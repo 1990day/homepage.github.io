@@ -1,0 +1,360 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+
+     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5522499110435321"
+     crossorigin="anonymous"></script>
+
+
+
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>테스트잇 칠 가이 성격 테스트</title>
+    <meta name="description" content="나는 얼마나 Chill 한 사람 일까?">
+<meta name="keywords" content="테스트잇,성격테스트,chill가이테스트,테스트잇칠가이,칠가이성격테스트,chill guy,테스트잇chill guy,테스트잇chill guy테스트,연애테스트,연애mbti,연애성격테스트, 심리테스트, mbti테스트">
+    <meta property="og:type" content="website"> 
+    <meta property="og:title" content="테스트잇 칠 가이 성격 테스트">
+    <meta property="og:description" content="나는 얼마나 Chill 한 사람 일까?">
+    <meta property="og:image" content="img_main251.png">
+    <meta property="og:url" content="https://test-it.co.kr/test251">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+      <link rel="icon" type="image/png" href="favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+
+
+   <style>
+       
+ body {
+    font-family: 'Noto Sans KR', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+    display: flex;
+    flex-direction: column; /* 세로 방향으로 요소를 배치하도록 수정 */
+    align-items: center;
+}
+
+.logo {
+    width: 100px;
+    margin-top: 14px;
+}
+
+.main-nav {
+    display: flex;
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    margin-top: 34px;
+    list-style: none;
+}
+
+.main-nav li {
+    margin-left: 36px;
+    font-family: 'Do Hyeon', sans-serif;
+    line-height: 1.7;
+    color: #432;
+}
+
+.main-nav a {
+    color: #432;
+    font-family: 'Do Hyeon', sans-serif;
+    line-height: 1.7;
+}
+
+.main-nav a:hover {
+    color: #0bd;
+}
+
+.page-header {
+    width: 100%;
+    background-color: #ffffff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 2;
+}
+
+       
+#img_main{
+    width: 500px;
+    height: 600px;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
+       
+#start-container, #question-container, #result-container {
+  text-align: center;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 600px;
+  width: 100%;
+}
+
+button {
+  background-color: #ffdbdb;
+  color: #000000;
+  padding: 15px 25px;
+  font-size: 18px;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  margin: 15px auto; /* 수정된 부분: 수평 가운데 정렬을 위해 auto 사용 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #fff6a3;
+}
+       
+#result-image {
+  max-width: 100%;
+  height: auto;
+  margin-top: 20px;
+}
+
+#question-image {
+    width: 500px;
+    height: 900px;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
+.coupang_ad {
+    width: 320px;
+    margin: 0 auto;
+}
+
+ 
+
+       
+  </style>
+</head>
+<body>
+<body class="container" style="background-color:#ffffff">
+            
+    <header class="page-header wrapper">
+        <h1><a href="index.html"><img class="logo" src="img_logo.png" alt="test it"></a>
+        </h1>
+    <nav>
+        <u1 class="main-nav">
+            <li> <a href="https://test-it.co.kr/test.html">성격</a></li>
+            <li> <a href="https://test-it.co.kr/face.html">얼굴</a></li>
+            <li> <a href="https://test-it.co.kr/etc.html">그외</a></li>
+        </u1>
+    </nav>
+        
+        
+    </header>
+
+    <div id="start-container">
+        <img id="img_main" class="mt-3" src="img_main251.png">
+        <button onclick="startTest()">시작하기</button>
+    </div>
+    
+    
+
+<div id="question-container" style="display: none;">
+  <h2 id="question"></h2>
+  <img id="question-image" src="" alt="Question Image">
+  <div id="options"></div>
+</div>
+
+<div id="result-container" style="display: none;">
+  <p id="result"></p>
+  <img id="result-image" src="" alt="Result Image">
+    
+      <button type="button" class="btn btn-info mt-3" onclick="location.href='test251.html'" style="font-size:large; font-weight: bold; color: black;background-color: rgb(255, 208, 107); border-radius: 0px; border-width: 3px; border-color: rgb(255, 255, 255); width: 350px; height: 50px; margin: 0 auto;">다시 해보기</button>
+                <button type="button" class="btn btn-info mt-3" onclick="location.href='/'" style="font-size:large; font-weight: bold; color: black; background-color: rgb(255, 208, 107); border-radius: 0px; border-width: 3px; border-color: rgb(255, 255, 255); width: 350px; height: 50px; margin: 0 auto;">다른 테스트 해보기</button>
+        
+    </div>
+
+     <article class="coupang_ad mt-3">
+<a href="https://link.coupang.com/a/UJY9K" target="_blank" referrerpolicy="unsafe-url"><img src="https://ads-partners.coupang.com/banners/471299?subId=&traceId=V0-301-bae0f72e5e59e45f-I471299&w=320&h=100" alt=""></a>
+                
+
+<script>
+    
+const resultImages = [];
+
+for (let a = 0; a <= 2; a++) {
+  const key = `a${a}`;
+  const imageFileName = `result_image_${key}.png`;
+  resultImages.push(imageFileName);
+}
+
+
+// 결과 이미지 파일 이름 출력
+console.log(resultImages);
+    
+    
+    
+    
+  const questions = [
+    { 
+      image: 'q1_251.png',
+      options: [
+        { text: '진짜 무례하네 시간 버렸잖아', score: 0 },
+        { text: '뭐야...다음엔 제대로 약속 잡자', score: 1 },
+        { text: '괜찮아~ 다음에 보면 되지!', score: 2 },
+      ], 
+      area: 'a' 
+    },
+    { 
+          image: 'q2_251.png',
+      options: [
+        { text: '아 이제 단톡 안 들어가ㅡㅡ', score: 0 },
+        { text: '좀 서운하긴 하네', score: 1 },
+        { text: '다들 바쁜가 보네~', score: 2 },
+      ], 
+      area: 'a' 
+    },    { 
+          image: 'q3_251.png',
+      options: [
+        { text: '아오 진짜 나는 왜 이럴까', score: 0 },
+        { text: '가자마자 미안하다고 사과해야지', score: 1 },
+        { text: '다음부터 조심해야겠다', score: 2 },
+      ], 
+      area: 'a' 
+    },
+        { 
+     image: 'q4_251.png',
+      options: [
+        { text: '오늘 운 더럽게 나쁘네', score: 0 },
+        { text: '아 조심할 걸', score: 1 },
+        { text: '괜찮아 빨면 되니까', score: 2 },
+      ], 
+     area: 'a' 
+    },
+          { 
+  image: 'q5_251.png',
+      options: [
+        { text: '아 좀 기다려주지 진짜ㅡㅡ', score: 0 },
+        { text: '아 조금만 빨리 왔으면..', score: 1 },
+        { text: '다음 거 타야지~!', score: 2 },
+      ], 
+      area: 'a' 
+    },
+          { 
+     image: 'q6_251.png',
+      options: [
+        { text: '미친 거 아냐? 왜 사과를 안 해?', score: 0 },
+        { text: '좀 조심하시지..', score: 1 },
+        { text: '실수할 수도 있지 뭐', score: 2 },
+      ], 
+       area: 'a' 
+    },
+          { 
+    image: 'q7_251.png',
+      options: [
+        { text: '이제부터 나도 절대 안 챙긴다', score: 0 },
+        { text: '좀 서운하긴 하지만 이해해야지', score: 1 },
+        { text: '바쁘게 살다 보면 그럴 수도 있지', score: 2 },
+      ], 
+       area: 'a' 
+    },
+          { 
+   image: 'q8_251.png',
+      options: [
+        { text: '아 이거 어떻게 수습하지 미치겠네', score: 0 },
+        { text: '익숙해지면 괜찮겠지..?', score: 1 },
+        { text: '머리카락은 자라니까 괜찮아', score: 2 },
+      ], 
+      area: 'a' 
+    },
+          { 
+  image: 'q9_251.png',
+      options: [
+        { text: '당장 지워줄래..?', score: 0 },
+        { text: '다음엔 괜찮은 걸로 올려줘!!', score: 1 },
+        { text: '뭐 어때 추억이지', score: 2 },
+      ], 
+        area: 'a' 
+    },
+          { 
+       image: 'q10_251.png',
+      options: [
+        { text: '왜 안 기다려줘? 진짜 짜증 난다', score: 0 },
+        { text: '아 타이밍 안 좋네...', score: 1 },
+        { text: '다음 거 타면 되지 뭐', score: 2 },
+      ], 
+      area: 'a' 
+    },
+
+  ];
+let currentQuestionIndex = 0;
+  let userAnswers = [];
+
+  function startTest() {
+    document.getElementById('start-container').style.display = 'none';
+    document.getElementById('question-container').style.display = 'block';
+    showQuestion();
+  }
+
+  function showQuestion() {
+  const questionElement = document.getElementById('question');
+  const questionImageElement = document.getElementById('question-image');
+  const optionsElement = document.getElementById('options');
+  const currentQuestion = questions[currentQuestionIndex];
+
+  questionElement.textContent = currentQuestion.question;
+  questionImageElement.src = currentQuestion.image;  // 이미지 업데이트 추가
+  optionsElement.innerHTML = '';
+
+  currentQuestion.options.forEach((option, index) => {
+    const button = document.createElement('button');
+    button.textContent = option.text;
+    button.onclick = () => selectAnswer(option.score);
+    optionsElement.appendChild(button);
+  });
+}
+    
+  function selectAnswer(score) {
+    userAnswers.push(score);
+
+    if (currentQuestionIndex < questions.length - 1) {
+      currentQuestionIndex++;
+      showQuestion();
+    } else {
+      showResult();
+    }
+  }
+
+ function showResult() {
+  document.getElementById('question-container').style.display = 'none';
+  document.getElementById('result-container').style.display = 'block';
+
+  const resultElement = document.getElementById('result');
+  const scores = calculateScores();
+  const resultImageFileName = getResultImageFileName(scores); // 새로운 함수 호출
+ 
+  // 결과 이미지 업데이트
+  const resultImageElement = document.getElementById('result-image');
+  resultImageElement.src = resultImageFileName;
+}
+
+   function calculateScores() {
+            const totalScore = userAnswers.reduce((acc, score) => acc + score, 0);
+            return { a: totalScore };
+        }
+
+        // 새로운 함수 추가
+        function getResultImageFileName(scores) {
+            const key = `a${scores.a}`;
+            return `result_image251_${key}.png`;
+        }
+    
+    
+</script>
+
+</body>
+</html>

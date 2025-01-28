@@ -9,12 +9,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>테스트잇 샬라샬라 영어 이름 짓기 테스트</title>
-    <meta name="description" content="테스트잇 샬라샬라 영어 이름 짓기 테스트">
-<meta name="keywords" content="테스트잇,성격테스트,영어이름짓기테스트,샬라샬라영어이름테스트,테스트잇연애,테스트잇영어이름,늦기전에어학연수샬라샬라,연애테스트,연애mbti,연애성격테스트, 심리테스트, mbti테스트">
+    <title>테스트잇 샬라샬라 영어 이름 테스트</title>
+    <meta name="description" content="테스트잇 샬라샬라 영어 이름 테스트">
+<meta name="keywords" content="테스트잇,성격테스트,영어이름테스트,샬라샬라영어이름테스트,테스트잇연애,테스트잇영어이름,늦기전에어학연수샬라샬라,연애테스트,연애mbti,연애성격테스트, 심리테스트, mbti테스트">
     <meta property="og:type" content="website"> 
-    <meta property="og:title" content="테스트잇 영어 이름 짓기 테스트">
-    <meta property="og:description" content="테스트잇 영어 이름 짓기 테스트">
+    <meta property="og:title" content="테스트잇 영어 이름 테스트">
+    <meta property="og:description" content="테스트잇 영어 이름 테스트">
     <meta property="og:image" content="img_main07.png">
     <meta property="og:url" content="https://test-it.co.kr/test07">
 
@@ -39,7 +39,7 @@
   font-family: 'YoonChildfundkoreaManSeh', sans-serif;
   margin: 0;
   padding: 0;
-  background: linear-gradient(135deg, #3493ff, #63dbff);
+  background: linear-gradient(135deg, #ff84c3, #ff84c3);
   color: #333;
   display: flex;
   align-items: center;
@@ -487,17 +487,16 @@ input[type="date"], select {
   const userName = document.getElementById('user-name');
   const resultImg = document.getElementById('result-img');
 
-    const resultImages = [
-      'img_07_1.png',
-      'img_07_2.png'
-    ];
+  const resultImagesMale = Array.from({ length: 25 }, (_, i) => `img_07_${i + 1}.png`); // 01~25
+const resultImagesFemale = Array.from({ length: 25 }, (_, i) => `img_07_${i + 26}.png`); // 26~50
+const resultImagesOther = Array.from({ length: 50 }, (_, i) => `img_07_${i + 1}.png`); // 01~50
+
 
     startBtn.addEventListener('click', () => {
     mainPage.style.display = 'none'; // 첫 화면 숨김
     namePage.style.display = 'block'; // 이름 입력 화면 표시
   });
 
-  // "확인" 버튼 이벤트
   infoConfirmBtn.addEventListener('click', () => {
   const name = nameInput.value.trim();
   const year = yearSelect.value;
@@ -505,20 +504,21 @@ input[type="date"], select {
   const day = daySelect.value;
   const gender = genderSelect.value;
 
-    // 유효성 검사
-    if (!name) {
-      alert('이름을 입력해주세요!');
-      return;
-    }
-    if (!year || !month || !day) {
-      alert('생년월일을 선택해주세요!');
-      return;
-    }
-    if (!gender) {
-      alert('성별을 선택해주세요!');
-      return;
-    }
-    // 생년월일 조합
+  // 유효성 검사
+  if (!name) {
+    alert('이름을 입력해주세요!');
+    return;
+  }
+  if (!year || !month || !day) {
+    alert('생년월일을 선택해주세요!');
+    return;
+  }
+  if (!gender) {
+    alert('성별을 선택해주세요!');
+    return;
+  }
+
+  // 생년월일 조합
   const birthdate = `${year}-${month}-${day}`;
 
   // 결과 화면에 표시할 텍스트 설정
@@ -533,11 +533,21 @@ input[type="date"], select {
     loadingPage.style.display = 'none'; // 로딩 화면 숨김
     resultPage.style.display = 'block'; // 결과 화면 표시
 
-    // 랜덤 이미지 선택
-    const randomImage = resultImages[Math.floor(Math.random() * resultImages.length)];
-    resultImg.src = randomImage;
+    let randomImage;
+
+    // 성별에 따라 랜덤 이미지를 선택
+    if (gender === 'male') {
+      randomImage = resultImagesMale[Math.floor(Math.random() * resultImagesMale.length)];
+    } else if (gender === 'female') {
+      randomImage = resultImagesFemale[Math.floor(Math.random() * resultImagesFemale.length)];
+    } else if (gender === 'other') {
+      randomImage = resultImagesOther[Math.floor(Math.random() * resultImagesOther.length)];
+    }
+
+    resultImg.src = randomImage; // 선택된 이미지를 결과 이미지로 설정
   }, 3000);
 });
+
 
 document.getElementById('save-btn').addEventListener('click', () => {
   const result = document.getElementById('result'); // 캡처할 영역

@@ -13,8 +13,8 @@
     <meta name="description" content="테스트잇 샬라샬라 영어 이름 테스트">
 <meta name="keywords" content="테스트잇,성격테스트,영어이름테스트,샬라샬라영어이름테스트,테스트잇연애,테스트잇영어이름,늦기전에어학연수샬라샬라,연애테스트,연애mbti,연애성격테스트, 심리테스트, mbti테스트">
     <meta property="og:type" content="website"> 
-    <meta property="og:title" content="테스트잇 영어 이름 테스트">
-    <meta property="og:description" content="테스트잇 영어 이름 테스트">
+    <meta property="og:title" content="테스트잇 샬라샬라 영어 이름 테스트">
+    <meta property="og:description" content="테스트잇 샬라샬라 영어 이름 테스트">
     <meta property="og:image" content="img_main07.png">
     <meta property="og:url" content="https://test-it.co.kr/test07">
 
@@ -145,14 +145,17 @@
     }
 
     input[type="text"] {
-      width: 80%;
-      padding: 10px;
-      margin: 10px 0;
-      font-size: 1rem;
-      border: 1px solid #ddd;
-      border-radius: 25px;
-      box-sizing: border-box;
-    }
+  width: 80%;
+  padding: 10px;
+  margin: 10px 0;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 25px;
+  box-sizing: border-box;
+  font-weight: bold; /* 글씨를 굵게 */
+  color: #333333; /* 글씨 색상 진하게 */
+  background-color: #ffffff; /* 배경색 설정 (선택 사항) */
+}
 
 
     #name-page {
@@ -252,8 +255,15 @@
   background-color: #f8f8f8; /* 부드러운 배경색 추가 */
   border-top: 1px solid #ddd; /* 위쪽 경계선 */
 }
+h1 {
+  font-size: 2rem; /* 제목 글씨 크기 조정 */
+  font-weight: bold; /* 글씨 굵게 */
+  color: #333333; /* 글씨 색상 */
+  text-align: center; /* 중앙 정렬 */
+  margin-bottom: 15px; /* 아래쪽 여백 추가 */
+}
 
-input[type="date"], select {
+input[type="text"], input[type="date"], select {
   width: 80%;
   padding: 10px;
   margin: 10px 0;
@@ -261,8 +271,27 @@ input[type="date"], select {
   border: 1px solid #ddd;
   border-radius: 25px;
   box-sizing: border-box;
+  background-color: #fbffc4; /* 배경색 설정 */
+  font-weight: bold; /* 글씨 굵게 */
+  color: #333333; /* 글씨 색상 진하게 */
 }
-
+select {
+  width: 80%;
+  padding: 10px;
+  margin: 10px 0;
+  font-size: 1rem;
+  font-weight: bold; /* 글씨를 굵게 */
+  color: #333333; /* 글씨 색상 진하게 */
+  border: 1px solid #ddd;
+  border-radius: 25px;
+  box-sizing: border-box;
+  background-color: #fbffc4; /* 배경색 설정 */
+}
+select option {
+  font-weight: bold; /* 드롭다운 옵션 글씨 굵게 */
+  color: #333333; /* 드롭다운 옵션 글씨 색 */
+  background-color: #fbffc4; /* 드롭다운 옵션 배경색 */
+}
 #top-decor-img {
   max-width: 50%; /* 원하는 크기로 조정 */
   height: auto;
@@ -391,7 +420,8 @@ input[type="date"], select {
     <img src="top-decor-image07.png" alt="장식 이미지" id="name-page-decor-img" style="max-width: 50%; height: auto; display: block; margin: 0 auto 10px;">
     
     <h1>영어 이름이 알고 싶은 당신은 누구?</h1>
-    <input type="text" id="name" placeholder="이름을 다섯 자 이내로 입력해 주세요!">
+    <input type="text" id="name" maxlength="5" placeholder="이름을 다섯 자 이내로 입력해 주세요!">
+
     <div>
         <select id="year">
             <option value="" disabled selected>년도</option>
@@ -573,7 +603,13 @@ document.getElementById('save-btn').addEventListener('click', () => {
     link.click(); // 저장 실행
   });
 });
-
+// 이름 입력 제한 및 경고 메시지 표시
+nameInput.addEventListener('input', () => {
+  if (nameInput.value.length > 5) {
+    alert('이름은 다섯 자 이내로 입력해주세요!');
+    nameInput.value = nameInput.value.slice(0, 5); // 다섯 글자까지만 유지
+  }
+});
   </script>
 </body>
 </html>

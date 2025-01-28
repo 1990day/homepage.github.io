@@ -1,0 +1,494 @@
+
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>테스트잇 샬라샬라 영어 이름 짓기 테스트</title>
+    <meta name="description" content="테스트잇 샬라샬라 영어 이름 짓기 테스트">
+<meta name="keywords" content="테스트잇,성격테스트,영어이름짓기테스트,샬라샬라영어이름테스트,테스트잇연애,테스트잇영어이름,늦기전에어학연수샬라샬라,연애테스트,연애mbti,연애성격테스트, 심리테스트, mbti테스트">
+    <meta property="og:type" content="website"> 
+    <meta property="og:title" content="테스트잇 영어 이름 짓기 테스트">
+    <meta property="og:description" content="테스트잇 영어 이름 짓기 테스트">
+    <meta property="og:image" content="img_main07.png">
+    <meta property="og:url" content="https://test-it.co.kr/test07">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+      <link rel="icon" type="image/png" href="favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+
+
+
+  <style>
+    /* 공통 스타일 */
+      
+ @font-face {
+    font-family: 'YoonChildfundkoreaManSeh';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408@1.0/YoonChildfundkoreaManSeh.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+  body {
+  font-family: 'YoonChildfundkoreaManSeh', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column; /* 콘텐츠 세로 정렬 */
+  min-height: 100vh;
+  padding-top: 80px; /* 헤더 높이만큼 여백 추가 */
+}
+.logo {
+    width: 100px;
+    margin-top: 14px;
+}
+
+.main-nav {
+    display: flex;
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    margin-top: 34px;
+    list-style: none;
+}
+
+.main-nav li {
+    margin-left: 36px;
+       font-family: 'Do Hyeon', sans-serif;
+    line-height: 1.7;
+    color: #432;
+}
+
+.main-nav a{
+    color: #432;
+       font-family: 'Do Hyeon', sans-serif;
+    line-height: 1.7;
+}
+
+.main-nav a:hover {
+    color: #0bd;
+}
+
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 20px;
+  position: fixed; /* 헤더를 고정 */
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: white; /* 배경 색 추가 */
+  z-index: 1000; /* 다른 요소 위에 표시 */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+}
+
+    #container {
+      max-width: 90%;
+      width: 100%;
+      max-width: 600px;
+      padding: 50px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      margin: 10px 0;
+    }
+
+    #main-img {
+      max-width: 90%;
+      height: auto;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+   
+    button {
+      padding: 10px 20px;
+      font-size: 1rem;
+      color: white;
+      background: linear-gradient(45deg, #ff7eb3, #ff758c);
+        font-weight: bold; /* 글씨 굵게 추가 */
+      border: none;
+      border-radius: 25px;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
+      max-width: 200px;
+      margin: 10px auto;
+    }
+
+    button:hover {
+      background: linear-gradient(45deg, #ff89b3, #ff80a1);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+      transform: scale(1.05);
+    }
+
+    button:active {
+      transform: scale(0.95);
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    input[type="text"] {
+      width: 80%;
+      padding: 10px;
+      margin: 10px 0;
+      font-size: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 25px;
+      box-sizing: border-box;
+    }
+
+
+    #name-page {
+    display: none; /* 첫 화면에서는 보이지 않음 */
+  }
+
+ #name-image {
+  max-width: 100%; /* 화면 크기에 맞춰 조정 */
+  height: auto; /* 비율 유지 */
+  border-radius: 10px; /* 둥근 모서리 추가 */
+  margin-bottom: 20px;
+}
+    #loading-page {
+      text-align: center;
+    }
+
+    #loading-img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+    .hidden {
+      display: none;
+    }
+
+    #result {
+  position: relative; /* 부모 요소를 기준으로 자식 요소 배치 */
+  text-align: center;
+  padding: 20px 0;
+}
+
+#result-text {
+  position: absolute; /* 이미지 위에 배치 */
+  top: 28%; /* 부모 요소의 중앙에 위치 */
+  left: 50%;
+  transform: translate(-50%, -50%); /* 정확히 중앙 정렬 */
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 25px;
+  color: #000000;
+  font-weight: 900;
+  white-space: nowrap; /* 줄바꿈 방지 */
+  z-index: 10; /* 이미지 위에 표시되도록 보장 */
+}
+
+    #result-img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+      .result-buttons {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column; /* 버튼을 세로로 정렬 */
+  align-items: center; /* 가운데 정렬 */
+  gap: 10px; /* 버튼 간 간격 */
+}
+
+.custom-jelly-button {
+  width: 200px; /* 버튼 너비 */
+  padding: 10px 15px;
+  background: linear-gradient(45deg, #ff7eb3, #ff758c);
+  border: none;
+  border-radius: 25px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  font-size: 1rem;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.custom-jelly-button:hover {
+  background: linear-gradient(45deg, #ff89b3, #ff80a1);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+  transform: scale(1.05);
+}
+
+.custom-jelly-button:active {
+  transform: scale(0.95);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+      
+      .footer {
+  margin-top: 10px;
+  padding: 10px 0;
+  text-align: center; /* 광고 가운데 정렬 */
+  background-color: #f8f8f8; /* 부드러운 배경색 추가 */
+  border-top: 1px solid #ddd; /* 위쪽 경계선 */
+}
+
+input[type="date"], select {
+  width: 80%;
+  padding: 10px;
+  margin: 10px 0;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 25px;
+  box-sizing: border-box;
+}
+      
+      /* 미디어 쿼리: 화면 크기가 작을 경우 위치 조정 */
+@media (max-width: 768px) {
+  #result-text {
+    top: 155px; /* 모바일 환경에서 더 아래로 이동 */
+    font-size: 22px; /* 글씨 크기 조정 */
+  }
+}
+@media (max-width: 553px) {
+  #result-text {
+    top: 150px; /* 모바일 환경에서 더 아래로 이동 */
+    font-size: 22px; /* 글씨 크기 조정 */
+  }
+}
+      
+      @media (max-width: 527px) {
+  #result-text {
+    top: 140px; /* 더 작은 화면에서 추가 이동 */
+    font-size: 20px; /* 글씨 크기 축소 */
+  }
+
+  @media (max-width: 506px) {
+  #result-text {
+    top: 135px; /* 더 작은 화면에서 추가 이동 */
+    font-size: 20px; /* 글씨 크기 축소 */
+  }
+  @media (max-width: 490px) {
+  #result-text {
+    top: 130px; /* 더 작은 화면에서 추가 이동 */
+    font-size: 20px; /* 글씨 크기 축소 */
+  }
+
+  @media (max-width: 470px) {
+  #result-text {
+    top: 130px; /* 더 작은 화면에서 추가 이동 */
+    font-size: 20px; /* 글씨 크기 축소 */
+  }
+
+
+@media (max-width: 467px) {
+  #result-text {
+    top: 120px; /* 더 작은 화면에서 추가 이동 */
+    font-size: 18px; /* 글씨 크기 축소 */
+  }
+
+
+  
+@media (max-width: 444px) {
+  #result-text {
+    top: 115px; /* 더 작은 화면에서 추가 이동 */
+    font-size: 18px; /* 글씨 크기 축소 */
+  }
+     .coupang_ad {
+    max-width: 350px; /* 핸드폰 크기에서 더 줄어듦 */
+  }
+}
+  </style>
+</head>
+<body>
+    <body class="container" style="background-color:#ffffff">
+            
+    <header class="page-header wrapper">
+        <h1><a href="index.html"><img class="logo" src="img_logo.png" alt="test it"></a>
+        </h1>
+    <nav>
+        <u1 class="main-nav">
+            <li> <a href="https://test-it.co.kr/test.html">성격</a></li>
+            <li> <a href="https://test-it.co.kr/face.html">얼굴</a></li>
+            <li> <a href="https://test-it.co.kr/etc.html">그외</a></li>
+        </u1>
+    </nav>
+        
+        
+    </header>
+        
+  <div id="container">
+    <!-- 첫 화면 -->
+    <div id="main-page">
+ 
+      <img src="img_main07.png" alt="메인 이미지" id="main-img">
+      <button id="start-btn">시작하기</button>
+    </div>
+
+    <!-- 이름, 생년월일, 성별 선택 화면 -->
+        <div id="name-page">
+            <h1>정보를 입력해주세요</h1>
+            <input type="text" id="name" placeholder="이름을 입력해주세요">
+            <div>
+                <select id="year">
+                    <option value="" disabled selected>년도</option>
+                </select>
+                <select id="month">
+                    <option value="" disabled selected>월</option>
+                </select>
+                <select id="day">
+                    <option value="" disabled selected>일</option>
+                </select>
+            </div>
+            <select id="gender">
+                <option value="" disabled selected>성별을 선택해주세요</option>
+                <option value="female">여성</option>
+                <option value="male">남성</option>
+                <option value="other">기타</option>
+            </select>
+            <button id="info-confirm-btn">확인</button>
+        </div>
+
+<!-- 로딩 화면 -->
+<div id="loading-page" class="hidden">
+  <img src="loading-image07.png" alt="로딩 중" id="loading-img">
+</div>
+
+   <!-- 결과 화면 -->
+<div id="result-page" class="hidden">
+  <div id="result">
+  <!-- 이미지 위에 표시될 텍스트 -->
+  <div id="result-text">
+  <span id="user-name"></span>님의<br>영어 이름은
+</div>
+  <!-- 결과 이미지 -->
+  <img src="" alt="결과 이미지" id="result-img">
+</div>
+  <!-- 추가한 버튼 -->
+  <div class="result-buttons">
+    <button type="button" class="btn btn-info mt-3 custom-jelly-button" 
+            onclick="location.href='test07.html'" 
+            style="font-size:large; font-weight: bold;">다시 해보기</button>
+    <button type="button" class="btn btn-info mt-1 custom-jelly-button" 
+            onclick="location.href='/'" 
+            style="font-size:large; font-weight: bold;">다른 테스트 해보기</button>
+  </div>
+</div>
+
+
+  <script>
+
+    // 페이지 로드 시 년도, 월, 일 드롭다운 메뉴 초기화
+  window.onload = () => {
+    const yearSelect = document.getElementById('year');
+    const monthSelect = document.getElementById('month');
+    const daySelect = document.getElementById('day');
+
+    // 현재 연도 가져오기
+    const currentYear = new Date().getFullYear();
+
+    // 년도 옵션 추가 (현재 연도부터 과거 100년까지)
+    for (let year = currentYear; year >= currentYear - 100; year--) {
+      const option = document.createElement('option');
+      option.value = year;
+      option.textContent = year;
+      yearSelect.appendChild(option);
+    }
+
+    // 월 옵션 추가 (1월 ~ 12월)
+    for (let month = 1; month <= 12; month++) {
+      const option = document.createElement('option');
+      option.value = month;
+      option.textContent = `${month}월`;
+      monthSelect.appendChild(option);
+    }
+
+    // 일 옵션 추가 (1일 ~ 31일)
+    for (let day = 1; day <= 31; day++) {
+      const option = document.createElement('option');
+      option.value = day;
+      option.textContent = `${day}일`;
+      daySelect.appendChild(option);
+    }
+  };
+
+  
+  const mainPage = document.getElementById('main-page');
+  const namePage = document.getElementById('name-page');
+  const loadingPage = document.getElementById('loading-page');
+  const resultPage = document.getElementById('result-page');
+
+  const startBtn = document.getElementById('start-btn');
+  const infoConfirmBtn = document.getElementById('info-confirm-btn');
+  const nameInput = document.getElementById('name');
+  const yearSelect = document.getElementById('year');
+  const monthSelect = document.getElementById('month');
+  const daySelect = document.getElementById('day');
+  const genderSelect = document.getElementById('gender');
+  const userName = document.getElementById('user-name');
+  const resultImg = document.getElementById('result-img');
+
+    const resultImages = [
+      'img_07_1.png',
+      'img_07_2.png'
+    ];
+
+    startBtn.addEventListener('click', () => {
+    mainPage.style.display = 'none'; // 첫 화면 숨김
+    namePage.style.display = 'block'; // 이름 입력 화면 표시
+  });
+
+  // "확인" 버튼 이벤트
+  infoConfirmBtn.addEventListener('click', () => {
+  const name = nameInput.value.trim();
+  const year = yearSelect.value;
+  const month = monthSelect.value;
+  const day = daySelect.value;
+  const gender = genderSelect.value;
+
+    // 유효성 검사
+    if (!name) {
+      alert('이름을 입력해주세요!');
+      return;
+    }
+    if (!year || !month || !day) {
+      alert('생년월일을 선택해주세요!');
+      return;
+    }
+    if (!gender) {
+      alert('성별을 선택해주세요!');
+      return;
+    }
+    // 생년월일 조합
+  const birthdate = `${year}-${month}-${day}`;
+
+  // 결과 화면에 표시할 텍스트 설정
+  userName.textContent = `${name}`;
+
+  // 이름 입력 화면 숨기고 로딩 화면 표시
+  namePage.style.display = 'none';
+  loadingPage.style.display = 'block';
+
+  // 3초 후 결과 화면 표시
+  setTimeout(() => {
+    loadingPage.style.display = 'none'; // 로딩 화면 숨김
+    resultPage.style.display = 'block'; // 결과 화면 표시
+
+    // 랜덤 이미지 선택
+    const randomImage = resultImages[Math.floor(Math.random() * resultImages.length)];
+    resultImg.src = randomImage;
+  }, 3000);
+});
+  </script>
+</body>
+</html>

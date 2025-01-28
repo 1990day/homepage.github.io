@@ -223,7 +223,15 @@
   align-items: center; /* 가운데 정렬 */
   gap: 10px; /* 버튼 간 간격 */
 }
-
+#main-title {
+  font-size: 22px; /* 제목 글씨 크기 */
+  font-weight: bold; /* 글씨 굵게 */
+  color: #333333; /* 글씨 색상 */
+  text-align: center; /* 텍스트 중앙 정렬 */
+  line-height: 1.5; /* 줄 간격 조정 */
+  margin-top: 15px; /* 아래쪽 여백 */
+  margin-bottom: 15px; /* 아래쪽 여백 */
+}
 .custom-jelly-button {
   width: 200px; /* 버튼 너비 */
   padding: 10px 15px;
@@ -255,13 +263,6 @@
   background-color: #f8f8f8; /* 부드러운 배경색 추가 */
   border-top: 1px solid #ddd; /* 위쪽 경계선 */
 }
-h1 {
-  font-size: 2rem; /* 제목 글씨 크기 조정 */
-  font-weight: bold; /* 글씨 굵게 */
-  color: #333333; /* 글씨 색상 */
-  text-align: center; /* 중앙 정렬 */
-  margin-bottom: 15px; /* 아래쪽 여백 추가 */
-}
 
 input[type="text"], input[type="date"], select {
   width: 80%;
@@ -271,7 +272,7 @@ input[type="text"], input[type="date"], select {
   border: 1px solid #ddd;
   border-radius: 25px;
   box-sizing: border-box;
-  background-color: #fbffc4; /* 배경색 설정 */
+  background-color: #feffb9; /* 배경색 설정 */
   font-weight: bold; /* 글씨 굵게 */
   color: #333333; /* 글씨 색상 진하게 */
 }
@@ -285,12 +286,12 @@ select {
   border: 1px solid #ddd;
   border-radius: 25px;
   box-sizing: border-box;
-  background-color: #fbffc4; /* 배경색 설정 */
+  background-color: #fbffeffb9fc4; /* 배경색 설정 */
 }
 select option {
   font-weight: bold; /* 드롭다운 옵션 글씨 굵게 */
   color: #333333; /* 드롭다운 옵션 글씨 색 */
-  background-color: #fbffc4; /* 드롭다운 옵션 배경색 */
+  background-color: #feffb9; /* 드롭다운 옵션 배경색 */
 }
 #top-decor-img {
   max-width: 50%; /* 원하는 크기로 조정 */
@@ -419,7 +420,9 @@ select option {
     <!-- 추가한 이미지 -->
     <img src="top-decor-image07.png" alt="장식 이미지" id="name-page-decor-img" style="max-width: 50%; height: auto; display: block; margin: 0 auto 10px;">
     
-    <h1>영어 이름이 알고 싶은 당신은 누구?</h1>
+    <h1 id="main-title">
+  💛영어 이름이 궁금한 당신은 누구?🙃
+</h1>
     <input type="text" id="name" maxlength="5" placeholder="이름을 다섯 자 이내로 입력해 주세요!">
 
     <div>

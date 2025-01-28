@@ -169,11 +169,18 @@
       text-align: center;
     }
 
+    @keyframes sparkle {
+    0% { opacity: 1; }
+    50% { opacity: 0.8; }
+    100% { opacity: 1; }
+  }
+
     #loading-img {
   max-width: 100%;
   height: auto;
   display: block;
   margin: 0 auto;
+  animation: sparkle 1.5s infinite; /* 1.5초 동안 반복 */
 }
 
     .hidden {
@@ -379,28 +386,31 @@ input[type="date"], select {
     </div>
 
     <!-- 이름, 생년월일, 성별 선택 화면 -->
-        <div id="name-page">
-            <h1>정보를 입력해주세요</h1>
-            <input type="text" id="name" placeholder="이름을 입력해주세요">
-            <div>
-                <select id="year">
-                    <option value="" disabled selected>년도</option>
-                </select>
-                <select id="month">
-                    <option value="" disabled selected>월</option>
-                </select>
-                <select id="day">
-                    <option value="" disabled selected>일</option>
-                </select>
-            </div>
-            <select id="gender">
-                <option value="" disabled selected>성별을 선택해주세요</option>
-                <option value="female">여성</option>
-                <option value="male">남성</option>
-                <option value="other">기타</option>
-            </select>
-            <button id="info-confirm-btn">확인</button>
-        </div>
+<div id="name-page">
+    <!-- 추가한 이미지 -->
+    <img src="top-decor-image07.png" alt="장식 이미지" id="name-page-decor-img" style="max-width: 50%; height: auto; display: block; margin: 0 auto 10px;">
+    
+    <h1>영어 이름이 알고 싶은 당신은 누구?</h1>
+    <input type="text" id="name" placeholder="이름을 다섯 자 이내로 입력해 주세요!">
+    <div>
+        <select id="year">
+            <option value="" disabled selected>년도</option>
+        </select>
+        <select id="month">
+            <option value="" disabled selected>월</option>
+        </select>
+        <select id="day">
+            <option value="" disabled selected>일</option>
+        </select>
+    </div>
+    <select id="gender">
+        <option value="" disabled selected>성별을 선택해주세요</option>
+        <option value="female">여성</option>
+        <option value="male">남성</option>
+        <option value="other">기타</option>
+    </select>
+    <button id="info-confirm-btn">확인</button>
+</div>
 
 <!-- 로딩 화면 -->
 <div id="loading-page" class="hidden">

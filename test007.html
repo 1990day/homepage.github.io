@@ -7,12 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>테스트잇 샬라샬라 영어 이름 테스트</title>
-    <meta name="description" content="테스트잇 샬라샬라 영어 이름 테스트">
-<meta name="keywords" content="테스트잇,성격테스트,영어이름테스트,샬라샬라영어이름테스트,테스트잇연애,테스트잇영어이름,늦기전에어학연수샬라샬라,연애테스트,연애mbti,연애성격테스트, 심리테스트, mbti테스트">
+    <title>테스트잇 샬라샬라 외국인 친구 테스트</title>
+    <meta name="description" content="테스트잇 샬라샬라 외국인 친구 테스트">
+<meta name="keywords" content="테스트잇,성격테스트,외국인친구테스트,샬라샬라외국인친구테스트,테스트잇연애,테스트잇샬라샬라,늦기전에어학연수샬라샬라,연애테스트,연애mbti,연애성격테스트, 심리테스트, mbti테스트">
     <meta property="og:type" content="website"> 
-    <meta property="og:title" content="테스트잇 샬라샬라 영어 이름 테스트">
-    <meta property="og:description" content="테스트잇 샬라샬라 영어 이름 테스트">
+    <meta property="og:title" content="테스트잇 샬라샬라 외국인 친구 테스트">
+    <meta property="og:description" content="테스트잇 샬라샬라 외국인 친구 테스트">
     <meta property="og:image" content="img_main007.png">
     <meta property="og:url" content="https://test-it.co.kr/test007">
 
@@ -451,7 +451,7 @@ select option {
 
   @media (max-width: 477px) {
   #result-text {
-    top: 195px; /* 더 작은 화면에서 추가 이동 */
+    top: 200px; /* 더 작은 화면에서 추가 이동 */
     font-size: 20px; /* 글씨 크기 축소 */
   }
   }
@@ -483,7 +483,7 @@ select option {
   
 @media (max-width: 444px) {
   #result-text {
-    top: 180px; /* 더 작은 화면에서 추가 이동 */
+    top: 182px; /* 더 작은 화면에서 추가 이동 */
     font-size: 18px; /* 글씨 크기 축소 */
   }
   #country-info {
@@ -737,6 +737,70 @@ window.onload = () => {
         option.textContent = `${day}일`;
         daySelect.appendChild(option);
     }
+    // 🎯 "확인" 버튼 이벤트 리스너를 여기서 등록
+    document.getElementById("info-confirm-btn").addEventListener("click", () => {
+        console.log("✅ '확인' 버튼 클릭됨!");
+
+        const name = document.getElementById("name").value.trim();
+        const year = document.getElementById("year").value;
+        const month = document.getElementById("month").value;
+        const day = document.getElementById("day").value;
+        const gender = document.getElementById("gender").value;
+
+        // 🎯 모든 입력값이 채워졌는지 확인
+        if (!name || name.length === 0) {
+            alert("이름을 입력해주세요!");
+            return;
+        }
+
+        if (year === "" || year === "년도") {
+            alert("년도를 선택해주세요!");
+            return;
+        }
+
+        if (month === "" || month === "월") {
+            alert("월을 선택해주세요!");
+            return;
+        }
+
+        if (day === "" || day === "일") {
+            alert("일을 선택해주세요!");
+            return;
+        }
+
+        if (gender === "" || gender === "성별을 선택해주세요") {
+            alert("성별을 선택해주세요!");
+            return;
+        }
+
+        // 모든 입력값이 정상적으로 입력된 경우
+        document.getElementById("user-name").textContent = `${name}`;
+
+        console.log("✅ 모든 정보 입력 완료 -> 로딩 페이지로 이동!");
+
+        // 랜덤 국기 설정
+        if (countryFlag && countryName) {
+            const randomCountry = countries[Math.floor(Math.random() * countries.length)];
+            countryFlag.src = randomCountry.flag;
+            countryName.textContent = randomCountry.name;
+        }
+
+
+
+        document.getElementById("name-page").style.display = "none";
+        document.getElementById("loading-page").style.display = "block";
+
+
+        // 🎬 ✅ 로딩 페이지 도착 시 YouTube 영상 실행
+    createYouTubeVideo(); 
+
+
+        setTimeout(() => {
+            document.getElementById("skip-btn").style.display = "block";
+        }, 5000);
+    });
+};
+
 
     // 🎯 랜덤 나라 정보 설정
     const countryFlag = document.getElementById("country-flag");
@@ -759,60 +823,7 @@ window.onload = () => {
         document.getElementById("name-page").style.display = "block";
     });
 
-    // 🎯 "확인" 버튼 이벤트 추가
-document.getElementById("info-confirm-btn").addEventListener("click", () => {
-    console.log("✅ '확인' 버튼 클릭됨!");
-
-    const name = document.getElementById("name").value.trim();
-    const year = document.getElementById("year").value;
-    const month = document.getElementById("month").value;
-    const day = document.getElementById("day").value;
-    const gender = document.getElementById("gender").value;
-
-    // 🎯 모든 입력값이 채워졌는지 확인
-    if (!name || name.length === 0) {
-        alert("이름을 입력해주세요!");
-        return;
-    }
-
-    if (year === "" || year === "년도") {
-        alert("년도를 선택해주세요!");
-        return;
-    }
-
-    if (month === "" || month === "월") {
-        alert("월을 선택해주세요!");
-        return;
-    }
-
-    if (day === "" || day === "일") {
-        alert("일을 선택해주세요!");
-        return;
-    }
-
-    if (gender === "" || gender === "성별을 선택해주세요") {
-        alert("성별을 선택해주세요!");
-        return;
-    }
-
-    // 모든 입력값이 정상적으로 입력된 경우
-    document.getElementById("user-name").textContent = `${name}`;
-
-
-        // 랜덤 국기 설정
-        if (countryFlag && countryName) {
-            const randomCountry = countries[Math.floor(Math.random() * countries.length)];
-            countryFlag.src = randomCountry.flag;
-            countryName.textContent = randomCountry.name;
-        }
-
-        document.getElementById("name-page").style.display = "none";
-        document.getElementById("loading-page").style.display = "block";
-
-        setTimeout(() => {
-            document.getElementById("skip-btn").style.display = "block";
-        }, 5000);
-    });
+ 
 
     // 🎯 "바로 결과 보기" 버튼 기능 추가
     document.getElementById("skip-btn").addEventListener("click", () => {
@@ -879,16 +890,6 @@ function createYouTubeVideo() {
     videoContainer.appendChild(iframe);
 }
 
-// 🎯 "확인" 버튼 클릭 시 로딩 페이지 도착하면 실행
-document.getElementById("info-confirm-btn").addEventListener("click", () => {
-    document.getElementById("name-page").style.display = "none";
-    document.getElementById("loading-page").style.display = "block";
-    createYouTubeVideo(); // ✅ 로딩 페이지 도착 시 YouTube 영상 생성
-
-    setTimeout(() => {
-        document.getElementById("skip-btn").style.display = "block";
-    }, 3000);
-});
 
 // 🎯 결과 페이지로 넘어갈 때 iframe 제거 (다시 로딩할 때 처음부터 재생되도록)
 document.getElementById("skip-btn").addEventListener("click", () => {
@@ -912,7 +913,7 @@ document.head.appendChild(tag);
             document.getElementById("name").value = document.getElementById("name").value.slice(0, 5);
         }
     });
-};
+
 
 </script>
 

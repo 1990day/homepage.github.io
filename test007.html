@@ -223,7 +223,7 @@
 
 #result-text {
   position: absolute; /* 이미지 위에 배치 */
-  top: 38%; /* 부모 요소의 중앙에 위치 */
+  top: 28%; /* 부모 요소의 중앙에 위치 */
   left: 50%;
   transform: translate(-50%, -50%); /* 정확히 중앙 정렬 */
   padding: 10px 20px;
@@ -232,7 +232,7 @@
   color: #000000;
   font-weight: 900;
   white-space: nowrap; /* 줄바꿈 방지 */
-  z-index: 10; /* 이미지 위에 표시되도록 보장 */
+  z-index: 11; /* 이미지 위에 표시되도록 보장 */
 }
 
     #result-img {
@@ -247,6 +247,47 @@
   align-items: center; /* 가운데 정렬 */
   gap: 10px; /* 버튼 간 간격 */
 }
+.result-buttons button {
+  font-weight: bold !important; /* ✅ 강제 적용 */\
+}
+.result-buttons button:hover {
+      background: linear-gradient(45deg, #ffffff, #fffc3b);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+      transform: scale(1.05);
+      color: #000000;
+    }
+
+
+/* 기본 위치 */
+#country-info {
+  position: absolute;
+  top: 200px;  
+  left: 40px;  
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+  background: rgba(255, 255, 255, 0.85);
+  padding: 6px 10px;
+  border-radius: 8px;
+  z-index: 10;
+  transition: all 0.3s ease-in-out;
+}
+
+#country-flag {
+  width: 40px; /* 기본 크기 */
+  height: auto;
+  border-radius: 5px;
+  transition: width 0.3s ease-in-out;
+}
+
+#country-name {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+}
+
+
 #main-title {
   font-size: 22px; /* 제목 글씨 크기 */
   font-weight: bold; /* 글씨 굵게 */
@@ -310,7 +351,7 @@ select {
   border: 1px solid #ddd;
   border-radius: 25px;
   box-sizing: border-box;
-  background-color: #fbffeffb9fc4; /* 배경색 설정 */
+  background-color: #feffb9; /* 배경색 설정 */
 }
 select option {
   font-weight: bold; /* 드롭다운 옵션 글씨 굵게 */
@@ -328,7 +369,7 @@ select option {
       /* 미디어 쿼리: 화면 크기가 작을 경우 위치 조정 */
 @media (max-width: 768px) {
   #result-text {
-    top: 235px; /* 모바일 환경에서 더 아래로 이동 */
+    top: 230px; /* 모바일 환경에서 더 아래로 이동 */
     font-size: 22px; /* 글씨 크기 조정 */
   }
 }
@@ -338,64 +379,108 @@ select option {
     top: 240px; /* 모바일 환경에서 더 아래로 이동 */
     font-size: 22px; /* 글씨 크기 조정 */
   }
+  #country-info {
+    top: 200px;
+    left: 20px;
+    padding: 5px 8px;
+  }
+  #country-flag {
+    width: 35px; /* 줄어듦 */
+  }
+  #country-name {
+    font-size: 13px;
+  }
 }
-@media (max-width: 553px) {
+
+
+@media (max-width: 560px) {
   #result-text {
     top: 230px; /* 모바일 환경에서 더 아래로 이동 */
     font-size: 22px; /* 글씨 크기 조정 */
   }
 }
+
       
       @media (max-width: 536px) {
   #result-text {
-    top: 228px; /* 더 작은 화면에서 추가 이동 */
+    top: 225px; /* 더 작은 화면에서 추가 이동 */
     font-size: 20px; /* 글씨 크기 축소 */
   }
+      }
 
   @media (max-width: 529px) {
   #result-text {
     top: 220px; /* 더 작은 화면에서 추가 이동 */
     font-size: 20px; /* 글씨 크기 축소 */
   }
-
+  }
 
   @media (max-width: 515px) {
   #result-text {
     top: 215px; /* 더 작은 화면에서 추가 이동 */
     font-size: 20px; /* 글씨 크기 축소 */
   }
+}
+
   @media (max-width: 499px) {
   #result-text {
     top: 210px; /* 더 작은 화면에서 추가 이동 */
     font-size: 20px; /* 글씨 크기 축소 */
   }
+  }
+
+
 
   @media (max-width: 492px) {
   #result-text {
     top: 205px; /* 더 작은 화면에서 추가 이동 */
     font-size: 20px; /* 글씨 크기 축소 */
   }
+}
+
+  @media (max-width: 485px) {
+  #country-info {
+    top: 200px;
+    left: 15px;
+  }
+  #country-flag {
+    width: 30px;
+  }
+  #country-name {
+    font-size: 12px;
+  }
+  }
 
   @media (max-width: 477px) {
   #result-text {
-    top: 200px; /* 더 작은 화면에서 추가 이동 */
+    top: 195px; /* 더 작은 화면에서 추가 이동 */
     font-size: 20px; /* 글씨 크기 축소 */
   }
-
+  }
 
 @media (max-width: 467px) {
   #result-text {
     top: 190px; /* 더 작은 화면에서 추가 이동 */
     font-size: 18px; /* 글씨 크기 축소 */
   }
-
+}
 
   @media (max-width: 455px) {
   #result-text {
     top: 185px; /* 더 작은 화면에서 추가 이동 */
     font-size: 18px; /* 글씨 크기 축소 */
   }
-
+  #country-info {
+    top: 190px;
+    left: 15px;
+  }
+  #country-flag {
+    width: 25px;
+  }
+  #country-name {
+    font-size: 10px;
+  }
+  }
 
   
 @media (max-width: 444px) {
@@ -403,64 +488,127 @@ select option {
     top: 180px; /* 더 작은 화면에서 추가 이동 */
     font-size: 18px; /* 글씨 크기 축소 */
   }
-
+  #country-info {
+    top: 180px;
+    left: 15px;
+  }
+  #country-flag {
+    width: 25px;
+  }
+  #country-name {
+    font-size: 10px;
+  }
+}
     
 @media (max-width: 432px) {
   #result-text {
     top: 175px; /* 더 작은 화면에서 추가 이동 */
     font-size: 18px; /* 글씨 크기 축소 */
   }
+  #country-info {
+    top: 170px;
+    left: 15px;
+  }
+  #country-flag {
+    width: 25px;
+  }
+  #country-name {
+    font-size: 10px;
+  }
+}
 
   @media (max-width: 420px) {
   #result-text {
-    top: 170px; /* 더 작은 화면에서 추가 이동 */
+    top: 165px; /* 더 작은 화면에서 추가 이동 */
     font-size: 18px; /* 글씨 크기 축소 */
   }
+}
 
   @media (max-width: 410px) {
   #result-text {
-    top: 160px; /* 더 작은 화면에서 추가 이동 */
+    top: 163px; /* 더 작은 화면에서 추가 이동 */
     font-size: 18px; /* 글씨 크기 축소 */
   }
+  #country-info {
+    top: 160px;
+    left: 15px;
+  }
+  #country-flag {
+    width: 25px;
+  }
+  #country-name {
+    font-size: 10px;
+  }
+}
     
   @media (max-width: 393px) {
   #result-text {
     top: 155px; /* 더 작은 화면에서 추가 이동 */
     font-size: 17px; /* 글씨 크기 축소 */
   }
-  @media (max-width: 383px) {
+  #country-info {
+    top: 150px;
+    left: 15px;
+  }
+  #country-flag {
+    width: 25px;
+  }
+  #country-name {
+    font-size: 10px;
+  }
+}
+@media (max-width: 380px) {
   #result-text {
     top: 150px; /* 더 작은 화면에서 추가 이동 */
     font-size: 17px; /* 글씨 크기 축소 */
   }
+}
+
+
   @media (max-width: 374px) {
   #result-text {
-    top: 145px; /* 더 작은 화면에서 추가 이동 */
+    top: 148px; /* 더 작은 화면에서 추가 이동 */
     font-size: 16px; /* 글씨 크기 축소 */
   }
+  #country-info {
+    top: 140px;
+    left: 15px;
+  }
+  #country-flag {
+    width: 20px;
+  }
+  #country-name {
+    font-size: 9px;
+  }
+}
 
-  @media (max-width: 364px) {
-  #result-text {
-    top: 140px; /* 더 작은 화면에서 추가 이동 */
-    font-size: 16px; /* 글씨 크기 축소 */
-  }
+
+
   @media (max-width: 354px) {
   #result-text {
-    top: 135px; /* 더 작은 화면에서 추가 이동 */
+    top: 145px; /* 더 작은 화면에서 추가 이동 */
     font-size: 15px; /* 글씨 크기 축소 */
   }
-  @media (max-width: 344px) {
-  #result-text {
-    top: 130px; /* 더 작은 화면에서 추가 이동 */
-    font-size: 15px; /* 글씨 크기 축소 */
-  }
+}
+
   @media (max-width: 337px) {
   #result-text {
-    top: 135px; /* 더 작은 화면에서 추가 이동 */
+    top: 140px; /* 더 작은 화면에서 추가 이동 */
     font-size: 15px; /* 글씨 크기 축소 */
   }
-    
+  #country-info {
+    top: 190px;
+    left: 15px;
+  }
+  #country-flag {
+    width: 15px;
+  }
+  #country-name {
+    font-size: 8px;
+  }
 }
+
+
   </style>
 </head>
 <body>
@@ -520,205 +668,234 @@ select option {
 
 <!-- 로딩 화면 -->
 <div id="loading-page" class="hidden">
-  <!-- YouTube 영상 추가 -->
-  <iframe id="loading-video" width="560" height="315" 
-        src="https://www.youtube.com/embed/56k_UyDhnyE?autoplay=1&mute=1"
-        title="YouTube video player" 
-        frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-        allowfullscreen>
-</iframe>
+  <div id="video-container"></div> 
+
 <button id="skip-btn">바로 결과 보기</button>
 </div>
 
-   <!-- 결과 화면 -->
+<!-- 결과 화면 -->
 <div id="result-page" class="hidden">
-  <div id="result">
-  <!-- 추가 이미지 -->
-  <img src="top-decor-image07.png" alt="장식 이미지" id="top-decor-img">
-  
-  <!-- 텍스트 -->
-  <div id="result-text">
-    <span id="user-name"></span>님의<br>영어 이름은
-  </div>
-  
-  <!-- 결과 이미지 -->
-  <img src="" alt="결과 이미지" id="result-img">
-</div>
-  <!-- 추가한 버튼 -->
-  <div class="result-buttons">
+  <div id="result" style="position: relative; display: inline-block;">
+    
+    <!-- ✅ 캡처할 영역 -->
+    <div id="result-content">
+      <!-- 🎯 추가: 장식 이미지 -->
+      <img src="top-decor-image07.png" alt="장식 이미지" id="top-decor-img">
 
+      <!-- 결과 이미지 -->
+      <img src="" alt="결과 이미지" id="result-img">
+
+      <!-- 국기 & 나라명 -->
+      <div id="country-info">
+        <img id="country-flag" src="" alt="국기">
+        <span id="country-name"></span>
+      </div>
+
+      <!-- 결과 텍스트 -->
+      <div id="result-text">
+        <span id="user-name"></span>님의<br>영어 이름은
+      </div>
+    </div>
+  <!-- ✅ 버튼: 캡처 제외 -->
+  <div class="result-buttons">
     <button id="save-btn" class="custom-jelly-button">이미지 저장</button>
     <button type="button" class="btn btn-info mt-3 custom-jelly-button" 
-            onclick="location.href='test007.html'" 
-            style="font-size:large; font-weight: bold;">다시 해보기</button>
+            onclick="location.href='test007.html'">다시 해보기</button>
     <button type="button" class="btn btn-info mt-1 custom-jelly-button" 
-            onclick="location.href='/'" 
-            style="font-size:large; font-weight: bold;">다른 테스트 해보기</button>
+            onclick="location.href='/'">다른 테스트 해보기</button>
   </div>
+
 </div>
-
-
+</div>
   <script>
 
-    // 페이지 로드 시 년도, 월, 일 드롭다운 메뉴 초기화
-    window.onload = () => {
+
+// 🎯 페이지 로드 시 연도, 월, 일 드롭다운 메뉴 초기화
+window.onload = () => {
+    console.log("페이지 로드 완료! 🚀");
+
     const yearSelect = document.getElementById('year');
     const monthSelect = document.getElementById('month');
     const daySelect = document.getElementById('day');
 
-    // 현재 연도 가져오기
     const currentYear = new Date().getFullYear();
-
-    // 년도 옵션 추가 (현재 연도부터 과거 100년까지)
     for (let year = currentYear; year >= currentYear - 100; year--) {
-      const option = document.createElement('option');
-      option.value = year;
-      option.textContent = year;
-      yearSelect.appendChild(option);
+        const option = document.createElement('option');
+        option.value = year;
+        option.textContent = year;
+        yearSelect.appendChild(option);
     }
 
-    // 월 옵션 추가 (1월 ~ 12월)
     for (let month = 1; month <= 12; month++) {
-      const option = document.createElement('option');
-      option.value = month;
-      option.textContent = `${month}월`;
-      monthSelect.appendChild(option);
+        const option = document.createElement('option');
+        option.value = month;
+        option.textContent = `${month}월`;
+        monthSelect.appendChild(option);
     }
 
-    // 일 옵션 추가 (1일 ~ 31일)
     for (let day = 1; day <= 31; day++) {
-      const option = document.createElement('option');
-      option.value = day;
-      option.textContent = `${day}일`;
-      daySelect.appendChild(option);
+        const option = document.createElement('option');
+        option.value = day;
+        option.textContent = `${day}일`;
+        daySelect.appendChild(option);
     }
 
-    // 🎯 YouTube API 스크립트 추가 (onload 시 실행)
-    var tag = document.createElement('script');
-    tag.src = "https://www.youtube.com/iframe_api";
-    var firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-};
+    // 🎯 랜덤 나라 정보 설정
+    const countryFlag = document.getElementById("country-flag");
+    const countryName = document.getElementById("country-name");
+    const countries = [
+        { name: "영국", flag: "https://flagcdn.com/w40/gb.png" },
+        { name: "미국", flag: "https://flagcdn.com/w40/us.png" },
+        { name: "캐나다", flag: "https://flagcdn.com/w40/ca.png" },
+        { name: "호주", flag: "https://flagcdn.com/w40/au.png" },
+        { name: "뉴질랜드", flag: "https://flagcdn.com/w40/nz.png" },
+        { name: "아일랜드", flag: "https://flagcdn.com/w40/ie.png" },
+        { name: "남아공", flag: "https://flagcdn.com/w40/za.png" },
+        { name: "싱가포르", flag: "https://flagcdn.com/w40/sg.png" },
+    ];
 
-// 페이지 요소 가져오기
-const mainPage = document.getElementById('main-page');
-const namePage = document.getElementById('name-page');
-const loadingPage = document.getElementById('loading-page');
-const resultPage = document.getElementById('result-page');
+    // 🎯 "시작하기" 버튼 이벤트 추가
+    document.getElementById("start-btn").addEventListener("click", () => {
+        console.log("✅ '시작하기' 버튼 클릭됨!");
+        document.getElementById("main-page").style.display = "none";
+        document.getElementById("name-page").style.display = "block";
+    });
 
-const startBtn = document.getElementById('start-btn');
-const infoConfirmBtn = document.getElementById('info-confirm-btn');
-const nameInput = document.getElementById('name');
-const yearSelect = document.getElementById('year');
-const monthSelect = document.getElementById('month');
-const daySelect = document.getElementById('day');
-const genderSelect = document.getElementById('gender');
-const userName = document.getElementById('user-name');
-const resultImg = document.getElementById('result-img');
+    // 🎯 "확인" 버튼 이벤트 추가
+    document.getElementById("info-confirm-btn").addEventListener("click", () => {
+        console.log("✅ '확인' 버튼 클릭됨!");
 
-const resultImagesMale = Array.from({ length: 25 }, (_, i) => `img_07_${i + 1}.png`);
-const resultImagesFemale = Array.from({ length: 25 }, (_, i) => `img_07_${i + 26}.png`);
-const resultImagesOther = Array.from({ length: 50 }, (_, i) => `img_07_${i + 1}.png`);
+        const name = document.getElementById("name").value.trim();
+        const year = yearSelect.value;
+        const month = monthSelect.value;
+        const day = daySelect.value;
+        const gender = document.getElementById("gender").value;
 
-// 🎯 "시작하기" 버튼 클릭 시 동작
-startBtn.addEventListener('click', () => {
-    mainPage.style.display = 'none'; // 첫 화면 숨기기
-    namePage.style.display = 'block'; // 이름 입력 화면 보이기
-});
-
-// 🎯 "확인" 버튼 클릭 시 동작
-infoConfirmBtn.addEventListener('click', () => {
-    const name = nameInput.value.trim();
-    const year = yearSelect.value;
-    const month = monthSelect.value;
-    const day = daySelect.value;
-    const gender = genderSelect.value;
-
-    // 유효성 검사
-    if (!name) {
-        alert('이름을 입력해주세요!');
-        return;
-    }
-    if (!year || !month || !day) {
-        alert('생년월일을 선택해주세요!');
-        return;
-    }
-    if (!gender) {
-        alert('성별을 선택해주세요!');
-        return;
-    }
-
-    // 🎯 결과 화면에 표시할 이름 설정
-    userName.textContent = `${name}`;
-
-    // 🎯 이름 입력 화면 숨기고 로딩 화면 표시
-    namePage.style.display = 'none';
-    loadingPage.style.display = 'block';
-
-    // 🎯 "바로 결과 보기" 버튼 3초 후 나타나게 설정
-    setTimeout(() => {
-        document.getElementById('skip-btn').style.display = 'block';
-    }, 3000); // 3초 후 버튼 표시
-
-    // 🎯 유튜브 영상이 끝나면 자동으로 결과 페이지로 이동하는 기능 추가
-    function onYouTubeIframeAPIReady() {
-        var player = new YT.Player('loading-video', {
-            events: {
-                'onStateChange': onPlayerStateChange
-            }
-        });
-    }
-
-
-    function onPlayerStateChange(event) {
-        if (event.data === 0) { // 0은 영상 종료 상태
-            loadingPage.style.display = 'none'; // 로딩 페이지 숨기기
-            resultPage.style.display = 'block'; // 결과 페이지 보이기
+        if (!name || !year || !month || !day || !gender) {
+            alert("모든 정보를 입력해주세요!");
+            return;
         }
-    }
+
+        document.getElementById("user-name").textContent = `${name}`;
+
+        // 랜덤 국기 설정
+        if (countryFlag && countryName) {
+            const randomCountry = countries[Math.floor(Math.random() * countries.length)];
+            countryFlag.src = randomCountry.flag;
+            countryName.textContent = randomCountry.name;
+        }
+
+        document.getElementById("name-page").style.display = "none";
+        document.getElementById("loading-page").style.display = "block";
+
+        setTimeout(() => {
+            document.getElementById("skip-btn").style.display = "block";
+        }, 3000);
+    });
 
     // 🎯 "바로 결과 보기" 버튼 기능 추가
-    document.getElementById('skip-btn').addEventListener('click', () => {
-        loadingPage.style.display = 'none'; // 로딩 페이지 숨기기
-        resultPage.style.display = 'block'; // 결과 페이지 보이기
+    document.getElementById("skip-btn").addEventListener("click", () => {
+        console.log("✅ '바로 결과 보기' 버튼 클릭됨!");
+        document.getElementById("loading-page").style.display = "none";
+        document.getElementById("result-page").style.display = "block";
     });
 
-    // 🎯 랜덤 결과 이미지 선택
-    let randomImage;
-    if (gender === 'male') {
-        randomImage = resultImagesMale[Math.floor(Math.random() * resultImagesMale.length)];
-    } else if (gender === 'female') {
-        randomImage = resultImagesFemale[Math.floor(Math.random() * resultImagesFemale.length)];
-    } else {
-        randomImage = resultImagesOther[Math.floor(Math.random() * resultImagesOther.length)];
-    }
+    // 🎯 결과 이미지 랜덤 선택
+    const resultImagesMale = Array.from({ length: 25 }, (_, i) => `img_07_${i + 1}.png`);
+    const resultImagesFemale = Array.from({ length: 25 }, (_, i) => `img_07_${i + 26}.png`);
+    const resultImagesOther = Array.from({ length: 50 }, (_, i) => `img_07_${i + 1}.png`);
 
-    resultImg.src = randomImage; // 선택된 이미지 설정
-});
+    document.getElementById("info-confirm-btn").addEventListener("click", () => {
+        let randomImage;
+        const gender = document.getElementById("gender").value;
+        if (gender === "male") {
+            randomImage = resultImagesMale[Math.floor(Math.random() * resultImagesMale.length)];
+        } else if (gender === "female") {
+            randomImage = resultImagesFemale[Math.floor(Math.random() * resultImagesFemale.length)];
+        } else {
+            randomImage = resultImagesOther[Math.floor(Math.random() * resultImagesOther.length)];
+        }
 
-// 🎯 결과 이미지 저장 기능 추가
-document.getElementById('save-btn').addEventListener('click', () => {
-    const result = document.getElementById('result'); // 캡처할 영역
+        console.log("랜덤 이미지 선택됨:", randomImage);
+        document.getElementById("result-img").src = randomImage;
+    });
 
-    html2canvas(result, {
-        scale: 2, // 해상도를 높이기 위해 스케일 조정
-        useCORS: true, // CORS 문제 방지
+    // 🎯 결과 이미지 저장 기능 추가
+    document.getElementById("save-btn").addEventListener("click", () => {
+    const resultContent = document.getElementById("result-content"); // ✅ 버튼 제외한 캡처 대상
+
+    html2canvas(resultContent, {
+        scale: 2, 
+        useCORS: true,
     }).then((canvas) => {
-        const link = document.createElement('a');
-        link.download = '영어이름결과.png'; // 저장 파일 이름
-        link.href = canvas.toDataURL('image/png'); // 캔버스를 데이터 URL로 변환
-        link.click(); // 다운로드 실행
+        const link = document.createElement("a");
+        link.download = "영어이름결과.png";
+        link.href = canvas.toDataURL("image/png");
+        link.click();
     });
 });
 
-// 🎯 이름 입력 제한 (5자 이내)
-nameInput.addEventListener('input', () => {
-    if (nameInput.value.length > 5) {
-        alert('이름은 다섯 자 이내로 입력해주세요!');
-        nameInput.value = nameInput.value.slice(0, 5); // 다섯 글자까지만 유지
-    }
+// 🎯 로딩 페이지 도착하면 YouTube iframe을 생성
+function createYouTubeVideo() {
+    console.log("🎬 로딩 페이지 도착 - YouTube 영상 생성!");
+
+    // 기존 iframe 삭제 (기존 영상이 계속 재생되는 문제 해결)
+    const videoContainer = document.getElementById("video-container");
+    videoContainer.innerHTML = ""; // 기존 iframe 삭제
+
+    // 새로운 iframe 생성 (0초부터 자동재생)
+    const iframe = document.createElement("iframe");
+    iframe.id = "loading-video";
+    iframe.width = "560";
+    iframe.height = "315";
+    iframe.src = "https://www.youtube.com/embed/56k_UyDhnyE?autoplay=1&mute=1&enablejsapi=1&playsinline=1";
+    iframe.title = "YouTube video player";
+    iframe.frameBorder = "0";
+    iframe.allow = "autoplay; encrypted-media";
+    iframe.allowFullscreen = true;
+
+    // 로딩 페이지에 추가
+    videoContainer.appendChild(iframe);
+}
+
+// 🎯 "확인" 버튼 클릭 시 로딩 페이지 도착하면 실행
+document.getElementById("info-confirm-btn").addEventListener("click", () => {
+    document.getElementById("name-page").style.display = "none";
+    document.getElementById("loading-page").style.display = "block";
+    createYouTubeVideo(); // ✅ 로딩 페이지 도착 시 YouTube 영상 생성
+
+    setTimeout(() => {
+        document.getElementById("skip-btn").style.display = "block";
+    }, 3000);
 });
 
-  </script>
-</body>
-</html>
+// 🎯 결과 페이지로 넘어갈 때 iframe 제거 (다시 로딩할 때 처음부터 재생되도록)
+document.getElementById("skip-btn").addEventListener("click", () => {
+    console.log("✅ '바로 결과 보기' 클릭 - YouTube 영상 삭제!");
+    document.getElementById("loading-page").style.display = "none";
+    document.getElementById("result-page").style.display = "block";
+
+    // iframe 삭제 (결과 페이지로 넘어가면 영상 멈추고 제거)
+    document.getElementById("video-container").innerHTML = "";
+});
+
+// 🎯 YouTube API 스크립트 추가
+let tag = document.createElement('script');
+tag.src = "https://www.youtube.com/iframe_api";
+document.head.appendChild(tag);
+
+    // 🎯 이름 입력 제한 (5자 이내)
+    document.getElementById("name").addEventListener("input", () => {
+        if (document.getElementById("name").value.length > 5) {
+            alert("이름은 다섯 자 이내로 입력해주세요!");
+            document.getElementById("name").value = document.getElementById("name").value.slice(0, 5);
+        }
+    });
+};
+
+</script>
+
+  </div>
+  </body>
+  </body>
+  </html>

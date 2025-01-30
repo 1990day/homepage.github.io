@@ -193,6 +193,7 @@
 }
 
 #skip-btn {
+    display: none; /* 처음에는 숨김 */
     margin-top: 20px;
     padding: 10px 20px;
     font-size: 1rem;
@@ -409,6 +410,55 @@ select option {
     top: 175px; /* 더 작은 화면에서 추가 이동 */
     font-size: 18px; /* 글씨 크기 축소 */
   }
+
+  @media (max-width: 420px) {
+  #result-text {
+    top: 170px; /* 더 작은 화면에서 추가 이동 */
+    font-size: 18px; /* 글씨 크기 축소 */
+  }
+
+  @media (max-width: 410px) {
+  #result-text {
+    top: 160px; /* 더 작은 화면에서 추가 이동 */
+    font-size: 18px; /* 글씨 크기 축소 */
+  }
+    
+  @media (max-width: 393px) {
+  #result-text {
+    top: 155px; /* 더 작은 화면에서 추가 이동 */
+    font-size: 17px; /* 글씨 크기 축소 */
+  }
+  @media (max-width: 383px) {
+  #result-text {
+    top: 150px; /* 더 작은 화면에서 추가 이동 */
+    font-size: 17px; /* 글씨 크기 축소 */
+  }
+  @media (max-width: 374px) {
+  #result-text {
+    top: 145px; /* 더 작은 화면에서 추가 이동 */
+    font-size: 16px; /* 글씨 크기 축소 */
+  }
+
+  @media (max-width: 364px) {
+  #result-text {
+    top: 140px; /* 더 작은 화면에서 추가 이동 */
+    font-size: 16px; /* 글씨 크기 축소 */
+  }
+  @media (max-width: 354px) {
+  #result-text {
+    top: 135px; /* 더 작은 화면에서 추가 이동 */
+    font-size: 15px; /* 글씨 크기 축소 */
+  }
+  @media (max-width: 344px) {
+  #result-text {
+    top: 130px; /* 더 작은 화면에서 추가 이동 */
+    font-size: 15px; /* 글씨 크기 축소 */
+  }
+  @media (max-width: 337px) {
+  #result-text {
+    top: 135px; /* 더 작은 화면에서 추가 이동 */
+    font-size: 15px; /* 글씨 크기 축소 */
+  }
     
 }
   </style>
@@ -444,7 +494,7 @@ select option {
     <img src="top-decor-image07.png" alt="장식 이미지" id="name-page-decor-img" style="max-width: 50%; height: auto; display: block; margin: 0 auto 10px;">
     
     <h1 id="main-title">
-  💛영어 이름이 궁금한 당신은 누구?🙃
+  💛영국으로 떠날 당신은 누구?🙃
 </h1>
     <input type="text" id="name" maxlength="5" placeholder="이름을 다섯 자 이내로 입력해 주세요!">
 
@@ -605,6 +655,11 @@ infoConfirmBtn.addEventListener('click', () => {
     namePage.style.display = 'none';
     loadingPage.style.display = 'block';
 
+    // 🎯 "바로 결과 보기" 버튼 3초 후 나타나게 설정
+    setTimeout(() => {
+        document.getElementById('skip-btn').style.display = 'block';
+    }, 3000); // 3초 후 버튼 표시
+
     // 🎯 유튜브 영상이 끝나면 자동으로 결과 페이지로 이동하는 기능 추가
     function onYouTubeIframeAPIReady() {
         var player = new YT.Player('loading-video', {
@@ -613,6 +668,7 @@ infoConfirmBtn.addEventListener('click', () => {
             }
         });
     }
+
 
     function onPlayerStateChange(event) {
         if (event.data === 0) { // 0은 영상 종료 상태

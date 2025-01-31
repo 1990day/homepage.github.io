@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>얼평 테스트</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; background-color: #f0f0f5; margin: 0; padding: 0; }
+        .container { margin-top: 50px; padding: 20px; }
+        .hidden { display: none; }
+        h1, h2 { color: #333; }
+        button { background-color: #007bff; color: white; border: none; padding: 12px 20px; font-size: 16px; cursor: pointer; margin-top: 20px; border-radius: 8px; }
+        button:hover { background-color: #0056b3; }
+        .upload-box { border: 2px dashed #007bff; padding: 20px; width: 300px; margin: auto; cursor: pointer; background-color: white; }
+        .upload-box img { width: 100%; display: none; margin-top: 10px; border-radius: 8px; }
+        .loading { font-size: 22px; color: #555; margin-top: 20px; animation: blink 1.5s infinite; }
+        @keyframes blink { 50% { opacity: 0.5; } }
+        #resultContainer { text-align: center; margin-top: 20px; }
+        #resultCanvas { border-radius: 10px; max-width: 80%; display: block; margin: auto; }
+        .result-box { background: white; padding: 15px; margin-top: 10px; border-radius: 8px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); text-align: left; display: inline-block; width: 80%; max-width: 600px; }
+    </style>
+</head>
+<body>
+
+    <div id="mainPage" class="container">
+        <h1>얼평 테스트</h1>
+        <button onclick="showPage('uploadPage')">테스트 시작하기</button>
+    </div>
+
+    <div id="uploadPage" class="container hidden">
+        <h2>사진을 업로드하세요!</h2>
+        <div class="upload-box" onclick="document.getElementById('imageUpload').click();">
+            <p>사진을 선택하세요</p>
+            <img id="previewImage">
+        </div>
+        <input type="file" id="imageUpload" accept="image/*" style="display: none;">
+        <button onclick="startLoading()">결과 보기</button>
+    </div>
+
+    <div id="loadingPage" class="container hidden">
+        <h2>얼굴 분석 중...</h2>
+        <p class="loading">잠시만 기다려 주세요!</p>
+    </div>
+
+    <div id="resultPage" class="container hidden">
+        <h2>얼평 결과</h2>
+        <div id="resultContainer">
+            <canvas id="resultCanvas"></canvas>
+            <div class="result-box" id="faceAnalysis">결과를 불러오는 중...</div>
+        </div>
+        <button onclick="showPage('mainPage')">다시 하기</button>
+    </div>
+
+    
+    <!-- ✅ showPage() 함수를 가장 먼저 선언 -->
+    <script>
+    function showPage(pageId) {
+        document.querySelectorAll('.container').forEach(page => page.classList.add('hidden'));
+        document.getElementById(pageId).classList.remove('hidden');
+    }
+
+    async function loadModels() {
+    console.log("📥 모델 로드 중...");
+    
+    const modelUrl = "/models";  // models 폴더에서 불러오기
+
+    try {
+        await faceapi.nets.ssdMobilenetv1.loadFromUri(modelUrl);
+        await faceapi.nets.faceLandmark68TinyNet.loadFromUri(modelUrl);
+        console.log("✅ 모델 로드 완료!");
+    } catch (error) {
+        console.error("❌ 모델 로드 실패:", error);
+    }
+}
+
+async function startApp() {
+    console.log("📥 startApp() 실행됨! face-api.js 로딩 확인 중...");
+
+    if (typeof faceapi === "undefined") {
+        console.error("❌ face-api.js가 제대로 로드되지 않았습니다. 다시 실행해주세요.");
+        return;
+    }
+
+    console.log("✅ face-api.js 로드 완료!");
+    await loadModels();
+}
+
+// ✅ face-api.js가 완전히 로드될 때까지 대기
+async function waitForFaceAPI() {
+    console.log("⏳ face-api.js 로딩 중...");
+
+    const checkInterval = setInterval(() => {
+        if (typeof faceapi !== "undefined") {
+            console.log("✅ face-api.js 완전히 로드됨!");
+            clearInterval(checkInterval);
+            startApp();
+        }
+    }, 500);
+}
+
+    document.getElementById("imageUpload").addEventListener("change", function(event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById("previewImage").src = e.target.result;
+                document.getElementById("previewImage").style.display = "block";
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+
+    async function startLoading() {
+        if (!document.getElementById("imageUpload").files.length) {
+            alert("사진을 업로드해주세요!");
+            return;
+        }
+
+        showPage("loadingPage");
+
+        const reader = new FileReader();
+        reader.onload = function(event) {
+            localStorage.setItem('uploadedImage', event.target.result);
+            setTimeout(async () => {
+                await analyzeImage();
+            }, 3000);
+        };
+        reader.readAsDataURL(document.getElementById("imageUpload").files[0]);
+    }
+
+    async function analyzeImage() {
+        console.log("📸 이미지 분석 시작!");
+
+        // ✅ faceapi 로드 확인 (로드되지 않았으면 실행 중지)
+        if (typeof faceapi === "undefined") {
+            console.error("❌ face-api.js가 아직 로드되지 않았습니다. 다시 실행해주세요.");
+            document.getElementById("faceAnalysis").innerHTML = "❌ 얼굴 감지 오류: face-api.js가 로드되지 않음!";
+            return;
+        }
+
+        showPage("resultPage");
+        document.getElementById("faceAnalysis").innerHTML = "얼굴 분석 중...";
+
+        const canvas = document.getElementById("resultCanvas");
+        const ctx = canvas.getContext("2d");
+        const img = new Image();
+        img.src = localStorage.getItem('uploadedImage'); 
+
+        img.onload = async function() {
+            canvas.width = img.width / 2;
+            canvas.height = img.height / 2;
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+            try {
+                const detections = await faceapi.detectSingleFace(canvas, new faceapi.SsdMobilenetv1Options()).withFaceLandmarks();
+
+                if (detections) {
+                    document.getElementById("faceAnalysis").innerHTML = "✅ 얼굴 분석 완료!<br>세련된 인상을 주는 얼굴입니다!";
+                } else {
+                    document.getElementById("faceAnalysis").innerHTML = "❌ 얼굴을 감지하지 못했습니다. 다른 사진을 올려주세요!";
+                }
+            } catch (error) {
+                document.getElementById("faceAnalysis").innerHTML = "⚠️ 얼굴 감지 중 오류 발생!";
+                console.error("❌ 얼굴 감지 오류:", error);
+            }
+        };
+    }
+    </script>
+</body>
+</html>

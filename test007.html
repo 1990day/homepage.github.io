@@ -384,28 +384,43 @@ display: block; /* 중앙 정렬 */
     border-radius: 10px;
 }
 
+
 .custom-jelly-button {
     font-size: 16px;
     font-weight: bold;
     color: black !important; /* ✅ 글씨 색 강제 유지 */
-    background-color: rgb(255, 245, 174);
-    border-color: rgb(255, 252, 57);
+    background-color: rgb(255, 252, 57) !important; /* ✅ 배경색 강제 유지 */
+    border: 2px solid rgb(255, 252, 57) !important;
     width: 450px;
     height: 70px;
     margin: 10px auto;
     display: block;
     border-radius: 25px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
+    user-select: none; /* ✅ 텍스트 드래그 방지 */
+    appearance: none; /* ✅ 기본 버튼 스타일 제거 */
+    -webkit-tap-highlight-color: transparent; /* ✅ 모바일 터치 효과 제거 */
 }
 
+/* ✅ 호버 상태에서도 유지 */
 .custom-jelly-button:hover {
-    transform: scale(1.05);
-    color: black !important; /* ✅ 호버 상태에서도 검정 유지 */
+    background-color: rgb(255, 252, 57) !important;
+    color: black !important;
 }
 
+/* ✅ 클릭(활성) 상태에서도 유지 */
 .custom-jelly-button:active {
-    color: black !important; /* ✅ 클릭해도 검정 유지 */
+    background-color: rgb(255, 252, 57) !important;
+    color: black !important;
+    transform: scale(0.98); /* ✅ 클릭 효과만 추가 */
+}
+
+/* ✅ 포커스 스타일 완전 제거 (브라우저 기본 효과 방지) */
+.custom-jelly-button:focus {
+    outline: none !important;
+    background-color: rgb(255, 252, 57) !important;
+    box-shadow: none !important; /* ✅ 클릭 시 그림자 효과 제거 */
 }
 
     

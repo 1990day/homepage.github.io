@@ -83,7 +83,31 @@
     display: flex;
     justify-content: space-between;
 }
+#question-text,#extra-question-text {
+    font-size: 18px;  /* 글씨 크기 키우기 */
+    font-weight: bold; /* 글씨 굵게 */
+    text-align: center;
+    margin-bottom: 30px; /* 버튼과 간격 벌리기 */
+}
 
+.custom-jelly-button {
+    background: linear-gradient(90deg, #ffc7de, #ffc7de); /* 색상 변경 가능 */
+    color: rgb(0, 0, 0);
+    font-size: 18px; /* 글자 크기 조정 */
+    font-weight: bold;
+    width: 60%; /* 버튼 크기 조정 */
+    max-width: 300px; /* 최대 크기 제한 */
+    padding: 12px; /* 버튼 높이 조정 */
+    border-radius: 30px; /* 버튼 모양 둥글게 */
+    display: block;
+    margin: 15px auto; /* 버튼 간격 조정 */
+    text-align: center;
+    transition: all 0.2s ease-in-out;
+}
+
+.custom-jelly-button:hover {
+    transform: scale(1.05); /* hover 효과 */
+}
 
         .container {
             width: 90%;
@@ -116,7 +140,7 @@
         .btn {
     display: block;
     width: 60%;  /* 버튼 너비 더 줄이기 */
-    max-width: 250px; /* 최대 크기 제한 */
+    max-width: 350px; /* 최대 크기 제한 */
     padding: 10px; /* 버튼 높이 줄이기 */
     margin: 10px auto; /* 자동 정렬로 가운데 배치 */
     border: none;
@@ -127,20 +151,20 @@
     transition: all 0.2s ease-in-out;
     text-align: center; /* 텍스트 정렬 */
 }
-        .btn-a { background: linear-gradient(90deg, #ff9aa2, #ffb7b2);
+        .btn-a { background: linear-gradient(90deg, #ffd7d4, #ffd7d4);
              color: rgb(0, 0, 0); 
             min-height: 100px;
             width: 60%; /* 버튼 너비 줄이기 */
             max-width: 350px; /* 최대 크기 제한 */
-            margin: 10px auto; /* 버튼마다 자동 가운데 정렬 */
+            margin: 15px auto; /* 버튼마다 자동 가운데 정렬 */
         }
-        .btn-b { background: linear-gradient(90deg, #9ad1ff, #b2e0ff); color: rgb(0, 0, 0); 
+        .btn-b { background: linear-gradient(90deg, #fff9aa, #fff9aa); color: rgb(0, 0, 0); 
             min-height: 100px;
             width: 60%; /* 버튼 너비 줄이기 */
             max-width: 350px; /* 최대 크기 제한 */
-            margin: 10px auto; /* 버튼마다 자동 가운데 정렬 */
+            margin: 15px auto; /* 버튼마다 자동 가운데 정렬 */
         }
-        .btn-start { background: linear-gradient(90deg, #ff7eb3, #ff85a2); 
+        .btn-start { background: linear-gradient(90deg, #ffb7b2, #ffb7b2); 
             color: rgb(0, 0, 0); 
             padding: 12px; 
             font-size: 18px; 
@@ -149,7 +173,7 @@
         .btn:active { transform: scale(0.95); }
         #result img {
     width: 100%;  /* 컨테이너에 맞춰 이미지 크기 조정 */
-    max-width: 400px; /* 필요에 따라 조정 */
+    max-width: 500px; /* 필요에 따라 조정 */
     height: auto;
     margin-top: 20px;
     border-radius: 20px;

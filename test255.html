@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>당신의 빌런 유형은?</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #111;
+            color: #fff;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: #222;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+        }
+        .hidden {
+            display: none;
+        }
+        .main-image {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            background: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 5px;
+        }
+        button:hover {
+            background: #555;
+        }
+        .result-image {
+            width: 100%;
+            max-width: 400px;
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 첫 번째 페이지 (메인) -->
+    <div id="main-page" class="container">
+        <h1>🔥 당신은 어떤 빌런인가? 🔥</h1>
+        <img src="main-image.jpg" alt="메인 이미지" class="main-image">
+        <button onclick="startQuiz()">테스트 시작하기</button>
+    </div>
+
+    <!-- 두 번째 페이지 (질문 진행) -->
+    <div id="quiz-page" class="container hidden">
+        <p id="question-text"></p>
+        <div id="options-container"></div>
+    </div>
+
+    <!-- 세 번째 페이지 (결과) -->
+    <div id="result-page" class="container hidden">
+        <h2 id="result-title"></h2>
+        <p id="result-description"></p>
+        <img id="result-image" src="" alt="빌런 유형 이미지" class="result-image">
+        <button onclick="restartQuiz()">다시 하기</button>
+        <button onclick="goToMain()">다른 테스트 하기</button>
+    </div>
+
+    <script>
+            const questions = [
+            { text: "당신이 빌런이 된 이유는?", choices: [
+                { text: "세상을 바로잡기 위해.", score: 10 },
+                { text: "배신당한 복수를 위해.", score: 7 },
+                { text: "혼돈을 즐기기 위해.", score: 5 },
+                { text: "강한 자만이 살아남는 법칙을 따르기 위해.", score: 0 }
+            ]},
+            { text: "당신이 가장 즐기는 순간은?", choices: [
+                { text: "내 계획이 완벽하게 맞아떨어질 때.", score: 10 },
+                { text: "상대가 나를 두려워할 때.", score: 7 },
+                { text: "모든 것이 혼돈 속에 빠질 때.", score: 5 },
+                { text: "압도적인 힘으로 상대를 박살낼 때.", score: 0 }
+            ]},
+            { text: "당신의 전투 스타일은?", choices: [
+                { text: "싸우기도 전에 이길 방법을 만들어 둔다.", score: 10 },
+                { text: "심리전을 이용해 적을 무너뜨린다.", score: 7 },
+                { text: "예측할 수 없는 공격으로 혼란스럽게 만든다.", score: 5 },
+                { text: "단순한 힘으로 정면 돌파한다.", score: 0 }
+            ]},
+            { text: "당신의 빌런 아지트는?", choices: [
+                { text: "세상이 모르는 비밀 기지.", score: 10 },
+                { text: "호화로운 펜트하우스나 장엄한 성.", score: 7 },
+                { text: "어디든 아지트가 될 수 있어.", score: 5 },
+                { text: "그런 거 필요 없어. 그냥 내가 있는 곳이 내 왕국.", score: 0 }
+            ]},
+            { text: "당신이 죽기 직전 마지막으로 남길 말은?", choices: [
+                { text: "이건 계획의 일부다.", score: 10 },
+                { text: "이제야... 끝났군.", score: 7 },
+                { text: "하하하! 이거 진짜 재미있네!", score: 5 },
+                { text: "다 죽어라!!!!", score: 0 }
+            ]},
+            { text: "당신의 빌런 능력은?", choices: [
+                { text: "세상을 조종하는 천재적 두뇌", score: 10 },
+                { text: "강력한 카리스마와 권력", score: 7 },
+                { text: "상대를 미치게 만드는 혼란의 힘", score: 5 },
+                { text: "압도적인 물리적 힘", score: 0 }
+            ]},
+            { text: "당신의 최종 목표는?", choices: [
+                { text: "완벽한 세계를 만드는 것", score: 10 },
+                { text: "나를 배신한 자를 모두 없애는 것", score: 7 },
+                { text: "세상에 혼돈을 퍼뜨리는 것", score: 5 },
+                { text: "내가 최강임을 증명하는 것", score: 0 }
+            ]},
+            { text: "당신의 빌런 스타일은?", choices: [
+                { text: "뒤에서 조종하는 천재", score: 10 },
+                { text: "강력한 카리스마를 가진 지도자", score: 7 },
+                { text: "미치광이 광대", score: 5 },
+                { text: "무자비한 전사", score: 0 }
+            ]},
+            { text: "당신의 주무기는?", choices: [
+                { text: "머리와 계획", score: 10 },
+                { text: "말과 세뇌", score: 7 },
+                { text: "혼란과 기만", score: 5 },
+                { text: "주먹과 무력", score: 0 }
+            ]},
+            { text: "당신의 가장 큰 약점은?", choices: [
+                { text: "너무 철저한 계획이 가끔 변수를 놓친다", score: 10 },
+                { text: "감정을 숨기지 못하고 폭발한다", score: 7 },
+                { text: "예측 불가능한 행동이 오히려 독이 된다", score: 5 },
+                { text: "힘으로만 해결하려다 전략을 놓친다", score: 0 }
+            ]}
+        ];
+
+        const results = [
+            { minScore: 90, maxScore: 100, title: "신적인 존재", description: "당신은 신과 같은 존재입니다.", image: "godlike.jpg" },
+            { minScore: 80, maxScore: 89, title: "절대 악", description: "세상을 파괴하려는 최악의 존재입니다.", image: "ultimate_evil.jpg" },
+            { minScore: 70, maxScore: 79, title: "사이코패스", description: "감정이 없는 살인마입니다.", image: "psychopath.jpg" },
+            { minScore: 60, maxScore: 69, title: "천재 조종자", description: "모든 걸 통제하는 전략가입니다.", image: "mastermind.jpg" },
+            { minScore: 50, maxScore: 59, title: "속삭이는 그림자", description: "보이지 않는 곳에서 세상을 조종하는 자입니다.", image: "shadow.jpg" },
+            { minScore: 40, maxScore: 49, title: "냉혈한 지배자", description: "감정을 버리고 이상을 실현하는 존재입니다.", image: "cold_villain.jpg" },
+            { minScore: 30, maxScore: 39, title: "암흑 군주", description: "세상을 지배하려는 절대적인 존재입니다.", image: "dark_lord.jpg" },
+            { minScore: 20, maxScore: 29, title: "복수귀", description: "과거의 상처로 복수를 맹세한 빌런입니다.", image: "revenge.jpg" },
+            { minScore: 10, maxScore: 19, title: "파괴 본능", description: "힘으로 모든 걸 해결하는 파괴자입니다.", image: "destroyer.jpg" },
+            { minScore: 0, maxScore: 9, title: "혼돈의 광대", description: "예측 불가능한 미치광이입니다.", image: "clown.jpg" }
+        ];
+
+        let currentQuestionIndex = 0;
+        let totalScore = 0;
+
+        function startQuiz() {
+            document.getElementById("main-page").classList.add("hidden");
+            document.getElementById("quiz-page").classList.remove("hidden");
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            const question = questions[currentQuestionIndex];
+            document.getElementById("question-text").textContent = question.text;
+            const optionsContainer = document.getElementById("options-container");
+            optionsContainer.innerHTML = "";
+            question.choices.forEach(choice => {
+                const button = document.createElement("button");
+                button.textContent = choice.text;
+                button.onclick = function() {
+                    totalScore += choice.score;
+                    nextQuestion();
+                };
+                optionsContainer.appendChild(button);
+            });
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < questions.length) {
+                loadQuestion();
+            } else {
+                showResult();
+            }
+        }
+
+        function showResult() {
+            document.getElementById("quiz-page").classList.add("hidden");
+            document.getElementById("result-page").classList.remove("hidden");
+            const result = results.find(r => totalScore >= r.minScore && totalScore <= r.maxScore);
+            document.getElementById("result-title").textContent = result.title;
+            document.getElementById("result-description").textContent = result.description;
+            document.getElementById("result-image").src = result.image;
+        }
+    </script>
+
+</body>
+</html>

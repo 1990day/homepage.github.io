@@ -109,6 +109,11 @@
     transform: scale(1.05); /* hover 효과 */
 }
 
+.btn, .custom-jelly-button {
+    outline: none !important;  /* 기본 포커스 효과 제거 */
+    box-shadow: none !important; /* 클릭 시 테두리 하늘색 제거 */
+}
+
         .container {
             width: 90%;
             max-width: 600px;
@@ -121,7 +126,7 @@
             transition: all 0.3s ease-in-out;
         }
         .container:hover {
-            transform: scale(1.02);
+            transform: none;
         }
         #progress-bar {
             width: 100%;
@@ -173,7 +178,7 @@
         .btn:active { transform: scale(0.95); }
         #result img {
     width: 100%;  /* 컨테이너에 맞춰 이미지 크기 조정 */
-    max-width: 500px; /* 필요에 따라 조정 */
+    max-width: 550px; /* 필요에 따라 조정 */
     height: auto;
     margin-top: 0px;
     border-radius: 20px;
@@ -290,10 +295,10 @@
         { text: "길을 잃었을 때 반응은?", A: { text: "일단 돌아다니면서 찾기!", type: "7" }, B: { text: "계획적으로 찾기!", type: "1" } },
         { text: "친구가 울면서 고민 상담하면?", A: { text: "감정을 함께 나눔!", type: "4" }, B: { text: "해결책을 제시함!", type: "8" } },
         { text: "새로운 취미 시작할 때 반응은?", A: { text: "흥미로우면 바로 해본다!", type: "5" }, B: { text: "계획을 세워서 시작!", type: "4" } },
-        { text: "즉흥적으로 버스킹하자고 하면?", A: { text: "재밌을 것 같아!", type: "7" }, B: { text: "너무 갑작스러워서 부담스러움", type: "6" } },
+        { text: "갑자기 즉흥적으로 여행 가자고 하면?", A: { text: "재밌을 것 같아!", type: "7" }, B: { text: "너무 갑작스러워서 부담스러움", type: "6" } },
         { text: "너한테 제일 중요한 건?", A: { text: "성공과 목표 달성!", type: "3" }, B: { text: "주변 사람들과의 관계!", type: "2" } },
         { text: "어떤 환경이 더 편해?", A: { text: "조용한 게 좋음!", type: "9" }, B: { text: "활기찬 게 좋음!", type: "1" } },
-        { text: "중요한 결정을 내릴 때?", A: { text: "논리적으로 분석!", type: "8" }, B: { text: "감정적으로 판단!", type: "9" } }
+        { text: "중요한 결정을 내릴 때 기준은?", A: { text: "논리적으로 분석!", type: "8" }, B: { text: "감정과 분위기 고려!", type: "9" } }
     ];
 
      // ✅ 3. 점수를 저장하는 변수
@@ -306,30 +311,30 @@
 
    // ✅ 2. 추가 질문 리스트 (동점 발생 시 사용됨)
 let extraQuestions = {
-    "1vs2": { text: "더 중요한 것은?", A: { text: "원칙과 질서!", type: "1" }, B: { text: "사람을 돕는 것!", type: "2" } },
-    "1vs3": { text: "더 가치 있는 것은?", A: { text: "완벽함과 질서!", type: "1" }, B: { text: "성취와 성공!", type: "3" } },
-    "1vs4": { text: "더 중요한 것은?", A: { text: "규칙과 질서!", type: "1" }, B: { text: "창의성과 감성!", type: "4" } },
-    "1vs5": { text: "결정할 때 중요한 것은?", A: { text: "논리적 분석!", type: "1" }, B: { text: "지식과 탐구!", type: "5" } },
+    "1vs2": { text: "더 중요하게 생각하는 건?", A: { text: "원칙과 질서!", type: "1" }, B: { text: "사람들에게 따뜻함 주기!", type: "2" } },
+    "1vs3": { text: "더 가치 있는 건?", A: { text: "완벽한 원칙과 질서!", type: "1" }, B: { text: "화려한 성취와 성공!", type: "3" } },
+    "1vs4": { text: "더 중요하게 여기는 건?", A: { text: "규칙과 공정함!", type: "1" }, B: { text: "나만의 개성과 감성!", type: "4" } },
+    "1vs5": { text: "어떤 태도가 더 중요해?", A: { text: "논리적인 판단!", type: "1" }, B: { text: "깊이 있는 탐구!", type: "5" } },
     "1vs6": { text: "신뢰할 수 있는 것은?", A: { text: "규칙과 원칙!", type: "1" }, B: { text: "안전과 계획!", type: "6" } },
-    "1vs7": { text: "더 즐거운 것은?", A: { text: "규칙적인 삶!", type: "1" }, B: { text: "새로운 경험!", type: "7" } },
-    "1vs8": { text: "리더십 스타일은?", A: { text: "원칙을 강조!", type: "1" }, B: { text: "강한 주도권!", type: "8" } },
+    "1vs7": { text: "더 즐거운 삶은?", A: { text: "규칙적인 안정된 삶!", type: "1" }, B: { text: "다양한 모험과 경험!", type: "7" } },
+    "1vs8": { text: "더 강한 리더십 스타일은?", A: { text: "원칙을 지키는 리더!", type: "1" }, B: { text: "주도적으로 이끄는 리더!", type: "8" } },
     "1vs9": { text: "더 중요한 가치?", A: { text: "질서와 원칙!", type: "1" }, B: { text: "평화와 조화!", type: "9" } },
-    "2vs3": { text: "더 가치 있는 것은?", A: { text: "사람을 돕는 것!", type: "2" }, B: { text: "목표 달성!", type: "3" } },
-    "2vs4": { text: "더 중요하게 생각하는 것은?", A: { text: "다른 사람과의 관계!", type: "2" }, B: { text: "내 감정을 표현하는 것!", type: "4" } },
-    "2vs5": { text: "더 중요한 것은?", A: { text: "타인을 돕는 것!", type: "2" }, B: { text: "깊이 있는 탐구!", type: "5" } },
-    "2vs6": { text: "더 신경 쓰이는 것은?", A: { text: "사람과 감정!", type: "2" }, B: { text: "안정과 계획!", type: "6" } },
-    "2vs7": { text: "더 즐거운 것은?", A: { text: "도움을 주는 것!", type: "2" }, B: { text: "새로운 경험!", type: "7" } },
-    "2vs8": { text: "더 중요하게 여기는 것은?", A: { text: "사람과 관계!", type: "2" }, B: { text: "강한 리더십!", type: "8" } },
-    "2vs9": { text: "어떤 사람이 되고 싶은가?", A: { text: "배려하는 사람!", type: "2" }, B: { text: "평화로운 사람!", type: "9" } },
-    "3vs4": { text: "더 가치 있는 것은?", A: { text: "성취와 목표 달성!", type: "3" }, B: { text: "창의적인 자기 표현!", type: "4" } },
+    "2vs3": { text: "더 가치 있는 건?", A: { text: "사람을 돕는 것!", type: "2" }, B: { text: "목표를 이루는 것!", type: "3" } },
+    "2vs4": { text: "더 중요하게 생각하는 건?", A: { text: "다른 사람과의 관계!", type: "2" }, B: { text: "내 감정을 솔직하게 표현!", type: "4" } },
+    "2vs5": { text: "더 의미 있는 건?", A: { text: "사람을 돕는 것!", type: "2" }, B: { text: "지식을 쌓는 것!", type: "5" } },
+    "2vs6": { text: "더 신경 쓰이는 건?", A: { text: "사람들의 감정과 관계!", type: "2" }, B: { text: "안정적인 삶과 계획!", type: "6" } },
+    "2vs7": { text: "더 즐거운 순간은?", A: { text: "사람을 도울 때!", type: "2" }, B: { text: "새로운 모험을 할 때!", type: "7" } },
+    "2vs8": { text: "더 중요하게 여기는 것은?", A: { text: "주변 사람들과의 관계!", type: "2" }, B: { text: "강한 리더십과 영향력!", type: "8" } },
+    "2vs9": { text: "어떤 사람이 되고 싶어?", A: { text: "다정하고 배려 깊은 사람!", type: "2" }, B: { text: "평온하고 조화로운 사람!", type: "9" } },
+    "3vs4": { text: "더 가치 있는 건?", A: { text: "성취와 목표 달성!", type: "3" }, B: { text: "창의적인 자기 표현!", type: "4" } },
     "3vs5": { text: "더 선호하는 것은?", A: { text: "성취와 경쟁!", type: "3" }, B: { text: "깊이 있는 탐구!", type: "5" } },
     "3vs6": { text: "더 중요한 것은?", A: { text: "목표 달성!", type: "3" }, B: { text: "안정과 신뢰!", type: "6" } },
     "3vs7": { text: "더 즐거운 것은?", A: { text: "목표를 이루는 것!", type: "3" }, B: { text: "다양한 경험!", type: "7" } },
     "3vs8": { text: "더 강한 성향은?", A: { text: "성취 지향!", type: "3" }, B: { text: "강한 리더십!", type: "8" } },
     "3vs9": { text: "더 중요한 가치?", A: { text: "목표와 성취!", type: "3" }, B: { text: "조화와 균형!", type: "9" } },
-    "6vs7": { text: "더 선호하는 것은?", A: { text: "안정적인 삶!", type: "6" }, B: { text: "다채로운 경험!", type: "7" } },
-    "6vs8": { text: "더 강한 성향은?", A: { text: "신중한 계획!", type: "6" }, B: { text: "강한 주도권!", type: "8" } },
-    "6vs9": { text: "더 원하는 것은?", A: { text: "안정적인 삶!", type: "6" }, B: { text: "조화로운 삶!", type: "9" } },
+    "6vs7": { text: "더 선호하는 삶은?", A: { text: "안정적인 루틴!", type: "6" }, B: { text: "새롭고 다채로운 경험!", type: "7" } },
+    "6vs8": { text: "더 강한 성향은?", A: { text: "신중하고 계획적인 스타일!", type: "6" }, B: { text: "강한 주도권과 리더십!", type: "8" } },
+    "6vs9": { text: "더 원하는 삶은?", A: { text: "안정적인 삶!", type: "6" }, B: { text: "평온하고 조화로운 삶!", type: "9" } },
     "7vs8": { text: "더 강한 성향은?", A: { text: "자유로운 도전!", type: "7" }, B: { text: "강한 리더십!", type: "8" } },
     "7vs9": { text: "더 원하는 것은?", A: { text: "다양한 경험!", type: "7" }, B: { text: "평온한 삶!", type: "9" } },
     "8vs9": { text: "더 중요한 가치?", A: { text: "강한 리더십!", type: "8" }, B: { text: "평화로운 조화!", type: "9" } }

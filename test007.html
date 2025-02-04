@@ -971,21 +971,22 @@ document.getElementById("name").addEventListener("input", () => {
 });
 
 document.getElementById("share-btn").addEventListener("click", function() {
-    const testURL = "https://test-it.co.kr/test007"; // 테스트 링크
-    const shareText = `내 영어 이름은?! 💛 확인해봐! ${testURL}`;
+  const testURL = "https://test-it.co.kr/test007"; // 테스트 링크
+    const shareText = "내 영어 이름은?! 💛 확인해봐!"; // 🔥 URL 제거
 
     if (navigator.share) {
         navigator.share({
             title: "샬라샬라 영어 이름 테스트",
-            text: shareText,
-            url: testURL
+            text: shareText, // 🔥 여기서는 URL 없이 텍스트만 전달
+            url: testURL // 🔥 URL은 따로 전달
         }).then(() => {
             console.log("✅ 공유 성공!");
         }).catch((error) => {
             console.error("❌ 공유 실패:", error);
         });
     } else {
-        navigator.clipboard.writeText(shareText).then(() => {
+        // 📌 PC에서는 클립보드 복사
+        navigator.clipboard.writeText(`${shareText} ${testURL}`).then(() => {
             alert("📌 링크가 복사되었습니다! 원하는 곳에 붙여넣기 해보세요.");
         }).catch((err) => {
             console.error("❌ 클립보드 복사 실패:", err);

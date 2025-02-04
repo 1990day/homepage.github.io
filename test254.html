@@ -114,31 +114,46 @@
             transition: width 0.3s ease-in-out;
         }
         .btn {
-            display: block;
-            width: 100%;
-            padding: 15px;
-            margin: 10px 0;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            font-size: 18px;
-            font-weight: bold;
-            transition: all 0.2s ease-in-out;
-            text-shadow: 2px 2px 3px rgba(255, 255, 255, 0.5);
+    display: block;
+    width: 60%;  /* 버튼 너비 더 줄이기 */
+    max-width: 250px; /* 최대 크기 제한 */
+    padding: 10px; /* 버튼 높이 줄이기 */
+    margin: 10px auto; /* 자동 정렬로 가운데 배치 */
+    border: none;
+    border-radius: 25px; /* 둥근 정도 적당히 조정 */
+    cursor: pointer;
+    font-size: 16px; /* 글자 크기 줄이기 */
+    font-weight: bold;
+    transition: all 0.2s ease-in-out;
+    text-align: center; /* 텍스트 정렬 */
+}
+        .btn-a { background: linear-gradient(90deg, #ff9aa2, #ffb7b2);
+             color: rgb(0, 0, 0); 
+            min-height: 100px;
+            width: 60%; /* 버튼 너비 줄이기 */
+            max-width: 350px; /* 최대 크기 제한 */
+            margin: 10px auto; /* 버튼마다 자동 가운데 정렬 */
         }
-        .btn-a { background: linear-gradient(90deg, #ff9aa2, #ffb7b2); color: white; 
-            min-height: 50px;}
-        .btn-b { background: linear-gradient(90deg, #9ad1ff, #b2e0ff); color: white; 
-            min-height: 50px;}
-        .btn-start { background: linear-gradient(90deg, #ff7eb3, #ff85a2); color: white; padding: 15px; font-size: 20px; border-radius: 30px; }
-        .btn:hover { transform: scale(1.05); }
+        .btn-b { background: linear-gradient(90deg, #9ad1ff, #b2e0ff); color: rgb(0, 0, 0); 
+            min-height: 100px;
+            width: 60%; /* 버튼 너비 줄이기 */
+            max-width: 350px; /* 최대 크기 제한 */
+            margin: 10px auto; /* 버튼마다 자동 가운데 정렬 */
+        }
+        .btn-start { background: linear-gradient(90deg, #ff7eb3, #ff85a2); 
+            color: rgb(0, 0, 0); 
+            padding: 12px; 
+            font-size: 18px; 
+            border-radius: 30px; }
+        .btn:hover { transform: scale(1.03); /* hover 효과 조금 줄이기 */ }
         .btn:active { transform: scale(0.95); }
         #result img {
-            width: 250px;
-            height: auto;
-            margin-top: 20px;
-            border-radius: 20px;
-        }
+    width: 100%;  /* 컨테이너에 맞춰 이미지 크기 조정 */
+    max-width: 400px; /* 필요에 따라 조정 */
+    height: auto;
+    margin-top: 20px;
+    border-radius: 20px;
+}
         .hidden { display: none; }
     </style>
 </head>
@@ -213,7 +228,6 @@
 </div>
 
 <div class="container hidden" id="result">
-    <h2>테스트 결과</h2>
     <p id="result-text"></p>
     <img id="result-image" src="" alt="결과 이미지">
     
@@ -289,30 +303,49 @@ let extraQuestions = {
     "8vs9": { text: "더 중요한 가치?", A: { text: "강한 리더십!", type: "8" }, B: { text: "평화로운 조화!", type: "9" } }
 };
 
+function updateProgress() {
+    let progress = (currentQuestion / questions.length) * 100;
+    document.getElementById("progress").style.width = progress + "%";
+}
 
 function startTest() {
-        document.getElementById("main-page").classList.add("hidden");
-        document.getElementById("quiz-page").classList.remove("hidden");
-        loadQuestion();
+    document.getElementById("main-page").classList.add("hidden");
+    document.getElementById("quiz-page").classList.remove("hidden");
+
+    currentQuestion = 0; // ✅ 질문 번호 초기화
+    updateProgress(); // ✅ 프로그래스 바 초기화
+    loadQuestion();
+}
+
+function loadQuestion() {
+    if (currentQuestion >= questions.length) {
+        checkForTie();
+        return;
     }
 
-    function loadQuestion() {
-        if (currentQuestion < questions.length) {
-            let q = questions[currentQuestion];
-            document.getElementById("question-text").textContent = q.text;
-            document.querySelector(".btn-a").textContent = q.A.text;
-            document.querySelector(".btn-b").textContent = q.B.text;
-        } else {
-            checkForTie();
-        }
+    let q = questions[currentQuestion];
+    if (!q) return;
+
+    document.getElementById("question-text").textContent = q.text;
+    document.querySelector(".btn-a").textContent = q.A.text;
+    document.querySelector(".btn-b").textContent = q.B.text;
+}
+
+function selectAnswer(choice) {
+    if (currentQuestion >= questions.length) {
+        checkForTie();
+        return;
     }
 
-    function selectAnswer(choice) {
-        let selectedType = questions[currentQuestion][choice].type;
-        scores[selectedType]++;
-        currentQuestion++;
-        loadQuestion();
-    }
+    let selectedType = questions[currentQuestion][choice]?.type;
+    if (!selectedType) return;
+
+    scores[selectedType]++;
+    currentQuestion++;
+
+    updateProgress();
+    loadQuestion();
+}
 
     function checkForTie() {
     let sortedScores = Object.entries(scores).sort((a, b) => b[1] - a[1]);
@@ -430,13 +463,13 @@ function showResult(mainType, wingType) {
     let resultText = wingType ? `${mainType}w${wingType}` : `${mainType}w`;
 
     // ✅ 결과 이미지 파일명 설정
-    let imageFileName = wingType ? `img254_${mainType}w${wingType}.png` : `img254_${mainType}w.png`;
+    let imageFileName = wingType ? `img254_${mainType}w${wingType}.jpg` : `img254_${mainType}w.jpg`;
 
     // ✅ 화면에 최종 결과 표시
     document.getElementById("quiz-page").classList.add("hidden");
     document.getElementById("extra-quiz-page").classList.add("hidden");
     document.getElementById("result").classList.remove("hidden");
-    document.getElementById("result-text").textContent = `당신의 유형은 ${resultText}!`;
+   
 
     // ✅ 결과 이미지 표시
     document.getElementById("result-image").src = imageFileName;

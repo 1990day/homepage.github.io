@@ -760,9 +760,8 @@ display: block; /* 중앙 정렬 */
 <div class="result-buttons">
   <button id="save-btn" class="button">이미지 저장</button>
   <button type="button" class="button" onclick="location.href='test007.html'">다시 해보기</button>
-  <button type="button" class="button" onclick="location.href='/'">다른 테스트 해보기</button>
+  <button id="share-btn" class="button">테스트 공유하기</button>
 </div>
-
 
 </div>
 </div>
@@ -970,6 +969,30 @@ document.getElementById("name").addEventListener("input", () => {
         document.getElementById("name").value = document.getElementById("name").value.slice(0, 5);
     }
 });
+
+document.getElementById("share-btn").addEventListener("click", function() {
+    const testURL = "https://test-it.co.kr/test007"; // 테스트 링크
+    const shareText = `내 영어 이름은?! 💛 확인해봐! ${testURL}`;
+
+    if (navigator.share) {
+        navigator.share({
+            title: "샬라샬라 영어 이름 테스트",
+            text: shareText,
+            url: testURL
+        }).then(() => {
+            console.log("✅ 공유 성공!");
+        }).catch((error) => {
+            console.error("❌ 공유 실패:", error);
+        });
+    } else {
+        navigator.clipboard.writeText(shareText).then(() => {
+            alert("📌 링크가 복사되었습니다! 원하는 곳에 붙여넣기 해보세요.");
+        }).catch((err) => {
+            console.error("❌ 클립보드 복사 실패:", err);
+        });
+    }
+});
+
 
 </script>
 </div>

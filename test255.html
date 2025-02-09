@@ -49,6 +49,18 @@
     list-style: none;
 }
 
+article{
+    display: flex;
+    flex-direction: column;
+}
+
+ 
+#options-container button {
+    font-size: 15px; /* 글씨 크기 줄임 (기존보다 작게) */
+    padding: 10px; /* 버튼 내부 여백 줄이기 */
+    line-height: 1.2; /* 줄 간격 조정 */
+}
+
 .main-nav li {
     margin-left: 36px;
        font-family: 'Do Hyeon', sans-serif;
@@ -128,7 +140,7 @@
             color: white;
             border: none;
             cursor: pointer;
-            font-size: 18px;
+            font-size: 14px;
             border-radius: 5px;
         }
         button:hover {
@@ -155,6 +167,38 @@
     width: 0%;
     background-color: red;
     transition: width 0.3s ease-in-out;
+}
+
+#question-text {
+    font-size: 19px; /* 질문 글씨 크기 키움 */
+    font-weight: bold; /* 글씨 두껍게 */
+    margin-bottom: 25px; /* 보기 버튼과 간격 확보 */
+}
+
+#result-title {
+    font-size: 20px; /* 결과명 크기 줄이기 */
+    font-weight: bold; /* 굵기는 유지 */
+    margin-bottom: 10px; /* 결과 설명과 간격 */
+}
+
+
+.coupang_ad {
+    width: 100%; /* 부모 컨테이너에 맞춰 자동 조정 */
+    max-width: 350px; /* 최대 크기 설정 */
+    margin: 0 auto; /* 가운데 정렬 */
+    overflow: hidden;
+}
+
+@media (max-width: 768px) { /* 태블릿 및 모바일 */
+    .coupang_ad {
+        max-width: 90%; /* 화면 크기에 따라 자동 조절 */
+    }
+}
+
+@media (max-width: 480px) { /* 모바일 화면 */
+    .coupang_ad {
+        max-width: 80%; /* 더 작은 화면에 맞춤 */
+    }
 }
 
     </style>
@@ -199,67 +243,82 @@
         <button onclick="location.href='/'"">다른 테스트 하기</button>
     </div>
 
+    
+    <article class="coupang_ad">
+        <script src="https://ads-partners.coupang.com/g.js"></script>
+        <script>
+            new PartnersCoupang.G({
+                "id":798186,
+                "template":"carousel",
+                "trackingCode":"AF4391881",
+                "width":"100%", /* 반응형 설정 */
+                "height":"auto", /* 높이 자동 조정 */
+                "tsource":""
+            });
+        </script>
+    </article>
+    
     <script>
             const questions = [
             { text: "당신이 빌런이 된 이유는?", choices: [
-                { text: "세상을 바로잡기 위해.", score: 10 },
-                { text: "배신당한 복수를 위해.", score: 7 },
-                { text: "혼돈을 즐기기 위해.", score: 5 },
-                { text: "강한 자만이 살아남는 법칙을 따르기 위해.", score: 0 }
+                { text: "세상을 바꾸겠다는 생각 때문에", score: 10 },
+                { text: "누군가 열받게 해서 복수하려고", score: 7 },
+                { text: "그냥 재미있을 것 같아서", score: 5 },
+                { text: "강한 자만이 살아남는 거니까", score: 0 }
             ]},
             { text: "당신이 가장 즐기는 순간은?", choices: [
-                { text: "내 계획이 완벽하게 맞아떨어질 때.", score: 10 },
-                { text: "상대가 나를 두려워할 때.", score: 7 },
-                { text: "모든 것이 혼돈 속에 빠질 때.", score: 5 },
-                { text: "압도적인 힘으로 상대를 박살낼 때.", score: 0 }
+                { text: "내 계획이 완벽하게 맞아떨어질 때", score: 10 },
+                { text: "상대가 나를 두려워할 때", score: 7 },
+                { text: "혼란스러운 세상을 볼 때", score: 5 },
+                { text: "압도적인 힘으로 상대를 박살낼 때", score: 0 }
             ]},
-            { text: "당신의 전투 스타일은?", choices: [
-                { text: "싸우기도 전에 이길 방법을 만들어 둔다.", score: 10 },
-                { text: "심리전을 이용해 적을 무너뜨린다.", score: 7 },
-                { text: "예측할 수 없는 공격으로 혼란스럽게 만든다.", score: 5 },
-                { text: "단순한 힘으로 정면 돌파한다.", score: 0 }
+            { text: "당신의 싸움 스타일은?", choices: [
+                { text: "싸우기도 전에 이길 방법을 만들어둠", score: 10 },
+                { text: "심리전을 이용해 적을 무너뜨림", score: 7 },
+                { text: "예측할 수 없는 공격으로 혼란스럽게 만듦", score: 5 },
+                { text: "단순한 힘으로 정면 돌파함", score: 0 }
             ]},
-            { text: "당신의 빌런 아지트는?", choices: [
-                { text: "세상이 모르는 비밀 기지.", score: 10 },
-                { text: "호화로운 펜트하우스나 장엄한 성.", score: 7 },
-                { text: "어디든 아지트가 될 수 있어.", score: 5 },
-                { text: "그런 거 필요 없어. 그냥 내가 있는 곳이 내 왕국.", score: 0 }
+            { text: "누군가 당신을 배신했다! 당신의 반응은?", choices: [
+                { text: "이미 예상해서 차분하게 다음 계획을 실행함", score: 10 },
+                { text: "철저하게 복수를 준비함", score: 7 },
+                { text: "당장 응징하고 경고를 남김", score: 5 },
+                { text: "가차 없이 본보기로 처단함", score: 0 }
             ]},
-            { text: "당신이 죽기 직전 마지막으로 남길 말은?", choices: [
-                { text: "이건 계획의 일부다.", score: 10 },
-                { text: "이제야... 끝났군.", score: 7 },
-                { text: "하하하! 이거 진짜 재미있네!", score: 5 },
-                { text: "다 죽어라!!!!", score: 0 }
+            { text: "당신이 꿈꾸는 완벽한 세상은?", choices: [
+                { text: "지능이 우월한 자들이 통치하는 세상", score: 10 },
+                { text: "배신과 거짓이 없는 완벽한 정의로운 세계", score: 7 },
+                { text: "끝없는 혼돈과 즐거움이 가득한 세상", score: 5 },
+                { text: "힘이 모든 걸 결정하는 약육강식의 세계", score: 0 }
             ]},
-            { text: "당신의 빌런 능력은?", choices: [
-                { text: "세상을 조종하는 천재적 두뇌", score: 10 },
-                { text: "강력한 카리스마와 권력", score: 7 },
-                { text: "상대를 미치게 만드는 혼란의 힘", score: 5 },
-                { text: "압도적인 물리적 힘", score: 0 }
+            { text: "적과 마주쳤을 때 당신의 전략은?", choices: [
+                { text: "먼저 상대의 심리를 흔들어 무너뜨림", score: 10 },
+                { text: "정교한 함정과 전략으로 상대를 조종함", score: 7 },
+                { text: "전략? 그런 거 몰라. 그냥 박살 냄", score: 5 },
+                { text: "압도적인 힘으로 정면 승부", score: 0 }
             ]},
-            { text: "당신의 최종 목표는?", choices: [
-                { text: "완벽한 세계를 만드는 것", score: 10 },
-                { text: "나를 배신한 자를 모두 없애는 것", score: 7 },
-                { text: "세상에 혼돈을 퍼뜨리는 것", score: 5 },
-                { text: "내가 최강임을 증명하는 것", score: 0 }
+            { text: "당신이 원하는 조직의 스타일은?", choices: [
+                { text: "모든 게 계획적으로 운영되는 엘리트 집단", score: 10 },
+                { text: "충성스러운 부하들이 따르는 강력한 왕국", score: 7 },
+                { text: "규칙이 없는 자유로운 무법 조직", score: 5 },
+                { text: "오직 나 혼자만이 존재하는 절대적인 힘", score: 0 }
             ]},
-            { text: "당신의 빌런 스타일은?", choices: [
-                { text: "뒤에서 조종하는 천재", score: 10 },
-                { text: "강력한 카리스마를 가진 지도자", score: 7 },
-                { text: "미치광이 광대", score: 5 },
-                { text: "무자비한 전사", score: 0 }
+            { text: "당신이 가장 두려워하는 것은?", choices: [
+                { text: "내가 쌓아온 모든 것이 무너지는 것", score: 10 },
+                { text: "가장 소중한 사람에게 배신당하는 것", score: 7 },
+                { text: "나를 기억하는 사람이 아무도 없을 때", score: 5 },
+                { text: "나보다 더 강한 존재가 나타나는 것", score: 0 }
             ]},
-            { text: "당신의 주무기는?", choices: [
-                { text: "머리와 계획", score: 10 },
-                { text: "말과 세뇌", score: 7 },
-                { text: "혼란과 기만", score: 5 },
-                { text: "주먹과 무력", score: 0 }
+            { text: "원하는 목표를 이루는 가장 확실한 방법은?", choices: [
+                { text: "시간을 들여 철저한 계획을 세움", score: 10 },
+                { text: "필요하다면 거짓말도, 배신도 감수함", score: 7 },
+                { text: "예측할 수 없는 방식으로 접근함", score: 5 },
+                { text: "강한 힘으로 모든 걸 찍어누름", score: 0 }
             ]},
-            { text: "당신의 가장 큰 약점은?", choices: [
-                { text: "너무 철저한 계획이 가끔 변수를 놓친다", score: 10 },
-                { text: "감정을 숨기지 못하고 폭발한다", score: 7 },
-                { text: "예측 불가능한 행동이 오히려 독이 된다", score: 5 },
-                { text: "힘으로만 해결하려다 전략을 놓친다", score: 0 }
+            { text: "당신을 가장 분노하게 만드는 상황은?", choices: [
+                { text: "내 계획을 방해하는 멍청한 존재들", score: 10 },
+                { text: "믿었던 사람이 나를 배신하는 것", score: 7 },
+                { text: "상대가 내 의도를 이해하지 못할 때", score: 5 },
+                { text: "나보다 약한 자들이 감히 반항할 때", score: 0 }
             ]}
         ];
 

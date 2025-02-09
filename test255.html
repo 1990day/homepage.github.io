@@ -234,15 +234,15 @@ article{
     <div id="options-container"></div>
 </div>
 
-    <!-- 세 번째 페이지 (결과) -->
-    <div id="result-page" class="container hidden">
-        <h2 id="result-title"></h2>
-        <p id="result-description"></p>
-        <img id="result-image" src="" alt="빌런 유형 이미지" class="result-image">
-        <button onclick="location.href='test255.html'">다시 하기</button>
-        <button onclick="location.href='/'"">다른 테스트 하기</button>
-    </div>
-
+<!-- 세 번째 페이지 (결과) -->
+<div id="result-page" class="container hidden">
+    <h2 id="result-title"></h2>
+    <p id="result-description"></p>
+    <img id="result-image" src="" alt="빌런 유형 이미지" class="result-image">
+    <button onclick="location.href='test255.html'">다시 하기</button>
+    <button onclick="location.href='/'">다른 테스트 하기</button>
+    <button id="share-btn" onclick="shareTest()">📢 테스트 공유하기</button>
+</div>
     
     <article class="coupang_ad">
         <script src="https://ads-partners.coupang.com/g.js"></script>
@@ -411,6 +411,30 @@ function nextQuestion() {
             document.getElementById("result-description").textContent = result.description;
             document.getElementById("result-image").src = result.image;
         }
+
+        document.getElementById("share-btn").addEventListener("click", function() {
+  const testURL = "https://test-it.co.kr/test255"; // 테스트 링크
+    const shareText = "내가 빌런이라면 어떤 유형일까?🔥"; //  URL 제거
+
+    if (navigator.share) {
+        navigator.share({
+            title: "테스트잇 빌런 유형형 테스트",
+            text: shareText, // 🔥 여기서는 URL 없이 텍스트만 전달
+            url: testURL // 🔥 URL은 따로 전달
+        }).then(() => {
+            console.log("✅ 공유 성공!");
+        }).catch((error) => {
+            console.error("❌ 공유 실패:", error);
+        });
+    } else {
+        // 📌 PC에서는 클립보드 복사
+        navigator.clipboard.writeText(`${shareText} ${testURL}`).then(() => {
+            alert("📌 링크가 복사되었습니다! 원하는 곳에 붙여넣기 해보세요.");
+        }).catch((err) => {
+            console.error("❌ 클립보드 복사 실패:", err);
+        });
+    }
+});
     </script>
 
 </body>

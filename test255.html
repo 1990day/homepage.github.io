@@ -56,11 +56,12 @@ article{
 
  
 #options-container button {
-    font-size: 15px; /* 글씨 크기 줄임 (기존보다 작게) */
-    padding: 10px; /* 버튼 내부 여백 줄이기 */
-    line-height: 1.2; /* 줄 간격 조정 */
+    font-size: 16px; /* 글씨 크기 조정 */
+    padding: 30px 10px; /* 세로 크기 키우기 (기존 10px → 15px) */
+    width: 100%; /* 버튼 가로 크기 유지 */
+    margin: 10px 0; /* 버튼 간격 */
+    line-height: 1.4; /* 줄 간격 추가 */
 }
-
 .main-nav li {
     margin-left: 36px;
        font-family: 'Do Hyeon', sans-serif;
@@ -275,11 +276,11 @@ article{
             { text: "당신의 싸움 스타일은?", choices: [
                 { text: "싸우기도 전에 이길 방법을 만들어둠", score: 10 },
                 { text: "심리전을 이용해 적을 무너뜨림", score: 7 },
-                { text: "예측할 수 없는 공격으로 혼란스럽게 만듦", score: 5 },
+                { text: "예측할 수 없는 공격으로 교란시킴", score: 5 },
                 { text: "단순한 힘으로 정면 돌파함", score: 0 }
             ]},
-            { text: "누군가 당신을 배신했다! 당신의 반응은?", choices: [
-                { text: "이미 예상해서 차분하게 다음 계획을 실행함", score: 10 },
+            { text: "누군가 당신을 배신했다! 내 반응은?", choices: [
+                { text: "이미 예상해서 차분하게 대응함", score: 10 },
                 { text: "철저하게 복수를 준비함", score: 7 },
                 { text: "당장 응징하고 경고를 남김", score: 5 },
                 { text: "가차 없이 본보기로 처단함", score: 0 }
@@ -308,7 +309,7 @@ article{
                 { text: "나를 기억하는 사람이 아무도 없을 때", score: 5 },
                 { text: "나보다 더 강한 존재가 나타나는 것", score: 0 }
             ]},
-            { text: "원하는 목표를 이루는 가장 확실한 방법은?", choices: [
+            { text: "원하는 목표를 이루는 확실한 방법은?", choices: [
                 { text: "시간을 들여 철저한 계획을 세움", score: 10 },
                 { text: "필요하다면 거짓말도, 배신도 감수함", score: 7 },
                 { text: "예측할 수 없는 방식으로 접근함", score: 5 },

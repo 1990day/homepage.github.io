@@ -4,7 +4,7 @@
 <html lang="ko">
 <head>
 
-     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5522599110435321"
+     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5522499110435321"
      crossorigin="anonymous"></script>
 
 
@@ -294,6 +294,10 @@ article{
                 
       <button type="button" class="btn btn-info mt-3 custom-jelly-button" onclick="location.href='test259.html'" style="font-size:large; font-weight: bold;">다시 해보기</button>
     <button type="button" class="btn btn-info mt-3 custom-jelly-button" onclick="location.href='/'" style="font-size:large; font-weight: bold;">다른 테스트 해보기</button>
+    <button id="share-btn" type="button" class="btn btn-info mt-3 custom-jelly-button" style="font-size:large; font-weight: bold;">
+        테스트 공유하기
+    </button>
+    
 </article>
                         
   
@@ -423,10 +427,44 @@ article{
             }
 
         }
-    </script>
-<!-- Go to www.addthis.com/dashboard to customize your tools -->
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-6076fc88e5b8b134"></script>
+    
+    document.addEventListener("DOMContentLoaded", function () {
+        const shareButton = document.getElementById("share-btn"); // 공유 버튼 선택
+        if (shareButton) {
+            shareButton.addEventListener("click", function () {
+                const testURL = window.location.href; // 현재 페이지 URL 가져오기
+                const shareText = "만세력 성격 테스트해봐!🙂🙃";  
 
+                if (navigator.share) {
+                    // 📱 모바일 및 지원되는 브라우저에서 기본 공유 기능 사용
+                    navigator.share({
+                        title: "테스트잇 만세력 성격 테스트",  
+                        text: shareText,
+                        url: testURL
+                    }).then(() => {
+                        console.log("✅ 공유 성공!");
+                    }).catch((error) => {
+                        console.error("❌ 공유 실패:", error);
+                    });
+                } else {
+                    // 💻 PC에서는 클립보드에 복사
+                    navigator.clipboard.writeText(`${shareText} ${testURL}`).then(() => {
+                        alert("📌 링크가 복사되었습니다! 친구들에게 공유해보세요.");
+                    }).catch((err) => {
+                        console.error("❌ 클립보드 복사 실패:", err);
+                    });
+                }
+            });
+        }
+    });
+</script>
+
+
+
+
+
+
+    </script>
     </article>
 
 </body>

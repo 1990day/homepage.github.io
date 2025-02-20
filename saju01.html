@@ -453,7 +453,7 @@ function saveToGoogleSheet(name, birth, time, email) {
     formData.append("userEmail", email);
     formData.append("paymentTime", new Date().toISOString());  // 결제시간 추가!
 
-    fetch("https://https://script.google.com/macros/s/AKfycbw0vFaw4ly6CIYLjan2PuvQwLEGmeCORyZsicMrsCxLUeKCdDo-tyEB4dyRkXyC3ky7/exec.google.com/macros/s/YOUR_NEW_DEPLOYMENT_URL/exec", {
+    fetch("https://script.google.com/macros/s/AKfycbw0vFaw4ly6CIYLjan2PuvQwLEGmeCORyZsicMrsCxLUeKCdDo-tyEB4dyRkXyC3ky7/exec", {
     method: "POST",
     mode: "cors",  // CORS 모드 활성화
     credentials: "omit",  // 인증 정보 전달 안 함

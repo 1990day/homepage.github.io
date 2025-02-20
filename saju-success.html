@@ -316,7 +316,7 @@ article{
 
             fetch("https://script.google.com/macros/s/AKfycbxoadFDZ2n_z_Ifs-JQfNcwVeEISrc-UHltqA4osYRpKls8pUvyMagSV69xq2Up2Hes/exec", {
                 method: "POST",
-                mode: "no-cors",
+                mode: "cors",
                 body: formData
             }).then(() => {
                 alert("✅ 정보가 성공적으로 저장되었습니다!");

@@ -455,19 +455,20 @@ function saveToGoogleSheet(name, birth, time, email) {
     formData.append("userEmail", email);
 
     // 웹 앱 URL 연결 (여기 중요!)
-    fetch("https://script.google.com/macros/s/AKfycbxoadFDZ2n_z_Ifs-JQfNcwVeEISrc-UHltqA4osYRpKls8pUvyMagSV69xq2Up2Hes/exec", {
+    fetch("https://script.google.com/macros/s/AKfycbx3C2Zu3cBntmVSTeRpHajUArX7Hrn3tsNz6ixEoNH7BuKkCUGAORY2K3ubcTfKyuKZ/exec", {
         method: "POST",
-        mode: "no-cors",  // 이 부분만 추가!
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: formData
     })
-    .then(response => {
-        if (response.ok) {
-            console.log("정보가 성공적으로 저장되었습니다.");
+    .then(response => response.json())
+    .then(data => {
+        if (data.result === "success") {
+            alert("✅ 정보가 성공적으로 저장되고, 이메일이 발송되었습니다!");
         } else {
-            console.error("정보 저장 실패.");
+            alert(`❌ 데이터 저장 실패: ${data.message}`);
         }
     })
-    .catch(error => console.error("Error:", error));
+    .catch(error => console.error("❌ 데이터 저장 중 오류 발생:", error));
 }
 
 </script>

@@ -314,17 +314,20 @@ article{
             formData.append("birthTime", birthTime);
             formData.append("userEmail", userEmail);
 
-            fetch("https://script.google.com/macros/s/AKfycbz7VhTATNo390rY7L27ifr1ZXBv2lRCojEFqGHUzld94-xHX1Md7yFNDND09gdvf8gw/exec", {
+            fetch("https://script.google.com/macros/s/AKfycbx3C2Zu3cBntmVSTeRpHajUArX7Hrn3tsNz6ixEoNH7BuKkCUGAORY2K3ubcTfKyuKZ/exec", {
                 method: "POST",
-                mode: "cors",
-                body: formData
-            }).then(() => {
-                alert("✅ 정보가 성공적으로 저장되었습니다!");
-            }).catch(error => {
-                console.error("❌ 구글 스프레드시트 저장 실패: ", error);
-            });
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.result === "success") {
+            alert("✅ 정보가 성공적으로 저장되고, 이메일이 발송되었습니다!");
         } else {
-            alert("⚠️ 전달된 정보가 없습니다.");
+            alert(`❌ 데이터 저장 실패: ${data.message}`);
         }
+    })
+    .catch(error => console.error("❌ 데이터 저장 중 오류 발생:", error));
+}
     </script>
 </html>

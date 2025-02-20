@@ -381,7 +381,7 @@ function startKakaoPay(itemName, price) {
             quantity: 1,
             total_amount: price,
             tax_free_amount: 0,
-            approval_url: `https://test-it.co.kr/payment-success?name=${userName}&birth=${birthDate}&time=${birthTime}&email=${userEmail}`,
+            approval_url: `https://test-it.co.kr/saju-success.html?name=${userName}&birth=${birthDate}&time=${birthTime}&email=${userEmail}`,
             fail_url: "https://test-it.co.kr/payment-fail",
             cancel_url: "https://test-it.co.kr/payment-cancel"
         })
@@ -436,7 +436,8 @@ function startNaverPay(itemName, price) {
         productCount: "1",
         totalPayAmount: price,
         taxScopeAmount: price,
-        returnUrl: `https://test-it.co.kr/saju-success.html`
+        returnUrl: `https://test-it.co.kr/saju-success.html?name=${userName}&birth=${birthDate}&time=${birthTime}&email=${userEmail}`,
+
     });
 
     alert(`결제가 진행됩니다!`);

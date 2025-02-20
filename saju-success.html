@@ -297,5 +297,34 @@ article{
         <p>사주 신청이 완료되었습니다. 빠른 시일 내에 이메일로 발송해 드릴게요.</p>
         <a href="https://test-it.co.kr/">메인 페이지로 돌아가기</a>
     </body>
-</body>
+    <script>
+        // URL에서 데이터 가져오기
+        const urlParams = new URLSearchParams(window.location.search);
+        const userName = urlParams.get("name");
+        const birthDate = urlParams.get("birth");
+        const birthTime = urlParams.get("time");
+        const userEmail = urlParams.get("email");
+
+        // 데이터 확인
+        if (userName && birthDate && birthTime && userEmail) {
+            // 구글 스프레드시트로 데이터 전송
+            const formData = new FormData();
+            formData.append("userName", userName);
+            formData.append("birthDate", birthDate);
+            formData.append("birthTime", birthTime);
+            formData.append("userEmail", userEmail);
+
+            fetch("https://script.google.com/macros/s/AKfycbxoadFDZ2n_z_Ifs-JQfNcwVeEISrc-UHltqA4osYRpKls8pUvyMagSV69xq2Up2Hes/exec", {
+                method: "POST",
+                mode: "no-cors",
+                body: formData
+            }).then(() => {
+                alert("✅ 정보가 성공적으로 저장되었습니다!");
+            }).catch(error => {
+                console.error("❌ 구글 스프레드시트 저장 실패: ", error);
+            });
+        } else {
+            alert("⚠️ 전달된 정보가 없습니다.");
+        }
+    </script>
 </html>

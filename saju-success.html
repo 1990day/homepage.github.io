@@ -297,37 +297,56 @@ article{
         <p>사주 신청이 완료되었습니다. 빠른 시일 내에 이메일로 발송해 드릴게요.</p>
         <a href="https://test-it.co.kr/">메인 페이지로 돌아가기</a>
     </body>
-    <script>
-        // URL에서 데이터 가져오기
-        const urlParams = new URLSearchParams(window.location.search);
-        const userName = urlParams.get("name");
-        const birthDate = urlParams.get("birth");
-        const birthTime = urlParams.get("time");
-        const userEmail = urlParams.get("email");
+     <script>
+    // URL에서 데이터 가져오기
+    const urlParams = new URLSearchParams(window.location.search);
+    const userName = urlParams.get("name");
+    const birthDate = urlParams.get("birth");
+    const birthTime = urlParams.get("time");
+    const userEmail = urlParams.get("email");
+    const paymentTime = new Date().toISOString();  // 🔑 결제시간 추가!
 
-        // 데이터 확인
-        if (userName && birthDate && birthTime && userEmail) {
-            // 구글 스프레드시트로 데이터 전송
-            const formData = new FormData();
-            formData.append("userName", userName);
-            formData.append("birthDate", birthDate);
-            formData.append("birthTime", birthTime);
-            formData.append("userEmail", userEmail);
+    // 데이터 확인
+    if (userName && birthDate && birthTime && userEmail) {
+        const formData = new URLSearchParams();
+        formData.append("userName", userName);
+        formData.append("birthDate", birthDate);
+        formData.append("birthTime", birthTime);
+        formData.append("userEmail", userEmail);
+        formData.append("paymentTime", paymentTime);  // 결제시간 전달!
 
-            fetch("https://script.google.com/macros/s/AKfycbx3C2Zu3cBntmVSTeRpHajUArX7Hrn3tsNz6ixEoNH7BuKkCUGAORY2K3ubcTfKyuKZ/exec", {
-                method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: formData
+        fetch("https://https://script.google.com/macros/s/AKfycbw0vFaw4ly6CIYLjan2PuvQwLEGmeCORyZsicMrsCxLUeKCdDo-tyEB4dyRkXyC3ky7/exec.google.com/macros/s/YOUR_NEW_DEPLOYMENT_URL/exec", {
+    method: "POST",
+    mode: "cors",  // CORS 모드 활성화
+    credentials: "omit",  // 인증 정보 전달 안 함
+    headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+    },
+    body: new URLSearchParams({
+        userName: userName,
+        birthDate: birthDate,
+        birthTime: birthTime,
+        userEmail: userEmail,
+        paymentTime: new Date().toISOString()
     })
-    .then(response => response.json())
-    .then(data => {
-        if (data.result === "success") {
-            alert("✅ 정보가 성공적으로 저장되고, 이메일이 발송되었습니다!");
-        } else {
-            alert(`❌ 데이터 저장 실패: ${data.message}`);
-        }
-    })
-    .catch(error => console.error("❌ 데이터 저장 중 오류 발생:", error));
-}
-    </script>
+})
+.then(response => {
+    if (!response.ok) {
+        throw new Error(`서버 오류: ${response.status}`);
+    }
+    return response.json();
+})
+.then(data => {
+    if (data.result === "success") {
+        alert("✅ 결제가 완료되었고, 알림이 발송되었습니다!");
+    } else {
+        alert(`❌ 데이터 저장 실패: ${data.message}`);
+    }
+})
+.catch(error => {
+    console.error("❌ 데이터 저장 중 오류 발생:", error);
+});
+    }
+</script>
+
 </html>

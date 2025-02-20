@@ -445,31 +445,48 @@ function startNaverPay(itemName, price) {
 
 
 
-// 구글 스프레드시트에 정보 저장
-// 구글 스프레드시트에 정보 저장
 function saveToGoogleSheet(name, birth, time, email) {
-    const formData = new FormData();
+    const formData = new URLSearchParams();
     formData.append("userName", name);
     formData.append("birthDate", birth);
     formData.append("birthTime", time);
     formData.append("userEmail", email);
+    formData.append("paymentTime", new Date().toISOString());  // 결제시간 추가!
 
-    // 웹 앱 URL 연결 (여기 중요!)
-    fetch("https://script.google.com/macros/s/AKfycbx3C2Zu3cBntmVSTeRpHajUArX7Hrn3tsNz6ixEoNH7BuKkCUGAORY2K3ubcTfKyuKZ/exec", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: formData
+    fetch("https://https://script.google.com/macros/s/AKfycbw0vFaw4ly6CIYLjan2PuvQwLEGmeCORyZsicMrsCxLUeKCdDo-tyEB4dyRkXyC3ky7/exec.google.com/macros/s/YOUR_NEW_DEPLOYMENT_URL/exec", {
+    method: "POST",
+    mode: "cors",  // CORS 모드 활성화
+    credentials: "omit",  // 인증 정보 전달 안 함
+    headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+    },
+    body: new URLSearchParams({
+        userName: userName,
+        birthDate: birthDate,
+        birthTime: birthTime,
+        userEmail: userEmail,
+        paymentTime: new Date().toISOString()
     })
-    .then(response => response.json())
-    .then(data => {
-        if (data.result === "success") {
-            alert("✅ 정보가 성공적으로 저장되고, 이메일이 발송되었습니다!");
-        } else {
-            alert(`❌ 데이터 저장 실패: ${data.message}`);
-        }
-    })
-    .catch(error => console.error("❌ 데이터 저장 중 오류 발생:", error));
+})
+.then(response => {
+    if (!response.ok) {
+        throw new Error(`서버 오류: ${response.status}`);
+    }
+    return response.json();
+})
+.then(data => {
+    if (data.result === "success") {
+        alert("✅ 결제가 완료되었고, 알림이 발송되었습니다!");
+    } else {
+        alert(`❌ 데이터 저장 실패: ${data.message}`);
+    }
+})
+.catch(error => {
+    console.error("❌ 데이터 저장 중 오류 발생:", error);
+});
 }
+
+
 
 </script>
 

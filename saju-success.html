@@ -298,55 +298,59 @@ article{
         <a href="https://test-it.co.kr/">메인 페이지로 돌아가기</a>
     </body>
      <script>
-    // URL에서 데이터 가져오기
-    const urlParams = new URLSearchParams(window.location.search);
-    const userName = urlParams.get("name");
-    const birthDate = urlParams.get("birth");
-    const birthTime = urlParams.get("time");
-    const userEmail = urlParams.get("email");
-    const paymentTime = new Date().toISOString();  // 🔑 결제시간 추가!
+  
+  // ✅ 결제 성공 시에만 시트와 메일로 데이터 전송
+  const urlParams = new URLSearchParams(window.location.search);
+  const userName = urlParams.get("name");
+  const userGender = urlParams.get("gender"); // 🌟 성별 추가
+  const birthDate = urlParams.get("birth");
+  const birthType = urlParams.get("birthType");
+  const birthTime = urlParams.get("time");
+  const userEmail = urlParams.get("email");
 
-    // 데이터 확인
-    if (userName && birthDate && birthTime && userEmail) {
-        const formData = new URLSearchParams();
-        formData.append("userName", userName);
-        formData.append("birthDate", birthDate);
-        formData.append("birthTime", birthTime);
-        formData.append("userEmail", userEmail);
-        formData.append("paymentTime", paymentTime);  // 결제시간 전달!
+  console.log("✅ 석세스 페이지에서 전달된 값:");
+  console.log("이름:", userName);
+  console.log("성별:", userGender); // 🌟 성별 로그 추가
+  console.log("생년월일:", birthDate);
+  console.log("양력/음력:", birthType);
+  console.log("출생 시간:", birthTime);
+  console.log("이메일:", userEmail);
 
-        fetch("https://script.google.com/macros/s/AKfycbw0vFaw4ly6CIYLjan2PuvQwLEGmeCORyZsicMrsCxLUeKCdDo-tyEB4dyRkXyC3ky7/exec", {
-    method: "POST",
-    mode: "cors",  // CORS 모드 활성화
-    credentials: "omit",  // 인증 정보 전달 안 함
-    headers: {
-        "Content-Type": "application/x-www-form-urlencoded"
-    },
-    body: new URLSearchParams({
-        userName: userName,
-        birthDate: birthDate,
-        birthTime: birthTime,
-        userEmail: userEmail,
-        paymentTime: new Date().toISOString()
-    })
-})
-.then(response => {
-    if (!response.ok) {
-        throw new Error(`서버 오류: ${response.status}`);
-    }
-    return response.json();
-})
-.then(data => {
-    if (data.result === "success") {
-        alert("✅ 결제가 완료되었고, 알림이 발송되었습니다!");
-    } else {
-        alert(`❌ 데이터 저장 실패: ${data.message}`);
-    }
-})
-.catch(error => {
-    console.error("❌ 데이터 저장 중 오류 발생:", error);
-});
-    }
+  // 데이터 누락 확인
+  if (!userName || !userGender || !birthDate || !birthType || !birthTime || !userEmail) {
+      alert("⚠️ 결제 성공 페이지에서 정보가 누락되었습니다! 다시 시도해 주세요.");
+  } else {
+      console.log("🚀 모든 데이터가 정상적으로 전달되었습니다.");
+  }
+
+  // ✅ 수정된 fetch 요청
+  if (userName && userGender && birthDate && birthType && birthTime && userEmail) {
+      console.log("📤 구글 시트로 데이터 전송 중...");
+
+      fetch("https://script.google.com/macros/s/AKfycbwthEXtrunyVulU7fL000nqm1lkfTnTKWnuZqSkRBhEfAK8gKm6Sw6DZPFPxcs_WZT8/exec", {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+              userName: userName,
+              userGender: userGender,  // 🌟 성별 추가
+              birthDate: birthDate,
+              birthType: birthType,
+              birthTime: birthTime,
+              userEmail: userEmail,
+              paymentTime: new Date().toLocaleString()
+          })
+      })
+      .then(() => {
+          console.log("✅ 데이터 전송 완료 (CORS 모드로 응답 확인 불가)");
+          alert("✅ 결제가 완료되고, 데이터가 시트에 성공적으로 저장되었습니다!");
+      })
+      .catch(error => {
+          console.error("❌ 서버 통신 중 오류 발생:", error);
+          alert("❌ 구글 시트에 데이터를 기록하는 중 문제가 발생했습니다.");
+      });
+  }
+
 </script>
 
 </html>

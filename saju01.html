@@ -265,8 +265,15 @@ article{
             margin: 0 auto;
         }
     
-
-  
+        input, select, button {
+      width: 80%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+    }
+    
+    
 </style>
 
 
@@ -300,18 +307,26 @@ article{
     <button class="custom-jelly-button" onclick="showPage('infoPage')">💌 정보 입력하고 결제하기</button>
 </div>
 
-<!-- 2. 정보 입력 페이지 -->
-<div id="infoPage" class="page">
+  <!-- 2. 정보 입력 페이지 (드롭다운 형식) -->
+  <div id="infoPage" class="page">
     <h1>📄 사주 정보 입력</h1>
     <form id="sajuForm">
-        <input type="text" id="userName" placeholder="이름 (예: 홍길동)" required><br>
-        <input type="date" id="birthDate" required><br>
-        <input type="time" id="birthTime" required><br>
-        <input type="email" id="userEmail" placeholder="이메일 (예: example@email.com)" required><br>
-        <button type="button" class="custom-jelly-button" onclick="showPage('paymentPage')">💰 결제하기</button>
-        <br><button type="button" class="custom-jelly-button" onclick="showPage('mainPage')">⬅️ 돌아가기</button>
+      <input type="text" id="userName" placeholder="이름 (예: 홍길동)" required><br>
+      <label>생년월일:</label><br>
+      <select id="birthYear" required></select>
+      <select id="birthMonth" required></select>
+      <select id="birthDay" required></select>
+      <br>
+      <label>태어난 시간:</label><br>
+      <select id="birthHour" required></select>
+      <select id="birthMinute" required></select>
+      <br>
+      <input type="email" id="userEmail" placeholder="이메일 (예: example@email.com)" required><br>
+      <button type="button" class="custom-jelly-button" onclick="showPage('paymentPage')">💰 결제하기</button>
+      <br>
+      <button type="button" class="custom-jelly-button" onclick="showPage('mainPage')">⬅️ 돌아가기</button>
     </form>
-</div>
+  </div>
 
 <!-- 3. 결제 페이지 -->
 <div id="paymentPage" class="page">
@@ -324,171 +339,215 @@ article{
 </div>
 
 <script>
-// 페이지 이동 함수
-function showPage(pageId) {
-    const pages = document.querySelectorAll('.page');
-    pages.forEach(page => page.classList.remove('active'));
-    document.getElementById(pageId).classList.add('active');
 
-    // 결제 페이지일 때 정보 표시
-    if (pageId === 'paymentPage') {
-        const userName = document.getElementById("userName").value;
-        const birthDate = document.getElementById("birthDate").value;
-        const birthTime = document.getElementById("birthTime").value;
-        const userEmail = document.getElementById("userEmail").value;
-
-        if (!userName || !birthDate || !birthTime || !userEmail) {
-            alert("모든 정보를 입력해 주세요!");
-            showPage('infoPage');
-            return;
-        }
-
-        // 정보 표시
-        document.getElementById("userInfo").innerHTML = `
-            <h2>입력 정보 확인</h2>
-            <p><strong>이름:</strong> ${userName}</p>
-            <p><strong>생년월일:</strong> ${birthDate}</p>
-            <p><strong>태어난 시간:</strong> ${birthTime}</p>
-            <p><strong>이메일:</strong> ${userEmail}</p>
-        `;
+     // 날짜 드롭다운 옵션 채우기
+     function populateDateSelectors() {
+      const yearSelect = document.getElementById("birthYear");
+      const monthSelect = document.getElementById("birthMonth");
+      const daySelect = document.getElementById("birthDay");
+      const currentYear = new Date().getFullYear();
+      for (let y = 1900; y <= currentYear; y++) {
+        const option = document.createElement("option");
+        option.value = y;
+        option.text = y;
+        yearSelect.add(option);
+      }
+      for (let m = 1; m <= 12; m++) {
+        const option = document.createElement("option");
+        option.value = m;
+        option.text = m;
+        monthSelect.add(option);
+      }
+      for (let d = 1; d <= 31; d++) {
+        const option = document.createElement("option");
+        option.value = d;
+        option.text = d;
+        daySelect.add(option);
+      }
     }
-}
+    
+    // 시간 드롭다운 옵션 채우기
+    function populateTimeSelectors() {
+      const hourSelect = document.getElementById("birthHour");
+      const minuteSelect = document.getElementById("birthMinute");
+      for (let h = 0; h < 24; h++) {
+        const option = document.createElement("option");
+        option.value = h;
+        option.text = h;
+        hourSelect.add(option);
+      }
+      for (let min = 0; min < 60; min++) {
+        const option = document.createElement("option");
+        option.value = min;
+        option.text = min;
+        minuteSelect.add(option);
+      }
+    }
 
-// 카카오페이 결제 함수
-function startKakaoPay(itemName, price) {
-    const userName = document.getElementById("userName").value;
-    const birthDate = document.getElementById("birthDate").value;
-    const birthTime = document.getElementById("birthTime").value;
-    const userEmail = document.getElementById("userEmail").value;
-
-    if (!userName || !birthDate || !birthTime || !userEmail) {
+  // 페이지 이동 함수 (정보 입력값 조합 포함)
+    function showPage(pageId) {
+      const pages = document.querySelectorAll('.page');
+      pages.forEach(page => page.classList.remove('active'));
+      document.getElementById(pageId).classList.add('active');
+      
+      if (pageId === 'paymentPage') {
+        const userName = document.getElementById("userName").value;
+        const birthYear = document.getElementById("birthYear").value;
+        const birthMonth = document.getElementById("birthMonth").value;
+        const birthDay = document.getElementById("birthDay").value;
+        const birthDate = birthYear + '-' + String(birthMonth).padStart(2, '0') + '-' + String(birthDay).padStart(2, '0');
+        const birthHour = document.getElementById("birthHour").value;
+        const birthMinute = document.getElementById("birthMinute").value;
+        const birthTime = String(birthHour).padStart(2, '0') + ':' + String(birthMinute).padStart(2, '0');
+        const userEmail = document.getElementById("userEmail").value;
+        
+        if (!userName || !birthYear || !birthMonth || !birthDay || !birthHour || !birthMinute || !userEmail) {
+          alert("모든 정보를 입력해 주세요!");
+          showPage('infoPage');
+          return;
+        }
+        
+        document.getElementById("userInfo").innerHTML = `
+          <h2>입력 정보 확인</h2>
+          <p><strong>이름:</strong> ${userName}</p>
+          <p><strong>생년월일:</strong> ${birthDate}</p>
+          <p><strong>태어난 시간:</strong> ${birthTime}</p>
+          <p><strong>이메일:</strong> ${userEmail}</p>
+        `;
+      }
+    }
+    
+    // 카카오페이 결제 함수
+    function startKakaoPay(itemName, price) {
+      const userName = document.getElementById("userName").value;
+      const birthYear = document.getElementById("birthYear").value;
+      const birthMonth = document.getElementById("birthMonth").value;
+      const birthDay = document.getElementById("birthDay").value;
+      const birthDate = birthYear + '-' + String(birthMonth).padStart(2, '0') + '-' + String(birthDay).padStart(2, '0');
+      const birthHour = document.getElementById("birthHour").value;
+      const birthMinute = document.getElementById("birthMinute").value;
+      const birthTime = String(birthHour).padStart(2, '0') + ':' + String(birthMinute).padStart(2, '0');
+      const userEmail = document.getElementById("userEmail").value;
+      
+      if (!userName || !birthYear || !birthMonth || !birthDay || !birthHour || !birthMinute || !userEmail) {
         alert("모든 정보를 입력해 주세요!");
         return;
-    }
-
-    // 결제 요청
-    fetch("https://kapi.kakao.com/v1/payment/ready", {
+      }
+      
+      fetch("https://kapi.kakao.com/v1/payment/ready", {
         method: "POST",
         headers: {
-            "Authorization": "KakaoAK b4083f89247a0b1069aba322c0ffafb4",
-            "Content-Type": "application/x-www-form-urlencoded"
+          "Authorization": "KakaoAK b4083f89247a0b1069aba322c0ffafb4",
+          "Content-Type": "application/x-www-form-urlencoded"
         },
         body: new URLSearchParams({
-            cid: "TC0ONETIME",
-            partner_order_id: "order_" + new Date().getTime(),
-            partner_user_id: userEmail,
-            item_name: `${itemName} (${userName})`,
-            quantity: 1,
-            total_amount: price,
-            tax_free_amount: 0,
-            approval_url: `https://test-it.co.kr/saju-success.html?name=${userName}&birth=${birthDate}&time=${birthTime}&email=${userEmail}`,
-            fail_url: "https://test-it.co.kr/payment-fail",
-            cancel_url: "https://test-it.co.kr/payment-cancel"
+          cid: "TC0ONETIME",
+          partner_order_id: "order_" + new Date().getTime(),
+          partner_user_id: userEmail,
+          item_name: `${itemName} (${userName})`,
+          quantity: 1,
+          total_amount: price,
+          tax_free_amount: 0,
+          approval_url: `https://test-it.co.kr/saju-success.html?name=${userName}&birth=${birthDate}&time=${birthTime}&email=${userEmail}`,
+          fail_url: "https://test-it.co.kr/payment-fail",
+          cancel_url: "https://test-it.co.kr/payment-cancel"
         })
-    })
-    .then(response => response.json())
-    .then(data => {
+      })
+      .then(response => response.json())
+      .then(data => {
         if (data.next_redirect_pc_url) {
-            // 결제 성공 시 정보 저장
-            alert("결제가 완료되면 정보가 전송됩니다!");
-            window.location.href = data.next_redirect_pc_url;
+          alert("결제가 완료되면 정보가 전송됩니다!");
+          window.location.href = data.next_redirect_pc_url;
         } else {
-            alert("결제 요청 실패: " + data.code);
+          alert("결제 요청 실패: " + data.code);
         }
-    })
-    .catch(error => console.error("Error:", error));
-}
-window.onload = function () {
-    const urlParams = new URLSearchParams(window.location.search);
-    const userName = urlParams.get("name");
-    const birthDate = urlParams.get("birth");
-    const birthTime = urlParams.get("time");
-    const userEmail = urlParams.get("email");
-
-    if (userName && birthDate && birthTime && userEmail) {
-        saveToGoogleSheet(userName, birthDate, birthTime, userEmail);
-        alert(`결제가 완료되었습니다!\n이름: ${userName}\n이메일: ${userEmail}`);
+      })
+      .catch(error => console.error("Error:", error));
     }
-};
-
-
-
-function startNaverPay(itemName, price) {
-    const userName = document.getElementById("userName").value;
-    const birthDate = document.getElementById("birthDate").value;
-    const birthTime = document.getElementById("birthTime").value;
-    const userEmail = document.getElementById("userEmail").value;
-
-    if (!userName || !birthDate || !birthTime || !userEmail) {
+    
+    // 네이버페이 결제 함수
+    function startNaverPay(itemName, price) {
+      const userName = document.getElementById("userName").value;
+      const birthYear = document.getElementById("birthYear").value;
+      const birthMonth = document.getElementById("birthMonth").value;
+      const birthDay = document.getElementById("birthDay").value;
+      const birthDate = birthYear + '-' + String(birthMonth).padStart(2, '0') + '-' + String(birthDay).padStart(2, '0');
+      const birthHour = document.getElementById("birthHour").value;
+      const birthMinute = document.getElementById("birthMinute").value;
+      const birthTime = String(birthHour).padStart(2, '0') + ':' + String(birthMinute).padStart(2, '0');
+      const userEmail = document.getElementById("userEmail").value;
+      
+      if (!userName || !birthYear || !birthMonth || !birthDay || !birthHour || !birthMinute || !userEmail) {
         alert("모든 정보를 입력해 주세요!");
         return;
-    }
-
-    const oPay = Naver.Pay.create({
+      }
+      
+      const oPay = Naver.Pay.create({
         mode: "development",
         clientId: "HN3GGCMDdTgGUfl0kFCo",
         chainId: "a3lzdzZ0QmtxSG1"
-    });
-
-    oPay.open({
+      });
+      
+      oPay.open({
         merchantPayKey: "order_" + new Date().getTime(),
         productName: `${itemName} (${userName})`,
         productCount: "1",
         totalPayAmount: price,
         taxScopeAmount: price,
-        returnUrl: `https://test-it.co.kr/saju-success.html?name=${userName}&birth=${birthDate}&time=${birthTime}&email=${userEmail}`,
-
-    });
-
-    alert(`결제가 진행됩니다!`);
-}
-
-
-
-function saveToGoogleSheet(name, birth, time, email) {
-    const formData = new URLSearchParams();
-    formData.append("userName", name);
-    formData.append("birthDate", birth);
-    formData.append("birthTime", time);
-    formData.append("userEmail", email);
-    formData.append("paymentTime", new Date().toISOString());  // 결제시간 추가!
-
-    fetch("https://script.google.com/macros/s/AKfycbw0vFaw4ly6CIYLjan2PuvQwLEGmeCORyZsicMrsCxLUeKCdDo-tyEB4dyRkXyC3ky7/exec", {
-    method: "POST",
-    mode: "cors",  // CORS 모드 활성화
-    credentials: "omit",  // 인증 정보 전달 안 함
-    headers: {
-        "Content-Type": "application/x-www-form-urlencoded"
-    },
-    body: new URLSearchParams({
-        userName: userName,
-        birthDate: birthDate,
-        birthTime: birthTime,
-        userEmail: userEmail,
-        paymentTime: new Date().toISOString()
-    })
-})
-.then(response => {
-    if (!response.ok) {
-        throw new Error(`서버 오류: ${response.status}`);
+        returnUrl: `https://test-it.co.kr/saju-success.html?name=${userName}&birth=${birthDate}&time=${birthTime}&email=${userEmail}`
+      });
+      
+      alert("결제가 진행됩니다!");
     }
-    return response.json();
-})
-.then(data => {
-    if (data.result === "success") {
-        alert("✅ 결제가 완료되었고, 알림이 발송되었습니다!");
-    } else {
-        alert(`❌ 데이터 저장 실패: ${data.message}`);
+    
+    // 구글 시트에 데이터 저장 함수
+    function saveToGoogleSheet(name, birth, time, email) {
+      fetch("https://script.google.com/macros/s/AKfycbw0vFaw4ly6CIYLjan2PuvQwLEGmeCORyZsicMrsCxLUeKCdDo-tyEB4dyRkXyC3ky7/exec", {
+        method: "POST",
+        mode: "cors",
+        credentials: "omit",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: new URLSearchParams({
+          userName: name,
+          birthDate: birth,
+          birthTime: time,
+          userEmail: email,
+          paymentTime: new Date().toISOString()
+        })
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`서버 오류: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then(data => {
+        if (data.result === "success") {
+          alert("✅ 결제가 완료되었고, 알림이 발송되었습니다!");
+        } else {
+          alert(`❌ 데이터 저장 실패: ${data.message}`);
+        }
+      })
+      .catch(error => console.error("❌ 데이터 저장 중 오류 발생:", error));
     }
-})
-.catch(error => {
-    console.error("❌ 데이터 저장 중 오류 발생:", error);
-});
-}
-
-
-
-</script>
-
+    
+    window.onload = function() {
+      populateDateSelectors();
+      populateTimeSelectors();
+      
+      // 결제 완료 후 URL 파라미터 처리
+      const urlParams = new URLSearchParams(window.location.search);
+      const userName = urlParams.get("name");
+      const birthDate = urlParams.get("birth");
+      const birthTime = urlParams.get("time");
+      const userEmail = urlParams.get("email");
+      if (userName && birthDate && birthTime && userEmail) {
+        saveToGoogleSheet(userName, birthDate, birthTime, userEmail);
+        alert(`결제가 완료되었습니다!\n이름: ${userName}\n이메일: ${userEmail}`);
+      }
+    };
+  </script>
 </body>
 </html>

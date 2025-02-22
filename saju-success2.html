@@ -41,318 +41,265 @@
 
 <style>
 
-/* start 태그와 question 태그 모두 article 태그라서 article 태그에 속성을 주면 동시에 적용됨
-.start{
-    display: flex;
-    flex-direction: column;
-}
-*/
-    
-   @font-face {
-    font-family: 'ChosunGu';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/ChosunGu.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-    
-      body {
-            font-family: 'ChosunGu', sans-serif;
-        }
-    
-.logo {
-    width: 100px;
-    margin-top: 14px;
-}
-
-.main-nav {
-    display: flex;
-    font-size: 1.25rem;
-    text-transform: uppercase;
-    margin-top: 34px;
-    list-style: none;
-}
-
-.main-nav li {
-    margin-left: 36px;
-       font-family: 'Do Hyeon', sans-serif;
-    line-height: 1.7;
-    color: #432;
-}
-
-.main-nav a{
-    color: #432;
-       font-family: 'Do Hyeon', sans-serif;
-    line-height: 1.7;
-}
-
-.main-nav a:hover {
-    color: #0bd;
-}
-
-
-.page-header {
-    display: flex;
-    justify-content: space-between;
-}
-
-    
-article{
-    display: flex;
-    flex-direction: column;
-}
-
- 
-    
-.question{
-    display: none;
-}
-
-.result{
-    display: none;
-}
-.progress-bar {
-    background-color: #76c5c1;
-}
-.progress {
-    background-color: #fbffe4;
-}
-#img{
-    width: 500px;
-    height: 900px;
-    max-width: 100%;
-    height: auto;
-    margin: 0 auto;
-}
-
-#img_main{
-    width: 500px;
-    height: 600px;
-    max-width: 100%;
-    height: auto;
-    margin: 0 auto;
-}
-
-#question-image {
-    max-width: 100%;
-    height: auto;
-    margin: 0 auto;
-    display: block;
-}
-
-.question-image {
-    max-width: 100%;
-    height: auto;
-    margin: 0 auto;
-    display: block;
-}
-.custom-jelly-button {
-    width: 100%;
-    max-width: 350px;
-    height: 60px;
-    font-size: 15px !important;
-    font-weight: bold;
-    color: black !important;
-    background: linear-gradient(145deg, #ffcfcf, #ffcfcf); /* 분홍과 노랑 그라데이션 */
-    border: none;
-    border-radius: 17px;
-    box-shadow: inset -4px -4px 10px rgba(255, 255, 255, 0.7), 
-                inset 4px 4px 10px rgba(0, 0, 0, 0.1),
-                2px 2px 8px rgba(0, 0, 0, 0.15);
-    margin: 0 auto;
-    display: block;
-}
-
-.custom-jelly-button:hover {
-    background: linear-gradient(145deg, #ffcfcf, #ffcfcf); /* 반대로 그라데이션 */
-}
-
-
-.page {
-            display: none;
-            margin: 0 auto;
-            max-width: 600px;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 15px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .active {
-            display: block;
-        }
-        input, button {
-            width: 80%;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 10px;
-            border: 1px solid #ddd;
-        }
-
-        
-    
-.jelly-question-box {
-    width: 100%;
-    max-width: 400px;
-    min-height: 150px;
-    padding: 30px 20px;
-    margin: 20px auto;
-    background: linear-gradient(145deg, #ffc1cc, #ff91a1); /* 진한 분홍색으로 변경 */
-    border-radius: 25px;
-    box-shadow: inset -6px -6px 12px rgba(255, 255, 255, 0.8), 
-                inset 6px 6px 12px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    color: #432;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* h6 요소의 폰트 크기 강제 적용 */
-.jelly-question-box h6 {
-    font-size: 18px !important;
-}
-    
-.btn-info.focus, .btn-info:focus {
-    box-shadow: 0 0 0 0.1rem rgb(255 255 255);
-}
-    .btn-info:hover {
-    color: #ffffff;
-    background-color: #ffffff;
-    border-color: #ffffff;
-            box-shadow: 0 0 0 0.1rem rgb(255 255 255);
-}
-    .btn-info.focus, .btn-info:focus {
-    color: #ffffff;
-    background-color: #ffffff;
-    border-color: #ffffff;
-    box-shadow: 0 0 0 0.1rem rgb(255 255 255);
-}
-    .btn-info {
-    color: #ffffff;
-    background-color: #ffffff;
-    border-color: #ffffff;
-            box-shadow: 0 0 0 0.1rem rgb(255 255 255);
-}
-    .btn.focus, .btn:focus {
-    outline: 0;
-    box-shadow: 0 0 0 0.1rem rgb(255 255 255);
-}
-   
-    
-    
-    .at-share-btn-elements{
-        text-align: center;
+    /* start 태그와 question 태그 모두 article 태그라서 article 태그에 속성을 주면 동시에 적용됨
+    .start{
+        display: flex;
+        flex-direction: column;
     }
-.share{
-    margin: 0 auto;
-}
-
-.kakao_ad{
-    width: 320px;
-    margin: 0 auto;
-}
-
-.kakao_ad2{
-    width: 320px;
-    margin: 0 auto;
-}
-.coupang_ad {
-    width: 320px;
-    margin: 0 auto;
-}
-        .custom-button {
-            width: 100%;
-            max-width: 350px;
-            margin: 0 auto;
-        }
+    */
+        
+       @font-face {
+        font-family: 'ChosunGu';
+        src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/ChosunGu.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+    }
+        
+          body {
+                font-family: 'ChosunGu', sans-serif;
+            }
+        
+    .logo {
+        width: 100px;
+        margin-top: 14px;
+    }
     
-
-  
-</style>
-
-
-
-
-
-</head>
-<!-- body 태그 style background-color 지정으로 배경색 변경-->
-<body class="container" style="background-color:#ffffff">
+    .main-nav {
+        display: flex;
+        font-size: 1.25rem;
+        text-transform: uppercase;
+        margin-top: 34px;
+        list-style: none;
+    }
+    
+    .main-nav li {
+        margin-left: 36px;
+           font-family: 'Do Hyeon', sans-serif;
+        line-height: 1.7;
+        color: #432;
+    }
+    
+    .main-nav a{
+        color: #432;
+           font-family: 'Do Hyeon', sans-serif;
+        line-height: 1.7;
+    }
+    
+    .main-nav a:hover {
+        color: #0bd;
+    }
+    
+    
+    .page-header {
+        display: flex;
+        justify-content: space-between;
+    }
+    
+        
+    article{
+        display: flex;
+        flex-direction: column;
+    }
+    
+     
+    
+    
+    .custom-jelly-button {
+        width: 100%;
+        max-width: 350px;
+        height: 60px;
+        font-size: 15px !important;
+        font-weight: bold;
+        color: black !important;
+        background: linear-gradient(145deg, #ffcfcf, #ffcfcf); /* 분홍과 노랑 그라데이션 */
+        border: none;
+        border-radius: 17px;
+        box-shadow: inset -4px -4px 10px rgba(255, 255, 255, 0.7), 
+                    inset 4px 4px 10px rgba(0, 0, 0, 0.1),
+                    2px 2px 8px rgba(0, 0, 0, 0.15);
+        margin: 0 auto;
+        display: block;
+    }
+    
+    .custom-jelly-button:hover {
+        background: linear-gradient(145deg, #ffcfcf, #ffcfcf); /* 반대로 그라데이션 */
+    }
+    
+    
+    .page {
+                display: none;
+                margin: 0 auto;
+                max-width: 600px;
+                padding: 20px;
+                background-color: #fff;
+                border-radius: 15px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+            .active {
+                display: block;
+            }
+            input, button {
+                width: 80%;
+                padding: 10px;
+                margin: 10px 0;
+                border-radius: 10px;
+                border: 1px solid #ddd;
+            }
+    
+                 /* 성공 페이지 전용 스타일 */
+                 .success-page {
+                text-align: center;        /* 가운데 정렬 */
+                margin: 40px auto;        /* 페이지 위아래 여백, 가운데 정렬 */
+                max-width: 600px;         /* 폭 제한 */
+                padding: 30px;            /* 안쪽 여백 */
+                background-color: #fff;   /* 배경 흰색 */
+                border-radius: 15px;      /* 모서리 둥글게 */
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 그림자 */
+            }
+            .success-title {
+                font-size: 1.2rem;        /* 글씨 크기 */
+                font-weight: bold;        /* 굵게 */
+                margin-bottom: 10px;      /* 아래쪽 여백 */
+            }
+            .success-text {
+                font-size: 1rem;          /* 본문 크기 */
+                margin-bottom: 20px;      /* 간격 */
+            }
+            .success-link {
+                display: inline-block;    
+                padding: 10px 20px;
+                background-color: #ffcfcf; /* 분홍빛 배경 */
+                border-radius: 10px;
+                text-decoration: none;      /* 밑줄 제거 */
+                color: black;
+                font-weight: bold;
+                box-shadow: inset -4px -4px 10px rgba(255, 255, 255, 0.7),
+                            inset 4px 4px 10px rgba(0, 0, 0, 0.1),
+                            2px 2px 8px rgba(0, 0, 0, 0.15);
+            }
+            .success-link:hover {
+                background: #ffbdbd;       /* hover 시 조금 진해짐 */
+            }
+        
+        .at-share-btn-elements{
+            text-align: center;
+        }
+    .share{
+        margin: 0 auto;
+    }
+    
+    .kakao_ad{
+        width: 320px;
+        margin: 0 auto;
+    }
+    
+    .kakao_ad2{
+        width: 320px;
+        margin: 0 auto;
+    }
+    .coupang_ad {
+        width: 320px;
+        margin: 0 auto;
+    }
+            .custom-button {
+                width: 100%;
+                max-width: 350px;
+                margin: 0 auto;
+            }
+        
+    
+      
+    </style>
+    
+    
+    
+    
+    
+    </head>
+    <!-- body 태그 style background-color 지정으로 배경색 변경-->
+    <body class="container" style="background-color:#ffffff">
+                
+        <header class="page-header wrapper">
+            <h1><a href="index.html"><img class="logo" src="img_logo.png" alt="test it"></a>
+            </h1>
+        <nav>
+            <u1 class="main-nav">
+                <li> <a href="https://test-it.co.kr/test.html">성격</a></li>
+                <li> <a href="https://test-it.co.kr/face.html">얼굴</a></li>
+                <li> <a href="https://test-it.co.kr/etc.html">그외</a></li>
+                <li> <a href="https://test-it.co.kr/saju.html">사주</a></li>
+            </u1>
+        </nav>
             
-    <header class="page-header wrapper">
-        <h1><a href="index.html"><img class="logo" src="img_logo.png" alt="test it"></a>
-        </h1>
-    <nav>
-        <u1 class="main-nav">
-            <li> <a href="https://test-it.co.kr/test.html">성격</a></li>
-            <li> <a href="https://test-it.co.kr/face.html">얼굴</a></li>
-            <li> <a href="https://test-it.co.kr/etc.html">그외</a></li>
-            <li> <a href="https://test-it.co.kr/saju.html">사주</a></li>
-        </u1>
-    </nav>
-        
-        
-    </header>
+            
+        </header>
+    
+       <!-- 성공 페이지(가운데 정렬 + 꾸며주기) -->
+       <div class="success-page">
+        <h1 class="success-title">결제가 성공적으로 완료되었습니다!</h1>
+        <p class="success-text">
+            사주 신청이 완료되었습니다. 48시간 내에 이메일로 발송해 드릴게요.
+        </p>
+        <a class="success-link" href="https://test-it.co.kr/saju02">이전 페이지로 돌아가기</a>
+    </div>
+         <script>
+      
+    // ✅ 결제 성공 시에만 시트와 메일로 데이터 전송
+    const urlParams = new URLSearchParams(window.location.search);
+  const userName = urlParams.get("name");
+  const userGender = urlParams.get("gender");
+  const birthDate = urlParams.get("birth");
+  const birthType = urlParams.get("birthType");
+  const birthTime = urlParams.get("time");
+  const userEmail = urlParams.get("email");
+  const paymentItem = decodeURIComponent(urlParams.get("paymentItem") || "알 수 없는 항목");
+  const fortuneMonth = urlParams.get("fortuneMonth");  // 새로 추가된 값
 
-    <body>
-        <h1>결제가 성공적으로 완료되었습니다!</h1>
-        <p>사주 신청이 완료되었습니다. 빠른 시일 내에 이메일로 발송해 드릴게요.</p>
-        <a href="https://test-it.co.kr/saju02">이전 페이지로 돌아가기</a>
-    </body>
-     <script>
-  
-// ✅ 결제 성공 시에만 시트와 메일로 데이터 전송
-const urlParams = new URLSearchParams(window.location.search);
-const userName = urlParams.get("name");
-const userGender = urlParams.get("gender");
-const birthDate = urlParams.get("birth");
-const birthType = urlParams.get("birthType");
-const birthTime = urlParams.get("time");
-const userEmail = urlParams.get("email");
-const paymentItem = decodeURIComponent(urlParams.get("paymentItem") || "알 수 없는 항목");
+  console.log("✅ 석세스 페이지에서 전달된 값:");
+  console.log("이름:", userName);
+  console.log("성별:", userGender);
+  console.log("생년월일:", birthDate);
+  console.log("양력/음력:", birthType);
+  console.log("출생 시간:", birthTime);
+  console.log("이메일:", userEmail);
+  console.log("운세 볼 월:", fortuneMonth);
+  console.log(`🚀 결제 항목 확인: ${paymentItem}`);
 
+  // 모든 필수 정보가 있는지 확인 (운세 볼 월도 포함)
+  if (userName && userGender && birthDate && birthType && birthTime && userEmail && paymentItem && fortuneMonth) {
+      // sendToGoogleSheet 호출 시에도 fortuneMonth 전달
+      sendToGoogleSheet(userName, userGender, birthDate, birthType, birthTime, userEmail, paymentItem, fortuneMonth);
+      alert(`✅ 결제가 완료되었습니다!\n이름: ${userName}\n성별: ${userGender}\n이메일: ${userEmail}\n결제 항목: ${paymentItem}\n운세 볼 월: ${fortuneMonth}월`);
+  } else {
+      alert("⚠️ 결제 성공 후 정보가 누락되었습니다. 다시 시도해 주세요.");
+  }
 
-console.log("✅ 석세스 페이지에서 전달된 값:");
-console.log("이름:", userName);
-console.log("성별:", userGender);
-console.log("생년월일:", birthDate);
-console.log("양력/음력:", birthType);
-console.log("출생 시간:", birthTime);
-console.log("이메일:", userEmail);
-console.log(`🚀 결제 항목 확인: ${paymentItem}`);
-
-if (userName && userGender && birthDate && birthType && birthTime && userEmail && paymentItem) {
-     // sendToGoogleSheet(userName, userGender, birthDate, birthType, birthTime, userEmail, paymentItem);
-} else {
-    alert("⚠️ 결제 성공 후 정보가 누락되었습니다!");
-}
-
-   // 결제 성공 시 데이터 전송
-fetch("https://script.google.com/macros/s/AKfycbzSWc97F6-n1z0h6y0i2lhK7PJBkH31NNC6wkgygIa7mzYlifA5nbxqS1DcOcCUQ0vF/exec", {
-    method: "POST",
-    mode: "no-cors",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-        userName: userName,
-        userGender: userGender,
-        birthDate: birthDate,
-        birthType: birthType,
-        birthTime: birthTime,
-        userEmail: userEmail,
-        paymentItem: decodeURIComponent(paymentItem),  // ✅ 여기 디코딩 추가!
-        paymentTime: new Date().toLocaleString()
-})
-
-})
-.then(() => {
-    console.log(`✅ 데이터 전송 완료! 결제 항목: ${paymentItem}`);
-    alert(`✅ 결제가 완료되어 담당자에게 전송되었습니다!\n결제 항목: ${paymentItem}`);
-})
-.catch(error => {
-    console.error("❌ 서버 통신 중 오류 발생:", error);
-    alert("❌ 구글 시트에 데이터를 기록하는 중 문제가 발생했습니다.");
-});
-
-
-</script>
-
-</html>
+  // 데이터 전송: fortuneMonth 포함
+  fetch("https://script.google.com/macros/s/AKfycbwalxNcrXdGECvpL5netU_zkiwhYXXK_UbuuP67KESDi5SXKlye4_23fRhAg1i7yQMa/exec", {
+      method: "POST",
+      mode: "no-cors",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+          userName: userName,
+          userGender: userGender,
+          birthDate: birthDate,
+          birthType: birthType,
+          birthTime: birthTime,
+          userEmail: userEmail,
+          paymentItem: decodeURIComponent(paymentItem),
+          fortuneMonth: fortuneMonth,  // 운세 볼 월 추가
+          paymentTime: new Date().toLocaleString()
+      })
+  })
+  .then(() => {
+      console.log(`✅ 데이터 전송 완료! 결제 항목: ${paymentItem}`);
+      // 원래 있던 alert 제거 또는 유지
+  })
+  .catch(error => {
+      console.error("❌ 서버 통신 중 오류 발생:", error);
+  });
+    
+    
+    </script>
+    
+    </html>

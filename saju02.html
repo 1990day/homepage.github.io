@@ -38,540 +38,602 @@
 
 
 
+
 <style>
 
-/* start 태그와 question 태그 모두 article 태그라서 article 태그에 속성을 주면 동시에 적용됨
-.start{
-    display: flex;
-    flex-direction: column;
-}
-*/
-    
-   @font-face {
-    font-family: 'ChosunGu';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/ChosunGu.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-    
-      body {
-            font-family: 'ChosunGu', sans-serif;
-        }
-    
-.logo {
-    width: 100px;
-    margin-top: 14px;
-}
-
-.main-nav {
-    display: flex;
-    font-size: 1.25rem;
-    text-transform: uppercase;
-    margin-top: 34px;
-    list-style: none;
-}
-
-.main-nav li {
-    margin-left: 36px;
-       font-family: 'Do Hyeon', sans-serif;
-    line-height: 1.7;
-    color: #432;
-}
-
-.main-nav a{
-    color: #432;
-       font-family: 'Do Hyeon', sans-serif;
-    line-height: 1.7;
-}
-
-.main-nav a:hover {
-    color: #0bd;
-}
-
-
-.page-header {
-    display: flex;
-    justify-content: space-between;
-}
-
-
-/* 전체 페이지 중앙 정렬 */
-.center-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    text-align: center;
-    padding: 20px;
-    box-sizing: border-box;
-}
-
-/* 입력 폼과 내용도 가운데 정렬 */
-form, .page, body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    width: 100%;
-}
-
-/* 입력창과 버튼 간격 */
-input, select, button {
-    margin: 10px 0;
-    text-align: center;
-}
-
-
-article{
-    display: flex;
-    flex-direction: column;
-}
-
- 
-    
-.question{
-    display: none;
-}
-
-.result{
-    display: none;
-}
-.progress-bar {
-    background-color: #76c5c1;
-}
-.progress {
-    background-color: #fbffe4;
-}
-#img{
-    width: 500px;
-    height: 900px;
-    max-width: 100%;
-    height: auto;
-    margin: 0 auto;
-}
-
-#img_main{
-    width: 500px;
-    height: 600px;
-    max-width: 100%;
-    height: auto;
-    margin: 0 auto;
-}
-
-#question-image {
-    max-width: 100%;
-    height: auto;
-    margin: 0 auto;
-    display: block;
-}
-
-.question-image {
-    max-width: 100%;
-    height: auto;
-    margin: 0 auto;
-    display: block;
-}
-.custom-jelly-button {
-    width: 100%;
-    max-width: 350px;
-    height: 60px;
-    font-size: 15px !important;
-    font-weight: bold;
-    color: black !important;
-    background: linear-gradient(145deg, #ffcfcf, #ffcfcf); /* 분홍과 노랑 그라데이션 */
-    border: none;
-    border-radius: 17px;
-    box-shadow: inset -4px -4px 10px rgba(255, 255, 255, 0.7), 
-                inset 4px 4px 10px rgba(0, 0, 0, 0.1),
-                2px 2px 8px rgba(0, 0, 0, 0.15);
-    margin: 0 auto;
-    display: block;
-}
-
-.custom-jelly-button:hover {
-    background: linear-gradient(145deg, #ffcfcf, #ffcfcf); /* 반대로 그라데이션 */
-}
-
-
-.page {
-            display: none;
-            margin: 0 auto;
-            max-width: 600px;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 15px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .active {
-            display: block;
-        }
-        input, button {
-            width: 80%;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 10px;
-            border: 1px solid #ddd;
-        }
-
+    /* start 태그와 question 태그 모두 article 태그라서 article 태그에 속성을 주면 동시에 적용됨
+    .start{
+        display: flex;
+        flex-direction: column;
+    }
+    */
         
-    
-.jelly-question-box {
-    width: 100%;
-    max-width: 400px;
-    min-height: 150px;
-    padding: 30px 20px;
-    margin: 20px auto;
-    background: linear-gradient(145deg, #ffc1cc, #ff91a1); /* 진한 분홍색으로 변경 */
-    border-radius: 25px;
-    box-shadow: inset -6px -6px 12px rgba(255, 255, 255, 0.8), 
-                inset 6px 6px 12px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    color: #432;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* h6 요소의 폰트 크기 강제 적용 */
-.jelly-question-box h6 {
-    font-size: 18px !important;
-}
-    
-.btn-info.focus, .btn-info:focus {
-    box-shadow: 0 0 0 0.1rem rgb(255 255 255);
-}
-    .btn-info:hover {
-    color: #ffffff;
-    background-color: #ffffff;
-    border-color: #ffffff;
-            box-shadow: 0 0 0 0.1rem rgb(255 255 255);
-}
-    .btn-info.focus, .btn-info:focus {
-    color: #ffffff;
-    background-color: #ffffff;
-    border-color: #ffffff;
-    box-shadow: 0 0 0 0.1rem rgb(255 255 255);
-}
-    .btn-info {
-    color: #ffffff;
-    background-color: #ffffff;
-    border-color: #ffffff;
-            box-shadow: 0 0 0 0.1rem rgb(255 255 255);
-}
-    .btn.focus, .btn:focus {
-    outline: 0;
-    box-shadow: 0 0 0 0.1rem rgb(255 255 255);
-}
-   
-    
-    
-    .at-share-btn-elements{
-        text-align: center;
+       @font-face {
+        font-family: 'ChosunGu';
+        src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/ChosunGu.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
     }
-.share{
-    margin: 0 auto;
-}
-
-.kakao_ad{
-    width: 320px;
-    margin: 0 auto;
-}
-
-.kakao_ad2{
-    width: 320px;
-    margin: 0 auto;
-}
-.coupang_ad {
-    width: 320px;
-    margin: 0 auto;
-}
-        .custom-button {
-            width: 100%;
-            max-width: 350px;
-            margin: 0 auto;
+        
+          body {
+                font-family: 'ChosunGu', sans-serif;
+            }
+        
+    .logo {
+        width: 100px;
+        margin-top: 14px;
+    }
+    
+    .main-nav {
+        display: flex;
+        font-size: 1.25rem;
+        text-transform: uppercase;
+        margin-top: 34px;
+        list-style: none;
+    }
+    
+    .main-nav li {
+        margin-left: 36px;
+           font-family: 'Do Hyeon', sans-serif;
+        line-height: 1.7;
+        color: #432;
+    }
+    
+    .main-nav a{
+        color: #432;
+           font-family: 'Do Hyeon', sans-serif;
+        line-height: 1.7;
+    }
+    
+    .main-nav a:hover {
+        color: #0bd;
+    }
+    
+    
+    .page-header {
+        display: flex;
+        justify-content: space-between;
+    }
+    
+        
+    article{
+        display: flex;
+        flex-direction: column;
+    }
+    
+     
+        
+    #img{
+        width: 500px;
+        height: 900px;
+        max-width: 100%;
+        height: auto;
+        margin: 0 auto;
+    }
+    
+    #img_main{
+        width: 500px;
+        height: 600px;
+        max-width: 100%;
+        height: auto;
+        margin: 0 auto;
+    }
+    
+    
+    .custom-jelly-button {
+        width: 100%;
+        max-width: 350px;
+        height: 60px;
+        font-size: 15px !important;
+        font-weight: bold;
+        color: black !important;
+        background: linear-gradient(145deg, #ffcfcf, #ffcfcf); /* 분홍과 노랑 그라데이션 */
+        border: none;
+        border-radius: 17px;
+        box-shadow: inset -4px -4px 10px rgba(255, 255, 255, 0.7), 
+                    inset 4px 4px 10px rgba(0, 0, 0, 0.1),
+                    2px 2px 8px rgba(0, 0, 0, 0.15);
+        margin: 0 auto;
+        display: block;
+    }
+    
+    .custom-jelly-button:hover {
+        background: linear-gradient(145deg, #ffcfcf, #ffcfcf); /* 반대로 그라데이션 */
+    }
+    
+    
+    /* 페이지 기본 스타일 */
+      /* 페이지 기본 스타일 */
+      .page {
+          display: none;
+          margin: 0 auto;
+          max-width: 600px;
+          padding: 20px;
+          background-color: #fff;
+          border-radius: 15px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .page.active {
+          display: block;
         }
     
-        input, select, button {
-      width: 80%;
-      padding: 10px;
-      margin: 10px 0;
-      border-radius: 10px;
-      border: 1px solid #ddd;
+        /* 정보 입력 페이지 전체 스타일 */
+        .info-page {
+          text-align: center;
+        }
+    
+        /* "사주 정보 입력" 제목 스타일 (크기는 살짝 작게, 굵게) */
+        .info-title {
+          font-size: 1.2rem;
+          font-weight: bold;
+          margin-bottom: 10px; /* 제목 아래 간격 */
+        }
+    
+        /* 폼 전체 스타일: 세로 레이아웃 + 중앙 정렬 + 요소 간격 */
+        .saju-form {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 10px; /* 폼 내부 요소 간격(줄임) */
+          margin: 0 auto;
+          max-width: 400px; /* 폼 자체 폭 제한 */
+        }
+    
+        /* 각 입력 그룹(이름, 성별, 생년월일, 태어난 시간, 이메일) 공통 스타일 */
+        .form-group {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 3px; /* 레이블과 입력창 사이 간격(더 줄임) */
+        }
+    
+        /* 레이블 굵게 */
+        .label-bold {
+          font-weight: bold;
+        }
+    
+        /* 단일 input, select 공통 스타일 (너비 100%) */
+        .form-group input,
+        .form-group select {
+          width: 100%;
+          padding: 10px;
+          border-radius: 10px;
+          border: 1px solid #ddd;
+        }
+    
+        /* 생년월일(양력/음력 + 연/월/일)을 한 줄로 배치할 때 사용하는 컨테이너 */
+        .form-group-inline {
+          display: flex;
+          flex-direction: row;
+          gap: 8px; /* 드롭다운 사이 간격 */
+          width: 100%;
+        }
+    
+        /* 이 컨테이너 안의 select들을 동일한 비율로 늘려 같은 폭을 맞춤 */
+        .form-group-inline select {
+          flex: 1;
+          padding: 10px;
+          border-radius: 10px;
+          border: 1px solid #ddd;
+        }
+    
+        /* 버튼 영역(결제하기/돌아가기) */
+        .button-group {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          align-items: center;
+          width: 100%;
+          max-width: 500px;
+        }
+    
+    /* 결제 페이지 스타일 */
+    .payment-page {
+      text-align: center; /* 페이지 전체 중앙 정렬 */
     }
     
+    /* 결제 진행 메인 제목 */
+    .payment-page h1 {
+      font-size: 1.2rem;  /* 글씨 크기 조금 줄임 */
+      font-weight: bold;
+      margin-bottom: 10px; /* 아래쪽 여백 */
+    }
     
-</style>
-
-
-
-
-
-</head>
-<!-- body 태그 style background-color 지정으로 배경색 변경-->
-<body class="container center-container" style="background-color:#ffffff">
-
+    /* "입력 정보 확인" 등 하위 제목 */
+    .payment-page h2 {
+      font-size: 1rem;    /* 더 작게 */
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+    
+    /* 일반 텍스트(이름, 생년월일, 태어난 시간, 이메일 등) */
+    .payment-page p {
+      font-size: 0.9rem;  /* 일반 텍스트 크기 */
+      margin-bottom: 5px;
+    }
+    
+        
+        .at-share-btn-elements{
+            text-align: center;
+        }
+    .share{
+        margin: 0 auto;
+    }
+    
+    .coupang_ad {
+        width: 320px;
+        margin: 0 auto;
+    }
+            .custom-button {
+                width: 100%;
+                max-width: 350px;
+                margin: 0 auto;
+            }
+        
+            input, select, button {
+          width: 80%;
+          padding: 10px;
+          margin: 10px 0;
+          border-radius: 10px;
+          border: 1px solid #ddd;
+        }
+        
+        
+    </style>
+    
+    
+    
+    
+    
+    </head>
+    <!-- body 태그 style background-color 지정으로 배경색 변경-->
+    <body class="container" style="background-color:#ffffff">
+                
+        <header class="page-header wrapper">
+            <h1><a href="index.html"><img class="logo" src="img_logo.png" alt="test it"></a>
+            </h1>
+        <nav>
+            <u1 class="main-nav">
+                <li> <a href="https://test-it.co.kr/test.html">성격</a></li>
+                <li> <a href="https://test-it.co.kr/face.html">얼굴</a></li>
+                <li> <a href="https://test-it.co.kr/etc.html">그외</a></li>
+                <li> <a href="https://test-it.co.kr/saju.html">사주</a></li>
+            </u1>
+        </nav>
             
-    <header class="page-header wrapper">
-        <h1><a href="index.html"><img class="logo" src="img_logo.png" alt="test it"></a>
-        </h1>
-    <nav>
-        <u1 class="main-nav">
-            <li> <a href="https://test-it.co.kr/test.html">성격</a></li>
-            <li> <a href="https://test-it.co.kr/face.html">얼굴</a></li>
-            <li> <a href="https://test-it.co.kr/etc.html">그외</a></li>
-            <li> <a href="https://test-it.co.kr/saju.html">사주</a></li>
-        </u1>
-    </nav>
-        
-        
-    </header>
+            
+        </header>
+    
+      <!-- 1. 사주 메인 페이지 -->
+      <div id="mainPage" class="page active">
+        <img src="saju_main02.png" alt="사주 예시" style="width: 100%; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+        <br><br>
+        <button class="custom-jelly-button" onclick="showPage('infoPage')">💌 정보 입력하고 결제하기</button>
+    </div>
+    
+      <!-- 정보 입력 페이지 -->
+      <div id="infoPage" class="page info-page">
+        <h1 class="info-title">📄 사주 정보 입력</h1>
+    
+        <form id="sajuForm" class="saju-form">
+          <!-- 이름 -->
+          <div class="form-group">
+            <input
+              type="text"
+              id="userName"
+              placeholder="이름 (예: 홍길동)"
+              required
+            />
+          </div>
+    
+          <!-- 성별 -->
+          <div class="form-group">
+            <label for="userGender" class="label-bold">성별</label>
+            <select id="userGender" required>
+              <option value="여성">여성</option>
+              <option value="남성">남성</option>
+            </select>
+          </div>
+    
+          <!-- 생년월일 (양력/음력 + 연/월/일) -->
+          <div class="form-group">
+            <label for="birthType" class="label-bold">생년월일</label>
+            <div class="form-group-inline">
+              <!-- 양력/음력 -->
+              <select id="birthType" required>
+                <option value="양력">양력</option>
+                <option value="음력">음력</option>
+              </select>
+              <!-- 연/월/일 -->
+              <select id="birthYear" required></select>
+              <select id="birthMonth" required></select>
+              <select id="birthDay" required></select>
+            </div>
+          </div>
+    
+          <!-- 태어난 시간 -->
+          <div class="form-group">
+            <label for="birthHour" class="label-bold">태어난 시간</label>
+            <select id="birthHour" required>
+              <option value="모름">모름</option>
+              <option value="자시">자시 (23:30 ~ 01:30)</option>
+              <option value="축시">축시 (01:30 ~ 03:30)</option>
+              <option value="인시">인시 (03:30 ~ 05:30)</option>
+              <option value="묘시">묘시 (05:30 ~ 07:30)</option>
+              <option value="진시">진시 (07:30 ~ 09:30)</option>
+              <option value="사시">사시 (09:30 ~ 11:30)</option>
+              <option value="오시">오시 (11:30 ~ 13:30)</option>
+              <option value="미시">미시 (13:30 ~ 15:30)</option>
+              <option value="신시">신시 (15:30 ~ 17:30)</option>
+              <option value="유시">유시 (17:30 ~ 19:30)</option>
+              <option value="술시">술시 (19:30 ~ 21:30)</option>
+              <option value="해시">해시 (21:30 ~ 23:30)</option>
+            </select>
+          </div>
+    
+          <!-- 이메일 -->
+          <div class="form-group">
+            <label for="userEmail" class="label-bold">이메일</label>
+            <input
+              type="email"
+              id="userEmail"
+              placeholder="이메일 (예: example@email.com)"
+              required
+            />
+          </div>
 
-<!-- 1. 사주 메인 페이지 -->
-<div id="mainPage" class="page active">
-
-    <img src="saju_main02.png" alt="사주 예시" style="width: 100%; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
-    <br><br>
-    <button class="custom-jelly-button" onclick="showPage('infoPage')">💌 정보 입력하고 결제하기</button>
-</div>
-
-  <!-- 2. 정보 입력 페이지 (드롭다운 형식) -->
-  <div id="infoPage" class="page">
-    <h1>📄 사주 정보 입력</h1>
-    <form id="sajuForm">
-      <input type="text" id="userName" placeholder="이름 (예: 홍길동)" required><br>
-      <label>성별:</label><br>
-<select id="userGender" required>
-    <option value="여성">여성</option>
-    <option value="남성">남성</option>
-</select>
-<br>
-      <label>생년월일:</label><br>
-      <select id="birthType" required>
-        <option value="양력">양력</option>
-        <option value="음력">음력</option>
-    </select>
-      <select id="birthYear" required></select>
-      <select id="birthMonth" required></select>
-      <select id="birthDay" required></select>
-      
-      <br>
-      <label>태어난 시간:</label><br>
-      <select id="birthHour" required>
-          <option value="모름">모름</option>
-          <option value="자시">자시 (23:30 ~ 01:30)</option>
-          <option value="축시">축시 (01:30 ~ 03:30)</option>
-          <option value="인시">인시 (03:30 ~ 05:30)</option>
-          <option value="묘시">묘시 (05:30 ~ 07:30)</option>
-          <option value="진시">진시 (07:30 ~ 09:30)</option>
-          <option value="사시">사시 (09:30 ~ 11:30)</option>
-          <option value="오시">오시 (11:30 ~ 13:30)</option>
-          <option value="미시">미시 (13:30 ~ 15:30)</option>
-          <option value="신시">신시 (15:30 ~ 17:30)</option>
-          <option value="유시">유시 (17:30 ~ 19:30)</option>
-          <option value="술시">술시 (19:30 ~ 21:30)</option>
-          <option value="해시">해시 (21:30 ~ 23:30)</option>
-      </select>      
-      <br>
-      <input type="email" id="userEmail" placeholder="이메일 (예: example@email.com)" required><br>
-      <button type="button" class="custom-jelly-button" onclick="showPage('paymentPage')">💰 결제하기</button>
-      <br>
-      <button type="button" class="custom-jelly-button" onclick="showPage('mainPage')">⬅️ 돌아가기</button>
-    </form>
-  </div>
-
-<!-- 3. 결제 페이지 -->
-<div id="paymentPage" class="page">
-    <h1>💳 결제 진행</h1>
-    <div id="userInfo"></div>
-    <button class="custom-jelly-button" onclick="startKakaoPay('월별사주', 4900)">💛 카카오페이로 결제하기 (4,900원)</button><br>
-    <button class="custom-jelly-button" onclick="startNaverPay('월별사주', 4900)">💚 네이버페이로 결제하기 (4,900원)</button>
-    <br><br>
-    <button class="custom-jelly-button" onclick="showPage('infoPage')">⬅️ 정보 수정</button>
-</div>
-
-<script>
-
-    // 날짜 드롭다운 옵션 채우기
-function populateDateSelectors() {
-    const yearSelect = document.getElementById("birthYear");
-    const monthSelect = document.getElementById("birthMonth");
-    const daySelect = document.getElementById("birthDay");
-    const currentYear = new Date().getFullYear();
-
-    // 연도 선택 (1900년부터 현재까지)
-    for (let y = 1900; y <= currentYear; y++) {
-        const option = document.createElement("option");
-        option.value = y;
-        option.text = y;
-        yearSelect.add(option);
-    }
-
-    // 월 선택
-    for (let m = 1; m <= 12; m++) {
-        const option = document.createElement("option");
-        option.value = m;
-        option.text = m;
-        monthSelect.add(option);
-    }
-
-    // 일 선택
-    for (let d = 1; d <= 31; d++) {
-        const option = document.createElement("option");
-        option.value = d;
-        option.text = d;
-        daySelect.add(option);
-    }
-}
-
-
-    // 페이지 이동 시 데이터 반영
-    function showPage(pageId) {
-      const pages = document.querySelectorAll('.page');
-      pages.forEach(page => page.classList.remove('active'));
-      document.getElementById(pageId).classList.add('active');
-      
-      if (pageId === 'paymentPage') {
-        const userName = document.getElementById("userName").value;
-        const birthType = document.getElementById("birthType").value;
-        const birthYear = document.getElementById("birthYear").value;
-        const birthMonth = document.getElementById("birthMonth").value;
-        const birthDay = document.getElementById("birthDay").value;
-        const birthDate = `${birthYear}-${String(birthMonth).padStart(2, '0')}-${String(birthDay).padStart(2, '0')}`;
-        const birthHour = document.getElementById("birthHour").value;
-        const userEmail = document.getElementById("userEmail").value;
-        
-        if (!userName || !birthYear || !birthMonth || !birthDay || !birthHour || !userEmail) {
-          alert("모든 정보를 입력해 주세요!");
-          showPage('infoPage');
-          return;
-        }
-        
-        document.getElementById("userInfo").innerHTML = `
+           <!-- 운세를 볼 월 선택 드롭다운 추가 -->
+    <div class="form-group">
+        <label for="fortuneMonth" class="label-bold">운세를 볼 월 선택</label>
+        <select id="fortuneMonth" required>
+          <option value="">월 선택</option>
+          <option value="1">1월</option>
+          <option value="2">2월</option>
+          <option value="3">3월</option>
+          <option value="4">4월</option>
+          <option value="5">5월</option>
+          <option value="6">6월</option>
+          <option value="7">7월</option>
+          <option value="8">8월</option>
+          <option value="9">9월</option>
+          <option value="10">10월</option>
+          <option value="11">11월</option>
+          <option value="12">12월</option>
+        </select>
+      </div>
+    
+          <!-- 버튼 영역 -->
+          <div class="button-group">
+            <button
+              type="button"
+              class="custom-jelly-button"
+              onclick="showPage('paymentPage')"
+            >
+              💰 결제하기
+            </button>
+            <button
+              type="button"
+              class="custom-jelly-button"
+              onclick="showPage('mainPage')"
+            >
+              ⬅️ 돌아가기
+            </button>
+          </div>
+        </form>
+      </div>
+    
+    <!-- 결제 페이지 -->
+    <div id="paymentPage" class="page payment-page">
+        <h1>💳 결제 진행</h1>
+        <div id="userInfo">
+          <!-- 자바스크립트에서 "입력 정보 확인" h2와 p들이 동적으로 삽입됨 -->
+          <!-- 예: 
           <h2>입력 정보 확인</h2>
-          <p><strong>이름:</strong> ${userName}</p>
-          <p><strong>생년월일:</strong> ${birthDate} (${birthType})</p>
-          <p><strong>태어난 시간:</strong> ${birthHour}</p>
-          <p><strong>이메일:</strong> ${userEmail}</p>
-        `;
-      }
-    }
-
-
-
-// 페이지 로드 시 실행
-window.onload = function () {
-    populateDateSelectors();
-};
-
-function startKakaoPay(itemName, price) {
-    console.log(`🚀 결제 요청: 결제 항목 = ${itemName}`);
-    const userName = document.getElementById("userName").value;
-    const userGender = document.getElementById("userGender").value;
-    const birthYear = document.getElementById("birthYear").value;
-    const birthMonth = document.getElementById("birthMonth").value;
-    const birthDay = document.getElementById("birthDay").value;
-    const birthType = document.getElementById("birthType").value;
-    const birthHour = document.getElementById("birthHour").value;
-    const userEmail = document.getElementById("userEmail").value;
-
-    if (!userName || !userGender || !birthYear || !birthMonth || !birthDay || !birthType || !birthHour || !userEmail) {
-        alert("⚠️ 모든 정보를 입력해 주세요!");
-        return;
-    }
-    const birthDate = `${birthYear}-${String(birthMonth).padStart(2, '0')}-${String(birthDay).padStart(2, '0')}`;
-    const successUrl = `https://test-it.co.kr/saju-success2.html?name=${encodeURIComponent(userName)}&gender=${encodeURIComponent(userGender)}&birth=${encodeURIComponent(birthDate)}&birthType=${encodeURIComponent(birthType)}&time=${encodeURIComponent(birthHour)}&email=${encodeURIComponent(userEmail)}&paymentItem=${encodeURIComponent(itemName)}`;
-
-
-
-
-
-    console.log("🚀 카카오페이 successUrl:", successUrl);
-
-    fetch("https://kapi.kakao.com/v1/payment/ready", {
-        method: "POST",
-        headers: {
-            "Authorization": "KakaoAK 9ef00fb320e149a6aed3dae54cf9f18a",
-            "Content-Type": "application/x-www-form-urlencoded"
-        },
-        body: new URLSearchParams({
-            cid: "TC0ONETIME",
-            partner_order_id: "order_" + new Date().getTime(),
-            partner_user_id: userEmail,
-            item_name: `테스트잇 월별사주`,
-            quantity: 1,
-            total_amount: price,
-            tax_free_amount: 0,
-            approval_url: successUrl,
-            fail_url: "https://test-it.co.kr/payment-fail",
-            cancel_url: "https://test-it.co.kr/payment-cancel"
-        })
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.next_redirect_pc_url) {
-            window.location.href = data.next_redirect_pc_url;
-        } else {
-            alert("❌ 결제 요청 실패: " + (data.code || "알 수 없는 오류"));
+          <p><strong>이름:</strong> 홍길동</p>
+          <p><strong>생년월일:</strong> 1900-01-01 (양력)</p>
+          <p><strong>태어난 시간:</strong> 모름</p>
+          <p><strong>이메일:</strong> example@example.com</p>
+          -->
+        </div>
+        
+        <button class="custom-jelly-button" onclick="startKakaoPay('월별사주', 4900)">
+          💛 카카오페이로 결제하기 (4,900원)
+        </button>
+        <br>
+        
+        <button class="custom-jelly-button" onclick="startNaverPay('월별사주', 4900)">
+          💚 네이버페이로 결제하기 (4,900원)
+        </button>
+        <br><br>
+        
+        <button class="custom-jelly-button" onclick="showPage('infoPage')">
+          ⬅️ 정보 수정
+        </button>
+      </div>
+      
+    <script>
+    
+        // 날짜 드롭다운 옵션 채우기
+    function populateDateSelectors() {
+        const yearSelect = document.getElementById("birthYear");
+        const monthSelect = document.getElementById("birthMonth");
+        const daySelect = document.getElementById("birthDay");
+        const currentYear = new Date().getFullYear();
+    
+        // 연도 선택 (1900년부터 현재까지)
+        for (let y = 1900; y <= currentYear; y++) {
+            const option = document.createElement("option");
+            option.value = y;
+            option.text = y;
+            yearSelect.add(option);
         }
-    })
-    .catch(error => console.error("❌ 결제 중 오류 발생:", error));
-}
+    
+        // 월 선택
+        for (let m = 1; m <= 12; m++) {
+            const option = document.createElement("option");
+            option.value = m;
+            option.text = m;
+            monthSelect.add(option);
+        }
+    
+        // 일 선택
+        for (let d = 1; d <= 31; d++) {
+            const option = document.createElement("option");
+            option.value = d;
+            option.text = d;
+            daySelect.add(option);
+        }
+    }
+    
+    
+  // 페이지 이동 시 데이터 반영
+function showPage(pageId) {
+  const pages = document.querySelectorAll('.page');
+  pages.forEach(page => page.classList.remove('active'));
+  document.getElementById(pageId).classList.add('active');
 
-
-function startNaverPay(itemName, price) {
-    console.log(`🚀 결제 요청: 결제 항목 = ${itemName}`);
+  if (pageId === 'paymentPage') {
     const userName = document.getElementById("userName").value;
     const userGender = document.getElementById("userGender").value;
+    const birthType = document.getElementById("birthType").value;
     const birthYear = document.getElementById("birthYear").value;
     const birthMonth = document.getElementById("birthMonth").value;
     const birthDay = document.getElementById("birthDay").value;
-    const birthType = document.getElementById("birthType").value;
+    const birthDate = `${birthYear}-${String(birthMonth).padStart(2, '0')}-${String(birthDay).padStart(2, '0')}`;
     const birthHour = document.getElementById("birthHour").value;
     const userEmail = document.getElementById("userEmail").value;
+    const fortuneMonth = document.getElementById("fortuneMonth").value;
 
-    if (!userName || !userGender || !birthYear || !birthMonth || !birthDay || !birthType || !birthHour || !userEmail) {
-        alert("⚠️ 모든 정보를 입력해 주세요!");
-        return;
+    // 필수 항목 체크 (운세 볼 월도 추가)
+    if (!userName || !birthYear || !birthMonth || !birthDay || !birthHour || !userEmail || !fortuneMonth) {
+      alert("모든 정보를 입력해 주세요!");
+      showPage('infoPage');
+      return;
     }
 
-    const birthDate = `${birthYear}-${String(birthMonth).padStart(2, '0')}-${String(birthDay).padStart(2, '0')}`;
-    const paymentItem = itemName;  // 결제 항목 추가
-
-    // ✅ paymentItem을 successUrl에 포함
-    const successUrl = `https://test-it.co.kr/saju-success2.html?name=${encodeURIComponent(userName)}&gender=${encodeURIComponent(userGender)}&birth=${encodeURIComponent(birthDate)}&birthType=${encodeURIComponent(birthType)}&time=${encodeURIComponent(birthHour)}&email=${encodeURIComponent(userEmail)}&paymentItem=${encodeURIComponent(itemName)}`;
-
-
-    console.log("🚀 네이버페이 successUrl:", successUrl);
-
-    const oPay = Naver.Pay.create({
-        mode: "development",  
-        clientId: "HN3GGCMDdTgGUfl0kFCo", 
-        chainId: "a3lzdzZ0QmtxSG1"
-    });
-
-    oPay.open({
-        merchantPayKey: "order_" + new Date().getTime(),
-        productName: `테스트잇 월별사주`,
-        productCount: "1",
-        totalPayAmount: price,
-        taxScopeAmount: price,
-        returnUrl: successUrl  // ✅ 수정된 successUrl 전달
-    });
-
-    alert(`💚 네이버페이로 ${paymentItem} 결제가 진행됩니다!`);
+    // 결제 페이지에 입력 정보 확인 출력 (운세 볼 월 포함)
+    document.getElementById("userInfo").innerHTML = `
+      <h2>입력 정보 확인</h2>
+      <p><strong>이름:</strong> ${userName}</p>
+      <p><strong>생년월일:</strong> ${birthDate} (${birthType})</p>
+      <p><strong>태어난 시간:</strong> ${birthHour}</p>
+      <p><strong>이메일:</strong> ${userEmail}</p>
+      <p><strong>운세 볼 월:</strong> ${fortuneMonth}월</p>
+    `;
+  }
 }
-
-
 
     
-function sendToGoogleSheet(userName, userGender, birthDate, birthType, birthTime, userEmail, paymentItem) {
-    console.log("📤 전송할 데이터:", userName, userGender, birthDate, birthType, birthTime, userEmail, paymentItem);
+    
+    // 페이지 로드 시 실행
+    window.onload = function () {
+        populateDateSelectors();
+    };
+    
+    function startKakaoPay(itemName, price) {
+  console.log(`🚀 결제 요청: 결제 항목 = ${itemName}`);
+  const userName = document.getElementById("userName").value;
+  const userGender = document.getElementById("userGender").value;
+  const birthYear = document.getElementById("birthYear").value;
+  const birthMonth = document.getElementById("birthMonth").value;
+  const birthDay = document.getElementById("birthDay").value;
+  const birthType = document.getElementById("birthType").value;
+  const birthHour = document.getElementById("birthHour").value;
+  const userEmail = document.getElementById("userEmail").value;
+  const fortuneMonth = document.getElementById("fortuneMonth").value;
 
+  if (!userName || !userGender || !birthYear || !birthMonth || !birthDay || !birthType || !birthHour || !userEmail || !fortuneMonth) {
+      alert("⚠️ 모든 정보를 입력해 주세요!");
+      return;
+  }
+  const birthDate = `${birthYear}-${String(birthMonth).padStart(2, '0')}-${String(birthDay).padStart(2, '0')}`;
 
-    fetch("https://script.google.com/macros/s/AKfycbzSWc97F6-n1z0h6y0i2lhK7PJBkH31NNC6wkgygIa7mzYlifA5nbxqS1DcOcCUQ0vF/exec", {
+  // successUrl에 fortuneMonth 추가
+  const successUrl = `https://test-it.co.kr/saju-success2.html?name=${encodeURIComponent(userName)}&gender=${encodeURIComponent(userGender)}&birth=${encodeURIComponent(birthDate)}&birthType=${encodeURIComponent(birthType)}&time=${encodeURIComponent(birthHour)}&email=${encodeURIComponent(userEmail)}&paymentItem=${encodeURIComponent(itemName)}&fortuneMonth=${encodeURIComponent(fortuneMonth)}`;
+
+  console.log("🚀 카카오페이 successUrl:", successUrl);
+
+  fetch("https://kapi.kakao.com/v1/payment/ready", {
+      method: "POST",
+      headers: {
+          "Authorization": "KakaoAK 9ef00fb320e149a6aed3dae54cf9f18a",
+          "Content-Type": "application/x-www-form-urlencoded"
+      },
+      body: new URLSearchParams({
+          cid: "TC0ONETIME",
+          partner_order_id: "order_" + new Date().getTime(),
+          partner_user_id: userEmail,
+          item_name: `테스트잇 월별사주`,
+          quantity: 1,
+          total_amount: price,
+          tax_free_amount: 0,
+          approval_url: successUrl,
+          fail_url: "https://test-it.co.kr/payment-fail",
+          cancel_url: "https://test-it.co.kr/payment-cancel"
+      })
+  })
+  .then(response => response.json())
+  .then(data => {
+      if (data.next_redirect_pc_url) {
+          window.location.href = data.next_redirect_pc_url;
+      } else {
+          alert("❌ 결제 요청 실패: " + (data.code || "알 수 없는 오류"));
+      }
+  })
+  .catch(error => console.error("❌ 결제 중 오류 발생:", error));
+}
+
+    
+    
+    function startNaverPay(itemName, price) {
+        console.log(`🚀 결제 요청: 결제 항목 = ${itemName}`);
+        const userName = document.getElementById("userName").value;
+  const userGender = document.getElementById("userGender").value;
+  const birthYear = document.getElementById("birthYear").value;
+  const birthMonth = document.getElementById("birthMonth").value;
+  const birthDay = document.getElementById("birthDay").value;
+  const birthType = document.getElementById("birthType").value;
+  const birthHour = document.getElementById("birthHour").value;
+  const userEmail = document.getElementById("userEmail").value;
+  const fortuneMonth = document.getElementById("fortuneMonth").value;
+
+        if (!userName || !userGender || !birthYear || !birthMonth || !birthDay || !birthType || !birthHour || !userEmail || !fortuneMonth) {
+      alert("⚠️ 모든 정보를 입력해 주세요!");
+      return;
+  }
+  const birthDate = `${birthYear}-${String(birthMonth).padStart(2, '0')}-${String(birthDay).padStart(2, '0')}`;
+
+  // successUrl에 fortuneMonth 추가
+  const successUrl = `https://test-it.co.kr/saju-success2.html?name=${encodeURIComponent(userName)}&gender=${encodeURIComponent(userGender)}&birth=${encodeURIComponent(birthDate)}&birthType=${encodeURIComponent(birthType)}&time=${encodeURIComponent(birthHour)}&email=${encodeURIComponent(userEmail)}&paymentItem=${encodeURIComponent(itemName)}&fortuneMonth=${encodeURIComponent(fortuneMonth)}`;
+
+        console.log("🚀 네이버페이 successUrl:", successUrl);
+    
+        const oPay = Naver.Pay.create({
+            mode: "development",  
+            clientId: "HN3GGCMDdTgGUfl0kFCo", 
+            chainId: "a3lzdzZ0QmtxSG1"
+        });
+    
+        oPay.open({
+            merchantPayKey: "order_" + new Date().getTime(),
+            productName: `테스트잇 월별사주`,
+            productCount: "1",
+            totalPayAmount: price,
+            taxScopeAmount: price,
+            returnUrl: successUrl  // ✅ 수정된 successUrl 전달
+        });
+    
+        alert(`💚 네이버페이로 ${paymentItem} 결제가 진행됩니다!`);
+    }
+    
+    
+    
+        
+    function sendToGoogleSheet(userName, userGender, birthDate, birthType, birthTime, userEmail, paymentItem, fortuneMonth) {
+    console.log("📤 전송할 데이터:", userName, userGender, birthDate, birthType, birthTime, userEmail, paymentItem, fortuneMonth);
+
+    fetch("https://script.google.com/macros/s/AKfycbwalxNcrXdGECvpL5netU_zkiwhYXXK_UbuuP67KESDi5SXKlye4_23fRhAg1i7yQMa/exec", {
         method: "POST",
         mode: "no-cors",
         headers: { "Content-Type": "application/json" },
@@ -582,7 +644,8 @@ function sendToGoogleSheet(userName, userGender, birthDate, birthType, birthTime
             birthType: birthType,
             birthTime: birthTime,
             userEmail: userEmail,
-            paymentItem: paymentItem,  // ✅ 여기서도 추가!
+            paymentItem: paymentItem,
+            fortuneMonth: fortuneMonth,  // 새로 추가된 운세 볼 월 값
             paymentTime: new Date().toLocaleString()
         })
     })
@@ -594,28 +657,31 @@ function sendToGoogleSheet(userName, userGender, birthDate, birthType, birthTime
     });
 }
 
-    // 모든 초기화 및 URL 파라미터 처리 통합
-    window.onload = function() {
-      populateDateSelectors();
-      populateTimeSelectors();
-      
-// 결제 성공 후 URL 파라미터 처리
-const urlParams = new URLSearchParams(window.location.search);
-const userName = urlParams.get("name");
-const userGender = urlParams.get("gender");  // 🌟 성별 추가
-const birthDate = urlParams.get("birth");
-const birthType = urlParams.get("birthType");
-const birthTime = urlParams.get("time");
-const userEmail = urlParams.get("email");
-const paymentItem = urlParams.get("paymentItem");  // ✅ 결제항목 추가!
+    
+        // 모든 초기화 및 URL 파라미터 처리 통합
+        window.onload = function() {
+    populateDateSelectors();
+    populateTimeSelectors();
+    
+    // 결제 성공 후 URL 파라미터 처리
+    const urlParams = new URLSearchParams(window.location.search);
+    const userName = urlParams.get("name");
+    const userGender = urlParams.get("gender");  // 성별
+    const birthDate = urlParams.get("birth");
+    const birthType = urlParams.get("birthType");
+    const birthTime = urlParams.get("time");
+    const userEmail = urlParams.get("email");
+    const paymentItem = urlParams.get("paymentItem");  // 결제 항목
+    const fortuneMonth = urlParams.get("fortuneMonth");  // 운세 볼 월
 
-if (userName && userGender && birthDate && birthType && birthTime && userEmail && paymentItem) {
-    saveToGoogleSheet(userName, userGender, birthDate, birthType, birthTime, userEmail, paymentItem);  // ✅ 결제항목 전달!
-    alert(`✅ 결제가 완료되었습니다!\n이름: ${userName}\n성별: ${userGender}\n이메일: ${userEmail}\n결제 항목: ${paymentItem}`);
-} else {
-    alert("⚠️ 결제 성공 후 정보가 누락되었습니다. 다시 시도해 주세요.");
-}
+    if (userName && userGender && birthDate && birthType && birthTime && userEmail && paymentItem && fortuneMonth) {
+        sendToGoogleSheet(userName, userGender, birthDate, birthType, birthTime, userEmail, paymentItem, fortuneMonth);
+        alert(`✅ 결제가 완료되었습니다!\n이름: ${userName}\n성별: ${userGender}\n이메일: ${userEmail}\n결제 항목: ${paymentItem}\n운세 볼 월: ${fortuneMonth}월`);
+    } else {
+        alert("⚠️ 결제 성공 후 정보가 누락되었습니다. 다시 시도해 주세요.");
     }
-  </script>
-</body>
-</html>
+}
+
+      </script>
+    </body>
+    </html>

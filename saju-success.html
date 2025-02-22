@@ -322,13 +322,13 @@ console.log("이메일:", userEmail);
 console.log(`🚀 결제 항목 확인: ${paymentItem}`);
 
 if (userName && userGender && birthDate && birthType && birthTime && userEmail && paymentItem) {
-    sendToGoogleSheet(userName, userGender, birthDate, birthType, birthTime, userEmail, paymentItem);  // ✅ 결제항목 전달
+     // sendToGoogleSheet(userName, userGender, birthDate, birthType, birthTime, userEmail, paymentItem);
 } else {
     alert("⚠️ 결제 성공 후 정보가 누락되었습니다!");
 }
 
    // 결제 성공 시 데이터 전송
-fetch("https://script.google.com/macros/s/AKfycbw5y7gZXlWa6NJ-4J7vdNKOUfLAfDXUsTymNRTm8mDwcG5cZBRepns_8ZtfXc7YKceb/exec", {
+fetch("https://script.google.com/macros/s/AKfycbzSWc97F6-n1z0h6y0i2lhK7PJBkH31NNC6wkgygIa7mzYlifA5nbxqS1DcOcCUQ0vF/exec", {
     method: "POST",
     mode: "cors",
     headers: { "Content-Type": "application/json" },
@@ -345,8 +345,8 @@ fetch("https://script.google.com/macros/s/AKfycbw5y7gZXlWa6NJ-4J7vdNKOUfLAfDXUsT
 
 })
 .then(() => {
-    console.log(`✅ 데이터 전송 완료! 결제 항목: ${itemName}`);
-    alert(`✅ 결제가 완료되어 담당자에게 전송되었습니다!\n결제 항목: ${itemName}`);
+    console.log(`✅ 데이터 전송 완료! 결제 항목: ${paymentItem}`);
+    alert(`✅ 결제가 완료되어 담당자에게 전송되었습니다!\n결제 항목: ${paymentItem}`);
 })
 .catch(error => {
     console.error("❌ 서버 통신 중 오류 발생:", error);

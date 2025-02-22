@@ -330,7 +330,7 @@ if (userName && userGender && birthDate && birthType && birthTime && userEmail &
    // 결제 성공 시 데이터 전송
 fetch("https://script.google.com/macros/s/AKfycbzSWc97F6-n1z0h6y0i2lhK7PJBkH31NNC6wkgygIa7mzYlifA5nbxqS1DcOcCUQ0vF/exec", {
     method: "POST",
-    mode: "cors",
+    mode: "no-cors",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
         userName: userName,

@@ -277,8 +277,9 @@
   function sendToGoogleSheet(userName, userGender, birthDate, birthType, birthTime, userEmail, paymentItem, fortuneMonth) {
     console.log("📤 전송할 데이터:", userName, userGender, birthDate, birthType, birthTime, userEmail, paymentItem, fortuneMonth);
 
-    fetch("https://script.google.com/macros/s/AKfycbxSNfz1z7dP7RUmqazm2Rmbzr3v6WnKOrwbDsBk7fFAk6vLbCa0q9l48MQblfAd9pk/exec", {
+    fetch("https://script.google.com/macros/s/AKfycbyaDoLDrglc5d9ycgCK0EtWEihFWakfMoiXgYDHaHOmP1JmRLdFLbR4CyFBWcIHElDi/exec", {
         method: "POST",
+        mode: "no-cors",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
             userName: userName,

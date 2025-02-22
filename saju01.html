@@ -470,7 +470,7 @@ function startKakaoPay(itemName, price) {
             cid: "TC0ONETIME",
             partner_order_id: "order_" + new Date().getTime(),
             partner_user_id: userEmail,
-            item_name: `${itemName} (${userName})`,
+            item_name: `테스트잇 정통사주`,
             quantity: 1,
             total_amount: price,
             tax_free_amount: 0,
@@ -524,7 +524,7 @@ function startNaverPay(itemName, price) {
 
     oPay.open({
         merchantPayKey: "order_" + new Date().getTime(),
-        productName: `${paymentItem} (${userName})`,
+        productName: `테스트잇 정통사주`,
         productCount: "1",
         totalPayAmount: price,
         taxScopeAmount: price,

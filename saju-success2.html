@@ -23,18 +23,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>테스트잇 나의 전체 사주</title>
-    <meta name="description" content="테스트잇 나의 전체 사주">
-<meta name="keywords" content="테스트잇,전체사주,전통사주,테스트잇사주,테스트잇전체사주,테스트잇사주,정확한사주,연애테스트,연애mbti,연애성격테스트, 심리테스트, mbti테스트">
+
+    <title>테스트잇 월별 사주 리포트</title>
+    <meta name="description" content="테스트잇 월별 사주 리포트">
+<meta name="keywords" content="테스트잇,전체사주,월별사주,테스트잇사주,테스트잇전체사주,테스트잇월별사주테스트잇사주,정확한사주,연애테스트,연애mbti,연애성격테스트, 심리테스트, mbti테스트">
     <meta property="og:type" content="website"> 
-    <meta property="og:title" content="테스트잇 나의 전체 사주">
-    <meta property="og:description" content="테스트잇 나의 전체 사주">
-    <meta property="og:image" content="saju_main01.png">
-    <meta property="og:url" content="https://test-it.co.kr/saju-success">
+    <meta property="og:title" content="테스트잇 월별 사주 리포트">
+    <meta property="og:description" content="테스트잇 월별 사주 리포트">
+    <meta property="og:image" content="saju_main02.png">
+    <meta property="og:url" content="https://test-it.co.kr/saju02">
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
       <link rel="icon" type="image/png" href="favicon.png">
 <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+
+
 
 
 
@@ -295,7 +298,7 @@ article{
     <body>
         <h1>결제가 성공적으로 완료되었습니다!</h1>
         <p>사주 신청이 완료되었습니다. 빠른 시일 내에 이메일로 발송해 드릴게요.</p>
-        <a href="https://test-it.co.kr/saju01">이전 페이지로 돌아가기</a>
+        <a href="https://test-it.co.kr/saju02">이전 페이지로 돌아가기</a>
     </body>
      <script>
   
@@ -307,6 +310,8 @@ const birthDate = urlParams.get("birth");
 const birthType = urlParams.get("birthType");
 const birthTime = urlParams.get("time");
 const userEmail = urlParams.get("email");
+const paymentItem = decodeURIComponent(urlParams.get("paymentItem") || "알 수 없는 항목");
+
 
 console.log("✅ 석세스 페이지에서 전달된 값:");
 console.log("이름:", userName);
@@ -315,35 +320,40 @@ console.log("생년월일:", birthDate);
 console.log("양력/음력:", birthType);
 console.log("출생 시간:", birthTime);
 console.log("이메일:", userEmail);
+console.log(`🚀 결제 항목 확인: ${paymentItem}`);
 
-if (userName && userGender && birthDate && birthType && birthTime && userEmail) {
-    console.log("📤 구글 시트로 데이터 전송 중...");
-
-    fetch("https://script.google.com/macros/s/AKfycbwthEXtrunyVulU7fL000nqm1lkfTnTKWnuZqSkRBhEfAK8gKm6Sw6DZPFPxcs_WZT8/exec", {
-        method: "POST",
-        mode: "no-cors",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-            userName: userName,
-            userGender: userGender,
-            birthDate: birthDate,
-            birthType: birthType,
-            birthTime: birthTime,
-            userEmail: userEmail,
-            paymentTime: new Date().toLocaleString()
-        })
-    })
-    .then(() => {
-        console.log("✅ 데이터 전송 완료");
-        alert("✅ 안전하게 결제가 완료되어 담당자에게 전송되었습니다!");
-    })
-    .catch(error => {
-        console.error("❌ 서버 통신 중 오류 발생:", error);
-        alert("❌ 구글 시트에 데이터를 기록하는 중 문제가 발생했습니다.");
-    });
+if (userName && userGender && birthDate && birthType && birthTime && userEmail && paymentItem) {
+     // sendToGoogleSheet(userName, userGender, birthDate, birthType, birthTime, userEmail, paymentItem);
 } else {
-    alert("⚠️ 결제 성공 페이지에서 정보가 누락되었습니다! 다시 시도해 주세요.");
+    alert("⚠️ 결제 성공 후 정보가 누락되었습니다!");
 }
+
+   // 결제 성공 시 데이터 전송
+fetch("https://script.google.com/macros/s/AKfycbzSWc97F6-n1z0h6y0i2lhK7PJBkH31NNC6wkgygIa7mzYlifA5nbxqS1DcOcCUQ0vF/exec", {
+    method: "POST",
+    mode: "no-cors",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+        userName: userName,
+        userGender: userGender,
+        birthDate: birthDate,
+        birthType: birthType,
+        birthTime: birthTime,
+        userEmail: userEmail,
+        paymentItem: decodeURIComponent(paymentItem),  // ✅ 여기 디코딩 추가!
+        paymentTime: new Date().toLocaleString()
+})
+
+})
+.then(() => {
+    console.log(`✅ 데이터 전송 완료! 결제 항목: ${paymentItem}`);
+    alert(`✅ 결제가 완료되어 담당자에게 전송되었습니다!\n결제 항목: ${paymentItem}`);
+})
+.catch(error => {
+    console.error("❌ 서버 통신 중 오류 발생:", error);
+    alert("❌ 구글 시트에 데이터를 기록하는 중 문제가 발생했습니다.");
+});
+
 
 </script>
 

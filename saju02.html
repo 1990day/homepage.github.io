@@ -23,14 +23,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>테스트잇 나의 전체 사주</title>
-    <meta name="description" content="테스트잇 나의 전체 사주">
-<meta name="keywords" content="테스트잇,전체사주,전통사주,테스트잇사주,테스트잇전체사주,테스트잇사주,정확한사주,연애테스트,연애mbti,연애성격테스트, 심리테스트, mbti테스트">
+    <title>테스트잇 월별 사주 리포트</title>
+    <meta name="description" content="테스트잇 월별 사주 리포트">
+<meta name="keywords" content="테스트잇,전체사주,월별사주,테스트잇사주,테스트잇전체사주,테스트잇월별사주테스트잇사주,정확한사주,연애테스트,연애mbti,연애성격테스트, 심리테스트, mbti테스트">
     <meta property="og:type" content="website"> 
-    <meta property="og:title" content="테스트잇 나의 전체 사주">
-    <meta property="og:description" content="테스트잇 나의 전체 사주">
-    <meta property="og:image" content="saju_main01.png">
-    <meta property="og:url" content="https://test-it.co.kr/saju01">
+    <meta property="og:title" content="테스트잇 월별 사주 리포트">
+    <meta property="og:description" content="테스트잇 월별 사주 리포트">
+    <meta property="og:image" content="saju_main02.png">
+    <meta property="og:url" content="https://test-it.co.kr/saju02">
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
       <link rel="icon" type="image/png" href="favicon.png">
@@ -302,7 +302,7 @@ article{
 <!-- 1. 사주 메인 페이지 -->
 <div id="mainPage" class="page active">
 
-    <img src="saju_main01.png" alt="사주 예시" style="width: 100%; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+    <img src="saju_main02.png" alt="사주 예시" style="width: 100%; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
     <br><br>
     <button class="custom-jelly-button" onclick="showPage('infoPage')">💌 정보 입력하고 결제하기</button>
 </div>
@@ -356,8 +356,8 @@ article{
 <div id="paymentPage" class="page">
     <h1>💳 결제 진행</h1>
     <div id="userInfo"></div>
-    <button class="custom-jelly-button" onclick="startKakaoPay('정통사주', 9900)">💛 카카오페이로 결제하기 (9,900원)</button><br>
-    <button class="custom-jelly-button" onclick="startNaverPay('정통사주', 9900)">💚 네이버페이로 결제하기 (9,900원)</button>
+    <button class="custom-jelly-button" onclick="startKakaoPay('월별 운세 리포트', 4900)">💛 카카오페이로 결제하기 (4,900원)</button><br>
+    <button class="custom-jelly-button" onclick="startNaverPay('월별 운세 리포트', 4900)">💚 네이버페이로 결제하기 (4,900원)</button>
     <br><br>
     <button class="custom-jelly-button" onclick="showPage('infoPage')">⬅️ 정보 수정</button>
 </div>
@@ -437,7 +437,6 @@ window.onload = function () {
 };
 
 function startKakaoPay(itemName, price) {
-    console.log(`🚀 결제 요청: 결제 항목 = ${itemName}`);
     const userName = document.getElementById("userName").value;
     const userGender = document.getElementById("userGender").value;
     const birthYear = document.getElementById("birthYear").value;
@@ -451,12 +450,9 @@ function startKakaoPay(itemName, price) {
         alert("⚠️ 모든 정보를 입력해 주세요!");
         return;
     }
+
     const birthDate = `${birthYear}-${String(birthMonth).padStart(2, '0')}-${String(birthDay).padStart(2, '0')}`;
-    const successUrl = `https://test-it.co.kr/saju-success.html?name=${encodeURIComponent(userName)}&gender=${encodeURIComponent(userGender)}&birth=${encodeURIComponent(birthDate)}&birthType=${encodeURIComponent(birthType)}&time=${encodeURIComponent(birthHour)}&email=${encodeURIComponent(userEmail)}&paymentItem=${encodeURIComponent(itemName)}`;
-
-
-
-
+    const successUrl = `https://test-it.co.kr/saju-success.html?name=${encodeURIComponent(userName)}&gender=${encodeURIComponent(userGender)}&birth=${encodeURIComponent(birthDate)}&birthType=${encodeURIComponent(birthType)}&time=${encodeURIComponent(birthHour)}&email=${encodeURIComponent(userEmail)}`;
 
     console.log("🚀 카카오페이 successUrl:", successUrl);
 
@@ -491,8 +487,8 @@ function startKakaoPay(itemName, price) {
 }
 
 
+
 function startNaverPay(itemName, price) {
-    console.log(`🚀 결제 요청: 결제 항목 = ${itemName}`);
     const userName = document.getElementById("userName").value;
     const userGender = document.getElementById("userGender").value;
     const birthYear = document.getElementById("birthYear").value;
@@ -508,11 +504,7 @@ function startNaverPay(itemName, price) {
     }
 
     const birthDate = `${birthYear}-${String(birthMonth).padStart(2, '0')}-${String(birthDay).padStart(2, '0')}`;
-    const paymentItem = itemName;  // 결제 항목 추가
-
-    // ✅ paymentItem을 successUrl에 포함
-    const successUrl = `https://test-it.co.kr/saju-success.html?name=${encodeURIComponent(userName)}&gender=${encodeURIComponent(userGender)}&birth=${encodeURIComponent(birthDate)}&birthType=${encodeURIComponent(birthType)}&time=${encodeURIComponent(birthHour)}&email=${encodeURIComponent(userEmail)}&paymentItem=${encodeURIComponent(itemName)}`;
-
+    const successUrl = `https://test-it.co.kr/saju-success.html?name=${encodeURIComponent(userName)}&gender=${encodeURIComponent(userGender)}&birth=${encodeURIComponent(birthDate)}&birthType=${encodeURIComponent(birthType)}&time=${encodeURIComponent(birthHour)}&email=${encodeURIComponent(userEmail)}`;
 
     console.log("🚀 네이버페이 successUrl:", successUrl);
 
@@ -524,43 +516,47 @@ function startNaverPay(itemName, price) {
 
     oPay.open({
         merchantPayKey: "order_" + new Date().getTime(),
-        productName: `${paymentItem} (${userName})`,
+        productName: `${itemName} (${userName})`,
         productCount: "1",
         totalPayAmount: price,
         taxScopeAmount: price,
-        returnUrl: successUrl  // ✅ 수정된 successUrl 전달
+        returnUrl: successUrl  
     });
 
-    alert(`💚 네이버페이로 ${paymentItem} 결제가 진행됩니다!`);
+    alert("💰 네이버페이 결제가 진행됩니다!");
 }
 
 
 
     
-function sendToGoogleSheet(userName, userGender, birthDate, birthType, birthTime, userEmail, paymentItem) {
-    console.log("📤 전송할 데이터:", userName, userGender, birthDate, birthType, birthTime, userEmail, paymentItem);
+function sendToGoogleSheet(userName, userGender, birthDate, birthType, birthTime, userEmail) {
+    console.log("📤 Google Sheet에 전송할 데이터:");
+    console.log("이름:", userName);
+    console.log("성별:", userGender);
+    console.log("생년월일:", birthDate);
+    console.log("양력/음력:", birthType);
+    console.log("출생 시간:", birthTime);
+    console.log("이메일:", userEmail);
 
-
-    fetch("https://script.google.com/macros/s/AKfycbw5y7gZXlWa6NJ-4J7vdNKOUfLAfDXUsTymNRTm8mDwcG5cZBRepns_8ZtfXc7YKceb/exec", {
+    fetch("https://script.google.com/macros/s/AKfycbwthEXtrunyVulU7fL000nqm1lkfTnTKWnuZqSkRBhEfAK8gKm6Sw6DZPFPxcs_WZT8/exec", {
         method: "POST",
-        mode: "cors",
+        mode: "no-cors",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
             userName: userName,
-            userGender: userGender,
+            userGender: userGender,   // 🌟 성별 추가
             birthDate: birthDate,
             birthType: birthType,
             birthTime: birthTime,
             userEmail: userEmail,
-            paymentItem: paymentItem,  // ✅ 여기서도 추가!
             paymentTime: new Date().toLocaleString()
         })
     })
     .then(() => {
-        console.log("✅ 구글 시트에 데이터 전송 완료!");
+        console.log("✅ 사주 페이지에서 성별 포함 데이터 전송 완료.");
     })
     .catch(error => {
-        console.error("❌ 데이터 전송 실패:", error);
+        console.error("❌ 사주 페이지 서버 통신 오류:", error);
     });
 }
 
@@ -577,13 +573,10 @@ const birthDate = urlParams.get("birth");
 const birthType = urlParams.get("birthType");
 const birthTime = urlParams.get("time");
 const userEmail = urlParams.get("email");
-const paymentItem = urlParams.get("paymentItem");  // ✅ 결제항목 추가!
 
-if (userName && userGender && birthDate && birthType && birthTime && userEmail && paymentItem) {
-    saveToGoogleSheet(userName, userGender, birthDate, birthType, birthTime, userEmail, paymentItem);  // ✅ 결제항목 전달!
-    alert(`✅ 결제가 완료되었습니다!\n이름: ${userName}\n성별: ${userGender}\n이메일: ${userEmail}\n결제 항목: ${paymentItem}`);
-} else {
-    alert("⚠️ 결제 성공 후 정보가 누락되었습니다. 다시 시도해 주세요.");
+if (userName && userGender && birthDate && birthType && birthTime && userEmail) {
+    saveToGoogleSheet(userName, userGender, birthDate, birthType, birthTime, userEmail);
+    alert(`결제가 완료되었습니다!\n이름: ${userName}\n성별: ${userGender}\n이메일: ${userEmail}`);
 }
     }
   </script>

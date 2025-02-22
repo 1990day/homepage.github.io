@@ -94,7 +94,36 @@
     justify-content: space-between;
 }
 
-    
+
+/* 전체 페이지 중앙 정렬 */
+.center-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* 입력 폼과 내용도 가운데 정렬 */
+form, .page, body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+}
+
+/* 입력창과 버튼 간격 */
+input, select, button {
+    margin: 10px 0;
+    text-align: center;
+}
+
+
 article{
     display: flex;
     flex-direction: column;
@@ -282,7 +311,8 @@ article{
 
 </head>
 <!-- body 태그 style background-color 지정으로 배경색 변경-->
-<body class="container" style="background-color:#ffffff">
+<body class="container center-container" style="background-color:#ffffff">
+
             
     <header class="page-header wrapper">
         <h1><a href="index.html"><img class="logo" src="img_logo.png" alt="test it"></a>

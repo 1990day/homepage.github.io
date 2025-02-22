@@ -102,49 +102,8 @@ article{
 }
 
  
-    
-.question{
-    display: none;
-}
 
-.result{
-    display: none;
-}
-.progress-bar {
-    background-color: #76c5c1;
-}
-.progress {
-    background-color: #fbffe4;
-}
-#img{
-    width: 500px;
-    height: 900px;
-    max-width: 100%;
-    height: auto;
-    margin: 0 auto;
-}
 
-#img_main{
-    width: 500px;
-    height: 600px;
-    max-width: 100%;
-    height: auto;
-    margin: 0 auto;
-}
-
-#question-image {
-    max-width: 100%;
-    height: auto;
-    margin: 0 auto;
-    display: block;
-}
-
-.question-image {
-    max-width: 100%;
-    height: auto;
-    margin: 0 auto;
-    display: block;
-}
 .custom-jelly-button {
     width: 100%;
     max-width: 350px;
@@ -187,58 +146,40 @@ article{
             border: 1px solid #ddd;
         }
 
-        
-    
-.jelly-question-box {
-    width: 100%;
-    max-width: 400px;
-    min-height: 150px;
-    padding: 30px 20px;
-    margin: 20px auto;
-    background: linear-gradient(145deg, #ffc1cc, #ff91a1); /* 진한 분홍색으로 변경 */
-    border-radius: 25px;
-    box-shadow: inset -6px -6px 12px rgba(255, 255, 255, 0.8), 
-                inset 6px 6px 12px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    color: #432;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* h6 요소의 폰트 크기 강제 적용 */
-.jelly-question-box h6 {
-    font-size: 18px !important;
-}
-    
-.btn-info.focus, .btn-info:focus {
-    box-shadow: 0 0 0 0.1rem rgb(255 255 255);
-}
-    .btn-info:hover {
-    color: #ffffff;
-    background-color: #ffffff;
-    border-color: #ffffff;
-            box-shadow: 0 0 0 0.1rem rgb(255 255 255);
-}
-    .btn-info.focus, .btn-info:focus {
-    color: #ffffff;
-    background-color: #ffffff;
-    border-color: #ffffff;
-    box-shadow: 0 0 0 0.1rem rgb(255 255 255);
-}
-    .btn-info {
-    color: #ffffff;
-    background-color: #ffffff;
-    border-color: #ffffff;
-            box-shadow: 0 0 0 0.1rem rgb(255 255 255);
-}
-    .btn.focus, .btn:focus {
-    outline: 0;
-    box-shadow: 0 0 0 0.1rem rgb(255 255 255);
-}
-   
-    
+             /* 성공 페이지 전용 스타일 */
+             .success-page {
+            text-align: center;        /* 가운데 정렬 */
+            margin: 40px auto;        /* 페이지 위아래 여백, 가운데 정렬 */
+            max-width: 600px;         /* 폭 제한 */
+            padding: 30px;            /* 안쪽 여백 */
+            background-color: #fff;   /* 배경 흰색 */
+            border-radius: 15px;      /* 모서리 둥글게 */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 그림자 */
+        }
+        .success-title {
+            font-size: 1.2rem;        /* 글씨 크기 */
+            font-weight: bold;        /* 굵게 */
+            margin-bottom: 10px;      /* 아래쪽 여백 */
+        }
+        .success-text {
+            font-size: 1rem;          /* 본문 크기 */
+            margin-bottom: 20px;      /* 간격 */
+        }
+        .success-link {
+            display: inline-block;    
+            padding: 10px 20px;
+            background-color: #ffcfcf; /* 분홍빛 배경 */
+            border-radius: 10px;
+            text-decoration: none;      /* 밑줄 제거 */
+            color: black;
+            font-weight: bold;
+            box-shadow: inset -4px -4px 10px rgba(255, 255, 255, 0.7),
+                        inset 4px 4px 10px rgba(0, 0, 0, 0.1),
+                        2px 2px 8px rgba(0, 0, 0, 0.15);
+        }
+        .success-link:hover {
+            background: #ffbdbd;       /* hover 시 조금 진해짐 */
+        }
     
     .at-share-btn-elements{
         text-align: center;
@@ -293,11 +234,14 @@ article{
         
     </header>
 
-    <body>
-        <h1>결제가 성공적으로 완료되었습니다!</h1>
-        <p>사주 신청이 완료되었습니다. 빠른 시일 내에 이메일로 발송해 드릴게요.</p>
-        <a href="https://test-it.co.kr/saju02">이전 페이지로 돌아가기</a>
-    </body>
+   <!-- 성공 페이지(가운데 정렬 + 꾸며주기) -->
+   <div class="success-page">
+    <h1 class="success-title">결제가 성공적으로 완료되었습니다!</h1>
+    <p class="success-text">
+        사주 신청이 완료되었습니다. 48시간 내에 이메일로 발송해 드릴게요.
+    </p>
+    <a class="success-link" href="https://test-it.co.kr/saju01">이전 페이지로 돌아가기</a>
+</div>
      <script>
   
 // ✅ 결제 성공 시에만 시트와 메일로 데이터 전송
@@ -345,11 +289,11 @@ fetch("https://script.google.com/macros/s/AKfycbzSWc97F6-n1z0h6y0i2lhK7PJBkH31NN
 })
 .then(() => {
     console.log(`✅ 데이터 전송 완료! 결제 항목: ${paymentItem}`);
-    alert(`✅ 결제가 완료되어 담당자에게 전송되었습니다!\n결제 항목: ${paymentItem}`);
+    // 원래 있던 alert 제거
 })
 .catch(error => {
     console.error("❌ 서버 통신 중 오류 발생:", error);
-    alert("❌ 구글 시트에 데이터를 기록하는 중 문제가 발생했습니다.");
+    // 원래 있던 alert 제거
 });
 
 

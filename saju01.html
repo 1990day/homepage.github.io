@@ -102,19 +102,6 @@ article{
 
  
     
-.question{
-    display: none;
-}
-
-.result{
-    display: none;
-}
-.progress-bar {
-    background-color: #76c5c1;
-}
-.progress {
-    background-color: #fbffe4;
-}
 #img{
     width: 500px;
     height: 900px;
@@ -131,19 +118,7 @@ article{
     margin: 0 auto;
 }
 
-#question-image {
-    max-width: 100%;
-    height: auto;
-    margin: 0 auto;
-    display: block;
-}
 
-.question-image {
-    max-width: 100%;
-    height: auto;
-    margin: 0 auto;
-    display: block;
-}
 .custom-jelly-button {
     width: 100%;
     max-width: 350px;
@@ -166,78 +141,117 @@ article{
 }
 
 
-.page {
-            display: none;
-            margin: 0 auto;
-            max-width: 600px;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 15px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .active {
-            display: block;
-        }
-        input, button {
-            width: 80%;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 10px;
-            border: 1px solid #ddd;
-        }
+/* 페이지 기본 스타일 */
+  /* 페이지 기본 스타일 */
+  .page {
+      display: none;
+      margin: 0 auto;
+      max-width: 600px;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .page.active {
+      display: block;
+    }
 
-        
-    
-.jelly-question-box {
-    width: 100%;
-    max-width: 400px;
-    min-height: 150px;
-    padding: 30px 20px;
-    margin: 20px auto;
-    background: linear-gradient(145deg, #ffc1cc, #ff91a1); /* 진한 분홍색으로 변경 */
-    border-radius: 25px;
-    box-shadow: inset -6px -6px 12px rgba(255, 255, 255, 0.8), 
-                inset 6px 6px 12px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    color: #432;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    /* 정보 입력 페이지 전체 스타일 */
+    .info-page {
+      text-align: center;
+    }
+
+    /* "사주 정보 입력" 제목 스타일 (크기는 살짝 작게, 굵게) */
+    .info-title {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 10px; /* 제목 아래 간격 */
+    }
+
+    /* 폼 전체 스타일: 세로 레이아웃 + 중앙 정렬 + 요소 간격 */
+    .saju-form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px; /* 폼 내부 요소 간격(줄임) */
+      margin: 0 auto;
+      max-width: 400px; /* 폼 자체 폭 제한 */
+    }
+
+    /* 각 입력 그룹(이름, 성별, 생년월일, 태어난 시간, 이메일) 공통 스타일 */
+    .form-group {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 3px; /* 레이블과 입력창 사이 간격(더 줄임) */
+    }
+
+    /* 레이블 굵게 */
+    .label-bold {
+      font-weight: bold;
+    }
+
+    /* 단일 input, select 공통 스타일 (너비 100%) */
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+    }
+
+    /* 생년월일(양력/음력 + 연/월/일)을 한 줄로 배치할 때 사용하는 컨테이너 */
+    .form-group-inline {
+      display: flex;
+      flex-direction: row;
+      gap: 8px; /* 드롭다운 사이 간격 */
+      width: 100%;
+    }
+
+    /* 이 컨테이너 안의 select들을 동일한 비율로 늘려 같은 폭을 맞춤 */
+    .form-group-inline select {
+      flex: 1;
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+    }
+
+    /* 버튼 영역(결제하기/돌아가기) */
+    .button-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
+      width: 100%;
+      max-width: 500px;
+    }
+
+/* 결제 페이지 스타일 */
+.payment-page {
+  text-align: center; /* 페이지 전체 중앙 정렬 */
 }
 
-/* h6 요소의 폰트 크기 강제 적용 */
-.jelly-question-box h6 {
-    font-size: 18px !important;
+/* 결제 진행 메인 제목 */
+.payment-page h1 {
+  font-size: 1.2rem;  /* 글씨 크기 조금 줄임 */
+  font-weight: bold;
+  margin-bottom: 10px; /* 아래쪽 여백 */
 }
-    
-.btn-info.focus, .btn-info:focus {
-    box-shadow: 0 0 0 0.1rem rgb(255 255 255);
+
+/* "입력 정보 확인" 등 하위 제목 */
+.payment-page h2 {
+  font-size: 1rem;    /* 더 작게 */
+  font-weight: bold;
+  margin-bottom: 8px;
 }
-    .btn-info:hover {
-    color: #ffffff;
-    background-color: #ffffff;
-    border-color: #ffffff;
-            box-shadow: 0 0 0 0.1rem rgb(255 255 255);
+
+/* 일반 텍스트(이름, 생년월일, 태어난 시간, 이메일 등) */
+.payment-page p {
+  font-size: 0.9rem;  /* 일반 텍스트 크기 */
+  margin-bottom: 5px;
 }
-    .btn-info.focus, .btn-info:focus {
-    color: #ffffff;
-    background-color: #ffffff;
-    border-color: #ffffff;
-    box-shadow: 0 0 0 0.1rem rgb(255 255 255);
-}
-    .btn-info {
-    color: #ffffff;
-    background-color: #ffffff;
-    border-color: #ffffff;
-            box-shadow: 0 0 0 0.1rem rgb(255 255 255);
-}
-    .btn.focus, .btn:focus {
-    outline: 0;
-    box-shadow: 0 0 0 0.1rem rgb(255 255 255);
-}
-   
-    
+
     
     .at-share-btn-elements{
         text-align: center;
@@ -246,15 +260,6 @@ article{
     margin: 0 auto;
 }
 
-.kakao_ad{
-    width: 320px;
-    margin: 0 auto;
-}
-
-.kakao_ad2{
-    width: 320px;
-    margin: 0 auto;
-}
 .coupang_ad {
     width: 320px;
     margin: 0 auto;
@@ -299,37 +304,57 @@ article{
         
     </header>
 
-<!-- 1. 사주 메인 페이지 -->
-<div id="mainPage" class="page active">
-
+  <!-- 1. 사주 메인 페이지 -->
+  <div id="mainPage" class="page active">
     <img src="saju_main01.png" alt="사주 예시" style="width: 100%; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
     <br><br>
     <button class="custom-jelly-button" onclick="showPage('infoPage')">💌 정보 입력하고 결제하기</button>
 </div>
 
-  <!-- 2. 정보 입력 페이지 (드롭다운 형식) -->
-  <div id="infoPage" class="page">
-    <h1>📄 사주 정보 입력</h1>
-    <form id="sajuForm">
-      <input type="text" id="userName" placeholder="이름 (예: 홍길동)" required><br>
-      <label>성별:</label><br>
-<select id="userGender" required>
-    <option value="여성">여성</option>
-    <option value="남성">남성</option>
-</select>
-<br>
-      <label>생년월일:</label><br>
-      <select id="birthType" required>
-        <option value="양력">양력</option>
-        <option value="음력">음력</option>
-    </select>
-      <select id="birthYear" required></select>
-      <select id="birthMonth" required></select>
-      <select id="birthDay" required></select>
-      
-      <br>
-      <label>태어난 시간:</label><br>
-      <select id="birthHour" required>
+  <!-- 정보 입력 페이지 -->
+  <div id="infoPage" class="page info-page">
+    <h1 class="info-title">📄 사주 정보 입력</h1>
+
+    <form id="sajuForm" class="saju-form">
+      <!-- 이름 -->
+      <div class="form-group">
+        <input
+          type="text"
+          id="userName"
+          placeholder="이름 (예: 홍길동)"
+          required
+        />
+      </div>
+
+      <!-- 성별 -->
+      <div class="form-group">
+        <label for="userGender" class="label-bold">성별</label>
+        <select id="userGender" required>
+          <option value="여성">여성</option>
+          <option value="남성">남성</option>
+        </select>
+      </div>
+
+      <!-- 생년월일 (양력/음력 + 연/월/일) -->
+      <div class="form-group">
+        <label for="birthType" class="label-bold">생년월일</label>
+        <div class="form-group-inline">
+          <!-- 양력/음력 -->
+          <select id="birthType" required>
+            <option value="양력">양력</option>
+            <option value="음력">음력</option>
+          </select>
+          <!-- 연/월/일 -->
+          <select id="birthYear" required></select>
+          <select id="birthMonth" required></select>
+          <select id="birthDay" required></select>
+        </div>
+      </div>
+
+      <!-- 태어난 시간 -->
+      <div class="form-group">
+        <label for="birthHour" class="label-bold">태어난 시간</label>
+        <select id="birthHour" required>
           <option value="모름">모름</option>
           <option value="자시">자시 (23:30 ~ 01:30)</option>
           <option value="축시">축시 (01:30 ~ 03:30)</option>
@@ -343,25 +368,69 @@ article{
           <option value="유시">유시 (17:30 ~ 19:30)</option>
           <option value="술시">술시 (19:30 ~ 21:30)</option>
           <option value="해시">해시 (21:30 ~ 23:30)</option>
-      </select>      
-      <br>
-      <input type="email" id="userEmail" placeholder="이메일 (예: example@email.com)" required><br>
-      <button type="button" class="custom-jelly-button" onclick="showPage('paymentPage')">💰 결제하기</button>
-      <br>
-      <button type="button" class="custom-jelly-button" onclick="showPage('mainPage')">⬅️ 돌아가기</button>
+        </select>
+      </div>
+
+      <!-- 이메일 -->
+      <div class="form-group">
+        <label for="userEmail" class="label-bold">이메일</label>
+        <input
+          type="email"
+          id="userEmail"
+          placeholder="이메일 (예: example@email.com)"
+          required
+        />
+      </div>
+
+      <!-- 버튼 영역 -->
+      <div class="button-group">
+        <button
+          type="button"
+          class="custom-jelly-button"
+          onclick="showPage('paymentPage')"
+        >
+          💰 결제하기
+        </button>
+        <button
+          type="button"
+          class="custom-jelly-button"
+          onclick="showPage('mainPage')"
+        >
+          ⬅️ 돌아가기
+        </button>
+      </div>
     </form>
   </div>
 
-<!-- 3. 결제 페이지 -->
-<div id="paymentPage" class="page">
+<!-- 결제 페이지 -->
+<div id="paymentPage" class="page payment-page">
     <h1>💳 결제 진행</h1>
-    <div id="userInfo"></div>
-    <button class="custom-jelly-button" onclick="startKakaoPay('정통사주', 9900)">💛 카카오페이로 결제하기 (9,900원)</button><br>
-    <button class="custom-jelly-button" onclick="startNaverPay('정통사주', 9900)">💚 네이버페이로 결제하기 (9,900원)</button>
+    <div id="userInfo">
+      <!-- 자바스크립트에서 "입력 정보 확인" h2와 p들이 동적으로 삽입됨 -->
+      <!-- 예: 
+      <h2>입력 정보 확인</h2>
+      <p><strong>이름:</strong> 홍길동</p>
+      <p><strong>생년월일:</strong> 1900-01-01 (양력)</p>
+      <p><strong>태어난 시간:</strong> 모름</p>
+      <p><strong>이메일:</strong> example@example.com</p>
+      -->
+    </div>
+    
+    <button class="custom-jelly-button" onclick="startKakaoPay('정통사주', 9900)">
+      💛 카카오페이로 결제하기 (9,900원)
+    </button>
+    <br>
+    
+    <button class="custom-jelly-button" onclick="startNaverPay('정통사주', 9900)">
+      💚 네이버페이로 결제하기 (9,900원)
+    </button>
     <br><br>
-    <button class="custom-jelly-button" onclick="showPage('infoPage')">⬅️ 정보 수정</button>
-</div>
-
+    
+    <button class="custom-jelly-button" onclick="showPage('infoPage')">
+      ⬅️ 정보 수정
+    </button>
+  </div>
+  
 <script>
 
     // 날짜 드롭다운 옵션 채우기

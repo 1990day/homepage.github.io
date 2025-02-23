@@ -267,12 +267,14 @@
 
   // 모든 필수 정보가 있는지 확인 (운세 볼 월도 포함)
   if (userName && userGender && birthDate && birthType && birthTime && userEmail && paymentItem && fortuneMonth) {
-      // sendToGoogleSheet 호출 시에도 fortuneMonth 전달
-      sendToGoogleSheet(userName, userGender, birthDate, birthType, birthTime, userEmail, paymentItem, fortuneMonth);
-      alert(`✅ 결제가 완료되었습니다!\n이름: ${userName}\n성별: ${userGender}\n이메일: ${userEmail}\n결제 항목: ${paymentItem}\n운세 볼 월: ${fortuneMonth}월`);
-  } else {
-      alert("⚠️ 결제 성공 후 정보가 누락되었습니다. 다시 시도해 주세요.");
-  }
+    sendToGoogleSheet(userName, userGender, birthDate, birthType, birthTime, userEmail, paymentItem, fortuneMonth);
+    // alert() 제거: 필요한 경우 HTML 요소를 통해 성공 메시지를 표시할 수 있습니다.
+    console.log(`✅ 결제가 완료되었습니다! 이름: ${userName}, 성별: ${userGender}, 이메일: ${userEmail}, 결제 항목: ${paymentItem}, 운세 볼 월: ${fortuneMonth}월`);
+} else {
+    // alert() 제거
+    console.log("⚠️ 결제 성공 후 정보가 누락되었습니다. 다시 시도해 주세요.");
+}
+
 
   function sendToGoogleSheet(userName, userGender, birthDate, birthType, birthTime, userEmail, paymentItem, fortuneMonth) {
     console.log("📤 전송할 데이터:", userName, userGender, birthDate, birthType, birthTime, userEmail, paymentItem, fortuneMonth);

@@ -297,18 +297,18 @@
     })
     .then(response => response.json())
     .then(data => {
-        console.log("✅ 구글 시트에 데이터 전송 완료!", data);
-        if (data.result === "success") {
-            alert("✅ 데이터가 성공적으로 전송되었습니다!");
-        } else {
-            alert("❌ 데이터 전송 실패: " + data.message);
-        }
-    })
-    .catch(error => {
-        console.error("❌ 데이터 전송 실패:", error);
-        alert("⚠️ 서버에 데이터를 전송하는 동안 오류가 발생했습니다.");
-    });
-}
+    console.log("✅ 구글 시트에 데이터 전송 완료!", data);
+    if (data.result === "success") {
+        console.log("✅ 데이터가 성공적으로 전송되었습니다!");
+    } else {
+        console.log("❌ 데이터 전송 실패: " + data.message);
+    }
+})
+.catch(error => {
+    console.error("❌ 데이터 전송 실패:", error);
+    console.log("⚠️ 서버에 데이터를 전송하는 동안 오류가 발생했습니다.");
+});
+
     
     
     </script>

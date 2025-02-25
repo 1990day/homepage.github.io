@@ -482,6 +482,7 @@ function showPage(pageId) {
   
   if (pageId === 'paymentPage') {
     const userName = document.getElementById("userName").value;
+    const userGender = document.getElementById("userGender").value;
     const birthType = document.getElementById("birthType").value;
     const birthYear = document.getElementById("birthYear").value;
     const birthMonth = document.getElementById("birthMonth").value;
@@ -496,6 +497,7 @@ function showPage(pageId) {
       return;
     }
     
+    // 사용자 정보 확인 UI 업데이트
     document.getElementById("userInfo").innerHTML = `
       <h2>입력 정보 확인</h2>
       <p><strong>이름:</strong> ${userName}</p>
@@ -504,12 +506,22 @@ function showPage(pageId) {
       <p><strong>이메일:</strong> ${userEmail}</p>
     `;
     
+    // 여기서 sessionStorage에 사용자 정보를 저장
+    const userData = {
+      name: userName,
+      gender: userGender,
+      birth: birthDate,
+      birthType: birthType,
+      time: birthHour,
+      email: userEmail,
+      paymentItem: "정통사주" // 또는 동적으로 설정
+    };
+    sessionStorage.setItem("userData", JSON.stringify(userData));
+    
     // 토스 위젯 UI 렌더링 (가격 9900원으로 설정)
     renderTossWidgets(9900).catch(err => console.error("토스 위젯 렌더링 오류:", err));
   }
 }
-
-
 
 // 페이지 로드 시 실행
 window.onload = function () {

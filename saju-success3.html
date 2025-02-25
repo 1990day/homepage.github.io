@@ -242,75 +242,47 @@ article{
     </p>
     <a class="success-link" href="https://test-it.co.kr/saju03">이전 페이지로 돌아가기</a>
 </div>
-     <script>
-  
-    // ✅ URL 파라미터에서 두 명의 정보 가져오기
-    const urlParams = new URLSearchParams(window.location.search);
+<script>
+    // sessionStorage에 저장된 사용자 데이터 읽어오기
+    const storedData = sessionStorage.getItem("userData");
+    const userData = storedData ? JSON.parse(storedData) : null;
 
-const user1 = {
-    name: urlParams.get("name1"),
-    gender: urlParams.get("gender1"),
-    birthDate: urlParams.get("birth1"),
-    birthType: urlParams.get("birthType1"),
-    birthTime: urlParams.get("time1")
-};
+    // Google Sheet 전송 함수
+    function sendToGoogleSheet(user1, user2, email, paymentItem) {
+      console.log("📤 전송할 데이터:", user1, user2, email, paymentItem);
+      fetch("https://script.google.com/macros/s/AKfycbwj6p-ePMu47vmeIFfnL21T3saiuYk-H8gTc1G8Z0Q4DN6VZIIGY2-rTfPH13YRKgTzEQ/exec", {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+              user1Name: user1.name,
+              user1Gender: user1.gender,
+              user1BirthDate: user1.birthDate,
+              user1BirthType: user1.birthType,
+              user1BirthTime: user1.birthTime,
+              user2Name: user2.name,
+              user2Gender: user2.gender,
+              user2BirthDate: user2.birthDate,
+              user2BirthType: user2.birthType,
+              user2BirthTime: user2.birthTime,
+              userEmail: email,
+              paymentItem: paymentItem,
+              paymentTime: new Date().toLocaleString()
+          })
+      })
+      .then(() => { console.log("✅ 구글 시트에 데이터 전송 완료!"); })
+      .catch(error => { console.error("❌ 데이터 전송 실패:", error); });
+    }
 
-const user2 = {
-    name: urlParams.get("name2"),
-    gender: urlParams.get("gender2"),
-    birthDate: urlParams.get("birth2"),
-    birthType: urlParams.get("birthType2"),
-    birthTime: urlParams.get("time2")
-};
-
-const userEmail = urlParams.get("email");
-const paymentItem = decodeURIComponent(urlParams.get("paymentItem") || "애정 사주 궁합");
-
-console.log("✅ 석세스 페이지에서 전달된 값:");
-console.log("💑 사용자1:", user1);
-console.log("💑 사용자2:", user2);
-console.log("📧 이메일:", userEmail);
-console.log("🚀 결제 항목:", paymentItem);
-
-// ✅ 데이터 전송 함수
-function sendToGoogleSheet(user1, user2, userEmail, paymentItem) {
-    fetch("https://script.google.com/macros/s/AKfycbwj6p-ePMu47vmeIFfnL21T3saiuYk-H8gTc1G8Z0Q4DN6VZIIGY2-rTfPH13YRKgTzEQ/exec", {
-        method: "POST",
-        mode: "no-cors",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-            user1Name: user1.name,
-            user1Gender: user1.gender,
-            user1BirthDate: user1.birthDate,
-            user1BirthType: user1.birthType,
-            user1BirthTime: user1.birthTime,
-
-            user2Name: user2.name,
-            user2Gender: user2.gender,
-            user2BirthDate: user2.birthDate,
-            user2BirthType: user2.birthType,
-            user2BirthTime: user2.birthTime,
-
-            userEmail: userEmail,
-            paymentItem: paymentItem,
-            paymentTime: new Date().toLocaleString()
-        })
-    })
-    .then(() => {
-        console.log("✅ 구글 시트에 데이터 전송 완료!");
-    })
-    .catch(error => {
-        console.error("❌ 데이터 전송 실패:", error);
-    });
-}
-
-// ✅ 모든 정보가 있을 때만 데이터 전송
-if (user1.name && user2.name && userEmail && paymentItem) {
-    sendToGoogleSheet(user1, user2, userEmail, paymentItem);
-} else {
-    alert("⚠️ 결제 성공 후 일부 정보가 누락되었습니다. 다시 시도해 주세요.");
-}
-
-</script>
-
+    if (userData && userData.user1 && userData.user2 && userData.email && userData.paymentItem) {
+      sendToGoogleSheet(userData.user1, userData.user2, userData.email, userData.paymentItem);
+      alert(`✅ 결제가 완료되었습니다!
+💑 본인: ${userData.user1.name} (${userData.user1.gender})
+💏 상대: ${userData.user2.name} (${userData.user2.gender})
+📧 이메일: ${userData.email}`);
+    } else {
+      console.log("❌ 사용자 데이터가 없습니다.");
+    }
+  </script>
+</body>
 </html>

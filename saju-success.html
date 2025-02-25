@@ -339,12 +339,24 @@ function sendToGoogleSheet(userName, userGender, birthDate, birthType, birthTime
     });
 }
 
+const userData = JSON.parse(sessionStorage.getItem("userData"));
+if (userData) {
+  console.log("✅ 사용자 데이터:", userData);
+  // 구글 시트로 데이터 전송
+  sendToGoogleSheet(userData.name, userData.gender, userData.birth, userData.birthType, userData.time, userData.email, userData.paymentItem);
+} else {
+  console.error("❌ 사용자 데이터가 없습니다.");
+  alert("⚠️ 결제 성공 후 정보가 누락되었습니다!");
+}
+
 
 if (userName && userGender && birthDate && birthType && birthTime && userEmail && paymentItem) {
      // sendToGoogleSheet(userName, userGender, birthDate, birthType, birthTime, userEmail, paymentItem);
 } else {
     alert("⚠️ 결제 성공 후 정보가 누락되었습니다!");
 }
+
+
 
    // 결제 성공 시 데이터 전송
 fetch("https://script.google.com/macros/s/AKfycbzSWc97F6-n1z0h6y0i2lhK7PJBkH31NNC6wkgygIa7mzYlifA5nbxqS1DcOcCUQ0vF/exec", {

@@ -672,6 +672,19 @@ async function startTossPay(itemName, price) {
 }
 
 
+// 결제 전 사용자 정보 저장 (예시)
+const userData = {
+  name: document.getElementById("userName").value,
+  gender: document.getElementById("userGender").value,
+  birth: `${document.getElementById("birthYear").value}-${String(document.getElementById("birthMonth").value).padStart(2, '0')}-${String(document.getElementById("birthDay").value).padStart(2, '0')}`,
+  birthType: document.getElementById("birthType").value,
+  time: document.getElementById("birthHour").value,
+  email: document.getElementById("userEmail").value,
+  paymentItem: "정통사주" // 또는 동적으로 설정
+};
+sessionStorage.setItem("userData", JSON.stringify(userData));
+
+
     
 function sendToGoogleSheet(userName, userGender, birthDate, birthType, birthTime, userEmail, paymentItem) {
     console.log("📤 전송할 데이터:", userName, userGender, birthDate, birthType, birthTime, userEmail, paymentItem);

@@ -244,73 +244,45 @@
     </div>
          <script>
       
-    // ✅ 결제 성공 시에만 시트와 메일로 데이터 전송
-    const urlParams = new URLSearchParams(window.location.search);
-  const userName = urlParams.get("name");
-  const userGender = urlParams.get("gender");
-  const birthDate = urlParams.get("birth");
-  const birthType = urlParams.get("birthType");
-  const birthTime = urlParams.get("time");
-  const userEmail = urlParams.get("email");
-  const paymentItem = decodeURIComponent(urlParams.get("paymentItem") || "알 수 없는 항목");
-  const fortuneMonth = urlParams.get("fortuneMonth");  // 새로 추가된 값
+      // URL 파라미터 대신 sessionStorage의 사용자 데이터를 사용합니다.
+      const storedData = sessionStorage.getItem("userData");
+    const userData = storedData ? JSON.parse(storedData) : null;
 
-  console.log("✅ 석세스 페이지에서 전달된 값:");
-  console.log("이름:", userName);
-  console.log("성별:", userGender);
-  console.log("생년월일:", birthDate);
-  console.log("양력/음력:", birthType);
-  console.log("출생 시간:", birthTime);
-  console.log("이메일:", userEmail);
-  console.log("운세 볼 월:", fortuneMonth);
-  console.log(`🚀 결제 항목 확인: ${paymentItem}`);
-
-  // 모든 필수 정보가 있는지 확인 (운세 볼 월도 포함)
-  if (userName && userGender && birthDate && birthType && birthTime && userEmail && paymentItem && fortuneMonth) {
-    sendToGoogleSheet(userName, userGender, birthDate, birthType, birthTime, userEmail, paymentItem, fortuneMonth);
-    // alert() 제거: 필요한 경우 HTML 요소를 통해 성공 메시지를 표시할 수 있습니다.
-    console.log(`✅ 결제가 완료되었습니다! 이름: ${userName}, 성별: ${userGender}, 이메일: ${userEmail}, 결제 항목: ${paymentItem}, 운세 볼 월: ${fortuneMonth}월`);
-} else {
-    // alert() 제거
-    console.log("⚠️ 결제 성공 후 정보가 누락되었습니다. 다시 시도해 주세요.");
-}
-
-
-  function sendToGoogleSheet(userName, userGender, birthDate, birthType, birthTime, userEmail, paymentItem, fortuneMonth) {
-    console.log("📤 전송할 데이터:", userName, userGender, birthDate, birthType, birthTime, userEmail, paymentItem, fortuneMonth);
-
-    fetch("https://script.google.com/macros/s/AKfycbyaDoLDrglc5d9ycgCK0EtWEihFWakfMoiXgYDHaHOmP1JmRLdFLbR4CyFBWcIHElDi/exec", {
-        method: "POST",
-        mode: "no-cors",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-            userName: userName,
-            userGender: userGender,
-            birthDate: birthDate,
-            birthType: birthType,
-            birthTime: birthTime,
-            userEmail: userEmail,
-            paymentItem: paymentItem,
-            fortuneMonth: fortuneMonth,
-            paymentTime: new Date().toLocaleString()
-        })
-    })
-    .then(response => response.json())
-    .then(data => {
-    console.log("✅ 구글 시트에 데이터 전송 완료!", data);
-    if (data.result === "success") {
-        console.log("✅ 데이터가 성공적으로 전송되었습니다!");
-    } else {
-        console.log("❌ 데이터 전송 실패: " + data.message);
+    function sendToGoogleSheet(userName, userGender, birthDate, birthType, birthTime, userEmail, paymentItem, fortuneMonth) {
+      console.log("📤 전송할 데이터:", userName, userGender, birthDate, birthType, birthTime, userEmail, paymentItem, fortuneMonth);
+      fetch("https://script.google.com/macros/s/AKfycbyaDoLDrglc5d9ycgCK0EtWEihFWakfMoiXgYDHaHOmP1JmRLdFLbR4CyFBWcIHElDi/exec", {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+              userName: userName,
+              userGender: userGender,
+              birthDate: birthDate,
+              birthType: birthType,
+              birthTime: birthTime,
+              userEmail: userEmail,
+              paymentItem: paymentItem,
+              fortuneMonth: fortuneMonth,
+              paymentTime: new Date().toLocaleString()
+          })
+      })
+      .then(() => {
+          console.log("✅ 구글 시트에 데이터 전송 완료!");
+      })
+      .catch(error => {
+          console.error("❌ 데이터 전송 실패:", error);
+      });
     }
-})
-.catch(error => {
-    console.error("❌ 데이터 전송 실패:", error);
-    console.log("⚠️ 서버에 데이터를 전송하는 동안 오류가 발생했습니다.");
-});
-  }
-    
-    
-    </script>
-    
-    </html>
+
+    if (userData && userData.name) {
+      console.log("✅ 사용자 데이터:", userData);
+      // Google Sheet 전송: 운세 볼 월은 userData.fortuneMonth로 전달 (없으면 빈 문자열)
+      sendToGoogleSheet(userData.name, userData.gender, userData.birth, userData.birthType, userData.time, userData.email, userData.paymentItem, userData.fortuneMonth || "");
+      alert(`✅ 결제가 완료되었습니다!\n이름: ${userData.name}\n성별: ${userData.gender}\n이메일: ${userData.email}\n결제 항목: ${userData.paymentItem}\n운세 볼 월: ${userData.fortuneMonth}월`);
+    } else {
+      // 데이터 누락 경고 대신 아무 작업도 하지 않습니다.
+      console.log("❌ 사용자 데이터가 없습니다.");
+    }
+  </script>
+</body>
+</html>

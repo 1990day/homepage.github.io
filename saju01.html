@@ -16,6 +16,13 @@
      ">
      <script src="https://nsp.pay.naver.com/sdk/js/naverpay.min.js"></script>
 
+     <script src="https://js.tosspayments.com/v2/standard"></script>
+
+
+
+
+
+
 
 
 
@@ -35,6 +42,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
       <link rel="icon" type="image/png" href="favicon.png">
 <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+
 
 
 
@@ -404,34 +412,36 @@ article{
 
 <!-- 결제 페이지 -->
 <div id="paymentPage" class="page payment-page">
-    <h1>💳 결제 진행</h1>
-    <div id="userInfo">
-      <!-- 자바스크립트에서 "입력 정보 확인" h2와 p들이 동적으로 삽입됨 -->
-      <!-- 예: 
-      <h2>입력 정보 확인</h2>
-      <p><strong>이름:</strong> 홍길동</p>
-      <p><strong>생년월일:</strong> 1900-01-01 (양력)</p>
-      <p><strong>태어난 시간:</strong> 모름</p>
-      <p><strong>이메일:</strong> example@example.com</p>
-      -->
-    </div>
-    
-    <button class="custom-jelly-button" onclick="startKakaoPay('정통사주', 9900)">
-      💛 카카오페이로 결제하기 (9,900원)
-    </button>
-    <br>
-    
-    <button class="custom-jelly-button" onclick="startNaverPay('정통사주', 9900)">
-      💚 네이버페이로 결제하기 (9,900원)
-    </button>
-    <br><br>
-    
-    <button class="custom-jelly-button" onclick="showPage('infoPage')">
-      ⬅️ 정보 수정
-    </button>
+  <h1>💳 결제 진행</h1>
+  <div id="userInfo">
+    <!-- 입력 정보 확인 UI -->
   </div>
   
+  <!-- 토스 위젯 UI를 렌더링할 영역 -->
+  <div id="payment-method"></div>
+  <div id="agreement"></div>
+  
+  <button class="custom-jelly-button" onclick="startKakaoPay('정통사주', 9900)">
+    💛 카카오페이로 결제하기 (9,900원)
+  </button>
+  <br>
+  <button class="custom-jelly-button" onclick="startNaverPay('정통사주', 9900)">
+    💚 네이버페이로 결제하기 (9,900원)
+  </button>
+  <br><br>
+  <button class="custom-jelly-button" onclick="startTossPay('정통사주', 9900)">
+    💙 토스로 결제하기 (9,900원)
+  </button>
+  <button class="custom-jelly-button" onclick="showPage('infoPage')">
+    ⬅️ 정보 수정
+  </button>
+</div>
+
+  
 <script>
+
+let tossWidgets;  // Toss 위젯 인스턴스를 저장할 변수
+
 
     // 날짜 드롭다운 옵션 채우기
 function populateDateSelectors() {
@@ -465,38 +475,39 @@ function populateDateSelectors() {
     }
 }
 
-
-    // 페이지 이동 시 데이터 반영
-    function showPage(pageId) {
-      const pages = document.querySelectorAll('.page');
-      pages.forEach(page => page.classList.remove('active'));
-      document.getElementById(pageId).classList.add('active');
-      
-      if (pageId === 'paymentPage') {
-        const userName = document.getElementById("userName").value;
-        const birthType = document.getElementById("birthType").value;
-        const birthYear = document.getElementById("birthYear").value;
-        const birthMonth = document.getElementById("birthMonth").value;
-        const birthDay = document.getElementById("birthDay").value;
-        const birthDate = `${birthYear}-${String(birthMonth).padStart(2, '0')}-${String(birthDay).padStart(2, '0')}`;
-        const birthHour = document.getElementById("birthHour").value;
-        const userEmail = document.getElementById("userEmail").value;
-        
-        if (!userName || !birthYear || !birthMonth || !birthDay || !birthHour || !userEmail) {
-          alert("모든 정보를 입력해 주세요!");
-          showPage('infoPage');
-          return;
-        }
-        
-        document.getElementById("userInfo").innerHTML = `
-          <h2>입력 정보 확인</h2>
-          <p><strong>이름:</strong> ${userName}</p>
-          <p><strong>생년월일:</strong> ${birthDate} (${birthType})</p>
-          <p><strong>태어난 시간:</strong> ${birthHour}</p>
-          <p><strong>이메일:</strong> ${userEmail}</p>
-        `;
-      }
+function showPage(pageId) {
+  const pages = document.querySelectorAll('.page');
+  pages.forEach(page => page.classList.remove('active'));
+  document.getElementById(pageId).classList.add('active');
+  
+  if (pageId === 'paymentPage') {
+    const userName = document.getElementById("userName").value;
+    const birthType = document.getElementById("birthType").value;
+    const birthYear = document.getElementById("birthYear").value;
+    const birthMonth = document.getElementById("birthMonth").value;
+    const birthDay = document.getElementById("birthDay").value;
+    const birthDate = `${birthYear}-${String(birthMonth).padStart(2, '0')}-${String(birthDay).padStart(2, '0')}`;
+    const birthHour = document.getElementById("birthHour").value;
+    const userEmail = document.getElementById("userEmail").value;
+    
+    if (!userName || !birthYear || !birthMonth || !birthDay || !birthHour || !userEmail) {
+      alert("모든 정보를 입력해 주세요!");
+      showPage('infoPage');
+      return;
     }
+    
+    document.getElementById("userInfo").innerHTML = `
+      <h2>입력 정보 확인</h2>
+      <p><strong>이름:</strong> ${userName}</p>
+      <p><strong>생년월일:</strong> ${birthDate} (${birthType})</p>
+      <p><strong>태어난 시간:</strong> ${birthHour}</p>
+      <p><strong>이메일:</strong> ${userEmail}</p>
+    `;
+    
+    // 토스 위젯 UI 렌더링 (가격 9900원으로 설정)
+    renderTossWidgets(9900).catch(err => console.error("토스 위젯 렌더링 오류:", err));
+  }
+}
 
 
 
@@ -504,6 +515,29 @@ function populateDateSelectors() {
 window.onload = function () {
     populateDateSelectors();
 };
+
+// 토스 위젯 UI를 렌더링하는 함수
+async function renderTossWidgets(price) {
+  const tossPayments = TossPayments("test_gck_docs_Ovk5rk1EwkEbP0W43n07xlzm");
+  // 전역 변수에 할당하여 재사용
+  tossWidgets = tossPayments.widgets({ customerKey: TossPayments.ANONYMOUS });
+  
+  await tossWidgets.setAmount({
+    currency: "KRW",
+    value: price,
+  });
+  
+  await Promise.all([
+    tossWidgets.renderPaymentMethods({
+      selector: "#payment-method",
+      variantKey: "DEFAULT",
+    }),
+    tossWidgets.renderAgreement({
+      selector: "#agreement",
+      variantKey: "AGREEMENT",
+    }),
+  ]);
+}
 
 function startKakaoPay(itemName, price) {
     console.log(`🚀 결제 요청: 결제 항목 = ${itemName}`);
@@ -604,6 +638,39 @@ function startNaverPay(itemName, price) {
 }
 
 
+async function startTossPay(itemName, price) {
+  console.log(`🚀 토스 결제 요청: 결제 항목 = ${itemName}`);
+
+  const userName = document.getElementById("userName").value;
+  const userEmail = document.getElementById("userEmail").value;
+
+  if (!userName || !userEmail) {
+    alert("⚠️ 모든 정보를 입력해 주세요!");
+    return;
+  }
+
+  // tossWidgets가 렌더링되어 있지 않으면 오류 처리
+  if (!tossWidgets) {
+    alert("결제 위젯이 초기화되지 않았습니다. 결제 페이지를 새로고침 해주세요.");
+    return;
+  }
+
+  try {
+    const response = await tossWidgets.requestPayment({
+      orderId: `order_${Date.now()}`,
+      orderName: itemName,
+      successUrl: "https://test-it.co.kr/saju-success.html",
+      failUrl: "https://test-it.co.kr/payment-fail",
+      customerName: userName,
+      customerEmail: userEmail,
+    });
+    console.log("✅ 결제 성공:", response);
+  } catch (error) {
+    console.error("❌ 결제 실패:", error);
+    alert(`❌ 결제 실패: ${error.message}`);
+  }
+}
+
 
     
 function sendToGoogleSheet(userName, userGender, birthDate, birthType, birthTime, userEmail, paymentItem) {
@@ -633,28 +700,36 @@ function sendToGoogleSheet(userName, userGender, birthDate, birthType, birthTime
     });
 }
 
-    // 모든 초기화 및 URL 파라미터 처리 통합
-    window.onload = function() {
-      populateDateSelectors();
-      populateTimeSelectors();
-      
-// 결제 성공 후 URL 파라미터 처리
-const urlParams = new URLSearchParams(window.location.search);
-const userName = urlParams.get("name");
-const userGender = urlParams.get("gender");  // 🌟 성별 추가
-const birthDate = urlParams.get("birth");
-const birthType = urlParams.get("birthType");
-const birthTime = urlParams.get("time");
-const userEmail = urlParams.get("email");
-const paymentItem = urlParams.get("paymentItem");  // ✅ 결제항목 추가!
+// ✅ 페이지 로딩 시 실행
+window.onload = function () {
+    // 날짜 셀렉터 초기화
+    populateDateSelectors();
 
-if (userName && userGender && birthDate && birthType && birthTime && userEmail && paymentItem) {
-    saveToGoogleSheet(userName, userGender, birthDate, birthType, birthTime, userEmail, paymentItem);  // ✅ 결제항목 전달!
-    alert(`✅ 결제가 완료되었습니다!\n이름: ${userName}\n성별: ${userGender}\n이메일: ${userEmail}\n결제 항목: ${paymentItem}`);
-} else {
-    alert("⚠️ 결제 성공 후 정보가 누락되었습니다. 다시 시도해 주세요.");
-}
+    // 결제 성공 후 URL 파라미터 확인
+    const urlParams = new URLSearchParams(window.location.search);
+    const userName = urlParams.get("name");
+    const userGender = urlParams.get("gender");
+    const birthDate = urlParams.get("birth");
+    const birthType = urlParams.get("birthType");
+    const birthTime = urlParams.get("time");
+    const userEmail = urlParams.get("email");
+    const paymentItem = urlParams.get("paymentItem");
+
+    // ✅ 모든 필수 정보가 있을 때만 처리
+    if (userName && userGender && birthDate && birthType && birthTime && userEmail && paymentItem) {
+        console.log("✅ 결제 성공! 정보가 전달되었습니다.");
+        console.log(`이름: ${userName}, 성별: ${userGender}, 생년월일: ${birthDate}, 이메일: ${userEmail}, 결제항목: ${paymentItem}`);
+
+        // 구글 시트로 데이터 전송
+        sendToGoogleSheet(userName, userGender, birthDate, birthType, birthTime, userEmail, paymentItem);
+
+        // 성공 알림
+        alert(`✅ 결제가 완료되었습니다!\n이름: ${userName}\n성별: ${userGender}\n이메일: ${userEmail}\n결제 항목: ${paymentItem}`);
+    } else {
+        console.log("❌ 결제 성공 정보가 없으므로 아무 작업도 하지 않습니다.");
     }
+};
+
   </script>
 </body>
 </html>

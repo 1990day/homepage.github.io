@@ -322,13 +322,17 @@ async function confirmPayment() {
         } else {
             console.error("❌ 결제 승인 실패:", result);
             alert(`⚠️ 결제 승인 실패: ${result.message}`);
+       // 🚨 결제 실패 시 실패 페이지로 이동!
+       window.location.href = "https://test-it.co.kr/payment-fail2";
         }
     } catch (error) {
         console.error("❌ 결제 승인 중 오류 발생:", error);
         alert("⚠️ 결제 승인 중 오류가 발생했습니다.");
+
+        // 🚨 결제 승인 중 오류 발생 시 실패 페이지로 이동!
+        window.location.href = "https://test-it.co.kr/payment-fail2";
     }
 }
-
 // ✅ 페이지 로드 시 결제 승인 실행
 window.onload = function() {
     confirmPayment();

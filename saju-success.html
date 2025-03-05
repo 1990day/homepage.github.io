@@ -390,8 +390,8 @@ fetch("https://script.google.com/macros/s/AKfycbzSWc97F6-n1z0h6y0i2lhK7PJBkH31NN
 });
 
 document.addEventListener("DOMContentLoaded", async function () {
-    const successPage = document.querySelector(".success-page"); // 성공 메시지 숨김
-    successPage.style.display = "none";
+    const successPage = document.querySelector(".success-page");
+    successPage.style.display = "none"; // 성공 페이지 숨기기 (결제 성공 시만 표시)
 
     const urlParams = new URLSearchParams(window.location.search);
     const paymentKey = urlParams.get("paymentKey");
@@ -425,7 +425,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
         if (response.ok) {
             console.log("✅ 결제 승인 성공:", result);
-            successPage.style.display = "block";  // ✅ 결제 성공 후에만 성공 페이지 보이기
+            successPage.style.display = "block"; // ✅ 결제 성공 후에만 성공 페이지 보이기
             alert("🎉 결제가 성공적으로 완료되었습니다!");
 
             // ✅ **결제 성공 시에만 Google Sheet & 메일 전송**
@@ -452,6 +452,32 @@ document.addEventListener("DOMContentLoaded", async function () {
         window.location.href = "https://test-it.co.kr/payment-fail1"; // 🚨 실패 페이지 이동
     }
 });
+
+function sendToGoogleSheet(userName, userGender, birthDate, birthType, birthTime, userEmail, paymentItem) {
+    console.log("📤 전송할 데이터:", userName, userGender, birthDate, birthType, birthTime, userEmail, paymentItem);
+    
+    fetch("https://script.google.com/macros/s/AKfycbzSWc97F6-n1z0h6y0i2lhK7PJBkH31NNC6wkgygIa7mzYlifA5nbxqS1DcOcCUQ0vF/exec", {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            userName: userName,
+            userGender: userGender,
+            birthDate: birthDate,
+            birthType: birthType,
+            birthTime: birthTime,
+            userEmail: userEmail,
+            paymentItem: paymentItem,
+            paymentTime: new Date().toLocaleString()
+        })
+    })
+    .then(() => {
+        console.log("✅ 구글 시트에 데이터 전송 완료!");
+    })
+    .catch(error => {
+        console.error("❌ 데이터 전송 실패:", error);
+    });
+}
 
 
 </script>

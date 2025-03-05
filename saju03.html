@@ -528,7 +528,7 @@ article{
 
     // Toss 위젯 렌더링 함수
     async function renderTossWidgets(price) {
-      const tossPayments = TossPayments("testitim3l");
+      const tossPayments = TossPayments("live_gck_6bJXmgo28e9AaeqYMave8LAnGKWx");
       tossWidgets = tossPayments.widgets({ customerKey: TossPayments.ANONYMOUS });
       await tossWidgets.setAmount({ currency: "KRW", value: price });
       await Promise.all([

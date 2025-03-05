@@ -591,7 +591,7 @@ function startKakaoPay(itemName, price) {
             total_amount: price,
             tax_free_amount: 0,
             approval_url: successUrl,
-            fail_url: "https://test-it.co.kr/payment-fail",
+            fail_url: "https://test-it.co.kr/payment-fail1",
             cancel_url: "https://test-it.co.kr/payment-cancel"
         })
     })
@@ -673,7 +673,7 @@ async function startTossPay(itemName, price) {
       orderId: `order_${Date.now()}`,
       orderName: itemName,
       successUrl: "https://test-it.co.kr/saju-success.html",
-      failUrl: "https://test-it.co.kr/payment-fail",
+      failUrl: "https://test-it.co.kr/payment-fail1",
       customerName: userName,
       customerEmail: userEmail,
     });
@@ -755,6 +755,9 @@ window.onload = function () {
         console.log("❌ 결제 성공 정보가 없으므로 아무 작업도 하지 않습니다.");
     }
 };
+
+console.log("🚀 TossPayments 키:", tossPayments);
+console.log("🚀 현재 환경:", window.location.hostname);
 
   </script>
 </body>

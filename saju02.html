@@ -432,10 +432,6 @@
     <!-- 토스 위젯 UI 렌더링할 영역 (사주2의 경우 별도 위젯은 생략할 수 있고, 그냥 Toss 결제 요청만 진행할 수도 있음) -->
     <div id="payment-method"></div>
     <div id="agreement"></div>
-    <button class="custom-jelly-button" onclick="startKakaoPay('월별사주', 4900)">
-      💛 카카오페이로 결제하기 (4,900원)
-    </button>
-    <br>
     <button class="custom-jelly-button" onclick="startNaverPay('월별사주', 4900)">
       💚 네이버페이로 결제하기 (4,900원)
     </button>
@@ -546,55 +542,7 @@
         }),
       ]);
     }
-    
-    function startKakaoPay(itemName, price) {
-      console.log(`🚀 결제 요청: 결제 항목 = ${itemName}`);
-      const userName = document.getElementById("userName").value;
-      const userGender = document.getElementById("userGender").value;
-      const birthYear = document.getElementById("birthYear").value;
-      const birthMonth = document.getElementById("birthMonth").value;
-      const birthDay = document.getElementById("birthDay").value;
-      const birthType = document.getElementById("birthType").value;
-      const birthHour = document.getElementById("birthHour").value;
-      const userEmail = document.getElementById("userEmail").value;
-      const fortuneMonth = document.getElementById("fortuneMonth").value;
-      if (!userName || !userGender || !birthYear || !birthMonth || !birthDay || !birthType || !birthHour || !userEmail || !fortuneMonth) {
-          alert("⚠️ 모든 정보를 입력해 주세요!");
-          return;
-      }
-      const birthDate = `${birthYear}-${String(birthMonth).padStart(2, '0')}-${String(birthDay).padStart(2, '0')}`;
-      const successUrl = `https://test-it.co.kr/saju-success2.html?name=${encodeURIComponent(userName)}&gender=${encodeURIComponent(userGender)}&birth=${encodeURIComponent(birthDate)}&birthType=${encodeURIComponent(birthType)}&time=${encodeURIComponent(birthHour)}&email=${encodeURIComponent(userEmail)}&paymentItem=${encodeURIComponent(itemName)}&fortuneMonth=${encodeURIComponent(fortuneMonth)}`;
-      console.log("🚀 카카오페이 successUrl:", successUrl);
-      fetch("https://kapi.kakao.com/v1/payment/ready", {
-          method: "POST",
-          headers: {
-              "Authorization": "KakaoAK 9ef00fb320e149a6aed3dae54cf9f18a",
-              "Content-Type": "application/x-www-form-urlencoded"
-          },
-          body: new URLSearchParams({
-              cid: "TC0ONETIME",
-              partner_order_id: "order_" + new Date().getTime(),
-              partner_user_id: userEmail,
-              item_name: `테스트잇 월별사주`,
-              quantity: 1,
-              total_amount: price,
-              tax_free_amount: 0,
-              approval_url: successUrl,
-              fail_url: "https://test-it.co.kr/payment-fail2",
-              cancel_url: "https://test-it.co.kr/payment-cancel"
-          })
-      })
-      .then(response => response.json())
-      .then(data => {
-          if (data.next_redirect_pc_url) {
-              window.location.href = data.next_redirect_pc_url;
-          } else {
-              alert("❌ 결제 요청 실패: " + (data.code || "알 수 없는 오류"));
-          }
-      })
-      .catch(error => console.error("❌ 결제 중 오류 발생:", error));
-    }
-    
+   
     function startNaverPay(itemName, price) {
       console.log(`🚀 결제 요청: 결제 항목 = ${itemName}`);
       const userName = document.getElementById("userName").value;

@@ -355,40 +355,6 @@ function sendToGoogleSheet(userName, userGender, birthDate, birthType, birthTime
 
 
 
-if (userName && userGender && birthDate && birthType && birthTime && userEmail && paymentItem) {
-     // sendToGoogleSheet(userName, userGender, birthDate, birthType, birthTime, userEmail, paymentItem);
-} else {
-    // alert("⚠️ 결제 성공 후 정보가 누락되었습니다!");  // 주석 처리됨
-}
-
-
-
-   // 결제 성공 시 데이터 전송
-fetch("https://script.google.com/macros/s/AKfycbzSWc97F6-n1z0h6y0i2lhK7PJBkH31NNC6wkgygIa7mzYlifA5nbxqS1DcOcCUQ0vF/exec", {
-    method: "POST",
-    mode: "no-cors",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-        userName: userName,
-        userGender: userGender,
-        birthDate: birthDate,
-        birthType: birthType,
-        birthTime: birthTime,
-        userEmail: userEmail,
-        paymentItem: decodeURIComponent(paymentItem),  // ✅ 여기 디코딩 추가!
-        paymentTime: new Date().toLocaleString()
-})
-
-})
-.then(() => {
-    console.log(`✅ 데이터 전송 완료! 결제 항목: ${paymentItem}`);
-    // 원래 있던 alert 제거
-})
-.catch(error => {
-    console.error("❌ 서버 통신 중 오류 발생:", error);
-    // 원래 있던 alert 제거
-});
-
 document.addEventListener("DOMContentLoaded", async function () {
     const successPage = document.querySelector(".success-page");
     successPage.style.display = "none"; // 성공 페이지 숨기기 (결제 성공 시만 표시)

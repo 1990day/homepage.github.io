@@ -14,7 +14,7 @@
      connect-src 'self' https://*;
      frame-src 'self' https://*;
      ">
-     <script src="https://nsp.pay.naver.com/sdk/js/naverpay.min.js"></script>
+   
      <script src="https://js.tosspayments.com/v2/standard"></script>
 
 
@@ -427,9 +427,8 @@ article{
     <div id="payment-method"></div>
     <div id="agreement"></div>
  
-    <button class="custom-jelly-button" onclick="startNaverPay('재회사주', 19900)">💚 네이버페이로 결제하기 (19,900원)</button>
-    <br>
-    <button class="custom-jelly-button" onclick="startTossPay('재회사주', 19900)">💙 토스로 결제하기 (19,900원)</button>
+   
+    <button class="custom-jelly-button" onclick="startTossPay('재회사주', 19900)">💙 결제하기 (19,900원)</button>
     <br>
     <button class="custom-jelly-button" onclick="showPage('infoPage')">⬅️ 정보 수정</button>
   </div>
@@ -534,42 +533,7 @@ article{
 
   
 
-    function startNaverPay(itemName, price) {
-      const userName1 = document.getElementById("userName1").value;
-      const userGender1 = document.getElementById("userGender1").value;
-      const birthDate1 = `${document.getElementById("birthYear1").value}-${String(document.getElementById("birthMonth1").value).padStart(2, '0')}-${String(document.getElementById("birthDay1").value).padStart(2, '0')}`;
-      const birthType1 = document.getElementById("birthType1").value;
-      const birthHour1 = document.getElementById("birthHour1").value;
-      const userName2 = document.getElementById("userName2").value;
-      const userGender2 = document.getElementById("userGender2").value;
-      const birthDate2 = `${document.getElementById("birthYear2").value}-${String(document.getElementById("birthMonth2").value).padStart(2, '0')}-${String(document.getElementById("birthDay2").value).padStart(2, '0')}`;
-      const birthType2 = document.getElementById("birthType2").value;
-      const birthHour2 = document.getElementById("birthHour2").value;
-      const userEmail = document.getElementById("userEmail").value;
-      const successUrl = `https://test-it.co.kr/saju-success5.html?` +
-        `name1=${encodeURIComponent(userName1)}&gender1=${encodeURIComponent(userGender1)}` +
-        `&birth1=${encodeURIComponent(birthDate1)}&birthType1=${encodeURIComponent(birthType1)}` +
-        `&time1=${encodeURIComponent(birthHour1)}&name2=${encodeURIComponent(userName2)}` +
-        `&gender2=${encodeURIComponent(userGender2)}&birth2=${encodeURIComponent(birthDate2)}` +
-        `&birthType2=${encodeURIComponent(birthType2)}&time2=${encodeURIComponent(birthHour2)}` +
-        `&email=${encodeURIComponent(userEmail)}&paymentItem=${encodeURIComponent(itemName)}`;
-      console.log("🚀 네이버페이 successUrl:", successUrl);
-      const oPay = Naver.Pay.create({
-          mode: "development",  
-          clientId: "HN3GGCMDdTgGUfl0kFCo", 
-          chainId: "a3lzdzZ0QmtxSG1"
-      });
-      oPay.open({
-          merchantPayKey: "order_" + new Date().getTime(),
-          productName: "테스트잇 재회사주",
-          productCount: "1",
-          totalPayAmount: price,
-          taxScopeAmount: price,
-          returnUrl: successUrl
-      });
-      alert(`💚 네이버페이로 ${itemName} 결제가 진행됩니다!`);
-    }
-
+   
     async function startTossPay(itemName, price) {
       const userName1 = document.getElementById("userName1").value;
       const userEmail = document.getElementById("userEmail").value;
@@ -624,6 +588,9 @@ article{
     window.onload = function () {
       populateDateSelectors();
     };
+    document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+  });
   </script>
 </body>
 </html>

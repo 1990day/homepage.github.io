@@ -662,7 +662,9 @@ window.onload = function () {
 
 console.log("🚀 TossPayments 키:", tossPayments);
 console.log("🚀 현재 환경:", window.location.hostname);
-
+document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+  });
   </script>
 </body>
 </html>

@@ -1,0 +1,500 @@
+
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+
+     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5522499110435321"
+     crossorigin="anonymous"></script>
+
+
+
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>테스트잇 챗지피티 성격 테스트</title>
+    <meta name="description" content="테스트잇 챗지피티 성격 테스트">
+<meta name="keywords" content="테스트잇,성격테스트,챗지피티성격테스트,챗지피티성격테스트,테스트잇연애,테스트잇챗지피티성격,챗지피티성격테스트결과,연애테스트,연애mbti,연애성격테스트, 심리테스트, mbti테스트,선플읽기테스트,챗지피티테스트">
+    <meta property="og:type" content="website"> 
+    <meta property="og:title" content="테스트잇 챗지피티 성격 테스트">
+    <meta property="og:description" content="테스트잇 챗지피티 성격 테스트">
+    <meta property="og:image" content="img_main265.png">
+    <meta property="og:url" content="https://test-it.co.kr/test265">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+      <link rel="icon" type="image/png" href="favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+
+
+
+    <style>
+        
+        @font-face {
+    font-family: 'NanumSquareRound';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+        
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'KIMM_Bold';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2212@1.0/KIMM_Bold.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+}
+        
+button {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+
+        body {
+            font-family: 'NanumSquareRound', sans-serif;
+        }
+        .logo {
+            width: 100px;
+            margin-top: 14px;
+        }
+        .main-nav {
+    display: flex;
+    font-size: 1rem; /* 기본 크기 줄이기 */
+    text-transform: uppercase;
+    margin-top: 34px;
+    list-style: none;
+}
+
+.main-nav li {
+    margin-left: 20px; /* 간격 줄이기 */
+    line-height: 1.7;
+    color: #432;
+}
+
+        .main-nav a{
+            color: #432;
+            line-height: 1.7;
+        }
+        .main-nav a:hover {
+            color: #0bd;
+        }
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+        }
+        article{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .question, .nickname, .result {
+            display: none;
+        }
+        .progress {
+    display: block !important; /* 무조건 보이게 설정 */
+    width: 100%;
+    height: 12px; /* 프로그래스 바 높이 */
+    background-color: #f5f5f5; /* 바탕 색상 */
+    border-radius: 6px;
+    overflow: hidden;
+    margin-top: 15px;
+}
+
+.progress-bar {
+    width: 0%; /* 초기값 */
+    height: 100%;
+    background-color: #ffd8d8; /* 진행되는 바 색상 */
+    transition: width 0.3s ease-in-out; /* 부드럽게 이동 */
+}
+
+
+        
+        #img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .custom-jelly-button {
+    max-width: 350px;
+    width: 350px; /* 부모 요소에 영향을 받지 않도록 자동 크기 조정 */
+    height: 50px; /* 버튼 높이 고정 */
+    padding: 10px 20px; /* 내부 여백 조정 */
+    font-size: 14px !important;
+    font-weight: normal;
+    color: black !important;
+    background-color: #ffd1d1;
+    border: none;
+    border-radius: 15px;
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+    white-space: nowrap; /* 버튼 내용이 한 줄로 유지되도록 설정 */
+}
+
+
+.custom-jelly-button:hover {
+    background-color: #ffd1d1; /* 호버 시에도 비슷한 톤 유지 */
+}
+
+    
+.jelly-question-box {
+    width: 100%;
+    max-width: 400px;
+    min-height: 150px;
+    padding: 30px 20px;
+    margin: 20px auto;
+    background-color: #dddddd; /* 진한 분홍색 단색 적용 */
+    border-radius: 25px;
+    text-align: center;
+    color: #432;
+    font-weight: normal;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.jelly-question-box h6 {
+    font-size: 17px !important;
+    font-weight: normal;
+    color: black;
+}
+
+        
+.save-result-button {
+    max-width: 350px;
+    width: 350px;
+    height: 50px; /* 높이를 다른 버튼과 동일하게 맞춤 */
+    font-size: 14px !important;
+    font-weight: normal;
+    color: black !important;
+    background-color: #ffd1d1;
+    border: none;
+    border-radius: 15px;
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+    white-space: nowrap;
+}
+
+
+.save-result-button:hover {
+    background-color: #ffd1d1; /* 호버 시 색 유지 */
+}
+
+
+.save-result-button:active,
+.save-result-button:focus {
+    background-color: #ffd1d1 !important; /* 클릭 후에도 노랑 유지 */
+    border-color: #ffd1d1 !important;
+    box-shadow: none !important; /* 클릭 시 기본 부트스트랩 효과 제거 */
+    outline: none !important;
+}
+
+  .image-container {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    overflow: hidden; /* 컨테이너 내에서 이미지가 넘치지 않도록 설정 */
+}
+
+#resultImage {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+#resultContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative; /* 위치 고정 */
+    width: auto !important;
+    height: auto !important;
+    padding: 20px; /* 캡처 시 짤리는 문제 해결 */
+}
+
+#nicknameOverlay {
+    position: absolute; /* 닉네임 위치 고정 */
+    top: 15.5%; /* 기존 위치 유지 */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+    font-weight: bold;
+    color: #000000;
+    z-index: 10;
+    white-space: nowrap;
+    pointer-events: none;
+    font-family: 'KIMM_Bold', sans-serif;
+}
+
+
+        #img_main{
+            width: 500px;
+            max-width: 100%;
+            height: auto;
+            margin: 0 auto;
+        }
+        .custom-button {
+            width: 100%;
+            max-width: 350px;
+            margin: 10px auto;
+        }
+        .nickname-input {
+            max-width: 350px;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        /* 모바일 화면에서 닉네임 크기 조정 */
+@media screen and (max-width: 768px) {
+    #nicknameOverlay {
+        font-size: 16px; /* 모바일에서 글자 크기 줄이기 */
+    }
+    .custom-jelly-button, .save-result-button {
+        width: 90%; /* 부모 요소에 맞게 자동 조정 */
+        max-width: 300px; /* 최대 크기 제한 */
+        min-width: 200px; /* 너무 작아지는 것 방지 */
+    }
+    
+    @media screen and (max-width: 430px) {
+    #nicknameOverlay {
+        font-size: 15px; /* 모바일에서 글자 크기 줄이기 */
+    }
+    @media screen and (max-width: 410px) {
+    #nicknameOverlay {
+        font-size: 14px; /* 모바일에서 글자 크기 줄이기 */
+    }
+    
+
+}
+
+    </style>
+
+</head>
+<body class="container" style="background-color:#ffffff">
+    <header class="page-header wrapper">
+        <h1><a href="index.html"><img class="logo" src="img_logo.png" alt="test it"></a>
+        </h1>
+        <nav>
+            <u1 class="main-nav">
+            <li> <a href="https://test-it.co.kr/test.html">성격</a></li>
+            <li> <a href="https://test-it.co.kr/face.html">얼굴</a></li>
+            <li> <a href="https://test-it.co.kr/etc.html">그외</a></li>
+            <li> <a href="https://test-it.co.kr/saju.html">사주</a></li>
+        </u1>
+    </nav>
+    </header>
+
+<!-- 시작화면 -->
+<article class="start">
+    <img id="img_main" class="mt-3" src="img_main265.png">
+    <button type="button" class="btn btn-info mt-1 custom-jelly-button" onclick='showNicknameInput();' style="font-size:large; font-weight: normal; color: black; background-color: rgb(255, 197, 197); border-color: rgb(0, 0, 0); width: 350px; height: 50px; margin: 0 auto;">테스트 시작하기</button>
+</article>
+
+
+    <!-- 닉네임 입력 화면 -->
+    <article class="nickname">
+        <img id="img_nickname" class="mt-1" src="nickname265.png" style="max-width: 100%; height: auto; margin: 0 auto; display: block;">
+        <input type="text" id="nicknameInput" class="form-control nickname-input" placeholder="닉네임을 입력해요!">
+     <button type="button" class="btn btn-info mt-3 custom-jelly-button" onclick='start();' style="font-size: 16px; font-weight: normal; color: black; background-color: rgb(255, 209, 209); border-color: rgb(0, 0, 0);">다음 화면으로</button>
+    </article>
+    
+ <!-- 문제 화면 -->
+<article class="question">
+    <div class="progress mt-5">
+        <div class="progress-bar" role="progressbar" style="width: calc(100/12*1%)" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+    <!-- 문제 텍스트에 jelly-question-box 클래스 적용 -->
+    <div class="jelly-question-box">
+        <h6 id="title" style="font-weight: normal; color: black;" class="text-center mt-1">문제</h6>
+    </div>
+    <input id="type" type="hidden" value="EI">
+    <button id="A" type="button" class="btn btn-info mt-3 custom-jelly-button" style="font-size:smaller; font-weight: normal; color: black; background-color: rgb(255, 226, 226); border-color: rgb(255, 226, 226); width: 350px; height: 100px; margin: 0 auto; display: block;">Primary</button>
+    <button id="B" type="button" class="btn btn-info mt-3 custom-jelly-button" style="font-size:smaller; font-weight: normal; color: black; background-color: rgb(255, 226, 226); border-color: rgb(255, 226, 226); width: 350px; height: 100px; margin: 0 auto; display: block;">Primary</button>
+</article>
+
+
+  <!-- 결과 화면 -->
+<article class="result">
+    <div class="image-container" id="resultContainer">
+        <img id="resultImage" src="" alt="result image" style="width: 100%; height: auto;">
+        <div id="nicknameOverlay">닉네임</div>
+    </div>
+    <button type="button" class="btn btn-info mt-3 save-result-button" onclick="saveResult()" style="font-size:large; font-weight: normal;">결과 저장하기</button>
+    <button type="button" class="btn btn-info mt-2 custom-jelly-button" onclick="location.href='test265.html'" style="font-size:large; font-weight: normal;">다시 해보기</button>
+    <button type="button" class="btn btn-info mt-2 custom-jelly-button" onclick="location.href='/'" style="font-size:large; font-weight: normal;">다른 테스트 해보기</button>
+    <button type="button" id="share-btn" class="btn btn-info mt-2 custom-jelly-button">
+    테스트 공유하기
+</button>
+</article>
+
+
+    <!-- 쿠팡 배너 -->
+    <article class="coupang_ad mt-3 text-center">
+        <script src="https://ads-partners.coupang.com/g.js"></script>
+        <script>
+            new PartnersCoupang.G({"id":798186,"template":"carousel","trackingCode":"AF4391881","width":"350","height":"140","tsource":""});
+        </script>
+    </article>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.5/dist/html2canvas.min.js"></script>
+
+    <script>
+        var num = 1;
+        var EI = 0, SN = 0, TF = 0, JP = 0;
+          var q = {
+            1: {"title": "내가 챗지피티가 됐다면<br><br>사용자와의 첫 인사를 어떻게 할까?", "type": "EI", "A": "안녕하세요!<br>오늘 같이 신나게 이야기해봐요!", "B": "안녕하세요<br>마음을 열고 천천히 대화를 시작해요"},
+            2: {"title": "사용자가<br><br>선택지 두 개를 두고 고민할 때<br><br>나는 어떻게 할까?", "type": "TF", "A": "어떤 거에 더 마음에 가는지<br>사용자의 감정을 파악해 본다", "B": "선택지 두 개의 장단점을<br>분석하고 비교해 준다"},
+            3: {"title": "사용자가<br><br>미래가 깜깜하고 뭘 해야 할지 모르겠다고<br><br>고민할 때", "type": "SN", "A": "지금 당장 할 수 있는 것부터<br>시작하면 걱정이 줄어들 거야", "B": "넌 엄청난 가능성을 갖고 있어<br>분명할 수 있는 게 많을 거야"},
+            4: {"title": "사용자가<br><br>일정 관리가 힘들다고<br><br>어떻게 해야 하냐 물을 때", "type": "JP", "A": "너무 틀에 얽매이지 말고<br>그때그때 유연하게 대처하는 게 좋아", "B": "꼼꼼한 계획을 세우고<br>우선순위를 정해서 실천해봐!"},
+            5: {"title": "사용자가<br><br>쉬는 날엔 뭘 해야 할까요?<br><br>라고 할 때", "type": "EI", "A":"밖에서 사람들과 어울리는 건 어때?<br>새로운 경험이 널 기다리고 있어!", "B": "집에서 조용히 책을 읽거나<br>혼자 할 수 있는 취미를 즐겨보는 것도 좋아"},
+            6: {"title": "사용자가<br><br>어떤 결정을 내릴 때 가장 중요한 건 뭔가요?<br><br>라고 할 때", "type": "TF", "A": "네가 행복할 수 있는 결정이 가장 중요해", "B": "논리적이고 객관적인 분석이 중요해"},
+            7: {"title": "사용자가<br><br>마감이 다가오는데 아무것도 안 하고 있어요<br><br>라고 할 때", "type": "JP", "A": "일단 가장 쉬운 것부터 시작해<br>한번 하면 속도가 붙을 거야", "B": "미리미리 준비하는 습관을 길러야 해<br>지금 바로 시작하자"},
+            8: {"title":"사용자가<br><br>여행을 가고 싶은데 어디로 가야 할까요?<br><br>라고 할 때", "type": "SN", "A": "편하게 즐길 수 있는<br>현실적인 여행지를 추천해줄게!", "B": "조금 색다르고 흥미로운 곳을<br>가보는 건 어때? 추천해 줄게!"},
+            9: {"title": "사용자가<br><br>일하는 중에 실수했다고 털어놓는다면", "type": "TF", "A": "누구나 실수할 수 있어요<br>기분은 좀 괜찮아요?", "B": "다음엔 이런 방법으로<br>해보면 좋을 것 같아요"},
+            10: {"title": "사용자가<br><br>행복해지는 방법을 물을 때", "type": "SN", "A": "운동을 하고 충분한 수면을 취하고<br>좋아하는 일을 해보세요", "B": "행복은 각자의 의미가 달라요<br>당신에게 행복은 뭔지 찾아볼까요?"},
+            11: {"title": "사용자가<br><br>계획을 세우면 지키기가 어려워요<br><br>라고 할 때", "type": "JP", "A": "계획은 상황에 따라 변하는 거야!<br>너무 완벽하게 지키려고 하지 말자", "B": "현실적으로 가능한 계획을 세우고<br>꾸준히 실천하는 게 중요해"},
+            12: {"title": "지금까지 사용자와 채팅을 할 때<br><br>나는 어떤 스타일로 대답했을까?", "type": "EI", "A": "유머도 섞고 감탄사도 넣으며<br>활기차게 대화했을 것이다", "B": "차분하고 조용하게<br>집중해서 답했을 것이다"}
+        };
+  function showNicknameInput() {
+            $(".start").hide();
+            $(".nickname").show();
+        }
+
+
+        function start() {
+    var nickname = $("#nicknameInput").val().trim();
+    if (nickname === "") {
+        alert("닉네임을 입력해주세요.");
+        return;
+    }
+
+    // 닉네임 형식 변경: 'ㅇㅇㅇ님의 게시판'
+    var modifiedNickname = nickname + "GPT";
+
+    // 결과창에서 닉네임 표시
+    $("#nicknameOverlay").text(modifiedNickname);
+
+    $(".nickname").hide();
+    $(".question").show();
+    next();
+}
+
+
+
+
+function next() {
+    if (num === 13) {
+        $(".question").hide();
+        $(".result").show();
+        var mbti = "";
+        mbti += (EI >= 2) ? "E" : "I";
+        mbti += (SN >= 2) ? "S" : "N";
+        mbti += (TF >= 2) ? "F" : "T";
+        mbti += (JP >= 2) ? "P" : "J";
+        $("#resultImage").attr("src", "img_" + mbti.toLowerCase() + "265.png");
+    } else {
+        var progressPercent = (num / 12) * 100; // 문제 진행률 계산
+        $(".progress-bar").css("width", progressPercent + "%"); // 프로그래스 바 업데이트
+
+        $("#title").html(q[num]["title"]);
+        $("#type").val(q[num]["type"]);
+        $("#A").html(q[num]["A"]);
+        $("#B").html(q[num]["B"]);
+        num++;
+    }
+}
+
+
+
+        $("#A").click(function () {
+            var type = $("#type").val();
+            if (type == "EI") EI++;
+            else if (type == "SN") SN++;
+            else if (type == "TF") TF++;
+            else if (type == "JP") JP++;
+            next();
+        });
+
+        $("#B").click(function () {
+            next();
+        });
+
+        function saveResult() {
+    window.scrollTo(0, 0); // 캡처 전에 화면을 맨 위로 이동
+
+    const resultElement = document.querySelector("#resultContainer");
+    const nicknameOverlay = document.querySelector("#nicknameOverlay");
+
+    // 닉네임과 결과 컨테이너 크기 유지
+    resultElement.style.width = resultElement.scrollWidth + "px";
+    resultElement.style.height = resultElement.scrollHeight + "px";
+
+    html2canvas(resultElement, {
+        useCORS: true,
+        scale: window.devicePixelRatio, // 해상도 개선
+        backgroundColor: null,
+        scrollX: 0, // 가로 스크롤 고정
+        scrollY: 0, // 세로 스크롤 고정
+        width: resultElement.scrollWidth, // 원본 크기 유지
+        height: resultElement.scrollHeight, // 원본 크기 유지
+    }).then(function (canvas) {
+        var link = document.createElement("a");
+        link.download = "testit265_result.png";
+        link.href = canvas.toDataURL("image/png");
+        link.click();
+    }).catch((err) => {
+        console.error("❌ 이미지 저장 실패:", err);
+    });
+}
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const shareButton = document.getElementById("share-btn"); // 공유 버튼 선택
+    if (shareButton) {
+        shareButton.addEventListener("click", function () {
+            const testURL = window.location.href; // 현재 페이지 URL 가져오기
+            const shareText = "내가 챗지피티가 된다면?✨🩷"; 
+
+            if (navigator.share) {
+                // 📱 모바일 및 지원되는 브라우저에서 기본 공유 기능 사용
+                navigator.share({
+                    title: "테스트잇 챗지피티 성격 테스트", 
+                    text: shareText,
+                    url: testURL
+                }).then(() => {
+                    console.log("✅ 공유 성공!");
+                }).catch((error) => {
+                    console.error("❌ 공유 실패:", error);
+                });
+            } else {
+                // 💻 PC에서는 클립보드에 복사
+                navigator.clipboard.writeText(`${shareText} ${testURL}`).then(() => {
+                    alert("📌 링크가 복사되었습니다! 친구들에게 공유해보세요.");
+                }).catch((err) => {
+                    console.error("❌ 클립보드 복사 실패:", err);
+                });
+            }
+        });
+    }
+});
+
+    </script>
+</body>
+
+</html>

@@ -7,19 +7,18 @@ html {
 
 
 @font-face {
-    font-family: 'RIDIBatang';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/RIDIBatang.woff') format('woff');
+    font-family: 'NanumSquareRound';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
-
 .section {
     margin-top: 50px;
 }    
 
 
 body {
-    font-family: 'RIDIBatang', sans-serif;
+    font-family: 'NanumSquareRound', sans-serif;
     line-height: 1.7;
     color: #432;
     background: #fbeffc;

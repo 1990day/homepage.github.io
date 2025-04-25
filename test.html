@@ -1413,17 +1413,45 @@
     }
   </script>   
     
-    <footer>
-        <div style="wrapper">
-            <p>제작/광고문의 - tktkrh2@gmail.com</p>
-            <p>&copy; test it 2025. All Rights Reserved.</p>
-            <p style="color: gray; font-size: 12px;">
-                상호명 : 테스트잇 |  대표자명 : 송다혜<br>
-                사업자등록번호: 662-54-00892  |  010-2175-2277<br>
-                주소: 경기도 하남시 미사강변서로 85
-            </p>
-        </div>
-    </footer>
+
+    <footer style="
+    width: 100vw;
+    background-color: #ffefef;
+    padding: 10px 10px;
+    text-align: center;
+    font-size: 13px;
+    color: #333;
+    box-sizing: border-box;
+  ">
+    <p style="margin: 4px 0;">제작/광고문의 - tktkrh2@gmail.com</p>
+    <p style="margin: 4px 0;">&copy; test it 2025. All Rights Reserved.</p>
+  
+    <button onclick="toggleBusinessInfo()" style="
+      background: none;
+      border: none;
+      color: #333;
+      font-size: 13px;
+      cursor: pointer;
+      margin: 10px 0;
+      text-decoration: none;
+    ">
+      사업자정보 확인
+    </button>
+  
+    <div id="businessInfo" style="display: none; color: #666; font-size: 12px; line-height: 1.6; margin-top: 10px;">
+      <p style="margin: 4px 0;">상호명 : 테스트잇 | 대표자명 : 송다혜</p>
+      <p style="margin: 4px 0;">사업자등록번호: 662-54-00892 | 010-2175-2277</p>
+      <p style="margin: 4px 0;">주소: 경기도 하남시 미사강변서로 85</p>
+    </div>
+  </footer>
+  
+  <script>
+    function toggleBusinessInfo() {
+      const info = document.getElementById('businessInfo');
+      info.style.display = (info.style.display === 'none' || info.style.display === '') ? 'block' : 'none';
+    }
+  </script>
+  
      </html>
         
         

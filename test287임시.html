@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>과거 회귀 테스트</title>
+  <style>
+body {
+  background: #fff0f5; /* 연핑크 배경 */
+  font-family: 'Pretendard', sans-serif;
+  color: #d63384; /* 전체 글자 연한 체리핑크 계열 */
+}
+
+.container {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.2s;
+}
+
+.card:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+}
+
+.main-image {
+  width: 100%;
+  border-radius: 16px;
+  margin-bottom: 24px;
+}
+
+.jelly-button {
+  background: #ff9ac1;
+  color: white;
+  font-size: 20px;
+  border: none;
+  border-radius: 999px;
+  padding: 18px 36px; /* ✅ 버튼 크기 키움 */
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.3s;
+  display: block;
+  margin: 0 auto;
+}
+
+.jelly-button:hover {
+  background: #ff79ab;
+  transform: scale(1.07);
+}
+.hidden {
+  display: none;
+}
+
+.progress-bar {
+  height: 10px;
+  background: #ffe2ec;
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 50px;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #ff80aa;
+  width: 0%;
+  transition: width 0.3s;
+  border-radius: 999px;
+}
+
+.question {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 30px;
+  text-align: center; /* ✅ 가운데 정렬 */
+  color: #d63384;
+}
+
+.option {
+  background: #ffe3ed;
+  color: #c2185b;
+  padding: 40px 20px;
+  margin: 12px auto;
+  border-radius: 16px;
+  border: 1px solid #ffc1d7;
+  cursor: pointer;
+  max-width: 80%;
+  text-align: center; /* ✅ 가운데 정렬 */
+  transition: all 0.2s ease;
+    margin-bottom: 15px; /* 선택지 아래에 여유 공간 확보 */
+}
+
+.option:hover {
+  background: #ffc7dc;
+  border-color: #ffa1bd;
+}
+.result {
+  text-align: center;
+  padding-top: 12px;
+}
+
+.result img {
+  width: 100%;
+  border-radius: 16px;
+  margin-bottom: 20px;
+}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div id="main-screen" class="card">
+      <img src="main.jpg" alt="메인 이미지" class="main-image" />
+      <button class="jelly-button" onclick="startTest()">시작하기</button>
+    </div>
+
+    <div id="question-screen" class="card hidden">
+      <div class="progress-bar"><div class="progress-fill" id="progress"></div></div>
+      <div class="question" id="questionText"></div>
+      <div id="options"></div>
+    </div>
+
+    <div id="result-screen" class="card hidden">
+      <div class="result">
+        <img id="resultImage" src="result.jpg" alt="결과 이미지" />
+        <h2 id="resultText"></h2>
+      </div>
+    </div>
+  </div>
+
+<script>
+    const baseQuestions = [
+      { q: "과거로 돌아가서 가장 바꾸고 싶은 건?", options: [
+        { text: "진로를 결정하던 시기", score: { strategist: 1 } },
+        { text: "좋아했던 사람과 마주했던 순간", score: { lover: 1 } },
+        { text: "아무것도 안 하고 흘려보낸 날", score: { rest: 1 } },
+        { text: "하고 싶었던 걸 미뤘던 타이밍", score: { creator: 1 } }
+      ]},
+      { q: "돌아간다면 제일 먼저 해보고 싶은 건?", options: [
+        { text: "하고 싶은 거 일단 해보기", score: { creator: 1 } },
+        { text: "돈 되는 쪽부터 찾기", score: { strategist: 1 } },
+        { text: "감정부터 정확히 표현하기", score: { emotion: 1 } },
+        { text: "살아보고 싶은 대로 살아보기", score: { freedom: 1 } }
+      ]},
+      { q: "어린 시절의 나에게 한마디 할 수 있다면?", options: [
+        { text: "너무 참지 말고 말해", score: { emotion: 1 } },
+        { text: "겁내지 말고 해봐", score: { creator: 1 } },
+        { text: "그 사람, 네가 먼저 잡아", score: { lover: 1 } },
+        { text: "조금만 더 넓게 생각해봐", score: { freedom: 1 } }
+      ]},
+      { q: "가장 미안한 사람은 누구야?", options: [
+        { text: "가족", branch: "family" },
+        { text: "나 자신", branch: "self" },
+        { text: "연인", branch: "lover" },
+        { text: "친구", branch: "friend" }
+      ]}
+    ];
+
+    const postQuestions = [
+      { q: "다시 과거로 돌아간다면 무엇부터 다르게 할까?", options: [
+        { text: "사람들과 더 많이 어울린다", score: { emotion: 1 } },
+        { text: "계획을 철저히 짠다", score: { strategist: 1 } },
+        { text: "하고 싶은 걸 시작한다", score: { creator: 1 } },
+        { text: "좀 쉬고 덜 참는다", score: { rest: 1 } }
+      ]},
+      { q: "삶을 다시 설계한다면?", options: [
+        { text: "안정된 직업과 삶을 선택", score: { strategist: 1 } },
+        { text: "내 이름으로 무언가를 만든다", score: { creator: 1 } },
+        { text: "내 감정에 더 솔직해진다", score: { emotion: 1 } },
+        { text: "혼자 있어도 괜찮은 삶", score: { rest: 1 } }
+      ]},
+      { q: "어떤 방식으로 일하고 싶어?", options: [
+        { text: "회사보단 나 혼자", score: { freelancer: 1 } },
+        { text: "콘텐츠로 돈 벌고 싶어", score: { vlogger: 1 } },
+        { text: "조용히 글 쓰며 살고 싶다", score: { writer: 1 } },
+        { text: "가르치고 나누는 사람", score: { teacher: 1 } }
+      ]},
+      { q: "어디서 살고 싶은 편이야?", options: [
+        { text: "한 곳에 정착하고 싶다", score: { strategist: 1 } },
+        { text: "이곳저곳 옮겨다니고 싶다", score: { traveler: 1 } },
+        { text: "로컬 커뮤니티 속에서 살고 싶다", score: { localist: 1 } },
+        { text: "나만의 공간에서 조용히", score: { solo: 1 } }
+      ]},
+      { q: "시간이 많다면?", options: [
+        { text: "브랜드를 만들어 본다", score: { seller: 1 } },
+        { text: "직장도 하고 프리도 한다", score: { hybrid: 1 } },
+        { text: "일단 쉬어야 할 듯", score: { rest: 1 } },
+        { text: "배우고 기록하는 시간", score: { creator: 1 } }
+      ]},
+      { q: "어떤 어른이 되고 싶어?", options: [
+        { text: "내 감정 잘 표현하는 사람", score: { emotion: 1 } },
+        { text: "내가 만든 걸로 인정받는 사람", score: { creator: 1 } },
+        { text: "사람들에게 좋은 영향 주는 사람", score: { teacher: 1 } },
+        { text: "혼자서도 괜찮은 사람", score: { solo: 1 } }
+      ]}
+    ];
+
+        const emotionBranches = {
+      family: [
+        { q: "가족에게 더 하고 싶었던 건?", options: [
+          { text: "고맙다는 말", score: { family: 1 }, tag: "a" },
+          { text: "더 많은 시간", score: { family: 1 }, tag: "b" }
+        ]},
+        { q: "왜 그러지 못했을까?", options: [
+          { text: "표현이 어색해서", score: { family: 1 }, tag: "x" },
+          { text: "바빠서 미뤘어", score: { family: 1 }, tag: "y" }
+        ]}
+      ],
+      self: [
+        { q: "그때의 나에게 해주고 싶은 말은?", options: [
+          { text: "하고 싶은 거 해도 돼", score: { self: 1 }, tag: "a" },
+          { text: "좀 쉬어도 괜찮아", score: { rest: 1 }, tag: "b" }
+        ]},
+        { q: "그때 참았던 이유는?", options: [
+          { text: "실망 줄까봐", score: { self: 1 }, tag: "x" },
+          { text: "그게 편했어", score: { self: 1 }, tag: "y" }
+        ]}
+      ],
+      lover: [
+        { q: "그 사람에게 하지 못한 건?", options: [
+          { text: "고백", score: { lover: 1 }, tag: "a" },
+          { text: "잡지 못한 손", score: { lover: 1 }, tag: "b" }
+        ]},
+        { q: "왜 그러지 못했을까?", options: [
+          { text: "용기가 없었어", score: { lover: 1 }, tag: "x" },
+          { text: "타이밍을 놓쳤어", score: { lover: 1 }, tag: "y" }
+        ]}
+      ],
+      friend: [
+        { q: "친구에게 하지 못한 말은?", options: [
+          { text: "고마웠어", score: { friend: 1 }, tag: "a" },
+          { text: "미안했어", score: { friend: 1 }, tag: "b" }
+        ]},
+        { q: "왜 말하지 못했을까?", options: [
+          { text: "거리감 때문에", score: { friend: 1 }, tag: "x" },
+          { text: "그렇게까지 소중한 줄 몰랐어", score: { friend: 1 }, tag: "y" }
+        ]}
+      ]
+    };
+
+    const resultText = {
+      // 감정 루트 16개
+      family_ax: "가족과 시간을 더 많이 보내려는 당신.",
+      family_ay: "가족에게 표현을 시작한 당신.",
+      family_bx: "가족과 식사를 중요하게 여긴 당신.",
+      family_by: "지금은 매일 문자라도 보내는 당신.",
+      self_ax: "실망 두려움을 넘은 당신.",
+      self_ay: "완벽 대신 회복을 택한 당신.",
+      self_bx: "지금은 루틴을 쌓아가는 당신.",
+      self_by: "그때 못 쉰 나를 인정한 당신.",
+      lover_ax: "지금은 표현을 놓치지 않는 당신.",
+      lover_ay: "사랑 앞에서 망설이지 않는 당신.",
+      lover_bx: "지금은 타인의 손을 놓치지 않는 당신.",
+      lover_by: "타이밍보다 진심을 선택한 당신.",
+      friend_ax: "거리를 좁혀간 당신.",
+      friend_ay: "고마움을 표현하는 당신.",
+      friend_bx: "미안함을 말할 수 있는 당신.",
+      friend_by: "지금은 먼저 다가가는 당신.",
+      // 상황 루트 12개
+      strategist: "계획과 분석으로 삶을 설계하는 당신.",
+      creator: "표현하는 순간에 살아있음을 느끼는 당신.",
+      rest: "회복과 재정비를 삶의 중심에 둔 당신.",
+      freedom: "구조보다 자유를 선택한 당신.",
+      emotion: "감정과 연결을 삶의 기준으로 삼은 당신.",
+      writer: "글로 세상과 연결되는 당신.",
+      freelancer: "자율성과 집중을 모두 추구하는 당신.",
+      vlogger: "일상을 기록하고 공유하는 당신.",
+      teacher: "배움을 나누며 성장하는 당신.",
+      seller: "내 브랜드를 키워가는 1인 사업가.",
+      traveler: "한자리에 머물지 않는 당신.",
+      localist: "로컬 커뮤니티와 함께 살아가는 당신.",
+      solo: "혼자 있어도 완전한 당신.",
+      hybrid: "직장과 프리를 넘나드는 유연한 당신."
+    };
+
+    let current = 0, allQuestions = [...baseQuestions], scores = {}, branchKey = '', tags = '';
+    let totalQuestions = 12;
+    function startTest() {
+      document.getElementById("main-screen").classList.add("hidden");
+      document.getElementById("question-screen").classList.remove("hidden");
+      loadQuestion();
+    }
+
+function loadQuestion() {
+  const q = allQuestions[current];
+  document.getElementById("questionText").innerText = q.q;
+  const optionsDiv = document.getElementById("options");
+  optionsDiv.innerHTML = '';
+
+  q.options.forEach(opt => {
+    const div = document.createElement("div");
+    div.className = "option";
+    div.innerText = opt.text;
+    div.onclick = () => {
+      if (opt.score) updateScore(opt.score);
+      if (opt.tag) tags += opt.tag;
+
+      // 분기 삽입과 동시에 전체 질문 수를 늘림
+      if (opt.branch) {
+        branchKey = opt.branch;
+        allQuestions.splice(current + 1, 0, ...emotionBranches[branchKey], ...postQuestions);
+        totalQuestions += 8;
+      }
+
+      current++; // 💥 여기서 증가
+      if (current < allQuestions.length) {
+        loadQuestion(); // ⬅️ 다음 질문 불러오기
+      } else {
+        showResult();
+      }
+    };
+    optionsDiv.appendChild(div);
+  });
+
+  // ✅ 질문 삽입 이후에 정확하게 계산됨
+  document.getElementById("progress").style.width = ((current + 1) / totalQuestions * 100) + "%";
+}
+
+
+    function updateScore(scoreObj) {
+      for (const key in scoreObj) {
+        if (!scores[key]) scores[key] = 0;
+        scores[key] += scoreObj[key];
+      }
+    }
+
+   function nextQuestion() {
+  current++;
+
+  // ✅ 여기서만 프로그래스바 계산함
+  document.getElementById("progress").style.width = ((current + 1) / totalQuestions * 100) + "%";
+
+  if (current < allQuestions.length) {
+    loadQuestion();
+  } else {
+    showResult();
+  }
+}
+
+
+    function showResult() {
+      document.getElementById("question-screen").classList.add("hidden");
+      document.getElementById("result-screen").classList.remove("hidden");
+
+      const top = Object.entries(scores).sort((a, b) => b[1] - a[1])[0][0];
+      const resultKey = ["family", "self", "lover", "friend"].includes(top) ? `${top}_${tags}` : top;
+
+      document.getElementById("resultText").innerText = resultText[resultKey] || "당신만의 인생을 설계한 결과입니다.";
+document.getElementById("resultImage").src = "result-" + resultKey + "287.png";
+    }
+  </script>
+</body>
+</html>

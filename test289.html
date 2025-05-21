@@ -1,0 +1,455 @@
+
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+
+     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5522499110435321"
+     crossorigin="anonymous"></script>
+
+
+
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>테스트잇 미리 대선 테스트</title>
+    <meta name="description" content="테스트잇 미리 대선 테스트">
+<meta name="keywords" content="테스트잇,성격테스트,미리대선테스트,미리대선투표테스트,대선투표테스트,테스트잇대선투표테스트,테스트잇미리투표,테스트잇연애,테스트잇대선,성격테스트결과,연애테스트,연애mbti,연애성격테스트, 심리테스트, mbti테스트">
+    <meta property="og:type" content="website"> 
+    <meta property="og:title" content="테스트잇 미리 대선 테스트">
+    <meta property="og:description" content="테스트잇 미리 대선 테스트>
+    <meta property="og:image" content="img_main289.png">
+    <meta property="og:url" content="https://test-it.co.kr/test289">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+      <link rel="icon" type="image/png" href="favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+
+
+  <style>
+
+    
+        .logo {
+            width: 100px;
+            margin-top: 14px;
+        }
+        .main-nav {
+    display: flex;
+    font-size: 1rem; /* 기본 크기 줄이기 */
+    text-transform: uppercase;
+    margin-top: 34px;
+    list-style: none;
+}
+
+.main-nav li {
+    margin-left: 20px; /* 간격 줄이기 */
+    line-height: 1.7;
+    color: #432;
+}
+
+        .main-nav a{
+            color: #432;
+            line-height: 1.7;
+        }
+        .main-nav a:hover {
+            color: #0bd;
+        }
+        .page-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  z-index: 999;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+    body {
+      margin: 0;
+      font-family: 'Pretendard', sans-serif;
+      background: #ffffff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+    .container {
+      width: 90%;
+      max-width: 500px;
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      padding: 20px;
+      text-align: center;
+    }
+   .start-btn, .option-btn {
+  background-color: #ffd966;
+  border: none;
+  padding: 15px 20px;
+  border-radius: 999px;
+  font-size: 16px;
+  margin: 10px 0;
+  cursor: pointer;
+  transition: background 0.2s;
+
+  display: block;        /* 👈 무조건 세로로 배치 */
+  width: 100%;           /* 👈 부모의 너비를 꽉 채움 */
+  box-sizing: border-box; /* 👈 padding 포함한 크기 계산 */
+  word-break: keep-all;   /* 👈 단어 중간 줄바꿈 방지 */
+  white-space: normal;    /* 👈 줄바꿈 허용 */
+}
+    .start-btn:hover, .option-btn:hover {
+      background-color: #ffcd3c;
+    }
+    .progress {
+      height: 20px;
+      width: 100%;
+      background: #eee;
+      border-radius: 999px;
+      overflow: hidden;
+      margin-bottom: 30px;
+    }
+    .progress-bar {
+      height: 100%;
+      background: #ffd966;
+      width: 0%;
+      transition: width 0.3s;
+            border-radius: 999px;
+    }
+    .question {
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+#result-img {
+  width: 100%;
+  max-width: none; /* 기본 제한 없애기 */
+  height: auto;
+  border-radius: 12px;
+  margin-top: 20px;
+}
+
+    #main-img {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 16px;
+  margin-bottom: 20px;
+}
+
+.option-btn {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 15px 20px;
+  border-radius: 999px;
+  font-size: 16px;
+  margin-bottom: 15px;  /* 버튼 간 간격 */
+  background-color: #ffd966;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+  word-break: keep-all;
+  white-space: normal;
+}
+#quiz-screen,
+#result-screen {
+  padding-top: 100px;  /* 헤더 높이만큼 확보 */
+}
+.custom-jelly-button.result-button {
+  background-color: #ffd966;
+  border: none;
+  border-radius: 999px;
+  padding: 12px 24px;
+  font-size: 16px;
+  margin: 8px 0;
+  width: 100%;
+  max-width: 100%;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.custom-jelly-button.result-button:hover {
+  background-color: #ffcd3c;
+}
+
+  </style>
+</head>
+
+<body style="background-color:#ffffff;">
+  <!-- 헤더: 위에 고정 -->
+  <header class="page-header">
+    <div class="wrapper" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 20px;">
+      <h1 style="margin: 0;">
+        <a href="index.html"><img class="logo" src="img_logo.png" alt="test it" style="width: 100px;"></a>
+      </h1>
+      <nav>
+        <ul class="main-nav" style="display: flex; list-style: none; margin: 0; padding: 0;">
+          <li style="margin-left: 20px;"><a href="https://test-it.co.kr/test.html">성격</a></li>
+          <li style="margin-left: 20px;"><a href="https://test-it.co.kr/face.html">얼굴</a></li>
+          <li style="margin-left: 20px;"><a href="https://test-it.co.kr/etc.html">그외</a></li>
+          <li style="margin-left: 20px;"><a href="https://test-it.co.kr/saju.html">사주</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<body>
+<div class="container" id="start-screen">
+  <img src="img_main289.png" alt="메인 이미지" id="main-img" />
+  <button class="start-btn" onclick="startTest()">시작하기</button>
+</div>
+
+  <div class="container" id="quiz-screen" style="display:none;">
+    <div class="progress"><div class="progress-bar" id="progress-bar"></div></div>
+    <div class="question" id="question-text"></div>
+    <div id="options"></div>
+  </div>
+
+<div class="container" id="result-screen" style="display:none;">
+  <img id="result-img" src="" alt="결과 이미지" />
+  
+  <div style="margin-top: 30px;">
+    <button type="button" class="custom-jelly-button result-button" onclick="location.href='test289.html'">다시 해보기</button>
+    <button type="button" class="custom-jelly-button result-button" onclick="location.href='/'">다른 테스트 해보기</button>
+    <button type="button" id="share-btn" class="custom-jelly-button result-button">테스트 공유하기</button>
+  </div>
+</div>
+
+  <script>
+    function shuffle(arr) {
+      return arr.sort(() => Math.random() - 0.5);
+    }
+
+    const questions = [
+      {
+        q: "나라 경제를 어떻게 키우면 좋을까?",
+        options: [
+          { text: "AI 같은 미래 기술에 국가 예산을<br>크게 투자해서 키워야지", score: "lee" },
+          { text: "법인세도 줄이고 규제도 풀어서<br>기업이 뛰게 만들어야지", score: "kim" },
+          { text: "해외로 빠져나간 기업들이 다시<br>지방으로 돌아오게 해야지", score: "jun" }
+        ]
+      },
+      {
+        q: "청년에게 어떤 지원이 있으면<br><br>제일 도움이 될까?",
+        options: [
+          { text: "청년 전용 적금도 만들고<br>집도 좀 도와줬으면 좋겠어", score: "lee" },
+          { text: "5천만 원 대출해주고 어디에 쓰든<br>자유롭게 쓸 수 있으면 좋겠어", score: "jun" },
+          { text: "결혼하고 애 낳으면 주거비를<br>꽤 오래 지원해줘야지", score: "kim" }
+        ]
+      },
+      {
+        q: "복지는<br><br>어떻게 운영하는 게 좋다고 생각해?",
+        options: [
+          { text: "아이·어르신 모두에게<br>보편적 기본 복지를 줘야 해", score: "lee" },
+          { text: "낸 만큼 돌려받는<br>연금 구조로 개혁해야 해", score: "jun" },
+          { text: "진짜 필요한 사람에게만<br>선별적으로 지원해야 공정해", score: "kim" }
+        ]
+      },
+      {
+        q: "정치나 국회<br><br>어떻게 바뀌었으면 좋겠어?",
+        options: [
+          { text: "국회의원도 잘못하면<br>국민이 끌어내릴 수 있어야지", score: "lee" },
+          { text: "대통령 힘을 줄이고<br>일 잘하는 사람이 힘을 나눠 가져야지", score: "jun" },
+          { text: "국회의원 특권 좀 없애고<br>감시 시스템도 강화해야 해", score: "kim" }
+        ]
+      },
+      {
+        q: "일하는 환경<br><br>어떤 게 제일 나아 보여?",
+        options: [
+          { text: "노동자 권리 지키고<br>일주일에 좀 덜 일하게 했으면", score: "lee" },
+          { text: "지역마다 최저임금도<br>다르게 정하면 좋지 않을까?", score: "jun" },
+          { text: "회사랑 직원이<br>유연하게 협의하는 게 현실적이야", score: "kim" }
+        ]
+      },
+      {
+        q: "안보나 군대는<br><br>어떻게 운영하는 게 좋아 보여?",
+        options: [
+          { text: "군 복무를 선택할 수 있게 하고<br>방위산업도 수출 산업으로 키워야 해", score: "lee" },
+          { text: "짧게 훈련받고, 원하면<br>간부로 뽑히는 식으로 제도를 바꿔야 해", score: "jun" },
+          { text: "북한 억제하려면 핵무기 같은<br>강력한 무기가 필요해", score: "kim" }
+        ]
+      },
+      {
+        q: "집 문제는 어떤 식으로 해결하는 게<br><br>제일 낫다고 생각해?",
+        options: [
+          { text: "청년이나 무주택자에게<br>공공임대주택을 많이 공급해야 해", score: "lee" },
+          { text: "청년한테 대출해줘서<br>스스로 결정하게 해야지", score: "jun" },
+          { text: "결혼하면 3년, 아이 낳을 때마다 3년씩<br>더 지원해주는 주거정책이 필요해", score: "kim" }
+        ]
+      },
+      {
+        q: "기후 변화 문제<br><br>나라가 어떻게 대응해야 한다고 봐?",
+        options: [
+          { text: "석탄 발전 줄이고<br>재생에너지로 바꿔야지", score: "lee" },
+          { text: "풍력보다 원자력이 현실적이고<br>전기요금도 안정적이야", score: "jun" },
+          { text: "원자력 발전을 키워서<br>에너지 안정을 먼저 잡아야 해", score: "kim" }
+        ]
+      },
+      {
+        q: "학교에서 생기는 문제<br><br>뭐가 먼저 해결돼야 할까?",
+        options: [
+          { text: "국가가 교육이랑 돌봄 책임 더 져야 해", score: "lee" },
+          { text: "수업 방해하는 애들은<br>따로 지도받게 해야 해", score: "jun" },
+          { text: "교육감 직선제를 없애서<br>정치 개입을 줄여야 해", score: "kim" }
+        ]
+      },
+      {
+        q: "수도권 쏠림을 줄이려면<br><br>어떤 방법이 가장 좋을까?",
+        options: [
+          { text: "공공기관을 지방으로 옮기고<br>지역화폐를 늘려야지", score: "lee" },
+          { text: "세금 권한을 지방에 넘겨서<br>스스로 경쟁하게 해야 해", score: "jun" },
+          { text: "GTX 같은 교통 인프라를<br>전국으로 넓혀야 해", score: "kim" }
+        ]
+      },
+      {
+        q: "여성을 위한 정책 중<br><br>어떤 게 더 현실적이라고 느껴져?",
+        options: [
+          { text: "경력단절 여성의 재취업을 지원하고<br>고용평등을 위한 제도를 강화해야 해", score: "lee" },
+          { text: "여성만 챙기는 정책보다<br>전반적인 시스템을 바꾸는 게 맞아", score: "jun" },
+          { text: "결혼하고 아이 낳으면<br>집이나 생활비를 확실히 도와줘야 해", score: "kim" }
+        ]
+      },
+      {
+        q: "우리나라가 진짜 변화하려면<br><br>어떤 게 제일 먼저 필요할까?",
+        options: [
+          { text: "검찰, 국회, 대통령 권력부터<br>다 바꿔야 해", score: "lee" },
+          { text: "행정 구조 확 바꾸고<br>민첩한 정부로 다시 짜야지", score: "jun" },
+          { text: "기득권 내려놓고<br>정치인들 먼저 솔선수범해야 해", score: "kim" }
+        ]
+      }
+    ];
+
+    const tieBreakerQuestions = [
+    {
+      q: "나라 살림 어떻게 쓰는 게 맞다고 생각해?",
+      options: [
+        { text: "고소득자 세금 조금 더 걷더라도, 청년이랑 서민을 확실히 도와야 해", score: "lee" },
+        { text: "자율을 보장하고 책임을 지게 하는 구조", score: "jun" },
+        { text: "정부가 돈 푸는 것보다, 세금 줄이고 시장이 돌게 해야지", score: "kim" }
+      ]
+    }
+  ];
+
+  let current = 0;
+  let scores = { lee: 0, kim: 0, jun: 0 };
+  let tieBreakerMode = false;
+  let tieIndex = 0;
+  let tiedCandidates = [];
+
+  function startTest() {
+    document.getElementById('start-screen').style.display = 'none';
+    document.getElementById('quiz-screen').style.display = 'block';
+    showQuestion();
+  }
+
+  function showQuestion() {
+    const qBox = document.getElementById('question-text');
+    const optionsBox = document.getElementById('options');
+    optionsBox.innerHTML = '';
+
+    if (tieBreakerMode) {
+      const tQ = tieBreakerQuestions[tieIndex];
+      qBox.textContent = tQ.q;
+      const filteredOptions = tQ.options.filter(opt => tiedCandidates.includes(opt.score));
+      filteredOptions.forEach(opt => {
+        const btn = document.createElement('button');
+        btn.className = 'option-btn';
+        btn.textContent = opt.text;
+        btn.onclick = () => {
+          renderResult(opt.score);
+        };
+        optionsBox.appendChild(btn);
+      });
+      document.getElementById('progress-bar').style.width = '100%';
+      return;
+    }
+
+    const q = questions[current];
+   qBox.innerHTML = q.q;
+    const shuffled = shuffle(q.options);
+    shuffled.forEach(opt => {
+      const btn = document.createElement('button');
+      btn.className = 'option-btn';
+btn.innerHTML = opt.text;
+      btn.onclick = () => {
+        scores[opt.score]++;
+        current++;
+        if (current < questions.length) {
+          updateProgress();
+          showQuestion();
+        } else {
+          showResult();
+        }
+      };
+      optionsBox.appendChild(btn);
+    });
+
+    updateProgress();
+  }
+
+  function updateProgress() {
+    const percent = ((current) / questions.length) * 100;
+    document.getElementById('progress-bar').style.width = percent + '%';
+  }
+
+  function showResult() {
+    const values = Object.values(scores);
+    const max = Math.max(...values);
+    const top = Object.keys(scores).filter(k => scores[k] === max);
+
+    if (top.length === 1) {
+      renderResult(top[0]);
+    } else {
+      // 동점 발생 → 추가 질문 진입
+      tieBreakerMode = true;
+      tiedCandidates = top;
+      document.getElementById('quiz-screen').style.display = 'block';
+      document.getElementById('result-screen').style.display = 'none';
+      showQuestion();
+    }
+  }
+
+  function renderResult(winner) {
+    document.getElementById('quiz-screen').style.display = 'none';
+    document.getElementById('result-screen').style.display = 'block';
+    const resultImg = {
+      lee: 'img_lee289.png',
+      kim: 'img_kim289.png',
+      jun: 'img_jun289.png'
+    };
+    document.getElementById('result-img').src = resultImg[winner];
+  }
+
+    document.addEventListener("DOMContentLoaded", function () {
+    const shareButton = document.getElementById("share-btn");
+    if (shareButton) {
+      shareButton.addEventListener("click", function () {
+        const testURL = "https://test-it.co.kr/test289"; // 정확한 주소로 수정
+        const shareText = "테스트잇 미리 대선 테스트 해봐!";
+
+        if (navigator.share) {
+          navigator.share({
+            title: "테스트잇 미리 대선 테스트",
+            text: shareText,
+            url: testURL
+          }).then(() => {
+            console.log("✅ 공유 성공!");
+          }).catch((error) => {
+            console.error("❌ 공유 실패:", error);
+          });
+        } else {
+          navigator.clipboard.writeText(`${shareText} ${testURL}`).then(() => {
+            alert("📌 링크가 복사되었습니다! 친구들에게 공유해보세요.");
+          }).catch((err) => {
+            console.error("❌ 클립보드 복사 실패:", err);
+          });
+        }
+      });
+    }
+  });
+
+</script>
+</body>
+</html>

@@ -76,15 +76,7 @@
       justify-content: center;
       min-height: 100vh;
     }
-    .container {
-      width: 90%;
-      max-width: 500px;
-      background: #ffffff;
-      border-radius: 20px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      padding: 20px;
-      text-align: center;
-    }
+
    .start-btn, .option-btn {
   background-color: #ffd966;
   border: none;
@@ -104,14 +96,15 @@
     .start-btn:hover, .option-btn:hover {
       background-color: #ffcd3c;
     }
-    .progress {
-      height: 20px;
-      width: 100%;
-      background: #eee;
-      border-radius: 999px;
-      overflow: hidden;
-      margin-bottom: 30px;
-    }
+.progress {
+  width: calc(100vw - 40px);  /* ✅ 전체화면 기준, 좌우 여백 제외하고 꽉 채움 */
+  max-width: 600px;
+  margin: 0 auto 30px auto;
+  height: 20px;
+  background: #eee;
+  border-radius: 999px;
+  overflow: hidden;
+}
     .progress-bar {
       height: 100%;
       background: #ffd966;
@@ -123,10 +116,6 @@
       font-size: 18px;
       margin-bottom: 30px;
     }
-#result-screen {
-  margin-top: 100px; /* 헤더와 광고 높이 고려해서 확보 */
-  padding-bottom: 50px;
-}
 
 #result-img {
   width: 100%;
@@ -163,9 +152,30 @@
   word-break: keep-all;
   white-space: normal;
 }
-#quiz-screen,
-#result-screen {
-  padding-top: 100px;  /* 헤더 높이만큼 확보 */
+
+.question {
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+.option-btn {
+  display: block;
+  width: 100%;              /* ✅ 부모 기준 꽉 채우기 */
+  max-width: 100%;          /* ✅ 혹시 모를 제한 제거 */
+  padding: 18px 24px;       /* ✅ 조금 더 큼직한 느낌으로 */
+  font-size: 18px;          /* ✅ 더 큼직한 글씨 */
+  margin-bottom: 18px;
+  border-radius: 999px;
+  background-color: #ffd966;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+  word-break: keep-all;
+  white-space: normal;
+}
+
+.option-btn:hover {
+  background-color: #ffcd3c;
 }
 .custom-jelly-button.result-button {
   background-color: #ffd966;
@@ -183,6 +193,29 @@
 .custom-jelly-button.result-button:hover {
   background-color: #ffcd3c;
 }
+
+#quiz-screen {
+  margin-top: 120px;         /* 헤더 + 광고 여백 */
+  width: 100%;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  padding: 0 20px;
+}
+
+#result-screen {
+  margin-top: 100px;
+  padding-bottom: 50px;
+  width: 100%;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
 
   </style>
 </head>
@@ -212,11 +245,12 @@
 </div>
 
 
-  <div class="container" id="quiz-screen" style="display:none;">
-    <div class="progress"><div class="progress-bar" id="progress-bar"></div></div>
-    <div class="question" id="question-text"></div>
-    <div id="options"></div>
-  </div>
+<div id="quiz-screen" style="display:none; text-align: center; padding: 0 20px;">
+  <div class="progress"><div class="progress-bar" id="progress-bar"></div></div>
+  <div class="question" id="question-text"></div>
+  <div id="options"></div>
+</div>
+
 
 <div id="result-screen" style="display:none; text-align:center; padding: 0 20px;">
   <img id="result-img" src="" alt="결과 이미지" />
@@ -339,11 +373,11 @@
 
     const tieBreakerQuestions = [
     {
-      q: "나라 살림 어떻게 쓰는 게 맞다고 생각해?",
+      q: "동점이네..<br>그럼 여기서 끌리는 문구 골라봐!",
       options: [
-        { text: "고소득자 세금 조금 더 걷더라도, 청년이랑 서민을 확실히 도와야 해", score: "lee" },
-        { text: "자율을 보장하고 책임을 지게 하는 구조", score: "jun" },
-        { text: "정부가 돈 푸는 것보다, 세금 줄이고 시장이 돌게 해야지", score: "kim" }
+        { text: "이제부터 진짜 대한민국", score: "lee" },
+        { text: "미래를 여는 선택", score: "jun" },
+        { text: "새롭게 대한민국, 정정당당", score: "kim" }
       ]
     }
   ];

@@ -123,19 +123,29 @@
       font-size: 18px;
       margin-bottom: 30px;
     }
-#result-img {
-  width: 100%;
-  max-width: none; /* 기본 제한 없애기 */
-  height: auto;
-  border-radius: 12px;
-  margin-top: 20px;
+#result-screen {
+  margin-top: 100px; /* 헤더와 광고 높이 고려해서 확보 */
+  padding-bottom: 50px;
 }
 
-    #main-img {
+#result-img {
   width: 100%;
+  max-width: 500px;
+  min-height: 200px;
+  object-fit: contain;
+  margin: 0 auto;
+  border-radius: 12px;
+}
+#main-img {
+  width: 90%;
   max-width: 400px;
   border-radius: 16px;
   margin-bottom: 20px;
+}
+
+#start-screen {
+  text-align: center;
+  margin-top: 100px; /* 헤더 공간 피해서 아래로 */
 }
 
 .option-btn {
@@ -196,10 +206,11 @@
   </header>
 
 <body>
-<div class="container" id="start-screen">
+<div id="start-screen" style="text-align: center;">
   <img src="img_main289.png" alt="메인 이미지" id="main-img" />
   <button class="start-btn" onclick="startTest()">시작하기</button>
 </div>
+
 
   <div class="container" id="quiz-screen" style="display:none;">
     <div class="progress"><div class="progress-bar" id="progress-bar"></div></div>
@@ -207,15 +218,20 @@
     <div id="options"></div>
   </div>
 
-<div class="container" id="result-screen" style="display:none;">
+<div id="result-screen" style="display:none; text-align:center; padding: 0 20px;">
   <img id="result-img" src="" alt="결과 이미지" />
-  
+
   <div style="margin-top: 30px;">
     <button type="button" class="custom-jelly-button result-button" onclick="location.href='test289.html'">다시 해보기</button>
     <button type="button" class="custom-jelly-button result-button" onclick="location.href='/'">다른 테스트 해보기</button>
     <button type="button" id="share-btn" class="custom-jelly-button result-button">테스트 공유하기</button>
   </div>
 </div>
+ <article class="coupang_ad mt-3">
+<script src="https://ads-partners.coupang.com/g.js"></script>
+<script>
+	new PartnersCoupang.G({"id":798186,"template":"carousel","trackingCode":"AF4391881","width":"350","height":"140","tsource":""});
+</script>
 
   <script>
     function shuffle(arr) {

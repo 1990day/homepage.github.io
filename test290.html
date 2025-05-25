@@ -174,21 +174,21 @@ opacity: 1; /* 투명도를 완전히 없애기 */
   margin: 10px auto;
   display: block;
 }
-  .start-button {
-    background-color: #fff372;
-    color: black;
-    padding: 14px 24px;
-    border: none;
-    font-size: 17px;
-     font-weight: 400;
-       width: 80%;
-    display: block;
-    margin: 0 auto;
-    border-radius: 30px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-    transition: all 0.2s ease-in-out;
+.start-button {
+  background-color: #fff372;
+  color: black;
+  padding: 14px 24px;
+  border: none;
+  font-size: 17px;
+  font-weight: 400;
+  width: 100%;
+  max-width: 280px;       /* ✅ 너무 길지 않도록 제한 */
+  display: block;
+  margin: 0 auto;
+  border-radius: 30px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.2s ease-in-out;
 }
-
 .start-button:hover {
     transform: translateY(-3px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
@@ -400,35 +400,28 @@ opacity: 1; /* 투명도를 완전히 없애기 */
     <p id="result-text"></p>
     <img id="result-image" src="" alt="결과 이미지" width="500">
     <div style="margin-top: 10px;">
-<button type="button" class="btn btn-info"
-    onclick="location.href='test290.html'"
-    style="color: black; background-color: rgb(255, 244, 120); border: none; max-width: 90%; width: 350px; height: 50px; margin-bottom: 10px;">
-    다시 해보기
-</button>
+<!-- 결과 버튼 그룹을 flex column으로 묶어줌 -->
+<div class="result-buttons" style="display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 10px;">
+  <button type="button" class="btn btn-info"
+      onclick="location.href='test290.html'"
+      style="color: black; background-color: rgb(255, 244, 120); border: none; width: 100%; max-width: 350px; height: 50px;">
+      다시 해보기
+  </button>
 
-<button type="button" class="btn btn-info"
-    onclick="location.href='/'"
-    style="color: black; background-color: rgb(255, 244, 120); border: none; max-width: 90%; width: 350px; height: 50px;">
-    다른 테스트 해보기
-</button>
+  <button type="button" class="btn btn-info"
+      onclick="location.href='/'"
+      style="color: black; background-color: rgb(255, 244, 120); border: none; width: 100%; max-width: 350px; height: 50px;">
+      다른 테스트 해보기
+  </button>
 
-<!-- 기존 결과 버튼 아래에 추가 -->
-<button id="share-btn" type="button" class="btn btn-info"
-    style="color: black; background-color: rgb(255, 244, 120); border: none; max-width: 90%; width: 350px; height: 50px; margin-top: 10px;">
-    테스트 공유하기
-</button>
-
-
-
-    </div>
+<!-- 공유 버튼 아래에 광고 삽입 -->
+  <button id="share-btn" type="button" class="btn btn-info"
+      style="color: black; background-color: rgb(255, 244, 120); border: none; width: 100%; max-width: 350px; height: 50px;">
+      테스트 공유하기
+  </button>
 </div>
-
-
-   <article class="coupang_ad mt-3">
-<script src="https://ads-partners.coupang.com/g.js"></script>
-<script>
-	new PartnersCoupang.G({"id":798186,"template":"carousel","trackingCode":"AF4391881","width":"350","height":"140","tsource":""});
-</script>
+</div>
+</div>
     <script>
         
           let currentQuestion = 0;
@@ -513,7 +506,24 @@ opacity: 1; /* 투명도를 완전히 없애기 */
             resultText.textContent = ``;
 
             resultContainer.style.display = "block";
-        }
+       const coupangContainer = document.querySelector(".coupang_ad");
+  if (coupangContainer) {
+    coupangContainer.innerHTML = ""; // 기존 제거
+    const script = document.createElement("script");
+    script.src = "https://ads-partners.coupang.com/g.js";
+    script.onload = function () {
+      new PartnersCoupang.G({
+        id: 798186,
+        template: "carousel",
+        trackingCode: "AF4391881",
+        width: "350",
+        height: "140",
+        tsource: ""
+      });
+    };
+    coupangContainer.appendChild(script);
+  }
+}
 
         function updateProgressBar() {
             const progressBar = document.getElementById("progress-bar");
@@ -554,6 +564,18 @@ opacity: 1; /* 투명도를 완전히 없애기 */
 </script>
 
     </script>
-
+<article class="coupang_ad mt-3">
+  <script src="https://ads-partners.coupang.com/g.js"></script>
+  <script>
+    new PartnersCoupang.G({
+      id: 798186,
+      template: "carousel",
+      trackingCode: "AF4391881",
+      width: "350",
+      height: "140",
+      tsource: ""
+    });
+  </script>
+</article>
 </body>
 </html>

@@ -1,0 +1,738 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+
+     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5522499110435321"
+     crossorigin="anonymous"></script>
+
+
+
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>테스트잇 다른 생의 나 테스트</title>
+    <meta name="description" content="테스트잇 다른 생의 나 테스트">
+<meta name="keywords" content="테스트잇,성격테스트,다른생의나테스트,테스트잇다른생테스트,다른생테스트,테스트잇다른생의나,테스트잇연애,테스트잇여름성격빙고판,다른생의나테스트결과,연애테스트,연애mbti,연애성격테스트, 심리테스트, mbti테스트">
+    <meta property="og:type" content="website"> 
+    <meta property="og:title" content="테스트잇 다른 생의 나 테스트">
+    <meta property="og:description" content="테스트잇 다른 생의 나 테스트">
+    <meta property="og:image" content="img_main301.png">
+    <meta property="og:url" content="https://test-it.co.kr/test301">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+      <link rel="icon" type="image/png" href="favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+
+
+
+  <style>
+
+     
+   @font-face {
+    font-family: 'ChosunGu';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/ChosunGu.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+    
+      body {
+            font-family: 'ChosunGu', sans-serif;
+        }
+    
+.logo {
+    width: 100px;
+    margin-top: 14px;
+}
+
+.main-nav {
+    display: flex;
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    margin-top: 34px;
+    list-style: none;
+}
+
+.main-nav li {
+    margin-left: 36px;
+       font-family: 'Do Hyeon', sans-serif;
+    line-height: 1.7;
+    color: #432;
+}
+
+.main-nav a{
+    color: #432;
+       font-family: 'Do Hyeon', sans-serif;
+    line-height: 1.7;
+}
+
+.main-nav a:hover {
+    color: #0bd;
+}
+
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #fff;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+    #main, #nickname-screen, #question-screen, #result-screen {
+      display: none;
+      padding: 40px 20px;
+    }
+    #main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+ .main-img {
+  width: 500px; /* 이미지 크기 키움 */
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 30px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.btn {
+   padding: 10px 20px; /* 버튼 살짝 줄임 */
+  background: linear-gradient(to bottom, #ffe15d, #ffe15d);
+  color: #5c4a00;
+  font-size: 17px;
+  border: 2px solid #ffe15d;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(255, 212, 89, 0.5);
+  transition: all 0.2s ease-in-out;
+}
+
+
+
+.progress-bar {
+  width: 100%;
+  background: #eee;
+  height: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+.progress {
+  height: 100%;
+  background: #fff7d1;
+  width: 0%;
+  border-radius: 10px;
+}
+  .question-box {
+    margin-top: 40px;
+    font-size: 18px;
+    padding: 60px 40px;
+    border: 2px solid #f9c8d9;
+    border-radius: 16px;
+    background: #fff0f4;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .answers button {
+    display: block;
+    margin: 15px auto;
+    padding: 30px 10px;
+    border: 2px solid #f8dc87;
+    background: #fff9c4;
+    color: #333;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 20px;
+    transition: transform 0.1s ease;
+    max-width: 300px;
+    width: 80%;
+  }
+
+  .answers button:hover {
+    transform: scale(1.04);
+  }
+input[type="text"] {
+  padding: 12px 20px;
+  font-size: 16px;
+  width: 300px; /* 가로폭 넉넉하게 */
+  border-radius: 20px;
+  outline: none;
+  box-shadow: none;
+  color: #000000;
+  margin: 0px auto; /* 위아래 간격 조절 */
+  display: block;
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+}
+
+.nickname-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 0;
+  margin-top: 0;
+}
+
+.nickname-screen img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 0px; /* 이미지와 입력창 사이 간격 */
+}
+
+.result-wrapper {
+  position: relative;
+  width: 100%;           /* 가득 차게 만들기 */
+  max-width: 600px;       /* 제한 해제 */
+  display: block;        /* inline-block 제거 */
+  margin: 0;
+  padding: 0;
+}
+
+
+#result-img {
+  width: 100%;
+  display: block;
+}
+
+.nickname-img {
+  width: 500px;
+  max-width: 100%;
+  height: auto;
+}
+
+.overlay-text {
+  position: absolute;
+  top: 20px; /* 원하는 위치로 조절 가능 */
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+  z-index: 2;
+}
+
+  .gender-select {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .gender-btn {
+    background-color: #f9c8d9;
+    color: #000000;
+    border: none;
+    border-radius: 25px;
+    padding: 24px 24px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: transform 0.1s ease;
+  }
+
+  .gender-btn:hover {
+    transform: scale(1.05);
+  }
+
+  .gender-btn.selected {
+    background-color: #f28ab2;
+  }
+
+  .result-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+#result-nickname {
+  position: absolute;
+  top: 8%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 20px;
+  font-weight: bold;
+  color: #000000;
+  white-space: nowrap;
+  z-index: 10;
+}
+#result-screen {
+  position: relative;
+}
+
+.result-buttons {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.result-buttons .btn {
+  width: 220px;
+  padding: 12px 20px;
+  font-size: 16px;
+}
+
+        
+  /* 화면이 좁아질 때 글씨 크기만 줄어들도록 설정 */
+@media (max-width: 768px) {
+  .main-nav {
+    font-size: 1rem;
+  }
+  #result-nickname {
+    top: 8%;
+    font-size: 16px;
+  }
+
+  .main-nav li {
+    margin-left: 16px; /* 왼쪽 여백도 살짝 줄여줌 */
+  }
+}
+
+
+@media (max-width: 527px) {
+ #result-nickname {
+    top: 8%;
+    font-size: 15px;
+  }
+}
+
+
+@media (max-width: 505px) {
+ #result-nickname {
+    top: 8%;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-nav {
+    font-size: 0.9rem;
+  }
+
+  .main-nav li {
+    margin-left: 12px;
+  }
+   #result-nickname {
+    top: 8%;
+    font-size: 13px;
+  }
+}
+@media (max-width: 430px) {
+ #result-nickname {
+    top: 8%;
+    font-size: 12px;
+  }
+}
+@media (max-width: 404px) {
+ #result-nickname {
+    top: 8%;
+    font-size: 11px;
+  }
+}
+@media (max-width: 380px) {
+ #result-nickname {
+    top: 8%;
+    font-size: 10px;
+  }
+}
+
+
+  </style>
+</head>
+<!-- body 태그 style background-color 지정으로 배경색 변경-->
+<body class="container" style="background-color:#ffffff">
+            
+    <header class="page-header wrapper">
+        <h1><a href="index.html"><img class="logo" src="img_logo.png" alt="test it"></a>
+        </h1>
+    <nav>
+        <u1 class="main-nav">
+            <li> <a href="https://test-it.co.kr/test.html">성격</a></li>
+            <li> <a href="https://test-it.co.kr/face.html">얼굴</a></li>
+            <li> <a href="https://test-it.co.kr/etc.html">그외</a></li>
+            <li> <a href="https://test-it.co.kr/saju.html">사주</a></li>
+        </u1>
+    </nav>
+        
+        
+  </header>
+
+<div id="main">
+  <img class="main-img" src="img_main300.png" alt="메인 이미지">
+  <button class="btn" onclick="goToNickname()">테스트 시작하기</button>
+</div>
+
+<div id="nickname-screen">
+<img class="main-img nickname-img" src="nickname_image300.png" alt="닉네임 입력 이미지">
+
+
+  <input type="text" id="nickname" placeholder="닉네임을 입력하세요(3글자까지)">
+<div class="gender-select">
+  <button type="button" class="gender-btn" onclick="selectGender('male')">남자</button>
+  <button type="button" class="gender-btn" onclick="selectGender('female')">여자</button>
+</div>
+<input type="hidden" id="selected-gender">
+  <button class="btn" onclick="startTest()">다음으로</button>
+</div>
+
+<div id="question-screen">
+  <div class="progress-bar">
+    <div class="progress" id="progress"></div>
+  </div>
+  <div class="question-box" id="question-text">질문이 여기에 나옵니다</div>
+  <div class="answers" id="answers"></div>
+</div>
+
+<div id="result-screen">
+  <div class="result-wrapper">
+    <h2 id="result-nickname"></h2>
+    <img id="result-img" src="" alt="결과 이미지">
+  </div>
+
+  <!-- 버튼 영역 -->
+  <div class="result-buttons">
+    <button class="btn" onclick="saveImage()">이미지 저장하기</button>
+    <button class="btn" onclick="location.reload()">다시 해보기</button>
+    <button class="btn" onclick="location.href='https://test-it.co.kr/test.html'">다른 테스트 해보기</button>
+    <button class="btn" id="share-btn">테스트 공유하기</button>
+  </div>
+</div>
+
+
+<script>
+let currentQuestion = 0;
+let nickname = "";
+let gender = "";
+let tieBreakQueue = [];
+
+const traits = {
+  lifestyleA: 0, lifestyleB: 0,
+  jobA: 0, jobB: 0,
+  socialA: 0, socialB: 0,
+  moneyA: 0, moneyB: 0,
+  loveA: 0, loveB: 0,
+  thoughtA: 0, thoughtB: 0
+};
+
+const resultMap = {
+  "AAAAAA": 1, "AAAAAB": 2, "AAAABA": 3, "AAAABB": 4,
+  "AABAAA": 5, "AABAAB": 6, "AABABA": 7, "AABABB": 8,
+  "AABBAA": 9, "AABBAB":10, "AABBBA":11, "AABBBB":12,
+  "ABAAAA":13, "ABAAAB":14, "ABAABA":15, "ABAABB":16,
+  "ABABAA":17, "ABABAB":18, "ABABBA":19, "ABABBB":20,
+  "ABBBAA":21, "ABBBAB":22, "ABBBBA":23, "ABBBBB":24,
+  "BAAAAA": 1, "BAAAAB": 2, "BAAABA": 3, "BAAABB": 4,
+  "BAABAA": 5, "BAABAB": 6, "BAABBA": 7, "BAABBB": 8,
+  "BABAAA": 9, "BABAAB":10, "BABABA":11, "BABABB":12,
+  "BABBAA":13, "BABBAB":14, "BABBBA":15, "BABBBB":16,
+  "BBABAA":17, "BBABAB":18, "BBABBA":19, "BBABBB":20,
+  "BBBBAA":21, "BBBBAB":22, "BBBBBA":23, "BBBBBB":24
+};
+
+const resultNames = {
+  female: [ null,
+    { name: "김소현", age: 33 }, { name: "장수빈", age: 42 }, { name: "유지해", age: 29 },
+    { name: "이하은", age: 36 }, { name: "백하늘", age: 25 }, { name: "최미정", age: 48 },
+    { name: "서예빈", age: 31 }, { name: "정가윤", age: 38 }, { name: "노하정", age: 27 },
+    { name: "김민솔", age: 34 }, { name: "윤가람", age: 45 }, { name: "조혜정", age: 34 },
+    { name: "배소정", age: 39 }, { name: "한예린", age: 32 }, { name: "송은하", age: 28 },
+    { name: "홍서윤", age: 41 }, { name: "임다정", age: 30 }, { name: "조민지", age: 26 },
+    { name: "박해린", age: 35 }, { name: "이하영", age: 46 }, { name: "최소연", age: 22 },
+    { name: "문지현", age: 50 }, { name: "강서린", age: 29 }, { name: "김여은", age: 33 }
+  ],
+  male: [ null,
+    { name: "이현우", age: 34 }, { name: "정재윤", age: 39 }, { name: "이승호", age: 27 },
+    { name: "최도윤", age: 44 }, { name: "김태완", age: 31 }, { name: "서강우", age: 32 },
+    { name: "임도현", age: 44 }, { name: "장하진", age: 30 }, { name: "윤성재", age: 36 },
+    { name: "백태현", age: 49 }, { name: "홍민재", age: 26 }, { name: "권지후", age: 43 },
+    { name: "배영호", age: 34 }, { name: "송재우", age: 30 }, { name: "이주성", age: 28 },
+    { name: "전민수", age: 42 }, { name: "유건희", age: 31 }, { name: "고태윤", age: 36 },
+    { name: "하도윤", age: 39 }, { name: "임하늘", age: 27 }, { name: "양지훈", age: 45 },
+    { name: "정태우", age: 37 }, { name: "백영민", age: 29 }, { name: "박시헌", age: 33 }
+  ]
+};
+
+const questions = [
+  { q: "나는 어떤 환경에서<br>더 잘 버틸까?", a: [
+    { text: "정해진 패턴이<br>반복되는 구조", key: "lifestyleA" },
+    { text: "하루하루가 달라지는 구조", key: "lifestyleB" }
+  ]},
+  { q: "여행을 고른다면?", a: [
+    { text: "가본 곳 다시 가기", key: "lifestyleA" },
+    { text: "무계획으로 안 가본 곳!", key: "lifestyleB" }
+  ]},
+  { q: "오늘 하루 끝! 더 좋은 느낌은?", a: [
+    { text: "하나라도 배운 게 있을 때", key: "jobA" },
+    { text: "뭔가 하나 뚝딱 만든 날", key: "jobB" }
+  ]},
+  { q: "어떤 하루가 더 편해?", a: [
+    { text: "할 일이 딱<br>정해져 있는 하루", key: "jobA" },
+    { text: "내 맘대로<br>굴러가는 하루", key: "jobB" }
+  ]},
+  { q: "모임에서 나는?", a: [
+      { text: "웃기고 말 많은<br>분위기 메이커", key: "socialA" },
+      { text: "말 적고 조용히<br>관찰하는 타입", key: "socialB" }
+  ]},
+  { q: "주말에 더 끌리는 건?", a: [
+    { text: "친구들이랑 밖에서 노는 날", key: "socialA" },
+    { text: "집에서 혼자 넷플릭스", key: "socialB" }
+  ]},
+  { q: "월급 받았을 때 첫 생각은?", a: [
+    { text: "저축부터 챙겨야지", key: "moneyA" },
+    { text: "나를 위해 써야지!", key: "moneyB" }
+  ]},
+  { q: "쇼핑할 때 나는?", a: [
+    { text: "후기, 쿠폰 확인 후 구매", key: "moneyA" },
+    { text: "마음에 들면 바로 결제", key: "moneyB" }
+  ]},
+  { q: "연애는 나에게…", a: [
+    { text: "살 맛 나게 해주는 감정!", key: "loveA" },
+    { text: "있으면 좋지만 없어도 괜찮음", key: "loveB" }
+  ]},
+  { q: "애인이 매일 보고 싶다 하면?", a: [
+    { text: "나도! 계속 붙어있고 싶어", key: "loveA" },
+    { text: "적당한 거리감도 필요해", key: "loveB" }
+  ]},
+  { q: "미래 계획 짤 때 나는?", a: [
+    { text: "현실적인 조건부터 따진다", key: "thoughtA" },
+    { text: "일단 그리고 싶은 그림부터", key: "thoughtB" }
+  ]},
+  { q: "고민 생기면 어떻게 해?", a: [
+    { text: "논리, 데이터, 팩트로<br>따져본다", key: "thoughtA" },
+    { text: "느낌, 감정, 분위기로 결정", key: "thoughtB" }
+  ]}
+];
+
+const tieBreakerQuestions = {
+  lifestyle: {
+    q: `가끔 일이 비면 뭐 하고 싶어?`, a: [
+      { text: "집 정리하고 루틴 챙기기", key: "lifestyleA" },
+      { text: "평소 안 하던 거 도전!", key: "lifestyleB" }
+    ]
+  },
+  job: {
+    q: `어떤 일이 더 끌려?`, a: [
+      { text: "꾸준히 배우고 발전하는 일", key: "jobA" },
+      { text: "새로운 걸 만들고 표현하는 일", key: "jobB" }
+    ]
+  },
+  social: {
+    q: `사람 많은 모임에<br>초대받았을 때?`, a: [
+      { text: "어색하지만<br>일단 나가서 섞인다", key: "socialA" },
+      { text: "그냥 조용히 빠질<br>핑계부터 찾는다", key: "socialB" }
+    ]
+  },
+  money: {
+    q: `갑자기 생긴<br>보너스 20만 원!`, a: [
+      { text: "비상금 통장으로 넣어둔다", key: "moneyA" },
+      { text: "사고 싶던 거 하나 지른다", key: "moneyB" }
+    ]
+  },
+  love: {
+    q: `연애 초반에<br>연락 텀이 생기면?`, a: [
+      { text: "왜 연락 없지?<br>먼저 연락해본다", key: "loveA" },
+      { text: "개인 시간을 존중해 준다", key: "loveB" }
+    ]
+  },
+  thought: {
+    q: `갑자기 이사를 하게 된다면?`, a: [
+      { text: "가격, 교통 먼저 체크", key: "thoughtA" },
+      { text: "분위기, 느낌부터 본다", key: "thoughtB" }
+    ]
+  }
+};
+
+</script>
+   <article class="coupang_ad mt-3">
+<script src="https://ads-partners.coupang.com/g.js"></script>
+<script>
+	new PartnersCoupang.G({"id":798186,"template":"carousel","trackingCode":"AF4391881","width":"350","height":"140","tsource":""});
+</script>
+        
+<script>
+function goToNickname() {
+  document.getElementById("main").style.display = "none";
+  document.getElementById("nickname-screen").style.display = "block";
+}
+
+function startTest() {
+  const input = document.getElementById("nickname").value.trim();
+if (!input || !gender) {
+  alert("닉네임과 성별을 모두 입력해주세요!");
+  return;
+}
+
+nickname = input;
+
+  document.getElementById("nickname-screen").style.display = "none";
+  document.getElementById("question-screen").style.display = "block";
+  showQuestion();
+}
+
+function selectGender(value) {
+  gender = value;
+  document.getElementById("selected-gender").value = value;
+
+  // 모든 버튼에서 active 제거
+  const buttons = document.querySelectorAll('.gender-btn');
+  buttons.forEach(btn => btn.classList.remove('active'));
+
+  // 선택된 버튼에만 active 추가
+  if (value === 'male') {
+    buttons[0].classList.add('active');
+  } else if (value === 'female') {
+    buttons[1].classList.add('active');
+  }
+}
+
+function showQuestion() {
+  if (currentQuestion >= questions.length) {
+    checkTiesAndProceed();
+    return;
+  }
+
+  const q = questions[currentQuestion];
+ document.getElementById("question-text").innerHTML = q.q;
+  const answersDiv = document.getElementById("answers");
+  answersDiv.innerHTML = "";
+
+  q.a.forEach(option => {
+    const btn = document.createElement("button");
+    btn.innerHTML = option.text; // ← 여기도 수정
+    btn.onclick = () => {
+      traits[option.key]++;
+      currentQuestion++;
+      updateProgress();
+      showQuestion();
+    };
+    answersDiv.appendChild(btn);
+  });
+}
+
+function updateProgress() {
+  const percent = (currentQuestion / questions.length) * 100;
+  document.getElementById("progress").style.width = percent + "%";
+}
+
+function checkTiesAndProceed() {
+  tieBreakQueue = [];
+
+  if (traits.lifestyleA === traits.lifestyleB) tieBreakQueue.push("lifestyle");
+  if (traits.jobA === traits.jobB) tieBreakQueue.push("job");
+  if (traits.socialA === traits.socialB) tieBreakQueue.push("social");
+  if (traits.moneyA === traits.moneyB) tieBreakQueue.push("money");
+  if (traits.loveA === traits.loveB) tieBreakQueue.push("love");
+  if (traits.thoughtA === traits.thoughtB) tieBreakQueue.push("thought");
+
+  if (tieBreakQueue.length > 0) {
+    askTieBreaker();
+  } else {
+    showFinalResult();
+  }
+}
+
+function askTieBreaker() {
+  const key = tieBreakQueue.shift();
+  const q = tieBreakerQuestions[key];
+
+document.getElementById("question-text").innerHTML = q.q;
+  const answersDiv = document.getElementById("answers");
+  answersDiv.innerHTML = "";
+
+  q.a.forEach(option => {
+    const btn = document.createElement("button");
+btn.innerHTML = option.text;
+    btn.onclick = () => {
+      traits[option.key]++;
+      if (tieBreakQueue.length > 0) {
+        askTieBreaker();
+      } else {
+        showFinalResult();
+      }
+    };
+    answersDiv.appendChild(btn);
+  });
+}
+
+function showFinalResult() {
+  document.getElementById("question-screen").style.display = "none";
+  document.getElementById("result-screen").style.display = "block";
+
+  const resultKey = [
+    traits.lifestyleA > traits.lifestyleB ? "A" : "B",
+    traits.jobA > traits.jobB ? "A" : "B",
+    traits.socialA > traits.socialB ? "A" : "B",
+    traits.moneyA > traits.moneyB ? "A" : "B",
+    traits.loveA > traits.loveB ? "A" : "B",
+    traits.thoughtA > traits.thoughtB ? "A" : "B"
+  ].join("");
+
+  const resultIndex = resultMap[resultKey];
+  const resultData = resultNames[gender][resultIndex];
+  const resultImg = gender === "female"
+    ? `result_female_${String(resultIndex).padStart(2, "0")}.png`
+    : `result_male_${String(resultIndex).padStart(2, "0")}.png`;
+
+  document.getElementById("result-nickname").textContent =
+    `${nickname}님의 다른 생은 ${resultData.age}살 ${resultData.name}입니다.`;
+  document.getElementById("result-img").src = resultImg;
+}
+
+function saveImage() {
+  const captureTarget = document.querySelector(".result-wrapper");
+
+  html2canvas(captureTarget).then(canvas => {
+    const link = document.createElement("a");
+    link.href = canvas.toDataURL("image/png");
+    link.download = "다른생의나_결과.png";
+    link.click();
+  });
+}
+
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const shareButton = document.getElementById("share-btn");
+    if (shareButton) {
+        shareButton.addEventListener("click", function () {
+            const testURL = "https://test-it.co.kr/test301";
+            const shareText = "✈️다른 생의 나 테스트 해봐!♥️";
+
+            if (navigator.share) {
+                navigator.share({
+                    title: "테스트잇 다른 생의 나 테스트",
+                    text: shareText,
+                    url: testURL
+                }).then(() => {
+                    console.log("✅ 공유 성공!");
+                }).catch((error) => {
+                    console.error("❌ 공유 실패:", error);
+                });
+            } else {
+                navigator.clipboard.writeText(`${shareText} ${testURL}`).then(() => {
+                    alert("📌 링크가 복사되었습니다! 친구들에게 공유해보세요.");
+                }).catch((err) => {
+                    console.error("❌ 클립보드 복사 실패:", err);
+                });
+            }
+        });
+    }
+});
+
+</script>
+
+
+
+</body>
+</html>

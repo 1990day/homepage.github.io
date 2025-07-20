@@ -37,6 +37,13 @@
     font-weight: normal;
     font-style: normal;
 }
+
+@font-face {
+    font-family: 'NanumSquareNeoBold';
+    src: url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquareNeo/NanumSquareNeoTTF-cBd.eot);
+    src: url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquareNeo/NanumSquareNeoTTF-cBd.eot?#iefix) format("embedded-opentype"), url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquareNeo/NanumSquareNeoTTF-cBd.woff) format("woff"), url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquareNeo/NanumSquareNeoTTF-cBd.ttf) format("truetype");
+}
+
     
       body {
             font-family: 'ChosunGu', sans-serif;
@@ -269,6 +276,7 @@ button:focus, button:active {
   color: #000000;
   white-space: nowrap;
   z-index: 10;
+  font-family: 'NanumSquareNeoBold', sans-serif; /* 폰트 변경 */
 }
 #result-screen {
   position: relative;
@@ -382,7 +390,7 @@ button:focus, button:active {
 <img class="main-img nickname-img" src="nickname_image302.png" alt="닉네임 입력 이미지">
 
 
-  <input type="text" id="nickname" placeholder="이름을 입력하세요(3글자까지)">
+  <input type="text" id="nickname" placeholder="이름을 입력해주세요!">
 
 <input type="hidden" id="selected-gender">
   <button class="btn" onclick="startTest()">다음으로</button>

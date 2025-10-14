@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>나에게 맞는 직업 테스트 🌷</title>
+<style>
+/* ===================== 헤더 ===================== */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background: linear-gradient(90deg, #ffe3ee, #ffd9f2);
+  border-radius: 0 0 20px 20px;
+  box-shadow: 0 3px 10px rgba(255, 150, 200, 0.3);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.logo { width: 100px; margin-top: 14px; }
+.main-nav { display: flex; font-size: 1.25rem; text-transform: uppercase; margin-top: 34px; list-style: none; }
+.main-nav li { margin-left: 36px; font-family: 'Do Hyeon', sans-serif; line-height: 1.7; color: #432; }
+.main-nav a { color: #432; font-family: 'Do Hyeon', sans-serif; line-height: 1.7; text-decoration: none; }
+.main-nav a:hover { color: #0bd; }
+
+/* ===================== 기본 레이아웃 ===================== */
+body {
+  margin: 0;
+  font-family: 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+  background: linear-gradient(180deg, #fff8fb 0%, #ffe9f3 100%);
+  color: #333;
+}
+.container {
+  max-width: 600px;
+  margin: 60px auto;
+  background: #fff;
+  padding: 40px 30px;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(255, 170, 200, 0.3);
+  text-align: center;
+}
+
+/* ===================== 메인 이미지 ===================== */
+.main-image {
+  width: 260px;
+  margin-bottom: 20px;
+  border-radius: 20px;
+  box-shadow: 0 6px 15px rgba(255, 180, 210, 0.35);
+}
+
+
+/* ===================== 젤리 버튼 ===================== */
+button {
+  display: block;
+  width: 100%;
+  margin: 14px 0;
+  padding: 16px;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 50px;
+  background: linear-gradient(90deg, #ffb6d9, #ffd4f2);
+  color: #432;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 6px 0 #e79bc7;
+  transition: all 0.15s ease-in-out;
+}
+button:hover { transform: translateY(-2px); box-shadow: 0 8px 0 #e79bc7; }
+button:active { transform: translateY(3px); box-shadow: 0 3px 0 #e79bc7; }
+
+/* ===================== 진행바 ===================== */
+.progress {
+  height: 10px;
+  background: #ffd4f2;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+.progress-bar {
+  height: 10px;
+  width: 0%;
+  background: linear-gradient(90deg, #ff85c2, #ffa3e0);
+  transition: width 0.3s ease;
+}
+
+/* ===================== 기타 ===================== */
+.hidden { display: none; }
+#result img { width: 220px; border-radius: 12px; margin-bottom: 16px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+</style>
+</head>
+<body>
+
+<!-- 헤더 -->
+<header class="page-header">
+  <img src="logo.png" alt="Logo" class="logo">
+  <ul class="main-nav">
+    <li><a href="#">홈</a></li>
+    <li><a href="#">테스트</a></li>
+    <li><a href="#">소개</a></li>
+  </ul>
+</header>
+
+
+<!-- ✅ 메인화면 (이미지 포함) -->
+<section id="start-screen" class="container">
+  <img src="img_main323.png" alt="메인 이미지" class="main-image">
+  <button onclick="startTest()">테스트 시작하기</button>
+</section>
+
+
+<!-- 질문 -->
+<section id="quiz-screen" class="container hidden">
+  <div class="progress">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+  <h2 id="question"></h2>
+  <div id="options"></div>
+</section>
+
+<!-- 결과 -->
+<section id="result-screen" class="container hidden">
+  <div id="result"></div>
+  <button onclick="restartTest()">다시 하기</button>
+</section>
+
+<script>
+let current = 0;
+let selectedRoot = null;
+let scores = {};
+const progressBar = document.getElementById("progressBar");
+const questionEl = document.getElementById("question");
+const optionsEl = document.getElementById("options");
+const startScreen = document.getElementById("start-screen");
+const quizScreen = document.getElementById("quiz-screen");
+const resultScreen = document.getElementById("result-screen");
+
+/* =============== Q1 공통 질문 (루트 결정) =============== */
+const rootQuestion = {
+  q: "일을 할 때 가장 몰입되는 순간은?",
+  options: [
+    { text: "새로운 아이디어를 떠올릴 때", type: "A" },
+    { text: "문제를 논리적으로 풀 때", type: "B" },
+    { text: "누군가를 이해하고 도울 때", type: "C" },
+    { text: "목표를 세우고 달성할 때", type: "D" }
+  ]
+};
+
+/* =============== 루트별 전용 질문 (Q2~Q4) =============== */
+const rootQuestions = {
+  A: [
+    { q: "아이디어가 떠오를 때 당신은?", options: [
+      { text: "그림으로 시각화한다", job: "그래픽디자이너" },
+      { text: "글로 풀어낸다", job: "작가" },
+      { text: "사람들에게 보여줄 콘셉트를 구상한다", job: "광고기획자" },
+      { text: "트렌드를 반영한 콘텐츠로 만든다", job: "콘텐츠크리에이터" }
+    ]},
+    { q: "당신의 결과물에서 더 중요한 건?", options: [
+      { text: "색감과 조형미", job: "그래픽디자이너" },
+      { text: "감정과 메시지", job: "작가" },
+      { text: "대중 반응", job: "크리에이터" },
+      { text: "브랜드의 일관성", job: "브랜드디렉터" }
+    ]},
+    { q: "일하면서 가장 뿌듯한 순간은?", options: [
+      { text: "새로운 표현을 완성했을 때", job: "디자이너" },
+      { text: "스토리가 완성됐을 때", job: "작가" },
+      { text: "내 아이디어가 채택될 때", job: "기획자" },
+      { text: "사람들이 내 콘텐츠에 반응할 때", job: "크리에이터" }
+    ]}
+  ],
+  B: [
+    { q: "복잡한 문제를 마주했을 때 당신은?", options: [
+      { text: "데이터를 먼저 본다", job: "데이터분석가" },
+      { text: "계획부터 세운다", job: "전략기획자" },
+      { text: "코드를 점검한다", job: "프로그래머" },
+      { text: "수익 구조를 검토한다", job: "금융애널리스트" }
+    ]},
+    { q: "성취감을 느끼는 순간은?", options: [
+      { text: "수치가 정확히 맞아떨어질 때", job: "회계사" },
+      { text: "프로세스가 완성될 때", job: "프로그래머" },
+      { text: "전략이 통했을 때", job: "기획자" },
+      { text: "시장 흐름을 예측했을 때", job: "애널리스트" }
+    ]},
+    { q: "일할 때 더 중요한 건?", options: [
+      { text: "정확성", job: "회계사" },
+      { text: "효율성", job: "전략기획자" },
+      { text: "논리성", job: "분석가" },
+      { text: "결과 수치", job: "금융전문가" }
+    ]}
+  ],
+  C: [
+    { q: "누군가 힘든 얘기를 하면 당신은?", options: [
+      { text: "감정부터 공감한다", job: "심리상담사" },
+      { text: "도움을 줄 방법을 찾는다", job: "간호사" },
+      { text: "조용히 들어준다", job: "교사" },
+      { text: "실질적인 조언을 한다", job: "HR매니저" }
+    ]},
+    { q: "일하면서 보람을 느끼는 순간은?", options: [
+      { text: "사람이 달라졌을 때", job: "상담사" },
+      { text: "누군가가 성장했을 때", job: "교사" },
+      { text: "감사 인사를 받을 때", job: "복지사" },
+      { text: "팀이 화합할 때", job: "HR매니저" }
+    ]},
+    { q: "당신이 중요하게 여기는 것은?", options: [
+      { text: "마음의 치유", job: "상담사" },
+      { text: "도움과 봉사", job: "복지사" },
+      { text: "신뢰와 존중", job: "교사" },
+      { text: "사람 관리", job: "HR매니저" }
+    ]}
+  ],
+  D: [
+    { q: "당신이 가장 에너지가 넘칠 때는?", options: [
+      { text: "팀을 이끌 때", job: "프로젝트매니저" },
+      { text: "행사를 기획할 때", job: "이벤트기획자" },
+      { text: "시장 아이디어를 낼 때", job: "마케팅매니저" },
+      { text: "직접 시작할 때", job: "창업가" }
+    ]},
+    { q: "성과를 확인할 때 당신은?", options: [
+      { text: "팀원들과 나눈다", job: "PM" },
+      { text: "새 캠페인을 구상한다", job: "마케팅매니저" },
+      { text: "다음 목표를 세운다", job: "창업가" },
+      { text: "현장을 더 키운다", job: "이벤트기획자" }
+    ]},
+    { q: "성공을 정의한다면?", options: [
+      { text: "내가 주도해 만든 결과", job: "PM" },
+      { text: "사람들이 즐거워하는 모습", job: "이벤트기획자" },
+      { text: "내 브랜드가 성장하는 것", job: "창업가" },
+      { text: "성과가 수치로 보일 때", job: "마케팅매니저" }
+    ]}
+  ]
+};
+
+/* =============== Q5~Q12 공통 질문 =============== */
+const commonQuestions = [
+  { q: "일의 결과를 평가할 때 더 중요하다고 느끼는 것은?", options: [
+    { text: "완성도와 정확성", add: "B" },
+    { text: "감정과 반응", add: "C" }
+  ]},
+  { q: "퇴근 후 당신은?", options: [
+    { text: "자기계발·정리", add: "B" },
+    { text: "감정충전·휴식", add: "C" }
+  ]},
+  { q: "팀이 잘 되기 위해 필요한 건?", options: [
+    { text: "아이디어", add: "A" },
+    { text: "배려", add: "C" },
+    { text: "리더십", add: "D" }
+  ]}
+];
+
+function startTest() {
+  startScreen.classList.add("hidden");
+  quizScreen.classList.remove("hidden");
+  current = 0;
+  selectedRoot = null;
+  scores = {};
+  showQuestion();
+}
+
+/* 루트 + 루트전용 + 공통 진행 */
+function showQuestion() {
+  const totalSteps = 1 + 3 + commonQuestions.length;
+  const step = current + 1;
+  progressBar.style.width = (step / totalSteps) * 100 + "%";
+
+  if (current === 0) {
+    // Q1 (루트 선택)
+    renderQuestion(rootQuestion, opt => {
+      selectedRoot = opt.type;
+      scores[selectedRoot] = 0;
+      current++;
+      showQuestion();
+    });
+  } else if (current <= 3) {
+    // Q2~Q4 루트별
+    const q = rootQuestions[selectedRoot][current - 1];
+    renderQuestion(q, opt => {
+      const job = opt.job;
+      if (!scores[job]) scores[job] = 0;
+      scores[job]++;
+      current++;
+      showQuestion();
+    });
+  } else if (current - 4 < commonQuestions.length) {
+    // Q5~ 공통
+    const q = commonQuestions[current - 4];
+    renderQuestion(q, opt => {
+      scores[opt.add] = (scores[opt.add] || 0) + 0.5;
+      current++;
+      showQuestion();
+    });
+  } else {
+    showResult();
+  }
+}
+
+function renderQuestion(q, callback) {
+  questionEl.innerText = q.q;
+  optionsEl.innerHTML = "";
+  q.options.forEach(opt => {
+    const btn = document.createElement("button");
+    btn.innerText = opt.text;
+    btn.onclick = () => callback(opt);
+    optionsEl.appendChild(btn);
+  });
+}
+
+/* 결과 */
+function showResult() {
+  quizScreen.classList.add("hidden");
+  resultScreen.classList.remove("hidden");
+  let max = -Infinity, best = null;
+  for (let k in scores) {
+    if (scores[k] > max) { max = scores[k]; best = k; }
+  }
+
+  // ✅ 각 직업에 이미지 번호 연결
+ const jobImages = {
+  "그래픽디자이너": "job1.png",
+  "콘텐츠크리에이터": "job2.png",
+  "작가": "job3.png",
+  "광고기획자": "job4.png",
+  "브랜드디렉터": "job5.png",
+  "데이터분석가": "job6.png",
+  "회계사": "job7.png",
+  "스타트업 CFO": "job8.png",
+  "자산관리사": "job9.png",
+  "전략기획자": "job10.png",
+  "심리상담사": "job11.png",
+  "교사": "job12.png",
+  "사회복지사": "job13.png",
+  "간호사": "job14.png",
+  "HR매니저": "job15.png",
+  "마케팅매니저": "job16.png",
+  "창업가": "job17.png",
+  "프로젝트매니저": "job18.png",
+  "이벤트기획자": "job19.png",
+  "여행플래너": "job20.png"
+};
+
+  const imgSrc = jobImages[best] || "default.png";
+  document.getElementById("result").innerHTML = `
+    <img src="${imgSrc}" alt="${best}">
+    <h3>${best}</h3>
+    <p>당신은 ${best}로서 가장 잘 빛날 타입이에요 🌷</p>
+  `;
+}
+
+
+/* 다시하기 */
+function restartTest() {
+  selectedRoot = null;
+  current = 0;
+  scores = {};
+  resultScreen.classList.add("hidden");
+  startScreen.classList.remove("hidden");
+  progressBar.style.width = "0%";
+}
+</script>
+</body>
+</html>

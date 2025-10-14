@@ -1,360 +1,962 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>나에게 맞는 직업 테스트 🌷</title>
-<style>
-/* ===================== 헤더 ===================== */
-.page-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 40px;
-  background: linear-gradient(90deg, #ffe3ee, #ffd9f2);
-  border-radius: 0 0 20px 20px;
-  box-shadow: 0 3px 10px rgba(255, 150, 200, 0.3);
-  position: sticky;
-  top: 0;
-  z-index: 10;
-}
-.logo { width: 100px; margin-top: 14px; }
-.main-nav { display: flex; font-size: 1.25rem; text-transform: uppercase; margin-top: 34px; list-style: none; }
-.main-nav li { margin-left: 36px; font-family: 'Do Hyeon', sans-serif; line-height: 1.7; color: #432; }
-.main-nav a { color: #432; font-family: 'Do Hyeon', sans-serif; line-height: 1.7; text-decoration: none; }
-.main-nav a:hover { color: #0bd; }
 
-/* ===================== 기본 레이아웃 ===================== */
-body {
-  margin: 0;
-  font-family: 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
-  background: linear-gradient(180deg, #fff8fb 0%, #ffe9f3 100%);
-  color: #333;
+
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta name="naver-site-verification" content="76081b74cd43245d89a4160aeb9fc9a827be455d" />
+
+
+
+     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5522499110435321"
+     crossorigin="anonymous"></script>
+
+
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta ht-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Jua&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>테스트잇 소속사 얼굴 테스트</title>
+    <meta name="description" content="테스트잇 소속사 얼굴 테스트">
+    <meta name="title" content="테스트잇 소속사 얼굴 테스트">
+    <meta name="subject" content="테스트잇 소속사 얼굴 테스트">
+    <meta name="keywords" content="얼굴테스트,mbti테스트,소속사얼굴테스트,얼굴테스트,테스트잇소속사얼굴,테스트잇,닮은꼴테스트">
+
+    <meta name="author" content="test it">
+   
+    <link rel="canonical" href="https://test-it.co.kr/test324.html" />
+    <meta property="og:url" content="https://test-it.co.kr/test324.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="테스트잇 소속사 얼굴 테스트" />
+    <meta property="og:description" content="테스트잇 소속사 얼굴 테스트"/>
+
+       <link rel="icon" type="image/png" href="favicon.png">
+
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+
+ 
+
+<style>
+
+
+   
+   @font-face {
+    font-family: 'ChosunGu';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/ChosunGu.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
-.container {
-  max-width: 600px;
-  margin: 60px auto;
-  background: #fff;
-  padding: 40px 30px;
-  border-radius: 20px;
-  box-shadow: 0 8px 20px rgba(255, 170, 200, 0.3);
+    
+
+
+.logo {
+    width: 100px;
+    margin-top: 14px;
+}
+
+.main-nav {
+  display: flex;
+  flex-wrap: nowrap;
+  font-size: 1.25rem;
+  text-transform: uppercase;
+  margin-top: 34px;
+  list-style: none;
+  padding: 0;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.main-nav li {
+  margin-left: 28px;
+  font-family: 'ChosunGu', sans-serif;
+  line-height: 1.7;
+  color: #432;
+}
+
+.main-nav a {
+  color: #432;
+  font-family: 'ChosunGu', sans-serif;
+  line-height: 1.7;
+}
+
+
+.main-nav a:hover {
+    color: #0bd;
+}
+
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.wrapper {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 4%;
+}
+    
+
+body {
+  font-family: 'ChosunGu', sans-serif;
+  font-size: 17px;
+  background-color: #ffffff;
+  box-sizing: border-box;
+  color: #9A9A9A;
+}
+
+.file-upload {
+    padding: 3% 3%;
+    margin: 0 auto;
+    border-radius: 10px;
+    border: solid 1.5px #ffffff;
+    background-color: #ffffff;
+    
+}
+
+.img {
+    margin: 0 auto;
+     text-align: center;
+
+}
+    
+    .img img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto; /* 이미지를 수평 가운데 정렬 */
+}
+    
+.file-upload-btn {
+  width: 100%;
+  margin: 0;
+  color: #fff;
+  background: #F2E7FA;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  border-bottom: 4px solid #15824B;
+  transition: all .2s ease;
+  outline: none;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.file-upload-btn:hover {
+  background: #1AA059;
+  color: #ffffff;
+  transition: all .2s ease;
+  cursor: pointer;
+}
+
+.file-upload-btn:active {
+  border: 0;
+  transition: all .2s ease;
+}
+
+.file-upload-content {
+  display: none;
+  text-align: center;
+}
+#loading {
+  display: none;
+}
+
+.file-upload-input {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  outline: none;
+  opacity: 0;
+  cursor: pointer;
+}
+
+
+.image-upload-wrap {
+    width: 70%;
+        height: 70%;
+    margin: 0 auto;
+    position: relative;
+    object-fit: contain;
+    border-radius: 5px;
+    border: dashed 1.5px #ffffff;
+    background-color: #fff4b4;
+    
+}
+
+.image-dropping,
+.image-upload-wrap:hover {
+    background-color: #ff92bf;
+    border: 1.5px dashed #ffffff;
+}
+
+.image-title-wrap {
+  padding: 0 15px 15px 15px;
+  color: #324;
+}
+
+.drag-text {
   text-align: center;
 }
 
-/* ===================== 메인 이미지 ===================== */
-.main-image {
-  width: 260px;
-  margin-bottom: 20px;
-  border-radius: 20px;
-  box-shadow: 0 6px 15px rgba(255, 180, 210, 0.35);
+.drag-text h3 {
+  font-weight: 500;
+  text-transform: uppercase;
 }
 
 
-/* ===================== 젤리 버튼 ===================== */
-button {
+.file-upload-image {
+  max-height:50%;
+  max-width: 50%;
+  margin: auto;
+  padding: 10px;
+}
+
+.try-again-btn {
+  border-radius: 40px;
+  border: solid 1.5px #ffecec;
+  background-color: #ffecec;
+}
+
+.try-again-text {
   display: block;
-  width: 100%;
-  margin: 14px 0;
-  padding: 16px;
-  font-size: 1.1rem;
-  border: none;
-  border-radius: 50px;
-  background: linear-gradient(90deg, #ffb6d9, #ffd4f2);
-  color: #432;
-  font-weight: bold;
+  font-size: 1.5rem;
+  text-align: center;
+  color: #000000;
+  padding: 4px 15px;
+}
+
+.remove-image:hover {
+  background: #c13b2a;
+  color: #ffffff;
+  transition: all .2s ease;
   cursor: pointer;
-  box-shadow: 0 6px 0 #e79bc7;
-  transition: all 0.15s ease-in-out;
-}
-button:hover { transform: translateY(-2px); box-shadow: 0 8px 0 #e79bc7; }
-button:active { transform: translateY(3px); box-shadow: 0 3px 0 #e79bc7; }
-
-/* ===================== 진행바 ===================== */
-.progress {
-  height: 10px;
-  background: #ffd4f2;
-  border-radius: 10px;
-  overflow: hidden;
-  margin-bottom: 30px;
-}
-.progress-bar {
-  height: 10px;
-  width: 0%;
-  background: linear-gradient(90deg, #ff85c2, #ffa3e0);
-  transition: width 0.3s ease;
 }
 
-/* ===================== 기타 ===================== */
-.hidden { display: none; }
-#result img { width: 220px; border-radius: 12px; margin-bottom: 16px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+.remove-image:active {
+  border: 0;
+  transition: all .2s ease;
+}
+
+.section {
+    margin-top: 50px;
+}
+
+.title {
+  line-height: 1.67;
+  text-align: center;
+  color: #bfbbf2;
+        font-size: 25px;
+}
+
+.subtitle {
+  line-height: 1.53;
+  text-align: center;
+  color: #948bd3;
+        font-size: 30px;
+}
+.sbtitle {
+  line-height: 1.53;
+  text-align: center;
+  color: #BDBDBD;
+        font-size: 20px;
+}
+.result-message img, 
+.result-title img {
+    max-width: 60%; /* 화면에 맞게 이미지 크기 조정 */
+    height: auto;
+}
+/* 결과 이미지 부모 요소 스타일 추가 */
+.result-title {
+    text-align: center;
+    max-width: 80%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.result-title img {
+    max-width: 80%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    max-height: 100%;
+}
+
+
+    .custom-button {
+            width: 100%;
+            max-width: 350px;
+            margin: 0 auto;
+        }
+    
+
+/* On screens that are 600px or less, set the background color to olive */
+@media screen and (max-width: 600px) {
+  html {
+    font-size: 10px;
+  }
+    .navbar-brand {
+        font-size: 2rem;
+    }
+}
+
+ @media screen and (max-width: 600px) {
+  .result-title img,
+  .result-message img {
+    max-width: 100%; /* 이미지를 부모 요소에 맞게 조정 */
+    width: 100%; /* 화면 너비에 맞게 이미지 크기 조정 */
+    height: auto;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .main-nav {
+    font-size: 1.6rem; /* 고정! 줄어들지 않음 */
+  }
+
+  .main-nav li {
+    margin-left: 12px;
+  }
+}
+
+
+
+.upload {
+    width: 20%;
+}
+
+.upload-text {
+    width: 58%;
+    font-size: 1.5rem;
+    line-height: 1.53;
+    text-align: center;
+    color: #35465d;
+    margin: 0 auto;
+}
+
+.footer {
+    background-color: initial;
+    color: initial;
+}
+
+.bar-container {
+  height: 2.7rem;
+}
+
+
+.percent-text {
+  font-size: 1rem;
+  color: #ffffff;
+}
+.gg-label {
+    width: 20%;
+    text-align: left;
+    height: 2rem;
+}
+#label-container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.result-button {
+  font-size: 1.4rem;
+  color: #000000;
+  background-color: #ffb2e5;
+  border: none;
+  border-radius: 25px;
+  padding: 12px 24px;
+  margin-top: 10px;
+  width: 100%;
+  max-width: 350px;
+  font-family: 'ChosunGu', sans-serif;
+  text-align: center;
+  transition: background-color 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.result-button:hover {
+  background-color: #ffb2e5;
+  cursor: pointer;
+}
+
+
+
+/* gender */
+input#gender {
+  display: none;
+}
+
+label {
+  cursor: pointer;
+  display: inline-block;
+  width: 90px;
+  height: 41px;
+  box-shadow: 0 0 0 8px #e5e9ea inset;
+  border-radius: 30px;
+  position: relative;
+}
+
+.knob {
+  position: absolute;
+  width: 41px;
+  top: 0;
+  left: 0;
+  height: 41px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 8px #f470a7 inset;
+  background-color: #fbd4e6;
+  transition: 0.3s;
+}
+
+.knob > i {
+  position: absolute;
+  width: 4px;
+  height: 18px;
+  top: 100%;
+  background-color: #f470a7;
+  left: calc(50% - 2px);
+}
+
+.knob > i:before,
+.knob > i:after {
+  width: 6px;
+  position: absolute;
+  top: 42%;
+  content: "";
+  height: 4px;
+  background-color: #f470a7;
+}
+
+.knob > i:before {
+  left: 4px;
+}
+.knob > i:after {
+  left: -6px;
+}
+
+input:checked + label > .knob {
+  box-shadow: 0 0 0 8px #a1c6dd inset;
+  background-color: #e2ecf4;
+  transform: translateX(49px) rotate(-140deg);
+}
+
+input:checked + label > .knob > i {
+  background-color: #a1c6dd;
+}
+
+input:checked + label > .knob > i:after,
+input:checked + label > .knob > i:before {
+  background-color: #a1c6dd;
+}
+
+input:checked + label > .knob > i:after {
+  top: 14.5px;
+  width: 12px;
+  left: -7px;
+  transform: rotate(45deg);
+}
+input:checked + label > .knob > i:before {
+  top: 13px;
+  width: 12px;
+  left: 0px;
+  transform: rotate(134deg);
+}
+
+.ad-banner {
+    width: 320px;
+    margin: 0 auto;
+}
+
+
+.coupang-banner {
+    width: 320px;
+    margin: 0 auto;
+}
+.cute-loading {
+  text-align: center;
+  padding: 20px;
+  font-family: 'ChosunGu', sans-serif;
+  color: #444;
+  animation: fadein 0.4s ease;
+}
+
+.emoji-area {
+  font-size: 3rem;
+  animation: wiggle 1.2s infinite ease-in-out;
+}
+
+.loading-text {
+  font-size: 1.6rem;  /* 여기 키워! */
+  margin-top: 10px;
+  color: #444;
+}
+
+.dot-dot-dot {
+  font-size: 1.5rem;  /* 이것도 키워! */
+  margin-top: 6px;
+  color: #888;
+}
+
+.dot-dot-dot span {
+  animation: blink 1.5s infinite;
+}
+
+.dot-dot-dot span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.dot-dot-dot span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes wiggle {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(3deg); }
+  50% { transform: rotate(0deg); }
+  75% { transform: rotate(-3deg); }
+  100% { transform: rotate(0deg); }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+@keyframes fadein {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+ 
+
 </style>
+
+
+
+
+
+
+
+
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+    <meta property="og:image" content="img_main324.png" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-6076fc88e5b8b134"></script>
+
+    <script data-ad-client="ca-pub-5522499110435321" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
+
 </head>
+
+
+
 <body>
+ 
 
-<!-- 헤더 -->
-<header class="page-header">
-  <img src="logo.png" alt="Logo" class="logo">
-  <ul class="main-nav">
-    <li><a href="#">홈</a></li>
-    <li><a href="#">테스트</a></li>
-    <li><a href="#">소개</a></li>
-  </ul>
-</header>
+    <header class="page-header wrapper">
+        <h1><a href="index.html"><img class="logo" src="img_logo.png" alt="test it"></a>
+        </h1>
+    <nav>
+        <u1 class="main-nav">
+            <li> <a href="https://test-it.co.kr/test.html">성격</a></li>
+            <li> <a href="https://test-it.co.kr/face.html">얼굴</a></li>
+            <li> <a href="https://test-it.co.kr/etc.html">그외</a></li>
+            <li> <a href="https://test-it.co.kr/saju.html">사주</a></li>
+        </u1>
+    </nav>
+        
+        
+    </header>
+    
+    <section class="section">
+  </section>
 
 
-<!-- ✅ 메인화면 (이미지 포함) -->
-<section id="start-screen" class="container">
-  <img src="img_main323.png" alt="메인 이미지" class="main-image">
-  <button onclick="startTest()">테스트 시작하기</button>
-</section>
 
 
-<!-- 질문 -->
-<section id="quiz-screen" class="container hidden">
-  <div class="progress">
-    <div class="progress-bar" id="progressBar"></div>
-  </div>
-  <h2 id="question"></h2>
-  <div id="options"></div>
-</section>
+ <section class="section">
 
-<!-- 결과 -->
-<section id="result-screen" class="container hidden">
-  <div id="result"></div>
-  <button onclick="restartTest()">다시 하기</button>
-</section>
+        <h2 class="sr-only">테스트잇 소속사 얼굴 테스트</h2>
+        <h3 class="sr-only">인공지능으로 파악한 나의 소속사 얼굴 테스트</h3>
+        <h4 class="sr-only">본 서비스는 Google의 인공지능 teachable machine 2.0을 활용하였습니다.</h4>
+        <p class="sr-only">테스트잇 소속사 얼굴 테스트</p>
+    </section>
 
+
+
+  <div class="img"> 
+<img class="up mt-3 pb-5" src="img_main324.png" alt="up">
+</div>
+
+    <h3 class="sbtitle""d-flex justify-content-center">성별 선택</h3>
+    <section class="d-flex justify-content-center">
+        <p class="d-flex align-items-center pr-3">여</p>
+        <div>
+            <input type="checkbox" id="gender">
+            <label for="gender">
+                <span class="knob">
+                    <i></i>
+                </span>
+            </label>
+        </div>
+        <p class="d-flex align-items-center pl-3">남</p>
+    </section>
+   
+   <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <div class="mt-3 container file-upload">
+        <div class="image-upload-wrap">
+            <input class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />
+            <div class="drag-text">
+                <h3 class="mb-5 pb-4 pt-5  upload-text">사진을 올려놓거나<br>눌러서 파일 업로드</h3>
+            </div>
+        </div>
+        <div class="file-upload-content">
+            <img class="file-upload-image" id="face-image" src="#" alt="your image" />
+      <!-- 귀여운 로딩 화면 -->
+<div id="loading" style="display: none;" class="cute-loading">
+  <div class="emoji-area">🔍</div>
+  <div class="loading-text">당신의 얼굴을 스캔 중이에요!</div>
+  <div class="dot-dot-dot">소속사 찾는 중...<span>.</span><span>.</span><span>.</span></div>
+</div>
+
+
+                <p class="result-message"></p>
+            <div id="label-container" class="d-flex flex-column justify-content-around"></div>
+                <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                <div class="addthis_inline_share_toolbox_bzap"></div>
+            
+
+<div style="display: flex; flex-direction: column; align-items: center;">
+  <button type="button" class="result-button" onclick="location.href='test324.html'">
+    다시 해보기
+  </button>
+
+  <button type="button" class="result-button" onclick="location.href='/'">
+    다른 테스트 해보기
+  </button>
+
+  <button id="share-btn" class="result-button">
+    테스트 공유하기
+  </button>
+</div>
+
+                        
+                        
+            </div>
+        </div>
+    </div>
+    
+               
+
+
+<article class="coupang_ad mt-1" style="text-align: center;">
+<script src="https://ads-partners.coupang.com/g.js"></script>
 <script>
-let current = 0;
-let selectedRoot = null;
-let scores = {};
-const progressBar = document.getElementById("progressBar");
-const questionEl = document.getElementById("question");
-const optionsEl = document.getElementById("options");
-const startScreen = document.getElementById("start-screen");
-const quizScreen = document.getElementById("quiz-screen");
-const resultScreen = document.getElementById("result-screen");
-
-/* =============== Q1 공통 질문 (루트 결정) =============== */
-const rootQuestion = {
-  q: "일을 할 때 가장 몰입되는 순간은?",
-  options: [
-    { text: "새로운 아이디어를 떠올릴 때", type: "A" },
-    { text: "문제를 논리적으로 풀 때", type: "B" },
-    { text: "누군가를 이해하고 도울 때", type: "C" },
-    { text: "목표를 세우고 달성할 때", type: "D" }
-  ]
-};
-
-/* =============== 루트별 전용 질문 (Q2~Q4) =============== */
-const rootQuestions = {
-  A: [
-    { q: "아이디어가 떠오를 때 당신은?", options: [
-      { text: "그림으로 시각화한다", job: "그래픽디자이너" },
-      { text: "글로 풀어낸다", job: "작가" },
-      { text: "사람들에게 보여줄 콘셉트를 구상한다", job: "광고기획자" },
-      { text: "트렌드를 반영한 콘텐츠로 만든다", job: "콘텐츠크리에이터" }
-    ]},
-    { q: "당신의 결과물에서 더 중요한 건?", options: [
-      { text: "색감과 조형미", job: "그래픽디자이너" },
-      { text: "감정과 메시지", job: "작가" },
-      { text: "대중 반응", job: "크리에이터" },
-      { text: "브랜드의 일관성", job: "브랜드디렉터" }
-    ]},
-    { q: "일하면서 가장 뿌듯한 순간은?", options: [
-      { text: "새로운 표현을 완성했을 때", job: "디자이너" },
-      { text: "스토리가 완성됐을 때", job: "작가" },
-      { text: "내 아이디어가 채택될 때", job: "기획자" },
-      { text: "사람들이 내 콘텐츠에 반응할 때", job: "크리에이터" }
-    ]}
-  ],
-  B: [
-    { q: "복잡한 문제를 마주했을 때 당신은?", options: [
-      { text: "데이터를 먼저 본다", job: "데이터분석가" },
-      { text: "계획부터 세운다", job: "전략기획자" },
-      { text: "코드를 점검한다", job: "프로그래머" },
-      { text: "수익 구조를 검토한다", job: "금융애널리스트" }
-    ]},
-    { q: "성취감을 느끼는 순간은?", options: [
-      { text: "수치가 정확히 맞아떨어질 때", job: "회계사" },
-      { text: "프로세스가 완성될 때", job: "프로그래머" },
-      { text: "전략이 통했을 때", job: "기획자" },
-      { text: "시장 흐름을 예측했을 때", job: "애널리스트" }
-    ]},
-    { q: "일할 때 더 중요한 건?", options: [
-      { text: "정확성", job: "회계사" },
-      { text: "효율성", job: "전략기획자" },
-      { text: "논리성", job: "분석가" },
-      { text: "결과 수치", job: "금융전문가" }
-    ]}
-  ],
-  C: [
-    { q: "누군가 힘든 얘기를 하면 당신은?", options: [
-      { text: "감정부터 공감한다", job: "심리상담사" },
-      { text: "도움을 줄 방법을 찾는다", job: "간호사" },
-      { text: "조용히 들어준다", job: "교사" },
-      { text: "실질적인 조언을 한다", job: "HR매니저" }
-    ]},
-    { q: "일하면서 보람을 느끼는 순간은?", options: [
-      { text: "사람이 달라졌을 때", job: "상담사" },
-      { text: "누군가가 성장했을 때", job: "교사" },
-      { text: "감사 인사를 받을 때", job: "복지사" },
-      { text: "팀이 화합할 때", job: "HR매니저" }
-    ]},
-    { q: "당신이 중요하게 여기는 것은?", options: [
-      { text: "마음의 치유", job: "상담사" },
-      { text: "도움과 봉사", job: "복지사" },
-      { text: "신뢰와 존중", job: "교사" },
-      { text: "사람 관리", job: "HR매니저" }
-    ]}
-  ],
-  D: [
-    { q: "당신이 가장 에너지가 넘칠 때는?", options: [
-      { text: "팀을 이끌 때", job: "프로젝트매니저" },
-      { text: "행사를 기획할 때", job: "이벤트기획자" },
-      { text: "시장 아이디어를 낼 때", job: "마케팅매니저" },
-      { text: "직접 시작할 때", job: "창업가" }
-    ]},
-    { q: "성과를 확인할 때 당신은?", options: [
-      { text: "팀원들과 나눈다", job: "PM" },
-      { text: "새 캠페인을 구상한다", job: "마케팅매니저" },
-      { text: "다음 목표를 세운다", job: "창업가" },
-      { text: "현장을 더 키운다", job: "이벤트기획자" }
-    ]},
-    { q: "성공을 정의한다면?", options: [
-      { text: "내가 주도해 만든 결과", job: "PM" },
-      { text: "사람들이 즐거워하는 모습", job: "이벤트기획자" },
-      { text: "내 브랜드가 성장하는 것", job: "창업가" },
-      { text: "성과가 수치로 보일 때", job: "마케팅매니저" }
-    ]}
-  ]
-};
-
-/* =============== Q5~Q12 공통 질문 =============== */
-const commonQuestions = [
-  { q: "일의 결과를 평가할 때 더 중요하다고 느끼는 것은?", options: [
-    { text: "완성도와 정확성", add: "B" },
-    { text: "감정과 반응", add: "C" }
-  ]},
-  { q: "퇴근 후 당신은?", options: [
-    { text: "자기계발·정리", add: "B" },
-    { text: "감정충전·휴식", add: "C" }
-  ]},
-  { q: "팀이 잘 되기 위해 필요한 건?", options: [
-    { text: "아이디어", add: "A" },
-    { text: "배려", add: "C" },
-    { text: "리더십", add: "D" }
-  ]}
-];
-
-function startTest() {
-  startScreen.classList.add("hidden");
-  quizScreen.classList.remove("hidden");
-  current = 0;
-  selectedRoot = null;
-  scores = {};
-  showQuestion();
-}
-
-/* 루트 + 루트전용 + 공통 진행 */
-function showQuestion() {
-  const totalSteps = 1 + 3 + commonQuestions.length;
-  const step = current + 1;
-  progressBar.style.width = (step / totalSteps) * 100 + "%";
-
-  if (current === 0) {
-    // Q1 (루트 선택)
-    renderQuestion(rootQuestion, opt => {
-      selectedRoot = opt.type;
-      scores[selectedRoot] = 0;
-      current++;
-      showQuestion();
-    });
-  } else if (current <= 3) {
-    // Q2~Q4 루트별
-    const q = rootQuestions[selectedRoot][current - 1];
-    renderQuestion(q, opt => {
-      const job = opt.job;
-      if (!scores[job]) scores[job] = 0;
-      scores[job]++;
-      current++;
-      showQuestion();
-    });
-  } else if (current - 4 < commonQuestions.length) {
-    // Q5~ 공통
-    const q = commonQuestions[current - 4];
-    renderQuestion(q, opt => {
-      scores[opt.add] = (scores[opt.add] || 0) + 0.5;
-      current++;
-      showQuestion();
-    });
-  } else {
-    showResult();
-  }
-}
-
-function renderQuestion(q, callback) {
-  questionEl.innerText = q.q;
-  optionsEl.innerHTML = "";
-  q.options.forEach(opt => {
-    const btn = document.createElement("button");
-    btn.innerText = opt.text;
-    btn.onclick = () => callback(opt);
-    optionsEl.appendChild(btn);
-  });
-}
-
-/* 결과 */
-function showResult() {
-  quizScreen.classList.add("hidden");
-  resultScreen.classList.remove("hidden");
-  let max = -Infinity, best = null;
-  for (let k in scores) {
-    if (scores[k] > max) { max = scores[k]; best = k; }
-  }
-
-  // ✅ 각 직업에 이미지 번호 연결
- const jobImages = {
-  "그래픽디자이너": "job1.png",
-  "콘텐츠크리에이터": "job2.png",
-  "작가": "job3.png",
-  "광고기획자": "job4.png",
-  "브랜드디렉터": "job5.png",
-  "데이터분석가": "job6.png",
-  "회계사": "job7.png",
-  "스타트업 CFO": "job8.png",
-  "자산관리사": "job9.png",
-  "전략기획자": "job10.png",
-  "심리상담사": "job11.png",
-  "교사": "job12.png",
-  "사회복지사": "job13.png",
-  "간호사": "job14.png",
-  "HR매니저": "job15.png",
-  "마케팅매니저": "job16.png",
-  "창업가": "job17.png",
-  "프로젝트매니저": "job18.png",
-  "이벤트기획자": "job19.png",
-  "여행플래너": "job20.png"
-};
-
-  const imgSrc = jobImages[best] || "default.png";
-  document.getElementById("result").innerHTML = `
-    <img src="${imgSrc}" alt="${best}">
-    <h3>${best}</h3>
-    <p>당신은 ${best}로서 가장 잘 빛날 타입이에요 🌷</p>
-  `;
-}
-
-
-/* 다시하기 */
-function restartTest() {
-  selectedRoot = null;
-  current = 0;
-  scores = {};
-  resultScreen.classList.add("hidden");
-  startScreen.classList.remove("hidden");
-  progressBar.style.width = "0%";
-}
+	new PartnersCoupang.G({"id":798186,"template":"carousel","trackingCode":"AF4391881","width":"350","height":"140","tsource":""});
 </script>
+  
+
+<script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
+
+
+
+
+<footer class="footer pt-5 container d-flex justify-content-center">
+        <div>
+            <p>&copy; test it 2025. All Rights Reserved. </p>
+        </div>
+    </footer>
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    $('.image-upload-wrap').hide();
+                    $('.img').hide();
+                    $('#loading').show();
+                    $('.file-upload-image').attr('src', e.target.result);
+                    $('.file-upload-content').show();
+                    $('.image-title').html(input.files[0].name);
+                };
+                reader.readAsDataURL(input.files[0]);
+                init().then(function() {
+                    console.log("hello");
+                    predict();
+                    $('#loading').hide();
+                });
+            } else {
+                removeUpload();
+            }
+        }
+
+        function removeUpload() {
+            $('.file-upload-input').replaceWith($('.file-upload-input').clone());
+            $('.file-upload-content').hide();
+            $('.image-upload-wrap').show();
+        }
+        $('.image-upload-wrap').bind('dragover', function() {
+            $('.image-upload-wrap').addClass('image-dropping');
+        });
+        $('.image-upload-wrap').bind('dragleave', function() {
+            $('.image-upload-wrap').removeClass('image-dropping');
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
+    <script type="text/javascript">
+        let URL;
+        const urlMale = "https://teachablemachine.withgoogle.com/models/thrZDKfbT/";
+        const urlFemale = "https://teachablemachine.withgoogle.com/models/xUEoocgsI/";
+        let model, webcam, labelContainer, maxPredictions;
+       async function init() {
+            if (document.getElementById("gender").checked) {
+                URL = urlMale;
+            } else {
+                URL = urlFemale;
+            }
+            const modelURL = URL + "model.json";
+            const metadataURL = URL + "metadata.json";
+            model = await tmImage.load(modelURL, metadataURL);
+            maxPredictions = model.getTotalClasses();
+            labelContainer = document.getElementById("label-container");
+            for (let i = 0; i < maxPredictions; i++) {
+                var element = document.createElement("div")
+                element.classList.add("d-flex");
+                labelContainer.appendChild(element);
+            }
+        }
+        async function predict() {
+            var image = document.getElementById("face-image")
+            const prediction = await model.predict(image, false);
+            prediction.sort((a, b) => parseFloat(b.probability) - parseFloat(a.probability));
+            console.log(prediction[0].className);
+            var resultTitle;
+            if (document.getElementById("gender").checked) {
+                switch (prediction[0].className) {
+                                 case "1a":
+                       resultTitle = '<img src="fn324_1a.png">';
+                     
+                        break;
+                      case "2a":
+                       resultTitle = '<img src="fn324_2a.png">';
+                     
+                        break;
+    case "3a":
+                       resultTitle = '<img src="fn324_3a.png">';
+                     
+                        break;
+    case "4a":
+                       resultTitle = '<img src="fn324_4a.png">';
+                     
+                        break;
+    case "5a":
+                       resultTitle = '<img src="fn324_5a.png">';
+                     
+                        break;
+    case "6a":
+                       resultTitle = '<img src="fn324_6a.png">';
+                     
+                        break;
+    case "7a":
+                       resultTitle = '<img src="fn324_7a.png">';
+                     
+                        break;
+    case "8a":
+                       resultTitle = '<img src="fn324_8a.png">';
+                     
+                        break;
+    case "9a":
+                       resultTitle = '<img src="fn324_9a.png">';
+                     
+                        break;
+    case "10a":
+                       resultTitle = '<img src="fn324_10a.png">';
+                     
+                        break;
+
+    case "11a":
+                       resultTitle = '<img src="fn324_11a.png">';
+                     
+                        break;
+    case "12a":
+                       resultTitle = '<img src="fn324_12a.png">';
+                     
+                        break;
+    case "13a":
+                       resultTitle = '<img src="fn324_13a.png">';
+                     
+                        break;
+    case "14a":
+                       resultTitle = '<img src="fn324_14a.png">';
+                     
+                        break;
+    case "15a":
+                       resultTitle = '<img src="fn324_15a.png">';
+                     
+                        break;
+ 
+ 
+
+                        
+                    default:
+                   
+                }
+            } else {
+                switch (prediction[0].className) {
+                                              case "1a":
+                       resultTitle = '<img src="fy324_1a.png">';
+                     
+                        break;
+                      case "2a":
+                       resultTitle = '<img src="fy324_2a.png">';
+                     
+                        break;
+    case "3a":
+                       resultTitle = '<img src="fy324_3a.png">';
+                     
+                        break;
+    case "4a":
+                       resultTitle = '<img src="fy324_4a.png">';
+                     
+                        break;
+    case "5a":
+                       resultTitle = '<img src="fy324_5a.png">';
+                     
+                        break;
+    case "6a":
+                       resultTitle = '<img src="fy324_6a.png">';
+                     
+                        break;
+    case "7a":
+                       resultTitle = '<img src="fy324_7a.png">';
+                     
+                        break;
+    case "8a":
+                       resultTitle = '<img src="fy324_8a.png">';
+                     
+                        break;
+    case "9a":
+                       resultTitle = '<img src="fy324_9a.png">';
+                     
+                        break;
+    case "10a":
+                       resultTitle = '<img src="fy324_10a.png">';
+                     
+                        break;
+
+    case "11a":
+                       resultTitle = '<img src="fy324_11a.png">';
+                     
+                        break;
+    case "12a":
+                       resultTitle = '<img src="fy324_12a.png">';
+                     
+                        break;
+    case "13a":
+                       resultTitle = '<img src="fy324_13a.png">';
+                     
+                        break;
+    case "14a":
+                       resultTitle = '<img src="fy324_14a.png">';
+                     
+                        break;
+    case "15a":
+                       resultTitle = '<img src="fy324_15a.png">';
+                     
+                        break;
+ 
+
+                    default:
+                  
+                }
+            }
+            var title = "<div class='" + prediction[0].className + "-gg-title'>" + resultTitle + "</div>"
+      
+            $('.result-message').html(title);
+            var barWidth;
+            for (let i = 0; i < maxPredictions; i++) {
+                if (prediction[i].probability.toFixed(2) > 0.1) {
+                    barWidth = Math.round(prediction[i].probability.toFixed(2) * 100) + "%";
+                } else if (prediction[i].probability.toFixed(2) >= 0.01) {
+                    barWidth = "4%"
+                } else {
+                    barWidth = "2%"
+                }
+                var labelTitle;
+                switch (prediction[i].className) {
+                
+                  
+              
+
+                    default:
+                        labelTitle = "알수없음"
+            }
+                var label = "<div class='gg-label d-flex align-items-center'>" + labelTitle + "</div>"
+            
+                labelContainer.childNodes[i].innerHTML = label + bar;
+            }
+        }
+    </script>
+    <script>
+        function iosApp() {
+            document.getElementById("coupang").style.display="none";
+            $("#coupang ins").hide();
+            document.getElementById("addThis").style.display="none";
+            document.getElementById("disqus_thread").style.display="none";
+            var kakao = document.getElementsByClassName("kakao_ad_area");
+            for (var i = 0; i < kakao.length; i++) {
+              if(kakao[i]) {
+                  kakao[i].style.display="none";
+              }
+            }
+            document.getElementById("yotube-top-link").style.display="none";
+            document.getElementById("yotube-mid-link").style.display="none";
+            document.getElementById("yotube-bottom-link").style.display="none";
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+    const shareButton = document.getElementById("share-btn"); // 공유 버튼 선택
+    if (shareButton) {
+        shareButton.addEventListener("click", function () {
+            const testURL = window.location.href; // 현재 페이지 URL 가져오기
+            const shareText = "테스트잇 소속사 얼굴 테스트 해봐✨";  
+
+            if (navigator.share) {
+                // 📱 모바일 및 지원되는 브라우저에서 기본 공유 기능 사용
+                navigator.share({
+                    title: "테스트잇 소속사 얼굴 테스트",  
+                    text: shareText,
+                    url: testURL
+                }).then(() => {
+                    console.log("✅ 공유 성공!");
+                }).catch((error) => {
+                    console.error("❌ 공유 실패:", error);
+                });
+            } else {
+                // 💻 PC에서는 클립보드에 복사
+                navigator.clipboard.writeText(`${shareText} ${testURL}`).then(() => {
+                    alert("📌 링크가 복사되었습니다! 친구들에게 공유해보세요.");
+                }).catch((err) => {
+                    console.error("❌ 클립보드 복사 실패:", err);
+                });
+            }
+        });
+    }
+});
+
+    </script>
 </body>
+<!-- 
+image input box
+Copyright (c) 2020 by Aaron Vanston (https://codepen.io/aaronvanston/pen/yNYOXR)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
 </html>

@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5522499110435321" crossorigin="anonymous"></script>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>테스트잇 하반기 성격 고사 테스트</title>
+  <meta name="description" content="테스트잇 하반기 성격 고사 테스트">
+  <meta name="keywords" content="테스트잇,성격테스트,하반기 성격 고사,테스트잇하반기 성격 고사,하반기 성격 고사테스트,연애고사테스트,연애테스트,연애mbti,연애성격테스트, 심리테스트, mbti테스트">
+  <meta property="og:type" content="website"> 
+  <meta property="og:title" content="테스트잇 하반기 성격 고사 테스트">
+  <meta property="og:description" content="나의 하반기 성격 고사이 뭔지 알아보는 테스트">
+  <meta property="og:image" content="img_main325.png">
+  <meta property="og:url" content="https://test-it.co.kr/test325">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+
+  
+  <style>
+    body {
+      font-family: 'ChosunGu', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+      @font-face {
+    font-family: 'ChosunGu';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/ChosunGu.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+    
+    /* 로고: 위쪽 마진 제거 + 반응형 크기 */
+/* 로고 - 기본 크기 유지, 너무 작아지지 않게 */
+.logo {
+  width: 95px; /* 원래보다 살짝만 줄임 */
+  margin-top: 0;
+  display: block;
+}
+
+/* 네비게이션 - 가로유지, 글씨는 일정 크기 유지 */
+.main-nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 28px; /* 항목 간 간격 */
+  font-size: 18px; /* 글씨 크기 일정하게 유지 */
+  text-transform: uppercase;
+}
+
+/* 글씨 스타일 유지 */
+.main-nav li {
+  margin: 0;
+}
+
+.main-nav a {
+  color: #432;
+  font-family: 'Do Hyeon', sans-serif;
+  line-height: 1.6;
+  text-decoration: none;
+  transition: color .2s ease;
+}
+
+.main-nav a:hover { color: #0bd; }
+/* 헤더 위쪽 여백 최소화 */
+.page-header {
+  width: 100%;
+  background-color: #ffffff;
+  padding: 6px 20px; /* 위 여백 줄이기 */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 2;
+  position: sticky;
+  top: 0;
+}
+
+
+    #img_main { width: 500px; max-width: 100%; height: auto; margin: 0 auto; }
+    #start-container, #question-container, #result-container {
+      text-align: center; background-color: #fff; padding: 20px; border-radius: 10px; max-width: 600px; width: 100%;
+    }
+    button {
+      background-color: #ffe84f; color: #000; padding: 15px 25px; font-size: 18px;
+      border: none; border-radius: 15px; cursor: pointer; margin: 15px auto; display: flex;
+      align-items: center; justify-content: center; transition: background-color 0.3s ease;
+    }
+    button:hover { background-color: #ffde00; }
+    #result-image { max-width: 100%; height: auto; margin-top: 20px; display: none; }
+    #question-image { width: 500px; max-width: 100%; height: auto; margin: 0 auto; }
+    .coupang_ad { width: 320px; margin: 0 auto; }
+    .pill {
+      display:inline-block; padding:6px 12px; border:2px solid #000; border-radius:999px; background:#fffbe6; font-weight:700; margin:6px 4px;
+    }
+/* 공통 젤리 버튼 */
+.jelly{
+  all: unset;
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  max-width: clamp(280px, 60vw, 360px);
+  height: clamp(44px, 6.2vw, 56px);
+  margin: 10px auto;
+  padding: 0 18px;
+  text-align: center;
+  font-family: 'ChosunGu', sans-serif;
+  font-weight: 700;
+    font-size: clamp(14px, 2vw, 16px); /* 🔸지금보다 살짝 작게 */
+  line-height: 1;
+  color: #3a2a2a;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  background: linear-gradient(180deg, #ffd9e8 0%, #ffc1d8 100%); /* 기본 핑크 */
+  box-shadow: 0 8px 0 rgba(255,140,160,.8), 0 8px 18px rgba(255,120,150,.35);
+  transition: transform .08s ease, box-shadow .08s ease, filter .08s ease;
+}
+.jelly:hover{ filter: brightness(1.03); }
+.jelly:active{
+  transform: translateY(4px);
+  box-shadow: 0 4px 0 rgba(255,140,160,.8), 0 6px 12px rgba(255,120,150,.35);
+}
+.jelly:focus-visible{
+  outline: 3px solid rgba(255,120,150,.6);
+  outline-offset: 2px;
+}
+
+#question-container #options {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px; /* 버튼 사이 간격 */
+}
+/* 결과화면 버튼 간격 넉넉하게 */
+#result-container .jelly {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+/* 버튼 묶음 정렬도 조금 여유롭게 */
+#result-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px; /* 버튼 간 간격 */
+}
+
+    /* 화면이 작아질 때 글씨가 아주 조금만 줄어들게 */
+@media (max-width: 600px) {
+  .logo { width: 80px; }
+  .main-nav { gap: 18px; font-size: 16px; }
+}
+
+@media (max-width: 420px) {
+  .logo { width: 70px; }
+  .main-nav { gap: 12px; font-size: 14px; }
+}
+
+
+  </style>
+</head>
+<body>
+
+  <header class="page-header wrapper">
+    <h1><a href="index.html"><img class="logo" src="img_logo.png" alt="test it"></a></h1>
+    <nav>
+      <ul class="main-nav">
+        <li><a href="https://test-it.co.kr/test.html">성격</a></li>
+        <li><a href="https://test-it.co.kr/face.html">얼굴</a></li>
+        <li><a href="https://test-it.co.kr/etc.html">그외</a></li>
+        <li><a href="https://test-it.co.kr/saju.html">사주</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div id="start-container">
+    <img id="img_main" class="mt-3" src="img_main325.png" alt="메인 이미지">
+  <button class="jelly" onclick="startTest()">테스트 시작하기</button>
+  </div>
+
+  <div id="question-container" style="display:none;">
+    <div class="pill" id="progress-pill">1 / 16</div>
+    <h2 id="question-title" class="mt-2"></h2>
+    <img id="question-image" src="" alt="Question Image">
+    <div id="options" class="mt-2"></div>
+    <div class="small text-muted mt-2" id="domain-hint"></div>
+  </div>
+
+<div id="result-container" style="display:none;">
+  <p id="result" class="lead" style="white-space:pre-line;"></p>
+  <img id="result-image" src="" alt="Result Image">
+  <button type="button" class="jelly" onclick="location.href='test325.html'">다시 해보기</button>
+  <button type="button" class="jelly" onclick="location.href='/'">다른 테스트 해보기</button>
+  <button type="button" id="share-btn" class="jelly">테스트 공유하기</button>
+</div>
+
+<!-- ★ 쿠팡 광고는 여기로 옮기기 -->
+<article class="coupang_ad mt-3">
+  <script src="https://ads-partners.coupang.com/g.js"></script>
+  <script>
+    new PartnersCoupang.G({"id":798186,"template":"carousel","trackingCode":"AF4391881","width":"320","height":"140","tsource":""});
+  </script>
+</article>
+<script>
+/* ============
+  테스트 설계
+  - 두 영역: friend(친한친구), work(사회생활)
+  - 각 영역 문항 배분: EI 3, SN 1, TF 3, JP 1 => 총 8문항 × 2 = 16문항
+  - 선택값: EI(E/I), SN(S/N), TF(T/F), JP(J/P)
+  - 결과: friendMBTI / workMBTI => 결과 이미지: results/{friend}__{work}.png
+============= */
+
+const DIM_ORDER = ['EI','SN','TF','JP']; // MBTI 표기 순서
+
+// 점수판 및 타이브레이커(해당 차원에서 마지막 선택으로 동점 해소)
+const scores = {
+  friend: { EI:{E:0,I:0, last:null}, SN:{S:0,N:0, last:null}, TF:{T:0,F:0, last:null}, JP:{J:0,P:0, last:null} },
+  work:   { EI:{E:0,I:0, last:null}, SN:{S:0,N:0, last:null}, TF:{T:0,F:0, last:null}, JP:{J:0,P:0, last:null} }
+};
+
+// 문항 데이터 (이미지 파일명은 네가 쓰는 규칙대로 바꿔 쓰면 됨)
+// friend 8문항 (EI×3, SN×1, TF×3, JP×1)
+const questions = [
+  // FRIEND — EI(3)
+  { domain:'friend', dim:'EI', image:'image1_q325.png',  options:[{text:'아쉽고 심심하다', value:'E'},{text:'솔직히 좀 편하다', value:'I'}] },
+  { domain:'friend', dim:'EI', image:'image2_q325.png',   options:[{text:'내가 분위기를 살린다', value:'E'},{text:'주로 듣는 편이다', value:'I'}] },
+  { domain:'friend', dim:'EI', image:'image3_q325.png', options:[{text:'내가 먼저 연락한다', value:'E'},{text:'언젠가 오겠지 한다', value:'I'}] },
+  // FRIEND — SN(1)
+  { domain:'friend', dim:'SN', image:'image4_q325.png',   options:[{text:'보이는 모습을 위주로 본다', value:'S'},{text:'숨겨진 모습을 보려고 한다', value:'N'}] },
+  // FRIEND — TF(3)
+  { domain:'friend', dim:'TF', image:'image5_q325.png',  options:[{text:'그건 비교 기준이 잘못된 거야', value:'T'},{text:'넌 충분히 괜찮은 사람이야', value:'F'}] },
+  { domain:'friend', dim:'TF', image:'image6_q325.png',   options:[{text:'어차피 사람 관계는 유동적이야', value:'T'},{text:'약간 질투나네', value:'F'}] },
+  { domain:'friend', dim:'TF', image:'image7_q325.png',  options:[{text:'다음에 붙으면 되지', value:'T'},{text:'열심히 했는데 속상하겠다', value:'F'}] },
+  // FRIEND — JP(1)
+  { domain:'friend', dim:'JP', image:'image8_q325.png',  options:[{text:'장단점 비교해보고 사', value:'J'},{text:'그냥 마음 가는 걸로 사', value:'P'}] },
+
+  // WORK — EI(3)
+  { domain:'work',   dim:'EI', image:'image9_q325.png',   options:[{text:'대화 주제를 찾아낸다', value:'E'},{text:'묻는 말에만 답하는 편', value:'I'}] },
+  { domain:'work',   dim:'EI', image:'image10_q325.png',  options:[{text:'주변에 털어놓고 풀어낸다', value:'E'},{text:'혼자 마음 정리한다', value:'I'}] },
+  { domain:'work',   dim:'EI', image:'image11_q325.png',  options:[{text:'자주 연락하고 챙기는 편이다', value:'E'},{text:'필요할 때만 연락해도 괜찮다', value:'I'}] },
+  // WORK — SN(1)
+  { domain:'work',   dim:'SN', image:'image12_q325.png',  options:[{text:'말보단 행동으로 판단한다', value:'S'},{text:'말과 분위기, 태도를 함께 읽는다', value:'N'}] },
+  // WORK — TF(3)
+  { domain:'work',   dim:'TF', image:'image13_q325.png',  options:[{text:'비효율적이어서 짜증난다', value:'T'},{text:'도와주려는 마음은 고맙다', value:'F'}] },
+  { domain:'work',   dim:'TF', image:'image14_q325.png',  options:[{text:'그래도 능력이 중요하다', value:'T'},{text:'태도가 더 중요하다', value:'F'}] },
+  { domain:'work',   dim:'TF', image:'image15_q325.png',  options:[{text:'일은 일, 감정은 감정이라고 구분한다', value:'T'},{text:'감정이 틀어지면 일도 어긋난다', value:'F'}] },
+  // WORK — JP(1)
+  { domain:'work',   dim:'JP', image:'image16_q325.png', options:[{text:'계획대로 안 되는 게 답답하다', value:'J'},{text:'계획이 너무 많을 때 숨 막힌다', value:'P'}] }
+];
+
+let currentQuestionIndex = 0;
+
+// UI refs
+const startEl = document.getElementById('start-container');
+const qWrapEl = document.getElementById('question-container');
+const qTitleEl = document.getElementById('question-title');
+const qImgEl = document.getElementById('question-image');
+const optsEl = document.getElementById('options');
+const pillEl = document.getElementById('progress-pill');
+const domainHintEl = document.getElementById('domain-hint');
+
+const resultWrapEl = document.getElementById('result-container');
+const resultTextEl = document.getElementById('result');
+const resultImgEl = document.getElementById('result-image');
+
+function startTest() {
+  startEl.style.display = 'none';
+  qWrapEl.style.display = 'block';
+  currentQuestionIndex = 0;
+  resetScores();
+  showQuestion();
+}
+
+function resetScores() {
+  for (const domain of ['friend','work']) {
+    for (const dim of DIM_ORDER) {
+      const d = scores[domain][dim];
+      for (const k in d) if (k!=='last') d[k]=0;
+      d.last = null;
+    }
+  }
+}
+
+function showQuestion() {
+  const q = questions[currentQuestionIndex];
+  pillEl.textContent = (currentQuestionIndex+1) + ' / ' + questions.length;
+  qImgEl.src = q.image || '';
+  domainHintEl.textContent = (q.domain === 'friend') ? '친한친구 기준' : '사회생활 기준';
+
+  optsEl.innerHTML = '';
+  q.options.forEach(opt => {
+    const btn = document.createElement('button');
+    btn.textContent = opt.text;
+    btn.classList.add('jelly'); // ★ 젤리 스타일 적용
+    btn.onclick = () => selectAnswer(q, opt.value);
+    optsEl.appendChild(btn);
+  });
+}
+
+
+function selectAnswer(q, value) {
+  // 점수 합산
+  const domainBlock = scores[q.domain][q.dim];
+  domainBlock[value] = (domainBlock[value] || 0) + 1;
+  domainBlock.last = value; // 동점일 경우 최근 선택으로 타이브레이크
+
+  // 다음 문항 혹은 결과
+  if (currentQuestionIndex < questions.length - 1) {
+    currentQuestionIndex++;
+    showQuestion();
+  } else {
+    showResult();
+  }
+}
+
+function decideLetter(block, aKey, bKey) {
+  if (block[aKey] > block[bKey]) return aKey;
+  if (block[aKey] < block[bKey]) return bKey;
+  // 동점이면 마지막 선택 우선
+  if (block.last === aKey || block.last === bKey) return block.last;
+  // 그래도 없으면 기본 aKey
+  return aKey;
+}
+
+function buildMBTI(domain) {
+  const d = scores[domain];
+  const ei = decideLetter(d.EI, 'E','I');
+  const sn = decideLetter(d.SN, 'S','N');
+  const tf = decideLetter(d.TF, 'T','F');
+  const jp = decideLetter(d.JP, 'J','P');
+  return `${ei}${sn}${tf}${jp}`;
+}
+
+function showResult() {
+  qWrapEl.style.display = 'none';
+  resultWrapEl.style.display = 'block';
+
+  const friend = buildMBTI('friend');
+  const work   = buildMBTI('work');
+
+  // 텍스트는 안 보이게
+  resultTextEl.style.display = 'none';
+
+  // 결과 이미지 경로 (파일명 규칙 맞춰서 사용)
+  const path = `${friend}_${work}325.png`;
+  // const path = `results/${friend}__${work}325.png`; // 파일명이 이 규칙이면 이걸로 바꿔
+
+  resultImgEl.style.display = 'none';
+  resultImgEl.onload = () => { resultImgEl.style.display = 'block'; };
+  resultImgEl.onerror = () => { 
+    resultImgEl.style.display = 'none'; 
+    console.warn('결과 이미지 로딩 실패:', path); 
+  };
+  resultImgEl.src = path;
+}
+
+
+        document.addEventListener("DOMContentLoaded", function () {
+    const shareButton = document.getElementById("share-btn"); // 공유 버튼만 선택
+    if (shareButton) {
+        shareButton.addEventListener("click", function () {
+            const testURL = "https://test-it.co.kr/test325"; // 테스트 URL
+            const shareText = "🍂테스트잇 하반기 성격 고사 테스트🍂"; // 공유 메시지
+
+            if (navigator.share) {
+                // 📱 모바일 및 지원되는 브라우저에서 기본 공유 기능 사용
+                navigator.share({
+                    title: "테스트잇 하반기 성격 고사 테스트",
+                    text: shareText,
+                    url: testURL
+                }).then(() => {
+                    console.log("✅ 공유 성공!");
+                }).catch((error) => {
+                    console.error("❌ 공유 실패:", error);
+                });
+            } else {
+                // 💻 PC에서는 클립보드에 복사
+                navigator.clipboard.writeText(`${shareText} ${testURL}`).then(() => {
+                    alert("📌 링크가 복사되었습니다! 친구들에게 공유해보세요.");
+                }).catch((err) => {
+                    console.error("❌ 클립보드 복사 실패:", err);
+                });
+            }
+        });
+    }
+});
+
+
+
+</script>
+</body>
+</html>

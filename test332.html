@@ -1,0 +1,660 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+
+     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5522499110435321"
+     crossorigin="anonymous"></script>
+
+
+
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   <title>테스트잇 매끈매끈한 성격 테스트</title>
+    <meta name="description" content="테스트잇 매끈매끈한 성격 테스트">
+<meta name="keywords" content="테스트잇,성격테스트,매끈매끈한성격테스트,매끈매끈하다,푱푱하다,울퉁불퉁하다,테스트잇매끈매끈,울퉁불퉁테스트,연애mbti,연애성격테스트, 심리테스트, mbti테스트">
+    <meta property="og:type" content="website"> 
+    <meta property="og:title" content="테스트잇 매끈매끈한 성격 테스트">
+    <meta property="og:description" content="테스트잇 매끈매끈한 성격 테스트">
+    <meta property="og:image" content="img_main332.png">
+    <meta property="og:url" content="https://test-it.co.kr/test332.html">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+      <link rel="icon" type="image/png" href="favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+
+<script src="https://ads-partners.coupang.com/g.js" async></script>
+
+
+    <style>
+        
+        
+.start{
+    display: flex;
+    flex-direction: column;
+}
+
+.logo {
+    width: 100px; /* 더 작게 줄여볼게 */
+    height: auto; /* 가로세로 비율 유지 */
+    max-width: 100%;
+    margin-top: 14px;
+    display: block;
+}
+
+.main-nav {
+    display: flex;
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    margin-top: 34px;
+    list-style: none;
+    flex-wrap: nowrap; /* ✅ 줄바꿈 방지 */
+    overflow-x: auto;   /* ✅ 화면이 좁으면 가로 스크롤 가능 */
+    gap: 20px;          /* ✅ 간격 정돈 */
+}
+
+.main-nav li {
+    white-space: nowrap; /* ✅ 줄바꿈 방지 */
+    font-family: 'Do Hyeon', sans-serif;
+    line-height: 1.7;
+    color: #432;
+}
+
+.main-nav a{
+    color: #432;
+       font-family: 'Do Hyeon', sans-serif;
+    line-height: 1.7;
+}
+
+.main-nav a:hover {
+    color: #0bd;
+}
+
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+    
+article{
+    display: flex;
+    flex-direction: column;
+}
+
+ 
+        /* 스타일링을 위한 CSS 코드 */
+        
+        body {
+            font-family: Noto Sans KR, sans-serif;
+            text-align: center;
+        }
+            /* 이미지에 아래 여백을 주어 버튼을 내립니다. */
+    /* 이미지 스타일 */
+        /* 모달 스타일 */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+/* 기본 모달 콘텐츠 스타일 */
+.modal-content {
+    position: absolute;
+    top: 50%; /* 화면 세로 중앙에 배치 */
+    left: 50%; /* 화면 가로 중앙에 배치 */
+    transform: translate(-50%, -50%); /* 가운데 정렬을 위한 변형 */
+    background-color: #ffdbdb;
+    margin: auto;
+    padding: 20px; /* 내용에 맞게 조절 */
+    border: 1px solid #888;
+    width: 50%; /* 모달 창의 가로 너비를 조절합니다. */
+     height: 10%;
+    max-width: 400px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 10px; /* 모달 창 모서리를 10px만큼 둥글게 만듭니다. */
+}
+        /* 모달 텍스트 스타일 */
+#modalText {
+    text-align: center; /* 가로 가운데 정렬 */
+    position: absolute; /* 위치 지정 */
+    top: 50%; /* 세로 중앙에 배치 */
+    left: 50%; /* 가로 중앙에 배치 */
+    transform: translate(-50%, -50%); /* 가운데 정렬을 위한 변형 */
+}
+
+        
+/* 닫기 버튼 스타일 */
+.close {
+    position: absolute; /* 모달 내부에서 절대 위치로 설정 */
+    bottom: -50px; /* 모달 내부 아래에 여백을 둡니다. */
+    left: 50%; /* 모달 내부 가로 중앙에 배치 */
+    transform: translateX(-50%); /* 수평 가운데 정렬 */
+  background-color: #ffdbdb; /* 불투명한 배경색으로 설정 */
+opacity: 1; /* 투명도를 완전히 없애기 */
+
+    color: #000;
+    padding: 10px 10px;
+    border: none;
+  cursor: pointer;
+    font-weight: bold;
+    border-radius: 5px;
+    font-size: 15px; /* 원하는 글씨 크기로 조절합니다. */
+}
+.close:hover {
+    background-color: #ffdbdb; /* 마우스 호버 상태일 때도 배경색을 원래 색으로 유지 */
+    color: #000; /* 마우스 호버 상태일 때도 글자색을 원래 색으로 유지 */
+}
+
+        
+    .start-image {
+        max-width: 100%; /* 이미지의 최대 너비를 100%로 설정하여 부모 요소에 맞게 조절 */
+        height: auto; /* 이미지의 높이를 자동으로 조절하여 가로세로 비율 유지 */
+        display: block; /* 이미지를 블록 요소로 표시하여 위아래 여백을 생성 */
+        margin: 0 auto 10px; /* 이미지 아래에 20px 여백을 추가하고 수평 가운데 정렬 */
+    }
+
+        .quiz-container {
+            display: none;
+        }
+
+        /* 객관식 버튼의 스타일 */
+  .quiz-container button {
+  width: 100%;
+  max-width: 500px;
+  margin: 10px auto;
+  display: block;
+}
+.start-button {
+  background-color: #fff372;
+  color: black;
+  padding: 14px 24px;
+  border: none;
+  font-size: 17px;
+  font-weight: 400;
+  width: 100%;
+  max-width: 280px;       /* ✅ 너무 길지 않도록 제한 */
+  display: block;
+  margin: 0 auto;
+  border-radius: 30px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.2s ease-in-out;
+}
+.start-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+/* 질문 이미지 스타일링 */
+
+.question-button {
+  width: 100%;
+  max-width: 500px;
+  padding: 16px 24px;
+  font-size: clamp(14px, 2.5vw, 18px);
+  font-weight: 400;
+  background-color: #fff372;
+  border: none;
+  border-radius: 30px;
+  margin: 10px auto;
+   font-size: 16px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: clip;
+  word-break: keep-all;
+  text-align: center;
+  box-sizing: border-box;
+}
+.question-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+#quiz-box { margin-top: 10px; }
+#options { display: flex; flex-direction: column; align-items: center; }
+
+
+.result-button {
+    background-color: #fff478 !important;
+    color: black !important;
+    border: 1px solid #000 !important;
+    height: 50px;
+    width: 100%;
+    max-width: 350px;
+    font-size: 18px;
+    font-weight: 400;
+    border-radius: 30px;
+    margin: 6px auto;
+    display: block;
+}
+.btn {
+  border-radius: 30px !important;
+  background-color: #fff478 !important;
+  border: none !important;
+  color: black !important;
+}
+
+
+        #result-image {
+          width: 500px;
+    height: 900px;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+        }
+
+/* 원통형, 테두리/그림자 없음, 내부 투명 */
+.progress-container {
+    width: 100%;
+    height: 20px;
+    background: transparent;
+    border: none;
+    border-radius: 50px;
+    overflow: hidden;
+    position: relative;
+    display: none;
+    margin-bottom: 20px;
+    box-shadow: none !important;
+    filter: none !important;
+}
+
+/* 채워지는 부분: 연분홍/연노랑 '대각선' 줄무늬 */
+.progress-bar {
+    width: 0;
+    height: 100%;
+    position: absolute;
+    left: 0; top: 0;
+    border: none;
+    border-radius: 50px;
+    background: repeating-linear-gradient(
+        45deg,        /* ✅ 대각선 스트라이프 */
+        #ffb6c1 0px,
+        #ffb6c1 12px,
+        #fff59d 12px,
+        #fff59d 24px
+    );
+    transition: width 0.3s ease;
+    box-shadow: none !important;
+    filter: none !important;
+}
+
+
+        .coupang_ad {
+    width: 320px;
+    margin: 0 auto;
+}
+    @media (max-width: 768px) {
+    .main-nav {
+        font-size: 0.95rem; /* ✅ 글씨만 작아지게 */
+    }
+}
+
+    </style>
+</head>
+<body>
+    <!-- body 태그 style background-color 지정으로 배경색 변경-->
+<body class="container" style="background-color:#ffffff">
+            
+    <header class="page-header wrapper">
+        <h1><a href="index.html"><img class="logo" src="img_logo.png" alt="test it"></a>
+        </h1>
+    <nav>
+        <u1 class="main-nav">
+            <li> <a href="https://test-it.co.kr/test.html">성격</a></li>
+            <li> <a href="https://test-it.co.kr/face.html">얼굴</a></li>
+            <li> <a href="https://test-it.co.kr/etc.html">그외</a></li>
+            <li> <a href="https://test-it.co.kr/saju.html">사주</a></li>
+        </u1>
+    </nav>
+        
+        
+    </header>
+
+    
+<!-- body 태그 style background-color 지정으로 배경색 변경-->
+<body class="container" style="background-color:#fed7e0">
+
+<div>
+    <img src="img_main332.png" alt="시작 이미지" class="start-image mt-3" width="500">
+    <button onclick="startQuiz()" class="start-button mt-3">시작하기</button>
+</div>
+    <!-- 프로그래스 바 -->
+    <div class="progress-container" id="progress-container">
+        <div class="progress-bar" id="progress-bar"></div>
+    </div>
+
+
+<!-- 동적 렌더용 퀴즈 박스 -->
+<div id="quiz-box" style="display:none;">
+  <p><img id="q-image" src="" alt="문항 이미지" class="start-image" width="500"></p>
+  <div id="options"></div>
+</div>
+
+
+<div id="result-container" style="display: none; text-align: center;">
+    <p id="result-text"></p>
+    <img id="result-image" src="" alt="결과 이미지" width="500">
+    <div style="margin-top: 10px;">
+<!-- 결과 버튼 그룹을 flex column으로 묶어줌 -->
+<div class="result-buttons" style="display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 10px;">
+  <button type="button" class="btn btn-info"
+      onclick="location.href='test332.html'"
+      style="color: black; background-color: rgb(255, 244, 120); border: none; width: 100%; max-width: 350px; height: 50px;">
+      다시 해보기
+  </button>
+
+  <button type="button" class="btn btn-info"
+      onclick="location.href='/'"
+      style="color: black; background-color: rgb(255, 244, 120); border: none; width: 100%; max-width: 350px; height: 50px;">
+      다른 테스트 해보기
+  </button>
+<button id="share-btn" type="button" class="btn btn-info"
+        style="color: black; background-color: rgb(255, 244, 120); border: none; width: 100%; max-width: 350px; height: 50px;">
+  테스트 공유하기
+</button>
+</div>
+</div>
+</div>
+
+<script>
+/* =========================
+   3지선다 + 동점 타이브레이커 버전
+   카테고리: 매끈(SMOOTH) / 평평(FLAT) / 울퉁(ROUGH)
+   ========================= */
+
+const CAT = {
+  SMOOTH: "매끈매끈한 성격",
+  FLAT:   "평평한 성격",
+  ROUGH:  "울퉁불퉁한 성격",
+};
+
+let scores = { SMOOTH: 0, FLAT: 0, ROUGH: 0 };
+let currentIndex = 0;
+let needTiebreaker = false;
+let totalQuestions = 10; // 기본 10문항
+let answered = 0;        // 진행바 계산용
+
+// 질문 데이터 (이미지 파일명은 기존 q1_332.png ~ q10_332.png 그대로 사용)
+const questions = [
+  {
+    img: "q1_332.png",
+    options: [
+      { text: "친구가 걱정돼서 진지하게 들어준다", cat: "SMOOTH" },
+      { text: "무슨 일 있었어? 궁금해한다", cat: "FLAT" },
+      { text: "나도 힘든데..라는 생각이 먼저든다", cat: "ROUGH" },
+    ],
+  },
+  {
+    img: "q2_332.png",
+    options: [
+      { text: "나한테 부탁하는 게 싫다", cat: "ROUGH" },
+      { text: "가능하면 들어주고 안되면 거절한다", cat: "FLAT" },
+      { text: "최대한 들어주려고 노력한다", cat: "SMOOTH" },
+    ],
+  },
+  {
+    img: "q3_332.png",
+    options: [
+      { text: "속으로는 조금 씁쓸하다", cat: "FLAT" },
+      { text: "다른 의견이 더 좋았나 보네 싶다", cat: "SMOOTH" },
+      { text: "바로 반박하거나 속으로 삐진다", cat: "ROUGH" },
+    ],
+  },
+  {
+    img: "q4_332.png",
+    options: [
+      { text: "눈에 띄게 표정이 굳는다", cat: "ROUGH" },
+      { text: "장난이니까 웃어넘긴다", cat: "FLAT" },
+      { text: "웃으면서 같이 장난친다", cat: "SMOOTH" },
+    ],
+  },
+  {
+    img: "q5_332.png",
+    options: [
+      { text: "바로 사과하고 수습한다", cat: "SMOOTH" },
+      { text: "그냥 조용히 상황을 정리한다", cat: "FLAT" },
+      { text: "잘못한 거 알지만 짜증 난다", cat: "ROUGH" },
+    ],
+  },
+  {
+    img: "q6_332.png",
+    options: [
+      { text: "괜찮아~ 그런 날도 있지", cat: "SMOOTH" },
+      { text: "조금 섭섭하긴 하네", cat: "FLAT" },
+      { text: "친하면서 어떻게 내 기분도 모르냐", cat: "ROUGH" },
+    ],
+  },
+  {
+    img: "q7_332.png",
+    options: [
+      { text: "네 알겠습니다", cat: "FLAT" },
+      { text: "순간 기분이 상해서 아무 말도 하지 않는다", cat: "ROUGH" },
+      { text: "감사합니다 다음엔 조심할게요", cat: "SMOOTH" },
+    ],
+  },
+  {
+    img: "q8_332.png",
+    options: [
+      { text: "순간 기분이 확 식는다", cat: "ROUGH" },
+      { text: "그럴 수도 있지 하고 넘긴다", cat: "FLAT" },
+      { text: "아 그래? 나는 되게 좋던데! 라고 한다", cat: "SMOOTH" },
+    ],
+  },
+  {
+    img: "q9_332.png",
+    options: [
+      { text: "와 대단하다 배우고 싶다", cat: "SMOOTH" },
+      { text: "나도 노력해야겠다", cat: "FLAT" },
+      { text: "알 수 없는 짜증이 올라온다", cat: "ROUGH" },
+    ],
+  },
+  {
+    img: "q10_332.png",
+    options: [
+      { text: "내 노력을 왜 아무도 몰라주지?", cat: "ROUGH" },
+      { text: "조금 허무하지만 금방 잊는다", cat: "FLAT" },
+      { text: "뭐 어때 내가 알고 있으면 됐지", cat: "SMOOTH" },
+    ],
+  },
+];
+
+// 동점 타이브레이커 질문 (기존 질문과 동일한 틀)
+const tiebreaker = {
+  img: "q_tb_332.png",
+  optionsByCat: (cats) => cats.map((c) => {
+    if (c === "SMOOTH") return { text: "이따가 다시 말해야지", cat: "SMOOTH" };
+    if (c === "FLAT")   return { text: "말이 끊긴 걸 느끼지만 그냥 듣는다", cat: "FLAT" };
+    return { text: "끝까지 좀 듣고 말하지.. 짜증이 난다", cat: "ROUGH" }; // c === "ROUGH"
+  }),
+};
+/* ---------- 기존 요소 참조 ---------- */
+let currentQuestion = 0;
+const startBtn = document.querySelector(".start-button");
+const startImg = document.querySelector(".start-image");
+const progressContainer = document.getElementById("progress-container");
+const progressBar = document.getElementById("progress-bar");
+const quizBox = document.getElementById("quiz-box");
+const qImage = document.getElementById("q-image");
+const optionsHost = document.getElementById("options");
+
+const resultContainer = document.getElementById("result-container");
+const resultImage = document.getElementById("result-image");
+const resultText = document.getElementById("result-text");
+
+/* ---------- 시작 ---------- */
+function startQuiz() {
+  // 시작 UI 숨김
+  if (startBtn) startBtn.style.display = "none";
+  if (startImg) startImg.style.display = "none";
+
+  // 진행바/퀴즈 박스 표시
+  progressContainer.style.display = "block";
+  quizBox.style.display = "block";
+
+  currentIndex = 0;
+  scores = { SMOOTH: 0, FLAT: 0, ROUGH: 0 };
+  answered = 0;
+  needTiebreaker = false;
+  totalQuestions = questions.length;
+
+  renderQuestion();
+  updateProgressBar();
+}
+
+/* ---------- 질문 렌더 ---------- */
+function renderQuestion() {
+  const isTB = needTiebreaker && currentIndex >= questions.length;
+  optionsHost.innerHTML = "";
+
+  if (!isTB) {
+    const q = questions[currentIndex];
+    qImage.src = q.img;
+    q.options.forEach((opt) => {
+      const btn = createOptionButton(opt.text, () => pick(opt.cat));
+      optionsHost.appendChild(btn);
+    });
+  } else {
+    // ✅ 동점 난 카테고리만 보기로 노출
+    const tied = getTopTiedCats();           // ["SMOOTH","FLAT"] 같은 형태
+    qImage.src = tiebreaker.img;
+    tiebreaker.optionsByCat(tied).forEach((opt) => {
+      const btn = createOptionButton(opt.text, () => pick(opt.cat, true));
+      optionsHost.appendChild(btn);
+    });
+  }
+}
+
+
+// 선택지 버튼 생성 유틸
+function createOptionButton(text, onClick) {
+  const btn = document.createElement("button");
+  btn.type = "button";
+  btn.className = "question-button";
+  btn.textContent = text;
+  btn.addEventListener("click", onClick);
+  return btn;
+}
+
+/* ---------- 답변 처리 ---------- */
+function pick(cat, isTB = false) {
+  // 점수 반영
+  scores[cat]++;
+
+  answered++;
+  updateProgressBar();
+
+  if (!isTB) {
+    currentIndex++;
+    // 모든 기본 문항 종료 시 동점 체크
+    if (currentIndex >= questions.length) {
+      const tied = getTopTiedCats();
+      if (tied.length >= 2) {
+        needTiebreaker = true;
+        totalQuestions = questions.length + 1; // 타이브레이커 1문항 추가
+        renderQuestion();
+        return;
+      } else {
+        // 동점 아니면 곧바로 결과
+        showResult();
+        return;
+      }
+    }
+    renderQuestion();
+  } else {
+    // 타이브레이커 답변 후 결과
+    showResult();
+  }
+}
+
+/* ---------- 동점 그룹 ---------- */
+function getTopTiedCats() {
+  const arr = [
+    { k: "SMOOTH", v: scores.SMOOTH },
+    { k: "FLAT", v: scores.FLAT },
+    { k: "ROUGH", v: scores.ROUGH },
+  ];
+  arr.sort((a, b) => b.v - a.v);
+  const top = arr[0].v;
+  return arr.filter((x) => x.v === top).map((x) => x.k);
+}
+
+/* ---------- 진행바 ---------- */
+function updateProgressBar() {
+  const progress = (answered / totalQuestions) * 100;
+  progressBar.style.width = progress + "%";
+}
+
+/* ---------- 결과 ---------- */
+function showResult() {
+  quizBox.style.display = "none";
+  progressContainer.style.display = "none";
+
+  const finalCat = getTopTiedCats()[0];
+  let imgSrc = "img332_flat.png";
+  if (finalCat === "SMOOTH") imgSrc = "img332_smooth.png";
+  if (finalCat === "ROUGH") imgSrc = "img332_rough.png";
+  resultImage.src = imgSrc;
+
+  // ✅ 결과 섹션 보이기 (이 줄이 중요!)
+  resultContainer.style.display = "block";
+}
+
+
+/* ---------- 공유 버튼 기존 기능 유지 ---------- */
+document.addEventListener("DOMContentLoaded", function () {
+  const shareButton = document.getElementById("share-btn");
+  if (shareButton) {
+    shareButton.addEventListener("click", function () {
+      const testURL = "https://test-it.co.kr/test332";
+      const shareText = "❤️‍🔥테스트잇 매끈매끈한 성격 테스트 해봐!✨";
+      if (navigator.share) {
+        navigator
+          .share({
+            title: "테스트잇 매끈매끈한 성격 테스트",
+            text: shareText,
+            url: testURL,
+          })
+          .catch(() => {});
+      } else {
+        navigator.clipboard
+          .writeText(`${shareText} ${testURL}`)
+          .then(() => alert("📌 링크가 복사되었습니다! 친구들에게 공유해보세요."))
+          .catch(() => {});
+      }
+    });
+  }
+});
+
+</script>
+<div class="coupang_ad" id="coupang_global" style="width:350px; margin:16px auto;"></div>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  function init() {
+    try {
+      new PartnersCoupang.G({
+        id: 798186,
+        template: "carousel",
+        trackingCode: "AF4391881",
+        width: "350",
+        height: "140",
+        tsource: ""
+      });
+    } catch (e) {
+      setTimeout(init, 200); // g.js 로드 지연 대비
+    }
+  }
+  init();
+});
+</script>
+</body>
+</html>

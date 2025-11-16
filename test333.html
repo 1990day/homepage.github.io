@@ -1,0 +1,499 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+
+     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5522499110435321"
+     crossorigin="anonymous"></script>
+
+
+
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>테스트잇 외향인 내향인 테스트</title>
+    <meta name="description" content="테스트잇 외향인 내향인 테스트">
+<meta name="keywords" content="테스트잇,성격테스트,연애타입,테스트잇외향인내향인,외향인내향인성격,외향인내향인성격,외향인내향인테스트,외향인내향인격테스트,외성내향,내성외향,연애능력테스트,연애테스트,연애mbti,연애성격테스트, 심리테스트, mbti테스트">
+    <meta property="og:type" content="website"> 
+    <meta property="og:title" content="테스트잇 외향인 내향인 테스트">
+    <meta property="og:description" content="테스트잇 외향인 내향인 테스트">
+    <meta property="og:image" content="img_main333.png">
+    <meta property="og:url" content="https://test-it.co.kr/test333">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+      <link rel="icon" type="image/png" href="favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+
+
+   <style>
+       
+ body {
+    font-family: 'Noto Sans KR', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+    display: flex;
+    flex-direction: column; /* 세로 방향으로 요소를 배치하도록 수정 */
+    align-items: center;
+}
+
+.logo {
+    width: 100px;
+    margin-top: 14px;
+}
+
+.main-nav {
+    display: flex;
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    margin-top: 34px;
+    list-style: none;
+    flex-wrap: nowrap; /* 🔹 항상 가로 한 줄로 */
+}
+
+.main-nav li {
+    margin-left: 36px;
+    font-family: 'Do Hyeon', sans-serif;
+    line-height: 1.7;
+    color: #432;
+}
+
+.main-nav a {
+    color: #432;
+    font-family: 'Do Hyeon', sans-serif;
+    line-height: 1.7;
+    white-space: nowrap; /* 🔹 줄바꿈 금지 */
+}
+
+.main-nav a:hover {
+    color: #0bd;
+}
+
+.page-header {
+    width: 100%;
+    background-color: #ffffff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 2;
+}
+
+       
+#img_main{
+    width: 500px;
+    height: 600px;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
+       
+#start-container, #question-container, #result-container {
+  text-align: center;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 600px;
+  width: 100%;
+}
+
+   button {
+        background: linear-gradient(45deg, #f6deff, #f9eaff); /* 연한 핑크색 그라데이션 */
+        color: #000000;
+        padding: 15px 15px;
+        font-size: 15px;
+        border: none;
+        border-radius: 15px;
+        cursor: pointer;
+        margin: 15px auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.3s ease, transform 0.2s ease;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 버튼 그림자 추가 */
+    }
+
+    button:hover {
+        background: linear-gradient(45deg, #ffc1cc, #ffe5eb); /* hover 시 더 밝은 핑크 그라데이션 */
+        transform: translateY(-3px); /* 버튼 살짝 위로 올라가는 효과 */
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* hover 시 그림자 강조 */
+    }
+       
+    .result-buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px; /* 버튼 사이 간격 제거 */
+    }
+
+ .result-buttons button {
+    width: 90%; /* 화면 크기에 따라 너비를 조정 (부모 컨테이너의 90%) */
+    max-width: 350px; /* 최대 너비를 제한 */
+    height: 50px;
+    font-size: 15px;
+    margin: 5px; /* 버튼 사이의 간격 */
+}
+       
+#result-image {
+  max-width: 100%;
+  height: auto;
+  margin-top: 20px;
+     margin-bottom: 20px;
+}
+
+#question-image {
+    width: 500px;
+    height: 900px;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
+.coupang_ad {
+    width: 320px;
+    margin: 0 auto;
+}
+
+/* 중간 정도 화면 */
+@media (max-width: 900px) {
+    .main-nav {
+        font-size: 1.1rem;
+    }
+    .main-nav li {
+        margin-left: 22px;
+    }
+}
+
+/* 태블릿~작은 화면 */
+@media (max-width: 700px) {
+    .main-nav {
+        font-size: 1rem;
+    }
+    .main-nav li {
+        margin-left: 16px;
+    }
+}
+
+/* 작은 모바일 */
+@media (max-width: 550px) {
+    .main-nav {
+        font-size: 0.9rem;
+    }
+    .main-nav li {
+        margin-left: 10px;
+    }
+}
+
+/* 아주 작은 화면 */
+@media (max-width: 380px) {
+    .main-nav {
+        font-size: 0.8rem;
+    }
+    .main-nav li {
+        margin-left: 6px;
+    }
+}
+       
+  </style>
+</head>
+<body>
+<body class="container" style="background-color:#ffffff">
+            
+    <header class="page-header wrapper">
+        <h1><a href="index.html"><img class="logo" src="img_logo.png" alt="test it"></a>
+        </h1>
+    <nav>
+        <u1 class="main-nav">
+            <li> <a href="https://test-it.co.kr/test.html">성격</a></li>
+            <li> <a href="https://test-it.co.kr/face.html">얼굴</a></li>
+            <li> <a href="https://test-it.co.kr/etc.html">그외</a></li>
+            <li> <a href="https://test-it.co.kr/saju.html">사주</a></li>
+        </u1>
+    </nav>
+        
+        
+    </header>
+
+    <div id="start-container">
+        <img id="img_main" class="mt-3" src="img_main333.png">
+        <button onclick="startTest()">테스트 시작하기</button>
+    </div>
+    
+    
+
+<div id="question-container" style="display: none;">
+  <h2 id="question"></h2>
+  <img id="question-image" src="" alt="Question Image">
+  <div id="options"></div>
+</div>
+
+<div id="result-container" style="display: none;">
+  <p id="result"></p>
+  <img id="result-image" src="" alt="Result Image">
+    
+    <div class="result-buttons">
+        <button type="button" onclick="location.href='test333.html'">다시 해보기</button>
+        <button type="button" onclick="location.href='/'">다른 테스트 해보기</button>
+           <button type="button" id="share-btn">테스트 공유하기</button>
+    </div>
+        
+    </div>
+
+     <article class="coupang_ad mt-1">
+<script src="https://ads-partners.coupang.com/g.js"></script>
+<script>
+	new PartnersCoupang.G({"id":798186,"template":"carousel","trackingCode":"AF4391881","width":"350","height":"140","tsource":""});
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5522499110435321"
+crossorigin="anonymous"></script>
+<!-- 본문 수동 광고333 -->
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-5522499110435321"
+data-ad-slot="5388282419"
+data-ad-format="auto"
+data-full-width-responsive="true"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+                
+
+<script>
+    const questions = [
+        {
+            image: 'image1_q333.png',
+            options: [
+                { text: '자연스럽게 이야기하며 분위기를 이끈다', value: '1' },
+                { text: '조용히 앉아 먼저 다가오길 기다린다', value: '2' },
+                { text: '관심은 많은데 막상 다가가려니 부담스럽다', value: '3' },
+                { text: '처음엔 나름 잘 어울리지만 금방 지친다', value: '4' }
+            ]
+        },
+        {
+            image: 'image2_q333.png',
+            options: [
+                { text: '바로 다른 친구 불러서 논다', value: '1' },
+                { text: '취소된 게 더 좋다', value: '2' },
+                { text: '만나도 괜찮지만 취소됐으면.. 하긴 했다', value: '3' },
+                { text: '노는 것도 좋지만 혼자 쉬는 것도 좋다', value: '4' }
+            ]
+        },
+        {
+            image: 'image3_q333.png',
+            options: [
+                { text: '먼저 연락하고 자연스럽게 친해진다', value: '1' },
+                { text: '상대가 다가오면 조금씩 마음이 열린다', value: '2' },
+                { text: '마음은 가는데 친해지기가 어렵다', value: '3' },
+                { text: '말 거는 건 어렵지 않은데 금방 피곤해진다', value: '4' }
+            ]
+        },
+  {
+            image: 'image4_q333.png',
+            options: [
+                { text: '재밌고 기분이 업되어 있다', value: '1' },
+                { text: '너무 피곤해서 바로 눕고 싶다', value: '2' },
+                { text: '친해지고 싶은데 어색해서 힘들었다', value: '3' },
+                { text: '재밌었지만 집에 오니 방전된 느낌이다', value: '4' }
+            ]
+        },
+
+  {
+            image: 'image5_q333.png',
+            options: [
+                { text: '너무 생각 없이 질러버린 실수들', value: '1' },
+                { text: '말할 기회를 놓친 것, 표현하지 못한 것', value: '2' },
+                { text: '망설이다 결국 포기해버린 일들', value: '3' },
+                { text: '다른 사람 비위를 맞추느라 나를 희생한 일', value: '4' }
+            ]
+        },
+
+  {
+            image: 'image6_q333.png',
+            options: [
+                { text: '바로 다가가서 반갑게 인사한다', value: '1' },
+                { text: '들키지 않게 조용히 지나간다', value: '2' },
+                { text: '인사하고 싶지만 어색할까 봐 안 한다', value: '3' },
+                { text: '인사는 괜찮지만 오래 대화하는 게 부담이다', value: '4' }
+            ]
+        },
+
+  {
+            image: 'image7_q333.png',
+            options: [
+                { text: '분위기 주도하고 자연스럽게 참여', value: '1' },
+                { text: '해야 할 부분만 조용히 하고 빠진다', value: '2' },
+                { text: '의견 많지만 말 꺼내는 순간이 제일 어렵다', value: '3' },
+                { text: '잘 참여하지만 슬슬 말이 줄어든다', value: '4' }
+            ]
+        },
+
+  {
+            image: 'image8_q333.png',
+            options: [
+                { text: '바로 받아주고 같이 웃는다', value: '1' },
+                { text: '부담스럽고 어떻게 반응해야 할지 모르겠다', value: '2' },
+                { text: '재밌다고 느끼지만 리액션은 어색하고 서툴다', value: '3' },
+                { text: '반응은 잘해주지만 오래 이어지면 피곤함', value: '4' }
+            ]
+        },
+
+  {
+            image: 'image9_q333.png',
+            options: [
+                { text: '바로 말 걸면서 저도 그거 좋아해요! 한다', value: '1' },
+                { text: '그냥 속으로만 반가워하고 지나간다', value: '2' },
+                { text: '말 걸고 싶지만 어색해서 포기한다', value: '3' },
+                { text: '말은 걸 수 있지만 얘기가 길어지면 힘들다', value: '4' }
+            ]
+        },
+
+  {
+            image: 'image10_q333.png',
+            options: [
+                { text: '솔직하게 내 마음을 다 쏟아낸다', value: '1' },
+                { text: '일단 혼자 생각할 시간을 갖는다', value: '2' },
+                { text: '화해하고 싶지만 먼저 연락 못 한다', value: '3' },
+                { text: '겉으론 화해해도 속으론 안 풀린 기분이다', value: '4' }
+            ]
+        }
+
+    ];
+
+    const tieBreaker = {
+    image: 'tie_question_image333.png', // 추가 질문 이미지 경로
+    options: [
+        { text: '시작도 쉽고 함께 있는 것도 즐겁다', value: '1' },
+        { text: '시작도 어렵고 오래 있는 것도 피곤하다', value: '2' },
+        { text: '사람 좋아하지만 시작이 너무 어렵다', value: '3' },
+        { text: '시작은 괜찮지만 오래 함께 있는 건 부담된다', value: '4' }
+    ]
+};
+
+let currentQuestionIndex = 0;
+const userAnswers = [];
+let tieScores = []; // 동점된 옵션을 저장
+
+function startTest() {
+    document.getElementById('start-container').style.display = 'none';
+    document.getElementById('question-container').style.display = 'block';
+    showQuestion();
+}
+
+function showQuestion() {
+    const currentQuestion = questions[currentQuestionIndex];
+    document.getElementById('question').textContent = ''; // 질문 텍스트 제거
+    document.getElementById('question-image').src = currentQuestion.image; // 질문 이미지는 그대로 표시
+    const optionsElement = document.getElementById('options');
+    optionsElement.innerHTML = '';
+
+
+    currentQuestion.options.forEach(option => {
+        const button = document.createElement('button');
+        button.textContent = option.text;
+        button.onclick = () => selectAnswer(option.value);
+        optionsElement.appendChild(button);
+    });
+}
+
+function selectAnswer(option) {
+    userAnswers.push(option);
+    if (currentQuestionIndex < questions.length - 1) {
+        currentQuestionIndex++;
+        showQuestion();
+    } else {
+        processResult();
+    }
+}
+
+function processResult() {
+    const resultCounts = userAnswers.reduce((counts, answer) => {
+        counts[answer] = (counts[answer] || 0) + 1;
+        return counts;
+    }, {});
+
+    const maxCount = Math.max(...Object.values(resultCounts));
+    const topResults = Object.keys(resultCounts).filter(key => resultCounts[key] === maxCount);
+
+    if (topResults.length > 1) {
+        // 동점일 경우 추가 질문 실행
+        tieScores = topResults;
+        askTieBreaker();
+    } else {
+        // 동점이 없으면 바로 결과 표시
+        showResult(topResults[0]);
+    }
+}
+
+function askTieBreaker() {
+    document.getElementById('question-container').style.display = 'block';
+
+    // 추가 질문 이미지를 표시
+    const questionElement = document.getElementById('question');
+    questionElement.textContent = ''; // 텍스트 질문 제거
+    const questionImageElement = document.getElementById('question-image');
+    questionImageElement.style.display = 'block'; // 이미지 활성화
+    questionImageElement.src = tieBreaker.image; // 추가 질문 이미지 설정
+
+    const optionsElement = document.getElementById('options');
+    optionsElement.innerHTML = '';
+
+    tieBreaker.options.forEach(option => {
+        if (tieScores.includes(option.value)) {
+            const button = document.createElement('button');
+            button.textContent = option.text;
+            button.onclick = () => resolveTie(option.value);
+            optionsElement.appendChild(button);
+        }
+    });
+}
+
+function resolveTie(selectedOption) {
+    showResult(selectedOption); // 추가 질문으로 결정된 결과 표시
+}
+
+function showResult(result) {
+    document.getElementById('question-container').style.display = 'none';
+    document.getElementById('result-container').style.display = 'block';
+
+   // 결과 텍스트 제거
+    document.getElementById('result').textContent = ''; 
+      // 결과 이미지 설정 (파일명 형식: result333_image_<value>.png)
+    document.getElementById('result-image').src = `result333_image_${result}.png`;
+}
+
+ document.addEventListener("DOMContentLoaded", function () {
+    const shareButton = document.getElementById("share-btn"); // 공유 버튼만 선택
+    if (shareButton) {
+        shareButton.addEventListener("click", function () {
+            const testURL = "https://test-it.co.kr/test333"; // 테스트 URL 
+            const shareText = "테스트잇 외향인 내향인 테스트"; // 공유 메시지 
+
+            if (navigator.share) {
+                // 📱 모바일 및 지원되는 브라우저에서 기본 공유 기능 사용
+                navigator.share({
+                    title: "테스트잇 외향인 내향인 테스트", 
+                    text: shareText,
+                    url: testURL
+                }).then(() => {
+                    console.log("✅ 공유 성공!");
+                }).catch((error) => {
+                    console.error("❌ 공유 실패:", error);
+                });
+            } else {
+                // 💻 PC에서는 클립보드에 복사
+                navigator.clipboard.writeText(`${shareText} ${testURL}`).then(() => {
+                    alert("📌 링크가 복사되었습니다! 친구들에게 공유해보세요.");
+                }).catch((err) => {
+                    console.error("❌ 클립보드 복사 실패:", err);
+                });
+            }
+        });
+    }
+});
+
+</script>
+    </article>
+</body>
+    </body>
+</html>

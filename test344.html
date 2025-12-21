@@ -476,12 +476,12 @@ article{
     if (shareButton) {
         shareButton.addEventListener("click", function () {
             const testURL = "https://test-it.co.kr/test344"; // 테스트 URL
-            const shareText = "🥖크리스마스 트리 오너먼트 성격 테스트해봐!♥️"; // 공유 메시지
+            const shareText = "🎅크리스마스 트리 오너먼트 성격 테스트해봐!♥️"; // 공유 메시지
 
             if (navigator.share) {
                 // 📱 모바일 및 지원되는 브라우저에서 기본 공유 기능 사용
                 navigator.share({
-                    title: "테스트잇 크리스마스 트리 오너먼트 성격 테스트)",
+                    title: "테스트잇 크리스마스 트리 오너먼트 성격 테스트",
                     text: shareText,
                     url: testURL
                 }).then(() => {

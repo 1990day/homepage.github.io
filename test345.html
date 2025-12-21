@@ -241,7 +241,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    overflow: hidden;
+   overflow: visible;
     position: relative; /* 위치 고정 */
     width: auto !important;
     height: auto !important;
@@ -642,15 +642,17 @@ function nextQuestion() {
   answers.push(value);
   qIndex++;
 
-  if (qIndex === questions.length) {
+if (qIndex === questions.length) {
     $(".question").hide();
     $(".result").show();
 
-    $("#resultImage").attr("src", "img_result345.png");
+    const resImg = document.getElementById("resultImage");
+    resImg.src = "img_result345.png";
 
-    // ✅ 결과 이미지 위에 답변 10개 박기
-    renderAnswersOnImage();
-
+    // 이미지가 브라우저에 완전히 그려진 후 답변을 입히도록 수정
+    resImg.onload = function() {
+        renderAnswersOnImage();
+    };
   } else {
     showQuestion(); // ✅ 다음 질문으로 이동
   }
@@ -669,46 +671,56 @@ function renderAnswersOnImage() {
 }
 
 async function saveResult() {
-    window.scrollTo(0, 0);
-  if (document.fonts && document.fonts.ready) {
-    try { await document.fonts.ready; } catch(e){}
+  const container = document.getElementById('resultContainer');
+  const resultImg = document.getElementById('resultImage');
+
+  // 이미지 로딩이 안 끝났다면 캡처 중단
+  if (!resultImg.complete) {
+    alert("이미지를 준비 중입니다. 잠시만 기다려 주세요.");
+    return;
   }
 
-  const container = document.getElementById('resultContainer');
+  // 광고 숨기기
+  const ads = document.querySelectorAll(
+    'ins.adsbygoogle, iframe[src*="googlesyndication"], iframe[src*="doubleclick"], div[id^="aswift_"], iframe[id^="aswift_"]'
+  );
 
-  // 광고 숨기기 (기존 코드 유지)
-  const adSelectors = [
-    'ins.adsbygoogle','ins[class*="adsbygoogle"]',
-    'div[id^="google_ads_iframe_"]','div[id^="aswift_"]',
-    'iframe[id^="aswift_"]','iframe[src*="googlesyndication"]',
-    'iframe[src*="doubleclick"]','iframe[src*="googleads"]'
-  ];
-  const adNodes = document.querySelectorAll(adSelectors.join(','));
-  const prevVisibility = [];
-  adNodes.forEach((el, i) => {
-    prevVisibility[i] = el.style.visibility;
-    el.setAttribute('data-html2canvas-ignore', 'true');
-    el.style.visibility = 'hidden';
+  const adBackup = [];
+  ads.forEach(ad => {
+    adBackup.push({ el: ad, display: ad.style.display });
+    ad.style.display = 'none';
   });
 
   try {
-  const canvas = await html2canvas(container, {
-  useCORS: true,
-  backgroundColor: null,
-  scale: Math.max(2, window.devicePixelRatio || 2),
-  scrollX: 0,
-  scrollY: -window.scrollY
-});
+    // 캡처 시 레이아웃 깨짐 방지를 위해 높이를 일시적으로 고정
+    const originalHeight = container.style.height;
+    container.style.height = container.offsetHeight + 'px';
+
+    const canvas = await html2canvas(container, {
+      useCORS: true,
+      allowTaint: true,
+      scale: 2,
+      backgroundColor: '#ffffff', // 배경을 흰색으로 강제 지정
+      width: container.offsetWidth,
+      height: container.offsetHeight,
+      scrollX: 0,
+      scrollY: -window.scrollY // 현재 스크롤 위치 보정
+    });
 
     const a = document.createElement('a');
     a.download = 'testit345_result.png';
     a.href = canvas.toDataURL('image/png');
     a.click();
-  } catch (err) {
-    console.error(err);
-    alert("이미지 저장에 실패했어요.");
+
+    container.style.height = originalHeight; // 높이 복구
+
+  } catch (e) {
+    console.error(e);
+    alert('이미지 저장 실패');
   } finally {
-    adNodes.forEach((el, i) => (el.style.visibility = prevVisibility[i] || ''));
+    adBackup.forEach(item => {
+      item.el.style.display = item.display || '';
+    });
   }
 }
 

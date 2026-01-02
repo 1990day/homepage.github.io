@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>테스트잇 만세력 테스트</title>
+    
+    <script src="https://cdn.jsdelivr.net/npm/lunar-javascript@1.6.12/lunar.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
+
+    <style>
+        @font-face {
+            font-family: 'ChosunGu';
+            src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/ChosunGu.woff') format('woff');
+        }
+        body { font-family: 'ChosunGu', sans-serif; background-color: #fce4ec; color: #333; margin: 0; padding: 0; }
+        .container { display: flex; flex-direction: column; align-items: center; padding: 20px; text-align: center; }
+        article { display: none; width: 100%; max-width: 500px; flex-direction: column; align-items: center; }
+        .active { display: flex; }
+        #img_main { width: 100%; height: auto; border-radius: 20px; }
+        .custom-jelly-button {
+            width: 100%; max-width: 350px; height: 70px; font-size: 18px !important;
+            font-weight: bold; color: black !important; background: #fff;
+            border-radius: 35px; margin: 10px auto; border: 4px solid #ff80ab;
+            cursor: pointer; display: block;
+        }
+        /* 만세력 칸을 정사각형으로 유지 */
+.saju-cell {
+    width: 25%;
+    aspect-ratio: 1 / 1; /* 가로 세로 비율 1:1 강제 */
+    text-align: center;
+    border-radius: 15px;
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    vertical-align: middle;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+}
+.saju-wrapper {
+    width: 100%;
+    max-width: 400px;
+    margin: 20px auto;
+}
+.saju-table-container { width: 100%; margin-top: 20px; }
+.saju-box { 
+    display: table; 
+    width: 100%; 
+    border-collapse: separate; 
+    border-spacing: 5px; 
+    table-layout: fixed;
+}
+.saju-item { 
+    width: 25%; 
+    aspect-ratio: 1 / 1; 
+    border-radius: 12px; 
+    color: white; 
+    font-size: 22px; 
+    font-weight: bold; 
+    text-align: center; 
+    vertical-align: middle;
+    display: table-cell;
+    padding-top: 10px;
+}
+.wuxing-count-box {
+    display: flex;
+    justify-content: space-around;
+    background: #fff;
+    padding: 15px;
+    border-radius: 15px;
+    margin: 15px 0;
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.05);
+}
+.count-item { font-size: 14px; font-weight: bold; }
+        .custom-jelly-button:hover { background: #ff80ab !important; color: white !important; text-decoration: none; }
+        .select-container { display: flex; flex-direction: column; width: 100%; gap: 10px; margin: 20px 0; }
+        .date-row { display: flex; gap: 5px; width: 100%; }
+        .date-select { padding: 12px; border-radius: 12px; border: 2px solid #ff80ab; font-weight: bold; flex: 1; background: white; }
+        .saju-table { width: 100%; border-spacing: 5px; border-collapse: separate; margin: 20px 0; }
+        .saju-table td { width: 25%; height: 90px; text-align: center; border-radius: 15px; font-size: 22px; font-weight: bold; color: white; vertical-align: middle; }
+        .bg-wood { background-color: #4caf50; }
+        .bg-fire { background-color: #f44336; }
+        .bg-earth { background-color: #ffeb3b; color: #333 !important; }
+        .bg-metal { background-color: #9e9e9e; color: #333 !important; }
+        .bg-water { background-color: #212121; }
+        .info-box { background: white; width: 100%; border-radius: 20px; padding: 20px; margin-bottom: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        .shinsal-tag { display: inline-block; background: #ff80ab; color: white; padding: 5px 12px; border-radius: 20px; margin: 3px; font-size: 14px; }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <article class="start active">
+            <img id="img_main" class="mt-3" src="img_main347.png">
+            <button type="button" class="custom-jelly-button mt-5" onclick="goPage('saju-input');">만세력 확인하기</button>
+        </article>
+
+        <article class="saju-input">
+            <h3 class="mt-4" style="font-weight: bold;">정보를 입력해주세요</h3>
+            <div class="mt-4">
+                <label class="mr-3"><input type="radio" name="calendarType" value="solar" checked> 양력</label>
+                <label class="ml-3"><input type="radio" name="calendarType" value="lunar"> 음력</label>
+            </div>
+            <div class="mt-2">
+                <label class="mr-3"><input type="radio" name="gender" value="1" checked> 남성</label>
+                <label class="ml-3"><input type="radio" name="gender" value="0"> 여성</label>
+            </div>
+            <div class="select-container">
+                <div class="date-row">
+                    <select id="year" class="date-select"></select>
+                    <select id="month" class="date-select"></select>
+                    <select id="day" class="date-select"></select>
+                </div>
+                <select id="hour" class="date-select">
+                    <option value="0">자시 (23:30 ~ 01:29)</option>
+                    <option value="2">축시 (01:30 ~ 03:29)</option>
+                    <option value="4">인시 (03:30 ~ 05:29)</option>
+                    <option value="6">묘시 (05:30 ~ 07:29)</option>
+                    <option value="8">진시 (07:30 ~ 09:29)</option>
+                    <option value="10">사시 (09:30 ~ 11:29)</option>
+                    <option value="12">오시 (11:30 ~ 13:29)</option>
+                    <option value="14">미시 (13:30 ~ 15:29)</option>
+                    <option value="16">신시 (15:30 ~ 17:29)</option>
+                    <option value="18">유시 (17:30 ~ 19:29)</option>
+                    <option value="20">술시 (19:30 ~ 21:29)</option>
+                    <option value="22">해시 (21:30 ~ 23:29)</option>
+                </select>
+            </div>
+            <button type="button" class="custom-jelly-button" onclick="showResult();">결과 확인하기</button>
+        </article>
+
+        <article class="result">
+            <h4 style="font-weight: bold; color: #ff4081;">나의 만세력</h4>
+            <table class="saju-table">
+                <tr style="font-size: 13px; color: #666;">
+                    <td>시주</td><td>일주</td><td>월주</td><td>년주</td>
+                </tr>
+                <tr id="top-row"></tr>
+                <tr id="bottom-row"></tr>
+            </table>
+            <div class="info-box">
+                <h5 style="font-weight: bold;">사주 분석 결과</h5>
+                <div id="shinsal-area"></div>
+            </div>
+            <button type="button" class="custom-jelly-button mt-4" onclick="location.reload();">다시 해보기</button>
+            <button type="button" class="custom-jelly-button" onclick="location.href='/'">다른 테스트 해보기</button>
+            <button type="button" id="share-btn" class="custom-jelly-button">테스트 공유하기</button>
+        </article>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            const currentYear = new Date().getFullYear();
+            for (let i = currentYear; i >= 1950; i--) { $('#year').append(`<option value="${i}">${i}년</option>`); }
+            for (let i = 1; i <= 12; i++) { $('#month').append(`<option value="${i}">${i}월</option>`); }
+            for (let i = 1; i <= 31; i++) { $('#day').append(`<option value="${i}">${i}일</option>`); }
+        });
+
+        function goPage(pageClass) {
+            $("article").hide().removeClass("active");
+            $("." + pageClass).show().addClass("active");
+            window.scrollTo(0, 0);
+        }
+
+        const ganziMap = {'甲':'갑','乙':'을','丙':'병','丁':'정','戊':'무','己':'기','庚':'경','辛':'신','壬':'임','癸':'계','子':'자','丑':'축','寅':'인','卯':'묘','辰':'진','巳':'사','午':'오','未':'미','申':'신','酉':'유','戌':'술','亥':'해'};
+        const wuxingMap = {'甲':'wood','乙':'wood','寅':'wood','卯':'wood','丙':'fire','丁':'fire','巳':'fire','午':'fire','戊':'earth','己':'earth','辰':'earth','戌':'earth','丑':'earth','未':'earth','庚':'metal','辛':'metal','申':'metal','酉':'metal','壬':'water','癸':'water','亥':'water','子':'water'};
+
+        function getWuxingClass(char) { return "bg-" + (wuxingMap[char] || ""); }
+
+function showResult() {
+    const y = parseInt($("#year").val());
+    const m = parseInt($("#month").val());
+    const d = parseInt($("#day").val());
+    const h = parseInt($("#hour").val());
+    const isSolar = $("input[name='calendarType']:checked").val() === "solar";
+
+    try {
+        let lunar;
+        if (isSolar) {
+            lunar = Solar.fromYmdHms(y, m, d, h, 0, 0).getLunar();
+        } else {
+            lunar = Lunar.fromYmdHms(y, m, d, h, 0, 0);
+        }
+
+        const eightChar = lunar.getEightChar();
+        const bazi = [eightChar.getTime(), eightChar.getDay(), eightChar.getMonth(), eightChar.getYear()];
+        const titles = ["시주", "일주", "월주", "년주"];
+
+        // 1. 만세력 표 강제 생성 (기존 영역 비우고 새로 삽입)
+        let tableHtml = `<div class="saju-table-container"><div class="saju-box">`;
+        tableHtml += `<div style="display:table-row; font-size:12px; color:#666; text-align:center;">`;
+        titles.forEach(t => tableHtml += `<div style="display:table-cell; padding-bottom:5px;">${t}</div>`);
+        tableHtml += `</div><div style="display:table-row;">`;
+        
+        // 천간 행
+        bazi.forEach(ganzi => {
+            const g = ganzi.charAt(0);
+            tableHtml += `<div class="saju-item ${getWuxingClass(g)}">${g}<br><span style="font-size:12px; font-weight:normal;">${ganziMap[g]}</span></div>`;
+        });
+        tableHtml += `</div><div style="display:table-row; height:5px;"></div><div style="display:table-row;">`;
+
+        // 지지 행
+        bazi.forEach(ganzi => {
+            const z = ganzi.charAt(1);
+            tableHtml += `<div class="saju-item ${getWuxingClass(z)}">${z}<br><span style="font-size:12px; font-weight:normal;">${ganziMap[z]}</span></div>`;
+        });
+        tableHtml += `</div></div></div>`;
+
+        // 기존 표 위치 교체
+        $(".saju-table").replaceWith(tableHtml);
+
+        // 2. 오행 개수 계산
+        let counts = { wood: 0, fire: 0, earth: 0, metal: 0, water: 0 };
+        bazi.forEach(gz => {
+            counts[wuxingMap[gz.charAt(0)]]++;
+            counts[wuxingMap[gz.charAt(1)]]++;
+        });
+
+        let countHtml = `<div class="wuxing-count-box">`;
+        countHtml += `<div class="count-item" style="color:#4caf50;">목: ${counts.wood}</div>`;
+        countHtml += `<div class="count-item" style="color:#f44336;">화: ${counts.fire}</div>`;
+        countHtml += `<div class="count-item" style="color:#fbc02d;">토: ${counts.earth}</div>`;
+        countHtml += `<div class="count-item" style="color:#757575;">금: ${counts.metal}</div>`;
+        countHtml += `<div class="count-item" style="color:#212121;">수: ${counts.water}</div>`;
+        countHtml += `</div>`;
+
+        // 3. 신살 분석 영역
+        $("#shinsal-area").empty().append(countHtml); // 오행 개수 먼저 삽입
+        
+        const dG = bazi[1].charAt(0); 
+        const dZ = bazi[1].charAt(1);
+        const yG = bazi[3].charAt(0);
+        const yZ = bazi[3].charAt(1);
+
+        titles.forEach((title, index) => {
+            const cur = bazi[index];
+            const g = cur.charAt(0);
+            const z = cur.charAt(1);
+            let shinsals = new Set();
+
+            // 신살 로직
+            const hong = {'甲':'午','乙':'午','丙':'寅','丁':'未','戊':'辰','己':'辰','庚':'戌','辛':'酉','壬':'子','癸':'申'};
+            if (hong[dG] === z) shinsals.add("홍염살");
+            const noble = {'甲':'未丑','乙':'申子','丙':'酉亥','丁':'酉亥','戊':'未丑','己':'申子','庚':'未丑','辛':'午寅','壬':'卯巳','癸':'卯巳'};
+            if (noble[dG].includes(z) || noble[yG].includes(z)) shinsals.add("천을귀인");
+            const munchang = {'甲':'巳','乙':'午','丙':'申','丁':'酉','戊':'申','己':'酉','庚':'亥','辛':'子','壬':'寅','癸':'卯'};
+            if (munchang[dG] === z) shinsals.add("문창귀인");
+            const hakdang = {'甲':'亥','乙':'午','丙':'寅','丁':'酉','戊':'寅','己':'酉','庚':'巳','辛':'子','壬':'申','癸':'卯'};
+            if (hakdang[dG] === z) shinsals.add("학당귀인");
+            const geumyeo = {'甲':'辰','乙':'巳','丙':'未','丁':'申','戊':'未','己':'申','庚':'戌','辛':'亥','壬':'丑','癸':'寅'};
+            if (geumyeo[dG] === z) shinsals.add("금여성");
+            const amrok = {'甲':'亥','乙':'戌','丙':'申','丁':'未','戊':'申','己':'未','庚':'巳','辛':'辰','壬':'寅','癸':'丑'};
+            if (amrok[dG] === z) shinsals.add("암록");
+            if (["甲辰", "乙未", "丙戌", "丁丑", "戊辰", "壬戌", "癸丑"].includes(cur)) shinsals.add("백호살");
+            if (["庚辰", "庚戌", "壬辰", "壬戌", "戊辰", "戊戌"].includes(cur)) shinsals.add("괴강살");
+            if (index === 1 && ["甲寅", "乙巳", "丙午", "丁巳", "戊申"].includes(cur)) shinsals.add("고란살");
+            if (["甲", "辛", "卯", "午", "申"].includes(g) || ["甲", "辛", "卯", "午", "申"].includes(z)) shinsals.add("현침살");
+
+            const get12 = (base, target) => {
+                const map = {
+                    "申子辰":{"亥":"겁살","子":"장성","丑":"반안","寅":"역마","卯":"육해","辰":"화개","巳":"겁살","午":"재살","未":"천살","申":"지살","酉":"년살","戌":"월살"},
+                    "巳酉丑":{"寅":"겁살","卯":"재살","辰":"천살","巳":"지살","오":"년살","未":"월살","申":"망신","酉":"장성","戌":"반안","亥":"역마","子":"육해","丑":"화개"},
+                    "寅午戌":{"亥":"겁살","子":"재살","丑":"천살","寅":"지살","卯":"년살","辰":"월살","巳":"망신","午":"장성","未":"반안","申":"역마","酉":"육해","戌":"화개"},
+                    "亥卯未":{"申":"겁살","酉":"재살","戌":"천살","亥":"지살","子":"년살","丑":"월살","寅":"망신","卯":"장성","辰":"반안","巳":"역마","午":"육해","未":"화개"}
+                };
+                for(let k in map) if(k.includes(base)) return map[k][target];
+                return null;
+            };
+            const s1 = get12(yZ, z); if(s1) shinsals.add(s1 === "년살" ? "도화살" : s1);
+            const s2 = get12(dZ, z); if(s2) shinsals.add(s2 === "년살" ? "도화살" : s2);
+
+            const gongmang = {"甲子":"戌亥","乙丑":"戌亥","丙寅":"戌亥","丁卯":"戌亥","戊辰":"戌亥","己巳":"戌亥","庚午":"戌亥","辛未":"戌亥","壬申":"戌亥","癸酉":"戌亥","甲戌":"申酉","乙亥":"申酉","丙子":"申酉","丁丑":"申酉","戊寅":"申酉","己卯":"申酉","庚辰":"申酉","辛巳":"申酉","壬午":"申酉","癸未":"申酉","甲申":"午未","乙酉":"午未","丙戌":"午未","丁亥":"午未","戊子":"午未","己丑":"午未","庚寅":"午未","辛卯":"午未","壬辰":"午未","癸巳":"午未","甲午":"辰巳","乙未":"辰巳","丙申":"辰巳","丁酉":"辰巳","戊戌":"辰巳","己亥":"辰巳","庚子":"辰巳","辛丑":"辰巳","壬寅":"辰巳","癸卯":"辰巳","甲辰":"寅卯","乙巳":"寅卯","丙午":"寅卯","丁未":"寅卯","戊申":"寅卯","己酉":"寅卯","庚戌":"寅卯","辛亥":"寅卯","壬子":"寅卯","癸丑":"寅卯","甲寅":"子丑","乙卯":"子丑","丙辰":"子丑","丁巳":"子丑","戊午":"子丑","己未":"子丑","庚申":"子丑","辛酉":"子丑","壬戌":"子丑","癸亥":"子丑"};
+            if (gongmang[bazi[1]] && gongmang[bazi[1]].includes(z)) shinsals.add("공망");
+
+            let resHtml = `<div style="margin-bottom: 12px; text-align: left; border-bottom: 1px solid #eee; padding-bottom: 8px;">`;
+            resHtml += `<strong style="color: #ff4081; font-size: 14px;">[${title}]</strong> `;
+            if (shinsals.size > 0) {
+                Array.from(shinsals).forEach(s => { resHtml += `<span class="shinsal-tag">#${s}</span> `; });
+            } else {
+                resHtml += `<span style="color: #999; font-size: 12px; margin-left: 5px;">-</span>`;
+            }
+            resHtml += `</div>`;
+            $("#shinsal-area").append(resHtml);
+        });
+
+        goPage('result');
+    } catch (e) { alert("오류 발생"); console.error(e); }
+}
+        document.getElementById("share-btn").onclick = function() {
+            const url = window.location.href;
+            if (navigator.share) {
+                navigator.share({ title: '만세력 테스트', url: url });
+            } else {
+                navigator.clipboard.writeText(url).then(() => alert("복사되었습니다!"));
+            }
+        };
+    </script>
+</body>
+</html>

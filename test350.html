@@ -31,7 +31,13 @@
 
 
     <style>
-        
+        @font-face {
+    font-family: 'ThinRounded';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2511-1@1.0/ThinDungGeunMo.woff2') format('woff2');
+    font-weight: normal;
+    font-display: swap;
+}
+
         @font-face {
     font-family: 'NanumSquareRound';
     src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff') format('woff');
@@ -250,7 +256,7 @@
     z-index: 10;
     white-space: nowrap;
     pointer-events: none;
-    font-family: 'NanumSquareRound', sans-serif;
+    font-family: 'ThinRounded', sans-serif;
         padding: 3px 3px; /* 안쪽 여백 */
     border-radius: 12px; /* 둥글게 */
    
@@ -311,33 +317,33 @@ button:focus {
 }
     @media screen and (max-width: 450px) {
     #nicknameOverlay {
-        font-size: 15px; /* 모바일에서 글자 크기 줄이기 */
-     top: 16.5%; /* 기존 위치 유지 */
+        font-size: 14px; /* 모바일에서 글자 크기 줄이기 */
+     top: 16.7%; /* 기존 위치 유지 */
     }
     }
     @media screen and (max-width: 430px) {
     #nicknameOverlay {
-        font-size: 15px; /* 모바일에서 글자 크기 줄이기 */
-     top: 16.5%; /* 기존 위치 유지 */
+        font-size: 14px; /* 모바일에서 글자 크기 줄이기 */
+     top: 16.7%; /* 기존 위치 유지 */
     }
 }
     @media screen and (max-width: 410px) {
     #nicknameOverlay {
-        font-size: 14px; /* 모바일에서 글자 크기 줄이기 */
-        top: 16.5%; /* 기존 위치 유지 */
+        font-size: 13px; /* 모바일에서 글자 크기 줄이기 */
+        top: 16.9%; /* 기존 위치 유지 */
     }
    
     @media screen and (max-width: 385px) {
     #nicknameOverlay {
-   top: 16.5%; /* 기존 위치 유지 */
-          font-size: 14px; /* 모바일에서 글자 크기 줄이기 */
+   top: 16.9%; /* 기존 위치 유지 */
+          font-size: 13px; /* 모바일에서 글자 크기 줄이기 */
     }
     }
     }
        @media screen and (max-width: 375px) {
     #nicknameOverlay {
-   top: 16.5%; /* 기존 위치 유지 */
-          font-size: 13px; /* 모바일에서 글자 크기 줄이기 */
+   top: 16.9%; /* 기존 위치 유지 */
+          font-size: 12px; /* 모바일에서 글자 크기 줄이기 */
     }
     }
     </style>

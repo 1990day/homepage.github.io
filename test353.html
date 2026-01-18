@@ -1,0 +1,620 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+
+     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5522499110435321"
+     crossorigin="anonymous"></script>
+
+
+
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   <title>테스트잇 AI 관상 테스트</title>
+    <meta name="description" content="테스트잇 AI 관상 테스트">
+<meta name="keywords" content="테스트잇,성격테스트,AI관상테스트,관상테스트,테스트잇관상,AI관상분석,연애mbti,연애성격테스트, 심리테스트, mbti테스트">
+    <meta property="og:type" content="website"> 
+    <meta property="og:title" content="테스트잇 AI 관상 테스트">
+    <meta property="og:description" content="테스트잇 AI 관상 테스트">
+    <meta property="og:image" content="img_main353.png">
+    <meta property="og:url" content="https://test-it.co.kr/test353.html">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+      <link rel="icon" type="image/png" href="favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+
+    
+    <style>
+        @font-face {
+            font-family: 'ChosunGu';
+            src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/ChosunGu.woff') format('woff');
+        }
+
+        body {
+            font-family: 'ChosunGu', -apple-system, sans-serif;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            display: block; 
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; padding: 0; margin: 0; }
+
+        /* [1] 헤더 스타일 */
+        .page-header {
+            width: 100%;
+            height: 70px;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-sizing: border-box;
+            border-bottom: 1px solid #eee;
+            background-color: white;
+        }
+
+        .logo { width: 100px; display: block; }
+
+        .main-nav {
+            display: flex;
+            font-family: 'Do Hyeon', sans-serif;
+            font-size: 1.1rem;
+        }
+        .main-nav li { margin-left: 30px; color: #432; white-space: nowrap; }
+        .main-nav a { color: #432; }
+
+        /* [2] 테스트 영역 */
+        .test-container {
+            width: 100%;
+            max-width: 600px;
+            margin: 30px auto;
+            padding: 20px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .page-header { padding: 0 15px; }
+            .main-nav li { margin-left: 15px; font-size: 1rem; }
+        }
+
+        :root {
+            --aurora-gradient: linear-gradient(135deg, #FF00CC 0%, #333399 100%);
+            --hip-gradient: linear-gradient(135deg, #833ab4 0%, #fd1d1d 50%, #fcb045 100%);
+        }
+
+        h1.title-hip {
+            font-size: 2rem; margin: 10px 0 10px 0;
+            background: var(--aurora-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            font-weight: 900; letter-spacing: -0.5px;
+            font-family: 'Do Hyeon', sans-serif;
+        }
+        .sub-text { color: #888; margin-bottom: 40px; font-size: 1rem; line-height: 1.6; }
+
+        .circle-img {
+            width: 200px; height: 200px; border-radius: 50%; object-fit: cover;
+            margin-bottom: 40px; padding: 5px; background: var(--aurora-gradient);
+        }
+
+        /* 메인 화면 전용 큰 이미지 스타일 */
+        .main-hero-img {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            object-fit: cover;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .btn {
+            width: 100%; max-width: 400px; height: 60px;
+            background: var(--aurora-gradient);
+            color: white; border: none; font-size: 1.2rem; font-weight: bold;
+            border-radius: 30px; cursor: pointer; margin: 10px auto; display: block;
+            box-shadow: 0 4px 15px rgba(255, 0, 204, 0.3);
+            font-family: 'ChosunGu', sans-serif;
+            transition: transform 0.2s;
+        }
+        .btn:active { transform: scale(0.98); }
+        .btn-save { background: #222; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+        .btn-outline { background: white; border: 2px solid #ddd; color: #333; box-shadow: none; }
+
+        #file-upload { display: none; }
+        .upload-box {
+            border: 3px dashed #e0e0e0; padding: 40px 20px; border-radius: 20px;
+            cursor: pointer; background: #f9f9f9; transition: 0.3s; margin: 20px 0;
+        }
+        .upload-box:hover { border-color: #FF00CC; background: #fff5fc; }
+
+        /* 결과 페이지 */
+        #capture-target {
+            background: white; padding: 20px; border-radius: 20px; 
+        }
+        .insta-header { display: flex; align-items: center; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid #eee; }
+        .header-avatar { width: 40px; height: 40px; border-radius: 50%; margin-right: 10px; padding: 2px; background: var(--hip-gradient); }
+        .header-text { font-weight: 700; font-size: 1rem; }
+        
+        .result-img-wrapper {
+            width: 100%; aspect-ratio: 1/1; overflow: hidden; border-radius: 10px;
+            background: #000; display: flex; justify-content: center; align-items: center;
+        }
+        
+        #result-photo { 
+            width: 100%; 
+            height: 100%; 
+            background-size: cover; 
+            background-position: center; 
+            background-repeat: no-repeat;
+        }
+
+        .result-info-area { margin: 25px 0; text-align: center; }
+
+        /* [최종 완성] 핑크 몽글몽글 구름 스타일 (이모티콘 제거됨) */
+        .job-title {
+            display: inline-block;
+            font-size: 2.2rem; 
+            font-weight: 900;
+            color: #ff5e98; /* 귀여운 핫핑크 글씨 */
+            background: #ffffff; /* 하얀 구름 배경 */
+            
+            /* 구름 모양 만들기 */
+            padding: 15px 35px;
+            border-radius: 50px; 
+            border: 5px solid #ffe3ee; /* 딸기우유색 테두리 */
+            
+            /* 몽글몽글한 그림자 효과 */
+            box-shadow: 
+                0 10px 20px rgba(255, 182, 193, 0.4), /* 부드러운 핑크 그림자 */
+                inset 0 -5px 10px rgba(255, 240, 245, 0.5); /* 안쪽 볼륨감 */
+            
+            font-family: 'Do Hyeon', sans-serif;
+            word-break: keep-all;
+            margin: 0;
+            line-height: 1.2;
+        }
+
+        .age-badge {
+            background: #f1f1f1; color: #555; padding: 5px 15px; border-radius: 20px; 
+            font-size: 0.9rem; font-weight: bold; margin-top: 15px; display: inline-block;
+        }
+
+        .caption-area { text-align: left; font-size: 1rem; line-height: 1.6; color: #333; margin-top: 20px;}
+        .caption-id { font-weight: 800; margin-right: 5px; }
+
+        /* 서술형 텍스트 스타일 */
+        #res-desc { 
+            display: block; 
+            margin-top: 15px; 
+            text-align: justify; 
+            word-break: keep-all; 
+            line-height: 1.8;
+            font-size: 0.95rem;
+            color: #444;
+        }
+
+        .section { display: none; }
+        .section.active { display: block; animation: fadeIn 0.5s; }
+        @keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
+
+        .loader {
+            border: 5px solid #f3f3f3; border-top: 5px solid #FF00CC; border-radius: 50%;
+            width: 50px; height: 50px; animation: spin 1s linear infinite; margin: 50px auto;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        .coupang_ad { width: 100%; max-width: 350px; margin: 30px auto; text-align: center; }
+        
+        .safe-notice {
+            color: #666; font-size: 0.9rem; margin-top: 10px;
+            background: #f0f0f0; padding: 8px; border-radius: 10px; display: inline-block;
+        }
+    </style>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+</head>
+
+<body>
+    <header class="page-header">
+        <a href="index.html"><img class="logo" src="img_logo.png" alt="test it"></a>
+        <nav>
+            <ul class="main-nav">
+                <li><a href="https://test-it.co.kr/test.html">성격</a></li>
+                <li><a href="https://test-it.co.kr/face.html">얼굴</a></li>
+                <li><a href="https://test-it.co.kr/etc.html">그외</a></li>
+                <li><a href="https://test-it.co.kr/saju.html">사주</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="test-container">
+        
+        <div id="loading-section" class="section">
+            <div class="loader"></div>
+            <p>AI가 관상 데이터를 불러오고 있습니다...</p>
+        </div>
+
+        <div id="main-section" class="section active">
+            <img src="img_main353.png" class="main-hero-img" alt="main">
+            <button class="btn" onclick="goToUpload()">테스트 시작하기</button>
+        </div>
+
+        <div id="upload-section" class="section">
+            <h2 style="font-family:'Do Hyeon'; font-size:1.8rem;">사진 업로드</h2>
+            <p class="sub-text">정면 사진이 가장 정확합니다.</p>
+            
+            <label for="file-upload" class="upload-box" style="display:block;">
+                <span style="font-size: 3rem;">📸</span><br><br>
+                <span style="font-weight:bold; color:#FF00CC;">사진 찍기 / 앨범 선택</span>
+            </label>
+            <input type="file" id="file-upload" accept="image/*" onchange="previewImage(event)">
+            
+            <div class="safe-notice">
+                🔒 <b>안심하세요!</b><br>
+                사진은 서버에 절대 저장되지 않습니다.
+            </div>
+
+            <div id="preview-area" style="display:none; margin-top:30px;">
+                <img id="preview-img" class="circle-img" style="width:150px; height:150px;">
+                <button id="analyze-btn" class="btn" onclick="analyzeFace()">이 사진으로 분석하기</button>
+            </div>
+        </div>
+
+        <div id="result-section" class="section">
+            <div id="capture-target">
+                <div class="insta-header">
+                    <img src="img_profile353.jpg" class="header-avatar" crossorigin="anonymous">
+                    <span class="header-text">테스트잇</span>
+                    <span style="margin-left:auto; font-size:1.5rem;">🔥</span>
+                </div>
+
+                <div class="result-img-wrapper">
+                    <div id="result-photo"></div>
+                </div>
+
+                <div class="result-info-area">
+                    <h2 id="res-job" class="job-title">직업 로딩중...</h2>
+                    <br>
+                    <span class="age-badge">관상 나이: <span id="res-age">20</span>세</span>
+                </div>
+
+                <div style="text-align:left; font-size:1.5rem; margin-bottom:10px; padding:0 5px;">
+                    <span>❤️</span> <span style="margin-left:10px;">💬</span> <span style="margin-left:10px;">✈️</span>
+                </div>
+
+                <div class="caption-area">
+                    <p>
+                        <span class="caption-id">테스트잇</span>
+                        <span id="res-desc"></span>
+                    </p>
+                    <p style="color:#aaa; font-size:0.8rem; margin-top:10px;">
+                        #테스트잇 #관상테스트 #AI관상분석 #testit
+                    </p>
+                </div>
+            </div>
+
+            <div style="margin-top: 30px;">
+                <button class="btn btn-save" onclick="saveImage()">📥 결과 이미지 저장</button>
+                <button class="btn btn-outline" onclick="location.reload()">🔄 다시 하기</button>
+                <button class="btn btn-outline" onclick="location.href='https://test-it.co.kr/test.html'">📂 다른 테스트 더보기</button>
+                <button id="share-btn" class="btn btn-outline">🔗 테스트 공유하기</button>
+            </div>
+        </div>
+
+    </div>
+
+    <article class="coupang_ad">
+        <script src="https://ads-partners.coupang.com/g.js"></script>
+        <script>
+            new PartnersCoupang.G({"id":798186,"template":"carousel","trackingCode":"AF4391881","width":"350","height":"140","tsource":""});
+        </script>
+    </article>
+
+    <script>
+        const MODEL_URL = 'https://cdn.jsdelivr.net/gh/justadudewhohacks/face-api.js@master/weights';
+
+        // [직업 데이터: 사용자가 자유롭게 수정 가능]
+        const JOBS = {
+            // 학생/청소년 (현실 반영)
+            youth: ["전교회장", "아이돌 센터상", "만능 엔터테이너", "체육부장", "웹툰 작가 지망생", "유튜브 꿈나무", "전교 1등", "천재 해커", "패션 인플루언서", "쇼미더머니 우승 후보", "핵인싸 동아리 회장", "엄친아/엄친딸", "PC방 알바생", "급식 마스터", "독서실 지박령"],
+            
+            // 부자 (기존 유지)
+            money: ["청담동 건물주", "비트코인 대박난 부자", "유니콘 기업 CEO", "다이아 수저", "명품 브랜드 VIP", "사모펀드 매니저", "영앤리치 래퍼", "강남 큰손", "호텔 체인 오너", "프랜차이즈 대표", "석유 재벌"],
+            
+            // 예술 (기존 유지)
+            art: ["칸 영화제 초청 감독", "천재 타투이스트", "힙합 프로듀서", "베스트셀러 작가", "성수동 힙한 카페 사장", "패션 디자이너", "인디밴드 보컬", "메이크업 아티스트", "현대미술 작가", "스트릿 댄서", "뮤지컬 배우"],
+            
+            // 권력 (기존 유지)
+            power: ["청와대 비서실장급", "대기업 최연소 임원", "카리스마 강력계 반장", "국가대표 감독", "협상 전문가", "뉴스 앵커", "스타 변호사", "노조 위원장", "대학 총장", "정치계 거물"],
+            
+            // 서비스 (기존 유지)
+            service: ["미슐랭 3스타 셰프", "퍼스널 쇼퍼", "반려동물 행동교정사", "일타 강사", "승무원", "연애 컨설턴트", "심리 상담가", "와인 소믈리에", "호텔 지배인", "웨딩 플래너", "필라테스 원장님"],
+            
+            // 기술 (기존 유지)
+            tech: ["판교 AI 개발자", "NASA 연구원", "화이트 해커", "천재 외과의사", "건축가", "프로파일러", "블록체인 전문가", "신약 개발자", "천체 물리학자", "로봇 공학자"],
+
+            // [NEW] 현실/재미/백수 (무표정일 때 나올 확률 높음)
+            funny: ["돈 많은 백수", "자발적 백수", "편의점 야간 알바", "방구석 키보드 워리어", "로또 1등 당첨 예정자", "코인 떡락한 개미", "숨쉬기 운동 전문가", "배달앱 VVIP", "넷플릭스 고인물", "도가 튼 백수", "퇴사 꿈나무", "N년차 고시생", "프로 이직러", "주식 단타 전문가", "로또 단골손님", "그냥 백수"]
+        };
+
+
+        const DESC_PARTS = {
+            eyes: [
+                "가장 먼저 눈을 살펴보면, 호기심이 가득하고 세상의 이치를 꿰뚫어 보는 통찰력이 담겨 있으며",
+                "우선 눈매를 보면, 한번 목표를 정하면 끝까지 해내는 강렬한 집념이 서려 있고",
+                "당신의 눈망울은 타인의 마음을 무장해제 시키는 부드럽고 다정다감한 기운을 가지고 있으며",
+                "예리한 관찰력으로 남들이 놓치는 기회를 포착하는 비범한 눈빛을 지녔으며",
+                "깊은 바다처럼 속을 알 수 없지만 사람을 묘하게 끌어당기는 도화살이 눈가에 머물고 있어",
+                "눈빛이 밤하늘의 별처럼 초롱초롱하여 명석한 두뇌 회전을 암시하며",
+                "웃을 때 반달이 되는 눈매는 주변에 항상 즐거운 일이 가득할 것을 의미하고",
+                "강인하면서도 고요한 눈빛은 위기 상황에서도 침착함을 잃지 않는 대범함을 보여주며",
+                "눈꼬리가 살짝 올라가 있어 승부욕이 강하고 지는 것을 싫어하는 성향이 엿보이며",
+                "맑고 깨끗한 흰자는 정직하고 올바른 성품을 나타내어 사람들에게 신뢰를 주고",
+                "눈두덩이가 도톰하여 부동산이나 재산 운이 좋고 인내심이 강한 편이며",
+                "쌍꺼풀 라인이 짙거나 눈매가 시원하여 감정 표현이 솔직하고 예술적 감수성이 풍부하며",
+                "눈동자가 흑진주처럼 검고 뚜렷하여 한번 본 것은 절대 잊지 않는 기억력을 가졌으며",
+                "눈과 눈썹 사이가 넓어 마음의 여유가 있고 대인관계가 원만함을 보여주며",
+                "어딘가 모르게 슬픈 듯한 눈망울은 보호본능을 자극하여 이성에게 인기가 많을 상이며",
+                "매서운 듯하지만 깊이 있는 눈빛은 한 분야의 전문가가 될 잠재력을 품고 있으며",
+                "눈 밑의 와잠(애교살)이 도톰하여 자식복이 좋고 활력이 넘치는 에너자이저이며",
+                "눈빛에서 레이저가 나갈 듯한 카리스마는 리더로서 조직을 장악할 힘을 보여주며",
+                "선한 강아지 같은 눈매는 적을 만들지 않고 모두를 내 편으로 만드는 능력이 있으며",
+                "눈을 깜빡일 때마다 번뜩이는 재치가 엿보여 아이디어 뱅크라 불릴 만하고",
+                "그윽하고 분위기 있는 눈매는 사람을 홀리는 묘한 매력을 발산하며"
+            ],
+            jaw: [
+                "전체적인 얼굴형과 턱선은 날렵하여 매사에 결단력이 있고 맺고 끊음이 확실한 성격임을 보여줍니다.",
+                "얼굴의 하관이 안정적으로 자리 잡아 초년보다는 말년으로 갈수록 운기가 더욱 상승하는 대기만성형 관상입니다.",
+                "부드러운 얼굴 라인은 적을 만들지 않고 유연하게 상황을 대처하는 뛰어난 처세술을 의미합니다.",
+                "강인하게 뻗은 턱 끝에서는 어떤 고난도 이겨내고야 마는 불굴의 의지가 엿보입니다.",
+                "계란형의 갸름한 얼굴은 미적 감각이 뛰어나고 세련된 라이프스타일을 추구함을 나타냅니다.",
+                "각진 턱은 강한 추진력과 뚝심을 상징하여 한 번 시작한 일은 끝을 보는 성격입니다.",
+                "둥글둥글한 얼굴형은 모난 구석 없이 사람들과 잘 어울리는 원만한 대인관계를 암시합니다.",
+                "이마에서 턱까지 이어지는 라인이 조화로워 평생 의식주 걱정 없이 살 복을 타고났습니다.",
+                "넓고 시원한 이마와 균형 잡힌 하관은 조상 덕을 보거나 윗사람의 도움을 많이 받을 상입니다.",
+                "볼살이 적당히 있어 재물복이 따르고 주변 사람들에게 사랑받는 귀염성 있는 관상입니다.",
+                "턱이 앞으로 살짝 나와 있는 주걱턱 형상은 만년에 부와 명예를 동시에 거머쥘 길상입니다.",
+                "광대뼈가 적당히 솟아 있어 사회적인 활동력이 왕성하고 명예욕이 있음을 보여줍니다.",
+                "얼굴 좌우 대칭이 완벽에 가까워 성격이 모나지 않고 공정한 판단력을 지녔습니다.",
+                "다소 긴 얼굴형은 논리적이고 이성적인 사고를 하며 지적인 분야에서 두각을 나타냅니다.",
+                "짧고 귀여운 얼굴형은 동안의 조건을 갖추었으며 평생 젊은 감각으로 살아갈 운명입니다.",
+                "턱선이 묵직하고 두터워 아랫사람을 잘 거느리고 조직의 수장이 될 그릇입니다.",
+                "얼굴에 살집이 없고 뼈대가 드러나는 형상은 예민하지만 천재적인 감각을 지녔음을 의미합니다.",
+                "귀 밑 턱이 발달하여 의지가 굳건하고 신념을 굽히지 않는 대장부의 기질이 있습니다.",
+                "하관이 좁아지는 형태는 감수성이 풍부하고 예술 계통에서 성공할 가능성이 높습니다.",
+                "얼굴 윤곽이 또렷하여 어디서나 눈에 띄고 존재감을 발휘하는 화려한 인생을 예고합니다.",
+                "이중턱이 살짝 보이는 것은 말년에 재물이 곳간에 가득 쌓일 징조입니다."
+            ],
+            nose: [
+                "또한 얼굴의 중심인 코는 재물운이 마르지 않고 끊임없이 들어오는 복스러운 형상입니다.",
+                "재물운을 상징하는 코가 곧게 뻗어 있어, 자존심이 강하고 리더십이 느껴지는 기운을 뿜어냅니다.",
+                "예술적 감각이 뛰어나고 세련미가 넘치는 오똑한 코는 당신의 안목이 남다름을 증명합니다.",
+                "코의 모양을 보아하니 실속을 잘 챙기며 중년 이후에 큰 부를 축적할 튼튼한 기반을 가졌습니다.",
+                "사람들 사이에서 중심을 잡아주는 묵직하고 신뢰감 있는 코의 기운이 느껴집니다.",
+                "콧망울이 둥글고 두툼하여 금전 관리에 능하고 한 번 들어온 돈은 절대 새나가지 않습니다.",
+                "매부리코의 기질이 살짝 보여 계산이 빠르고 이재에 밝아 사업가로서의 자질이 충분합니다.",
+                "콧대가 높고 날렵하여 귀족적인 아우라를 풍기며 남들보다 높은 위치에 오를 상입니다.",
+                "코 끝이 살짝 들린 버선코는 재치 있고 발랄한 성격으로 주변의 귀여움을 독차지합니다.",
+                "콧구멍이 보이지 않는 코는 재물을 꽉 쥐고 놓지 않는 알뜰살뜰한 부자 관상입니다.",
+                "미간에서부터 코끝까지 시원하게 뻗어 있어 인생의 고속도로가 뚫린 듯 탄탄대로를 달릴 것입니다.",
+                "코에 점이나 흉터 없이 매끈하여 인생에 큰 굴곡 없이 평온한 삶을 누릴 운명입니다.",
+                "살짝 휜 듯한 코는 융통성이 있고 상황 대처 능력이 뛰어나 위기를 기회로 바꿉니다.",
+                "짧은 코는 순발력이 좋고 판단이 빨라 급변하는 시대에 빠르게 적응하는 능력자입니다.",
+                "긴 코는 신중하고 사려 깊은 성격으로 매사에 돌다리도 두들겨 보고 건너는 지략가입니다.",
+                "코 양옆의 광대가 코를 잘 받쳐주어 주변의 도움으로 성공 가도를 달릴 복을 지녔습니다.",
+                "들창코 기질이 있는 것은 개방적이고 호탕한 성격으로 친구가 많고 인맥이 넓음을 뜻합니다.",
+                "화살코처럼 코끝이 아래로 향한 것은 현실 감각이 뛰어나고 헛된 꿈을 쫓지 않는 실리파입니다.",
+                "코가 얼굴 전체 비율에 비해 큰 편이라 자기 주장이 강하고 독립적인 성향이 두드러집니다.",
+                "작고 아담한 코는 소박한 행복을 즐길 줄 알고 욕심을 부리지 않아 마음이 편안한 상입니다.",
+                "콧등이 넓어 건강하고 체력이 좋아 어떤 힘든 일도 거뜬히 해낼 에너지가 넘칩니다."
+            ],
+            mouth: [
+                "더불어 입꼬리가 자연스럽게 올라가 있어 말년운이 좋고 주변에 귀인이 끊이지 않을 상입니다.",
+                "굳게 다문 입술에서는 신중함과 무거운 책임감을 지닌 진정한 리더의 자질이 보입니다.",
+                "입매가 야무져 화술이 뛰어나고, 말 한마디로 천냥 빚을 갚을 만큼 설득력이 탁월합니다.",
+                "웃을 때 시원스럽게 벌어지는 입은 주변 사람들에게 긍정적인 에너지를 전파하는 매력 포인트입니다.",
+                "입술 선이 명확하여 감정 표현이 솔직 담백하고, 거짓 없이 사람을 대하는 진정성이 느껴집니다.",
+                "윗입술보다 아랫입술이 도톰하여 사랑을 받기보다 주는 것에 익숙한 헌신적인 사랑꾼입니다.",
+                "입술이 앵두같이 붉고 작아 이성에게 인기가 많고 평생 의식주 걱정이 없는 복을 타고났습니다.",
+                "큰 입은 포부가 크고 야망이 있어 작은 물이 아닌 큰 물에서 놀아야 할 대범한 관상입니다.",
+                "입술이 얇은 편이라 냉철하고 이성적인 판단을 내리며 맺고 끊음이 확실한 쿨한 성격입니다.",
+                "인중이 깊고 뚜렷하여 건강하고 장수하며 자손 복까지 겸비한 길상 중의 길상입니다.",
+                "웃을 때 잇몸이 살짝 보이는 것은 솔직하고 꾸밈없는 성격으로 사람들의 경계심을 허무는 매력이 있습니다.",
+                "입술에 세로 주름이 많은 것은 정이 많고 타인을 배려할 줄 아는 따뜻한 마음씨를 가졌습니다.",
+                "말할 때 치아가 가지런히 보이는 것은 신뢰감을 주고 성실함을 인정받아 성공할 운입니다.",
+                "입술 양 끝이 아래로 처지지 않고 위로 향해 있어 긍정적인 마인드로 행운을 불러옵니다.",
+                "윗입술이 얇고 아랫입술이 두꺼운 것은 자기애가 강하고 자신감이 넘쳐 어디서든 당당합니다.",
+                "입을 다물었을 때 일자 모양이 되는 것은 고집이 있고 주관이 뚜렷하여 타협하지 않는 소신파입니다.",
+                "입술 색이 선명하고 윤기가 흐르는 것은 현재 건강 상태가 좋고 운의 흐름이 원활함을 의미합니다.",
+                "입술이 약간 돌출된 형상은 말하기를 좋아하고 논쟁을 즐기며 언변가로서의 재능이 있습니다.",
+                "작은 입이지만 야무지게 다문 모습은 빈틈이 없고 꼼꼼하여 실수가 없는 완벽주의자입니다.",
+                "입 주변에 점이 있는 것은 먹을 복이 타고나 평생 굶을 일은 없다는 식복의 상징입니다.",
+                "웃을 때 입꼬리에 보조개가 생기는 것은 천진난만함으로 이성의 마음을 사로잡을 도화살입니다."
+            ],
+            advice: [
+                "결론적으로 당신은 초반에는 다소 굴곡이 있을 수 있으나, 결국 본인의 능력으로 자수성가할 강한 운명을 타고났습니다.",
+                "종합해보면, 타고난 끼와 재능을 숨기지 않고 세상에 마음껏 드러낼 때 비로소 큰 부와 명예가 따라올 것입니다.",
+                "이러한 관상은 사람을 이끄는 카리스마가 있어, 어디를 가든 무리의 우두머리가 될 큰 그릇임을 암시합니다.",
+                "남들과 다른 독창적인 시각으로 세상을 놀라게 할 혁명가의 기질이 다분하니 자신의 직관을 믿으세요.",
+                "성실함과 신뢰를 무기로 차곡차곡 쌓아 올린 공든 탑은 절대 무너지지 않으니, 꾸준함이 당신의 가장 큰 무기입니다.",
+                "지금은 잠시 웅크리고 있을지라도, 때가 되면 승천하는 용처럼 비상할 엄청난 잠재력을 품고 있습니다.",
+                "주변의 시선에 흔들리지 않고 묵묵히 자신의 길을 가다 보면, 어느새 정상에 서 있는 자신을 발견할 것입니다.",
+                "타고난 인복으로 인해 힘들 때마다 돕는 손길이 나타날 것이니, 사람을 귀하게 여기면 복이 배가 됩니다.",
+                "재물운, 명예운, 애정운의 삼박자가 고루 갖춰진 황금 관상이니 자신감을 가지고 세상에 도전하세요.",
+                "작은 실패에 연연하지 마세요. 당신의 인생 그래프는 우상향을 그리고 있으며 대운이 들어오고 있습니다.",
+                "말년으로 갈수록 창고에 곡식이 쌓이듯 재물이 불어나는 형국이니 노후 걱정은 안 하셔도 됩니다.",
+                "당신은 흙 속의 진주와 같습니다. 스스로를 갈고닦으면 눈부신 빛을 발하여 세상이 주목할 것입니다.",
+                "차가운 이성과 따뜻한 감성을 동시에 지닌 당신은 많은 사람들에게 영감을 주는 뮤즈가 될 운명입니다.",
+                "역마살의 기운이 긍정적으로 작용하여, 넓은 세상을 돌아다니며 견문을 넓히면 큰 성공을 거둡니다.",
+                "손대는 일마다 황금으로 변하는 '마이다스의 손'이 될 자질이 보이니 과감하게 투자하고 실행하세요.",
+                "당신의 미소는 천만 불짜리입니다. 웃으면 웃을수록 복이 굴러들어오는 관상이니 항상 웃음을 잃지 마세요.",
+                "타고난 도화살을 긍정적으로 활용하면 연예인이나 인플루언서처럼 대중의 사랑을 한 몸에 받을 수 있습니다.",
+                "겉은 부드러워 보이지만 속은 단단한 외유내강형 인간으로, 어떤 시련도 지혜롭게 극복해낼 것입니다.",
+                "평생 손에 물 한 방울 안 묻히고 살 귀족적인 팔자이니, 자신의 품위를 지키며 여유롭게 사세요.",
+                "하늘이 내린 천운을 타고났습니다. 노력한 것보다 더 큰 결과를 얻게 될 것이니 감사하는 마음을 가지세요.",
+                "당신은 사막에서도 오아시스를 찾아낼 생존력과 운을 지녔습니다. 두려워 말고 거친 세상으로 나아가세요."
+            ]
+        };
+
+        let isLoaded = false;
+        
+        window.onload = async () => {
+            try {
+                await Promise.all([
+                    faceapi.nets.ssdMobilenetv1.loadFromUri(MODEL_URL),
+                    faceapi.nets.faceLandmark68Net.loadFromUri(MODEL_URL),
+                    faceapi.nets.ageGenderNet.loadFromUri(MODEL_URL),
+                    faceapi.nets.faceExpressionNet.loadFromUri(MODEL_URL)
+                ]);
+                isLoaded = true;
+                console.log("AI 모델 로딩 완료");
+            } catch(e) { 
+                console.error(e); 
+            }
+        };
+
+        function goToUpload() {
+            document.querySelector('.section.active').classList.remove('active');
+            document.getElementById('upload-section').classList.add('active');
+        }
+
+        function previewImage(event) {
+            const reader = new FileReader();
+            reader.onload = e => {
+                document.getElementById('preview-img').src = e.target.result;
+                document.getElementById('preview-area').style.display = 'block';
+            };
+            if(event.target.files[0]) reader.readAsDataURL(event.target.files[0]);
+        }
+
+        function getConsistentDesc(seed) {
+            const eyeIdx = Math.floor(seed) % DESC_PARTS.eyes.length;
+            const jawIdx = Math.floor(seed * 2) % DESC_PARTS.jaw.length;
+            const noseIdx = Math.floor(seed * 3) % DESC_PARTS.nose.length;
+            const mouthIdx = Math.floor(seed * 5) % DESC_PARTS.mouth.length;
+            const advIdx = Math.floor(seed * 7) % DESC_PARTS.advice.length;
+
+            return `
+                ${DESC_PARTS.eyes[eyeIdx]} ${DESC_PARTS.jaw[jawIdx]}<br><br>
+                ${DESC_PARTS.nose[noseIdx]} ${DESC_PARTS.mouth[mouthIdx]}<br><br>
+                ${DESC_PARTS.advice[advIdx]}
+            `;
+        }
+
+        async function analyzeFace() {
+            if(!isLoaded) {
+                alert("AI가 아직 준비 중입니다. 1~2초 뒤에 다시 눌러주세요!");
+                return;
+            }
+
+            const btn = document.getElementById('analyze-btn');
+            btn.innerText = "분석 중...";
+            
+            try {
+                const img = document.getElementById('preview-img');
+                const detections = await faceapi.detectSingleFace(img).withFaceLandmarks().withAgeAndGender().withFaceExpressions();
+                if(!detections) throw new Error("얼굴 인식 실패");
+
+                const age = Math.round(detections.age);
+                const ex = detections.expressions;
+                const mood = Object.keys(ex).reduce((a, b) => ex[a] > ex[b] ? a : b);
+
+                // 고유 숫자 생성
+                const uniqueNum = detections.detection.score * 1000 + detections.age;
+
+                let cat = 'service';
+                if(age < 20) cat = 'youth';
+                else if(['angry', 'disgusted'].includes(mood)) cat = 'power';
+                else if(['happy'].includes(mood)) cat = 'money';
+                else if(['sad', 'fearful'].includes(mood)) cat = 'art';
+                else {
+                    if (uniqueNum % 10 < 5) cat = 'tech';
+                    else cat = 'funny';
+                }
+                
+                if(age >= 50 && (uniqueNum % 10 > 7)) cat = 'money';
+
+                const jobList = JOBS[cat];
+                const jobIndex = Math.floor(uniqueNum) % jobList.length;
+                const finalJob = jobList[jobIndex];
+                
+                const desc = getConsistentDesc(uniqueNum);
+
+                document.getElementById('result-photo').style.backgroundImage = `url('${img.src}')`;
+                
+                document.getElementById('res-job').innerText = finalJob;
+                document.getElementById('res-age').innerText = age;
+                document.getElementById('res-desc').innerHTML = `
+                    <b>[AI 정밀 관상 보고서]</b><br>
+                    ${desc}<br><br>
+                    이러한 이목구비의 조화를 종합해볼 때,<br>
+                    당신은 <b>"${finalJob}"</b>의 운명을 타고났습니다.
+                `;
+
+                document.querySelector('.section.active').classList.remove('active');
+                document.getElementById('result-section').classList.add('active');
+            } catch(e) {
+                console.error(e);
+                alert("얼굴을 찾을 수 없어요. 이목구비가 뚜렷한 정면 사진으로 다시 시도해주세요!");
+                btn.innerText = "이 사진으로 분석";
+            }
+        }
+
+        function saveImage() {
+            const target = document.getElementById('capture-target');
+            const btn = document.querySelector('.btn-save');
+            btn.innerText = "저장 중...";
+            
+            html2canvas(target, { 
+                useCORS: true, 
+                backgroundColor: "#ffffff",
+                scale: 2 
+            }).then(canvas => {
+                const link = document.createElement('a');
+                link.download = 'hip-face-test.png';
+                link.href = canvas.toDataURL("image/png");
+                link.click();
+                btn.innerText = "📥 결과 이미지 저장";
+            }).catch(err => {
+                console.error(err);
+                alert("이미지 저장에 실패했습니다.");
+                btn.innerText = "📥 결과 이미지 저장";
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const shareButton = document.getElementById("share-btn"); 
+            if (shareButton) {
+                shareButton.addEventListener("click", function () {
+                    const testURL = "https://test-it.co.kr/test353"; 
+                    const shareText = "테스트잇 AI 관상 테스트"; 
+
+                    if (navigator.share) {
+                        navigator.share({
+                            title: "테스트잇 AI 관상 테스트",
+                            text: shareText,
+                            url: testURL
+                        }).then(() => {
+                            console.log("✅ 공유 성공!");
+                        }).catch((error) => {
+                            console.error("❌ 공유 실패:", error);
+                        });
+                    } else {
+                        navigator.clipboard.writeText(`${shareText} ${testURL}`).then(() => {
+                            alert("📌 링크가 복사되었습니다! 친구들에게 공유해보세요.");
+                        }).catch((err) => {
+                            console.error("❌ 클립보드 복사 실패:", err);
+                        });
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

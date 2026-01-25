@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5522499110435321" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>테스트잇 사주 연애 성격 테스트</title>
+    <meta name="description" content="테스트잇 사주 연애 성격 테스트">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="테스트잇 사주 연애 성격 테스트">
+    <meta property="og:description" content="테스트잇 사주 연애 성격 테스트">
+    <meta property="og:image" content="img_main356.png">
+    <meta property="og:url" content="https://test-it.co.kr/test356">
+    
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lunar-javascript/lunar.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+    <style>
+        /* [THEME: Dreamy Pastel Anime Style] */
+        :root { 
+            /* 배경: 보라-핑크-하늘색이 섞인 몽환적인 그라데이션 */
+            --bg-gradient: linear-gradient(135deg, #E0C3FC 0%, #8EC5FC 100%);
+            --primary: #9B72AA; /* 부드러운 라벤더 퍼플 */
+            --secondary: #FFB7B2; /* 파스텔 피치 */
+            --accent: #A0E9FF; /* 파스텔 하늘색 */
+            --text-main: #454545; /* 너무 검지 않은 부드러운 회색 */
+            --white: #ffffff;
+        }
+
+        * { box-sizing: border-box; outline: none; -webkit-tap-highlight-color: transparent; }
+        
+        body { 
+            font-family: 'Pretendard', sans-serif;
+            background: var(--bg-gradient); 
+            color: var(--text-main); margin: 0; 
+            display: flex; flex-direction: column; align-items: center; 
+            min-height: 100vh; 
+            background-attachment: fixed; 
+        }
+
+        /* [헤더 스타일] */
+        .page-header {
+            width: 100%; max-width: 600px;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 15px 20px; margin-bottom: 10px;
+        }
+        .logo { width: 100px; display: block; filter: drop-shadow(0 2px 4px rgba(255,255,255,0.5)); }
+        .main-nav { display: flex; font-size: 1.0rem; list-style: none; margin: 0; padding: 0; }
+        .main-nav li { margin-left: 15px; }
+        .main-nav a { text-decoration: none; color: #fff; font-weight: 800; text-shadow: 1px 1px 2px rgba(0,0,0,0.1); transition: 0.2s; }
+        .main-nav a:hover { color: #FFF9C4; }
+        
+        /* [★수정1] 메인 화면 길이 문제 해결 (min-height 제거, auto로 변경) */
+        .container { 
+            width: 100%; max-width: 600px; background: rgba(255, 255, 255, 0.95); 
+            box-shadow: 0 10px 40px rgba(100, 80, 200, 0.15); 
+            border: 2px solid #fff;
+            border-radius: 30px; overflow: hidden; 
+            height: auto; /* 내용물만큼만 높이 잡기 */
+            min-height: auto; 
+            position: relative;
+            backdrop-filter: blur(10px);
+            margin-bottom: 50px; /* 하단 여백 확보 */
+            padding-bottom: 20px;
+        }
+        
+        .page { display: none; flex-direction: column; padding: 40px 25px; animation: fadeIn 0.6s ease-out; }
+        .page.active { display: flex; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* [입력 페이지] */
+        .logo-area { text-align: center; margin: 20px 0 30px 0; }
+        .main-title { font-size: 32px; font-weight: 900; color: var(--primary); margin-bottom: 10px; line-height: 1.3; }
+
+        .form-group { margin-bottom: 25px; }
+        .label { font-size: 15px; font-weight: 700; color: #666; margin-bottom: 10px; display: block; }
+        
+        .toggle-box { display: flex; background: #F3F0FF; padding: 5px; border-radius: 20px; }
+        .toggle-btn { flex: 1; padding: 12px; border: none; background: transparent; font-weight: 600; color: #aaa; cursor: pointer; border-radius: 15px; transition: 0.3s; }
+        .toggle-btn.active { background: white; color: var(--primary); box-shadow: 0 2px 8px rgba(155, 114, 170, 0.15); }
+        
+        select, input { width: 100%; padding: 16px; border: 2px solid #F3F0FF; border-radius: 18px; font-size: 16px; background: #FAFAFF; appearance: none; font-family: inherit; transition: 0.3s; color: #555; }
+        select:focus, input:focus { border-color: var(--primary); background: #fff; box-shadow: 0 0 0 4px rgba(155, 114, 170, 0.1); }
+        
+        .date-grid { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 10px; }
+        
+        /* 버튼 스타일 */
+        .btn-main { 
+            width: 100%; padding: 20px; 
+            background: linear-gradient(90deg, #B294FF 0%, #FFB7B2 100%); 
+            color: white; border: none; border-radius: 50px; 
+            font-size: 19px; font-weight: 800; cursor: pointer; margin-top: 20px; 
+            box-shadow: 0 10px 20px rgba(178, 148, 255, 0.3); 
+            transition: all 0.2s; 
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        .btn-main:hover { transform: translateY(-2px); box-shadow: 0 15px 25px rgba(178, 148, 255, 0.4); }
+        .btn-main:active { transform: scale(0.98); }
+
+        /* [결과 페이지] */
+        .result-header { 
+            text-align: center; margin-bottom: 30px; 
+            background: linear-gradient(180deg, #F4F8FF 0%, #fff 100%);
+            padding: 50px 20px 30px; 
+            border-radius: 0 0 40px 40px; margin: -40px -25px 30px -25px; 
+            border-bottom: 1px solid #f0f0f0; 
+        }
+        .ilju-badge { 
+            background: linear-gradient(90deg, #E0C3FC, #8EC5FC); 
+            color: white; padding: 8px 20px; border-radius: 30px; 
+            font-size: 14px; font-weight: 800; display: inline-block; 
+            box-shadow: 0 4px 15px rgba(142, 197, 252, 0.3); margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+        
+        .heart-box {
+            position: relative; width: 220px; height: 200px; margin: 0 auto;
+            display: flex; justify-content: center; align-items: center;
+        }
+
+        .heart-svg {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;
+            filter: drop-shadow(0 10px 20px rgba(160, 100, 255, 0.25));
+            animation: floatHeart 3s ease-in-out infinite;
+        }
+        @keyframes floatHeart { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+        .ilju-title {
+            position: relative; z-index: 2; 
+            font-size: 34px; font-weight: 900; color: #fff; 
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.15); 
+            margin-top: -15px;
+        }
+
+        .card { 
+            background: white; border-radius: 24px; padding: 30px 25px; margin-bottom: 25px; 
+            box-shadow: 0 8px 25px rgba(149, 157, 165, 0.08); 
+            border: 1px solid #F5F5F5; 
+        }
+        
+        .card-head { 
+            font-size: 20px; font-weight: 800; color: #555; 
+            margin-bottom: 20px; display: flex; align-items: center; gap: 10px; 
+            padding-bottom: 10px; border-bottom: 2px solid #F3F0FF; 
+        }
+
+        /* [★수정2] 텍스트 정렬 및 형광펜 효과 개선 */
+        .long-text { 
+            font-size: 16px; 
+            line-height: 1.9; 
+            color: #555; 
+            text-align: left; /* 양쪽 정렬(justify) 대신 왼쪽 정렬로 깔끔하게 */
+            word-break: keep-all; 
+        }
+        
+        .txt-point { 
+            /* 줄 높이에 영향받지 않는 깔끔한 형광펜 효과 (box-shadow 사용) */
+            box-shadow: inset 0 -10px 0 rgba(224, 195, 252, 0.6); 
+            font-weight: 700; 
+            color: #212121; 
+        }
+
+        /* 차트 */
+        .chart-wrap { position: relative; height: 300px; width: 100%; display: flex; justify-content: center; }
+        .bar-row { display: flex; align-items: center; margin-bottom: 15px; }
+        .bar-label { width: 80px; font-size: 14px; font-weight: 700; color: #666; }
+        .bar-bg { flex: 1; height: 14px; background: #F0F0F0; border-radius: 10px; overflow: hidden; margin: 0 10px; }
+        .bar-fill { height: 100%; border-radius: 10px; transition: width 1s ease-in-out; }
+        .bar-val { width: 35px; text-align: right; font-size: 13px; font-weight: 800; color: var(--primary); }
+
+        /* 장단점 세로 정렬 */
+        .pros-cons-wrap { display: flex; flex-direction: column; gap: 15px; margin-top: 10px; }
+        .pc-box { width: 100%; background: #F9FAFB; border-radius: 20px; padding: 20px; border: 1px solid #eee; }
+        .pc-title { font-size: 16px; font-weight: 800; text-align: center; margin-bottom: 10px; }
+        .pc-item { font-size: 15px; color: #666; margin-bottom: 8px; line-height: 1.5; list-style: none; display: flex; align-items: flex-start; gap: 8px; }
+
+        /* 배우자 정보 */
+        .spouse-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px; }
+        .sp-item { background: #F4F8FF; padding: 15px; border-radius: 15px; text-align: center; }
+        .sp-label { display: block; font-size: 13px; color: #7986CB; margin-bottom: 5px; font-weight: 600; }
+        .sp-val { font-size: 16px; font-weight: 800; color: #333; }
+
+        /* 궁합 */
+        .match-card { background: #FFFAFA; border: 1px solid #FFEBEB; }
+        .match-row { margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px dashed #FFCDD2; }
+        .match-label { display: block; font-size: 14px; color: #FF8A80; font-weight: 700; margin-bottom: 8px; }
+        .match-desc { font-size: 15px; color: #444; font-weight: 600; line-height: 1.5; }
+
+        #p-loading {
+            background: linear-gradient(180deg, #E0C3FC 0%, #A9C9FF 100%);
+            overflow: hidden; position: relative;
+        }
+
+        .loading-wrap {
+            position: relative; z-index: 10; height: 80vh;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+        }
+
+        .bouncing-heart {
+            font-size: 60px; margin-bottom: 20px;
+            animation: heartBeat 1.2s infinite ease-in-out;
+            filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.8));
+        }
+
+        @keyframes heartBeat {
+            0% { transform: scale(1); }
+            14% { transform: scale(1.3); }
+            28% { transform: scale(1); }
+            42% { transform: scale(1.3); }
+            70% { transform: scale(1); }
+        }
+
+        /* 구름 */
+        .cloud {
+            position: absolute; background: rgba(255,255,255,0.8);
+            border-radius: 50px; z-index: 1; left: -150px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        .cloud::after, .cloud::before { content: ''; position: absolute; background: inherit; border-radius: 50%; }
+        .cloud::after { width: 40px; height: 40px; top: -20px; left: 15px; }
+        .cloud::before { width: 30px; height: 30px; top: -12px; left: -10px; }
+        
+        @keyframes floatCloud { from { left: -150px; } to { left: 110%; } }
+        
+        .c1 { width: 80px; height: 30px; top: 15%; opacity: 0.9; animation: floatCloud 25s linear infinite; animation-delay: -5s; }
+        .c2 { width: 60px; height: 25px; top: 30%; opacity: 0.7; animation: floatCloud 35s linear infinite; animation-delay: -20s; }
+        .c3 { width: 100px; height: 35px; top: 55%; opacity: 0.6; animation: floatCloud 28s linear infinite; animation-delay: -10s; }
+        .c4 { width: 70px; height: 28px; top: 75%; opacity: 0.8; animation: floatCloud 30s linear infinite; animation-delay: -2s; }
+
+        .coupang_ad {
+    width: 320px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+    </style>
+</head>
+
+<body> 
+
+    <header class="page-header">
+        <h1>
+            <a href="index.html">
+                <img class="logo" src="img_logo.png" alt="test it">
+            </a>
+        </h1>
+        <nav>
+            <ul class="main-nav">
+                <li><a href="https://test-it.co.kr/test.html">성격</a></li>
+                <li><a href="https://test-it.co.kr/face.html">얼굴</a></li>
+                <li><a href="https://test-it.co.kr/etc.html">그외</a></li>
+                <li><a href="https://test-it.co.kr/saju.html">사주</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        
+        <div id="p-main" class="page active" style="justify-content: center; padding: 40px 0;">
+            <div class="logo-area" style="margin: 0 0 30px 0;">
+                <img src="img_main356.png" alt="메인" style="width: 100%; max-width: 100%; height: auto; display: block; border-radius:20px;">
+            </div>
+            <button class="btn-main" onclick="nav('p-input')" style="width: 90%; margin: 0 auto; display: block;">테스트 시작하기</button>
+        </div>
+
+        <div id="p-input" class="page">
+            <h2 style="text-align:center; margin-bottom:30px; color:#9B72AA;">정보를 입력해주세요 🔮</h2>
+            
+            <div class="form-group">
+                <span class="label">달력 기준</span>
+                <div class="toggle-box">
+                    <button class="toggle-btn active" id="btn-solar" onclick="setCal('solar')">양력</button>
+                    <button class="toggle-btn" id="btn-lunar" onclick="setCal('lunar')">음력</button>
+                </div>
+                <input type="hidden" id="cal-type" value="solar">
+            </div>
+
+            <div class="form-group">
+                <span class="label">생년월일</span>
+                <div class="date-grid">
+                    <select id="sel-year"></select>
+                    <select id="sel-month"></select>
+                    <select id="sel-day"></select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <span class="label">태어난 시간</span>
+                <select id="sel-time">
+                    <option value="99">모름</option>
+                    <option value="0">자시 (23:30 ~ 01:29)</option>
+                    <option value="2">축시 (01:30 ~ 03:29)</option>
+                    <option value="4">인시 (03:30 ~ 05:29)</option>
+                    <option value="6">묘시 (05:30 ~ 07:29)</option>
+                    <option value="8">진시 (07:30 ~ 09:29)</option>
+                    <option value="10">사시 (09:30 ~ 11:29)</option>
+                    <option value="12">오시 (11:30 ~ 13:29)</option>
+                    <option value="14">미시 (13:30 ~ 15:29)</option>
+                    <option value="16">신시 (15:30 ~ 17:29)</option>
+                    <option value="18">유시 (17:30 ~ 19:29)</option>
+                    <option value="20">술시 (19:30 ~ 21:29)</option>
+                    <option value="22">해시 (21:30 ~ 23:29)</option>
+                </select>
+            </div>
+
+            <button class="btn-main" onclick="processResult()">결과 분석하기</button>
+        </div>
+
+      <div id="p-loading" class="page">
+            
+            <div class="cloud c1"></div>
+            <div class="cloud c2"></div>
+            <div class="cloud c3"></div>
+            <div class="cloud c4"></div>
+
+            <div class="loading-wrap">
+                <div class="bouncing-heart">💖</div>
+                <h3 style="color:#fff; text-shadow:1px 1px 3px rgba(0,0,0,0.1);">사주 정밀 분석 중...</h3>
+                <p style="color:#f0f0f0;">3초만 기다려요! ✨</p>
+            </div>
+        </div>
+
+        <div id="p-result" class="page" style="padding:0;">
+            <div id="capture-area" style="padding: 0 25px 40px 25px;">
+                
+                <div class="result-header">
+                    <div class="ilju-badge">테스트잇 사주 연애 성격 테스트</div>
+                    
+                    <div class="heart-box">
+                        <svg class="heart-svg" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="aurora-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#A0E9FF;stop-opacity:1" />
+                                    <stop offset="50%" style="stop-color:#E0C3FC;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#FFB7B2;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <path fill="url(#aurora-grad)" d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"/>
+                        </svg>
+                        <div class="ilju-title" id="res-ilju">--일주</div>
+                    </div>
+
+                    <div style="font-size:16px; color:#888; margin-top:10px; font-weight:600;">당신의 연애 성향 진단</div>
+                </div>
+
+                <div class="card">
+                    <div class="card-head" style="color:#9B72AA;"><span>📖</span> 나의 연애 스타일</div>
+                    <div class="long-text" id="desc-love-style"></div>
+                </div>
+
+                <div class="card">
+                    <div class="card-head" style="color:#7986CB;"><span>📊</span> 연애 능력치 스탯</div>
+                    <div class="chart-wrap">
+                        <canvas id="loveRadarChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="card" style="border-color:#FFEBEE;">
+                    <div class="card-head" style="color:#EF9A9A;"><span>🚨</span> 내 안의 본능</div>
+                    <div class="bar-row">
+                        <span class="bar-label">집착/소유</span>
+                        <div class="bar-bg"><div id="bar-obsession" class="bar-fill" style="width:0%; background:#FF8A80;"></div></div>
+                        <span class="bar-val" id="val-obsession">0%</span>
+                    </div>
+                    <div class="bar-row">
+                        <span class="bar-label">자존심</span>
+                        <div class="bar-bg"><div id="bar-pride" class="bar-fill" style="width:0%; background:#FFB74D;"></div></div>
+                        <span class="bar-val" id="val-pride">0%</span>
+                    </div>
+                    <div class="bar-row">
+                        <span class="bar-label">철벽/방어</span>
+                        <div class="bar-bg"><div id="bar-wall" class="bar-fill" style="width:0%; background:#4FC3F7;"></div></div>
+                        <span class="bar-val" id="val-wall">0%</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-head" style="color:#81C784;"><span>⚖️</span> 장점과 단점</div>
+                    <div class="pros-cons-wrap">
+                        <div class="pc-box">
+                            <div class="pc-title" style="color:#66BB6A;">👍 매력 포인트</div>
+                            <div id="list-pros"></div>
+                        </div>
+                        <div class="pc-box">
+                            <div class="pc-title" style="color:#EF5350;">👎 주의할 점</div>
+                            <div id="list-cons"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" style="border-color:#E3F2FD;">
+                    <div class="card-head" style="color:#64B5F6;"><span>💍</span> 미래 배우자 리포트</div>
+                    <div class="long-text" id="desc-spouse"></div>
+                    <div class="spouse-grid">
+                        <div class="sp-item">
+                            <span class="sp-label">배우자 십성</span>
+                            <div class="sp-val" id="sp-god">--</div>
+                        </div>
+                        <div class="sp-item">
+                            <span class="sp-label">추천 직업군</span>
+                            <div class="sp-val" id="sp-job">--</div>
+                        </div>
+                        <div class="sp-item">
+                            <span class="sp-label">성격 키워드</span>
+                            <div class="sp-val" id="sp-key">--</div>
+                        </div>
+                        <div class="sp-item">
+                            <span class="sp-label">관계성</span>
+                            <div class="sp-val" id="sp-rel">--</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card match-card">
+                    <div class="card-head" style="color:#F06292;"><span>💞</span> 궁합 가이드</div>
+                    <div class="match-row">
+                        <span class="match-label" style="color:#F48FB1;">✨ 천생연분</span>
+                        <span class="match-desc" id="match-best">--</span>
+                    </div>
+                    <div class="match-row">
+                        <span class="match-label" style="color:#B0BEC5;">💥 최악의 궁합</span>
+                        <span class="match-desc" id="match-worst" style="color:#777;">--</span>
+                    </div>
+                </div>
+                <div style="text-align:center; color:#888; font-size:13px; margin-top:20px;">@테스트잇 사주 연애 성격 테스트</div>
+            </div>
+
+
+        
+            <div style="padding: 0 25px 40px 25px;">
+                <button class="btn-main btn-save" onclick="saveImage()">결과 이미지 저장 📸</button>
+                
+                <button class="btn-main" style="background: linear-gradient(90deg, #A1C4FD 0%, #C2E9FB 100%); margin-top:10px; color:#555;" onclick="location.reload()">다시 해보기</button>
+                <button class="btn-main" style="background: linear-gradient(90deg, #FF9A9E 0%, #FECFEF 100%); margin-top:10px; color:#fff;" onclick="location.href='https://test-it.co.kr'">다른 테스트 해보기</button>
+                <button class="btn-main" id="share-btn" style="background: linear-gradient(90deg, #a8edea 0%, #fed6e3 100%); margin-top:10px; color:#555;">테스트 공유하기</button>
+            </div>
+        </div>
+        
+      <article class="coupang_ad mt-3">
+<script src="https://ads-partners.coupang.com/g.js"></script>
+<script>
+	new PartnersCoupang.G({"id":798186,"template":"carousel","trackingCode":"AF4391881","width":"350","height":"140","tsource":""});
+</script>
+        
+    </div> 
+    
+<script>
+    /* [데이터베이스] */
+    
+    // 1. 일간(나) 설명
+    const GAN_DESC = {
+        '甲': "당신은 곧게 뻗은 나무처럼 <span class='txt-point'>자존심이 강하고 리더십이 있는</span> 사람입니다. 연애에 있어서도 솔직하고 직진하는 스타일이며, ",
+        '乙': "당신은 유연한 넝쿨처럼 <span class='txt-point'>환경 적응력이 뛰어나고 다정한</span> 사람입니다. 연인에게 세심하게 맞춰주는 부드러운 매력이 있으며, ",
+        '丙': "당신은 태양처럼 밝고 <span class='txt-point'>정열적인 에너지를</span> 가졌습니다. 사랑을 할 때도 숨김없이 표현하고 화끈하게 불타오르는 스타일이며, ",
+        '丁': "당신은 촛불처럼 은근하고 <span class='txt-point'>따뜻한 배려심을</span> 가졌습니다. 섬세한 감수성으로 상대를 챙겨주는 헌신적인 사랑을 하며, ",
+        '戊': "당신은 거대한 산처럼 묵직하고 <span class='txt-point'>신뢰감을 주는</span> 사람입니다. 가벼운 만남보다는 진중하고 변함없는 관계를 선호하며, ",
+        '己': "당신은 비옥한 밭처럼 <span class='txt-point'>실속 있고 가정적인</span> 사람입니다. 현실적인 감각이 뛰어나 연인과의 미래를 꼼꼼하게 계획하며, ",
+        '庚': "당신은 단단한 바위처럼 <span class='txt-point'>결단력 있고 의리가 넘치는</span> 사람입니다. 맺고 끊음이 확실하고 내 사람에게는 끝까지 책임을 다하며, ",
+        '辛': "당신은 반짝이는 보석처럼 <span class='txt-point'>섬세하고 예리한 감각을</span> 가졌습니다. 눈이 높고 깔끔한 연애를 선호하며 미적 감각이 뛰어나고, ",
+        '壬': "당신은 넓은 바다처럼 <span class='txt-point'>포용력이 좋고 지혜로운</span> 사람입니다. 어디서든 잘 어울리는 유연함과 상대를 편안하게 해주는 매력이 있으며, ",
+        '癸': "당신은 봄비처럼 <span class='txt-point'>감수성이 풍부하고 자상한</span> 사람입니다. 상대방의 마음에 깊이 공감하고 스며드는 로맨틱한 사랑을 하며, "
+    };
+
+    // 2. 10가지 십성(Ten Gods)별 해석 데이터
+    const TEN_GODS = {
+        'BiGyeon': { // 비견
+            name: "비견 (어깨를 나란히 함)",
+            txt: "친구처럼 <span class='txt-point'>대등한 관계를 가장 중요하게</span> 생각합니다. 나를 구속하거나 가르치려 드는 사람과는 맞지 않으며, 서로의 가치관과 취미를 공유할 수 있는 '영혼의 단짝' 같은 연애를 추구합니다.",
+            sp: "자기 주관이 뚜렷하고 자존심이 강한 사람입니다. 누구에게 의지하기보다는 스스로 성취하려는 성향이 강하며, 당신과 경쟁하듯 티격태격할 수도 있지만 가장 든든한 내 편이 되어주는 사람입니다.",
+            job: "프리랜서, 전문직, 공동사업", key: "독립심, 솔직함, 의리", rel: "친구 같은 동반자",
+            pros: ["솔직하고 꾸밈없는 매력", "의리 있고 대등한 관계"], cons: ["고집이 세서 타협이 힘듦", "자존심 싸움을 자주 함"]
+        },
+        'GeopJae': { // 겁재
+            name: "겁재 (재물을 다룸)",
+            txt: "<span class='txt-point'>승부욕과 경쟁심이 강해</span> 연애도 쟁취하려는 성향이 있습니다. 겉으로는 쿨해 보이지만 속으로는 질투심과 소유욕이 강할 수 있습니다. 드라마틱하고 열정적인 사랑을 꿈꿉니다.",
+            sp: "카리스마 있고 리더십이 강한 사람입니다. 때로는 당신을 이기려 들거나 고집을 피울 수 있지만, 그만큼 능력 있고 야망이 큰 사람일 확률이 높습니다.",
+            job: "사업가, 운동선수, 투자가", key: "야망, 승부욕, 열정", rel: "경쟁자이자 연인",
+            pros: ["열정적이고 화끈한 사랑", "상대를 리드하는 카리스마"], cons: ["강한 질투심과 소유욕", "감정 기복이 심할 수 있음"]
+        },
+        'SikSin': { // 식신
+            name: "식신 (먹을 복)",
+            txt: "천진난만하고 <span class='txt-point'>순수한 마음으로 연인에게 퍼주는 것을</span> 좋아합니다. 맛있는 것을 먹이고, 좋은 곳에 데려가며 상대를 챙기는 과정에서 행복을 느낍니다.",
+            sp: "마음이 넓고 여유가 있으며, 먹고 즐기는 것을 좋아하는 사람입니다. 성격이 모나지 않고 둥글둥글하여 당신을 편안하게 해줍니다. 다소 살이 찌기 쉬운 체질일 수 있습니다.",
+            job: "요식업, 교육, 연구직", key: "다정함, 배려, 낙천적", rel: "내가 챙겨주는 사람",
+            pros: ["한결같은 다정함과 배려", "순수하고 계산적이지 않음"], cons: ["맺고 끊음이 약함", "자기 실속을 못 챙김"]
+        },
+        'SangGwan': { // 상관
+            name: "상관 (관을 상하게 함)",
+            txt: "<span class='txt-point'>표현력이 뛰어나고 센스가 넘쳐</span> 이성에게 인기가 많습니다. 틀에 박힌 연애보다는 자유분방하고 톡톡 튀는 연애를 선호합니다. 말을 재치 있게 잘하지만 직설적일 수 있습니다.",
+            sp: "다재다능하고 끼가 넘치는 매력적인 사람입니다. 외모가 수려하거나 패션 감각이 뛰어날 확률이 높습니다. 다만 기분파적인 기질이 있어 당신이 비위를 잘 맞춰줘야 할 수 있습니다.",
+            job: "연예인, 유튜버, 예술가", key: "매력, 센스, 언변", rel: "티격태격 매력덩어리",
+            pros: ["지루할 틈 없는 재미", "뛰어난 센스와 매력"], cons: ["말실수로 인한 다툼", "반항적인 기질"]
+        },
+        'PyeonJae': { // 편재
+            name: "편재 (치우친 재물)",
+            txt: "<span class='txt-point'>통이 크고 호탕한 연애를</span> 즐깁니다. 연인을 위해 깜짝 이벤트를 준비하거나 선물을 사주는 것을 좋아합니다. 유머 감각이 있고 노는 것을 좋아합니다.",
+            sp: "활동적이고 사교성이 좋은 사람입니다. 재물복이 있거나 사업 수완이 좋을 수 있습니다. 역마살이 있어 여기저기 돌아다니는 것을 좋아하며 집안에만 있는 것을 답답해합니다.",
+            job: "무역, 영업, 사업", key: "활동성, 유머, 능력", rel: "즐거운 엔터테이너",
+            pros: ["통 크고 화끈한 데이트", "유머러스하고 사교적"], cons: ["바람기 주의", "진지함이 부족할 수 있음"]
+        },
+        'JeongJae': { // 정재
+            name: "정재 (바른 재물)",
+            txt: "<span class='txt-point'>꼼꼼하고 현실적인 연애를</span> 추구합니다. 감정에 휩쓸리기보다는 미래를 계획하고 차근차근 신뢰를 쌓아가는 스타일입니다. 성실하고 책임감이 강합니다.",
+            sp: "성실하고 알뜰하며 가정적인 사람입니다. 겉모습이 화려하기보다는 단정하고 깔끔한 스타일입니다. 당신의 재산을 잘 관리해주고 내조/외조를 잘해줄 사람입니다.",
+            job: "은행원, 공무원, 회계", key: "성실, 꼼꼼, 가정적", rel: "안정적인 반려자",
+            pros: ["신뢰할 수 있는 성실함", "현실적이고 계획적"], cons: ["융통성이 부족함", "지나치게 꼼꼼함"]
+        },
+        'PyeonGwan': { // 편관
+            name: "편관 (치우친 관)",
+            txt: "<span class='txt-point'>카리스마 있고 나를 휘어잡을 수 있는</span> 강한 사람에게 끌립니다. 폼생폼사 기질이 있어 남들에게 보여지는 모습도 중요하게 생각합니다. 의리와 체면을 중시합니다.",
+            sp: "성격이 급하고 권위적일 수 있지만, 책임감 하나는 끝내주는 사람입니다. 사회적으로 지위가 있거나 명예를 중요시하는 직업을 가졌을 수 있습니다.",
+            job: "군인, 경찰, 정치인", key: "카리스마, 의리, 권위", rel: "나를 통제하는 사람",
+            pros: ["강인한 책임감과 리더십", "화끈하고 의리 있음"], cons: ["강압적일 수 있음", "스트레스를 잘 받음"]
+        },
+        'JeongGwan': { // 정관
+            name: "정관 (바른 관)",
+            txt: "<span class='txt-point'>반듯하고 예의 바른 '모범생' 스타일의</span> 연애를 선호합니다. 원칙과 도덕을 중요하게 생각하며, 안정적이고 보수적인 성향이 있습니다.",
+            sp: "신사숙녀처럼 매너가 좋고 점잖은 사람입니다. 합리적이고 이성적이라 다툼이 있어도 대화로 해결하려 합니다. 가정적이고 자상한 최고의 배우자감입니다.",
+            job: "공무원, 대기업, 교사", key: "매너, 원칙, 명예", rel: "존경할 수 있는 사람",
+            pros: ["반듯하고 예의 바름", "안정적인 결혼 생활"], cons: ["지나치게 보수적", "재미는 없을 수 있음"]
+        },
+        'PyeonIn': { // 편인
+            name: "편인 (치우친 도장)",
+            txt: "<span class='txt-point'>신비롭고 독특한 매력이 있는</span> 사람에게 끌립니다. 남들이 이해 못 하는 4차원적인 코드가 맞아야 하며, 정신적인 교감을 매우 중요하게 생각합니다.",
+            sp: "재능이 많고 독창적인 사람입니다. 한 가지 분야에 깊이 파고드는 전문가 스타일일 수 있습니다. 다소 엉뚱하거나 변덕스러운 면이 있지만, 당신의 영감을 자극해 줍니다.",
+            job: "예술, 철학, IT, 의료", key: "신비, 독창성, 직관", rel: "영혼의 파트너",
+            pros: ["독특한 매력과 신비감", "깊은 정신적 교감"], cons: ["변덕과 의심", "현실 감각 부족"]
+        },
+        'JeongIn': { // 정인
+            name: "정인 (바른 도장)",
+            txt: "<span class='txt-point'>사랑받고 싶어 하는 욕구가 강하며</span>, 엄마처럼 나를 다정하게 챙겨주고 이해해 주는 사람을 원합니다. 지적이고 우아한 연애를 선호합니다.",
+            sp: "지혜롭고 인자한 성품을 가진 사람입니다. 학식이 높거나 배울 점이 많아 당신을 좋은 길로 인도해 줍니다. 다소 보수적이고 느긋해 보일 수 있지만, 마음이 깊고 따뜻합니다.",
+            job: "교수, 작가, 선생님", key: "지혜, 인자함, 학식", rel: "엄마/아빠 같은 사람",
+            pros: ["지혜롭고 배울 점이 많음", "따뜻한 포용력"], cons: ["다소 의존적일 수 있음", "행동이 느림"]
+        }
+    };
+
+    // 궁합 가이드
+    const MATCH_GUIDE = {
+        'wood': "🌲 목(나무) 기운이 강한 사람 (인자하고 부드러운 성격)",
+        'fire': "🔥 화(불) 기운이 강한 사람 (밝고 열정적인 성격)",
+        'earth': "⛰️ 토(흙) 기운이 강한 사람 (믿음직하고 차분한 성격)",
+        'metal': "💎 금(쇠) 기운이 강한 사람 (깔끔하고 결단력 있는 성격)",
+        'water': "🌊 수(물) 기운이 강한 사람 (지혜롭고 유연한 성격)"
+    };
+
+    // [한글 변환 매핑]
+    const HANJA_TO_KOR = {
+        '甲':'갑','乙':'을','丙':'병','丁':'정','戊':'무','己':'기','庚':'경','辛':'신','壬':'임','癸':'계',
+        '子':'자','丑':'축','寅':'인','卯':'묘','辰':'진','巳':'사','午':'오','未':'미','申':'신','酉':'유','戌':'술','亥':'해'
+    };
+
+    let calType = 'solar';
+    window.onload = function() {
+        const ySel = document.getElementById('sel-year'); for(let i=2020; i>=1950; i--) ySel.add(new Option(i+'년', i)); ySel.value = 1996;
+        const mSel = document.getElementById('sel-month'); for(let i=1; i<=12; i++) mSel.add(new Option(i+'월', i));
+        const dSel = document.getElementById('sel-day'); for(let i=1; i<=31; i++) dSel.add(new Option(i+'일', i));
+    };
+    function setCal(t) { calType = t; document.getElementById('btn-solar').className=t=='solar'?'toggle-btn active':'toggle-btn'; document.getElementById('btn-lunar').className=t=='lunar'?'toggle-btn active':'toggle-btn'; }
+    function nav(id) { document.querySelectorAll('.page').forEach(p=>p.classList.remove('active')); document.getElementById(id).classList.add('active'); }
+
+    // 오행/십성 로직
+    const GAN_MAP = {'甲':{e:'wood',p:0},'乙':{e:'wood',p:1},'丙':{e:'fire',p:0},'丁':{e:'fire',p:1},'戊':{e:'earth',p:0},'己':{e:'earth',p:1},'庚':{e:'metal',p:0},'辛':{e:'metal',p:1},'壬':{e:'water',p:0},'癸':{e:'water',p:1}};
+    const JI_MAP = {'子':{e:'water',p:1},'丑':{e:'earth',p:1},'寅':{e:'wood',p:0},'卯':{e:'wood',p:1},'辰':{e:'earth',p:0},'巳':{e:'fire',p:0},'午':{e:'fire',p:1},'未':{e:'earth',p:1},'申':{e:'metal',p:0},'酉':{e:'metal',p:1},'戌':{e:'earth',p:0},'亥':{e:'water',p:0}};
+    const ELEM_IDX = {'wood':0,'fire':1,'earth':2,'metal':3,'water':4};
+
+    function processResult() {
+        nav('p-loading');
+        setTimeout(() => {
+            const y=parseInt(document.getElementById('sel-year').value), m=parseInt(document.getElementById('sel-month').value), d=parseInt(document.getElementById('sel-day').value), t=parseInt(document.getElementById('sel-time').value);
+            let ld = calType=='solar' ? Solar.fromYmdHms(y,m,d,t==99?12:t,0,0).getLunar() : Lunar.fromYmdHms(y,m,d,t==99?12:t,0,0);
+            const bazi = { y:ld.getYearInGanZhi(), m:ld.getMonthInGanZhi(), d:ld.getDayInGanZhi(), t:ld.getTimeInGanZhi() };
+            
+            // 전체 오행 카운트 & 도화살 카운트
+            let cnt = {wood:0,fire:0,earth:0,metal:0,water:0};
+            let gods = {Self:0, Output:0, Wealth:0, Power:0, Resource:0};
+            let peach = 0;
+
+            const me = GAN_MAP[bazi.d[0]];
+            const meIdx = ELEM_IDX[me.e];
+
+            [bazi.y, bazi.m, bazi.d, bazi.t].forEach(col => {
+                [0,1].forEach(i => {
+                    const char = col[i];
+                    const target = i==0 ? GAN_MAP[char] : JI_MAP[char];
+                    if(!target) return;
+                    
+                    cnt[target.e]++; 
+                    
+                    if(i==1 && ['子','午','卯','酉'].includes(char)) peach++;
+
+                    const tIdx = ELEM_IDX[target.e];
+                    if(meIdx == tIdx) gods.Self++;
+                    else if((meIdx+1)%5 == tIdx) gods.Output++;
+                    else if((meIdx+2)%5 == tIdx) gods.Wealth++;
+                    else if((tIdx+1)%5 == meIdx) gods.Resource++;
+                    else if((tIdx+2)%5 == meIdx) gods.Power++;
+                });
+            });
+
+            analyze(bazi.d[0], bazi.d[1], cnt, gods, peach);
+            nav('p-result');
+        }, 2000);
+    }
+
+    let radarChart = null;
+
+    function analyze(ilgan, ilji, cnt, gods, peach) {
+        // [수정됨] 한글로 일주 표시
+        const korIlju = HANJA_TO_KOR[ilgan] + HANJA_TO_KOR[ilji];
+        document.getElementById('res-ilju').innerText = `${korIlju}일주`;
+
+        // 1. 일지 십성 정밀 판단
+        const me = GAN_MAP[ilgan];
+        const you = JI_MAP[ilji];
+        const meIdx = ELEM_IDX[me.e];
+        const youIdx = ELEM_IDX[you.e];
+        
+        let godKey = "";
+        if(meIdx == youIdx) godKey = (me.p==you.p)?'BiGyeon':'GeopJae';
+        else if((meIdx+1)%5 == youIdx) godKey = (me.p==you.p)?'SikSin':'SangGwan';
+        else if((meIdx+2)%5 == youIdx) godKey = (me.p==you.p)?'PyeonJae':'JeongJae';
+        else if((youIdx+1)%5 == meIdx) godKey = (me.p==you.p)?'PyeonIn':'JeongIn';
+        else if((youIdx+2)%5 == meIdx) godKey = (me.p==you.p)?'PyeonGwan':'JeongGwan';
+
+        const gData = TEN_GODS[godKey];
+
+        // 2. 텍스트 조합
+        const fullDesc = `
+            ${GAN_DESC[ilgan]}<br><br>
+            특히 당신의 배우자 자리에는 <b>'${gData.name}'</b>의 기운이 강하게 자리 잡고 있습니다.<br><br>
+            이로 인해 당신은 ${gData.txt}
+        `;
+        document.getElementById('desc-love-style').innerHTML = fullDesc;
+
+        // 3. 장단점 (동적)
+        let pros = [...gData.pros];
+        let cons = [...gData.cons];
+        if(cnt.wood >=3) { pros.push("순수하고 인정 많음"); cons.push("귀가 얇음"); }
+        if(cnt.fire >=3) { pros.push("화끈한 열정"); cons.push("성격이 급함"); }
+        if(cnt.earth >=3) { pros.push("믿음직함"); cons.push("융통성 부족"); }
+        if(cnt.metal >=3) { pros.push("깔끔한 성격"); cons.push("차가운 말투"); }
+        if(cnt.water >=3) { pros.push("지혜로움"); cons.push("속을 모르겠음"); }
+
+        document.getElementById('list-pros').innerHTML = pros.slice(0,3).map(t=>`<li class="pc-item">✅ ${t}</li>`).join('');
+        document.getElementById('list-cons').innerHTML = cons.slice(0,3).map(t=>`<li class="pc-item">⚠️ ${t}</li>`).join('');
+
+        // 4. 배우자 상세
+        document.getElementById('desc-spouse').innerText = gData.sp;
+        document.getElementById('sp-god').innerText = gData.name.split(' ')[0];
+        document.getElementById('sp-job').innerText = gData.job;
+        document.getElementById('sp-key').innerText = gData.key;
+        document.getElementById('sp-rel').innerText = gData.rel;
+
+        // 5. 연애 능력치 그래프 (Real Logic)
+        const charm = Math.min((peach * 25) + (gods.Output * 10), 100); 
+        const devotion = Math.min((gods.Resource * 20) + (godKey.includes('JeongJae') ? 20 : 0) + (cnt.earth * 5), 100);
+        const sense = Math.min((cnt.water * 20) + (gods.Output * 10), 100);
+        const leader = Math.min((gods.Power * 20) + (godKey.includes('PyeonGwan') ? 20 : 0) + (cnt.fire * 5), 100);
+        const stub = Math.min((gods.Self * 20) + (cnt.metal * 10), 100);
+
+        const ctx = document.getElementById('loveRadarChart').getContext('2d');
+        if(radarChart) radarChart.destroy();
+        radarChart = new Chart(ctx, {
+            type: 'radar',
+            data: {
+                labels: ['도화/매력', '헌신/다정', '눈치/센스', '리더십', '고집/주관'],
+                datasets: [{
+                    label: '나의 스탯',
+                    data: [charm, devotion, sense, leader, stub],
+                    // 차트 색상도 파스텔 퍼플로 변경
+                    backgroundColor: 'rgba(178, 148, 255, 0.2)', 
+                    borderColor: '#B294FF', 
+                    borderWidth: 2, 
+                    pointBackgroundColor: '#fff', 
+                    pointBorderColor: '#B294FF'
+                }]
+            },
+            options: { maintainAspectRatio: false, scales: { r: { angleLines: {color:'#eee'}, grid: {color:'#eee'}, pointLabels: {font:{family:"'Pretendard'",size:12,weight:'700'},color:'#666'}, ticks: {display:false,max:100} } }, plugins: { legend: {display:false} } }
+        });
+
+        // 6. 위험한 본능 (십성 과다 체크)
+        const obs = Math.min((gods.Wealth + gods.Self)*20, 100); // 재성/비겁
+        const pri = Math.min((gods.Self + gods.Output)*20, 100); // 비겁/식상
+        const wal = Math.min((gods.Resource + gods.Power)*20, 100); // 인성/관성
+
+        setTimeout(()=>{
+            document.getElementById('bar-obsession').style.width = obs+'%'; document.getElementById('val-obsession').innerText = obs+'%';
+            document.getElementById('bar-pride').style.width = pri+'%'; document.getElementById('val-pride').innerText = pri+'%';
+            document.getElementById('bar-wall').style.width = wal+'%'; document.getElementById('val-wall').innerText = wal+'%';
+        }, 300);
+
+        // 7. 궁합 (오행 기반)
+        const scores = [{k:'wood',v:cnt.wood},{k:'fire',v:cnt.fire},{k:'earth',v:cnt.earth},{k:'metal',v:cnt.metal},{k:'water',v:cnt.water}];
+        scores.sort((a,b)=>a.v-b.v); // 부족한게 0번, 과한게 4번
+        
+        document.getElementById('match-best').innerText = MATCH_GUIDE[scores[0].k];
+        document.getElementById('match-worst').innerText = MATCH_GUIDE[scores[4].k];
+    }
+
+function saveImage() {
+        html2canvas(document.getElementById('capture-area'), { scale: 2 }).then(canvas => {
+            const link = document.createElement('a');
+            link.download = '테스트잇 사주 연애 성격 테스트.png';
+            link.href = canvas.toDataURL();
+            link.click();
+        });
+    }
+
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const shareButton = document.getElementById("share-btn"); // 공유 버튼 선택
+        if (shareButton) {
+            shareButton.addEventListener("click", function () {
+                const testURL = window.location.href; // 현재 페이지 URL 가져오기
+                const shareText = "테스트잇 사주 연애 성격 테스트"; 
+
+                if (navigator.share) {
+                    // 📱 모바일 및 지원되는 브라우저에서 기본 공유 기능 사용
+                    navigator.share({
+                        title: "테스트잇 사주 연애 성격 테스트", 
+                        text: shareText,
+                        url: testURL
+                    }).then(() => {
+                        console.log("✅ 공유 성공!");
+                    }).catch((error) => {
+                        console.error("❌ 공유 실패:", error);
+                    });
+                } else {
+                    // 💻 PC에서는 클립보드에 복사
+                    navigator.clipboard.writeText(`${shareText} ${testURL}`).then(() => {
+                        alert("📌 링크가 복사되었습니다! 친구들에게 공유해보세요.");
+                    }).catch((err) => {
+                        console.error("❌ 클립보드 복사 실패:", err);
+                    });
+                }
+            });
+        }
+    });
+    
+</script>
+</body>
+</html>

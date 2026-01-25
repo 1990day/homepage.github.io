@@ -54,7 +54,7 @@
         .main-nav a { text-decoration: none; color: #fff; font-weight: 800; text-shadow: 1px 1px 2px rgba(0,0,0,0.1); transition: 0.2s; }
         .main-nav a:hover { color: #FFF9C4; }
         
-        /* [★수정1] 메인 화면 길이 문제 해결 (min-height 제거, auto로 변경) */
+        /* [수정됨] 메인 화면 길이 문제 해결 */
         .container { 
             width: 100%; max-width: 600px; background: rgba(255, 255, 255, 0.95); 
             box-shadow: 0 10px 40px rgba(100, 80, 200, 0.15); 
@@ -148,7 +148,7 @@
             padding-bottom: 10px; border-bottom: 2px solid #F3F0FF; 
         }
 
-        /* [★수정2] 텍스트 정렬 및 형광펜 효과 개선 */
+        /* [수정됨] 텍스트 정렬 및 형광펜 효과 개선 */
         .long-text { 
             font-size: 16px; 
             line-height: 1.9; 
@@ -231,11 +231,18 @@
         .c3 { width: 100px; height: 35px; top: 55%; opacity: 0.6; animation: floatCloud 28s linear infinite; animation-delay: -10s; }
         .c4 { width: 70px; height: 28px; top: 75%; opacity: 0.8; animation: floatCloud 30s linear infinite; animation-delay: -2s; }
 
-        .coupang_ad {
-    width: 320px;
-    margin: 0 auto;
-    text-align: center;
-}
+        .coupang_ad { width: 320px; margin: 0 auto; text-align: center; }
+
+        /* [★NEW] 캡처 모드 전용 스타일 */
+        .snapshot-mode .heart-svg {
+            animation: none !important; /* 애니메이션 정지 */
+            filter: none !important; /* 그림자 제거 (깨짐 방지) */
+            transform: translateY(0) !important; /* 정위치 고정 */
+        }
+        .snapshot-mode .ilju-title {
+            text-shadow: none !important;
+            -webkit-text-stroke: 1px rgba(0,0,0,0.1);
+        }
 
     </style>
 </head>
@@ -443,7 +450,7 @@
       <article class="coupang_ad mt-3">
 <script src="https://ads-partners.coupang.com/g.js"></script>
 <script>
-	new PartnersCoupang.G({"id":798186,"template":"carousel","trackingCode":"AF4391881","width":"350","height":"140","tsource":""});
+    new PartnersCoupang.G({"id":798186,"template":"carousel","trackingCode":"AF4391881","width":"350","height":"140","tsource":""});
 </script>
         
     </div> 
@@ -532,7 +539,7 @@
         },
         'JeongIn': { // 정인
             name: "정인 (바른 도장)",
-            txt: "<span class='txt-point'>사랑받고 싶어 하는 욕구가 강하며</span>, 엄마처럼 나를 다정하게 챙겨주고 이해해 주는 사람을 원합니다. 지적이고 우아한 연애를 선호합니다.",
+            txt: "<span class='txt-point'>사랑받고 싶어 하는 욕구가 강하며</span>, 엄마,아빠처럼 나를 다정하게 챙겨주고 이해해 주는 사람을 원합니다. 지적이고 우아한 연애를 선호합니다.",
             sp: "지혜롭고 인자한 성품을 가진 사람입니다. 학식이 높거나 배울 점이 많아 당신을 좋은 길로 인도해 줍니다. 다소 보수적이고 느긋해 보일 수 있지만, 마음이 깊고 따뜻합니다.",
             job: "교수, 작가, 선생님", key: "지혜, 인자함, 학식", rel: "엄마/아빠 같은 사람",
             pros: ["지혜롭고 배울 점이 많음", "따뜻한 포용력"], cons: ["다소 의존적일 수 있음", "행동이 느림"]
@@ -702,13 +709,33 @@
         document.getElementById('match-worst').innerText = MATCH_GUIDE[scores[4].k];
     }
 
-function saveImage() {
-        html2canvas(document.getElementById('capture-area'), { scale: 2 }).then(canvas => {
-            const link = document.createElement('a');
-            link.download = '테스트잇 사주 연애 성격 테스트.png';
-            link.href = canvas.toDataURL();
-            link.click();
-        });
+    /* [★수정] 애니메이션/그림자 겹침 방지 캡처 함수 */
+    function saveImage() {
+        const captureArea = document.getElementById('capture-area');
+        
+        // 1. 애니메이션/필터 강제 정지 클래스 추가
+        captureArea.classList.add('snapshot-mode');
+
+        // 2. DOM 렌더링 안정화 대기 (0.05초)
+        setTimeout(() => {
+            html2canvas(captureArea, { 
+                scale: 3, // 고해상도
+                backgroundColor: "#ffffff",
+                useCORS: true,
+                allowTaint: true
+            }).then(canvas => {
+                const link = document.createElement('a');
+                link.download = '테스트잇_사주연애성격.png';
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+
+                // 3. 캡처 후 다시 애니메이션 재생
+                captureArea.classList.remove('snapshot-mode');
+            }).catch(err => {
+                console.error(err);
+                captureArea.classList.remove('snapshot-mode');
+            });
+        }, 50);
     }
 
 

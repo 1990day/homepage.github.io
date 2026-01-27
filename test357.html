@@ -3,637 +3,1016 @@
 <head>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5522499110435321" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>테스트잇 사주 궁합 테스트</title>
-    <meta name="description" content="너와 나의 사주 궁합 점수는?">
+    <title>테스트잇 사주 궁합 성격 테스트</title>
+    <meta name="description" content="테스트잇 사주 궁합 성격 테스트">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="테스트잇 사주 궁합 테스트">
-    <meta property="og:description" content="우리 둘의 케미를 사주로 분석해봐요!">
-    <meta property="og:image" content="img_match_thumb.png"> 
-    
+    <meta property="og:title" content="테스트잇 사주 궁합 성격 테스트">
+    <meta property="og:description" content="테스트잇 사주 궁합 성격 테스트">
+    <meta property="og:image" content="img_main357.png">
+    <meta property="og:url" content="https://test-it.co.kr/test357">
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css" />
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/lunar-javascript/lunar.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-
     <style>
-        /* [THEME: Pinky Cloud Pastel Style] */
+        /* [THEME: Pastel Pink + Image Main] */
         :root { 
-            /* 이미지의 몽환적인 핑크/보라 하늘색 반영 */
-            --bg-gradient: linear-gradient(180deg, #FBC2EB 0%, #A6C1EE 100%);
-            --glass-bg: rgba(255, 255, 255, 0.85);
-            --primary: #FF9A9E; /* 따뜻한 파스텔 핑크 */
-            --secondary: #A18CD1; /* 부드러운 라벤더 */
-            --accent: #FBC2EB; 
-            --text-main: #5D5D5D;
-            --p1-color: #B59CE0; /* 나 (보라) */
-            --p2-color: #FFB7B2; /* 상대 (코랄핑크) */
+            --cp-bg: #FFF0F5; /* 연한 핑크 배경 */
+            --cp-line: #F48FB1; /* 진한 핑크 라인 (테두리 등) */
+            --cp-pink: #F8BBD0; /* 기본 핑크 */
+            --cp-pink-dark: #fdcaf5; /* 버튼 등 강조 컬러 */
+            --cp-blue: #E3F2FD; /* 대비되는 연한 블루 */
+            --cp-yellow: #FFF9C4; /* 연한 레몬색 */
+            --cp-cream: #FFFFFF; 
+            --cp-text: #5D4037; /* 핑크와 어울리는 따뜻한 브라운 텍스트 */
+            --cp-shadow: 3px 3px 0px rgba(236, 64, 122, 0.15); /* 핑크빛 그림자 */
+            --radius-cute: 25px; 
         }
 
-        * { box-sizing: border-box; outline: none; -webkit-tap-highlight-color: transparent; }
+        * { box-sizing: border-box; font-family: 'Pretendard', sans-serif; -webkit-tap-highlight-color: transparent; }
         
         body { 
-            font-family: 'Pretendard', sans-serif;
-            background: var(--bg-gradient); 
-            color: var(--text-main); margin: 0; 
-            display: flex; flex-direction: column; align-items: center; 
+            background-color: var(--cp-bg);
+            background-image: 
+                linear-gradient(90deg, rgba(244, 143, 177, 0.1) 50%, transparent 50%),
+                linear-gradient(rgba(244, 143, 177, 0.1) 50%, transparent 50%);
+            background-size: 40px 40px;
+            color: var(--cp-text); 
+            margin: 0; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
             min-height: 100vh; 
-            background-attachment: fixed; 
         }
 
         .page-header {
             width: 100%; max-width: 600px;
             display: flex; justify-content: space-between; align-items: center;
-            padding: 15px 20px;
+            padding: 15px 20px; margin-bottom: 10px;
+            background-color: var(--cp-pink-dark);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
-        .logo { width: 100px; display: block; filter: drop-shadow(0 2px 4px rgba(255,255,255,0.8)); }
+        .logo { width: 100px; display: block; filter: drop-shadow(0 2px 4px rgba(255,255,255,0.5)); }
+        .main-nav { display: flex; font-size: 1.1rem; list-style: none; margin: 0; padding: 0; }
+        .main-nav li { margin-left: 15px; }
+        .main-nav a { text-decoration: none; color: #5f3831; font-weight: 800; text-shadow: 1px 1px 2px rgba(0,0,0,0.1); transition: 0.2s; }
+        .main-nav a:hover { color: #FFF9C4; }
 
-        .container { 
-            width: 100%; max-width: 600px; 
-            background: var(--glass-bg);
-            box-shadow: 0 15px 35px rgba(255, 154, 158, 0.2); 
-            border: 2px solid #fff;
-            border-radius: 35px; overflow: hidden; 
-            min-height: 600px; position: relative;
-            backdrop-filter: blur(15px);
-            margin-bottom: 50px; padding-bottom: 20px;
-        }
-        
-        .page { display: none; flex-direction: column; padding: 40px 25px; animation: fadeIn 0.8s ease-out; }
+        .page-header h1 { margin: 0; font-size: 0; }
+
+        .container { width: 100%; max-width: 600px; padding: 20px; padding-bottom: 100px; }
+        .page { display: none; flex-direction: column; animation: slideUp 0.3s ease-out; } 
         .page.active { display: flex; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* [입력 페이지 스타일] */
-        .input-section {
-            background: #fff; border-radius: 25px; padding: 25px; margin-bottom: 20px;
-            border: 1px solid #FFF0F5;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+        .main-title-box { 
+            text-align: center; 
+            padding: 20px 0; 
+            background: transparent; 
+            border: none; 
+            box-shadow: none; 
+            margin-bottom: 10px; 
+            position: relative;
         }
-        .section-title {
-            font-size: 18px; font-weight: 800; margin-bottom: 15px; display: flex; align-items: center; gap: 8px;
-        }
-        .p1-title { color: var(--p1-color); }
-        .p2-title { color: var(--p2-color); }
 
-        .form-group { margin-bottom: 15px; }
-        select, input { 
-            width: 100%; padding: 14px; 
-            border: 2px solid #F3E5F5; border-radius: 15px; 
-            font-size: 15px; background: #FAFAFA; transition: 0.3s; color: #666;
+        .main-title-box::after { display: none; } 
+
+        .main-img {
+            width: 100%;
+            max-width: 100%;
+            display: block;
+            margin: 0 auto;
+            border-radius: 15px; 
         }
-        select:focus, input:focus { border-color: var(--secondary); background: #fff; }
+
+        h1 { font-size: 32px; font-weight: 800; margin: 15px 0; color: var(--cp-text); letter-spacing: -1px; }
         
-        .date-grid { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 8px; }
+        .input-card { 
+            background: var(--cp-cream); 
+        
+            border-radius: var(--radius-cute); 
+            padding: 30px; 
+            box-shadow: var(--cp-shadow); 
+            margin-bottom: 20px; 
+            border: 2px solid var(--cp-line); 
+        }
+
+        .label-title { font-size: 20px; font-weight: 700; margin-bottom: 15px; display: flex; align-items: center; gap: 8px; color: var(--cp-text); }
+        .t-blue { color: #64B5F6; } .t-pink { color: #F06292; } 
+        
+        input, select { 
+            width: 100%; padding: 16px; margin-bottom: 12px; 
+            border: 2px solid #F8BBD0; 
+            border-radius: 15px; 
+            font-size: 18px; 
+            background: #FFF; 
+            font-weight: 500; 
+            color: var(--cp-text); 
+            transition: all 0.2s;
+        }
+        input:focus, select:focus { border-color: var(--cp-pink-dark); outline: none; background: #FFF0F5; transform: scale(1.01); }
+        
+        .date-row { display: flex; gap: 8px; }
 
         .btn-main { 
-            width: 100%; padding: 18px; 
-            /* 핑크-라벤더 그라데이션 버튼 */
-            background: linear-gradient(90deg, #FF9A9E 0%, #FECFEF 100%); 
-            color: white; border: none; border-radius: 50px; 
-            font-size: 19px; font-weight: 800; cursor: pointer; margin-top: 10px; 
-            box-shadow: 0 8px 20px rgba(255, 154, 158, 0.4); transition: 0.2s; 
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            width: 100%; padding: 20px; 
+            background: var(--cp-pink-dark); 
+            color: #5f3831; 
+            border: 2px solid var(--cp-pink-dark); 
+            border-radius: 20px; 
+            font-size: 20px; 
+            font-weight: 800; 
+            cursor: pointer; 
+            margin-top: 0; 
+            box-shadow: 3px 3px 0px #C2185B; 
+            transition: transform 0.1s; 
         }
-        .btn-main:hover { transform: translateY(-2px); }
+        .btn-main:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0px #C2185B; }
+        .btn-sub { background: var(--cp-cream); color: #5f3831; border: 2px solid var(--cp-pink-dark); }
 
-        /* [결과 페이지 스타일] */
-        .score-box {
-            text-align: center; margin-bottom: 30px; padding: 40px 0;
-            background: linear-gradient(180deg, #FFF0F5 0%, #fff 100%);
-            border-radius: 0 0 40px 40px; margin: -40px -25px 30px;
+        .score-wrap { 
+            text-align: center; margin: 20px 0 30px; 
+            background: #fff; 
+            padding: 30px; 
+            border-radius: 30px; 
+            border: 3px solid var(--cp-pink); 
+            box-shadow: var(--cp-shadow); 
+            position: relative;
         }
-        .score-circle {
-            width: 140px; height: 140px; 
-            background: linear-gradient(135deg, #FF9A9E 0%, #FECFEF 100%);
-            border-radius: 50%; display: flex; justify-content: center; align-items: center;
-            margin: 0 auto 20px; color: white; font-size: 42px; font-weight: 900;
-            box-shadow: 0 10px 30px rgba(255, 154, 158, 0.5);
-            animation: pulse 2s infinite; position: relative;
-        }
-        .score-circle::after {
-            content:''; position: absolute; width: 100%; height: 100%; border-radius: 50%;
-            border: 5px solid rgba(255,255,255,0.4); box-sizing: border-box;
-        }
-        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
-
-        .card { 
-            background: white; border-radius: 24px; padding: 30px 25px; margin-bottom: 25px; 
-            box-shadow: 0 10px 30px rgba(166, 193, 238, 0.15); border: 1px solid #fff; 
-        }
-        .card-head { font-size: 20px; font-weight: 800; color: #666; margin-bottom: 20px; display: flex; align-items: center; gap: 8px; }
-
-        /* 관계 유형 게이지 */
-        .gauge-row { margin-bottom: 15px; }
-        .gauge-label { display: flex; justify-content: space-between; font-size: 14px; font-weight: 700; margin-bottom: 8px; color: #777; }
-        .gauge-bg { width: 100%; height: 12px; background: #eee; border-radius: 10px; overflow: hidden; }
-        .gauge-fill { height: 100%; border-radius: 10px; transition: width 1.5s ease-out; }
         
-        /* 비교 바 스타일 (5개) */
-        .vs-row { margin-bottom: 25px; }
-        .vs-label { text-align: center; font-size: 15px; font-weight: 700; color: #777; margin-bottom: 8px; }
-        .vs-bar-wrap { display: flex; align-items: center; height: 30px; border-radius: 15px; overflow: hidden; background: #f0f0f0; }
-        .vs-part { height: 100%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: bold; color: #fff; transition: width 1s; }
-        .vs-left { background: var(--p1-color); }
-        .vs-right { background: var(--p2-color); }
+        .score-wrap::before {
+            content: '💖'; position: absolute; top: -15px; left: 50%; transform: translateX(-50%);
+            font-size: 24px;
+        }
+
+        .score-val { font-size: 70px; font-weight: 900; color: #ff6aff; line-height: 1; letter-spacing: -2px; }
+        .score-cmt { font-size: 22px; font-weight: 600; color: #888; margin-top: 10px; }
+
+        .char-row { display: flex; gap: 10px; margin-bottom: 30px; }
+        .char-card { 
+            flex: 1; border-radius: var(--radius-cute); padding: 25px 10px; text-align: center; 
+            background: var(--cp-cream); 
+            box-shadow: var(--cp-shadow); 
+            border: 2px solid var(--cp-line); 
+        }
+        .cc-bg-1 { background: linear-gradient(180deg, #FCE4EC 0%, #fff 60%); } 
+        .cc-bg-2 { background: linear-gradient(180deg, #FFF8E1 0%, #fff 60%); } 
+
+        .cc-name { font-size: 18px; font-weight: 700; color: var(--cp-text); margin-bottom: 5px; } 
+        .cc-emo { font-size: 50px; margin-bottom: 5px; display: inline-block; filter: drop-shadow(2px 2px 0px rgba(0,0,0,0.1)); }
+        .cc-ilju { font-size: 14px; color: #888; margin-bottom: 8px; font-weight: 600; background:rgba(255,255,255,0.8); padding:4px 10px; border-radius:10px; border: 1px solid #F8BBD0; display:inline-block;}
+        .cc-title { font-size: 17px; font-weight: 800; color: var(--cp-text); line-height: 1.4; word-break: keep-all; margin-bottom: 5px;}
+
+        .vs-box { background: var(--cp-cream); border-radius: var(--radius-cute); padding: 20px; box-shadow: var(--cp-shadow); margin-bottom: 25px; border: 2px solid var(--cp-line); }
+        .vs-row { margin-bottom: 15px; }
+        .vs-info { display: flex; justify-content: space-between; font-size: 16px; font-weight: 700; margin-bottom: 8px; color: var(--cp-text); }
+        .vs-bar { height: 16px; background: #eee; border-radius: 8px; overflow: hidden; display: flex; border: 1px solid var(--cp-line); }
+        .vs-l { height: 100%; background: #90CAF9; } 
+        .vs-r { height: 100%; background: #F48FB1; }
+
+        .sec-head { 
+            font-size: 24px; font-weight: 800; margin: 45px 0 20px; 
+            display: flex; align-items: center; gap: 8px; color: var(--cp-text);
+            background: #fff; display: inline-flex; padding: 8px 20px; border-radius: 20px; border: 2px solid var(--cp-line); box-shadow: 3px 3px 0px rgba(244, 143, 177, 0.2);
+        }
         
-        .names-display {
-            display: flex; justify-content: space-between; font-weight: 800; margin-bottom: 5px; font-size: 14px;
+        .detail-card { 
+            background: #fff; border-radius: 20px; padding: 25px; 
+            box-shadow: var(--cp-shadow); margin-bottom: 30px; 
+            border: 2px solid var(--cp-line); 
+            position: relative;
+        }
+        .detail-card::after {
+            content: '📍'; position: absolute; top: -15px; right: 10px; font-size: 24px;
         }
 
-        /* 텍스트 박스 디자인 개선 */
-        .txt-box { 
-            font-size: 16px; line-height: 1.8; color: #555; 
-            text-align: justify; word-break: keep-all; 
-            background: #FAFAFF; padding: 20px; border-radius: 20px; border: 1px solid #EEF;
+        .detail-header { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px dashed #F8BBD0; }
+        .dh-name { font-size: 24px; font-weight: 800; color: var(--cp-text); } 
+        .dh-tag { font-size: 14px; background: var(--cp-pink-dark); color: #fff; padding: 5px 10px; border-radius: 12px; }
+
+        .detail-item { margin-bottom: 20px; } 
+        .di-label { font-size: 16px; font-weight: 700; color: #ff80b3; margin-bottom: 8px; display: block; }
+        .di-text { 
+            font-size: 17px; line-height: 1.7; color: #666; text-align: justify; word-break: keep-all; 
+            background: #FFF8E1; padding: 15px; border-radius: 15px; border: 1px solid #FFE0B2; 
         }
-        .txt-good-box { background: #F3FDFF; border-color: #E0F7FA; }
-        .txt-bad-box { background: #FFF5F5; border-color: #FFEBEE; }
 
-        /* 로딩 애니메이션 */
-        #p-loading { background: linear-gradient(180deg, #FBC2EB 0%, #A6C1EE 100%); align-items: center; justify-content: center; height: 700px; text-align: center;}
-        .bouncing-heart { font-size: 80px; animation: heartBeat 1.2s infinite ease-in-out; filter: drop-shadow(0 0 10px rgba(255,255,255,0.6)); }
-        @keyframes heartBeat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
+        .report-box { 
+            background: #fff; padding: 30px; border-radius: var(--radius-cute); 
+            font-size: 17px; line-height: 1.9; color: var(--cp-text); text-align: justify; 
+            box-shadow: var(--cp-shadow); white-space: pre-wrap; 
+            border: 2px solid var(--cp-line); 
+            margin-bottom: 30px; word-break: keep-all; 
+            background-image: linear-gradient(#F8BBD0 1px, transparent 1px); 
+            background-size: 100% 32px; 
+            line-height: 32px;
+        }
 
+        .sim-item { 
+            background: var(--cp-cream); border-radius: var(--radius-cute); padding: 25px; 
+            box-shadow: var(--cp-shadow); position: relative; 
+            border: 2px solid var(--cp-line); margin-bottom: 20px; 
+        }
+        .sim-tag { 
+            position: absolute; top: 15px; left: 15px; padding: 5px 12px; border-radius: 10px; 
+            font-size: 14px; font-weight: 800; color: #fff;
+        }
+        .tag-love { background: #F06292; } .tag-friend { background: #AED581; } .tag-fam { background: #FFB74D; }
+        .sim-txt { margin-top: 25px; font-size: 17px; line-height: 1.7; color: #555; text-align: justify; word-break: keep-all; }
+
+        .verdict-box { 
+            text-align: center; 
+            background: var(--cp-pink);
+            color: var(--cp-text);
+            padding: 30px; 
+            border-radius: 20px; 
+            box-shadow: 4px 4px 0px rgba(0,0,0,0.1); 
+            margin-top: 40px; 
+            border: 2px solid var(--cp-line);
+        }
+        .verdict-title { font-size: 20px; font-weight: 800; opacity: 1; margin-bottom: 15px; color: #fff; text-shadow: 1px 1px 0px rgba(0,0,0,0.2); }
+        .verdict-main { font-size: 60px; font-weight: 900; letter-spacing: -2px; }
+
+        /* [수정된 로딩 화면 스타일] */
+        #p-loading {
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            min-height: 70vh;
+            background-color: #FFF0F5;
+            background-image: 
+                linear-gradient(rgba(244, 143, 177, 0.2) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(244, 143, 177, 0.2) 1px, transparent 1px);
+            background-size: 25px 25px;
+            border: 4px dashed var(--cp-pink-dark);
+            border-radius: 35px;
+            margin: 40px 20px;
+            padding: 40px;
+            box-shadow: var(--cp-shadow), inset 0 0 20px rgba(244, 143, 177, 0.1);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .loading-scene {
+            position: relative;
+            width: 100%;
+            height: 250px;
+            margin-bottom: 30px;
+        }
+
+        .float-item {
+            position: absolute;
+            filter: drop-shadow(3px 3px 0px rgba(0,0,0,0.1));
+            animation: floatBob 3s ease-in-out infinite;
+        }
+
+        .char-bear { font-size: 80px; left: 20%; top: 30%; animation-delay: 0s; z-index: 2; }
+        .char-rabbit { font-size: 75px; right: 20%; top: 40%; animation-delay: -1.5s; z-index: 2; transform: rotateY(180deg); }
+
+        .deco-item {
+            position: absolute;
+            opacity: 0.8;
+            animation: twinkleDrift 5s linear infinite;
+        }
+        .d1 { font-size: 30px; top: 10%; left: 10%; animation-delay: 0s; }
+        .d2 { font-size: 35px; top: 20%; right: 15%; animation-delay: -2s; }
+        .d3 { font-size: 28px; bottom: 20%; left: 25%; animation-delay: -1s; }
+        .d4 { font-size: 32px; bottom: 30%; right: 10%; animation-delay: -3s; }
+        .d-center-heart { 
+            font-size: 100px; 
+            top: 50%; left: 50%; 
+            transform: translate(-50%, -50%); 
+            opacity: 0.15; 
+            z-index: 0;
+            animation: pulseHeart 2s ease-in-out infinite; 
+        }
+
+        @keyframes floatBob { 
+            0%, 100% { transform: translateY(0) rotate(-4deg); }
+            50% { transform: translateY(-25px) rotate(4deg); }
+        }
+        @keyframes twinkleDrift { 
+            0% { transform: translate(0, 0) rotate(0deg); opacity: 0.5; }
+            50% { opacity: 1; }
+            100% { transform: translate(20px, -20px) rotate(360deg); opacity: 0.5; }
+        }
+        @keyframes pulseHeart { 
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.1); }
+        }
+
+        .spinner { display: none; }
+
+        /* [세로 버튼 그룹 스타일] */
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
+            margin-top: 30px;
+            padding: 0 10px;
+        }
+     .coupang_ad { 
+    width: 320px; 
+    margin: 10px auto 0; /* 위쪽 50px, 좌우 중앙, 아래 0 */
+    text-align: center; 
+}
     </style>
 </head>
 
-<body> 
+<body>
     <header class="page-header">
-        <a href="index.html"><img class="logo" src="img_logo.png" alt="test it"></a>
+        <h1>
+            <a href="index.html">
+                <img class="logo" src="img_logo.png" alt="test it">
+            </a>
+        </h1>
+        <nav>
+            <ul class="main-nav">
+                <li><a href="https://test-it.co.kr/test.html">성격</a></li>
+                <li><a href="https://test-it.co.kr/face.html">얼굴</a></li>
+                <li><a href="https://test-it.co.kr/etc.html">그외</a></li>
+                <li><a href="https://test-it.co.kr/saju.html">사주</a></li>
+            </ul>
+        </nav>
     </header>
 
     <div class="container">
-        
-        <div id="p-main" class="page active" style="text-align: center; justify-content: center;">
-            <div style="margin-bottom: 20px;">
-                <img src="img_main_match.png" style="width:100%; max-width:280px; border-radius:30px; box-shadow:0 10px 30px rgba(255,154,158,0.3);" onerror="this.style.display='none'">
-                <div style="font-size: 80px; filter: drop-shadow(0 10px 20px rgba(166, 193, 238, 0.5));">💞</div>
+        <div id="p-main" class="page active">
+            <div class="main-title-box">
+                <img src="img_main357.png" alt="성격 궁합 메인" class="main-img">
+                <p style="font-size: 18px; line-height: 1.5; color:#8D6E63; margin-top:10px;">
             </div>
-            
-            <h1 style="font-size: 30px; color: #FF9A9E; margin: 10px 0; font-weight: 900;">사주 궁합 테스트</h1>
-            <p style="color: #777; margin-bottom: 40px; font-size: 17px; line-height: 1.5;">
-                우리 둘의 운명적인 이끌림은?<br>
-                <span style="font-size:15px; color:#999;">#친구같은_연인 #불꽃같은_사랑 #정밀분석</span>
-            </p>
-            
-            <button class="btn-main" onclick="nav('p-input')">궁합 분석 시작하기 ✨</button>
+            <button class="btn-main" style="margin-top:20px;" onclick="nav('p-input')">테스트 시작하기</button>
         </div>
 
         <div id="p-input" class="page">
-            <h2 style="text-align:center; color:#A18CD1; margin-bottom: 25px;">운명의 상대를 입력하세요 🔮</h2>
-
-            <div class="input-section">
-                <div class="section-title p1-title"><span>🙋‍♀️</span> 나 (본인)</div>
-                <div class="form-group">
-                    <input type="text" id="p1-name" placeholder="이름 (예: 김여주)">
-                </div>
-                <div class="form-group">
-                    <div class="date-grid">
-                        <select id="p1-year"></select>
-                        <select id="p1-month"></select>
-                        <select id="p1-day"></select>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <select id="p1-time">
-                        <option value="99">시간 모름</option>
-                        <option value="0">자시 (23:30 ~ 01:29)</option>
-                        <option value="2">축시 (01:30 ~ 03:29)</option>
-                        <option value="4">인시 (03:30 ~ 05:29)</option>
-                        <option value="6">묘시 (05:30 ~ 07:29)</option>
-                        <option value="8">진시 (07:30 ~ 09:29)</option>
-                        <option value="10">사시 (09:30 ~ 11:29)</option>
-                        <option value="12">오시 (11:30 ~ 13:29)</option>
-                        <option value="14">미시 (13:30 ~ 15:29)</option>
-                        <option value="16">신시 (15:30 ~ 17:29)</option>
-                        <option value="18">유시 (17:30 ~ 19:29)</option>
-                        <option value="20">술시 (19:30 ~ 21:29)</option>
-                        <option value="22">해시 (21:30 ~ 23:29)</option>
-                    </select>
-                </div>
+            <h2 style="text-align:center; margin-bottom:30px; color:var(--cp-text); text-shadow: 1px 1px 0px #fff; font-size: 28px;">사주 정보 입력</h2>
+            <div class="input-card">
+                <span class="label-title t-blue">🐻 본인 (ME)</span>
+                <input type="text" id="p1-name" placeholder="이름을 입력하세요">
+                <div class="date-row"><select id="p1-year"></select><select id="p1-month"></select><select id="p1-day"></select></div>
             </div>
-
-            <div class="input-section">
-                <div class="section-title p2-title"><span>🙋‍♂️</span> 상대방 (그 사람)</div>
-                <div class="form-group">
-                    <input type="text" id="p2-name" placeholder="이름 (예: 이남주)">
-                </div>
-                <div class="form-group">
-                    <div class="date-grid">
-                        <select id="p2-year"></select>
-                        <select id="p2-month"></select>
-                        <select id="p2-day"></select>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <select id="p2-time">
-                        <option value="99">시간 모름</option>
-                        </select>
-                </div>
+            <div class="input-card">
+                <span class="label-title t-pink">🐰 상대방 (YOU)</span>
+                <input type="text" id="p2-name" placeholder="이름을 입력하세요">
+                <div class="date-row"><select id="p2-year"></select><select id="p2-month"></select><select id="p2-day"></select></div>
             </div>
-
-            <button class="btn-main" onclick="processMatch()">두 사람의 결과 보기 💌</button>
+            <button class="btn-main" style="margin-top:20px;" onclick="runAnalysis()">궁합 결과 보기</button>
         </div>
 
         <div id="p-loading" class="page">
-            <div class="bouncing-heart">💖</div>
-            <h3 style="color:#fff; text-shadow:1px 1px 4px rgba(0,0,0,0.2); margin-top:30px; font-size:24px;">
-                별자리 연결 중...
-            </h3>
-            <p style="color:#fff; font-size:16px; opacity:0.9;">두 분의 사주 에너지를 분석하고 있어요.</p>
+            <div class="loading-scene">
+                <div class="deco-item d-center-heart">💖</div> <div class="float-item char-bear">🐻</div>
+                <div class="float-item char-rabbit">🐰</div>
+                <div class="deco-item d1">✨</div>
+                <div class="deco-item d2">⭐</div>
+                <div class="deco-item d3">🌸</div>
+                <div class="deco-item d4">🎀</div>
+            </div>
+            <h3 style="margin-top:0px; color:var(--cp-text); font-size: 26px; text-shadow: 2px 2px 0px #FFF0F5;">💕 두 분의 궁합을 보는 중... 💕</h3>
+            <p style="color:#EC407A; font-size: 20px; font-weight: 700; letter-spacing: -1px; margin-top: 10px;">잠시만 기다려 주세요! (두근두근)</p>
         </div>
 
-        <div id="p-result" class="page" style="padding: 0;">
-            <div id="capture-area" style="padding: 0 25px 40px;">
+        <div id="p-result" class="page" style="padding:0;">
+            <div id="capture-area" style="padding:20px;">
+                <div class="score-wrap">
+                    <div style="font-size:18px; font-weight:700; color:#8D6E63; margin-bottom:10px;">테스트잇 사주 궁합 성격 테스트</div>
+                    <div class="score-val" id="final-score">--</div>
+                    <div class="score-cmt" id="final-cmt">--</div>
+                </div>
+
+                <div class="char-row">
+                    <div class="char-card cc-bg-1">
+                        <div class="cc-name" id="p1-disp-name">--</div><div class="cc-emo" id="p1-emoji"></div><div class="cc-ilju" id="p1-ilju-txt">--</div><div class="cc-title" id="p1-title">--</div>
+                    </div>
+                    <div class="char-card cc-bg-2">
+                        <div class="cc-name" id="p2-disp-name">--</div><div class="cc-emo" id="p2-emoji"></div><div class="cc-ilju" id="p2-ilju-txt">--</div><div class="cc-title" id="p2-title">--</div>
+                    </div>
+                </div>
+
+                <div class="sec-head">VS 그래프</div>
+                <div class="vs-box" id="vs-area"></div>
+
+                <div class="detail-card">
+                    <div class="detail-header"><span class="dh-name" id="dc-p1-name"></span><span class="dh-tag">ME</span></div>
+                    <div class="detail-item"><span class="di-label">💡 기본 성향</span><div class="di-text" id="dc-p1-basic"></div></div>
+                    <div class="detail-item"><span class="di-label">💼 사회적 가면</span><div class="di-text" id="dc-p1-social"></div></div>
+                    <div class="detail-item"><span class="di-label">💖 연애 스타일</span><div class="di-text" id="dc-p1-love"></div></div>
+                    <div class="detail-item"><span class="di-label">⚠️ 숨겨진 내면</span><div class="di-text" id="dc-p1-bad"></div></div>
+                </div>
+
+                <div class="detail-card">
+                    <div class="detail-header"><span class="dh-name" id="dc-p2-name"></span><span class="dh-tag" style="background:var(--cp-pink-dark);">YOU</span></div>
+                    <div class="detail-item"><span class="di-label">💡 기본 성향</span><div class="di-text" id="dc-p2-basic"></div></div>
+                    <div class="detail-item"><span class="di-label">💼 사회적 가면</span><div class="di-text" id="dc-p2-social"></div></div>
+                    <div class="detail-item"><span class="di-label">💖 연애 스타일</span><div class="di-text" id="dc-p2-love"></div></div>
+                    <div class="detail-item"><span class="di-label">⚠️ 숨겨진 내면</span><div class="di-text" id="dc-p2-bad"></div></div>
+                </div>
+
+                <div class="sec-head">둘의 성격 정밀 궁합 분석</div>
+                <div class="report-box" id="txt-hardcore"></div>
+
+                <div class="sec-head">관계 시뮬레이션</div>
+                <div class="sim-item"><span class="sim-tag tag-love">연인이라면?</span><div class="sim-txt" id="sim-lover">--</div></div>
+                <div class="sim-item"><span class="sim-tag tag-friend">친구라면?</span><div class="sim-txt" id="sim-friend">--</div></div>
+                <div class="sim-item"><span class="sim-tag tag-fam">가족이라면?</span><div class="sim-txt" id="sim-family">--</div></div>
+
+                <div class="verdict-box">
+                    <div class="verdict-title">그래서 사주로 보는 관계는?</div>
+                    <div class="verdict-main" id="final-verdict-main">--</div>
+                </div>
                 
-                <div class="score-box">
-                    <div style="font-size:16px; color:#888; margin-bottom:10px;">두 사람의 최종 궁합</div>
-                    <div class="score-circle">
-                        <div><span id="res-score">0</span><span style="font-size:20px">%</span></div>
-                    </div>
-                    <div id="res-comment" style="font-size:22px; font-weight:800; color:#FF9A9E; text-shadow:1px 1px 0 #fff;">--</div>
-                    <div style="font-size:14px; color:#aaa; margin-top:8px;">#오행조화 #음양조화 #성격케미</div>
-                </div>
-
-                <div class="card">
-                    <div class="card-head" style="color:#A18CD1;"><span>🧬</span> 관계 유형 분석</div>
-                    <p style="font-size:15px; color:#666; margin-bottom:20px; line-height:1.4;">
-                        우리는 친구에 가까울까요, 연인에 가까울까요?<br>
-                        사주 원국에 나타난 기운으로 분석했습니다.
-                    </p>
-                    
-                    <div class="gauge-row">
-                        <div class="gauge-label">
-                            <span>🍏 친구 케미 (티키타카)</span>
-                            <span id="val-friend" style="color:#81C784;">--%</span>
-                        </div>
-                        <div class="gauge-bg"><div id="bar-friend" class="gauge-fill" style="width:0%; background:#81C784;"></div></div>
-                    </div>
-
-                    <div class="gauge-row">
-                        <div class="gauge-label">
-                            <span>🍑 연인 케미 (설렘지수)</span>
-                            <span id="val-lover" style="color:#FF8A80;">--%</span>
-                        </div>
-                        <div class="gauge-bg"><div id="bar-lover" class="gauge-fill" style="width:0%; background:#FF8A80;"></div></div>
-                    </div>
-                    
-                    <div class="txt-box" id="txt-type" style="margin-top:20px; font-size:15px;">
-                        --
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-head" style="color:#64B5F6;"><span>🆚</span> 본격 캐릭터 비교</div>
-                    <div style="text-align:center; margin-bottom:20px; font-size:13px; color:#aaa;">누가 더 해당 특징이 강할까요?</div>
-                    
-                    <div class="vs-row">
-                        <div class="vs-label">🤣 누가 더 재밌을까? (유머/끼)</div>
-                        <div class="names-display">
-                            <span class="p1-tag" style="color:var(--p1-color)">나</span>
-                            <span class="p2-tag" style="color:var(--p2-color)">상대</span>
-                        </div>
-                        <div class="vs-bar-wrap">
-                            <div id="bar-fun-l" class="vs-part vs-left" style="width:50%"></div>
-                            <div id="bar-fun-r" class="vs-part vs-right" style="width:50%"></div>
-                        </div>
-                    </div>
-
-                    <div class="vs-row">
-                        <div class="vs-label">🧠 누가 더 어른스러울까? (멘탈)</div>
-                        <div class="names-display">
-                            <span class="p1-tag" style="color:var(--p1-color)">나</span>
-                            <span class="p2-tag" style="color:var(--p2-color)">상대</span>
-                        </div>
-                        <div class="vs-bar-wrap">
-                            <div id="bar-mat-l" class="vs-part vs-left" style="width:50%"></div>
-                            <div id="bar-mat-r" class="vs-part vs-right" style="width:50%"></div>
-                        </div>
-                    </div>
-
-                    <div class="vs-row">
-                        <div class="vs-label">🔥 누가 고집이 더 셀까? (자존심)</div>
-                        <div class="names-display">
-                            <span class="p1-tag" style="color:var(--p1-color)">나</span>
-                            <span class="p2-tag" style="color:var(--p2-color)">상대</span>
-                        </div>
-                        <div class="vs-bar-wrap">
-                            <div id="bar-stub-l" class="vs-part vs-left" style="width:50%"></div>
-                            <div id="bar-stub-r" class="vs-part vs-right" style="width:50%"></div>
-                        </div>
-                    </div>
-
-                     <div class="vs-row">
-                        <div class="vs-label">👀 누가 더 집착/질투할까?</div>
-                        <div class="names-display">
-                            <span class="p1-tag" style="color:var(--p1-color)">나</span>
-                            <span class="p2-tag" style="color:var(--p2-color)">상대</span>
-                        </div>
-                        <div class="vs-bar-wrap">
-                            <div id="bar-obs-l" class="vs-part vs-left" style="width:50%"></div>
-                            <div id="bar-obs-r" class="vs-part vs-right" style="width:50%"></div>
-                        </div>
-                    </div>
-
-                     <div class="vs-row">
-                        <div class="vs-label">💕 누가 더 애교가 많을까?</div>
-                        <div class="names-display">
-                            <span class="p1-tag" style="color:var(--p1-color)">나</span>
-                            <span class="p2-tag" style="color:var(--p2-color)">상대</span>
-                        </div>
-                        <div class="vs-bar-wrap">
-                            <div id="bar-cute-l" class="vs-part vs-left" style="width:50%"></div>
-                            <div id="bar-cute-r" class="vs-part vs-right" style="width:50%"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card" style="border-color:#E0F7FA;">
-                    <div class="card-head" style="color:#4DD0E1;"><span>💚</span> 우리가 잘 맞는 점</div>
-                    <div class="txt-box txt-good-box" id="txt-good">--</div>
-                </div>
-
-                <div class="card" style="border-color:#FFEBEE;">
-                    <div class="card-head" style="color:#EF5350;"><span>💔</span> 조심해야 할 점</div>
-                    <div class="txt-box txt-bad-box" id="txt-bad">--</div>
-                </div>
-
-                <div style="text-align:center; color:#999; font-size:12px; margin-top:20px;">@테스트잇 사주 궁합 테스트</div>
+                <div style="margin-top:30px; color:#aaa; font-size:14px; text-align:center;">@테스트잇 사주 궁합 성격</div>
+            </div>
+            <div class="btn-group" style="padding: 0 20px 50px 20px;">
+                <button class="btn-main" onclick="saveResult()">결과 이미지 저장하기</button>
+                <button class="btn-main btn-sub" onclick="location.reload()">다시 해보기</button>
+                <button class="btn-main btn-sub" onclick="location.href='https://test-it.co.kr">다른 테스트 해보기</button>
+                <button class="btn-main" id="share-btn" style="background:#ffffff; border-color:#fdcaf5; color:#5f3831;">테스트 공유하기</button>
             </div>
             
-            <div style="padding: 0 25px 40px;">
-                <button class="btn-main" onclick="saveImage()">결과 이미지 저장 📸</button>
-                <button class="btn-main" style="background:#f0f0f0; color:#555; margin-top:10px;" onclick="location.reload()">다시 하기</button>
-                <button class="btn-main" style="background: linear-gradient(90deg, #a8edea 0%, #fed6e3 100%); margin-top:10px; color:#555;">테스트 공유하기</button>
-            </div>
         </div>
-
+           <article class="coupang_ad mt-3">
+<script src="https://ads-partners.coupang.com/g.js"></script>
+<script>
+    new PartnersCoupang.G({"id":798186,"template":"carousel","trackingCode":"AF4391881","width":"350","height":"140","tsource":""});
+</script>
     </div>
 
-    <script>
-        // [초기 설정]
-        window.onload = function() {
-            initDateSelect('p1');
-            initDateSelect('p2');
-            
-            // 시간 복사
-            const tOpts = document.getElementById('p1-time').innerHTML;
-            document.getElementById('p2-time').innerHTML = tOpts;
-        };
+<script>
+    window.onload = function() { initSel('p1'); initSel('p2'); };
+    function initSel(id) {
+        const y=document.getElementById(id+'-year'), m=document.getElementById(id+'-month'), d=document.getElementById(id+'-day');
+        for(let i=2010; i>=1950; i--) y.add(new Option(i+'년', i)); y.value=1995;
+        for(let i=1; i<=12; i++) m.add(new Option(i+'월', i));
+        for(let i=1; i<=31; i++) d.add(new Option(i+'일', i));
+    }
+    function nav(page) {
+        document.querySelectorAll('.page').forEach(e=>e.classList.remove('active'));
+        document.getElementById(page).classList.add('active');
+        window.scrollTo(0,0);
+    }
 
-        function initDateSelect(prefix) {
-            const ySel = document.getElementById(prefix+'-year');
-            const mSel = document.getElementById(prefix+'-month');
-            const dSel = document.getElementById(prefix+'-day');
-            
-            for(let i=2020; i>=1950; i--) ySel.add(new Option(i+'년', i));
-            ySel.value = 1996;
-            for(let i=1; i<=12; i++) mSel.add(new Option(i+'월', i));
-            for(let i=1; i<=31; i++) dSel.add(new Option(i+'일', i));
-        }
+    const GAN = {'甲':'목','乙':'목','丙':'화','丁':'화','戊':'토','己':'토','庚':'금','辛':'금','壬':'수','癸':'수'};
+    const JI = {'子':'수','丑':'토','寅':'목','卯':'목','辰':'토','巳':'화','午':'화','未':'토','申':'금','酉':'금','戌':'토','亥':'수'};
+    const HAN = {'甲':'갑','乙':'을','丙':'병','丁':'정','戊':'무','己':'기','庚':'경','辛':'신','壬':'임','癸':'계', '子':'자','丑':'축','寅':'인','卯':'묘','辰':'진','巳':'사','午':'오','未':'미','申':'신','酉':'유','戌':'술','亥':'해'};
+    const HAP = {'子':'丑','丑':'子','寅':'亥','亥':'寅','卯':'戌','戌':'卯','辰':'酉','酉':'辰','巳':'申','申':'巳','午':'未','未':'午'};
+    const CHUNG = {'子':'午','午':'子','丑':'未','未':'丑','寅':'申','申':'寅','卯':'酉','酉':'卯','辰':'戌','戌':'辰','巳':'亥','亥':'巳'};
+    const WONJIN = {'子':'未','未':'子','丑':'午','午':'丑','寅':'酉','酉':'寅','卯':'申','申':'卯','辰':'亥','亥':'辰','巳':'戌','戌':'巳'};
 
-        function nav(id) {
-            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-            document.getElementById(id).classList.add('active');
-            window.scrollTo(0,0);
-        }
+    const DB_60 = {
+        '甲子': ['한겨울의 거목', '차가운 물 위에 뜬 나무처럼 생각이 많고 이상이 높습니다. 시작하는 힘이 강하고 자존심이 세며, 남에게 굽히기 싫어하는 도도함이 있습니다.', '기획력이 좋고 남을 가르치거나 이끄는 리더십이 있습니다. 다만 실천력보다 계획이 앞설 때가 있습니다.', '내 사람에게는 한없이 퍼주지만 구속받는 것을 싫어합니다. 엄마같은 연인을 찾기도 합니다.', '귀가 얇아 남의 말에 잘 휘둘리며, 마무리가 약해 끈기가 부족할 수 있습니다.', '🌲'],
+        '乙丑': ['진흙 속의 연꽃', '겉은 부드러워 보이나 내면은 강철 같습니다. 척박한 환경에서도 살아남는 생활력이 강하고 실속을 챙깁니다.', '조용히 자신의 일을 완벽하게 처리하는 실무가 타입입니다. 겉으로 드러내지 않고 실리를 취합니다.', '오래 지켜보다가 확신이 들면 올인하는 신중한 사랑을 합니다.', '속내를 잘 드러내지 않아 꿍하다는 오해를 받으며, 한번 화나면 무섭습니다.', '🌷'],
+        '丙寅': ['봄날의 태양', '밝고 명랑하며 추진력이 엄청납니다. 가만히 있지 못하고 늘 무언가를 벌입니다. 호기심이 많고 아이디어 뱅크입니다.', '아이디어가 넘치고 기획력이 뛰어난 창조자입니다. 주목받는 것을 좋아합니다.', '금사빠 기질이 있으며 불같은 사랑을 합니다. 표현이 솔직하고 적극적입니다.', '성격이 급해 실수가 잦고, 싫증을 빨리 내어 용두사미가 될 수 있습니다.', '☀️'],
+        '丁卯': ['달빛 아래 촛불', '감수성이 풍부하고 예민하며 직관력이 뛰어납니다. 인정이 많고 다정다감하지만, 속은 까칠한 면이 있습니다.', '미적 감각이 뛰어나고 섬세한 업무에 강합니다. 예술적인 분야에서 두각을 나타냅니다.', '로맨티스트지만 질투심과 소유욕이 강합니다. 의존적인 경향이 있습니다.', '감정 기복이 심하고 변덕을 부릴 때가 있어 주변을 피곤하게 합니다.', '🕯️'],
+        '戊辰': ['거대한 산맥', '스케일이 크고 배포가 남다릅니다. 고집이 세지만 그만큼 책임감도 강합니다. 신의를 중요하게 생각합니다.', '조직의 리더나 사업가로서 자질이 있습니다. 사람들을 아우르는 포용력이 있습니다.', '무뚝뚝해 보이지만 내 사람에게는 듬직한 버팀목이 되어줍니다.', '자기주장이 너무 강해 남의 말을 안 듣고 독불장군이 될 수 있습니다.', '⛰️'],
+        '己巳': ['용광로를 품은 밭', '겉은 조용하지만 속에는 뜨거운 야망을 품고 있습니다. 눈치가 빠르고 처세가 좋습니다. 환경 적응력이 빠릅니다.', '상황 판단이 빠르고 실속을 챙기는 능력자입니다. 다방면에 재주가 많습니다.', '의심이 많아 마음을 여는 데 시간이 걸리지만, 내 사람이 되면 잘 챙깁니다.', '변덕이 심하고 계산적인 면이 있어 이기적으로 보일 수 있습니다.', '🌋'],
+        '庚午': ['잘 제련된 검', '공명정대하고 원칙을 중요시합니다. 흐트러진 모습을 보이기 싫어하는 바른생활맨입니다. 깔끔하고 단정합니다.', '신뢰를 주는 공무원이나 원칙을 지키는 관리자 스타일입니다.', '체면을 중시하며 예의 없는 사람을 싫어합니다. 직설적인 사랑을 합니다.', '지나치게 솔직한 독설로 남에게 상처를 주며, 융통성이 부족합니다.', '⚔️'],
+        '辛未': ['건조한 땅의 보석', '섬세하고 예민하며 자존심이 셉니다. 겉으로는 순해 보여도 속은 깐깐합니다. 완벽주의 성향이 있습니다.', '꼼꼼하고 디테일한 업무 처리에 능합니다. 빈틈을 보이기 싫어합니다.', '까다롭지만 한번 정을 주면 헌신적입니다. 눈이 높습니다.', '소심하고 뒤끝이 있어 상처를 오래 기억하며, 혼자 삭히는 편입니다.', '💎'],
+        '壬申': ['샘솟는 물', '두뇌 회전이 빠르고 임기응변에 능합니다. 다재다능하여 못하는 게 없습니다. 유머러스하고 사교적입니다.', '창의적이고 기획력이 좋아 아이디어 뱅크 역할을 합니다.', '인기가 많으나 깊은 관계는 어려워합니다. 쿨한 연애를 선호합니다.', '변덕이 죽 끓듯 하고 마무리가 약해 산만할 수 있습니다.', '🌊'],
+        '癸酉': ['맑은 샘물', '결벽증이 있을 만큼 깔끔하고 호불호가 분명합니다. 미적 감각이 뛰어납니다. 남들이 못 보는 디테일을 잡아냅니다.', '디자인이나 예술, 정밀한 기술 분야에서 능력을 발휘합니다.', '순수한 사랑을 꿈꾸며 눈이 높습니다. 정신적인 교감을 중시합니다.', '냉정하고 차가운 말투로 주변을 얼어붙게 하며, 예민합니다.', '💧'],
+        '甲戌': ['가을의 단풍나무', '독립심이 강하고 책임감이 투철합니다. 혼자서도 잘 해내는 강인함이 있습니다. 의리가 있습니다.', '신의를 중요시하며 맡은 일은 끝까지 해내는 책임감이 있습니다.', '무뚝뚝하지만 속정이 깊은 츤데레 스타일입니다.', '고독을 즐기지만 사실은 외로움을 많이 타며, 내면이 쓸쓸합니다.', '🍁'],
+        '乙亥': ['바다 위의 꽃', '상상력이 풍부하고 자유로운 영혼입니다. 경쟁보다는 자신만의 세계를 중요시합니다. 낭만적입니다.', '예술, 문학 등 창의적인 분야에서 두각을 나타냅니다.', '낭만적이고 감성적인 연애를 추구합니다. 상대에게 잘 맞춰줍니다.', '현실 감각이 떨어지고 뜬구름 잡는 소리를 할 때가 있습니다.', '🪷'],
+        '丙子': ['호수 위의 태양', '겉은 화려하지만 속은 깊은 고민이 많습니다. 예의가 바르고 사교성이 좋습니다. 공과 사가 분명합니다.', '사람을 상대하는 일이나 공직에 어울리며, 처세술이 좋습니다.', '인기가 많지만 정작 본인은 외로움을 탑니다. 비밀 연애를 하기도 합니다.', '감정 기복이 심하고 예민해질 때가 있어 주변이 눈치를 봅니다.', '🌅'],
+        '丁丑': ['화로 속의 불씨', '자신의 재능을 감추고 때를 기다리는 은둔 고수입니다. 묵묵히 실속을 챙깁니다. 재주가 많습니다.', '전문적인 기술이나 연구직, 요리 등에서 재능을 보입니다.', '따뜻하고 배려심 깊은 연애를 합니다. 질투심이 있습니다.', '속을 알 수 없고 표현을 잘 안 해 답답할 수 있습니다.', '🔥'],
+        '戊寅': ['산 속의 호랑이', '권위적이고 명예욕이 강합니다. 남 밑에 있기 힘든 우두머리 기질이 있습니다. 카리스마가 있습니다.', '조직의 리더나 명예로운 직업을 선호합니다. 야망이 큽니다.', '지배적이고 주도적인 연애를 선호합니다. 자존심을 세워줘야 합니다.', '독선적이고 남을 무시하는 경향이 있어 적을 만듭니다.', '🐅'],
+        '己卯': ['들판의 토끼', '환경 적응력이 빠르고 민첩합니다. 섬세하고 타인을 배려하는 마음이 있습니다. 꼼꼼합니다.', '사람을 상대하는 서비스나 영업, 기획 업무에 능합니다.', '다정다감하고 세심하게 챙겨주는 연인입니다.', '귀가 얇고 우유부단하여 결정을 못 내립니다. 의심이 많습니다.', '🐇'],
+        '庚辰': ['무쇠 바위', '의협심이 강하고 불의를 보면 참지 못합니다. 투쟁심과 개척 정신이 강합니다. 배포가 큽니다.', '어려운 일을 도맡아 해결하는 해결사 역할을 자처합니다.', '직설적이고 화끈한 사랑을 합니다. 밀당을 싫어합니다.', '융통성이 없고 고집불통이라 타협이 안 됩니다.', '🪨'],
+        '辛巳': ['빛나는 보석', '남들에게 돋보이기를 좋아하고 센스가 있습니다. 품위를 중요하게 생각합니다. 깔끔합니다.', '미적 감각이 필요한 디자인이나 예술 분야에 어울립니다.', '눈이 높고 세련된 연애를 추구합니다. 상대의 스타일을 중요시합니다.', '허영심이 있고 겉치레에 신경 쓰느라 실속이 없을 수 있습니다.', '💍'],
+        '壬午': ['달밤의 호수', '지혜롭고 현실적인 감각이 뛰어납니다. 재물운과 인연이 깊고 사교적입니다. 언변이 좋습니다.', '사업이나 영업, 재테크 관련 분야에서 능력을 발휘합니다.', '매력적이고 인기가 많아 이성이 끊이지 않습니다.', '계산적이고 이기적인 면이 있어 냉정해 보일 수 있습니다.', '🌕'],
+        '癸未': ['비 내리는 정원', '조용하고 차분하며 인내심이 강합니다. 내면에 복잡한 감정을 숨기고 있습니다. 배려심이 깊습니다.', '세밀하고 꼼꼼한 업무, 활인업에 적합합니다.', '헌신적이고 희생적인 사랑을 합니다. 상대에게 맞추는 편입니다.', '소심하고 걱정이 너무 많아 스트레스를 받습니다.', '🌧️'],
+        '甲申': ['바위 위의 나무', '환경을 개척하는 힘이 강하고 혁신적입니다. 다재다능하여 못하는 게 없습니다. 도전적입니다.', '새로운 것을 기획하거나 도전하는 일에 강합니다.', '변화무쌍하고 재미있는 연애를 선호합니다. 구속을 싫어합니다.', '끈기가 부족하고 싫증을 잘 내며 산만합니다.', '🌲'],
+        '乙酉': ['가위로 다듬은 꽃', '결단력이 강하고 맺고 끊음이 확실합니다. 부드러워 보이지만 내면은 칼날 같습니다.', '정확하고 예리한 판단이 필요한 일에 능합니다.', '깔끔하고 쿨한 연애를 지향합니다. 집착하는 것을 싫어합니다.', '냉정하고 날카로운 말로 상대에게 상처를 줍니다.', '✂️'],
+        '丙戌': ['지는 해 (석양)', '감수성이 풍부하고 동정심이 많습니다. 의리가 있고 솔직 담백한 성격입니다. 정이 많습니다.', '사람을 돕는 활인업이나 교육, 복지 분야에 어울립니다.', '정열적이지만 감정 기복이 심합니다. 솔직하게 표현합니다.', '욱하는 성질이 있어 다툼이 잦고 뒤끝은 없습니다.', '🌇'],
+        '丁亥': ['어둠 속의 등불', '직관력이 뛰어나고 영감이 발달했습니다. 예의 바르고 온화한 성품을 가졌습니다. 지혜롭습니다.', '상담이나 멘토링, 기획 업무에 능합니다.', '헌신적이고 따뜻한 사랑을 줍니다. 정신적인 교감을 중시합니다.', '소극적이고 자신감이 부족해 기회를 놓칠 수 있습니다.', '🏮'],
+        '戊子': ['산 속의 보물', '신중하고 꼼꼼하며 재물을 모으는 능력이 탁월합니다. 실리적이고 계산이 빠릅니다.', '재테크나 금융, 회계 관련 분야에서 두각을 나타냅니다.', '신중하게 상대를 고르고 안정적인 연애를 합니다.', '인색하고 계산적이라는 평을 들을 수 있습니다.', '💰'],
+        '己丑': ['겨울의 밭', '묵묵히 자신의 일을 해내는 끈기의 아이콘입니다. 고집이 세지만 신뢰가 두텁습니다. 우직합니다.', '성실함이 무기인 대기만성형 인재입니다.', '느리지만 한결같은 사랑을 합니다. 변함없는 스타일입니다.', '융통성이 없고 답답할 정도로 고지식합니다.', '❄️'],
+        '庚寅': ['큰 도끼', '추진력이 강하고 활동 범위가 넓습니다. 큰 목표를 향해 달려가는 야망가입니다. 스케일이 큽니다.', '사업이나 정치, 큰 조직의 리더가 어울립니다.', '화끈하고 정열적인 사랑을 합니다. 주도권을 잡으려 합니다.', '독단적이고 남의 말을 무시하여 실패할 수 있습니다.', '🪓'],
+        '辛卯': ['예리한 가위', '섬세하고 치밀하며 완벽주의 성향이 있습니다. 미적 감각이 좋고 꾸미기를 좋아합니다. 예민합니다.', '디자인이나 예술, 패션 계통에 재능이 있습니다.', '까다롭지만 세심하게 챙겨주는 연인입니다. 질투가 있습니다.', '의심이 많고 예민하여 본인을 피곤하게 합니다.', '🔪'],
+        '壬辰': ['거대한 파도', '리더십이 있고 배포가 큽니다. 시련을 이겨내는 힘이 매우 강하고 카리스마가 있습니다.', '난관을 돌파하는 혁명가, 사업가 기질이 있습니다.', '지배적이고 강렬한 사랑을 합니다. 소유욕이 강합니다.', '자기주장이 너무 강해 독선적이라는 말을 듣습니다.', '🌊'],
+        '癸巳': ['아지랑이', '두뇌가 명석하고 상황 판단이 빠릅니다. 재물과 명예를 동시에 추구하는 욕심이 있습니다. 처세술이 좋습니다.', '영업이나 로비, 전략 기획에 능합니다.', '매력적이고 센스 있는 연애 고수입니다.', '변덕이 심하고 이중적인 면이 있어 신뢰를 잃을 수 있습니다.', '🐍'],
+        '甲午': ['달리는 말', '호기심이 많고 활동적입니다. 말이 빠르고 행동이 민첩하며 솔직합니다. 뒤끝이 없습니다.', '말을 잘하고 표현력이 좋은 엔터테이너 기질이 있습니다.', '화끈하고 열정적인 연애를 합니다. 금방 식을 수도 있습니다.', '지구력이 부족하고 싫증을 잘 냅니다.', '🐎'],
+        '乙未': ['사막의 선인장', '부드러워 보이지만 생명력이 강하고 끈기가 있습니다. 현실적이고 계산이 빠릅니다. 실속을 잘 챙깁니다.', '안정적인 직장이나 관리직에 어울립니다.', '집착이 강하고 소유욕이 있는 편입니다. 헌신적입니다.', '고집이 세고 남의 말을 잘 안 듣습니다.', '🌵'],
+        '丙申': ['오후의 태양', '화려하고 사교적이며 주변을 밝게 만듭니다. 다재다능하고 역동적입니다. 재주가 많습니다.', '다방면에서 활약하는 만능 엔터테이너입니다.', '재미있고 이벤트가 넘치는 연애를 합니다.', '산만하고 마무리가 약해 결실이 부족할 수 있습니다.', '🐒'],
+        '丁酉': ['빛나는 별', '섬세하고 감수성이 예민합니다. 집중력이 뛰어나고 예술적 재능이 있습니다. 사람을 잘 봅니다.', '예술가나 디자이너, 정밀 기술직에 적합합니다.', '낭만적이고 분위기 있는 연애를 추구합니다.', '날카로운 말로 상대에게 상처를 줄 때가 있습니다.', '⭐'],
+        '戊戌': ['첩첩산중', '신의가 두텁고 포용력이 큽니다. 고집이 매우 세지만 듬직하고 믿음직스럽습니다.', '신뢰를 바탕으로 하는 관리직이나 중개업에 어울립니다.', '무뚝뚝하지만 진국인 사랑을 합니다.', '융통성이 없고 꽉 막혀 있어 대화가 안 통할 때가 있습니다.', '🏔️'],
+        '己亥': ['기름진 옥토', '융통성이 있고 적응력이 좋습니다. 겉으로는 유해 보이나 속은 꽉 찬 외유내강형입니다. 포용력이 있습니다.', '사람을 상대하거나 관리하는 업무에 능합니다.', '편안하고 안정감을 주는 연애를 합니다.', '우유부단하고 결단력이 부족해 기회를 놓칩니다.', '🌾'],
+        '庚子': ['차가운 서리', '머리가 비상하고 언변이 좋습니다. 비판적인 시각이 발달하여 분석적입니다. 냉철합니다.', '비평가나 연구원, 전문직에 어울립니다.', '차가워 보이지만 내 사람에겐 따뜻합니다.', '너무 따지고 들어 피곤하게 하고 말로 상처를 줍니다.', '❄️'],
+        '辛丑': ['진흙 속 진주', '한번 시작하면 끝을 보는 끈기가 있습니다. 호불호가 분명하고 자기주장이 강합니다. 자존심이 매우 셉니다.', '장인 정신이 필요한 전문 기술직에 적합합니다.', '오래 지켜보고 천천히 마음을 여는 스타일입니다.', '고집이 세고 타협을 몰라 고립될 수 있습니다.', '🦪'],
+        '壬寅': ['봄비', '여유가 있고 낙천적이며, 먹을 복과 재물 복을 타고났습니다. 베푸는 것을 좋아하고 긍정적입니다.', '식복이 있고 즐거움을 주는 서비스업에 어울립니다.', '다정다감하고 친구 같은 편안한 연애를 합니다.', '게으르고 일을 미루는 경향이 있어 실속이 없을 수 있습니다.', '🌧️'],
+        '癸卯': ['아침 이슬', '다정다감하고 인정이 많습니다. 창의력이 뛰어나고 꾸미는 것을 좋아합니다. 애교가 많고 사랑스럽습니다.', '아이디어 뱅크, 기획, 예술 분야에 재능이 있습니다.', '애교가 많고 사랑받기를 원하며 의존적입니다.', '거절을 못 하고 우유부단하여 손해를 봅니다.', '🌱'],
+        '甲辰': ['청룡', '이상과 포부가 크고 명예욕이 있습니다. 투기적인 성향도 있으며 배포가 큽니다. 추진력이 좋습니다.', '사업가나 정치가, 큰 프로젝트 리더가 어울립니다.', '주도적이고 카리스마 있는 연애를 합니다.', '자신감이 지나쳐 자만하다가 실패할 수 있습니다.', '🐉'],
+        '乙巳': ['꽃밭의 뱀', '표현력이 뛰어나고 눈치가 빠르며, 사람을 끄는 매력이 넘칩니다. 생활력이 강하고 처세가 좋습니다.', '언변이 좋고 사교적인 마당발 스타일입니다.', '매력이 넘쳐 이성이 끊이지 않는 인기쟁이입니다.', '변덕이 심하고 실속이 없을 수 있습니다.', '💐'],
+        '丙午': ['한낮의 태양', '자존심이 강하고 성격이 불같습니다. 뒤끝이 없고 화끈한 리더 스타일입니다. 거짓말을 못합니다.', '열정적이고 에너지 넘치는 행동파 리더입니다.', '불같이 뜨겁게 타오르는 사랑을 합니다.', '독단적이고 욱하는 성질이 있어 다툼이 잦습니다.', '🐎'],
+        '丁未': ['뜨거운 흙', '따뜻하고 정이 많지만 내면의 고집은 셉니다. 희생정신이 있고 남을 잘 챙겨줍니다.', '봉사하거나 남을 돕는 일, 교육 분야에 어울립니다.', '헌신적이고 가정적인 연애를 합니다.', '속을 알 수 없고 한번 화나면 무섭게 돌변합니다.', '🔥'],
+        '戊申': ['원석이 묻힌 산', '다방면에 관심이 많고 재주가 뛰어납니다. 신의를 중요하게 생각합니다. 오지랖이 넓습니다.', '다재다능하여 여러 분야를 넘나드는 능력자입니다.', '재미있고 활동적인 데이트를 선호합니다.', '오지랖이 넓어 남의 일에 참견하다 손해를 봅니다.', '🗿'],
+        '己酉': ['잘 닦인 밭', '꼼꼼하고 정확하며 실수를 용납하지 않습니다. 자기표현이 확실하고 깔끔합니다. 예리합니다.', '완벽주의 성향으로 일처리가 확실한 전문가입니다.', '깐깐하지만 세심하게 챙겨주는 츤데레입니다.', '잔소리가 심하고 예민하여 상대를 피곤하게 합니다.', '🧱'],
+        '庚戌': ['괴강', '의리와 충성심이 강합니다. 한번 믿으면 끝까지 가지만 배신은 용서하지 않습니다. 강직한 성품입니다.', '카리스마가 있고 원칙을 지키는 리더입니다.', '무뚝뚝하지만 내 사람에겐 진국인 사랑을 합니다.', '고집이 너무 세서 소통이 어렵고 독단적입니다.', '🐕'],
+        '辛亥': ['물에 씻긴 보석', '머리가 좋고 감수성이 풍부합니다. 언변이 뛰어나고 돋보이는 것을 좋아합니다. 예민하지만 감각적입니다.', '센스 있고 감각적인 능력이 필요한 일에 능합니다.', '로맨틱하고 분위기 있는 연애를 즐깁니다.', '허영심이 있고 사치스러울 수 있습니다.', '💎'],
+        '壬子': ['깊은 바다', '속을 알 수 없는 깊이가 있고 스케일이 큽니다. 리더십이 강하고 승부욕이 있습니다. 전략가 기질이 있습니다.', '도량이 넓고 사람을 품는 큰 조직의 리더입니다.', '스케일이 크고 정열적인 사랑을 합니다.', '고집이 세고 독단적이라 주변과 마찰이 생깁니다.', '🌊'],
+        '癸丑': ['겨울비', '묵묵히 자신의 길을 갑니다. 내성적이지만 폭발적인 에너지를 숨기고 있습니다. 끈기가 대단합니다.', '끈기와 인내심으로 승부하는 대기만성형입니다.', '신중하고 천천히 스며드는 사랑을 합니다.', '속을 알 수 없고 음침하다는 오해를 받습니다.', '🌧️'],
+        '甲寅': ['곧은 소나무', '주관이 뚜렷하고 고집이 셉니다. 독립심이 강해 남에게 의지하지 않습니다. 타협하지 않는 강인함이 있습니다.', '자신의 철학이 뚜렷한 리더나 전문가입니다.', '자존심이 강하고 대등한 관계를 원합니다.', '독선적이고 남을 무시하는 태도를 보일 수 있습니다.', '🌲'],
+        '乙卯': ['넝쿨나무', '생명력이 강하고 적응력이 좋습니다. 부드러워 보이지만 꺾이지 않는 고집이 있습니다. 생활력이 강합니다.', '어디서든 살아남는 강인한 생명력의 소유자입니다.', '친구 같고 편안한 연애를 선호합니다.', '질투심이 강하고 집착할 수 있습니다.', '🌿'],
+        '丙辰': ['구름 속 태양', '밝고 명랑하며 추진력이 좋습니다. 현실적인 감각과 이상을 동시에 추구합니다. 성격이 시원시원합니다.', '다재다능하고 융통성 있는 능력자입니다.', '화려하고 멋진 연애를 꿈꿉니다.', '감정 기복이 심하고 변덕스러울 때가 있습니다.', '⛅'],
+        '丁巳': ['타오르는 횃불', '열정적이고 사교적이며 인기가 많습니다. 감정 기복이 있지만 매력적입니다. 언변이 화려합니다.', '사람을 끌어당기는 매력이 있는 인기인입니다.', '열정적이고 질투가 심한 뜨거운 사랑을 합니다.', '성격이 급하고 화를 잘 내며 뒤끝이 있습니다.', '🔥'],
+        '戊午': ['화산', '성격이 급하고 정열적입니다. 꼼꼼함은 부족하지만 스케일이 크고 화끈합니다. 행동력이 좋습니다.', '강한 추진력으로 일을 벌이는 사업가입니다.', '직진남녀, 화끈하고 정열적인 연애를 합니다.', '독단적이고 고집이 세서 타협이 안 됩니다.', '🌋'],
+        '己未': ['마른 땅', '참을성이 많고 신중합니다. 보수적이지만 한번 내린 결정은 번복하지 않습니다. 뚝심이 있습니다.', '묵묵히 자리를 지키는 신뢰의 아이콘입니다.', '신중하고 헌신적인 사랑을 합니다.', '융통성이 없고 답답할 정도로 고지식합니다.', '🏜️'],
+        '庚申': ['강력한 도끼', '의리와 결단력의 끝판왕입니다. 독선적일 수 있으나 능력은 확실합니다. 통솔력이 뛰어납니다. 강인합니다.', '혁명가적 기질이 있고 통솔력이 있는 리더입니다.', '의리를 중요시하는 상남자/걸크러쉬 스타일입니다.', '자기주장이 너무 강해 적을 많이 만듭니다.', '⚔️'],
+        '辛酉': ['순금', '자존심이 매우 강하고 예리합니다. 완벽주의 성향으로 타협을 모릅니다. 깔끔하고 깐깐합니다.', '날카로운 분석력과 비평 능력을 가진 전문가입니다.', '눈이 높고 까다로운 연애를 합니다.', '냉정하고 차가워 보여 접근하기 어렵습니다.', '👑'],
+        '壬戌': ['바다 속 산', '직관력이 뛰어나고 재물 운이 좋습니다. 속내를 잘 드러내지 않아 비밀이 많습니다. 통찰력이 있습니다.', '사람의 심리를 꿰뚫어 보는 능력이 있습니다.', '깊이 있고 진지한 만남을 추구합니다.', '속을 알 수 없어 답답함을 주고 음흉해 보입니다.', '🐳'],
+        '癸亥': ['망망대해', '생각이 깊고 포용력이 있습니다. 겉은 유해 보이나 속은 강인한 외유내강입니다. 지혜롭습니다.', '모든 것을 수용하는 바다 같은 마음씨를 가졌습니다.', '상대방을 이해하고 감싸주는 헌신적인 사랑을 합니다.', '생각이 너무 많아 우울해지기 쉽습니다.', '🌊']
+    };
 
-        // [사주 로직 데이터]
-        const GAN = {'甲':0, '乙':0, '丙':1, '丁':1, '戊':2, '己':2, '庚':3, '辛':3, '壬':4, '癸':4}; // 0목 1화 2토 3금 4수
-        const JI = {'子':4, '丑':2, '寅':0, '卯':0, '辰':2, '巳':1, '午':1, '未':2, '申':3, '酉':3, '戌':2, '亥':4};
+    function runAnalysis() {
+        const p1Name = document.getElementById('p1-name').value;
+        const p2Name = document.getElementById('p2-name').value;
+        if(!p1Name || !p2Name) { alert('이름을 입력해주세요!'); return; }
+        
+        nav('p-loading');
 
-        function processMatch() {
-            const p1 = getSajuData('p1');
-            const p2 = getSajuData('p2');
-            
-            if(!p1.name || !p2.name) { alert('이름을 모두 입력해주세요!'); return; }
-
-            nav('p-loading');
-
-            setTimeout(() => {
-                analyzeCompatibility(p1, p2);
-                nav('p-result');
-            }, 2500);
-        }
-
-        function getSajuData(prefix) {
-            const name = document.getElementById(prefix+'-name').value;
-            const y = parseInt(document.getElementById(prefix+'-year').value);
-            const m = parseInt(document.getElementById(prefix+'-month').value);
-            const d = parseInt(document.getElementById(prefix+'-day').value);
-            const t = parseInt(document.getElementById(prefix+'-time').value);
-
-            const solar = Solar.fromYmdHms(y, m, d, t==99?12:t, 0, 0);
+        const getSaju = (id) => {
+            const y = document.getElementById(id+'-year').value;
+            const m = document.getElementById(id+'-month').value;
+            const d = document.getElementById(id+'-day').value;
+            const solar = Solar.fromYmdHms(parseInt(y),parseInt(m),parseInt(d),12,0,0);
             const lunar = solar.getLunar();
-            const bazi = {
-                y: lunar.getYearInGanZhi(),
-                m: lunar.getMonthInGanZhi(),
-                d: lunar.getDayInGanZhi(),
-                t: lunar.getTimeInGanZhi()
-            };
-
-            // 오행 카운트
-            let counts = [0,0,0,0,0]; // 목화토금수
-            let dayGan = bazi.d[0]; 
-            let dayGanIdx = GAN[dayGan];
-
-            [bazi.y, bazi.m, bazi.d, bazi.t].forEach(pillar => {
-                counts[GAN[pillar[0]]]++; 
-                counts[JI[pillar[1]]]++;
+            const dGan = lunar.getDayGan();
+            const dJi = lunar.getDayZhi();
+            const ohaeng = {'목':0, '화':0, '토':0, '금':0, '수':0};
+            [lunar.getYearGan(), lunar.getYearZhi(), lunar.getMonthGan(), lunar.getMonthZhi(), lunar.getDayGan(), lunar.getDayZhi()].forEach(c => {
+                let el = GAN[c];
+                if(!el) el = JI[c] === '수' ? '수' : JI[c] === '화' ? '화' : JI[c] === '목' ? '목' : JI[c] === '금' ? '금' : '토';
+                ohaeng[el]++;
             });
+            return { gan: dGan, ji: dJi, ilju: dGan+dJi, ohaeng: ohaeng };
+        };
+        
+        const s1 = getSaju('p1');
+        const s2 = getSaju('p2');
+        const d1 = DB_60[s1.ilju];
+        const d2 = DB_60[s2.ilju];
 
-            // 5가지 스탯 계산
-            // 1. 재미: 식상(표현) + 화(발산)
-            // 2. 멘탈: 인성(생각) + 수(지혜) + 토(중용)
-            // 3. 고집: 비겁(자아) + 금(단단함)
-            // 4. 질투: 재성(소유욕) + 관성(통제)
-            // 5. 애교: 식상 + 수(유연함) + 도화글자(자오묘유 보너스)
+        setTimeout(() => {
+            document.getElementById('p1-disp-name').innerText = p1Name;
+            document.getElementById('p2-disp-name').innerText = p2Name;
+            document.getElementById('p1-ilju-txt').innerText = HAN[s1.gan]+HAN[s1.ji]+'일주';
+            document.getElementById('p2-ilju-txt').innerText = HAN[s2.gan]+HAN[s2.ji]+'일주';
+            document.getElementById('p1-emoji').innerText = d1[5];
+            document.getElementById('p2-emoji').innerText = d2[5];
+            document.getElementById('p1-title').innerText = d1[0];
+            document.getElementById('p2-title').innerText = d2[0];
 
-            const siksangIdx = (dayGanIdx + 1) % 5;
-            const jaeseongIdx = (dayGanIdx + 2) % 5;
-            const kwanIdx = (dayGanIdx + 3) % 5;
-            const insungIdx = (dayGanIdx + 4) % 5;
-            const bigeobIdx = dayGanIdx;
+            renderVS(p1Name, p2Name, s1.ohaeng, s2.ohaeng);
 
-            let s_fun = (counts[siksangIdx]*15) + (counts[1]*10);
-            let s_mat = (counts[insungIdx]*15) + (counts[4]*5) + (counts[2]*5);
-            let s_stub = (counts[bigeobIdx]*20) + (counts[3]*10);
-            let s_obs = (counts[jaeseongIdx]*15) + (counts[kwanIdx]*10);
-            
-            // 도화살 보너스
-            let peach = 0;
-            [bazi.y[1], bazi.m[1], bazi.d[1], bazi.t[1]].forEach(c => { if('子午卯酉'.includes(c)) peach++; });
-            let s_cute = (counts[siksangIdx]*10) + (peach*15) + (counts[4]*5);
+            document.getElementById('dc-p1-name').innerText = p1Name;
+            document.getElementById('dc-p1-basic').innerText = d1[1];
+            document.getElementById('dc-p1-social').innerText = d1[2];
+            document.getElementById('dc-p1-love').innerText = d1[3];
+            document.getElementById('dc-p1-bad').innerText = d1[4];
 
-            return { name, dayGan, dayGanIdx, dayJi: bazi.d[1], counts, stats: [s_fun, s_mat, s_stub, s_obs, s_cute] };
+            document.getElementById('dc-p2-name').innerText = p2Name;
+            document.getElementById('dc-p2-basic').innerText = d2[1];
+            document.getElementById('dc-p2-social').innerText = d2[2];
+            document.getElementById('dc-p2-love').innerText = d2[3];
+            document.getElementById('dc-p2-bad').innerText = d2[4];
+
+            const hardcoreReport = generateDeepAnalysis(p1Name, p2Name, s1, s2, d1, d2);
+            document.getElementById('txt-hardcore').innerHTML = hardcoreReport;
+
+            const sim = getSimulation(s1, s2, p1Name, p2Name, d1, d2);
+            document.getElementById('final-score').innerText = sim.score + "점";
+            document.getElementById('final-cmt').innerText = sim.title;
+            document.getElementById('sim-lover').innerHTML = sim.love;
+            document.getElementById('sim-friend').innerHTML = sim.friend;
+            document.getElementById('sim-family').innerHTML = sim.family;
+
+            document.getElementById('final-verdict-main').innerText = getFinalVerdict(sim.score, s1, s2);
+
+            nav('p-result');
+        }, 3000);
+    }
+
+    function generateDeepAnalysis(n1, n2, s1, s2, d1, d2) {
+        let txt = "";
+        const g1 = s1.gan; const g2 = s2.gan;
+        const j1 = s1.ji; const j2 = s2.ji; 
+
+        // 1. 천간 성격 케미 (100가지 케이스, 용어 중립화 완료)
+        if (g1 === '甲') {
+            if (g2 === '甲') txt += "두 분 다 자존심 하나는 끝내주게 셉니다. '내가 맞고 너는 틀리다'는 태도가 기본적으로 깔려 있어서 사소한 의견 차이가 자존심 싸움으로 번지기 쉽습니다. 하지만 서로의 추진력과 배포는 누구보다 잘 알기에, 경쟁하면서도 상대를 '멋있는 사람'이라고 인정하게 됩니다. 굽히지 않는 두 리더가 만난 격이라 시끄럽지만 발전적인 관계입니다.";
+            else if (g2 === '乙') txt += "당신은 굵직한 계획을 세우는 스타일이고, 상대방은 유연하게 처세하는 스타일입니다. 상대방이 당신에게 많이 의지하고 기대려고 하는데, 당신은 처음엔 이걸 받아주다가도 나중엔 '왜 혼자서 못 하냐'며 답답해할 수 있습니다. 당신이 든든한 버팀목이 되어줘야만 유지되는 관계입니다.";
+            else if (g2 === '丙') txt += "무뚝뚝한 당신을 상대방이 밝게 만들어줍니다. 당신이 머릿속으로만 생각하던 걸 상대방은 행동으로 바로 옮깁니다. 당신은 상대방의 그런 거침없는 표현력을 보며 대리 만족을 느낍니다. 당신이 판을 깔아주면 상대방이 그 위에서 춤추는 아주 신나는 콤비입니다.";
+            else if (g2 === '丁') txt += "당신은 무던한 편인데 상대방은 굉장히 섬세하고 예민합니다. 당신이 무심코 던진 말에 상대방은 상처받고 꽁해 있을 수 있습니다. 당신이 상대방을 위해 아낌없이 지원하는 관계이지만, 상대방의 감정 기복을 맞춰주다 보면 '내가 어디까지 받아줘야 하나' 싶어 지칠 수도 있습니다.";
+            else if (g2 === '戊') txt += "서로 고집이 보통이 아닙니다. 당신은 위로 뻗어가려 하고 상대방은 자리를 지키려 하니, 움직임이 다릅니다. 당신이 상대방을 리드하려 들 수 있는데, 상대방은 겉으론 져주는 척해도 속으론 꿈쩍도 안 합니다. 현실적인 이익을 따질 때는 기가 막히게 잘 통하는 비즈니스 파트너 같습니다.";
+            else if (g2 === '己') txt += "당신이 상대방을 보면 왠지 모르게 마음이 약해지고 책임감을 느끼게 됩니다. 상대방도 당신을 믿고 잘 따릅니다. 당신이 리드하고 상대방이 묵묵히 서포트하는, 아주 안정적이고 보수적인 파트너의 모습입니다. 서로에게 집착이 좀 심할 수 있지만 그만큼 끈끈합니다.";
+            else if (g2 === '庚') txt += "만나면 스트레스받는데 이상하게 끌리는 관계입니다. 상대방은 당신의 단점을 콕콕 찝어내고 통제하려 듭니다. 당신은 그게 싫으면서도, 상대방의 말이 틀린 게 없어서 따르게 됩니다. 당신을 긴장하게 만들고 성장시키는, 호랑이 선생님 같은 사람입니다.";
+            else if (g2 === '辛') txt += "당신의 자존심을 상대방이 예민하게 긁어댑니다. 상대방은 꼼꼼하고 까칠한 편이라, 당신의 대범하고 털털한 성격을 '대충대충 한다'고 지적할 수 있습니다. 서로 성격 차이가 꽤 커서, 당신이 상대방의 예민함을 얼마나 참아주느냐가 관건입니다.";
+            else if (g2 === '壬') txt += "상대방은 생각이 깊고 아는 게 많아 당신에게 좋은 조언자가 됩니다. 당신이 막힐 때마다 상대방이 길을 터주는 느낌을 받습니다. 당신은 상대방에게서 보호자 같은 편안함을 느끼며 정신적으로 깊이 의존하게 됩니다. 대화가 잘 통하는 지적인 파트너입니다.";
+            else if (g2 === '癸') txt += "상대방의 세심한 배려가 당신에겐 가끔 간섭처럼 느껴집니다. 당신은 좀 내버려 뒀으면 좋겠는데, 상대방은 계속 챙겨주려 합니다. 그게 고맙긴 하지만 부담스러울 때가 있습니다. 적당한 거리를 유지하면 아주 좋은 관계입니다.";
+        } else if (g1 === '乙') {
+            if (g2 === '甲') txt += "당신에게 상대방은 든든한 '빽'입니다. 혼자 해결하기 힘든 일도 상대방과 함께하면 쉽게 풀립니다. 당신이 상대방에게 기대고 의지하면 상대방은 기꺼이 당신을 보호해줍니다. 당신이 실속을 챙기기에 아주 좋은 최고의 파트너입니다.";
+            else if (g2 === '乙') txt += "취향도 비슷하고 말도 잘 통하는데, 묘하게 서로 질투합니다. '쟤는 나보다 이게 낫네?' 하면서 은근히 견제하는 심리가 있습니다. 친구처럼 지내기엔 너무 좋지만, 같이 일을 도모하면 생산성이 떨어지고 수다만 떨다 끝날 수 있습니다.";
+            else if (g2 === '丙') txt += "상대방은 당신을 돋보이게 만들어주는 조명 같습니다. 당신이 가진 매력을 상대방이 밖으로 끌어내 줍니다. 함께 있으면 즐겁고 웃을 일이 많습니다. 당신은 상대방 덕분에 자신감을 얻고, 상대방은 당신을 보며 즐거워하는 환상의 짝꿍입니다.";
+            else if (g2 === '丁') txt += "당신이 아이디어를 내면 상대방이 그걸로 불을 지피는 격입니다. 열정이 넘치는 관계지만, 너무 뜨거워지면 당신이 타버릴 수 있습니다. 상대방의 감정이 격해질 때 당신이 휘말리지 않도록 중심을 잘 잡아야 합니다.";
+            else if (g2 === '戊') txt += "상대방은 스케일이 크고 묵직한데, 당신은 섬세하고 현실적입니다. 당신이 상대방을 쥐락펴락할 수 있는 관계입니다. 겉보기엔 상대방이 이기는 것 같아도, 결국엔 당신이 원하는 대로 상황이 흘러갑니다. 재물운이 따르는 실리적인 만남입니다.";
+            else if (g2 === '己') txt += "당신이 뿌리내리기에 딱 좋은 편안한 사람입니다. 상대방은 당신을 있는 그대로 받아줍니다. 당신이 무엇을 하든 지지해주는 안정적인 관계라, 함께 있으면 마음이 놓이고 계산기를 두드려봐도 이득인 관계입니다.";
+            else if (g2 === '庚') txt += "평소엔 자기주장이 강한 당신도 이 사람 앞에서는 순한 양이 됩니다. 상대방의 카리스마에 당신이 매료되는 형국입니다. 상대방이 하자는 대로 따라가게 되며, 그게 싫지 않고 오히려 듬직하게 느껴집니다. 떼려야 뗄 수 없는 강한 인연입니다.";
+            else if (g2 === '辛') txt += "상대방의 말 한마디가 당신 가슴에 비수처럼 꽂힐 때가 있습니다. 둘 다 예민한 편이라 한번 틀어지면 서로에게 상처 주는 말을 쏟아냅니다. 서로의 신경을 건드리지 않도록 말조심하는 게 이 관계의 핵심입니다.";
+            else if (g2 === '壬') txt += "상대방은 속을 알 수 없는 깊은 물 같아서, 당신이 종잡을 수 없어 불안해할 수 있습니다. 상대방의 생각이 너무 많아 당신까지 복잡해집니다. 과도한 관심이 오히려 당신을 둥둥 떠다니게 만들어 현실 감각을 잃게 할 수 있습니다.";
+            else if (g2 === '癸') txt += "상대방의 배려는 보슬비처럼 잔잔해서 당신을 편안하게 합니다. 당신이 힘들 때 조용히 다가와서 위로해주는 사람입니다. 정신적으로 아주 잘 맞고, 당신은 상대방에게서 맑고 순수한 에너지를 얻습니다.";
+        } else if (g1 === '丙') {
+            if (g2 === '甲') txt += "상대방이 당신의 열정에 기름을 부어주는 격입니다. 당신이 무언가 하려고 하면 상대방이 적극적으로 지지하고 도와줍니다. 당신은 상대방 덕분에 지치지 않고 에너지를 뿜어낼 수 있습니다. 서로 윈윈하는 발전적인 관계입니다.";
+            else if (g2 === '乙') txt += "당신은 상대방을 보면 뭐라도 하나 더 챙겨주고 싶고 예뻐 보입니다. 당신의 보호 본능을 자극하는 사람입니다. 당신이 리드하고 상대방은 당신만 바라보는 구조라, 당신의 어깨가 좀 무거울 수 있지만 기분은 좋습니다.";
+            else if (g2 === '丙') txt += "주인공이 두 명이라 서로 스포트라이트를 받으려고 합니다. 처음엔 화끈하게 잘 맞다가도, 나중엔 '왜 나보다 쟤가 더 돋보이지?' 하며 기싸움을 할 수 있습니다. 서로 한 발짝씩 양보하지 않으면 매일이 전쟁일 수 있습니다.";
+            else if (g2 === '丁') txt += "당신은 화려하고 겉으로 드러나는 걸 좋아하는데, 상대방은 은근하고 실속을 챙깁니다. 겉으로는 당신이 더 잘난 것 같지만, 실속은 상대방이 다 챙기고 있을 수 있습니다. 낮과 밤처럼 서로 다른 매력이 있어 상호 보완이 됩니다.";
+            else if (g2 === '戊') txt += "당신의 에너지를 상대방이 묵묵히 다 받아줍니다. 당신이 아무리 날뛰어도 상대방은 꿈쩍 않고 그 자리에 있어 줍니다. 맘껏 뛰어놀 수 있는 넓은 운동장을 만난 격이라, 당신은 이 사람과 함께라면 큰 꿈을 꿀 수 있습니다.";
+            else if (g2 === '己') txt += "당신의 밝은 기운을 상대방이 조금 흐리게 할 수 있습니다. 상대방의 우유부단함이나 의심이 당신을 답답하게 만듭니다. 당신은 직설적인데 상대방은 돌려 말하니 대화할 때 속이 터질 수 있습니다.";
+            else if (g2 === '庚') txt += "당신이 상대방을 다루고 통제하는 관계입니다. 상대방은 깐깐해 보이지만 당신 앞에서는 의외로 말을 잘 듣습니다. 싸우면서 정이 드는 스타일이고, 함께 일하면 결과물을 확실하게 만들어내는 능력자 콤비입니다.";
+            else if (g2 === '辛') txt += "당신은 원래 강한 사람인데, 이 사람 앞에서는 꼼짝을 못 하고 녹아내립니다. 첫눈에 반하거나 강렬하게 끌릴 확률이 높습니다. 상대방이 뭘 해도 좋아 보여서 당신이 다 맞춰주게 되는, 서로에게 푹 빠진 관계입니다.";
+            else if (g2 === '壬') txt += "서로 다르지만 너무나 아름답게 어우러집니다. 당신의 열정과 상대방의 냉철함이 만나 완벽한 밸런스를 이룹니다. 서로가 서로를 빛나게 해주는 귀한 인연이며, 남들이 보기에도 참 잘 어울리는 한 쌍입니다.";
+            else if (g2 === '癸') txt += "상대방은 당신의 기분을 가라앉게 만듭니다. 당신은 신나서 이야기하는데 상대방이 찬물을 끼얹는 말을 할 수 있습니다. 상대방의 감정적인 면이 당신에게는 스트레스가 되어, 피하고 싶을 때가 있습니다.";
+        } else if (g1 === '丁') {
+            if (g2 === '甲') txt += "상대방은 당신에게 끊임없이 에너지를 주는 보물 같은 사람입니다. 당신이 지칠 때마다 상대방이 멘탈을 잡아주고 힘을 줍니다. 배울 점이 많고 존경할 수 있는 상대를 만난 셈입니다.";
+            else if (g2 === '乙') txt += "상대방은 돕겠다고 나서는데 당신에겐 별 도움이 안 되고 오히려 귀찮습니다. 잔소리가 많거나 사소한 걸로 당신을 피곤하게 할 수 있습니다. 의도는 좋으니 화낼 수도 없고, 참자니 답답한 애매한 상황이 연출됩니다.";
+            else if (g2 === '丙') txt += "상대방의 기가 너무 세서 당신이 주눅 들 수 있습니다. 당신도 충분히 매력적인데 상대방 옆에만 서면 왠지 작아지는 기분이 듭니다. 하지만 큰일이 터졌을 땐 상대방이 당신의 든든한 방패가 되어줄 것입니다.";
+            else if (g2 === '丁') txt += "말하지 않아도 눈빛만 보면 통하는 소울메이트입니다. 서로의 외로움과 예민함을 누구보다 잘 이해합니다. 둘이 뭉치면 시너지 효과가 나서 세상을 환하게 비출 수 있습니다. 감성 코드가 아주 잘 맞습니다.";
+            else if (g2 === '戊') txt += "당신의 재능이나 끼를 상대방이 현실로 만들어줍니다. 당신은 표현하고 싶어 하고 상대방은 그걸 받아줄 그릇이 됩니다. 다만 당신이 상대방을 위해 너무 많은 에너지를 쓰다 보니 기력이 쇠할 수 있습니다.";
+            else if (g2 === '己') txt += "당신이 아무리 잘해줘도 상대방은 고마운 줄 모르고 당연하게 여길 수 있습니다. 헌신하다가 상처받을 수 있으니, 무조건 퍼주기보다는 당신의 실속부터 챙겨야 합니다.";
+            else if (g2 === '庚') txt += "당신이 상대방을 올바른 길로 이끌어주는 관계입니다. 상대방은 다소 거칠지만 당신의 조언을 잘 받아들입니다. 당신의 섬세함으로 상대방을 다듬어주니, 서로에게 발전이 있는 생산적인 사이입니다.";
+            else if (g2 === '辛') txt += "당신은 다가가려 하는데 상대방은 부담스러워합니다. 당신의 따뜻함이 상대방에겐 너무 뜨거워서 상처가 될 수 있습니다. 상대방이 예민하게 굴어도 너무 서운해하지 말고 조금만 거리를 두는 센스가 필요합니다.";
+            else if (g2 === '壬') txt += "만나자마자 강렬하게 끌리는, 본능적으로 통하는 관계입니다. '성격적 케미'가 매우 좋아 서로에게 깊이 빠져듭니다. 너무 좋아서 집착하게 되거나 감정적으로 얽힐 수 있으니, 쿨한 태도가 필요합니다.";
+            else if (g2 === '癸') txt += "상대방은 당신과 완전히 반대 성향입니다. 당신은 감성적인데 상대방은 냉정하거나, 당신의 불같은 성격을 상대방이 확 꺼버립니다. 물과 기름처럼 섞이기 힘들어 서로 스트레스를 많이 받을 수 있습니다.";
+        } else if (g1 === '戊') {
+            if (g2 === '甲') txt += "상대방이 당신을 좀 통제하고 억압하려 들 수 있습니다. 당신은 답답함을 느끼지만, 사실 상대방 덕분에 당신이 긴장하고 자기 관리를 하게 됩니다. 잔소리꾼 선생님과 학생 같은 애증의 관계입니다.";
+            else if (g2 === '乙') txt += "상대방이 당신을 귀찮게 굽니다. 사소한 걸로 긁어대거나 투정을 부리는데, 당신은 '그래 너는 짖어라 나는 내 갈 길 간다' 하는 식으로 무던하게 받아넘깁니다. 당신의 포용력이 빛을 발하는 관계입니다.";
+            else if (g2 === '丙') txt += "상대방이 당신의 기를 살려줍니다. 어디 가서 꿀리지 않게 당신을 치켜세워주고 칭찬해줍니다. 당신은 상대방 덕분에 자존감이 올라가고, 든든한 내 편이 생겼다는 안도감을 느낍니다.";
+            else if (g2 === '丁') txt += "무뚝뚝한 당신의 마음을 상대방이 세심하게 녹여줍니다. 당신은 표현을 잘 안 하는데 상대방이 알아서 챙겨주니 편안합니다. 정신적으로 위로가 되고 힐링이 되는 따뜻한 만남입니다.";
+            else if (g2 === '戊') txt += "산 넘어 산입니다. 둘 다 고집이 황소 고집이라 타협이 안 됩니다. 한번 싸우면 며칠이고 말을 안 할 수도 있습니다. 하지만 의리는 최고라, 한번 믿으면 끝까지 가는 묵직한 관계입니다.";
+            else if (g2 === '己') txt += "서로 다른 듯하면서도 본질은 비슷해서 잘 통합니다. 당신은 대범하고 상대방은 꼼꼼해서 서로의 부족한 점을 잘 채워줍니다. 큰 갈등 없이 무난하고 편안하게 오래갈 수 있는 친구 같은 사이입니다.";
+            else if (g2 === '庚') txt += "당신이 상대방을 도와줘야 하는 관계입니다. 상대방은 일을 벌이고 당신은 수습하거나 지원해주는 역할을 합니다. 당신의 능력을 발휘할 곳이 생기는 셈이니 나쁘지는 않지만, 몸이 좀 고달플 수 있습니다.";
+            else if (g2 === '辛') txt += "당신은 상대방을 품어주고 보호해주고 싶어 합니다. 상대방은 당신의 품 안에서 안정을 찾습니다. 하지만 상대방이 가끔 당신을 답답해하며 톡 쏘는 말을 할 때가 있는데, 그때 서운함을 느낄 수 있습니다.";
+            else if (g2 === '壬') txt += "당신이 주도권을 꽉 쥐는 관계입니다. 상대방은 융통성 있게 넘어가려 하지만 당신은 원칙대로 통제하려 합니다. 재물운이 따르는 관계이며, 당신이 리드하는 대로 관계가 안정적으로 흘러갑니다.";
+            else if (g2 === '癸') txt += "나이 차이가 많이 나거나 환경이 전혀 다른데도 강하게 끌립니다. 겉보기에 당신은 무뚝뚝해 보이지만 상대방 앞에서는 다정다감한 사람이 됩니다. 겉모습과 달리 속정은 그 누구보다 깊은 찰떡 궁합입니다.";
+        } else if (g1 === '己') {
+            if (g2 === '甲') txt += "당신은 상대방을 믿고 의지하며, 상대방은 당신을 책임지려 합니다. 가장 이상적이고 안정적인 파트너의 모습에 가깝습니다. 당신이 상대방에게 좀 맞춰주는 편이지만, 그게 억울하지 않고 오히려 마음이 편합니다.";
+            else if (g2 === '乙') txt += "당신이 헌신하고 희생해야 하는 관계입니다. 상대방은 당신의 배려를 당연하게 생각하고 자꾸 무리한 요구를 할 수 있습니다. 당신이 참고 참다가 병이 날 수 있으니, 할 말은 하고 살아야 합니다.";
+            else if (g2 === '丙') txt += "상대방의 밝은 에너지가 당신의 의심이나 우울함을 날려버립니다. 당신은 생각이 많은 편인데 상대방은 단순 명쾌해서, 같이 있으면 머리가 맑아지는 기분입니다. 당신에게 큰 혜택을 주는 고마운 사람입니다.";
+            else if (g2 === '丁') txt += "서로 사소한 것까지 챙겨주는 아기자기한 콤비입니다. 상대방의 조언이 당신에게 실질적인 도움이 됩니다. 따뜻하고 정이 넘치는 관계라, 같이 있으면 마음이 훈훈해집니다.";
+            else if (g2 === '戊') txt += "당신은 상대방을 든든한 배경으로 생각하고 의지합니다. 상대방은 묵묵히 당신의 곁을 지켜줍니다. 때로는 상대방의 그늘에 가려 당신의 존재감이 희미해질 수 있지만, 보호받는 느낌은 확실합니다.";
+            else if (g2 === '己') txt += "성격이 비슷해서 편안하긴 한데, 너무 똑같아서 재미가 없을 수도 있습니다. 특별한 트러블은 없지만 흥미도 빨리 식을 수 있습니다. 권태기를 조심해야 하는 '오래된 친구' 같은 스타일입니다.";
+            else if (g2 === '庚') txt += "당신은 상대방을 챙겨주느라 바쁩니다. 밥은 먹었는지, 아픈 데는 없는지 쫓아다니며 챙깁니다. 상대방은 좀 무뚝뚝해서 고맙다는 표현을 잘 안 할 수 있어 당신이 서운해할 수 있습니다.";
+            else if (g2 === '辛') txt += "당신의 노력으로 상대방이 빛을 보는 형국입니다. 당신은 상대방을 아주 소중하게 다루고 아낍니다. 상대방은 당신에게서 실속을 챙깁니다. 당신이 좀 손해 보는 것 같지만, 아끼니까 다 퍼주는 관계입니다.";
+            else if (g2 === '壬') txt += "같이 있으면 자꾸 일이 꼬이고 머리가 복잡해질 수 있습니다. 당신은 실속을 챙기려는데 상대방은 뜬구름 잡는 소리를 하거나, 금전적인 문제로 엮일 수 있습니다. 서로의 영역을 확실히 하지 않으면 흙탕물 싸움이 됩니다.";
+            else if (g2 === '癸') txt += "상대방은 당신에게 꼭 필요한 존재입니다. 마치 가뭄에 단비처럼 당신의 갈증을 해소해줍니다. 서로에게 이득이 되는 실리적인 관계이며, 당신이 원하는 것을 상대방이 가지고 있습니다.";
+        } else if (g1 === '庚') {
+            if (g2 === '甲') txt += "당신이 이 관계의 주도권을 잡습니다. 당신의 결단력 있는 모습에 상대방은 의지하게 됩니다. 당신이 하자고 하는 대로 상대방이 따라오게 되어 있습니다. 하지만 너무 강압적으로 하면 상대방이 튕겨 나갈 수 있으니 부드러움이 필요합니다.";
+            else if (g2 === '乙') txt += "평소엔 강한 당신도 이 사람 앞에서는 순해집니다. 겉으로는 당신이 이기는 것 같지만, 실제로는 상대방에게 다 맞춰주고 있습니다. 상대방의 유연함에 당신이 완전히 녹아내린 상태입니다.";
+            else if (g2 === '丙') txt += "서로 만만치 않은 성격이라 부딪힘이 있습니다. 하지만 상대방이 당신의 능력을 알아보고 키워줍니다. 당신을 힘들게 굴리지만 결국엔 성공하게 만드는, 스파르타식 코치 같은 파트너입니다.";
+            else if (g2 === '丁') txt += "상대방의 섬세한 지적이 당신을 더 완벽하게 만듭니다. 당신은 대충 넘어가고 싶은데 상대방은 디테일하게 따고 듭니다. 피곤하긴 해도 상대방 말이 다 맞아서 반박할 수가 없습니다. 당신을 세련되게 다듬어주는 관계입니다.";
+            else if (g2 === '戊') txt += "상대방의 챙김이 과해서 당신은 좀 답답합니다. '밥 먹어라, 옷 입어라' 잔소리하는 보호자 같습니다. 챙김 받는 건 좋지만 당신의 자유가 구속될 수 있으니, 독립심을 잃지 않도록 주의해야 합니다.";
+            else if (g2 === '己') txt += "상대방의 우유부단함이 당신의 결단력을 흐리게 합니다. 당신은 빨리 결정하고 싶은데 상대방이 자꾸 망설여서 속이 터집니다. 서로 템포가 안 맞아서 답답함을 느낄 수 있는 관계입니다.";
+            else if (g2 === '庚') txt += "만나면 시끄럽습니다. 둘 다 자존심이 세고 지기 싫어해서 한번 싸우면 끝장을 봅니다. 하지만 뒤끝은 없어서 싸우고 나서 쿨하게 풉니다. 의기투합하면 무서울 게 없는 강력한 동지이자 라이벌입니다.";
+            else if (g2 === '辛') txt += "당신이 상대방의 보디가드가 되어줍니다. 상대방은 예민하고 까칠한데, 당신이 험한 일을 대신 막아줍니다. 상대방은 겉으론 틱틱대도 속으론 당신을 믿고 의지합니다. 든든한 형/누나 같은 역할을 하게 됩니다.";
+            else if (g2 === '壬') txt += "당신의 예리함과 상대방의 유연함이 만나 시너지가 폭발합니다. 말이 정말 잘 통하고, 같이 있으면 머리가 팍팍 돌아갑니다. 서로의 재능을 끌어올려 주는 아주 총명하고 발전적인 파트너입니다.";
+            else if (g2 === '癸') txt += "당신은 챙겨준다고 하는데 상대방은 상처를 받습니다. 반대로 상대방 때문에 당신의 기운이 쭉 빠질 수 있습니다. 당신의 에너지가 소모되는 관계라, 만나고 나면 왠지 모르게 피곤함을 느낄 수 있습니다.";
+        } else if (g1 === '辛') {
+            if (g2 === '甲') txt += "당신은 꼼꼼하고 상대방은 털털합니다. 당신이 상대방을 통제하고 관리하려 드는데, 상대방은 덩치가 커서 잘 안 잡힙니다. 당신이 잔소리하다가 지칠 수 있습니다. 상대방의 대범함을 인정해주면 재물운이 따릅니다.";
+            else if (g2 === '乙') txt += "당신이 확실하게 주도권을 쥡니다. 당신의 말 한마디에 상대방은 꼼짝 못 합니다. 당신이 상대방을 다듬어주고 관리해주는 관계입니다. 상대방은 당신을 좀 무서워하면서도 존경합니다.";
+            else if (g2 === '丙') txt += "당신이 가장 빛나는 순간은 이 사람을 만났을 때입니다. 권위적인 상대방이 당신만 보면 무장해제 되어 끔찍이 아껴줍니다. 서로 첫눈에 반하거나 강하게 끌리며, 아주 이상적인 관계를 맺게 됩니다.";
+            else if (g2 === '丁') txt += "상대방이 당신을 너무 힘들게 합니다. 상대방의 존재 자체가 당신에겐 스트레스일 수 있습니다. 예민한 당신을 더 예민하게 만드는 사람이라, 같이 있으면 신경이 곤두섭니다. 적당한 거리가 필수입니다.";
+            else if (g2 === '戊') txt += "상대방의 관심이 너무 과해서 당신을 질식하게 합니다. 흙더미에 묻힌 보석 꼴이 될 수 있습니다. 당신의 매력이 가려질 수 있으니, 자기주장을 확실히 하고 휘둘리지 말아야 합니다.";
+            else if (g2 === '己') txt += "상대방은 도와준다고 하는데 결과적으로 당신에게 민폐가 될 수 있습니다. 생각이 서로 달라서 오해가 자주 쌓입니다. 당신은 깔끔한 걸 좋아하는데 상대방은 털털해서 생활 습관으로 부딪힐 수 있습니다.";
+            else if (g2 === '庚') txt += "당신이 감당하기 힘든 궂은일을 상대방이 대신 처리해줍니다. 겉으로는 경쟁자 같아 보이지만, 실질적으로는 당신의 든든한 배경이 되어줍니다. 힘들 때 기대면 큰 힘이 되는 사람입니다.";
+            else if (g2 === '辛') txt += "거울을 보는 것처럼 똑같아서 문제입니다. 서로의 단점이 너무 잘 보여서 서로 지적질하다 싸웁니다. '너나 잘해'라는 말이 목구멍까지 차오릅니다. 서로 간섭하지 말고 각자의 영역을 존중해줘야 평화롭습니다.";
+            else if (g2 === '壬') txt += "당신이 가진 재능을 상대방이 200% 발휘하게 해줍니다. 상대방을 만나면 당신이 더 예뻐지고 멋있어집니다. 상대방은 당신을 빛나게 해주는 최고의 파트너입니다. 아주 세련된 관계입니다.";
+            else if (g2 === '癸') txt += "당신의 날카로움이 무뎌집니다. 감성적인 교류는 좋지만, 현실적인 부분에서는 손해를 볼 수 있습니다. 같이 있으면 왠지 모르게 센치해지고 우울해질 수 있으니, 밝은 분위기를 유지해야 합니다.";
+        } else if (g1 === '壬') {
+            if (g2 === '甲') txt += "당신의 지혜와 노하우를 상대방에게 전수해주는 관계입니다. 당신은 베푸는 즐거움을 느끼고, 상대방은 당신 덕분에 무럭무럭 성장합니다. 상대방이 잘 되는 게 곧 당신의 기쁨이 되는, 헌신적이고 긍정적인 사이입니다.";
+            else if (g2 === '乙') txt += "당신은 큰 강물인데 상대방은 작은 꽃잎이라, 당신의 관심이 너무 과하면 상대방이 떠내려갑니다. 당신은 좋아서 하는 행동이 상대방에겐 부담과 공포가 될 수 있습니다. 힘 조절이 필요한 관계입니다.";
+            else if (g2 === '丙') txt += "강물 위에 태양이 비치듯 서로를 돋보이게 합니다. 성향은 정반대인데 기가 막히게 잘 어울립니다. 같이 있으면 시너지가 나서 재물도 모이고 사회적으로도 성공할 수 있는 환상의 짝꿍입니다.";
+            else if (g2 === '丁') txt += "만나자마자 강렬하게 끌리는 묘한 매력이 있습니다. 서로에게 '성격적 케미'가 아주 강하게 작용합니다. 너무 감성적으로 흘러서 이성적인 판단이 흐려질 수 있으니, 공과 사를 구분하는 게 좋습니다.";
+            else if (g2 === '戊') txt += "자유분방한 당신을 상대방이 꽉 잡아줍니다. 당신은 답답해하면서도 상대방의 통제 안에서 안정감을 느낍니다. 방황하던 당신이 정착할 수 있게 도와주는, 듬직한 닻 같은 사람입니다.";
+            else if (g2 === '己') txt += "섞이면 섞일수록 머리가 아파집니다. 맑은 물이 흙탕물이 되는 격이라, 관계가 불투명하고 서로에게 실망할 일이 생깁니다. 금전 문제나 복잡한 일로 엮일 수 있으니 깔끔한 관계 정리가 필요합니다.";
+            else if (g2 === '庚') txt += "상대방이 당신에게 끊임없이 에너지를 공급해줍니다. 당신이 지칠 틈이 없게 서포트해주는 든든한 지원군입니다. 당신의 능력에 날개를 달아주는 격이라, 함께하면 두려울 게 없습니다.";
+            else if (g2 === '辛') txt += "당신이 상대방을 닦아주고 빛내주는 관계입니다. 상대방은 당신에게 고마움을 느끼고, 당신은 상대방의 가치를 알아봐 줍니다. 서로 대화가 잘 통하고 세련된 취향을 공유하는 멋진 파트너입니다.";
+            else if (g2 === '壬') txt += "스케일이 큰 두 사람이 만났습니다. 통하는 게 많아서 좋긴 한데, 한번 싸우면 쓰나미가 몰려오는 것처럼 무섭습니다. 둘 다 고집이 세고 물러서지 않아서, 한쪽이 져주지 않으면 큰 싸움이 됩니다.";
+            else if (g2 === '癸') txt += "겉으로는 친구 같지만 속으로는 경쟁심이 있습니다. 상대방이 당신의 영역을 침범할까 봐 은근히 신경 쓰입니다. 당신이 형님/누님 노릇을 하며 주도권을 잡는 게 마음 편합니다.";
+        } else if (g1 === '癸') {
+            if (g2 === '甲') txt += "당신은 섬세하게 챙겨주는데 상대방은 좀 무심합니다. 당신의 헌신으로 상대방이 성장하지만, 상대방은 그걸 당연하게 생각할 수 있습니다. 서운함이 쌓이지 않으려면 '나한테도 잘해라'고 표현해야 합니다.";
+            else if (g2 === '乙') txt += "당신은 상대방에게 생명수 같은 존재입니다. 당신의 지원으로 상대방이 활짝 피어납니다. 아기자기하고 예쁜 관계를 맺을 수 있으며, 당신이 챙겨주는 만큼 상대방도 당신을 따릅니다.";
+            else if (g2 === '丙') txt += "당신의 감정 기복이 상대방의 밝은 기운을 가릴 수 있습니다. 상대방은 화끈한데 당신은 좀 소심해서 템포가 안 맞을 수 있습니다. 하지만 너무 들뜨는 상대방을 당신이 차분하게 진정시켜주는 역할도 합니다.";
+            else if (g2 === '丁') txt += "성격이 정반대라 서로 이해하기 힘듭니다. 당신은 차분한데 상대방은 급하고, 당신은 속으로 삭히는데 상대방은 표출합니다. 의도치 않게 서로에게 상처를 줄 수 있으니 조심스러운 접근이 필요합니다.";
+            else if (g2 === '戊') txt += "나이 차이가 많거나 성격이 다른데도 운명처럼 끌립니다. 당신은 상대방의 듬직함에 반하고, 상대방은 당신의 다정함에 녹습니다. 겉보기엔 안 어울려 보여도 속정은 그 누구보다 깊은 찰떡 궁합입니다.";
+            else if (g2 === '己') txt += "상대방은 당신을 간절하게 원합니다. 당신이 있어야 상대방이 윤택해집니다. 서로에게 실질적인 도움이 되는 관계이며, 당신이 주도권을 쥐고 상대를 리드하는 듯한 느낌을 받을 수 있습니다.";
+            else if (g2 === '庚') txt += "상대방의 무심한 듯한 챙김이 당신에겐 큰 감동으로 다가옵니다. 당신은 상대방에게 많이 의존하게 되고, 상대방은 츤데레처럼 당신을 챙겨줍니다. 지지받는 느낌을 충분히 받을 수 있습니다.";
+            else if (g2 === '辛') txt += "당신은 섬세하고 상대방은 예민해서 코드가 잘 맞습니다. 말하지 않아도 서로의 기분을 눈치챕니다. 감각적이고 세련된 교류를 즐기는 파트너이지만, 둘 다 신경이 곤두서면 피곤해질 수 있습니다.";
+            else if (g2 === '壬') txt += "당신이 상대방에게 묻어가는 관계입니다. 상대방의 스케일이 워낙 커서 당신이 주도하기보다는 따라가는 게 편합니다. 경쟁하기보다는 협력해서 상대방의 덕을 보는 게 현명합니다.";
+            else if (g2 === '癸') txt += "둘 다 감수성이 풍부해서 같이 있으면 센치해집니다. 비 오는 날 창밖을 보며 같이 우울해할 수도 있습니다. 서로 위로는 잘 되지만, 현실적인 문제를 해결하는 능력은 좀 떨어질 수 있으니 주의해야 합니다.";
         }
 
-        function analyzeCompatibility(p1, p2) {
-            // 이름 업데이트
-            document.querySelectorAll('.p1-tag').forEach(e => e.innerText = p1.name);
-            document.querySelectorAll('.p2-tag').forEach(e => e.innerText = p2.name);
+        txt += "\n\n";
 
-            // 1. 기본 점수 계산
-            let totalScore = 60;
-            // 오행 상호 보완
-            for(let i=0; i<5; i++) {
-                if(p1.counts[i] === 0 && p2.counts[i] >= 2) totalScore += 5;
-                if(p2.counts[i] === 0 && p1.counts[i] >= 2) totalScore += 5;
-            }
-            // 천간합
-            const cheonGanHap = {'甲':'己','己':'甲','乙':'庚','庚':'乙','丙':'辛','辛':'丙','丁':'壬','壬':'丁','戊':'癸','癸':'戊'};
-            if(cheonGanHap[p1.dayGan] === p2.dayGan) totalScore += 15;
+        // 2. 지지 합충 분석 (사람 대 사람 관계)
+        if (HAP[j1] === j2) {
+            txt += `현실적인 결속력이 아주 좋습니다. 겉으로 티격태격해도 돌아서면 보고 싶고, 깊은 유대감이 무서운 관계입니다. 헤어지자고 백 번 말해도 다시 만날 확률이 99%입니다. 서로 뗄래야 뗄 수 없는 강력한 끈끈함이 있는 사이입니다.`;
+        } else if (CHUNG[j1] === j2) {
+            txt += `생활 습관이나 가치관이 정반대입니다. '도대체 왜 저러나' 싶을 때가 한두 번이 아닐 겁니다. 한 명은 아침형 인간인데 한 명은 올빼미족인 식입니다. 이 다름을 인정하지 않고 바꾸려 들면 매일 전쟁을 치르게 되지만, 서로를 인정하면 아주 다이내믹하고 시너지가 나는 팀이 됩니다.`;
+        } else if (WONJIN[j1] === j2) {
+            txt += `이유 없이 미워졌다가 또 죽도록 좋아졌다가, 감정이 널를 뜁니다. 옆에 있으면 꼴 보기 싫은데 없으면 보고 싶어 미치는 묘한 애증 관계입니다. 괜히 의심하고 꼬투리 잡기 쉬우니, 서로 믿음을 주는 게 제일 중요합니다.`;
+        } else {
+            txt += `큰 충돌도 없고 그렇다고 미친 듯이 집착하지도 않는, 아주 쿨하고 편안한 관계입니다. 서로의 사생활을 존중해줄 줄 알고 적당한 거리를 유지합니다. 불타오르는 맛은 덜해도 친구처럼 오래오래 편하게 지낼 수 있습니다.`;
+        }
+
+        txt += `\n\n`;
+        
+        // 3. 오행(온도) 밸런스 정밀 분석 (25가지 케이스로 세분화)
+        const getDominant = (o) => Object.keys(o).reduce((a, b) => o[a] > o[b] ? a : b);
+        const dOm1 = getDominant(s1.ohaeng);
+        const dOm2 = getDominant(s2.ohaeng);
+        
+        txt += `마지막으로, 두 분의 성격에서 가장 강력하게 작용하는 핵심 기운끼리의 만남을 보면\n`;
+        
+        // 오행 조합 25가지 (목,화,토,금,수)
+        if(dOm1 === '목') {
+            if(dOm2 === '목') txt += "두 분 다 추진력과 고집이 대단합니다. 숲이 우거지듯 서로 성장하려 경쟁하지만, 자칫하면 자존심 대결로 번질 수 있습니다.";
+            else if(dOm2 === '화') txt += "나무가 불을 만난 격이라 시너지가 폭발합니다. 당신이 기획하면 상대방이 열정적으로 실행하는 최고의 팀입니다.";
+            else if(dOm2 === '토') txt += "나무가 흙에 뿌리를 내리는 관계입니다. 당신이 주도권을 쥐고 상대를 리드하며, 현실적인 결실을 맺기 좋습니다.";
+            else if(dOm2 === '금') txt += "상대방(금)이 당신(목)을 다듬어주는 관계입니다. 잔소리처럼 들릴 수 있지만, 상대방의 조언이 당신을 성장시킵니다.";
+            else if(dOm2 === '수') txt += "상대방(수)이 당신(목)을 도와주는 관계입니다. 당신은 상대방에게서 아이디어와 지원을 얻으며 편안함을 느낍니다.";
+        } else if(dOm1 === '화') {
+            if(dOm2 === '목') txt += "상대방(목)이 당신(화)에게 에너지를 공급합니다. 지칠 때마다 상대방이 힘이 되어주는 든든한 지원군입니다.";
+            else if(dOm2 === '화') txt += "불과 불이 만났으니 열정이 넘칩니다. 화끈하게 좋았다가 화끈하게 싸우는, 다이내믹한 파트너입니다.";
+            else if(dOm2 === '토') txt += "불이 흙을 단단하게 해줍니다. 당신의 열정이 상대방을 돕고, 상대방은 당신을 묵묵히 받아줍니다.";
+            else if(dOm2 === '금') txt += "당신(화)이 상대방(금)을 제련하는 관계입니다. 당신이 리드하고 상대방은 당신의 능력을 인정하며 따르게 됩니다.";
+            else if(dOm2 === '수') txt += "물과 불의 만남이라 극과 극입니다. 서로 너무 달라서 매력을 느끼지만, 감정 싸움이 격해질 수 있습니다.";
+        } else if(dOm1 === '토') {
+            if(dOm2 === '목') txt += "상대방(목)이 당신(토)을 통제하려 합니다. 답답할 수 있지만, 상대방 덕분에 당신이 긴장하고 발전하게 됩니다.";
+            else if(dOm2 === '화') txt += "상대방(화)이 당신(토)을 챙겨줍니다. 당신은 가만히 있어도 상대방이 알아서 서포트해주는 편안한 관계입니다.";
+            else if(dOm2 === '토') txt += "산과 산이 만난 격이라 믿음직스럽습니다. 변화는 적지만 그 누구보다 서로를 신뢰하는 묵직한 관계입니다.";
+            else if(dOm2 === '금') txt += "당신(토)이 상대방(금)을 도와줍니다. 당신의 헌신으로 상대방이 빛을 보는 관계입니다.";
+            else if(dOm2 === '수') txt += "당신(토)이 상대방(수)을 꽉 잡고 있는 관계입니다. 당신이 주도권을 쥐고 관계를 안정적으로 이끌어갑니다.";
+        } else if(dOm1 === '금') {
+            if(dOm2 === '목') txt += "당신(금)이 상대방(목)을 이기는 관계입니다. 당신의 결단력이 상대방에게 큰 영향을 미치며 리드하게 됩니다.";
+            else if(dOm2 === '화') txt += "상대방(화)이 당신(금)을 강하게 만듭니다. 스트레스를 받을 수 있지만, 상대방 덕분에 당신이 성공할 수 있습니다.";
+            else if(dOm2 === '토') txt += "상대방(토)이 당신(금)을 보호해줍니다. 과잉보호가 될 수도 있지만, 든든한 배경이 되어줍니다.";
+            else if(dOm2 === '금') txt += "쇠와 쇠가 부딪히니 소리가 큽니다. 의기투합하면 무서울 게 없지만, 의견 충돌이 일어나면 양보가 없습니다.";
+            else if(dOm2 === '수') txt += "당신(금)이 상대방(수)을 밀어줍니다. 당신의 예리함과 상대방의 유연함이 만나면 아주 스마트한 콤비가 됩니다.";
+        } else if(dOm1 === '수') {
+            if(dOm2 === '목') txt += "당신(수)이 상대방(목)을 키워줍니다. 베푸는 즐거움이 있고, 상대방의 성장을 보며 보람을 느낍니다.";
+            else if(dOm2 === '화') txt += "물(당신)이 불(상대)을 끄는 격입니다. 당신이 상대방을 진정시키거나 이기게 되는 관계입니다.";
+            else if(dOm2 === '토') txt += "상대방(토)이 당신(수)을 가두는 형국입니다. 당신은 좀 답답할 수 있지만, 상대방이 당신에게 안정감을 줍니다.";
+            else if(dOm2 === '금') txt += "상대방(금)이 당신(수)에게 끊임없이 에너지를 줍니다. 마르지 않는 샘물처럼 상대방의 도움을 받게 됩니다.";
+            else if(dOm2 === '수') txt += "물과 물이 만나 큰 바다가 되었습니다. 스케일이 크고 통하는 게 많지만, 한번 감정에 휩쓸리면 걷잡을 수 없습니다.";
+        }
+        
+        return txt;
+    }
+
+    function getSimulation(s1, s2, n1, n2, d1, d2) {
+        const g1 = s1.gan; const g2 = s2.gan;
+        let love="", friend="", family="", title="", score=0;
+
+      // 천간 100가지 조합에 따른 상세 시뮬레이션 및 기본 점수 배정 (현실적 표현 버전)
+        if(g1 === '甲') { // [본인: 갑목]
+            if(g2==='甲') { score=75; love="자존심 대결하는 연인"; friend="선의의 경쟁자"; family="고집 센 두 기둥"; }
+            else if(g2==='乙') { score=70; love="내가 의지되는 버팀목"; friend="챙겨줘야 하는 동생"; family="책임감 강한 가장"; }
+            else if(g2==='丙') { score=85; love="나를 표현하게 돕는 활력소"; friend="손발이 척척 맞는 콤비"; family="나를 희생해 너를 키움"; }
+            else if(g2==='丁') { score=82; love="내 모든 걸 바치는 헌신"; friend="영감을 주는 파트너"; family="아낌없는 뒷바라지"; }
+            else if(g2==='戊') { score=60; love="내가 주도권 잡는 관계"; friend="현실적인 이해타산"; family="내가 통제하려는 대상"; }
+            else if(g2==='己') { score=95; love="안정감을 주는 최고의 짝"; friend="내 편 들어주는 친구"; family="믿고 맡기는 금고"; }
+            else if(g2==='庚') { score=55; love="나를 긴장시키는 애증관계"; friend="쓴소리하는 조언자"; family="엄격한 호랑이 선생님"; }
+            else if(g2==='辛') { score=65; love="예민해서 눈치 보게 됨"; friend="성향이 안 맞는 친구"; family="사사건건 부딪힘"; }
+            else if(g2==='壬') { score=88; love="엄마같이 다 받아주는 사랑"; friend="배울 점 많은 멘토"; family="조건 없는 내 편"; }
+            else if(g2==='癸') { score=80; love="필요한 걸 채워주는 존재"; friend="세심한 서포터"; family="잔소리꾼이지만 내 편"; }
+        } 
+        else if(g1 === '乙') { // [본인: 을목]
+            if(g2==='甲') { score=95; love="기대고 싶은 든든한 사람"; friend="믿고 가는 확실한 빽"; family="평생 비빌 언덕"; }
+            else if(g2==='乙') { score=72; love="취향 잘 맞는 소울메이트"; friend="밤새 떠드는 수다쟁이"; family="질투심 많은 형제자매"; }
+            else if(g2==='丙') { score=88; love="나를 돋보이게 해주는 사람"; friend="놀 때 제일 좋은 짝"; family="집안의 분위기 메이커"; }
+            else if(g2==='丁') { score=78; love="감정 기복 심한 불같은 사랑"; friend="예술적 감각 공유"; family="감정 소모가 큰 관계"; }
+            else if(g2==='戊') { score=65; love="만만해 보이지만 버거운 상대"; friend="실속 챙기는 사이"; family="내가 관리해야 할 대상"; }
+            else if(g2==='己') { score=75; love="편안하고 안정적인 관계"; friend="부담 없는 밥친구"; family="내 맘 편한 안식처"; }
+            else if(g2==='庚') { score=90; love="강한 카리스마에 끌림"; friend="나를 이끄는 리더"; family="조금 무서운 배우자"; }
+            else if(g2==='辛') { score=50; love="상처 주는 말만 골라 함"; friend="나를 힘들게 하는 존재"; family="신경 쇠약 유발자"; }
+            else if(g2==='壬') { score=68; love="과도한 관심이 부담스러움"; friend="부담스러운 호의"; family="과잉보호로 피곤함"; }
+            else if(g2==='癸') { score=85; love="나에게 꼭 필요한 은인"; friend="힘들 때 찾는 사람"; family="나를 살리는 존재"; }
+        } 
+        else if(g1 === '丙') { // [본인: 병화]
+            if(g2==='甲') { score=85; love="지치지 않는 에너지 공급원"; friend="나를 지지해주는 팬"; family="든든한 후원자"; }
+            else if(g2==='乙') { score=80; love="예뻐서 챙겨주고 싶은 사람"; friend="내가 리드하는 관계"; family="보호 본능 자극"; }
+            else if(g2==='丙') { score=70; love="주인공이 둘이라 시끄러움"; friend="화끈한 의리파"; family="주도권 다툼이 심함"; }
+            else if(g2==='丁') { score=75; love="낮과 밤처럼 다른 매력"; friend="서로 다른 영역 존중"; family="내 빛이 가려지는 기분"; }
+            else if(g2==='戊') { score=88; love="마음껏 뛰어놀 수 있는 상대"; friend="다 받아주는 대인배"; family="편안한 휴식처"; }
+            else if(g2==='己') { score=65; love="만나면 답답해지는 관계"; friend="말이 잘 안 통함"; family="내 기운을 빠지게 함"; }
+            else if(g2==='庚') { score=72; love="싸우면서 정드는 스타일"; friend="다루기 힘든 능력자"; family="결국 내 뜻대로 됨"; }
+            else if(g2==='辛') { score=98; love="첫눈에 반하는 운명적 만남"; friend="서로에게 푹 빠짐"; family="끔찍이 아끼는 보물"; }
+            else if(g2==='壬') { score=55; love="너무 달라서 끌리는 관계"; friend="극과 극의 성향"; family="감정 싸움 폭발"; }
+            else if(g2==='癸') { score=60; love="만나면 기분 다운됨"; friend="분위기 깨는 친구"; family="시야를 가리는 안개"; }
+        } 
+        else if(g1 === '丁') { // [본인: 정화]
+            if(g2==='甲') { score=90; love="끊임없이 사랑을 주는 사람"; friend="귀인 같은 존재"; family="존경하는 어른"; }
+            else if(g2==='乙') { score=68; love="도움은커녕 귀찮은 존재"; friend="도움 안 되는 오지랖"; family="성가신 잔소리꾼"; }
+            else if(g2==='丙') { score=65; love="상대방 기세에 눌림"; friend="비교되어 열등감 느낌"; family="주눅 들어 눈치 봄"; }
+            else if(g2==='丁') { score=78; love="눈빛만 봐도 아는 소울메이트"; friend="감성 통하는 찐친"; family="서로 위로하는 사이"; }
+            else if(g2==='戊') { score=72; love="내 재능을 알아봐 줌"; friend="표현하게 도와줌"; family="기운 빠지는 희생"; }
+            else if(g2==='己') { score=62; love="혼자만 헌신하는 사랑"; friend="잘해줘도 고마운 줄 모름"; family="밑 빠진 독에 물 붓기"; }
+            else if(g2==='庚') { score=85; love="내가 상대방을 훈련시킴"; friend="내가 고쳐 쓰는 사람"; family="발전적인 관계"; }
+            else if(g2==='辛') { score=58; love="서로에게 상처만 남김"; friend="예민함 배틀"; family="피하고 싶은 사이"; }
+            else if(g2==='壬') { score=96; love="본능적으로 강하게 끌림"; friend="밤에 만나는 사이"; family="다정다감한 잉꼬부부"; }
+            else if(g2==='癸') { score=50; love="나를 꺼버리는 최악의 상대"; friend="공포스러운 존재"; family="물과 불의 전쟁"; }
+        } 
+        else if(g1 === '戊') { // [본인: 무토]
+            if(g2==='甲') { score=65; love="나를 통제하려는 사람"; friend="극복해야 할 과제"; family="어려운 윗사람"; }
+            else if(g2==='乙') { score=70; love="귀여운 투정 다 받아줌"; friend="성가시지만 봐줌"; family="관대한 보호자"; }
+            else if(g2==='丙') { score=88; love="자존감을 높여주는 사람"; friend="나를 돋보이게 함"; family="무조건 내 편"; }
+            else if(g2==='丁') { score=82; love="따뜻한 위로와 힐링"; friend="세심한 배려"; family="감동 주는 효자/효녀"; }
+            else if(g2==='戊') { score=75; love="고집불통끼리의 만남"; friend="말 없어도 통하는 의리"; family="무뚝뚝한 관계"; }
+            else if(g2==='己') { score=78; love="편안한 친구 같은 연인"; friend="오래된 동반자"; family="안정적인 관계"; }
+            else if(g2==='庚') { score=70; love="내가 다 퍼주는 관계"; friend="뒷바라지 전문"; family="능력 키워주는 희생"; }
+            else if(g2==='辛') { score=68; love="답답해서 속 터지는 상대"; friend="신경 쓰이게 함"; family="과잉보호"; }
+            else if(g2==='壬') { score=85; love="돈이 되는 실리적인 관계"; friend="이득을 주는 파트너"; family="가장의 책임감"; }
+            else if(g2==='癸') { score=94; love="나이/환경 차이 극복한 사랑"; friend="의외로 잘 맞음"; family="떼려야 뗄 수 없음"; }
+        } 
+        else if(g1 === '己') { // [본인: 기토]
+            if(g2==='甲') { score=93; love="가장 안정적인 천생연분"; friend="믿음직한 리더"; family="가장 이상적인 합"; }
+            else if(g2==='乙') { score=60; love="나를 힘들게 하는 사람"; friend="무리한 부탁을 함"; family="등골 브레이커"; }
+            else if(g2==='丙') { score=85; love="나를 밝고 긍정적으로 만듦"; friend="우울증 치료제"; family="물질적 혜택을 줌"; }
+            else if(g2==='丁') { score=82; love="따뜻하게 감싸주는 사랑"; friend="사려 깊은 조언자"; family="사랑받는 느낌"; }
+            else if(g2==='戊') { score=70; love="든든하지만 때론 기죽음"; friend="의지하는 배경"; family="보호받는 관계"; }
+            else if(g2==='己') { score=72; love="평범하고 지루한 연애"; friend="권태기 온 친구"; family="특별할 것 없는 사이"; }
+            else if(g2==='庚') { score=68; love="뒤치다꺼리하느라 바쁨"; friend="잔소리 듣는 상대"; family="내가 봉사하는 관계"; }
+            else if(g2==='辛') { score=75; love="소중하게 아껴주는 관계"; friend="실속 챙겨주는 친구"; family="보물 다루듯 함"; }
+            else if(g2==='壬') { score=55; love="복잡하게 얽히는 관계"; friend="금전 문제 발생 주의"; family="불투명한 미래"; }
+            else if(g2==='癸') { score=80; love="나에게 꼭 필요한 사람"; friend="필요충분조건"; family="윤택해지는 삶"; }
+        } 
+        else if(g1 === '庚') { // [본인: 경금]
+            if(g2==='甲') { score=65; love="내가 주도권 꽉 잡는 관계"; friend="만만한 상대"; family="권위적인 가장"; }
+            else if(g2==='乙') { score=95; love="강한 나를 순하게 만듦"; friend="내 말에 꼼짝 못 함"; family="애처가/공처가"; }
+            else if(g2==='丙') { score=60; love="나를 힘들게 훈련시킴"; friend="스파르타식 코치"; family="호랑이 선생님"; }
+            else if(g2==='丁') { score=85; love="나를 세련되게 다듬어줌"; friend="완벽주의 파트너"; family="발전하는 관계"; }
+            else if(g2==='戊') { score=68; love="답답한 잔소리와 간섭"; friend="꼰대 같은 친구"; family="게을러지게 만듦"; }
+            else if(g2==='己') { score=62; love="우유부단해서 답답함"; friend="망설이다 기회 놓침"; family="도움 안 되는 사랑"; }
+            else if(g2==='庚') { score=55; love="시끄러운 전쟁 같은 사랑"; friend="맞짱 뜨는 의리파"; family="양보 없는 충돌"; }
+            else if(g2==='辛') { score=80; love="내가 지켜주는 보디가드"; friend="대신 싸워주는 친구"; family="든든한 형님/누님"; }
+            else if(g2==='壬') { score=92; love="말이 기막히게 잘 통함"; friend="천재적인 콤비"; family="똑똑한 집안"; }
+            else if(g2==='癸') { score=58; love="기운 빠지게 하는 사람"; friend="감정 소모가 큼"; family="쓸데없는 감정 낭비"; }
+        } 
+        else if(g1 === '辛') { // [본인: 신금]
+            if(g2==='甲') { score=65; love="내가 관리 감독하는 관계"; friend="내 손바닥 안"; family="스트레스 주는 가장"; }
+            else if(g2==='乙') { score=60; love="상처 주는 말로 끝냄"; friend="냉정한 손절"; family="날카로운 독설"; }
+            else if(g2==='丙') { score=98; love="나를 빛나게 해주는 최고"; friend="권위와 명예를 얻음"; family="보석 같은 존재"; }
+            else if(g2==='丁') { score=50; love="최악의 스트레스 유발자"; friend="만나면 고통스러움"; family="숨 막히는 관계"; }
+            else if(g2==='戊') { score=55; love="답답해 미치는 과잉보호"; friend="지나친 간섭"; family="나를 묻어버림"; }
+            else if(g2==='己') { score=62; love="민폐 끼치는 존재"; friend="도움 안 되고 귀찮음"; family="오해와 불만"; }
+            else if(g2==='庚') { score=75; love="든든한 배경이 되어줌"; friend="대신 욕해주는 친구"; family="믿는 구석"; }
+            else if(g2==='辛') { score=52; love="거울 보고 싸우는 느낌"; friend="예민 보스들의 대결"; family="냉전 상태"; }
+            else if(g2==='壬') { score=90; love="내 가치를 알아주는 사람"; friend="매력 발산하게 도움"; family="성공의 열쇠"; }
+            else if(g2==='癸') { score=68; love="우울함이 전염됨"; friend="같이 있으면 센치해짐"; family="눈물 마를 날 없음"; }
+        } 
+        else if(g1 === '壬') { // [본인: 임수]
+            if(g2==='甲') { score=88; love="아낌없이 주는 나무"; friend="내 노하우를 전수함"; family="자식 키우는 마음"; }
+            else if(g2==='乙') { score=65; love="내가 감당하기 힘든 상대"; friend="불안정해 보이는 친구"; family="부담스러운 존재"; }
+            else if(g2==='丙') { score=92; love="서로를 빛내주는 시너지"; friend="최고의 파트너"; family="부귀영화를 누림"; }
+            else if(g2==='丁') { score=96; love="다정다감한 잉꼬 커플"; friend="음란하고 즐거운 사이"; family="화목한 가정"; }
+            else if(g2==='戊') { score=85; love="방황하는 나를 잡아줌"; friend="든든한 울타리"; family="책임감 강한 가장"; }
+            else if(g2==='己') { score=55; love="이성 문제로 복잡해짐"; friend="질척거리는 관계"; family="망신살 주의"; }
+            else if(g2==='庚') { score=82; love="끊임없이 지원해주는 사람"; friend="마르지 않는 샘물"; family="든든한 빽"; }
+            else if(g2==='辛') { score=80; love="섬세하고 세련된 관계"; friend="가치를 알아주는 친구"; family="깔끔한 관계"; }
+            else if(g2==='壬') { score=70; love="서로의 자유를 존중하는 쿨한 사이"; friend="의기투합하면 천하무적"; family="한번 싸우면 끝장"; }
+            else if(g2==='癸') { score=60; love="묘한 경쟁심이 있음"; friend="속을 알 수 없는 친구"; family="비밀 많은 사이"; }
+        } 
+        else if(g1 === '癸') { // [본인: 계수]
+            if(g2==='甲') { score=85; love="헌신적인 희생과 사랑"; friend="성장의 밑거름"; family="자비로운 부모 마음"; }
+            else if(g2==='乙') { score=90; love="서로 예뻐하는 관계"; friend="아기자기한 사이"; family="서로가 꼭 필요함"; }
+            else if(g2==='丙') { score=58; love="만나면 우울해지는 사람"; friend="내 앞길을 막는 느낌"; family="시야를 가림"; }
+            else if(g2==='丁') { score=52; love="사사건건 충돌함"; friend="물과 불의 전쟁"; family="이별수가 있음"; }
+            else if(g2==='戊') { score=94; love="운명적으로 강하게 끌림"; friend="나이 차 극복한 우정"; family="무정한 듯 깊은 정"; }
+            else if(g2==='己') { score=78; love="윤택하게 해주는 사람"; friend="상부상조하는 관계"; family="실질적인 도움"; }
+            else if(g2==='庚') { score=82; love="사랑을 독차지함"; friend="끊임없는 지원 사격"; family="마르지 않는 샘물"; }
+            else if(g2==='辛') { score=85; love="코드가 잘 맞는 사이"; friend="섬세한 감각 공유"; family="세련된 집안"; }
+            else if(g2==='壬') { score=65; love="상대에게 묻어가는 관계"; friend="편승하는 친구"; family="형님만 믿고 따름"; }
+            else if(g2==='癸') { score=60; love="같이 있으면 우울해짐"; friend="서로 신세 한탄함"; family="눈물 바다"; }
+        }
+
+        // 지지 합/충/원진에 따른 점수 및 멘트 추가 보정 (전역변수 활용)
+        const simJ1 = s1.ji; const simJ2 = s2.ji; // [수정] 변수명 충돌 방지 j1 -> simJ1
+        if(HAP[simJ1] === simJ2) { 
+            love += " (운명적)"; score += 15; 
+        } else if(CHUNG[simJ1] === simJ2) { 
+            love += " (충돌)"; score -= 10; 
+        } else if(WONJIN[simJ1] === simJ2) { 
+            love += " (애증)"; score -= 5; 
+        }
+
+        if(score > 100) score = 100; if(score < 0) score = 0;
+
+        title = score >= 90 ? "🔥 영혼의 동반자" : score >= 70 ? "🍯 찰떡 콤비" : score >= 50 ? "🤝 노력하는 사이" : "🌩️ 위태로운 관계";
+        
+        return { love, friend, family, score, title };
+    }
+function getFinalVerdict(score, s1, s2) {
+        // [사주 로직 정의]
+        // 천간 합 (정신적 끌림/부부의 합)
+        const tHap = {'甲':'己','己':'甲','乙':'庚','庚':'乙','丙':'辛','辛':'丙','丁':'壬','壬':'丁','戊':'癸','癸':'戊'};
+        // 천간 충 (정신적 충돌)
+        const tChung = {'甲':'庚','庚':'甲','乙':'辛','辛':'乙','丙':'壬','壬':'丙','丁':'癸','癸':'丁'};
+
+        // 1. [연인] 💖
+        // 천간이 합(정신적 교감)하거나, 지지가 합(속궁합/현실적 안정)인 경우
+        // 싸우더라도 끌림이 강해 '연인'으로 정의
+        if (tHap[s1.gan] === s2.gan || HAP[s1.ji] === s2.ji) {
+            return "연인";
+        }
+
+        // 2. [원수] ⚡
+        // 지지 충(강한 충돌), 원진(애증/집착), 천간 충(가치관 대립)이 있는 경우
+        // 합이 없는데 충이 있으면 '원수'로 정의
+        if (CHUNG[s1.ji] === s2.ji || WONJIN[s1.ji] === s2.ji || tChung[s1.gan] === s2.gan) {
+            return "원수";
+        }
+
+        // 3. [가족] 👨‍👩‍👧‍👦
+        // 천간의 오행이 같은 경우 (비견/겁재)
+        // 예: 갑목-을목, 병화-병화 등 -> 형제자매나 가족처럼 편안하고 끈끈함
+        if (GAN[s1.gan] === GAN[s2.gan]) {
+            return "가족";
+        }
+
+        // 4. [친구] 🤝
+        // 특별한 합, 충, 오행의 일치가 없는 무난하고 쿨한 관계
+        return "친구";
+    }
+    function renderVS(n1, n2, o1, o2) {
+        const box = document.getElementById('vs-area');
+        box.innerHTML = "";
+        const items = [
+            {t:"누가 더 재밌나요?", keys:['화', '수']}, 
+            {t:"누가 더 화가 많나요?", keys:['화', '금']}, 
+            {t:"누가 더 어른스럽나요?", keys:['토', '수']}, 
+            {t:"누가 더 성격이 좋나요?", keys:['목', '토']}, 
+            {t:"누가 더 고집이 세나요?", keys:['금', '목']}  
+        ];
+        items.forEach(i => {
+            let v1 = 0; 
+            i.keys.forEach(k => v1 += o1[k]);
             
-            totalScore = Math.min(Math.max(totalScore, 15), 98);
-            document.getElementById('res-score').innerText = totalScore;
+            let v2 = 0; 
+            i.keys.forEach(k => v2 += o2[k]);
             
-            let cmt = "";
-            if(totalScore >= 90) cmt = "💖 전생에 부부였던 천생연분";
-            else if(totalScore >= 75) cmt = "✨ 서로 빛내주는 환상의 짝꿍";
-            else if(totalScore >= 50) cmt = "🌱 맞춰가면 예쁘게 클 관계";
-            else cmt = "🔥 전쟁 같은 사랑 (스파크 팍!)";
-            document.getElementById('res-comment').innerText = cmt;
-
-            // 2. 관계 유형 (친구 vs 연인) 분리 계산
-            // 친구지수: 오행 구성이 비슷하거나 비견/겁재 관계일 때 높음
-            let friendScore = 40;
-            if(p1.dayGanIdx === p2.dayGanIdx) friendScore += 30; // 일간 오행 같음
-            if(p1.stats[2] > 50 && p2.stats[2] > 50) friendScore += 10; // 둘다 고집 있으면 친구같은 티키타카
-
-            // 연인지수: 합이 있거나, 일간이 서로 극하거나 생하는 관계 (긴장감)
-            let loverScore = totalScore; 
-            if(cheonGanHap[p1.dayGan] === p2.dayGan) loverScore += 10;
+            let sum = v1 + v2; 
+            if(sum === 0) { v1 = 1; v2 = 1; sum = 2; } 
             
-            // 100점 만점 보정
-            friendScore = Math.min(friendScore, 95);
-            loverScore = Math.min(loverScore, 95);
-
-            document.getElementById('bar-friend').style.width = friendScore + '%';
-            document.getElementById('val-friend').innerText = friendScore + '%';
-            document.getElementById('bar-lover').style.width = loverScore + '%';
-            document.getElementById('val-lover').innerText = loverScore + '%';
-
-            let typeTxt = "";
-            if(friendScore > loverScore + 10) {
-                typeTxt = `두 분은 <b>'베스트 프렌드'</b> 같은 기운이 강합니다. 만나면 시간 가는 줄 모르고 떠들 수 있고, 서로의 개그 코드가 잘 맞습니다. 설렘보다는 편안함과 신뢰가 우선시되는 관계이며, 연인으로 발전하더라도 의리 있는 사랑을 하게 됩니다.`;
-            } else if(loverScore > friendScore + 10) {
-                typeTxt = `두 분은 <b>'강렬한 로맨스'</b>의 기운이 강합니다. 서로를 보자마자 이성적인 끌림을 느꼈을 확률이 높습니다. 다만 감정의 파동이 커서 좋을 때는 세상 없이 좋지만, 싸울 때는 불같이 다툴 수 있으니 주의가 필요합니다.`;
-            } else {
-                typeTxt = `두 분은 <b>'이상적인 밸런스'</b>를 갖췄습니다. 친구 같은 편안함과 연인의 설렘이 적절히 섞여 있어, 지루할 틈이 없으면서도 안정적인 관계를 유지할 수 있습니다. 가장 추천하는 궁합 유형입니다.`;
-            }
-            document.getElementById('txt-type').innerHTML = typeTxt;
-
-
-            // 3. 캐릭터 비교 5종
-            const setVs = (lId, rId, lVal, rVal) => {
-                let sum = lVal + rVal; 
-                if(sum === 0) sum = 1;
-                let lPer = Math.round((lVal / sum) * 100);
-                lPer = Math.max(10, Math.min(90, lPer)); // 최소 10% 보장
-                document.getElementById(lId).style.width = lPer + '%';
-                document.getElementById(lId).innerText = lPer + '%';
-                document.getElementById(rId).style.width = (100-lPer) + '%';
-                document.getElementById(rId).innerText = (100-lPer) + '%';
-            };
-
-            setVs('bar-fun-l', 'bar-fun-r', p1.stats[0], p2.stats[0]);
-            setVs('bar-mat-l', 'bar-mat-r', p1.stats[1], p2.stats[1]);
-            setVs('bar-stub-l', 'bar-stub-r', p1.stats[2], p2.stats[2]);
-            setVs('bar-obs-l', 'bar-obs-r', p1.stats[3], p2.stats[3]);
-            setVs('bar-cute-l', 'bar-cute-r', p1.stats[4], p2.stats[4]);
-
-
-            // 4. 상세 텍스트 분석 (오행별 상세 시나리오)
-            const e1 = ['wood','wood','fire','fire','earth','earth','metal','metal','water','water'][p1.dayGanIdx*2];
-            const e2 = ['wood','wood','fire','fire','earth','earth','metal','metal','water','water'][p2.dayGanIdx*2];
-            let key = [e1.split('_')[0], e2.split('_')[0]].sort().join('_');
+            let pct = Math.round((v1 / sum) * 100);
             
-            // 상세 텍스트 데이터 (Saju Logic Expanded)
-            const longTexts = {
-                'wood_wood': {
-                    g: "두 분은 숲 속에 나란히 서 있는 나무처럼, 서로 같은 곳을 바라보며 함께 성장하는 관계입니다. 경쟁심이 발동하면 서로에게 더 멋진 사람이 되기 위해 노력하는 긍정적인 시너지를 냅니다. 대화의 코드가 잘 통하고, 미래에 대한 가치관이 비슷하여 장기적인 파트너로서 최고의 궁합을 자랑합니다.",
-                    b: "하지만 두 나무가 너무 가까우면 뿌리가 엉키듯, 서로의 자존심이 충돌할 때가 있습니다. 둘 다 고집이 있어 한번 싸우면 굽히지 않으려 하니, 관계가 냉랭해질 수 있습니다. 상대방을 이기려 들지 말고 '우리는 한 팀'이라는 인식을 가지는 것이 중요합니다."
-                },
-                'wood_fire': {
-                    g: "나무가 불을 피우듯(목생화), 한 사람은 헌신적으로 사랑을 주고 한 사람은 그 사랑을 받아 열정적으로 표현하는 관계입니다. 서로가 서로의 에너지를 증폭시켜 주며, 함께 있으면 없던 용기도 생기고 새로운 일에 도전하게 됩니다. 지루할 틈 없이 활기찬 연애가 가능합니다.",
-                    b: "주는 사람은 계속 주기만 하다가 지칠 수 있고, 받는 사람은 그것을 당연하게 여길 수 있습니다. 불의 기운이 너무 강해지면 나무가 다 타버리듯, 감정적인 소모가 클 수 있습니다. 고마움을 말로 자주 표현하고, 가끔은 역할을 바꿔보는 노력이 필요합니다."
-                },
-                'wood_earth': {
-                    g: "나무가 흙에 뿌리를 내리듯, 서로에게 안정감을 주는 동시에 구속력을 가집니다. 현실 감각이 부족한 쪽을 다른 한쪽이 든든하게 잡아주며, 경제적으로나 생활면에서 서로의 빈틈을 완벽하게 메꿔줍니다. 실속 있고 알찬 만남을 이어갈 수 있는 커플입니다.",
-                    b: "나무가 흙을 파고들듯, 한쪽이 상대를 통제하거나 가르치려 들 수 있습니다. 이로 인해 상대방은 답답함을 느끼거나 숨이 막힐 수 있습니다. 서로의 영역을 존중해주고, 잔소리보다는 믿고 기다려주는 인내심이 필요합니다."
-                },
-                'wood_metal': {
-                    g: "서로 정반대의 성향을 가지고 있어 강한 끌림을 느낍니다. 도끼로 나무를 다듬듯, 날카롭고 예리한 쪽이 우유부단한 쪽을 리드하여 긍정적인 변화를 이끌어냅니다. 서로에게 없는 매력을 동경하며, 단점을 보완해주는 '상호보완'의 정석입니다.",
-                    b: "성향 차이가 큰 만큼 가치관 충돌이 잦을 수 있습니다. 한 명은 감성적이고 자유로운데, 다른 한 명은 원칙적이고 냉정하여 상처를 주고받을 수 있습니다. '틀린 것'이 아니라 '다른 것'임을 인정하고 대화 방식을 부드럽게 바꿔야 합니다."
-                },
-                'wood_water': {
-                    g: "물이 나무를 키우듯(수생목), 정서적으로 깊은 교감을 나누는 소울메이트입니다. 말하지 않아도 서로의 기분을 알아채는 섬세함이 있으며, 힘들 때 가장 큰 위로가 되어줍니다. 이해타산을 따지지 않는 순수한 사랑을 할 수 있는 아름다운 관계입니다.",
-                    b: "서로에게 너무 깊이 의존하다 보면 관계가 고인 물처럼 정체될 수 있습니다. 또한 감성적인 면이 강해 현실적인 문제를 회피하려 할 수 있습니다. 둘만의 세상에 갇히기보다는 함께 외부 활동을 하며 활력을 불어넣는 것이 좋습니다."
-                },
-                'fire_fire': {
-                    g: "불과 불이 만났으니 그 열정이 대단합니다. 첫눈에 반하거나 급속도로 가까워지는 경우가 많으며, 표현을 아끼지 않는 화끈한 커플입니다. 함께 있으면 세상 무엇도 두렵지 않은 자신감이 생기며, 언제나 파티처럼 즐거운 시간을 보냅니다.",
-                    b: "너무 뜨거우면 금방 식을 수 있습니다. 감정 기복이 심해 사소한 일로도 불같이 싸우고 이별을 말할 수 있습니다. 싸울 때 자존심을 세우며 막말을 하지 않도록 주의해야 하며, 가끔은 차분하게 혼자만의 시간을 가지는 것이 관계 유지에 도움이 됩니다."
-                },
-                'fire_earth': {
-                    g: "불이 타고나면 흙이 되듯(화생토), 뜨거운 열정을 따뜻한 포용력으로 감싸주는 관계입니다. 한 명은 분위기를 주도하고, 다른 한 명은 묵묵히 들어주며 받아줍니다. 겉보기엔 안 어울려 보여도 속으로는 누구보다 편안함을 느끼는 실속 있는 궁합입니다.",
-                    b: "표현 속도의 차이가 문제입니다. 불 같은 사람은 성격이 급한데 흙 같은 사람은 신중하고 느려서 답답함을 느낄 수 있습니다. 재촉하지 말고 상대방의 템포를 기다려주는 배려가 필요하며, 흙 같은 사람은 조금 더 적극적으로 표현해야 합니다."
-                },
-                'fire_metal': {
-                    g: "불이 쇠를 녹여 도구를 만들듯, 서로를 단련시키며 발전하는 관계입니다. 서로에게 강한 자극제가 되어 매너리즘에 빠지지 않게 해줍니다. 세련되고 화려한 것을 좋아하는 취향이 비슷해, 함께 쇼핑을 하거나 여행을 다니면 만족도가 높습니다.",
-                    b: "서로 기가 세서 주도권 싸움이 일어날 수 있습니다. 통제하려는 성향과 자유로우려는 성향이 부딪혀 스트레스를 받을 수 있습니다. 논리적으로 따지기보다는 감성적인 터치와 애교로 갈등을 풀어가는 것이 현명합니다."
-                },
-                'fire_water': {
-                    g: "물과 불, 정반대의 극과 극이 만나 묘한 조화를 이룹니다. 서로가 가진 전혀 다른 매력에 신비감을 느끼며 강하게 끌립니다. 너무 뜨겁지도 차갑지도 않게 서로의 온도를 조절해주는 '온도 조절 장치' 같은 역할을 해줍니다.",
-                    b: "수극화(물이 불을 끔)의 원리처럼, 한 사람의 말 한마디가 상대방의 기를 확 죽일 수 있습니다. 감정의 낙차가 커서 좋을 때는 천국이지만 나쁠 때는 지옥을 오갑니다. 서로의 다름을 인정하지 않으면 상처만 남을 수 있으니 끊임없는 대화가 필요합니다."
-                },
-                'earth_earth': {
-                    g: "넓은 대지처럼 서로에게 든든한 버팀목이 되어줍니다. 화려한 이벤트보다는 소소한 일상을 공유하며 신뢰를 쌓아가는 관계입니다. 변함없는 모습으로 오래 연애하거나 결혼까지 골인할 확률이 가장 높은, 안정적인 커플입니다.",
-                    b: "너무 안정적이라 지루해질 수 있습니다. 변화를 싫어하고 고집이 세서, 융통성 없는 모습에 서로 답답해할 수 있습니다. 가끔은 새로운 데이트 코스를 짜거나 깜짝 선물을 하는 등 의식적으로 '설렘 포인트'를 만들어야 합니다."
-                },
-                'earth_metal': {
-                    g: "땅에서 광물이 나오듯(토생금), 서로가 서로의 가치를 알아보고 빛내주는 관계입니다. 흙 같은 사람의 내조/외조 덕분에 쇠 같은 사람이 사회적으로 성공할 수 있습니다. 서로 의리를 중요시하며 배신하지 않는 끈끈한 유대감을 가집니다.",
-                    b: "지나치게 이성적이고 현실적인 대화만 오갈 수 있습니다. 로맨틱한 분위기보다는 업무 파트너 같은 느낌이 들 수 있으니 주의해야 합니다. 상대방의 감정을 읽어주려는 노력이 필요하며, 계산적인 태도는 버려야 합니다."
-                },
-                'earth_water': {
-                    g: "흙이 물을 가두어 댐을 만들듯, 불안정한 감정을 잡아주고 형태를 만들어주는 관계입니다. 현실적인 조언과 감성적인 위로가 적절히 섞여 있어 서로에게 배울 점이 많습니다. 서로 다른 관점으로 문제를 해결해 나가는 지혜로운 커플입니다.",
-                    b: "서로 속을 알 수 없어 답답해할 수 있습니다. 겉으로는 맞춰주는 척하지만 속으로는 다른 생각을 할 수 있어, 나중에 큰 오해로 번질 수 있습니다. 솔직한 대화가 부족하면 벽이 생기니, 서운한 점은 그때그때 풀어야 합니다."
-                },
-                'metal_metal': {
-                    g: "두 개의 칼처럼 날카롭지만, 그만큼 서로를 잘 이해합니다. 깔끔하고 쿨한 관계를 선호하며, 질척거리는 것을 싫어하는 성향이 잘 맞습니다. 의리가 있어 한번 내 사람이라 생각하면 끝까지 책임지는 멋진 의리 커플입니다.",
-                    b: "둘 다 자존심이 세고 예민해서 말싸움이 잦을 수 있습니다. 직설적인 화법으로 서로의 가슴에 비수를 꽂을 수 있으니 언어 선택에 신중해야 합니다. 차가운 분위기가 오래가지 않도록 먼저 사과하는 용기가 필요합니다."
-                },
-                'metal_water': {
-                    g: "바위 틈에서 맑은 물이 흐르듯(금생수), 아주 맑고 깨끗한 지적 교류가 일어나는 관계입니다. 대화가 잘 통하고 서로의 지적 호기심을 채워줍니다. 금 같은 사람의 결단력과 물 같은 사람의 유연함이 합쳐져 완벽한 팀워크를 보여줍니다.",
-                    b: "너무 차갑고 이성적인 관계가 될 수 있습니다. 따뜻한 인간미나 정보다는 논리와 원칙을 앞세우다 보면 정서적으로 메마를 수 있습니다. 머리로만 사랑하지 말고 가슴으로 사랑하려는 노력이 필요하며, 스킨십을 늘리는 것도 좋습니다."
-                },
-                'water_water': {
-                    g: "두 물줄기가 만나 큰 강을 이루듯, 정신적으로 하나가 되는 깊은 인연입니다. 말하지 않아도 눈빛만으로 통하는 텔레파시가 있으며, 서로에 대한 공감 능력이 뛰어납니다. 밤새도록 대화해도 지루하지 않은 소울메이트입니다.",
-                    b: "물이 고이면 썩듯, 둘 다 우울감이나 감상에 빠지면 헤어나오기 힘들 수 있습니다. 비밀이 많아 서로를 완벽하게 믿지 못하고 의심할 수도 있습니다. 긍정적이고 밝은 에너지를 외부에서 자꾸 끌어와야 관계가 건강하게 유지됩니다."
+            box.innerHTML += `
+            <div class="vs-row">
+                <div class="vs-info"><span>${n1}</span><span>${i.t}</span><span>${n2}</span></div>
+                <div class="vs-bar"><div class="vs-l" style="width:${pct}%"></div><div class="vs-r" style="width:${100-pct}%"></div></div>
+            </div>`;
+        });
+    }
+
+    function saveResult() {
+        html2canvas(document.getElementById('capture-area'), { 
+            scale: 2,
+            backgroundColor: "#FFF0F5" // [수정] 배경색을 파스텔 핑크(#FFF0F5)로 강제 지정하여 흰색 배경 방지
+        }).then(c => {
+            let a = document.createElement('a'); a.download='테스트잇_성격궁합.png'; a.href=c.toDataURL(); a.click();
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const shareButton = document.getElementById("share-btn"); // 공유 버튼 선택
+        if (shareButton) {
+            shareButton.addEventListener("click", function () {
+                const testURL = window.location.href; // 현재 페이지 URL 가져오기
+                const shareText = "테스트잇 사주 궁합 성격 테스트"; 
+
+                if (navigator.share) {
+                    // 📱 모바일 및 지원되는 브라우저에서 기본 공유 기능 사용
+                    navigator.share({
+                        title: "테스트잇 사주 궁합 성격 테스트", 
+                        text: shareText,
+                        url: testURL
+                    }).then(() => {
+                        console.log("✅ 공유 성공!");
+                    }).catch((error) => {
+                        console.error("❌ 공유 실패:", error);
+                    });
+                } else {
+                    // 💻 PC에서는 클립보드에 복사
+                    navigator.clipboard.writeText(`${shareText} ${testURL}`).then(() => {
+                        alert("📌 링크가 복사되었습니다! 친구들에게 공유해보세요.");
+                    }).catch((err) => {
+                        console.error("❌ 클립보드 복사 실패:", err);
+                    });
                 }
-            };
-
-            let txtData = longTexts[key] || longTexts['wood_wood']; // 기본값
-            
-            // 이름 대입
-            document.getElementById('txt-good').innerHTML = 
-                `<b>${p1.name}</b>님과 <b>${p2.name}</b>님의 긍정적인 면을 보면,<br><br>` + txtData.g;
-            
-            document.getElementById('txt-bad').innerHTML = 
-                `하지만 주의할 점도 있습니다.<br><br>` + txtData.b;
-        }
-
-        function saveImage() {
-            html2canvas(document.getElementById('capture-area'), { 
-                scale: 2,
-                backgroundColor: "#fff" // 투명 배경 방지
-            }).then(canvas => {
-                const link = document.createElement('a');
-                link.download = '테스트잇_사주궁합.png';
-                link.href = canvas.toDataURL();
-                link.click();
             });
         }
-    </script>
+    });
+</script>
 </body>
 </html>

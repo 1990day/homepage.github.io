@@ -38,8 +38,8 @@ img {
     display: flex;
     justify-content: space-between;
     align-items: center;
-   padding-top: 30px !important;
-    padding-bottom: 30px !important; /* ★여기를 패딩으로 바꿨습니다. 숫자를 늘리면 더 벌어집니다. */
+    padding-top: 30px !important;
+    padding-bottom: 30px !important;
 }
 
 /* 로고 위치 잡기 */
@@ -80,15 +80,15 @@ img {
 
 .home-content {
     text-align: center;
-    margin-top: 5%; /* 상단 여백 조금 줄임 (헤더 마진으로 조절했으므로) */
+    margin-top: 5%; 
 }
 
-/* --- [수정] 그리드 기본 설정 (PC/태블릿) --- */
+/* --- [수정] 그리드 기본 설정 (PC) --- */
 .grid {
     display: grid;
     gap: 26px;
-    /* 230px로 줄여서 600px 화면에서도 2개가 들어갈 수 있게 변경 */
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    /* ★여기를 수정했습니다: 무조건 가로 3개로 고정 (이미지 커짐) */
+    grid-template-columns: repeat(3, 1fr);
     margin-top: 6%;
     margin-bottom: 50px;
 }
@@ -165,9 +165,9 @@ footer p {
         margin: 0 0 0 15px; 
     }
 
- .main-nav a {
-        font-size: 1.0rem;  /* (원래 0.85rem -> 1.1rem으로 키움) */
-        font-weight: bold;  /* 잘 보이게 굵기도 추가함 */
+    .main-nav a {
+        font-size: 1.0rem;
+        font-weight: bold;
     }
     
     .home-content {
@@ -179,7 +179,7 @@ footer p {
         padding: 0 4%;
     }
 
-    /* 600px 이하에서도 minmax(200px) 유지 -> 500px 넘으면 2줄 가능 */
+    /* 모바일에서는 다시 크기에 맞게 자동 정렬 (3개 강제 해제) */
     .grid {
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         gap: 10px;

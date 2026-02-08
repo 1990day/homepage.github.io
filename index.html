@@ -60,7 +60,32 @@
   </section>
 
         
-        
+        <script>
+function filterTests() {
+    // 검색어 가져오기
+    var input = document.getElementById('searchInput');
+    var filter = input.value.toUpperCase().replace(/\s+/g, ''); // 공백제거해서 검색율 높임
+    
+    // 테스트 아이템들 가져오기
+    var items = document.getElementsByClassName('item');
+    
+    // 모든 아이템을 돌면서 검사
+    for (var i = 0; i < items.length; i++) {
+        var img = items[i].getElementsByTagName("img")[0];
+        if (img) {
+            // 이미지의 alt 설명글을 가져옴
+            var txtValue = img.alt.replace(/\s+/g, ''); 
+            
+            // 검색어가 포함되어 있는지 확인
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                items[i].style.display = ""; // 보이기
+            } else {
+                items[i].style.display = "none"; // 숨기기
+            }
+        }       
+    }
+}
+</script>
         
         
         </body>
@@ -70,7 +95,9 @@
         
    <!--시작화면-->
 
- 
+ <div class="search-container">
+    <input type="text" id="searchInput" onkeyup="filterTests()" placeholder="찾고 싶은 테스트를 검색하세요 (예: 연애, 성격)">
+</div>
     
     <div class="wrapper grid" style="text-align : center;">
 

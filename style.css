@@ -1,10 +1,8 @@
 @charset "UTF-8";
-    
+
 html {
     font-size: 100%;
 }
-
-
 
 @font-face {
     font-family: 'NanumSquareRound';
@@ -13,17 +11,16 @@ html {
     font-style: normal;
 }
 
-
 .section {
     margin-top: 50px;
 }    
-
 
 body {
     font-family: 'NanumSquareRound', sans-serif;
     line-height: 1.7;
     color: #432;
     background: #ffeff5;
+    margin: 0;
 }
 
 a {
@@ -32,19 +29,35 @@ a {
 
 img {
     max-width: 100%;
+    display: block;
+    margin: 0 auto;
 }
 
+/* 상단 헤더 영역 수정 */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+   padding-top: 30px !important;
+    padding-bottom: 30px !important; /* ★여기를 패딩으로 바꿨습니다. 숫자를 늘리면 더 벌어집니다. */
+}
+
+/* 로고 위치 잡기 */
+.page-header h1 {
+    margin: 0;
+    line-height: 0;
+}
 .logo {
     width: 100px;
-    margin-top: 14px;
 }
 
 .main-nav {
     display: flex;
     font-size: 1.25rem;
     text-transform: uppercase;
-    margin-top: 34px;
     list-style: none;
+    margin: 0; 
+    padding: 0;
 }
 
 .main-nav li {
@@ -59,11 +72,6 @@ img {
     color: #0bd;
 }
 
-.page-header {
-    display: flex;
-    justify-content: space-between;
-}
-
 .wrapper {
     max-width: 1100px;
     margin: 0 auto;
@@ -72,13 +80,15 @@ img {
 
 .home-content {
     text-align: center;
-    margin-top: 10%;
+    margin-top: 5%; /* 상단 여백 조금 줄임 (헤더 마진으로 조절했으므로) */
 }
 
+/* --- [수정] 그리드 기본 설정 (PC/태블릿) --- */
 .grid {
     display: grid;
     gap: 26px;
-    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    /* 230px로 줄여서 600px 화면에서도 2개가 들어갈 수 있게 변경 */
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
     margin-top: 6%;
     margin-bottom: 50px;
 }
@@ -100,22 +110,34 @@ img {
     border: none;
 }
 
-/* 아이콘 이미지 스타일 */
+/* --- 검색창 스타일 --- */
+.search-container {
+    text-align: center;
+    margin: 20px 0;
+    padding: 0 10px;
+}
+
+#searchInput {
+    width: 100%;
+    max-width: 400px;
+    padding: 12px 20px;
+    font-size: 16px;
+    border: 2px solid #ddd;
+    border-radius: 25px;
+    outline: none;
+    transition: border-color 0.3s;
+    box-sizing: border-box; 
+}
+
+#searchInput:focus {
+    border-color: #ff9c9c; 
+}
+
 #kakao-channel-icon img {
     background-color: transparent;
 }
 
-.kakao_ad {
-    width: 320px;
-    margin: 0 auto;
-}
-
-.kakao_ad2 {
-    width: 320px;
-    margin: 0 auto;
-}
-
-.coupang_ad {
+.kakao_ad, .kakao_ad2, .coupang_ad {
     width: 320px;
     margin: 0 auto;
 }
@@ -129,27 +151,27 @@ footer p {
     font-size: 0.875rem;
 }
 
-
+/* --- 모바일 반응형 (600px 이하) --- */
 @media (max-width: 600px) {
     .page-title {
         font-size: 2rem;
     }
     
     .main-nav {
-        font-size: 0.9rem;
-        margin-top: 10px;
+        font-size: 1.3rem;
     }
     
     .main-nav li {
-        margin: 0 5px;
+        margin: 0 0 0 15px; 
     }
 
-    .main-nav a {
-        font-size: 0.85rem;
+ .main-nav a {
+        font-size: 1.0rem;  /* (원래 0.85rem -> 1.1rem으로 키움) */
+        font-weight: bold;  /* 잘 보이게 굵기도 추가함 */
     }
     
     .home-content {
-        margin-top: 12%;
+        margin-top: 8%;
     }
 
     .wrapper {
@@ -157,8 +179,9 @@ footer p {
         padding: 0 4%;
     }
 
+    /* 600px 이하에서도 minmax(200px) 유지 -> 500px 넘으면 2줄 가능 */
     .grid {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* 최소 크기 더 줄이기 */
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         gap: 10px;
         margin-top: 4%;
     }
@@ -178,7 +201,15 @@ footer p {
     }
 }
 
-@media (max-width: 400px) {
+/* --- [수정] 500px 이하일 때 무조건 한 줄에 하나 (강제) --- */
+@media (max-width: 500px) {
+    .grid {
+        /* 강제로 1열로 고정 */
+        grid-template-columns: 1fr; 
+        gap: 15px;
+        margin-top: 3%;
+    }
+
     .page-title {
         font-size: 1.7rem;
     }
@@ -188,7 +219,7 @@ footer p {
     }
 
     .main-nav li {
-        margin: 0 4px;
+        margin: 0 0 0 8px; 
     }
 
     .home-content {
@@ -198,12 +229,6 @@ footer p {
     .wrapper {
         max-width: 100%;
         padding: 0 2%;
-    }
-
-    .grid {
-        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-        gap: 5px;
-        margin-top: 3%;
     }
 
     .item img {
@@ -224,4 +249,3 @@ footer p {
         font-size: 0.7rem;
     }
 }
-

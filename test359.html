@@ -49,36 +49,69 @@
             font-family: 'ChosunGu', sans-serif;
         }
     
+        /* 헤더 전체 틀 스타일 (여백 및 정렬) */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* 수직 중앙 정렬 추가 */
+    
+    /* ★ 여기가 천장과 떨어지게 만드는 핵심 코드 ★ */
+    padding-top: 30px !important;
+    padding-bottom: 30px !important;
+    
+    /* 가로폭 제한 및 중앙 정렬 */
+    max-width: 1100px;
+    margin: 0 auto;
+    padding-left: 4%;
+    padding-right: 4%;
+}
+
 .logo {
     width: 100px;
     margin-top: 14px;
 }
 
+/* 1. 메뉴바 가로 정렬 강제 고정 */
 .main-nav {
     display: flex;
-    font-size: 1.25rem;
-    text-transform: uppercase;
-    margin-top: 34px;
+    flex-wrap: nowrap !important; /* ★ 핵심: 화면이 좁아도 절대 줄바꿈 안 함 */
+    align-items: center;
     list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
+/* 2. 기본 간격 */
 .main-nav li {
-    margin-left: 36px;
-       font-family: 'Do Hyeon', sans-serif;
-    line-height: 1.7;
-    color: #432;
+    margin-left: 10px; 
 }
 
-.main-nav a{
-    color: #432;
-       font-family: 'Do Hyeon', sans-serif;
-    line-height: 1.7;
+/* 3. 버튼 디자인 (PC 기준) */
+.main-nav a {
+    display: block;
+    text-decoration: none;
+    color: #fff;
+    font-weight: 700;
+    background-color: #CE93D8; 
+    
+    /* 기본 크기 */
+    padding: 8px 15px;
+    border-radius: 20px;
+    border: 2px solid #fff;
+    box-shadow: 2px 2px 5px rgba(206, 147, 216, 0.5);
+    
+    font-size: 14px;
+    transition: all 0.2s;
+    
+    /* ★ 글자가 길어도 한 줄로 버티기 */
+    white-space: nowrap; 
 }
 
 .main-nav a:hover {
-    color: #0bd;
+    background-color: #FFB6C1;
+    transform: translateY(-2px);
+    box-shadow: 3px 3px 8px rgba(255, 182, 193, 0.6);
 }
-
 
 .page-header {
     display: flex;
@@ -278,7 +311,38 @@ article{
     margin-left: 12px;
   }
 }
+/* 4. ★ 모바일(작은 화면) 전용 설정 ★ */
+@media (max-width: 600px) {
+    
+    /* 1. 헤더 전체 틀의 위아래 여백을 확 줄임 (30px -> 10px) */
+    .page-header {
+        padding-top: 10px !important; 
+        padding-bottom: 10px !important;
+    }
 
+    /* 2. 로고 감싸는 태그(h1)가 가진 기본 공백 제거 */
+    .page-header h1 {
+        margin: 0 !important;
+        line-height: 0 !important;
+    }
+
+    /* 3. 로고 자체의 여백 제거 및 크기 조절 */
+    .logo {
+        width: 90px; 
+        margin-top: 0 !important; /* 혹시 모를 상단 여백 제거 */
+        margin-bottom: 0 !important;
+    }
+
+    /* 4. 메뉴 버튼들 설정 (작성하신 부분) */
+    .main-nav li {
+        margin-left: 5px !important;
+    }
+    .main-nav a {
+        font-size: 13px !important;
+        padding: 5px 8px !important;
+        border-width: 1px !important;
+    }
+}
 </style>
 
 

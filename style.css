@@ -40,36 +40,62 @@ img {
     align-items: center;
     padding-top: 30px !important;
     padding-bottom: 30px !important;
+    max-width: 1100px; /* wrapper 속성 */
+    margin: 0 auto;    /* wrapper 속성 */
+    padding-left: 4%;  /* wrapper 속성 */
+    padding-right: 4%; /* wrapper 속성 */
 }
 
-/* 로고 위치 잡기 */
 .page-header h1 {
     margin: 0;
     line-height: 0;
 }
+
 .logo {
     width: 100px;
 }
 
+/* 상단 네비게이션바 정렬 */
 .main-nav {
     display: flex;
-    font-size: 1.25rem;
-    text-transform: uppercase;
     list-style: none;
-    margin: 0; 
+    margin: 0;
     padding: 0;
+    align-items: center; /* 수직 중앙 정렬 */
 }
 
+/* 메뉴 간격 */
 .main-nav li {
-    margin-left: 36px;
+    margin-left: 10px; /* 간격 조절 */
 }
 
+/* ★ 여기가 보라색 버튼 만드는 핵심 코드입니다 ★ */
 .main-nav a {
-    color: #432;
+    display: block;
+    text-decoration: none;
+    color: #fff; /* 글자색 흰색 */
+    font-weight: 700;
+    
+    /* 보라색 배경 (테두리처럼 보이는 효과) */
+    background-color: #CE93D8; 
+    
+    /* 둥근 모양 만들기 */
+    padding: 8px 15px;
+    border-radius: 20px;
+    
+    /* 흰색 테두리와 그림자 */
+    border: 2px solid #fff;
+    box-shadow: 2px 2px 5px rgba(206, 147, 216, 0.5);
+    
+    font-size: 14px;
+    transition: all 0.2s;
 }
 
+/* 마우스 올렸을 때 효과 */
 .main-nav a:hover {
-    color: #0bd;
+    background-color: #FFB6C1; /* 핑크색으로 변경 */
+    transform: translateY(-2px); /* 살짝 위로 뜸 */
+    box-shadow: 3px 3px 8px rgba(255, 182, 193, 0.6);
 }
 
 .wrapper {
@@ -247,5 +273,27 @@ footer p {
 
     footer p {
         font-size: 0.7rem;
+    }
+}
+/* --- 모바일 반응형 (헤더 관련만 추출) --- */
+@media (max-width: 600px) {
+    .main-nav {
+        font-size: 1.3rem;
+    }
+    .main-nav li {
+        margin: 0 0 0 15px; 
+    }
+    .main-nav a {
+        font-size: 1.0rem;
+        font-weight: bold;
+    }
+}
+
+@media (max-width: 500px) {
+    .main-nav {
+        font-size: 0.75rem;
+    }
+    .main-nav li {
+        margin: 0 0 0 8px; 
     }
 }

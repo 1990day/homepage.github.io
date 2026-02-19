@@ -79,9 +79,9 @@
     }
 
     .wrap{
-      width:min(980px, 100%);
+      width:min(820px, 100%);
       margin:0 auto;
-      padding:20px 16px 40px;
+      padding:20px 20px 40px;
     }
 
     .topbar{
@@ -163,7 +163,7 @@
     }
 
     .question{
-      font-size:20px; font-weight:900; color:var(--ink);
+      font-size:18px; font-weight:900; color:var(--ink);
       text-align:center; line-height:1.4; margin:30px 0;
       word-break: keep-all;
     }
@@ -186,16 +186,9 @@
     .btn:active{ transform: translateY(1px) scale(0.98); }
     
     .btn .txt{
-      display:block; font-weight:800; line-height:1.4; font-size:16px; color:#7a5266; transition: color .2s ease;
+      display:block; font-weight:800; line-height:1.4; font-size:15px; color:#7a5266; transition: color .2s ease;
     }
     .btn:hover .txt{ color: var(--pink-neon); }
-
-    .nav{ display:flex; gap:10px; margin-top:20px; }
-    .ghost{
-      background: transparent; border: 2px dashed var(--pink-light); box-shadow:none;
-      color: #b08d9f; padding: 14px; border-radius: 999px;
-    }
-    .ghost:hover { border-color: var(--pink-main); background: transparent; transform: none; box-shadow: none; }
 
     /* 결과 페이지 */
     .resultHero{ display:flex; flex-direction:column; gap:20px; }
@@ -289,6 +282,9 @@
       z-index:50;
     }
     .toast.show{ opacity:1; transform:translateX(-50%) translateY(-10px); }
+     /* 광고 스타일 */
+    .coupang_ad { width: 100%; margin: 0 auto; text-align: center; overflow:hidden; border-radius:20px; border: 2px solid #F0F0F0; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+
   </style>
 </head>
 <body>
@@ -351,12 +347,6 @@
                 <span class="txt" id="textB">선택지 B</span>
               </button>
             </div>
-
-            <div class="nav">
-              <button class="btn ghost" id="btnBack">
-                <span class="txt">이전 질문</span>
-              </button>
-            </div>
           </div>
 
           <div id="resultView" style="display:none;">
@@ -395,6 +385,13 @@
             </div>
           </div>
         </div>
+        
+    <article class="coupang_ad mt-3" style="margin: 20px 0 10px;">
+        <script src="https://ads-partners.coupang.com/g.js"></script>
+        <script>
+            new PartnersCoupang.G({"id":798186,"template":"carousel","trackingCode":"AF4391881","width":"320","height":"100","tsource":""});
+        </script>
+    </article>
       </section>
     </div>
   </div>
@@ -685,7 +682,6 @@
     const mainHead = document.getElementById("mainHead");
 
     const btnStart = document.getElementById("btnStart");
-    const btnBack = document.getElementById("btnBack");
     const choiceA = document.getElementById("choiceA");
     const choiceB = document.getElementById("choiceB");
 
@@ -746,11 +742,6 @@
       if(pick === "A") state.scores[ax.a] += 1;
       else state.scores[ax.b] += 1;
     }
-    function axisUnpick(axis, pick){
-      const ax = AXIS[axis];
-      if(pick === "A") state.scores[ax.a] -= 1;
-      else state.scores[ax.b] -= 1;
-    }
 
     function renderQuestion(){
       const i = state.step;
@@ -766,8 +757,6 @@
       qText.innerHTML = `<span style="color:var(--pink-main); font-size:16px;">Q${i+1}.</span><br>${item.q}`;
       textA.textContent = item.aText;
       textB.textContent = item.bText;
-
-      btnBack.style.display = (i === 0) ? "none" : "block";
     }
 
     function next(pick){
@@ -778,14 +767,6 @@
 
       if(state.step >= QUESTIONS.length) showResult();
       else renderQuestion();
-    }
-
-    function back(){
-      if(state.step <= 0) return;
-      state.step -= 1;
-      const last = state.answers.pop();
-      axisUnpick(last.axis, last.pick);
-      renderQuestion();
     }
 
     function decideAxis(axisKey){
@@ -894,7 +875,7 @@
         backgroundColor: "#fff4f9"
       }).then(canvas => {
         const link = document.createElement("a");
-        link.download = `my_love_type_${resCode.textContent}.png`;
+        link.download = `testit_love_type_${resCode.textContent}.png`;
         link.href = canvas.toDataURL("image/png");
         link.click();
         showToast("이미지 앨범에 저장 완료!");
@@ -928,7 +909,6 @@
     btnStart.addEventListener("click", startQuiz);
     choiceA.addEventListener("click", ()=> next("A"));
     choiceB.addEventListener("click", ()=> next("B"));
-    btnBack.addEventListener("click", back);
 
     resetAll();
   </script>

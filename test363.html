@@ -94,7 +94,6 @@
       user-select:none;
     }
 
-    /* 기존 .logo를 .test-logo로 변경 */
     .test-logo{
       width:40px; height:40px; border-radius:14px;
       background: linear-gradient(135deg, var(--pink-neon), var(--pink-main));
@@ -196,9 +195,9 @@
     .typeBadge{
       display:flex; flex-direction:column; align-items:center; gap:6px;
       padding:20px 16px; border-radius:var(--radius);
-      background: linear-gradient(135deg, #fff, var(--bg1));
-      box-shadow: 0 10px 25px rgba(255,134,200,0.15);
-      text-align: center; border: 2px solid #fff;
+      background: linear-gradient(135deg, var(--bg1), var(--pink-light));
+      box-shadow: 0 10px 25px rgba(255,134,200,0.2);
+      text-align: center; border: 2px solid var(--pink-main);
     }
     .typeBadge .emoji{ font-size:40px; margin-bottom: 6px; filter: drop-shadow(0 8px 12px rgba(255,79,179,0.3)); }
     .typeBadge .code{ font-weight:900; font-size:14px; color:var(--pink-neon); letter-spacing:1px; }
@@ -241,10 +240,10 @@
       position: relative; left: 50%; transform: translateX(-50%);
     }
     .traits-container {
-      background: #fff; border-radius: 24px; padding: 24px 20px;
+      background: var(--bg1); border-radius: 24px; padding: 24px 20px;
       box-shadow: 0 10px 25px rgba(255,134,200,0.1);
       display: flex; flex-direction: column; gap: 14px;
-      border: 2px solid #fff4f9;
+      border: 2px solid var(--pink-light);
     }
     .li-text {
       font-weight: 800; font-size: 14px; color: #7a5266;
@@ -386,7 +385,7 @@
           </div>
         </div>
         
-    <article class="coupang_ad mt-3" style="margin: 20px 0 10px;">
+    <article class="coupang_ad mt-3" data-html2canvas-ignore style="margin: 20px 0 10px;">
         <script src="https://ads-partners.coupang.com/g.js"></script>
         <script>
             new PartnersCoupang.G({"id":798186,"template":"carousel","trackingCode":"AF4391881","width":"320","height":"100","tsource":""});
@@ -619,7 +618,7 @@
         "거부 못 할 아우라와 카리스마로 상대방을 리드함",
         "사랑에 빠지면 오직 연인에게만 온전히 집중함",
         "이끄는 대로 즐겁게 따라와 주는 사람을 아주 좋아함",
-        "외모가 화려하거나 분위기 독특한 사람에게 끌림",
+        "외모가 화려하거나 분위기 독특한 편집인 사람에게 끌림",
         "적극적인 애정표현과 스킨십을 보여줌",
         "본인이 세상 가장 멋진 연인이란 자부심이 대단함",
         "주변의 부러움과 시샘을 받는 화려한 연애를 지향함",

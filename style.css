@@ -289,11 +289,31 @@ footer p {
     }
 }
 
-@media (max-width: 500px) {
-    .main-nav {
-        font-size: 0.75rem;
+@media (max-width: 445px) {
+    /* 기존 코드들 유지하면서 아래 내용 추가/수정 */
+
+    .page-header {
+        flex-wrap: nowrap; /* 헤더 안에서 줄바꿈 금지 */
+        white-space: nowrap;
+        padding-left: 2%;
+        padding-right: 2%;
     }
+
+    .logo {
+        width: 90px; /* 로고 크기를 살짝 줄여서 메뉴 공간 확보 */
+    }
+
+    .main-nav {
+        flex-wrap: nowrap; /* 세로 정렬 방지 */
+        white-space: nowrap; /* 글자 줄바꿈 방지 */
+    }
+
     .main-nav li {
-        margin: 0 0 0 8px; 
+        margin: 0 0 0 5px; /* 메뉴 사이 간격을 더 좁게 */
+    }
+
+    .main-nav a {
+        font-size: 0.95rem;
+        padding: 5px 8px; /* 버튼 안쪽 여백 줄이기 */
     }
 }

@@ -1,0 +1,936 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5522499110435321" crossorigin="anonymous"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <title>테스트잇 일본 러브 타입 테스트</title>
+  <meta name="description" content="테스트잇 일본 러브 타입 테스트">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="테스트잇 일본 러브 타입 테스트">
+  <meta property="og:description" content="테스트잇 일본 러브 타입 테스트">
+  <meta property="og:image" content="img_main363.png">
+  <meta property="og:url" content="https://test-it.co.kr/test363">
+  <meta name="theme-color" content="#ff86c8" />
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+  <style>
+    :root{
+      --bg1:#fff4f9;
+      --bg2:#ffe3f1;
+      --card:#ffffff;
+      --ink:#5a3a4b;
+      --pink-main:#ff86c8;
+      --pink-light:#ffd0e6;
+      --pink-neon:#ff4fb3;
+      --jelly-good:#ffc2e2;
+      --jelly-bad:#e2d9ff;
+      --radius: 28px;
+      --primary: #ff86c8;
+      --secondary: #ffd0e6;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: "Pretendard","Noto Sans KR", sans-serif;
+      color:var(--ink);
+      background: linear-gradient(135deg, var(--bg1), var(--bg2));
+      min-height:100vh;
+      overflow-x:hidden;
+    }
+
+    /* 상단 헤더 추가 */
+    .page-header {
+      width: 100%; max-width: 820px; margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 15px 20px; 
+      background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.8);
+      box-shadow: 0 2px 10px rgba(255, 182, 193, 0.1);
+      position: sticky; top: 0; z-index: 100;
+      /* 무조건 한 줄 유지 */
+      flex-wrap: nowrap !important;
+      white-space: nowrap;
+    }
+    .page-header h1 { margin: 0; display: flex; align-items: center; flex-shrink: 0; }
+    .logo { width: 100px; display: block; filter: drop-shadow(1px 1px 2px rgba(255, 182, 193, 0.5)); transition: width 0.2s; }
+    
+    .main-nav { display: flex; font-size: 1rem; list-style: none; margin: 0; padding: 0; align-items: center; }
+    .main-nav li { margin-left: 6px; }
+    .main-nav a { 
+      text-decoration: none; color: #fff; font-weight: normal; 
+      background: var(--secondary); padding: 8px 14px; border-radius: 20px;
+      border: 2px solid #fff; font-size: 15px;
+      box-shadow: 2px 2px 5px rgba(206, 147, 216, 0.3);
+      transition: all 0.2s; display: block;
+    }
+    .main-nav a:hover { background: var(--primary); transform: translateY(-2px); box-shadow: 3px 3px 8px rgba(255, 182, 193, 0.4); }
+
+    @media (max-width: 430px){
+      .page-header { padding: 10px 8px; } 
+      .logo { width: 90px; }
+      
+      .main-nav a { 
+        font-size: 14px; 
+        padding: 6px 10px; 
+      }
+      .main-nav li { margin-left: 3px; }
+    }
+
+    .wrap{
+      width:min(980px, 100%);
+      margin:0 auto;
+      padding:20px 16px 40px;
+    }
+
+    .topbar{
+      display:flex; align-items:center; justify-content:space-between;
+      margin:10px 0 20px;
+    }
+
+    .brand{
+      display:flex; align-items:center; gap:8px;
+      user-select:none;
+    }
+
+    /* 기존 .logo를 .test-logo로 변경 */
+    .test-logo{
+      width:40px; height:40px; border-radius:14px;
+      background: linear-gradient(135deg, var(--pink-neon), var(--pink-main));
+      display: flex; align-items:center; justify-content:center;
+      color:#fff; font-size:20px;
+      box-shadow: 0 6px 15px rgba(255,79,179,0.3);
+    }
+    .test-logo::after{ content:"💖"; }
+
+    .brand h1{
+      margin:0; font-size:16px; font-weight:900; color:var(--pink-neon);
+    }
+    .brand h1 .sub{
+      display:block; font-size:11px; font-weight:800; color:#a68395; margin-top:2px;
+    }
+
+    .pill{
+      background: #fff;
+      border: 2px solid var(--pink-light);
+      padding:8px 14px;
+      border-radius:999px;
+      font-weight:900; color:var(--ink); font-size:12px;
+      box-shadow: 0 4px 10px rgba(255,134,200,0.15);
+      display: flex; gap: 4px;
+    }
+
+    .container{
+      display:grid; grid-template-columns: 1fr; justify-items:center; align-items:start;
+    }
+    .card#mainCard{
+      width:min(600px, 100%);
+    }
+
+    .card{
+      border-radius: var(--radius);
+      background: rgba(255,255,255,0.85);
+      border: 2px solid #fff;
+      box-shadow: 0 15px 35px rgba(255,134,200,0.2);
+      backdrop-filter: blur(10px);
+      overflow:hidden;
+    }
+    .card .head{
+      padding:24px 20px 16px;
+      text-align: center;
+    }
+
+    .title{
+      margin:0; font-size:22px; font-weight:900; color:var(--pink-neon);
+      line-height: 1.3;
+    }
+    .desc{
+      margin:8px 0 0; color:#9c788a; font-weight:700; font-size:13px;
+    }
+
+    .body{ padding:20px; }
+
+    .progress{
+      height:14px; border-radius:999px; background:#fff;
+      border: 2px solid var(--pink-light);
+      overflow:hidden; box-shadow: inset 0 2px 5px rgba(0,0,0,0.03);
+    }
+    .bar{
+      height:100%; width:0%;
+      background: linear-gradient(90deg, var(--pink-main), var(--pink-neon));
+      border-radius:999px; transition: width .4s ease;
+    }
+
+    .question{
+      font-size:20px; font-weight:900; color:var(--ink);
+      text-align:center; line-height:1.4; margin:30px 0;
+      word-break: keep-all;
+    }
+
+    .choices{ display:grid; gap:12px; }
+
+    .btn{
+      appearance:none; width:100%; text-align:center;
+      padding:18px 20px; border-radius:999px;
+      background: #fff; border: 2px solid transparent;
+      box-shadow: 0 6px 16px rgba(255,134,200,0.12);
+      cursor:pointer; transition: all .3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .btn:hover{ 
+      transform: translateY(-4px); 
+      background: #fff9fc;
+      border-color: var(--pink-main);
+      box-shadow: 0 10px 20px rgba(255,134,200,0.25); 
+    }
+    .btn:active{ transform: translateY(1px) scale(0.98); }
+    
+    .btn .txt{
+      display:block; font-weight:800; line-height:1.4; font-size:16px; color:#7a5266; transition: color .2s ease;
+    }
+    .btn:hover .txt{ color: var(--pink-neon); }
+
+    .nav{ display:flex; gap:10px; margin-top:20px; }
+    .ghost{
+      background: transparent; border: 2px dashed var(--pink-light); box-shadow:none;
+      color: #b08d9f; padding: 14px; border-radius: 999px;
+    }
+    .ghost:hover { border-color: var(--pink-main); background: transparent; transform: none; box-shadow: none; }
+
+    /* 결과 페이지 */
+    .resultHero{ display:flex; flex-direction:column; gap:20px; }
+    
+    .typeBadge{
+      display:flex; flex-direction:column; align-items:center; gap:6px;
+      padding:20px 16px; border-radius:var(--radius);
+      background: linear-gradient(135deg, #fff, var(--bg1));
+      box-shadow: 0 10px 25px rgba(255,134,200,0.15);
+      text-align: center; border: 2px solid #fff;
+    }
+    .typeBadge .emoji{ font-size:40px; margin-bottom: 6px; filter: drop-shadow(0 8px 12px rgba(255,79,179,0.3)); }
+    .typeBadge .code{ font-weight:900; font-size:14px; color:var(--pink-neon); letter-spacing:1px; }
+    
+    .typeBadge .label{ font-weight:900; color:#e0488f; font-size:22px; word-break: keep-all; }
+    .typeBadge .subLabel{ font-weight:800; color:#b08d9f; font-size:12px; margin-top: 2px; }
+
+    /* 궁합 섹션 */
+    .compat-section { margin-top: 4px; }
+    .compat-title { font-size:13px; font-weight:900; text-align:center; margin-bottom:8px; }
+    .compat-title.good { color: #b31b67; }
+    .compat-title.bad { color: #634eb3; }
+
+    .pairs{ display:flex; flex-direction:column; width: 100%; }
+    
+    .pair{
+      width: 100%; padding:16px 8px; border-radius:24px;
+      font-weight:800; font-size:13px; text-align: center;
+      line-height: 1.3; word-break: keep-all; letter-spacing: -0.5px;
+    }
+    .pair.good{
+      background-color: #fff0f7;
+      box-shadow: 0 6px 15px rgba(255,134,200,0.15);
+      color: #b31b67; border: 2px solid #ffb3da;
+    }
+    .pair.bad{
+      background-color: #f5f0ff;
+      box-shadow: 0 6px 15px rgba(180,160,255,0.15);
+      color: #634eb3; border: 2px solid #d4c4ff;
+    }
+    .pair span { display: block; font-size: 11px; opacity: 0.7; margin-bottom: 4px; letter-spacing: 0; }
+
+    /* 하나로 합친 특징 영역 */
+    .traits-box { margin-top: 10px; }
+    .traits-box h4 {
+      text-align: center; font-size: 16px; font-weight: 900; color: var(--ink);
+      margin: 0 0 16px 0; background: #fff; padding: 8px 20px;
+      border-radius: 999px; display: inline-block;
+      box-shadow: 0 4px 12px rgba(255,134,200,0.1);
+      position: relative; left: 50%; transform: translateX(-50%);
+    }
+    .traits-container {
+      background: #fff; border-radius: 24px; padding: 24px 20px;
+      box-shadow: 0 10px 25px rgba(255,134,200,0.1);
+      display: flex; flex-direction: column; gap: 14px;
+      border: 2px solid #fff4f9;
+    }
+    .li-text {
+      font-weight: 800; font-size: 14px; color: #7a5266;
+      line-height: 1.4; position: relative; padding-left: 22px;
+      word-break: keep-all;
+    }
+    .li-text::before {
+      content: "💖"; position: absolute; left: 0; top: 1px; font-size: 13px;
+    }
+
+    /* 하단 액션 버튼 */
+    .actions{
+      display:grid; grid-template-columns: 1fr 1fr; gap:12px; margin-top:10px;
+    }
+    .actionBtn{
+      padding:16px; border-radius:999px; border:none; background: #fff;
+      font-weight:900; cursor:pointer; font-size: 14px; color: var(--ink);
+      box-shadow: 0 6px 16px rgba(255,134,200,0.12); transition: all .3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .actionBtn:hover{ transform:translateY(-3px); box-shadow: 0 10px 20px rgba(255,134,200,0.2); }
+    .actionBtn:active{ transform:translateY(1px) scale(0.98); }
+    .actionBtn.primary{
+      background: linear-gradient(135deg, var(--pink-main), var(--pink-neon)); color:#fff;
+    }
+    .actionBtn.secondary{
+      background: var(--pink-light); color: var(--ink);
+    }
+
+    .toast{
+      position:fixed; left:50%; bottom:30px; transform:translateX(-50%);
+      background: rgba(90, 58, 75, 0.9); color:#fff; padding:12px 20px;
+      border-radius:999px; font-weight:800; font-size:13px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      opacity:0; pointer-events:none; transition: opacity .3s ease, transform .3s ease;
+      z-index:50;
+    }
+    .toast.show{ opacity:1; transform:translateX(-50%) translateY(-10px); }
+  </style>
+</head>
+<body>
+
+  <header class="page-header">
+    <h1>
+      <a href="index.html">
+        <img class="logo" src="img_logo.png" alt="TEST IT">
+      </a>
+    </h1>
+    <nav>
+      <ul class="main-nav">
+        <li><a href="https://test-it.co.kr/test.html">성격</a></li>
+        <li><a href="https://test-it.co.kr/face.html">얼굴</a></li>
+        <li><a href="https://test-it.co.kr/etc.html">그외</a></li>
+        <li><a href="https://test-it.co.kr/saju.html">사주</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand">
+        <div class="test-logo" aria-hidden="true"></div>
+        <h1>LOVE TYPE 16<span class="sub">테스트잇 일본 러브 타입 테스트</span></h1>
+      </div>
+      <div class="pill" id="progressPill">
+        <span id="pillStep">0</span> / <span id="pillTotal">12</span>
+      </div>
+    </div>
+
+    <div class="container">
+      <section class="card" id="mainCard">
+        <div class="head" id="mainHead" style="padding: 0;">
+          </div>
+
+        <div class="body" id="mainBody">
+          <div id="startView">
+            <div style="text-align:center; padding: 10px 0;">
+              <img src="img_main363.png" alt="메인 이미지" style="width: 100%; border-radius: 16px;">
+            </div>
+
+            <div class="actions" style="display: flex; flex-direction: column; margin-top: 20px;">
+              <button class="actionBtn primary" id="btnStart" style="padding: 20px; font-size: 16px;">테스트 시작하기</button>
+            </div>
+          </div>
+
+          <div id="quizView" style="display:none;">
+            <div class="progress">
+              <div class="bar" id="progressBar2"></div>
+            </div>
+
+            <h3 class="question" id="qText">질문</h3>
+
+            <div class="choices">
+              <button class="btn" id="choiceA">
+                <span class="txt" id="textA">선택지 A</span>
+              </button>
+              <button class="btn" id="choiceB">
+                <span class="txt" id="textB">선택지 B</span>
+              </button>
+            </div>
+
+            <div class="nav">
+              <button class="btn ghost" id="btnBack">
+                <span class="txt">이전 질문</span>
+              </button>
+            </div>
+          </div>
+
+          <div id="resultView" style="display:none;">
+            <div class="resultHero">
+              <div class="typeBadge">
+                <div class="emoji" id="resEmoji">💗</div>
+                <div class="code" id="resCode">LCRO</div>
+                <div class="label" id="resLabel">결과 이름</div>
+                <div class="subLabel" id="resSubLabel">주도형 · 애정표현형 · 현실파 · 자유형</div>
+              </div>
+
+              <div class="compat-section">
+                <div style="display: flex; gap: 12px;">
+                  <div style="flex:1; display:flex; flex-direction:column;">
+                    <div class="compat-title good">잘 맞는 타입</div>
+                    <div id="goodPairs" class="pairs"></div>
+                  </div>
+                  <div style="flex:1; display:flex; flex-direction:column;">
+                    <div class="compat-title bad">위험한 타입</div>
+                    <div id="badPairs" class="pairs"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="traits-box">
+                <h4>나의 연애 특징</h4>
+                <div class="traits-container" id="traits"></div>
+              </div>
+
+              <div class="actions" data-html2canvas-ignore style="margin-top: 20px;">
+                <button class="actionBtn primary" id="btnSaveImg">결과 저장하기 📸</button>
+                <button class="actionBtn secondary" id="btnShare">테스트 공유하기 💌</button>
+                <button class="actionBtn" id="btnRetry">다시 해보기</button>
+                <button class="actionBtn" id="btnOtherTest">다른 테스트 해보기</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <div class="toast" id="toast">알림</div>
+
+  <script>
+    // ---------- DATA ----------
+    const AXIS = {
+      LF: { a: "LEAD", b: "FOLLOW" },
+      CA: { a: "CUDDY", b: "ACCEPT" },
+      RP: { a: "REALISTIC", b: "PASSIONATE" },
+      OE: { a: "OPTIMISTIC", b: "EARNEST" }
+    };
+
+    const QUESTIONS = [
+      { axis:"LF", q:"데이트 계획을 세울 때 나는?", aText:"상대의 취향을 먼저 존중함", bText:"내가 가고 싶은 곳에 함께 가주길 원함" },
+      { axis:"LF", q:"의견 차이가 생겼을 때 태도는?", aText:"웬만하면 상대에게 맞춰줌", bText:"내 생각을 확실히 설득함" },
+      { axis:"LF", q:"연락할 때 나는 어떤 스타일인가?", aText:"상대의 속도에 맞춰주는 편", bText:"내가 하고 싶을 때 하는 편" },
+
+      { axis:"CA", q:"연인과 있을 때 내 모습은?", aText:"아이처럼 응석 부리는 쪽", bText:"다정하게 챙겨주는 쪽" },
+      { axis:"CA", q:"내가 더 큰 행복을 느낄 때는?", aText:"사랑받으며 편안하게 기대고 싶을 때", bText:"상대를 따뜻하게 감싸고 챙겨줄 때" },
+      { axis:"CA", q:"요즘 애정 표현이 좀 줄어든 것 같다면?", aText:"내가 더 많이 표현함", bText:"상대가 다시 표현해 주길 기다림" },
+
+      { axis:"RP", q:"더 끌리는 데이트 분위기는?", aText:"편안하고 소소한 일상 느낌", bText:"화려하고 설레는 낭만 느낌" },
+      { axis:"RP", q:"상대를 볼 때 더 중요한 것?", aText:"나와 잘 맞는 성격과 가치관", bText:"첫눈에 꽂히는 강렬한 설렘" },
+      { axis:"RP", q:"기념일을 챙기는 나의 방식은?", aText:"실속 있고 유용한 선물 준비", bText:"잊지 못할 로맨틱 이벤트 준비" },
+
+      { axis:"OE", q:"새로운 연애를 시작할 때 나는?", aText:"일단 만나보며 즐겁게 시작", bText:"진중하고 신중하게 고민함" },
+      { axis:"OE", q:"나에게 연애란 어떤 의미일까?", aText:"삶을 더 즐겁게 만드는 활력", bText:"무거운 책임감이 필요한 약속" },
+      { axis:"OE", q:"만약 이별하게 될 가능성을 생각하면?", aText:"오지도 않은 이별을 굳이 걱정 안 함", bText:"시작할 때부터 상처받을까 봐 조금 걱정됨" }
+    ];
+
+    const TYPE_EMOJI = {
+      "LCRO":"🐶","LCRE":"🧸","LCPO":"🔥","LCPE":"❤️‍🔥",
+      "LARO":"🌸","LARE":"🕊️","LAPO":"✨","LAPE":"🖤",
+      "FCRO":"🍓","FCRE":"🧁","FCPO":"🎀","FCPE":"🥺",
+      "FARO":"☁️","FARE":"🧊","FAPO":"💫","FAPE":"🌙"
+    };
+
+    const LABELS = {
+      L:"주도형", F:"맞춤형",
+      C:"애정표현형", A:"수용형",
+      R:"현실파", P:"열정파",
+      O:"자유형", E:"진지형"
+    };
+
+    const TYPE_NAME = {
+      "LCRO":"천하태평 아기 강아지", "LCRE":"성실한 어리광쟁이", "LCPO":"로맨틱한 사랑꾼", "LCPE":"헌신적인 꿈꾸는 아이",
+      "LARO":"쿨한 평화주의자", "LARE":"속 깊은 안식처", "LAPO":"열정적인 수호천사", "LAPE":"단단한 버팀목",
+      "FCRO":"마이웨이 귀염둥이", "FCRE":"원칙 있는 어리광쟁이", "FCPO":"화려한 주인공", "FCPE":"고집 있는 로맨티스트",
+      "FARO":"자유로운 리더", "FARE":"냉철한 캡틴", "FAPO":"매력적인 카리스마", "FAPE":"사랑에 진심인 별"
+    };
+
+    const TRAITS = {
+      "LCRO":[
+        "상대방이 이끄는 대로 따라가는 게 제일 편함",
+        "연인에게 껌딱지처럼 붙어있는 걸 좋아함",
+        "오늘 즐거우면 장땡이라는 마인드로 연애함",
+        "연락 문제로 스트레스를 거의 안 줌",
+        "뒤끝이 없어서 싸워도 5분 뒤면 까먹음",
+        "질투가 나도 금방 자기만의 즐거움을 찾음",
+        "복잡한 관계 고민을 싫어하고 단순하게 생각함",
+        "구속받는 느낌을 은근히 즐기기도 함",
+        "화려한 미래보다는 지금의 소소한 행복을 믿음",
+        "상대방의 라이프스타일에 본인을 아주 잘 맞춤"
+      ],
+      "LCRE":[
+        "상대에게 맞추면서도 관계의 무게를 진지하게 느낌",
+        "한 사람에게 정착하면 딴눈 절대 안 팜",
+        "연인의 스케줄을 본인의 일정보다 우선순위에 둠",
+        "약속 시간을 어기는 걸 아주 싫어함",
+        "연애 초기보다 시간이 갈수록 더 의지하는 스타일",
+        "감정 기복이 적고 늘 일정한 온도의 사랑을 줌",
+        "상대방의 부모님이나 지인에게 예의 바르게 행동함",
+        "연인의 작은 칭찬에도 하루 종일 행복해함",
+        "연락을 규칙적으로 주고받는 것에서 안정감을 느낌",
+        "자극적인 연애보다는 편안한 휴식 같은 연애를 함"
+      ],
+      "LCPO":[
+        "첫눈에 반하는 영화 같은 사랑을 실제로 믿음",
+        "상대방의 페이스에 맞추며 본인의 열정을 다 쏟음",
+        "감정 표현이 아주 풍부하고 애교가 철철 넘침",
+        "사랑받고 있다는 확인을 1시간 단위로 원함",
+        "현실적인 제약보다는 마음의 끌림을 따름",
+        "상대방의 사소한 행동에 의미 부여를 많이 함",
+        "질투심이 매우 강하고 독점욕도 있는 편임",
+        "싸울 때도 열정적으로 싸우고 화해할 때도 화끈함",
+        "금사빠 기질이 있어 금방 사랑에 빠짐",
+        "본인이 맞추는 입장임에도 주인공 대접을 원함"
+      ],
+      "LCPE":[
+        "한 번 빠지면 바닥끝까지 깊게 빠지는 사랑꾼",
+        "상대방에게 모든 걸 맞추며 평생 함께할 미래를 꿈꿈",
+        "연애의 시작은 신중하지만 시작하면 완전 올인!",
+        "진지한 대화를 통해 깊은 내면을 공유하길 원함",
+        "가끔은 상대를 너무 좋아해서 혼자 상처받음",
+        "사랑의 기준이 높아서 아무나 만나지 않음",
+        "드라마틱한 사랑을 꿈꾸면서도 현실의 책임감을 느낌",
+        "연인의 고충을 본인 일처럼 아파하고 위로함",
+        "화려한 이벤트보다는 진심이 담긴 편지에 감동함",
+        "정서적 안정감이 연애의 가장 큰 목적임"
+      ],
+      "LARO":[
+        "연애의 중심을 딱 잡으면서도 완전 쿨가이/쿨걸",
+        "상대방이 원하는 건 웬만하면 다 들어주는 편",
+        "눈치 백단! 상황 파악 엄청 빠르고 센스 넘침",
+        "질투나 집착은 노노, 부담 없는 관계가 최고",
+        "감정에 크게 휘둘리지 않아서 연애가 평화로움",
+        "현실적이고 실용적인 연애 지향함",
+        "서로의 시간과 선을 아주 완벽하게 지켜줌",
+        "싸울 일 생겨도 부드럽게 스무스하게 넘어감",
+        "같이 있으면 마음이 차분해지고 엄청 편안함",
+        "호들갑 떨지 않는 어른스러운 연애의 정석"
+      ],
+      "LARE":[
+        "상대방의 페이스를 세심하게 살피고 맞춰줌",
+        "감정을 막 드러내진 않지만 속은 엄청 깊고 따뜻함",
+        "기준이 확실해서 연애의 기둥 역할을 든든하게 해줌",
+        "오래오래 안정적으로 만날 사람을 신중하게 고름",
+        "상대방이 멘붕 와도 옆에서 차분하게 멘탈 잡아줌",
+        "신뢰를 차곡차곡 쌓아 올리는 장기 연애 장인",
+        "약속 시간, 기념일 절대 안 까먹는 칼 같은 철저함",
+        "가끔 무뚝뚝해 보여도 내 사람에겐 세상 다정함",
+        "감정 기복이 적어 태풍 속에서도 흔들리지 않음",
+        "가장 믿고 평생을 함께할 수 있는 최고의 안식처"
+      ],
+      "LAPO":[
+        "속은 불타오르는데 겉으론 여유로운 척하는 여우",
+        "설렘에 살고 설렘에 죽는 로맨스 과몰입러",
+        "분위기에 약해서 로맨틱한 순간이면 사르르 녹음",
+        "자유롭고 즉흥적인 데이트를 엄청 좋아함",
+        "연인이 원하는 건 무엇이든 해주고 싶어 함",
+        "깊은 고민보다는 지금 당장의 즐거움을 선택함",
+        "감정 기복이 롤러코스터라 톡톡 튀는 매력이 있음",
+        "갑자기 식으면 언제 그랬냐는 듯 쿨하게 돌아서기도 함",
+        "적극적으로 스킨십하고 애정을 표현함",
+        "연애가 인생에서 가장 큰 활력소라고 생각함"
+      ],
+      "LAPE":[
+        "상대의 의견을 경청하면서 가장 진지한 조언을 해줌",
+        "진짜 내 사람이다 싶을 때만 마음의 문을 엶",
+        "마음 주면 진짜 간절하고 깊게, 영원히 사랑함",
+        "연애를 절대 가벼운 흥미거리로 취급하지 않음",
+        "표현은 서툴고 조심스럽지만 진심의 깊이가 다름",
+        "한 번 상처받으면 마음에 오래 남아 쉽게 못 잊음",
+        "내가 책임질 수 있는 단 한 사람에게 집중함",
+        "질투나 집착이 조금 있지만 그만큼 사랑한다는 증거",
+        "가벼운 장난이나 플러팅은 별로 안 통하는 철벽",
+        "거짓말을 절대 안 하며 정직함을 최우선으로 함"
+      ],
+      "FCRO":[
+        "자기 중심적 성향이 강하지만 매력적임",
+        "상대방이 나를 칭찬하고 띄워줄 때 기분 최고조",
+        "자유로운 영혼이라 조금이라도 구속받으면 답답해함",
+        "돈 쓰는 것에 거침이 없고 화려한 소비를 즐기는 편",
+        "배려를 당연하게 여기는 경향이 있어 주의 필요",
+        "나를 위해 희생하는 모습에서 사랑을 체감함",
+        "낙천적인 성격이라 미래 걱정은 연인에게 맡기는 편",
+        "본인의 사생활과 친구 관계를 연애만큼 중요하게 여김",
+        "감정에 매우 충실하며 좋고 싫음이 얼굴에 다 나타남",
+        "상대방을 은근슬쩍 조종하는 능력이 탁월함"
+      ],
+      "FCRE":[
+        "본인만의 확실한 기준을 가지고 연애의 주도권을 잡음",
+        "똑부러지고 강해 보이지만 연인 앞에서는 무장해제",
+        "무례하거나 예의 없는 행동을 하는 사람을 경멸함",
+        "현실적인 조언을 잘하며 상대방의 미래 계획에 간섭함",
+        "애정을 확인하고 싶어서 가끔 까칠하게 굴 때가 있음",
+        "연인의 사소한 거짓말도 금방 알아채고 크게 실망함",
+        "책임감이 강해서 연애 중에 한눈파는 일 절대 없음",
+        "연인에게 거는 기대치가 상당히 높은 편이라 실망도 큼",
+        "한번 멀어지면 마음의 문을 닫는 속도가 아주 빠름",
+        "사랑은 신뢰와 존중이 있어야 한다고 믿음"
+      ],
+      "FCPO":[
+        "인생의 주인공이 되어 화려한 연애를 이끌어감",
+        "본인의 감정에 솔직하며 숨기지 않고 다 드러냄",
+        "나에게 집중 안 하면 금방 소외감을 느끼고 토라짐",
+        "첫눈에 반하는 영화 같은 운명적인 만남을 믿음",
+        "큰 갈등이 생겨도 훌훌 털고 긍정적으로 잘 웃는 편",
+        "나를 위해 돈과 시간을 아낌없이 쓰는 연인을 좋아함",
+        "사랑에 빠진 순간만큼은 온 마음을 다해 뜨겁게 연애함",
+        "자랑하고 싶어지는 멋진 능력을 가진 연인을 선호",
+        "상대를 구속하는 건 괜찮지만 내가 구속받는 건 싫어함",
+        "본인의 매력을 어필하고 상대의 마음을 뺏는 방법을 잘 앎"
+      ],
+      "FCPE":[
+        "아주 높은 기준과 열정으로 연애를 주도해 나감",
+        "본인이 리드하는 관계 속에서 최고의 낭만을 찾으려 함",
+        "연인의 헌신을 바라며 그만큼 본인도 확실하게 보답함",
+        "주관이 너무 뚜렷해서 연인과의 타협이 다소 어려움",
+        "미래에 대한 계획을 함께 세우고 실행하길 즐김",
+        "연인을 본인 자부심 삼으며 완벽한 커플 되길 꿈꿈",
+        "상대의 지적 능력이나 야망 있는 모습에 매력 느낌",
+        "질투 할 때도 논리적으로 따지며 상대방을 압박함",
+        "한번 정 주면 끝까지 가지만 배신은 절대 용납 안 함",
+        "연애가 인생 중요 목표 중 하나라 생각하고 공들임"
+      ],
+      "FARO":[
+        "합리적이고 효율적인 연애를 본인 주도하에 이끎",
+        "서로 집착 없는 쿨하고 독립적인 관계를 최고라 여김",
+        "연애 올인보다 본인의 사회생활과 취미를 완벽히 챙김",
+        "감정 소모 심한 싸움은 인생 낭비라 생각하고 피함",
+        "사생활 존중하는 만큼 본인 영역 침범받기 싫어함",
+        "뒤끝 없고 쿨해서 이별 후 감정 정리가 매우 빠른 편",
+        "말보단 행동이나 물질로 사랑을 표현하는 스타일",
+        "본인과 비슷한 경제력이나 능력 가진 사람 선호",
+        "질투심 거의 없고 상대를 믿는 것이 편하다 여김",
+        "상대가 너무 의존하려 하면 부담 느끼고 멀어짐"
+      ],
+      "FARE":[
+        "엄격한 기준을 통과한 사람에게만 마음의 문을 열음",
+        "연인을 위한 쓴소리도 주저하지 않고 함",
+        "관계 주도권을 절대 상대에게 넘기지 않음",
+        "윤리적 기준 매우 높아서 바른 연애를 추구함",
+        "연인이 날 존경하고 따를 때 보람과 사랑을 느낌",
+        "속마음 안 드러내서 연인이 속터져 할 때 있음",
+        "미리 짠 루틴에서 벗어나는 돌발 상황을 싫어함",
+        "내 영역 확고해서 연인이라도 함부로 침범하지 못하게 함",
+        "가벼운 만남 시간 낭비라 생각하며 늘 결혼 염두에 둠",
+        "신중하게 시작한 만큼 끝까지 책임지려 함"
+      ],
+      "FAPO":[
+        "거부 못 할 아우라와 카리스마로 상대방을 리드함",
+        "사랑에 빠지면 오직 연인에게만 온전히 집중함",
+        "이끄는 대로 즐겁게 따라와 주는 사람을 아주 좋아함",
+        "외모가 화려하거나 분위기 독특한 사람에게 끌림",
+        "적극적인 애정표현과 스킨십을 보여줌",
+        "본인이 세상 가장 멋진 연인이란 자부심이 대단함",
+        "주변의 부러움과 시샘을 받는 화려한 연애를 지향함",
+        "상대가 가진 잠재력이나 장점 극대화해주는 능력 있음",
+        "감각적이고 유행에 민감해 센스 있는 데이트를 함",
+        "때로는 연인을 소유하고 철저히 통제하려 함"
+      ],
+      "FAPE":[
+        "무거운 책임감 가지고 사랑의 결실 맺으려 함",
+        "상대방이 나 없인 일상 불가능할 정도로 의존하게 만듬",
+        "본인의 주관과 가치관을 연인에게 깊이 심어주는 타입",
+        "연인을 세상 모든 위험에서 완벽히 지켜줌",
+        "거짓말이나 가벼운 태도 보이면 가차 없이 아웃",
+        "서로의 영혼까지 깊게 공유하는 진짜 사랑을 원함",
+        "연애 모든 과정이 한 치 오차 없이 완벽하고 싶어함",
+        "눈빛만 봐도 내 마음 다 알아주는 운명을 기다림",
+        "연인을 올바른 방향으로 이끌고 가르치려 함",
+        "배신당하면 상상 초월할 정도로 분노함"
+      ]
+    };
+
+    const COMPAT = {
+      "LCRO":{ good:["FARO","FARE"], bad:["LCPE","FCPE"] },
+      "LCRE":{ good:["FARE","FARO"], bad:["LCPO","FCPO"] },
+      "LCPO":{ good:["FAPO","FCRO"], bad:["LARE","FARE"] },
+      "LCPE":{ good:["FAPE","FCRE"], bad:["LCRO","FARO"] },
+
+      "LARO":{ good:["FCRO","FCRE"], bad:["LAPE","FAPE"] },
+      "LARE":{ good:["FCRE","FCRO"], bad:["LCPO","FAPO"] },
+      "LAPO":{ good:["FCPO","FARO"], bad:["LCRE","FCRE"] },
+      "LAPE":{ good:["FCPE","FARE"], bad:["LARO","FCRO"] },
+
+      "FCRO":{ good:["LARO","LARE"], bad:["FCPE","LCPE"] },
+      "FCRE":{ good:["LARE","LARO"], bad:["FCPO","LCPO"] },
+      "FCPO":{ good:["LAPO","LCRO"], bad:["FARE","LARE"] },
+      "FCPE":{ good:["LAPE","LCRE"], bad:["FARO","LARO"] },
+
+      "FARO":{ good:["LCRO","LCRE"], bad:["FAPE","LAPE"] },
+      "FARE":{ good:["LCRE","LCRO"], bad:["FAPO","LAPO"] },
+      "FAPO":{ good:["LCPO","LARO"], bad:["FCRE","LCRE"] },
+      "FAPE":{ good:["LCPE","LARE"], bad:["FARO","LCRO"] }
+    };
+
+    // ---------- STATE ----------
+    const state = {
+      step: 0,
+      answers: [],
+      scores: { LEAD:0, FOLLOW:0, CUDDY:0, ACCEPT:0, REALISTIC:0, PASSIONATE:0, OPTIMISTIC:0, EARNEST:0 }
+    };
+
+    // ---------- ELEMENTS ----------
+    const progressPill = document.getElementById("progressPill");
+    const pillStep = document.getElementById("pillStep");
+    const pillTotal = document.getElementById("pillTotal");
+    const progressBar2 = document.getElementById("progressBar2");
+
+    const startView = document.getElementById("startView");
+    const quizView = document.getElementById("quizView");
+    const resultView = document.getElementById("resultView");
+    const mainHead = document.getElementById("mainHead");
+
+    const btnStart = document.getElementById("btnStart");
+    const btnBack = document.getElementById("btnBack");
+    const choiceA = document.getElementById("choiceA");
+    const choiceB = document.getElementById("choiceB");
+
+    const qText = document.getElementById("qText");
+    const textA = document.getElementById("textA");
+    const textB = document.getElementById("textB");
+
+    const resCode = document.getElementById("resCode");
+    const resLabel = document.getElementById("resLabel");
+    const resSubLabel = document.getElementById("resSubLabel");
+    const resEmoji = document.getElementById("resEmoji");
+
+    const traitsEl = document.getElementById("traits");
+    const goodPairs = document.getElementById("goodPairs");
+    const badPairs = document.getElementById("badPairs");
+
+    const btnSaveImg = document.getElementById("btnSaveImg");
+    const btnShare = document.getElementById("btnShare");
+    const btnRetry = document.getElementById("btnRetry");
+    const btnOtherTest = document.getElementById("btnOtherTest");
+
+    const toast = document.getElementById("toast");
+
+    pillTotal.textContent = String(QUESTIONS.length);
+
+    // ---------- HELPERS ----------
+    function showToast(msg){
+      toast.textContent = msg;
+      toast.classList.add("show");
+      setTimeout(()=>toast.classList.remove("show"), 1800);
+    }
+
+    // 처음 화면으로 완벽하게 리셋
+    function resetAll(){
+      state.step = 0;
+      state.answers = [];
+      state.scores = { LEAD:0, FOLLOW:0, CUDDY:0, ACCEPT:0, REALISTIC:0, PASSIONATE:0, OPTIMISTIC:0, EARNEST:0 };
+      pillStep.textContent = "0";
+      progressBar2.style.width = "0%";
+      startView.style.display = "";
+      quizView.style.display = "none";
+      resultView.style.display = "none";
+      mainHead.style.display = "";
+      progressPill.style.display = "flex"; // 진행도 다시 보이기
+      window.scrollTo({top:0, behavior:"smooth"});
+    }
+
+    function startQuiz(){
+      startView.style.display = "none";
+      quizView.style.display = "";
+      resultView.style.display = "none";
+      mainHead.style.display = "none";
+      renderQuestion();
+    }
+
+    function axisPick(axis, pick){
+      const ax = AXIS[axis];
+      if(pick === "A") state.scores[ax.a] += 1;
+      else state.scores[ax.b] += 1;
+    }
+    function axisUnpick(axis, pick){
+      const ax = AXIS[axis];
+      if(pick === "A") state.scores[ax.a] -= 1;
+      else state.scores[ax.b] -= 1;
+    }
+
+    function renderQuestion(){
+      const i = state.step;
+      const total = QUESTIONS.length;
+
+      pillStep.textContent = String(i+1);
+      
+      const pct = Math.round(((i)/total)*100);
+      progressBar2.style.width = pct + "%";
+
+      const item = QUESTIONS[i];
+
+      qText.innerHTML = `<span style="color:var(--pink-main); font-size:16px;">Q${i+1}.</span><br>${item.q}`;
+      textA.textContent = item.aText;
+      textB.textContent = item.bText;
+
+      btnBack.style.display = (i === 0) ? "none" : "block";
+    }
+
+    function next(pick){
+      const item = QUESTIONS[state.step];
+      state.answers.push({ axis:item.axis, pick });
+      axisPick(item.axis, pick);
+      state.step += 1;
+
+      if(state.step >= QUESTIONS.length) showResult();
+      else renderQuestion();
+    }
+
+    function back(){
+      if(state.step <= 0) return;
+      state.step -= 1;
+      const last = state.answers.pop();
+      axisUnpick(last.axis, last.pick);
+      renderQuestion();
+    }
+
+    function decideAxis(axisKey){
+      const ax = AXIS[axisKey];
+      const aScore = state.scores[ax.a];
+      const bScore = state.scores[ax.b];
+      if(aScore > bScore) return ax.a;
+      if(bScore > aScore) return ax.b;
+      for(let i=state.answers.length-1;i>=0;i--){
+        if(state.answers[i].axis === axisKey){
+          return state.answers[i].pick === "A" ? ax.a : ax.b;
+        }
+      }
+      return ax.a;
+    }
+
+    function toCode(parts){
+      const map = {
+        LEAD:"L", FOLLOW:"F",
+        CUDDY:"C", ACCEPT:"A",
+        REALISTIC:"R", PASSIONATE:"P",
+        OPTIMISTIC:"O", EARNEST:"E"
+      };
+      return parts.map(p=>map[p]).join("");
+    }
+
+    function codeToLabel(code){
+      const chars = code.split("");
+      return `${LABELS[chars[0]]} · ${LABELS[chars[1]]} · ${LABELS[chars[2]]} · ${LABELS[chars[3]]}`;
+    }
+
+    function renderJellyPair(typeCode, container, isGood) {
+      const el = document.createElement("div");
+      el.className = `pair ${isGood ? 'good' : 'bad'}`;
+      
+      const emoji = TYPE_EMOJI[typeCode] || "💗";
+      const name = TYPE_NAME[typeCode] || typeCode;
+      
+      el.innerHTML = `<span style="font-size: 24px;">${emoji}</span><span>${typeCode}</span>${name}`;
+      container.appendChild(el);
+    }
+
+    function showResult(){
+      startView.style.display = "none";
+      quizView.style.display = "none";
+      resultView.style.display = "";
+      mainHead.style.display = "none";
+      
+      // 결과 페이지에서는 진행도 숨기기
+      progressPill.style.display = "none";
+      
+      progressBar2.style.width = "100%";
+
+      const lf = decideAxis("LF");
+      const ca = decideAxis("CA");
+      const rp = decideAxis("RP");
+      const oe = decideAxis("OE");
+
+      const code = toCode([lf, ca, rp, oe]);
+
+      resCode.textContent = code;
+      resLabel.textContent = TYPE_NAME[code] || codeToLabel(code);
+      resSubLabel.textContent = codeToLabel(code);
+      resEmoji.textContent = TYPE_EMOJI[code] || "💗";
+
+      // 특징 10개
+      traitsEl.innerHTML = "";
+      const list = TRAITS[code] || [];
+      list.forEach(t=>{
+        const div = document.createElement("div");
+        div.className = "li-text";
+        div.textContent = t;
+        traitsEl.appendChild(div);
+      });
+
+      const c = COMPAT[code] || {good:[], bad:[]};
+      
+      goodPairs.innerHTML = "";
+      if (c.good && c.good.length > 0) {
+        renderJellyPair(c.good[0], goodPairs, true);
+      }
+
+      badPairs.innerHTML = "";
+      if (c.bad && c.bad.length > 0) {
+        renderJellyPair(c.bad[0], badPairs, false);
+      }
+
+      window.scrollTo({top:0, behavior:"smooth"});
+    }
+
+    function buildShareText(){
+      const code = resCode.textContent.trim();
+      const name = resLabel.textContent.trim();
+      return `💌 내 연애 스타일은?\n${code} ${name}\n\n👇 테스트 하러 가기\n${location.href}`;
+    }
+
+    // 로고까지 포함해서 캡처하기 (헤더는 캡처 영역 밖이라 포함 안됨)
+    btnSaveImg.addEventListener("click", () => {
+      showToast("예쁘게 캡처하는 중이에요 📸");
+      // 최상위 박스인 .wrap을 캡처 대상으로 유지
+      const target = document.querySelector(".wrap");
+      
+      html2canvas(target, {
+        scale: 2, 
+        useCORS: true,
+        backgroundColor: "#fff4f9"
+      }).then(canvas => {
+        const link = document.createElement("a");
+        link.download = `my_love_type_${resCode.textContent}.png`;
+        link.href = canvas.toDataURL("image/png");
+        link.click();
+        showToast("이미지 앨범에 저장 완료!");
+      }).catch(err => {
+        showToast("캡처에 실패했어요 🥲");
+      });
+    });
+
+    // 공유하기
+    btnShare.addEventListener("click", async () => {
+      const text = buildShareText();
+      if(navigator.share){
+        try{ await navigator.share({ title: "테스트잇 일본 러브 타입 테스트", text, url: location.href }); }
+        catch(e){}
+      }else{
+        try{
+          await navigator.clipboard.writeText(text);
+          showToast("링크가 복사됐어요! 친구한테 붙여넣기 해보세요 💌");
+        }catch(e){
+          showToast("복사에 실패했어요 🥲");
+        }
+      }
+    });
+
+    // 다시 해보기 누르면 무조건 첫 화면으로 초기화
+    btnRetry.addEventListener("click", resetAll);
+
+   btnOtherTest.addEventListener("click", ()=>{ location.href = "https://test-it.co.kr/"; });
+
+    // ---------- EVENTS ----------
+    btnStart.addEventListener("click", startQuiz);
+    choiceA.addEventListener("click", ()=> next("A"));
+    choiceB.addEventListener("click", ()=> next("B"));
+    btnBack.addEventListener("click", back);
+
+    resetAll();
+  </script>
+</body>
+</html>

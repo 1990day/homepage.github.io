@@ -227,16 +227,31 @@
     /* 화면이 작아질 때 글씨 크기 조정 */
     @media (max-width: 500px) {
       .traitsBlock {
-        font-size: 16px;
+        font-size: 19px;
+        letter-spacing: -0.3px;
+      }
+      .kingName { font-size: 40px; }
+      .oneLine { font-size: 19px; }
+.qTitle { font-size: 18px; } /* <--- 질문 크기 줄이기 (원래 22px) */
+      .traitsBlock {
+        font-size: 15px;
         letter-spacing: -0.3px;
       }
       .kingName { font-size: 40px; }
       .oneLine { font-size: 19px; }
     }
 
+
     @media (max-width: 400px) {
       .traitsBlock {
-        font-size: 15px;
+        font-size: 18px;
+        letter-spacing: -0.5px;
+      }
+      .kingName { font-size: 36px; }
+      .oneLine { font-size: 17px; }
+      .qTitle { font-size: 16px; } /* <--- 더 작은 폰에서 질문 크기 줄이기 */
+      .traitsBlock {
+        font-size: 14px;
         letter-spacing: -0.5px;
       }
       .kingName { font-size: 36px; }
@@ -736,12 +751,7 @@
       const data = RESULTS[type] || {};
       const lines = (data.traits || []).slice(0,15).join("\n");
 
-      const text =
-        "테스트잇 | 내가 조선의 왕이라면\n" +
-        "결과: " + (data.king || "") + "\n" +
-        (data.oneLine ? data.oneLine + "\n" : "") +
-        "\n" + lines +
-        "\n\n👉 링크: https://test-it.co.kr/test365";
+     const text = "테스트잇 조선의 왕 성격 테스트\n👉 링크: https://test-it.co.kr/test365";
 
       if (navigator.share) {
         navigator.share({

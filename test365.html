@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5522499110435321" crossorigin="anonymous"></script>
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>테스트잇 조선의 왕 성격 테스트</title>
+  <meta name="description" content="테스트잇 조선의 왕 성격 테스트">
+  <meta name="keywords" content="테스트잇,성격테스트,조선의 왕성격테스트,조선의 왕성격테스트결과,심리테스트">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="테스트잇 조선의 왕 성격 테스트">
+  <meta property="og:description" content="테스트잇 조선의 왕 성격 테스트">
+  <meta property="og:image" content="img_main365.png">
+  <meta property="og:url" content="https://test-it.co.kr/test365">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  <style>
+    :root {
+      --bg-color: #2b3247;
+      --gold-main: #f5cf65;
+      --gold-light: #fbe4a4;
+      --gold-dark: #cfa242;
+      --gold-dim: rgba(245, 207, 101, 0.4);
+      --text-light: #fef8e8;
+      --text-dark: #2b3247;
+    }
+    
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Pretendard, "Noto Sans KR", sans-serif;
+      color: var(--text-light);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: var(--bg-color);
+    }
+
+    .page-header {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 4%;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .logo { width: 90px; }
+
+    .main-nav {
+      display: flex;
+      list-style: none;
+      margin: 0; padding: 0; gap: 8px;
+    }
+
+    .main-nav a {
+      text-decoration: none;
+      color: var(--text-light);
+      font-weight: 700;
+      font-size: 13px;
+      padding: 6px 12px;
+      border: 2px solid var(--gold-dark);
+      border-radius: 20px;
+      transition: all 0.2s;
+      background: var(--bg-color);
+      box-shadow: inset 0 0 0 1px var(--gold-light);
+    }
+
+    .main-nav a:hover {
+      background-color: var(--gold-main);
+      border-color: var(--gold-main);
+      color: var(--text-dark);
+      box-shadow: none;
+    }
+
+    .wrap {
+      width: min(760px, 100%); 
+      padding: 0 10px 60px;
+    }
+
+    .hidden { display: none !important; }
+
+    /* Moon Design */
+    .moon {
+      background: var(--gold-main);
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-dark);
+      margin: 40px auto;
+      box-shadow: 
+        0 0 0 6px var(--gold-dark), 
+        0 0 60px rgba(245, 207, 101, 0.25); 
+      position: relative;
+      border: 2px solid var(--gold-light); 
+    }
+    
+    .moon-reflection {
+      width: 120px;
+      height: 8px;
+      background: var(--gold-main);
+      border-radius: 10px;
+      margin: -20px auto 30px;
+      opacity: 0.7;
+      box-shadow: 0 14px 0 -2px var(--gold-main), 0 28px 0 -4px var(--gold-main);
+    }
+
+    /* Start Screen Image - 수정됨 */
+    .hero-img {
+      width: 500px;
+      /* max-width를 제거하거나 100%로 설정하여 꽉 차게 함 */
+      max-width: 100%; 
+      /* 위쪽 마진을 0으로 설정하여 패딩 제거 효과 */
+      margin: 0 auto 30px;
+      display: block;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    /* Quiz Screen */
+    .progressWrap {
+      display: flex; flex-direction: column; align-items: center; gap: 10px;
+      margin-bottom: 30px; margin-top: 20px;
+    }
+    .progressTxt { font-size: 14px; font-weight: 700; color: var(--gold-main); }
+    .bar {
+      width: 100%; height: 6px; border-radius: 10px;
+      background: rgba(255,255,255,0.1); overflow: hidden;
+      border: 1px solid var(--gold-dark);
+    }
+    .bar > i {
+      display: block; height: 100%; width: 0%;
+      background: var(--gold-main); transition: width 0.3s;
+    }
+
+    .qTitle {
+      font-size: 22px; font-weight: 700; line-height: 1.4;
+      text-align: center; margin-bottom: 40px; word-break: keep-all;
+      color: var(--gold-main);
+    }
+
+    .btnGrid { display: flex; flex-direction: column; gap: 14px; }
+    .jelly {
+      width: 100%; min-height: 80px; padding: 20px;
+      background: transparent; 
+      border: 3px solid var(--gold-dark); 
+      border-radius: 16px; color: var(--text-light);
+      font-size: 17px; font-weight: 700; line-height: 1.4;
+      cursor: pointer; transition: all 0.2s; word-break: keep-all;
+      box-shadow: inset 0 0 0 2px var(--gold-light); 
+    }
+    .jelly:hover {
+      background: rgba(245, 207, 101, 0.1);
+      border-color: var(--gold-main);
+      box-shadow: 0 0 15px rgba(245, 207, 101, 0.3);
+    }
+    .smallNote {
+      text-align: center; font-size: 12px; color: rgba(255,255,255,0.4);
+      margin-top: 20px;
+    }
+
+    /* === RESULT 화면: 내부 공간 최대화 === */
+    .capture-wrapper {
+      background-color: var(--bg-color);
+      padding: 6px;
+      border: 3px solid var(--gold-dark); 
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      margin-bottom: 30px;
+    }
+    
+    .capture-inner {
+      background-color: var(--bg-color);
+      border: 1px solid var(--gold-light); 
+      border-radius: 14px;
+      padding: 40px 12px; 
+      text-align: center;
+    }
+    /* ========================================================= */
+
+    .resultTitle {
+      font-size: 14px; color: var(--gold-main); font-weight: 700; margin-bottom: 20px;
+    }
+    .result-moon { width: 180px; height: 180px; margin: 20px auto 30px; }
+    
+    .kingName {
+      font-size: 46px; 
+      font-weight: 700; margin: 0;
+      font-family: 'Gowun Batang', serif; letter-spacing: 2px;
+    }
+    .oneLine {
+      font-size: 21px; 
+      font-weight: 700; color: var(--gold-main);
+      margin-bottom: 30px; word-break: keep-all;
+      font-family: 'Gowun Batang', serif;
+    }
+    .divider {
+      width: 60px; height: 3px; background: var(--gold-main);
+      margin: 0 auto 30px; border: none;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+    
+    /* 광고 스타일 */
+    .coupang_ad { width: 100%; margin: 0 auto; text-align: center; overflow:hidden; border-radius:20px; border: 2px solid #F0F0F0; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+
+    .traitsBlock {
+      font-size: 17px; 
+      line-height: 2.2; 
+      font-weight: 400;
+      color: var(--text-light); 
+      white-space: pre-line;
+      word-break: keep-all;
+    }
+
+    /* 화면이 작아질 때 글씨 크기 조정 */
+    @media (max-width: 500px) {
+      .traitsBlock {
+        font-size: 16px;
+        letter-spacing: -0.3px;
+      }
+      .kingName { font-size: 40px; }
+      .oneLine { font-size: 19px; }
+    }
+
+    @media (max-width: 400px) {
+      .traitsBlock {
+        font-size: 15px;
+        letter-spacing: -0.5px;
+      }
+      .kingName { font-size: 36px; }
+      .oneLine { font-size: 17px; }
+    }
+
+    /* Action Buttons */
+    .action-buttons {
+      display: flex; flex-direction: column; gap: 12px;
+    }
+    .action-btn {
+      width: 100%; padding: 18px; border-radius: 14px;
+      font-size: 16px; font-weight: 800; cursor: pointer; transition: 0.2s;
+      border: 3px solid var(--gold-dark);
+      box-shadow: inset 0 0 0 2px var(--gold-light);
+    }
+    .primary-btn {
+      background: var(--gold-main);
+      color: var(--text-dark);
+      border-color: var(--gold-main);
+      box-shadow: 0 4px 10px rgba(245, 207, 101, 0.3);
+    }
+    .outline-btn {
+      background: transparent;
+      color: var(--gold-main);
+    }
+    .action-btn:hover { transform: translateY(-2px); }
+    .action-btn:active { transform: translateY(1px); }
+
+    .toast {
+      position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+      background: var(--gold-main); color: var(--text-dark);
+      padding: 12px 24px; border-radius: 30px; font-weight: 800;
+      display: none; z-index: 99; box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      border: 2px solid var(--gold-light);
+    }
+  </style>
+</head>
+
+<body>
+  
+  <header class="page-header">
+    <a href="index.html"><img class="logo" src="img_logo.png" alt="테스트잇"></a>
+    <nav>
+      <ul class="main-nav">
+        <li><a href="https://test-it.co.kr/test.html">성격</a></li>
+        <li><a href="https://test-it.co.kr/face.html">얼굴</a></li>
+        <li><a href="https://test-it.co.kr/etc.html">그외</a></li>
+        <li><a href="https://test-it.co.kr/saju.html">사주</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="wrap">
+    
+    <section id="screenStart">
+      <img src="img_main365.png" alt="테스트잇 조선의 왕 성격 테스트" class="hero-img">
+      
+      <div class="action-buttons">
+        <button id="btnStart" class="action-btn primary-btn">테스트 시작하기</button>
+      </div>
+    </section>
+
+    <section id="screenQuiz" class="hidden">
+      <div class="progressWrap">
+        <div class="progressTxt" id="progressTxt">1 / 12</div>
+        <div class="bar"><i id="progressBar"></i></div>
+      </div>
+
+      <h2 class="qTitle" id="qTitle"></h2>
+      
+      <div class="btnGrid">
+        <button class="jelly" id="btnA"><span id="txtA"></span></button>
+        <button class="jelly" id="btnB"><span id="txtB"></span></button>
+      </div>
+
+    </section>
+
+    <section id="screenResult" class="hidden">
+      
+      <div id="captureArea" class="capture-wrapper">
+        <div class="capture-inner">
+          <div class="resultTitle">테스트잇 조선의 왕 성격 테스트</div>
+          
+          <div class="moon result-moon">
+            <h2 class="kingName" id="kingName">성종</h2>
+          </div>
+          
+          <p class="oneLine" id="oneLine">원칙과 체면으로 나라를 반듯하게 세우려 한 왕</p>
+          <div class="divider"></div>
+          <div class="traitsBlock" id="traitsBlock"></div>
+        </div>
+      </div>
+
+      <div class="action-buttons">
+        <button class="action-btn primary-btn" id="btnSaveImg">결과 이미지 저장하기</button>
+        <button class="action-btn outline-btn" id="btnRetry">다시 해보기</button>
+        <button class="action-btn outline-btn" id="btnOtherTest" onclick="window.location.href='https://test-it.co.kr'">다른 테스트 해보기</button>
+        <button class="action-btn outline-btn" id="btnShare">테스트 공유하기</button>
+      </div>
+
+    </section>
+    
+    <article class="coupang_ad mt-3" style="margin: 20px 0 10px;">
+        <script src="https://ads-partners.coupang.com/g.js"></script>
+        <script>
+            new PartnersCoupang.G({"id":798186,"template":"carousel","trackingCode":"AF4391881","width":"320","height":"100","tsource":""});
+        </script>
+    </article>
+
+  </div>
+
+  <div class="toast" id="toast">링크 복사 완료</div>
+
+  <script>
+    const QUESTIONS = [
+      { axis:"EI", q:"왕이 되자마자 먼저 하고 싶은 건?", A:"반대파부터 싹 정리하고<br>내 존재감부터 찍는다", B:"조용히 궁 안 분위기부터 읽고<br>판을 파악한다" },
+      { axis:"EI", q:"궁궐 연회가 열렸다!", A:"직접 돌아다니며<br>연회 분위기를 장악한다", B:"자리에 조용히 앉아<br>사람들부터 파악한다" },
+      { axis:"EI", q:"나라의 중대한 안건을<br>최종 결정해야 할 때 나는?", A:"대신들을 당장 불러<br>회의를 열고 결론을 낸다", B:"홀로 조용히 관련 서책을 읽으며<br>생각을 정리한다" },
+
+      { axis:"SN", q:"암행을 나갔는데 다들 힘들어 보인다<br>가장 먼저 보이는 건?", A:"쌀값, 시장 상태, 치안 같은<br>눈에 보이는 현실", B:"표정, 소문, 분위기 같은<br>민심의 흐름" },
+      { axis:"SN", q:"스트레스가 터졌을 때 나는?", A:"지금 당장 자극이 필요하다<br>술, 놀이, 쾌락으로 풀어야 한다", B:"혼자 생각 정리하며<br>왜 이런 건지 의미를 찾는다" },
+      { axis:"SN", q:"신하가 새 정책을 들고 왔다", A:"오늘부터 바로 효과가 나나?<br>돈, 기간, 현실성부터 본다", B:"10년 뒤 나라의 방향이 어떻게 바뀔까?<br>큰 그림부터 본다" },
+
+      { axis:"TF", q:"신하가 공개적으로 내 권위에 도전한다", A:"본보기로 강하게 처벌하라<br>기강이 먼저다", B:"당장은 참아라<br>피바람 불면 나라가 더 흔들린다" },
+      { axis:"TF", q:"백성이 굶는다는 소식이 올라왔다", A:"창고 열어 쌀 풀고 세금 조정해<br>오늘부터 당장 실행한다", B:"급하니까 약한 사람부터 살리자<br>노인, 아이부터 먼저 지급한다" },
+      { axis:"TF", q:"내 곁에 둘 사람을 고르는 기준은?", A:"인간성은 별로여도<br>능력 있고 내 목표에 도움이 되는가", B:"나를 진심으로 따르고<br>내 마음을 알아주는가" },
+
+      { axis:"JP", q:"내일 궁궐 밖으로 행차를 나갈 예정이다<br>나의 준비 스타일은?", A:"시간, 이동 동선, 호위병 배치까지<br>사전에 철저하게 계획을 확정해둔다", B:"호위병들이 당황하든 말든<br>내일 아침 내 발길 닿는 곳이 곧 목적지다" },
+      { axis:"JP", q:"한밤중 변방에서 적의 침입과 반란이 터졌다는<br>다급한 급보가 올라왔다!", A:"평소 세워둔 방어 체계와 군사 전략에 따라<br>병력을 오차 없이 착착 배치한다", B:"내 직감과 본능이 곧 전술이다<br>그 자리에서 즉흥적으로 병력을 몰아친다" },
+      { axis:"JP", q:"매일 산더미 같은 상소문과<br>국정을 처리해야 하는 나의 스타일은?", A:"정해진 일과 시간에 맞춰<br>업무를 미루지 않고 처리한다", B:"내 기분이 곧 법이다<br>삘 꽂히면 처리하고 하기 싫으면 미룬다" }
+    ];
+
+    const RESULTS = {
+      "ENFJ": { king:"성종", oneLine:"원칙과 체면으로 나라를 반듯하게 세우려 한 왕", traits: [
+        "나라의 모범 답안이 되려 스스로를 채찍질한다",
+        "규칙은 예외 없이 적용해야 직성이 풀린다",
+        "겉은 온화해도 내면의 기준선은 매우 단단하다",
+        "남들 앞에서 흐트러진 모습 보이는 걸 혐오한다",
+        "칭찬엔 춤추고 비판엔 예민하게 반응한다",
+        "산만한 분위기를 못 참아 즉시 정리를 시작한다",
+        "상대가 품위를 잃는 순간 냉정하게 변한다",
+        "사생활에도 규범을 적용하려는 성향이 강하다",
+        "선 넘은 사람은 기억해뒀다 나중에 반영한다",
+        "평가를 의식해 말과 행동을 더 조심한다",
+        "다 같이 잘 지내려면, 질서가 먼저라고 믿는다",
+        "시스템이 매뉴얼대로 돌아갈 때 가장 뿌듯하다"
+      ]},
+      "INTJ": { king:"세종", oneLine:"시스템으로 나라를 설계한 왕", traits: [
+        "감정 위로보다 제도와 기술로 문제를 풀려 한다",
+        "감으로 밀기보다 자료와 논리로 끝까지 검증한다",
+        "유능하면 출신보다 실력을 보고 사람을 쓴다",
+        "무능한 변명보다 결과와 개선안을 더 중요하게 본다",
+        "혼자 깊게 파고들어 결론을 내리는 몰입형이다",
+        "반대가 있어도 필요하다고 보면 끝까지 추진한다",
+        "멀리 보는 큰 설계와 디테일을 동시에 챙긴다",
+        "연구·개발·프로젝트를 꾸준히 굴리는 타입이다",
+        "일 앞에선 차분하고 이성적으로 판단하려 한다",
+        "낡은 관습을 그대로 두기보다 새 해법을 만든다",
+        "기준이 높아서 주변이 따라오느라 바빠지기 쉽다",
+        "세상은 구조를 잘 짜면 더 나아진다고 믿는다"
+      ]},
+      "INTP": { king:"정조", oneLine:"지성으로 판을 설계한 학자 왕", traits: [
+        "말이 허술하면 논리로 바로 허점을 찔러버린다",
+        "전문가라도 근거가 약하면 끝까지 캐묻는 편이다",
+        "감정보다 이성과 계산을 먼저 세우고 움직인다",
+        "관심 생기면 끝장을 보려 깊게 파고드는 타입이다",
+        "혼자 읽고 정리하고 연구하는 시간이 가장 편하다",
+        "비효율이 보이면 미련 없이 구조부터 손본다",
+        "겉은 차분해 보여도 머릿속은 아이디어로 바쁘다",
+        "아부보다 실력과 근거를 더 인정하는 편이다",
+        "남 말 맹신 안 하고 직접 확인해야 직성이 풀린다",
+        "명분만 내세우는 말장난을 논리로 끊어버린다",
+        "복잡한 판을 분석해 가장 효율적인 길을 찾는다",
+        "감정 표현이 서툴러 차갑다는 오해를 받기도 한다"
+      ]},
+      "ENTJ": { king:"태종", oneLine:"판을 갈아엎고 왕권을 끝까지 밀어붙인 왕", traits: [
+        "목표가 생기면 돌아가지 않고 정면으로 밀어붙인다",
+        "조직이 굴러가게 규칙과 시스템부터 먼저 깔아둔다",
+        "내 사람이어도 방해가 되면 냉정하게 선을 긋는다",
+        "우유부단하게 끌기보단 결론을 빨리 내리려 한다",
+        "당장보다 앞으로의 판을 보고 크게 설계하려 든다",
+        "말보다 실행으로 성과를 보여줘야 속이 풀린다",
+        "권한과 책임이 내 손에 있어야 추진력이 제대로 난다",
+        "실력만 있으면 예전 감정은 접고 데려다 쓴다",
+        "최종 목표를 위해 욕먹는 역할도 감수해버린다",
+        "흐트러진 분위기 보이면 바로 정리부터 시작한다",
+        "명분보다 실리와 효율을 먼저 따져서 움직인다",
+        "문제는 덮지 않고 뿌리부터 뽑아 확실히 끝낸다"
+      ]},
+      "ENTP": { king:"광해군", oneLine:"실리로 판을 읽은 줄타기 왕", traits: [
+        "낡은 관습이나 명분보다 실리를 먼저 챙기는 편이다",
+        "논리에 안 맞으면 분위기 좋아도 딱 잘라 반대한다",
+        "강한 나라 사이에서도 눈치만 보지 않고 줄타기한다",
+        "기존 방식이 막히면 새 규칙으로 판을 다시 짜려 한다",
+        "쓸모 있는 지식과 기술은 빠르게 배워 바로 써먹는다",
+        "말이 빠르고 논리로 콕 찔러 상대를 흔들어버린다",
+        "현실 모르는 명분 타령을 답답해하며 잘 못 참는다",
+        "아이디어는 뛰어난데 감정 기류는 놓칠 때가 있다",
+        "위기 오면 남들 못 보는 방법으로 돌파구를 만든다",
+        "내가 맞다 싶으면 반대 의견을 가볍게 넘기기도 한다",
+        "편 가르기보다 상황 따라 유연하게 움직이려 한다",
+        "말이 앞서서 괜히 반발을 키우는 순간도 생긴다"
+      ]},
+      "INFJ": { king:"문종", oneLine:"조용히 기준 세운 안정형 왕", traits: [
+        "겉은 온화하지만 기준과 원칙을 쉽게 안 꺾는다",
+        "큰 틀을 흔들기보다 방향을 잡고 꾸준히 밀어간다",
+        "학문과 기록을 중시하고 정리하는 일에 강한 편이다",
+        "말이 앞서기보다 조용히 준비하고 다듬는 쪽이다",
+        "시끄러운 갈등은 피하되 선 넘는 건 단호히 막는다",
+        "신하의 의견을 듣고 넓게 살피려는 태도가 있다",
+        "눈앞 성과보다 오래 가는 제도와 기반을 챙긴다",
+        "디테일을 놓치기 싫어 직접 챙기다 부담이 커진다",
+        "가벼운 이익보다 옳은 절차와 도리를 더 중시한다",
+        "중요한 결론은 급히 내리기보다 충분히 생각한다",
+        "사람을 넓게 두기보다 믿는 쪽과 깊게 가는 편이다",
+        "몸이 약해 오래 밀어붙이지 못한 아쉬움이 남는다"
+      ]},
+      "INFP": { king:"단종", oneLine:"마음이 앞서는 비운의 왕", traits: [
+        "피 튀기는 권력 싸움보다 평온한 쪽을 더 바라게 된다",
+        "목소리 큰 사람 앞에서는 주도권을 잡기 어려운 편이다",
+        "주변 분위기와 표정 변화에 예민하게 반응하는 타입이다",
+        "이상은 크지만 현실의 벽에 상처를 받기 쉬운 쪽이다",
+        "갈등이 터지면 맞서기보다 조용히 물러나는 편이다",
+        "지켜주는 사람에게 마음을 깊게 주고 의지하려 한다",
+        "누굴 벌주고 몰아붙이는 결정을 쉽게 못 내리는 편이다",
+        "강한 주장에 휘둘리면 자기 뜻이 흐려지기 쉽다",
+        "숨 막히면 혼자 숨 돌릴 곳을 찾아 거리를 둔다",
+        "일이 틀어지면 남 탓보다 내 탓으로 돌리기 쉽다",
+        "겉으론 조용하지만 속의 선은 끝까지 지키려 한다",
+        "순한 마음이 거친 권력판에서 깨지기 쉬운 이미지다"
+      ]},
+      "ENFP": { king:"고종", oneLine:"새로운 것에 끌리지만 위기엔 내 편을 찾는 왕", traits: [
+        "새로운 것에 관심이 빨리 붙는다",
+        "큰 꿈을 말하되 실행은 흔들릴 때가 있다",
+        "주변 말에 영향받아 결정을 바꾸기 쉽다",
+        "답답한 틀보다 숨통 트이는 분위기를 선호한다",
+        "위기엔 맞붙기보다 안전한 길을 먼저 찾는다",
+        "믿는 사람에게 의지하며 마음을 연다",
+        "한 방 결단보다 여러 가능성을 동시에 본다",
+        "압박받으면 눈치 보며 타이밍을 재는 편이다",
+        "불리해지면 정면보다 우회로를 고른다",
+        "시작은 빠른데 끝까지 밀어붙이는 힘이 약하다",
+        "불안이 커지면 더 조심스러워지고 결정이 늦어진다",
+        "강하게 밀기보다 관계와 지지로 버티는 타입이다"
+      ]},
+      "ISTJ": { king:"영조", oneLine:"원칙과 절제로 버틴 장기집권 왕", traits: [
+        "검약을 내세우며 사치와 낭비를 강하게 막으려 한다",
+        "기준을 세우면 쉽게 흐트러뜨리지 않고 밀고 간다",
+        "근거와 기록을 남기며 절차대로 처리하려는 편이다",
+        "감정 호소보다 논리와 증거가 있어야 움직인다",
+        "전통과 예법을 중시하며 질서가 무너지는 걸 경계한다",
+        "반복되는 실수와 태만을 엄하게 잡아세우려 한다",
+        "모순이 보이면 그냥 넘기지 않고 바로 짚고 고친다",
+        "원칙 집행에 예외를 적게 두려는 쪽에 가깝다",
+        "겉치레보다 실속과 내실을 먼저 챙긴다",
+        "스스로를 다잡고 오래 버티는 인내형이다",
+        "조직 기강을 깨는 돌발 행동을 강하게 제어한다",
+        "큰 흔들림 없이 국정을 오래 끌고 가는 타입이다"
+      ]},
+      "ISFJ": { king:"정종", oneLine:"앞장서기보다 내실 택한 왕", traits: [
+        "권력 욕심보다 내부의 안정부터 챙기는 편이다",
+        "맡은 일은 해내지만 앞에 서는 건 부담스러워한다",
+        "갈등이 커지면 정면승부보다 조정과 타협을 고른다",
+        "전통과 예법을 중시해 선을 넘는 걸 경계한다",
+        "화려한 주목보다 뒤에서 정리하는 역할이 편하다",
+        "큰 변화보다 당장의 혼란을 줄이는 쪽을 택한다",
+        "사람과 세력 사이 균형을 맞추려 조심스럽게 간다",
+        "싸움이 나기 전에 한발 물러서 상황을 정리한다",
+        "무리하게 밀기보다 안정적으로 굴러가게 만든다",
+        "결단을 오래 끌기보다 넘겨야 할 땐 넘기는 편이다",
+        "자기 자리보다 질서 유지가 우선인 쪽에 가깝다",
+        "결국 왕위를 내려놓는 선택으로 흐름을 정리한다"
+      ]},
+      "ESTJ": { king:"숙종", oneLine:"환국으로 판을 장악한 통제형 왕", traits: [
+        "정국 주도권을 왕이 쥐려는 성향이 강하게 드러난다",
+        "정치 판이 안 맞으면 환국으로 세력을 갈아치운다",
+        "상벌 기준을 앞세워 질서와 위계를 세우려 한다",
+        "권위에 도전하는 세력은 강하게 눌러 정리한다",
+        "감정 호소보다 명분·절차·결과를 더 앞에 둔다",
+        "사람을 쓸 때 충성도와 효율을 기준으로 판단한다",
+        "무능하거나 말만 많은 신하는 빠르게 쳐내려 한다",
+        "기강이 흐트러지면 단호하게 잡아세우는 편이다",
+        "이익 계산이 끝나면 망설이기보다 실행을 택한다",
+        "어수선한 판을 규칙과 체계로 정리하려고 든다",
+        "욕을 먹더라도 원하는 구도로 몰아가는 운영을 한다",
+        "한 번 잡은 원칙과 방향을 쉽게 바꾸지 않으려 한다"
+      ]},
+      "ESFJ": { king:"인조", oneLine:"명분과 여론에 묶인 정치형 왕", traits: [
+        "정통성과 예법 같은 명분을 앞세워 움직인다",
+        "지지 세력과 내 편을 굳게 잡고 가려는 편이다",
+        "민심과 주변 시선을 의식해 판단이 흔들리기 쉽다",
+        "새 길보다 안전한 방식과 관례를 먼저 고른다",
+        "의리와 체면을 챙기느라 결단이 늦어질 때가 있다",
+        "혼자 밀기보다 사람과 세력으로 판을 짜서 간다",
+        "상대 세력과 갈등이 생기면 편 가르기가 강해진다",
+        "여론이 갈리면 강하게 정리 못 하고 끌려간다",
+        "대외 관계에서 명분을 고집하다 충돌을 부르기도 한다",
+        "차갑게 계산하기보다 관계와 편을 먼저 챙긴다",
+        "명분과 현실 사이에서 방향을 자주 바꾸게 된다",
+        "큰 위기 앞에서 결정을 늦춰 손해를 키우기도 한다"
+      ]},
+      "ISTP": { king:"태조", oneLine:"현장 감각으로 판을 연 개척자 왕", traits: [
+        "말로 설득하기보다 행동으로 상황을 바꾸는 편이다",
+        "전장 경험을 바탕으로 위기에서 빠르게 판단한다",
+        "복잡한 이론보다 눈앞의 현실과 전력을 먼저 본다",
+        "간섭을 싫어하고 내 손으로 판을 짜려는 쪽이다",
+        "평소엔 조용하지만 결정적 순간에 승부수를 던진다",
+        "필요한 말만 하고 핵심만 찍는 소통을 선호한다",
+        "상황이 바뀌면 전략도 빠르게 갈아끼우는 편이다",
+        "남 눈치보다 내 감과 실전 판단을 더 믿고 간다",
+        "명분 싸움보다 실질적인 힘과 성과를 더 중시한다",
+        "감정에 끌리기보다 전황과 리스크를 먼저 계산한다",
+        "현장에서 직접 움직일 때 가장 강해지는 타입이다",
+        "확실한 승산이 보이면 과감하게 모험을 건다"
+      ]},
+      "ISFP": { king:"연산군", oneLine:"쾌락에 휘둘린 폭주 왕", traits: [
+        "내 기분과 즉흥이 판단을 좌우해버리는 편이다",
+        "연회·사냥·유흥 같은 감각적 즐거움에 잘 빠진다",
+        "간섭받는 걸 싫어하고 하고 싶은 대로 밀어붙인다",
+        "감정이 한 번 터지면 멈추기보다 끝까지 몰아간다",
+        "미래 계획보다 당장의 자극과 쾌락을 더 우선한다",
+        "과거의 분노를 붙잡고 보복으로 풀어버리기 쉽다",
+        "나를 말리거나 비판하는 신하는 적으로 돌리기 쉽다",
+        "호불호가 극단적이라 싫으면 바로 쳐내려 한다",
+        "백성보다 자기 만족을 앞에 두는 모습이 강해진다",
+        "예법과 관습을 무시하며 선을 쉽게 넘어버린다",
+        "충동적인 결정이 커져서 피해를 키우기 쉽다",
+        "내 영역을 건드리면 가혹하게 보복하려 든다"
+      ]},
+      "ESTP": { king:"세조", oneLine:"힘으로 왕좌를 뺏은 행동파 왕", traits: [
+        "말로 설득하기보다 힘으로 판을 바꾸는 쪽이다",
+        "목표로 정한 자리는 끝까지 밀어붙여 손에 넣는다",
+        "명분보다 유리한 구도와 현실의 힘을 먼저 챙긴다",
+        "위기일수록 물러서기보다 정면 승부로 몰아붙인다",
+        "절차가 걸리적거리면 과감히 생략하고 속도를 낸다",
+        "반대파는 타협보다 강하게 눌러 정리하려 든다",
+        "한 번 찍은 상대는 공개적으로 압박해 꺾어버린다",
+        "비판이 나와도 설득보다 결과로 찍어누르려 한다",
+        "고민이 길지 않고 결단이 빠르게 떨어지는 편이다",
+        "권력은 결국 힘이 쥐는 거라고 보는 쪽에 가깝다",
+        "판을 지키려면 거친 선택도 감수해버리기 쉽다",
+        "상대가 버티면 더 세게 밀어붙여 끝을 보려 한다"
+      ]},
+      "ESFP": { king:"선조", oneLine:"눈치로 버티다 위기 맞은 왕", traits: [
+        "상황이 바뀌면 판단을 빨리 바꾸는 편이다",
+        "복잡한 계획보다 당장 대응부터 먼저 움직인다",
+        "위험 오면 체면보다 일단 피하는 선택을 한다",
+        "사람 사이 기류를 읽고 줄을 잘 타려는 편이다",
+        "여론과 주변 반응에 따라 결정을 바꾸기 쉽다",
+        "믿는 쪽 말에 쏠리면 반대 의견을 밀어낸다",
+        "무거운 책임보다 눈앞의 급한 불 끄기에 집중한다",
+        "자기 권위가 흔들리면 예민하게 반응하는 편이다",
+        "큰 전략보다 그때그때 봉합으로 넘어가려 한다",
+        "갈등 나면 정면돌파보다 우회로를 먼저 찾는다",
+        "판이 불리해지면 책임 소재를 돌리려는 흐름이 생긴다",
+        "결국 운과 말솜씨로 버티는 타입으로 보이기도 한다"
+      ]}
+    };
+
+    const $ = (id) => document.getElementById(id);
+
+    const screenStart = $("screenStart");
+    const screenQuiz = $("screenQuiz");
+    const screenResult = $("screenResult");
+
+    const btnStart = $("btnStart");
+    const btnA = $("btnA");
+    const btnB = $("btnB");
+
+    const progressTxt = $("progressTxt");
+    const progressBar = $("progressBar");
+    const qTitle = $("qTitle");
+    const txtA = $("txtA");
+    const txtB = $("txtB");
+
+    const kingName = $("kingName");
+    const oneLine = $("oneLine");
+    const traitsBlock = $("traitsBlock");
+
+    const btnShare = $("btnShare");
+    const btnRetry = $("btnRetry");
+    const btnSaveImg = $("btnSaveImg");
+    const toast = $("toast");
+
+    let idx = 0;
+    let answers = [];
+    let currentType = null;
+
+    const score = { E:0, I:0, S:0, N:0, T:0, F:0, J:0, P:0 };
+
+    function resetAll(){
+      idx = 0;
+      answers = [];
+      currentType = null;
+      for(const k in score) score[k] = 0;
+      showStart();
+    }
+
+    function showStart(){
+      screenStart.classList.remove("hidden");
+      screenQuiz.classList.add("hidden");
+      screenResult.classList.add("hidden");
+    }
+    
+    function showQuiz(){
+      screenStart.classList.add("hidden");
+      screenQuiz.classList.remove("hidden");
+      screenResult.classList.add("hidden");
+      renderQuestion();
+    }
+    
+    function showResult(type){
+      currentType = type;
+      screenStart.classList.add("hidden");
+      screenQuiz.classList.add("hidden");
+      screenResult.classList.remove("hidden");
+
+      const data = RESULTS[type] || { king:"알 수 없음", oneLine:"결과 데이터가 비어 있어요", traits:[] };
+
+      kingName.textContent = data.king;
+      oneLine.textContent = data.oneLine;
+
+      const lines = (data.traits || []).slice(0,15).join("\n");
+      traitsBlock.textContent = lines;
+    }
+
+    function renderQuestion(){
+      const total = QUESTIONS.length;
+      const q = QUESTIONS[idx];
+
+      progressTxt.textContent = (idx+1) + " / " + total;
+      progressBar.style.width = Math.round(((idx+1)/total)*100) + "%";
+
+      qTitle.innerHTML = q.q;
+      txtA.innerHTML = q.A;
+      txtB.innerHTML = q.B;
+    }
+
+    function applyAnswer(i, choice){
+      const q = QUESTIONS[i];
+      const first = q.axis[0];
+      const second = q.axis[1];
+
+      answers[i] = choice;
+      if(choice === "A") score[first] += 1;
+      else score[second] += 1;
+    }
+
+    function computeType(){
+      const EorI = score.E >= score.I ? "E" : "I";
+      const SorN = score.S >= score.N ? "S" : "N";
+      const TorF = score.T >= score.F ? "T" : "F";
+      const JorP = score.J >= score.P ? "J" : "P";
+      return EorI + SorN + TorF + JorP;
+    }
+
+    function toastShow(msg){
+      toast.textContent = msg;
+      toast.style.display = "block";
+      clearTimeout(toast._t);
+      toast._t = setTimeout(()=> toast.style.display="none", 1500);
+    }
+
+    btnStart.addEventListener("click", showQuiz);
+
+    btnA.addEventListener("click", ()=>{ applyAnswer(idx, "A"); next(); });
+    btnB.addEventListener("click", ()=>{ applyAnswer(idx, "B"); next(); });
+
+    function next(){
+      const total = QUESTIONS.length;
+      if(idx < total - 1){
+        idx += 1;
+        renderQuestion();
+      } else {
+        showResult(computeType());
+      }
+    }
+
+    btnRetry.addEventListener("click", resetAll);
+
+    btnSaveImg.addEventListener("click", () => {
+      const target = document.getElementById("captureArea");
+      html2canvas(target, { 
+        scale: 2,
+        backgroundColor: "#2b3247" 
+      }).then(canvas => {
+        const link = document.createElement("a");
+        link.download = "조선의왕_테스트결과.png";
+        link.href = canvas.toDataURL("image/png");
+        link.click();
+      });
+    });
+
+    btnShare.addEventListener("click", () => {
+      const type = currentType || computeType();
+      const data = RESULTS[type] || {};
+      const lines = (data.traits || []).slice(0,15).join("\n");
+
+      const text =
+        "테스트잇 | 내가 조선의 왕이라면\n" +
+        "결과: " + (data.king || "") + "\n" +
+        (data.oneLine ? data.oneLine + "\n" : "") +
+        "\n" + lines +
+        "\n\n👉 링크: https://test-it.co.kr/test365";
+
+      if (navigator.share) {
+        navigator.share({
+          title: '조선의 왕 성격 테스트',
+          text: text,
+        }).catch((error) => console.log('공유 실패', error));
+      } else {
+        const ta = document.createElement("textarea");
+        ta.value = text;
+        ta.style.position = "absolute";
+        ta.style.left = "-9999px";
+        document.body.appendChild(ta);
+        ta.select();
+        ta.setSelectionRange(0, 99999);
+        try {
+          document.execCommand("copy");
+          toastShow("링크 복사 완료");
+        } catch (err) {
+          toastShow("복사 실패");
+        }
+        document.body.removeChild(ta);
+      }
+    });
+
+    (function init(){
+      showStart();
+    })();
+  </script>
+</body>
+</html>

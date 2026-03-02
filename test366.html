@@ -460,7 +460,7 @@ const BEST_MATCH = {
     "ESTJ": { title: "ESTJ 상대", desc: "감정 기복 없이 깔끔하게 팩트로 대답해 줘서 너무 자기 스타일이래요! 든든한 어른 같아서 당장 사귀고 싶다네요." },
     "ENTJ": { title: "ENTJ 상대", desc: "어물쩍거리지 않고 대화의 티키타카가 딱딱 맞아서 완전 호감이래요! 배울 점이 많은 사람 같아서 계속 연락하고 싶대요." },
     "ESFJ": { title: "ESFJ 상대", desc: "당신의 다정한 리액션과 따뜻한 말투에 완전 감동받았대요! 톡만 해도 너무 편안해진다며 벌써 썸 타는 기분이래요." },
-    "ENFJ": { title: "ENFJ 상대", desc: "대화할 때 팍팍 공감해 주는 당신의 매력에 푹 빠졌대요! 성격이 너무 좋아서 평생 예쁘게 만날 수 있을 것 같대요." },
+    "ENFJ": { title: "ENFJ 상대", desc: "대화할 때 팍팍 공감해 주는 당신의 매력에 푹 빠졌대요! 성격이 너무 좋아서 평생 예쁘게 만날 수 있을 기분이에요." },
     "ESTP": { title: "ESTP 상대", desc: "빙빙 안 돌리고 시원시원하게 대답하는 모습이 완전 매력적이래요! 지루할 틈이 없을 것 같다며 당장 내일 번개치고 싶어 해요." },
     "ENTP": { title: "ENTP 상대", desc: "뻔하지 않은 대답과 센스 넘치는 티키타카에 흥미진진하대요! 이 사람이랑은 매일 카톡해도 안 질리겠다고 100점 줬어요." },
     "ESFP": { title: "ESFP 상대", desc: "통통 튀는 당신의 리액션에 심장을 폭행당했대요! 당장 만나서 텐션 높게 놀고 싶어서 애프터 약속만 기다리고 있어요." },
@@ -610,7 +610,7 @@ function saveImage() {
     const captureArea = document.getElementById('capture-area');
     html2canvas(captureArea, { scale: 2, backgroundColor: '#f0f4f7' }).then(canvas => {
         const link = document.createElement('a');
-        link.download = 'after_signal_result.png';
+        link.download = '테스트잇_블라인드소개팅result.png';
         link.href = canvas.toDataURL("image/png");
         link.click();
     });
@@ -620,6 +620,7 @@ function shareTest() {
     if (navigator.share) {
         navigator.share({
             title: '테스트잇 블라인드 소개팅 테스트',
+            text: '테스트잇 블라인드 소개팅 테스트\n',
             url: window.location.href
         }).catch(console.error);
     } else {

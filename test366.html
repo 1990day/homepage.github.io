@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5522499110435321" crossorigin="anonymous"></script>
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>테스트잇 블라인드 소개팅 테스트</title>
+  <meta name="description" content="테스트잇 블라인드 소개팅 테스트">
+  <meta name="keywords" content="테스트잇,성격테스트,블라인드소개팅테스트,소개팅테스트결과,심리테스트">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="테스트잇 블라인드 소개팅 테스트">
+  <meta property="og:description" content="테스트잇 블라인드 소개팅 테스트">
+  <meta property="og:image" content="img_main366.png">
+  <meta property="og:url" content="https://test-it.co.kr/test366">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <style>
+        :root {
+            --main-color: #ff87a9;
+            --sub-color: #ffc4d3;
+            --bg-color: #fff0f6;
+            --white: #ffffff;
+            
+            --text-light: #555555;
+            --text-dark: #ffffff;
+            --gold-dark: #ff87a9;
+            --gold-main: #ff87a9;
+            --gold-light: #ffc4d3;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: "Pretendard", sans-serif; }
+        
+        body { background-color: #f8f9fa; display: flex; flex-direction: column; align-items: center; min-height: 100vh; overflow-x: hidden; }
+        
+        /* 스크롤바 커스텀 */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: var(--sub-color); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--main-color); }
+
+        /* 전체 레이아웃 래퍼 */
+        .layout-wrapper {
+            width: 100%;
+            max-width: 500px;
+            background-color: var(--white);
+            height: 100vh;
+            height: 100dvh;
+            display: flex;
+            flex-direction: column;
+            border-left: 1px solid #eaeaea;
+            border-right: 1px solid #eaeaea;
+            box-shadow: 0 0 20px rgba(0,0,0,0.05);
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        /* 헤더 CSS */
+        .page-header {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            border-bottom: 1px solid #f0f0f0;
+            background: var(--white);
+            z-index: 10;
+        }
+
+        .logo { width: 90px; }
+
+        .main-nav {
+            display: flex;
+            list-style: none;
+            margin: 0; padding: 0; gap: 8px;
+        }
+
+        .main-nav a {
+            text-decoration: none;
+            color: var(--text-light);
+            font-weight: 700;
+            font-size: 13px;
+            padding: 6px 12px;
+            border: 2px solid var(--gold-dark);
+            border-radius: 20px;
+            transition: all 0.2s;
+            background: var(--bg-color);
+            box-shadow: inset 0 0 0 1px var(--gold-light);
+        }
+
+        .main-nav a:hover {
+            background-color: var(--gold-main);
+            border-color: var(--gold-main);
+            color: var(--text-dark);
+            box-shadow: none;
+        }
+
+        /* 메인 앱 영역 */
+        #app {
+            width: 100%; 
+            flex: 1; 
+            background: var(--white);
+            display: flex; 
+            flex-direction: column; 
+            position: relative; 
+            overflow: hidden;
+        }
+        .screen { flex: 1; display: flex; flex-direction: column; overflow: hidden; position: relative; }
+        .hidden { display: none !important; }
+
+        /* 애니메이션 */
+        @keyframes float { 0% { transform: translateY(0); } 50% { transform: translateY(-10px); } 100% { transform: translateY(0); } }
+        @keyframes flyUp { 0% { transform: translateY(0) scale(1); opacity: 1; } 100% { transform: translateY(-120px) scale(1.5); opacity: 0; } }
+
+        /* 시작 화면 */
+        #main-screen { 
+            background: var(--white); 
+            align-items: center; 
+            justify-content: flex-start;
+            text-align: center; 
+            padding: 40px 20px 20px 20px;
+            overflow-y: auto;
+        }
+        
+        .main-image {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            margin-bottom: 30px;
+            object-fit: cover;
+        }
+
+        .btn { padding: 15px 40px; border-radius: 30px; border: none; font-size: 18px; font-weight: 800; cursor: pointer; transition: 0.2s; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .btn:active { transform: scale(0.95); }
+        .btn-start { 
+            background: var(--main-color); 
+            color: white; 
+            width: 80%;
+            max-width: 350px;
+            box-shadow: 0 4px 15px rgba(255, 135, 169, 0.3);
+            margin-bottom: 30px;
+        }
+
+        /* 로딩 화면 */
+        #loading-screen { background: var(--bg-color); align-items: center; justify-content: center; text-align: center; }
+        
+        .loading-animation {
+            position: relative;
+            width: 160px;
+            height: 120px;
+            margin: 0 auto 20px;
+        }
+        .loading-bubble {
+            position: absolute;
+            background: var(--white);
+            border: 2px solid var(--sub-color);
+            border-radius: 20px;
+            padding: 12px 18px;
+            font-size: 28px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            animation: bounceBubble 1.5s infinite alternate ease-in-out;
+        }
+        .bubble-left {
+            bottom: 10px;
+            left: 0;
+            border-bottom-left-radius: 4px;
+        }
+        .bubble-right {
+            top: 10px;
+            right: 0;
+            border-top-right-radius: 4px;
+            background: var(--main-color);
+            border-color: var(--main-color);
+            color: white;
+            animation-delay: 0.75s;
+        }
+        .loading-heart {
+            position: absolute;
+            font-size: 24px;
+            opacity: 0;
+            animation: floatUpHeart 2s infinite ease-in;
+        }
+        .lh-1 { left: 40%; bottom: 30px; animation-delay: 0s; }
+        .lh-2 { left: 60%; bottom: 40px; font-size: 18px; animation-delay: 0.6s; }
+        .lh-3 { left: 50%; bottom: 20px; font-size: 28px; animation-delay: 1.2s; }
+
+        @keyframes bounceBubble { 0% { transform: translateY(5px); } 100% { transform: translateY(-5px); } }
+        @keyframes floatUpHeart { 0% { transform: translateY(0) scale(0.8); opacity: 1; } 100% { transform: translateY(-70px) scale(1.2); opacity: 0; } }
+
+        /* 채팅창 */
+        .header { padding: 15px 20px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; font-weight: 800; color: #333; height: 60px; background: var(--bg-color); flex-shrink: 0; }
+        .gauge-wrap { width: 100px; height: 8px; background: #eee; border-radius: 4px; overflow: hidden; }
+        #gauge { width: 0%; height: 100%; transition: 0.3s; background: linear-gradient(90deg, var(--main-color), var(--sub-color)); }
+        
+        #chat-log { flex: 1; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; background: #fdfdfd; }
+        
+        .msg-row { display: flex; gap: 10px; width: 100%; align-items: flex-start; }
+        .bot-row { justify-content: flex-start; }
+        .user-row { justify-content: flex-end; }
+        
+        .profile-pic { width: 38px; height: 38px; background: #ffe3eb; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        
+        .msg { max-width: 75%; padding: 12px 16px; border-radius: 18px; font-size: 15px; line-height: 1.5; word-break: keep-all; margin-top: 4px; }
+        .msg.bot { background: #fff; border: 1px solid #eee; border-top-left-radius: 4px; color: #333; }
+        .msg.user { color: white; border-top-right-radius: 4px; background: var(--main-color); }
+        
+        #choices { padding: 15px 20px; background: var(--bg-color); border-top: 1px solid #eee; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0; }
+        .c-btn { width: 100%; padding: 15px; background: #fff; border: 1px solid #ffc4d3; border-radius: 12px; font-weight: 600; cursor: pointer; text-align: left; font-size: 14px; transition: 0.2s; color: #333; }
+        .c-btn:hover { background: #ffe3eb; border-color: var(--main-color); }
+
+        /* 클릭 이펙트 (반짝이) */
+        .flying-emoji { position: fixed; font-size: 24px; pointer-events: none; z-index: 9999; animation: flyUp 0.8s ease-out forwards; }
+
+        /* 결과창 */
+        #result-screen { background: #fdfdfd; justify-content: flex-start; align-items: center; padding: 0; text-align: center; overflow-y: auto; }
+        
+        #capture-area { background: #f0f4f7; padding: 25px 20px 40px 20px; width: 100%; display: flex; flex-direction: column; gap: 15px; position: relative; }
+        
+        .watermark { background: rgba(0,0,0,0.3); color: white; padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 700; align-self: center; margin-bottom: 10px; letter-spacing: 0.5px; }
+        
+        /* 결과창 말풍선 스타일 */
+        .res-msg { background: #fff; padding: 18px; border-radius: 18px; border-top-left-radius: 4px; box-shadow: 0 2px 10px rgba(0,0,0,0.03); text-align: left; max-width: 85%; }
+        .res-msg.best { border: 2px solid var(--sub-color); }
+        .res-msg.worst { border: 1px solid #e0e0e0; }
+        .res-msg.final-match { border: 2px solid var(--main-color); background: #fff0f6; }
+        
+        .res-label-tag { font-size: 12px; font-weight: 800; padding: 4px 8px; border-radius: 8px; display: inline-block; margin-bottom: 8px; }
+        .res-msg.best .res-label-tag { background: var(--bg-color); color: #e64980; }
+        .res-msg.worst .res-label-tag { background: #eee; color: #777; }
+        .res-msg.final-match .res-label-tag { background: var(--main-color); color: white; }
+        
+        .mbti-title { font-size: 20px; font-weight: 900; margin-bottom: 8px; color: #333; }
+        .mbti-desc { font-size: 14px; color: #555; line-height: 1.6; word-break: keep-all; }
+
+        /* 하단 버튼 그룹 */
+        .btn-group { width: 100%; display: flex; flex-direction: column; gap: 10px; padding: 20px; background: #fff; border-top: 1px solid #eee; }
+        .action-btn { padding: 15px; border-radius: 15px; border: none; font-size: 16px; font-weight: 800; cursor: pointer; transition: 0.2s; width: 100%; }
+        .action-btn:active { transform: scale(0.98); }
+        .btn-save { background: var(--main-color); color: #fff; box-shadow: 0 4px 15px rgba(255, 135, 169, 0.3); }
+        .btn-retry { background: #fff; color: var(--main-color); border: 2px solid var(--sub-color); }
+        .btn-other { background: #fff; color: #555; border: 2px solid #eee; }
+        .btn-share { background: #333; color: #fff; }
+    </style>
+</head>
+<body>
+
+<div class="layout-wrapper">
+    <header class="page-header">
+        <a href="index.html"><img class="logo" src="img_logo.png" alt="테스트잇"></a>
+        <nav>
+            <ul class="main-nav">
+                <li><a href="https://test-it.co.kr/test.html">성격</a></li>
+                <li><a href="https://test-it.co.kr/face.html">얼굴</a></li>
+                <li><a href="https://test-it.co.kr/etc.html">그외</a></li>
+                <li><a href="https://test-it.co.kr/saju.html">사주</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div id="app">
+        <div id="main-screen" class="screen">
+            <img src="img_main366.png" alt="애프터 시그널 메인 이미지" class="main-image">
+            <button class="btn btn-start" onclick="startChat()">테스트 시작하기</button>
+            
+            <article class="coupang_ad mt-3" style="margin: 20px 0 20px; width: 100%; display: flex; justify-content: center;">
+                <script src="https://ads-partners.coupang.com/g.js"></script>
+                <script>
+                    new PartnersCoupang.G({"id":798186,"template":"carousel","trackingCode":"AF4391881","width":"320","height":"100","tsource":""});
+                </script>
+            </article>
+        </div>
+
+        <div id="chat-screen" class="screen hidden">
+            <div class="header">
+                <span id="t-nick">블라인드 상대방</span>
+                <div class="gauge-wrap"><div id="gauge"></div></div>
+            </div>
+            <div id="chat-log"></div>
+            <div id="choices"></div>
+            
+            <article class="coupang_ad" style="width: 100%; background: var(--bg-color); display: flex; justify-content: center; padding: 10px 0; border-top: 1px solid #ffc4d3; flex-shrink: 0;">
+                <script src="https://ads-partners.coupang.com/g.js"></script>
+                <script>
+                    new PartnersCoupang.G({"id":798186,"template":"carousel","trackingCode":"AF4391881","width":"320","height":"100","tsource":""});
+                </script>
+            </article>
+        </div>
+
+        <div id="loading-screen" class="screen hidden">
+            <div class="loading-animation">
+                <div class="loading-heart lh-1">❤️</div>
+                <div class="loading-heart lh-2">💕</div>
+                <div class="loading-heart lh-3">💖</div>
+                <div class="loading-bubble bubble-left">💬</div>
+                <div class="loading-bubble bubble-right">💌</div>
+            </div>
+            <h2 style="color: #333; margin-top: 20px; font-size: 22px;">메시지 시그널 분석 중...</h2>
+            <p style="color: #888; margin-top: 10px; font-size: 15px;">애프터 확률이 가장 높은 사람은?</p>
+        </div>
+
+        <div id="result-screen" class="screen hidden">
+            <div id="capture-area">
+                <div class="watermark">@테스트잇 블라인드 소개팅 테스트</div>
+                
+                <div class="msg-row bot-row">
+                    <div class="profile-pic">🐰</div>
+                    <div>
+                        <div class="res-msg best">
+                            <div class="res-label-tag">나에게 애프터를 신청한 찰떡 상대 💌</div>
+                            <div class="mbti-title" id="best-mbti"></div>
+                            <div class="mbti-desc" id="best-desc"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="msg-row bot-row" style="margin-top: 10px;">
+                    <div class="profile-pic">🐰</div>
+                    <div>
+                        <div class="res-msg worst">
+                            <div class="res-label-tag">나를 읽씹한 최악의 상대 💔</div>
+                            <div class="mbti-title" id="worst-mbti"></div>
+                            <div class="mbti-desc" id="worst-desc"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="msg-row bot-row" style="margin-top: 10px;">
+                    <div class="profile-pic">🐰</div>
+                    <div>
+                        <div class="res-msg final-match">
+                            <div class="res-label-tag">최종 매칭 결과 💘</div>
+                            <div class="mbti-title" id="final-mbti" style="margin-bottom: 0; font-size: 16px; word-break: keep-all;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="btn-group">
+                <button class="action-btn btn-save" onclick="saveImage()">결과 이미지 저장하기</button>
+                <button class="action-btn btn-retry" onclick="location.reload()">다시 해보기</button>
+                <button class="action-btn btn-other" onclick="location.href='https://test-it.co.kr'">다른 테스트 해보기</button>
+                <button class="action-btn btn-share" onclick="shareTest()">테스트 공유하기</button>
+            </div>
+
+            <article class="coupang_ad mt-3" style="margin: 10px 0 30px; width: 100%; display: flex; justify-content: center;">
+                <script src="https://ads-partners.coupang.com/g.js"></script>
+                <script>
+                    new PartnersCoupang.G({"id":798186,"template":"carousel","trackingCode":"AF4391881","width":"320","height":"100","tsource":""});
+                </script>
+            </article>
+        </div>
+    </div>
+
+</div>
+
+<script>
+const QUESTIONS = [
+    {
+        q: "잘 들어가셨어요? 전 방금 씻고 누웠어요 ㅎㅎ",
+        a: [
+            { t: "네! 저도 방금 와서 씻고 누웠어요 ㅎㅎ", type: "I" },
+            { t: "네! 전 집에 오니까 오히려 쌩쌩하네요 ㅋㅋ", type: "E" },
+            { t: "잘 도착했습니다. 피곤하실 텐데 푹 쉬세요!", type: "I" }
+        ]
+    },
+    {
+        q: "내일 주말인데 푹 쉬시나요? 아니면 약속 있으세요?",
+        a: [
+            { t: "밀린 집안일 하고 미리 잡아둔 약속 가요!", type: "J" },
+            { t: "아직 딱히요 ㅋㅋ 늦잠 자고 끌리는 대로 할래요.", type: "P" },
+            { t: "쉴 생각인데 심심하면 잠깐 나갈지도 몰라요.", type: "P" }
+        ]
+    },
+    {
+        q: "방금 친구가 오늘 어땠냐고 꼬치꼬치 캐묻는데 왠지 부끄럽네요 ㅋㅋ 평소에 이런 거 다 말하는 편이세요?",
+        a: [
+            { t: "네! 전 친구들이랑 시시콜콜 다 공유하고 썰 풀어요 ㅋㅋ", type: "E" },
+            { t: "아뇨 ㅋㅋ 전 굳이 안 말하고 혼자만 조용히 알고 있어요.", type: "I" },
+            { t: "진짜 고민되는 부분만 객관적으로 물어보는 편이에요.", type: "T" }
+        ]
+    },
+    {
+        q: "방금 릴스 보다가 심리테스트 같은 거 떠서 해봤는데 재밌네요 ㅋㅋ 평소에 이런 거 좋아하세요?",
+        a: [
+            { t: "완전 좋아해요! MBTI나 심리테스트 완전 과몰입러예요 ㅋㅋ", type: "N" },
+            { t: "아뇨 ㅋㅋ 그런 거 다 끼워 맞추기라고 생각해서 안 믿어요.", type: "S" },
+            { t: "그냥 친구들이 보내주면 재미로 한 번씩 해보는 정도예요.", type: "S" }
+        ]
+    },
+    {
+        q: "지금 누워서 넷플릭스 보려는데, 평소에 뭐 볼지 고르는 데 오래 걸리는 편이세요?",
+        a: [
+            { t: "미리 찜해둔 리스트가 있어서 거기서 바로 골라 봐요!", type: "J" },
+            { t: "네 ㅠㅠ 썸네일만 한참 구경하다가 결국 스르륵 잠들어요 ㅋㅋ", type: "P" },
+            { t: "아뇨! 그냥 지금 딱 삘 꽂히는 거 아무거나 눌러서 봐요.", type: "P" }
+        ]
+    },
+    {
+        q: "혹시 평소에 유튜브 자주 보세요? 전 알고리즘의 노예라서요 ㅋㅋ",
+        a: [
+            { t: "저도요 ㅋㅋ 전 주로 예능이나 먹방 보면서 힐링해요.", type: "S" },
+            { t: "전 미스터리나 우주 다큐 같은 거 보면 시간 순삭이더라고요.", type: "N" },
+            { t: "그냥 아무 생각 없이 숏폼만 계속 넘기면서 봐요 ㅋㅋ", type: "S" }
+        ]
+    },
+    {
+        q: "아... 내일 또 출근이라니 믿기지가 않네요 ㅠㅠ 꿀 같은 주말 끝...",
+        a: [
+            { t: "아고 ㅠㅠ 주말은 진짜 순삭이네요. 낼 파이팅하세요!", type: "F" },
+            { t: "어쩔 수 없죠 ㅠㅠ 얼른 주무시고 컨디션 관리 잘하세요.", type: "T" },
+            { t: "저도요 ㅠㅠ 그래도 돈 벌려면 꾹 참고 가야죠 뭐...", type: "T" }
+        ]
+    },
+    {
+        q: "다음 주말쯤에 한 번 더 뵐 수 있을까 해서요. 언제가 편하세요?",
+        a: [
+            { t: "전 토요일 오후 2시쯤이 제일 좋을 것 같아요!", type: "J" },
+            { t: "주말 다 괜찮아요! 편하실 때 시간 맞춰서 봐요 ㅎㅎ", type: "P" },
+            { t: "금요일쯤 다시 연락해서 정할까요? 아직 일정을 몰라서요.", type: "P" }
+        ]
+    },
+    {
+        q: "평일에 퇴근하고 나면 보통 밖에서 노는 편이세요?",
+        a: [
+            { t: "아뇨 ㅋㅋ 무조건 칼퇴하고 집 가서 눕는 게 최고죠.", type: "I" },
+            { t: "네! 가끔 친구들 만나서 놀다 들어가기도 해요.", type: "E" },
+            { t: "아뇨, 선약 없으면 웬만하면 바로 집콕이에요 ㅋㅋ", type: "I" }
+        ]
+    },
+    {
+        q: "자기 전에 누우면 바로 잠드시는 편이세요? 전 생각이 좀 많아서 늦게 자거든요.",
+        a: [
+            { t: "전 눕자마자 기절해요 ㅋㅋ 불면증이 뭐죠?", type: "S" },
+            { t: "저도요 ㅋㅋ 생각이 좀 많은 편이라.", type: "N" },
+            { t: "그냥 폰으로 영상 좀 보다가 스르륵 잠들어요.", type: "S" }
+        ]
+    },
+    {
+        q: "아 참, 오늘 제가 혹시 말실수한 건 없었나 모르겠네요 ㅎㅎ 쫌 긴장해서...",
+        a: [
+            { t: "에이 전혀요! 편하게 잘해주셔서 저도 너무 좋았어요.", type: "F" },
+            { t: "네 딱히 거슬리는 말씀은 없으셨어요. 괜찮았어요!", type: "T" },
+            { t: "저도 엄청 긴장해서 사실 무슨 말 했는지 잘 기억이 안 나요~", type: "F" }
+        ]
+    },
+    {
+    q: "그럼 다음 번에 뵐 땐 데이트 코스 어떻게 정할까요?",
+        a: [
+            { t: "미리 어디 갈지 딱 정해두고 만나는 게 전 마음 편하고 좋아요!", type: "J" },
+            { t: "제가 가보고 싶었던 곳 리스트 보낼 테니 같이 골라봐요!", type: "J" },
+            { t: "동네만 대충 정해두고 그날 땡기는 거 먹으러 가죠!", type: "P" }
+        ]
+    }
+];
+
+const BEST_MATCH = {
+    "ESTJ": { title: "ESTJ 상대", desc: "감정 기복 없이 깔끔하게 팩트로 대답해 줘서 너무 자기 스타일이래요! 든든한 어른 같아서 당장 사귀고 싶다네요." },
+    "ENTJ": { title: "ENTJ 상대", desc: "어물쩍거리지 않고 대화의 티키타카가 딱딱 맞아서 완전 호감이래요! 배울 점이 많은 사람 같아서 계속 연락하고 싶대요." },
+    "ESFJ": { title: "ESFJ 상대", desc: "당신의 다정한 리액션과 따뜻한 말투에 완전 감동받았대요! 톡만 해도 너무 편안해진다며 벌써 썸 타는 기분이래요." },
+    "ENFJ": { title: "ENFJ 상대", desc: "대화할 때 팍팍 공감해 주는 당신의 매력에 푹 빠졌대요! 성격이 너무 좋아서 평생 예쁘게 만날 수 있을 것 같대요." },
+    "ESTP": { title: "ESTP 상대", desc: "빙빙 안 돌리고 시원시원하게 대답하는 모습이 완전 매력적이래요! 지루할 틈이 없을 것 같다며 당장 내일 번개치고 싶어 해요." },
+    "ENTP": { title: "ENTP 상대", desc: "뻔하지 않은 대답과 센스 넘치는 티키타카에 흥미진진하대요! 이 사람이랑은 매일 카톡해도 안 질리겠다고 100점 줬어요." },
+    "ESFP": { title: "ESFP 상대", desc: "통통 튀는 당신의 리액션에 심장을 폭행당했대요! 당장 만나서 텐션 높게 놀고 싶어서 애프터 약속만 기다리고 있어요." },
+    "ENFP": { title: "ENFP 상대", desc: "당신 특유의 몽글몽글한 감수성과 열린 마인드에 완전히 반해버렸대요! 나랑 너무 잘 맞는 소울메이트를 찾았다고 신났어요." },
+    "ISTJ": { title: "ISTJ 상대", desc: "애프터 톡에서도 느껴지는 당신의 차분함과 계획적인 모습에 100% 신뢰를 느꼈대요! 믿고 기댈 수 있는 최고의 짝꿍이래요." },
+    "INTJ": { title: "INTJ 상대", desc: "감정에 휘둘리지 않고 논리적이고 깔끔하게 대화하는 모습에 반했대요! 대화 수준이 맞아서 최고의 파트너가 될 거라고 확신한대요." },
+    "ISFJ": { title: "ISFJ 상대", desc: "다정하게 공감해 주고 따뜻하게 챙겨주는 카톡에 완전 심쿵했대요! 이 사람이라면 안정적인 연애가 가능하겠다고 설레어해요." },
+    "INFJ": { title: "INFJ 상대", desc: "단순한 겉핥기 톡이 아니라 속 깊은 내면이 통하는 것 같아서 짜릿했대요! 당신을 진지하게 알아가고 싶어서 애프터 준비 중이에요." },
+    "ISTP": { title: "ISTP 상대", desc: "부담스럽지 않게 선 지키면서 쿨하게 대화하는 당신의 시크함이 너무 좋대요! 쓸데없는 연락 안 해도 될 것 같아서 100점 줬어요." },
+    "INTP": { title: "INTP 상대", desc: "뻔한 스몰톡 안 하고 독특하고 이성적으로 대답하는 모습에 묘한 동질감을 느꼈대요! 당신의 머릿속이 더 궁금해졌대요." },
+    "ISFP": { title: "ISFP 상대", desc: "부담 주지 않고 물 흐르듯 편안하게 대화해 주는 당신의 은은한 매력에 마음이 푹 녹았대요! 조심스럽게 다음 만남을 기다리고 있어요." },
+    "INFP": { title: "INFP 상대", desc: "당신의 따뜻한 공감 한마디에 심장이 사르르 녹아버렸대요! 영화 같은 로맨틱한 연애를 상상하며 애프터 타이밍만 재고 있어요." }
+};
+
+const WORST_MATCH = {
+    "ESTJ": { title: "ESTJ 상대", desc: "당신이 계획도 없고 뜬구름 잡는 소리만 해서 너무 답답하대요. 대화가 안 통할 것 같다며 칼같이 연락처 삭제했대요." },
+    "ENTJ": { title: "ENTJ 상대", desc: "대답이 너무 우유부단하고 감정에만 휘둘리는 것 같아서 기 빨린대요. 답답해서 그냥 톡방 나가버렸대요." },
+    "ESFJ": { title: "ESFJ 상대", desc: "당신이 너무 무뚝뚝하고 로봇처럼 팩트만 꽂아서 상처받았대요 ㅠㅠ 정이 뚝 떨어져서 조용히 읽씹 모드로 들어갔대요." },
+    "ENFJ": { title: "ENFJ 상대", desc: "말투가 너무 차갑고 남 배려할 줄 모르는 것 같아서 크게 실망했대요. 자기랑은 결이 안 맞는 것 같다며 미련 없이 떠났어요." },
+    "ESTP": { title: "ESTP 상대", desc: "만날 시간부터 코스까지 빡빡하게 다 정하려는 꼰대 같은 톡에 숨 막혀 죽을 뻔했대요. 질려서 도망갔어요." },
+    "ENTP": { title: "ENTP 상대", desc: "별것도 아닌 걸로 서운해하고 징징대는 것 같아서 대화할 맛이 뚝 떨어졌대요. 피곤해서 바로 카톡 알림 꺼버렸대요." },
+    "ESFP": { title: "ESFP 상대", desc: "톡이 너무 재미없고 단답형이라서 교장 선생님이랑 대화하는 줄 알았대요. 지루해서 답장 치다가 그냥 잠들었대요." },
+    "ENFP": { title: "ENFP 상대", desc: "낭만이라곤 1도 없고 너무 현실적인 팩폭만 날려서 무섭대요 ㅠㅠ 상처받아서 몰래 카톡 차단해버렸대요." },
+    "ISTJ": { title: "ISTJ 상대", desc: "대책 없이 즉흥적이고 산만한 당신의 대답에 신뢰도가 바닥 쳤대요. 안정감이 하나도 안 느껴진다며 조용히 연락 끊었어요." },
+    "INTJ": { title: "INTJ 상대", desc: "논리 없이 감정에만 호소하는 당신의 얕은 톡에 흥미를 완전히 잃었대요. 대화할 가치가 없다고 판단해서 안읽씹 중이에요." },
+    "ISFJ": { title: "ISFJ 상대", desc: "배려 없이 직설적으로 할 말만 하는 당신의 말투에 속으로 엄청 눈물 흘렸대요 ㅠㅠ 무서워서 조용히 카톡방 숨김 처리했대요." },
+    "INFJ": { title: "INFJ 상대", desc: "대화가 너무 가볍고 공감대가 1도 안 느껴져서 빨리 대화를 끝내고 싶었대요. 결이 달라도 너무 달라서 그냥 읽씹했대요." },
+    "ISTP": { title: "ISTP 상대", desc: "사사건건 서운한 티 내고 연락에 집착할 같이 피곤한 스타일에 질려버렸대요. 귀찮아서 폰 무음으로 돌려놨어요." },
+    "INTP": { title: "INTP 상대", desc: "대화의 본질은 안 보고 쓸데없는 감정 교류만 바라는 것 같아서 소통을 포기했대요. 벽이랑 대화하는 기분이라 도망갔어요." },
+    "ISFP": { title: "ISFP 상대", desc: "당신의 톡 말투가 너무 팍팍하고 직설적이라서 쫄았대요 ㅠㅠ 기 빨리고 상처받아서 조용히 연락처 지워버렸대요." },
+    "INFP": { title: "INFP 상대", desc: "피도 눈물도 없이 냉정한 당신의 팩트 폭격에 마음에 피멍이 들었대요 ㅠㅠ 너무 차가워서 다신 톡 엮이고 싶지 않대요." }
+};
+
+let S = { idx: 0, scores: { E:0, I:0, S:0, N:0, T:0, F:0, J:0, P:0 } };
+
+function startChat() {
+    S.idx = 0;
+    S.scores = { E:0, I:0, S:0, N:0, T:0, F:0, J:0, P:0 };
+    document.getElementById('main-screen').classList.add('hidden');
+    document.getElementById('chat-screen').classList.remove('hidden');
+    render();
+}
+
+function scrollToBottom() {
+    const log = document.getElementById('chat-log');
+    log.scrollTo({ top: log.scrollHeight, behavior: 'smooth' });
+}
+
+function render() {
+    const data = QUESTIONS[S.idx];
+    if (!data) return calculateResult();
+    
+    document.getElementById('gauge').style.width = ((S.idx + 1) / 12 * 100) + '%';
+    
+    addMsg('bot', data.q);
+    
+    const cArea = document.getElementById('choices');
+    cArea.innerHTML = '';
+    data.a.forEach((ans) => {
+        const b = document.createElement('button');
+        b.className = 'c-btn';
+        b.innerText = ans.t;
+        b.onclick = (e) => clickAns(ans, e);
+        cArea.appendChild(b);
+    });
+    
+    setTimeout(scrollToBottom, 50);
+}
+
+function clickAns(ans, event) {
+    if (event) {
+        const emoji = document.createElement('div');
+        emoji.innerText = '✨';
+        emoji.className = 'flying-emoji';
+        emoji.style.left = (event.clientX - 15) + 'px';
+        emoji.style.top = (event.clientY - 15) + 'px';
+        document.body.appendChild(emoji);
+        setTimeout(() => emoji.remove(), 800);
+    }
+
+    addMsg('user', ans.t);
+    document.getElementById('choices').innerHTML = '';
+    
+    S.scores[ans.type]++;
+    S.idx++;
+    
+    setTimeout(render, 800);
+}
+
+function addMsg(who, txt) {
+    const log = document.getElementById('chat-log');
+    
+    const row = document.createElement('div');
+    row.className = `msg-row ${who}-row`;
+    
+    if (who === 'bot') {
+        const profile = document.createElement('div');
+        profile.className = 'profile-pic';
+        profile.innerText = '🐰';
+        row.appendChild(profile);
+    }
+    
+    const msg = document.createElement('div');
+    msg.className = `msg ${who}`;
+    msg.innerText = txt;
+    row.appendChild(msg);
+    
+    log.appendChild(row);
+    scrollToBottom();
+}
+
+function calculateResult() {
+    document.getElementById('chat-screen').classList.add('hidden');
+    document.getElementById('loading-screen').classList.remove('hidden');
+    
+    setTimeout(() => {
+        document.getElementById('loading-screen').classList.add('hidden');
+        showResult();
+    }, 3000);
+}
+
+function showResult() {
+    document.getElementById('result-screen').classList.remove('hidden');
+    
+    const bestMBTI = 
+        (S.scores.E >= S.scores.I ? "E" : "I") +
+        (S.scores.S >= S.scores.N ? "S" : "N") +
+        (S.scores.T >= S.scores.F ? "T" : "F") +
+        (S.scores.J >= S.scores.P ? "J" : "P");
+        
+    const worstMBTI = 
+        (S.scores.E >= S.scores.I ? "I" : "E") +
+        (S.scores.S >= S.scores.N ? "N" : "S") +
+        (S.scores.T >= S.scores.F ? "F" : "T") +
+        (S.scores.J >= S.scores.P ? "P" : "J");
+
+    document.getElementById('best-mbti').innerText = BEST_MATCH[bestMBTI].title;
+    document.getElementById('best-desc').innerText = BEST_MATCH[bestMBTI].desc;
+    
+    document.getElementById('worst-mbti').innerText = WORST_MATCH[worstMBTI].title;
+    document.getElementById('worst-desc').innerText = WORST_MATCH[worstMBTI].desc;
+    
+    document.getElementById('final-mbti').innerText = bestMBTI + ' 상대와 매칭되었습니다 ❤️';
+}
+
+function saveImage() {
+    const captureArea = document.getElementById('capture-area');
+    html2canvas(captureArea, { scale: 2, backgroundColor: '#f0f4f7' }).then(canvas => {
+        const link = document.createElement('a');
+        link.download = 'after_signal_result.png';
+        link.href = canvas.toDataURL("image/png");
+        link.click();
+    });
+}
+
+function shareTest() {
+    if (navigator.share) {
+        navigator.share({
+            title: '테스트잇 블라인드 소개팅 테스트',
+            url: window.location.href
+        }).catch(console.error);
+    } else {
+        alert('지원하지 않는 브라우저입니다. URL을 직접 복사해주세요!');
+    }
+}
+</script>
+</body>
+</html>

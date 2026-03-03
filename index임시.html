@@ -82,7 +82,6 @@
 
         .card h2 { color: #d11534; margin-top: 0; font-size: 1.4rem; font-weight: 900; }
 
-        /* 입력 폼 핑크 테마 적용 */
         .saju-form { 
             text-align: left; 
             margin-top: 15px; 
@@ -122,11 +121,10 @@
 
         .action-btns { display: flex; flex-direction: column; gap: 10px; margin-top: 25px; }
 
-        /* 결과창 윗부분 전체 핑크 배경 적용 */
         .capture-wrapper { 
             padding: 0; 
             background-color: #fcdde5; 
-            border-radius: 12px; 
+            border-radius: 8px; 
             margin-bottom: 10px; 
             color: #5a3a41;
             overflow: hidden;
@@ -135,27 +133,44 @@
 
         #man-result-area { text-align: center; position: relative; }
         
-        .result-header {
-            background-color: #fcdde5;
-            color: #5a3a41;
-            padding: 15px;
-            font-size: 1.6rem;
+        .window-bar {
+            background-color: #ffc4d0;
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #ffb6c1;
+        }
+
+        .window-title {
+            font-size: 1.1rem;
             font-weight: 900;
-            border: none;
-            text-shadow: none;
-            text-align: center;
+            color: #5a3a41;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .window-controls {
+            display: flex;
+            gap: 15px;
+            color: #5a3a41;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: default;
         }
 
         .bazi-grid { 
             display: flex; flex-direction: row-reverse; 
             width: 100%; box-sizing: border-box;
-            background: #ffffff; border-top: 1px solid #f6c5d0;
+            background: #ffffff;
         }
         
         .pillar { 
             flex: 1 1 25%; max-width: 25%; box-sizing: border-box;
             display: flex; flex-direction: column; 
             border-right: 1px solid #f6c5d0; position: relative; z-index: 1;
+            height: auto;
         }
         .pillar:first-child { border-right: none; } 
         
@@ -183,7 +198,6 @@
             box-sizing: border-box;
         }
 
-        /* 수채화 퍼지는 효과 */
         .bazi-box { 
             width: 55px; height: 55px; font-size: 1.5rem; font-weight: 900; 
             margin: 0; display: flex; align-items: center; justify-content: center;
@@ -194,7 +208,6 @@
             content: ''; position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
             z-index: -1;
-            /* 불규칙한 원형을 만들어 자연스러운 물감 형태 구성 */
             border-radius: 45% 55% 65% 35% / 55% 45% 60% 40%;
             filter: blur(4px); opacity: 0.85;
             transform: scale(1.3) rotate(-5deg);
@@ -222,6 +235,8 @@
             padding: 15px 4px; background: #fcdde5; min-height: 120px; 
             display: flex; flex-direction: column; gap: 6px; align-items: center;
             border-bottom: none !important;
+            flex-grow: 1;
+            justify-content: flex-start;
         }
         
         .shinsal-tag {
@@ -377,7 +392,14 @@
 
                 <div id="man-result-area" style="display: none;">
                     <div id="capture-area" class="capture-wrapper">
-                        <div class="result-header">🐷 돼지 만세력</div>
+                        <div class="window-bar">
+                            <div class="window-title">🐷 돼지 만세력</div>
+                            <div class="window-controls">
+                                <span>─</span>
+                                <span>□</span>
+                                <span>✕</span>
+                            </div>
+                        </div>
                         <div class="bazi-grid" id="man-result-grid">
                         </div>
                         <div id="element-summary" class="element-summary"></div>
@@ -472,6 +494,9 @@
             let list = [];
             const pillar = gan + zhi;
 
+            // -------------------------
+            // 기존 신살(유지)
+            // -------------------------
             if (['甲','戊','庚'].includes(dGan) && ['丑','未'].includes(zhi)) list.push('천을귀인');
             if (['乙','己'].includes(dGan) && ['子','申'].includes(zhi)) list.push('천을귀인');
             if (['丙','丁'].includes(dGan) && ['亥','酉'].includes(zhi)) list.push('천을귀인');
@@ -509,28 +534,33 @@
             if (['甲','辛','卯','午','申'].includes(gan)) list.push('현침살');
             if (['甲','辛','卯','午','申'].includes(zhi) && !list.includes('현침살')) list.push('현침살');
 
-            function getSamhap(z) {
-                if(['申','子','辰'].includes(z)) return '水';
-                if(['寅','午','戌'].includes(z)) return '火';
-                if(['亥','卯','未'].includes(z)) return '木';
-                if(['巳','酉','丑'].includes(z)) return '金';
-                return '';
+            // -------------------------
+            // 12신살: "전체" 매핑으로 복구 (년지 + 일지 기준 둘 다)
+            // -------------------------
+            function get12Shinsal(refZhi, targetZhi) {
+                let samhap = '';
+                if (['亥', '卯', '未'].includes(refZhi)) samhap = '木';
+                else if (['寅', '午', '戌'].includes(refZhi)) samhap = '火';
+                else if (['巳', '酉', '丑'].includes(refZhi)) samhap = '金';
+                else if (['申', '子', '辰'].includes(refZhi)) samhap = '水';
+
+                const map = {
+                    '木': { '亥':'지살', '子':'도화살', '丑':'월살', '寅':'망신살', '卯':'장성살', '辰':'반안살', '巳':'역마살', '午':'육해살', '未':'화개살', '申':'겁살', '酉':'재살', '戌':'천살' },
+                    '火': { '寅':'지살', '卯':'도화살', '辰':'월살', '巳':'망신살', '午':'장성살', '未':'반안살', '申':'역마살', '酉':'육해살', '戌':'화개살', '亥':'겁살', '子':'재살', '丑':'천살' },
+                    '金': { '巳':'지살', '午':'도화살', '未':'월살', '申':'망신살', '酉':'장성살', '戌':'반안살', '亥':'역마살', '子':'육해살', '丑':'화개살', '寅':'겁살', '卯':'재살', '辰':'천살' },
+                    '水': { '申':'지살', '酉':'도화살', '戌':'월살', '亥':'망신살', '子':'장성살', '丑':'반안살', '寅':'역마살', '卯':'육해살', '辰':'화개살', '巳':'겁살', '午':'재살', '未':'천살' }
+                };
+                return map[samhap] ? map[samhap][targetZhi] : null;
             }
-            const dSamhap = getSamhap(dZhi);
-            const ySamhap = getSamhap(yZhi);
 
-            if ((dSamhap==='水'&&zhi==='寅')||(dSamhap==='火'&&zhi==='申')||(dSamhap==='木'&&zhi==='巳')||(dSamhap==='金'&&zhi==='亥')||
-                (ySamhap==='水'&&zhi==='寅')||(ySamhap==='火'&&zhi==='申')||(ySamhap==='木'&&zhi==='巳')||(ySamhap==='金'&&zhi==='亥')) list.push('역마살');
-            
-            if ((dSamhap==='水'&&zhi==='酉')||(dSamhap==='火'&&zhi==='卯')||(dSamhap==='木'&&zhi==='子')||(dSamhap==='金'&&zhi==='午')||
-                (ySamhap==='水'&&zhi==='酉')||(ySamhap==='火'&&zhi==='卯')||(ySamhap==='木'&&zhi==='子')||(ySamhap==='金'&&zhi==='午')) list.push('도화살');
+            const yShinsal = get12Shinsal(yZhi, zhi);
+            const dShinsal = get12Shinsal(dZhi, zhi);
+            if (yShinsal) list.push(yShinsal);
+            if (dShinsal && dShinsal !== yShinsal) list.push(dShinsal);
 
-            if ((dSamhap==='水'&&zhi==='辰')||(dSamhap==='火'&&zhi==='戌')||(dSamhap==='木'&&zhi==='未')||(dSamhap==='金'&&zhi==='丑')||
-                (ySamhap==='水'&&zhi==='辰')||(ySamhap==='火'&&zhi==='戌')||(ySamhap==='木'&&zhi==='未')||(ySamhap==='金'&&zhi==='丑')) list.push('화개살');
-                
-            if ((dSamhap==='水'&&zhi==='巳')||(dSamhap==='火'&&zhi==='亥')||(dSamhap==='木'&&zhi==='申')||(dSamhap==='金'&&zhi==='寅')) list.push('겁살');
-            if ((dSamhap==='水'&&zhi==='亥')||(dSamhap==='火'&&zhi==='巳')||(dSamhap==='木'&&zhi==='寅')||(dSamhap==='金'&&zhi==='申')) list.push('망신살');
-
+            // -------------------------
+            // 기타 살(유지)
+            // -------------------------
             const gwasuk = {'寅':'丑','卯':'丑','辰':'丑', '巳':'辰','午':'辰','未':'辰', '申':'未','酉':'未','戌':'未', '亥':'戌','子':'戌','丑':'戌'};
             const gosin = {'寅':'巳','卯':'巳','辰':'巳', '巳':'申','午':'申','未':'申', '申':'亥','酉':'亥','戌':'亥', '亥':'寅','子':'寅','丑':'寅'};
             if (gwasuk[yZhi] === zhi) list.push('과숙살');
@@ -553,12 +583,40 @@
             const timeStr = document.getElementById('man-time').value;
             const calendarType = document.querySelector('input[name="man-calendar"]:checked').value;
             
+            const timeMap = {
+                'unknown': 12,
+                '자시': 0, '축시': 2, '인시': 4, '묘시': 6, '진시': 8,
+                '사시': 10, '오시': 12, '미시': 14, '신시': 16, '유시': 18,
+                '술시': 20, '해시': 22
+            };
+            const hour = timeMap[timeStr] !== undefined ? timeMap[timeStr] : 12;
+
             try {
                 let lunarObj;
+
+                // -------------------------
+                // 윤달 검증 + 처리 (핵심 수정)
+                // -------------------------
                 if (calendarType === 'solar') {
-                    lunarObj = Solar.fromYmdHms(year, month, day, 12, 0, 0).getLunar();
-                } else {
-                    lunarObj = Lunar.fromYmdHms(year, month, day, 12, 0, 0);
+                    lunarObj = Solar.fromYmdHms(year, month, day, hour, 0, 0).getLunar();
+                } else if (calendarType === 'lunar') {
+                    lunarObj = Lunar.fromYmdHms(year, month, day, hour, 0, 0);
+                } else if (calendarType === 'lunar-leap') {
+                    // 해당 년도 윤달이 몇 월인지 검증
+                    let leapMonth = 0;
+                    try {
+                        leapMonth = LunarYear.fromYear(year).getLeapMonth(); // 없으면 0
+                    } catch (e) {
+                        leapMonth = 0;
+                    }
+
+                    if (leapMonth !== month) {
+                        alert(`선택한 ${year}년에는 윤${month}월이 없습니다.\n(이 해의 윤달: ${leapMonth ? '윤' + leapMonth + '월' : '윤달 없음'})\n윤달이 맞는지 확인해 주세요.`);
+                        return;
+                    }
+
+                    // 윤달은 월을 음수로 넣어 구분
+                    lunarObj = Lunar.fromYmdHms(year, -month, day, hour, 0, 0);
                 }
 
                 const bazi = lunarObj.getEightChar();

@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5522499110435321" crossorigin="anonymous"></script>
+
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>테스트잇 사회생활 성격 테스트</title>
+  <meta name="description" content="테스트잇 사회생활 성격 테스트" />
+  <meta name="keywords" content="테스트잇,성격테스트,사회생활성격테스트,테스트잇사회생활성격,사회생활성격테스트결과,심리테스트,mbti테스트" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="테스트잇 사회생활 성격 테스트" />
+  <meta property="og:description" content="테스트잇 사회생활 성격 테스트" />
+  <meta property="og:image" content="img_main367.png" />
+  <meta property="og:url" content="https://test-it.co.kr/test367" />
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous" />
+
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+  <style>
+    :root{
+      --bg: #e9edf3;
+      --win: #ffffff;
+      --line: #cfd6e2;
+      --text: #0f172a;
+      --muted: #64748b;
+      --blue: #2563eb;
+      --blue2: #1d4ed8;
+      --folder: #f7f8fb;
+      --shadow: 0 10px 28px rgba(15,23,42,0.10);
+      --shadow2: 0 6px 16px rgba(15,23,42,0.12);
+      --radius: 12px;
+      --id-color: #ff6b00; 
+    }
+
+    *{ box-sizing: border-box; }
+    body{
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans KR, Apple SD Gothic Neo, Malgun Gothic, Arial, sans-serif;
+    }
+
+    .app{
+      max-width: 1060px;
+      margin: 18px auto 48px;
+      padding: 0 14px;
+    }
+
+    .winbar{
+      background: linear-gradient(#fbfcff, #f1f5ff);
+      border: 1px solid var(--line);
+      border-radius: var(--radius) var(--radius) 0 0;
+      padding: 10px 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: var(--shadow);
+      gap: 4px;
+    }
+
+    .win-left{
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      min-width: 60px; 
+    }
+
+    .traffic{ display:flex; gap:5px; align-items:center; }
+    .dot{ width:10px; height:10px; border-radius:50%; border:1px solid rgba(0,0,0,0.12); }
+    .dot.red{ background:#ff5f57; }
+    .dot.yellow{ background:#febc2e; }
+    .dot.green{ background:#28c840; }
+
+    .win-title{
+      font-weight: 800;
+      font-size: 12px;
+      color: #111827;
+      letter-spacing: -0.2px;
+      white-space: nowrap;
+    }
+
+    .win-right{
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .win-right::-webkit-scrollbar{ display: none; }
+
+    .nav-pill{
+      flex: 0 0 auto;
+      height: 26px;
+      padding: 0 8px; 
+      border-radius: 999px;
+      background: #ffffff;
+      border: 1px solid var(--line);
+      color: var(--text);
+      font-weight: 800;
+      font-size: 11px; 
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      box-shadow: 0 2px 10px rgba(15,23,42,0.06);
+      white-space: nowrap;
+    }
+    .nav-pill:hover{
+      background: #f8fafc;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .addr{
+      background: var(--win);
+      border: 1px solid var(--line);
+      border-top: 0;
+      padding: 8px 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 12px 26px rgba(15,23,42,0.06);
+    }
+    .addr-btn{
+      width: 26px;
+      height: 26px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: #fff;
+      font-weight: 900;
+      font-size: 12px;
+      color: #334155;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      user-select: none;
+      flex-shrink: 0;
+    }
+    .addr-bar{
+      flex: 1;
+      height: 28px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: #f8fafc;
+      display: flex;
+      align-items: center;
+      padding: 0 8px;
+      color: #334155;
+      font-size: 11px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      min-width: 0;
+    }
+    .crumb{ display:inline-flex; align-items:center; gap:4px; font-weight:800; }
+    .sep{ color:#94a3b8; font-weight:900; margin: 0 2px; }
+
+    .window{
+      background: var(--win);
+      border: 1px solid var(--line);
+      border-top: 0;
+      border-radius: 0 0 var(--radius) var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .content{
+      padding: 16px 16px 22px;
+      background: #ffffff;
+      min-height: 640px;
+    }
+
+    .folder-top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      padding:10px 12px;
+      border:1px solid var(--line);
+      border-radius:12px;
+      background:var(--folder);
+      margin-bottom:14px;
+    }
+    .folder-name{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight:1000;
+      letter-spacing:-0.3px;
+    }
+    .folder-ico{
+      width:22px;
+      height:16px;
+      border-radius:4px;
+      background: linear-gradient(#ffd978, #f4b63a);
+      border:1px solid rgba(0,0,0,0.08);
+      position:relative;
+    }
+    .folder-ico:before{
+      content:"";
+      position:absolute;
+      top:-5px;
+      left:2px;
+      width:10px;
+      height:6px;
+      border-radius:3px 3px 0 0;
+      background:#ffd978;
+      border:1px solid rgba(0,0,0,0.06);
+      border-bottom:0;
+    }
+    .folder-meta{ color:var(--muted); font-size:12px; font-weight:800; white-space:nowrap; }
+
+    .panel{
+      border:1px solid var(--line);
+      border-radius:14px;
+      background:#ffffff;
+      box-shadow:var(--shadow2);
+      overflow:hidden;
+    }
+    .panel-body{ padding:14px; }
+
+    article{ display:block; }
+    .start{ display:block; }
+    .name{ display:none; }
+    .question{ display:none; }
+    .result{ display:none; }
+
+    .main-img{
+      width:100%;
+      display:block;
+      border-radius:12px;
+      border:1px solid var(--line);
+      background:#f8fafc;
+    }
+
+    .start-btn-wrap{
+      margin-top:12px;
+      display:flex;
+      justify-content:center;
+    }
+
+    /* 버튼 스타일 및 포커스(클릭 시 테두리 남는 현상) 제거 완벽 적용 */
+    .win-btn{
+      width:100%;
+      max-width:420px;
+      min-height:52px;
+      border-radius:12px;
+      border:1px solid #cbd5e1;
+      background:#e2e8f0; 
+      color:var(--text);
+      font-weight:1000;
+      font-size:14px;
+      letter-spacing:-0.2px;
+      box-shadow:0 4px 12px rgba(15,23,42,0.08);
+      transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+      padding:12px 14px;
+      line-height: 1.45;
+      white-space:normal;
+      outline: none !important; /* 포커스 아웃라인 기본 제거 */
+      -webkit-tap-highlight-color: transparent; /* 모바일 터치 시 깜빡임 제거 */
+    }
+    .win-btn:hover{
+      transform: translateY(-1px);
+      box-shadow: 0 8px 16px rgba(15,23,42,0.12);
+      background:#cbd5e1;
+    }
+    .win-btn:focus, .win-btn:active {
+      outline: none !important;
+      box-shadow: 0 4px 12px rgba(15,23,42,0.08) !important; /* 부트스트랩 기본 검정/파랑 테두리 차단 */
+      border-color: #cbd5e1 !important; 
+    }
+
+    /* Primary 버튼 (시작하기 등 메인 기능) */
+    .win-btn.primary{
+      background: var(--blue);
+      border-color: rgba(37,99,235,0.35) !important;
+      color:#fff;
+    }
+    .win-btn.primary:hover{ background: var(--blue2); color:#fff; }
+    .win-btn.primary:focus, .win-btn.primary:active {
+      box-shadow: 0 4px 12px rgba(15,23,42,0.08) !important;
+    }
+
+    .btn-row{
+      display:grid;
+      gap:10px;
+      justify-items:center;
+      margin-top:10px;
+    }
+
+    .progress{
+      height:10px;
+      border-radius:999px;
+      background:#eef2f7;
+      overflow:hidden;
+      margin:4px 0 14px;
+    }
+    .progress-bar{
+      background:var(--blue);
+      border-radius:999px;
+      transition: width .35s ease;
+    }
+
+    .q-title{
+      margin:0 0 16px;
+      font-size:17px;
+      font-weight:1100;
+      letter-spacing:-0.4px;
+      line-height:1.55;
+      text-align:center;
+      word-break: keep-all;
+    }
+
+    .name-wrap{
+      max-width:520px;
+      margin:0 auto;
+      padding:4px 0 2px;
+      text-align:center;
+    }
+    .name-title{
+      margin: 8px 0 6px;
+      font-size: 16px;
+      font-weight: 1100;
+      letter-spacing: -0.3px;
+    }
+    .name-desc{
+      margin: 0 0 12px;
+      font-size: 12px;
+      font-weight: 900;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .name-input{
+      width: 100%;
+      height: 50px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: #f8fafc;
+      padding: 0 14px;
+      font-size: 14px;
+      font-weight: 1000;
+      outline: none;
+    }
+    .name-input:focus{
+      background: #ffffff;
+      border-color: rgba(37,99,235,0.45);
+      box-shadow: 0 0 0 4px rgba(37,99,235,0.12);
+    }
+
+    .report{
+      width:100%;
+      max-width:900px;
+      margin:0 auto;
+      text-align:left;
+    }
+
+    .result .panel-body{ padding: 0; } 
+    .capture{
+      padding: 30px 10px 10px; 
+      background: #ffffff; 
+    }
+
+    .report-head{
+      display: none; 
+    }
+
+    .idcard-wrap {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 0;
+    }
+
+    .idcard {
+      width: 100%;
+      max-width: 320px;
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+      overflow: hidden;
+      border: 1px solid #e2e8f0;
+      position: relative;
+    }
+
+    .idcard-top {
+      background: var(--id-color);
+      height: 70px;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .idcard-top::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: rgba(0,0,0,0.15);
+    }
+
+    .idcard-hole-outer {
+      width: 38px;
+      height: 38px;
+      background: rgba(255,255,255,0.25);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .idcard-hole-inner {
+      width: 16px;
+      height: 16px;
+      background: #ffffff;
+      border-radius: 50%;
+      box-shadow: inset 0 3px 6px rgba(0,0,0,0.15);
+    }
+
+    .idcard-body {
+      padding: 36px 24px 40px;
+      text-align: center;
+    }
+
+    .idcard-name-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
+    .idcard-name {
+      font-size: 28px;
+      font-weight: 900;
+      color: #111827;
+      margin: 0;
+      letter-spacing: -0.5px;
+      text-decoration: underline wavy var(--id-color); 
+      text-underline-offset: 6px;
+      text-decoration-thickness: 2px;
+    }
+
+    .idcard-role {
+      font-size: 13px;
+      color: var(--id-color);
+      font-weight: 900;
+      margin: 0;
+      background: #f8fafc;
+      padding: 4px 14px;
+      border-radius: 999px;
+      border: 1px solid #e2e8f0;
+      letter-spacing: 1px;
+    }
+
+    .idcard-info-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      text-align: left;
+    }
+
+    .info-box {
+      background: #ffffff;
+      padding: 14px 16px;
+      border-radius: 8px;
+      border: 1px solid #e2e8f0;
+      border-left: 5px solid var(--id-color);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    }
+
+    .info-label {
+      font-size: 12px;
+      font-weight: 900;
+      color: var(--id-color);
+      margin-bottom: 6px;
+      display: block;
+      letter-spacing: -0.2px;
+    }
+
+    .info-value {
+      font-size: 14px;
+      font-weight: 800;
+      color: #111827;
+      line-height: 1.4;
+      word-break: keep-all;
+    }
+
+    .idcard-bottom {
+      background: var(--id-color);
+      padding: 16px 24px;
+      text-align: center;
+    }
+
+    .idcard-brand {
+      color: #ffffff;
+      font-size: 13px; 
+      font-weight: 900;
+      margin: 0;
+      letter-spacing: 0.5px;
+    }
+
+    .formal-report {
+      background: #ffffff;
+      border: 0; 
+      border-radius: 0 0 12px 12px;
+      padding: 28px 15px 24px; 
+      margin-top: 0; 
+      box-shadow: none; 
+    }
+
+    .report-section-title {
+      font-size: 17px;
+      font-weight: 900;
+      color: #0f172a;
+      margin: 0 0 16px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      letter-spacing: -0.3px;
+    }
+
+    .report-section-title::before {
+      content: "";
+      display: inline-block;
+      width: 4px;
+      height: 16px;
+      background: var(--id-color);
+      border-radius: 2px;
+    }
+    
+    .trait-item {
+      margin-bottom: 12px;
+      padding-left: 16px;
+      position: relative;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+      letter-spacing: -0.4px;
+      line-height: 1.6;
+      font-size: 14.5px;
+      font-weight: 800;
+      color: #334155;
+    }
+    
+    .trait-item::before {
+      content: "·";
+      position: absolute;
+      left: 0;
+      color: var(--id-color);
+      font-weight: 900;
+      font-size: 18px;
+      line-height: 1.4;
+    }
+
+    /* 형광펜 효과들 */
+    .hl-pink { background: linear-gradient(to top, rgba(254, 205, 211, 0.7) 40%, transparent 40%); padding: 0 2px; border-radius: 2px; color: #0f172a; }
+    .hl-blue { background: linear-gradient(to top, rgba(191, 219, 254, 0.7) 40%, transparent 40%); padding: 0 2px; border-radius: 2px; color: #0f172a; }
+    .hl-yellow { background: linear-gradient(to top, rgba(254, 240, 138, 0.8) 40%, transparent 40%); padding: 0 2px; border-radius: 2px; color: #0f172a; }
+    .hl-green { background: linear-gradient(to top, rgba(187, 247, 208, 0.7) 40%, transparent 40%); padding: 0 2px; border-radius: 2px; color: #0f172a; }
+    .hl-purple { background: linear-gradient(to top, rgba(233, 213, 255, 0.7) 40%, transparent 40%); padding: 0 2px; border-radius: 2px; color: #0f172a; }
+    .squiggle { text-decoration: underline wavy var(--id-color); text-underline-offset: 4px; font-weight: 900; }
+
+    .actions{
+      margin-top:14px;
+      display:grid;
+      gap:10px;
+      justify-items:center;
+    }
+
+    .ad-wrap{
+      width: 320px;
+      margin: 18px auto 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="app">
+    <div class="winbar">
+      <div class="win-left">
+        <div class="traffic">
+          <span class="dot red"></span>
+          <span class="dot yellow"></span>
+          <span class="dot green"></span>
+        </div>
+        <div class="win-title">테스트잇</div>
+      </div>
+
+      <div class="win-right">
+        <a class="nav-pill" href="https://test-it.co.kr/test.html">성격</a>
+        <a class="nav-pill" href="https://test-it.co.kr/face.html">얼굴</a>
+        <a class="nav-pill" href="https://test-it.co.kr/etc.html">그외</a>
+        <a class="nav-pill" href="https://test-it.co.kr/saju.html">사주</a>
+      </div>
+    </div>
+
+    <div class="addr">
+      <div class="addr-btn">←</div>
+      <div class="addr-btn">→</div>
+      <div class="addr-btn">⟳</div>
+      <div class="addr-bar">
+        <span class="crumb">테스트잇</span>
+        <span class="sep">></span>
+        <span class="crumb">성격</span>
+        <span class="sep">></span>
+        <span class="crumb">사회생활 성격 테스트</span>
+      </div>
+    </div>
+
+    <div class="window">
+      <section class="content">
+
+        <div class="folder-top">
+          <div class="folder-name">
+            <span class="folder-ico"></span>
+            <span>사회생활 성격 테스트</span>
+          </div>
+          <div class="folder-meta">test367</div>
+        </div>
+
+        <article class="start panel">
+          <div class="panel-body">
+            <img id="img_main" class="main-img" src="img_main367.png" alt="메인 이미지" />
+            <div class="start-btn-wrap">
+              <button type="button" class="win-btn primary" onclick="goName();">테스트 시작하기</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="name panel">
+          <div class="panel-body">
+            <div class="name-wrap">
+              <h2 class="name-title">이름 입력</h2>
+              <p class="name-desc">결과에 ㅇㅇㅇ사원으로 표시됩니다.</p>
+              <input id="userName" class="name-input" type="text" maxlength="10" placeholder="이름을 입력하세요" autocomplete="off" />
+              <div class="btn-row" style="margin-top:12px;">
+                <button type="button" class="win-btn primary" onclick="start();">다음</button>
+                <button type="button" class="win-btn" onclick="backToStart();">뒤로</button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="question panel">
+          <div class="panel-body">
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" style="width: calc(100/12*1%)" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+
+            <h2 class="q-title" id="title">문제</h2>
+            <input id="type" type="hidden" value="EI" />
+
+            <div class="btn-row">
+              <button id="A" type="button" class="win-btn">A</button>
+              <button id="B" type="button" class="win-btn">B</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="result panel">
+          <div class="panel-body">
+            <div class="report">
+              
+              <div id="capture-area" class="capture">
+
+                <div class="idcard-wrap">
+                  <div class="idcard">
+                    
+                    <div class="idcard-top">
+                      <div class="idcard-hole-outer">
+                        <div class="idcard-hole-inner"></div>
+                      </div>
+                    </div>
+
+                    <div class="idcard-body">
+                      <div class="idcard-name-wrap">
+                        <h2 class="idcard-name" id="id-name">ㅇㅇㅇ</h2>
+                        <p class="idcard-role">사원</p>
+                      </div>
+
+                      <div class="idcard-info-list">
+                        <div class="info-box">
+                          <span class="info-label">한줄 요약</span>
+                          <div class="info-value" id="profile-title">-</div>
+                        </div>
+                        <div class="info-box">
+                          <span class="info-label">업무 강점</span>
+                          <div class="info-value" id="profile-strength">-</div>
+                        </div>
+                        <div class="info-box">
+                          <span class="info-label">주의 사항</span>
+                          <div class="info-value" id="profile-watch">-</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="idcard-bottom">
+                      <h3 class="idcard-brand">테스트잇 사회생활 성격 테스트</h3>
+                    </div>
+
+                  </div>
+                </div>
+
+                <div class="formal-report">
+                  <h4 class="report-section-title">사회생활 성격 특징</h4>
+                  <div id="trait-list-text">특징이 여기에 표시됩니다.</div>
+                </div>
+
+              </div>
+
+              <div class="addthis_inline_share_toolbox_ougq mt-3"></div>
+
+              <div class="actions">
+                <button type="button" class="win-btn primary" onclick="saveResultImage()">결과 이미지 저장하기</button>
+                <button type="button" class="win-btn" onclick="location.href='test367.html'">다시 실행</button>
+                <button type="button" class="win-btn" onclick="location.href='/'">다른 테스트</button>
+                <button type="button" id="share-btn" class="win-btn">테스트 공유</button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <div class="ad-wrap">
+          <script src="https://ads-partners.coupang.com/g.js"></script>
+          <script>
+            new PartnersCoupang.G({"id":798186,"template":"carousel","trackingCode":"AF4391881","width":"320","height":"140","tsource":""});
+          </script>
+        </div>
+
+        <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
+
+        <input type="hidden" id="EI" value="0" />
+        <input type="hidden" id="SN" value="0" />
+        <input type="hidden" id="TF" value="0" />
+        <input type="hidden" id="JP" value="0" />
+
+      </section>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+  <script>
+    var num = 1;
+
+    var q = {
+      1: {"title": "점심시간 직전, 동료가<br><br>밥 먹으러 가자고 한다면?", "type": "EI", "A": "좋아요! 오늘 뭐 먹을까요?<br>같이 메뉴 고르며 수다 떤다", "B": "아.. 저 오늘 혼자 쉴게요..<br>조용히 나만의 휴식을 취한다"},
+      2: {"title": "새로운 업무를 맡았을 때<br><br>나의 첫 행동은?", "type": "SN", "A": "이전 담당자의 자료와 데이터를<br>먼저 꼼꼼하게 싹 찾아본다", "B": "이 업무의 궁극적인 목적과<br>새로운 방향성부터 고민한다"},
+      3: {"title": "동료가 실수로<br><br>큰 사고를 쳤을 때 내 속마음은?", "type": "TF", "A": "저걸 어쩌지? 당장 어떻게<br>수습해야 하나 머리가 팽팽 돌아감", "B": "진짜 식은땀 나겠다..<br>지금 멘탈 완전 나갔겠네 ㅠㅠ"},
+      4: {"title": "퇴근 30분 전,<br><br>내일 할 일을 생각할 때 나는?", "type": "JP", "A": "내일 오면 1순위, 2순위 정해서<br>투두 리스트를 미리 쫙 적어둔다", "B": "대충 중요한 것만 기억해두고<br>내일 출근한 나에게 맡긴다"},
+      5: {"title": "엘리베이터에서 별로 안 친한<br><br>타 부서 사람과 단둘이 탔다.", "type": "EI", "A": "날씨 얘기라도 먼저 꺼내며<br>가볍게 스몰토크를 시도한다", "B": "핸드폰만 뚫어져라 쳐다보며<br>제발 빨리 내리길 속으로 기도한다"},
+      6: {"title": "회의 중 팀장님이 자유롭게<br><br>아이디어를 내보라고 한다.", "type": "SN", "A": "현실적으로 실현 가능하고<br>예산에 딱 맞는 레퍼런스를 떠올린다", "B": "실현 여부를 떠나서 일단<br>아예 새롭고 기발한 컨셉을 던져본다"},
+      7: {"title": "내가 낸 기획안에 대해<br><br>상사에게 날카로운 피드백을 받았다.", "type": "TF", "A": "이 부분은 확실히 논리가 부족했네.<br>납득하고 바로 수정 작업에 들어간다", "B": "피드백은 고마운데.. 말투가<br>꼭 저렇게까지 공격적이어야 하나 상처받음"},
+      8: {"title": "갑자기 팀장님이 '이거 내일까지 될까?'<br><br>하며 추가 업무를 던졌다.", "type": "JP", "A": "현재 스케줄을 속으로 빠르게 계산해보고<br>가능 여부와 기한을 명확히 답한다", "B": "일단 해보겠다고 대답하고<br>어떻게든 밤을 새워서라도 상황을 맞춘다"},
+      9: {"title": "오후 3시, 탕비실에 갔는데<br><br>아무도 없다. 나의 기분은?", "type": "EI", "A": "아무도 없네.. 뭔가 심심하다.<br>커피만 빨리 타고 자리로 돌아간다", "B": "오예 아무도 없다! 완전 럭키!<br>간식 까먹으며 조용히 꿀휴식을 즐긴다"},
+      10: {"title": "업무 중 도저히 풀리지 않는<br><br>어려운 문제에 직면했다.", "type": "SN", "A": "검증된 과거 사례나 팩트 위주의<br>매뉴얼을 뒤져서 확실한 해결책을 찾는다", "B": "아예 시점을 돌려 전혀 상관없는<br>새로운 직관과 영감으로 접근해본다"},
+      11: {"title": "성격은 진짜 천사인데 일은 못하는 동료<br><br>나의 솔직한 생각은?", "type": "TF", "A": "회사는 일하러 온 곳이지!<br>차라리 성격 까칠해도 일 잘하는 게 백번 낫다", "B": "일은 내가 좀 더 도와주면 되지!<br>매일 얼굴 봐야 하는데 인성 좋은 게 최고다"},
+      12: {"title": "하나의 큰 프로젝트가 끝난 후<br><br>내 PC 바탕화면 상태는?", "type": "JP", "A": "최종 폴더별, 날짜별로<br>깔끔하게 각 잡혀 정리되어 있어야 편안하다", "B": "온갖 파일이 널브러져 있지만<br>검색해서 쓰면 되니까 별로 신경 안 쓴다"}
+    };
+
+    var result = {
+      "ISTJ": { 
+        title:"약속은 칼같이 지키는 인간 시계", strength:"꼼꼼함, 책임감", watch:"갑작스러운 일정 변경에 스트레스", color:"#475569",
+        traits:[
+          "맡은 업무는 기한 내에 <span class='hl-yellow'>완벽한 퀄리티로</span> 끝냄.",
+          "규정과 <span class='hl-blue'>정해진 매뉴얼대로</span> 일하는 걸 선호함.",
+          "무뚝뚝해 보여도 내 일은 끝까지 확실히 책임짐.",
+          "사전 공지 없는 <span class='hl-pink'>갑작스러운 일정 변경</span>을 극혐함.",
+          "감정에 호소하기보단 <span class='hl-green'>객관적인 팩트와 데이터</span>가 편함.",
+          "빈말이나 영혼 없는 억지 리액션은 죽어도 못함.",
+          "투두 리스트 항목을 하나씩 지워나갈 때 짜릿함.",
+          "결론 없이 시간만 늘어지는 <span class='hl-purple'>비효율적인 회의</span>를 싫어함.",
+          "출근 시간과 마감 기한은 <span class='hl-yellow'>나와의 약속</span>이라 꼭 지킴."
+        ]
+      },
+      "ISFJ": { 
+        title:"조용히 팀원 챙기는 수호천사", strength:"친절함, 눈치 빠름", watch:"혼자 일 다 떠안을 수 있음", color:"#3b82f6",
+        traits:[
+          "거절을 잘 못해서 <span class='hl-pink'>남의 일까지 떠맡을 때</span>가 있음.",
+          "앞장서기보단 묵묵히 뒤에서 돕는 <span class='hl-green'>서포터 역할</span>이 편함.",
+          "동료의 가벼운 칭찬 한마디에 하루 종일 기분이 좋음.",
+          "소리 지르며 싸우는 <span class='hl-blue'>삭막한 분위기</span>를 가장 힘들어함.",
+          "남에게 아주 작은 민폐라도 끼치는 것을 병적으로 싫어함.",
+          "기억력이 좋아서 팀원들의 <span class='hl-yellow'>사소한 취향까지</span> 다 기억함.",
+          "새롭고 튀는 것보단 <span class='hl-purple'>안정적이고 익숙한 루틴</span>이 마음 편함.",
+          "할 말이 있어도 분위기를 망칠까 봐 그냥 속으로 참음.",
+          "동료들이 편하게 일할 수 있도록 <span class='hl-blue'>조용히 배려하는 편</span>."
+        ]
+      },
+      "INFJ": { 
+        title:"겉바속촉, 통찰력 만렙 조언자", strength:"깊은 생각, 공감 능력", watch:"속마음을 숨겨서 혼자 스트레스", color:"#8b5cf6",
+        traits:[
+          "업무의 <span class='hl-green'>의미와 목적</span>이 없으면 일할 동기부여가 안 됨.",
+          "평소엔 조용하지만 결정적일 땐 <span class='hl-yellow'>핵심을 찌르는 조언</span>을 함.",
+          "눈치가 빨라서 사무실 공기만 읽어도 분위기 파악 완료.",
+          "다 친해 보여도 <span class='hl-purple'>진짜 속마음</span>은 아무에게나 보여주지 않음.",
+          "업무 중에도 방해받지 않고 <span class='hl-blue'>혼자 집중할 수 있는 시간</span>이 필수.",
+          "머릿속으로 세워둔 완벽한 계획이 틀어지면 몹시 당황함.",
+          "겉으론 사회생활 미소를 짓지만 속으론 조용히 선을 그음.",
+          "결과물에 대한 기준이 지나치게 높아 <span class='hl-pink'>스스로를 피곤하게 만듦</span>.",
+          "얕고 넓은 관계보다는 <span class='hl-yellow'>소수와의 깊이 있는 관계</span>를 선호함."
+        ]
+      },
+      "INTJ": { 
+        title:"효율성 따지는 팩트 폭격기", strength:"문제 해결, 전략적 사고", watch:"융통성 없다는 소리 들을 수 있음", color:"#1e293b",
+        traits:[
+          "비효율적이고 답답한 일 처리 방식을 보면 <span class='hl-purple'>속이 터짐</span>.",
+          "동료의 고민에 감정적 위로보다 <span class='hl-green'>확실한 해결책</span>을 찾아줌.",
+          "여럿이 밍기적거리며 일할 바엔 <span class='hl-blue'>혼자 빠르게 처리</span>함.",
+          "결론 없는 회의나 <span class='hl-pink'>의미 없는 스몰토크</span>를 극도로 혐오함.",
+          "남들이 뭐라 하든 신경 안 쓰고 묵묵히 내 갈 길을 감.",
+          "비논리적인 헛소리를 들으면 <span class='hl-yellow'>팩트로 반박</span>하고 싶어 미침.",
+          "업무에 있어서 타협할 수 없는 <span class='hl-purple'>나만의 깐깐한 기준</span>이 있음.",
+          "목표가 생기면 달성할 때까지 무서운 집중력으로 파고듦.",
+          "일할 때 사적인 감정을 섞거나 정치질로 해결하는 걸 혐오함."
+        ]
+      },
+      "ISTP": { 
+        title:"조용하지만 강한 현장 해결사", strength:"적응력, 빠른 손놀림", watch:"귀찮은 일엔 영혼 탈출", color:"#64748b",
+        traits:[
+          "형식적인 보고 체계나 <span class='hl-blue'>꼰대식 위계질서</span>를 가장 싫어함.",
+          "컴퓨터나 기기에 문제가 생기면 <span class='hl-yellow'>말없이 다 고쳐놓는 해결사</span>.",
+          "내 할 일이 끝나면 남의 업무에는 전혀 관심을 두지 않음.",
+          "긴 설명서를 읽기보단 일단 <span class='hl-green'>직접 부딪혀보고</span> 파악함.",
+          "가성비와 효율을 따져서 불필요한 에너지 낭비를 절대 안 함.",
+          "조용해 보이지만 상황에 맞는 <span class='hl-pink'>타격감 좋은 팩트 드립</span>을 침.",
+          "일하는데 누가 옆에서 <span class='hl-purple'>시시콜콜 훈수</span>를 두면 짜증 폭발함.",
+          "퇴근 후엔 공과 사를 칼같이 분리해서 회사 연락을 잘 안 받음.",
+          "귀찮은 일은 딱 질색이라 최대한 <span class='hl-yellow'>빨리 끝낼 꼼수</span>를 찾아냄."
+        ]
+      },
+      "ISFP": { 
+        title:"갈등을 피하는 평화주의자", strength:"유연함, 따뜻한 마음", watch:"쓴소리 못해서 속앓이 심함", color:"#10b981",
+        traits:[
+          "팀원들끼리 화목하고 편안할 때 <span class='hl-pink'>업무 능률이 최고</span>로 오름.",
+          "남에게 강요하는 것도, 남이 나에게 <span class='hl-purple'>강요하는 것도 싫음</span>.",
+          "퇴근 후 침대에 누워 <span class='hl-blue'>아무것도 안 하는 시간</span>이 필수임.",
+          "부탁을 단호하게 거절 못해서 무리한 일도 떠맡고 후회함.",
+          "회의 때 나에게 사람들의 이목이 집중되면 <span class='hl-yellow'>숨어버리고 싶어짐</span>.",
+          "실적 압박이 심하고 공격적인 경쟁 부서에서는 기가 다 빨림.",
+          "남 눈치를 많이 보고 <span class='hl-green'>사소한 지적</span>에도 혼자 오래 상처받음.",
+          "특유의 유연함 덕분에 웬만한 돌발 상황엔 <span class='hl-blue'>무난하게 잘 맞춰줌</span>.",
+          "회사에서도 내 자리에 대한 <span class='hl-pink'>사생활과 프라이버시</span>는 지켜져야 함."
+        ]
+      },
+      "INFP": { 
+        title:"상상력 풍부한 기획 요정", strength:"창의력, 진정성", watch:"기분 안 좋으면 일 효율 바닥", color:"#ec4899",
+        traits:[
+          "진심 어린 칭찬을 받으면 하루 종일 기분이 좋고 <span class='hl-yellow'>의욕이 솟구침</span>.",
+          "딱딱한 꼰대 문화보단 <span class='hl-blue'>유연하고 자유로운 분위기</span>를 선호함.",
+          "스스로 <span class='hl-pink'>가치 있다고 느끼는 프로젝트</span>에는 미친 듯이 열정을 쏟음.",
+          "가끔 모니터를 보며 우주 끝까지 뻗어나가는 딴생각을 하곤 함.",
+          "팀 내에 갈등이 생기면 나서기보단 <span class='hl-purple'>조용히 그 자리를 피하고 싶음</span>.",
+          "상상력이 남달라 남들이 생각 못한 <span class='hl-green'>감성적인 아이디어</span>를 잘 냄.",
+          "남의 부탁을 매몰차게 거절하거나 쓴소리하는 걸 제일 힘들어함.",
+          "완벽한 기분파라 그날 컨디션에 따라 <span class='hl-yellow'>업무 효율 편차</span>가 큼.",
+          "겉으로는 말랑해 보여도 절대 타협할 수 없는 <span class='hl-blue'>확고한 가치관</span>이 있음."
+        ]
+      },
+      "INTP": { 
+        title:"호기심 가득한 팩트 감별사", strength:"논리적 분석, 엉뚱한 상상", watch:"시작은 거창한데 마무리가 약함", color:"#06b6d4",
+        traits:[
+          "창의성이 1도 필요 없는 <span class='hl-purple'>단순 반복 업무</span>를 세상에서 가장 지루해함.",
+          "남들은 절대 생각 못 할 <span class='hl-yellow'>엉뚱하고 신박한 기획</span>을 속으로 계속 짬.",
+          "내 의견을 논리적으로 깔끔하게 반박해주면 솔직히 은근히 재미있음.",
+          "관심 있는 일엔 무섭게 파고들지만 <span class='hl-blue'>흥미가 떨어지면</span> 바로 손절함.",
+          "머릿속 아이디어는 천재인데 막상 <span class='hl-pink'>실행으로 옮기는 걸</span> 귀찮아함.",
+          "논리적으로 스스로 납득이 안 되면 찜찜해서 다음 업무로 못 넘어감.",
+          "감정적으로 징징대는 사람보다 <span class='hl-green'>팩트와 데이터</span>로 말하는 사람이 좋음.",
+          "평소엔 과묵하다가도 내 관심사 얘기가 나오면 <span class='hl-yellow'>투머치토커</span>로 돌변함.",
+          "표면적인 결과보다는 그 이면에 숨겨진 <span class='hl-purple'>본질적인 원리</span>를 파악하려 함."
+        ]
+      },
+      "ESTP": { 
+        title:"행동력 갑, 부딪히는 불도저", strength:"실행력, 위기 대처 능력", watch:"설명서 안 읽고 막 하다가 실수", color:"#f59e0b",
+        traits:[
+          "하루 종일 사무실 모니터 앞에만 가만히 앉아있으면 <span class='hl-yellow'>온몸에 좀이 쑤심</span>.",
+          "골치 아프게 고민할 시간에 <span class='hl-blue'>일단 저지르고 부딪혀서</span> 수습하는 스타일.",
+          "긴급 상황이나 컴플레인이 터져도 당황하지 않고 <span class='hl-green'>대처하는 능력이 원탑</span>임.",
+          "어려운 문제가 생겨도 심각하게 안 생각하고 쿨하게 넘기는 <span class='hl-pink'>긍정왕</span>.",
+          "눈치가 굉장히 빨라 회의실에서 <span class='hl-purple'>돌아가는 상황 파악</span>을 기가 막히게 함.",
+          "지루하고 반복되는 일상은 못 참고 항상 <span class='hl-yellow'>새롭고 자극적인 업무</span>를 원함.",
+          "특유의 말주변으로 다른 사람을 잘 구워삶아 <span class='hl-blue'>협상이나 영업</span>에 아주 강함.",
+          "회사에서 팀 경쟁이 붙으면 쓸데없이 승부욕이 불타올라 무조건 1등 해야 함.",
+          "장황한 기획 과정보다는 당장 눈앞에 보이는 <span class='hl-green'>빠르고 확실한 결과물</span>이 중요."
+        ]
+      },
+      "ESFP": { 
+        title:"사무실의 텐션 업 인간 비타민", strength:"친화력, 긍정 에너지", watch:"수다 떨다가 시간 가는 줄 모름", color:"#f43f5e",
+        traits:[
+          "어색한 미팅이나 회식 자리에서 <span class='hl-yellow'>분위기를 유쾌하게 띄우는 건</span> 내 담당임.",
+          "아무도 말 안 하고 마우스 소리만 나는 <span class='hl-purple'>적막한 사무실 분위기</span>를 못 견딤.",
+          "동료들과 왁자지껄하게 떠들면서 <span class='hl-pink'>함께 소통하고 일할 때</span>가 가장 신남.",
+          "리액션이 아주 찰져서 타 부서 사람들도 나에게 다가와 말 거는 걸 좋아함.",
+          "파티션에 갇혀 혼자 엑셀 숫자만 들여다보는 일은 <span class='hl-blue'>너무 외롭고 고통스러움</span>.",
+          "루틴한 일은 금방 질려해서 사람을 만나는 <span class='hl-green'>활기찬 이벤트성 업무</span>를 선호.",
+          "오타를 하나하나 잡고 꼼꼼히 체크해야 하는 <span class='hl-purple'>세밀한 서류 작업</span>엔 쥐약임.",
+          "서로 얼굴 붉히는 갈등을 극도로 싫어해 웬만하면 <span class='hl-yellow'>둥글게 웃으며 넘어감</span>.",
+          "주목받는 걸 은근히 즐기고 <span class='hl-pink'>칭찬 한마디</span> 들으면 기분 좋아서 더 열심히 함."
+        ]
+      },
+      "ENFP": { 
+        title:"일 벌리기 선수, 열정 인싸", strength:"넘치는 아이디어, 친화력", watch:"벌려놓고 수습 못 할 때가 있음", color:"#14b8a6",
+        traits:[
+          "새 프로젝트를 시작할 때 텐션이 최고조에 달하며 <span class='hl-yellow'>아이디어를 폭격함</span>.",
+          "하나에 꽂히면 미친 듯이 몰입하지만 <span class='hl-blue'>흥미가 떨어지면</span> 바로 쳐다도 안 봄.",
+          "매일 똑같은 자리에서 똑같은 일만 반복하는 <span class='hl-purple'>단조로운 일상</span>은 완전 노잼.",
+          "엄청난 친화력으로 처음 본 타 부서 직원과도 어느새 <span class='hl-pink'>웃으며 절친이 됨</span>.",
+          "일단 재밌어 보이면 다 벌려놓는데 막상 <span class='hl-green'>꼼꼼한 마무리 수습</span>을 못해서 혼남.",
+          "딱딱한 규칙에 얽매이는 걸 싫어하고 <span class='hl-yellow'>유연하고 자유분방한 환경</span>을 사랑함.",
+          "출근하자마자 동료들에게 밝게 인사하는 긍정 에너지 뿜뿜 <span class='hl-blue'>분위기 메이커</span>.",
+          "타인의 감정에 과몰입해서 동료가 혼나고 오면 <span class='hl-purple'>내가 다 눈물이 날 것 같음</span>.",
+          "열심히 한 결과물에 대해 <span class='hl-pink'>폭풍 칭찬과 리액션</span>을 받으면 능력치 200% 발휘."
+        ]
+      },
+      "ENTP": { 
+        title:"토론을 즐기는 아이디어 자판기", strength:"순발력, 창의적인 생각", watch:"팩폭하다가 미움받을 수 있음", color:"#84cc16",
+        traits:[
+          "이해 불가한 구시대적 규정을 보면 <span class='hl-purple'>이걸 대체 왜 해야 하죠?</span> 일단 따짐.",
+          "모두가 상사 의견에 아부할 때 혼자 당당하고 <span class='hl-yellow'>논리적인 근거로 반대</span>함.",
+          "제약 없이 아무 말 대잔치하며 기발한 아이디어를 던지는 <span class='hl-blue'>기획 회의가 꿀잼</span>.",
+          "타고난 말빨로 타 부서와의 팽팽한 의견 조율이나 <span class='hl-pink'>협상 자리에서 활약함</span>.",
+          "창의성 없는 엑셀 복붙 루틴 업무는 10분만 해도 <span class='hl-green'>집중력이 바닥</span>으로 추락함.",
+          "내가 꽂힌 일 아니면 남들이 아무리 중요하다 해도 쳐다보지도 않음.",
+          "업무적 토론이나 말싸움이 붙으면 <span class='hl-yellow'>승부욕이 발동해</span> 끝까지 논리를 찾아옴.",
+          "일 벌이고 기획하는 건 전교 1등인데 지루한 서류 정리는 <span class='hl-purple'>남한테 은근 미룸</span>.",
+          "위계질서에 얽매이지 않고 회사를 위해 맞다 싶으면 <span class='hl-blue'>필터링 없이 솔직히 말함</span>."
+        ]
+      },
+      "ESTJ": { 
+        title:"잔소리 봇, 계획대로 직진 리더", strength:"추진력, 확실한 결과", watch:"자기 방식만 고집할 수 있음", color:"#0f766e",
+        traits:[
+          "일을 흐지부지하게 하거나 마감을 어기면서 <span class='hl-purple'>핑계 대는 사람</span>을 보면 속이 터짐.",
+          "세워둔 계획과 데드라인대로 <span class='hl-yellow'>오차 없이 완벽하게</span> 진행되어야 마음이 편안함.",
+          "애매한 위로나 칭찬보단 <span class='hl-blue'>눈에 보이는 확실한 데이터</span>와 금융 치료를 선호함.",
+          "업무가 주어지면 당장 역할 분담부터 칼같이 나누고 일사천리로 <span class='hl-green'>속도를 냄</span>.",
+          "융통성 없다는 소릴 들어도 <span class='hl-yellow'>정해진 원칙과 규정</span>을 철저하게 지키는 편임.",
+          "빙빙 돌려 말하는 화법을 가장 답답해하며, 늘 <span class='hl-pink'>핵심과 팩트만 직설적으로</span> 말함.",
+          "일하는 중에 감정을 앞세우는 걸 싫어하며 <span class='hl-purple'>무조건 프로페셔널하게</span> 대처하길 원함.",
+          "내가 총대를 메고 전체 상황을 통제하며 지휘하는 <span class='hl-blue'>리더 역할</span>을 맡을 때 빛이 남.",
+          "탱크 같은 추진력이 있어 한 번 결정된 사안은 절대 뒤돌아보지 않고 <span class='hl-yellow'>밀어붙임</span>."
+        ]
+      },
+      "ESFJ": { 
+        title:"오지랖 넓은 팀 내 마더테레사", strength:"책임감, 배려심", watch:"남 신경 쓰느라 내 일 놓칠 수 있음", color:"#eab308",
+        traits:[
+          "동료 생일, 탕비실 간식, 각종 경조사 등을 누구보다 <span class='hl-yellow'>솔선수범해서 제일 먼저 챙김</span>.",
+          "숨 막히는 실적 압박보다는 다 같이 도와가며 일하는 <span class='hl-pink'>훈훈한 분위기</span>를 가장 중시함.",
+          "내가 헌신한 일에 대해 팀원들이 진심으로 <span class='hl-blue'>고마워할 때</span> 회사 다닐 보람을 크게 느낌.",
+          "회의 때 내 피드백 때문에 누가 <span class='hl-purple'>기분 상했을까 봐</span> 집에 가는 내내 걱정하고 눈치 봄.",
+          "신입이 오거나 어색한 공기가 흐르면 참지 못하고 <span class='hl-green'>내가 먼저 다가가서 친근하게</span> 말 검.",
+          "내가 남에게 작은 피해라도 끼치는 것을 극도로 싫어해서 힘든 일이 있어도 <span class='hl-purple'>부탁을 못 함</span>.",
+          "열심히 일한 만큼 주변의 따뜻한 칭찬과 인정을 갈구하는 은근하고 <span class='hl-yellow'>귀여운 관종 재질</span>임.",
+          "거절을 잘 못하는 탓에 <span class='hl-blue'>남의 일까지 다 떠안고</span> 결국 늦게까지 혼자 사무실에 남아 야근함.",
+          "조직의 기존 룰과 전통을 존중하기 때문에 무리해서 튀거나 <span class='hl-pink'>돌발적인 행동</span>은 절대 하지 않음."
+        ]
+      },
+      "ENFJ": { 
+        title:"사람 냄새 나는 열정 멘토", strength:"리더십, 소통 능력", watch:"완벽주의 때문에 스스로 피곤함", color:"#d946ef",
+        traits:[
+          "후배들의 멘탈 케어와 고민을 진심으로 들어주느라 정작 <span class='hl-purple'>내 메인 업무 시간</span>은 뺏기곤 함.",
+          "나 혼자 잘 나가는 것보다 팀 전체가 시너지를 내며 <span class='hl-yellow'>다 같이 성장하는 것</span>이 진정한 목표임.",
+          "서로 따뜻한 리액션과 폭풍 칭찬을 아끼지 않는 인간적이고 <span class='hl-pink'>다정한 동료들</span>을 엄청 사랑함.",
+          "주변 사람들을 이끌고 챙기느라 정작 나 자신의 스트레스는 풀지 못하고 <span class='hl-blue'>혼자 쌓아둘 때</span>가 많음.",
+          "눈치와 공감 능력이 1티어라서 출근하는 팀원들의 표정만 스윽 봐도 <span class='hl-green'>기분 상태를 단번에 캐치</span>함.",
+          "업무 성과도 잡아야 하고 인간관계도 훌륭해야 한다는 <span class='hl-purple'>완벽주의 강박</span> 때문에 스스로 매우 피곤함.",
+          "특유의 긍정적인 오지랖과 부드러운 카리스마로 사람들을 아우르며 <span class='hl-yellow'>훌륭한 조력자이자 리더</span>가 됨.",
+          "경쟁만 강요하고 사람 냄새가 1도 나지 않는 삭막하고 차가운 조직에서는 <span class='hl-blue'>멘탈이 털려 오래 버티기 힘듦</span>.",
+          "설득력 만렙 스피커라서 타 부서와의 까다로운 회의 때 부드러운 화법으로 <span class='hl-pink'>사람들을 내 편으로 잘 만듦</span>."
+        ]
+      },
+      "ENTJ": { 
+        title:"앞만 보고 달리는 직진 보스", strength:"결단력, 카리스마", watch:"목표 달성하려고 팀원 갈아 넣을 수 있음", color:"#b91c1c",
+        traits:[
+          "옆에서 답답하고 느리게 일하는 사람을 보면 울화통이 터져서 차라리 <span class='hl-yellow'>내가 일을 뺏어서 다 해버림</span>.",
+          "과정이 얼마나 힘들었는지 감정적으로 호소하는 건 통하지 않으며, 무조건 <span class='hl-blue'>성과와 결과물이 최우선</span>임.",
+          "큰 그림과 장기 전략을 세워서 팀원들을 적재적소에 지휘하는 <span class='hl-green'>카리스마 리더 자리</span>가 가장 찰떡임.",
+          "성격 좋아도 일 못하는 동료보다는, 차라리 성격 까칠해도 자기 몫의 <span class='hl-pink'>일을 완벽히 해내는 동료</span>가 나음.",
+          "비효율과 핑계를 극도로 혐오하며 업무는 무조건 빠르고 논리적이고 <span class='hl-purple'>정확하게 처리되어야 직성이 풀림</span>.",
+          "상사의 눈치를 보지 않고 회사 방향성에 도움이 된다고 판단되면 <span class='hl-yellow'>내 의견을 강하게 밀어붙이는 불도저</span>.",
+          "동료가 힘들어하면 따뜻한 위로보다는 당장 상황을 타개할 수 있는 현실적이고 <span class='hl-blue'>실질적인 해결책</span>을 제시함.",
+          "아무도 하려고 하지 않는 난이도 높은 하드코어 목표일수록 그것을 정복하려는 <span class='hl-purple'>무서운 승부욕</span>이 불타오름.",
+          "능력치를 끝없이 올려 임원진에게 인정받고 회사에서 확실하게 <span class='hl-green'>실력을 입증하는 것</span>을 즐기는 워커홀릭."
+        ]
+      }
+    };
+
+    function normalizeName(raw){
+      var s = (raw || "").trim();
+      s = s.replace(/\s+/g, "");
+      s = s.replace(/[0-9]/g, "");
+      s = s.replace(/[~`!@#$%^&*()_\-+={}[\]|\\:;"'<>,.?/]/g, "");
+      return s;
+    }
+
+    function goName(){
+      $(".start").hide();
+      $(".name").show();
+      setTimeout(function(){
+        var input = document.getElementById("userName");
+        if (input) input.focus();
+      }, 60);
+    }
+
+    function backToStart(){
+      $(".name").hide();
+      $(".start").show();
+    }
+
+    function start(){
+      var input = document.getElementById("userName");
+      var nm = normalizeName(input ? input.value : "");
+      if (!nm){
+        alert("이름을 입력해주세요.");
+        return;
+      }
+      window.__userName = nm;
+
+      $(".name").hide();
+      $(".question").show();
+      next();
+    }
+
+    $("#A").click(function(){
+      var type = $("#type").val();
+      var preValue = $("#"+type).val();
+      $("#"+type).val(parseInt(preValue,10) + 1);
+      next();
+    });
+
+    $("#B").click(function(){
+      next();
+    });
+
+    function next(){
+      if(num === 13){
+        $(".question").hide();
+        $(".result").show();
+
+        var mbti = "";
+        ($("#EI").val() < 2) ? mbti += "I" : mbti += "E";
+        ($("#SN").val() < 2) ? mbti += "N" : mbti += "S";
+        ($("#TF").val() < 2) ? mbti += "T" : mbti += "F";
+        ($("#JP").val() < 2) ? mbti += "J" : mbti += "P";
+
+        renderReport(mbti);
+      } else {
+        $(".progress-bar").attr("style","width: calc(100/12*" + num + "%)");
+        $("#title").html(q[num]["title"]);
+        $("#type").val(q[num]["type"]);
+        $("#A").html(q[num]["A"]);
+        $("#B").html(q[num]["B"]);
+        num++;
+      }
+    }
+
+    function renderReport(mbti){
+      var data = result[mbti];
+      var nm = window.__userName || "ㅇㅇㅇ";
+      
+      document.documentElement.style.setProperty('--id-color', data.color);
+
+      $("#id-name").text(nm);
+      $("#profile-title").text(data.title);
+      $("#profile-strength").text(data.strength);
+      $("#profile-watch").text(data.watch);
+
+      var listHtml = "";
+      for (var i = 0; i < data.traits.length; i++){
+        listHtml += "<div class='trait-item'>" + data.traits[i] + "</div>";
+      }
+      $("#trait-list-text").html(listHtml);
+    }
+
+    function saveResultImage(){
+      var target = document.getElementById("capture-area");
+      if (!target) return;
+
+      html2canvas(target, {
+        backgroundColor: "#ffffff",
+        scale: 2,
+        useCORS: true
+      }).then(function(canvas){
+        var nm = window.__userName || "사회생활";
+        var link = document.createElement("a");
+        link.href = canvas.toDataURL("image/png");
+        link.download = nm + "_사회생활_성격보고서.png";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }).catch(function(){
+        alert("이미지 저장에 실패했습니다. 브라우저 권한 또는 보안 설정을 확인해주세요.");
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      var shareButton = document.getElementById("share-btn");
+      if (shareButton) {
+        shareButton.addEventListener("click", function () {
+          var testURL = "https://test-it.co.kr/test367";
+          var shareText = "테스트잇 사회생활 성격 테스트";
+
+          if (navigator.share) {
+            navigator.share({
+              title: "테스트잇 사회생활 성격 테스트",
+              text: shareText,
+              url: testURL
+            }).catch(function(){});
+          } else {
+            navigator.clipboard.writeText(shareText + " " + testURL).then(function () {
+              alert("링크가 복사되었습니다.");
+            }).catch(function(){});
+          }
+        });
+      }
+
+      var input = document.getElementById("userName");
+      if (input){
+        input.addEventListener("keydown", function(e){
+          if (e.key === "Enter"){
+            start();
+          }
+        });
+      }
+    });
+  </script>
+
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-6076fc88e5b8b134"></script>
+</body>
+</html>

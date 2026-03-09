@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>월간남친 테스트 - 테스트잇</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    @font-face {
+  font-family: 'Umdot';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2601-4@1.1/Umdot12.woff2') format('woff2');
+  font-weight: normal;
+  font-display: swap;
+}
+
+    :root {
+      --bg1: #fff8fc;
+      --bg2: #ffeef6;
+      --pink1: #ff8fbe;
+      --pink2: #ffb8d2;
+      --pink3: #ffd7e7;
+      --pink4: #fff0f6;
+      --deep: #6f4b5d;
+      --text: #44303a;
+      --white: #ffffff;
+      --shadow: 0 14px 40px rgba(255, 143, 190, 0.18);
+      --shadow-soft: 0 10px 24px rgba(255, 143, 190, 0.12);
+      --radius-xl: 30px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+    }
+
+body {
+  font-family: 'Umdot', sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top left, #fffefe 0%, #fff4f8 30%, #ffeaf4 60%, #ffe2f0 100%);
+  min-height: 100vh;
+}
+
+body,
+button,
+input,
+textarea,
+select,
+.question-text,
+.answer-title,
+.section-title,
+.section-sub,
+.result-kicker,
+.result-name,
+.result-type,
+.feature-title,
+.feature-item,
+.bad-box h3,
+.bad-value,
+.mini-note,
+.progress-text,
+.progress-count,
+.btn,
+.choice-btn,
+.small-btn,
+.name-input {
+  font-family: 'Umdot', sans-serif !important;
+}
+
+    .page-header {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      border-bottom: 1px solid #ffeef6;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 100;
+    }
+
+    .logo { width: 90px; }
+
+    .main-nav {
+      display: flex;
+      list-style: none;
+      margin: 0; padding: 0; gap: 8px;
+    }
+
+    .main-nav a {
+      text-decoration: none;
+      color: #7a5a69;
+      font-weight: 700;
+      font-size: 13px;
+      padding: 6px 12px;
+      border: 2px solid #ffb8d2;
+      border-radius: 20px;
+      transition: all 0.2s;
+      background: #fff8fc;
+      box-shadow: inset 0 0 0 1px #ffd7e7;
+    }
+
+    .main-nav a:hover {
+      background-color: #ff8fbe;
+      border-color: #ff8fbe;
+      color: #ffffff;
+      box-shadow: none;
+    }
+
+    .layout-wrapper {
+      padding-top: 65px;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .app {
+      width: 100%;
+      flex: 1;
+      padding: 30px 16px 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    .screen {
+      width: 100%;
+      max-width: 760px;
+      display: none;
+      animation: fadeIn 0.35s ease;
+    }
+
+    .screen.active {
+      display: block;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(10px);
+      border: 3px solid rgba(255, 200, 221, 0.9);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .inner {
+      padding: 30px;
+    }
+
+    .title-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 16px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #ff8fbe, #ffb1cf);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 900;
+      margin-bottom: 16px;
+      box-shadow: 0 4px 12px rgba(255, 143, 190, 0.3);
+      letter-spacing: 0.05em;
+    }
+
+    h1, h2, h3, p {
+      margin: 0;
+    }
+
+    .main-title {
+      font-size: 38px;
+      line-height: 1.2;
+      color: #6b3e54;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      text-shadow: 2px 2px 0px #fff, 3px 3px 0px #ffcce1;
+    }
+
+    .sub-text {
+      margin-top: 14px;
+      font-size: 16px;
+      line-height: 1.65;
+      color: #7a5a69;
+      word-break: keep-all;
+    }
+
+    /* ------------------------------- */
+    /* 데이팅 앱 느낌의 메인 이미지 영역 */
+    /* ------------------------------- */
+    .dating-app-ui {
+      margin-top: 26px;
+      width: 100%;
+      max-width: 320px;
+      height: 480px;
+      margin-left: auto;
+      margin-right: auto;
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(255, 143, 190, 0.2);
+      display: flex;
+      flex-direction: column;
+      padding: 16px;
+      border: 2px solid #ffe3ef;
+    }
+
+    /* 상단 헤더 (앱 내부) */
+    .dating-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+    .dating-avatar-small {
+      width: 36px; height: 36px;
+      background: #d9d9d9; border-radius: 50%;
+      display: flex; justify-content: center; align-items: center;
+      color: #fff; font-size: 18px;
+    }
+    .dating-greeting {
+      font-size: 15px; font-weight: 800; color: #ff8fbe; letter-spacing: 0.05em;
+    }
+    .dating-menu {
+      font-size: 22px; color: #b3b3b3; line-height: 1;
+    }
+
+    /* 사진 영역 */
+    .dating-photo {
+      flex: 1;
+      background: linear-gradient(135deg, #e2e2e2 0%, #cccccc 100%);
+      border-radius: 16px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      box-shadow: inset 0 2px 10px rgba(0,0,0,0.05);
+    }
+    .dating-cam-icon {
+      position: absolute; top: 12px; right: 14px;
+      width: 32px; height: 32px; background: rgba(255,255,255,0.4);
+      border-radius: 50%; display: flex; justify-content: center; align-items: center;
+      color: #fff; font-size: 16px;
+    }
+    .dating-actions {
+      display: flex; align-items: center; gap: 30px;
+    }
+    .dating-btn-heart {
+      font-size: 80px; color: #ffffff; text-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      animation: pulse 1.5s infinite;
+    }
+    .dating-btn-side {
+      font-size: 28px; color: #ffffff; opacity: 0.7; font-weight: 900;
+    }
+    .dating-info {
+      position: absolute; bottom: 16px; left: 16px;
+    }
+    .dating-name {
+      font-size: 22px; font-weight: 900; color: #fff; margin-bottom: 4px;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    }
+    .dating-dist {
+      font-size: 14px; font-weight: 700; color: rgba(255,255,255,0.9);
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    }
+
+    /* 하단 네비게이션 */
+    .dating-nav {
+      display: flex; justify-content: space-around; align-items: center;
+      padding-top: 16px; margin-top: 12px; border-top: 2px solid #f5f5f5;
+    }
+    .nav-icon {
+      font-size: 26px; color: #d9d9d9; position: relative;
+    }
+    .nav-icon.active {
+      color: #ff8fbe;
+    }
+    .badge-wrap .badge {
+      position: absolute; top: -4px; right: -6px;
+      background: #ff8fbe; color: #fff; font-size: 11px;
+      width: 18px; height: 18px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 900; border: 2px solid #fff;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    /* ------------------------------- */
+
+    .btn-wrap {
+      margin-top: 26px;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 20px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #ff8fbe 0%, #ffb1cf 100%);
+      color: #fff;
+      font-size: 18px;
+      font-weight: 900;
+      border: 0;
+      cursor: pointer;
+      box-shadow: 0 10px 24px rgba(255, 143, 190, 0.4);
+      transition: transform 0.15s ease, filter 0.15s ease;
+      letter-spacing: 0.05em;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      filter: brightness(1.05);
+    }
+
+    .section-title {
+      font-size: 28px;
+      font-weight: 900;
+      color: #6b4155;
+      margin-bottom: 10px;
+    }
+
+    .section-sub {
+      font-size: 15px;
+      color: #816372;
+      line-height: 1.6;
+      margin-bottom: 24px;
+      word-break: keep-all;
+    }
+
+    .select-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .choice-btn {
+      padding: 24px 16px;
+      background: #fff;
+      border: 3px solid #ffe3ef;
+      border-radius: 20px;
+      color: #7f5a6b;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .choice-btn .choice-emoji {
+      display: block;
+      font-size: 40px;
+      margin-bottom: 12px;
+    }
+
+    .choice-btn .choice-title {
+      display: block;
+      font-size: 19px;
+      font-weight: 900;
+      color: #6b4155;
+      margin-bottom: 8px;
+    }
+
+    .choice-btn .choice-desc {
+      display: block;
+      font-size: 13px;
+      line-height: 1.55;
+      color: #876a78;
+    }
+
+    .choice-btn.selected {
+      background: #fff5fa;
+      border-color: #ff8fbe;
+      box-shadow: 0 12px 28px rgba(255, 143, 190, 0.22);
+      transform: translateY(-4px);
+    }
+
+    .input-box {
+      background: #fff9fc;
+      padding: 20px;
+      border-radius: 18px;
+      border: 2px solid #ffe3ef;
+      margin-bottom: 24px;
+    }
+
+    .input-label {
+      display: block;
+      font-size: 15px;
+      font-weight: 900;
+      color: #7d6170;
+      margin-bottom: 12px;
+    }
+
+    .name-input {
+      width: 100%;
+      height: 56px;
+      border-radius: 12px;
+      border: 2px solid #ffd8e8;
+      background: #fff;
+      padding: 0 18px;
+      font-size: 16px;
+      color: #4a3640;
+      font-weight: 700;
+      outline: none;
+      font-family: inherit;
+      transition: all 0.2s;
+    }
+
+    .name-input:focus {
+      border-color: #ff8fbe;
+      box-shadow: 0 0 0 4px rgba(255, 143, 190, 0.15);
+    }
+
+    .progress-wrap {
+      margin-bottom: 30px;
+    }
+
+    .progress-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .progress-text {
+      font-size: 15px;
+      font-weight: 900;
+      color: #ff8fbe;
+      letter-spacing: 0.05em;
+    }
+
+    .progress-count {
+      font-size: 14px;
+      font-weight: 900;
+      color: #d86c9d;
+      background: #fff;
+      padding: 6px 14px;
+      border-radius: 20px;
+      border: 2px solid #ffd6e7;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 16px;
+      border-radius: 999px;
+      background: #ffe9f2;
+      overflow: hidden;
+      border: 2px solid #ffd8e6;
+    }
+
+    .progress-fill {
+      width: 0%;
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #ff8fbe 0%, #ffc1d8 100%);
+      transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .question-box {
+      position: relative;
+      margin-top: 24px;
+      padding: 36px 24px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 143, 190, 0.4);
+      box-shadow: 0 10px 30px rgba(255, 143, 190, 0.15);
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    .question-tag {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #ff8fbe, #ffb1cf);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 900;
+      padding: 6px 16px;
+      border-radius: 20px;
+      letter-spacing: 0.1em;
+      box-shadow: 0 4px 10px rgba(255, 143, 190, 0.3);
+    }
+
+    .question-text {
+      font-size: 22px;
+      line-height: 1.5;
+      font-weight: 900;
+      color: #5e3d4d;
+      word-break: keep-all;
+    }
+
+    .answer-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .answer-btn {
+      text-align: center;
+      padding: 22px 24px;
+      border-radius: 18px;
+      background: #fff;
+      border: 2px solid #ffe3ef;
+      color: #5d4550;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 12px rgba(255, 143, 190, 0.05);
+      font-family: inherit;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .answer-btn:hover {
+      background: #fff5fa;
+      border-color: #ff8fbe;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(255, 143, 190, 0.15);
+    }
+
+    .answer-btn .answer-title {
+      font-size: 17px;
+      font-weight: 900;
+      color: #674657;
+      line-height: 1.4;
+      word-break: keep-all;
+    }
+
+    .result-card {
+      background: #fff;
+      border-radius: 24px;
+      border: 4px solid #ffb6d1;
+      padding: 16px;
+      box-shadow: var(--shadow);
+    }
+
+    .result-top-box {
+      border-radius: 16px;
+      overflow: hidden;
+      border: 2px solid #ffd8e8;
+      background: #fff;
+    }
+
+    .result-hero {
+      padding: 30px 24px;
+      background: linear-gradient(135deg, #ff8fbe 0%, #ffb6d1 100%);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .result-kicker {
+      position: relative;
+      display: inline-block;
+      background: #fff;
+      padding: 8px 18px;
+      border-radius: 20px;
+      font-size: 14px;
+      color: #ff8fbe;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      margin-bottom: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .result-name {
+      position: relative;
+      font-size: 26px;
+      line-height: 1.4;
+      font-weight: 800;
+      color: #fff;
+      word-break: keep-all;
+    }
+
+    .result-type {
+      position: relative;
+      margin-top: 10px;
+      font-size: 48px;
+      line-height: 1.1;
+      font-weight: 900;
+      color: #fff;
+      text-shadow: 3px 3px 0 rgba(217, 111, 154, 0.4);
+      letter-spacing: -0.02em;
+    }
+
+    .result-body {
+      padding: 26px 22px;
+    }
+
+    .feature-title {
+      font-size: 20px;
+      font-weight: 900;
+      color: #6a4256;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .feature-title::before {
+      content: "📌";
+      font-size: 22px;
+    }
+
+    .feature-list {
+      list-style: none;
+      padding: 24px 20px;
+      margin: 0;
+      background: #fff9fc;
+      border: 2px solid #ffe3ef;
+      border-radius: 16px;
+    }
+
+    .feature-item {
+      font-size: 15px;
+      line-height: 1.6;
+      color: #654b57;
+      font-weight: 700;
+      word-break: keep-all;
+      position: relative;
+      padding-left: 20px;
+      margin-bottom: 14px;
+    }
+
+    .feature-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .feature-item::before {
+      content: "♥";
+      position: absolute;
+      left: 0;
+      top: 1px;
+      color: #ff8fbe;
+      font-size: 13px;
+    }
+
+    .match-grid {
+      display: block;
+      margin-top: 24px;
+    }
+
+    .bad-box {
+      border-radius: 16px;
+      padding: 22px 20px;
+      border: 2px dashed #ffb6d1;
+      background: #fff5fa;
+      text-align: center;
+    }
+
+    .bad-box h3 {
+      font-size: 13px;
+      color: #d26c9c;
+      margin-bottom: 12px;
+      font-weight: 900;
+      letter-spacing: 0.05em;
+      background: #fff;
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 12px;
+      border: 1px solid #ffe0ee;
+    }
+
+    .bad-value {
+      font-size: 24px;
+      font-weight: 900;
+      color: #654556;
+      margin-bottom: 8px;
+    }
+
+    .mini-note {
+      font-size: 13px;
+      line-height: 1.5;
+      color: #987d8a;
+      word-break: keep-all;
+    }
+
+    .button-grid {
+      margin-top: 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .small-btn {
+      padding: 16px;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 900;
+      background: #fff;
+      color: #6b4256;
+      border: 2px solid #ffd7e8;
+      box-shadow: 0 4px 10px rgba(255, 143, 190, 0.1);
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.2s;
+    }
+
+    .small-btn:hover {
+      background: #fff5fa;
+      transform: translateY(-2px);
+    }
+
+    .small-btn.primary {
+      background: linear-gradient(135deg, #ff8fbe 0%, #ffb6d1 100%);
+      color: #fff;
+      border: 0;
+      box-shadow: 0 6px 16px rgba(255, 143, 190, 0.3);
+    }
+
+    .small-btn.primary:hover {
+      background: linear-gradient(135deg, #ff7eb3 0%, #ff9ec4 100%);
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 24px;
+      transform: translateX(-50%) translateY(20px);
+      background: rgba(86, 56, 70, 0.95);
+      color: #fff;
+      padding: 14px 24px;
+      border-radius: 999px;
+      font-size: 15px;
+      font-weight: 800;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.25s ease;
+      z-index: 1000;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 720px) {
+      .main-title { font-size: 32px; }
+      .select-grid { grid-template-columns: 1fr; }
+      .result-type { font-size: 40px; }
+      .result-name { font-size: 22px; }
+    }
+
+    @media (max-width: 480px) {
+      .app { padding: 14px 10px 28px; }
+      .inner, .result-card, .result-body, .result-hero, .question-box { padding: 20px 16px; }
+      .main-title { font-size: 28px; }
+      .section-title { font-size: 24px; }
+      .question-text { font-size: 20px; }
+      .button-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="layout-wrapper">
+    <header class="page-header">
+      <a href="index.html"><img class="logo" src="img_logo.png" alt="테스트잇"></a>
+      <nav>
+        <ul class="main-nav">
+          <li><a href="https://test-it.co.kr/test.html">성격</a></li>
+          <li><a href="https://test-it.co.kr/face.html">얼굴</a></li>
+          <li><a href="https://test-it.co.kr/etc.html">그외</a></li>
+          <li><a href="https://test-it.co.kr/saju.html">사주</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="app">
+      <div class="screen active" id="screenMain">
+        <div class="card">
+          <div class="inner">
+            <div class="title-badge">러블리 연애 시뮬레이션 테스트</div>
+            <h1 class="main-title">월간남친 테스트</h1>
+            <p class="sub-text">
+              내 연애 취향을 따라가다 보면  
+              이번 달 나와 가장 잘 맞는 월간남친이 누구인지 알 수 있어요.
+            </p>
+
+            <div class="dating-app-ui">
+              <div class="dating-header">
+                <div class="dating-avatar-small">👤</div>
+                <div class="dating-greeting">월간남친 매칭 중...</div>
+                <div class="dating-menu">≡</div>
+              </div>
+              
+              <div class="dating-photo">
+                <div class="dating-cam-icon">📷</div>
+                <div class="dating-actions">
+                  <div class="dating-btn-side">✕</div>
+                  <div class="dating-btn-heart">♥</div>
+                  <div class="dating-btn-side">✓</div>
+                </div>
+                <div class="dating-info">
+                  <div class="dating-name">이번 달 당신의 인연</div>
+                  <div class="dating-dist">취향 저격 100% 매칭</div>
+                </div>
+              </div>
+
+              <div class="dating-nav">
+                <div class="nav-icon">👤</div>
+                <div class="nav-icon active">♥</div>
+                <div class="nav-icon badge-wrap">💬<span class="badge">1</span></div>
+              </div>
+            </div>
+
+            <div class="btn-wrap">
+              <button class="btn" id="startMainBtn">테스트 시작하기</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="screen" id="screenSelect">
+        <div class="card">
+          <div class="inner">
+            <div class="title-badge">STEP 1</div>
+            <h2 class="section-title">누구를 찾고 있나요</h2>
+            <p class="section-sub">
+              원하는 상대를 먼저 골라주세요.  
+              아래에 이름까지 입력하면 본격적으로 시뮬레이션이 시작돼요.
+            </p>
+
+            <div class="select-grid">
+              <div class="choice-btn" data-mode="boyfriend">
+                <span class="choice-emoji">💗</span>
+                <span class="choice-title">월간남친 찾기</span>
+                <span class="choice-desc">나와 잘 맞는 남친 타입을 알아봐요</span>
+              </div>
+
+              <div class="choice-btn" data-mode="girlfriend">
+                <span class="choice-emoji">💞</span>
+                <span class="choice-title">월간여친 찾기</span>
+                <span class="choice-desc">나와 잘 맞는 여친 타입을 알아봐요</span>
+              </div>
+            </div>
+
+            <div class="input-box">
+              <label class="input-label" for="userName">플레이어 이름</label>
+              <input
+                type="text"
+                id="userName"
+                class="name-input"
+                maxlength="12"
+                placeholder="이름을 입력해주세요"
+              />
+            </div>
+
+            <div class="btn-wrap">
+              <button class="btn" id="goTestBtn">시뮬레이션 시작</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="screen" id="screenTest">
+        <div class="card">
+          <div class="inner">
+            <div class="progress-wrap">
+              <div class="progress-top">
+                <div class="progress-text" id="progressText">호감도 분석 중...</div>
+                <div class="progress-count" id="progressCount">1 / 12</div>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+              </div>
+            </div>
+
+            <div class="question-box">
+              <div class="question-tag">SYSTEM MESSAGE</div>
+              <div class="question-text" id="questionText"></div>
+            </div>
+            <div class="answer-list" id="answerList"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="screen" id="screenResult">
+        <div class="result-card" id="resultCapture">
+          <div class="result-top-box">
+            <div class="result-hero">
+              <div class="result-kicker">테스트잇 월간남친 테스트</div>
+              <div class="result-name" id="resultNameLine"></div>
+              <div class="result-type" id="resultMainType"></div>
+            </div>
+
+            <div class="result-body">
+              <div class="feature-title" id="featureTitle"></div>
+              <ul class="feature-list" id="featureList"></ul>
+              
+              <div class="match-grid">
+                <div class="bad-box">
+                  <h3>⚠ HARD MODE</h3>
+                  <div class="bad-value" id="worstMatchText"></div>
+                  <div class="mini-note" id="worstMatchNote"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="button-grid">
+          <button class="small-btn primary" id="saveImageBtn">결과이미지 저장하기</button>
+          <button class="small-btn" id="restartBtn">다시해보기</button>
+          <button class="small-btn" id="otherTestBtn">다른테스트해보기</button>
+          <button class="small-btn" id="shareBtn">테스트 공유하기</button>
+        </div>
+      </div>
+
+      <article class="coupang_ad mt-3" style="margin: 20px 0 20px; width: 100%; display: flex; justify-content: center;">
+        <script src="https://ads-partners.coupang.com/g.js"></script>
+        <script>
+          new PartnersCoupang.G({"id":798186,"template":"carousel","trackingCode":"AF4391881","width":"320","height":"100","tsource":""});
+        </script>
+      </article>
+
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    const screens = {
+      main: document.getElementById("screenMain"),
+      select: document.getElementById("screenSelect"),
+      test: document.getElementById("screenTest"),
+      result: document.getElementById("screenResult")
+    };
+
+    const startMainBtn = document.getElementById("startMainBtn");
+    const goTestBtn = document.getElementById("goTestBtn");
+    const progressText = document.getElementById("progressText");
+    const progressCount = document.getElementById("progressCount");
+    const progressFill = document.getElementById("progressFill");
+    const questionText = document.getElementById("questionText");
+    const answerList = document.getElementById("answerList");
+    const userNameInput = document.getElementById("userName");
+    const choiceButtons = document.querySelectorAll(".choice-btn");
+
+    const resultNameLine = document.getElementById("resultNameLine");
+    const resultMainType = document.getElementById("resultMainType");
+    const worstMatchText = document.getElementById("worstMatchText");
+    const worstMatchNote = document.getElementById("worstMatchNote");
+    const featureTitle = document.getElementById("featureTitle");
+    const featureList = document.getElementById("featureList");
+
+    const saveImageBtn = document.getElementById("saveImageBtn");
+    const restartBtn = document.getElementById("restartBtn");
+    const otherTestBtn = document.getElementById("otherTestBtn");
+    const shareBtn = document.getElementById("shareBtn");
+    const toast = document.getElementById("toast");
+
+    let selectedMode = "";
+    let userName = "";
+    let currentQuestionIndex = 0;
+    let scores = { E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0 };
+
+    const questions = [
+      { type: "EI", question: "데이트할 때 더 끌리는 사람은 누구인가요", answers: [{ title: "분위기를 먼저 띄우고 대화를 적극적으로 이끄는 사람", value: "E" }, { title: "내 얘기를 차분히 들어주고 편안하게 맞춰주는 사람", value: "I" }] },
+      { type: "SN", question: "소개팅 후 연락을 이어갈 때 더 설레는 스타일은", answers: [{ title: "약속 시간과 장소를 딱 정해서 안정감 있게 챙겨주는 사람", value: "S" }, { title: "다음에 같이 하고 싶은 걸 상상하며 톡이 재밌는 사람", value: "N" }] },
+      { type: "TF", question: "내가 속상한 일이 있을 때 더 원하는 반응은", answers: [{ title: "문제를 같이 정리해주고 현실적인 해결책을 말해주는 사람", value: "T" }, { title: "일단 내 마음부터 이해해주고 다정하게 감싸주는 사람", value: "F" }] },
+      { type: "JP", question: "주말 데이트가 잡혔을 때 더 좋은 상대는", answers: [{ title: "동선과 예약을 미리 정리해서 편하게 이끌어주는 사람", value: "J" }, { title: "그날 기분 따라 코스를 바꾸며 자유롭게 즐기는 사람", value: "P" }] },
+      { type: "EI", question: "처음 만난 자리에서 더 매력적으로 느껴지는 모습은", answers: [{ title: "주변과 자연스럽게 어울리며 나까지 편하게 해주는 모습", value: "E" }, { title: "많이 튀진 않지만 나와의 대화에 집중해주는 모습", value: "I" }] },
+      { type: "SN", question: "연애 초반 상대의 어떤 말에 더 심쿵하나요", answers: [{ title: "내가 좋아하는 걸 기억하고 실제로 챙겨주는 말", value: "S" }, { title: "우리 관계를 예쁘게 상상하며 설레는 말을 해주는 말", value: "N" }] },
+      { type: "TF", question: "갈등이 생겼을 때 더 잘 맞는 상대는", answers: [{ title: "왜 문제가 생겼는지 차분하게 짚고 넘어가려는 사람", value: "T" }, { title: "서로 상처받지 않도록 말투와 감정을 먼저 살피는 사람", value: "F" }] },
+      { type: "JP", question: "기념일을 보내는 방식으로 더 끌리는 쪽은", answers: [{ title: "미리 준비한 선물과 코스로 정성스럽게 챙기는 사람", value: "J" }, { title: "그날의 분위기에 맞춰 즉흥적으로 특별하게 만드는 사람", value: "P" }] },
+      { type: "EI", question: "연애할 때 연락 스타일로 더 좋은 사람은", answers: [{ title: "생각나는 순간 바로바로 연락하고 표현도 확실한 사람", value: "E" }, { title: "자주 연락하진 않아도 한 번 할 때 진하게 소통하는 사람", value: "I" }] },
+      { type: "SN", question: "데이트 장소를 고를 때 더 좋은 쪽은", answers: [{ title: "분위기 좋고 검증된 곳을 골라서 실패 확률이 적은 사람", value: "S" }, { title: "조금 특별하고 새로운 곳을 찾아 설렘을 주는 사람", value: "N" }] },
+      { type: "TF", question: "내가 실수했을 때 더 고마운 반응은", answers: [{ title: "어떤 부분을 고치면 되는지 분명하게 말해주는 사람", value: "T" }, { title: "민망하지 않게 먼저 다독여주고 천천히 말해주는 사람", value: "F" }] },
+      { type: "JP", question: "오래 만날수록 더 믿음이 가는 상대는", answers: [{ title: "기준과 생활 패턴이 분명해서 예측 가능한 사람", value: "J" }, { title: "상황에 따라 자연스럽게 맞춰주며 답답하지 않은 사람", value: "P" }] }
+    ];
+
+    const typeFeatures = {
+      ENFP: ["표현이 풍부해서 연애 초반부터 설렘을 잘 만들어줘요", "같이 있으면 데이트가 지루할 틈이 없어요", "칭찬과 애정 표현을 아끼지 않는 편이에요", "내 이야기에 호기심을 갖고 반응을 크게 해줘요", "평범한 하루도 특별한 추억처럼 바꿔줘요", "깜짝 이벤트나 귀여운 장난을 잘해요", "감정의 결을 빠르게 캐치하는 편이에요", "연애를 친구 같고 달콤하게 풀어가는 타입이에요", "새로운 데이트 코스나 취미를 제안하는 걸 좋아해요", "좋아하면 티가 많이 나는 사랑스러운 스타일이에요"],
+      ENFJ: ["상대 기분을 잘 읽고 다정하게 맞춰줘요", "연애에서도 배려와 책임감을 동시에 챙겨요", "말 한마디도 따뜻하게 해주려고 노력해요", "기념일이나 중요한 순간을 잘 기억해줘요", "관계를 더 좋게 만들기 위해 먼저 움직이는 편이에요", "애정 표현이 부드럽고 안정감 있어요", "내가 힘들 때 먼저 알아차리는 경우가 많아요", "둘 사이 분위기를 조율하는 능력이 좋아요", "연애를 가볍게 보지 않고 진지하게 대하는 편이에요", "함께 성장하는 관계를 중요하게 생각해요"],
+      ENTJ: ["주도적으로 관계를 이끌어가는 힘이 있어요", "답답한 밀당보다 확실한 표현을 선호해요", "약속과 미래 계획을 현실적으로 챙겨줘요", "문제가 생기면 빠르게 해결하려는 편이에요", "의지할 수 있는 든든한 면이 커요", "목표가 분명해서 관계 방향이 선명해요", "상대를 챙길 때도 효율적이고 확실하게 해줘요", "리드하는 데 익숙해서 편안함을 줄 수 있어요", "감정보다 행동으로 책임감을 보여주는 타입이에요", "연애에서도 믿음직한 파트너가 되기 쉬워요"],
+      ENTP: ["말이 잘 통하고 티키타카가 즐거운 타입이에요", "재치 있는 농담으로 분위기를 밝게 만들어요", "틀에 박히지 않은 데이트를 좋아해요", "상대를 지루하게 두지 않는 매력이 있어요", "새로운 시도와 변화에 열려 있어요", "친구처럼 편하고 연인처럼 설레는 느낌을 줘요", "호기심이 많아 대화 주제가 끊기지 않아요", "상대를 자극하고 성장하게 만드는 면이 있어요", "예상 못한 포인트에서 매력을 터뜨려요", "연애를 생기 있고 유쾌하게 만드는 스타일이에요"],
+      ESFP: ["함께 있으면 분위기가 금방 밝아져요", "리액션이 좋아서 데이트가 더 재밌어요", "지금 이 순간을 즐기는 능력이 커요", "애정 표현이 솔직하고 귀여운 편이에요", "같이 놀고 웃는 연애에 강해요", "센스 있게 분위기를 띄워주는 타입이에요", "데이트 현장에서 만족감을 크게 줘요", "표정과 행동으로 호감을 잘 보여줘요", "활발하고 사랑스러운 매력이 분명해요", "연애가 답답하지 않고 생동감 있게 흘러가요"],
+      ESFJ: ["상대를 세심하게 챙기는 능력이 뛰어나요", "연락과 약속을 성실하게 이어가는 편이에요", "기념일과 이벤트를 잘 챙겨주는 타입이에요", "다정하고 생활 밀착형 배려가 많아요", "관계 안정감을 중요하게 여겨요", "내가 서운할 만한 포인트를 잘 캐치해요", "연애에서 성의를 꾸준히 보여줘요", "따뜻하고 정돈된 사랑을 주는 편이에요", "함께 있으면 편안하고 익숙한 행복이 커요", "사랑받는 느낌을 자주 들게 해주는 스타일이에요"],
+      ESTP: ["밀당보다 직진에 가까운 매력이 있어요", "즉흥적이고 시원시원한 데이트를 잘해요", "말보다 행동으로 보여주는 편이에요", "과하게 복잡하지 않은 연애를 선호해요", "답답한 분위기를 빠르게 풀어내요", "재미와 긴장감을 동시에 주는 타입이에요", "현실 감각이 있어서 데이트 진행이 능숙해요", "상대 반응을 보고 센스 있게 움직여요", "매력이 단순하지 않고 은근히 중독적이에요", "연애에서 활력과 추진력을 담당해요"],
+      ESTJ: ["연락과 약속이 깔끔해서 믿음이 가요", "관계를 애매하게 끌지 않는 편이에요", "책임감이 강해서 장기 연애에 유리해요", "필요한 걸 실질적으로 챙겨주는 타입이에요", "문제가 생기면 현실적으로 해결하려 해요", "생활 리듬이 안정적이라 편안함을 줘요", "확실한 태도로 신뢰를 쌓아가요", "관계의 기본을 중요하게 생각해요", "말보다 실천에서 진심이 드러나는 편이에요", "든든하고 예측 가능한 연애를 만들어줘요"],
+      INFP: ["감정 표현이 조용하지만 깊은 편이에요", "한 사람에게 진심으로 몰입하는 타입이에요", "둘만의 감정선을 소중히 여겨요", "소소한 순간도 의미 있게 기억해줘요", "말 한마디가 따뜻하고 섬세해요", "상대의 상처를 조심스럽게 다뤄줘요", "감성적인 대화가 잘 통하는 편이에요", "연애를 로맨틱하게 느끼고 바라봐요", "겉보다 속정이 깊은 스타일이에요", "잔잔하지만 오래 가는 설렘을 줘요"],
+      INFJ: ["마음을 깊이 읽고 세심하게 반응해줘요", "겉으로는 차분해도 속은 진심이 큰 편이에요", "관계를 쉽게 소비하지 않고 소중히 다뤄요", "상대의 마음을 오래 기억하는 타입이에요", "필요할 때 조용히 힘이 되어줘요", "감정적으로 안정감 있는 연애를 지향해요", "배려가 티 안 나게 자연스럽게 묻어나요", "내면적인 대화를 중요하게 생각해요", "가볍지 않은 애정을 보여주는 편이에요", "조용하지만 깊은 사랑을 주는 스타일이에요"],
+      INTJ: ["쉽게 열지 않지만 한 번 마음 주면 깊어요", "불필요한 감정 소모보다 본질을 중시해요", "관계를 체계적으로 생각하는 편이에요", "말은 적어도 신뢰감이 강한 타입이에요", "미래까지 생각하며 연애하는 경향이 있어요", "상대를 선택하면 오래 보는 편이에요", "합리적으로 챙겨주는 배려가 있어요", "감정 표현은 투박해도 행동은 진지해요", "혼자만의 시간도 존중해주는 관계에 강해요", "깊이 있는 파트너십을 만들기 좋아해요"],
+      INTP: ["말수보다 생각이 많은 조용한 매력이 있어요", "가볍게 휩쓸리기보다 천천히 가까워져요", "대화가 잘 통하면 확실히 깊어지는 타입이에요", "억지 감정보다 자연스러운 흐름을 선호해요", "개인 공간을 존중해주는 연애에 잘 맞아요", "감정 표현은 서툴러도 진심은 꾸준한 편이에요", "상대와의 지적 교감에서 매력이 커져요", "소란스럽지 않은 편안한 관계를 만들어요", "필요할 때 현실적인 도움을 주는 타입이에요", "조용히 스며드는 사랑을 하는 스타일이에요"],
+      ISFP: ["다정하고 부드러운 분위기를 가진 타입이에요", "상대 기분을 해치지 않으려는 배려가 있어요", "소소한 데이트를 예쁘게 즐기는 편이에요", "감정 표현은 은근하지만 따뜻해요", "강요 없는 편안한 관계를 좋아해요", "상대의 취향을 섬세하게 맞춰줘요", "함께 있을 때 분위기가 포근해져요", "부담스럽지 않게 설렘을 주는 타입이에요", "일상 속 작은 행복을 잘 만들어줘요", "연애를 조용하고 달콤하게 이어가요"],
+      ISFJ: ["믿음직하고 안정감 있는 사랑을 줘요", "챙김이 생활 속에서 자연스럽게 나와요", "약속과 연락을 꾸준히 지키는 편이에요", "한 번 정 붙이면 오래 가는 타입이에요", "상대가 편안하도록 세심하게 배려해요", "가볍지 않은 진심이 느껴지는 연애를 해요", "서운한 포인트를 조용히 잘 살펴줘요", "익숙한 행복을 오래 지켜주는 편이에요", "연애에서 책임감과 성실함이 커요", "따뜻하고 정직한 파트너가 되기 쉬워요"],
+      ISTP: ["쿨한 듯하지만 필요한 순간엔 확실히 챙겨줘요", "감정 과잉보다 편한 관계를 잘 만들어요", "과하게 간섭하지 않아 숨이 트이는 타입이에요", "실용적인 배려를 잘하는 편이에요", "자연스럽고 편한 데이트를 선호해요", "말보다 행동에서 진심이 보일 때가 많아요", "둘만의 템포를 존중해주는 장점이 있어요", "무심한 듯 은근히 설레게 만드는 매력이 있어요", "감정 기복이 심하지 않아 편안함을 줘요", "연애에서 담백한 안정감을 주는 스타일이에요"],
+      ISTJ: ["꾸준하고 성실해서 믿고 만날 수 있어요", "관계의 기본을 중요하게 여기는 편이에요", "약속, 시간, 태도에서 신뢰가 쌓여요", "표현은 화려하지 않아도 책임감이 커요", "현실적으로 상대를 챙겨주는 타입이에요", "예측 가능한 안정감이 큰 장점이에요", "가볍게 흔들리지 않는 연애를 해요", "생활 패턴이 안정적이라 관계가 편해요", "한 번 마음먹으면 오래 가는 편이에요", "묵직하고 단단한 사랑을 주는 스타일이에요"]
+    };
+
+    function showScreen(screenName) {
+      Object.values(screens).forEach((screen) => screen.classList.remove("active"));
+      screens[screenName].classList.add("active");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function resetState() {
+      selectedMode = "";
+      userName = "";
+      currentQuestionIndex = 0;
+      scores = { E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0 };
+      userNameInput.value = "";
+      choiceButtons.forEach((btn) => btn.classList.remove("selected"));
+    }
+
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add("show");
+      setTimeout(() => { toast.classList.remove("show"); }, 1800);
+    }
+
+    function renderQuestion() {
+      const q = questions[currentQuestionIndex];
+      const percent = ((currentQuestionIndex) / questions.length) * 100;
+
+      progressText.textContent = "호감도 분석 중...";
+      progressCount.textContent = `${currentQuestionIndex + 1} / ${questions.length}`;
+      progressFill.style.width = `${percent}%`;
+
+      questionText.textContent = q.question;
+      answerList.innerHTML = "";
+
+      q.answers.forEach((answer) => {
+        const btn = document.createElement("button");
+        btn.className = "answer-btn";
+        btn.innerHTML = `<span class="answer-title">${answer.title}</span>`;
+        
+        btn.addEventListener("click", () => {
+          scores[answer.value] += 1;
+          currentQuestionIndex += 1;
+
+          if (currentQuestionIndex < questions.length) {
+            renderQuestion();
+          } else {
+            progressFill.style.width = "100%";
+            renderResult();
+            showScreen("result");
+          }
+        });
+        answerList.appendChild(btn);
+      });
+    }
+
+    function getMbtiResult() {
+      const ei = scores.E > scores.I ? "E" : "I";
+      const sn = scores.S > scores.N ? "S" : "N";
+      const tf = scores.T > scores.F ? "T" : "F";
+      const jp = scores.J > scores.P ? "J" : "P";
+      return `${ei}${sn}${tf}${jp}`;
+    }
+
+    function getOppositeType(type) {
+      const map = { E: "I", I: "E", S: "N", N: "S", T: "F", F: "T", J: "P", P: "J" };
+      return type.split("").map((char) => map[char]).join("");
+    }
+
+    function getPartnerLabel() {
+      return selectedMode === "girlfriend" ? "여친" : "남친";
+    }
+
+    function renderResult() {
+      const resultType = getMbtiResult();
+      const oppositeType = getOppositeType(resultType);
+      const partnerLabel = getPartnerLabel();
+      const safeName = userName.trim() || "플레이어";
+      
+      const features = typeFeatures[resultType];
+
+      resultNameLine.textContent = `${safeName}님의 월간${partnerLabel}은`;
+      resultMainType.textContent = `${resultType} ${partnerLabel}`;
+
+      worstMatchText.textContent = `${oppositeType} ${partnerLabel}`;
+      worstMatchNote.textContent = `성향 차이가 커서 서로를 이해하는 데 시간이 조금 더 필요한 고난이도 조합이에요.`;
+
+      featureTitle.textContent = `${resultType} ${partnerLabel}의 공략 포인트`;
+      featureList.innerHTML = features
+        .map((item) => `<li class="feature-item">${item}</li>`)
+        .join("");
+    }
+
+    startMainBtn.addEventListener("click", () => { showScreen("select"); });
+
+    choiceButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        choiceButtons.forEach((item) => item.classList.remove("selected"));
+        btn.classList.add("selected");
+        selectedMode = btn.dataset.mode;
+      });
+    });
+
+    goTestBtn.addEventListener("click", () => {
+      const inputName = userNameInput.value.trim();
+
+      if (!selectedMode) {
+        showToast("월간남친 또는 월간여친을 선택해주세요");
+        return;
+      }
+
+      if (!inputName) {
+        showToast("플레이어 이름을 입력해주세요");
+        userNameInput.focus();
+        return;
+      }
+
+      userName = inputName;
+      currentQuestionIndex = 0;
+      scores = { E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0 };
+
+      renderQuestion();
+      showScreen("test");
+    });
+
+    saveImageBtn.addEventListener("click", async () => {
+      const target = document.getElementById("resultCapture");
+      try {
+        const canvas = await html2canvas(target, { backgroundColor: "#fff8fc", scale: 2, useCORS: true });
+        const link = document.createElement("a");
+        link.download = "monthly-love-result.png";
+        link.href = canvas.toDataURL("image/png");
+        link.click();
+        showToast("결과 이미지가 성공적으로 저장되었습니다!");
+      } catch (error) {
+        showToast("이미지 저장에 실패했습니다.");
+      }
+    });
+
+    restartBtn.addEventListener("click", () => {
+      resetState();
+      showScreen("main");
+    });
+
+    otherTestBtn.addEventListener("click", () => { window.location.href = "./"; });
+
+    shareBtn.addEventListener("click", async () => {
+      const shareTitle = "월간남친 테스트";
+      const shareText = "내 취향에 맞는 월간 연애 상대를 알아보는 테스트";
+      const shareUrl = window.location.href;
+
+      if (navigator.share) {
+        try { await navigator.share({ title: shareTitle, text: shareText, url: shareUrl }); } catch (error) {}
+      } else {
+        try {
+          await navigator.clipboard.writeText(shareUrl);
+          showToast("테스트 링크가 복사되었습니다!");
+        } catch (error) {
+          showToast("공유에 실패했습니다.");
+        }
+      }
+    });
+
+    resetState();
+  </script>
+</body>
+</html>

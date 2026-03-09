@@ -1,136 +1,180 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>월간남친 테스트 - 테스트잇</title>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5522499110435321" crossorigin="anonymous"></script>
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>테스트잇 월간남친 테스트</title>
+  <meta name="description" content="테스트잇 월간남친 테스트">
+  <meta name="keywords" content="테스트잇,성격테스트,월간남친테스트,월간남친테스트결과,심리테스트">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="테스트잇 월간남친 테스트">
+  <meta property="og:description" content="테스트잇 월간남친 테스트">
+  <meta property="og:image" content="img_main368.png">
+  <meta property="og:url" content="https://test-it.co.kr/test368">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://ads-partners.coupang.com/g.js"></script>
+
+
   <style>
+
+
     * {
       box-sizing: border-box;
     }
 
-    @font-face {
-  font-family: 'Umdot';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2601-4@1.1/Umdot12.woff2') format('woff2');
-  font-weight: normal;
-  font-display: swap;
-}
-
     :root {
-      --bg1: #fff8fc;
-      --bg2: #ffeef6;
-      --pink1: #ff8fbe;
-      --pink2: #ffb8d2;
-      --pink3: #ffd7e7;
-      --pink4: #fff0f6;
-      --deep: #6f4b5d;
-      --text: #44303a;
+      --bg1: #fff9fc;
+      --bg2: #ffeef7;
+      --pink1: #ff82b4;
+      --pink2: #ffaad0;
+      --pink3: #ffd3e6;
+      --pink4: #fff1f8;
+      --pink5: #ffe7f1;
+      --deep: #6f4558;
+      --text: #4a3640;
       --white: #ffffff;
-      --shadow: 0 14px 40px rgba(255, 143, 190, 0.18);
-      --shadow-soft: 0 10px 24px rgba(255, 143, 190, 0.12);
+      --shadow: 0 16px 42px rgba(255, 132, 184, 0.16);
+      --shadow-soft: 0 10px 24px rgba(255, 132, 184, 0.1);
       --radius-xl: 30px;
-      --radius-lg: 22px;
-      --radius-md: 16px;
+      --radius-lg: 24px;
+      --radius-md: 18px;
+
+      --bg-color: #fff8fc;
+      --text-light: #8a6a79;
+      --text-dark: #5e3d4d;
+      --gold-main: #ffb8d2;
+      --gold-dark: #f3bfd4;
+      --gold-light: #ffe8f1;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
     }
 
 body {
-  font-family: 'Umdot', sans-serif;
+  font-family: "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", sans-serif;
   color: var(--text);
   background:
     radial-gradient(circle at top left, #fffefe 0%, #fff4f8 30%, #ffeaf4 60%, #ffe2f0 100%);
   min-height: 100vh;
 }
 
-body,
-button,
-input,
-textarea,
-select,
-.question-text,
-.answer-title,
-.section-title,
-.section-sub,
-.result-kicker,
-.result-name,
-.result-type,
-.feature-title,
-.feature-item,
-.bad-box h3,
-.bad-value,
-.mini-note,
-.progress-text,
-.progress-count,
-.btn,
-.choice-btn,
-.small-btn,
-.name-input {
-  font-family: 'Umdot', sans-serif !important;
-}
+    .layout-wrapper {
+      width: 100%;
+      min-height: 100vh;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .layout-wrapper::before,
+    .layout-wrapper::after {
+      content: "♥";
+      position: fixed;
+      font-weight: 900;
+      color: rgba(255, 127, 179, 0.08);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .layout-wrapper::before {
+      font-size: 160px;
+      top: 4%;
+      left: 4%;
+      transform: rotate(-12deg);
+    }
+
+    .layout-wrapper::after {
+      font-size: 120px;
+      bottom: 8%;
+      right: 5%;
+      transform: rotate(12deg);
+    }
 
     .page-header {
       width: 100%;
+      max-width: 980px;
+      margin: 0 auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 15px 20px;
-      border-bottom: 1px solid #ffeef6;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(8px);
-      position: fixed;
+      padding: 16px 20px;
+      border-bottom: 1px solid #f4dce7;
+      background: rgba(255,255,255,0.94);
+      backdrop-filter: blur(10px);
+      z-index: 20;
+      position: sticky;
       top: 0;
-      left: 0;
-      z-index: 100;
+      border-radius: 0 0 18px 18px;
+      box-shadow: 0 8px 18px rgba(255, 143, 190, 0.06);
     }
 
-    .logo { width: 90px; }
+    .logo {
+      width: 112px;
+      display: block;
+    }
 
     .main-nav {
       display: flex;
       list-style: none;
-      margin: 0; padding: 0; gap: 8px;
+      margin: 0;
+      padding: 0;
+      gap: 10px;
     }
 
     .main-nav a {
       text-decoration: none;
-      color: #7a5a69;
-      font-weight: 700;
-      font-size: 13px;
-      padding: 6px 12px;
-      border: 2px solid #ffb8d2;
-      border-radius: 20px;
+      color: var(--text-light);
+      font-weight: 800;
+      font-size: 15px;
+      padding: 8px 14px;
+      border: 2px solid var(--gold-dark);
+      border-radius: 22px;
       transition: all 0.2s;
-      background: #fff8fc;
-      box-shadow: inset 0 0 0 1px #ffd7e7;
+      background: var(--bg-color);
+      box-shadow: inset 0 0 0 1px var(--gold-light);
+      white-space: nowrap;
     }
 
     .main-nav a:hover {
-      background-color: #ff8fbe;
-      border-color: #ff8fbe;
-      color: #ffffff;
+      background-color: var(--gold-main);
+      border-color: var(--gold-main);
+      color: var(--text-dark);
       box-shadow: none;
-    }
-
-    .layout-wrapper {
-      padding-top: 65px;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
     }
 
     .app {
       width: 100%;
-      flex: 1;
-      padding: 30px 16px 40px;
+      min-height: calc(100vh - 82px);
+      padding: 10px 16px 20px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      position: relative;
+      z-index: 1;
+    }
+
+    .page-shell {
+      width: 100%;
+      max-width: 760px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: flex-start;
+      gap: 0;
+    }
+
+    .content-wrap {
+      width: 100%;
+      max-width: 760px;
     }
 
     .screen {
       width: 100%;
-      max-width: 760px;
       display: none;
       animation: fadeIn 0.35s ease;
     }
@@ -140,189 +184,119 @@ select,
     }
 
     .card {
-      background: rgba(255, 255, 255, 0.92);
-      backdrop-filter: blur(10px);
-      border: 3px solid rgba(255, 200, 221, 0.9);
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 204, 225, 0.7);
       border-radius: var(--radius-xl);
       box-shadow: var(--shadow);
       overflow: hidden;
+      position: relative;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(145deg, rgba(255,255,255,0.25), transparent 32%),
+        radial-gradient(circle at 100% 0%, rgba(255, 196, 221, 0.18), transparent 28%);
+      pointer-events: none;
     }
 
     .inner {
-      padding: 30px;
-    }
-
-    .title-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 9px 16px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, #ff8fbe, #ffb1cf);
-      color: #fff;
-      font-size: 13px;
-      font-weight: 900;
-      margin-bottom: 16px;
-      box-shadow: 0 4px 12px rgba(255, 143, 190, 0.3);
-      letter-spacing: 0.05em;
+      padding: 24px;
+      position: relative;
+      z-index: 1;
     }
 
     h1, h2, h3, p {
       margin: 0;
     }
 
-    .main-title {
-      font-size: 38px;
-      line-height: 1.2;
-      color: #6b3e54;
-      font-weight: 900;
-      letter-spacing: -0.03em;
-      text-shadow: 2px 2px 0px #fff, 3px 3px 0px #ffcce1;
-    }
-
-    .sub-text {
-      margin-top: 14px;
-      font-size: 16px;
-      line-height: 1.65;
-      color: #7a5a69;
-      word-break: keep-all;
-    }
-
-    /* ------------------------------- */
-    /* 데이팅 앱 느낌의 메인 이미지 영역 */
-    /* ------------------------------- */
-    .dating-app-ui {
-      margin-top: 26px;
-      width: 100%;
-      max-width: 320px;
-      height: 480px;
-      margin-left: auto;
-      margin-right: auto;
-      background: #ffffff;
-      border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(255, 143, 190, 0.2);
-      display: flex;
-      flex-direction: column;
+    .main-only-wrap {
       padding: 16px;
-      border: 2px solid #ffe3ef;
-    }
-
-    /* 상단 헤더 (앱 내부) */
-    .dating-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 16px;
-    }
-    .dating-avatar-small {
-      width: 36px; height: 36px;
-      background: #d9d9d9; border-radius: 50%;
-      display: flex; justify-content: center; align-items: center;
-      color: #fff; font-size: 18px;
-    }
-    .dating-greeting {
-      font-size: 15px; font-weight: 800; color: #ff8fbe; letter-spacing: 0.05em;
-    }
-    .dating-menu {
-      font-size: 22px; color: #b3b3b3; line-height: 1;
-    }
-
-    /* 사진 영역 */
-    .dating-photo {
-      flex: 1;
-      background: linear-gradient(135deg, #e2e2e2 0%, #cccccc 100%);
-      border-radius: 16px;
       position: relative;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
-      box-shadow: inset 0 2px 10px rgba(0,0,0,0.05);
-    }
-    .dating-cam-icon {
-      position: absolute; top: 12px; right: 14px;
-      width: 32px; height: 32px; background: rgba(255,255,255,0.4);
-      border-radius: 50%; display: flex; justify-content: center; align-items: center;
-      color: #fff; font-size: 16px;
-    }
-    .dating-actions {
-      display: flex; align-items: center; gap: 30px;
-    }
-    .dating-btn-heart {
-      font-size: 80px; color: #ffffff; text-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      animation: pulse 1.5s infinite;
-    }
-    .dating-btn-side {
-      font-size: 28px; color: #ffffff; opacity: 0.7; font-weight: 900;
-    }
-    .dating-info {
-      position: absolute; bottom: 16px; left: 16px;
-    }
-    .dating-name {
-      font-size: 22px; font-weight: 900; color: #fff; margin-bottom: 4px;
-      text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-    }
-    .dating-dist {
-      font-size: 14px; font-weight: 700; color: rgba(255,255,255,0.9);
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+      z-index: 1;
     }
 
-    /* 하단 네비게이션 */
-    .dating-nav {
-      display: flex; justify-content: space-around; align-items: center;
-      padding-top: 16px; margin-top: 12px; border-top: 2px solid #f5f5f5;
-    }
-    .nav-icon {
-      font-size: 26px; color: #d9d9d9; position: relative;
-    }
-    .nav-icon.active {
-      color: #ff8fbe;
-    }
-    .badge-wrap .badge {
-      position: absolute; top: -4px; right: -6px;
-      background: #ff8fbe; color: #fff; font-size: 11px;
-      width: 18px; height: 18px; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-weight: 900; border: 2px solid #fff;
-    }
+ .main-image {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  max-height: 500px;
+  border-radius: 30px;
+  overflow: hidden;
+  border: 1px solid #ffcce1;
+  box-shadow: var(--shadow-soft);
+  background-color: #fff3f8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-      100% { transform: scale(1); }
-    }
-    /* ------------------------------- */
-
+.main-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 500px;
+  object-fit: contain;
+  border-radius: 30px;
+}
     .btn-wrap {
-      margin-top: 26px;
+      margin-top: 18px;
+    }
+
+    .btn,
+    .answer-btn,
+    .choice-btn,
+    .small-btn {
+      width: 100%;
+      border: 0;
+      outline: none;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+      font-family: inherit;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .btn:hover,
+    .answer-btn:hover,
+    .choice-btn:hover,
+    .small-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn:focus,
+    .answer-btn:focus,
+    .choice-btn:focus,
+    .small-btn:focus {
+      outline: none;
+      box-shadow: none;
+    }
+
+    .btn::-moz-focus-inner,
+    .answer-btn::-moz-focus-inner,
+    .choice-btn::-moz-focus-inner,
+    .small-btn::-moz-focus-inner {
+      border: 0;
     }
 
     .btn {
-      width: 100%;
-      padding: 20px;
-      border-radius: 16px;
+      padding: 18px 20px;
+      border-radius: 18px;
       background: linear-gradient(135deg, #ff8fbe 0%, #ffb1cf 100%);
       color: #fff;
-      font-size: 18px;
+      font-size: 17px;
       font-weight: 900;
-      border: 0;
-      cursor: pointer;
-      box-shadow: 0 10px 24px rgba(255, 143, 190, 0.4);
-      transition: transform 0.15s ease, filter 0.15s ease;
-      letter-spacing: 0.05em;
-    }
-
-    .btn:hover {
-      transform: translateY(-3px);
-      filter: brightness(1.05);
+      box-shadow: 0 10px 24px rgba(255, 143, 190, 0.3);
     }
 
     .section-title {
       font-size: 28px;
+      line-height: 1.25;
       font-weight: 900;
       color: #6b4155;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
     .section-sub {
@@ -336,25 +310,34 @@ select,
     .select-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin-bottom: 24px;
+      gap: 14px;
+      margin-bottom: 18px;
     }
 
     .choice-btn {
-      padding: 24px 16px;
-      background: #fff;
-      border: 3px solid #ffe3ef;
-      border-radius: 20px;
+      padding: 22px 16px;
+      background: linear-gradient(180deg, #fff8fc 0%, #fff1f7 100%);
+      border: 2px solid #ffd5e7;
+      border-radius: 22px;
       color: #7f5a6b;
       text-align: center;
-      cursor: pointer;
-      transition: all 0.2s ease;
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .choice-btn::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(145deg, rgba(255,255,255,0.4), transparent 45%);
+      pointer-events: none;
     }
 
     .choice-btn .choice-emoji {
       display: block;
-      font-size: 40px;
-      margin-bottom: 12px;
+      font-size: 36px;
+      margin-bottom: 10px;
     }
 
     .choice-btn .choice-title {
@@ -362,7 +345,7 @@ select,
       font-size: 19px;
       font-weight: 900;
       color: #6b4155;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     .choice-btn .choice-desc {
@@ -373,83 +356,88 @@ select,
     }
 
     .choice-btn.selected {
-      background: #fff5fa;
-      border-color: #ff8fbe;
+      background: linear-gradient(180deg, #fff0f7 0%, #ffe3ef 100%);
+      border-color: #ff98c1;
       box-shadow: 0 12px 28px rgba(255, 143, 190, 0.22);
-      transform: translateY(-4px);
     }
 
     .input-box {
-      background: #fff9fc;
-      padding: 20px;
-      border-radius: 18px;
-      border: 2px solid #ffe3ef;
-      margin-bottom: 24px;
+      margin-top: 10px;
+      margin-bottom: 10px;
     }
 
     .input-label {
       display: block;
-      font-size: 15px;
-      font-weight: 900;
+      font-size: 14px;
+      font-weight: 800;
       color: #7d6170;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
     .name-input {
       width: 100%;
       height: 56px;
-      border-radius: 12px;
+      border-radius: 16px;
       border: 2px solid #ffd8e8;
       background: #fff;
       padding: 0 18px;
       font-size: 16px;
       color: #4a3640;
-      font-weight: 700;
       outline: none;
-      font-family: inherit;
-      transition: all 0.2s;
+      transition: border 0.15s ease, box-shadow 0.15s ease;
     }
 
     .name-input:focus {
-      border-color: #ff8fbe;
-      box-shadow: 0 0 0 4px rgba(255, 143, 190, 0.15);
+      border-color: #ff97c1;
+      box-shadow: 0 0 0 5px rgba(255, 151, 193, 0.13);
     }
 
     .progress-wrap {
-      margin-bottom: 30px;
+      margin-bottom: 12px;
     }
 
     .progress-top {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
+      gap: 12px;
     }
 
     .progress-text {
-      font-size: 15px;
-      font-weight: 900;
-      color: #ff8fbe;
-      letter-spacing: 0.05em;
+      font-size: 14px;
+      font-weight: 800;
+      color: #866674;
     }
 
     .progress-count {
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 900;
       color: #d86c9d;
-      background: #fff;
-      padding: 6px 14px;
-      border-radius: 20px;
-      border: 2px solid #ffd6e7;
+      background: #fff3f8;
+      padding: 7px 12px;
+      border-radius: 999px;
+      border: 1px solid #ffd6e7;
+      flex-shrink: 0;
+      box-shadow: 0 6px 12px rgba(255, 143, 190, 0.08);
     }
 
     .progress-bar {
       width: 100%;
-      height: 16px;
+      height: 14px;
       border-radius: 999px;
       background: #ffe9f2;
       overflow: hidden;
-      border: 2px solid #ffd8e6;
+      border: 1px solid #ffd8e6;
+      position: relative;
+    }
+
+    .progress-bar::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(255,255,255,0.2), transparent 40%);
+      pointer-events: none;
     }
 
     .progress-fill {
@@ -457,227 +445,521 @@ select,
       height: 100%;
       border-radius: 999px;
       background: linear-gradient(90deg, #ff8fbe 0%, #ffc1d8 100%);
-      transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: width 0.25s ease;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.4);
     }
 
     .question-box {
+      margin-top: 0;
+      padding: 28px 24px 24px;
+      border-radius: 26px;
+      background:
+        radial-gradient(circle at 14% 18%, rgba(255,255,255,0.9) 0 10px, transparent 11px),
+        radial-gradient(circle at 82% 16%, rgba(255,255,255,0.72) 0 8px, transparent 9px),
+        radial-gradient(circle at 18% 78%, rgba(255,255,255,0.62) 0 9px, transparent 10px),
+        radial-gradient(circle at 88% 75%, rgba(255,255,255,0.6) 0 10px, transparent 11px),
+        radial-gradient(circle at 50% 30%, rgba(255, 187, 215, 0.18) 0 14px, transparent 15px),
+        linear-gradient(180deg, #fff9fc 0%, #fff3f8 100%);
+      border: 1px solid #ffd9e8;
+      box-shadow: var(--shadow-soft);
       position: relative;
-      margin-top: 24px;
-      padding: 36px 24px;
-      border-radius: 20px;
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 143, 190, 0.4);
-      box-shadow: 0 10px 30px rgba(255, 143, 190, 0.15);
-      margin-bottom: 24px;
+      overflow: hidden;
       text-align: center;
     }
 
-    .question-tag {
+    .question-box::before,
+    .question-box::after {
+      content: "♥";
       position: absolute;
-      top: -14px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: linear-gradient(135deg, #ff8fbe, #ffb1cf);
-      color: #fff;
-      font-size: 12px;
       font-weight: 900;
-      padding: 6px 16px;
-      border-radius: 20px;
-      letter-spacing: 0.1em;
-      box-shadow: 0 4px 10px rgba(255, 143, 190, 0.3);
+      color: rgba(255, 143, 190, 0.09);
+      pointer-events: none;
+    }
+
+    .question-box::before {
+      font-size: 44px;
+      left: 18px;
+      top: 16px;
+    }
+
+    .question-box::after {
+      font-size: 30px;
+      right: 24px;
+      bottom: 18px;
     }
 
     .question-text {
-      font-size: 22px;
-      line-height: 1.5;
+      font-size: 20px;
+      line-height: 1.48;
       font-weight: 900;
       color: #5e3d4d;
       word-break: keep-all;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+      text-align: center;
     }
 
     .answer-list {
       display: grid;
       gap: 14px;
+      position: relative;
+      z-index: 1;
     }
 
     .answer-btn {
       text-align: center;
-      padding: 22px 24px;
-      border-radius: 18px;
-      background: #fff;
-      border: 2px solid #ffe3ef;
+      padding: 22px 18px 18px;
+      border-radius: 20px;
+      background: linear-gradient(180deg, #ffffff 0%, #fff9fc 100%);
+      border: 2px solid #ffd9e7;
       color: #5d4550;
-      cursor: pointer;
-      transition: all 0.25s ease;
-      box-shadow: 0 4px 12px rgba(255, 143, 190, 0.05);
-      font-family: inherit;
+      box-shadow: 0 8px 18px rgba(255, 143, 190, 0.08);
+      position: relative;
+      overflow: hidden;
+      min-height: 88px;
       display: flex;
       align-items: center;
       justify-content: center;
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
     }
 
-    .answer-btn:hover {
-      background: #fff5fa;
-      border-color: #ff8fbe;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(255, 143, 190, 0.15);
+    .answer-btn::after {
+      content: "♥";
+      position: absolute;
+      left: 50%;
+      top: 10px;
+      transform: translateX(-50%);
+      font-size: 16px;
+      color: rgba(255, 126, 179, 0.35);
+      font-weight: 900;
     }
 
-    .answer-btn .answer-title {
-      font-size: 17px;
+    .answer-title {
+      display: block;
+      font-size: 16px;
       font-weight: 900;
       color: #674657;
-      line-height: 1.4;
-      word-break: keep-all;
+      line-height: 1.5;
+      text-align: center;
+      padding: 6px 0 0;
     }
 
     .result-card {
-      background: #fff;
-      border-radius: 24px;
-      border: 4px solid #ffb6d1;
-      padding: 16px;
+      background:
+        linear-gradient(180deg, #fff8fc 0%, #ffffff 100%);
+      border-radius: 30px;
+      border: 1px solid #ffd7e8;
+      padding: 22px;
       box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .result-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 100% 0%, rgba(255, 187, 214, 0.18), transparent 22%),
+        radial-gradient(circle at 0% 100%, rgba(255, 207, 227, 0.14), transparent 20%);
+      pointer-events: none;
     }
 
     .result-top-box {
-      border-radius: 16px;
+      border-radius: 26px;
       overflow: hidden;
-      border: 2px solid #ffd8e8;
+      border: 1px solid #ffd8e8;
       background: #fff;
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      z-index: 1;
     }
 
     .result-hero {
-      padding: 30px 24px;
-      background: linear-gradient(135deg, #ff8fbe 0%, #ffb6d1 100%);
-      text-align: center;
+      padding: 24px;
+      background:
+        linear-gradient(135deg, #ffe3f0 0%, #fff6fb 42%, #ffdeee 100%);
+      border-bottom: 1px solid #ffd6e6;
       position: relative;
       overflow: hidden;
+      text-align: center;
+    }
+
+    .result-hero::before,
+    .result-hero::after {
+      content: "♥";
+      position: absolute;
+      font-weight: 900;
+      color: rgba(255, 127, 179, 0.14);
+    }
+
+    .result-hero::before {
+      font-size: 110px;
+      right: 18px;
+      top: 4px;
+    }
+
+    .result-hero::after {
+      font-size: 54px;
+      left: 20px;
+      bottom: 8px;
     }
 
     .result-kicker {
-      position: relative;
-      display: inline-block;
-      background: #fff;
-      padding: 8px 18px;
-      border-radius: 20px;
-      font-size: 14px;
-      color: #ff8fbe;
+      font-size: 13px;
+      color: #d06b9a;
       font-weight: 900;
-      letter-spacing: 0.1em;
-      margin-bottom: 16px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      letter-spacing: 0.04em;
+      margin-bottom: 10px;
     }
 
     .result-name {
-      position: relative;
-      font-size: 26px;
-      line-height: 1.4;
-      font-weight: 800;
-      color: #fff;
+      font-size: 30px;
+      line-height: 1.35;
+      font-weight: 900;
+      color: #694155;
       word-break: keep-all;
-    }
-
-    .result-type {
-      position: relative;
-      margin-top: 10px;
-      font-size: 48px;
-      line-height: 1.1;
-      font-weight: 900;
-      color: #fff;
-      text-shadow: 3px 3px 0 rgba(217, 111, 154, 0.4);
-      letter-spacing: -0.02em;
-    }
-
-    .result-body {
-      padding: 26px 22px;
-    }
-
-    .feature-title {
-      font-size: 20px;
-      font-weight: 900;
-      color: #6a4256;
-      margin-bottom: 16px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    
-    .feature-title::before {
-      content: "📌";
-      font-size: 22px;
-    }
-
-    .feature-list {
-      list-style: none;
-      padding: 24px 20px;
-      margin: 0;
-      background: #fff9fc;
-      border: 2px solid #ffe3ef;
-      border-radius: 16px;
-    }
-
-    .feature-item {
-      font-size: 15px;
-      line-height: 1.6;
-      color: #654b57;
-      font-weight: 700;
-      word-break: keep-all;
-      position: relative;
-      padding-left: 20px;
-      margin-bottom: 14px;
-    }
-
-    .feature-item:last-child {
-      margin-bottom: 0;
-    }
-
-    .feature-item::before {
-      content: "♥";
-      position: absolute;
-      left: 0;
-      top: 1px;
-      color: #ff8fbe;
-      font-size: 13px;
-    }
-
-    .match-grid {
-      display: block;
-      margin-top: 24px;
-    }
-
-    .bad-box {
-      border-radius: 16px;
-      padding: 22px 20px;
-      border: 2px dashed #ffb6d1;
-      background: #fff5fa;
-      text-align: center;
-    }
-
-    .bad-box h3 {
-      font-size: 13px;
-      color: #d26c9c;
-      margin-bottom: 12px;
-      font-weight: 900;
-      letter-spacing: 0.05em;
-      background: #fff;
-      display: inline-block;
-      padding: 6px 14px;
-      border-radius: 12px;
-      border: 1px solid #ffe0ee;
-    }
-
-    .bad-value {
-      font-size: 24px;
-      font-weight: 900;
-      color: #654556;
       margin-bottom: 8px;
     }
 
-    .mini-note {
-      font-size: 13px;
-      line-height: 1.5;
-      color: #987d8a;
+    .result-type {
+      font-size: 42px;
+      line-height: 1.1;
+      font-weight: 900;
+      color: #ff7eb3;
+      letter-spacing: -0.03em;
+      text-shadow: 0 8px 18px rgba(255, 126, 179, 0.16);
+    }
+
+    .result-body {
+      padding: 22px;
+      background:
+        linear-gradient(180deg, #fffdfd 0%, #fff8fc 100%);
+    }
+
+   .sim-score-panel {
+  margin-bottom: 18px;
+  padding: 18px;
+  border-radius: 20px;
+  background: #fff7fb;
+  border: 1px solid #ffd8e8;
+  box-shadow: none;
+}
+
+    .sim-score-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+
+    .sim-score-title {
+      font-size: 14px;
+      font-weight: 900;
+      color: #cf6698;
+      letter-spacing: 0.08em;
+    }
+
+ .sim-score-value {
+  font-size: 14px;
+  font-weight: 900;
+  color: #7a5365;
+  background: #fff7fb;
+  border: 1px solid #ffd6e6;
+  border-radius: 999px;
+  padding: 7px 12px;
+  box-shadow: none;
+}
+
+    .sim-score-bar {
+      width: 100%;
+      height: 14px;
+      border-radius: 999px;
+      overflow: hidden;
+      background: #ffe7f2;
+      border: 1px solid #ffd5e6;
+      margin-bottom: 0;
+    }
+
+    .sim-score-fill {
+      width: 84%;
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #ff89bb 0%, #ffc0d8 100%);
+    }
+
+.feature-panel {
+  margin-bottom: 18px;
+  padding: 18px;
+  border-radius: 20px;
+  background: #fff7fb;
+  border: 1px solid #ffd8e8;
+  box-shadow: none;
+  text-align: left;
+}
+
+
+.feature-title {
+  font-size: 20px;
+  font-weight: 900;
+  color: #6a4256;
+  margin-bottom: 16px;
+  line-height: 1.4;
+  word-break: keep-all;
+  position: relative;
+  display: block;
+  width: fit-content;
+  padding-left: 22px;
+  padding-bottom: 12px;
+  background: transparent;
+}
+
+.feature-title::before {
+  content: "૩";
+  position: absolute;
+  left: 0;
+  top: -1px;
+  font-size: 22px;
+  font-weight: 900;
+  color: #ff9fc4;
+}
+
+.feature-title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: -6px;
+  bottom: 0;
+  height: 8px;
+  border-radius: 999px;
+  background:
+    linear-gradient(
+      90deg,
+      #ffd0e4 0%,
+      #ffe6a8 22%,
+      #d7f4c8 44%,
+      #cfe9ff 66%,
+      #ead6ff 84%,
+      #ffd7ef 100%
+    );
+  opacity: 0.95;
+}
+.feature-lines {
+  display: grid;
+  gap: 7px;
+}
+
+.feature-line {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  line-height: 1.72;
+  color: #654b57;
+  font-weight: 700;
+  word-break: keep-all;
+  text-align: left;
+}
+
+.feature-dot {
+  width: 16px;
+  height: 16px;
+  margin-top: 5px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at center,
+      #ff8fbe 0 4px,
+      rgba(255, 143, 190, 0.22) 4px 8px,
+      transparent 8px);
+  box-shadow: none;
+}
+
+.feature-em {
+  position: relative;
+  display: inline;
+  padding-bottom: 0;
+  line-height: inherit;
+}
+
+.feature-em::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -4px;
+  height: 8px;
+  background-repeat: repeat-x;
+  background-position: left bottom;
+  background-size: 24px 8px;
+  pointer-events: none;
+}
+
+.capture-mode .feature-em::after {
+  bottom: -5px !important;
+}
+.feature-em.pink::after {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='8' viewBox='0 0 24 8'><path d='M0 5 Q3 1 6 5 T12 5 T18 5 T24 5' fill='none' stroke='%23ffb6d8' stroke-width='1.8' stroke-linecap='round'/></svg>");
+}
+
+.feature-em.yellow::after {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='8' viewBox='0 0 24 8'><path d='M0 5 Q3 1 6 5 T12 5 T18 5 T24 5' fill='none' stroke='%23f8d98b' stroke-width='1.8' stroke-linecap='round'/></svg>");
+}
+
+.feature-em.blue::after {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='8' viewBox='0 0 24 8'><path d='M0 5 Q3 1 6 5 T12 5 T18 5 T24 5' fill='none' stroke='%23b8dcff' stroke-width='1.8' stroke-linecap='round'/></svg>");
+}
+
+.feature-em.purple::after {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='8' viewBox='0 0 24 8'><path d='M0 5 Q3 1 6 5 T12 5 T18 5 T24 5' fill='none' stroke='%23d7c1ff' stroke-width='1.8' stroke-linecap='round'/></svg>");
+}
+
+.feature-em.green::after {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='8' viewBox='0 0 24 8'><path d='M0 5 Q3 1 6 5 T12 5 T18 5 T24 5' fill='none' stroke='%23bfe7c9' stroke-width='1.8' stroke-linecap='round'/></svg>");
+}
+
+.capture-mode,
+.capture-mode * {
+  text-shadow: none !important;
+}
+
+.capture-mode #resultCapture,
+.capture-mode .result-top-box,
+.capture-mode .result-hero,
+.capture-mode .result-body,
+.capture-mode .sim-score-panel,
+.capture-mode .feature-panel,
+.capture-mode .mini-match-card,
+.capture-mode .sim-score-bar,
+.capture-mode .sim-score-value {
+  background-image: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  box-shadow: none !important;
+}
+
+.capture-mode .result-top-box {
+  background: #fffafc !important;
+}
+
+.capture-mode .result-hero {
+  background: #fdeaf3 !important;
+}
+
+.capture-mode .result-body {
+  background: #fffafc !important;
+}
+
+.capture-mode .sim-score-panel,
+.capture-mode .feature-panel,
+.capture-mode .mini-match-card {
+  background: #fff7fb !important;
+  box-shadow: none !important;
+  position: relative !important;
+}
+
+.capture-mode .sim-score-value {
+  background: #fff7fb !important;
+}
+
+.capture-mode .feature-title {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.capture-mode .feature-title::after {
+  opacity: 1 !important;
+}
+
+.capture-mode .feature-dot {
+  box-shadow: none !important;
+  background: radial-gradient(circle at center, #ff8fbe 0 4px, rgba(255, 143, 190, 0.22) 4px 8px, transparent 8px) !important;
+}
+
+.capture-mode .result-card::before,
+.capture-mode .card::before,
+.capture-mode .question-box::before,
+.capture-mode .question-box::after,
+.capture-mode .sim-score-panel::before,
+.capture-mode .sim-score-panel::after,
+.capture-mode .feature-panel::before,
+.capture-mode .feature-panel::after {
+  display: none !important;
+  content: none !important;
+}
+
+.capture-mode .result-hero::before,
+.capture-mode .result-hero::after {
+  display: block !important;
+  content: "♥" !important;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.capture-mode .result-hero::before {
+  color: rgba(255, 127, 179, 0.14) !important;
+}
+
+.capture-mode .result-hero::after {
+  color: rgba(255, 127, 179, 0.14) !important;
+}
+
+.capture-mode .sim-score-panel,
+.capture-mode .feature-panel,
+.capture-mode .mini-match-card,
+.capture-mode .result-top-box {
+  overflow: hidden !important;
+}
+
+.capture-mode .feature-em,
+.capture-mode .feature-em::after,
+.capture-mode .feature-title,
+.capture-mode .feature-title::after,
+.capture-mode .feature-dot,
+.capture-mode .sim-score-value,
+.capture-mode .sim-score-fill {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+    .mini-match-wrap {
+      display: grid;
+      gap: 10px;
+    }
+
+  .mini-match-card {
+  border-radius: 18px;
+  padding: 16px;
+  border: 1px solid #ffd8e8;
+  background: #fff7fb;
+  box-shadow: none;
+}
+
+    .mini-match-label {
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      color: #cf6799;
+      margin-bottom: 8px;
+    }
+
+    .mini-match-value {
+      font-size: 28px;
+      font-weight: 900;
+      color: #674657;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+
+    .mini-match-note {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #8b6c7a;
       word-break: keep-all;
     }
 
@@ -686,37 +968,65 @@ select,
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 12px;
+      position: relative;
+      z-index: 1;
     }
 
     .small-btn {
-      padding: 16px;
-      border-radius: 12px;
+      padding: 16px 14px;
+      border-radius: 18px;
       font-size: 15px;
       font-weight: 900;
-      background: #fff;
+      background: #fff7fb;
       color: #6b4256;
       border: 2px solid #ffd7e8;
-      box-shadow: 0 4px 10px rgba(255, 143, 190, 0.1);
-      cursor: pointer;
-      font-family: inherit;
-      transition: all 0.2s;
-    }
-
-    .small-btn:hover {
-      background: #fff5fa;
-      transform: translateY(-2px);
+      box-shadow: var(--shadow-soft);
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
     }
 
     .small-btn.primary {
       background: linear-gradient(135deg, #ff8fbe 0%, #ffb6d1 100%);
       color: #fff;
       border: 0;
-      box-shadow: 0 6px 16px rgba(255, 143, 190, 0.3);
     }
 
-    .small-btn.primary:hover {
-      background: linear-gradient(135deg, #ff7eb3 0%, #ff9ec4 100%);
-    }
+   .global-ad-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px 0 24px;
+  margin-top: 10px;
+  position: relative;
+  z-index: 2;
+}
+
+.global-ad-inner {
+  width: 100%;
+  max-width: 760px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#globalCoupangAd {
+  width: 320px;
+  max-width: 100%;
+  min-height: 100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#globalCoupangAd iframe,
+#globalCoupangAd ins,
+#globalCoupangAd div {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
 
     .toast {
       position: fixed;
@@ -725,15 +1035,14 @@ select,
       transform: translateX(-50%) translateY(20px);
       background: rgba(86, 56, 70, 0.95);
       color: #fff;
-      padding: 14px 24px;
+      padding: 12px 18px;
       border-radius: 999px;
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 800;
       opacity: 0;
       pointer-events: none;
       transition: all 0.25s ease;
       z-index: 1000;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     }
 
     .toast.show {
@@ -741,25 +1050,327 @@ select,
       transform: translateX(-50%) translateY(0);
     }
 
+    .loading-screen {
+      position: fixed;
+      inset: 0;
+      z-index: 3000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background:
+        radial-gradient(circle at top left, #fffdfd 0%, #fff2f8 35%, #ffe4f1 100%);
+    }
+
+    .loading-screen.show {
+      display: flex;
+    }
+
+    .loading-card {
+      width: 100%;
+      max-width: 420px;
+      padding: 28px 24px;
+      border-radius: 28px;
+      background: rgba(255,255,255,0.92);
+      border: 1px solid #ffd7e8;
+      box-shadow: 0 20px 48px rgba(255, 132, 184, 0.16);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .loading-card::before,
+    .loading-card::after {
+      content: "♥";
+      position: absolute;
+      color: rgba(255, 126, 179, 0.12);
+      font-weight: 900;
+    }
+
+    .loading-card::before {
+      font-size: 72px;
+      top: 12px;
+      left: 18px;
+    }
+
+    .loading-card::after {
+      font-size: 46px;
+      right: 18px;
+      bottom: 14px;
+    }
+
+    .loading-kicker {
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      color: #d26799;
+      margin-bottom: 12px;
+    }
+
+    .loading-title {
+      font-size: 28px;
+      line-height: 1.35;
+      font-weight: 900;
+      color: #6b4256;
+      word-break: keep-all;
+      margin-bottom: 12px;
+    }
+
+    .loading-desc {
+      font-size: 14px;
+      line-height: 1.65;
+      color: #826572;
+      word-break: keep-all;
+      margin-bottom: 20px;
+    }
+
+    .loading-avatar {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 20px;
+      border-radius: 28px;
+      background: linear-gradient(180deg, #ffe5f0 0%, #fff8fc 100%);
+      border: 1px solid #ffd4e6;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .loading-avatar::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 20px;
+      transform: translateX(-50%);
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.92);
+    }
+
+    .loading-avatar::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 16px;
+      transform: translateX(-50%);
+      width: 78px;
+      height: 50px;
+      border-radius: 60px 60px 14px 14px;
+      background: rgba(255,255,255,0.92);
+    }
+
+    .loading-heart {
+      position: absolute;
+      color: #ff82b4;
+      font-weight: 900;
+      animation: floatUp 1.8s ease-in-out infinite;
+    }
+
+    .loading-heart.one {
+      right: 22px;
+      top: 16px;
+      font-size: 20px;
+    }
+
+    .loading-heart.two {
+      right: 38px;
+      top: 40px;
+      font-size: 14px;
+      animation-delay: 0.35s;
+    }
+
+    .loading-bar {
+      width: 100%;
+      height: 14px;
+      border-radius: 999px;
+      overflow: hidden;
+      background: #ffe7f2;
+      border: 1px solid #ffd5e6;
+      margin-bottom: 12px;
+    }
+
+    .loading-bar-fill {
+      width: 0%;
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #ff8fbe 0%, #ffc0d8 100%);
+      animation: loadingFill 2.2s ease forwards;
+    }
+
+    .loading-status {
+      font-size: 13px;
+      font-weight: 800;
+      color: #8a6a79;
+    }
+
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-6px);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes loadingFill {
+      0% {
+        width: 0%;
+      }
+      30% {
+        width: 36%;
+      }
+      62% {
+        width: 72%;
+      }
+      100% {
+        width: 100%;
+      }
     }
 
     @media (max-width: 720px) {
-      .main-title { font-size: 32px; }
-      .select-grid { grid-template-columns: 1fr; }
-      .result-type { font-size: 40px; }
-      .result-name { font-size: 22px; }
+      .page-header {
+        padding: 14px 14px;
+        border-radius: 0;
+        max-width: 100%;
+      }
+
+      .logo {
+        width: 96px;
+      }
+
+      .main-nav {
+        gap: 8px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+
+      .main-nav a {
+        font-size: 14px;
+        padding: 7px 12px;
+      }
+
+      .app {
+        min-height: calc(100vh - 72px);
+        padding: 8px 12px 18px;
+      }
+
+     .main-image {
+    max-height: 500px;
+    border-radius: 24px;
+  }
+
+  .main-image img {
+    max-height: 500px;
+    border-radius: 24px;
+  }
+
+      .question-text {
+        font-size: 18px;
+      }
+
+      .button-grid,
+      .select-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .result-type {
+        font-size: 36px;
+      }
+
+      .result-name {
+        font-size: 26px;
+      }
     }
 
     @media (max-width: 480px) {
-      .app { padding: 14px 10px 28px; }
-      .inner, .result-card, .result-body, .result-hero, .question-box { padding: 20px 16px; }
-      .main-title { font-size: 28px; }
-      .section-title { font-size: 24px; }
-      .question-text { font-size: 20px; }
-      .button-grid { grid-template-columns: 1fr; }
+      .page-header {
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .page-header nav {
+        flex: 1;
+      }
+
+      .logo {
+        width: 92px;
+      }
+
+      .main-nav {
+        justify-content: flex-end;
+        gap: 6px;
+      }
+
+      .main-nav a {
+        font-size: 13px;
+        padding: 6px 10px;
+      }
+
+      .app {
+        padding: 6px 10px 16px;
+      }
+
+      .inner,
+      .result-card,
+      .result-body,
+      .result-hero,
+      .question-box {
+        padding: 18px;
+      }
+
+      .main-only-wrap {
+        padding: 12px;
+      }
+
+     .main-image {
+    max-height: 500px;
+    border-radius: 24px;
+  }
+
+  .main-image img {
+    max-height: 500px;
+    border-radius: 24px;
+  }
+      .feature-title {
+        font-size: 18px;
+      }
+
+      .feature-line {
+        font-size: 14px;
+        line-height: 1.6;
+      }
+
+      .loading-card {
+        padding: 24px 18px;
+      }
+
+      .loading-title {
+        font-size: 24px;
+      }
+
+       .global-ad-wrap {
+    padding: 12px 0 20px;
+    margin-top: 8px;
+  }
+
+  #globalCoupangAd {
+    width: 320px;
+    max-width: 100%;
+  }
     }
   </style>
 </head>
@@ -778,156 +1389,169 @@ select,
     </header>
 
     <div class="app">
-      <div class="screen active" id="screenMain">
-        <div class="card">
-          <div class="inner">
-            <div class="title-badge">러블리 연애 시뮬레이션 테스트</div>
-            <h1 class="main-title">월간남친 테스트</h1>
-            <p class="sub-text">
-              내 연애 취향을 따라가다 보면  
-              이번 달 나와 가장 잘 맞는 월간남친이 누구인지 알 수 있어요.
-            </p>
-
-            <div class="dating-app-ui">
-              <div class="dating-header">
-                <div class="dating-avatar-small">👤</div>
-                <div class="dating-greeting">월간남친 매칭 중...</div>
-                <div class="dating-menu">≡</div>
-              </div>
-              
-              <div class="dating-photo">
-                <div class="dating-cam-icon">📷</div>
-                <div class="dating-actions">
-                  <div class="dating-btn-side">✕</div>
-                  <div class="dating-btn-heart">♥</div>
-                  <div class="dating-btn-side">✓</div>
-                </div>
-                <div class="dating-info">
-                  <div class="dating-name">이번 달 당신의 인연</div>
-                  <div class="dating-dist">취향 저격 100% 매칭</div>
-                </div>
-              </div>
-
-              <div class="dating-nav">
-                <div class="nav-icon">👤</div>
-                <div class="nav-icon active">♥</div>
-                <div class="nav-icon badge-wrap">💬<span class="badge">1</span></div>
-              </div>
-            </div>
-
-            <div class="btn-wrap">
-              <button class="btn" id="startMainBtn">테스트 시작하기</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="screen" id="screenSelect">
-        <div class="card">
-          <div class="inner">
-            <div class="title-badge">STEP 1</div>
-            <h2 class="section-title">누구를 찾고 있나요</h2>
-            <p class="section-sub">
-              원하는 상대를 먼저 골라주세요.  
-              아래에 이름까지 입력하면 본격적으로 시뮬레이션이 시작돼요.
-            </p>
-
-            <div class="select-grid">
-              <div class="choice-btn" data-mode="boyfriend">
-                <span class="choice-emoji">💗</span>
-                <span class="choice-title">월간남친 찾기</span>
-                <span class="choice-desc">나와 잘 맞는 남친 타입을 알아봐요</span>
-              </div>
-
-              <div class="choice-btn" data-mode="girlfriend">
-                <span class="choice-emoji">💞</span>
-                <span class="choice-title">월간여친 찾기</span>
-                <span class="choice-desc">나와 잘 맞는 여친 타입을 알아봐요</span>
-              </div>
-            </div>
-
-            <div class="input-box">
-              <label class="input-label" for="userName">플레이어 이름</label>
-              <input
-                type="text"
-                id="userName"
-                class="name-input"
-                maxlength="12"
-                placeholder="이름을 입력해주세요"
-              />
-            </div>
-
-            <div class="btn-wrap">
-              <button class="btn" id="goTestBtn">시뮬레이션 시작</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="screen" id="screenTest">
-        <div class="card">
-          <div class="inner">
-            <div class="progress-wrap">
-              <div class="progress-top">
-                <div class="progress-text" id="progressText">호감도 분석 중...</div>
-                <div class="progress-count" id="progressCount">1 / 12</div>
-              </div>
-              <div class="progress-bar">
-                <div class="progress-fill" id="progressFill"></div>
-              </div>
-            </div>
-
-            <div class="question-box">
-              <div class="question-tag">SYSTEM MESSAGE</div>
-              <div class="question-text" id="questionText"></div>
-            </div>
-            <div class="answer-list" id="answerList"></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="screen" id="screenResult">
-        <div class="result-card" id="resultCapture">
-          <div class="result-top-box">
-            <div class="result-hero">
-              <div class="result-kicker">테스트잇 월간남친 테스트</div>
-              <div class="result-name" id="resultNameLine"></div>
-              <div class="result-type" id="resultMainType"></div>
-            </div>
-
-            <div class="result-body">
-              <div class="feature-title" id="featureTitle"></div>
-              <ul class="feature-list" id="featureList"></ul>
-              
-              <div class="match-grid">
-                <div class="bad-box">
-                  <h3>⚠ HARD MODE</h3>
-                  <div class="bad-value" id="worstMatchText"></div>
-                  <div class="mini-note" id="worstMatchNote"></div>
+      <div class="page-shell">
+        <div class="content-wrap">
+          <div class="screen active" id="screenMain">
+            <div class="card">
+              <div class="main-only-wrap">
+           <div class="main-image" id="mainImage">
+  <img src="img_main368.png" alt="월간남친 테스트 메인 이미지">
+</div>
+                <div class="btn-wrap">
+                  <button class="btn" id="startMainBtn">테스트 시작하기</button>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="button-grid">
-          <button class="small-btn primary" id="saveImageBtn">결과이미지 저장하기</button>
-          <button class="small-btn" id="restartBtn">다시해보기</button>
-          <button class="small-btn" id="otherTestBtn">다른테스트해보기</button>
-          <button class="small-btn" id="shareBtn">테스트 공유하기</button>
-        </div>
-      </div>
 
-      <article class="coupang_ad mt-3" style="margin: 20px 0 20px; width: 100%; display: flex; justify-content: center;">
-        <script src="https://ads-partners.coupang.com/g.js"></script>
-        <script>
-          new PartnersCoupang.G({"id":798186,"template":"carousel","trackingCode":"AF4391881","width":"320","height":"100","tsource":""});
-        </script>
-      </article>
+          <div class="screen" id="screenSelect">
+            <div class="card">
+              <div class="inner">
+        <p class="section-sub" style="text-align:center;">
+  원하는 상대를 먼저 골라주세요.<br>
+  아래에 이름까지 입력하면 본격적으로 테스트가 시작돼요.
+</p>
 
+                <div class="select-grid">
+                  <button class="choice-btn" data-mode="boyfriend">
+                    <span class="choice-emoji">💗</span>
+                    <span class="choice-title">월간남친 찾기</span>
+                    <span class="choice-desc">나와 잘 맞는 남친 타입을 알아봐요</span>
+                  </button>
+
+                  <button class="choice-btn" data-mode="girlfriend">
+                    <span class="choice-emoji">💞</span>
+                    <span class="choice-title">월간여친 찾기</span>
+                    <span class="choice-desc">나와 잘 맞는 여친 타입을 알아봐요</span>
+                  </button>
+                </div>
+
+                <div class="input-box">
+                  <label class="input-label" for="userName">내 이름</label>
+                  <input
+                    type="text"
+                    id="userName"
+                    class="name-input"
+                    maxlength="12"
+                    placeholder="이름을 입력해주세요"
+                  />
+                </div>
+
+                <div class="btn-wrap">
+                  <button class="btn" id="goTestBtn">다음으로</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="screen" id="screenTest">
+            <div class="card">
+              <div class="inner">
+                <div class="progress-wrap">
+                  <div class="progress-top">
+                    <div class="progress-text" id="progressText">두근두근 연애 취향 분석 중</div>
+                    <div class="progress-count" id="progressCount">1 / 12</div>
+                  </div>
+                  <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                  </div>
+                </div>
+
+                <div class="question-box">
+                  <div class="question-text" id="questionText"></div>
+                  <div class="answer-list" id="answerList"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="screen" id="screenResult">
+            <div class="result-card">
+              <div id="resultCapture">
+                <div class="result-top-box">
+                  <div class="result-hero">
+                    <div class="result-kicker">테스트잇 월간남친 테스트</div>
+                    <div class="result-name" id="resultNameLine"></div>
+                    <div class="result-type" id="resultMainType"></div>
+                  </div>
+
+                  <div class="result-body">
+                    <div class="sim-score-panel">
+                      <div class="sim-score-top">
+                        <div class="sim-score-title">궁합 싱크율</div>
+                        <div class="sim-score-value" id="simScoreValue">84%</div>
+                      </div>
+                      <div class="sim-score-bar">
+                        <div class="sim-score-fill" id="simScoreFill"></div>
+                      </div>
+                    </div>
+
+                    <div class="feature-panel">
+                      <div class="feature-title" id="featureTitle"></div>
+                      <div class="feature-lines" id="featureLines"></div>
+                    </div>
+
+                    <div class="mini-match-wrap">
+                      <div class="mini-match-card">
+                        <div>
+                          <div class="mini-match-label">안 맞는 조합</div>
+                          <div class="mini-match-value" id="worstMatchText"></div>
+                          <div class="mini-match-note" id="worstMatchNote"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="button-grid" id="resultButtons">
+                <button class="small-btn primary" id="saveImageBtn">결과 이미지 저장하기</button>
+                <button class="small-btn" id="restartBtn">다시 해보기</button>
+                <button class="small-btn" id="otherTestBtn">다른 테스트 해보기</button>
+                <button class="small-btn" id="shareBtn">테스트 공유하기</button>
+              </div>
+            </div>
+          </div>
+
+         <div class="global-ad-wrap">
+  <div class="global-ad-inner">
+    <div id="globalCoupangAd">
+      <script>
+        new PartnersCoupang.G({
+          id: 798186,
+          template: "carousel",
+          trackingCode: "AF4391881",
+          width: "320",
+          height: "150",
+          tsource: ""
+        });
+      </script>
     </div>
   </div>
+</div>
 
-  <div class="toast" id="toast"></div>
+    <div class="loading-screen" id="loadingScreen">
+      <div class="loading-card">
+        <div class="loading-kicker">테스트잇 월간남친 테스트</div>
+        <div class="loading-title">당신의 월간남친을 찾는 중</div>
+        <div class="loading-desc">
+    가장 잘 맞는 상대를 찾고 있어요!
+        </div>
+
+        <div class="loading-avatar">
+          <div class="loading-heart one">♥</div>
+          <div class="loading-heart two">♥</div>
+        </div>
+
+        <div class="loading-bar">
+          <div class="loading-bar-fill"></div>
+        </div>
+        <div class="loading-status" id="loadingStatus">두근두근 계산 중...</div>
+      </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+  </div>
 
   <script>
     const screens = {
@@ -952,52 +1576,368 @@ select,
     const worstMatchText = document.getElementById("worstMatchText");
     const worstMatchNote = document.getElementById("worstMatchNote");
     const featureTitle = document.getElementById("featureTitle");
-    const featureList = document.getElementById("featureList");
+    const featureLines = document.getElementById("featureLines");
+    const simScoreValue = document.getElementById("simScoreValue");
+    const simScoreFill = document.getElementById("simScoreFill");
 
     const saveImageBtn = document.getElementById("saveImageBtn");
     const restartBtn = document.getElementById("restartBtn");
     const otherTestBtn = document.getElementById("otherTestBtn");
     const shareBtn = document.getElementById("shareBtn");
     const toast = document.getElementById("toast");
+    const loadingScreen = document.getElementById("loadingScreen");
+    const loadingStatus = document.getElementById("loadingStatus");
 
     let selectedMode = "";
     let userName = "";
     let currentQuestionIndex = 0;
-    let scores = { E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0 };
+    let scores = {
+      E: 0,
+      I: 0,
+      S: 0,
+      N: 0,
+      T: 0,
+      F: 0,
+      J: 0,
+      P: 0
+    };
 
     const questions = [
-      { type: "EI", question: "데이트할 때 더 끌리는 사람은 누구인가요", answers: [{ title: "분위기를 먼저 띄우고 대화를 적극적으로 이끄는 사람", value: "E" }, { title: "내 얘기를 차분히 들어주고 편안하게 맞춰주는 사람", value: "I" }] },
-      { type: "SN", question: "소개팅 후 연락을 이어갈 때 더 설레는 스타일은", answers: [{ title: "약속 시간과 장소를 딱 정해서 안정감 있게 챙겨주는 사람", value: "S" }, { title: "다음에 같이 하고 싶은 걸 상상하며 톡이 재밌는 사람", value: "N" }] },
-      { type: "TF", question: "내가 속상한 일이 있을 때 더 원하는 반응은", answers: [{ title: "문제를 같이 정리해주고 현실적인 해결책을 말해주는 사람", value: "T" }, { title: "일단 내 마음부터 이해해주고 다정하게 감싸주는 사람", value: "F" }] },
-      { type: "JP", question: "주말 데이트가 잡혔을 때 더 좋은 상대는", answers: [{ title: "동선과 예약을 미리 정리해서 편하게 이끌어주는 사람", value: "J" }, { title: "그날 기분 따라 코스를 바꾸며 자유롭게 즐기는 사람", value: "P" }] },
-      { type: "EI", question: "처음 만난 자리에서 더 매력적으로 느껴지는 모습은", answers: [{ title: "주변과 자연스럽게 어울리며 나까지 편하게 해주는 모습", value: "E" }, { title: "많이 튀진 않지만 나와의 대화에 집중해주는 모습", value: "I" }] },
-      { type: "SN", question: "연애 초반 상대의 어떤 말에 더 심쿵하나요", answers: [{ title: "내가 좋아하는 걸 기억하고 실제로 챙겨주는 말", value: "S" }, { title: "우리 관계를 예쁘게 상상하며 설레는 말을 해주는 말", value: "N" }] },
-      { type: "TF", question: "갈등이 생겼을 때 더 잘 맞는 상대는", answers: [{ title: "왜 문제가 생겼는지 차분하게 짚고 넘어가려는 사람", value: "T" }, { title: "서로 상처받지 않도록 말투와 감정을 먼저 살피는 사람", value: "F" }] },
-      { type: "JP", question: "기념일을 보내는 방식으로 더 끌리는 쪽은", answers: [{ title: "미리 준비한 선물과 코스로 정성스럽게 챙기는 사람", value: "J" }, { title: "그날의 분위기에 맞춰 즉흥적으로 특별하게 만드는 사람", value: "P" }] },
-      { type: "EI", question: "연애할 때 연락 스타일로 더 좋은 사람은", answers: [{ title: "생각나는 순간 바로바로 연락하고 표현도 확실한 사람", value: "E" }, { title: "자주 연락하진 않아도 한 번 할 때 진하게 소통하는 사람", value: "I" }] },
-      { type: "SN", question: "데이트 장소를 고를 때 더 좋은 쪽은", answers: [{ title: "분위기 좋고 검증된 곳을 골라서 실패 확률이 적은 사람", value: "S" }, { title: "조금 특별하고 새로운 곳을 찾아 설렘을 주는 사람", value: "N" }] },
-      { type: "TF", question: "내가 실수했을 때 더 고마운 반응은", answers: [{ title: "어떤 부분을 고치면 되는지 분명하게 말해주는 사람", value: "T" }, { title: "민망하지 않게 먼저 다독여주고 천천히 말해주는 사람", value: "F" }] },
-      { type: "JP", question: "오래 만날수록 더 믿음이 가는 상대는", answers: [{ title: "기준과 생활 패턴이 분명해서 예측 가능한 사람", value: "J" }, { title: "상황에 따라 자연스럽게 맞춰주며 답답하지 않은 사람", value: "P" }] }
+      {
+        type: "EI",
+        question: "데이트할 때 더 끌리는 사람은 누구인가요",
+        answers: [
+          { title: "분위기를 먼저 띄우고 대화를 적극적으로 이끄는 사람", value: "E" },
+          { title: "내 얘기를 차분히 들어주고 편안하게 맞춰주는 사람", value: "I" }
+        ]
+      },
+      {
+        type: "SN",
+        question: "소개팅 후 연락을 이어갈 때 더 설레는 스타일은",
+        answers: [
+          { title: "약속 시간과 장소를 딱 정해서 안정감 있게 챙겨주는 사람", value: "S" },
+          { title: "다음에 같이 하고 싶은 걸 상상하며 톡이 재밌는 사람", value: "N" }
+        ]
+      },
+      {
+        type: "TF",
+        question: "내가 속상한 일이 있을 때 더 원하는 반응은",
+        answers: [
+          { title: "문제를 같이 정리해주고 현실적인 해결책을 말해주는 사람", value: "T" },
+          { title: "일단 내 마음부터 이해해주고 다정하게 감싸주는 사람", value: "F" }
+        ]
+      },
+      {
+        type: "JP",
+        question: "주말 데이트가 잡혔을 때 더 좋은 상대는",
+        answers: [
+          { title: "동선과 예약을 미리 정리해서 편하게 이끌어주는 사람", value: "J" },
+          { title: "그날 기분 따라 코스를 바꾸며 자유롭게 즐기는 사람", value: "P" }
+        ]
+      },
+      {
+        type: "EI",
+        question: "처음 만난 자리에서 더 매력적으로 느껴지는 모습은",
+        answers: [
+          { title: "주변과 자연스럽게 어울리며 나까지 편하게 해주는 모습", value: "E" },
+          { title: "많이 튀진 않지만 나와의 대화에 집중해주는 모습", value: "I" }
+        ]
+      },
+      {
+        type: "SN",
+        question: "연애 초반 상대의 어떤 말에 더 심쿵하나요",
+        answers: [
+          { title: "내가 좋아하는 걸 기억하고 실제로 챙겨주는 말", value: "S" },
+          { title: "우리 관계를 예쁘게 상상하며 설레는 말을 해주는 말", value: "N" }
+        ]
+      },
+      {
+        type: "TF",
+        question: "갈등이 생겼을 때 더 잘 맞는 상대는",
+        answers: [
+          { title: "왜 문제가 생겼는지 차분하게 짚고 넘어가려는 사람", value: "T" },
+          { title: "서로 상처받지 않도록 말투와 감정을 먼저 살피는 사람", value: "F" }
+        ]
+      },
+      {
+        type: "JP",
+        question: "기념일을 보내는 방식으로 더 끌리는 쪽은",
+        answers: [
+          { title: "미리 준비한 선물과 코스로 정성스럽게 챙기는 사람", value: "J" },
+          { title: "그날의 분위기에 맞춰 즉흥적으로 특별하게 만드는 사람", value: "P" }
+        ]
+      },
+      {
+        type: "EI",
+        question: "연애할 때 연락 스타일로 더 좋은 사람은",
+        answers: [
+          { title: "생각나는 순간 바로바로 연락하고 표현도 확실한 사람", value: "E" },
+          { title: "자주 연락하진 않아도 한 번 할 때 진하게 소통하는 사람", value: "I" }
+        ]
+      },
+      {
+        type: "SN",
+        question: "데이트 장소를 고를 때 더 좋은 쪽은",
+        answers: [
+          { title: "분위기 좋고 검증된 곳을 골라서 실패 확률이 적은 사람", value: "S" },
+          { title: "조금 특별하고 새로운 곳을 찾아 설렘을 주는 사람", value: "N" }
+        ]
+      },
+      {
+        type: "TF",
+        question: "내가 실수했을 때 더 고마운 반응은",
+        answers: [
+          { title: "어떤 부분을 고치면 되는지 분명하게 말해주는 사람", value: "T" },
+          { title: "민망하지 않게 먼저 다독여주고 천천히 말해주는 사람", value: "F" }
+        ]
+      },
+      {
+        type: "JP",
+        question: "오래 만날수록 더 믿음이 가는 상대는",
+        answers: [
+          { title: "기준과 생활 패턴이 분명해서 예측 가능한 사람", value: "J" },
+          { title: "상황에 따라 자연스럽게 맞춰주며 답답하지 않은 사람", value: "P" }
+        ]
+      }
     ];
 
     const typeFeatures = {
-      ENFP: ["표현이 풍부해서 연애 초반부터 설렘을 잘 만들어줘요", "같이 있으면 데이트가 지루할 틈이 없어요", "칭찬과 애정 표현을 아끼지 않는 편이에요", "내 이야기에 호기심을 갖고 반응을 크게 해줘요", "평범한 하루도 특별한 추억처럼 바꿔줘요", "깜짝 이벤트나 귀여운 장난을 잘해요", "감정의 결을 빠르게 캐치하는 편이에요", "연애를 친구 같고 달콤하게 풀어가는 타입이에요", "새로운 데이트 코스나 취미를 제안하는 걸 좋아해요", "좋아하면 티가 많이 나는 사랑스러운 스타일이에요"],
-      ENFJ: ["상대 기분을 잘 읽고 다정하게 맞춰줘요", "연애에서도 배려와 책임감을 동시에 챙겨요", "말 한마디도 따뜻하게 해주려고 노력해요", "기념일이나 중요한 순간을 잘 기억해줘요", "관계를 더 좋게 만들기 위해 먼저 움직이는 편이에요", "애정 표현이 부드럽고 안정감 있어요", "내가 힘들 때 먼저 알아차리는 경우가 많아요", "둘 사이 분위기를 조율하는 능력이 좋아요", "연애를 가볍게 보지 않고 진지하게 대하는 편이에요", "함께 성장하는 관계를 중요하게 생각해요"],
-      ENTJ: ["주도적으로 관계를 이끌어가는 힘이 있어요", "답답한 밀당보다 확실한 표현을 선호해요", "약속과 미래 계획을 현실적으로 챙겨줘요", "문제가 생기면 빠르게 해결하려는 편이에요", "의지할 수 있는 든든한 면이 커요", "목표가 분명해서 관계 방향이 선명해요", "상대를 챙길 때도 효율적이고 확실하게 해줘요", "리드하는 데 익숙해서 편안함을 줄 수 있어요", "감정보다 행동으로 책임감을 보여주는 타입이에요", "연애에서도 믿음직한 파트너가 되기 쉬워요"],
-      ENTP: ["말이 잘 통하고 티키타카가 즐거운 타입이에요", "재치 있는 농담으로 분위기를 밝게 만들어요", "틀에 박히지 않은 데이트를 좋아해요", "상대를 지루하게 두지 않는 매력이 있어요", "새로운 시도와 변화에 열려 있어요", "친구처럼 편하고 연인처럼 설레는 느낌을 줘요", "호기심이 많아 대화 주제가 끊기지 않아요", "상대를 자극하고 성장하게 만드는 면이 있어요", "예상 못한 포인트에서 매력을 터뜨려요", "연애를 생기 있고 유쾌하게 만드는 스타일이에요"],
-      ESFP: ["함께 있으면 분위기가 금방 밝아져요", "리액션이 좋아서 데이트가 더 재밌어요", "지금 이 순간을 즐기는 능력이 커요", "애정 표현이 솔직하고 귀여운 편이에요", "같이 놀고 웃는 연애에 강해요", "센스 있게 분위기를 띄워주는 타입이에요", "데이트 현장에서 만족감을 크게 줘요", "표정과 행동으로 호감을 잘 보여줘요", "활발하고 사랑스러운 매력이 분명해요", "연애가 답답하지 않고 생동감 있게 흘러가요"],
-      ESFJ: ["상대를 세심하게 챙기는 능력이 뛰어나요", "연락과 약속을 성실하게 이어가는 편이에요", "기념일과 이벤트를 잘 챙겨주는 타입이에요", "다정하고 생활 밀착형 배려가 많아요", "관계 안정감을 중요하게 여겨요", "내가 서운할 만한 포인트를 잘 캐치해요", "연애에서 성의를 꾸준히 보여줘요", "따뜻하고 정돈된 사랑을 주는 편이에요", "함께 있으면 편안하고 익숙한 행복이 커요", "사랑받는 느낌을 자주 들게 해주는 스타일이에요"],
-      ESTP: ["밀당보다 직진에 가까운 매력이 있어요", "즉흥적이고 시원시원한 데이트를 잘해요", "말보다 행동으로 보여주는 편이에요", "과하게 복잡하지 않은 연애를 선호해요", "답답한 분위기를 빠르게 풀어내요", "재미와 긴장감을 동시에 주는 타입이에요", "현실 감각이 있어서 데이트 진행이 능숙해요", "상대 반응을 보고 센스 있게 움직여요", "매력이 단순하지 않고 은근히 중독적이에요", "연애에서 활력과 추진력을 담당해요"],
-      ESTJ: ["연락과 약속이 깔끔해서 믿음이 가요", "관계를 애매하게 끌지 않는 편이에요", "책임감이 강해서 장기 연애에 유리해요", "필요한 걸 실질적으로 챙겨주는 타입이에요", "문제가 생기면 현실적으로 해결하려 해요", "생활 리듬이 안정적이라 편안함을 줘요", "확실한 태도로 신뢰를 쌓아가요", "관계의 기본을 중요하게 생각해요", "말보다 실천에서 진심이 드러나는 편이에요", "든든하고 예측 가능한 연애를 만들어줘요"],
-      INFP: ["감정 표현이 조용하지만 깊은 편이에요", "한 사람에게 진심으로 몰입하는 타입이에요", "둘만의 감정선을 소중히 여겨요", "소소한 순간도 의미 있게 기억해줘요", "말 한마디가 따뜻하고 섬세해요", "상대의 상처를 조심스럽게 다뤄줘요", "감성적인 대화가 잘 통하는 편이에요", "연애를 로맨틱하게 느끼고 바라봐요", "겉보다 속정이 깊은 스타일이에요", "잔잔하지만 오래 가는 설렘을 줘요"],
-      INFJ: ["마음을 깊이 읽고 세심하게 반응해줘요", "겉으로는 차분해도 속은 진심이 큰 편이에요", "관계를 쉽게 소비하지 않고 소중히 다뤄요", "상대의 마음을 오래 기억하는 타입이에요", "필요할 때 조용히 힘이 되어줘요", "감정적으로 안정감 있는 연애를 지향해요", "배려가 티 안 나게 자연스럽게 묻어나요", "내면적인 대화를 중요하게 생각해요", "가볍지 않은 애정을 보여주는 편이에요", "조용하지만 깊은 사랑을 주는 스타일이에요"],
-      INTJ: ["쉽게 열지 않지만 한 번 마음 주면 깊어요", "불필요한 감정 소모보다 본질을 중시해요", "관계를 체계적으로 생각하는 편이에요", "말은 적어도 신뢰감이 강한 타입이에요", "미래까지 생각하며 연애하는 경향이 있어요", "상대를 선택하면 오래 보는 편이에요", "합리적으로 챙겨주는 배려가 있어요", "감정 표현은 투박해도 행동은 진지해요", "혼자만의 시간도 존중해주는 관계에 강해요", "깊이 있는 파트너십을 만들기 좋아해요"],
-      INTP: ["말수보다 생각이 많은 조용한 매력이 있어요", "가볍게 휩쓸리기보다 천천히 가까워져요", "대화가 잘 통하면 확실히 깊어지는 타입이에요", "억지 감정보다 자연스러운 흐름을 선호해요", "개인 공간을 존중해주는 연애에 잘 맞아요", "감정 표현은 서툴러도 진심은 꾸준한 편이에요", "상대와의 지적 교감에서 매력이 커져요", "소란스럽지 않은 편안한 관계를 만들어요", "필요할 때 현실적인 도움을 주는 타입이에요", "조용히 스며드는 사랑을 하는 스타일이에요"],
-      ISFP: ["다정하고 부드러운 분위기를 가진 타입이에요", "상대 기분을 해치지 않으려는 배려가 있어요", "소소한 데이트를 예쁘게 즐기는 편이에요", "감정 표현은 은근하지만 따뜻해요", "강요 없는 편안한 관계를 좋아해요", "상대의 취향을 섬세하게 맞춰줘요", "함께 있을 때 분위기가 포근해져요", "부담스럽지 않게 설렘을 주는 타입이에요", "일상 속 작은 행복을 잘 만들어줘요", "연애를 조용하고 달콤하게 이어가요"],
-      ISFJ: ["믿음직하고 안정감 있는 사랑을 줘요", "챙김이 생활 속에서 자연스럽게 나와요", "약속과 연락을 꾸준히 지키는 편이에요", "한 번 정 붙이면 오래 가는 타입이에요", "상대가 편안하도록 세심하게 배려해요", "가볍지 않은 진심이 느껴지는 연애를 해요", "서운한 포인트를 조용히 잘 살펴줘요", "익숙한 행복을 오래 지켜주는 편이에요", "연애에서 책임감과 성실함이 커요", "따뜻하고 정직한 파트너가 되기 쉬워요"],
-      ISTP: ["쿨한 듯하지만 필요한 순간엔 확실히 챙겨줘요", "감정 과잉보다 편한 관계를 잘 만들어요", "과하게 간섭하지 않아 숨이 트이는 타입이에요", "실용적인 배려를 잘하는 편이에요", "자연스럽고 편한 데이트를 선호해요", "말보다 행동에서 진심이 보일 때가 많아요", "둘만의 템포를 존중해주는 장점이 있어요", "무심한 듯 은근히 설레게 만드는 매력이 있어요", "감정 기복이 심하지 않아 편안함을 줘요", "연애에서 담백한 안정감을 주는 스타일이에요"],
-      ISTJ: ["꾸준하고 성실해서 믿고 만날 수 있어요", "관계의 기본을 중요하게 여기는 편이에요", "약속, 시간, 태도에서 신뢰가 쌓여요", "표현은 화려하지 않아도 책임감이 커요", "현실적으로 상대를 챙겨주는 타입이에요", "예측 가능한 안정감이 큰 장점이에요", "가볍게 흔들리지 않는 연애를 해요", "생활 패턴이 안정적이라 관계가 편해요", "한 번 마음먹으면 오래 가는 편이에요", "묵직하고 단단한 사랑을 주는 스타일이에요"]
+      ENFP: [
+        "표현이 풍부해서 연애 초반부터 설렘을 잘 만들어줘요",
+        "같이 있으면 데이트가 지루할 틈이 없어요",
+        "칭찬과 애정 표현을 아끼지 않는 편이에요",
+        "내 이야기에 호기심을 갖고 반응을 크게 해줘요",
+        "평범한 하루도 특별한 추억처럼 바꿔줘요",
+        "깜짝 이벤트나 귀여운 장난을 잘해요",
+        "감정의 결을 빠르게 캐치하는 편이에요",
+        "연애를 친구 같고 달콤하게 풀어가는 타입이에요",
+        "새로운 데이트 코스나 취미를 제안하는 걸 좋아해요",
+        "좋아하면 티가 많이 나는 사랑스러운 스타일이에요"
+      ],
+      ENFJ: [
+        "상대 기분을 잘 읽고 다정하게 맞춰줘요",
+        "연애에서도 배려와 책임감을 동시에 챙겨요",
+        "말 한마디도 따뜻하게 해주려고 노력해요",
+        "기념일이나 중요한 순간을 잘 기억해줘요",
+        "관계를 더 좋게 만들기 위해 먼저 움직이는 편이에요",
+        "애정 표현이 부드럽고 안정감 있어요",
+        "내가 힘들 때 먼저 알아차리는 경우가 많아요",
+        "둘 사이 분위기를 조율하는 능력이 좋아요",
+        "연애를 가볍게 보지 않고 진지하게 대하는 편이에요",
+        "함께 성장하는 관계를 중요하게 생각해요"
+      ],
+      ENTJ: [
+        "주도적으로 관계를 이끌어가는 힘이 있어요",
+        "답답한 밀당보다 확실한 표현을 선호해요",
+        "약속과 미래 계획을 현실적으로 챙겨줘요",
+        "문제가 생기면 빠르게 해결하려는 편이에요",
+        "의지할 수 있는 든든한 면이 커요",
+        "목표가 분명해서 관계 방향이 선명해요",
+        "상대를 챙길 때도 효율적이고 확실하게 해줘요",
+        "리드하는 데 익숙해서 편안함을 줄 수 있어요",
+        "감정보다 행동으로 책임감을 보여주는 타입이에요",
+        "연애에서도 믿음직한 파트너가 되기 쉬워요"
+      ],
+      ENTP: [
+        "말이 잘 통하고 티키타카가 즐거운 타입이에요",
+        "재치 있는 농담으로 분위기를 밝게 만들어요",
+        "틀에 박히지 않은 데이트를 좋아해요",
+        "상대를 지루하게 두지 않는 매력이 있어요",
+        "새로운 시도와 변화에 열려 있어요",
+        "친구처럼 편하고 연인처럼 설레는 느낌을 줘요",
+        "호기심이 많아 대화 주제가 끊기지 않아요",
+        "상대를 자극하고 성장하게 만드는 면이 있어요",
+        "예상 못한 포인트에서 매력을 터뜨려요",
+        "연애를 생기 있고 유쾌하게 만드는 스타일이에요"
+      ],
+      ESFP: [
+        "함께 있으면 분위기가 금방 밝아져요",
+        "리액션이 좋아서 데이트가 더 재밌어요",
+        "지금 이 순간을 즐기는 능력이 커요",
+        "애정 표현이 솔직하고 귀여운 편이에요",
+        "같이 놀고 웃는 연애에 강해요",
+        "센스 있게 분위기를 띄워주는 타입이에요",
+        "데이트 현장에서 만족감을 크게 줘요",
+        "표정과 행동으로 호감을 잘 보여줘요",
+        "활발하고 사랑스러운 매력이 분명해요",
+        "연애가 답답하지 않고 생동감 있게 흘러가요"
+      ],
+      ESFJ: [
+        "상대를 세심하게 챙기는 능력이 뛰어나요",
+        "연락과 약속을 성실하게 이어가는 편이에요",
+        "기념일과 이벤트를 잘 챙겨주는 타입이에요",
+        "다정하고 생활 밀착형 배려가 많아요",
+        "관계 안정감을 중요하게 여겨요",
+        "내가 서운할 만한 포인트를 잘 캐치해요",
+        "연애에서 성의를 꾸준히 보여줘요",
+        "따뜻하고 정돈된 사랑을 주는 편이에요",
+        "함께 있으면 편안하고 익숙한 행복이 커요",
+        "사랑받는 느낌을 자주 들게 해주는 스타일이에요"
+      ],
+      ESTP: [
+        "밀당보다 직진에 가까운 매력이 있어요",
+        "즉흥적이고 시원시원한 데이트를 잘해요",
+        "말보다 행동으로 보여주는 편이에요",
+        "과하게 복잡하지 않은 연애를 선호해요",
+        "답답한 분위기를 빠르게 풀어내요",
+        "재미와 긴장감을 동시에 주는 타입이에요",
+        "현실 감각이 있어서 데이트 진행이 능숙해요",
+        "상대 반응을 보고 센스 있게 움직여요",
+        "매력이 단순하지 않고 은근히 중독적이에요",
+        "연애에서 활력과 추진력을 담당해요"
+      ],
+      ESTJ: [
+        "연락과 약속이 깔끔해서 믿음이 가요",
+        "관계를 애매하게 끌지 않는 편이에요",
+        "책임감이 강해서 장기 연애에 유리해요",
+        "필요한 걸 실질적으로 챙겨주는 타입이에요",
+        "문제가 생기면 현실적으로 해결하려 해요",
+        "생활 리듬이 안정적이라 편안함을 줘요",
+        "확실한 태도로 신뢰를 쌓아가요",
+        "관계의 기본을 중요하게 생각해요",
+        "말보다 실천에서 진심이 드러나는 편이에요",
+        "든든하고 예측 가능한 연애를 만들어줘요"
+      ],
+      INFP: [
+        "감정 표현이 조용하지만 깊은 편이에요",
+        "한 사람에게 진심으로 몰입하는 타입이에요",
+        "둘만의 감정선을 소중히 여겨요",
+        "소소한 순간도 의미 있게 기억해줘요",
+        "말 한마디가 따뜻하고 섬세해요",
+        "상대의 상처를 조심스럽게 다뤄줘요",
+        "감성적인 대화가 잘 통하는 편이에요",
+        "연애를 로맨틱하게 느끼고 바라봐요",
+        "겉보다 속정이 깊은 스타일이에요",
+        "잔잔하지만 오래 가는 설렘을 줘요"
+      ],
+      INFJ: [
+        "마음을 깊이 읽고 세심하게 반응해줘요",
+        "겉으로는 차분해도 속은 진심이 큰 편이에요",
+        "관계를 쉽게 소비하지 않고 소중히 다뤄요",
+        "상대의 마음을 오래 기억하는 타입이에요",
+        "필요할 때 조용히 힘이 되어줘요",
+        "감정적으로 안정감 있는 연애를 지향해요",
+        "배려가 티 안 나게 자연스럽게 묻어나요",
+        "내면적인 대화를 중요하게 생각해요",
+        "가볍지 않은 애정을 보여주는 편이에요",
+        "조용하지만 깊은 사랑을 주는 스타일이에요"
+      ],
+      INTJ: [
+        "쉽게 열지 않지만 한 번 마음 주면 깊어요",
+        "불필요한 감정 소모보다 본질을 중시해요",
+        "관계를 체계적으로 생각하는 편이에요",
+        "말은 적어도 신뢰감이 강한 타입이에요",
+        "미래까지 생각하며 연애하는 경향이 있어요",
+        "상대를 선택하면 오래 보는 편이에요",
+        "합리적으로 챙겨주는 배려가 있어요",
+        "감정 표현은 투박해도 행동은 진지해요",
+        "혼자만의 시간도 존중해주는 관계에 강해요",
+        "깊이 있는 파트너십을 만들기 좋아해요"
+      ],
+      INTP: [
+        "말수보다 생각이 많은 조용한 매력이 있어요",
+        "가볍게 휩쓸리기보다 천천히 가까워져요",
+        "대화가 잘 통하면 확실히 깊어지는 타입이에요",
+        "억지 감정보다 자연스러운 흐름을 선호해요",
+        "개인 공간을 존중해주는 연애에 잘 맞아요",
+        "감정 표현은 서툴러도 진심은 꾸준한 편이에요",
+        "상대와의 지적 교감에서 매력이 커져요",
+        "소란스럽지 않은 편안한 관계를 만들어요",
+        "필요할 때 현실적인 도움을 주는 타입이에요",
+        "조용히 스며드는 사랑을 하는 스타일이에요"
+      ],
+      ISFP: [
+        "다정하고 부드러운 분위기를 가진 타입이에요",
+        "상대 기분을 해치지 않으려는 배려가 있어요",
+        "소소한 데이트를 예쁘게 즐기는 편이에요",
+        "감정 표현은 은근하지만 따뜻해요",
+        "강요 없는 편안한 관계를 좋아해요",
+        "상대의 취향을 섬세하게 맞춰줘요",
+        "함께 있을 때 분위기가 포근해져요",
+        "부담스럽지 않게 설렘을 주는 타입이에요",
+        "일상 속 작은 행복을 잘 만들어줘요",
+        "연애를 조용하고 달콤하게 이어가요"
+      ],
+      ISFJ: [
+        "믿음직하고 안정감 있는 사랑을 줘요",
+        "챙김이 생활 속에서 자연스럽게 나와요",
+        "약속과 연락을 꾸준히 지키는 편이에요",
+        "한 번 정 붙이면 오래 가는 타입이에요",
+        "상대가 편안하도록 세심하게 배려해요",
+        "가볍지 않은 진심이 느껴지는 연애를 해요",
+        "서운한 포인트를 조용히 잘 살펴줘요",
+        "익숙한 행복을 오래 지켜주는 편이에요",
+        "연애에서 책임감과 성실함이 커요",
+        "따뜻하고 정직한 파트너가 되기 쉬워요"
+      ],
+      ISTP: [
+        "쿨한 듯하지만 필요한 순간엔 확실히 챙겨줘요",
+        "감정 과잉보다 편한 관계를 잘 만들어요",
+        "과하게 간섭하지 않아 숨이 트이는 타입이에요",
+        "실용적인 배려를 잘하는 편이에요",
+        "자연스럽고 편한 데이트를 선호해요",
+        "말보다 행동에서 진심이 보일 때가 많아요",
+        "둘만의 템포를 존중해주는 장점이 있어요",
+        "무심한 듯 은근히 설레게 만드는 매력이 있어요",
+        "감정 기복이 심하지 않아 편안함을 줘요",
+        "연애에서 담백한 안정감을 주는 스타일이에요"
+      ],
+      ISTJ: [
+        "꾸준하고 성실해서 믿고 만날 수 있어요",
+        "관계의 기본을 중요하게 여기는 편이에요",
+        "약속, 시간, 태도에서 신뢰가 쌓여요",
+        "표현은 화려하지 않아도 책임감이 커요",
+        "현실적으로 상대를 챙겨주는 타입이에요",
+        "예측 가능한 안정감이 큰 장점이에요",
+        "가볍게 흔들리지 않는 연애를 해요",
+        "생활 패턴이 안정적이라 관계가 편해요",
+        "한 번 마음먹으면 오래 가는 편이에요",
+        "묵직하고 단단한 사랑을 주는 스타일이에요"
+      ]
     };
+
+    const loadingMessages = [
+      "설렘 루트 계산 중...",
+      "대화 템포를 맞춰보는 중...",
+      "호감도 반응을 분석하는 중...",
+      "월간남친 결과를 정리하는 중..."
+    ];
+
+   const highlightKeywords = [
+  "설렘", "표현", "배려", "책임감", "안정감", "진심", "대화", "호기심",
+  "센스", "리드", "신뢰", "재치", "다정", "공감", "계획", "행동",
+  "기억", "성의", "분위기", "추억", "이벤트", "몰입", "로맨틱",
+  "안정", "도움", "존중", "행복", "편안함", "사랑", "성장",
+  "주도적으로", "현실적으로", "따뜻하게", "세심하게", "빠르게 해결",
+  "특별한 추억", "기념일", "미래 계획", "지적 교감", "혼자만의 시간",
+  "깊이 있는", "생활 패턴", "익숙한 행복", "책임감을", "호감을",
+  "정리해주고", "이끌어가는", "신뢰감", "든든한", "성실", "안정적"
+];
+
+const highlightColors = ["pink", "yellow", "blue", "purple", "green"];
+
+function escapeRegExp(text) {
+  return text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function highlightImportantWords(text, index) {
+  const sortedKeywords = [...highlightKeywords].sort((a, b) => b.length - a.length);
+  const colorClass = highlightColors[index % highlightColors.length];
+
+  for (const keyword of sortedKeywords) {
+    if (text.includes(keyword)) {
+      const regex = new RegExp(escapeRegExp(keyword), "g");
+      return text.replace(
+        regex,
+        `<span class="feature-em ${colorClass}">${keyword}</span>`
+      );
+    }
+  }
+
+  return text;
+}
+
+    
 
     function showScreen(screenName) {
       Object.values(screens).forEach((screen) => screen.classList.remove("active"));
@@ -1009,7 +1949,17 @@ select,
       selectedMode = "";
       userName = "";
       currentQuestionIndex = 0;
-      scores = { E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0 };
+      scores = {
+        E: 0,
+        I: 0,
+        S: 0,
+        N: 0,
+        T: 0,
+        F: 0,
+        J: 0,
+        P: 0
+      };
+
       userNameInput.value = "";
       choiceButtons.forEach((btn) => btn.classList.remove("selected"));
     }
@@ -1017,26 +1967,74 @@ select,
     function showToast(message) {
       toast.textContent = message;
       toast.classList.add("show");
-      setTimeout(() => { toast.classList.remove("show"); }, 1800);
+      setTimeout(() => {
+        toast.classList.remove("show");
+      }, 1800);
+    }
+
+    function formatQuestionText(text) {
+      if (text.includes("<br>")) return text;
+
+      const words = text.split(" ");
+      if (words.length < 2) return text;
+
+      let bestIndex = -1;
+      let minDiff = Infinity;
+      const totalLength = text.length;
+
+      let currentLength = 0;
+      for (let i = 0; i < words.length - 1; i += 1) {
+        currentLength += words[i].length + (i > 0 ? 1 : 0);
+        const diff = Math.abs(totalLength / 2 - currentLength);
+        if (diff < minDiff) {
+          minDiff = diff;
+          bestIndex = i;
+        }
+      }
+
+      if (bestIndex === -1) return text;
+
+      const first = words.slice(0, bestIndex + 1).join(" ");
+      const second = words.slice(bestIndex + 1).join(" ");
+      return `${first}<br>${second}`;
+    }
+
+    function escapeRegExp(text) {
+      return text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    }
+
+    function highlightImportantWords(text, index) {
+      const sortedKeywords = [...highlightKeywords].sort((a, b) => b.length - a.length);
+      const colorClass = highlightColors[index % highlightColors.length];
+
+      for (const keyword of sortedKeywords) {
+        if (text.includes(keyword)) {
+          const regex = new RegExp(escapeRegExp(keyword));
+          return text.replace(regex, `<span class="feature-em ${colorClass}">${keyword}</span>`);
+        }
+      }
+
+      return text;
     }
 
     function renderQuestion() {
       const q = questions[currentQuestionIndex];
-      const percent = ((currentQuestionIndex) / questions.length) * 100;
+      const percent = currentQuestionIndex / questions.length * 100;
 
-      progressText.textContent = "호감도 분석 중...";
+      progressText.textContent = "두근두근 연애 취향 분석 중";
       progressCount.textContent = `${currentQuestionIndex + 1} / ${questions.length}`;
       progressFill.style.width = `${percent}%`;
 
-      questionText.textContent = q.question;
+      questionText.innerHTML = formatQuestionText(q.question);
       answerList.innerHTML = "";
 
       q.answers.forEach((answer) => {
         const btn = document.createElement("button");
         btn.className = "answer-btn";
-        btn.innerHTML = `<span class="answer-title">${answer.title}</span>`;
-        
-        btn.addEventListener("click", () => {
+        btn.type = "button";
+        btn.innerHTML = `<span class="answer-title">${formatQuestionText(answer.title)}</span>`;
+        btn.addEventListener("mousedown", (e) => e.preventDefault());
+        btn.addEventListener("click", async () => {
           scores[answer.value] += 1;
           currentQuestionIndex += 1;
 
@@ -1044,6 +2042,7 @@ select,
             renderQuestion();
           } else {
             progressFill.style.width = "100%";
+            await showLoadingSequence();
             renderResult();
             showScreen("result");
           }
@@ -1061,7 +2060,16 @@ select,
     }
 
     function getOppositeType(type) {
-      const map = { E: "I", I: "E", S: "N", N: "S", T: "F", F: "T", J: "P", P: "J" };
+      const map = {
+        E: "I",
+        I: "E",
+        S: "N",
+        N: "S",
+        T: "F",
+        F: "T",
+        J: "P",
+        P: "J"
+      };
       return type.split("").map((char) => map[char]).join("");
     }
 
@@ -1069,27 +2077,97 @@ select,
       return selectedMode === "girlfriend" ? "여친" : "남친";
     }
 
+    function calculateSyncPercent(resultType) {
+      const pairs = [
+        ["E", "I"],
+        ["S", "N"],
+        ["T", "F"],
+        ["J", "P"]
+      ];
+
+      let totalGap = 0;
+
+      pairs.forEach(([a, b]) => {
+        totalGap += Math.abs(scores[a] - scores[b]);
+      });
+
+      let base = 78 + totalGap * 2;
+      if (resultType.includes("F")) base += 2;
+      if (resultType.includes("J")) base += 1;
+      return Math.max(76, Math.min(96, base));
+    }
+
     function renderResult() {
       const resultType = getMbtiResult();
       const oppositeType = getOppositeType(resultType);
       const partnerLabel = getPartnerLabel();
-      const safeName = userName.trim() || "플레이어";
-      
+      const safeName = userName.trim() || "당신";
       const features = typeFeatures[resultType];
+      const worstMatchDescriptions = {
+  ENFP: "이 상대는 감정 표현이 훨씬 적고 반응도 느린 편이라, 설렘을 크게 주고받고 싶은 당신에겐 답답하게 느껴질 수 있어요. 대화 템포와 애정 표현 방식이 달라서 초반엔 특히 거리감이 생기기 쉬운 조합이에요.",
+  ENFJ: "이 상대는 감정보다 논리와 자기 방식이 더 앞서는 편이라, 관계 분위기를 중요하게 보는 당신과 엇갈릴 수 있어요. 배려를 바라는 순간에 차갑거나 무심하게 느껴져 서운함이 쌓이기 쉬운 조합이에요.",
+  ENTJ: "이 상대는 감정선과 즉흥성을 더 따라가는 편이라, 분명하고 효율적인 관계를 선호하는 당신에겐 흐름이 답답해 보일 수 있어요. 기준 없이 흔들리는 느낌을 받으면 금방 지치기 쉬운 조합이에요.",
+  ENTP: "이 상대는 너무 조용하고 보수적으로 반응하는 편이라, 티키타카와 자극이 중요한 당신에겐 재미가 부족하게 느껴질 수 있어요. 말이 잘 안 풀리면 금방 심심해지고 거리감이 커질 수 있는 조합이에요.",
+  ESFP: "이 상대는 감정 표현도 적고 반응도 무겁게 가는 편이라, 밝고 즉각적인 교감을 원하는 당신과 잘 안 맞을 수 있어요. 함께 있어도 분위기가 쉽게 살아나지 않아 심심하게 느껴질 수 있는 조합이에요.",
+  ESFJ: "이 상대는 개인 성향이 강하고 표현이 담백한 편이라, 다정함과 정성을 중요하게 보는 당신에겐 서운함을 줄 수 있어요. 챙김을 기대하는 순간마다 온도 차가 크게 느껴질 수 있는 조합이에요.",
+  ESTP: "이 상대는 생각이 많고 반응이 느린 편이라, 빠르고 시원한 흐름을 좋아하는 당신과 템포가 잘 안 맞을 수 있어요. 답답한 감정 줄다리기가 길어지면 금방 흥미가 떨어질 수 있는 조합이에요.",
+  ESTJ: "이 상대는 감정 중심으로 움직이고 기준이 자주 흔들리는 편이라, 안정적인 관계를 중요하게 보는 당신과 부딪히기 쉬워요. 현실적인 기준이 안 맞으면 피로감이 커질 수 있는 조합이에요.",
+
+  INFP: "이 상대는 감정 표현이 직설적이고 속도도 빠른 편이라, 여린 감정선을 중요하게 보는 당신에겐 부담스럽게 느껴질 수 있어요. 마음을 천천히 나누고 싶은데 너무 거칠게 들어오면 쉽게 지칠 수 있는 조합이에요.",
+  INFJ: "이 상대는 즉흥적이고 자기 스타일대로 움직이는 편이라, 관계의 의미와 흐름을 깊게 보는 당신과 맞지 않을 수 있어요. 생각보다 가볍게 느껴지면 신뢰가 쌓이기 어려운 조합이에요.",
+  INTJ: "이 상대는 감정 기복과 즉흥성이 큰 편이라, 구조와 예측 가능성을 중요하게 보는 당신에겐 피곤하게 느껴질 수 있어요. 관계가 안정적으로 굴러가지 않으면 빠르게 거리 두게 되는 조합이에요.",
+  INTP: "이 상대는 감정 표현과 관계 요구가 훨씬 많은 편이라, 혼자만의 여유와 담백한 흐름을 원하는 당신에겐 부담이 될 수 있어요. 계속 맞춰줘야 하는 상황이 반복되면 지치기 쉬운 조합이에요.",
+  ISFP: "이 상대는 너무 통제하려 하거나 기준을 강하게 세우는 편이라, 편안하고 부드러운 관계를 원하는 당신과 맞지 않을 수 있어요. 있는 그대로의 분위기를 즐기고 싶은데 압박감이 생기기 쉬운 조합이에요.",
+  ISFJ: "이 상대는 변동성이 크고 즉흥적인 편이라, 안정감과 성실함을 중요하게 보는 당신에게 불안함을 줄 수 있어요. 약속과 태도의 무게가 다르면 마음이 쉽게 식을 수 있는 조합이에요.",
+  ISTP: "이 상대는 감정 확인과 애정 표현을 자주 원하는 편이라, 담백한 관계를 선호하는 당신에겐 피곤하게 느껴질 수 있어요. 서로 원하는 애정의 밀도가 달라서 오해가 생기기 쉬운 조합이에요.",
+  ISTJ: "이 상대는 즉흥적이고 감정 반응이 큰 편이라, 차분하고 안정적인 흐름을 중요하게 보는 당신과 잘 안 맞을 수 있어요. 관계의 기본 리듬이 다르면 오래 갈수록 피로감이 커질 수 있는 조합이에요."
+};
+      const syncPercent = calculateSyncPercent(resultType);
 
       resultNameLine.textContent = `${safeName}님의 월간${partnerLabel}은`;
       resultMainType.textContent = `${resultType} ${partnerLabel}`;
 
-      worstMatchText.textContent = `${oppositeType} ${partnerLabel}`;
-      worstMatchNote.textContent = `성향 차이가 커서 서로를 이해하는 데 시간이 조금 더 필요한 고난이도 조합이에요.`;
+      simScoreValue.textContent = `${syncPercent}%`;
+      simScoreFill.style.width = `${syncPercent}%`;
 
-      featureTitle.textContent = `${resultType} ${partnerLabel}의 공략 포인트`;
-      featureList.innerHTML = features
-        .map((item) => `<li class="feature-item">${item}</li>`)
-        .join("");
+      worstMatchText.textContent = `${oppositeType} ${partnerLabel}`;
+    worstMatchNote.textContent = worstMatchDescriptions[resultType];
+
+      featureTitle.textContent = `${resultType} 월간${partnerLabel} 성격 특징`;
+   featureLines.innerHTML = features
+  .map((item, index) => `
+    <div class="feature-line">
+      <span class="feature-dot"></span>
+      <span>${highlightImportantWords(item, index)}</span>
+    </div>
+  `)
+  .join("");
     }
 
-    startMainBtn.addEventListener("click", () => { showScreen("select"); });
+    function showLoadingSequence() {
+      return new Promise((resolve) => {
+        let msgIndex = 0;
+        loadingStatus.textContent = loadingMessages[0];
+        loadingScreen.classList.add("show");
+
+        const interval = setInterval(() => {
+          msgIndex += 1;
+          if (msgIndex < loadingMessages.length) {
+            loadingStatus.textContent = loadingMessages[msgIndex];
+          }
+        }, 550);
+
+        setTimeout(() => {
+          clearInterval(interval);
+          loadingScreen.classList.remove("show");
+          resolve();
+        }, 2300);
+      });
+    }
+
+    startMainBtn.addEventListener("click", () => {
+      showScreen("select");
+    });
 
     choiceButtons.forEach((btn) => {
       btn.addEventListener("click", () => {
@@ -1108,39 +2186,90 @@ select,
       }
 
       if (!inputName) {
-        showToast("플레이어 이름을 입력해주세요");
+        showToast("이름을 입력해주세요");
         userNameInput.focus();
         return;
       }
 
       userName = inputName;
       currentQuestionIndex = 0;
-      scores = { E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0 };
+      scores = {
+        E: 0,
+        I: 0,
+        S: 0,
+        N: 0,
+        T: 0,
+        F: 0,
+        J: 0,
+        P: 0
+      };
 
       renderQuestion();
       showScreen("test");
     });
 
-    saveImageBtn.addEventListener("click", async () => {
-      const target = document.getElementById("resultCapture");
-      try {
-        const canvas = await html2canvas(target, { backgroundColor: "#fff8fc", scale: 2, useCORS: true });
-        const link = document.createElement("a");
-        link.download = "monthly-love-result.png";
-        link.href = canvas.toDataURL("image/png");
-        link.click();
-        showToast("결과 이미지가 성공적으로 저장되었습니다!");
-      } catch (error) {
-        showToast("이미지 저장에 실패했습니다.");
+  saveImageBtn.addEventListener("click", async () => {
+  const target = document.getElementById("resultCapture");
+  const resultButtons = document.getElementById("resultButtons");
+  const prevButtonsDisplay = resultButtons.style.display;
+
+  resultButtons.style.display = "none";
+
+  try {
+    if (document.fonts && document.fonts.ready) {
+      await document.fonts.ready;
+    }
+
+    const clonedClass = "capture-mode";
+    document.body.classList.add(clonedClass);
+    target.classList.add(clonedClass);
+
+    await new Promise((resolve) => setTimeout(resolve, 200));
+
+    const canvas = await html2canvas(target, {
+      backgroundColor: "#fff8fc",
+      scale: 3,
+      useCORS: true,
+      imageTimeout: 0,
+      logging: false,
+      scrollX: 0,
+      scrollY: 0,
+      removeContainer: true,
+      foreignObjectRendering: false,
+      onclone: (clonedDoc) => {
+        clonedDoc.body.classList.add("capture-mode");
+        const clonedTarget = clonedDoc.getElementById("resultCapture");
+        if (clonedTarget) {
+          clonedTarget.classList.add("capture-mode");
+          clonedTarget.style.transform = "translateZ(0)";
+        }
       }
     });
+
+    const link = document.createElement("a");
+    link.download = "monthly-love-result.png";
+    link.href = canvas.toDataURL("image/png");
+    link.click();
+
+    showToast("결과 이미지가 저장되었어요");
+  } catch (error) {
+    console.error(error);
+    showToast("이미지 저장에 실패했어요");
+  } finally {
+    resultButtons.style.display = prevButtonsDisplay || "grid";
+    document.body.classList.remove("capture-mode");
+    target.classList.remove("capture-mode");
+  }
+});
 
     restartBtn.addEventListener("click", () => {
       resetState();
       showScreen("main");
     });
 
-    otherTestBtn.addEventListener("click", () => { window.location.href = "./"; });
+    otherTestBtn.addEventListener("click", () => {
+      window.location.href = "./";
+    });
 
     shareBtn.addEventListener("click", async () => {
       const shareTitle = "월간남친 테스트";
@@ -1148,16 +2277,23 @@ select,
       const shareUrl = window.location.href;
 
       if (navigator.share) {
-        try { await navigator.share({ title: shareTitle, text: shareText, url: shareUrl }); } catch (error) {}
+        try {
+          await navigator.share({
+            title: shareTitle,
+            text: shareText,
+            url: shareUrl
+          });
+        } catch (error) {}
       } else {
         try {
           await navigator.clipboard.writeText(shareUrl);
-          showToast("테스트 링크가 복사되었습니다!");
+          showToast("테스트 링크가 복사되었어요");
         } catch (error) {
-          showToast("공유에 실패했습니다.");
+          showToast("공유에 실패했어요");
         }
       }
     });
+
 
     resetState();
   </script>

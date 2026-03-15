@@ -1,9 +1,20 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TEST_IT Precision OS v1.0</title>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5522499110435321" crossorigin="anonymous"></script>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>테스트잇 사주 MBTI 성격 테스트</title>
+  <meta name="description" content="테스트잇 사주 MBTI 성격 테스트">
+  <meta name="keywords" content="테스트잇,성격테스트,사주MBTI성격테스트,유행 사주성격테스트,사주MBTI성격테스트,테스트잇사주,테스트잇사주MBTI,테스트잇연애,연애테스트,연애mbti,연애성격테스트, 심리테스트, mbti테스트">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="테스트잇 사주 MBTI 성격 테스트">
+  <meta property="og:description" content="테스트잇 사주 MBTI 성격 테스트">
+  <meta property="og:image" content="img_main370.png">
+  <meta property="og:url" content="https://test-it.co.kr/test370">
     <script src="https://cdn.jsdelivr.net/npm/lunar-javascript/lunar.js"></script>
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <style>
@@ -506,7 +517,7 @@
                     <button class="win-btn" onclick="saveAsImage()">결과 이미지 저장하기</button>
                     <button class="win-btn" onclick="location.reload()">다시 해보기</button>
                     <button class="win-btn" onclick="location.href='https://test-it.co.kr'">다른 테스트 해보기</button>
-                    <button class="win-btn" onclick="alert('테스트 공유 기능이 실행됩니다.')">테스트 공유하기</button>
+                    <button class="win-btn" onclick="shareTest()">테스트 공유하기</button>
                 </div>
             </div>
         </div>
@@ -696,6 +707,25 @@
             link.click();
         });
     }
+    function shareTest() {
+        const shareData = {
+            title: '테스트잇 사주 MBTI 성격 테스트',
+            text: '테스트잇 사주 MBTI 성격 테스트',
+            url: window.location.href
+        };
+
+        if (navigator.share) {
+            navigator.share(shareData).catch((error) => console.log('공유 에러:', error));
+        } else {
+            // Web Share API를 지원하지 않는 브라우저(PC 등)용 클립보드 복사 기능
+            navigator.clipboard.writeText(window.location.href).then(() => {
+                alert('테스트 링크가 클립보드에 복사되었습니다. 친구들에게 공유해보세요!');
+            }).catch(() => {
+                alert('공유하기를 지원하지 않는 환경입니다. 주소창의 링크를 직접 복사해주세요.');
+            });
+        }
+    }
+
 </script>
 
 </body>

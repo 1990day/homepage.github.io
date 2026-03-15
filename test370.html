@@ -43,8 +43,8 @@
         .header-wrapper {
             width: 100%;
             background-color: var(--win-bg); 
-            border-bottom: 2px solid var(--win-border-black); 
-            box-shadow: inset 0 -1px 0 var(--win-border-dark); 
+            border-bottom: 2px outset var(--win-border-light); 
+            box-shadow: 0 1px 0 var(--win-border-light); 
             align-self: flex-start;
         }
 
@@ -54,12 +54,37 @@
             align-items: center;
             max-width: 1100px;
             margin: 0 auto;
-            padding: 4px 4% !important; 
+            padding: 6px 4% !important; 
         }
 
-        .logo {
-            width: 140px; 
-            display: block;
+        .retro-logo {
+            text-decoration: none;
+            color: #000;
+            font-size: 18px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            background-color: var(--win-bg); 
+            padding: 5px 10px; 
+            border-top: 2px solid var(--win-border-light);
+            border-left: 2px solid var(--win-border-light);
+            border-right: 2px solid var(--win-border-dark);
+            border-bottom: 2px solid var(--win-border-dark);
+        }
+
+        .retro-logo:active { 
+            border-top: 2px solid var(--win-border-dark);
+            border-left: 2px solid var(--win-border-dark);
+            border-right: 2px solid var(--win-border-light);
+            border-bottom: 2px solid var(--win-border-light);
+            padding: 6px 9px 4px 11px; 
+        }
+
+        .page-header h1 {
+            margin: 0 !important;
+            padding: 0 !important;
+            border-bottom: none !important;
         }
 
         .main-nav {
@@ -69,7 +94,7 @@
             list-style: none;
             margin: 0;
             padding: 0;
-            gap: 12px;
+            gap: 12px; 
         }
 
         .main-nav li {
@@ -86,34 +111,39 @@
             border-left: 2px solid var(--win-border-light);
             border-right: 2px solid var(--win-border-dark);
             border-bottom: 2px solid var(--win-border-dark);
-            border-radius: 0; 
-            padding: 8px 16px; 
-            font-size: 16px; 
+            padding: 4px 10px;
+            font-size: 15px; 
             white-space: nowrap;
-            font-family: 'Umdot', 'Mona', sans-serif;
             box-sizing: border-box;
         }
 
-        .main-nav a:hover, .main-nav a:active {
-            background: var(--win-bg);
-            color: #000;
+        .main-nav a:active {
             border-top: 2px solid var(--win-border-dark);
             border-left: 2px solid var(--win-border-dark);
             border-right: 2px solid var(--win-border-light);
             border-bottom: 2px solid var(--win-border-light);
+            padding: 5px 9px 3px 11px; 
         }
 
         @media (max-width: 480px) {
-            .page-header { padding: 4px 2% !important; }
-            .logo { width: 110px; }
-            .main-nav { gap: 6px; }
+            .page-header {
+                padding: 4px 2% !important;
+            }
+            .retro-logo {
+                font-size: 16px; 
+                padding: 3px 8px; 
+            }
+            .main-nav {
+                gap: 6px; 
+            }
             .main-nav a {
-                padding: 6px 12px; 
-                font-size: 14px; 
+                padding: 4px 6px; 
+                font-size: 13px; 
                 letter-spacing: -0.5px; 
             }
         }
 
+        /* --- 윈도우 창 --- */
         .window {
             width: 95%; 
             max-width: 600px;
@@ -130,7 +160,7 @@
         }
 
         .title-bar {
-            background: linear-gradient(90deg, var(--point-pink-dark), var(--point-pink));
+            background: #000080; 
             color: white;
             padding: 6px 10px;
             display: flex;
@@ -162,6 +192,8 @@
         .screen { display: none; text-align: center; }
         .screen.active { display: block; }
 
+        h1 { font-size: 22px; border-bottom: 2px groove var(--win-border-light); padding-bottom: 10px; margin-bottom: 20px; }
+
         .select-group { margin: 20px 0; background: #fff; border: 2px inset var(--win-border-dark); padding: 15px; }
         
         select { 
@@ -187,6 +219,65 @@
             padding: 13px 19px 11px 21px;
         }
 
+        /* --- 파일 전송 애니메이션 --- */
+        .transfer-dialog {
+            background: var(--win-bg);
+            border: 2px inset var(--win-border-dark);
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .transfer-animation {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            width: 140px;
+            margin: 0 auto 15px auto;
+        }
+
+        .folder-icon {
+            font-size: 36px;
+        }
+
+        .flying-file {
+            position: absolute;
+            font-size: 24px;
+            top: 5px;
+            left: 30px;
+            /* 애니메이션 속도를 1초에서 2.5초로 늘려 천천히 날아가게 수정 */
+            animation: flyFile 2.5s infinite linear;
+        }
+
+        @keyframes flyFile {
+            0% { left: 30px; top: 10px; opacity: 0; }
+            20% { opacity: 1; }
+            50% { top: -5px; } 
+            80% { opacity: 1; }
+            100% { left: 95px; top: 10px; opacity: 0; }
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 18px;
+            background: #fff;
+            border: 2px inset var(--win-border-dark);
+            margin-bottom: 5px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: #000080; 
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .progress-text {
+            font-size: 14px;
+            text-align: left;
+            margin-top: 5px;
+        }
+
+        /* --- 질문 및 버튼 --- */
         .q-card {
             background: #fff; border: 2px inset var(--win-border-dark); 
             padding: 20px; margin: 20px 0; min-height: 80px; 
@@ -212,9 +303,10 @@
             border-bottom: 2px solid var(--win-border-light);
         }
 
+        /* --- 결과 화면 --- */
         #capture-area {
             background-color: var(--win-bg);
-            padding: 10px;
+            padding: 15px;
             border: 2px inset var(--win-border-dark);
             margin-bottom: 20px;
         }
@@ -224,155 +316,81 @@
             white-space: nowrap; 
             text-align: center;
             letter-spacing: -0.5px; 
-            margin-top: 5px;
+            margin-top: 0; 
+            margin-bottom: 15px; 
+        }
+
+        .res-top-grid {
+            display: flex;
+            gap: 10px;
             margin-bottom: 20px;
         }
 
-        /* --- 뮤직 플레이어 UI 스타일 --- */
-        .player-card {
-            background: var(--win-bg);
-            border-top: 2px solid var(--win-border-light);
-            border-left: 2px solid var(--win-border-light);
-            border-right: 2px solid var(--win-border-black);
-            border-bottom: 2px solid var(--win-border-black);
-            margin-bottom: 20px;
-            padding: 2px;
-            text-align: left;
-        }
-        .player-title {
-            background: var(--win-blue);
-            color: white;
-            font-weight: bold;
-            padding: 2px 6px;
-            display: flex;
-            justify-content: space-between;
-            font-size: 14px;
-        }
-        .player-menu {
-            font-size: 13px;
-            padding: 4px 6px;
-            border-bottom: 1px solid var(--win-border-dark);
-            margin-bottom: 10px;
-            color: #000;
-        }
-        .player-body {
-            display: flex;
-            gap: 12px;
-            padding: 0 10px;
-        }
-        .player-img-wrapper {
-            width: 110px;
-            height: 110px;
-            border-top: 2px solid var(--win-border-dark);
-            border-left: 2px solid var(--win-border-dark);
-            border-right: 2px solid var(--win-border-light);
-            border-bottom: 2px solid var(--win-border-light);
+        .res-box {
+            flex: 1;
             background: #fff;
-            flex-shrink: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-        }
-        .player-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            /* 픽셀 아트가 선명하게 보이도록 렌더링 설정 */
-            image-rendering: pixelated; 
-        }
-
-        .player-info {
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            min-width: 0; 
-        }
-        .info-label {
-            font-size: 12px;
-            margin-bottom: 2px;
-            color: #000;
-        }
-        .info-input {
-            background: #fff;
-            border-top: 2px solid var(--win-border-dark);
-            border-left: 2px solid var(--win-border-dark);
-            border-right: 2px solid var(--win-border-light);
-            border-bottom: 2px solid var(--win-border-light);
-            padding: 4px 6px;
-            font-size: 14px;
-            margin-bottom: 8px;
-            font-weight: bold;
-            min-height: 20px;
-            display: flex;
-            align-items: center;
-        }
-        .traits-input {
-            flex-grow: 1;
-            align-items: flex-start;
-            font-weight: normal;
-            font-size: 13px;
-            line-height: 1.5;
-            padding: 6px;
-        }
-        .player-controls {
-            display: flex;
-            align-items: center;
+            border: 2px inset var(--win-border-dark);
             padding: 10px;
-            margin-top: 5px;
-        }
-        .ctrl-btn-group {
-            display: flex;
-            gap: 4px;
             text-align: center;
-        }
-        .ctrl-wrap {
             display: flex;
             flex-direction: column;
-            align-items: center;
-            gap: 2px;
-        }
-        .ctrl-btn {
-            background: var(--win-bg);
-            border-top: 2px solid var(--win-border-light);
-            border-left: 2px solid var(--win-border-light);
-            border-right: 2px solid var(--win-border-black);
-            border-bottom: 2px solid var(--win-border-black);
-            font-size: 10px;
-            padding: 4px 10px;
-            cursor: default;
-        }
-        .ctrl-label { font-size: 10px; color: #000; }
-        
-        .player-bar-container {
-            flex-grow: 1;
-            display: flex;
-            align-items: center;
-            margin-left: 15px;
-        }
-        .player-time { font-size: 11px; margin: 0 5px; }
-        .player-bar {
-            flex-grow: 1;
-            height: 14px;
-            border-top: 2px solid var(--win-border-dark);
-            border-left: 2px solid var(--win-border-dark);
-            border-right: 2px solid var(--win-border-light);
-            border-bottom: 2px solid var(--win-border-light);
-            background: #fff;
-            position: relative;
-        }
-        .player-bar-fill {
-            background: var(--win-blue);
-            width: 45%;
-            height: 100%;
+            justify-content: center;
         }
 
-        @media (max-width: 480px) {
-            .player-body { gap: 8px; padding: 0 6px; }
-            .player-img-wrapper { width: 90px; height: 90px; }
-            .info-input { font-size: 13px; padding: 3px 5px; margin-bottom: 6px; }
-            .traits-input { font-size: 12px; }
-            .ctrl-btn { padding: 3px 8px; }
+        .res-label { 
+            font-size: 13px; color: white; 
+            padding: 4px 5px; margin-bottom: 10px; display: inline-block; 
+            background-color: var(--point-pink);
+        }
+
+        .avatar-img {
+            width: 80px;
+            height: 80px;
+            margin: 5px auto 10px auto;
+            border: 2px inset var(--win-border-dark);
+            background-color: #f9f9f9;
+            image-rendering: pixelated;
+        }
+
+        .res-title { font-size: 26px; color: #d32f2f; margin-bottom: 5px; }
+        #res-test-name { color: #1976d2; }
+        .res-subtitle { font-size: 15px; color: #555; margin-top: 5px; }
+
+        .traits-layout {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .traits-col {
+            background: #fff;
+            border: 2px inset var(--win-border-dark);
+            padding: 15px;
+            text-align: center; 
+        }
+
+        .traits-title {
+            font-size: 18px;
+            color: #000;
+            border-bottom: 2px solid var(--win-border-dark);
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+            text-align: center;
+            background: var(--win-bg);
+            border: 1px solid var(--win-border-light);
+            border-right-color: var(--win-border-dark);
+            border-bottom-color: var(--win-border-dark);
+        }
+
+        .traits-col ul { list-style: none; padding: 0; margin: 0; }
+        
+        .traits-col li {
+            font-size: 15px;
+            color: #000000;
+            margin-bottom: 12px; 
+            line-height: 1.4; 
+            text-align: center; 
+            word-break: keep-all;
         }
 
         .action-btns {
@@ -381,13 +399,20 @@
             gap: 10px;
             margin-top: 10px;
         }
+        
+        .ad-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+            width: 100%;
+        }
     </style>
 </head>
 <body class="container">
 
     <div class="header-wrapper">
         <header class="page-header wrapper">
-            <h1><a href="index.html"><img class="logo" src="https://test-it.co.kr/img_logo.png" alt="test it"></a></h1>
+            <h1><a href="index.html" class="retro-logo">테스트잇</a></h1> 
             <nav>
                 <ul class="main-nav">
                     <li><a href="https://test-it.co.kr/test.html">성격</a></li>
@@ -409,10 +434,10 @@
         
         <div class="content">
             <div id="scr-start" class="screen active">
-                <img src="img_main370.png" alt="테스트잇 사주 x MBTI" style="width: 100%; display: block; border: 2px inset var(--win-border-dark); box-sizing: border-box; margin-bottom: 20px;" onerror="this.style.display='none';">
+                <img src="img_main370.png" alt="테스트잇 사주 x MBTI" style="width: 100%; display: block; border: 2px inset var(--win-border-dark); box-sizing: border-box; margin-bottom: 20px;">
                 
                 <div>
-                    <button class="win-btn" onclick="showScreen('scr-input')">분석 시작하기</button>
+                    <button class="win-btn" onclick="showScreen('scr-input')">테스트 시작하기</button>
                 </div>
             </div>
 
@@ -425,12 +450,23 @@
                     <select id="day"></select>
                 </div>
                 <div style="margin-top: 30px;">
-                    <button class="win-btn" onclick="beginAnalysis()">테스트 진행</button>
+                    <button class="win-btn" onclick="beginAnalysis()">테스트 진행하기</button>
                 </div>
             </div>
 
             <div id="scr-test" class="screen">
-                <h2 id="q-idx" style="font-size: 16px; background: #000; color: var(--point-pink); padding: 5px; display: inline-block;">진행 중...</h2>
+                <div class="transfer-dialog">
+                    <div class="transfer-animation">
+                        <span class="folder-icon">📁</span>
+                        <span class="flying-file">📄</span>
+                        <span class="folder-icon">📂</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-fill"></div>
+                    </div>
+                    <div class="progress-text" id="q-idx-text">운명 데이터 분석 중... 1 / 12</div>
+                </div>
+
                 <div class="q-card" id="q-txt"></div>
                 <div id="ans-list"></div>
             </div>
@@ -439,66 +475,31 @@
                 <div id="capture-area">
                     <h1>테스트잇 사주 MBTI 성격 테스트</h1>
                     
-                    <div class="player-card">
-                        <div class="player-title"><span>◎ Saju Player</span><span>_ □ ×</span></div>
-                        <div class="player-menu">Disc View Options Help</div>
-                        <div class="player-body">
-                            <div class="player-img-wrapper">
-                                <img id="saju-img" class="player-img" src="" alt="사주 픽셀 아트">
-                            </div>
-                            <div class="player-info">
-                                <div class="info-label">Ilju Name :</div>
-                                <div class="info-input" id="res-saju-mbti"></div>
-                                <div class="info-label">Type Match :</div>
-                                <div class="info-input" id="res-saju-name" style="color:#d32f2f;"></div>
-                                <div class="info-label">Traits :</div>
-                                <div class="info-input traits-input" id="res-saju-body"></div>
-                            </div>
+                    <div class="res-top-grid">
+                        <div class="res-box">
+                            <span class="res-label">사주 성향</span>
+                            <img id="saju-avatar" class="avatar-img" src="" alt="사주 아바타" crossorigin="anonymous">
+                            <span id="res-saju-name" class="res-title"></span>
+                            <span id="res-saju-mbti" class="res-subtitle"></span>
                         </div>
-                        <div class="player-controls">
-                            <div class="ctrl-btn-group">
-                                <div class="ctrl-wrap"><button class="ctrl-btn">◀◀</button><span class="ctrl-label">Prev</span></div>
-                                <div class="ctrl-wrap"><button class="ctrl-btn">■</button><span class="ctrl-label">Stop</span></div>
-                                <div class="ctrl-wrap"><button class="ctrl-btn">▶▶</button><span class="ctrl-label">Next</span></div>
-                            </div>
-                            <div class="player-bar-container">
-                                <span class="player-time">00:00</span>
-                                <div class="player-bar"><div class="player-bar-fill"></div></div>
-                                <span class="player-time">03:45</span>
-                            </div>
+                        <div class="res-box">
+                            <span class="res-label">테스트 성향</span>
+                            <img id="test-avatar" class="avatar-img" src="" alt="테스트 아바타" crossorigin="anonymous">
+                            <span id="res-test-name" class="res-title"></span>
+                            <span class="res-subtitle">현재 심리 상태</span>
                         </div>
                     </div>
 
-                    <div class="player-card">
-                        <div class="player-title"><span>◎ MBTI Player</span><span>_ □ ×</span></div>
-                        <div class="player-menu">Disc View Options Help</div>
-                        <div class="player-body">
-                            <div class="player-img-wrapper">
-                                <img id="test-img" class="player-img" src="" alt="MBTI 픽셀 아트">
-                            </div>
-                            <div class="player-info">
-                                <div class="info-label">MBTI Type :</div>
-                                <div class="info-input" id="res-test-name" style="color:#1976d2;"></div>
-                                <div class="info-label">Status :</div>
-                                <div class="info-input">현재 심리 상태</div>
-                                <div class="info-label">Traits :</div>
-                                <div class="info-input traits-input" id="res-test-body"></div>
-                            </div>
+                    <div class="traits-layout">
+                        <div class="traits-col">
+                            <div class="traits-title">사주 성향</div>
+                            <ul id="res-saju-body"></ul>
                         </div>
-                        <div class="player-controls">
-                            <div class="ctrl-btn-group">
-                                <div class="ctrl-wrap"><button class="ctrl-btn">◀◀</button><span class="ctrl-label">Prev</span></div>
-                                <div class="ctrl-wrap"><button class="ctrl-btn">■</button><span class="ctrl-label">Stop</span></div>
-                                <div class="ctrl-wrap"><button class="ctrl-btn">▶▶</button><span class="ctrl-label">Next</span></div>
-                            </div>
-                            <div class="player-bar-container">
-                                <span class="player-time">01:10</span>
-                                <div class="player-bar"><div class="player-bar-fill" style="width:70%;"></div></div>
-                                <span class="player-time">04:20</span>
-                            </div>
+                        <div class="traits-col">
+                            <div class="traits-title">테스트 성향</div>
+                            <ul id="res-test-body"></ul>
                         </div>
                     </div>
-
                 </div>
 
                 <div class="action-btns" id="action-btns">
@@ -509,6 +510,15 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="ad-container" id="ad-container">
+        <article class="coupang_ad mt-3">
+            <script src="https://ads-partners.coupang.com/g.js"></script>
+            <script>
+                new PartnersCoupang.G({"id":798186,"template":"carousel","trackingCode":"AF4391881","width":"350","height":"140","tsource":""});
+            </script>
+        </article>
     </div>
 
 <script>
@@ -562,19 +572,20 @@
         ENTJ: ["결단력과 추진력이 매우 강함", "장기적인 비전과 목표를 가지고 있음", "어디서든 리더 역할을 자연스럽게 맡음", "효율성과 성과 도출을 가장 중시함", "어려운 도전과 성취를 즐김", "상황에 대한 통제력이 강하고 단호함"]
     };
 
+    // 질문 순서를 무작위처럼 보이게 수동으로 골고루 섞어두었습니다.
     const questions = [
         { q: "모임이 생겼을 때 나의 모습은?", type: "EI", a: "사람들과 어울리며 분위기를 주도한다", b: "조용히 경청하며 상황을 지켜본다" },
-        { q: "휴일이 생기면 주로 하는 일은?", type: "EI", a: "밖으로 나가서 지인들을 만난다", b: "집에서 혼자만의 시간을 보낸다" },
+        { q: "물건을 살 때<br>더 집중하는 부분은?", type: "SN", a: "기능과 실용성", b: "디자인과 느낌" },
+        { q: "고민 상담을 할 때 바라는 것은?", type: "TF", a: "명확한 해결책과 현실적인 조언", b: "내 마음에 대한 공감과 위로" },
+        { q: "책상이나 방 정리 상태는?", type: "JP", a: "물건마다 제자리가 있고<br>항상 정돈된 상태", b: "여기저기 흩어져 있지만<br>나름의 질서가 있음" },
+        { q: "스트레스가 쌓였을 때 나는?", type: "EI", a: "누군가에게 털어놓기", b: "혼자 조용히 생각하기" },
+        { q: "새로운 기술을 배울 때 나는?", type: "SN", a: "매뉴얼을 정독하며 익힌다", b: "매뉴얼보단 직접 해봐야 한다" },
+        { q: "선물을 줄 때<br>가장 신경 쓰는 부분은?", type: "TF", a: "상대방에게 진짜 필요한가?", b: "상대방이 좋아하고 감동할까?" },
+        { q: "해야 할 일이 생겼을 때 스타일은?", type: "JP", a: "리스트를 만들고<br>순서대로 미리미리 끝냄", b: "미룰 수 있을 때까지 미루다<br>벼락치기로 끝냄" },
         { q: "모르는 사람과 대화할 때 나는?", type: "EI", a: "어색함 없이 먼저 말을 건다", b: "상대방이 먼저 다가오길 기다린다" },
-        { q: "이야기를 들을 때 더 집중하는 부분은?", type: "SN", a: "구체적인 사실과 현재 일어난 상황", b: "이면의 숨은 의미와 미래의 가능성" },
-        { q: "새로운 기술을 배울 때 나는?", type: "SN", a: "기본 매뉴얼을 정독하며 익힌다", b: "직관적으로 만져보며 원리를 파악한다" },
-        { q: "꿈이나 상상을 할 때 주로?", type: "SN", a: "현실에서 일어날 법한 일들을 생각한다", b: "현실과는 거리가 먼 판타지를 꿈꾼다" },
-        { q: "친구가 힘든 고민을 이야기하면?", type: "TF", a: "상황을 분석해서 해결책을 제시해준다", b: "친구의 마음을 먼저 공감하고 위로한다" },
-        { q: "일을 할 때 더 중요한 가치는?", type: "TF", a: "논리적인 결과와 업무의 효율성", b: "동료와의 관계와 즐거운 분위기" },
-        { q: "비판을 들었을 때 나의 속마음은?", type: "TF", a: "내용이 맞다면 수긍하고 개선한다", b: "말투나 감정이 상해 한참 생각한다" },
-        { q: "여행을 떠나기 전 나의 준비는?", type: "JP", a: "시간별로 동선과 일정을 미리 짠다", b: "큰 틀만 정하고 끌리는 대로 간다" },
-        { q: "과제 마감 시간이 다가오면?", type: "JP", a: "미리 끝내두고 마음 편히 쉰다", b: "마지막 순간에 몰입해서 해치운다" },
-        { q: "주변 정리정돈 상태는 어떤가요?", type: "JP", a: "물건 위치가 정해져 있고 깔끔하다", b: "조금 어질러져 있어도 찾는 건 다 찾는다" }
+        { q: "내일 지구가 멸망한다면 뭐 할래?<br>라는 질문을 들었을 때 나는?", type: "SN", a: "그럴 일이 없잖아<br>대화 종료", b: "누구랑 있을지<br>마지막 식사는 뭐 먹을지 생각함" },
+        { q: "사과를 할 때 가장 중요한 요소는?", type: "TF", a: "무엇을, 왜 잘못했는지<br>논리적으로 설명", b: "미안한 마음을 진심으로 전달하고<br>기분 풀어주기" },
+        { q: "인생은 계획대로 되지 않는다<br>는 말에 대한 내 생각은?", type: "JP", a: "그러니까 더 철저히<br>계획을 세워야 한다고 생각함", b: "원래 그런 거라며<br>흐르는 대로 사는 게 편함" }
     ];
 
     let currentIdx = 0, score = { EI: 0, SN: 0, TF: 0, JP: 0 }, userIlju = "", displayIlju = "";
@@ -582,6 +593,8 @@
     function showScreen(id) {
         document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
         document.getElementById(id).classList.add('active');
+        
+        document.getElementById('ad-container').style.display = 'flex';
     }
 
     function beginAnalysis() {
@@ -605,15 +618,19 @@
 
     function renderQuestion() {
         const q = questions[currentIdx];
-        document.getElementById('q-idx').innerText = `PROCESS ${currentIdx + 1} / 12`;
-        document.getElementById('q-txt').innerText = q.q;
+        
+        const pct = Math.round(((currentIdx + 1) / questions.length) * 100);
+        document.getElementById('progress-fill').style.width = pct + '%';
+        document.getElementById('q-idx-text').innerText = `성향 데이터 분석 중... ${currentIdx + 1} / 12`;
+
+        document.getElementById('q-txt').innerHTML = q.q;
         const area = document.getElementById('ans-list');
         area.innerHTML = "";
 
         [q.a, q.b].forEach((txt, i) => {
             const btn = document.createElement('button');
             btn.className = "ans-btn";
-            btn.innerText = txt;
+            btn.innerHTML = txt;
             btn.onclick = () => {
                 if(i === 0) score[q.type]++;
                 currentIdx++;
@@ -635,9 +652,8 @@
 
         const sajuMbtiResult = iljuToMBTI[userIlju] || "분석 불가";
 
-        // 오픈소스 API(DiceBear)를 이용해 글자에 맞는 랜덤 픽셀 아트를 자동 생성하여 표시 (배경색 추가로 더 예쁘게)
-        document.getElementById('saju-img').src = `https://api.dicebear.com/7.x/pixel-art/svg?seed=${userIlju}&backgroundColor=ffd1dc`;
-        document.getElementById('test-img').src = `https://api.dicebear.com/7.x/pixel-art/svg?seed=${testMbtiResult}&backgroundColor=c71585`;
+        document.getElementById('saju-avatar').src = `https://api.dicebear.com/7.x/pixel-art/png?seed=Saju_${userIlju}`;
+        document.getElementById('test-avatar').src = `https://api.dicebear.com/7.x/pixel-art/png?seed=Test_${testMbtiResult}`;
 
         document.getElementById('res-saju-name').innerText = sajuMbtiResult;
         document.getElementById('res-saju-mbti').innerText = displayIlju + "일주";
@@ -645,26 +661,34 @@
         
         let sajuTraitsHtml = "";
         if(mbtiTraits[sajuMbtiResult]) {
-            sajuTraitsHtml = mbtiTraits[sajuMbtiResult].join("<br><br>");
+            mbtiTraits[sajuMbtiResult].forEach(trait => {
+                sajuTraitsHtml += `<li>${trait}</li>`;
+            });
         } else {
-            sajuTraitsHtml = "해당 일주의 특성 데이터를 불러올 수 없습니다.";
+            sajuTraitsHtml = "<li>해당 일주의 특성 데이터를 불러올 수 없습니다.</li>";
         }
         document.getElementById('res-saju-body').innerHTML = sajuTraitsHtml;
 
-        let testTraitsHtml = mbtiTraits[testMbtiResult].join("<br><br>");
+        let testTraitsHtml = "";
+        mbtiTraits[testMbtiResult].forEach(trait => {
+            testTraitsHtml += `<li>${trait}</li>`;
+        });
         document.getElementById('res-test-body').innerHTML = testTraitsHtml;
     }
 
     function saveAsImage() {
         const btns = document.getElementById('action-btns');
+        const adContainer = document.getElementById('ad-container');
         btns.style.display = 'none';
+        adContainer.style.display = 'none'; 
 
         html2canvas(document.getElementById('capture-window'), {
             scale: 2, 
             backgroundColor: null,
-            useCORS: true // 외부 API 이미지(픽셀 아트) 정상 캡처를 위한 옵션
+            useCORS: true 
         }).then(canvas => {
             btns.style.display = 'flex';
+            adContainer.style.display = 'flex'; 
             const imgData = canvas.toDataURL("image/png");
             const link = document.createElement('a');
             link.download = '테스트잇_사주MBTI.png';

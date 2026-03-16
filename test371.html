@@ -22,22 +22,28 @@
     font-display: swap;
   }
 
+  @font-face {
+    font-family: 'Rimgul';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2601-4@1.1/Limgul12.woff2') format('woff2');
+    font-weight: normal;
+    font-display: swap;
+}
+
   :root {
     --line: rgba(112, 131, 167, 0.28);
     --bg: #f7f1c8;
     --panel: #f7f9fd;
     --text: #23283a;
-    --text-soft: #4b5473;
-    --text-sub: #5d6787;
+    --text-soft: #49516d;
+    --text-sub: #5f6885;
   }
 
   * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-rendering: geometricPrecision;
+    -webkit-font-smoothing: none;
+    -moz-osx-font-smoothing: auto;
   }
 
   body,
@@ -52,7 +58,7 @@
   div,
   a,
   li {
-    font-family: "Galmuri14", sans-serif;
+    font-family: "Rimgul", sans-serif;
   }
 
   .emoji-font {
@@ -213,32 +219,11 @@
     background: linear-gradient(180deg, #fffdf5 0%, #fff8db 100%);
     border: 2px solid #7083a7;
     border-radius: 22px;
-    padding: 18px 18px 16px;
+    padding: 28px 20px 24px;
     box-shadow:
       0 12px 28px rgba(73, 92, 130, 0.10),
       inset 0 1px 0 rgba(255,255,255,0.85);
     overflow: hidden;
-  }
-
-  .folder-panel::before {
-    content: "";
-    position: absolute;
-    top: 16px;
-    right: 16px;
-    width: 74px;
-    height: 54px;
-    border-radius: 12px;
-    background: rgba(255,255,255,0.28);
-    border: 1px solid rgba(112,131,167,0.16);
-  }
-
-  .folder-panel::after {
-    content: "";
-    position: absolute;
-    inset: auto 0 0 0;
-    height: 18px;
-    background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(112,131,167,0.06) 100%);
-    pointer-events: none;
   }
 
   .folder-inner {
@@ -281,45 +266,20 @@
 
   .main-title {
     font-size: 34px;
-    line-height: 1.28;
+    line-height: 1.32;
     color: var(--text);
-    margin-bottom: 10px;
+    margin-bottom: 14px;
     word-break: keep-all;
+    text-align: center;
   }
 
   .main-desc {
-    font-size: 16px;
+    font-size: 17px;
     line-height: 1.7;
     color: var(--text-sub);
-    margin-bottom: 18px;
+    margin-bottom: 22px;
     word-break: keep-all;
-  }
-
-  .folder-preview {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin-bottom: 16px;
-  }
-
-  .preview-note {
-    min-height: 74px;
-    border-radius: 16px;
-    padding: 12px 10px;
-    text-align: left;
-    border: 1.5px solid #d8e0ef;
-    background: rgba(255,255,255,0.9);
-    color: var(--text-soft);
-    font-size: 13px;
-    line-height: 1.55;
-    box-shadow: 0 4px 10px rgba(80, 98, 135, 0.05);
-  }
-
-  .preview-note strong {
-    display: block;
-    margin-bottom: 6px;
-    color: var(--text);
-    font-size: 13px;
+    text-align: center;
   }
 
   .pattern-btn {
@@ -703,6 +663,24 @@
   }
 
   @media (max-width: 390px) {
+    .page-header {
+      padding-top: 12px !important;
+      padding-bottom: 10px !important;
+    }
+
+    .logo {
+      width: 76px;
+    }
+
+    .main-nav {
+      gap: 6px;
+    }
+
+    .main-nav a {
+      padding: 7px 10px;
+      font-size: 11px;
+    }
+
     .content-wrapper {
       padding: 8px 10px 10px;
     }
@@ -720,7 +698,7 @@
     }
 
     .folder-panel {
-      padding: 16px 14px 14px;
+      padding: 22px 14px 18px;
     }
 
     .question-panel {
@@ -728,21 +706,16 @@
     }
 
     .main-title {
-      font-size: 30px;
+      font-size: 28px;
     }
 
     .main-desc {
       font-size: 15px;
+      margin-bottom: 18px;
     }
 
-    .folder-preview {
-      gap: 8px;
-    }
-
-    .preview-note {
-      min-height: 66px;
-      font-size: 12px;
-      padding: 10px 9px;
+    .folder-badges {
+      margin-bottom: 12px;
     }
 
     .capture-area {
@@ -808,28 +781,11 @@
             <div class="folder-tab">MY FOLDER</div>
             <div class="folder-panel">
               <div class="folder-inner">
-                <div class="folder-badges">
-                  <div class="folder-badge soft-pink">성격 기록</div>
-                  <div class="folder-badge soft-blue">mind map</div>
-                </div>
-
-                <h1 class="main-title">내 머릿속 다이어리</h1>
+                <h1 class="main-title">테스트잇 마인드맵 성격 테스트</h1>
                 <p class="main-desc">
-                  내 머릿속엔 어떤 생각들이 퍼져 있을까<br>
-                  질문에 답하고 나만의 마인드맵 결과를 확인해봐
+                  질문에 답하고<br>
+                  나만의 마인드맵 결과를 확인해봐
                 </p>
-
-                <div class="folder-preview">
-                  <div class="preview-note">
-                    <strong>생각 흐름</strong>
-                    평소 반응과 습관을 가볍게 체크
-                  </div>
-                  <div class="preview-note">
-                    <strong>결과 카드</strong>
-                    한 장 이미지처럼 깔끔하게 저장 가능
-                  </div>
-                </div>
-
                 <button class="pattern-btn" onclick="nextScreen('screen-name')">테스트 시작하기</button>
               </div>
             </div>

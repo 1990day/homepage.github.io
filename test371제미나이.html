@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>마인드맵 성격 테스트 - 인스타 커스텀 컬러</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<style>
+  html, body, div, h1, h2, p, button, input, span {
+    margin: 0; padding: 0; box-sizing: border-box;
+    font-family: 'Pretendard', -apple-system, sans-serif;
+  }
+  
+  body {
+    background-color: #f8f9fa;
+    color: #333333;
+    display: flex; justify-content: center;
+    min-height: 100vh;
+  }
+
+  #app {
+    width: 100%; max-width: 500px; 
+    background-color: #ffffff;
+    min-height: 100vh;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+    position: relative;
+    display: flex; flex-direction: column;
+    overflow-x: hidden;
+    transition: background-color 0.5s ease; /* 배경색 변경 애니메이션 */
+  }
+
+  .content-wrapper {
+    padding: 30px 20px;
+    flex-grow: 1;
+    display: flex; flex-direction: column;
+  }
+
+  .screen {
+    display: none; 
+    animation: fadeIn 0.4s ease-out; 
+    text-align: center;
+    width: 100%;
+  }
+  
+  .screen.active { display: block; }
+  .screen.active.flex-center { display: flex; flex-direction: column; justify-content: center; flex-grow: 1; }
+  .screen.block-view { padding-top: 10px; padding-bottom: 30px; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  h1 { font-size: 28px; margin-bottom: 12px; color: #ff5f8e; font-weight: 900; }
+  p {
+    color: #555555; margin-bottom: 25px; line-height: 1.5; font-size: 14px; font-weight: bold;
+    background: rgba(255, 255, 255, 0.5); padding: 8px; border-radius: 12px;
+  }
+
+  .pattern-btn {
+    background: #ffec8a; color: #ff5f8e; border: 3px solid #ff5f8e;
+    padding: 16px 25px; font-size: 16px; border-radius: 20px;
+    cursor: pointer; width: 100%; margin-bottom: 12px;
+    font-weight: 900; transition: transform 0.1s;
+    box-shadow: 3px 3px 0px #ff5f8e;
+  }
+  .pattern-btn:active { transform: translate(3px, 3px); box-shadow: 0px 0px 0px #ff5f8e; }
+
+  .answer-btn {
+    background: #ffffff; color: #333; border: 3px solid #8ac4ff; border-radius: 18px;
+    padding: 18px; text-align: left; cursor: pointer;
+    box-shadow: 3px 3px 0px #8ac4ff;
+    font-weight: 700; width: 100%; margin-bottom: 12px;
+  }
+
+  input[type="text"] {
+    width: 100%; padding: 16px; border-radius: 18px;
+    border: 3px solid #8ac4ff; background: #fff;
+    color: #333; font-size: 15px; margin-bottom: 20px; text-align: center;
+    font-weight: bold;
+  }
+
+  .progress-bar { width: 100%; height: 12px; background: #ffffff; border: 3px solid #8ac4ff; border-radius: 8px; margin-bottom: 30px; overflow: hidden; }
+  .progress { height: 100%; background: #8ac4ff; width: 0%; transition: width 0.3s ease; }
+
+  /* 결과 화면 레이아웃 */
+  .result-wrapper { display: flex; flex-direction: column; align-items: center; }
+  .capture-area {
+    width: 100%; display: flex; flex-direction: column; align-items: center;
+    padding: 15px 10px; border-radius: 15px;
+    background-color: transparent; /* 부모 배경색을 따름 */
+  }
+
+  .node-center {
+    width: 160px; padding: 10px; border: 3px solid #ff5f8e; background: #ffffff;
+    display: flex; justify-content: center; align-items: center;
+    text-align: center; box-shadow: 3px 3px 0px #ff5f8e; border-radius: 25px;
+    margin-bottom: 20px;
+  }
+  .center-name { font-size: 20px; font-weight: 900; color: #ff5f8e; }
+
+  .tree-container { position: relative; width: 100%; }
+  .tree-container::before {
+    content: ''; position: absolute; top: -10px; bottom: 10px; left: 50%;
+    transform: translateX(-50%); width: 2px; border-left: 2px dashed #ff9eb5; z-index: 0;
+  }
+
+  .cards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 10px; position: relative; z-index: 10; }
+  .sticker-card { background: #ffffff; border-radius: 15px; padding: 12px 10px; text-align: left; position: relative; }
+  .sticker-card::before { content: ''; position: absolute; top: 20px; width: 15px; height: 2px; border-top: 2px dashed #ff9eb5; z-index: -1; }
+  .sticker-card:nth-child(odd):not(.full-width)::before { right: -10px; }
+  .sticker-card:nth-child(even):not(.full-width)::before { left: -10px; }
+  .sticker-card.full-width { grid-column: 1 / -1; margin-top: 5px; }
+  .sticker-card.full-width::before { display: none; }
+
+  .sticker-card.pink { border: 2px solid #ff9eb5; box-shadow: 2px 2px 0px #ff9eb5; }
+  .sticker-card.blue { border: 2px solid #8ac4ff; box-shadow: 2px 2px 0px #8ac4ff; }
+  .sticker-card.green { border: 2px solid #a3e098; box-shadow: 2px 2px 0px #a3e098; }
+  .sticker-card.yellow { border: 2px solid #ffdf73; box-shadow: 2px 2px 0px #ffdf73; }
+
+  .detail-header { display: flex; align-items: center; margin-bottom: 6px; font-size: 14px; font-weight: 900; border-bottom: 1px dashed #eeeeee; padding-bottom: 6px; color: #333; }
+  .detail-icon { font-size: 18px; margin-right: 5px; }
+  .detail-text { font-size: 13px; color: #555; line-height: 1.45; word-break: keep-all; font-weight: 600; }
+
+  .result-action-area { width: 100%; margin-top: 30px; display: flex; flex-direction: column; gap: 10px; }
+  .action-btn { border: none; padding: 15px 20px; font-size: 15px; border-radius: 15px; cursor: pointer; font-weight: 900; transition: transform 0.1s; }
+  .action-btn.save { background: #8ac4ff; color: #ffffff; border: 3px solid #ff5f8e; box-shadow: 3px 3px 0px #ff5f8e; width: 100%; }
+  .action-btn-row { display: flex; gap: 8px; }
+  .action-btn-row .action-btn { flex: 1; padding: 12px 5px; font-size: 12px; }
+  .action-btn.restart { background: #ffec8a; color: #ff5f8e; border: 3px solid #ff5f8e; box-shadow: 3px 3px 0px #ff5f8e; }
+  .action-btn.others { background: #a3e098; color: #ffffff; border: 3px solid #1f2c61; box-shadow: 3px 3px 0px #1f2c61; }
+  .action-btn.share { background: #ffffff; color: #8ac4ff; border: 3px solid #8ac4ff; box-shadow: 3px 3px 0px #8ac4ff; }
+</style>
+</head>
+<body>
+
+<div id="app">
+  <div class="content-wrapper">
+    <div id="screen-main" class="screen flex-center active">
+      <div style="font-size: 50px; margin-bottom: 15px;">🎀</div>
+      <h1>내 머릿속 다이어리</h1>
+      <p>내 머릿속엔 어떤 생각들이 둥둥 떠다닐까?<br>나만의 속마음 다이어리를 훔쳐보자!</p>
+      <button class="pattern-btn" onclick="nextScreen('screen-name')">테스트 시작하기 ✏️</button>
+    </div>
+
+    <div id="screen-name" class="screen flex-center">
+      <h1>이름 입력</h1>
+      <p>결과지에 들어갈<br>너의 이름이나 닉네임을 적어줘!</p>
+      <input type="text" id="userName" placeholder="예: 다혜">
+      <button class="pattern-btn" onclick="startTest()">다 적었어! 🌈</button>
+    </div>
+
+    <div id="screen-question" class="screen flex-center">
+      <div class="progress-bar">
+        <div class="progress" id="progress"></div>
+      </div>
+      <h2 id="q-title" style="margin-bottom: 30px; line-height: 1.4; font-size: 18px; color: #ff5f8e; font-weight: 900;">질문</h2>
+      <button class="answer-btn" id="btn-A" onclick="selectAnswer('A')">답변 A</button>
+      <button class="answer-btn" id="btn-B" onclick="selectAnswer('B')">답변 B</button>
+    </div>
+
+    <div id="screen-result" class="screen block-view">
+      <div class="result-wrapper">
+        <div class="capture-area" id="capture-area">
+          <div class="result-header">
+            <div class="node-center">
+              <div class="center-name" id="mm-center-name">사용자</div>
+            </div>
+          </div>
+          <div class="tree-container">
+            <div class="cards-grid" id="cards-container"></div>
+          </div>
+        </div>
+        <div class="result-action-area">
+          <button class="action-btn save" onclick="saveResultAsImage()">💾 결과 이미지 저장하기</button>
+          <div class="action-btn-row">
+            <button class="action-btn restart" onclick="location.reload()">💫 다시 하기</button>
+            <button class="action-btn others" onclick="alert('다른 테스트 준비 중!')">👀 다른 테스트</button>
+            <button class="action-btn share" onclick="shareTest()">🔗 공유하기</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  let currentQ = 0;
+  let userName = "";
+  const scores = { E:0, I:0, S:0, N:0, T:0, F:0, J:0, P:0 };
+
+  const questions = [
+    { q: "주말에 약속이 취소되었다. 내 머릿속은?", a: {text: "아쉽다.. 다른 친구라도 만날까?", type: "E"}, b: {text: "오예! 오히려 좋아. 집에서 쉬어야지.", type: "I"} },
+    { q: "처음 가는 모임에 참석했을 때 나는?", a: {text: "먼저 다가가서 말을 건넨다.", type: "E"}, b: {text: "누가 말을 걸어줄 때까지 기다린다.", type: "I"} },
+    { q: "스트레스를 받을 때 푸는 방식은?", a: {text: "사람들과 수다 떨면서 푼다.", type: "E"}, b: {text: "혼자만의 시간을 가지며 푼다.", type: "I"} },
+    { q: "사과를 보면 드는 생각은?", a: {text: "빨갛다, 맛있다, 과일.", type: "S"}, b: {text: "백설공주, 뉴턴, 아이폰.", type: "N"} },
+    { q: "요리할 때 나는?", a: {text: "레시피에 적힌 정량대로 계량한다.", type: "S"}, b: {text: "대충 눈대중으로 감칠맛을 찾는다.", type: "N"} },
+    { q: "노래를 들을 때 더 집중하는 것은?", a: {text: "멜로디와 리듬이 좋으면 장땡.", type: "S"}, b: {text: "가사의 의미와 감성에 몰입한다.", type: "N"} },
+    { q: "친구가 '나 우울해서 화분 샀어'라고 한다면?", a: {text: "무슨 화분 샀어? 어디서 샀어?", type: "T"}, b: {text: "왜 우울해? 무슨 일 있었어?", type: "F"} },
+    { q: "고민을 털어놓는 친구에게 해주는 말은?", a: {text: "현실적인 해결책을 제시해 준다.", type: "T"}, b: {text: "무조건 편을 들어주고 공감해 준다.", type: "F"} },
+    { q: "일할 때 더 중요하게 생각하는 것은?", a: {text: "효율성과 정확한 결과.", type: "T"}, b: {text: "팀원들과의 조화와 분위기.", type: "F"} },
+    { q: "여행을 가기 전 나의 준비 상태는?", a: {text: "일정표, 맛집 리스트 완벽 세팅.", type: "J"}, b: {text: "가서 끌리는 대로 하면 되지 뭐.", type: "P"} },
+    { q: "내 방 책상의 상태는?", a: {text: "항상 물건이 제자리에 정리되어 있다.", type: "J"}, b: {text: "나름의 규칙은 있지만 남이 보면 지저분하다.", type: "P"} },
+    { q: "갑자기 일정이 변경되었다면?", a: {text: "스트레스받고 계획을 다시 짜야 한다.", type: "J"}, b: {text: "그럴 수도 있지 하고 유연하게 넘긴다.", type: "P"} }
+  ];
+
+  /* 16개 MBTI별 파스텔 배경색 매칭 */
+  const pastelColors = {
+    "ENFJ": "#FFF0F0", "ENFP": "#FFF9E5", "ENTJ": "#F0F4FF", "ENTP": "#F5F0FF",
+    "ESFJ": "#FFF5F8", "ESFP": "#FFFBE6", "ESTJ": "#EBF5FF", "ESTP": "#FDF2E9",
+    "INFJ": "#F3F0FF", "INFP": "#F0FFF0", "INTJ": "#F0F0F7", "INTP": "#EFFFFF",
+    "ISFJ": "#FFF2F5", "ISFP": "#F5FFF5", "ISTJ": "#F2F2F2", "ISTP": "#F0F7F7"
+  };
+
+  const resultData = {
+    "ENFJ": { branches: [ { main: "🛡️ 내 사람은 챙김", sub: "내 친구가 기뻐하면 나도 행복함. 고민도 내 일처럼 화내줌." }, { main: "🥺 상처 받았을까?", sub: "아까 내 말투가 좀 별로였나? 미움받는 거 질색이라 계속 고민함." }, { main: "🚀 진짜 갓생 산다", sub: "더 나은 내가 되기 위해 끊임없이 노력함. 계획은 항상 완벽함." }, { main: "📝 엄격한 기준", sub: "남들에겐 관대하지만 나한텐 기준 개높음. 못 끝내면 자책함." }, { main: "🙈 은근 관종끼", sub: "관심 줬으면 좋겠어(대놓고는 말고). 내 리액션에 반응해주면 좋음." }, { main: "😩 오지랖 후회", sub: "답답해서 내가 리드해놓고 나도 힘든데 괜히 했나 0.5초 후회." }, { main: "🤪 지루함 극혐", sub: "새로운 거 발견하면 눈 돌아감. 약속 꽉 차야 편안함(몸은 힘듦)." }, { main: "🍬 칭찬에 사르르", sub: "기분 안 좋다가도 멋지다, 고마워 한 마디면 싹 다 풀려버림." }, { main: "💖 모두의 행복", sub: "싸움 없는 평화로운 세상이 좋아! 모두가 웃으며 지내는 게 나의 진심." } ] },
+    "ENFP": { branches: [ { main: "🤩 새로운 거 최고", sub: "와 저거 재밌겠다! 호기심에 꽂히면 일단 시작하고 보는 스타일." }, { main: "🥺 나 미워하나?", sub: "겉으론 마냥 해맑아 보여도 남들 시선 은근히 엄청 신경 씀." }, { main: "🎨 아이디어 뱅크", sub: "머릿속에 기발한 생각들이 둥둥 떠다님(실행력은 글쎄)." }, { main: "🏃‍♀️ 벼락치기 장인", sub: "계획은 늘 거창하지만 결국 발등에 불 떨어져야 텐션 붙음." }, { main: "🤐 말실수 이불킥", sub: "아까 그 말 하지 말걸. 새벽에 혼자 곱씹으면서 발차기함." }, { main: "😭 진지한 내면", sub: "맨날 웃는 줄 알지만 혼자 있을 땐 우울한 감정에도 잘 빠짐." }, { main: "🥳 사람이 충전기", sub: "약속 없으면 시무룩. 내 텐션에 맞장구쳐주는 친구 필수." }, { main: "🎁 서프라이즈", sub: "작은 선물이나 깜짝 이벤트 받으면 진짜 감동해서 평생 기억함." }, { main: "✨ 매일이 축제", sub: "억압받는 건 싫어! 내가 즐겁고 세상이 반짝이는 게 제일 소중해." } ] },
+    "ENTJ": { branches: [ { main: "🤝 인맥도 능력", sub: "나에게 도움 되고 배울 점 있는 사람들을 곁에 두고 싶어 함." }, { main: "🤔 쟤 왜 저래?", sub: "일 비효율적으로 답답하게 하는 사람 보면 화딱지 나서 미칠 지경." }, { main: "👑 1등 아니면 안 돼", sub: "기왕 시작한 거면 최고가 되어야 직성이 풀리는 승부사." }, { main: "⏱️ 시간은 금이다", sub: "무의미하게 시간 낭비하는 걸 세상에서 제일 혐오함." }, { main: "🧸 은근 헐렁함", sub: "일할 땐 완벽주의잔데 일상에선 의외로 허당끼가 넘쳐남." }, { main: "🤬 감정소모 극혐", sub: "징징대는 거 안 받아줌. 공감보다 빠르고 확실한 해결책이 우선." }, { main: "📈 갓생 그 자체", sub: "쉬는 날 누워만 있으면 불안함. 뭐라도 해야 마음이 편안함." }, { main: "🎯 목표 달성 쾌감", sub: "세워둔 빡센 계획을 하나씩 지워갈 때 엄청난 짜릿함을 느낌." }, { main: "🏆 당당한 내 미래", sub: "어제보다 발전한 나를 발견할 때, 비로소 살아있음을 느껴." } ] },
+    "ENTP": { branches: [ { main: "🗣️ 토론이 스포츠", sub: "내 의견이랑 다르면 일단 반박하고 봄. 싸우는 게 아니라 재밌어서." }, { main: "🙄 지루한 건 고문", sub: "반복되는 뻔한 일상은 하품 나옴. 늘 새롭고 자극적인 게 필요." }, { main: "💡 기상천외 상상", sub: "남들이 절대 생각 못 하는 창의적인 아이디어가 늘 넘쳐남." }, { main: "🤷‍♂️ 알빠임?", sub: "남들이 속으로 날 어떻게 생각하든 마이웨이. 타격 1도 없음." }, { main: "🥺 은근 개복치", sub: "팩폭은 잘 날리지만 막상 내가 공격받으면 은근히 상처받음." }, { main: "🥱 용두사미", sub: "시작은 거창하나 마무리가 안 됨. 뒷정리하는 게 세상에서 제일 귀찮음." }, { main: "🌪️ 즉흥의 끝판왕", sub: "무계획이 곧 계획. 갑자기 꽂히면 당장 실행으로 옮겨버림." }, { main: "🧠 내 지능에 취함", sub: "나 좀 천재인 듯? 내 논리가 맞아떨어질 때 희열을 느낌." }, { main: "🗽 얽매이지 않는 삶", sub: "내 세상을 틀에 가두지 마! 자유롭게 생각하고 말하는 게 나의 힘." } ] },
+    "ESFJ": { branches: [ { main: "💖 우리 모두 친구", sub: "다 같이 둥글게 친하게 지내는 게 내 인생의 가장 큰 낙." }, { main: "🥺 서운함 100배", sub: "내가 세심하게 챙겨준 만큼 상대방이 반응 없으면 속상함." }, { main: "🗓️ 인간 스케줄러", sub: "친구들 생일, 모임 일정이 머릿속에 완벽히 정리되어 있음." }, { main: "🤐 선 넘는 거 싫어", sub: "남 얘기는 재밌지만 관계가 불편해지는 선은 절대 안 넘음." }, { main: "🎭 리액션 자판기", sub: "속으론 딴생각해도 겉으로는 진심인 척 폭풍 공감해 주는 중." }, { main: "🤦‍♀️ 거절을 못 해", sub: "단호하게 싫은 소리 못해서 남의 부탁 다 들어주다 힘들어함." }, { main: "🗣️ 수다 충전기", sub: "사람들이랑 떠들어야 에너지가 참. 혼자 있으면 심심해 죽음." }, { main: "🥰 고마워 한 마디", sub: "내 호의를 알아주고 진심으로 고마워하면 피로가 싹 풀림." }, { main: "🕊️ 함께하는 따뜻함", sub: "너와 나, 우리 모두가 소외되지 않고 사랑받는 순간이 가장 행복해." } ] },
+    "ESFP": { branches: [ { main: "💃 놀자판 벌려", sub: "오늘 하루 텐션 높게 재밌게 노는 게 인생에서 제일 중요해!" }, { main: "🙄 심각한 건 패스", sub: "진지한 분위기나 머리 아픈 고민은 일단 피하고 즐겁고 싶음." }, { main: "💸 욜로 라이프", sub: "돈은 쓰려고 버는 것. 사고 싶은 게 있으면 일단 지르고 봄." }, { main: "🏃‍♀️ 인간 불도저", sub: "복잡하게 생각하기 전에 이미 몸이 먼저 움직여서 저지름." }, { main: "🥺 은근 유리멘탈", sub: "쿨해 보여도 안 좋은 소리 들으면 혼자 밤새 엄청 고민함." }, { main: "🗓️ 계획이 왜 필요해", sub: "미리 정해두는 거 답답함. 즉흥적으로 움직이는 게 진짜 제맛." }, { main: "🌟 무대 체질", sub: "주목받고 분위기 띄울 때 내가 주인공이 된 것 같아 행복함." }, { main: "🎁 작은 것에 감동", sub: "거창한 것보다 길 가다 내 생각나서 샀다는 소소함에 감동함." }, { main: "🎉 주인공은 바로 나", sub: "지루할 틈 없는 세상! 매 순간을 파티처럼 신나게 살아가고 싶어." } ] },
+    "ESTJ": { branches: [ { main: "🤝 확실한 룰", sub: "내 사람에겐 헌신하지만 기본 예의 없는 인간은 바로 손절." }, { main: "🤬 핑계 대지 마", sub: "과정보다 결과가 중요함. 일 못하면서 변명하는 거 정말 혐오함." }, { main: "📊 플랜 B, C까지", sub: "계획 틀어지는 거 극혐. 어떤 변수도 대처할 매뉴얼이 있음." }, { main: "😤 꼰대 아님", sub: "효율적인 법 알려주는 건데 잔소리라고 하면 진짜 억울함." }, { main: "🥺 츤데레 매력", sub: "말투는 무뚝뚝해도 속으로는 상대방 걱정을 엄청 하고 있음." }, { main: "🤦‍♀️ 답답해서 내가 함", sub: "남 시키고 기다리느니 그냥 내가 빠르고 완벽하게 하는 게 편함." }, { main: "🏢 워커홀릭 모드", sub: "바쁘게 움직이고 성과를 내야 마음이 비로소 안정이 됨." }, { main: "🎯 확실한 보상", sub: "노력한 만큼 결과와 보상이 주어질 때 인생의 보람을 느낌." }, { main: "🎖️ 든든한 나의 자리", sub: "내 몫을 다하고 인정을 받을 때, 내 가치는 비로소 빛을 발해." } ] },
+    "ESTP": { branches: [ { main: "😎 직진 마이웨이", sub: "남들이 뭐라 하든 눈치 안 봄. 그냥 내가 하고 싶은 대로 함." }, { main: "🙄 결론만 말해", sub: "복잡하게 돌려 말하는 거 딱 질색. 그래서 요점이 뭔데?" }, { main: "💸 내기할래?", sub: "스릴 넘치는 상황과 승부욕을 즐김. 지는 건 절대 못 참음." }, { main: "🏃‍♂️ 일단 부딪혀", sub: "고민할 시간에 한 번이라도 더 몸으로 직접 부딪혀서 해결함." }, { main: "👀 폼 미친 눈치", sub: "관심 없는 척하지만 상황 파악이랑 사람 스캔은 이미 끝남." }, { main: "🥱 반복은 고문", sub: "가만히 있는 건 쥐약임. 늘 새로운 자극을 찾아다녀야 함." }, { main: "🛠️ 임기응변 만렙", sub: "돌발 상황이 터져도 순발력으로 어떻게든 다 해결해버림." }, { main: "🍻 쿨한 관계", sub: "싸워도 다음 날 밥 먹자 하면 풀림. 뒤끝 없는 쿨함 그 자체." }, { main: "🔥 멈추지 않는 에너지", sub: "내일 걱정은 내일 해! 지금 이 순간의 짜릿함을 놓칠 수 없어." } ] },
+    "INFJ": { branches: [ { main: "🛡️ 좁고 깊은 문", sub: "내 사람은 극소수. 한 번 믿음을 주면 다 내어주지만 조심스러움." }, { main: "🤔 인간 스캐너", sub: "친절하게 웃어도 머릿속으론 저 사람의 속내를 꿰뚫어 봄." }, { main: "✨ 나만의 이상향", sub: "내 머릿속엔 늘 완벽하고 아름다운 이상 세계가 그려져 있음." }, { main: "🤫 보이지 않는 채찍", sub: "남에겐 관대하지만 나 자신에겐 늘 엄격해서 스스로 괴롭힘." }, { main: "🚪 단호한 손절", sub: "오래 참지만 선을 넘으면 미련 없이 관계의 문을 닫아버림." }, { main: "🔋 방전 주의보", sub: "사람들 만나면 기 빨림. 혼자 방에서 회복할 시간이 꼭 필요함." }, { main: "📝 생각의 꼬리", sub: "자기 전 불 끄면 온갖 철학적인 생각들이 떠올라 잠을 설침." }, { main: "📚 딥한 대화 원해", sub: "가벼운 농담보다 가치관, 내면의 진지한 대화를 나눌 때 행복함." }, { main: "💎 영혼의 울림", sub: "가짜는 싫어. 내 진심이 닿고 세상에 작은 울림을 주는 삶을 원해." } ] },
+    "INFP": { branches: [ { main: "💖 내 마음 알아줘", sub: "내 감정을 이해받길 원하지만 먼저 다가가기엔 너무 부끄러움." }, { main: "🥺 개복치 멘탈", sub: "남이 던진 말 한마디에 백 번 의미 부여하고 밤새 우울해함." }, { main: "🦄 망상 대잔치", sub: "현실보단 몽글몽글한 상상 속 세계관을 만들 때 제일 행복함." }, { main: "🛌 침대랑 한 몸", sub: "이불 밖은 위험함. 넷플릭스 보면서 뒹굴거리는 게 최고의 힐링." }, { main: "🔥 갑툭튀 열정", sub: "평소엔 귀찮아하다가 꽂히는 게 생기면 미친 듯이 파고듦." }, { main: "🤐 비밀의 화원", sub: "진짜 속마음은 아무에게도 안 보여줌. 나도 나를 잘 모를 때가 있음." }, { main: "🎧 새벽 감성 중독", sub: "비 오는 날 플레이리스트 필수. 우울한 감성을 은근 즐기는 편." }, { main: "🥰 소소한 다정함", sub: "비싼 선물보다 널 위해 썼다는 손편지 한 장에 눈물 줄줄 흘림." }, { main: "🌈 나만의 예쁜 세상", sub: "누가 뭐래도 나의 가치관을 지키며, 나답게 피어나는 게 가장 중요해." } ] },
+    "INTJ": { branches: [ { main: "🛡️ 깐깐한 입국 심사", sub: "엄격한 기준을 통과한 소수만 곁에 둠. 나머지에겐 차가운 벽." }, { main: "🙄 바보 알러지", sub: "감정 앞세워 징징대거나 멍청하게 행동하는 사람 보면 기가 참." }, { main: "🎯 인생 체스판", sub: "몇 년 뒤의 치밀한 마스터플랜이 이미 머릿속에 설계되어 있음." }, { main: "🧐 지식 블랙홀", sub: "궁금한 분야는 논문까지 뒤져가며 끝을 봐야 직성이 풀림." }, { main: "🥺 사회화된 빙구", sub: "일할 땐 냉철한데 좋아하는 것 앞에서는 은근 어설프고 뚝딱거림." }, { main: "🤷‍♂️ 위로 AI 오류", sub: "친구가 울면 달래주기보다 왜 우는지 원인부터 분석하고 싶음." }, { main: "🤫 극강의 마이웨이", sub: "협동하는 거 피곤함. 그냥 나 혼자 하는 게 제일 빠르고 정확함." }, { main: "💡 퍼즐 맞추는 희열", sub: "복잡한 문제의 본질을 꿰뚫고 답을 찾아냈을 때 엄청난 쾌감." }, { main: "⚙️ 완벽한 설계", sub: "감정보다는 논리! 세상을 더 명확하고 효율적으로 만드는 게 나의 자부심." } ] },
+    "INTP": { branches: [ { main: "👻 카톡 읽씹 장인", sub: "연락 자체가 기 빨림. 머릿속으로 대답 다 하고 실제론 까먹음." }, { main: "🤔 끊임없는 왜?", sub: "세상 모든 원리가 궁금하지만 알게 되면 귀신같이 흥미 식음." }, { main: "🧠 상상 속 지구정복", sub: "잡지식 대마왕. 내 시뮬레이션 속에서는 이미 노벨상 여러 번 탐." }, { main: "🛌 귀찮음이 본체", sub: "숨 쉬는 것도 효율적으로 하고 싶음. 벼락치기 루트 계산부터 함." }, { main: "🥺 영혼 로그아웃", sub: "입은 웃고 있지만 뇌는 이미 저녁 메뉴 고르러 멀리 떠나 있음." }, { main: "🤖 순살 메이커", sub: "악의는 없는데 팩트만 말하다 보니 본의 아니게 남들 뼈를 때림." }, { main: "🔍 무한 현미경", sub: "오류가 보이면 끝까지 파고들어 논리적으로 까발려야 직성 풀림." }, { main: "🎮 절대 고립 구역", sub: "방해받지 않는 공간에서 혼자 딥하게 덕질할 때가 인생의 절정." }, { main: "💡 진리라는 이름의 빛", sub: "세상의 시끄러운 소리는 끄고, 오직 지식과 진리만을 탐구하고 싶어." } ] },
+    "ISFJ": { branches: [ { main: "💖 무명천사", sub: "내가 좀 손해 봐도 주변이 편안하면 좋아. 챙겨주는 게 내 특기." }, { main: "🥺 걱정 스노우볼", sub: "발표 실수하면 어쩌지? 일어나지도 않은 상황까지 상상하며 걱정함." }, { main: "🗓️ 평화로운 루틴", sub: "갑작스러운 약속 변경 싫어. 짜인 대로 흘러가야 마음이 놓임." }, { main: "🤐 호구 될 뻔", sub: "싫은 소리 못해서 다 들어주다가 속으로 골병듦. 착한 아이 병." }, { main: "🔥 데스노트 보관 중", sub: "웃어넘기지만 섭섭했던 디테일은 머릿속 장부에 다 기록해 둠." }, { main: "📝 기억력 알파고", sub: "몇 년 전에 네가 스치듯 말한 취향까지 기억해서 감동을 줌." }, { main: "🏡 내 방이 최고야", sub: "밖에 나가면 1분 단위로 기 빨림. 침대에 누워야 HP가 충전됨." }, { main: "🥰 따뜻한 인정", sub: "너 덕분에 살았어 한마디면 갈려 나갔던 피로가 싹 녹아내림." }, { main: "🛡️ 소중한 일상", sub: "사랑하는 사람들을 지키며, 변함없이 다정하고 평온한 오늘을 보내고 싶어." } ] },
+    "ISFP": { branches: [ { main: "🤫 좋은 게 좋은 거", sub: "갈등 생기는 게 너무 스트레스. 그냥 내가 양보하고 넘어가자." }, { main: "🛌 눕기 국가대표", sub: "주말 연락 두절 기본. 침대랑 한 몸 되어 뒹굴 때가 제일 소중해." }, { main: "🎨 미친 감수성", sub: "감각적인 거에 환장함. 예쁘고 감성 넘치는 공간에 있으면 힐링 됨." }, { main: "🤷‍♂️ 물 흐르는 대로", sub: "간섭이나 통제는 극혐. 내버려 두면 알아서 내 템포로 잘함." }, { main: "🥺 똥고집 발동", sub: "다 맞춰주지만 내 소중한 가치관을 건드리면 절대 안 물러섬." }, { main: "⏱️ 발등에 불 내성", sub: "미루기 스킬 만렙. 마감 직전 초인적인 힘을 은근히 즐기는 편." }, { main: "🎧 나홀로 BGM", sub: "이어폰은 생명줄. 혼자 조용히 산책하며 사색할 때 에너지가 참." }, { main: "🐶 소확행 수집가", sub: "거창한 성공보다 맛있는 디저트 먹을 때 세상 다 가진 기분임." }, { main: "🌿 나만의 조용한 바다", sub: "세상의 시끄러움에서 벗어나, 나만의 속도로 자유롭게 유영하고 싶어." } ] },
+    "ISTJ": { branches: [ { main: "🤝 예의가 기본", sub: "지킬 건 지키자. 예의 밥 말아먹은 무개념 인간은 인생에서 삭제." }, { main: "🤬 꼼수는 안 통해", sub: "정해진 매뉴얼 두고 요령 피우며 대충 하려는 꼴을 못 봄." }, { main: "📝 인간 엑셀", sub: "모든 일은 완벽한 계획과 순서대로 굴러가야 비로소 직성이 풀림." }, { main: "🤐 위로 뚝딱이", sub: "친구 울면 어설프게 토닥이며 속으론 현실적 대책만 오만가지 생각." }, { main: "🥺 팩트 기반 애정", sub: "잔소리하는 게 내 최고 애정표현인데 꼰대라고 하면 진짜 억울함." }, { main: "🏋️ 무한 책임감", sub: "맡은 일은 하늘이 두 쪽 나도 끝까지 완벽하게 해내야 잠이 옴." }, { main: "🏡 칼각의 편안함", sub: "청소 싹 하고 물건들이 자기 자리 지킬 때 엄청난 카타르시스." }, { main: "💰 통장 잔고 힐링", sub: "불확실한 말보다 눈부시게 쌓이는 데이터와 자산이 최고의 도파민." }, { main: "⚖️ 흔들리지 않는 나무", sub: "내게 주어진 책임을 다하며, 흐트러짐 없는 정직한 삶을 살아가고 싶어." } ] },
+    "ISTP": { branches: [ { main: "😎 무소의 뿔", sub: "남한테 관심 없고 남이 나한테 관심 가지는 것도 귀찮아함." }, { main: "🙄 극강의 가성비", sub: "최소 노력으로 최대 효율! 무의미한 감정 소모는 세상에서 젤 극혐." }, { main: "🛠️ 조용한 맥가이버", sub: "기계 분해하거나 뭐 만드는 거 잘함. 집중하면 시간 가는 줄 모름." }, { main: "📱 연락은 비상용", sub: "내 폰은 시계와 게임기일 뿐. 안부 카톡 진짜 쓸데없다고 생각함." }, { main: "🥺 벼락치기 몰입", sub: "평소엔 누워있다가 꽂히면 잠도 안 자고 미친 듯이 파고드는 집요함." }, { main: "🤷‍♂️ 에휴 귀찮아", sub: "숨 쉬는 거 빼고 다 귀찮음. 웬만한 일은 대충 좋게 넘기려고 함." }, { main: "🎢 조용한 스릴", sub: "평온한 얼굴 뒤로 익스트림 스포츠나 즉흥적인 스릴을 엄청 즐김." }, { main: "🤫 에어팟 결계", sub: "말 걸지 마. 내 동굴 속에서 혼자 보낼 때가 제일 완벽하게 평화로움." }, { main: "🦅 야생의 자유", sub: "복잡한 인간관계에서 벗어나, 오직 나만의 즐거움을 쫓아 자유롭게 살래." } ] },
+    "DEFAULT": { branches: [ { main: "🛡️ 내 사람 무조건 챙김", sub: "내 친구가 기뻐하면 나도 진심으로 행복해짐. 친구의 고민을 내 일처럼 같이 화내고 울어줌." }, { main: "🥺 상처 받았을까?", sub: "아까 내 말투가 좀 별로였나? 미움받는 거 딱 질색이라 속으로 계속 곱씹으며 고민함." }, { main: "🚀 진짜 갓생 산다", sub: "더 나은 내가 되기 위해 끊임없이 노력함. 계획은 항상 창대하고 완벽하게 세워둠." }, { main: "📝 스스로에게 엄격", sub: "남들에겐 관대하지만 나한텐 기준 개높음. 계획했던 거 못 끝내면 은근 자책함." }, { main: "🙈 은근슬쩍 관종끼", sub: "나한테 관심 좀 줬으면 좋겠어(너무 대놓고는 말고). 내 리액션에 반응해주면 좋아 주금." }, { main: "😩 또 오지랖 부렸네.. 후회", sub: "아무도 안 나서? 답답해서 내가 리드함. 해놓고 '나도 힘든데 괜히 했나' 0.5초 후회함." }, { main: "🤪 지루한 일상은 극혐", sub: "새로운 거 발견하면 눈 돌아감. 주말 약속 꽉 차있어야 마음이 편안(근데 몸은 힘듦)." }, { main: "🍬 칭찬 한 마디에 사르르", sub: "기분 안 좋다가도 너 오늘 멋지다, 도와줘서 고마워 한 마디면 금방 풀림." }, { main: "💖 모두의 행복", sub: "갈등 생기는 거 딱 질색. 싸우는 거 보면 내가 더 스트레스받음. 모두가 평화롭고 친하게 지내는 게 내 꿈." } ] }
+  };
+
+  function nextScreen(screenId) {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    const screen = document.getElementById(screenId);
+    screen.classList.add('active');
+    
+    // 결과 화면 진입 시 배경색 변경
+    if(screenId === 'screen-result') {
+        const mbti = calculateMBTI();
+        document.getElementById('app').style.backgroundColor = pastelColors[mbti] || "#ffffff";
+    } else {
+        document.getElementById('app').style.backgroundColor = "#ffffff";
+    }
+  }
+
+  function calculateMBTI() {
+    return (scores.E >= scores.I ? "E" : "I") +
+           (scores.S >= scores.N ? "S" : "N") +
+           (scores.T >= scores.F ? "T" : "F") +
+           (scores.J >= scores.P ? "J" : "P");
+  }
+
+  function startTest() {
+    const input = document.getElementById('userName').value.trim();
+    userName = input ? input : "당신";
+    currentQ = 0;
+    for (let key in scores) scores[key] = 0;
+    showQuestion();
+    nextScreen('screen-question');
+  }
+
+  function showQuestion() {
+    if (currentQ >= questions.length) {
+      showResult();
+      return;
+    }
+    const qData = questions[currentQ];
+    document.getElementById('q-title').innerHTML = qData.q;
+    document.getElementById('btn-A').innerHTML = qData.a.text;
+    document.getElementById('btn-A').onclick = () => selectAnswer(qData.a.type);
+    document.getElementById('btn-B').innerHTML = qData.b.text;
+    document.getElementById('btn-B').onclick = () => selectAnswer(qData.b.type);
+    document.getElementById('progress').style.width = ((currentQ + 1) / questions.length * 100) + "%";
+  }
+
+  function selectAnswer(type) {
+    scores[type]++;
+    currentQ++;
+    showQuestion();
+  }
+
+  function showResult() {
+    const mbti = calculateMBTI();
+    const data = resultData[mbti] || resultData["DEFAULT"];
+    document.getElementById('mm-center-name').innerText = userName;
+    
+    const colors = ['pink', 'blue', 'yellow', 'green'];
+    let html = '';
+    
+    data.branches.forEach((branch, index) => {
+      const firstSpaceIndex = branch.main.indexOf(" ");
+      const emoji = branch.main.substring(0, firstSpaceIndex);
+      const title = branch.main.substring(firstSpaceIndex).trim();
+      const colorClass = colors[index % 4];
+      const isLast = index === 8;
+      const extraClass = isLast ? 'full-width' : '';
+
+      html += `<div class="sticker-card ${colorClass} ${extraClass}">
+        <div class="detail-header"><span class="detail-icon">${emoji}</span>${title}</div>
+        <p class="detail-text">${branch.sub}</p>
+      </div>`;
+    });
+    
+    document.getElementById('cards-container').innerHTML = html;
+    nextScreen('screen-result');
+  }
+
+  function saveResultAsImage() {
+    const mbti = calculateMBTI();
+    const target = document.getElementById('capture-area');
+    const saveBtn = document.querySelector('.action-btn.save');
+    saveBtn.innerText = "⏳ 생성 중...";
+    saveBtn.disabled = true;
+
+    html2canvas(target, {
+      backgroundColor: pastelColors[mbti] || "#ffffff",
+      scale: 3, 
+      useCORS: true 
+    }).then(canvas => {
+      const link = document.createElement('a');
+      link.download = userName + '_머릿속_다이어리.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+      saveBtn.innerText = "💾 결과 이미지 저장하기";
+      saveBtn.disabled = false;
+    }).catch(err => {
+      alert("이미지 저장 실패 😭 캡처를 이용해 주세요!");
+      saveBtn.innerText = "💾 결과 이미지 저장하기";
+      saveBtn.disabled = false;
+    });
+  }
+
+  function shareTest() {
+    const url = location.href;
+    const title = userName + "의 머릿속 다이어리! 너도 해봐 💖";
+    if (navigator.share) {
+      navigator.share({ title: title, url: url }).catch(console.error);
+    } else {
+      navigator.clipboard.writeText(url).then(() => { alert('링크가 복사되었어요! ✨'); });
+    }
+  }
+</script>
+
+</body>
+</html>

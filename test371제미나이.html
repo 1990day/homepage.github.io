@@ -459,9 +459,9 @@
     position: absolute;
     inset: 12px 10px 12px 10px;
     border-radius: 12px;
-    /* 은은한 크림색 모눈종이 배경 */
     background-color: #fdfbf7;
-    background-image: radial-gradient(#dcd4c6 1px, transparent 1px);
+    /* 폰에서도 부담스럽지 않게 도트 투명도를 0.2로 대폭 낮춤 */
+    background-image: radial-gradient(rgba(180, 175, 165, 0.2) 1.5px, transparent 1.5px);
     background-size: 16px 16px;
     border: 1.5px solid rgba(195, 202, 220, 0.6);
     box-shadow:
@@ -470,7 +470,6 @@
     z-index: 0;
   }
 
-  /* 다꾸 마스킹 테이프 장식 */
   .deco-tape {
     position: absolute;
     width: 80px;
@@ -493,6 +492,18 @@
     border: 1px dashed rgba(255, 255, 255, 0.5);
   }
 
+  /* 결과창 최상단에 들어갈 브랜드 텍스트 */
+  .result-brand {
+    position: relative;
+    z-index: 4;
+    font-size: 13px;
+    color: #9aa4c2;
+    margin-top: 0px;
+    margin-bottom: 8px;
+    text-align: center;
+    line-height: 1.2;
+  }
+
   .mindmap-lines {
     position: absolute;
     inset: 0;
@@ -500,13 +511,14 @@
     pointer-events: none;
   }
 
+  /* 타이틀 텍스트 추가로 밀려난 공간만큼 SVG 선도 똑같이 내려줌 (24px) */
   .mindmap-lines svg {
     width: 100%;
     height: 100%;
     display: block;
+    transform: translateY(24px);
   }
 
-  /* 선 색상과 굵기 조정 */
   .mindmap-lines path {
     stroke: rgba(100, 130, 200, 0.6);
     stroke-width: 3;
@@ -534,14 +546,13 @@
     width: 250px;
     min-height: 84px;
     border: 3px solid #ffb3c6;
-    /* 구름처럼 둥근 유기적인 모양 (다꾸 느낌) */
     border-radius: 60% 40% 50% 50% / 40% 50% 60% 50%;
     background: #ffe3e9;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    margin: 10px 0 20px;
+    margin: 0px 0 20px; /* 타이틀 공간을 위해 top margin 제거 */
     padding: 12px 12px;
     flex-direction: column;
   }
@@ -567,7 +578,6 @@
 
   .sticker-card {
     background: rgba(255,255,255,0.95);
-    /* 손그림 느낌의 불규칙한 테두리 */
     border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
     padding: 12px 10px;
     text-align: left;
@@ -584,7 +594,6 @@
     margin-bottom: 0;
   }
 
-  /* 색상별 테두리 굵기 및 그림자 다듬기 */
   .sticker-card.pink {
     border: 3px solid #ff9eb5;
   }
@@ -740,6 +749,16 @@
       padding: 12px 12px 12px;
     }
 
+    .result-brand {
+      font-size: 12px;
+      margin-bottom: 6px;
+    }
+
+    /* 폰 화면에서도 SVG를 비율에 맞게 조절 */
+    .mindmap-lines svg {
+      transform: translateY(22px);
+    }
+
     .cards-grid {
       gap: 12px 8px;
     }
@@ -759,7 +778,7 @@
 
     .center-card {
       width: 220px;
-      margin: 10px 0 16px;
+      margin: 0px 0 16px;
     }
 
     .center-subtitle {
@@ -861,6 +880,8 @@
               <div class="paper-sheet"></div>
               <div class="deco-tape deco-1"></div>
               <div class="deco-tape deco-2"></div>
+
+              <div class="result-brand">테스트잇 마인드맵 성격 테스트</div>
 
               <div class="mindmap-lines">
                 <svg viewBox="0 0 430 1460" preserveAspectRatio="none">
@@ -1002,7 +1023,7 @@
     "ESFP": { branches: [
       { main: "💃 놀자판 벌려", sub: "재밌는 순간에 텐션이 확 올라감." },
       { main: "🙄 심각한 건 패스", sub: "무거운 분위기 오래 못 견딤." },
-      { main: "💸 욜로 성향", 단축키: "지금 좋으면 써버리는 편일 수 있음." },
+      { main: "💸 욜로 성향", sub: "지금 좋으면 써버리는 편일 수 있음." },
       { main: "🏃‍♀️ 몸이 먼저 움직임", sub: "생각보다 행동이 먼저 나가는 편." },
       { main: "🥺 은근 유리멘탈", sub: "쿨해 보여도 상처는 받을 수 있음." },
       { main: "🗓️ 계획 답답함", sub: "즉흥적인 흐름이 더 잘 맞음." },
@@ -1253,7 +1274,7 @@
     updateResultHeight();
 
     if (paper) {
-      paper.style.backgroundColor = "#fdfbf7"; /* 저장 시에도 종이색 유지 */
+      paper.style.backgroundColor = "#fdfbf7"; 
     }
 
     saveBtn.innerHTML = '<span class="emoji-font">⏳</span> 생성 중...';

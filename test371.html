@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>마인드맵 성격 테스트 - 인스타 스토리용</title>
+<title>테스트잇 마인드맵 성격 테스트</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
 <style>
   @import url("https://cdn.jsdelivr.net/gh/MonadABXY/mona-font/web/mona.css");
 
@@ -30,27 +31,30 @@
   }
 
   :root {
-    --line: rgba(112, 131, 167, 0.20);
-    --bg: #f7f1c8;
-    --panel: #f7f9fd;
-    --text: #23283a;
-    --text-soft: #5d647b;
-    --text-sub: #66708c;
+    --text: #2f3550;
+    --text-soft: #58617f;
+    --shadow: 0 18px 40px rgba(122, 120, 177, 0.16);
+
+    /* 결과 닉네임 위치 조절 */
+    --mindmap-title-top: 35%;
+    --mindmap-title-left: 22.8%;
+    --mindmap-title-width: 27%;
+    --mindmap-title-font-size: 19px;
+    --mindmap-title-line-height: 1.15;
+    --mindmap-title-color: #7b5d8d;
   }
 
   * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    -webkit-font-smoothing: none;
+    -webkit-font-smoothing: auto;
     -moz-osx-font-smoothing: auto;
   }
 
   body,
   button,
   input,
-  .detail-text,
-  .detail-header,
   p,
   h1,
   h2,
@@ -61,24 +65,28 @@
     font-family: "Rimgul", sans-serif;
   }
 
-  .emoji-font {
-    font-family: "Mona", "Apple Color Emoji", "Segoe UI Emoji", sans-serif !important;
-  }
-
   body.container {
-    background: linear-gradient(180deg, #f4ecbf 0%, #efe4ac 100%);
-    color: var(--text);
     min-height: 100vh;
+    background:
+      radial-gradient(circle at 8% 18%, rgba(255, 220, 191, 0.95) 0%, rgba(255, 220, 191, 0.08) 18%, transparent 34%),
+      radial-gradient(circle at 88% 18%, rgba(255, 205, 231, 0.95) 0%, rgba(255, 205, 231, 0.08) 18%, transparent 35%),
+      radial-gradient(circle at 18% 88%, rgba(186, 225, 255, 0.95) 0%, rgba(186, 225, 255, 0.08) 18%, transparent 35%),
+      radial-gradient(circle at 86% 84%, rgba(255, 223, 240, 0.95) 0%, rgba(255, 223, 240, 0.08) 18%, transparent 35%),
+      linear-gradient(135deg, #f8d8e8 0%, #d6d3fb 46%, #c8e3ff 72%, #ffd7ef 100%);
+    color: var(--text);
   }
 
   .page-shell {
     width: 100%;
     max-width: 500px;
     margin: 0 auto;
-    background: var(--panel);
     min-height: 100vh;
-    box-shadow: 0 14px 42px rgba(32, 40, 65, 0.12);
+    background: rgba(255,255,255,0.18);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 12px 40px rgba(71, 77, 117, 0.14);
     overflow-x: hidden;
+    border-left: 1px solid rgba(255,255,255,0.35);
+    border-right: 1px solid rgba(255,255,255,0.35);
   }
 
   .page-header {
@@ -89,10 +97,10 @@
     padding-bottom: 12px !important;
     padding-left: 4%;
     padding-right: 4%;
-    border-bottom: 1px solid var(--line);
+    border-bottom: 1px solid rgba(255,255,255,0.38);
     position: relative;
-    background: rgba(255,255,255,0.5);
-    backdrop-filter: blur(3px);
+    background: rgba(255,255,255,0.22);
+    backdrop-filter: blur(10px);
   }
 
   .page-header h1 {
@@ -102,7 +110,6 @@
 
   .logo {
     width: 86px;
-    margin-top: 0;
     display: block;
   }
 
@@ -116,43 +123,35 @@
     gap: 8px;
   }
 
-  .main-nav li {
-    margin-left: 0;
-  }
-
   .main-nav a {
     display: block;
     text-decoration: none;
-    color: #44506a;
-    background: rgba(255,255,255,0.82);
-    border: 1px solid rgba(112,131,167,0.18);
+    color: #4e5775;
+    background: rgba(255,255,255,0.72);
+    border: 1px solid rgba(255,255,255,0.7);
     border-radius: 999px;
     padding: 8px 12px;
     font-size: 13px;
     white-space: nowrap;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+    box-shadow: 0 8px 20px rgba(145, 145, 185, 0.12);
     transition: all 0.2s ease;
   }
 
   .main-nav a:hover {
-    background: #fff;
-    color: #111;
+    background: rgba(255,255,255,0.92);
     transform: translateY(-1px);
-    text-decoration: none;
   }
 
   #app {
     width: 100%;
-    background: #f7f9fd;
     min-height: calc(100vh - 66px);
     position: relative;
     display: flex;
     flex-direction: column;
-    transition: background-color 0.35s ease;
   }
 
   .content-wrapper {
-    padding: 10px 16px 14px;
+    padding: 14px 14px 18px;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
@@ -161,7 +160,6 @@
   .screen {
     display: none;
     animation: fadeIn 0.22s ease-out;
-    text-align: center;
     width: 100%;
   }
 
@@ -176,124 +174,75 @@
     flex-grow: 1;
   }
 
-  .screen.block-view {
-    padding-top: 0;
-    padding-bottom: 4px;
-  }
-
   @keyframes fadeIn {
     from { opacity: 0; transform: translateY(8px); }
     to { opacity: 1; transform: translateY(0); }
   }
 
-  .folder-stage {
-    position: relative;
+  .glass-panel {
     width: 100%;
-    padding-top: 18px;
-    margin-top: 2px;
-  }
-
-  .folder-tab {
-    position: absolute;
-    top: 0;
-    left: 18px;
-    min-width: 128px;
-    height: 40px;
-    padding: 0 16px;
-    border: 2px solid #7083a7;
-    border-bottom: none;
-    border-radius: 16px 16px 0 0;
-    background: linear-gradient(180deg, #fff7c9 0%, #ffe894 100%);
-    color: #3d4966;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 13px;
-    z-index: 2;
-    box-shadow: 0 -1px 0 rgba(255,255,255,0.8) inset;
-  }
-
-  .folder-panel {
+    border-radius: 30px;
+    padding: 18px;
+    background:
+      linear-gradient(180deg, rgba(255,255,255,0.50), rgba(255,255,255,0.24)),
+      linear-gradient(135deg, rgba(255,255,255,0.22), rgba(255,255,255,0.08));
+    border: 1px solid rgba(255,255,255,0.58);
+    box-shadow: var(--shadow);
     position: relative;
-    width: 100%;
-    background: linear-gradient(180deg, #fffdf5 0%, #fff8db 100%);
-    border: 2px solid #7083a7;
-    border-radius: 22px;
-    padding: 28px 20px 24px;
-    box-shadow:
-      0 12px 28px rgba(73, 92, 130, 0.10),
-      inset 0 1px 0 rgba(255,255,255,0.85);
     overflow: hidden;
   }
 
-  .folder-inner {
+  .glass-panel::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 12% 12%, rgba(255,255,255,0.45), transparent 20%),
+      radial-gradient(circle at 85% 18%, rgba(255,255,255,0.25), transparent 18%),
+      radial-gradient(circle at 18% 88%, rgba(255,255,255,0.22), transparent 18%);
+    pointer-events: none;
+  }
+
+  .main-image-wrap,
+  .name-card,
+  .question-card,
+  .result-card {
     position: relative;
     z-index: 1;
   }
 
-  .folder-badges {
-    display: flex;
-    justify-content: space-between;
-    gap: 8px;
-    margin-bottom: 14px;
+  .main-image-wrap img {
+    width: 100%;
+    display: block;
+    border-radius: 28px;
+    box-shadow: 0 18px 34px rgba(132, 126, 177, 0.16);
+    border: 1px solid rgba(255,255,255,0.72);
   }
 
-  .folder-badge {
-    height: 28px;
-    padding: 0 10px;
-    border-radius: 999px;
-    background: #ffffff;
-    color: #5d6787;
-    border: 1.5px solid #d4dceb;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 12px;
-    white-space: nowrap;
+  .main-cta {
+    margin-top: 16px;
   }
 
-  .folder-badge.soft-pink {
-    background: #fff1f6;
-    border-color: #f3cad9;
-    color: #8a6270;
-  }
-
-  .folder-badge.soft-blue {
-    background: #eef5ff;
-    border-color: #cddcf5;
-    color: #556684;
-  }
-
-  .main-title {
-    font-size: 34px;
-    line-height: 1.32;
-    color: var(--text);
-    margin-bottom: 14px;
-    word-break: keep-all;
+  .sub-copy {
     text-align: center;
-  }
-
-  .main-desc {
-    font-size: 17px;
-    line-height: 1.7;
-    color: var(--text-sub);
-    margin-bottom: 22px;
-    word-break: keep-all;
-    text-align: center;
+    color: var(--text-soft);
+    font-size: 15px;
+    line-height: 1.65;
+    margin-top: 14px;
+    margin-bottom: 16px;
   }
 
   .pattern-btn {
-    background: linear-gradient(180deg, #4b5878 0%, #38445f 100%);
-    color: #ffffff;
-    border: 2px solid #38445f;
-    padding: 15px 18px;
-    font-size: 16px;
-    border-radius: 16px;
-    cursor: pointer;
     width: 100%;
-    margin-bottom: 0;
+    border: none;
+    border-radius: 18px;
+    padding: 16px 18px;
+    font-size: 16px;
+    cursor: pointer;
+    color: #fff;
+    background: linear-gradient(135deg, #ff93c6 0%, #8bb8ff 100%);
+    box-shadow: 0 12px 24px rgba(149, 150, 210, 0.22);
     transition: transform 0.12s ease, filter 0.12s ease;
-    box-shadow: 0 8px 16px rgba(56, 68, 95, 0.18);
   }
 
   .pattern-btn:hover {
@@ -302,6 +251,46 @@
 
   .pattern-btn:active {
     transform: translateY(1px);
+  }
+
+  .name-card,
+  .question-card,
+  .result-card {
+    padding: 18px;
+  }
+
+  .section-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 108px;
+    height: 34px;
+    padding: 0 14px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.75);
+    border: 1px solid rgba(255,255,255,0.7);
+    color: #657099;
+    font-size: 12px;
+    margin-bottom: 14px;
+    box-shadow: 0 8px 18px rgba(168, 166, 210, 0.12);
+  }
+
+  .main-title {
+    font-size: 28px;
+    line-height: 1.42;
+    color: var(--text);
+    margin-bottom: 10px;
+    word-break: keep-all;
+    text-align: center;
+  }
+
+  .main-desc {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--text-soft);
+    margin-bottom: 20px;
+    word-break: keep-all;
+    text-align: center;
   }
 
   .name-input-wrap {
@@ -313,61 +302,25 @@
   input[type="text"] {
     width: 100%;
     padding: 16px;
-    border-radius: 16px;
-    border: 2px solid #d7deea;
-    background: #ffffff;
+    border-radius: 18px;
+    border: 1px solid rgba(255,255,255,0.82);
+    background: rgba(255,255,255,0.82);
     color: var(--text);
     font-size: 16px;
     text-align: center;
     outline: none;
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.8);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.9);
   }
 
   input[type="text"]:focus {
-    border-color: #9bacca;
-    background: #fcfdff;
-  }
-
-  .question-folder {
-    position: relative;
-    width: 100%;
-    padding-top: 18px;
-    margin-top: 2px;
-  }
-
-  .question-tab {
-    position: absolute;
-    top: 0;
-    left: 18px;
-    min-width: 120px;
-    height: 38px;
-    padding: 0 14px;
-    border: 2px solid #7486a7;
-    border-bottom: none;
-    border-radius: 15px 15px 0 0;
-    background: linear-gradient(180deg, #dce9ff 0%, #bfd6ff 100%);
-    color: #49556f;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 13px;
-    z-index: 2;
-  }
-
-  .question-panel {
-    position: relative;
-    width: 100%;
-    background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
-    border: 2px solid #7486a7;
-    border-radius: 22px;
-    padding: 16px 16px 14px;
-    box-shadow: 0 12px 26px rgba(80, 96, 130, 0.08);
+    background: rgba(255,255,255,0.96);
+    border-color: rgba(173, 201, 255, 0.95);
   }
 
   .progress-bar {
     width: 100%;
     height: 10px;
-    background: #e9eef6;
+    background: rgba(255,255,255,0.62);
     border-radius: 999px;
     margin-bottom: 14px;
     overflow: hidden;
@@ -375,7 +328,7 @@
 
   .progress {
     height: 100%;
-    background: linear-gradient(90deg, #91a8d5 0%, #6d84b2 100%);
+    background: linear-gradient(90deg, #ff9fcc 0%, #92b7ff 100%);
     width: 0%;
     transition: width 0.3s ease;
     border-radius: 999px;
@@ -392,9 +345,9 @@
   .question-count,
   .question-type {
     font-size: 12px;
-    color: #657394;
-    background: #f2f6fb;
-    border: 1px solid #dde6f1;
+    color: #667399;
+    background: rgba(255,255,255,0.70);
+    border: 1px solid rgba(255,255,255,0.74);
     border-radius: 999px;
     padding: 6px 10px;
   }
@@ -410,10 +363,10 @@
   }
 
   .answer-btn {
-    background: #ffffff;
+    background: rgba(255,255,255,0.84);
     color: var(--text);
-    border: 2px solid #d8e0ec;
-    border-radius: 18px;
+    border: 1px solid rgba(255,255,255,0.82);
+    border-radius: 20px;
     padding: 16px 14px;
     text-align: left;
     cursor: pointer;
@@ -422,220 +375,69 @@
     line-height: 1.58;
     word-break: keep-all;
     font-size: 16px;
-    box-shadow: 0 4px 10px rgba(78, 96, 130, 0.04);
-    transition: border-color 0.12s ease, background 0.12s ease, transform 0.12s ease;
+    box-shadow: 0 10px 22px rgba(144, 145, 198, 0.10);
+    transition: transform 0.12s ease, background 0.12s ease, border-color 0.12s ease;
   }
 
   .answer-btn:hover {
-    border-color: #9fb2d1;
-    background: #f9fbff;
+    background: rgba(255,255,255,0.96);
+    border-color: rgba(182, 203, 255, 0.95);
   }
 
   .answer-btn:active {
     transform: translateY(1px);
   }
 
-  .result-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  .result-card {
+    overflow: visible;
   }
 
-  .capture-area {
+  .result-preview-wrap {
     width: 100%;
-    max-width: 430px;
-    min-height: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 14px 14px 10px;
-    border-radius: 32px;
+  }
+
+  .capture-target {
     position: relative;
-    overflow: hidden;
-    background:
-      radial-gradient(circle at top, rgba(255,255,255,0.92) 0%, rgba(255,255,255,0.75) 26%, rgba(255,255,255,0.25) 100%),
-      linear-gradient(180deg, #fffdf7 0%, #fdf8ee 100%);
-    box-shadow: 0 20px 36px rgba(120, 120, 140, 0.10);
-  }
-
-  .paper-sheet {
-    position: absolute;
-    inset: 0;
-    border-radius: 28px;
-    background:
-      linear-gradient(180deg, rgba(255,255,255,0.96) 0%, rgba(255,255,255,0.88) 100%);
-    border: 1.5px solid rgba(223, 225, 235, 0.95);
-    box-shadow:
-      inset 0 1px 0 rgba(255,255,255,0.95),
-      0 6px 18px rgba(110, 118, 146, 0.05);
-    z-index: 0;
-  }
-
-  .mindmap-lines {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    pointer-events: none;
-  }
-
-  .mindmap-lines svg {
     width: 100%;
-    height: 100%;
+    display: inline-block;
+    line-height: 0;
+    overflow: visible;
+    background: transparent;
+  }
+
+  .result-image {
+    width: 100%;
+    height: auto;
     display: block;
+    border-radius: 0;
+    object-fit: contain;
+    box-shadow: none;
+    border: none;
   }
 
-  .mindmap-lines path,
-  .mindmap-lines line {
-    stroke-width: 2.2;
-    fill: none;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    opacity: 0.85;
-  }
-
-  .mindmap-lines circle {
-    opacity: 0.95;
-  }
-
-  .result-top {
-    position: relative;
-    z-index: 3;
-    width: 100%;
-    text-align: center;
-    margin-bottom: 10px;
-  }
-
-  .center-card {
-    position: relative;
-    z-index: 3;
-    width: 100%;
-    max-width: 286px;
-    min-height: 96px;
-    background: linear-gradient(180deg, #ffffff 0%, #fcfcfd 100%);
-    border: 2px solid #e6e8ef;
-    border-radius: 28px;
-    margin: 0 auto 18px;
-    padding: 18px 16px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow:
-      0 10px 18px rgba(110, 115, 135, 0.06),
-      inset 0 1px 0 rgba(255,255,255,0.92);
-  }
-
-  .center-card::after {
-    content: "";
+  .result-overlay-title {
     position: absolute;
-    inset: 10px;
-    border: 1px dashed rgba(205, 209, 221, 0.88);
-    border-radius: 22px;
-    pointer-events: none;
-  }
-
-  .center-subtitle {
-    position: relative;
-    z-index: 1;
-    font-size: 26px;
-    line-height: 1.34;
-    color: #525665;
+    top: var(--mindmap-title-top);
+    left: var(--mindmap-title-left);
+    width: var(--mindmap-title-width);
+    font-family: "Umdot", sans-serif !important;
+    font-size: var(--mindmap-title-font-size);
+    line-height: var(--mindmap-title-line-height);
+    color: var(--mindmap-title-color);
     text-align: center;
+    white-space: normal;
     word-break: keep-all;
-  }
-
-  .cards-grid {
-    position: relative;
-    z-index: 3;
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 14px 12px;
-    align-items: stretch;
-  }
-
-  .sticker-card {
-    background: rgba(255,255,255,0.98);
-    border-radius: 22px;
-    padding: 14px 12px 15px;
-    text-align: center;
-    position: relative;
-    min-height: 122px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    box-shadow:
-      0 8px 16px rgba(126, 131, 151, 0.05),
-      inset 0 1px 0 rgba(255,255,255,0.95);
-  }
-
-  .sticker-card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: 22px;
-    background: linear-gradient(180deg, rgba(255,255,255,0.55), rgba(255,255,255,0.08));
-    pointer-events: none;
-  }
-
-  .sticker-card.pink {
-    border: 2px solid #f2cad6;
-  }
-
-  .sticker-card.blue {
-    border: 2px solid #bfd8fb;
-  }
-
-  .sticker-card.green {
-    border: 2px solid #c7e5cf;
-  }
-
-  .sticker-card.yellow {
-    border: 2px solid #f1dfab;
-  }
-
-  .sticker-card.purple {
-    border: 2px solid #d7cdf6;
-  }
-
-  .detail-header {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    gap: 6px;
-    margin-bottom: 10px;
-    font-size: 15px;
-    padding-bottom: 8px;
-    color: #353a4d;
-    line-height: 1.38;
-    word-break: keep-all;
-    text-align: center;
-    border-bottom: 1px dashed rgba(204, 207, 218, 0.72);
-  }
-
-  .detail-icon {
-    font-size: 16px;
-    line-height: 1;
-    margin-top: 1px;
-    flex-shrink: 0;
-    font-family: "Mona", "Apple Color Emoji", "Segoe UI Emoji", sans-serif !important;
-  }
-
-  .detail-text {
-    position: relative;
-    z-index: 1;
-    font-size: 13px;
-    color: var(--text-soft);
-    line-height: 1.52;
-    word-break: keep-all;
-    text-align: center;
     letter-spacing: 0;
+    z-index: 5;
+    pointer-events: none;
+    text-shadow:
+      0 1px 0 rgba(255,255,255,0.95),
+      0 0 8px rgba(255,255,255,0.55);
   }
 
   .result-action-area {
     width: 100%;
-    margin-top: 12px;
+    margin-top: 14px;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -646,7 +448,7 @@
     border: none;
     padding: 14px 18px;
     font-size: 16px;
-    border-radius: 16px;
+    border-radius: 18px;
     cursor: pointer;
     transition: transform 0.1s;
     font-family: "Galmuri14", sans-serif;
@@ -657,34 +459,63 @@
   }
 
   .action-btn.save {
-    background: #76bfff;
+    background: linear-gradient(135deg, #8fc2ff 0%, #75a7ff 100%);
     color: #ffffff;
-    border: 3px solid #ff6ea8;
-    box-shadow: 3px 3px 0px #ff6ea8;
+    border: 2px solid rgba(255,255,255,0.82);
+    box-shadow: 0 12px 20px rgba(130, 168, 255, 0.24);
   }
 
   .action-btn.restart {
-    background: #ffec8a;
-    color: #ff5f8e;
-    border: 3px solid #ff5f8e;
-    box-shadow: 3px 3px 0px #ff5f8e;
+    background: linear-gradient(135deg, #ffd993 0%, #ffc277 100%);
+    color: #ffffff;
+    border: 2px solid rgba(255,255,255,0.82);
+    box-shadow: 0 12px 20px rgba(255, 186, 103, 0.24);
   }
 
   .action-btn.others {
-    background: #a3e098;
+    background: linear-gradient(135deg, #b5eaa8 0%, #88d7af 100%);
     color: #ffffff;
-    border: 3px solid #5f7b57;
-    box-shadow: 3px 3px 0px #5f7b57;
+    border: 2px solid rgba(255,255,255,0.82);
+    box-shadow: 0 12px 20px rgba(136, 215, 175, 0.22);
   }
 
   .action-btn.share {
-    background: #ffffff;
-    color: #76bfff;
-    border: 3px solid #76bfff;
-    box-shadow: 3px 3px 0px #76bfff;
+    background: rgba(255,255,255,0.9);
+    color: #7b8fca;
+    border: 2px solid rgba(255,255,255,0.82);
+    box-shadow: 0 12px 20px rgba(170, 173, 214, 0.16);
+  }
+
+  .ad-container {
+    width: 100%;
+    margin-top: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: visible;
+  }
+
+  .coupang_ad {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .coupang_ad iframe,
+  .coupang_ad ins,
+  .coupang_ad div {
+    max-width: 100% !important;
   }
 
   @media (max-width: 390px) {
+    :root {
+      --mindmap-title-font-size: 16px;
+      --mindmap-title-top: 34.6%;
+      --mindmap-title-left: 22%;
+      --mindmap-title-width: 29%;
+    }
+
     .page-header {
       padding-top: 12px !important;
       padding-bottom: 10px !important;
@@ -704,90 +535,28 @@
     }
 
     .content-wrapper {
-      padding: 8px 10px 10px;
+      padding: 10px 10px 14px;
     }
 
-    .folder-tab,
-    .question-tab {
-      left: 12px;
-      min-width: 108px;
-      font-size: 11px;
+    .glass-panel,
+    .name-card,
+    .question-card,
+    .result-card {
+      border-radius: 24px;
+      padding: 14px;
     }
 
-    .folder-panel,
-    .question-panel {
-      border-radius: 20px;
-    }
-
-    .folder-panel {
-      padding: 22px 14px 18px;
-    }
-
-    .question-panel {
-      padding: 14px 12px 12px;
+    .main-image-wrap img {
+      border-radius: 22px;
     }
 
     .main-title {
-      font-size: 28px;
+      font-size: 24px;
     }
 
-    .main-desc {
-      font-size: 15px;
-      margin-bottom: 18px;
-    }
-
-    .folder-badges {
-      margin-bottom: 12px;
-    }
-
-    .capture-area {
-      padding: 12px 10px 8px;
-      border-radius: 26px;
-    }
-
-    .paper-sheet {
-      border-radius: 24px;
-    }
-
-    .center-card {
-      max-width: 248px;
-      min-height: 88px;
-      margin-bottom: 14px;
-      border-radius: 24px;
-      padding: 15px 12px;
-    }
-
-    .center-card::after {
-      inset: 9px;
-      border-radius: 18px;
-    }
-
-    .center-subtitle {
-      font-size: 22px;
-    }
-
-    .cards-grid {
-      gap: 10px 8px;
-    }
-
-    .sticker-card {
-      min-height: 112px;
-      border-radius: 18px;
-      padding: 11px 8px 12px;
-    }
-
-    .detail-header {
-      font-size: 13px;
-      gap: 4px;
-    }
-
-    .detail-icon {
+    .main-desc,
+    .sub-copy {
       font-size: 14px;
-    }
-
-    .detail-text {
-      font-size: 11.5px;
-      line-height: 1.45;
     }
 
     #q-title {
@@ -819,109 +588,86 @@
       <div class="content-wrapper">
 
         <div id="screen-main" class="screen flex-center active">
-          <div class="folder-stage">
-            <div class="folder-tab">MY FOLDER</div>
-            <div class="folder-panel">
-              <div class="folder-inner">
-                <h1 class="main-title">테스트잇 마인드맵 성격 테스트</h1>
-                <p class="main-desc">
-                  질문에 답하고<br>
-                  나만의 마인드맵 결과를 확인해봐
-                </p>
-                <button class="pattern-btn" onclick="nextScreen('screen-name')">테스트 시작하기</button>
-              </div>
+          <div class="glass-panel">
+            <div class="main-image-wrap">
+              <img src="img_main371.png" alt="테스트잇 마인드맵 성격 테스트 메인 이미지">
+            </div>
+            <p class="sub-copy">
+              질문에 답하고<br>
+              나만의 마인드맵 결과를 확인해봐
+            </p>
+            <div class="main-cta">
+              <button class="pattern-btn" onclick="nextScreen('screen-name')">테스트 시작하기</button>
             </div>
           </div>
         </div>
 
         <div id="screen-name" class="screen flex-center">
-          <div class="folder-stage">
-            <div class="folder-tab">NAME FILE</div>
-            <div class="folder-panel">
-              <div class="folder-inner">
-                <div class="folder-badges">
-                  <div class="folder-badge">result name</div>
-                  <div class="folder-badge soft-pink">nickname ok</div>
-                </div>
+          <div class="glass-panel name-card">
+            <div class="section-badge">NAME FILE</div>
+            <h1 class="main-title">이름 입력</h1>
+            <p class="main-desc">
+              결과 이미지에 들어갈<br>
+              이름이나 닉네임을 적어줘
+            </p>
 
-                <h1 class="main-title">이름 입력</h1>
-                <p class="main-desc">
-                  결과지에 들어갈 이름이나 닉네임을 적어줘
-                </p>
-
-                <div class="name-input-wrap">
-                  <input type="text" id="userName" placeholder="예: 다혜">
-                  <button class="pattern-btn" onclick="startTest()">다 적었어</button>
-                </div>
-              </div>
+            <div class="name-input-wrap">
+              <input type="text" id="userName" placeholder="예: 다혜">
+              <button class="pattern-btn" onclick="startTest()">다 적었어</button>
             </div>
           </div>
         </div>
 
         <div id="screen-question" class="screen flex-center">
-          <div class="question-folder">
-            <div class="question-tab">QUESTION</div>
-            <div class="question-panel">
-              <div class="progress-bar">
-                <div class="progress" id="progress"></div>
-              </div>
+          <div class="glass-panel question-card">
+            <div class="section-badge">QUESTION</div>
 
-              <div class="question-meta">
-                <div class="question-count" id="question-count">1 / 12</div>
-                <div class="question-type">mind check</div>
-              </div>
-
-              <h2 id="q-title">질문</h2>
-
-              <button class="answer-btn" id="btn-A" onclick="selectAnswer('A')">답변 A</button>
-              <button class="answer-btn" id="btn-B" onclick="selectAnswer('B')">답변 B</button>
+            <div class="progress-bar">
+              <div class="progress" id="progress"></div>
             </div>
+
+            <div class="question-meta">
+              <div class="question-count" id="question-count">1 / 12</div>
+              <div class="question-type">mind check</div>
+            </div>
+
+            <h2 id="q-title">질문</h2>
+
+            <button class="answer-btn" id="btn-A">답변 A</button>
+            <button class="answer-btn" id="btn-B">답변 B</button>
           </div>
         </div>
 
-        <div id="screen-result" class="screen block-view">
-          <div class="result-wrapper">
-            <div class="capture-area" id="capture-area">
-              <div class="paper-sheet"></div>
-
-              <div class="mindmap-lines">
-                <svg id="mindmap-svg" viewBox="0 0 430 610" preserveAspectRatio="none">
-                  <path id="line-top-left" d="M215 96 C180 120, 130 126, 80 152"></path>
-                  <path id="line-top-center" d="M215 96 C215 116, 215 126, 215 152"></path>
-                  <path id="line-top-right" d="M215 96 C250 120, 300 126, 350 152"></path>
-
-                  <line id="line-col-left" x1="80" y1="152" x2="80" y2="460"></line>
-                  <line id="line-col-center" x1="215" y1="152" x2="215" y2="460"></line>
-                  <line id="line-col-right" x1="350" y1="152" x2="350" y2="460"></line>
-
-                  <circle id="dot-top-left" cx="80" cy="152" r="4"></circle>
-                  <circle id="dot-top-center" cx="215" cy="152" r="4"></circle>
-                  <circle id="dot-top-right" cx="350" cy="152" r="4"></circle>
-
-                  <circle id="dot-mid-left" cx="80" cy="306" r="4"></circle>
-                  <circle id="dot-mid-center" cx="215" cy="306" r="4"></circle>
-                  <circle id="dot-mid-right" cx="350" cy="306" r="4"></circle>
-
-                  <circle id="dot-bottom-left" cx="80" cy="460" r="4"></circle>
-                  <circle id="dot-bottom-center" cx="215" cy="460" r="4"></circle>
-                  <circle id="dot-bottom-right" cx="350" cy="460" r="4"></circle>
-                </svg>
+        <div id="screen-result" class="screen">
+          <div class="glass-panel result-card">
+            <div class="result-preview-wrap">
+              <div id="capture-target" class="capture-target">
+                <img id="result-image" class="result-image" src="" alt="마인드맵 결과 이미지">
+                <div id="result-overlay-title" class="result-overlay-title"></div>
               </div>
-
-              <div class="result-top"></div>
-
-              <div class="center-card">
-                <div class="center-subtitle" id="mm-center-subtitle">사용자님의 마인드맵</div>
-              </div>
-
-              <div class="cards-grid" id="cards-container"></div>
             </div>
 
             <div class="result-action-area">
-              <button class="action-btn save" onclick="saveResultAsImage()"><span class="emoji-font">💾</span> 결과 이미지 저장하기</button>
-              <button class="action-btn restart" onclick="location.reload()"><span class="emoji-font">💫</span> 다시 하기</button>
-              <button class="action-btn others" onclick="alert('다른 테스트 준비 중!')"><span class="emoji-font">👀</span> 다른 테스트</button>
-              <button class="action-btn share" onclick="shareTest()"><span class="emoji-font">🔗</span> 공유하기</button>
+              <button class="action-btn save" onclick="saveResultAsImage()">결과 이미지 저장하기</button>
+              <button class="action-btn restart" onclick="location.reload()">다시 하기</button>
+              <button class="action-btn others" onclick="alert('다른 테스트 준비 중!')">다른 테스트</button>
+              <button class="action-btn share" onclick="shareTest()">공유하기</button>
+            </div>
+
+            <div class="ad-container" id="ad-container">
+              <article class="coupang_ad mt-3">
+                <script src="https://ads-partners.coupang.com/g.js"></script>
+                <script>
+                  new PartnersCoupang.G({
+                    "id":798186,
+                    "template":"carousel",
+                    "trackingCode":"AF4391881",
+                    "width":"350",
+                    "height":"140",
+                    "tsource":""
+                  });
+                </script>
+              </article>
             </div>
           </div>
         </div>
@@ -933,263 +679,32 @@
 <script>
   let currentQ = 0;
   let userName = "";
+
   const scores = { E:0, I:0, S:0, N:0, T:0, F:0, J:0, P:0 };
 
   const questions = [
     { q: "주말에 약속이 취소되었다 내 머릿속은?", a: {text: "아쉽다 다른 친구라도 만날까?", type: "E"}, b: {text: "오히려 좋다 집에서 쉬어야지", type: "I"} },
     { q: "처음 가는 모임에 참석했을 때 나는?", a: {text: "먼저 다가가서 말을 건넨다", type: "E"}, b: {text: "누가 말을 걸어줄 때까지 기다린다", type: "I"} },
     { q: "스트레스를 받을 때 푸는 방식은?", a: {text: "사람들과 수다 떨면서 푼다", type: "E"}, b: {text: "혼자만의 시간을 가지며 푼다", type: "I"} },
+
     { q: "사과를 보면 드는 생각은?", a: {text: "빨갛다 맛있다 과일", type: "S"}, b: {text: "백설공주 뉴턴 아이폰", type: "N"} },
     { q: "요리할 때 나는?", a: {text: "레시피에 적힌 정량대로 계량한다", type: "S"}, b: {text: "대충 눈대중으로 감칠맛을 찾는다", type: "N"} },
     { q: "노래를 들을 때 더 집중하는 것은?", a: {text: "멜로디와 리듬이 좋으면 좋다", type: "S"}, b: {text: "가사의 의미와 감성에 몰입한다", type: "N"} },
+
     { q: "친구가 나 우울해서 화분 샀어라고 한다면?", a: {text: "무슨 화분 샀어 어디서 샀어?", type: "T"}, b: {text: "왜 우울해 무슨 일 있었어?", type: "F"} },
     { q: "고민을 털어놓는 친구에게 해주는 말은?", a: {text: "현실적인 해결책을 제시해 준다", type: "T"}, b: {text: "편을 들어주고 공감해 준다", type: "F"} },
     { q: "일할 때 더 중요하게 생각하는 것은?", a: {text: "효율성과 정확한 결과", type: "T"}, b: {text: "팀원들과의 조화와 분위기", type: "F"} },
+
     { q: "여행을 가기 전 나의 준비 상태는?", a: {text: "일정표와 맛집 리스트를 미리 정리한다", type: "J"}, b: {text: "가서 끌리는 대로 하면 된다", type: "P"} },
     { q: "내 방 책상의 상태는?", a: {text: "항상 물건이 제자리에 정리되어 있다", type: "J"}, b: {text: "나름의 규칙은 있지만 남이 보면 지저분하다", type: "P"} },
     { q: "갑자기 일정이 변경되었다면?", a: {text: "스트레스받고 계획을 다시 짜야 한다", type: "J"}, b: {text: "그럴 수도 있지 하고 유연하게 넘긴다", type: "P"} }
   ];
 
-  const pastelColors = {
-    "ENFJ": "#fff6f8",
-    "ENFP": "#fffaf0",
-    "ENTJ": "#f5f9ff",
-    "ENTP": "#f8f5ff",
-    "ESFJ": "#fff7fa",
-    "ESFP": "#fffbf3",
-    "ESTJ": "#f4f8ff",
-    "ESTP": "#fff9f2",
-    "INFJ": "#faf7ff",
-    "INFP": "#f8fff6",
-    "INTJ": "#f6f8ff",
-    "INTP": "#f6fcff",
-    "ISFJ": "#fff8fb",
-    "ISFP": "#f8fff8",
-    "ISTJ": "#f7f8fb",
-    "ISTP": "#f6fbfb"
-  };
-
-  const lineThemes = {
-    "ENFJ": { left:"#efc1ce", center:"#bfd6fb", right:"#c7e5cf" },
-    "ENFP": { left:"#f1d8a6", center:"#bfd6fb", right:"#c7e5cf" },
-    "ENTJ": { left:"#d7cdf6", center:"#bfd6fb", right:"#c7e5cf" },
-    "ENTP": { left:"#d7cdf6", center:"#bfd6fb", right:"#efd1b0" },
-    "ESFJ": { left:"#efc1ce", center:"#f1d8a6", right:"#c7e5cf" },
-    "ESFP": { left:"#efc1ce", center:"#f1d8a6", right:"#c7e5cf" },
-    "ESTJ": { left:"#efc1ce", center:"#bfd6fb", right:"#c7e5cf" },
-    "ESTP": { left:"#efc1ce", center:"#bfd6fb", right:"#efd1b0" },
-    "INFJ": { left:"#d7cdf6", center:"#bfd6fb", right:"#c7e5cf" },
-    "INFP": { left:"#d7cdf6", center:"#c7e5cf", right:"#bfd6fb" },
-    "INTJ": { left:"#d7cdf6", center:"#bfd6fb", right:"#c7e5cf" },
-    "INTP": { left:"#d7cdf6", center:"#bfd6fb", right:"#c7e5cf" },
-    "ISFJ": { left:"#efc1ce", center:"#f1d8a6", right:"#c7e5cf" },
-    "ISFP": { left:"#d7cdf6", center:"#c7e5cf", right:"#bfd6fb" },
-    "ISTJ": { left:"#efc1ce", center:"#bfd6fb", right:"#c7e5cf" },
-    "ISTP": { left:"#d7cdf6", center:"#bfd6fb", right:"#c7e5cf" },
-    "DEFAULT": { left:"#efc1ce", center:"#bfd6fb", right:"#c7e5cf" }
-  };
-
-  const resultData = {
-    "ENFJ": { branches: [
-      { main: "🛡️ 내 사람은 챙김", sub: "친구 일도 내 일처럼 챙기는 편." },
-      { main: "🥺 상처 받았을까", sub: "내 말투 하나도 곱씹어보는 타입." },
-      { main: "🚀 진짜 갓생 산다", sub: "목표가 생기면 꽤 열심히 끌고 감." },
-      { main: "📝 기준이 높은 편", sub: "남보다 나한테 더 엄격할 때 있음." },
-      { main: "🙈 은근 관심 필요", sub: "반응해주면 기분이 생각보다 좋음." },
-      { main: "😩 오지랖 후회", sub: "나서놓고 혼자 기 빨릴 때 있음." },
-      { main: "🤪 지루함 극혐", sub: "재미없으면 금방 텐션 떨어짐." },
-      { main: "🍬 칭찬에 약함", sub: "좋은 말 한 마디에 확 풀리는 편." },
-      { main: "💖 모두의 행복", sub: "편안하고 다정한 관계가 제일 중요함." }
-    ]},
-    "ENFP": { branches: [
-      { main: "🤩 새로운 거 최고", sub: "재밌어 보이면 바로 마음이 감." },
-      { main: "🥺 나 미워하나", sub: "해맑아 보여도 눈치 은근 많이 봄." },
-      { main: "🎨 아이디어 뱅크", sub: "기발한 생각이 자주 떠오르는 편." },
-      { main: "🏃‍♀️ 벼락치기 장인", sub: "미루다가 꽂히면 확 몰입함." },
-      { main: "🙈 말실수 이불킥", sub: "혼자 갑자기 떠올리고 민망해함." },
-      { main: "😭 진지한 내면", sub: "혼자 있을 때 감정이 깊어질 수 있음." },
-      { main: "🥳 사람이 충전기", sub: "재밌는 사람 만나면 에너지 참." },
-      { main: "🎁 작은 반응에 감동", sub: "사소하게 챙겨주는 거에 약함." },
-      { main: "✨ 매일이 축제", sub: "답답한 것보다 반짝이는 삶이 좋음." }
-    ]},
-    "ENTJ": { branches: [
-      { main: "👑 1등 아니면 안 돼", sub: "기왕 하는 거면 제대로 해내고 싶음." },
-      { main: "🤔 답답한 거 싫음", sub: "비효율적인 흐름을 그냥 못 넘김." },
-      { main: "📈 갓생 모드", sub: "성과가 나야 마음이 더 편해짐." },
-      { main: "😤 감정소모 극혐", sub: "해결 없는 징징거림을 힘들어함." },
-      { main: "🥺 은근 허당미", sub: "완벽해 보여도 생활은 어설플 수 있음." },
-      { main: "🏃‍♂️ 먼저 밀어붙임", sub: "생각보다 행동이 빠른 편." },
-      { main: "🧠 계산 빠름", sub: "머릿속으로 판을 크게 보는 타입." },
-      { main: "🎯 목표 달성 쾌감", sub: "해냈다는 감각이 제일 짜릿함." },
-      { main: "🏆 영향력 중요", sub: "결국 남는 건 성과와 영향력이라 느낌." }
-    ]},
-    "ENTP": { branches: [
-      { main: "🗣️ 토론이 재밌음", sub: "싸우는 게 아니라 그냥 재밌는 거임." },
-      { main: "🙄 지루한 건 고문", sub: "늘 새로운 자극이 있어야 버팀." },
-      { main: "💡 기상천외 상상", sub: "남들이 안 하는 생각을 잘 함." },
-      { main: "🥱 용두사미", sub: "시작은 화려한데 마무리는 약할 수 있음." },
-      { main: "🤷 마이웨이", sub: "남 시선보다 내 흥미가 더 중요함." },
-      { main: "🥺 은근 예민", sub: "쿨한 척해도 타격이 아예 없는 건 아님." },
-      { main: "🎲 즉흥력 강함", sub: "재밌으면 바로 시도하는 편." },
-      { main: "🧠 말빨 자신감", sub: "내 논리가 통할 때 희열 느낌." },
-      { main: "🗽 얽매이기 싫음", sub: "자유롭게 말하고 노는 게 중요함." }
-    ]},
-    "ESFJ": { branches: [
-      { main: "💖 우리 모두 친구", sub: "다 같이 둥글게 지내는 게 좋음." },
-      { main: "🥺 서운함 100배", sub: "내가 챙긴 만큼 반응 없으면 속상함." },
-      { main: "🗓️ 인간 스케줄러", sub: "약속과 기념일을 잘 챙기는 편." },
-      { main: "🤐 선 넘는 거 싫음", sub: "관계 어색해지는 건 피하고 싶음." },
-      { main: "🎭 리액션 큼", sub: "분위기 살리려고 반응이 커질 때 많음." },
-      { main: "🤦 거절을 잘 못 함", sub: "부탁을 받아주다 힘들어할 때 있음." },
-      { main: "🗣️ 수다로 충전", sub: "사람들과 떠들면 텐션이 참." },
-      { main: "🥰 고마워 한 마디", sub: "알아봐주면 피로가 확 풀림." },
-      { main: "🕊️ 함께하는 따뜻함", sub: "편한 분위기와 다정한 관계가 중요함." }
-    ]},
-    "ESFP": { branches: [
-      { main: "💃 놀자판 벌려", sub: "재밌는 순간에 텐션이 확 올라감." },
-      { main: "🙄 심각한 건 패스", sub: "무거운 분위기 오래 못 견딤." },
-      { main: "💸 욜로 성향", sub: "지금 좋으면 써버리는 편일 수 있음." },
-      { main: "🏃‍♀️ 몸이 먼저 움직임", sub: "생각보다 행동이 먼저 나가는 편." },
-      { main: "🥺 은근 유리멘탈", sub: "쿨해 보여도 상처는 받을 수 있음." },
-      { main: "🗓️ 계획 답답함", sub: "즉흥적인 흐름이 더 잘 맞음." },
-      { main: "🌟 무대 체질", sub: "주목받는 순간에 살아나는 느낌." },
-      { main: "🎁 작은 것에 감동", sub: "소소한 챙김에도 크게 기뻐함." },
-      { main: "🎉 주인공은 바로 나", sub: "지루하지 않은 하루가 제일 소중함." }
-    ]},
-    "ESTJ": { branches: [
-      { main: "🤝 확실한 룰", sub: "기본은 지켜야 한다고 생각함." },
-      { main: "📊 플랜 B까지 있음", sub: "계획이 있어야 마음이 편함." },
-      { main: "🤬 꼼수 싫음", sub: "대충 넘어가는 걸 못 견딜 수 있음." },
-      { main: "🥺 츤데레 기질", sub: "무뚝뚝해도 속으로는 챙길 때 있음." },
-      { main: "🤦 답답해서 내가 함", sub: "느린 흐름을 보면 직접 나섬." },
-      { main: "🏢 워커홀릭 모드", sub: "바쁘게 굴러가야 안정감이 생김." },
-      { main: "🎯 결과 지향", sub: "성과가 보여야 뿌듯함을 느낌." },
-      { main: "💬 직설적인 편", sub: "돌려 말하기보다 바로 말함." },
-      { main: "🎖️ 인정받고 싶음", sub: "내 역할을 제대로 했다는 감각이 중요함." }
-    ]},
-    "ESTP": { branches: [
-      { main: "😎 직진 마이웨이", sub: "눈치 보기보다 일단 해봄." },
-      { main: "🙄 결론만 말해", sub: "복잡한 설명보다 핵심이 중요함." },
-      { main: "💸 승부욕 있음", sub: "짜릿한 상황과 경쟁을 즐길 수 있음." },
-      { main: "🏃 일단 부딪혀", sub: "몸으로 해보면서 감을 잡는 편." },
-      { main: "👀 상황 파악 빠름", sub: "관심 없는 척해도 보는 건 다 봄." },
-      { main: "🥱 반복은 고문", sub: "똑같은 건 금방 질림." },
-      { main: "🛠️ 임기응변 강함", sub: "돌발 상황에 은근 강한 편." },
-      { main: "🍻 뒤끝 적음", sub: "싸워도 금방 넘길 수 있음." },
-      { main: "🔥 지금 이 순간", sub: "지금 재밌고 짜릿한 게 중요함." }
-    ]},
-    "INFJ": { branches: [
-      { main: "🛡️ 좁고 깊은 문", sub: "아무나 가까워지게 두지는 않음." },
-      { main: "🤔 인간 스캐너", sub: "사람의 속마음을 오래 읽는 편." },
-      { main: "✨ 나만의 이상향", sub: "내 안의 가치관과 이상이 선명함." },
-      { main: "🤫 보이지 않는 채찍", sub: "남보다 나 자신에게 엄격할 수 있음." },
-      { main: "🚪 단호한 손절", sub: "선 넘으면 갑자기 멀어질 수 있음." },
-      { main: "🔋 혼자 충전 필요", sub: "사람 만나고 나면 쉬는 시간이 꼭 필요함." },
-      { main: "📝 생각의 꼬리", sub: "자기 전에도 생각이 길어질 수 있음." },
-      { main: "📚 딥한 대화 원함", sub: "가벼운 말보다 깊은 대화가 좋음." },
-      { main: "💎 진심 통하는 순간", sub: "겉도는 관계보다 마음이 맞는 연결이 중요함." }
-    ]},
-    "INFP": { branches: [
-      { main: "💖 내 마음 알아줘", sub: "이해받고 싶은 마음이 꽤 큼." },
-      { main: "🥺 개복치 멘탈", sub: "사소한 말도 오래 마음에 남을 수 있음." },
-      { main: "🦄 망상 대잔치", sub: "상상 속 세계가 은근 화려한 편." },
-      { main: "🛌 침대와 친함", sub: "가만히 누워 있는 시간도 소중함." },
-      { main: "🔥 갑툭튀 열정", sub: "꽂히면 갑자기 깊게 몰입함." },
-      { main: "🤐 비밀의 화원", sub: "진짜 속마음은 쉽게 안 꺼냄." },
-      { main: "🎧 새벽 감성 중독", sub: "감정에 오래 잠길 때가 있음." },
-      { main: "🥰 소소한 다정함", sub: "작은 진심에도 크게 감동함." },
-      { main: "🌈 나만의 예쁜 세상", sub: "나답고 진심 있는 삶이 제일 중요함." }
-    ]},
-    "INTJ": { branches: [
-      { main: "🛡️ 깐깐한 입국 심사", sub: "아무나 가까이 두는 편은 아님." },
-      { main: "🙄 바보 알러지", sub: "비효율과 답답함에 예민한 편." },
-      { main: "🎯 인생 체스판", sub: "멀리 보고 계획하는 걸 좋아함." },
-      { main: "🧐 지식 블랙홀", sub: "궁금한 건 끝까지 파고들기도 함." },
-      { main: "🥺 사회화된 뚝딱이", sub: "좋아하는 것 앞에선 어설퍼질 수도 있음." },
-      { main: "🤷 위로는 서툼", sub: "공감보다 해결이 먼저 떠오를 수 있음." },
-      { main: "🤫 마이웨이 본체", sub: "혼자 하는 게 편한 경우가 많음." },
-      { main: "💡 퍼즐 맞추는 희열", sub: "복잡한 걸 이해했을 때 짜릿함." },
-      { main: "⚙️ 완벽한 설계", sub: "논리적이고 단단한 방향이 중요함." }
-    ]},
-    "INTP": { branches: [
-      { main: "👻 연락은 미루기 쉬움", sub: "머릿속 답장은 했는데 실제 답장은 늦을 수 있음." },
-      { main: "🤔 끊임없는 왜", sub: "이유와 원리를 자꾸 생각하게 됨." },
-      { main: "🧠 상상 속 확장", sub: "머릿속에서 사고가 계속 이어짐." },
-      { main: "🛌 귀찮음 본체", sub: "에너지 아끼고 싶은 순간이 많음." },
-      { main: "🥺 영혼 로그아웃", sub: "겉은 여기 있어도 속은 딴생각 중일 수 있음." },
-      { main: "🤖 팩트가 먼저", sub: "의도 없이도 팩트가 먼저 나올 때 있음." },
-      { main: "🔍 무한 현미경", sub: "오류를 발견하면 그냥 못 넘김." },
-      { main: "🎮 혼자 몰입 최고", sub: "혼자 깊게 파고드는 시간이 좋음." },
-      { main: "💡 진리 탐구", sub: "납득되는 구조와 지식이 중요함." }
-    ]},
-    "ISFJ": { branches: [
-      { main: "💖 무명천사", sub: "조용하게 챙기고 배려하는 편." },
-      { main: "🥺 걱정 스노우볼", sub: "일어나지 않은 일도 미리 걱정할 때 있음." },
-      { main: "🗓️ 평화로운 루틴", sub: "안정적인 흐름이 편함." },
-      { main: "🤐 호구 될 뻔", sub: "싫은 소리 못 해 힘들어질 수 있음." },
-      { main: "🔥 기억 오래 감", sub: "섭섭한 디테일도 은근 남음." },
-      { main: "📝 기억력 좋음", sub: "사람의 취향이나 말도 잘 기억함." },
-      { main: "🏡 혼자 충전", sub: "밖보다 집에서 회복이 잘 됨." },
-      { main: "🥰 인정받으면 녹음", sub: "고맙다는 말에 힘이 많이 남." },
-      { main: "🛡️ 소중한 일상", sub: "평온하고 다정한 하루가 제일 중요함." }
-    ]},
-    "ISFP": { branches: [
-      { main: "🤫 좋은 게 좋은 거", sub: "불편한 갈등은 피하고 싶어함." },
-      { main: "🛌 눕기 좋아함", sub: "가만히 쉬는 시간이 진짜 소중함." },
-      { main: "🎨 미친 감수성", sub: "예쁜 것과 분위기에 크게 반응함." },
-      { main: "🤷 물 흐르는 대로", sub: "간섭보다 내 템포가 중요함." },
-      { main: "🥺 조용한 고집", sub: "건드리면 물러서지 않는 기준도 있음." },
-      { main: "⏱️ 미루기 가능", sub: "마감 직전에 급집중할 수도 있음." },
-      { main: "🎧 나홀로 힐링", sub: "혼자 조용한 시간이 진짜 충전임." },
-      { main: "🐶 소확행 좋아함", sub: "작은 행복이 생각보다 큼." },
-      { main: "🌿 나만의 속도", sub: "편안하고 자유로운 감각이 중요함." }
-    ]},
-    "ISTJ": { branches: [
-      { main: "🤝 예의가 기본", sub: "기본이 무너지면 정이 확 떨어짐." },
-      { main: "🤬 꼼수 싫음", sub: "대충 넘어가는 걸 잘 못 봄." },
-      { main: "📝 인간 엑셀", sub: "정리된 흐름을 좋아함." },
-      { main: "🤐 위로는 서툴 수 있음", sub: "공감보다 해결이 먼저 떠오를 수 있음." },
-      { main: "🥺 팩트 기반 애정", sub: "잔소리도 애정일 때가 있음." },
-      { main: "🏋️ 무한 책임감", sub: "맡은 건 끝까지 하려는 편." },
-      { main: "🏡 칼각의 편안함", sub: "정돈된 공간이 마음을 편하게 함." },
-      { main: "💰 안정감 중요", sub: "확실한 결과와 안정이 중요함." },
-      { main: "⚖️ 흔들리지 않는 기준", sub: "꾸준하고 단단한 태도가 중요함." }
-    ]},
-    "ISTP": { branches: [
-      { main: "😎 무소의 뿔", sub: "혼자 있는 시간이 꽤 편함." },
-      { main: "🙄 극강의 가성비", sub: "쓸데없는 감정 소모를 싫어함." },
-      { main: "🛠️ 조용한 맥가이버", sub: "직접 만지고 해결하는 데 강함." },
-      { main: "📱 연락은 비상용", sub: "쓸데없는 연락을 귀찮아할 수 있음." },
-      { main: "🥺 벼락 몰입", sub: "평소엔 조용하다가 갑자기 깊게 파고듦." },
-      { main: "🤷 에휴 귀찮아", sub: "웬만한 건 귀찮아서 대충 넘길 때도 있음." },
-      { main: "🎢 조용한 스릴", sub: "자극적인 상황을 은근 즐길 수 있음." },
-      { main: "🤫 혼자 보내는 시간", sub: "방해받지 않을 때 제일 편함." },
-      { main: "🦅 야생의 자유", sub: "간섭 없는 자유가 제일 중요함." }
-    ]},
-    "DEFAULT": { branches: [
-      { main: "🛡️ 내 사람 무조건 챙김", sub: "좋은 사람은 오래 마음에 둠." },
-      { main: "🥺 상처 받았을까", sub: "사소한 말도 은근 신경 쓸 수 있음." },
-      { main: "🚀 하고 싶은 건 해봄", sub: "마음이 가는 쪽으로 움직이려는 편." },
-      { main: "📝 기준이 있음", sub: "생각보다 내 안의 기준이 선명할 수 있음." },
-      { main: "🙈 은근 관심 필요", sub: "반응해주면 생각보다 기분이 좋음." },
-      { main: "😩 혼자 기 빨림", sub: "사람이나 상황에 지칠 때도 있음." },
-      { main: "🤪 지루한 건 싫음", sub: "재밌는 걸 찾을 때 살아나는 느낌." },
-      { main: "🍬 좋은 말에 약함", sub: "사소한 칭찬도 힘이 됨." },
-      { main: "💖 모두의 행복", sub: "결국 편하고 좋은 흐름이 중요함." }
-    ]}
-  };
-
   function nextScreen(screenId) {
-    document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
-    const screen = document.getElementById(screenId);
-    screen.classList.add("active");
-
-    if (screenId === "screen-result") {
-      const mbti = calculateMBTI();
-      document.getElementById("app").style.backgroundColor = pastelColors[mbti] || "#ffffff";
-    } else {
-      document.getElementById("app").style.backgroundColor = "#f7f9fd";
-    }
+    document.querySelectorAll(".screen").forEach(function(screen) {
+      screen.classList.remove("active");
+    });
+    document.getElementById(screenId).classList.add("active");
   }
 
   function calculateMBTI() {
@@ -1203,7 +718,11 @@
     const input = document.getElementById("userName").value.trim();
     userName = input ? input : "당신";
     currentQ = 0;
-    for (let key in scores) scores[key] = 0;
+
+    for (let key in scores) {
+      scores[key] = 0;
+    }
+
     showQuestion();
     nextScreen("screen-question");
   }
@@ -1216,10 +735,20 @@
 
     const qData = questions[currentQ];
     document.getElementById("q-title").innerHTML = qData.q;
-    document.getElementById("btn-A").innerHTML = qData.a.text;
-    document.getElementById("btn-A").onclick = () => selectAnswer(qData.a.type);
-    document.getElementById("btn-B").innerHTML = qData.b.text;
-    document.getElementById("btn-B").onclick = () => selectAnswer(qData.b.type);
+
+    const btnA = document.getElementById("btn-A");
+    const btnB = document.getElementById("btn-B");
+
+    btnA.innerHTML = qData.a.text;
+    btnA.onclick = function() {
+      selectAnswer(qData.a.type);
+    };
+
+    btnB.innerHTML = qData.b.text;
+    btnB.onclick = function() {
+      selectAnswer(qData.b.type);
+    };
+
     document.getElementById("progress").style.width = ((currentQ + 1) / questions.length * 100) + "%";
     document.getElementById("question-count").innerText = (currentQ + 1) + " / " + questions.length;
   }
@@ -1230,106 +759,49 @@
     showQuestion();
   }
 
-  function cleanText(text) {
-    return text.replace(/\./g, "").trim();
-  }
-
-  function applyMindmapLineColors(mbti) {
-    const theme = lineThemes[mbti] || lineThemes.DEFAULT;
-
-    const leftIds = ["line-top-left", "line-col-left", "dot-top-left", "dot-mid-left", "dot-bottom-left"];
-    const centerIds = ["line-top-center", "line-col-center", "dot-top-center", "dot-mid-center", "dot-bottom-center"];
-    const rightIds = ["line-top-right", "line-col-right", "dot-top-right", "dot-mid-right", "dot-bottom-right"];
-
-    leftIds.forEach(id => {
-      const el = document.getElementById(id);
-      if (!el) return;
-      if (el.tagName === "circle") {
-        el.setAttribute("fill", theme.left);
-      } else {
-        el.setAttribute("stroke", theme.left);
-      }
-    });
-
-    centerIds.forEach(id => {
-      const el = document.getElementById(id);
-      if (!el) return;
-      if (el.tagName === "circle") {
-        el.setAttribute("fill", theme.center);
-      } else {
-        el.setAttribute("stroke", theme.center);
-      }
-    });
-
-    rightIds.forEach(id => {
-      const el = document.getElementById(id);
-      if (!el) return;
-      if (el.tagName === "circle") {
-        el.setAttribute("fill", theme.right);
-      } else {
-        el.setAttribute("stroke", theme.right);
-      }
-    });
-  }
-
   function showResult() {
     const mbti = calculateMBTI();
-    const data = resultData[mbti] || resultData["DEFAULT"];
-    const bg = pastelColors[mbti] || "#ffffff";
+    const mbtiLower = mbti.toLowerCase();
+    const resultImagePath = "img_" + mbtiLower + "371.png";
 
-    document.getElementById("mm-center-subtitle").innerText = userName + "님의 마인드맵";
+    const resultImage = document.getElementById("result-image");
+    const overlayTitle = document.getElementById("result-overlay-title");
 
-    const captureArea = document.getElementById("capture-area");
-    captureArea.style.backgroundColor = bg;
+    overlayTitle.innerText = userName + "의 마인드맵";
+    resultImage.src = resultImagePath;
+    resultImage.alt = mbti + " 마인드맵 결과 이미지";
 
-    const colors = ["pink", "blue", "green", "pink", "blue", "green", "purple", "yellow", "green"];
-    let html = "";
+    resultImage.onerror = function() {
+      this.onerror = null;
+      this.src = "img_enfj371.png";
+    };
 
-    data.branches.forEach((branch, index) => {
-      const firstSpaceIndex = branch.main.indexOf(" ");
-      const emoji = branch.main.substring(0, firstSpaceIndex);
-      const title = branch.main.substring(firstSpaceIndex).trim();
-      const colorClass = colors[index % colors.length];
-
-      html += `
-        <div class="sticker-card ${colorClass}">
-          <div class="detail-header"><span class="detail-icon emoji-font">${emoji}</span><span>${title}</span></div>
-          <div class="detail-text">${cleanText(branch.sub)}</div>
-        </div>
-      `;
-    });
-
-    document.getElementById("cards-container").innerHTML = html;
-    applyMindmapLineColors(mbti);
-
-    requestAnimationFrame(() => {
-      nextScreen("screen-result");
-    });
+    nextScreen("screen-result");
   }
 
   function saveResultAsImage() {
-    const mbti = calculateMBTI();
-    const target = document.getElementById("capture-area");
     const saveBtn = document.querySelector(".action-btn.save");
+    const target = document.getElementById("capture-target");
 
-    saveBtn.innerHTML = '<span class="emoji-font">⏳</span> 생성 중...';
+    saveBtn.innerText = "저장 중...";
     saveBtn.disabled = true;
 
     html2canvas(target, {
-      backgroundColor: pastelColors[mbti] || "#ffffff",
-      scale: 5,
+      backgroundColor: null,
+      scale: 4,
       useCORS: true,
       logging: false
-    }).then(canvas => {
+    }).then(function(canvas) {
       const link = document.createElement("a");
       link.download = userName + "_마인드맵.png";
       link.href = canvas.toDataURL("image/png");
       link.click();
-      saveBtn.innerHTML = '<span class="emoji-font">💾</span> 결과 이미지 저장하기';
+
+      saveBtn.innerText = "결과 이미지 저장하기";
       saveBtn.disabled = false;
-    }).catch(() => {
-      alert("이미지 저장 실패 캡처를 이용해 주세요");
-      saveBtn.innerHTML = '<span class="emoji-font">💾</span> 결과 이미지 저장하기';
+    }).catch(function() {
+      alert("이미지 저장에 실패했어");
+      saveBtn.innerText = "결과 이미지 저장하기";
       saveBtn.disabled = false;
     });
   }
@@ -1337,10 +809,11 @@
   function shareTest() {
     const url = location.href;
     const title = userName + "의 마인드맵";
+
     if (navigator.share) {
-      navigator.share({ title: title, url: url }).catch(console.error);
+      navigator.share({ title: title, url: url }).catch(function() {});
     } else {
-      navigator.clipboard.writeText(url).then(() => {
+      navigator.clipboard.writeText(url).then(function() {
         alert("링크가 복사되었어요");
       });
     }

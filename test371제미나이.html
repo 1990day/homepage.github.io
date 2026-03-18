@@ -198,7 +198,6 @@
     pointer-events: none;
   }
 
-  /* 패딩이랑 모서리 둥글기 완전히 없애는 용도 */
   .no-padding-panel {
     padding: 0 !important;
     border-radius: 0 !important;
@@ -227,7 +226,7 @@
     display: block;
     border-radius: 28px;
     box-shadow: 0 18px 34px rgba(132, 126, 177, 0.16);
-    border: 1px solid rgba(255,255,255,0.72);
+    border: none; /* 흰 테두리 제거 */
   }
 
   .main-cta {
@@ -365,7 +364,7 @@
   #q-title {
     margin-bottom: 18px;
     line-height: 1.58;
-    font-size: 18px; /* 질문 폰트 크기 줄임 */
+    font-size: 18px;
     color: var(--text);
     word-break: keep-all;
     text-align: left;
@@ -432,7 +431,7 @@
     transform: translate(-50%, -50%);
     font-family: "Mona", "Umdot", sans-serif !important;
     font-size: 14px; 
-    color: #7c5f8e;
+    color: #000000; /* 까만색으로 변경 */
     white-space: nowrap;
     margin: 0;
     z-index: 10;
@@ -527,7 +526,6 @@
       padding: 14px;
     }
 
-    /* 반응형일 때 패딩 0 유지 */
     .no-padding-panel {
       padding: 0 !important;
       border-radius: 0 !important;
@@ -543,7 +541,7 @@
     }
 
     #q-title {
-      font-size: 16px; /* 모바일 질문 폰트 크기 줄임 */
+      font-size: 16px; 
     }
 
     .answer-btn {
@@ -576,10 +574,7 @@
               <img src="img_main371.png" alt="테스트잇 마인드맵 성격 테스트 메인 이미지">
             </div>
             <div class="panel-content">
-              <p class="sub-copy">
-                질문에 답하고<br>
-                나만의 마인드맵 결과를 확인해봐
-              </p>
+          
               <div class="main-cta">
                 <button class="pattern-btn" onclick="nextScreen('screen-name')">테스트 시작하기</button>
               </div>
@@ -593,12 +588,12 @@
             <h1 class="main-title">이름 입력</h1>
             <p class="main-desc">
               결과 이미지에 들어갈<br>
-              이름이나 닉네임을 적어줘
+              이름이나 닉네임을 적어주세요
             </p>
 
             <div class="name-input-wrap">
-              <input type="text" id="userName" placeholder="예: 다혜">
-              <button class="pattern-btn" onclick="startTest()">다 적었어</button>
+              <input type="text" id="userName" placeholder="~여기에 입력해주세요~">
+              <button class="pattern-btn" onclick="startTest()">다 적었어요!</button>
             </div>
           </div>
         </div>
@@ -661,23 +656,22 @@
 
   const scores = { E:0, I:0, S:0, N:0, T:0, F:0, J:0, P:0 };
 
-  // 조금 더 디테일하고 뻔하지 않은 질문들로 교체
   const questions = [
-    { q: "친구들과 늦게까지 놀고 집에 돌아가는 길, 내 상태는?", a: {text: "아 오늘 진짜 재밌었다! (에너지 충전됨)", type: "E"}, b: {text: "하얗게 불태웠다... 빨리 눕고 싶다 (에너지 방전)", type: "I"} },
-    { q: "새로운 취미 모임에 나갔을 때 나는?", a: {text: "옆 사람에게 자연스럽게 말을 걸며 친해진다", type: "E"}, b: {text: "누군가 말을 걸어줄 때까지 조용히 분위기를 파악한다", type: "I"} },
-    { q: "스트레스를 아주 많이 받았을 때 나는?", a: {text: "친구들을 만나서 맛있는 거 먹고 떠들어야 풀림", type: "E"}, b: {text: "무조건 혼자만의 공간에서 조용히 쉬어야 풀림", type: "I"} },
+    { q: "친구들과 늦게까지 놀고<br>집에 돌아가는 길, 내 상태는?", a: {text: "아 오늘 진짜 재밌었다!<br>(에너지 충전됨)", type: "E"}, b: {text: "하얗게 불태웠다... 빨리 눕고 싶다<br>(에너지 방전)", type: "I"} },
+    { q: "새로운 취미 모임에 나갔을 때 나는?", a: {text: "옆 사람에게 자연스럽게<br>말을 걸며 친해진다", type: "E"}, b: {text: "누군가 말을 걸어줄 때까지<br>조용히 분위기를 파악한다", type: "I"} },
+    { q: "스트레스를 아주 많이 받았을 때 나는?", a: {text: "친구들을 만나서 맛있는 거 먹고<br>떠들어야 풀림", type: "E"}, b: {text: "무조건 혼자만의 공간에서<br>조용히 쉬어야 풀림", type: "I"} },
 
-    { q: "멍 때릴 때 주로 하는 생각은?", a: {text: "오늘 저녁 뭐 먹지? 내일 뭐 입지?", type: "S"}, b: {text: "만약에 좀비 사태가 터지면 어디로 도망가지?", type: "N"} },
-    { q: "처음 가는 길을 찾을 때 나는?", a: {text: "지도 앱을 켜서 주변 건물과 간판을 보며 찾아간다", type: "S"}, b: {text: "대충 방향 감각을 믿고 이쪽이겠거니 하며 걷는다", type: "N"} },
-    { q: "영화나 드라마를 볼 때 나는?", a: {text: "와 저 배우 연기 잘한다, 영상미 좋다", type: "S"}, b: {text: "저 대사엔 저런 의미가 숨어있겠지? (숨은 의미 추론)", type: "N"} },
+    { q: "멍 때릴 때 주로 하는 생각은?", a: {text: "오늘 저녁 뭐 먹지?<br>내일 뭐 입지?", type: "S"}, b: {text: "만약에 좀비 사태가 터지면<br>어디로 도망가지?", type: "N"} },
+    { q: "처음 가는 길을 찾을 때 나는?", a: {text: "지도 앱을 켜서<br>주변 건물과 간판을 보며 찾아간다", type: "S"}, b: {text: "대충 방향 감각을 믿고<br>이쪽이겠거니 하며 걷는다", type: "N"} },
+    { q: "영화나 드라마를 볼 때 나는?", a: {text: "와 저 배우 연기 잘한다,<br>영상미 좋다", type: "S"}, b: {text: "저 대사엔 저런 의미가 숨어있겠지?<br>(숨은 의미 추론)", type: "N"} },
 
-    { q: "친구가 '나 차 사고 났어...' 라고 연락이 왔다. 나의 첫 마디는?", a: {text: "헐 다쳤어? 보험사 불렀어? 사진 찍어둬!", type: "T"}, b: {text: "뭐?! 다친 데는 없어? 많이 놀랐겠다ㅠㅠ", type: "F"} },
-    { q: "팀 과제를 하는데 한 명이 계속 실수를 한다면?", a: {text: "다음부터는 이렇게 해달라고 확실하게 지적한다", type: "T"}, b: {text: "기분 상하지 않게 돌려서 좋게 말해준다", type: "F"} },
-    { q: "누군가에게 '너 진짜 특이하다' 라는 말을 들었을 때 나는?", a: {text: "특이하다고? (뭐 나름 칭찬이네, 타격 없음)", type: "T"}, b: {text: "특이하다고? (나쁜 뜻인가? 은근 신경 쓰임)", type: "F"} },
+    { q: "친구가 '나 차 사고 났어...' 라고<br>연락이 왔다. 나의 첫 마디는?", a: {text: "헐 다쳤어? 보험사 불렀어?<br>사진 찍어둬!", type: "T"}, b: {text: "뭐?! 다친 데는 없어?<br>많이 놀랐겠다ㅠㅠ", type: "F"} },
+    { q: "팀 과제를 하는데<br>한 명이 계속 실수를 한다면?", a: {text: "다음부터는 이렇게 해달라고<br>확실하게 지적한다", type: "T"}, b: {text: "기분 상하지 않게<br>돌려서 좋게 말해준다", type: "F"} },
+    { q: "누군가에게 '너 진짜 특이하다'<br>라는 말을 들었을 때 나는?", a: {text: "특이하다고?<br>(뭐 나름 칭찬이네, 타격 없음)", type: "T"}, b: {text: "특이하다고?<br>(나쁜 뜻인가? 은근 신경 쓰임)", type: "F"} },
 
-    { q: "여행 가서 맛집을 찾아갔는데 오늘 휴무일이다!", a: {text: "아... 플랜 B 식당으로 가야겠다 (미리 찾아둠)", type: "J"}, b: {text: "아쉽네~ 근처에 맛있어 보이는 데 아무 데나 가자", type: "P"} },
-    { q: "핸드폰 앱에 빨간색 알림 배지(1, 2, 3...)가 떠 있다면?", a: {text: "거슬린다. 바로바로 눌러서 없애야 속이 편함", type: "J"}, b: {text: "999+가 되어도 별로 신경 안 쓴다", type: "P"} },
-    { q: "일을 시작하기 전 나의 스타일은?", a: {text: "언제부터 언제까지 뭘 할지 대충이라도 계획을 세운다", type: "J"}, b: {text: "일단 부딪히면서 그때그때 필요한 걸 처리한다", type: "P"} }
+    { q: "여행 가서 맛집을 찾아갔는데<br>오늘 휴무일이다!", a: {text: "아... 플랜 B 식당으로 가야겠다<br>(미리 찾아둠)", type: "J"}, b: {text: "아쉽네~ 근처에 맛있어 보이는 데<br>아무 데나 가자", type: "P"} },
+    { q: "핸드폰 앱에 빨간색 알림 배지<br>(1, 2, 3...)가 떠 있다면?", a: {text: "거슬린다. 바로바로 눌러서<br>없애야 속이 편함", type: "J"}, b: {text: "999+가 되어도<br>별로 신경 안 쓴다", type: "P"} },
+    { q: "일을 시작하기 전 나의 스타일은?", a: {text: "언제부터 언제까지 뭘 할지<br>대충이라도 계획을 세운다", type: "J"}, b: {text: "일단 부딪히면서<br>그때그때 필요한 걸 처리한다", type: "P"} }
   ];
 
   function nextScreen(screenId) {
@@ -696,7 +690,6 @@
 
   function startTest() {
     const input = document.getElementById("userName").value.trim();
-    // 빈칸일 때 기본값 설정
     userName = input ? input : "사용자";
     currentQ = 0;
 
@@ -778,7 +771,6 @@
       link.href = canvas.toDataURL("image/png");
       link.click();
 
-      // 버튼 원래대로 돌려놓기
       saveBtn.innerHTML = "<span class=\"mona-font\">💾</span> 결과 이미지 저장하기";
       saveBtn.disabled = false;
     }).catch(function() {
@@ -790,10 +782,10 @@
 
   function shareTest() {
     const url = location.href;
-    const title = userName + "님의 마인드맵";
+    const title = "테스트잇 마인드맵 성격 테스트";
 
     if (navigator.share) {
-      navigator.share({ title: title, url: url }).catch(function() {});
+      navigator.share({ text: title, url: url }).catch(function() {});
     } else {
       navigator.clipboard.writeText(url).then(function() {
         alert("링크가 복사되었어요");

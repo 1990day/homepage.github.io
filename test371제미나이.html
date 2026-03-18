@@ -629,9 +629,9 @@
 
             <div class="panel-content result-action-area">
               <button class="action-btn save" onclick="saveResultAsImage()"><span class="mona-font">💾</span> 결과 이미지 저장하기</button>
-              <button class="action-btn restart" onclick="location.reload()"><span class="mona-font">💫</span> 다시 하기</button>
-              <button class="action-btn others" onclick="alert('다른 테스트 준비 중!')"><span class="mona-font">👀</span> 다른 테스트</button>
-              <button class="action-btn share" onclick="shareTest()"><span class="mona-font">🔗</span> 공유하기</button>
+              <button class="action-btn restart" onclick="location.reload()"><span class="mona-font">💫</span> 다시 해보기</button>
+              <button class="action-btn others" onclick="alert('다른 테스트 준비 중!')"><span class="mona-font">👀</span> 다른 테스트 하기</button>
+              <button class="action-btn share" onclick="shareTest()"><span class="mona-font">🔗</span> 테스트 공유하기</button>
             </div>
           </div>
         </div>
@@ -656,25 +656,23 @@
 
   const scores = { E:0, I:0, S:0, N:0, T:0, F:0, J:0, P:0 };
 
-  const questions = [
-    { q: "친구들과 늦게까지 놀고<br>집에 돌아가는 길, 내 상태는?", a: {text: "아 오늘 진짜 재밌었다!<br>(에너지 충전됨)", type: "E"}, b: {text: "하얗게 불태웠다... 빨리 눕고 싶다<br>(에너지 방전)", type: "I"} },
+ const questions = [
+    { q: "친구들과 늦게까지 놀고<br>집에 돌아가는 길, 내 상태는?", a: {text: "아 오늘 진짜 재밌었다!<br>(에너지 충전됨)", type: "E"}, b: {text: "힘들어...빨리 눕고 싶다<br>(에너지 방전)", type: "I"} },
+    { q: "여행지를 고를 때 나는?", a: {text: "실제 후기와 정보부터 꼼꼼히 본다", type: "S"}, b: {text: "분위기나 느낌이 끌리는 곳을 고른다", type: "N"} },
+    { q: "리더를 뽑을 때 나는?", a: {text: "일 처리 빠르고<br>능력 있는 사람이 해야지", type: "T"}, b: {text: "팀원들 의견 잘 들어주고<br>배려심 넘치는 사람이 해야지", type: "F"} },
+    { q: "여행 가서 맛집을 찾아갔는데<br>오늘 휴무일이다!", a: {text: "플랜 B 식당으로 가야겠다<br>(미리 찾아둠)", type: "J"}, b: {text: "근처에 맛있어 보이는 데<br>아무 데나 가자", type: "P"} },
+
     { q: "새로운 취미 모임에 나갔을 때 나는?", a: {text: "옆 사람에게 자연스럽게<br>말을 걸며 친해진다", type: "E"}, b: {text: "누군가 말을 걸어줄 때까지<br>조용히 분위기를 파악한다", type: "I"} },
-    { q: "스트레스를 아주 많이 받았을 때 나는?", a: {text: "친구들을 만나서 맛있는 거 먹고<br>떠들어야 풀림", type: "E"}, b: {text: "무조건 혼자만의 공간에서<br>조용히 쉬어야 풀림", type: "I"} },
-
-    { q: "멍 때릴 때 주로 하는 생각은?", a: {text: "오늘 저녁 뭐 먹지?<br>내일 뭐 입지?", type: "S"}, b: {text: "만약에 좀비 사태가 터지면<br>어디로 도망가지?", type: "N"} },
-    { q: "처음 가는 길을 찾을 때 나는?", a: {text: "지도 앱을 켜서<br>주변 건물과 간판을 보며 찾아간다", type: "S"}, b: {text: "대충 방향 감각을 믿고<br>이쪽이겠거니 하며 걷는다", type: "N"} },
-    { q: "영화나 드라마를 볼 때 나는?", a: {text: "와 저 배우 연기 잘한다,<br>영상미 좋다", type: "S"}, b: {text: "저 대사엔 저런 의미가 숨어있겠지?<br>(숨은 의미 추론)", type: "N"} },
-
-    { q: "친구가 '나 차 사고 났어...' 라고<br>연락이 왔다. 나의 첫 마디는?", a: {text: "헐 다쳤어? 보험사 불렀어?<br>사진 찍어둬!", type: "T"}, b: {text: "뭐?! 다친 데는 없어?<br>많이 놀랐겠다ㅠㅠ", type: "F"} },
+    { q: "갑자기 몸이 아플 때 나는?", a: {text: "증상 검색하고<br>바로 병원이나 약국 감", type: "S"}, b: {text: "이러다 큰 병이면 어떡하지?<br>걱정 먼저 함", type: "N"} },
     { q: "팀 과제를 하는데<br>한 명이 계속 실수를 한다면?", a: {text: "다음부터는 이렇게 해달라고<br>확실하게 지적한다", type: "T"}, b: {text: "기분 상하지 않게<br>돌려서 좋게 말해준다", type: "F"} },
-    { q: "누군가에게 '너 진짜 특이하다'<br>라는 말을 들었을 때 나는?", a: {text: "특이하다고?<br>(뭐 나름 칭찬이네, 타격 없음)", type: "T"}, b: {text: "특이하다고?<br>(나쁜 뜻인가? 은근 신경 쓰임)", type: "F"} },
+    { q: "핸드폰에 빨간색 알림 배지가<br>많이 떠 있다면?", a: {text: "거슬린다!<br>바로바로 눌러서<br>없애야 속이 편함", type: "J"}, b: {text: "999+가 되어도<br>별로 신경 안 쓴다", type: "P"} },
 
-    { q: "여행 가서 맛집을 찾아갔는데<br>오늘 휴무일이다!", a: {text: "아... 플랜 B 식당으로 가야겠다<br>(미리 찾아둠)", type: "J"}, b: {text: "아쉽네~ 근처에 맛있어 보이는 데<br>아무 데나 가자", type: "P"} },
-    { q: "핸드폰 앱에 빨간색 알림 배지<br>(1, 2, 3...)가 떠 있다면?", a: {text: "거슬린다. 바로바로 눌러서<br>없애야 속이 편함", type: "J"}, b: {text: "999+가 되어도<br>별로 신경 안 쓴다", type: "P"} },
+    { q: "이야기할 주제가 없을 때 나는?", a: {text: "어떻게든 대화를 이어가려 한다", type: "E"}, b: {text: "굳이 말을 이어가려 하지 않는다", type: "I"} },
+    { q: "새로 산 전자기기를 뜯을 때 나는?", a: {text: "설명서부터 차근차근 정독", type: "S"}, b: {text: "일단 이것저것 눌러보면서 파악", type: "N"} },
+    { q: "갈등이 생겼을 때 나는?", a: {text: "잘잘못을 명확히 따져서<br>짚고 넘어가야 해", type: "T"}, b: {text: "서로 감정 상하지 않게<br>좋게좋게 풀었으면 좋겠어", type: "F"} },
     { q: "일을 시작하기 전 나의 스타일은?", a: {text: "언제부터 언제까지 뭘 할지<br>대충이라도 계획을 세운다", type: "J"}, b: {text: "일단 부딪히면서<br>그때그때 필요한 걸 처리한다", type: "P"} }
   ];
-
-  function nextScreen(screenId) {
+    function nextScreen(screenId) {
     document.querySelectorAll(".screen").forEach(function(screen) {
       screen.classList.remove("active");
     });
@@ -767,7 +765,7 @@
       logging: false
     }).then(function(canvas) {
       const link = document.createElement("a");
-      link.download = userName + "_마인드맵.png";
+      link.download = userName + "_님의 마인드맵.png";
       link.href = canvas.toDataURL("image/png");
       link.click();
 
@@ -780,14 +778,19 @@
     });
   }
 
-  function shareTest() {
-    const url = location.href;
+function shareTest() {
+    const fixedUrl = "https://test-it.co.kr/test371";
     const title = "테스트잇 마인드맵 성격 테스트";
 
     if (navigator.share) {
-      navigator.share({ text: title, url: url }).catch(function() {});
+      navigator.share({ 
+        title: title,
+        text: title,
+        url: fixedUrl 
+      }).catch(function() {});
     } else {
-      navigator.clipboard.writeText(url).then(function() {
+      const shareText = title + "\n" + fixedUrl;
+      navigator.clipboard.writeText(shareText).then(function() {
         alert("링크가 복사되었어요");
       });
     }

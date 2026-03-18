@@ -1,9 +1,21 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>테스트잇 마인드맵 성격 테스트</title>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5522499110435321" crossorigin="anonymous"></script>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>테스트잇 마인드맵 성격 테스트</title>
+  <meta name="description" content="테스트잇 마인드맵 성격 테스트">
+  <meta name="keywords" content="테스트잇,성격테스트,마인드맵성격테스트,테스트잇마인드맵성격테스트,마인드맵성격테스트결과,테스트잇마인드맵,테스트잇마인드맵MBTI,테스트잇연애,연애테스트,연애mbti,연애성격테스트, 심리테스트, mbti테스트">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="테스트잇 마인드맵 성격 테스트">
+  <meta property="og:description" content="테스트잇 마인드맵 성격 테스트">
+  <meta property="og:image" content="img_main371.png">
+  <meta property="og:url" content="https://test-it.co.kr/test371">
+    <link rel="icon" type="image/png" href="favicon.png">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
 <style>
@@ -34,14 +46,6 @@
     --text: #2f3550;
     --text-soft: #58617f;
     --shadow: 0 18px 40px rgba(122, 120, 177, 0.16);
-
-    /* 결과 닉네임 위치 조절 */
-    --mindmap-title-top: 35%;
-    --mindmap-title-left: 22.8%;
-    --mindmap-title-width: 27%;
-    --mindmap-title-font-size: 19px;
-    --mindmap-title-line-height: 1.15;
-    --mindmap-title-color: #7b5d8d;
   }
 
   * {
@@ -63,6 +67,10 @@
   a,
   li {
     font-family: "Rimgul", sans-serif;
+  }
+
+  .mona-font {
+    font-family: "Mona", "Apple Color Emoji", "Segoe UI Emoji", sans-serif !important;
   }
 
   body.container {
@@ -87,6 +95,8 @@
     overflow-x: hidden;
     border-left: 1px solid rgba(255,255,255,0.35);
     border-right: 1px solid rgba(255,255,255,0.35);
+    display: flex;
+    flex-direction: column;
   }
 
   .page-header {
@@ -144,7 +154,6 @@
 
   #app {
     width: 100%;
-    min-height: calc(100vh - 66px);
     position: relative;
     display: flex;
     flex-direction: column;
@@ -152,7 +161,6 @@
 
   .content-wrapper {
     padding: 14px 14px 18px;
-    flex-grow: 1;
     display: flex;
     flex-direction: column;
   }
@@ -171,7 +179,6 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    flex-grow: 1;
   }
 
   @keyframes fadeIn {
@@ -203,6 +210,21 @@
     pointer-events: none;
   }
 
+  .no-padding-panel {
+    padding: 0 !important;
+    border-radius: 0 !important;
+  }
+
+  .no-padding-panel .main-image-wrap img,
+  .no-padding-panel .result-image {
+    border-radius: 0 !important;
+    border: none !important;
+  }
+
+  .panel-content {
+    padding: 18px;
+  }
+
   .main-image-wrap,
   .name-card,
   .question-card,
@@ -216,7 +238,7 @@
     display: block;
     border-radius: 28px;
     box-shadow: 0 18px 34px rgba(132, 126, 177, 0.16);
-    border: 1px solid rgba(255,255,255,0.72);
+    border: none; /* 흰 테두리 제거 */
   }
 
   .main-cta {
@@ -254,8 +276,7 @@
   }
 
   .name-card,
-  .question-card,
-  .result-card {
+  .question-card {
     padding: 18px;
   }
 
@@ -355,7 +376,7 @@
   #q-title {
     margin-bottom: 18px;
     line-height: 1.58;
-    font-size: 22px;
+    font-size: 18px;
     color: var(--text);
     word-break: keep-all;
     text-align: left;
@@ -415,24 +436,17 @@
     border: none;
   }
 
-  .result-overlay-title {
+  #result-greeting {
     position: absolute;
-    top: var(--mindmap-title-top);
-    left: var(--mindmap-title-left);
-    width: var(--mindmap-title-width);
-    font-family: "Umdot", sans-serif !important;
-    font-size: var(--mindmap-title-font-size);
-    line-height: var(--mindmap-title-line-height);
-    color: var(--mindmap-title-color);
-    text-align: center;
-    white-space: normal;
-    word-break: keep-all;
-    letter-spacing: 0;
-    z-index: 5;
-    pointer-events: none;
-    text-shadow:
-      0 1px 0 rgba(255,255,255,0.95),
-      0 0 8px rgba(255,255,255,0.55);
+    top: 12%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    font-family: "Mona", "Umdot", sans-serif !important;
+    font-size: 14px; 
+    color: #000000; /* 까만색으로 변경 */
+    white-space: nowrap;
+    margin: 0;
+    z-index: 10;
   }
 
   .result-action-area {
@@ -488,34 +502,12 @@
 
   .ad-container {
     width: 100%;
-    margin-top: 14px;
     display: flex;
     justify-content: center;
-    align-items: center;
-    overflow: visible;
-  }
-
-  .coupang_ad {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .coupang_ad iframe,
-  .coupang_ad ins,
-  .coupang_ad div {
-    max-width: 100% !important;
+    padding: 10px 0 40px;
   }
 
   @media (max-width: 390px) {
-    :root {
-      --mindmap-title-font-size: 16px;
-      --mindmap-title-top: 34.6%;
-      --mindmap-title-left: 22%;
-      --mindmap-title-width: 29%;
-    }
-
     .page-header {
       padding-top: 12px !important;
       padding-bottom: 10px !important;
@@ -546,8 +538,9 @@
       padding: 14px;
     }
 
-    .main-image-wrap img {
-      border-radius: 22px;
+    .no-padding-panel {
+      padding: 0 !important;
+      border-radius: 0 !important;
     }
 
     .main-title {
@@ -560,7 +553,7 @@
     }
 
     #q-title {
-      font-size: 19px;
+      font-size: 16px; 
     }
 
     .answer-btn {
@@ -588,16 +581,15 @@
       <div class="content-wrapper">
 
         <div id="screen-main" class="screen flex-center active">
-          <div class="glass-panel">
+          <div class="glass-panel no-padding-panel">
             <div class="main-image-wrap">
               <img src="img_main371.png" alt="테스트잇 마인드맵 성격 테스트 메인 이미지">
             </div>
-            <p class="sub-copy">
-              질문에 답하고<br>
-              나만의 마인드맵 결과를 확인해봐
-            </p>
-            <div class="main-cta">
-              <button class="pattern-btn" onclick="nextScreen('screen-name')">테스트 시작하기</button>
+            <div class="panel-content">
+          
+              <div class="main-cta">
+                <button class="pattern-btn" onclick="nextScreen('screen-name')">테스트 시작하기</button>
+              </div>
             </div>
           </div>
         </div>
@@ -608,12 +600,12 @@
             <h1 class="main-title">이름 입력</h1>
             <p class="main-desc">
               결과 이미지에 들어갈<br>
-              이름이나 닉네임을 적어줘
+              이름이나 닉네임을 적어주세요
             </p>
 
             <div class="name-input-wrap">
-              <input type="text" id="userName" placeholder="예: 다혜">
-              <button class="pattern-btn" onclick="startTest()">다 적었어</button>
+              <input type="text" id="userName" placeholder="~여기에 입력해주세요~">
+              <button class="pattern-btn" onclick="startTest()">다 적었어요!</button>
             </div>
           </div>
         </div>
@@ -639,41 +631,35 @@
         </div>
 
         <div id="screen-result" class="screen">
-          <div class="glass-panel result-card">
+          <div class="glass-panel no-padding-panel result-card">
             <div class="result-preview-wrap">
               <div id="capture-target" class="capture-target">
                 <img id="result-image" class="result-image" src="" alt="마인드맵 결과 이미지">
-                <div id="result-overlay-title" class="result-overlay-title"></div>
+                <h2 id="result-greeting"></h2>
               </div>
             </div>
 
-            <div class="result-action-area">
-              <button class="action-btn save" onclick="saveResultAsImage()">결과 이미지 저장하기</button>
-              <button class="action-btn restart" onclick="location.reload()">다시 하기</button>
-              <button class="action-btn others" onclick="alert('다른 테스트 준비 중!')">다른 테스트</button>
-              <button class="action-btn share" onclick="shareTest()">공유하기</button>
-            </div>
-
-            <div class="ad-container" id="ad-container">
-              <article class="coupang_ad mt-3">
-                <script src="https://ads-partners.coupang.com/g.js"></script>
-                <script>
-                  new PartnersCoupang.G({
-                    "id":798186,
-                    "template":"carousel",
-                    "trackingCode":"AF4391881",
-                    "width":"350",
-                    "height":"140",
-                    "tsource":""
-                  });
-                </script>
-              </article>
+            <div class="panel-content result-action-area">
+              <button class="action-btn save" onclick="saveResultAsImage()"><span class="mona-font">💾</span> 결과 이미지 저장하기</button>
+              <button class="action-btn restart" onclick="location.reload()"><span class="mona-font">💫</span> 다시 해보기</button>
+              <button class="action-btn others" onclick="alert('다른 테스트 준비 중!')"><span class="mona-font">👀</span> 다른 테스트 하기</button>
+              <button class="action-btn share" onclick="shareTest()"><span class="mona-font">🔗</span> 테스트 공유하기</button>
             </div>
           </div>
         </div>
 
       </div>
     </div>
+
+    <div class="ad-container" id="ad-container">
+      <article class="coupang_ad mt-3">
+        <script src="https://ads-partners.coupang.com/g.js"></script>
+        <script>
+          new PartnersCoupang.G({"id":798186,"template":"carousel","trackingCode":"AF4391881","width":"350","height":"140","tsource":""});
+        </script>
+      </article>
+    </div>
+
   </div>
 
 <script>
@@ -682,25 +668,23 @@
 
   const scores = { E:0, I:0, S:0, N:0, T:0, F:0, J:0, P:0 };
 
-  const questions = [
-    { q: "주말에 약속이 취소되었다 내 머릿속은?", a: {text: "아쉽다 다른 친구라도 만날까?", type: "E"}, b: {text: "오히려 좋다 집에서 쉬어야지", type: "I"} },
-    { q: "처음 가는 모임에 참석했을 때 나는?", a: {text: "먼저 다가가서 말을 건넨다", type: "E"}, b: {text: "누가 말을 걸어줄 때까지 기다린다", type: "I"} },
-    { q: "스트레스를 받을 때 푸는 방식은?", a: {text: "사람들과 수다 떨면서 푼다", type: "E"}, b: {text: "혼자만의 시간을 가지며 푼다", type: "I"} },
+ const questions = [
+    { q: "친구들과 늦게까지 놀고<br>집에 돌아가는 길, 내 상태는?", a: {text: "아 오늘 진짜 재밌었다!<br>(에너지 충전됨)", type: "E"}, b: {text: "힘들어...빨리 눕고 싶다<br>(에너지 방전)", type: "I"} },
+    { q: "여행지를 고를 때 나는?", a: {text: "실제 후기와 정보부터 꼼꼼히 본다", type: "S"}, b: {text: "분위기나 느낌이 끌리는 곳을 고른다", type: "N"} },
+    { q: "리더를 뽑을 때 나는?", a: {text: "일 처리 빠르고<br>능력 있는 사람이 해야지", type: "T"}, b: {text: "팀원들 의견 잘 들어주고<br>배려심 넘치는 사람이 해야지", type: "F"} },
+    { q: "여행 가서 맛집을 찾아갔는데<br>오늘 휴무일이다!", a: {text: "플랜 B 식당으로 가야겠다<br>(미리 찾아둠)", type: "J"}, b: {text: "근처에 맛있어 보이는 데<br>아무 데나 가자", type: "P"} },
 
-    { q: "사과를 보면 드는 생각은?", a: {text: "빨갛다 맛있다 과일", type: "S"}, b: {text: "백설공주 뉴턴 아이폰", type: "N"} },
-    { q: "요리할 때 나는?", a: {text: "레시피에 적힌 정량대로 계량한다", type: "S"}, b: {text: "대충 눈대중으로 감칠맛을 찾는다", type: "N"} },
-    { q: "노래를 들을 때 더 집중하는 것은?", a: {text: "멜로디와 리듬이 좋으면 좋다", type: "S"}, b: {text: "가사의 의미와 감성에 몰입한다", type: "N"} },
+    { q: "새로운 취미 모임에 나갔을 때 나는?", a: {text: "옆 사람에게 자연스럽게<br>말을 걸며 친해진다", type: "E"}, b: {text: "누군가 말을 걸어줄 때까지<br>조용히 분위기를 파악한다", type: "I"} },
+    { q: "갑자기 몸이 아플 때 나는?", a: {text: "증상 검색하고<br>바로 병원이나 약국 감", type: "S"}, b: {text: "이러다 큰 병이면 어떡하지?<br>걱정 먼저 함", type: "N"} },
+    { q: "팀 과제를 하는데<br>한 명이 계속 실수를 한다면?", a: {text: "다음부터는 이렇게 해달라고<br>확실하게 지적한다", type: "T"}, b: {text: "기분 상하지 않게<br>돌려서 좋게 말해준다", type: "F"} },
+    { q: "핸드폰에 빨간색 알림 배지가<br>많이 떠 있다면?", a: {text: "거슬린다!<br>바로바로 눌러서<br>없애야 속이 편함", type: "J"}, b: {text: "999+가 되어도<br>별로 신경 안 쓴다", type: "P"} },
 
-    { q: "친구가 나 우울해서 화분 샀어라고 한다면?", a: {text: "무슨 화분 샀어 어디서 샀어?", type: "T"}, b: {text: "왜 우울해 무슨 일 있었어?", type: "F"} },
-    { q: "고민을 털어놓는 친구에게 해주는 말은?", a: {text: "현실적인 해결책을 제시해 준다", type: "T"}, b: {text: "편을 들어주고 공감해 준다", type: "F"} },
-    { q: "일할 때 더 중요하게 생각하는 것은?", a: {text: "효율성과 정확한 결과", type: "T"}, b: {text: "팀원들과의 조화와 분위기", type: "F"} },
-
-    { q: "여행을 가기 전 나의 준비 상태는?", a: {text: "일정표와 맛집 리스트를 미리 정리한다", type: "J"}, b: {text: "가서 끌리는 대로 하면 된다", type: "P"} },
-    { q: "내 방 책상의 상태는?", a: {text: "항상 물건이 제자리에 정리되어 있다", type: "J"}, b: {text: "나름의 규칙은 있지만 남이 보면 지저분하다", type: "P"} },
-    { q: "갑자기 일정이 변경되었다면?", a: {text: "스트레스받고 계획을 다시 짜야 한다", type: "J"}, b: {text: "그럴 수도 있지 하고 유연하게 넘긴다", type: "P"} }
+    { q: "이야기할 주제가 없을 때 나는?", a: {text: "어떻게든 대화를 이어가려 한다", type: "E"}, b: {text: "굳이 말을 이어가려 하지 않는다", type: "I"} },
+    { q: "새로 산 전자기기를 뜯을 때 나는?", a: {text: "설명서부터 차근차근 정독", type: "S"}, b: {text: "일단 이것저것 눌러보면서 파악", type: "N"} },
+    { q: "갈등이 생겼을 때 나는?", a: {text: "잘잘못을 명확히 따져서<br>짚고 넘어가야 해", type: "T"}, b: {text: "서로 감정 상하지 않게<br>좋게좋게 풀었으면 좋겠어", type: "F"} },
+    { q: "일을 시작하기 전 나의 스타일은?", a: {text: "언제부터 언제까지 뭘 할지<br>대충이라도 계획을 세운다", type: "J"}, b: {text: "일단 부딪히면서<br>그때그때 필요한 걸 처리한다", type: "P"} }
   ];
-
-  function nextScreen(screenId) {
+    function nextScreen(screenId) {
     document.querySelectorAll(".screen").forEach(function(screen) {
       screen.classList.remove("active");
     });
@@ -716,7 +700,7 @@
 
   function startTest() {
     const input = document.getElementById("userName").value.trim();
-    userName = input ? input : "당신";
+    userName = input ? input : "사용자";
     currentQ = 0;
 
     for (let key in scores) {
@@ -765,9 +749,9 @@
     const resultImagePath = "img_" + mbtiLower + "371.png";
 
     const resultImage = document.getElementById("result-image");
-    const overlayTitle = document.getElementById("result-overlay-title");
-
-    overlayTitle.innerText = userName + "의 마인드맵";
+    
+    document.getElementById("result-greeting").innerText = userName + "님의 마인드맵";
+    
     resultImage.src = resultImagePath;
     resultImage.alt = mbti + " 마인드맵 결과 이미지";
 
@@ -788,32 +772,37 @@
 
     html2canvas(target, {
       backgroundColor: null,
-      scale: 4,
+      scale: 3,
       useCORS: true,
       logging: false
     }).then(function(canvas) {
       const link = document.createElement("a");
-      link.download = userName + "_마인드맵.png";
+      link.download = userName + "_님의 마인드맵.png";
       link.href = canvas.toDataURL("image/png");
       link.click();
 
-      saveBtn.innerText = "결과 이미지 저장하기";
+      saveBtn.innerHTML = "<span class=\"mona-font\">💾</span> 결과 이미지 저장하기";
       saveBtn.disabled = false;
     }).catch(function() {
-      alert("이미지 저장에 실패했어");
-      saveBtn.innerText = "결과 이미지 저장하기";
+      alert("이미지 저장에 실패했어. 화면 캡처를 이용해줘!");
+      saveBtn.innerHTML = "<span class=\"mona-font\">💾</span> 결과 이미지 저장하기";
       saveBtn.disabled = false;
     });
   }
 
-  function shareTest() {
-    const url = location.href;
-    const title = userName + "의 마인드맵";
+function shareTest() {
+    const fixedUrl = "https://test-it.co.kr/test371";
+    const title = "테스트잇 마인드맵 성격 테스트";
 
     if (navigator.share) {
-      navigator.share({ title: title, url: url }).catch(function() {});
+      navigator.share({ 
+        title: title,
+        text: title,
+        url: fixedUrl 
+      }).catch(function() {});
     } else {
-      navigator.clipboard.writeText(url).then(function() {
+      const shareText = title + "\n" + fixedUrl;
+      navigator.clipboard.writeText(shareText).then(function() {
         alert("링크가 복사되었어요");
       });
     }

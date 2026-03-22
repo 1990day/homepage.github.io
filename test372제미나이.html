@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>테스트잇 - 봄꽃 성격 테스트</title>
+<style>
+  /* 기본 배경 및 컨테이너 설정 */
+  body.container {
+    background-color: #fff4f7; /* 봄 느낌의 아주 연한 핑크 배경 (유리 질감 헤더를 위해) */
+    color: #333;
+    font-family: 'Pretendard', -apple-system, sans-serif;
+    margin: 0 auto;
+    max-width: 420px;
+    min-height: 100vh;
+    box-shadow: 0 0 30px rgba(255, 118, 165, 0.1);
+    position: relative;
+  }
+
+  .page-shell {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* --- 유저 요청 테스트잇 고정 헤더 CSS --- */
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 14px !important;
+    padding-bottom: 12px !important;
+    padding-left: 4%;
+    padding-right: 4%;
+    border-bottom: 1px solid rgba(255,255,255,0.38);
+    position: relative;
+    background: rgba(255,255,255,0.4); /* 배경색이 살짝 비치도록 투명도 조정 */
+    backdrop-filter: blur(10px);
+    z-index: 10;
+  }
+
+  .page-header h1 {
+    margin: 0 !important;
+    line-height: 1;
+  }
+
+  .logo {
+    width: 86px;
+    display: block;
+  }
+
+  .main-nav {
+    display: flex;
+    flex-wrap: nowrap !important;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 8px;
+  }
+
+  .main-nav a {
+    display: block;
+    text-decoration: none;
+    color: #4e5775;
+    background: rgba(255,255,255,0.72);
+    border: 1px solid rgba(255,255,255,0.7);
+    border-radius: 999px;
+    padding: 8px 12px;
+    font-size: 13px;
+    white-space: nowrap;
+    box-shadow: 0 8px 20px rgba(145, 145, 185, 0.12);
+    transition: all 0.2s ease;
+  }
+
+  .main-nav a:hover {
+    background: rgba(255,255,255,0.92);
+    transform: translateY(-1px);
+  }
+  /* --------------------------------------- */
+
+  /* 콘텐츠 영역 여백 */
+  .content-area {
+    padding: 30px 20px 40px;
+  }
+
+  .screen { display: none; }
+  .screen.active { display: block; }
+
+  h2.main-title {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #222;
+  }
+
+  .sub-text {
+    text-align: center;
+    color: #777;
+    margin-bottom: 25px;
+    font-size: 0.95rem;
+  }
+
+  /* 메인/결과 이미지 영역 (깔끔한 정방형) */
+  .image-box {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background-color: #fff;
+    border-radius: 16px;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ff9cbd;
+    font-weight: bold;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+  }
+
+  button {
+    width: 100%;
+    padding: 16px;
+    margin-bottom: 12px;
+    border: 1px solid #ffe4ec;
+    border-radius: 12px;
+    background-color: #fff;
+    color: #444;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    word-break: keep-all;
+    line-height: 1.4;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+  }
+  
+  button:hover, button:active {
+    background-color: #ff76a5;
+    color: #fff;
+    border-color: #ff76a5;
+  }
+
+  .primary-btn {
+    background-color: #ff76a5;
+    color: #fff;
+    border: none;
+    font-size: 1.1rem;
+    padding: 18px;
+    box-shadow: 0 4px 15px rgba(255, 118, 165, 0.3);
+  }
+
+  .primary-btn:hover {
+    background-color: #ff5c93;
+  }
+
+  /* 프로그래스 바 */
+  .progress-wrapper {
+    margin-bottom: 30px;
+  }
+
+  .progress-text {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #ff76a5;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+
+  .progress-container {
+    width: 100%;
+    background-color: #fff;
+    border-radius: 20px;
+    height: 6px;
+  }
+
+  .progress-bar {
+    height: 100%;
+    background-color: #ff76a5;
+    border-radius: 20px;
+    width: 0%;
+    transition: width 0.4s ease;
+  }
+
+  .question-text {
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 40px;
+    line-height: 1.5;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #222;
+  }
+
+  /* 결과창 스타일 */
+  .result-subtitle {
+    text-align: center;
+    font-size: 1rem;
+    color: #777;
+    margin-bottom: 5px;
+  }
+
+  .result-title {
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: #ff76a5;
+    margin-bottom: 25px;
+  }
+
+  .traits-container {
+    background-color: #fff;
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+  }
+
+  .traits-container h3 {
+    margin-top: 0;
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+
+  .trait-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .trait-list li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #444;
+  }
+
+  .trait-list li::before {
+    content: '🌸';
+    position: absolute;
+    left: 0;
+    top: 1px;
+    font-size: 0.75rem;
+  }
+
+  .vertical-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+</style>
+</head>
+<body class="container">
+  <div class="page-shell">
+    
+    <header class="page-header wrapper">
+      <h1><a href="index.html"><img class="logo" src="img_logo.png" alt="test it"></a></h1>
+      <nav>
+        <ul class="main-nav">
+          <li><a href="https://test-it.co.kr/test.html">성격</a></li>
+          <li><a href="https://test-it.co.kr/face.html">얼굴</a></li>
+          <li><a href="https://test-it.co.kr/etc.html">그외</a></li>
+          <li><a href="https://test-it.co.kr/saju.html">사주</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="content-area">
+      <div id="start-screen" class="screen active">
+        <h2 class="main-title">나를 닮은 봄꽃은?</h2>
+        <p class="sub-text">나의 성향과 찰떡인 봄꽃 알아보기</p>
+        <div class="image-box">메인 이미지 자리</div>
+        <button class="primary-btn" onclick="startTest()">테스트 시작하기</button>
+      </div>
+
+      <div id="question-screen" class="screen">
+        <div class="progress-wrapper">
+          <div id="progress-text" class="progress-text">1 / 12</div>
+          <div class="progress-container">
+            <div id="progress" class="progress-bar"></div>
+          </div>
+        </div>
+        <div id="question" class="question-text"></div>
+        <button id="btn-a" onclick="nextQuestion(0)"></button>
+        <button id="btn-b" onclick="nextQuestion(1)"></button>
+      </div>
+
+      <div id="result-screen" class="screen">
+        <div class="result-subtitle">당신과 꼭 닮은 봄꽃은...</div>
+        <div id="flower-name" class="result-title"></div>
+        <div class="image-box">결과 이미지 자리</div>
+        
+        <div class="traits-container">
+          <h3>성격 특징 10가지</h3>
+          <ul id="trait-list" class="trait-list">
+            </ul>
+        </div>
+        
+        <div class="vertical-buttons">
+          <button onclick="saveImage()">결과 이미지 저장하기</button>
+          <button onclick="location.reload()">다시 해보기</button>
+          <button onclick="goOtherTests()">다른 테스트 해보기</button>
+          <button onclick="shareTest()">테스트 공유하기</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script>
+  let currentQuestion = 0;
+  let scores = { E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0 };
+
+  const qnaList = [
+    { q: "따뜻한 주말, 벚꽃이 만개했다! 나의 선택은?", a: [{ text: "당연히 나가야지! 친구들과 꽃놀이 약속을 잡는다", type: "E" }, { text: "사람 많은 건 기 빨려. 집에서 창밖으로 봄을 즐긴다", type: "I" }] },
+    { q: "봄맞이 피크닉에 초대받았다. 내가 원하는 분위기는?", a: [{ text: "여럿이 모여서 시끌벅적하게 노는 분위기", type: "E" }, { text: "친한 친구 한두 명과 소소하게 대화하는 분위기", type: "I" }] },
+    { q: "나만 아는 예쁜 겹벚꽃 명소를 발견했다면?", a: [{ text: "여기 대박이야! 친구들에게 사진을 보내며 바로 공유한다", type: "E" }, { text: "조용히 사진으로 남기고 나만의 아지트로 삼는다", type: "I" }] },
+    { q: "벚꽃 잎이 흩날리며 바닥에 떨어지는 걸 보면?", a: [{ text: "와 예쁘다~ 근데 저거 다 치우려면 힘들겠다", type: "S" }, { text: "뭔가 아련해져... 첫사랑이나 옛 추억이 떠오른다", type: "N" }] },
+    { q: "봄맞이 쇼핑을 하러 갈 때 나는?", a: [{ text: "가디건, 슬랙스 등 당장 입을 봄옷 위주로 구경한다", type: "S" }, { text: "입을 일은 없어도 너무 예쁜 드레스에 자꾸 눈길이 간다", type: "N" }] },
+    { q: "꽃놀이 가는 길, 내비게이션이 막히는 길을 안내하면?", a: [{ text: "빨리 우회도로나 다른 빠른 길을 검색한다", type: "S" }, { text: "차 막히는 김에 음악이나 듣자며 여유롭게 딴생각을 한다", type: "N" }] },
+    { q: "친구가 '나 봄 타나 봐, 요즘 너무 우울해' 라고 한다면?", a: [{ text: "햇빛을 덜 봐서 그래. 비타민D 챙겨 먹고 산책 좀 해!", type: "T" }, { text: "진짜? 많이 우울해? 달달한 거 먹으러 갈까?", type: "F" }] },
+    { q: "정성껏 키운 튤립이 갑자기 시들어버렸다. 내 반응은?", a: [{ text: "왜 시들었지? 물을 너무 많이 줬나? 원인을 분석한다", type: "T" }, { text: "아이고 내 튤립 불쌍해서 어떡해 ㅠㅠ 너무 속상하다", type: "F" }] },
+    { q: "열심히 봄 데이트 코스를 짰는데, 상대방이 별로라고 한다면?", a: [{ text: "뭐가 별로인데? 동선이 안 좋아? 이유를 묻는다", type: "T" }, { text: "내가 며칠을 고생해서 짠 건데... 너무 서운하고 상처받는다", type: "F" }] },
+    { q: "봄꽃 축제에 가기로 한 날! 나의 계획 스타일은?", a: [{ text: "몇 시에 만나서 어디서 밥 먹을지 미리 다 정해둔다", type: "J" }, { text: "일단 역 앞에서 만나서 발길 닿는 대로 돌아다닌다", type: "P" }] },
+    { q: "봄맞이 대청소를 시작할 때 나는?", a: [{ text: "오늘은 거실, 내일은 방. 구역을 나눠서 계획적으로 한다", type: "J" }, { text: "갑자기 삘 받았을 때 온 집안을 한 번에 다 엎고 시작한다", type: "P" }] },
+    { q: "내일 피크닉을 가기로 했는데 일기예보에 비가 뜬다면?", a: [{ text: "이미 플랜B로 예쁜 실내 식물원 카페를 알아뒀지!", type: "J" }, { text: "아쉽다... 제발 비 오지 말라고 기도하며 일단 잔다", type: "P" }] }
+  ];
+
+  // (이전 답변과 동일하게 16가지 MBTI 특징 10개가 들어갑니다. 코드 길이상 위쪽 스크립트는 그대로 유지했어요!)
+  const results = {
+    ENFJ: { flower: "따뜻한 해바라기", traits: ["봄볕처럼 따뜻한 리액션 요정이에요", "주변 사람들이 기뻐할 때 가장 행복해요", "눈치가 빨라서 남의 감정을 잘 캐치해요", "봄나들이 갈 때 앞장서서 리드하는 편이에요", "갈등을 싫어해서 둥글둥글하게 넘어가요", "오지랖이 넓다는 소리를 가끔 들어요", "칭찬을 들으면 하루 종일 기분이 좋아요", "계획 세우는 걸 좋아하고 은근 철저해요", "정이 많아서 거절을 참 어려워해요", "모두가 행복한 봄날을 꿈꾸는 평화주의자예요"] },
+    ENFP: { flower: "통통 튀는 프리지아", traits: ["어디서든 분위기를 띄우는 인간 비타민이에요", "새로운 봄맞이 핫플은 무조건 가봐야 해요", "감정 기복이 있지만 금방 훌훌 털어버려요", "리액션이 커서 대화하면 시간 가는 줄 몰라요", "반복되는 일상보다는 즉흥적인 일탈을 사랑해요", "친화력이 만렙이라 처음 본 사람과도 절친이 돼요", "머릿속에 재미있는 아이디어가 쉴 새 없이 떠올라요", "눈물도 많고 웃음도 많은 감성 부자예요", "꽂히는 게 있으면 무서운 속도로 몰입해요", "금방 질리기도 하지만 그만큼 열정적이에요"] },
+    ENTJ: { flower: "열정적인 붉은 장미", traits: ["목표를 세우면 무조건 직진하는 불도저예요", "비효율적인 일 처리를 보면 답답함을 느껴요", "리더 자리를 즐기진 않지만 항상 리더가 되어 있어요", "감정 호소보다는 논리적인 설득이 통하는 사람이에요", "내 바운더리 안의 사람들은 끝까지 책임져요", "자기애가 강하고 스스로에 대한 프라이드가 높아요", "쓸데없는 잡담보다는 발전적인 대화를 좋아해요", "결단력이 빨라서 팀플할 때 추진력이 엄청나요", "가끔 직설적이라 상처를 주기도 하지만 뒤끝은 없어요", "시간 낭비하는 걸 세상에서 제일 싫어해요"] },
+    ENTP: { flower: "호기심 많은 튤립", traits: ["세상의 모든 것에 호기심이 넘치는 도라에몽이에요", "토론하는 걸 즐기고 말싸움에서 지는 법이 없어요", "틀에 박힌 규칙이나 꼰대 문화를 극혐해요", "아이디어는 넘치는데 마무리가 조금 약한 편이에요", "눈치가 엄청 빠르지만 굳이 눈치를 보진 않아요", "관종끼가 있어서 남들의 시선을 은근히 즐겨요", "필터링 없이 팩트폭력을 날릴 때가 종종 있어요", "다방면에 얕고 넓은 지식을 자랑해요", "남들이 안 하는 독특한 짓을 할 때 살아있음을 느껴요", "자기합리화의 달인이라 멘탈이 아주 튼튼해요"] },
+    ESFJ: { flower: "포근한 목련", traits: ["주변 사람들을 세심하게 챙기는 프로 다정러예요", "눈치가 백단이라 분위기 파악을 기가 막히게 해요", "남들에게 인정받고 칭찬받을 때 에너지가 솟아요", "약속이 없으면 우울해지는 태생적 인싸예요", "규칙과 예의를 중요하게 생각하는 깍쟁이 면도 있어요", "공감 능력이 뛰어나서 고민 상담을 자주 해줘요", "거절을 잘 못해서 손해 보는 경우가 가끔 생겨요", "모임에서 어색한 사람이 있으면 꼭 말을 걸어줘요", "기억력이 좋아서 남들의 사소한 특징도 잘 기억해요", "안정적인 일상을 사랑하고 변화를 크게 즐기진 않아요"] },
+    ESFP: { flower: "화려한 작약", traits: ["오늘 하루 재미있게 사는 게 인생의 목표예요", "주목받는 걸 즐기는 타고난 무대 체질이에요", "침묵을 못 견뎌서 항상 오디오를 꽉꽉 채워요", "심각하고 복잡한 이야기는 듣기만 해도 졸려요", "리액션이 찰져서 어딜 가나 사랑받는 분위기 메이커예요", "충동구매의 요정이라 예쁜 쓰레기를 잘 사 모아요", "낙천적이라 안 좋은 일도 자고 일어나면 잊어버려요", "사람 만나는 걸 너무 좋아해서 집에 붙어있질 않아요", "트렌드에 민감하고 유행하는 건 다 해봐야 직성이 풀려요", "정 많고 단순해서 사람을 쉽게 믿는 편이에요"] },
+    ESTJ: { flower: "꼿꼿한 수선화", traits: ["완벽주의 성향이 강한 깐깐한 일잘러예요", "계획이 틀어지는 걸 세상에서 제일 싫어해요", "책임감이 강해서 맡은 일은 어떻게든 끝내요", "감정에 치우치지 않고 객관적으로 상황을 판단해요", "돌려 말하는 걸 못해서 팩폭 장인이라는 소리를 들어요", "호불호가 아주 확실하고 자기 주관이 뚜렷해요", "무능력하고 게으른 사람을 보면 화가 치밀어 올라요", "일의 효율성을 엄청나게 따지는 실용주의자예요", "가끔 융통성이 부족하다는 이야기를 듣기도 해요", "남에게 의지하기보다 스스로 해결하는 걸 선호해요"] },
+    ESTP: { flower: "자유로운 야생화", traits: ["눈치가 엄청 빨라서 상황 판단을 기가 막히게 해요", "지루한 걸 못 참는 타고난 스릴 시커예요", "미리 걱하기보다 일단 부딪혀보는 행동파예요", "폼생폼사, 간지를 아주 중요하게 생각해요", "말보다 행동이 앞서고 추진력이 장난 아니에요", "복잡하게 생각하는 걸 싫어하고 단순한 게 최고예요", "위기 상황이 닥치면 오히려 즐기고 순발력을 발휘해요", "사람을 좋아하지만 선 넘는 건 칼같이 잘라내요", "내기나 승부욕을 자극하는 일에 목숨을 걸어요", "뒤끝 없고 쿨해서 다투고 나면 금방 풀려요"] },
+    INFJ: { flower: "신비로운 은방울꽃", traits: ["속마음을 쉽게 드러내지 않는 신비주의자예요", "남들의 감정을 스펀지처럼 흡수해서 피곤할 때가 많아요", "도덕적 신념이 뚜렷하고 선을 넘는 걸 아주 싫어해요", "겉으로는 차분하지만 속으로는 수만 가지 생각을 해요", "혼자만의 시간이 무조건, 절대적으로 필요한 타입이에요", "깊고 의미 있는 인간관계를 추구하는 편이에요", "직관력이 뛰어나서 사람의 본심을 잘 꿰뚫어 봐요", "완벽주의 성향이 있어서 스스로를 괴롭힐 때가 있어요", "계획 세우는 걸 좋아하고 꽤나 철저하게 지키는 편이에요", "따뜻해 보이지만 은근히 냉정한 구석이 숨어있어요"] },
+    INFP: { flower: "감성적인 벚꽃", traits: ["풍부한 상상력과 나만의 독특한 세계관이 있어요", "감수성이 예민해서 작은 일에도 상처를 잘 받아요", "게으른 완벽주의자라 시작하기 전까지 시간이 오래 걸려요", "속상한 일이 있으면 혼자 동굴 속으로 들어가 버려요", "자신만의 가치관이 뚜렷하고 의미 있는 삶을 지향해요", "다수보다는 소수의 사람들과 깊게 교류하는 걸 좋아해요", "타인의 감정에 깊이 공감하고 위로를 잘해주는 편이에요", "갈등을 극도로 싫어해서 웬만하면 맞춰주고 양보해요", "돈이나 명예보다는 마음의 평화가 가장 중요해요", "혼자 있는 걸 좋아하지만 가끔은 외로움을 타요"] },
+    INTJ: { flower: "이성적인 라벤더", traits: ["감정보다는 논리와 이성이 지배하는 분석가예요", "효율성과 합리성을 인생의 제1원칙으로 삼아요", "쓸데없는 인맥 관리에는 시간과 에너지를 쓰지 않아요", "자기 기준이 엄청 높고 스스로에게 엄격한 편이에요", "남들이 뭐라 하든 내 갈 길을 가는 마이웨이 스타일이에요", "문제가 발생하면 감정 소모 없이 해결책부터 찾아요", "깊이 있는 지식을 탐구하고 배우는 걸 좋아해요", "겉보기엔 차가워 보이지만 내 사람에게는 은근 따뜻해요", "플랜 A부터 Z까지 세워두는 치밀함을 가지고 있어요", "멍청하고 비논리적인 사람과 대화하는 걸 못 견뎌요"] },
+    INTP: { flower: "독특한 무스카리", traits: ["호기심이 많아서 궁금한 건 끝까지 파고들어야 해요", "잡지식이 많고 엉뚱한 상상을 시도 때도 없이 해요", "팩트에 집착하고 논리적인 오류를 발견하면 짚고 넘어가요", "감정 표현이 서툴러서 AI 같다는 소리를 종종 들어요", "인간관계에 큰 미련이 없고 자발적 아싸를 즐겨요", "게으른 천재 스타일이라 미루고 미루다 벼락치기를 해요", "틀에 박힌 규칙이나 통제받는 상황을 극도로 싫어해요", "영혼 없는 리액션을 아주 기가 막히게 잘해요", "나만의 공간과 시간은 침범받고 싶지 않은 철벽이 있어요", "관심 없는 분야에는 1의 에너지도 쓰지 않아요"] },
+    ISFJ: { flower: "다정한 안개꽃", traits: ["조용하고 차분하지만 내 사람들은 지극정성으로 챙겨요", "남에게 폐 끼치는 걸 세상에서 제일 싫어해요", "공감 능력이 좋아서 남의 이야기를 아주 잘 들어줘요", "보수적이고 변화보다는 안정적인 일상을 선호해요", "눈치가 빠르고 센스 있어서 어디서든 사랑받는 편이에요", "기억력이 엄청 좋아서 사소한 약속도 잊지 않아요", "참을성이 많아 화를 잘 안 내지만 한 번 터지면 무서워요", "완벽주의 기질이 있어서 맡은 일은 꼼꼼하게 처리해요", "주목받는 건 부끄럽지만 은근히 인정받고 싶어 해요", "속마음을 잘 표현하지 않고 혼자 삭히는 경우가 많아요"] },
+    ISFP: { flower: "수줍은 라일락", traits: ["물 흐르듯 평화롭게 사는 게 목표인 집순이/집돌이에요", "누워서 폰 하는 시간이 세상에서 제일 행복해요", "다정하고 온화해서 주변 사람들과 트러블이 거의 없어요", "거절을 진짜 못해서 속으로 끙끙 앓을 때가 많아요", "미적 감각이 뛰어나고 예쁜 걸 보면 기분이 좋아져요", "계획 세우는 걸 귀찮아하고 즉흥적으로 행동하는 편이에요", "규칙이나 틀에 얽매이는 걸 답답해하고 자유를 원해요", "친해지기 전엔 낯을 가리지만 친해지면 은근 웃겨요", "다른 사람의 시선을 은근히 많이 의식하고 신경 써요", "경쟁하고 싸우는 상황을 피하고 싶어 하는 평화주의자예요"] },
+    ISTJ: { flower: "단아한 매화", traits: ["매사에 철저하고 꼼꼼한 FM 원칙주의자예요", "약속 시간 어기는 사람을 가장 이해하지 못해요", "한 번 시작한 일은 끝을 보는 엄청난 책임감이 있어요", "감정 표현에 서툴러서 겉보기엔 무뚝뚝해 보여요", "갑작스러운 변화를 싫어하고 익숙한 환경을 좋아해요", "쓸데없는 소비를 싫어하고 가성비와 실용성을 따져요", "사실에 근거해서 객관적으로 상황을 판단하는 편이에요", "여러 사람보다 적은 수의 친한 친구들과 어울려요", "기억력이 좋아서 과거의 디테일한 일들을 잘 기억해요", "주어진 규칙과 매뉴얼을 따를 때 마음이 가장 편안해요"] },
+    ISTP: { flower: "시크한 히아신스", traits: ["매사에 무미건조하고 귀찮음이 몸에 배어있어요", "효율성을 극한으로 따져서 최소한의 노력으로 결과를 내요", "개인주의 성향이 강해서 남의 일에 별로 관심이 없어요", "상황 적응력이 뛰어나서 위기 상황에도 침착해요", "기계나 도구를 잘 다루고 손재주가 좋은 편이에요", "말수가 적지만 가끔 던지는 팩트폭력이 아주 뼈를 때려요", "감정적인 위로보다는 현실적인 해결책을 제시해 줘요", "누가 내 일에 간섭하거나 통제하려고 하면 참을 수 없어요", "관심 있는 일엔 무섭게 몰입하지만 아니면 쳐다도 안 봐요", "영혼 없는 리액션이 일상화되어 있는 편이에요"] }
+  };
+
+  function startTest() {
+    document.getElementById('start-screen').classList.remove('active');
+    document.getElementById('question-screen').classList.add('active');
+    updateQuestion();
+  }
+
+  function updateQuestion() {
+    const progressPercent = ((currentQuestion) / 12) * 100;
+    document.getElementById('progress').style.width = progressPercent + '%';
+    document.getElementById('progress-text').innerText = `${currentQuestion + 1} / 12`;
+
+    const qna = qnaList[currentQuestion];
+    document.getElementById('question').innerHTML = qna.q;
+    document.getElementById('btn-a').innerText = qna.a[0].text;
+    document.getElementById('btn-b').innerText = qna.a[1].text;
+  }
+
+  function nextQuestion(choiceIndex) {
+    const type = qnaList[currentQuestion].a[choiceIndex].type;
+    scores[type]++;
+    
+    currentQuestion++;
+    
+    if (currentQuestion < 12) {
+      updateQuestion();
+    } else {
+      document.getElementById('progress').style.width = '100%';
+      document.getElementById('progress-text').innerText = '12 / 12';
+      setTimeout(showResult, 400); 
+    }
+  }
+
+  function showResult() {
+    document.getElementById('question-screen').classList.remove('active');
+    document.getElementById('result-screen').classList.add('active');
+    
+    const mbti = (scores.E > scores.I ? "E" : "I") +
+                 (scores.S > scores.N ? "S" : "N") +
+                 (scores.T > scores.F ? "T" : "F") +
+                 (scores.J > scores.P ? "J" : "P");
+
+    const myFlower = results[mbti];
+    
+    document.getElementById('flower-name').innerText = myFlower.flower;
+    
+    const traitListUl = document.getElementById('trait-list');
+    traitListUl.innerHTML = '';
+    
+    myFlower.traits.forEach(trait => {
+      const li = document.createElement('li');
+      li.innerText = trait;
+      traitListUl.appendChild(li);
+    });
+  }
+
+  function saveImage() { alert('이미지 저장 기능 연동 (html2canvas 등)'); }
+  function goOtherTests() { alert('테스트잇 메인 페이지로 이동'); }
+  function shareTest() { alert('공유하기 기능 연동'); }
+</script>
+
+</body>
+</html>

@@ -355,11 +355,30 @@
     margin-bottom: 8px;
   }
 
-  /* 결과 화면 레이아웃 */
+  /* 결과 화면 레이아웃 (연보라 테마 적용) */
+  #result-capture {
+    background: linear-gradient(180deg, #f2e9f9 0%, #e2d2f2 100%);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    border: 1px solid #d6c6e8;
+  }
+
+  #result-capture .content-box {
+    background: rgba(255, 255, 255, 0.85); /* 뒤에 보라색이 살짝 비치는 반투명 흰색 */
+    border: 1px dashed #c4b0d9;
+    box-shadow: 0 2px 10px rgba(180, 160, 200, 0.1);
+    margin-bottom: 12px;
+  }
+
+  #result-capture .content-box:last-child {
+    margin-bottom: 0;
+  }
+
   .result-header {
     text-align: center;
     margin-bottom: 20px;
-    border-bottom: 1px dashed var(--border-color);
+    border-bottom: 1px dashed #c4b0d9;
     padding-bottom: 16px;
   }
 
@@ -453,9 +472,9 @@
   }
 
   .info-block {
-    border: 1px solid var(--border-color);
+    border: 1px dashed #c4b0d9;
     padding: 12px;
-    background: var(--bg-white);
+    background: rgba(255, 255, 255, 0.7);
   }
 
   .info-block.full-width {
@@ -490,6 +509,8 @@
     font-size: 14px;
     font-weight: 600;
     color: var(--text-dark);
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px dashed #c4b0d9;
   }
 
   .action-stack {
@@ -811,7 +832,7 @@
     currentQuestionIndex = 0;
     testScore = 0;
     renderQuestion();
-    nextScreen("screen-input", "screen-test", false); 
+    nextScreen("screen-input", "screen-test"); 
   }
 
   function renderQuestion() {
@@ -1087,7 +1108,7 @@
     const target = document.getElementById("result-capture");
     try {
       const canvas = await html2canvas(target, {
-        backgroundColor: "#f4f4f4",
+        backgroundColor: "#e2d2f2",
         scale: 2
       });
       const imgData = canvas.toDataURL("image/png");

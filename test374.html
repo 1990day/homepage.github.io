@@ -575,13 +575,22 @@
       content: "";
     }
 
+    .main-hero-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0 0 18px;
+  border: 1px solid var(--line);
+  background: #fff;
+}
+
  .reveal-line {
   margin-top: 10px;
   margin-bottom: 0;
   text-align: center;
   font-size: 11px;
   line-height: 1.55;
-  color: #c4bdc1;
+color: rgba(157, 148, 153, 0.42);
   font-weight: 700;
   word-break: keep-all;
 }
@@ -769,18 +778,12 @@
       </div>
 
       <div class="window-body">
-        <div id="start-screen" class="screen active">
-          <div class="panel start-panel">
-            <div class="start-badge">만우절 테스트</div>
-            <div class="start-hero-box">성격</div>
-            <h1 class="main-title">테스트잇 만우절<br>성격 테스트</h1>
-            <p class="sub-text">
-              평소처럼 고르면 됩니다.<br>
-              마지막에 반전이 나옵니다.
-            </p>
-            <button class="start-btn" type="button" onclick="startTest()">테스트 시작하기</button>
-          </div>
-        </div>
+   <div id="start-screen" class="screen active">
+  <div class="panel start-panel">
+    <img src="img_main374.png" alt="테스트잇 만우절 성격 테스트 메인 이미지" class="main-hero-image">
+    <button class="start-btn" type="button" onclick="startTest()">테스트 시작하기</button>
+  </div>
+</div>
 
         <div id="question-screen" class="screen">
           <div class="progress-wrap">

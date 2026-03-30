@@ -518,23 +518,22 @@
     }
 
     .result-alert-body {
-      padding: 14px;
+      padding: 18px 14px;
       display: flex;
-      align-items: flex-start;
-      gap: 12px;
+      align-items: center;
+      justify-content: center;
     }
 
     .result-badge {
-      width: 96px;
-      min-width: 96px;
+      width: 100%;
       border: 1px solid var(--line);
       background: var(--pink-soft);
-      padding: 10px 8px;
+      padding: 18px 10px;
       text-align: center;
     }
 
     .result-type {
-      font-size: 30px;
+      font-size: 44px;
       line-height: 1;
       font-weight: 900;
       color: var(--pink-deep);
@@ -543,27 +542,7 @@
     }
 
     .result-main {
-      flex: 1;
-      min-width: 0;
-    }
-
-    .result-main h2 {
-      margin: 0 0 8px;
-      font-size: 20px;
-      line-height: 1.25;
-      letter-spacing: -0.4px;
-      font-weight: 900;
-      color: #222;
-      word-break: keep-all;
-    }
-
-    .result-main p {
-      margin: 0;
-      font-size: 13px;
-      line-height: 1.55;
-      color: #595959;
-      font-weight: 700;
-      word-break: keep-all;
+      display: none;
     }
 
     .traits-box {
@@ -575,8 +554,9 @@
 
     .traits-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px 14px;
+      grid-template-columns: 1fr;
+      gap: 8px;
+      text-align: center;
     }
 
     .trait-item {
@@ -585,29 +565,23 @@
       color: #505050;
       font-weight: 700;
       word-break: keep-all;
-      position: relative;
-      padding-left: 12px;
+      text-align: center;
     }
 
     .trait-item::before {
-      content: "•";
-      position: absolute;
-      left: 0;
-      top: 0;
-      color: #b88a9e;
-      font-weight: 900;
+      content: "";
     }
 
-    .reveal-line {
-      margin-top: 10px;
-      margin-bottom: 0;
-      text-align: center;
-      font-size: 11px;
-      line-height: 1.55;
-      color: var(--gray-text-light);
-      font-weight: 700;
-      word-break: keep-all;
-    }
+ .reveal-line {
+  margin-top: 10px;
+  margin-bottom: 0;
+  text-align: center;
+  font-size: 11px;
+  line-height: 1.55;
+  color: #c4bdc1;
+  font-weight: 700;
+  word-break: keep-all;
+}
 
     .action-stack {
       display: flex;
@@ -746,25 +720,12 @@
         min-height: 60px;
       }
 
-      .result-alert-body {
-        flex-direction: column;
+      .result-type {
+        font-size: 38px;
       }
 
-      .result-badge {
-        width: 100%;
-        min-width: 0;
-      }
-
-      .traits-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .result-main h2 {
-        font-size: 18px;
-      }
-
-      .result-main p {
-        font-size: 12px;
+      .trait-item {
+        font-size: 13px;
       }
     }
   </style>
@@ -856,8 +817,8 @@
                 </div>
 
                 <div class="result-main">
-                  <h2 id="result-title">차갑게 정리하는 전략형</h2>
-                  <p id="result-desc">빠르게 보고, 조용히 결론 내리는 타입입니다.</p>
+                  <h2 id="result-title"></h2>
+                  <p id="result-desc"></p>
                 </div>
               </div>
             </div>
@@ -991,8 +952,6 @@
 
     const resultData = {
       "INTJ": {
-        title: "차갑게 정리하는 전략형",
-        desc: "빠르게 보고, 조용히 결론 내리는 타입입니다.",
         traits: [
           "혼자 생각 정리하는 시간이 중요함",
           "기준이 분명한 편임",
@@ -1007,8 +966,6 @@
         ]
       },
       "INTP": {
-        title: "생각이 계속 뻗는 분석형",
-        desc: "조용해 보여도 머릿속은 늘 바쁜 타입입니다.",
         traits: [
           "궁금한 건 끝까지 파보는 편임",
           "논리 안 맞는 걸 잘 발견함",
@@ -1023,8 +980,6 @@
         ]
       },
       "ENTJ": {
-        title: "판을 먼저 잡는 지휘형",
-        desc: "결정이 빠르고, 밀고 가는 힘이 센 타입입니다.",
         traits: [
           "결단이 빠른 편임",
           "해야 할 일을 바로 움직임",
@@ -1039,8 +994,6 @@
         ]
       },
       "ENTP": {
-        title: "말빨 좋은 반전형",
-        desc: "생각도 빠르고, 판 뒤집는 재미를 아는 타입입니다.",
         traits: [
           "생각의 확장이 빠른 편임",
           "새로운 시도를 좋아함",
@@ -1055,8 +1008,6 @@
         ]
       },
       "INFJ": {
-        title: "조용히 꿰뚫는 통찰형",
-        desc: "겉은 잔잔해도 속은 꽤 깊은 타입입니다.",
         traits: [
           "겉보다 속이 깊은 편임",
           "사람의 감정선을 잘 읽음",
@@ -1071,8 +1022,6 @@
         ]
       },
       "INFP": {
-        title: "감정선이 진한 몰입형",
-        desc: "겉보다 속이 훨씬 또렷한 타입입니다.",
         traits: [
           "감정이 풍부한 편임",
           "좋아하는 것에 진심임",
@@ -1087,8 +1036,6 @@
         ]
       },
       "ENFJ": {
-        title: "분위기를 살리는 다정형",
-        desc: "사람 챙기면서 흐름도 잡는 타입입니다.",
         traits: [
           "상대 감정을 빨리 캐치함",
           "분위기를 부드럽게 만드는 편임",
@@ -1103,8 +1050,6 @@
         ]
       },
       "ENFP": {
-        title: "텐션 살아있는 자유형",
-        desc: "재미도 진심도 둘 다 챙기는 타입입니다.",
         traits: [
           "표현력이 좋은 편임",
           "새로운 자극을 좋아함",
@@ -1119,8 +1064,6 @@
         ]
       },
       "ISTJ": {
-        title: "묵묵히 해내는 안정형",
-        desc: "말보다 결과로 보여주는 타입입니다.",
         traits: [
           "기본을 잘 지키는 편임",
           "책임감을 무겁게 봄",
@@ -1135,8 +1078,6 @@
         ]
       },
       "ISFJ": {
-        title: "조용히 챙기는 보호형",
-        desc: "티 안 나게 다정한 타입입니다.",
         traits: [
           "작은 변화도 잘 알아차림",
           "배려를 행동으로 보여줌",
@@ -1151,8 +1092,6 @@
         ]
       },
       "ESTJ": {
-        title: "정리부터 하는 현실형",
-        desc: "답답한 흐름을 바로잡는 타입입니다.",
         traits: [
           "정리와 통제가 편함",
           "해야 할 일을 미루지 않음",
@@ -1167,8 +1106,6 @@
         ]
       },
       "ESFJ": {
-        title: "사람부터 살피는 챙김형",
-        desc: "분위기와 관계를 잘 돌보는 타입입니다.",
         traits: [
           "사람 챙기는 감각이 좋음",
           "관계를 부드럽게 유지하려고 함",
@@ -1183,8 +1120,6 @@
         ]
       },
       "ISTP": {
-        title: "말보다 손이 빠른 실전형",
-        desc: "필요한 순간 바로 움직이는 타입입니다.",
         traits: [
           "혼자서도 잘 해결함",
           "실전 감각이 좋은 편임",
@@ -1199,8 +1134,6 @@
         ]
       },
       "ISFP": {
-        title: "부드럽게 버티는 감각형",
-        desc: "조용하지만 결은 분명한 타입입니다.",
         traits: [
           "부드럽고 무리하지 않는 편임",
           "감각과 취향이 섬세함",
@@ -1215,8 +1148,6 @@
         ]
       },
       "ESTP": {
-        title: "몸이 먼저 나가는 행동형",
-        desc: "생각보다 실행이 먼저인 타입입니다.",
         traits: [
           "즉각적인 반응이 빠름",
           "현장 감각이 좋음",
@@ -1231,8 +1162,6 @@
         ]
       },
       "ESFP": {
-        title: "분위기 띄우는 생기형",
-        desc: "사람 많은 곳에서 더 살아나는 타입입니다.",
         traits: [
           "표현이 자연스럽고 친근함",
           "현장 분위기에 잘 녹아듦",
@@ -1324,8 +1253,8 @@
       const fakeData = resultData[fakeType];
 
       document.getElementById("fake-type").textContent = fakeType;
-      document.getElementById("result-title").textContent = fakeData.title;
-      document.getElementById("result-desc").textContent = fakeData.desc;
+      document.getElementById("result-title").textContent = "";
+      document.getElementById("result-desc").textContent = "";
       document.getElementById("real-type-inline").textContent = realType;
 
       const traitsGrid = document.getElementById("traits-grid");

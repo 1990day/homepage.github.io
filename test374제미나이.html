@@ -1,76 +1,102 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>테스트잇 만우절 MBTI 성격 테스트</title>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5522499110435321" crossorigin="anonymous"></script>
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 
-  <meta name="description" content="만우절 기념으로 정반대로 나오는 MBTI 성격 테스트" />
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="테스트잇 만우절 MBTI 성격 테스트" />
-  <meta property="og:description" content="평소처럼 풀었는데 결과는 정반대로 나온다고? 만우절 기념 MBTI 테스트!" />
-  <meta property="og:image" content="main_hero.png" />
-  <meta property="og:url" content="https://test-it.co.kr/test-april-mbti" />
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>테스트잇 만우절 성격 테스트</title>
+<meta name="description" content="테스트잇 만우절 성격 테스트" />
+  <meta name="keywords" content="테스트잇,성격테스트,만우절성격테스트,만우절테스트,만우절mbti테스트,테스트잇사주,테스트잇만우절,테스트잇연애,연애테스트,연애mbti,연애성격테스트, 심리테스트, mbti테스트">
+<meta property="og:type" content="website" />
+<meta property="og:title" content="테스트잇 만우절 성격 테스트" />
+<meta property="og:description" content="테스트잇 만우절 성격 테스트" />
+<meta property="og:url" content="https://test-it.co.kr/test374" />
 
   <style>
-    :root {
-      --bg-color: #f0f0f0; 
-      --win-bg: #dfdfdf; 
-      --win-border-light: #ffffff;
-      --win-border-dark: #848484;
-      --title-bar: #f4c2c2; 
-      --box-bg: #ffffff;
-      --text-main: #333333;
-      --text-sub: #666666;
-      --accent-pink: #d9788f; 
-    }
-
     * {
       box-sizing: border-box;
       -webkit-tap-highlight-color: transparent;
     }
 
+    :root {
+      --bg: #ece6e8;
+      --win-bg: #dfd8db;
+      --win-border-light: #ffffff;
+      --win-border-dark: #8b8386;
+      --win-border-darker: #000000;
+      --pink-soft: #f4dce3;
+      --pink-deep: #d28c9f;
+      --pink-bar: #c1758a;
+      --text-main: #222;
+      --text-gray: #555;
+    }
+
     html, body {
       margin: 0;
       padding: 0;
-      font-family: "Pretendard", "Apple SD Gothic Neo", "돋움", sans-serif;
-      background: var(--bg-color);
-      background-image: 
-        linear-gradient(to right, #e8e8e8 1px, transparent 1px),
-        linear-gradient(to bottom, #e8e8e8 1px, transparent 1px);
-      background-size: 20px 20px;
+      background: var(--bg);
       color: var(--text-main);
+      font-family: "Galmuri9", "Tahoma", "Apple SD Gothic Neo", sans-serif;
+    }
+
+    body {
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
+      background-image: radial-gradient(#d5cdd0 1px, transparent 1px);
+      background-size: 10px 10px;
+    }
+
+    .wrapper {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
     }
 
     .header-wrapper {
       width: 100%;
       background-color: var(--win-bg);
-      border-bottom: 1px solid var(--win-border-dark);
-      position: sticky;
-      top: 0;
-      z-index: 100;
+      border-bottom: 2px solid var(--win-border-darker);
+      box-shadow: 0 1px 0 var(--win-border-light) inset;
+      align-self: flex-start;
+      margin-bottom: 16px;
+      border-top: 2px solid var(--win-border-light);
     }
 
     .page-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 10px 20px; 
+      padding: 6px 4% !important;
     }
 
     .retro-logo {
       text-decoration: none;
-      color: var(--accent-pink);
-      font-size: 16px;
+      color: #000;
+      font-size: 18px;
       font-weight: 900;
-      letter-spacing: 0.5px;
+      background: var(--win-bg);
+      padding: 5px 10px;
+      border-top: 2px solid var(--win-border-light);
+      border-left: 2px solid var(--win-border-light);
+      border-right: 2px solid var(--win-border-darker);
+      border-bottom: 2px solid var(--win-border-darker);
+      box-shadow: inset -1px -1px 0 var(--win-border-dark);
+    }
+
+    .retro-logo:active {
+      border-top: 2px solid var(--win-border-darker);
+      border-left: 2px solid var(--win-border-darker);
+      border-right: 2px solid var(--win-border-light);
+      border-bottom: 2px solid var(--win-border-light);
+      box-shadow: inset 1px 1px 0 var(--win-border-dark);
+      padding: 6px 9px 4px 11px;
+    }
+
+    .page-header h1 {
+      margin: 0 !important;
+      padding: 0 !important;
     }
 
     .main-nav {
@@ -79,228 +105,296 @@
       list-style: none;
       margin: 0;
       padding: 0;
-      gap: 14px; 
+      gap: 8px;
     }
 
     .main-nav a {
+      display: block;
       text-decoration: none;
-      color: var(--text-sub);
-      font-weight: 600;
-      font-size: 13px;
+      color: #000;
+      font-weight: 700;
+      background: var(--win-bg);
+      border-top: 2px solid var(--win-border-light);
+      border-left: 2px solid var(--win-border-light);
+      border-right: 2px solid var(--win-border-darker);
+      border-bottom: 2px solid var(--win-border-darker);
+      box-shadow: inset -1px -1px 0 var(--win-border-dark);
+      padding: 4px 10px;
+      font-size: 14px;
+    }
+
+    .main-nav a:active {
+      border-top: 2px solid var(--win-border-darker);
+      border-left: 2px solid var(--win-border-darker);
+      border-right: 2px solid var(--win-border-light);
+      border-bottom: 2px solid var(--win-border-light);
+      box-shadow: inset 1px 1px 0 var(--win-border-dark);
+      padding: 5px 9px 3px 11px;
     }
 
     .container {
       width: 100%;
-      max-width: 600px; 
-      margin: 30px auto 30px;
-      padding: 0 20px;
-      display: flex;
-      flex-direction: column;
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 0 12px 28px;
     }
 
     .window98 {
-      width: 100%;
       background: var(--win-bg);
+      padding: 3px;
       border-top: 2px solid var(--win-border-light);
       border-left: 2px solid var(--win-border-light);
-      border-bottom: 2px solid var(--win-border-dark);
-      border-right: 2px solid var(--win-border-dark);
-      display: flex;
-      flex-direction: column;
+      border-right: 2px solid var(--win-border-darker);
+      border-bottom: 2px solid var(--win-border-darker);
+      box-shadow: 4px 4px 0px rgba(0,0,0,0.1);
     }
 
     .window-topbar {
-      background: var(--title-bar);
-      padding: 6px 10px;
+      background: linear-gradient(90deg, var(--pink-bar), var(--pink-deep));
+      padding: 4px 6px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      color: white;
+    }
+
+    .window-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .window-icon {
+      width: 14px;
+      height: 14px;
+      background: white;
+      border: 1px solid var(--win-border-darker);
+      box-shadow: 1px 1px 0 var(--pink-soft);
     }
 
     .window-title {
-      color: var(--text-main);
-      font-weight: 800;
-      font-size: 14px;
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 0.5px;
+      text-shadow: 1px 1px 0px rgba(0,0,0,0.3);
     }
 
     .window-controls {
       display: flex;
-      gap: 4px;
+      gap: 3px;
     }
 
-    .win-btn {
-      width: 20px;
-      height: 20px;
+    .control-btn {
+      width: 18px;
+      height: 18px;
       background: var(--win-bg);
-      border-top: 1px solid var(--win-border-light);
-      border-left: 1px solid var(--win-border-light);
+      border-top: 2px solid var(--win-border-light);
+      border-left: 2px solid var(--win-border-light);
+      border-right: 2px solid var(--win-border-darker);
+      border-bottom: 2px solid var(--win-border-darker);
+      position: relative;
+      cursor: pointer;
+    }
+    
+    .control-btn:active {
+      border-top: 2px solid var(--win-border-darker);
+      border-left: 2px solid var(--win-border-darker);
+      border-right: 2px solid var(--win-border-light);
+      border-bottom: 2px solid var(--win-border-light);
+    }
+
+    .control-btn.min::before {
+      content: ""; position: absolute; left: 3px; bottom: 3px; width: 8px; height: 2px; background: black;
+    }
+    .control-btn.max::before {
+      content: ""; position: absolute; left: 2px; top: 2px; width: 10px; height: 9px; border: 2px solid black; border-top-width: 3px;
+    }
+    .control-btn.close::before, .control-btn.close::after {
+      content: ""; position: absolute; left: 2px; top: 6px; width: 10px; height: 2px; background: black; transform: rotate(45deg);
+    }
+    .control-btn.close::after { transform: rotate(-45deg); }
+
+    .browser-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px;
       border-bottom: 1px solid var(--win-border-dark);
-      border-right: 1px solid var(--win-border-dark);
+    }
+
+    .nav-square {
+      width: 24px;
+      height: 24px;
+      background: var(--win-bg);
+      border-top: 2px solid var(--win-border-light);
+      border-left: 2px solid var(--win-border-light);
+      border-right: 2px solid var(--win-border-darker);
+      border-bottom: 2px solid var(--win-border-darker);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 11px;
-      font-weight: bold;
-      color: var(--text-main);
-      cursor: pointer;
-    }
-
-    .win-btn:active {
-      border-top: 1px solid var(--win-border-dark);
-      border-left: 1px solid var(--win-border-dark);
-      border-bottom: 1px solid var(--win-border-light);
-      border-right: 1px solid var(--win-border-light);
-      padding-top: 2px;
-      padding-left: 2px;
-    }
-
-    .browser-bar {
-      padding: 8px 10px;
-      display: flex;
-      align-items: center;
-      background: var(--win-bg);
-      border-bottom: 1px solid var(--win-border-dark);
+      font-size: 12px;
     }
 
     .address-bar {
       flex: 1;
-      height: 28px;
-      padding: 0 10px;
+      height: 24px;
+      background: white;
+      border-top: 2px solid var(--win-border-darker);
+      border-left: 2px solid var(--win-border-darker);
+      border-right: 2px solid var(--win-border-light);
+      border-bottom: 2px solid var(--win-border-light);
       display: flex;
       align-items: center;
-      color: var(--text-sub);
+      padding: 0 8px;
       font-size: 12px;
-      background: var(--box-bg);
-      border-top: 2px solid var(--win-border-dark);
-      border-left: 2px solid var(--win-border-dark);
-      border-bottom: 2px solid var(--win-border-light);
-      border-right: 2px solid var(--win-border-light);
+      color: #333;
     }
 
     .window-body {
-      padding: 25px 20px 20px; 
+      padding: 12px;
+      background: var(--win-bg);
+    }
+
+    .screen { display: none; }
+    .screen.active { display: block; }
+
+    .panel {
+      background: var(--win-bg);
+    }
+
+    .start-panel {
+      text-align: center;
+      padding: 20px 10px;
+    }
+
+    .start-badge {
+      display: inline-block;
+      padding: 4px 10px;
+      background: var(--pink-soft);
+      border-top: 2px solid var(--win-border-light);
+      border-left: 2px solid var(--win-border-light);
+      border-right: 2px solid var(--win-border-darker);
+      border-bottom: 2px solid var(--win-border-darker);
+      color: var(--text-main);
+      font-size: 12px;
+      font-weight: 900;
+      margin-bottom: 16px;
+    }
+
+    .start-hero-box {
+      width: 100px;
+      height: 100px;
+      margin: 0 auto 16px;
+      background: white;
+      border-top: 2px solid var(--win-border-darker);
+      border-left: 2px solid var(--win-border-darker);
+      border-right: 2px solid var(--win-border-light);
+      border-bottom: 2px solid var(--win-border-light);
       display: flex;
-      flex-direction: column;
-    }
-
-    .screen {
-      display: none;
-      width: 100%;
-    }
-
-    .screen.active {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .start-content {
       align-items: center;
       justify-content: center;
-      text-align: center;
-      padding: 20px 0;
+      font-size: 24px;
+      font-weight: 900;
+      color: var(--pink-bar);
+      box-shadow: inset 2px 2px 0px var(--win-border-dark);
     }
 
     .main-title {
-      margin: 0 0 16px;
-      font-size: 30px;
+      margin: 0;
+      font-size: 26px;
       line-height: 1.3;
       font-weight: 900;
-      color: var(--text-main);
+      color: #000;
     }
 
     .sub-text {
-      font-size: 15px;
-      line-height: 1.5;
-      color: var(--text-sub);
-      margin-bottom: 30px;
+      margin: 14px 0 0;
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--text-gray);
+      font-weight: 700;
     }
 
-    .action-button {
+    .start-btn, .choice-btn, .action-btn, .image-modal-close {
       width: 100%;
-      height: 56px;
-      font-size: 16px;
-      font-weight: 800;
+      font-family: inherit;
       cursor: pointer;
-      color: var(--text-main);
       background: var(--win-bg);
       border-top: 2px solid var(--win-border-light);
       border-left: 2px solid var(--win-border-light);
-      border-bottom: 2px solid var(--win-border-dark);
-      border-right: 2px solid var(--win-border-dark);
-      transition: all 0.1s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      border-right: 2px solid var(--win-border-darker);
+      border-bottom: 2px solid var(--win-border-darker);
+      box-shadow: inset -1px -1px 0 var(--win-border-dark), inset 1px 1px 0 var(--win-border-light);
+      color: var(--text-main);
+      font-weight: 900;
+      outline: none;
     }
 
-    .action-button:active {
-      border-top: 2px solid var(--win-border-dark);
-      border-left: 2px solid var(--win-border-dark);
-      border-bottom: 2px solid var(--win-border-light);
+    .start-btn:active, .choice-btn:active, .action-btn:active, .image-modal-close:active {
+      border-top: 2px solid var(--win-border-darker);
+      border-left: 2px solid var(--win-border-darker);
       border-right: 2px solid var(--win-border-light);
-      padding-top: 2px;
-      padding-left: 2px;
+      border-bottom: 2px solid var(--win-border-light);
+      box-shadow: inset 1px 1px 0 var(--win-border-dark);
+      padding-top: 12px !important;
     }
 
-    .action-button.pink-btn {
-      background: var(--title-bar);
+    .start-btn {
+      margin-top: 24px;
+      height: 48px;
+      font-size: 16px;
     }
 
-    .progress-wrap {
-      margin-bottom: 25px;
-    }
+    .progress-wrap { margin-bottom: 16px; }
 
     .progress-top {
       display: flex;
       justify-content: space-between;
-      font-size: 13px;
-      font-weight: 800;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
+    }
+
+    .progress-text {
+      font-size: 12px;
+      font-weight: 900;
+      color: var(--text-main);
     }
 
     .progress-bar {
       width: 100%;
-      height: 14px;
-      background: var(--box-bg);
-      border-top: 2px solid var(--win-border-dark);
-      border-left: 2px solid var(--win-border-dark);
-      border-bottom: 2px solid var(--win-border-light);
+      height: 20px;
+      background: white;
+      border-top: 2px solid var(--win-border-darker);
+      border-left: 2px solid var(--win-border-darker);
       border-right: 2px solid var(--win-border-light);
-      padding: 1px;
+      border-bottom: 2px solid var(--win-border-light);
+      padding: 2px;
     }
 
     .progress-fill {
       height: 100%;
       width: 0%;
-      background: var(--accent-pink);
-      transition: width 0.3s ease;
+      background: var(--pink-bar);
+      transition: width 0.2s ease;
     }
 
     .question-box {
-      margin-bottom: 30px;
-      padding: 40px 15px;
-      background: var(--box-bg);
-      border-top: 2px solid var(--win-border-dark);
-      border-left: 2px solid var(--win-border-dark);
-      border-bottom: 2px solid var(--win-border-light);
+      background: white;
+      border-top: 2px solid var(--win-border-darker);
+      border-left: 2px solid var(--win-border-darker);
       border-right: 2px solid var(--win-border-light);
-      text-align: center;
-    }
-
-    .question-type {
-      display: inline-block;
-      font-size: 14px;
-      font-weight: 900;
-      color: var(--accent-pink);
+      border-bottom: 2px solid var(--win-border-light);
+      padding: 20px 14px;
       margin-bottom: 16px;
+      text-align: center;
     }
 
     .question-title {
       margin: 0;
-      font-size: 20px;
-      line-height: 1.4;
-      font-weight: 800;
-      color: var(--text-main);
+      font-size: 18px;
+      line-height: 1.5;
+      font-weight: 900;
+      color: #000;
       word-break: keep-all;
     }
 
@@ -310,145 +404,237 @@
       gap: 12px;
     }
 
-    .alert-box {
-      padding: 40px 15px;
-      margin-bottom: 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+    .choice-btn {
+      min-height: 56px;
+      padding: 10px;
+      font-size: 15px;
+      font-weight: 700;
       text-align: center;
-      background: var(--box-bg);
-      border-top: 2px solid var(--win-border-dark);
-      border-left: 2px solid var(--win-border-dark);
-      border-bottom: 2px solid var(--win-border-light);
+    }
+    
+    .choice-btn:active {
+      padding-top: 12px; 
+    }
+
+    .result-box {
+      background: var(--win-bg);
+      padding: 2px;
+    }
+
+    .result-alert {
+      background: var(--win-bg);
+      border-top: 2px solid var(--win-border-light);
+      border-left: 2px solid var(--win-border-light);
+      border-right: 2px solid var(--win-border-darker);
+      border-bottom: 2px solid var(--win-border-darker);
+      margin-bottom: 16px;
+    }
+
+    .result-alert-titlebar {
+      height: 24px;
+      background: var(--pink-bar);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 6px;
+      color: white;
+    }
+
+    .result-alert-title-left {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .result-alert-icon {
+      width: 12px;
+      height: 12px;
+      background: white;
+      border: 1px solid black;
+    }
+
+    .result-alert-title-text {
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .result-alert-close {
+      width: 14px;
+      height: 14px;
+      background: var(--win-bg);
+      border-top: 1px solid var(--win-border-light);
+      border-left: 1px solid var(--win-border-light);
+      border-right: 1px solid var(--win-border-darker);
+      border-bottom: 1px solid var(--win-border-darker);
+      position: relative;
+    }
+
+    .result-alert-close::before, .result-alert-close::after {
+      content: ""; position: absolute; left: 2px; right: 2px; top: 5px; height: 1px; background: black; transform: rotate(45deg);
+    }
+    .result-alert-close::after { transform: rotate(-45deg); }
+
+    .result-alert-body {
+      padding: 20px 14px;
+      text-align: center;
+      background: white;
+      border-top: 2px solid var(--win-border-darker);
+      border-left: 2px solid var(--win-border-darker);
       border-right: 2px solid var(--win-border-light);
+      border-bottom: 2px solid var(--win-border-light);
+      margin: 6px;
+    }
+
+    .result-badge {
+      display: inline-block;
+      width: 100%;
+      background: var(--pink-soft);
+      border-top: 2px solid var(--win-border-darker);
+      border-left: 2px solid var(--win-border-darker);
+      border-right: 2px solid var(--win-border-light);
+      border-bottom: 2px solid var(--win-border-light);
+      padding: 20px 10px;
     }
 
     .result-type {
-      font-size: 28px;
+      font-size: 48px;
       font-weight: 900;
-      color: var(--accent-pink);
-      margin: 0 0 12px 0;
-      letter-spacing: 1px;
-    }
-
-    .result-title {
+      color: var(--pink-bar);
       margin: 0;
-      font-size: 18px;
-      color: var(--text-main);
-      font-weight: 800;
+      text-shadow: 2px 2px 0px rgba(0,0,0,0.1);
     }
 
-    .traits-container {
-      margin-bottom: 20px;
-      background: var(--box-bg);
-      border-top: 2px solid var(--win-border-dark);
-      border-left: 2px solid var(--win-border-dark);
-      border-bottom: 2px solid var(--win-border-light);
+    .result-main { display: none; }
+
+    .traits-box {
+      background: white;
+      border-top: 2px solid var(--win-border-darker);
+      border-left: 2px solid var(--win-border-darker);
       border-right: 2px solid var(--win-border-light);
-      padding: 20px 15px;
-    }
-    
-    .traits-label {
-      font-size: 15px;
-      font-weight: 800;
-      margin-bottom: 15px;
-      color: var(--text-main);
-      text-align: center;
+      border-bottom: 2px solid var(--win-border-light);
+      padding: 16px;
+      margin-bottom: 16px;
     }
 
-    .traits-listbox {
+    .traits-grid {
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 8px;
+      flex-direction: column;
+      gap: 10px;
     }
 
     .trait-item {
-      font-size: 13px;
-      color: var(--text-main);
-      background: var(--win-bg);
-      padding: 6px 14px;
-      border-radius: 20px;
-      border: 1px solid #c0c0c0;
-    }
-
-    .reveal-box {
+      font-size: 14px;
+      color: #333;
+      font-weight: 700;
       text-align: center;
+      background: var(--pink-soft);
+      padding: 8px;
+      border: 1px dashed var(--pink-bar);
     }
 
-    .reveal-small {
-      font-size: 10px;
-      color: #b0b0b0; 
-      font-weight: 400;
+    .reveal-line {
+      margin: 16px 0 0;
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-gray);
+      font-weight: 900;
+      background: var(--win-bg);
+      padding: 10px;
+      border-top: 2px solid var(--win-border-light);
+      border-left: 2px solid var(--win-border-light);
+      border-right: 2px solid var(--win-border-darker);
+      border-bottom: 2px solid var(--win-border-darker);
     }
 
-    .action-col {
+    #real-type-inline {
+      color: var(--pink-bar);
+      font-size: 15px;
+    }
+
+    .action-stack {
       display: flex;
       flex-direction: column;
-      gap: 12px;
-      margin-top: 25px; 
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .action-btn {
+      height: 48px;
+      font-size: 15px;
+    }
+
+    .ad-wrap {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
     }
 
     .ad-container {
       width: 100%;
-      max-width: 600px;
-      margin: 0 auto 40px; 
-      text-align: center;
+      max-width: 350px;
     }
 
     .image-modal {
-      display: none;
       position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0,0,0,0.7);
-      z-index: 999;
-      justify-content: center;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.8);
+      display: none;
       align-items: center;
-      flex-direction: column;
+      justify-content: center;
+      padding: 16px;
+      z-index: 9999;
     }
 
-    .image-modal.active {
-      display: flex;
-    }
+    .image-modal.active { display: flex; }
 
-    .modal-guide {
-      color: #fff;
-      margin-bottom: 15px;
-      font-size: 16px;
-      font-weight: bold;
-    }
-
-    .modal-img-wrap {
-      max-width: 85%;
-      max-height: 75vh;
-      overflow: auto;
-    }
-
-    .modal-img-wrap img {
+    .image-modal-box {
       width: 100%;
-      display: block;
-    }
-
-    .modal-close {
-      margin-top: 20px;
-      padding: 10px 30px;
+      max-width: 500px;
       background: var(--win-bg);
       border-top: 2px solid var(--win-border-light);
       border-left: 2px solid var(--win-border-light);
-      border-bottom: 2px solid var(--win-border-dark);
-      border-right: 2px solid var(--win-border-dark);
-      color: var(--text-main);
-      font-weight: bold;
-      cursor: pointer;
+      border-right: 2px solid var(--win-border-darker);
+      border-bottom: 2px solid var(--win-border-darker);
+      padding: 6px;
+    }
+
+    .image-modal-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-top: 2px solid var(--win-border-darker);
+      border-left: 2px solid var(--win-border-darker);
+      border-right: 2px solid var(--win-border-light);
+      border-bottom: 2px solid var(--win-border-light);
+    }
+
+    .image-modal-note {
+      margin-top: 12px;
+      text-align: center;
+      color: #000;
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .image-modal-close {
+      margin-top: 12px;
+      height: 44px;
+    }
+
+    @media (max-width: 480px) {
+      .main-title { font-size: 22px; }
+      .question-title { font-size: 16px; }
+      .choice-btn { font-size: 14px; min-height: 50px; }
+      .result-type { font-size: 40px; }
+      .trait-item { font-size: 13px; }
+      .action-btn { font-size: 14px; height: 44px; }
     }
   </style>
 </head>
 <body>
-
   <div class="header-wrapper">
     <header class="page-header wrapper">
-      <a href="https://test-it.co.kr/" class="retro-logo">테스트잇</a>
+      <h1><a href="https://test-it.co.kr/" class="retro-logo">테스트잇</a></h1>
       <nav>
         <ul class="main-nav">
           <li><a href="https://test-it.co.kr/test.html">성격</a></li>
@@ -461,38 +647,44 @@
   </div>
 
   <main class="container">
-    <section class="window98" id="capture-target">
+    <section class="window98" id="capture-area">
       <div class="window-topbar">
-        <div class="window-title">
-          만우절 성격 테스트
+        <div class="window-title-wrap">
+          <span class="window-icon"></span>
+          <span class="window-title">테스트잇 만우절 성격 테스트</span>
         </div>
         <div class="window-controls">
-          <span class="win-btn">_</span>
-          <span class="win-btn">ㅁ</span>
-          <span class="win-btn">X</span>
+          <span class="control-btn min"></span>
+          <span class="control-btn max"></span>
+          <span class="control-btn close"></span>
         </div>
       </div>
 
-      <div class="browser-bar">
-        <div class="address-bar">https://test-it.co.kr/april-mbti</div>
+      <div class="browser-row">
+        <span class="nav-square">◀</span>
+        <span class="nav-square">⌂</span>
+        <div class="address-bar">https://test-it.co.kr/test374</div>
       </div>
 
       <div class="window-body">
-        
-        <div id="start-screen" class="screen active start-content">
-          <h1 class="main-title">만우절 MBTI<br>성격 테스트</h1>
-          <p class="sub-text">
-            평소처럼 편하게 고르면 됩니다.<br>
-            마지막까지 봐야 진짜가 보입니다.
-          </p>
-          <button class="action-button pink-btn" onclick="startTest()">테스트 시작하기</button>
+        <div id="start-screen" class="screen active">
+          <div class="panel start-panel">
+            <div class="start-badge">만우절 테스트</div>
+            <div class="start-hero-box">성격</div>
+            <h1 class="main-title">테스트잇 만우절<br>성격 테스트</h1>
+            <p class="sub-text">
+              평소처럼 고르면 됩니다.<br>
+              마지막에 반전이 나옵니다.
+            </p>
+            <button class="start-btn" type="button" onclick="startTest()">테스트 시작하기</button>
+          </div>
         </div>
 
         <div id="question-screen" class="screen">
           <div class="progress-wrap">
             <div class="progress-top">
-              <span>진행률</span>
-              <span id="progress-text">1 / 12</span>
+              <div class="progress-text" id="progress-text">1 / 12</div>
+              <div class="progress-text"></div>
             </div>
             <div class="progress-bar">
               <div id="progress-fill" class="progress-fill"></div>
@@ -500,111 +692,414 @@
           </div>
 
           <div class="question-box">
-            <div class="question-type" id="question-type">Q1</div>
-            <h2 class="question-title" id="question-title">질문 내용</h2>
+            <h2 class="question-title" id="question-title"></h2>
           </div>
 
           <div class="choices">
-            <button class="action-button" id="choice-a" onclick="selectAnswer(0)">A</button>
-            <button class="action-button" id="choice-b" onclick="selectAnswer(1)">B</button>
+            <button class="choice-btn" type="button" onclick="selectAnswer(0)"></button>
+            <button class="choice-btn" type="button" onclick="selectAnswer(1)"></button>
           </div>
         </div>
 
         <div id="result-screen" class="screen">
-          
-          <div class="alert-box">
-            <div class="result-type" id="fake-type">INFP</div>
-            <h2 class="result-title" id="result-title">조용하지만 감정선이 깊은 타입</h2>
-          </div>
+          <div class="result-box">
+            <div class="result-alert">
+              <div class="result-alert-titlebar">
+                <div class="result-alert-title-left">
+                  <span class="result-alert-icon"></span>
+                  <span class="result-alert-title-text">테스트 결과</span>
+                </div>
+                <span class="result-alert-close"></span>
+              </div>
 
-          <div class="traits-container">
-            <div class="traits-label">성격 특징</div>
-            <div class="traits-listbox" id="trait-inline">
+              <div class="result-alert-body">
+                <div class="result-badge">
+                  <div class="result-type" id="fake-type">ENTJ</div>
+                </div>
+
+                <div class="result-main">
+                  <h2 id="result-title"></h2>
+                  <p id="result-desc"></p>
+                </div>
+              </div>
+            </div>
+
+            <div class="traits-box">
+              <div class="traits-grid" id="traits-grid"></div>
+            </div>
+
+            <div class="reveal-line">
+              사실 만우절 테스트라 반대로 나온것... 실제 결과는 <span id="real-type-inline">ISFP</span>!
             </div>
           </div>
 
-          <div class="reveal-box">
-            <div class="reveal-small">
-              사실 만우절 테스트라 정반대로 나온 겁니다! 실제 계산된 당신의 MBTI는 <span id="real-type-inline">ESTP</span>
-            </div>
+          <div class="action-stack" id="result-actions">
+            <button class="action-btn save" type="button" onclick="saveResultImage()">결과 이미지 저장하기</button>
+            <button class="action-btn retry" type="button" onclick="restartTest()">다시 해보기</button>
+            <button class="action-btn other" type="button" onclick="goOtherTest()">다른 테스트 해보기</button>
+            <button class="action-btn share" type="button" onclick="shareTest()">테스트 공유하기</button>
           </div>
-
-          <div class="action-col" id="action-buttons">
-            <button class="action-button pink-btn" onclick="saveAsImage()">결과 이미지 저장하기</button>
-            <button class="action-button" onclick="restartTest()">다시 해보기</button>
-            <button class="action-button" onclick="location.href='https://test-it.co.kr/test.html'">다른 테스트 해보기</button>
-            <button class="action-button" onclick="copyResult()">테스트 공유하기</button>
-          </div>
-
         </div>
       </div>
     </section>
+
+    <div class="ad-wrap">
+      <div class="ad-container" id="ad-container">
+        <article class="coupang_ad mt-3">
+          <script src="https://ads-partners.coupang.com/g.js"></script>
+          <script>
+            new PartnersCoupang.G({"id":798186,"template":"carousel","trackingCode":"AF4391881","width":"350","height":"140","tsource":""});
+          </script>
+        </article>
+      </div>
+    </div>
   </main>
 
-  <div class="ad-container" id="ad-container">
-    <article class="coupang_ad mt-3">
-        <script src="https://ads-partners.coupang.com/g.js"></script>
-        <script>
-            new PartnersCoupang.G({"id":798186,"template":"carousel","trackingCode":"AF4391881","width":"350","height":"140","tsource":""});
-        </script>
-    </article>
-  </div>
-
   <div id="image-modal" class="image-modal">
-    <div class="modal-guide">꾹 눌러서 이미지를 저장하세요!</div>
-    <div class="modal-img-wrap">
-      <img id="result-image" src="" alt="테스트 결과 이미지" />
+    <div class="image-modal-box">
+      <img id="image-modal-img" class="image-modal-img" src="" alt="결과 이미지" />
+      <div class="image-modal-note">이미지를 길게 누르거나 우클릭해서 저장해 주세요</div>
+      <button class="image-modal-close" type="button" onclick="closeImageModal()">닫기</button>
     </div>
-    <button class="modal-close" onclick="closeModal()">닫기</button>
   </div>
 
   <script>
     const questions = [
-      { question: "오랜만에 쉬는 날이 생기면 더 끌리는 쪽은?", answers: [{ text: "사람 만나서 밖에서 시간을 보내는 편이다", type: "E" }, { text: "혼자 쉬면서 내 시간을 보내는 편이다", type: "I" }] },
-      { question: "새로운 장소에 가면 먼저 보는 건?", answers: [{ text: "구조나 분위기처럼 바로 보이는 정보다", type: "S" }, { text: "여기서 어떤 일이 생길지 떠오르는 상상이다", type: "N" }] },
-      { question: "친구가 고민을 말하면 먼저 드는 생각은?", answers: [{ text: "어디서부터 꼬였는지 정리해보고 싶다", type: "T" }, { text: "얼마나 힘들었을지가 먼저 느껴진다", type: "F" }] },
-      { question: "여행 준비할 때 더 내 스타일은?", answers: [{ text: "일정을 어느 정도 정해두는 게 편하다", type: "J" }, { text: "가서 끌리는 대로 움직이는 게 좋다", type: "P" }] },
-      { question: "여럿이 있는 자리에서 나는 보통?", answers: [{ text: "먼저 말 걸고 분위기를 여는 편이다", type: "E" }, { text: "상황을 보다가 자연스럽게 끼는 편이다", type: "I" }] },
-      { question: "설명을 들을 때 더 잘 이해되는 방식은?", answers: [{ text: "예시와 순서가 분명한 설명", type: "S" }, { text: "의미와 흐름을 연결하는 설명", type: "N" }] },
-      { question: "갈등 상황에서 더 중요하게 보는 것은?", answers: [{ text: "누가 봐도 납득되는 기준과 논리", type: "T" }, { text: "상대가 상처받지 않는 전달 방식", type: "F" }] },
-      { question: "마감이 있는 일을 할 때 나는?", answers: [{ text: "미리 해두는 편이 마음이 편하다", type: "J" }, { text: "끝날 때쯤 몰입해서 처리하는 편이다", type: "P" }] },
-      { question: "기분 전환이 필요할 때 더 가까운 쪽은?", answers: [{ text: "사람 만나거나 밖에 나가야 풀린다", type: "E" }, { text: "혼자 있어야 회복되는 편이다", type: "I" }] },
-      { question: "무언가를 볼 때 더 먼저 잡히는 건?", answers: [{ text: "지금 보이는 사실과 디테일이다", type: "S" }, { text: "숨은 의미나 가능성이다", type: "N" }] },
-      { question: "누군가 실수했을 때 내 반응은?", answers: [{ text: "왜 그런 실수가 났는지 원인을 본다", type: "T" }, { text: "일단 민망했겠다 싶은 마음이 먼저 든다", type: "F" }] },
-      { question: "일상 루틴에 대한 내 태도는?", answers: [{ text: "흐름이 정해져 있어야 안정된다", type: "J" }, { text: "그날그날 다르게 움직이는 게 편하다", type: "P" }] }
+      {
+    question: "여럿이 있는 자리에서 나는 보통?",
+        answers: [
+          { text: "먼저 말 걸고 분위기를 여는 편이다", type: "E" },
+          { text: "상황을 보다가 자연스럽게 끼는 편이다", type: "I" }
+        ]
+      },
+      {
+       question: "영화나 드라마를 볼 때 내가 더 집중하는 부분은?",
+    answers: [
+      { text: "배우들의 연기력이나 줄거리 그 자체에 집중함", type: "S" },
+      { text: "작가가 숨겨놓은 복선이나 결말을 추측하며 봄", type: "N" }
+        ]
+      },
+      {
+      question: "영화나 드라마를 볼 때 내가 더 화나는 상황은?",
+    answers: [
+      { text: "스토리 개연성이 하나도 안 맞고 비논리적일 때", type: "T" },
+      { text: "악역이 너무 못됐고 사이다 장면이 하나도 없을 때", type: "F" }
+        ]
+      },
+      {
+     question: "약속 장소로 출발하기 전 나의 모습은?",
+    answers: [
+      { text: "소요 시간을 계산해 여유 있게 준비하고 나간다", type: "J" },
+      { text: "아직 준비 중인데 나갈 시간이 다 되어 서두른다", type: "P" }
+        ]
+      },
+      {
+    question: "친구가 자신의 다른 친구를 모임에 데려온다면?",
+    answers: [
+      { text: "새로운 인연이라 생각하고 반갑게 인사한다", type: "E" },
+      { text: "아는 사람만 있는 게 편해서 조금 어색해한다", type: "I" }
+        ]
+      },
+      {
+    question: "멍 때리고 있을 때 내 머릿속 상태는?",
+    answers: [
+      { text: "진짜 아무 생각 없이 시각적인 정보만 받아들임", type: "S" },
+      { text: "생각에 꼬리를 물고 계속 무언가 상상하고 있음", type: "N" }
+        ]
+      },
+      {
+     question: "누군가 나에게 피드백을 줄 때 더 받아들이기 쉬운 쪽은?",
+    answers: [
+      { text: "비판적이더라도 팩트 위주의 정확한 지적", type: "T" },
+      { text: "부드러운 말투로 장점을 먼저 말해주는 조언", type: "F" }
+        ]
+      },
+      {
+      question: "무언가 결정을 내릴 때 나의 태도는?",
+    answers: [
+      { text: "빨리 결론을 내고 다음 단계로 넘어가고 싶음", type: "J" },
+      { text: "더 좋은 대안이 있을지 몰라 끝까지 고민함", type: "P" }
+        ]
+      },
+      {
+  question: "생각을 정리할 때 주로 사용하는 방법은?",
+    answers: [
+      { text: "남들에게 이야기하면서 스스로 정리가 됨", type: "E" },
+      { text: "혼자 종이에 적거나 일기를 쓰며 정리함", type: "I" }
+        ]
+      },
+      {
+     question: "꿈을 꾸고 일어났을 때 나의 반응은?",
+    answers: [
+      { text: "개꿈이네 하고 잊어버리거나 상황만 기억함", type: "S" },
+      { text: "이게 무슨 징조일까? 하며 의미를 부여함", type: "N" }
+        ]
+      },
+      {
+      question: "친구가 나에게 고민 상담을 요청하는 이유는?",
+    answers: [
+      { text: "내 판단이 객관적이고 정확하다고 생각해서", type: "T" },
+      { text: "내가 자기 마음을 가장 잘 이해해 줄 것 같아서", type: "F" }
+        ]
+      },
+      {
+      question: "새로운 물건을 샀을 때 설명서를 읽나?",
+    answers: [
+      { text: "처음부터 끝까지 정독하며 기능을 숙지함", type: "J" },
+      { text: "일단 이것저것 만져보다가 안 되면 찾아봄", type: "P" }
+        ]
+      }
     ];
 
     const resultData = {
-      "INTJ": { title: "분석적이고 독립적인 전략가 타입", traits: ["혼자 생각 정리 중요", "기준이 분명한 편", "감정 소모 최소화", "큰 그림을 먼저 봄", "비효율을 못 참음", "속이 훨씬 치밀함", "판단이 빠른 편", "목표 중심 사고", "대충 넘어가는 거 싫음", "스스로 방향 잡음"] },
-      "INTP": { title: "논리적이고 호기심 많은 탐구형", traits: ["궁금한 건 파보는 편", "논리 안 맞는 거 잘 찾음", "혼자 생각 시간 필요", "관심 분야 몰입도 높음", "감정보다 맥락 먼저", "사고 정리가 우선", "원리 이해가 필수", "단순 반복 지루함", "생각의 가지가 많음", "관찰력과 분석력 좋음"] },
-      "ENTJ": { title: "주도적이고 추진력 강한 리더형", traits: ["결단이 빠른 편", "할 일은 바로 시작", "비효율 보면 손보고 싶음", "판단이 단호함", "목표 중심 성향", "리더 역할 안 부담스러움", "일 속도가 빠른 편", "정리와 통제에 강함", "결과를 중요시함", "판을 읽는 감각 좋음"] },
-      "ENTP": { title: "재치 있고 아이디어 넘치는 변화형", traits: ["생각 확장이 빠름", "새로운 시도 좋아함", "토론, 대화 순발력 굿", "지루한 거 오래 못 견딤", "아이디어 뱅크", "틀 깨는 거 재밌음", "상황 적응 빠름", "분위기 전환 잘함", "즉흥적인 매력", "변화를 두려워 안 함"] },
-      "INFJ": { title: "조용하지만 통찰이 깊은 이상형", traits: ["겉보다 속이 깊음", "사람 감정선 잘 읽음", "혼자만의 시간 필요", "쉽게 깊어지진 않음", "가치관이 분명함", "관계 진정성 중요시", "분위기 변화 민감", "상대 속마음 잘 느낌", "말수보다 내면 밀도 높음", "진심 없는 흐름 지침"] },
-      "INFP": { title: "감정선이 깊고 결이 뚜렷한 타입", traits: ["감정이 풍부한 편", "좋아하는 거엔 진심", "잔잔해 보여도 속 깊음", "자기만의 취향 분명", "억지로 맞추기 힘듦", "진심 없는 분위기 지침", "감정 정리가 중요", "상상과 감수성 풍부", "겉보다 섬세한 편", "마음 움직여야 힘 남"] },
-      "ENFJ": { title: "따뜻하고 사람을 움직이게 하는 타입", traits: ["상대 감정 빨리 캐치", "분위기 부드럽게 만듦", "사람 챙기는 데 능숙", "관계 속 책임감 큼", "응원과 격려 잘함", "사람 사이 흐름 민감", "누군가를 이끌어줌", "따뜻한 말이 자연스러움", "조화를 중요시함", "주변 온도 올리는 편"] },
-      "ENFP": { title: "밝고 자유롭고 생기 있는 타입", traits: ["표현력이 좋은 편", "새로운 자극 좋아함", "사람에게 쉽게 관심", "정적인 분위기 답답", "감정 결이 살아 있음", "자유로운 흐름 선호", "즉흥적인 매력", "반응 빠르고 생동감", "뻔한 거 지루해함", "재미와 진심 둘 다 중요"] },
-      "ISTJ": { title: "성실하고 안정적인 현실형", traits: ["기본을 잘 지킴", "책임감 무겁게 느낌", "안정적인 흐름 선호", "말보단 행동파", "꼼꼼하고 세심함", "신뢰 쌓는 데 강함", "허투루 넘기지 않음", "정해진 기준 중요시", "꾸준함이 가장 큰 무기", "생활 질서 지키는 편"] },
-      "ISFJ": { title: "조용하고 다정한 보호형", traits: ["작은 변화 잘 알아챔", "배려를 행동으로 보임", "정이 아주 깊은 편", "관계 속 꾸준함 강점", "남 부담 주는 거 싫음", "조용하지만 책임감 큼", "생활형 다정함 탑재", "눈에 안 띄게 챙김", "익숙한 사람에게 따뜻", "신뢰감 주는 인상"] },
-      "ESTJ": { title: "현실 감각 좋고 정리 빠른 타입", traits: ["정리와 통제가 편함", "할 일 미루지 않음", "현실적 판단 강함", "비효율 절대 못 참음", "책임 맡으면 든든함", "명확한 기준 선호", "일 처리 속도 빠름", "실행력 아주 좋음", "우왕좌왕 흐름 극혐", "결과 분명히 만들고 풂"] },
-      "ESFJ": { title: "사람과 관계를 따뜻하게 챙기는 타입", traits: ["사람 챙기는 감각 좋음", "관계 부드럽게 유지", "예의, 분위기 중요시", "생활형 배려 자연스러움", "주변 살피는 눈 빠름", "정 많은 현실형", "분위기 깨지는 거 싫음", "함께 편한 상태 원함", "주변 반응 민감한 편", "따뜻하고 안정적 느낌"] },
-      "ISTP": { title: "담백하고 유연한 실전형", traits: ["혼자서도 잘 해결함", "실전 감각 매우 좋음", "쓸데없는 말 적은 편", "상황 판단이 빠름", "유연 대처 능력", "과한 간섭 싫어함", "필요할 때 확 움직임", "담백한 태도 자연스러움", "즉시 행동으로 옮김", "복잡한 감정 소모 피함"] },
-      "ISFP": { title: "부드럽고 감각적인 자유형", traits: ["부드럽고 무리 안 함", "감각, 취향 섬세함", "조용하지만 속 마음 깊음", "강요받는 거 힘듦", "편안한 관계 선호", "말보단 느낌 먼저", "자기만의 결이 분명함", "잔잔한 매력이 있음", "부드러운 표현 선호", "억지 없는 흐름 편안"] },
-      "ESTP": { title: "순발력 있고 에너지 넘치는 행동형", traits: ["즉각적인 반응 빠름", "현장 감각 아주 좋음", "정적인 분위기 답답함", "승부욕 꽤 있는 편", "텐션 맞추기 장인", "실행하며 배우는 스타일", "상황 대처 엄청 빠름", "생동감 있는 흐름 선호", "에너지 직선적임", "망설이기보다 해보는 편"] },
-      "ESFP": { title: "밝고 친근하고 생기 있는 분위기형", traits: ["표현 자연스럽고 친근", "현장 분위기 잘 녹아듦", "사람들과 있을 때 빛남", "즐거운 흐름 잘 만듦", "감정 표현 비교적 솔직", "답답한 분위기 잘 품", "지금 이 순간 즐김", "주변 분위기 밝게 함", "편하게 다가가는 매력", "생기 넘치는 텐션 강점"] }
+      "INTJ": {
+        traits: [
+          "혼자 생각 정리하는 시간이 중요함",
+          "기준이 분명한 편임",
+          "쓸데없는 감정 소모를 줄이려 함",
+          "큰 그림을 먼저 보는 편임",
+          "비효율을 잘 못 참음",
+          "겉보다 속이 훨씬 치밀함",
+          "판단이 빠른 편임",
+          "목표 중심 사고가 강함",
+          "대충 넘어가는 걸 싫어함",
+          "스스로 방향을 잡으려는 편임"
+        ]
+      },
+      "INTP": {
+        traits: [
+          "궁금한 건 끝까지 파보는 편임",
+          "논리 안 맞는 걸 잘 발견함",
+          "혼자 생각하는 시간이 필요함",
+          "관심 분야 몰입도가 높음",
+          "감정보다 맥락을 먼저 봄",
+          "즉흥 대화보다 사고 정리가 먼저임",
+          "원리를 이해해야 마음이 편함",
+          "단순 반복을 지루해함",
+          "머릿속 생각의 가지가 많음",
+          "관찰력과 분석력이 좋은 편임"
+        ]
+      },
+      "ENTJ": {
+        traits: [
+          "결단이 빠른 편임",
+          "해야 할 일을 바로 움직임",
+          "비효율을 보면 손보고 싶어짐",
+          "판단이 단호한 편임",
+          "목표 중심 성향이 강함",
+          "리더 역할을 부담스러워하지 않음",
+          "일의 속도가 빠른 편임",
+          "정리와 통제에 강함",
+          "결과를 중요하게 여김",
+          "판을 읽는 감각이 좋음"
+        ]
+      },
+      "ENTP": {
+        traits: [
+          "생각의 확장이 빠른 편임",
+          "새로운 시도를 좋아함",
+          "토론이나 대화 순발력이 좋음",
+          "지루한 걸 오래 못 견딤",
+          "아이디어를 잘 떠올림",
+          "틀을 깨는 걸 재미있어함",
+          "상황 적응이 빠른 편임",
+          "말로 분위기를 전환하는 편임",
+          "즉흥적인 매력이 있음",
+          "변화를 두려워하지 않음"
+        ]
+      },
+      "INFJ": {
+        traits: [
+          "겉보다 속이 깊은 편임",
+          "사람의 감정선을 잘 읽음",
+          "혼자 정리하는 시간이 필요함",
+          "쉽게 깊어지지는 않음",
+          "가치관이 분명한 편임",
+          "관계의 진정성을 중요하게 봄",
+          "분위기 변화에 민감함",
+          "상대의 속마음을 잘 느끼는 편임",
+          "말수보다 내면 밀도가 높음",
+          "진심 없는 흐름에 금방 지침"
+        ]
+      },
+      "INFP": {
+        traits: [
+          "감정이 풍부한 편임",
+          "좋아하는 것에 진심임",
+          "겉은 잔잔해 보여도 속은 깊음",
+          "자기만의 취향이 분명함",
+          "억지로 맞추는 걸 힘들어함",
+          "진심 없는 분위기에 지침",
+          "혼자만의 감정 정리가 중요함",
+          "상상과 감수성이 살아 있음",
+          "겉보다 훨씬 섬세한 편임",
+          "마음이 움직여야 진짜 힘이 남"
+        ]
+      },
+      "ENFJ": {
+        traits: [
+          "상대 감정을 빨리 캐치함",
+          "분위기를 부드럽게 만드는 편임",
+          "사람 챙기는 데 능숙함",
+          "관계 속 책임감이 큼",
+          "응원과 격려를 잘함",
+          "사람 사이 흐름에 민감함",
+          "누군가를 이끌어주는 편임",
+          "따뜻한 말이 자연스럽게 나옴",
+          "조화를 중요하게 생각함",
+          "주변의 온도를 올리는 편임"
+        ]
+      },
+      "ENFP": {
+        traits: [
+          "표현력이 좋은 편임",
+          "새로운 자극을 좋아함",
+          "사람에게 쉽게 관심을 가짐",
+          "정적인 분위기를 답답해함",
+          "감정의 결이 살아 있음",
+          "자유로운 흐름에서 더 빛남",
+          "즉흥적인 매력이 있음",
+          "반응이 빠르고 생동감 있음",
+          "뻔한 걸 지루해함",
+          "재미와 진심을 둘 다 중요하게 봄"
+        ]
+      },
+      "ISTJ": {
+        traits: [
+          "기본을 잘 지키는 편임",
+          "책임감을 무겁게 봄",
+          "안정적인 흐름을 선호함",
+          "말보다 행동으로 보여줌",
+          "꼼꼼한 편임",
+          "신뢰를 쌓는 데 강함",
+          "허투루 넘기지 않음",
+          "정해진 기준을 중요하게 봄",
+          "꾸준함이 강점임",
+          "생활의 질서를 지키려는 편임"
+        ]
+      },
+      "ISFJ": {
+        traits: [
+          "작은 변화도 잘 알아차림",
+          "배려를 행동으로 보여줌",
+          "정이 깊은 편임",
+          "관계에서 꾸준함이 강점임",
+          "부담 주는 걸 싫어함",
+          "조용하지만 책임감이 큼",
+          "생활형 다정함이 있음",
+          "눈에 띄지 않게 챙기는 편임",
+          "익숙한 사람에게 특히 따뜻함",
+          "신뢰감 있는 인상을 줌"
+        ]
+      },
+      "ESTJ": {
+        traits: [
+          "정리와 통제가 편함",
+          "해야 할 일을 미루지 않음",
+          "현실적인 판단에 강함",
+          "비효율을 잘 못 참음",
+          "책임 역할을 맡으면 든든함",
+          "명확한 기준을 선호함",
+          "일 처리 속도가 빠름",
+          "실행력이 좋은 편임",
+          "우왕좌왕한 흐름을 싫어함",
+          "결과를 분명히 만들고 싶어함"
+        ]
+      },
+      "ESFJ": {
+        traits: [
+          "사람 챙기는 감각이 좋음",
+          "관계를 부드럽게 유지하려고 함",
+          "예의와 분위기를 중요하게 봄",
+          "생활형 배려가 자연스러움",
+          "주변을 살피는 눈이 빠름",
+          "정 많은 현실형에 가까움",
+          "분위기 깨지는 걸 싫어함",
+          "함께 편한 상태를 만들고 싶어함",
+          "주변 반응에 민감한 편임",
+          "따뜻하고 안정적인 느낌이 있음"
+        ]
+      },
+      "ISTP": {
+        traits: [
+          "혼자서도 잘 해결함",
+          "실전 감각이 좋은 편임",
+          "쓸데없는 말이 적음",
+          "상황 판단이 빠름",
+          "유연하게 대처하는 능력이 있음",
+          "과한 간섭을 싫어함",
+          "필요한 순간에 확 움직이는 편임",
+          "담백한 태도가 자연스러움",
+          "즉시 행동으로 옮기기 쉬움",
+          "복잡한 감정 소모를 피하려 함"
+        ]
+      },
+      "ISFP": {
+        traits: [
+          "부드럽고 무리하지 않는 편임",
+          "감각과 취향이 섬세함",
+          "조용하지만 마음은 깊음",
+          "강요받는 걸 힘들어함",
+          "편안한 관계를 선호함",
+          "말보다 느낌이 먼저 오는 편임",
+          "자기만의 결이 분명함",
+          "잔잔한 매력이 있는 편임",
+          "부드러운 표현을 선호함",
+          "억지 없는 흐름에서 편안함"
+        ]
+      },
+      "ESTP": {
+        traits: [
+          "즉각적인 반응이 빠름",
+          "현장 감각이 좋음",
+          "정적인 분위기를 답답해함",
+          "승부욕이 있는 편임",
+          "사람들과 텐션 맞추는 능력이 좋음",
+          "실행하면서 배우는 스타일임",
+          "상황 대처가 빠른 편임",
+          "생동감 있는 흐름을 좋아함",
+          "에너지가 직선적으로 나감",
+          "망설이기보다 해보는 쪽임"
+        ]
+      },
+      "ESFP": {
+        traits: [
+          "표현이 자연스럽고 친근함",
+          "현장 분위기에 잘 녹아듦",
+          "사람들과 함께 있을 때 매력이 커짐",
+          "즐거운 흐름을 잘 만듦",
+          "감정 표현이 비교적 솔직함",
+          "답답한 분위기를 풀어주는 편임",
+          "지금 이 순간을 즐기려 함",
+          "주변 분위기를 밝게 만듦",
+          "편하게 다가가는 매력이 있음",
+          "생기 있는 텐션이 강점임"
+        ]
+      }
     };
 
     let currentQuestion = 0;
-    const scores = { E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0 };
+    const scores = {
+      E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0
+    };
 
     function startTest() {
       currentQuestion = 0;
-      for (const key in scores) scores[key] = 0;
+      resetScores();
       showScreen("question-screen");
       renderQuestion();
     }
 
+    function resetScores() {
+      Object.keys(scores).forEach(function (key) {
+        scores[key] = 0;
+      });
+    }
+
     function showScreen(id) {
-      document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
+      document.querySelectorAll(".screen").forEach(function (screen) {
+        screen.classList.remove("active");
+      });
       document.getElementById(id).classList.add("active");
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
@@ -613,18 +1108,17 @@
       const q = questions[currentQuestion];
       const progress = ((currentQuestion + 1) / questions.length) * 100;
 
-      document.getElementById("progress-text").textContent = `${currentQuestion + 1} / ${questions.length}`;
-      document.getElementById("progress-fill").style.width = `${progress}%`;
-      document.getElementById("question-type").textContent = `Q${currentQuestion + 1}`;
+      document.getElementById("progress-text").textContent = (currentQuestion + 1) + " / " + questions.length;
+      document.getElementById("progress-fill").style.width = progress + "%";
+      document.querySelectorAll("#question-screen .choice-btn")[0].textContent = q.answers[0].text;
+      document.querySelectorAll("#question-screen .choice-btn")[1].textContent = q.answers[1].text;
       document.getElementById("question-title").textContent = q.question;
-      document.getElementById("choice-a").textContent = q.answers[0].text;
-      document.getElementById("choice-b").textContent = q.answers[1].text;
     }
 
     function selectAnswer(index) {
-      if (currentQuestion >= questions.length) return;
       const q = questions[currentQuestion];
-      scores[q.answers[index].type] += 1;
+      const chosenType = q.answers[index].type;
+      scores[chosenType] += 1;
       currentQuestion += 1;
 
       if (currentQuestion < questions.length) {
@@ -639,12 +1133,19 @@
       const sn = scores.S >= scores.N ? "S" : "N";
       const tf = scores.T >= scores.F ? "T" : "F";
       const jp = scores.J >= scores.P ? "J" : "P";
-      return `${ei}${sn}${tf}${jp}`;
+      return ei + sn + tf + jp;
     }
 
     function reverseMBTI(type) {
-      const map = { E: "I", I: "E", S: "N", N: "S", T: "F", F: "T", J: "P", P: "J" };
-      return type.split("").map(char => map[char]).join("");
+      const map = {
+        E: "I", I: "E",
+        S: "N", N: "S",
+        T: "F", F: "T",
+        J: "P", P: "J"
+      };
+      return type.split("").map(function (char) {
+        return map[char];
+      }).join("");
     }
 
     function showResult() {
@@ -653,12 +1154,19 @@
       const fakeData = resultData[fakeType];
 
       document.getElementById("fake-type").textContent = fakeType;
-      document.getElementById("result-title").textContent = fakeData.title;
-      
-      const traitsHTML = fakeData.traits.map(v => `<div class="trait-item">${v}</div>`).join("");
-      document.getElementById("trait-inline").innerHTML = traitsHTML;
-      
+      document.getElementById("result-title").textContent = "";
+      document.getElementById("result-desc").textContent = "";
       document.getElementById("real-type-inline").textContent = realType;
+
+      const traitsGrid = document.getElementById("traits-grid");
+      traitsGrid.innerHTML = "";
+
+      fakeData.traits.forEach(function (trait) {
+        const item = document.createElement("div");
+        item.className = "trait-item";
+        item.textContent = trait;
+        traitsGrid.appendChild(item);
+      });
 
       showScreen("result-screen");
     }
@@ -667,54 +1175,88 @@
       showScreen("start-screen");
     }
 
-    function copyResult() {
-      const realType = document.getElementById("real-type-inline").textContent;
-      const text = `사실 만우절 테스트라 정반대로 나온 겁니다!\n실제 계산된 당신의 MBTI는 ${realType}`;
+    function goOtherTest() {
+      window.location.href = "https://test-it.co.kr/";
+    }
+
+    function shareTest() {
+      const shareText = "테스트잇 만우절 성격 테스트\nhttps://test-it.co.kr/test374";
+
+      if (navigator.share) {
+        navigator.share({
+          title: "테스트잇 만우절 성격 테스트",
+          text: "테스트잇 만우절 성격 테스트",
+          url: "https://test-it.co.kr/test374"
+        }).catch(function () {});
+        return;
+      }
 
       if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(text).then(() => alert("결과 문구가 복사됐어요"))
-          .catch(() => fallbackCopy(text));
+        navigator.clipboard.writeText(shareText).then(function () {
+          alert("테스트 링크가 복사됐어요");
+        }).catch(function () {
+          fallbackCopy(shareText, "테스트 링크가 복사됐어요");
+        });
       } else {
-        fallbackCopy(text);
+        fallbackCopy(shareText, "테스트 링크가 복사됐어요");
       }
     }
 
-    function fallbackCopy(text) {
+    async function saveResultImage() {
+      const captureArea = document.getElementById("capture-area");
+      const actions = document.getElementById("result-actions");
+
+      try {
+        actions.style.display = "none";
+
+        const canvas = await html2canvas(captureArea, {
+          backgroundColor: "#dfd8db",
+          scale: 2,
+          useCORS: true
+        });
+
+        actions.style.display = "flex";
+
+        const dataUrl = canvas.toDataURL("image/png");
+        document.getElementById("image-modal-img").src = dataUrl;
+        document.getElementById("image-modal").classList.add("active");
+        document.body.style.overflow = "hidden";
+      } catch (error) {
+        actions.style.display = "flex";
+        console.error(error);
+        alert("이미지 저장 중 오류가 났어요. 다시 시도해 주세요.");
+      }
+    }
+
+    function closeImageModal() {
+      document.getElementById("image-modal").classList.remove("active");
+      document.getElementById("image-modal-img").src = "";
+      document.body.style.overflow = "";
+    }
+
+    function fallbackCopy(text, message) {
       const textarea = document.createElement("textarea");
       textarea.value = text;
       document.body.appendChild(textarea);
       textarea.select();
       document.execCommand("copy");
       document.body.removeChild(textarea);
-      alert("결과 문구가 복사됐어요");
+      alert(message);
     }
 
-    function saveAsImage() {
-      const target = document.getElementById("capture-target");
-      const actionCol = document.getElementById("action-buttons");
-      const body = document.body;
-      
-      actionCol.style.display = "none";
-      const originalBg = body.style.background;
-      body.style.background = "#ffffff"; 
-      
-      html2canvas(target, {
-        scale: 3, 
-        backgroundColor: "#ffffff",
-        useCORS: true
-      }).then(canvas => {
-        actionCol.style.display = "flex";
-        body.style.background = originalBg;
-        
-        const imgData = canvas.toDataURL("image/png");
-        document.getElementById("result-image").src = imgData;
-        document.getElementById("image-modal").classList.add("active");
-      });
-    }
+    document.getElementById("image-modal").addEventListener("click", function (e) {
+      if (e.target.id === "image-modal") {
+        closeImageModal();
+      }
+    });
 
-    function closeModal() {
-      document.getElementById("image-modal").classList.remove("active");
-    }
+    window.startTest = startTest;
+    window.selectAnswer = selectAnswer;
+    window.restartTest = restartTest;
+    window.goOtherTest = goOtherTest;
+    window.shareTest = shareTest;
+    window.saveResultImage = saveResultImage;
+    window.closeImageModal = closeImageModal;
   </script>
 </body>
 </html>

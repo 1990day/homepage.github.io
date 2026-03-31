@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>사주 전생 직업 테스트</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunar-javascript/1.7.4/lunar.min.js"></script>
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+  <style>
+    @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+    
+    :root {
+      --win-bg: #c0c0c0;
+      --win-border-light: #ffffff;
+      --win-border-dark: #808080;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Pretendard', sans-serif;
+    }
+
+    body {
+      background-color: #008080;
+      color: #000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding-bottom: 20px;
+    }
+
+    /* --- 헤더 --- */
+    .header-wrapper {
+      width: 100%;
+      background-color: var(--win-bg); 
+      border-bottom: 2px outset var(--win-border-light); 
+      box-shadow: 0 1px 0 var(--win-border-light); 
+      align-self: flex-start;
+      margin-bottom: 10px; 
+    }
+
+    .page-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 6px 4% !important; 
+    }
+
+    .retro-logo {
+      text-decoration: none;
+      color: #000;
+      font-size: 18px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      background-color: var(--win-bg); 
+      padding: 5px 10px; 
+      border-top: 2px solid var(--win-border-light);
+      border-left: 2px solid var(--win-border-light);
+      border-right: 2px solid var(--win-border-dark);
+      border-bottom: 2px solid var(--win-border-dark);
+    }
+
+    .retro-logo:active { 
+      border-top: 2px solid var(--win-border-dark);
+      border-left: 2px solid var(--win-border-dark);
+      border-right: 2px solid var(--win-border-light);
+      border-bottom: 2px solid var(--win-border-light);
+      padding: 6px 9px 4px 11px; 
+    }
+
+    .page-header h1 {
+      margin: 0 !important;
+      padding: 0 !important;
+      border-bottom: none !important;
+    }
+
+    .main-nav {
+      display: flex;
+      flex-wrap: nowrap !important;
+      align-items: center;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      gap: 12px; 
+    }
+
+    .main-nav li {
+      margin-left: 0;
+    }
+
+    .main-nav a {
+      display: block;
+      text-decoration: none;
+      color: #000;
+      font-weight: 700;
+      background: var(--win-bg);
+      border-top: 2px solid var(--win-border-light);
+      border-left: 2px solid var(--win-border-light);
+      border-right: 2px solid var(--win-border-dark);
+      border-bottom: 2px solid var(--win-border-dark);
+      padding: 4px 10px;
+      font-size: 14px; 
+      white-space: nowrap;
+      box-sizing: border-box;
+    }
+
+    .main-nav a:active {
+      border-top: 2px solid var(--win-border-dark);
+      border-left: 2px solid var(--win-border-dark);
+      border-right: 2px solid var(--win-border-light);
+      border-bottom: 2px solid var(--win-border-light);
+      padding: 5px 9px 3px 11px; 
+    }
+
+    @media (max-width: 480px) {
+      .page-header {
+        padding: 6px 12px !important;
+      }
+      .retro-logo {
+        font-size: 16px; 
+        padding: 3px 8px; 
+      }
+      .main-nav {
+        gap: 6px; 
+      }
+      .main-nav a {
+        padding: 4px 6px; 
+        font-size: 13px; 
+        letter-spacing: -0.5px; 
+      }
+    }
+
+    /* --- 메인 앱 --- */
+    #app {
+      width: 100%;
+      max-width: 480px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      padding: 0 15px;
+    }
+
+    .window {
+      background-color: var(--win-bg);
+      border-top: 2px solid var(--win-border-light);
+      border-left: 2px solid var(--win-border-light);
+      border-right: 2px solid #000;
+      border-bottom: 2px solid #000;
+      padding: 3px;
+    }
+
+    .title-bar {
+      background: linear-gradient(90deg, #000080, #1084d0);
+      padding: 5px 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .title-bar-text {
+      color: white;
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: 1px;
+    }
+
+    .title-bar-controls {
+      display: flex;
+      gap: 3px;
+    }
+
+    .title-btn {
+      width: 18px;
+      height: 18px;
+      background-color: var(--win-bg);
+      border-top: 1px solid var(--win-border-light);
+      border-left: 1px solid var(--win-border-light);
+      border-right: 1px solid #000;
+      border-bottom: 1px solid #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .window-body {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .title {
+      font-size: 1.4rem;
+      font-weight: 800;
+      margin: 20px 0;
+      line-height: 1.5;
+    }
+
+    .subtitle {
+      font-size: 0.95rem;
+      color: #333;
+      margin-bottom: 30px;
+    }
+
+    .icon-large {
+      font-size: 4rem;
+      margin: 10px 0;
+    }
+
+    .field-row {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+      margin-bottom: 20px;
+    }
+
+    .field-row label {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    .input-box {
+      padding: 8px;
+      border-top: 2px solid #000;
+      border-left: 2px solid #000;
+      border-right: 2px solid var(--win-border-light);
+      border-bottom: 2px solid var(--win-border-light);
+      background-color: #fff;
+      font-size: 1rem;
+      outline: none;
+    }
+
+    .date-dropdowns {
+      display: flex;
+      gap: 5px;
+    }
+
+    .date-dropdowns select {
+      flex: 1;
+      padding: 8px;
+      border-top: 2px solid #000;
+      border-left: 2px solid #000;
+      border-right: 2px solid var(--win-border-light);
+      border-bottom: 2px solid var(--win-border-light);
+      background-color: #fff;
+      font-size: 0.95rem;
+      outline: none;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 12px;
+      background-color: var(--win-bg);
+      border-top: 2px solid var(--win-border-light);
+      border-left: 2px solid var(--win-border-light);
+      border-right: 2px solid #000;
+      border-bottom: 2px solid #000;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .btn:active {
+      border-top: 2px solid #000;
+      border-left: 2px solid #000;
+      border-right: 2px solid var(--win-border-light);
+      border-bottom: 2px solid var(--win-border-light);
+      padding-top: 14px; 
+      padding-bottom: 10px;
+    }
+
+    #result-capture-area {
+      background-color: #c0c0c0; /* 캡처 영역 배경을 레트로 윈도우 회색으로 통일 */
+      padding: 5px;
+    }
+
+    .result-name {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    .result-job {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #000080;
+      margin-bottom: 20px;
+      word-break: keep-all;
+    }
+
+    #res-ilju-subtitle {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #555;
+      margin-top: -15px; 
+      margin-bottom: 25px;
+    }
+
+    .info-box {
+      background-color: #fff;
+      border-top: 2px solid #000;
+      border-left: 2px solid #000;
+      border-right: 2px solid var(--win-border-light);
+      border-bottom: 2px solid var(--win-border-light);
+      padding: 15px;
+      text-align: left;
+      margin-bottom: 15px;
+    }
+
+    .info-title {
+      font-weight: 800;
+      font-size: 1rem;
+      margin-bottom: 10px;
+      color: #000080;
+      border-bottom: 1px dashed #ccc;
+      padding-bottom: 5px;
+    }
+
+    .traits-list {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    .traits-list li {
+      font-size: 0.95rem;
+      margin-bottom: 8px;
+      position: relative;
+      padding-left: 15px;
+      line-height: 1.4;
+    }
+
+    .traits-list li::before {
+      content: "▶";
+      position: absolute;
+      left: 0;
+      top: 1px;
+      font-size: 0.7rem;
+      color: #000080;
+    }
+
+    .desc-text {
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .btn-action-group {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .ad-container {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
+    /* 이미지 저장용 모달 스타일 */
+    #image-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    #image-modal img {
+      max-width: 90%;
+      max-height: 75vh;
+      border: 3px solid #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    }
+
+    .modal-text {
+      color: #fff;
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    .modal-close-btn {
+      margin-top: 20px;
+      padding: 10px 30px;
+      background-color: var(--win-bg);
+      border-top: 2px solid var(--win-border-light);
+      border-left: 2px solid var(--win-border-light);
+      border-right: 2px solid #000;
+      border-bottom: 2px solid #000;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    
+    .modal-close-btn:active {
+      border-top: 2px solid #000;
+      border-left: 2px solid #000;
+      border-right: 2px solid var(--win-border-light);
+      border-bottom: 2px solid var(--win-border-light);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header-wrapper">
+    <header class="page-header wrapper">
+      <h1><a href="https://test-it.co.kr/" class="retro-logo">테스트잇</a></h1> 
+      <nav>
+        <ul class="main-nav">
+          <li><a href="https://test-it.co.kr/test.html">성격</a></li>
+          <li><a href="https://test-it.co.kr/face.html">얼굴</a></li>
+          <li><a href="https://test-it.co.kr/etc.html">그외</a></li>
+          <li><a href="https://test-it.co.kr/saju.html">사주</a></li>
+        </ul>
+      </nav>
+    </header>
+  </div>
+
+  <div id="app">
+    
+    <div id="home-screen" class="window">
+      <div class="title-bar">
+        <div class="title-bar-text">테스트잇 조선시대 직업 테스트.exe</div>
+        <div class="title-bar-controls">
+          <button class="title-btn">_</button>
+          <button class="title-btn">X</button>
+        </div>
+      </div>
+      <div class="window-body">
+        <img src="img_main375.png" alt="조선시대 직업 테스트 메인 이미지" style="width: 100%; max-width: 375px; height: auto; margin: 0 auto 20px; display: block;">
+        <button class="btn" onclick="goToInput()">테스트 시작하기</button>
+      </div>
+    </div>
+
+    <div id="input-screen" class="window" style="display: none;">
+      <div class="title-bar">
+        <div class="title-bar-text">테스트잇 조선시대 직업 테스트.exe</div>
+        <div class="title-bar-controls">
+          <button class="title-btn">_</button>
+          <button class="title-btn">X</button>
+        </div>
+      </div>
+      <div class="window-body">
+        <h2 class="title" style="margin-top: 10px; font-size: 1.2rem;">유저 데이터 입력</h2>
+        <p class="subtitle" style="margin-bottom: 20px;">정확한 스캔을 위해 정보를 입력하세요.</p>
+        
+        <div class="field-row">
+          <label for="userName">이름 (또는 닉네임)</label>
+          <input type="text" id="userName" class="input-box" placeholder="이름 입력" autocomplete="off">
+        </div>
+
+        <div class="field-row">
+          <label>생년월일 (양력)</label>
+          <div class="date-dropdowns">
+            <select id="birthYear"></select>
+            <select id="birthMonth"></select>
+            <select id="birthDay"></select>
+          </div>
+        </div>
+
+        <button class="btn" onclick="calculateResult()">결과 스캔하기</button>
+      </div>
+    </div>
+
+    <div id="result-screen" style="display: none;">
+      <div id="result-capture-area">
+        <div class="window">
+          <div class="title-bar">
+            <div class="title-bar-text">테스트잇 조선시대 직업 테스트</div>
+            <div class="title-bar-controls">
+              <button class="title-btn">_</button>
+              <button class="title-btn">X</button>
+            </div>
+          </div>
+          <div class="window-body">
+            
+            <p class="result-name">User_ID : <span id="res-name">ㅇㅇㅇ</span></p>
+            <h2 class="result-job" id="res-job">조선시대 직업</h2>
+            <p id="res-ilju-subtitle">조선시대 ㅇㅇ(ㅇㅇ) 일주</p>
+            
+            <div class="info-box">
+              <div class="info-title">성격 특징 요약</div>
+              <ul class="traits-list" id="res-traits-list">
+              </ul>
+            </div>
+
+            <div class="info-box">
+              <div class="info-title">조선시대 호적 기록</div>
+              <p class="desc-text" id="res-job-desc">직업 설명</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="btn-action-group" style="margin-top: 15px;">
+        <button class="btn" style="font-weight: 800; color: #000080;" onclick="showImageModal()">결과 이미지 저장하기</button>
+        <button class="btn" onclick="resetTest()">다시 해보기</button>
+        <button class="btn" onclick="location.href='https://test-it.co.kr/'">다른 테스트 해보기</button>
+        <button class="btn" onclick="shareTest()">테스트 공유하기</button>
+      </div>
+    </div>
+
+    <div class="ad-container" id="ad-container">
+      <article class="coupang_ad mt-3">
+        <script src="https://ads-partners.coupang.com/g.js"></script>
+        <script>
+          new PartnersCoupang.G({"id":798186,"template":"carousel","trackingCode":"AF4391881","width":"350","height":"140","tsource":""});
+        </script>
+      </article>
+    </div>
+
+  </div>
+
+  <div id="image-modal" onclick="closeModal(event)">
+    <p class="modal-text">이미지를 꾹 눌러서 저장해주세요.</p>
+    <img id="rendered-image" src="" alt="결과 이미지">
+    <button class="modal-close-btn" onclick="closeModal(event, true)">닫기</button>
+  </div>
+
+  <script>
+    // 60갑자 데이터: 각 특징 7개로 대폭 확장
+    const pastLifeData = {
+      "갑자": { character: "깐깐한 사헌부 대사헌", traits: ["융통성 제로의 꼿꼿한 원칙주의자", "뇌물은 쳐다도 안 보는 청렴결백", "한번 물면 안 놓는 집요함", "남들 눈치 안 보는 마이웨이", "겉으론 차가워도 속은 나라 걱정뿐", "결과보다 과정을 중요하게 생각함", "자기 관리에 철저하고 흐트러짐이 없음"], desc: "추운 겨울의 튼튼한 거목처럼 흔들림이 없습니다. 관원들의 비리를 감찰하고 왕에게도 팩트 폭행을 서슴지 않던 조선 최고의 감찰관이었습니다." },
+      "을축": { character: "악착같은 개성상인", traits: ["엄청난 인내심과 끈기의 소유자", "한 푼도 헛투루 안 쓰는 짠돌이/짠순이", "조용히 뒤에서 판을 짜는 실세", "보수적이고 변화를 썩 안 좋아함", "돈 냄새를 기가 막히게 맡음", "한번 화나면 걷잡을 수 없이 무서움", "남에게 아쉬운 소리 하는 것을 극혐함"], desc: "진흙 속에서 피어나는 꽃처럼 끈질긴 생명력이 있습니다. 아무리 거친 환경에서도 묵묵히 이문을 남겨 거상이 된 전설의 개성상인이었습니다." },
+      "병인": { character: "열혈 성균관 유생", traits: ["불의를 보면 상소문부터 쓰고 봄", "시작은 누구보다 화려하고 빠름", "동기들을 이끄는 골목대장 카리스마", "뒤끝 없이 쿨하고 화끈한 성격", "책상머리보단 행동이 먼저 나감", "호기심이 많아 일단 저지르고 봄", "칭찬을 받으면 날아갈 듯이 기뻐함"], desc: "땔감을 만난 불꽃처럼 학문과 정치에 대한 열정이 활활 타오릅니다. 불합리한 처사를 보면 성균관 뜰에 가장 먼저 뛰쳐나가 농성하던 열혈 유생이었습니다." },
+      "정묘": { character: "밤에 글 쓰는 규방 아씨", traits: ["감수성이 풍부하고 예민한 성격", "조용히 앉아 끝없이 생각하는 학구파", "남들에게 말 못 할 은근한 고집", "눈치가 백단이고 직관력이 뛰어남", "사람의 심리를 꿰뚫어 보는 통찰력", "다정하지만 은근히 선을 확실히 그음", "작은 디테일까지 기억하는 무서운 기억력"], desc: "은은한 호롱불 아래서 붓을 드는 섬세함이 있습니다. 낮에는 조신하게 수를 놓지만 밤에는 당대 최고의 연애소설을 몰래 집필하던 규방 아씨였습니다." },
+      "무진": { character: "한양 성곽 수축 총도감", traits: ["스케일이 남다른 대인배 마인드", "수천 명도 거느리는 깊은 포용력", "결정적일 때 나오는 무서운 추진력", "자존심이 매우 강하고 굽히기 싫어함", "자기 무리에 대한 강한 보호본능", "자신의 바운더리 안 사람만 챙김", "스케일이 커서 쩨쩨한 것을 싫어함"], desc: "태산처럼 거대한 스케일과 듬직함을 자랑합니다. 수많은 일꾼을 통솔하여 외적이 뚫을 수 없는 거대한 한양 성곽을 지휘하던 총괄 책임자였습니다." },
+      "기사": { character: "팔도 누비는 보부상", traits: ["가만히 있으면 병이 나는 역마살", "상황 판단이 빠르고 임기응변에 강함", "이윤을 향한 불도저 같은 실행력", "남한테 지기 싫어하는 강한 승부욕", "다방면에 관심이 많은 오지라퍼", "한번 꽂힌 일은 밤을 새워서라도 끝냄", "은근히 귀가 얇아 트렌드에 민감함"], desc: "불을 품은 땅처럼 에너지가 넘쳐 한곳에 머물지 못합니다. 봇짐 하나 메고 조선 팔도를 누비며 최신 트렌드를 전파하고 돈을 긁어모으던 워커홀릭 보부상이었습니다." },
+      "경오": { character: "왕의 그림자 금군 별장", traits: ["명예와 원칙에 죽고 사는 성격", "공과 사를 칼같이 구분하는 단호함", "뜨거운 충성심과 냉철함을 동시에 가짐", "옳다고 믿으면 뒤돌아보지 않음", "규칙을 어기는 자를 참지 못함", "불의를 보면 앞뒤 재지 않고 직언함", "겉은 강해 보여도 은근히 외로움을 탐"], desc: "뜨거운 화로에서 단련된 명검처럼 결단력이 뛰어납니다. 왕의 최측근에서 묵묵히 호위를 담당하며 자객들을 단칼에 베어버리던 조선 최고의 무사였습니다." },
+      "신미": { character: "깐깐한 내의원 수의", traits: ["약재 하나도 대충 안 보는 완벽주의", "거짓 엄살을 귀신같이 잡아냄", "위생과 청결에 목숨 거는 예민함", "상처를 잘 받지만 겉으론 티 안 냄", "자기만의 확고한 처방 기준이 있음", "자신만의 미적 감각과 고집이 확고함", "상대방의 약점을 귀신같이 파악함"], desc: "건조한 흙 속의 보석처럼 예리한 직관과 탁월한 감각을 지녔습니다. 왕실 가족들의 병을 진맥하고 까다롭게 약을 달이던 최고의 한의사였습니다." },
+      "임신": { character: "거침없는 수군통제사", traits: ["육지의 규칙에 얽매이는 걸 극혐함", "스케일이 크고 전술 아이디어가 넘침", "바다의 날씨만큼 융통성이 매우 좋음", "군사들을 끌어당기는 특유의 언변", "실패를 두려워하지 않는 모험심", "틀에 박힌 일상보다 새로운 자극을 원함", "어려운 상황일수록 빛을 발하는 순발력"], desc: "큰 바다처럼 깊고 스케일이 큽니다. 아무도 예측하지 못한 물길을 이용해 왜구를 소탕하며 바다를 호령하던 거침없는 수군 장수였습니다." },
+      "계유": { character: "신점 족집게 무당", traits: ["상대방의 과거나 기분을 귀신같이 맞춤", "조용하지만 굿판에선 에너지가 폭발함", "기억력이 좋고 계산이 빠름", "마음에 없는 소리를 잘 못하는 직구러", "영감이 무서울 정도로 뛰어나고 촉이 좋음", "남의 마음을 읽는 직관력이 매우 발달함", "티 내지 않고 조용히 자신의 이득을 취함"], desc: "바위틈에서 솟아나는 맑은 물처럼 영감이 뛰어나고 섬세합니다. 정승 판서들도 밤에 몰래 찾아와 조언을 구하던 저잣거리 최고의 족집게 무당이었습니다." },
+      "갑술": { character: "유배지 외골수 선비", traits: ["불의를 보면 유배 가도 상소문 씀", "자신이 믿는 학문은 끝까지 밀어붙임", "은근히 선비로서의 체면을 중요시함", "상황을 주도하려는 꼰대력이 살짝 있음", "겉은 뻣뻣해도 속은 따뜻한 츤데레", "자신의 신념과 어긋나면 단호하게 잘라냄", "책임감이 강해 궂은일도 마다하지 않음"], desc: "마른 땅에 뿌리내린 나무처럼 악조건 속에서도 자기주장을 굽히지 않습니다. 임금에게 바른말을 하다 섬으로 유배를 갔지만 그곳에서도 후학을 양성하던 참선비였습니다." },
+      "을해": { character: "유랑극단 남사당패 어름산이", traits: ["어느 동네든 금방 섞이는 미친 적응력", "부드러운 카리스마로 관객을 홀림", "방랑벽이 있어 한곳에 잘 정착 못함", "직관적이고 관객의 눈치를 매우 잘 봄", "이상주의자이면서도 팁은 잘 챙김", "눈치가 빨라 어디서든 살아남는 처세술", "자유를 억압받으면 스트레스를 심하게 받음"], desc: "물 위에 뜬 수초처럼 유연하고 환경 적응력이 타의 추종을 불허합니다. 줄타기 위에서 아슬아슬한 묘기와 입담으로 백성들의 혼을 쏙 빼놓던 광대였습니다." },
+      "병자": { character: "이중생활 암행어사", traits: ["낮에는 거지, 밤에는 탐관오리 저승사자", "사람들 앞에 나서서 마패 드는 걸 즐김", "머리 회전이 빠르고 아이디어가 통통 튐", "규칙과 유도리 사이에서 자주 갈등함", "자신만의 정의에 대한 철학이 확고함", "낮과 밤, 겉과 속의 텐션이 묘하게 다름", "남다른 예술적 감각과 통통 튀는 매력"], desc: "어둠 속의 태양처럼 정체를 숨기고 있다가 결정적일 때 빛을 발합니다. 거지꼴로 팔도를 돌아다니다가 탐관오리를 보면 마패를 던지며 호통치던 어사였습니다." },
+      "정축": { character: "밤낮없는 놋그릇 장인", traits: ["하나에 꽂히면 파고드는 집요한 성격", "말수 없이 묵묵히 망치질만 함", "은근한 끈기와 강한 인내력 탑재", "예술적 감각과 손재주가 남다름", "자신의 작품에 흠집 나는 걸 못 견딤", "말보다는 묵묵한 행동으로 보여주는 타입", "한 분야를 깊게 파고드는 장인정신"], desc: "용광로처럼 뜨거운 집념을 차가운 공방에 숨기고 있습니다. 밤낮없이 쇳물을 녹이고 두드려 양반가에서 가장 탐내는 최고급 유기를 만들어내던 장인이었습니다." },
+      "무인": { character: "백두산 착호갑사(호랑이 사냥꾼)", traits: ["기세가 등등하고 맹수 앞에서도 안 떪", "스스로 사냥조를 이끄는 리더 체질", "한번 타겟팅한 사냥감은 끝까지 쫓음", "체력과 정신력이 타의 추종을 불허함", "강자(호랑이)에겐 강하고 약자에겐 다정함", "승부욕이 강해 남에게 지는 것을 못 참음", "결단력이 빠르고 스케일이 남다름"], desc: "봄날의 큰 산처럼 생동감이 넘치고 용맹합니다. 나라의 명을 받고 깊은 산속의 식인 호랑이를 추적해 활로 꿰뚫어 버리던 전설의 특수부대 사냥꾼이었습니다." },
+      "기묘": { character: "궁궐 내전 수목장(정원사)", traits: ["어떤 환경이든 살아남는 잡초 생명력", "세심하고 식물을 가꾸는 손재주가 뛰어남", "은근히 경쟁심이 강해 자기 구역을 지킴", "촉촉하고 감수성이 예민하여 꽃을 사랑함", "남을 돌보고 가꾸는 데 천부적 소질", "작은 일에도 상처받는 예민한 감수성", "남을 보살피고 키워내는 데 탁월한 소질"], desc: "촉촉한 흙에서 자라는 풀처럼 생명력이 끈질기고 섬세합니다. 대비마마가 산책하는 궁궐 후원의 꽃과 나무를 한 치의 오차 없이 다듬어내던 수석 정원사였습니다." },
+      "경진": { character: "최전방 북방 수비대장", traits: ["압도적인 기백과 강철 같은 무쇠 멘탈", "오랑캐가 쳐들어오면 물불 가리지 않음", "뚝심 하나로 척박한 북방을 버팀", "가식과 아부를 극도로 혐오하는 상남자", "부하들을 끔찍하게 챙기는 참된 장수", "목표가 생기면 무소의 뿔처럼 직진함", "의리가 강해 내 사람은 끝까지 지킴"], desc: "강철 덩어리처럼 단단한 의지와 기백으로 뭉쳐있습니다. 가장 춥고 위험한 북쪽 국경선에서 적들의 기습을 온몸으로 막아내던 믿음직한 선봉장이었습니다." },
+      "신사": { character: "의금부 도사(수사관)", traits: ["날카로운 통찰력으로 범인의 거짓말을 깸", "조용히 치밀하게 함정을 파고 기다림", "은밀하고 완벽주의적인 수사 성향", "예리한 언변으로 죄인의 정곡을 찔러댐", "겉으론 얌전해 보여도 속엔 독기가 가득함", "차갑고 이성적인 판단력으로 팩트를 짚음", "자신만의 선이 확고해 넘는 것을 극혐함"], desc: "숨겨진 예리한 칼날처럼 판단력이 빠르고 날카롭습니다. 역모 사건이나 양반들의 대형 비리 사건을 맡아 뼈와 살을 분리해 진백을 받아내던 무서운 수사관이었습니다." },
+      "임오": { character: "기생집 단골 풍류객", traits: ["다정다감하고 예술적 감수성이 충만함", "기생부터 영의정까지 다 친한 미친 친화력", "벼슬길보다 한량 라이프를 사랑하는 영혼", "틀에 박힌 업무를 견디지 못하고 탈주함", "시 한 수로 사람 마음을 녹이는 언변", "타고난 언변으로 사람들의 마음을 훔침", "구속받는 것을 싫어하는 자유로운 영혼"], desc: "호수 위에 비친 달처럼 신비롭고 낭만적인 감수성을 지녔습니다. 과거 급제는 뒷전이고 가야금 소리와 술, 시를 찾아 팔도 기방을 유람하던 조선의 한량이었습니다." },
+      "계미": { character: "저잣거리 만물상 주인", traits: ["돈줄이 마른 상황에서도 길을 찾는 지혜", "양반이든 천민이든 웃으며 응대하는 싹싹함", "손님 취향에 맞춰 카멜레온처럼 변함", "은근히 꼼꼼하고 뒷돈 계산이 철저함", "장사가 망할 위기에도 침착하게 대처함", "어떤 무리에든 자연스럽게 녹아드는 친화력", "위기 상황에서 은근히 강한 멘탈을 보여줌"], desc: "사막의 오아시스처럼 백성들이 필요한 물건을 다 가지고 있습니다. 명나라 직물부터 짚신까지 온갖 물건을 떼어다 저잣거리에서 팔며 은밀히 부를 쌓던 상인이었습니다." },
+      "갑신": { character: "타협 없는 포도청 종사관", traits: ["자존심이 하늘을 찌르는 꺾이지 않는 멘탈", "아무리 세도가라도 원칙대로 잡아넣음", "맡은 사건에 대해서는 타협과 뇌물이 안 통함", "자기 관리가 매우 철저한 완벽주의 경찰", "거친 도적 떼 앞에서도 흔들리지 않는 뚝심", "명예와 체면을 중요하게 생각함", "아무리 힘들어도 남에게 기대는 것을 싫어함"], desc: "바위산 위의 소나무처럼 강직하고 주변의 압박에 흔들림이 없습니다. 한양의 험악한 치안을 철통같이 방어하며 밤거리의 도적들을 소탕하던 대장이었습니다." },
+      "을유": { character: "한양 최고 비단 장수", traits: ["외유내강형의 부드러운 장사 수완", "비단결의 미세한 흠집도 잡아내는 예민함", "스트레스를 비싼 물건 수집으로 승화함", "자신만의 고급스러운 미적 기준이 높음", "조용조용하게 손님에게 팩트 폭행을 함", "부드러운 카리스마로 사람을 이끄는 매력", "아름다운 것과 예술에 대한 조예가 깊음"], desc: "바위틈을 뚫고 피어난 꽃처럼 겉은 여려 보여도 멘탈은 돌덩이입니다. 가장 화려하고 품질 좋은 비단만을 골라 궁궐과 대가집에 납품하던 안목 높은 상인이었습니다." },
+      "병술": { character: "인심 좋은 주막 주모", traits: ["국밥 한 그릇도 넉넉히 퍼주는 넓은 오지랖", "시원시원하고 호탕한 대장부 스타일", "진상 손님에겐 불같지만 금방 화가 풀림", "갈 곳 없는 나그네를 챙기는 따뜻한 본능", "사람 냄새 폴폴 나는 타고난 인싸", "화통하고 시원시원한 성격으로 인기가 많음", "도움이 필요한 사람을 그냥 지나치지 못함"], desc: "해 질 녘의 태양처럼 지친 사람들에게 따뜻한 정을 베풉니다. 험난한 고갯길에서 나그네들의 피로를 풀어주고 팔도 소식을 전해 듣던 호탕한 주막의 주인이었습니다." },
+      "정해": { character: "별자리 읽는 관상감 관원", traits: ["신비주의적이고 밤하늘의 고독을 즐김", "영감과 직관력이 매우 발달해 날씨를 맞춤", "조용히 나라의 길흉화복을 예측함", "복잡한 속세의 벼슬보단 우주의 섭리가 좋음", "감정 기복이 있지만 하늘을 보며 삭힘", "혼자만의 사색과 고독한 시간을 즐김", "보이지 않는 영적인 세계에 관심이 많음"], desc: "호수 위의 별빛처럼 낭만적이고 쉽게 속을 알 수 없습니다. 남들이 잠든 밤마다 홀로 천문대에 올라 별자리의 이동을 보며 나라의 운명을 점치던 학자였습니다." },
+      "무자": { character: "왕실 내수사 금고지기", traits: ["속을 절대 알 수 없는 완벽한 포커페이스", "재물과 장부에 대한 천부적인 감각", "은화 한 닢도 천 번 확인하는 신중함", "남을 절대 믿지 않는 지독한 경계심", "한번 내 주군이라 믿으면 목숨을 바침", "속마음을 쉽게 드러내지 않는 신중함", "재물과 숫자를 다루는 감각이 매우 뛰어남"], desc: "한겨울의 거대한 산처럼 묵직하여 속내를 짐작조차 할 수 없습니다. 왕실의 가장 은밀한 비자금과 창고를 한 치의 오차도 없이 관리하던 철두철미한 관원이었습니다." },
+      "기축": { character: "묵묵한 다락논 농부", traits: ["새벽부터 해 질 때까지 일하는 극강의 성실함", "느리지만 확실하게 소처럼 밭을 가는 뚝심", "풍년과 가화만사성을 최우선으로 삼음", "고집이 세서 양반이 뭐라 해도 내 방식을 고수함", "검소하고 소박한 삶의 지혜를 가짐", "한 걸음씩 묵묵히 자신의 길을 가는 뚝심", "화려함보다는 실속과 안정을 추구함"], desc: "얼어붙은 땅에서도 묵묵히 제 할 일을 다 하는 엄청난 인내심을 가졌습니다. 산비탈을 일궈 다락논을 만들고 척박한 환경에서도 결국 알곡을 거둬들이는 농부였습니다." },
+      "경인": { character: "의적 임꺽정의 오른팔", traits: ["탐관오리를 보면 도끼로 찍어내듯 단호함", "관군 앞에서도 겁이 없는 상남자/상여자", "산적 무리의 기강을 잡는 카리스마", "금은보화보다 명예와 형제의 의리를 중시함", "행동이 빠르고 터는 스케일이 큼", "위험을 두려워하지 않는 엄청난 배짱", "의리와 명분을 위해서는 손해도 감수함"], desc: "큰 도끼로 거목을 찍어내는 듯한 강렬한 기백을 가졌습니다. 부패한 양반들의 곳간을 털어 가난한 백성들에게 쌀을 뿌리고 산속으로 사라지던 의적이었습니다." },
+      "신묘": { character: "상의원 수석 침방나인", traits: ["날카로운 바늘처럼 예민하고 바느질이 정교함", "뛰어난 미적 감각과 궁중 유행을 선도하는 눈", "옷고름 각도가 틀어지면 처음부터 다시 함", "손재주가 좋아 어떤 원단이든 명품으로 만듦", "구설수에 오르기 싫어 입을 무겁게 닫음", "완벽주의 성향으로 자신을 피곤하게 만듦", "섬세하고 예민하여 디테일의 끝판왕을 보여줌"], desc: "예리한 바늘과 부드러운 실을 동시에 다루는 탁월한 감각이 있습니다. 왕실 가족들의 까다로운 취향을 단번에 만족시키는 화려한 용포를 짓던 수석 나인이었습니다." },
+      "임진": { character: "거친 남한강 뗏목 뱃사공", traits: ["스케일이 남달라 험한 물결을 즐김", "거센 물살을 읽어내는 동물적인 감각", "뗏목 무리를 이끄는 터프한 리더십", "관청의 구속을 받는 것을 죽기보다 싫어함", "기분파 성향이 강해 막걸리 한잔에 춤을 춤", "스케일이 남달라 평범한 삶에 만족하지 못함", "한번 폭발하면 걷잡을 수 없는 에너지를 뿜어냄"], desc: "거대한 강물을 품은 것처럼 스케일이 크고 속이 깊습니다. 강원도에서 벤 거대한 통나무들을 엮어 목숨을 걸고 거친 한강 물줄기를 타고 한양으로 내려오던 사공이었습니다." },
+      "계사": { character: "팔방미인 기방 행수", traits: ["스펀지처럼 양반들의 속내를 흡수하는 눈치", "정적끼리도 한방에 앉히는 미친 친화력", "머리 회전이 타의 추종을 불허하는 정보통", "웃으며 뼈를 때리는 철저한 비즈니스 마인드", "기방의 위기 상황을 부드럽게 넘기는 스킬", "상황에 따라 유연하게 대처하는 처세의 달인", "비밀스럽고 조심성이 많아 속을 알 수 없음"], desc: "이슬비처럼 조용히 스며들어 한양 다방면의 모든 고급 정보를 빨아들입니다. 화려한 연회를 열어 고관대작들의 지갑을 열게 하고 은밀히 정보를 거래하던 행수였습니다." },
+      "갑오": { character: "한양 최고속 파발꾼", traits: ["말보다 빨리 뛰는 에너자이저 같은 체력", "호기심이 많아 가는 길의 마을 소식을 다 꿰뚫음", "참을성이 부족해 멈춰 있는 꼴을 못 봄", "남의 시선을 즐기고 관아 뜰에서 허세를 부림", "급보가 떨어지면 밤을 새워 달려가는 열정", "넘치는 에너지를 주체하지 못하는 활동가", "생각나면 바로 실행에 옮기는 무서운 추진력"], desc: "불타는 나무처럼 에너지가 넘치고 여기저기 뛰어다니길 좋아합니다. 변방에 전쟁이 나거나 봉화가 오르면 목숨을 걸고 한양 궁궐까지 가장 빨리 소식을 전하던 파발이었습니다." },
+      "을미": { character: "절벽 타는 끈질긴 심마니", traits: ["독사나 맹수 앞에서도 살아남는 생명력", "깊은 산속을 며칠씩 뒤지는 지독한 고집", "자연의 기운을 읽고 산신령과 소통하는 직감", "산삼을 캐서 혼자 조용히 실속을 다 챙김", "겉보기와 다르게 큰돈을 만지려는 야망", "부드러움 속에 숨겨진 끈질긴 생명력", "현실적인 계산이 빨라 손해 보는 장사는 안 함"], desc: "메마른 산등성이의 풀처럼 끈질긴 생명력으로 결국 살아남습니다. 험난한 절벽과 맹수의 위협을 뚫고 천 년 묵은 산삼을 찾아내어 팔자를 고치던 집념의 심마니였습니다." },
+      "병신": { character: "기상천외한 발명가", traits: ["호기심 천국이자 엉뚱한 아이디어 뱅크", "재주가 많아 못 고치는 물건이 없는 금손", "서당에서 천자문 외우는 일상에 금방 싫증 냄", "기분파라서 발명품이 성공하면 동네방네 자랑함", "중국이나 서양의 신기한 문물을 제일 좋아함", "다방면에 재능이 많은 타고난 팔방미인", "호기심이 많아 항상 새로운 것을 찾아다님"], desc: "뜨거운 태양 빛 아래서 호기심이 번뜩입니다. 격식에 얽매이지 않고 하늘을 나는 수레나 자동 물시계 같은 기상천외한 물건들을 뚝딱뚝딱 만들어내던 조선의 에디슨이었습니다." },
+      "정유": { character: "섬세한 은장도 세공사", traits: ["예민하고 정교한 조각 디테일의 끝판왕", "반짝이고 아름다운 은을 다루는 탁월한 감각", "작업 중 남이 말 거는 걸 극도로 싫어함", "불량품이 나오면 스트레스받아 다 부숴버림", "자신이 만족할 때까지 밤을 새워 무늬를 파냄", "미적 감각이 뛰어나고 세련된 것을 좋아함", "자신이 좋아하는 일에는 엄청난 집중력을 발휘함"], desc: "용광로 속의 쇳물처럼 불같으면서도 예민하고 섬세합니다. 단 1밀리미터의 오차도 허용하지 않고 양반가 아씨들이 품고 다닐 최고급 은장도를 깎아내던 세공사였습니다." },
+      "무술": { character: "듬직한 산성 수문장", traits: ["태산처럼 굳건하여 흔들림이 없는 멘탈", "비가 오나 눈이 오나 성문을 지키는 인내심", "자신의 구역에 수상한 자가 오면 가차 없음", "신원 확인이 안 되면 영의정도 안 들여보냄", "묵묵하고 말이 없지만 듬직한 행동파", "흔들리지 않는 굳건한 멘탈과 책임감", "한번 뱉은 말은 무조건 지키는 극강의 신용"], desc: "거대한 바위산처럼 믿음직스럽고 굳건하여 적들이 뚫을 수 없습니다. 외적의 침입을 알리는 최전방 남한산성에서 무거운 칼을 차고 굳건히 문을 지키던 수문장이었습니다." },
+      "기해": { character: "실속 챙기는 포구 객주", traits: ["초가집에 살아도 창고엔 비단이 가득한 알부자", "뱃사공과 양반 상인 모두와 잘 어울리는 둥근 성격", "조용히 수수료 떼먹으며 실속을 차리는 천재", "의심이 많아 거래 장부를 밤마다 두 번씩 확인함", "자신만의 탄탄한 인맥과 상권을 구축함", "둥글둥글한 성격으로 적을 만들지 않음", "속으로는 엄청난 실속과 이득을 챙기고 있음"], desc: "진흙 속에 숨겨진 진주처럼 겉모습보다 내실이 엄청납니다. 배가 드나드는 포구에서 여관방을 치며 상인들의 물건을 위탁 판매해주고 막대한 부를 쌓던 객주였습니다." },
+      "경자": { character: "피도 눈물도 없는 감찰", traits: ["얼음장처럼 차갑고 철저한 조선의 이성주의자", "흑백 논리가 분명하고 선 긋기에 매우 능함", "말수가 적지만 한번 입 열면 고관대작들도 떪", "완벽주의 성향으로 먼지 하나까지 털어댐", "정의감이 투철하여 친척이라도 잡아넣음", "차갑고 냉철한 이성으로 상황을 객관적으로 봄", "불의와 타협하지 않는 꼿꼿한 성품"], desc: "차가운 바위에서 떨어지는 물방울처럼 냉철하고 이성적입니다. 감정에 휩쓸리지 않고 권력자들의 부정부패를 날카롭게 적발해 귀양을 보내버리던 사헌부 감찰이었습니다." },
+      "신축": { character: "까다로운 백자 도공", traits: ["가마 불도 내 맘에 안 들면 엎어버리는 극강의 고집", "차가워 보이지만 내면엔 예술적 혼이 불탐", "완벽한 백색이 나올 때까지 수천 번을 굽고 깸", "혼자 흙을 빚는 고요한 시간을 가장 사랑함", "제자들의 실수를 용납하지 않고 팩폭을 날림", "남의 간섭을 극도로 싫어하는 마이웨이", "내면의 감정을 잘 드러내지 않는 포커페이스"], desc: "차가운 동토 속에 묻힌 다이아몬드처럼 완벽주의가 심합니다. 왕실에 진상할 티끌 하나 없는 완벽한 달항아리를 굽기 위해 평생 흙과 불과 싸우던 왕실 관요의 도공이었습니다." },
+      "임인": { character: "청산유수 이야기꾼 전기수", traits: ["봄을 맞은 강물처럼 생동감 넘치고 유쾌한 입담", "아주머니들을 들었다 놨다 하는 타고난 달변가", "머리가 비상하여 책 한 권을 통째로 다 외움", "관청에 얽매이는 걸 싫어하고 장터를 떠돎", "베풀기를 좋아해 국밥 한 그릇에 이야기를 풀어줌", "어디로 튈지 모르는 창의력과 아이디어 뱅크", "말을 기가 막히게 잘해서 위기를 잘 모면함"], desc: "봄날에 힘차게 흐르는 강물처럼 멈출 줄 모르는 에너지가 있습니다. 저잣거리에 돗자리를 깔고 심청전, 홍길동전을 기가 막히게 낭독하여 돈을 쓸어담던 이야기꾼이었습니다." },
+      "계묘": { character: "약방의 감초 혜민서 의원", traits: ["백성들을 촉촉하게 감싸는 따뜻한 마음씨", "피 보는 침술보다 조용히 약을 달이는 걸 선호함", "환자의 얼굴빛만 봐도 병을 아는 무서운 직감", "출세 경쟁을 피하고 서민들 병 고치는 데 만족함", "세심하게 이웃을 챙기고 약재를 나눠주는 성격", "따뜻하고 다정하여 주변에 사람이 많음", "다투는 것을 싫어하고 평화로운 해결을 원함"], desc: "봄비처럼 조용히 내려 병든 사람을 소생시키는 따뜻함이 있습니다. 출세가 보장된 내의원을 마다하고 병든 백성들을 치료해주며 평화롭게 살던 혜민서의 의원이었습니다." },
+      "갑진": { character: "배짱 두둑한 군관", traits: ["기름진 땅에 뿌리내린 거목 같은 배짱과 깡", "활쏘기 대회에서 늘 1등을 놓치지 않는 멘탈", "통솔력이 탁월하여 휘하 병사들이 형님으로 모심", "자존심이 강해 무관을 무시하는 문관들과 잘 싸움", "잔머리 안 굴리고 시원시원하게 직진하는 스타일", "난세에 영웅이 될 수 있는 강한 리더십", "자존심이 매우 세고 지는 것을 참지 못함"], desc: "비옥한 땅의 거목처럼 배짱이 두둑하고 멘탈이 강합니다. 외적이 쳐들어오면 가장 앞장서서 활을 쏘며 병사들의 사기를 하늘 끝까지 끌어올리던 믿음직한 군관이었습니다." },
+      "을사": { character: "입에 모터 달린 역관(통역관)", traits: ["바위 틈을 파고드는 유연하고 능구렁이 같은 처세술", "중국어, 일본어까지 마스터하는 미친 언어 감각", "사신단 따라 북경 가서 은근히 밀무역도 즐김", "언변이 화려하고 양반들 사이에서 기죽지 않음", "명나라 황제 앞에서도 당황하지 않는 카멜레온", "눈치가 백단이라 상황 파악이 매우 빠름", "화려한 언변으로 사람을 구워삶는 재주가 탁월함"], desc: "아름답게 피어난 덩굴꽃처럼 화려한 언변과 유연함을 지녔습니다. 사신단을 따라가 기가 막힌 통역으로 외교 문제를 해결하고 밀무역으로 거대한 부를 챙기던 천재 역관이었습니다." },
+      "병오": { character: "남사당패 줄타기 달인", traits: ["한여름의 태양 같은 폭발적인 에너지와 화려함", "장터 사람들의 시선과 환호를 즐기는 타고난 관종", "화끈하고 호탕해서 판돈 딴 것도 다 술값으로 씀", "내 줄타기 실력에 스크래치 나는 것을 절대 못 참음", "추진력이 좋아 즉흥적으로 팔도 유랑을 떠남", "자신감이 넘치고 어디서든 주인공이 되어야 함", "뒤끝이 없고 시원시원해서 쿨한 매력이 있음"], desc: "가장 뜨거운 한여름의 태양처럼 강렬하고 아슬아슬한 매력을 뿜어냅니다. 수십 미터 공중의 밧줄 위에서 부채 하나 들고 백성들의 혼을 쏙 빼놓던 조선 최고의 곡예사였습니다." },
+      "정미": { character: "인자한 서당 훈장님", traits: ["화롯불처럼 따뜻하고 열정적인 교육열", "학동들의 글 읽는 소리에서 인생의 행복을 느낌", "독립심이 강해 산골짜기 서당에서도 잘 지냄", "말 안 듣는 학동에겐 회초리로 따끔하게 팩폭함", "마을 사람들의 대소사를 다 챙기는 엄마 리더십", "겉은 부드러워 보이지만 속은 은근히 욱함", "자신이 맡은 사람들을 끝까지 책임지는 모성애"], desc: "따뜻한 아랫목처럼 포근하면서도 학문에 대한 열정이 있습니다. 시골 마을에서 아이들에게 천자문을 가르치고 동네의 크고 작은 분쟁을 지혜롭게 해결해주던 훈장님이었습니다." },
+      "무신": { character: "청나라 오가는 거상", traits: ["가을 산처럼 풍요롭고 못 구하는 물건이 없는 능력자", "압록강 넘어 북경까지 한 달 만에 주파하는 실행력", "상황 판단이 빠르고 환치기와 이익 계산이 철저함", "융통성이 좋아 오랑캐든 양반이든 거래를 성사시킴", "고집이 세지만 돈이 되는 합리적인 이유엔 수긍함", "어떤 일이든 뚝딱 해내는 미친 실행력과 능력", "상황에 맞춰 유연하게 사고하는 융통성"], desc: "거대한 산속에 엄청난 자원을 품고 있습니다. 험난한 국경을 넘어 청나라의 신문물을 들여와 조선 양반들에게 비싸게 팔아넘기며 막대한 부를 축적하던 대상인이었습니다." },
+      "기유": { character: "깐깐한 전주 한지 장인", traits: ["가을 들녘의 알곡처럼 내실 있고 손끝이 야무짐", "평생 종이만 뜬 지독하고 외골수적인 장인정신", "자기만의 배합 비율이 확고해 남의 말을 절대 안 들음", "물이 조금만 탁해도 종이를 다 찢어버리는 예민함", "스트레스를 좋은 안주와 막걸리로 푸는 소박함", "한 가지 일에 몰두하는 지독한 집중력", "디테일을 귀신같이 잡아내는 예리한 관찰력"], desc: "가을 들녘의 황금빛 벼처럼 내실이 꽉 차 있고 꼼꼼합니다. 질긴 닥나무를 수만 번 두드려 천 년을 가는 조선 최고의 명품 한지를 만들어내던 고집불통 장인이었습니다." },
+      "경술": { character: "대장간 수석 대장장이", traits: ["용광로를 품은 철광산 같은 압도적 덩치와 기백", "무거운 망치를 하루 종일 휘두르는 엄청난 뚝심", "한번 약속한 낫과 호미는 밤을 새워서라도 만들어줌", "거짓과 꼼수를 가장 극혐하는 직구 팩폭러", "수습 대장장이들을 쥐락펴락하며 이끄는 보스 기질", "한번 화가 나면 걷잡을 수 없는 불도저 성격", "거짓말을 극혐하고 투명한 관계를 지향함"], desc: "단단한 철광석 속에 뜨거운 용광로를 품은 듯한 기백이 있습니다. 쇳물을 들이마시며 묵묵히 망치질을 해 조선 팔도 농민들의 농기구를 책임지던 강인한 대장장이였습니다." },
+      "신해": { character: "산속 은둔 천재 선비", traits: ["맑은 계곡물에 씻긴 백옥처럼 고결하고 깔끔 떠는 성격", "붕당 정치의 더러움을 피해 산으로 숨은 개인주의", "두뇌 회전이 비상하고 시와 그림에 영감이 넘침", "세상 돌아가는 꼴을 비판하는 팩트 폭행의 달인", "먼지 하나 없는 서재를 유지하는 결벽증에 가까운 완벽주의", "세상과 타협하기 싫어하는 고결한 성품", "직관력이 비상하여 영감이 남다르게 번뜩임"], desc: "흐르는 맑은 물속에 빛나는 보석처럼 고결하고 예민한 성품을 지녔습니다. 썩어빠진 조정을 등지고 깊은 산속 폭포 아래서 역사에 남을 시조를 짓던 은둔형 천재였습니다." },
+      "임자": { character: "은밀한 정보 캐는 체탐인(첩자)", traits: ["한겨울의 거센 파도처럼 필요할 땐 무자비한 행동력", "정체를 절대 들키지 않는 심해 같은 완벽한 포커페이스", "비상한 두뇌로 적진의 지도를 단번에 외우는 직관력", "임무에 실패하는 것을 죽기보다 싫어하는 승부욕", "비밀이 많고 친척에게도 진짜 직업을 숨기고 삶", "속을 도통 알 수 없는 깊고 신비로운 매력", "승부욕이 강해 남몰래 철저히 준비하는 타입"], desc: "끝을 알 수 없는 캄캄하고 깊은 바닷속 같은 신비로움과 치밀함이 있습니다. 오랑캐 진영이나 역모 세력에 위장 잠입하여 국가의 1급 기밀을 빼내오던 특수 요원이었습니다." },
+      "계축": { character: "눈보라 뚫는 함경도 상인", traits: ["얼어붙은 북방의 땅에서도 버티는 묵묵한 참을성", "불평불만 없이 무거운 봇짐을 지고 산을 넘는 뚝심", "한번 욱하면 눈보라처럼 무섭게 터지는 다혈질", "겉은 얼음장처럼 차가워도 동료가 아프면 약을 달여줌", "영감이 발달하여 도적 떼가 숨은 낌새를 잘 알아챔", "묵묵한 참을성 뒤에 숨겨진 엄청난 뚝심", "차갑게 보이지만 내 사람에겐 한없이 다정함"], desc: "차가운 눈보라 속에서도 굳건히 버티는 강인함과 묵묵함이 있습니다. 매서운 칼바람이 부는 함경도의 험준한 산맥을 넘어 명태와 모피를 실어 나르던 강인한 상인이었습니다." },
+      "갑인": { character: "지리산 산적 두목", traits: ["하늘로 뻗은 소나무처럼 관군 앞에서도 안 꺾이는 자존심", "수백 명의 산적을 눈빛 하나로 제압하는 카리스마", "스케일이 커서 관찰사의 행차를 통째로 털어버림", "나라의 법이나 간섭받는 것을 극도로 혐오하는 마이웨이", "약탈한 재물을 부하들에게 공평하게 나누는 보스 기질", "꺾일지언정 굽히지 않는 대나무 같은 자존심", "자신의 무리를 이끄고 책임지는 보스 기질"], desc: "거대한 숲을 호령하는 가장 높고 튼튼한 거목과 같습니다. 부패한 벼슬아치들을 혐오하여 지리산 깊은 곳에 산채를 짓고 자신만의 규칙으로 무리를 다스리던 호탕한 두목이었습니다." },
+      "을묘": { character: "궁중 내의원 최고 의녀", traits: ["밟혀도 다시 자라는 들풀 같은 궁궐 내 끈질긴 생명력", "부드러운 미소 속에 감춰진 신분 상승의 지독한 승부욕", "맥 짚는 법 하나에 꽂히면 밤새워 의서를 파고드는 집요함", "예민하고 섬세하여 비빈들의 미세한 안색 변화를 놓치지 않음", "궁중 암투 속에서도 어느 편에 설지 아는 탁월한 눈치", "어려운 환경에서도 결국 살아남는 잡초 멘탈", "목표를 이루기 위해 조용히 칼을 가는 타입"], desc: "가녀린 풀꽃 같아 보이지만 바위도 뚫고 나오는 끈질김이 있습니다. 천민 출신이라는 한계를 극복하고 침술과 탕약 기술 하나로 왕실 여성들의 건강을 책임지던 최고 의녀였습니다." },
+      "병진": { character: "장악원 최고 악공", traits: ["봄날 햇살처럼 화려한 가락과 잔치를 즐기는 긍정 에너지", "넘치는 끼와 가야금 재능을 주체하지 못하는 관종력", "이상을 꿈꾸며 전에 없던 새로운 연주곡을 작곡해 냄", "성질이 급하고 연주 틀린 제자를 혼낸 뒤 뒤끝 없이 잊음", "자신의 예술적 재능에 대한 자존감이 하늘을 찌름", "스케일이 크고 화려한 것을 좇는 이상주의", "자신의 능력을 뽐내고 싶어 하는 강한 자기애"], desc: "화창한 봄날의 태양처럼 궁궐 잔치에 생기를 불어넣고 화려한 것을 좋아합니다. 왕실의 가장 큰 행사마다 백 명의 악대 맨 앞에서 비파를 튕기며 연회를 지휘하던 천재 악공이었습니다." },
+      "정사": { character: "적진 정탐하는 밀사", traits: ["활활 타오르는 용광로 같은 적진 침투의 집념과 추진력", "상대방의 마음을 조종하고 거짓말을 꿰뚫어 보는 눈", "위험에 처하면 모든 문서를 불태우고 자결할 독한 멘탈", "치밀하고 계산적이며 잠을 잘 때도 칼을 쥐고 잠", "조선을 지킨다는 자부심이 강해 누구에게도 굽히지 않음", "자신의 목표를 향해 무섭게 돌진하는 집념", "남의 약점을 쥐고 흔들 줄 아는 치밀함"], desc: "가장 뜨겁게 타오르는 불기둥처럼 에너지가 맹렬하고 치밀합니다. 적국의 동태를 파악하고 전쟁 기밀을 빼내기 위해 신분을 위장하고 적의 심장부로 들어가던 비밀 요원이었습니다." },
+      "무오": { character: "기 충만한 대장 무당", traits: ["불타는 대지처럼 개성이 강하고 뿜어져 나오는 기가 셈", "작두 위에서도 끄떡없는 자신의 신력에 대한 프라이드", "굿판에서 한번 신이 내리면 누구도 말릴 수 없는 폭발력", "화려한 무복과 방울을 좋아하며 세련된 굿판을 기획함", "양반에겐 호통치고 가난한 백성에겐 공짜로 부적을 써줌", "압도적인 에너지와 기를 뿜어내는 카리스마", "자신의 프라이드에 상처 입는 것을 절대 용납 안 함"], desc: "뜨거운 열기를 뿜어내는 거대한 산처럼 압도적인 화기와 신기를 품었습니다. 억울한 원혼을 달래고 마을의 큰 재앙을 막기 위해 시퍼런 작두 위에 서서 호령하던 대장 무당이었습니다." },
+      "기미": { character: "수라간 최고상궁", traits: ["메마른 땅처럼 조용하지만 백 명의 궁녀를 포용하는 성격", "묵묵히 왕의 세 끼 식사를 오차 없이 차려내는 극강의 성실함", "간장 맛에 대한 고집이 상당하여 대왕대비가 뭐라 해도 안 바꿈", "독살을 막기 위해 은수저부터 식재료까지 철저하게 검증함", "궁궐 사람들을 배불리 먹이는 데서 인생의 기쁨을 느낌", "겉보기엔 조용해도 속에는 엄청난 고집이 있음", "안정적이고 편안한 환경을 가장 중요시함"], desc: "조용하고 건조한 흙 같지만, 무엇이든 품어내는 포용력이 있습니다. 매일 새벽 가장 먼저 일어나 전국 팔도의 최고급 식재료로 왕의 입맛을 완벽하게 맞추던 수라간의 실세 궁녀였습니다." },
+      "경신": { character: "의리파 왈패 두목", traits: ["단단한 쇠스랑처럼 주먹 하나는 조선 팔도 최강인 맷집", "한번 싸우기로 결정하면 앞장서서 돌격하는 무서운 실행력", "밥 굶는 동생들 챙기는 의리를 목숨보다 소중하게 생각함", "계산 굴리는 양반들을 극혐하고 단순 명쾌하게 주먹으로 정리함", "내 구역 상인들을 건드리는 다른 패거리는 절대 용서치 않음", "의리를 목숨보다 중요하게 생각하는 상남자/상여자", "잔머리 굴리는 사람을 제일 싫어하고 팩트로 조짐"], desc: "순도 100%의 단단한 무쇠처럼 의리가 넘치고 무력이 뛰어납니다. 저잣거리에서 오직 실력과 주먹 하나로 승부하며 상권을 보호비 명목으로 장악하던 의리 넘치는 왈패 두목이었습니다." },
+      "신유": { character: "궁중 최고 다모(수사관)", traits: ["잘 벼려진 칼날처럼 매우 예민하고 현장 단서를 귀신같이 찾음", "시체의 아주 작은 상처 하나도 놓치지 않는 지독한 깐깐함", "사또 앞에서도 사건의 진실을 직설적으로 말하는 팩트 폭행러", "현장을 치울 때 결벽증에 가깝게 완벽하고 깔끔하게 처리함", "동료를 쉽게 믿지 않고 결정적 단서는 혼자 독고다이로 캐냄", "결벽증에 가까울 정도로 완벽주의 성향이 강함", "남의 실수를 용납하지 않고 날카롭게 지적함"], desc: "얼음같이 차갑고 예리한 보석처럼 빈틈이 없고 수사에 완벽주의 성향을 지녔습니다. 관아에서 여자의 몸으로 양반들이 놓친 살인 사건의 실마리를 족족 찾아내던 천재 다모였습니다." },
+      "임술": { character: "대운하 파는 토목 관원", traits: ["거대한 댐에 갇힌 물처럼 산을 뚫어버릴 엄청난 잠재력", "스케일이 남달라 강줄기를 바꾸는 큰 판을 기획하는 능력", "수백 명의 인부들을 호통치며 통솔하는 거친 카리스마", "자존심이 세서 현장 일 모르는 책상머리 문관들을 무시함", "홍수가 나면 즉각적으로 둑을 쌓아 대처하는 유연한 임기응변", "큰 판을 짜고 사람을 움직이는 리더십과 잠재력", "상황을 거시적으로 바라보는 탁월한 안목"], desc: "거대한 에너지를 모아두었다가 필요할 때 쏟아내는 기백이 있습니다. 한양으로 세곡선이 들어올 수 있도록 거대한 강줄기를 정비하고 운하를 파던 국가 소속의 천재 건축가였습니다." },
+      "계해": { character: "날씨 맞추는 관상감 천문관", traits: ["끝을 알 수 없는 깊은 바다처럼 우주의 이치에 대한 지혜가 넘침", "붕당 정치의 싸움을 극혐하고 별자리만 보고 싶어 하는 평화주의자", "바람의 냄새만 맡아도 비가 올지 아는 징그럽게 정확한 영감", "가뭄이나 홍수를 막을 제사 아이디어가 꼬리에 꼬리를 묾", "권력이나 재물보다 다가올 일식과 월식을 계산하는 데 관심이 미쳐있음", "우주 만물의 이치에 관심이 많은 신비주의자", "현실적인 이득보다 정신적인 가치를 더 쫓음"], desc: "가장 깊고 신비로운 바다처럼 지혜롭고 영감으로 가득 차 있습니다. 밤하늘의 별을 보고 내일의 날씨와 나라의 가뭄, 홍수를 정확하게 예측해 농사철을 알려주던 신비한 천문학자였습니다." }
+    };
+
+    const hanjaToHangulMap = {
+      "甲": "갑", "乙": "을", "丙": "병", "丁": "정", "戊": "무", "己": "기", "庚": "경", "辛": "신", "壬": "임", "癸": "계",
+      "子": "자", "丑": "축", "寅": "인", "卯": "묘", "辰": "진", "巳": "사", "午": "오", "未": "미", "申": "신", "酉": "유", "戌": "술", "亥": "해"
+    };
+
+    function getHangulIlju(hanjaStr) {
+      if (!hanjaStr || hanjaStr.length !== 2) return hanjaStr;
+      return (hanjaToHangulMap[hanjaStr[0]] || hanjaStr[0]) + (hanjaToHangulMap[hanjaStr[1]] || hanjaStr[1]);
+    }
+
+    function initDateDropdowns() {
+      const yearSelect = document.getElementById('birthYear');
+      const monthSelect = document.getElementById('birthMonth');
+      const daySelect = document.getElementById('birthDay');
+
+      const currentYear = new Date().getFullYear();
+      for (let i = currentYear; i >= 1950; i--) {
+        let option = document.createElement('option');
+        option.value = i;
+        option.text = i + '년';
+        if (i === 1995) option.selected = true;
+        yearSelect.appendChild(option);
+      }
+
+      for (let i = 1; i <= 12; i++) {
+        let option = document.createElement('option');
+        option.value = i;
+        option.text = i + '월';
+        if (i === 1) option.selected = true;
+        monthSelect.appendChild(option);
+      }
+
+      for (let i = 1; i <= 31; i++) {
+        let option = document.createElement('option');
+        option.value = i;
+        option.text = i + '일';
+        if (i === 1) option.selected = true;
+        daySelect.appendChild(option);
+      }
+    }
+
+    initDateDropdowns();
+
+    function goToInput() {
+      document.getElementById('home-screen').style.display = 'none';
+      document.getElementById('input-screen').style.display = 'block';
+    }
+
+    function resetTest() {
+      document.getElementById('userName').value = '';
+      document.getElementById('result-screen').style.display = 'none';
+      document.getElementById('home-screen').style.display = 'block';
+    }
+
+    function calculateResult() {
+      const name = document.getElementById('userName').value.trim();
+      
+      const year = parseInt(document.getElementById('birthYear').value, 10);
+      const month = parseInt(document.getElementById('birthMonth').value, 10);
+      const day = parseInt(document.getElementById('birthDay').value, 10);
+
+      if (!name) {
+        alert("시스템 오류: 사용자 이름을 입력해야 스캔이 가능합니다.");
+        return;
+      }
+
+      try {
+        const solar = Solar.fromYmd(year, month, day);
+        const lunar = solar.getLunar();
+        const bazi = lunar.getEightChar();
+        
+        const iljuHanja = bazi.getDay();
+        const ilju = getHangulIlju(iljuHanja);
+
+        const resultData = pastLifeData[ilju];
+
+        if (resultData) {
+          document.getElementById('res-name').innerText = name;
+          document.getElementById('res-job').innerText = resultData.character;
+          
+          // 일주 서브타이틀 업데이트
+          document.getElementById('res-ilju-subtitle').innerText = '조선시대 ' + ilju + '(' + iljuHanja + ') 일주';
+          
+          const traitsListElement = document.getElementById('res-traits-list');
+          traitsListElement.innerHTML = ''; 
+          resultData.traits.forEach(trait => {
+            const li = document.createElement('li');
+            li.innerText = trait;
+            traitsListElement.appendChild(li);
+          });
+
+          document.getElementById('res-job-desc').innerText = resultData.desc;
+          
+          document.getElementById('input-screen').style.display = 'none';
+          document.getElementById('result-screen').style.display = 'block';
+        } else {
+          alert(`시스템 오류: 일주(${ilju}) 데이터가 존재하지 않습니다.`);
+        }
+      } catch (e) {
+        alert("치명적 오류: 생년월일 파싱 중 시스템 충돌이 발생했습니다.");
+        console.error(e);
+      }
+    }
+
+    function showImageModal() {
+      const captureArea = document.getElementById('result-capture-area');
+      const modal = document.getElementById('image-modal');
+      const resultImg = document.getElementById('rendered-image');
+
+      html2canvas(captureArea, {
+        scale: 2,
+        backgroundColor: "#c0c0c0" 
+      }).then(canvas => {
+        const imgData = canvas.toDataURL('image/png');
+        resultImg.src = imgData;
+        modal.style.display = 'flex';
+      }).catch(err => {
+        alert("시스템 오류: 이미지 생성에 실패했습니다.");
+        console.error(err);
+      });
+    }
+
+    function closeModal(event, forceClose = false) {
+      const modal = document.getElementById('image-modal');
+      if (forceClose || event.target === modal) {
+        modal.style.display = 'none';
+      }
+    }
+
+    function shareTest() {
+      const shareUrl = window.location.href;
+      
+      if (navigator.share) {
+        navigator.share({
+          title: '사주로 알아보는 나의 조선시대 전생 직업',
+          text: '나의 조선시대 전생 직업은 무엇일까? 테스트잇에서 확인해보세요!',
+          url: shareUrl
+        }).catch(err => {
+          console.error('공유 실패:', err);
+        });
+      } else {
+        const dummy = document.createElement('input');
+        document.body.appendChild(dummy);
+        dummy.value = shareUrl;
+        dummy.select();
+        document.execCommand('copy');
+        document.body.removeChild(dummy);
+        alert('테스트 링크가 복사되었습니다!');
+      }
+    }
+  </script>
+
+</body>
+</html>

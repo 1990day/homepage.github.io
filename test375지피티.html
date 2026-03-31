@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>사주 전생 직업 테스트</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunar-javascript/1.7.4/lunar.min.js"></script>
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+  <style>
+    @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
+
+    :root {
+      --bg: #0c7a78;
+      --window: #d4d0c8;
+      --window-soft: #efede8;
+      --white: #ffffff;
+      --black: #111111;
+      --blue: #0b3ea8;
+      --line-dark: #4a4a4a;
+      --line-mid: #8d8d8d;
+      --line-light: #f9f7f2;
+      --text-sub: #4f4f4f;
+      --badge: #ece8e1;
+      --accent: #15387d;
+      --accent-soft: #e8eefc;
+      --mint-soft: #e3f4f1;
+      --yellow-soft: #fff3cf;
+      --pink-panel: #f3dbe4;
+      --pink-panel-dark: #9a7d87;
+      --pink-panel-light: #fff6fa;
+      --pink-input: #fffafb;
+      --pink-text: #5c2940;
+      --shadow: rgba(0, 0, 0, 0.22);
+
+      --win-bg: #d4d0c8;
+      --win-border-light: #f8f8f8;
+      --win-border-dark: #6f6f6f;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: "Pretendard", sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--black);
+      padding: 0 0 28px;
+    }
+
+    .page-shell {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .header-wrapper {
+      width: 100%;
+      background-color: var(--win-bg);
+      border-bottom: 2px outset var(--win-border-light);
+      box-shadow: 0 1px 0 var(--win-border-light);
+      align-self: flex-start;
+      margin-bottom: 10px;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .page-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 6px 4% !important;
+    }
+
+    .retro-logo {
+      text-decoration: none;
+      color: #000;
+      font-size: 18px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      background-color: var(--win-bg);
+      padding: 5px 10px;
+      border-top: 2px solid var(--win-border-light);
+      border-left: 2px solid var(--win-border-light);
+      border-right: 2px solid var(--win-border-dark);
+      border-bottom: 2px solid var(--win-border-dark);
+    }
+
+    .retro-logo:active {
+      border-top: 2px solid var(--win-border-dark);
+      border-left: 2px solid var(--win-border-dark);
+      border-right: 2px solid var(--win-border-light);
+      border-bottom: 2px solid var(--win-border-light);
+      padding: 6px 9px 4px 11px;
+    }
+
+    .page-header h1 {
+      margin: 0 !important;
+      padding: 0 !important;
+      border-bottom: none !important;
+    }
+
+    .main-nav {
+      display: flex;
+      flex-wrap: nowrap !important;
+      align-items: center;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      gap: 12px;
+    }
+
+    .main-nav li {
+      margin-left: 0;
+    }
+
+    .main-nav a {
+      display: block;
+      text-decoration: none;
+      color: #000;
+      font-weight: 700;
+      background: var(--win-bg);
+      border-top: 2px solid var(--win-border-light);
+      border-left: 2px solid var(--win-border-light);
+      border-right: 2px solid var(--win-border-dark);
+      border-bottom: 2px solid var(--win-border-dark);
+      padding: 4px 10px;
+      font-size: 14px;
+      white-space: nowrap;
+      box-sizing: border-box;
+    }
+
+    .main-nav a:active {
+      border-top: 2px solid var(--win-border-dark);
+      border-left: 2px solid var(--win-border-dark);
+      border-right: 2px solid var(--win-border-light);
+      border-bottom: 2px solid var(--win-border-light);
+      padding: 5px 9px 3px 11px;
+    }
+
+    #app {
+      width: 100%;
+      max-width: 500px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding: 0 14px;
+    }
+
+    .window {
+      width: 100%;
+      background: var(--window);
+      border-top: 2px solid var(--line-light);
+      border-left: 2px solid var(--line-light);
+      border-right: 2px solid var(--line-dark);
+      border-bottom: 2px solid var(--line-dark);
+      box-shadow: 6px 6px 0 var(--shadow);
+      overflow: hidden;
+    }
+
+    .title-bar {
+      height: 34px;
+      background: var(--blue);
+      padding: 0 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .title-bar-text {
+      color: var(--white);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.3px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .title-bar-controls {
+      display: flex;
+      gap: 4px;
+      flex-shrink: 0;
+    }
+
+    .title-btn {
+      width: 20px;
+      height: 18px;
+      border: none;
+      background: var(--window);
+      border-top: 1px solid var(--line-light);
+      border-left: 1px solid var(--line-light);
+      border-right: 1px solid var(--line-dark);
+      border-bottom: 1px solid var(--line-dark);
+      font-size: 11px;
+      font-weight: 800;
+      line-height: 1;
+      color: var(--black);
+      pointer-events: none;
+    }
+
+    .window-body {
+      padding: 18px;
+      background: var(--window);
+    }
+
+    .hero-panel {
+      background: var(--window-soft);
+      border-top: 2px solid var(--line-light);
+      border-left: 2px solid var(--line-light);
+      border-right: 2px solid var(--line-mid);
+      border-bottom: 2px solid var(--line-mid);
+      padding: 18px 16px;
+      text-align: center;
+    }
+
+    .field-block {
+      background: var(--pink-panel);
+      border-top: 2px solid var(--pink-panel-light);
+      border-left: 2px solid var(--pink-panel-light);
+      border-right: 2px solid var(--pink-panel-dark);
+      border-bottom: 2px solid var(--pink-panel-dark);
+      padding: 14px;
+    }
+
+    .field-row {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      margin-bottom: 14px;
+    }
+
+    .field-row:last-child {
+      margin-bottom: 0;
+    }
+
+    label {
+      font-size: 13px;
+      font-weight: 800;
+      color: #4e3140;
+    }
+
+    .input-box,
+    .date-dropdowns select {
+      width: 100%;
+      min-height: 42px;
+      padding: 10px 12px;
+      background: var(--pink-input);
+      border-top: 2px solid #8a7e83;
+      border-left: 2px solid #8a7e83;
+      border-right: 2px solid #fff;
+      border-bottom: 2px solid #fff;
+      outline: none;
+      font-size: 15px;
+      color: #111;
+    }
+
+    .input-box::placeholder {
+      color: #9a8e94;
+    }
+
+    .date-dropdowns {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 8px;
+    }
+
+    .btn,
+    .btn-sub {
+      width: 100%;
+      min-height: 46px;
+      padding: 12px 14px;
+      background: var(--window);
+      border-top: 2px solid var(--line-light);
+      border-left: 2px solid var(--line-light);
+      border-right: 2px solid var(--line-dark);
+      border-bottom: 2px solid var(--line-dark);
+      font-size: 15px;
+      font-weight: 800;
+      color: #111;
+      cursor: pointer;
+      transition: transform 0.08s ease;
+    }
+
+    .btn:active,
+    .btn-sub:active {
+      border-top: 2px solid var(--line-dark);
+      border-left: 2px solid var(--line-dark);
+      border-right: 2px solid var(--line-light);
+      border-bottom: 2px solid var(--line-light);
+      transform: translateY(1px);
+    }
+
+    .btn-primary {
+      background: var(--pink-panel);
+      color: var(--pink-text);
+      margin-top: 14px;
+      border-top: 2px solid var(--pink-panel-light);
+      border-left: 2px solid var(--pink-panel-light);
+      border-right: 2px solid var(--pink-panel-dark);
+      border-bottom: 2px solid var(--pink-panel-dark);
+    }
+
+    .btn-primary:active {
+      border-top: 2px solid var(--pink-panel-dark);
+      border-left: 2px solid var(--pink-panel-dark);
+      border-right: 2px solid var(--pink-panel-light);
+      border-bottom: 2px solid var(--pink-panel-light);
+    }
+
+    .btn-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    #result-capture-area {
+      background: var(--bg);
+      padding: 10px;
+    }
+
+    .result-shell {
+      background: var(--window);
+      border-top: 2px solid var(--line-light);
+      border-left: 2px solid var(--line-light);
+      border-right: 2px solid var(--line-dark);
+      border-bottom: 2px solid var(--line-dark);
+      box-shadow: 6px 6px 0 rgba(0,0,0,0.18);
+      overflow: hidden;
+    }
+
+    .result-body {
+      padding: 16px;
+      background: var(--window);
+    }
+
+    .result-top-panel {
+      background: var(--window-soft);
+      border-top: 2px solid var(--line-light);
+      border-left: 2px solid var(--line-light);
+      border-right: 2px solid var(--line-mid);
+      border-bottom: 2px solid var(--line-mid);
+      padding: 16px;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+
+    .result-label {
+      font-size: 12px;
+      font-weight: 800;
+      color: #4a4a4a;
+      margin-bottom: 8px;
+    }
+
+    .result-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: #333;
+      margin-bottom: 6px;
+    }
+
+    .result-job {
+      font-size: 28px;
+      line-height: 1.25;
+      font-weight: 900;
+      color: #132f72;
+      letter-spacing: -0.6px;
+      word-break: keep-all;
+      margin-bottom: 12px;
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .badge {
+      padding: 8px 10px;
+      background: var(--badge);
+      border-top: 1px solid #fff;
+      border-left: 1px solid #fff;
+      border-right: 1px solid #8f8f8f;
+      border-bottom: 1px solid #8f8f8f;
+      font-size: 12px;
+      font-weight: 800;
+      color: #222;
+    }
+
+    .summary-line {
+      margin-top: 12px;
+      padding: 10px 12px;
+      background: var(--mint-soft);
+      border: 1px solid #9fc7c1;
+      font-size: 13px;
+      line-height: 1.55;
+      text-align: left;
+      color: #23423f;
+      font-weight: 700;
+    }
+
+    .info-grid {
+      display: grid;
+      gap: 12px;
+    }
+
+    .info-box {
+      background: #f8f6f2;
+      border-top: 2px solid var(--line-light);
+      border-left: 2px solid var(--line-light);
+      border-right: 2px solid var(--line-mid);
+      border-bottom: 2px solid var(--line-mid);
+      padding: 14px;
+      text-align: left;
+    }
+
+    .info-title {
+      font-size: 14px;
+      font-weight: 900;
+      color: var(--accent);
+      margin-bottom: 10px;
+      display: inline-block;
+      padding: 6px 8px;
+      background: var(--yellow-soft);
+      border: 1px solid #d9c17c;
+    }
+
+    .traits-list {
+      list-style: none;
+      display: grid;
+      gap: 8px;
+    }
+
+    .traits-list li {
+      position: relative;
+      padding-left: 14px;
+      font-size: 14px;
+      line-height: 1.5;
+      color: #222;
+      word-break: keep-all;
+    }
+
+    .traits-list li::before {
+      content: "■";
+      position: absolute;
+      top: 1px;
+      left: 0;
+      font-size: 8px;
+      color: #0f3f97;
+    }
+
+    .desc-text {
+      font-size: 14px;
+      line-height: 1.7;
+      color: #242424;
+      word-break: keep-all;
+    }
+
+    .footer-mini {
+      margin-top: 8px;
+      text-align: center;
+      font-size: 11px;
+      color: rgba(255,255,255,0.92);
+      font-weight: 700;
+    }
+
+    .ad-container {
+      width: 100%;
+      margin-top: 12px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .coupang_ad {
+      width: 100%;
+      max-width: 350px;
+      background: var(--window);
+      padding: 8px;
+      border-top: 2px solid var(--line-light);
+      border-left: 2px solid var(--line-light);
+      border-right: 2px solid var(--line-dark);
+      border-bottom: 2px solid var(--line-dark);
+      box-shadow: 4px 4px 0 rgba(0,0,0,0.15);
+      text-align: center;
+    }
+
+    .image-preview-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.62);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      z-index: 999;
+    }
+
+    .image-preview-window {
+      width: 100%;
+      max-width: 430px;
+      background: var(--window);
+      border-top: 2px solid var(--line-light);
+      border-left: 2px solid var(--line-light);
+      border-right: 2px solid var(--line-dark);
+      border-bottom: 2px solid var(--line-dark);
+      box-shadow: 8px 8px 0 rgba(0,0,0,0.22);
+      overflow: hidden;
+    }
+
+    .image-preview-body {
+      padding: 14px;
+      text-align: center;
+      background: var(--window-soft);
+    }
+
+    .preview-guide {
+      font-size: 13px;
+      line-height: 1.55;
+      color: #333;
+      margin-bottom: 12px;
+      font-weight: 700;
+    }
+
+    .preview-image-wrap {
+      background: #fff;
+      border-top: 2px solid #7f7f7f;
+      border-left: 2px solid #7f7f7f;
+      border-right: 2px solid #fff;
+      border-bottom: 2px solid #fff;
+      padding: 6px;
+      margin-bottom: 12px;
+    }
+
+    #preview-image {
+      width: 100%;
+      display: block;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    @media (max-width: 480px) {
+      .page-header {
+        padding: 6px 12px !important;
+      }
+
+      .retro-logo {
+        font-size: 16px;
+        padding: 3px 8px;
+      }
+
+      .main-nav {
+        gap: 6px;
+      }
+
+      .main-nav a {
+        padding: 4px 6px;
+        font-size: 13px;
+        letter-spacing: -0.5px;
+      }
+
+      .title {
+        font-size: 25px;
+      }
+
+      .result-job {
+        font-size: 24px;
+      }
+
+      .date-dropdowns {
+        grid-template-columns: 1fr;
+      }
+
+      .window-body,
+      .result-body {
+        padding: 14px;
+      }
+
+      #app {
+        padding: 0 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+    <div class="header-wrapper">
+      <header class="page-header wrapper">
+        <h1><a href="https://test-it.co.kr/" class="retro-logo">테스트잇</a></h1>
+        <nav>
+          <ul class="main-nav">
+            <li><a href="https://test-it.co.kr/test.html">성격</a></li>
+            <li><a href="https://test-it.co.kr/face.html">얼굴</a></li>
+            <li><a href="https://test-it.co.kr/etc.html">그외</a></li>
+            <li><a href="https://test-it.co.kr/saju.html">사주</a></li>
+          </ul>
+        </nav>
+      </header>
+    </div>
+
+    <div id="app">
+      <div id="home-screen" class="window">
+        <div class="title-bar">
+          <div class="title-bar-text">테스트잇 조선시대 직업 테스트.exe</div>
+          <div class="title-bar-controls">
+            <button class="title-btn">_</button>
+            <button class="title-btn">□</button>
+            <button class="title-btn">X</button>
+          </div>
+        </div>
+        <div class="window-body">
+          <div class="hero-panel">
+            <img src="img_main375.png" alt="사주 전생 직업 테스트 메인 이미지" style="width: 100%; height: auto; margin-bottom: 16px; display: block;" />
+            <button class="btn btn-primary" onclick="goToInput()">테스트 시작하기</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="input-screen" class="window" style="display: none;">
+        <div class="title-bar">
+          <div class="title-bar-text">테스트잇 조선시대 직업 테스트.exe</div>
+          <div class="title-bar-controls">
+            <button class="title-btn">_</button>
+            <button class="title-btn">□</button>
+            <button class="title-btn">X</button>
+          </div>
+        </div>
+        <div class="window-body">
+          <div class="field-block">
+            <div class="field-row">
+              <label for="userName">이름 또는 닉네임</label>
+              <input type="text" id="userName" class="input-box" placeholder="이름 입력" autocomplete="off" />
+            </div>
+
+            <div class="field-row">
+              <label>생년월일 양력</label>
+              <div class="date-dropdowns">
+                <select id="birthYear"></select>
+                <select id="birthMonth"></select>
+                <select id="birthDay"></select>
+              </div>
+            </div>
+
+            <button class="btn btn-primary" onclick="calculateResult()">결과 스캔하기</button>
+
+            <div class="btn-group">
+              <button class="btn-sub" onclick="goHome()">처음 화면으로</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="result-screen" style="display: none;">
+        <div id="result-capture-area">
+          <div class="result-shell">
+            <div class="title-bar">
+              <div class="title-bar-text">테스트잇 조선시대 직업 테스트</div>
+              <div class="title-bar-controls">
+                <button class="title-btn">_</button>
+                <button class="title-btn">□</button>
+                <button class="title-btn">X</button>
+              </div>
+            </div>
+
+            <div class="result-body">
+              <div class="result-top-panel">
+                <div class="result-label">전생 직업 분석 결과</div>
+                <p class="result-name"><span id="res-name">사용자</span>님의 기록</p>
+                <h2 class="result-job" id="res-job">조선시대 직업</h2>
+
+                <div class="badge-row">
+                  <div class="badge">일주 <span id="res-ilju">갑자</span></div>
+                  <div class="badge">한자 <span id="res-ilju-hanja">甲子</span></div>
+                  <div class="badge">핵심기질 <span id="res-keyword">원칙과 통솔</span></div>
+                </div>
+
+                <div class="summary-line" id="res-summary">
+                  곧은 판단력과 상황을 이끄는 힘이 강해, 전생에는 책임과 통솔이 필요한 역할로 흐르기 쉬운 기운입니다.
+                </div>
+              </div>
+
+              <div class="info-grid">
+                <div class="info-box">
+                  <div class="info-title">성격 특징</div>
+                  <ul class="traits-list" id="res-traits-list"></ul>
+                </div>
+
+                <div class="info-box">
+                  <div class="info-title">전생 직업 기록</div>
+                  <p class="desc-text" id="res-job-desc"></p>
+                </div>
+
+                <div class="info-box">
+                  <div class="info-title">왜 이렇게 나왔을까</div>
+                  <p class="desc-text" id="res-analysis"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="btn-group" style="margin-top: 14px;">
+          <button class="btn btn-primary" onclick="openImagePreview()">결과 이미지 저장하기</button>
+          <button class="btn-sub" onclick="backToInput()">다시 해보기</button>
+          <button class="btn-sub" onclick="goOtherTests()">다른 테스트 해보기</button>
+          <button class="btn-sub" onclick="shareTest()">테스트 공유하기</button>
+        </div>
+
+      </div>
+
+      <div class="ad-container" id="ad-container">
+        <article class="coupang_ad mt-3">
+          <script src="https://ads-partners.coupang.com/g.js"></script>
+          <script>
+            new PartnersCoupang.G({
+              "id": 798186,
+              "template": "carousel",
+              "trackingCode": "AF4391881",
+              "width": "350",
+              "height": "140",
+              "tsource": ""
+            });
+          </script>
+        </article>
+      </div>
+    </div>
+  </div>
+
+  <div class="image-preview-modal" id="imagePreviewModal">
+    <div class="image-preview-window">
+      <div class="title-bar">
+        <div class="title-bar-text">Image_Preview.png</div>
+        <div class="title-bar-controls">
+          <button class="title-btn" onclick="closeImagePreview()">X</button>
+        </div>
+      </div>
+      <div class="image-preview-body">
+        <p class="preview-guide">이미지가 열렸어요. 모바일에서는 이미지를 꾹 눌러 저장하면 됩니다.</p>
+        <div class="preview-image-wrap">
+          <img id="preview-image" alt="결과 이미지 미리보기">
+        </div>
+        <div class="btn-group" style="margin-top: 0;">
+          <button class="btn btn-primary" onclick="downloadPreviewImage()">다운로드</button>
+          <button class="btn-sub" onclick="closeImagePreview()">닫기</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const hanjaToHangulMap = {
+      "甲": "갑", "乙": "을", "丙": "병", "丁": "정", "戊": "무", "己": "기", "庚": "경", "辛": "신", "壬": "임", "癸": "계",
+      "子": "자", "丑": "축", "寅": "인", "卯": "묘", "辰": "진", "巳": "사", "午": "오", "未": "미", "申": "신", "酉": "유", "戌": "술", "亥": "해"
+    };
+
+    function getHangulIlju(hanjaStr) {
+      if (!hanjaStr || hanjaStr.length !== 2) return hanjaStr;
+      return (hanjaToHangulMap[hanjaStr[0]] || hanjaStr[0]) + (hanjaToHangulMap[hanjaStr[1]] || hanjaStr[1]);
+    }
+
+    const stemProfiles = {
+      "갑": {
+        keyword: "원칙과 통솔",
+        traits: [
+          "기준이 분명하고 방향을 잡는 힘이 강함",
+          "어중간한 타협보다 바른 흐름을 선호함",
+          "맡은 일에 책임감을 크게 느끼는 편"
+        ],
+        summary: "곧은 기세와 통솔력이 강해 책임 있는 자리에 잘 어울리는 흐름입니다.",
+        analysis: "갑목의 기운은 곧게 뻗는 나무처럼 기준과 방향성을 중요하게 봅니다. 사람 위에 군림한다기보다 질서를 세우고 중심을 잡는 힘으로 드러나는 경우가 많습니다.",
+        descLead: "곧게 서는 기운이 강해 한가운데에서 질서를 잡고 방향을 정하는 역할에 잘 맞습니다."
+      },
+      "을": {
+        keyword: "유연한 조율",
+        traits: [
+          "상대의 반응을 빠르게 읽고 맞추는 편",
+          "부드럽지만 자기 방식은 은근히 분명함",
+          "디테일과 균형감각이 좋은 편"
+        ],
+        summary: "유연하게 움직이면서도 흐름을 조율하는 힘이 좋아 사람과 사람 사이에서 강점을 보입니다.",
+        analysis: "을목의 기운은 큰 힘으로 밀어붙이기보다 부드럽게 파고들고 연결하는 성질이 있습니다. 협상, 조정, 감각적인 실무에 잘 맞는 기운으로 해석합니다.",
+        descLead: "부드럽게 연결하고 조율하는 감각이 좋아 말과 감각, 세심한 판단을 쓰는 자리에 어울립니다."
+      },
+      "병": {
+        keyword: "표현과 추진",
+        traits: [
+          "존재감이 분명하고 표현력이 좋은 편",
+          "속도가 빠르고 시작 에너지가 강함",
+          "정체된 분위기보다 움직이는 흐름을 선호함"
+        ],
+        summary: "밖으로 드러나는 힘과 추진력이 강해 사람을 모으고 분위기를 끌어올리는 역할에 어울립니다.",
+        analysis: "병화는 밝게 드러나는 태양의 기운으로 해석합니다. 눈에 보이는 결과, 빠른 반응, 대중성과 연결될 때 강점이 커집니다.",
+        descLead: "밝고 바깥으로 뻗는 에너지가 강해 앞에 나서 움직이고 이끄는 역할로 자연스럽게 연결됩니다."
+      },
+      "정": {
+        keyword: "집중과 섬세함",
+        traits: [
+          "예민하지만 집중력이 깊은 편",
+          "작은 차이와 결을 잘 알아차림",
+          "혼자 몰입해서 완성도를 높이는 데 강함"
+        ],
+        summary: "섬세한 집중력과 내면의 기준이 강해 기록, 예술, 정교한 실무와 잘 맞습니다.",
+        analysis: "정화는 작은 불빛처럼 크지는 않아도 오래 집중하며 정교함을 만드는 기운입니다. 디테일과 완성도, 감각적 판단에서 힘이 드러납니다.",
+        descLead: "작고 예민한 불빛처럼 섬세하게 파고들어 완성도를 높이는 역할에 잘 맞는 흐름입니다."
+      },
+      "무": {
+        keyword: "안정과 버팀",
+        traits: [
+          "쉽게 흔들리지 않고 중심을 잘 지킴",
+          "큰 틀을 보고 오래 끌고 가는 힘이 있음",
+          "현실 감각과 책임감이 강한 편"
+        ],
+        summary: "묵직하게 버티고 큰 판을 관리하는 힘이 있어 조직과 구조를 책임지는 역할에 어울립니다.",
+        analysis: "무토는 넓은 땅과 산의 기운으로 해석합니다. 속도보다는 안정, 단기보다는 장기, 작은 일보다 큰 구조를 맡을 때 강점이 살아납니다.",
+        descLead: "묵직하고 안정적인 기운이 강해 구조를 세우고 버티는 역할에서 존재감이 커집니다."
+      },
+      "기": {
+        keyword: "실속과 관리",
+        traits: [
+          "실무 감각이 좋고 챙겨야 할 것을 잘 챙김",
+          "겉보다 속을 더 중요하게 보는 편",
+          "생활력과 관리 능력이 탄탄한 편"
+        ],
+        summary: "눈에 띄게 과시하기보다 실제로 굴러가게 만드는 힘이 있어 관리형 역할과 잘 맞습니다.",
+        analysis: "기토는 밭과 논처럼 생활과 현실에 밀접한 기운으로 봅니다. 돌봄, 관리, 축적, 실속에서 강점을 보이는 흐름입니다.",
+        descLead: "실속과 관리력이 좋아 눈에 띄지 않아도 전체를 굴러가게 만드는 자리에서 힘이 납니다."
+      },
+      "경": {
+        keyword: "판단과 결단",
+        traits: [
+          "옳고 그름을 빠르게 가르는 편",
+          "애매한 상황을 정리하는 힘이 강함",
+          "원칙이 생기면 쉽게 물러서지 않음"
+        ],
+        summary: "결단력과 판단력이 강해 수사, 군사, 규율, 선 긋기가 필요한 역할에 잘 맞습니다.",
+        analysis: "경금은 다듬어지지 않은 강한 금속처럼 명확함과 결단의 성질이 큽니다. 감정보다 기준, 모호함보다 정리를 선호하는 흐름으로 해석합니다.",
+        descLead: "단단하고 분명한 판단력이 강해 규율과 기준을 세워야 하는 역할에 잘 어울립니다."
+      },
+      "신": {
+        keyword: "정교함과 기준",
+        traits: [
+          "디테일에 민감하고 완성도를 중시함",
+          "기준이 높고 보는 눈이 까다로운 편",
+          "작은 오차도 쉽게 넘기지 않음"
+        ],
+        summary: "정교함과 미적 감각이 좋아 세공, 편집, 관리, 평가 역할에 어울리는 흐름입니다.",
+        analysis: "신금은 잘 다듬어진 보석이나 도구처럼 예민하고 섬세한 기운입니다. 정확성, 미감, 정리력, 평가 감각이 강하게 드러납니다.",
+        descLead: "예민하고 정교한 기질이 강해 디테일과 기준이 중요한 역할에서 능력이 두드러집니다."
+      },
+      "임": {
+        keyword: "유통과 확장",
+        traits: [
+          "움직임이 많고 판을 넓게 보는 편",
+          "낯선 환경에도 적응이 빠른 편",
+          "사람과 정보가 오가는 흐름에 강함"
+        ],
+        summary: "확장성과 순발력이 강해 이동, 교류, 유통, 외부 활동과 연결된 역할에 어울립니다.",
+        analysis: "임수는 큰 물처럼 흐름이 크고 범위가 넓은 기운입니다. 고정된 자리보다 이동과 연결, 확장 속에서 힘을 쓰는 경우가 많습니다.",
+        descLead: "넓게 흐르고 연결하는 힘이 강해 사람과 물자가 오가는 자리로 자연스럽게 이어집니다."
+      },
+      "계": {
+        keyword: "직관과 기록",
+        traits: [
+          "보이지 않는 분위기와 결을 잘 읽음",
+          "기억력과 관찰력이 좋은 편",
+          "겉으로 강하게 나서기보다 안쪽에서 힘을 씀"
+        ],
+        summary: "섬세한 관찰력과 직관이 있어 기록, 치유, 정보, 분석 역할에 잘 맞는 흐름입니다.",
+        analysis: "계수는 이슬과 비처럼 작지만 스며드는 기운입니다. 감각, 기억, 직관, 눈치, 기록력처럼 안쪽에서 작동하는 힘으로 자주 해석합니다.",
+        descLead: "조용히 스며들며 파악하는 힘이 강해 기록과 분석, 정보 정리에 잘 맞는 흐름입니다."
+      }
+    };
+
+    const branchProfiles = {
+      "자": { traits: ["머리 회전이 빠르고 흐름을 읽는 편", "상황 변화에 대한 감각이 좋은 편"], tone: "자수의 빠른 순환 기운이 더해져 판단과 타이밍 감각이 살아납니다." },
+      "축": { traits: ["끈기와 버티는 힘이 강한 편", "한번 맡은 일은 꾸준히 붙드는 편"], tone: "축토의 묵직함이 더해져 성실함과 지속력이 강조됩니다." },
+      "인": { traits: ["앞으로 나아가는 배짱이 큰 편", "위기 앞에서 물러서지 않는 힘이 있음"], tone: "인목의 전진성이 더해져 선봉형 기질과 배짱이 살아납니다." },
+      "묘": { traits: ["섬세하고 미감이 살아 있는 편", "분위기와 결을 빠르게 눈치챔"], tone: "묘목의 세밀한 감각이 더해져 섬세함과 관찰력이 부각됩니다." },
+      "진": { traits: ["큰 그림을 보는 시야가 넓은 편", "판을 키우고 구조를 잡는 데 강함"], tone: "진토의 확장성이 더해져 구조를 보고 키우는 힘이 생깁니다." },
+      "사": { traits: ["상대 심리와 상황 계산이 빠른 편", "임기응변과 전략 감각이 좋은 편"], tone: "사화의 민첩한 기운이 더해져 전략성과 상황 판단력이 강해집니다." },
+      "오": { traits: ["존재감이 뚜렷하고 추진력이 강함", "가만히 있기보다 직접 움직이는 편"], tone: "오화의 강한 발산력이 더해져 표현력과 돌파력이 커집니다." },
+      "미": { traits: ["사람을 챙기고 돌보는 감각이 있음", "부드럽게 조율하면서 실속도 챙김"], tone: "미토의 부드러운 관리력이 더해져 조율과 보살핌의 기질이 살아납니다." },
+      "신": { traits: ["변화 대응이 빠르고 눈치가 좋은 편", "현실 판단과 실전 감각이 좋음"], tone: "신금의 날렵한 기운이 더해져 대응력과 실전 감각이 강화됩니다." },
+      "유": { traits: ["정리 정돈과 기준 세우기에 강함", "완성도와 결과물을 중요하게 여김"], tone: "유금의 정제된 기운이 더해져 기준과 완성도가 더 강조됩니다." },
+      "술": { traits: ["책임감과 수호 본능이 강한 편", "내 사람과 내 영역을 지키려는 힘이 큼"], tone: "술토의 버팀목 기운이 더해져 보호와 책임의 성향이 짙어집니다." },
+      "해": { traits: ["직관과 공감 능력이 좋은 편", "보이지 않는 흐름을 읽는 감각이 있음"], tone: "해수의 깊은 감각이 더해져 직관과 공감력이 살아납니다." }
+    };
+
+    const titleMap = {
+      "갑자": "금군 호위대장", "을축": "호조 문서관리관", "병인": "봉수대 선봉장", "정묘": "관상감 서기관", "무진": "산성 축성 감독", "기사": "역참 총책임자", "경오": "의금부 추국관", "신미": "왕실 세공 장인", "임신": "조운선 선주", "계유": "내의원 약재기록관",
+      "갑술": "성균관 규정관", "을해": "통신사 실무 외교관", "병자": "야간 순라대장", "정축": "주자소 활자장", "무인": "무예청 교관", "기묘": "궁중 정원 관리관", "경진": "훈련도감 선봉장", "신사": "암행 감찰관", "임오": "장악원 악사", "계미": "상단 회계관",
+      "갑신": "도성 수비대장", "을유": "도화서 세밀화원", "병술": "객주 주모", "정해": "포구 신호수", "무자": "왕실 금고 관리관", "기축": "국영 목장 관리관", "경인": "의적 토벌 군관", "신묘": "왕실 재단사", "임진": "제방 공사 감독", "계사": "비밀 정보상",
+      "갑오": "파발마 총책", "을미": "향약 실무책임자", "병신": "기기 제작 장인", "정유": "보석 세공관", "무술": "국경 수비장", "기해": "만물전 주인", "경자": "한성부 판관", "신축": "빙고 관리장", "임인": "유랑 시인 겸 악인", "계묘": "산중 약재사",
+      "갑진": "왕실 호위무관", "을사": "외교문서 통역관", "병오": "연회 총연출관", "정미": "길안내 역원", "무신": "개성 상단 대행수", "기유": "전통 양조장 주인", "경술": "무쇠 주조관", "신해": "서화원 필사관", "임자": "원양 어로 선장", "계축": "산간 역원지기",
+      "갑인": "의병장", "을묘": "약초 연구 의원", "병진": "궁중 불꽃놀이 장인", "정사": "궁중 비밀서리", "무오": "매 조련사", "기미": "수라간 궁녀", "경신": "군영 선봉군관", "신유": "왕실 이발관", "임술": "대수로 설계관", "계해": "예언 기록관"
+    };
+
+    const ganjiOrder = [
+      "갑자","을축","병인","정묘","무진","기사","경오","신미","임신","계유",
+      "갑술","을해","병자","정축","무인","기묘","경진","신사","임오","계미",
+      "갑신","을유","병술","정해","무자","기축","경인","신묘","임진","계사",
+      "갑오","을미","병신","정유","무술","기해","경자","신축","임인","계묘",
+      "갑진","을사","병오","정미","무신","기유","경술","신해","임자","계축",
+      "갑인","을묘","병진","정사","무오","기미","경신","신유","임술","계해"
+    ];
+
+    let previewImageData = "";
+
+    function initDateDropdowns() {
+      const yearSelect = document.getElementById("birthYear");
+      const monthSelect = document.getElementById("birthMonth");
+      const daySelect = document.getElementById("birthDay");
+      const currentYear = new Date().getFullYear();
+
+      for (let i = currentYear; i >= 1950; i--) {
+        const option = document.createElement("option");
+        option.value = i;
+        option.textContent = i + "년";
+        if (i === 1995) option.selected = true;
+        yearSelect.appendChild(option);
+      }
+
+      for (let i = 1; i <= 12; i++) {
+        const option = document.createElement("option");
+        option.value = i;
+        option.textContent = i + "월";
+        monthSelect.appendChild(option);
+      }
+
+      for (let i = 1; i <= 31; i++) {
+        const option = document.createElement("option");
+        option.value = i;
+        option.textContent = i + "일";
+        daySelect.appendChild(option);
+      }
+    }
+
+    initDateDropdowns();
+
+    function goHome() {
+      document.getElementById("input-screen").style.display = "none";
+      document.getElementById("result-screen").style.display = "none";
+      document.getElementById("home-screen").style.display = "block";
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function goToInput() {
+      document.getElementById("home-screen").style.display = "none";
+      document.getElementById("result-screen").style.display = "none";
+      document.getElementById("input-screen").style.display = "block";
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function backToInput() {
+      document.getElementById("result-screen").style.display = "none";
+      document.getElementById("input-screen").style.display = "block";
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function resetTest() {
+      document.getElementById("userName").value = "";
+      document.getElementById("result-screen").style.display = "none";
+      document.getElementById("input-screen").style.display = "none";
+      document.getElementById("home-screen").style.display = "block";
+      closeImagePreview();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function uniqueTraits(arr) {
+      const result = [];
+      arr.forEach((item) => {
+        if (!result.includes(item)) result.push(item);
+      });
+      return result;
+    }
+
+    function buildResultData(iljuHangul, iljuHanja) {
+      const stem = iljuHangul[0];
+      const branch = iljuHangul[1];
+      const stemProfile = stemProfiles[stem];
+      const branchProfile = branchProfiles[branch];
+      const title = titleMap[iljuHangul] || "조선시대 기록관";
+
+      const traits = uniqueTraits([
+        ...stemProfile.traits,
+        ...branchProfile.traits
+      ]).slice(0, 5);
+
+      const summary = stemProfile.summary;
+      const analysis = `${stemProfile.analysis} ${branchProfile.tone}`;
+      const desc = `${stemProfile.descLead} ${branchProfile.tone} 이런 조합은 사람, 물자, 정보, 질서, 기술 가운데 본인에게 맞는 방식으로 역할을 맡는 경우가 많아 조선시대 기준으로는 "${title}" 같은 자리와 잘 연결됩니다.`;
+
+      return {
+        title,
+        keyword: stemProfile.keyword,
+        traits,
+        summary,
+        analysis,
+        desc,
+        iljuHangul,
+        iljuHanja
+      };
+    }
+
+    function renderTraits(traits) {
+      const traitsListElement = document.getElementById("res-traits-list");
+      traitsListElement.innerHTML = "";
+
+      traits.forEach((trait) => {
+        const li = document.createElement("li");
+        li.textContent = trait;
+        traitsListElement.appendChild(li);
+      });
+    }
+
+    function calculateResult() {
+      const name = document.getElementById("userName").value.trim();
+      const year = parseInt(document.getElementById("birthYear").value, 10);
+      const month = parseInt(document.getElementById("birthMonth").value, 10);
+      const day = parseInt(document.getElementById("birthDay").value, 10);
+
+      if (!name) {
+        alert("이름 또는 닉네임을 입력해 주세요.");
+        return;
+      }
+
+      try {
+        const solar = Solar.fromYmd(year, month, day);
+        const lunar = solar.getLunar();
+        const eightChar = lunar.getEightChar();
+        const iljuHanja = eightChar.getDay();
+        const iljuHangul = getHangulIlju(iljuHanja);
+
+        if (!ganjiOrder.includes(iljuHangul)) {
+          alert("일주 데이터를 불러오지 못했습니다.");
+          return;
+        }
+
+        const resultData = buildResultData(iljuHangul, iljuHanja);
+
+        document.getElementById("res-name").textContent = name;
+        document.getElementById("res-job").textContent = resultData.title;
+        document.getElementById("res-ilju").textContent = resultData.iljuHangul;
+        document.getElementById("res-ilju-hanja").textContent = resultData.iljuHanja;
+        document.getElementById("res-keyword").textContent = resultData.keyword;
+        document.getElementById("res-summary").textContent = resultData.summary;
+        document.getElementById("res-job-desc").textContent = resultData.desc;
+        document.getElementById("res-analysis").textContent = resultData.analysis;
+
+        renderTraits(resultData.traits);
+
+        document.getElementById("input-screen").style.display = "none";
+        document.getElementById("result-screen").style.display = "block";
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } catch (e) {
+        console.error(e);
+        alert("생년월일을 분석하는 중 오류가 발생했습니다.");
+      }
+    }
+
+    function openImagePreview() {
+      const captureArea = document.getElementById("result-capture-area");
+
+      html2canvas(captureArea, {
+        scale: 2,
+        backgroundColor: null,
+        useCORS: true
+      }).then((canvas) => {
+        previewImageData = canvas.toDataURL("image/png");
+        document.getElementById("preview-image").src = previewImageData;
+        document.getElementById("imagePreviewModal").style.display = "flex";
+      }).catch((err) => {
+        console.error(err);
+        alert("이미지 생성에 실패했습니다.");
+      });
+    }
+
+    function closeImagePreview() {
+      document.getElementById("imagePreviewModal").style.display = "none";
+    }
+
+    function downloadPreviewImage() {
+      if (!previewImageData) return;
+      const link = document.createElement("a");
+      link.download = "전생직업_테스트_결과.png";
+      link.href = previewImageData;
+      link.click();
+    }
+
+    function goOtherTests() {
+      window.location.href = "https://test-it.co.kr/";
+    }
+
+    async function shareTest() {
+      const shareData = {
+        title: "사주 전생 직업 테스트",
+        text: "사주로 알아보는 나의 전생 직업 테스트 해보기",
+        url: window.location.href
+      };
+
+      try {
+        if (navigator.share) {
+          await navigator.share(shareData);
+        } else {
+          await navigator.clipboard.writeText(window.location.href);
+          alert("테스트 링크가 복사되었습니다.");
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    }
+
+    document.getElementById("imagePreviewModal").addEventListener("click", function(e) {
+      if (e.target === this) {
+        closeImagePreview();
+      }
+    });
+  </script>
+</body>
+</html>

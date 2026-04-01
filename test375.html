@@ -15,7 +15,6 @@
 <meta property="og:description" content="사주 일주로 보는 나의 조선시대 직업은?" />
 <meta property="og:url" content="https://test-it.co.kr/test375" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lunar-javascript/1.7.4/lunar.min.js"></script>
-  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
   <style>
     @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
     
@@ -290,7 +289,7 @@
     }
 
     #result-capture-area {
-      background-color: #c0c0c0; /* 캡처 영역 배경을 레트로 윈도우 회색으로 통일 */
+      background-color: #c0c0c0;
       padding: 5px;
     }
 
@@ -376,7 +375,6 @@
       margin-top: 10px;
     }
 
-    /* 이미지 저장용 모달 스타일 */
     #image-modal {
       display: none;
       position: fixed;
@@ -425,6 +423,25 @@
       border-left: 2px solid #000;
       border-right: 2px solid var(--win-border-light);
       border-bottom: 2px solid var(--win-border-light);
+    }
+
+    /* 로딩 프로그레스 바 스타일 */
+    .progress-container {
+      width: 100%;
+      height: 25px;
+      background: #fff;
+      border-top: 2px solid #808080;
+      border-left: 2px solid #808080;
+      border-right: 2px solid #fff;
+      border-bottom: 2px solid #fff;
+      margin-top: 20px;
+      padding: 2px;
+    }
+
+    #progress-bar {
+      width: 0%;
+      height: 100%;
+      background: #000080;
     }
   </style>
 </head>
@@ -490,6 +507,24 @@
       </div>
     </div>
 
+    <div id="loading-screen" class="window" style="display: none;">
+      <div class="title-bar">
+        <div class="title-bar-text">시스템 스캔 중...</div>
+        <div class="title-bar-controls">
+          <button class="title-btn">_</button>
+          <button class="title-btn">X</button>
+        </div>
+      </div>
+      <div class="window-body" style="padding: 40px 20px;">
+        <div style="font-size: 3rem; margin-bottom: 20px;">📜</div>
+        <h2 class="title" style="font-size: 1.2rem; margin-bottom: 10px;">조선시대 호적을 뒤지는 중...</h2>
+        <p class="subtitle" style="margin-bottom: 10px;">사주팔자를 바탕으로 전생을 스캔하고 있습니다.</p>
+        <div class="progress-container">
+           <div id="progress-bar"></div>
+        </div>
+      </div>
+    </div>
+
     <div id="result-screen" style="display: none;">
       <div id="result-capture-area">
         <div class="window">
@@ -546,7 +581,6 @@
   </div>
 
   <script>
-    // 60갑자 데이터: 각 특징 7개로 대폭 확장
     const pastLifeData = {
       "갑자": { character: "깐깐한 사헌부 대사헌", traits: ["융통성 제로의 꼿꼿한 원칙주의자", "뇌물은 쳐다도 안 보는 청렴결백", "한번 물면 안 놓는 집요함", "남들 눈치 안 보는 마이웨이", "겉으론 차가워도 속은 나라 걱정뿐", "결과보다 과정을 중요하게 생각함", "자기 관리에 철저하고 흐트러짐이 없음"], desc: "추운 겨울의 튼튼한 거목처럼 흔들림이 없습니다. 관원들의 비리를 감찰하고 왕에게도 팩트 폭행을 서슴지 않던 조선 최고의 감찰관이었습니다." },
       "을축": { character: "악착같은 개성상인", traits: ["엄청난 인내심과 끈기의 소유자", "한 푼도 헛투루 안 쓰는 짠돌이/짠순이", "조용히 뒤에서 판을 짜는 실세", "보수적이고 변화를 썩 안 좋아함", "돈 냄새를 기가 막히게 맡음", "한번 화나면 걷잡을 수 없이 무서움", "남에게 아쉬운 소리 하는 것을 극혐함"], desc: "진흙 속에서 피어나는 꽃처럼 끈질긴 생명력이 있습니다. 아무리 거친 환경에서도 묵묵히 이문을 남겨 거상이 된 전설의 개성상인이었습니다." },
@@ -560,7 +594,7 @@
       "계유": { character: "신점 족집게 무당", traits: ["상대방의 과거나 기분을 귀신같이 맞춤", "조용하지만 굿판에선 에너지가 폭발함", "기억력이 좋고 계산이 빠름", "마음에 없는 소리를 잘 못하는 직구러", "영감이 무서울 정도로 뛰어나고 촉이 좋음", "남의 마음을 읽는 직관력이 매우 발달함", "티 내지 않고 조용히 자신의 이득을 취함"], desc: "바위틈에서 솟아나는 맑은 물처럼 영감이 뛰어나고 섬세합니다. 정승 판서들도 밤에 몰래 찾아와 조언을 구하던 저잣거리 최고의 족집게 무당이었습니다." },
       "갑술": { character: "유배지 외골수 선비", traits: ["불의를 보면 유배 가도 상소문 씀", "자신이 믿는 학문은 끝까지 밀어붙임", "은근히 선비로서의 체면을 중요시함", "상황을 주도하려는 꼰대력이 살짝 있음", "겉은 뻣뻣해도 속은 따뜻한 츤데레", "자신의 신념과 어긋나면 단호하게 잘라냄", "책임감이 강해 궂은일도 마다하지 않음"], desc: "마른 땅에 뿌리내린 나무처럼 악조건 속에서도 자기주장을 굽히지 않습니다. 임금에게 바른말을 하다 섬으로 유배를 갔지만 그곳에서도 후학을 양성하던 참선비였습니다." },
       "을해": { character: "유랑극단 남사당패 어름산이", traits: ["어느 동네든 금방 섞이는 미친 적응력", "부드러운 카리스마로 관객을 홀림", "방랑벽이 있어 한곳에 잘 정착 못함", "직관적이고 관객의 눈치를 매우 잘 봄", "이상주의자이면서도 팁은 잘 챙김", "눈치가 빨라 어디서든 살아남는 처세술", "자유를 억압받으면 스트레스를 심하게 받음"], desc: "물 위에 뜬 수초처럼 유연하고 환경 적응력이 타의 추종을 불허합니다. 줄타기 위에서 아슬아슬한 묘기와 입담으로 백성들의 혼을 쏙 빼놓던 광대였습니다." },
-      "병자": { character: "이중생활 암행어사", traits: ["낮에는 거지, 밤에는 탐관오리 저승사자", "사람들 앞에 나서서 마패 드는 걸 즐김", "머리 회전이 빠르고 아이디어가 통통 튐", "규칙과 유도리 사이에서 자주 갈등함", "자신만의 정의에 대한 철학이 확고함", "낮과 밤, 겉과 속의 텐션이 묘하게 다름", "남다른 예술적 감각과 통통 튀는 매력"], desc: "어둠 속의 태양처럼 정체를 숨기고 있다가 결정적일 때 빛을 발합니다. 거지꼴로 팔도를 돌아다니다가 탐관오리를 보면 마패를 던지며 호통치던 어사였습니다." },
+      "병자": { character: "이중생활 암행어사", traits: ["낮에는 거지, 밤에는 탐관오리 저승사자", "사람들 앞에 나서서 마패 드는 걸 즐김", "머리 회전이 빠르고 아이디어가 통통 튐", "규칙과 유도리 사이에서 자주 갈등함", "자신만의 정의에 대한 철학이 확고함", "낮과 밤, 겉과 속의 텐션이 묘하게 다름", "남다른 예술적 감각과 통통 튀는 매력"], desc: "어둠 속의 태양처럼 정체를 숨기고 있다가 결정적일 때 빛을 발합니다. 거지꼴로 팔도를 돌아다니다가 탐관오리를 보면 마패 던지며 호통치던 어사였습니다." },
       "정축": { character: "밤낮없는 놋그릇 장인", traits: ["하나에 꽂히면 파고드는 집요한 성격", "말수 없이 묵묵히 망치질만 함", "은근한 끈기와 강한 인내력 탑재", "예술적 감각과 손재주가 남다름", "자신의 작품에 흠집 나는 걸 못 견딤", "말보다는 묵묵한 행동으로 보여주는 타입", "한 분야를 깊게 파고드는 장인정신"], desc: "용광로처럼 뜨거운 집념을 차가운 공방에 숨기고 있습니다. 밤낮없이 쇳물을 녹이고 두드려 양반가에서 가장 탐내는 최고급 유기를 만들어내던 장인이었습니다." },
       "무인": { character: "백두산 착호갑사(호랑이 사냥꾼)", traits: ["기세가 등등하고 맹수 앞에서도 안 떪", "스스로 사냥조를 이끄는 리더 체질", "한번 타겟팅한 사냥감은 끝까지 쫓음", "체력과 정신력이 타의 추종을 불허함", "강자(호랑이)에겐 강하고 약자에겐 다정함", "승부욕이 강해 남에게 지는 것을 못 참음", "결단력이 빠르고 스케일이 남다름"], desc: "봄날의 큰 산처럼 생동감이 넘치고 용맹합니다. 나라의 명을 받고 깊은 산속의 식인 호랑이를 추적해 활로 꿰뚫어 버리던 전설의 특수부대 사냥꾼이었습니다." },
       "기묘": { character: "궁궐 내전 수목장(정원사)", traits: ["어떤 환경이든 살아남는 잡초 생명력", "세심하고 식물을 가꾸는 손재주가 뛰어남", "은근히 경쟁심이 강해 자기 구역을 지킴", "촉촉하고 감수성이 예민하여 꽃을 사랑함", "남을 돌보고 가꾸는 데 천부적 소질", "작은 일에도 상처받는 예민한 감수성", "남을 보살피고 키워내는 데 탁월한 소질"], desc: "촉촉한 흙에서 자라는 풀처럼 생명력이 끈질기고 섬세합니다. 대비마마가 산책하는 궁궐 후원의 꽃과 나무를 한 치의 오차 없이 다듬어내던 수석 정원사였습니다." },
@@ -661,6 +695,7 @@
     function resetTest() {
       document.getElementById('userName').value = '';
       document.getElementById('result-screen').style.display = 'none';
+      document.getElementById('loading-screen').style.display = 'none';
       document.getElementById('home-screen').style.display = 'block';
     }
 
@@ -690,7 +725,6 @@
           document.getElementById('res-name').innerText = name;
           document.getElementById('res-job').innerText = resultData.character;
           
-          // 일주 서브타이틀 업데이트
           document.getElementById('res-ilju-subtitle').innerText = '조선시대 ' + ilju + '(' + iljuHanja + ') 일주';
           
           const traitsListElement = document.getElementById('res-traits-list');
@@ -703,8 +737,27 @@
 
           document.getElementById('res-job-desc').innerText = resultData.desc;
           
+          // 결과 화면 띄우기 전 3초 로딩 화면 출력
           document.getElementById('input-screen').style.display = 'none';
-          document.getElementById('result-screen').style.display = 'block';
+          document.getElementById('loading-screen').style.display = 'block';
+
+          // 프로그레스 바 애니메이션 설정
+          let progress = 0;
+          let bar = document.getElementById('progress-bar');
+          let interval = setInterval(() => {
+            progress += Math.floor(Math.random() * 10) + 5; 
+            if (progress > 100) progress = 100;
+            bar.style.width = progress + '%';
+          }, 200);
+
+          // 3초 후 로딩창 숨기고 결과창 띄우기
+          setTimeout(() => {
+            clearInterval(interval);
+            document.getElementById('loading-screen').style.display = 'none';
+            document.getElementById('result-screen').style.display = 'block';
+            bar.style.width = '0%'; // 다음 테스트를 위해 초기화
+          }, 3000);
+
         } else {
           alert(`시스템 오류: 일주(${ilju}) 데이터가 존재하지 않습니다.`);
         }

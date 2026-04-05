@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>테스트잇 사주 만세력 프로필 테스트</title>
+  <meta name="description" content="생년월일과 시지를 입력하면 사주팔자를 윈도우 감성 프로필 카드로 보여주는 테스트잇 사주 만세력 프로필 테스트" />
+
+  <script src="https://cdn.jsdelivr.net/npm/lunar-javascript/lunar.js"></script>
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+      background: #0b7f7d;
+      color: #111;
+    }
+
+    body {
+      min-height: 100vh;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page-header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(214, 214, 214, 0.92);
+      border-bottom: 2px solid #8f8f8f;
+      box-shadow: inset 0 1px 0 #fff;
+    }
+
+    .wrapper {
+      width: min(100%, 560px);
+      margin: 0 auto;
+      padding: 0 12px;
+    }
+
+    .header-inner {
+      height: 54px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+    }
+
+    .main-nav {
+      display: flex;
+      gap: 10px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #333;
+      flex-wrap: wrap;
+    }
+
+    .app {
+      width: min(100%, 560px);
+      margin: 0 auto;
+      padding: 14px 12px 28px;
+    }
+
+    .screen {
+      display: none;
+    }
+
+    .screen.active {
+      display: block;
+    }
+
+    .win-window {
+      border: 2px solid #111;
+      background: #d4d0c8;
+      box-shadow:
+        inset 1px 1px 0 #fff,
+        inset -1px -1px 0 #7b7b7b,
+        0 8px 24px rgba(0,0,0,0.18);
+      overflow: hidden;
+    }
+
+    .title-bar {
+      height: 34px;
+      background: #0b4ea2;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 8px 0 10px;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .title-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .title-icon {
+      width: 14px;
+      height: 14px;
+      background: #fff;
+      border: 1px solid #08376f;
+    }
+
+    .title-buttons {
+      display: flex;
+      gap: 4px;
+    }
+
+    .win-btn {
+      width: 18px;
+      height: 18px;
+      border: 2px solid #111;
+      background: #d4d0c8;
+      box-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 #7b7b7b;
+    }
+
+    .window-body {
+      padding: 14px;
+      background: #d4d0c8;
+    }
+
+    .hero-box {
+      background: #ece9e1;
+      border: 2px solid #111;
+      box-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 #8d8d8d;
+      padding: 18px 14px 16px;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      min-height: 30px;
+      padding: 6px 12px;
+      border: 2px solid #111;
+      background: #fff4b6;
+      font-size: 12px;
+      font-weight: 800;
+      box-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 #8d8d8d;
+    }
+
+    .hero-title {
+      margin: 12px 0 0;
+      font-size: 28px;
+      line-height: 1.15;
+      font-weight: 900;
+      letter-spacing: -0.06em;
+      word-break: keep-all;
+    }
+
+    .hero-desc {
+      margin: 12px 0 0;
+      font-size: 13px;
+      line-height: 1.7;
+      color: #444;
+      word-break: keep-all;
+    }
+
+    .hero-points {
+      margin-top: 14px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .hero-point {
+      min-height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 6px 8px;
+      font-size: 11px;
+      font-weight: 800;
+      border: 2px solid #111;
+      background: #f8f8f8;
+      box-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 #979797;
+      word-break: keep-all;
+    }
+
+    .section-title {
+      margin: 0;
+      font-size: 24px;
+      line-height: 1.15;
+      font-weight: 900;
+      letter-spacing: -0.05em;
+    }
+
+    .section-desc {
+      margin: 10px 0 0;
+      font-size: 12px;
+      line-height: 1.7;
+      color: #444;
+      word-break: keep-all;
+    }
+
+    .form-card {
+      background: #ece9e1;
+      border: 2px solid #111;
+      box-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 #8d8d8d;
+      padding: 14px;
+    }
+
+    .form-grid {
+      margin-top: 14px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .field label {
+      font-size: 12px;
+      font-weight: 800;
+      color: #222;
+    }
+
+    select {
+      width: 100%;
+      height: 42px;
+      border: 2px solid #111;
+      background: #fff;
+      padding: 0 12px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #111;
+      outline: none;
+      appearance: none;
+      box-shadow: inset 1px 1px 0 #7a7a7a, inset -1px -1px 0 #fff;
+      background-image:
+        linear-gradient(45deg, transparent 50%, #444 50%),
+        linear-gradient(135deg, #444 50%, transparent 50%);
+      background-position:
+        calc(100% - 18px) calc(50% - 3px),
+        calc(100% - 12px) calc(50% - 3px);
+      background-size: 6px 6px, 6px 6px;
+      background-repeat: no-repeat;
+    }
+
+    .tip-box {
+      margin-top: 12px;
+      padding: 10px 12px;
+      border: 2px solid #111;
+      background: #fff;
+      font-size: 11px;
+      line-height: 1.7;
+      color: #444;
+      box-shadow: inset 1px 1px 0 #7a7a7a, inset -1px -1px 0 #fff;
+      word-break: keep-all;
+    }
+
+    .btn-row {
+      margin-top: 14px;
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-row-vertical {
+      margin-top: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .btn {
+      width: 100%;
+      min-height: 42px;
+      border: 2px solid #111;
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      cursor: pointer;
+      background: #d4d0c8;
+      box-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 #7b7b7b;
+    }
+
+    .btn:active {
+      box-shadow: inset -1px -1px 0 #fff, inset 1px 1px 0 #7b7b7b;
+    }
+
+    .btn-pink {
+      background: #ffd8e8;
+    }
+
+    .btn-green {
+      background: #dcf3b8;
+    }
+
+    .btn-yellow {
+      background: #fff0a8;
+    }
+
+    .btn-blue {
+      background: #dcecff;
+    }
+
+    .profile-card {
+      width: 100%;
+      border: 2px solid #111;
+      background: #f4f4f4;
+      box-shadow:
+        inset 1px 1px 0 #fff,
+        inset -1px -1px 0 #8f8f8f,
+        0 8px 20px rgba(0,0,0,0.15);
+      overflow: hidden;
+    }
+
+    .profile-row {
+      border-bottom: 1px solid #111;
+    }
+
+    .profile-row:last-child {
+      border-bottom: 0;
+    }
+
+    .row-head {
+      min-height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 8px 10px;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      background: #e2e2e2;
+      word-break: keep-all;
+    }
+
+    .saju-grid {
+      display: grid;
+      grid-template-columns: 104px 1fr;
+    }
+
+    .day-main {
+      border-right: 1px solid #111;
+      min-height: 118px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 6px;
+      text-align: center;
+      background: #ffffff;
+      gap: 8px;
+    }
+
+    .day-main-big {
+      font-size: 27px;
+      line-height: 1;
+      font-weight: 900;
+      letter-spacing: -0.08em;
+      color: #111;
+    }
+
+    .pillar-wrap {
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+    }
+
+    .pillar-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .pillar-row:first-child {
+      border-bottom: 1px solid #111;
+    }
+
+    .pillar-cell {
+      min-height: 59px;
+      border-right: 1px solid #111;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      padding: 7px 3px;
+      text-align: center;
+    }
+
+    .pillar-cell:last-child {
+      border-right: 0;
+    }
+
+    .pillar-top {
+      min-height: 12px;
+      font-size: 10px;
+      line-height: 1;
+      color: #555;
+      font-weight: 700;
+    }
+
+    .pillar-main {
+      font-size: 18px;
+      line-height: 1;
+      font-weight: 900;
+      letter-spacing: -0.05em;
+      color: #111;
+    }
+
+    .bg-wood {
+      background: #dcf4c6;
+    }
+
+    .bg-fire {
+      background: #ffdce6;
+    }
+
+    .bg-earth {
+      background: #fff0b5;
+    }
+
+    .bg-metal {
+      background: #ededed;
+    }
+
+    .bg-water {
+      background: #dcecff;
+    }
+
+    .profile-three {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .profile-box {
+      min-height: 98px;
+      padding: 10px 6px;
+      border-right: 1px solid #111;
+      text-align: center;
+      background: #fafafa;
+    }
+
+    .profile-box:last-child {
+      border-right: 0;
+    }
+
+    .profile-box-title {
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      letter-spacing: -0.04em;
+    }
+
+    .profile-box-main {
+      font-size: 22px;
+      line-height: 1.1;
+      font-weight: 900;
+      letter-spacing: -0.06em;
+      margin-bottom: 7px;
+      word-break: keep-all;
+    }
+
+    .profile-box-sub {
+      font-size: 10px;
+      line-height: 1.55;
+      color: #444;
+      word-break: keep-all;
+    }
+
+    .personality-area {
+      padding: 14px 14px 16px;
+      min-height: 170px;
+      background: #fff;
+    }
+
+    .personality-line {
+      display: block;
+      font-size: 14px;
+      line-height: 1.72;
+      word-break: keep-all;
+      color: #222;
+    }
+
+    .job-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .job-box {
+      min-height: 116px;
+      padding: 12px 8px 14px;
+      border-right: 1px solid #111;
+      text-align: center;
+      background: #fff;
+    }
+
+    .job-box:last-child {
+      border-right: 0;
+    }
+
+    .job-label {
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      letter-spacing: -0.04em;
+    }
+
+    .job-main {
+      font-size: 21px;
+      line-height: 1.28;
+      font-weight: 900;
+      letter-spacing: -0.05em;
+      margin-bottom: 8px;
+      word-break: keep-all;
+    }
+
+    .job-sub {
+      font-size: 11px;
+      line-height: 1.6;
+      color: #444;
+      word-break: keep-all;
+    }
+
+    .mini-summary {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+    }
+
+    .mini-box {
+      min-height: 50px;
+      padding: 7px 4px;
+      border-right: 1px solid #111;
+      text-align: center;
+    }
+
+    .mini-box:last-child {
+      border-right: 0;
+    }
+
+    .mini-top {
+      font-size: 9px;
+      color: #555;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .mini-main {
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    @media (max-width: 420px) {
+      .hero-title {
+        font-size: 25px;
+      }
+
+      .saju-grid {
+        grid-template-columns: 92px 1fr;
+      }
+
+      .day-main-big {
+        font-size: 24px;
+      }
+
+      .pillar-main {
+        font-size: 16px;
+      }
+
+      .profile-box-main {
+        font-size: 19px;
+      }
+
+      .job-main {
+        font-size: 18px;
+      }
+
+      .personality-line {
+        font-size: 15px;
+        line-height: 1.7;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="page-header">
+    <div class="wrapper header-inner">
+      <a href="/" class="logo">테스트잇</a>
+      <nav class="main-nav">
+        <a href="/">성격</a>
+        <a href="/">얼굴</a>
+        <a href="/">그외</a>
+        <a href="/">사주</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="app">
+    <section id="mainScreen" class="screen active">
+      <div class="win-window">
+        <div class="title-bar">
+          <div class="title-left">
+            <span class="title-icon"></span>
+            <span>테스트잇 사주 만세력 프로필 테스트.exe</span>
+          </div>
+          <div class="title-buttons">
+            <span class="win-btn"></span>
+            <span class="win-btn"></span>
+            <span class="win-btn"></span>
+          </div>
+        </div>
+        <div class="window-body">
+          <div class="hero-box">
+            <div class="hero-badge">윈도우 감성 사주 프로필</div>
+            <h1 class="hero-title">테스트잇 사주 만세력 프로필 테스트</h1>
+            <p class="hero-desc">
+              생년월일과 시지를 선택하면 복잡한 만세력 대신
+              귀여운 이력서 느낌의 프로필 카드로 사주를 정리해줘요.
+            </p>
+            <div class="hero-points">
+              <div class="hero-point">시지 선택형 입력</div>
+              <div class="hero-point">모바일 화면 최적화</div>
+              <div class="hero-point">60일주 성격 반영</div>
+              <div class="hero-point">쉬운 직업명 사용</div>
+            </div>
+            <div class="btn-row">
+              <button id="startBtn" class="btn btn-pink">테스트 시작하기</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="inputScreen" class="screen">
+      <div class="win-window">
+        <div class="title-bar">
+          <div class="title-left">
+            <span class="title-icon"></span>
+            <span>생년월일시 입력</span>
+          </div>
+          <div class="title-buttons">
+            <span class="win-btn"></span>
+            <span class="win-btn"></span>
+            <span class="win-btn"></span>
+          </div>
+        </div>
+        <div class="window-body">
+          <div class="form-card">
+            <h2 class="section-title">생년월일시 입력</h2>
+            <p class="section-desc">
+              시간은 자시, 축시처럼 시지 기준으로 선택하게 해뒀어.
+            </p>
+
+            <div class="form-grid">
+              <div class="field">
+                <label for="calendarType">달력 기준</label>
+                <select id="calendarType">
+                  <option value="solar">양력</option>
+                  <option value="lunar">음력</option>
+                </select>
+              </div>
+
+              <div id="leapWrap" class="field hidden">
+                <label for="leapType">윤달 여부</label>
+                <select id="leapType">
+                  <option value="false">아니오</option>
+                  <option value="true">윤달</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="yearSelect">출생 연도</label>
+                <select id="yearSelect"></select>
+              </div>
+
+              <div class="field">
+                <label for="monthSelect">출생 월</label>
+                <select id="monthSelect"></select>
+              </div>
+
+              <div class="field">
+                <label for="daySelect">출생 일</label>
+                <select id="daySelect"></select>
+              </div>
+
+              <div class="field">
+                <label for="timeBranchSelect">출생 시</label>
+                <select id="timeBranchSelect"></select>
+              </div>
+            </div>
+
+           
+
+            <div class="btn-row">
+              <button id="backMainBtn" class="btn">이전으로</button>
+              <button id="submitBtn" class="btn btn-pink">다음으로</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="resultScreen" class="screen">
+      <div class="profile-card" id="captureArea">
+        <div class="profile-row">
+          <div class="row-head">테스트잇 사주 만세력 프로필 테스트</div>
+        </div>
+
+        <div class="profile-row saju-grid">
+          <div class="day-main">
+            <div id="dayPillarMain" class="day-main-big">을사일주</div>
+          </div>
+
+          <div class="pillar-wrap">
+            <div id="stemRow" class="pillar-row"></div>
+            <div id="branchRow" class="pillar-row"></div>
+          </div>
+        </div>
+
+        <div class="profile-row profile-three">
+          <div class="profile-box">
+            <div class="profile-box-title">내 사주는</div>
+            <div id="strengthMain" class="profile-box-main">강한편</div>
+            <div id="strengthSub" class="profile-box-sub"></div>
+          </div>
+          <div class="profile-box">
+            <div class="profile-box-title">매력도</div>
+            <div id="charmMain" class="profile-box-main">은근강함</div>
+            <div id="charmSub" class="profile-box-sub"></div>
+          </div>
+          <div class="profile-box">
+            <div class="profile-box-title">정리</div>
+            <div id="summaryMain" class="profile-box-main">금강 수약</div>
+            <div id="summarySub" class="profile-box-sub"></div>
+          </div>
+        </div>
+
+        <div class="profile-row">
+          <div class="row-head">내 사주 프로필 성격</div>
+        </div>
+
+        <div class="profile-row">
+          <div id="personalityArea" class="personality-area"></div>
+        </div>
+
+        <div class="profile-row">
+          <div class="row-head">나에게 어울리는 직업</div>
+        </div>
+
+        <div class="profile-row job-grid">
+          <div class="job-box">
+            <div class="job-label">전생 느낌</div>
+            <div id="pastJobMain" class="job-main"></div>
+            <div id="pastJobSub" class="job-sub"></div>
+          </div>
+          <div class="job-box">
+            <div class="job-label">현재</div>
+            <div id="currentJobMain" class="job-main"></div>
+            <div id="currentJobSub" class="job-sub"></div>
+          </div>
+        </div>
+
+        <div class="mini-summary">
+          <div class="mini-box bg-wood">
+            <div class="mini-top">목</div>
+            <div id="woodCount" class="mini-main">0</div>
+          </div>
+          <div class="mini-box bg-fire">
+            <div class="mini-top">화</div>
+            <div id="fireCount" class="mini-main">0</div>
+          </div>
+          <div class="mini-box bg-earth">
+            <div class="mini-top">토</div>
+            <div id="earthCount" class="mini-main">0</div>
+          </div>
+          <div class="mini-box bg-metal">
+            <div class="mini-top">금</div>
+            <div id="metalCount" class="mini-main">0</div>
+          </div>
+          <div class="mini-box bg-water">
+            <div class="mini-top">수</div>
+            <div id="waterCount" class="mini-main">0</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="btn-row-vertical">
+        <button id="saveBtn" class="btn btn-green">결과 이미지 저장하기</button>
+        <button id="retryBtn" class="btn">다시 해보기</button>
+        <button id="otherTestBtn" class="btn btn-yellow">다른 테스트 해보기</button>
+        <button id="shareBtn" class="btn btn-blue">테스트 공유하기</button>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const screenMain = document.getElementById("mainScreen");
+    const screenInput = document.getElementById("inputScreen");
+    const screenResult = document.getElementById("resultScreen");
+
+    const calendarType = document.getElementById("calendarType");
+    const leapWrap = document.getElementById("leapWrap");
+    const leapType = document.getElementById("leapType");
+    const yearSelect = document.getElementById("yearSelect");
+    const monthSelect = document.getElementById("monthSelect");
+    const daySelect = document.getElementById("daySelect");
+    const timeBranchSelect = document.getElementById("timeBranchSelect");
+
+    const STEM_INFO = {
+      "갑": { element: "목", text: "갑목" },
+      "을": { element: "목", text: "을목" },
+      "병": { element: "화", text: "병화" },
+      "정": { element: "화", text: "정화" },
+      "무": { element: "토", text: "무토" },
+      "기": { element: "토", text: "기토" },
+      "경": { element: "금", text: "경금" },
+      "신": { element: "금", text: "신금" },
+      "임": { element: "수", text: "임수" },
+      "계": { element: "수", text: "계수" }
+    };
+
+    const BRANCH_INFO = {
+      "자": { element: "수", text: "자수", hidden: ["계"] },
+      "축": { element: "토", text: "축토", hidden: ["기", "계", "신"] },
+      "인": { element: "목", text: "인목", hidden: ["갑", "병", "무"] },
+      "묘": { element: "목", text: "묘목", hidden: ["을"] },
+      "진": { element: "토", text: "진토", hidden: ["무", "을", "계"] },
+      "사": { element: "화", text: "사화", hidden: ["병", "무", "경"] },
+      "오": { element: "화", text: "오화", hidden: ["정", "기"] },
+      "미": { element: "토", text: "미토", hidden: ["기", "정", "을"] },
+      "신": { element: "금", text: "신금", hidden: ["경", "임", "무"] },
+      "유": { element: "금", text: "유금", hidden: ["신"] },
+      "술": { element: "토", text: "술토", hidden: ["무", "신", "정"] },
+      "해": { element: "수", text: "해수", hidden: ["임", "갑"] }
+    };
+
+    const ELEMENT_BG_CLASS = {
+      "목": "bg-wood",
+      "화": "bg-fire",
+      "토": "bg-earth",
+      "금": "bg-metal",
+      "수": "bg-water"
+    };
+
+    const MONTH_SEASON = {
+      "인": "목", "묘": "목", "진": "토",
+      "사": "화", "오": "화", "미": "토",
+      "신": "금", "유": "금", "술": "토",
+      "해": "수", "자": "수", "축": "토"
+    };
+
+    const TIME_BRANCH_OPTIONS = [
+      { value: "자", label: "자시 23:30~01:29", hour: 0, minute: 30 },
+      { value: "축", label: "축시 01:30~03:29", hour: 2, minute: 0 },
+      { value: "인", label: "인시 03:30~05:29", hour: 4, minute: 0 },
+      { value: "묘", label: "묘시 05:30~07:29", hour: 6, minute: 0 },
+      { value: "진", label: "진시 07:30~09:29", hour: 8, minute: 0 },
+      { value: "사", label: "사시 09:30~11:29", hour: 10, minute: 0 },
+      { value: "오", label: "오시 11:30~13:29", hour: 12, minute: 0 },
+      { value: "미", label: "미시 13:30~15:29", hour: 14, minute: 0 },
+      { value: "신", label: "신시 15:30~17:29", hour: 16, minute: 0 },
+      { value: "유", label: "유시 17:30~19:29", hour: 18, minute: 0 },
+      { value: "술", label: "술시 19:30~21:29", hour: 20, minute: 0 },
+      { value: "해", label: "해시 21:30~23:29", hour: 22, minute: 0 }
+    ];
+
+    const ILJU_PERSONALITY = {
+      "을사": "말과 감각이 살아 있어 표현에서 매력이 드러나는 성향"
+    };
+
+    const PAST_JOB_BASE = {
+      "을사": "예술가"
+    };
+
+    const CURRENT_JOB_BASE = {
+      "을사": "에디터"
+    };
+
+    function showScreen(target) {
+      [screenMain, screenInput, screenResult].forEach(screen => screen.classList.remove("active"));
+      target.classList.add("active");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function normalizeStem(v) {
+      const map = { "甲":"갑","乙":"을","丙":"병","丁":"정","戊":"무","己":"기","庚":"경","辛":"신","壬":"임","癸":"계" };
+      const s = String(v || "").trim();
+      return map[s] || s.charAt(0);
+    }
+
+    function normalizeBranch(v) {
+      const map = { "子":"자","丑":"축","寅":"인","卯":"묘","辰":"진","巳":"사","午":"오","未":"미","申":"신","酉":"유","戌":"술","亥":"해" };
+      const s = String(v || "").trim();
+      return map[s] || s.charAt(0);
+    }
+
+    function getSolarDays(year, month) {
+      return new Date(year, month, 0).getDate();
+    }
+
+    function getLeapMonthOfYear(year) {
+      try {
+        return LunarYear.fromYear(year).getLeapMonth();
+      } catch (e) {
+        return 0;
+      }
+    }
+
+    function getLunarDays(year, month, isLeap) {
+      try {
+        const target = isLeap ? -month : month;
+        const monthObj = LunarYear.fromYear(year).getMonth(target);
+        return monthObj ? monthObj.getDayCount() : 30;
+      } catch (e) {
+        return 30;
+      }
+    }
+
+    function getElementOfStem(stem) {
+      return STEM_INFO[stem]?.element || "";
+    }
+
+    function getStemText(stem) {
+      return STEM_INFO[stem]?.text || stem;
+    }
+
+    function getBranchText(branch) {
+      return BRANCH_INFO[branch]?.text || branch;
+    }
+
+    function getElementOfBranch(branch) {
+      return BRANCH_INFO[branch]?.element || "";
+    }
+
+    function updateLeapVisibility() {
+      const isLunar = calendarType.value === "lunar";
+      leapWrap.classList.toggle("hidden", !isLunar);
+      if (!isLunar) leapType.value = "false";
+    }
+
+    function updateLeapEnabled() {
+      const y = Number(yearSelect.value);
+      const m = Number(monthSelect.value);
+
+      if (calendarType.value !== "lunar") {
+        leapType.disabled = true;
+        leapType.value = "false";
+        return;
+      }
+
+      const leapMonth = getLeapMonthOfYear(y);
+      if (leapMonth === m) {
+        leapType.disabled = false;
+      } else {
+        leapType.disabled = true;
+        leapType.value = "false";
+      }
+    }
+
+    function updateDayOptions() {
+      const y = Number(yearSelect.value);
+      const m = Number(monthSelect.value);
+      const current = Number(daySelect.value) || 1;
+      const isLunar = calendarType.value === "lunar";
+      const isLeap = leapType.value === "true" && !leapType.disabled;
+
+      let maxDay = 31;
+      if (isLunar) maxDay = getLunarDays(y, m, isLeap);
+      else maxDay = getSolarDays(y, m);
+
+      daySelect.innerHTML = "";
+      for (let d = 1; d <= maxDay; d++) {
+        const o = document.createElement("option");
+        o.value = String(d);
+        o.textContent = `${d}일`;
+        if (d === Math.min(current, maxDay)) o.selected = true;
+        daySelect.appendChild(o);
+      }
+    }
+
+    function initSelects() {
+      for (let y = 1950; y <= 2035; y++) {
+        const o = document.createElement("option");
+        o.value = String(y);
+        o.textContent = `${y}년`;
+        yearSelect.appendChild(o);
+      }
+
+      for (let m = 1; m <= 12; m++) {
+        const o = document.createElement("option");
+        o.value = String(m);
+        o.textContent = `${m}월`;
+        monthSelect.appendChild(o);
+      }
+
+      TIME_BRANCH_OPTIONS.forEach(item => {
+        const o = document.createElement("option");
+        o.value = item.value;
+        o.textContent = item.label;
+        timeBranchSelect.appendChild(o);
+      });
+
+      yearSelect.value = "1990";
+      monthSelect.value = "10";
+      timeBranchSelect.value = "진";
+
+      updateLeapVisibility();
+      updateLeapEnabled();
+      updateDayOptions();
+      daySelect.value = "7";
+    }
+
+    function getTimeSeed(branch) {
+      return TIME_BRANCH_OPTIONS.find(item => item.value === branch) || TIME_BRANCH_OPTIONS[4];
+    }
+
+    function buildPillars(eightChar) {
+      return {
+        year: {
+          stem: normalizeStem(eightChar.getYearGan()),
+          branch: normalizeBranch(eightChar.getYearZhi())
+        },
+        month: {
+          stem: normalizeStem(eightChar.getMonthGan()),
+          branch: normalizeBranch(eightChar.getMonthZhi())
+        },
+        day: {
+          stem: normalizeStem(eightChar.getDayGan()),
+          branch: normalizeBranch(eightChar.getDayZhi())
+        },
+        time: {
+          stem: normalizeStem(eightChar.getTimeGan()),
+          branch: normalizeBranch(eightChar.getTimeZhi())
+        }
+      };
+    }
+
+    function analyzeChart(pillars) {
+      const dayStem = pillars.day.stem;
+      const dayElement = getElementOfStem(dayStem);
+      const monthBranch = pillars.month.branch;
+
+      const elementScores = { "목": 0, "화": 0, "토": 0, "금": 0, "수": 0 };
+
+      const visibleWeights = { year: 1.0, month: 1.45, day: 1.35, time: 1.0 };
+      const hiddenWeights = {
+        year: [0.7, 0.35, 0.18],
+        month: [1.1, 0.55, 0.28],
+        day: [0.85, 0.42, 0.2],
+        time: [0.7, 0.35, 0.18]
+      };
+
+      Object.entries(pillars).forEach(([key, pillar]) => {
+        const stemEl = getElementOfStem(pillar.stem);
+        const branchEl = getElementOfBranch(pillar.branch);
+
+        if (stemEl) elementScores[stemEl] += visibleWeights[key];
+        if (branchEl) elementScores[branchEl] += key === "month" ? 0.9 : 0.55;
+
+        const hidden = BRANCH_INFO[pillar.branch].hidden;
+        hidden.forEach((stem, idx) => {
+          const el = getElementOfStem(stem);
+          const w = hiddenWeights[key][idx] || 0.15;
+          elementScores[el] += w;
+        });
+      });
+
+      const generateMap = { "목":"화", "화":"토", "토":"금", "금":"수", "수":"목" };
+      const controlMap = { "목":"토", "화":"금", "토":"수", "금":"목", "수":"화" };
+
+      const seasonElement = MONTH_SEASON[monthBranch];
+      let seasonBonus = 0;
+
+      if (seasonElement === dayElement) seasonBonus += 2.0;
+      else if (generateMap[seasonElement] === dayElement) seasonBonus += 1.0;
+      else if (controlMap[seasonElement] === dayElement) seasonBonus -= 1.0;
+      else if (controlMap[dayElement] === seasonElement) seasonBonus -= 0.8;
+
+      const support = (elementScores[dayElement] * 0.42) + seasonBonus;
+      const oppositeMap = {
+        "목": ["금", "화"],
+        "화": ["수", "토"],
+        "토": ["목", "금"],
+        "금": ["화", "수"],
+        "수": ["토", "목"]
+      };
+      const drain = oppositeMap[dayElement].reduce((sum, el) => sum + elementScores[el], 0) * 0.38;
+      const gap = support - drain;
+
+      let strengthMain = "중간형";
+      let strengthSub = "한쪽으로 크게 치우치지 않은 편";
+
+      if (gap >= 1.6) {
+        strengthMain = "강한편";
+        strengthSub = "자기 기준과 버티는 힘이 비교적 있는 편";
+      } else if (gap <= -1.1) {
+        strengthMain = "약한편";
+        strengthSub = "환경과 관계 영향을 크게 받는 편";
+      }
+
+      const dominantElement = Object.entries(elementScores).sort((a,b) => b[1] - a[1])[0][0];
+      const weakElement = Object.entries(elementScores).sort((a,b) => a[1] - b[1])[0][0];
+
+      const charmBase = (elementScores["화"] * 0.9) + (elementScores["목"] * 0.45) + (elementScores["수"] * 0.35);
+
+      let charmMain = "담백한편";
+      let charmSub = "편안함과 안정감으로 호감을 주는 편";
+
+      if (charmBase >= 4.8) {
+        charmMain = "강한편";
+        charmSub = "눈에 띄는 포인트와 반응 유도가 있는 편";
+      } else if (charmBase >= 3.3) {
+        charmMain = "은근강함";
+        charmSub = "알수록 매력이 쌓이는 편";
+      }
+
+      return {
+        elementScores,
+        strengthMain,
+        strengthSub,
+        charmMain,
+        charmSub,
+        dominantElement,
+        weakElement
+      };
+    }
+
+    function getDayPillarKey(pillars) {
+      return `${pillars.day.stem}${pillars.day.branch}`;
+    }
+
+    function buildPersonalityLines(pillars, analysis) {
+      const dayKey = getDayPillarKey(pillars);
+      const baseDayText = ILJU_PERSONALITY[dayKey] || "기본적으로 자기 흐름과 결이 분명한 성향";
+
+      return [
+        baseDayText,
+        analysis.strengthMain === "강한편"
+          ? "쉽게 휘둘리기보다 자기 기준대로 가려는 편"
+          : analysis.strengthMain === "약한편"
+            ? "사람과 환경 영향을 많이 받는 편"
+            : "강약이 한쪽으로 과하게 쏠리지는 않은 편",
+        `${analysis.dominantElement}기운이 강해서 그쪽 방식이 더 눈에 띄는 편`,
+        `${analysis.weakElement}기운은 의식적으로 보완하면 더 안정되는 편`,
+        "겉으로 보이는 인상과 실제 속마음이 완전히 같지는 않은 편",
+        "좋아하는 사람과 아닌 사람의 온도 차이가 분명한 편",
+        "결국 자기한테 맞는 리듬을 찾을 때 가장 편안해지는 타입"
+      ];
+    }
+
+    function getPastLifeJob(pillars, analysis) {
+      const dayKey = getDayPillarKey(pillars);
+      const base = PAST_JOB_BASE[dayKey] || "기획자";
+
+      return {
+        main: base,
+        sub: `${dayKey} 일주 기준 전생 느낌 직업`
+      };
+    }
+
+    function getCurrentJob(pillars, analysis) {
+      const dayKey = getDayPillarKey(pillars);
+      const base = CURRENT_JOB_BASE[dayKey] || "기획자";
+
+      return {
+        main: base,
+        sub: `${dayKey} 일주 기준 현재 잘 맞는 직업`
+      };
+    }
+
+    function renderPillars(pillars) {
+      const stemRow = document.getElementById("stemRow");
+      const branchRow = document.getElementById("branchRow");
+      stemRow.innerHTML = "";
+      branchRow.innerHTML = "";
+
+      const order = [
+        { key: "time", label: "시" },
+        { key: "day", label: "일" },
+        { key: "month", label: "월" },
+        { key: "year", label: "년" }
+      ];
+
+      order.forEach(item => {
+        const pillar = pillars[item.key];
+        const stemEl = getElementOfStem(pillar.stem);
+        const branchEl = getElementOfBranch(pillar.branch);
+
+        const stemCell = document.createElement("div");
+        stemCell.className = `pillar-cell ${ELEMENT_BG_CLASS[stemEl]}`;
+        stemCell.innerHTML = `
+          <div class="pillar-top">${item.label}</div>
+          <div class="pillar-main">${getStemText(pillar.stem)}</div>
+        `;
+        stemRow.appendChild(stemCell);
+
+        const branchCell = document.createElement("div");
+        branchCell.className = `pillar-cell ${ELEMENT_BG_CLASS[branchEl]}`;
+        branchCell.innerHTML = `
+          <div class="pillar-top">${item.label}</div>
+          <div class="pillar-main">${getBranchText(pillar.branch)}</div>
+        `;
+        branchRow.appendChild(branchCell);
+      });
+
+      document.getElementById("dayPillarMain").textContent = `${pillars.day.stem}${pillars.day.branch}일주`;
+    }
+
+    function renderCounts(elementScores) {
+      document.getElementById("woodCount").textContent = elementScores["목"].toFixed(1);
+      document.getElementById("fireCount").textContent = elementScores["화"].toFixed(1);
+      document.getElementById("earthCount").textContent = elementScores["토"].toFixed(1);
+      document.getElementById("metalCount").textContent = elementScores["금"].toFixed(1);
+      document.getElementById("waterCount").textContent = elementScores["수"].toFixed(1);
+    }
+
+    function buildResult() {
+      const y = Number(yearSelect.value);
+      const m = Number(monthSelect.value);
+      const d = Number(daySelect.value);
+      const branch = timeBranchSelect.value;
+      const timeSeed = getTimeSeed(branch);
+
+      const isSolar = calendarType.value === "solar";
+      const isLeap = leapType.value === "true" && !leapType.disabled;
+
+      let solar;
+      let lunar;
+
+      if (isSolar) {
+        solar = Solar.fromYmdHms(y, m, d, timeSeed.hour, timeSeed.minute, 0);
+        lunar = solar.getLunar();
+      } else {
+        lunar = Lunar.fromYmdHms(y, isLeap ? -m : m, d, timeSeed.hour, timeSeed.minute, 0);
+        solar = lunar.getSolar();
+      }
+
+      const eightChar = lunar.getEightChar();
+      if (eightChar.setSect) eightChar.setSect(2);
+
+      const pillars = buildPillars(eightChar);
+      const analysis = analyzeChart(pillars);
+      const personalityLines = buildPersonalityLines(pillars, analysis);
+      const pastJob = getPastLifeJob(pillars, analysis);
+      const currentJob = getCurrentJob(pillars, analysis);
+
+      renderPillars(pillars);
+
+      document.getElementById("strengthMain").textContent = analysis.strengthMain;
+      document.getElementById("strengthSub").textContent = analysis.strengthSub;
+
+      document.getElementById("charmMain").textContent = analysis.charmMain;
+      document.getElementById("charmSub").textContent = analysis.charmSub;
+
+      document.getElementById("summaryMain").textContent = `${analysis.dominantElement}강 ${analysis.weakElement}약`;
+      document.getElementById("summarySub").textContent = `${analysis.dominantElement}기운이 강하고 ${analysis.weakElement}기운이 상대적으로 약한 편`;
+
+      document.getElementById("personalityArea").innerHTML = personalityLines
+        .map(line => `<span class="personality-line">${line}</span>`)
+        .join("");
+
+      document.getElementById("pastJobMain").textContent = pastJob.main;
+      document.getElementById("pastJobSub").textContent = pastJob.sub;
+
+      document.getElementById("currentJobMain").textContent = currentJob.main;
+      document.getElementById("currentJobSub").textContent = currentJob.sub;
+
+      renderCounts(analysis.elementScores);
+    }
+
+    function saveCapture() {
+      const area = document.getElementById("captureArea");
+      html2canvas(area, {
+        backgroundColor: "#f4f4f4",
+        scale: 2,
+        useCORS: true
+      }).then(canvas => {
+        const link = document.createElement("a");
+        link.download = "saju_profile.png";
+        link.href = canvas.toDataURL("image/png");
+        link.click();
+      });
+    }
+
+    async function shareTest() {
+      const shareData = {
+        title: "테스트잇 사주 만세력 프로필 테스트",
+        text: "테스트잇 사주 만세력 프로필 테스트 해보기",
+        url: window.location.href
+      };
+
+      if (navigator.share) {
+        try {
+          await navigator.share(shareData);
+          return;
+        } catch (e) {}
+      }
+
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        alert("테스트 링크가 복사됐어요.");
+      } catch (e) {
+        alert("공유할 링크 복사에 실패했어요.");
+      }
+    }
+
+    document.getElementById("startBtn").addEventListener("click", () => showScreen(screenInput));
+    document.getElementById("backMainBtn").addEventListener("click", () => showScreen(screenMain));
+    document.getElementById("retryBtn").addEventListener("click", () => showScreen(screenInput));
+    document.getElementById("otherTestBtn").addEventListener("click", () => {
+      window.location.href = "/";
+    });
+    document.getElementById("saveBtn").addEventListener("click", saveCapture);
+    document.getElementById("shareBtn").addEventListener("click", shareTest);
+
+    document.getElementById("submitBtn").addEventListener("click", () => {
+      try {
+        buildResult();
+        showScreen(screenResult);
+      } catch (e) {
+        console.error(e);
+        alert("사주 계산 중 오류가 났어요. 날짜와 윤달 여부를 다시 확인해주세요.");
+      }
+    });
+
+    calendarType.addEventListener("change", () => {
+      updateLeapVisibility();
+      updateLeapEnabled();
+      updateDayOptions();
+    });
+
+    yearSelect.addEventListener("change", () => {
+      updateLeapEnabled();
+      updateDayOptions();
+    });
+
+    monthSelect.addEventListener("change", () => {
+      updateLeapEnabled();
+      updateDayOptions();
+    });
+
+    leapType.addEventListener("change", () => {
+      updateDayOptions();
+    });
+
+    initSelects();
+  </script>
+</body>
+</html>

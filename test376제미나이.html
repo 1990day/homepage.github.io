@@ -9,6 +9,13 @@
 <style>
   @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
   
+  @font-face {
+    font-family: 'Umdot';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2601-4@1.1/Umdot12.woff2') format('woff2');
+    font-weight: normal;
+    font-display: swap;
+}
+
   :root {
     --bg-blue: #9ac2e5; 
     --folder-yellow: #fff5c0; 
@@ -23,19 +30,126 @@
     --earth-bg: #ffebb3; --earth-txt: #d97706;
     --metal-bg: #f1f3f5; --metal-txt: #495057;
     --water-bg: #d0ebff; --water-txt: #0b7285;
+
+    --win-bg: #dfdfdf;
+    --win-border-light: #ffffff;
+    --win-border-dark: #808080;
   }
 
   body {
-    font-family: 'Pretendard', sans-serif;
+    font-family: 'Umdot', sans-serif;
     background-color: var(--bg-blue);
     background-image: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
                       linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px);
     background-size: 15px 15px;
     margin: 0;
-    padding: 30px 15px;
+    padding: 0;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     color: var(--text-main);
+    min-height: 100vh;
+  }
+
+  .header-wrapper {
+    width: 100%;
+    background-color: var(--bg-blue);
+    border-bottom: 2px solid var(--line-color);
+  }
+
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 6px 4% !important; 
+  }
+
+  .retro-logo {
+    text-decoration: none;
+    color: #000;
+    font-size: 18px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background-color: var(--win-bg); 
+    padding: 5px 10px; 
+    border-top: 2px solid var(--win-border-light);
+    border-left: 2px solid var(--win-border-light);
+    border-right: 2px solid var(--win-border-dark);
+    border-bottom: 2px solid var(--win-border-dark);
+  }
+
+  .retro-logo:active { 
+    border-top: 2px solid var(--win-border-dark);
+    border-left: 2px solid var(--win-border-dark);
+    border-right: 2px solid var(--win-border-light);
+    border-bottom: 2px solid var(--win-border-light);
+    padding: 6px 9px 4px 11px; 
+  }
+
+  .page-header h1 {
+    margin: 0 !important;
+    padding: 0 !important;
+    border-bottom: none !important;
+  }
+
+  .main-nav {
+    display: flex;
+    flex-wrap: nowrap !important;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 12px; 
+  }
+
+  .main-nav li {
+    margin-left: 0;
+  }
+
+  .main-nav a {
+    display: block;
+    text-decoration: none;
+    color: #000;
+    font-weight: 700;
+    background: var(--win-bg);
+    border-top: 2px solid var(--win-border-light);
+    border-left: 2px solid var(--win-border-light);
+    border-right: 2px solid var(--win-border-dark);
+    border-bottom: 2px solid var(--win-border-dark);
+    padding: 4px 10px;
+    font-size: 14px; 
+    white-space: nowrap;
+    box-sizing: border-box;
+  }
+
+  .main-nav a:active {
+    border-top: 2px solid var(--win-border-dark);
+    border-left: 2px solid var(--win-border-dark);
+    border-right: 2px solid var(--win-border-light);
+    border-bottom: 2px solid var(--win-border-light);
+    padding: 5px 9px 3px 11px; 
+  }
+
+  @media (max-width: 480px) {
+    .page-header {
+      padding: 6px 12px !important;
+    }
+    .retro-logo {
+      font-size: 16px; 
+      padding: 3px 8px; 
+    }
+    .main-nav {
+      gap: 6px; 
+    }
+    .main-nav a {
+      padding: 4px 6px; 
+      font-size: 13px; 
+      letter-spacing: -0.5px; 
+    }
   }
 
   #app {
@@ -44,6 +158,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 30px 15px;
+    box-sizing: border-box;
   }
 
   .screen {
@@ -62,14 +178,13 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
-  /* 캡처 영역 (배경 포함하여 깔끔하게 캡처되도록 설정) */
   #capture-area {
     width: 100%;
     background-color: var(--bg-blue);
     background-image: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
                       linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px);
     background-size: 15px 15px;
-    padding: 30px 15px 15px 15px; /* 상단 탭과 클립을 위한 여백 */
+    padding: 30px 15px 15px 15px;
     box-sizing: border-box;
     margin-bottom: 20px;
   }
@@ -144,6 +259,7 @@
     background-color: var(--white);
     color: var(--line-color);
     border: 2px solid var(--line-color);
+    border-radius: 0;
     box-shadow: 3px 3px 0px var(--line-color);
     font-family: 'Pretendard', sans-serif;
     font-size: 15px;
@@ -163,7 +279,6 @@
     box-shadow: 3px 3px 0px var(--text-sub);
   }
 
-  /* 세로 정렬 버튼 그룹 */
   .btn-col-group {
     display: flex;
     flex-direction: column;
@@ -179,6 +294,13 @@
     border: 2px solid var(--line-color);
     padding: 10px 15px;
     display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+  
+  .form-group-full.row-style {
+    flex-direction: row;
     align-items: center;
     justify-content: space-between;
   }
@@ -188,10 +310,13 @@
     font-weight: 700;
     color: var(--line-color);
     white-space: nowrap;
-    margin-right: 15px;
   }
   
-  .form-group-full select {
+  .form-group-full.row-style label {
+    margin-right: 15px;
+  }
+
+  .form-group-full.row-style input {
     width: 60%;
   }
 
@@ -209,6 +334,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    min-width: 0;
   }
 
   .input-item label {
@@ -218,7 +344,7 @@
     margin-bottom: 5px;
   }
 
-  select {
+  select, input[type="text"] {
     width: 100%;
     padding: 8px;
     font-family: 'Pretendard', sans-serif;
@@ -228,10 +354,14 @@
     border: 1.5px solid var(--line-color);
     border-radius: 0;
     color: var(--line-color);
+    box-sizing: border-box;
+  }
+
+  select {
     cursor: pointer;
   }
 
-  select:focus {
+  select:focus, input[type="text"]:focus {
     outline: none;
     background-color: #fff;
   }
@@ -252,10 +382,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 26px;
+    font-size: 20px;
     font-weight: 800;
     border-right: 2px solid var(--line-color);
     background-color: #eff6ff;
+    padding: 0 10px;
+    text-align: center;
+    word-break: break-all;
   }
 
   .palja-grid-box {
@@ -349,8 +482,8 @@
 
   .trait-list {
     padding: 20px 20px;
-    font-size: 14px;
-    line-height: 1.7;
+    font-size: 13px;
+    line-height: 1.6;
     font-weight: 600;
     border-bottom: 2px solid var(--line-color);
   }
@@ -359,6 +492,7 @@
     position: relative;
     padding-left: 15px;
     margin-bottom: 8px;
+    word-break: keep-all; 
   }
 
   .trait-list div::before {
@@ -372,6 +506,7 @@
   .job-grid {
     display: flex;
     padding: 15px 0;
+    border-bottom: 2px solid var(--line-color);
   }
 
   .job-col {
@@ -394,10 +529,41 @@
   }
 
   .job-desc {
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 800;
     line-height: 1.5;
     color: var(--text-main);
+    word-break: keep-all; 
+  }
+
+  .element-score-grid {
+    display: flex;
+  }
+
+  .es-cell {
+    flex: 1;
+    text-align: center;
+    padding: 12px 0;
+    border-right: 2px solid var(--line-color);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .es-cell:last-child {
+    border-right: none;
+  }
+
+  .es-label {
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--text-sub);
+  }
+
+  .es-val {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--line-color);
   }
 
   .paperclip {
@@ -414,7 +580,6 @@
     background: transparent;
   }
 
-  /* 팝업 모달 스타일 */
   .modal-overlay {
     display: none;
     position: fixed;
@@ -433,6 +598,7 @@
   .modal-content {
     background-color: var(--folder-yellow);
     border: 2px solid var(--line-color);
+    border-radius: 0;
     padding: 20px;
     max-width: 400px;
     width: 100%;
@@ -466,15 +632,35 @@
     display: block;
   }
 
+  .ad-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+  }
 </style>
 </head>
 <body>
+
+<div class="header-wrapper">
+  <header class="page-header wrapper">
+    <h1><a href="https://test-it.co.kr/" class="retro-logo">테스트잇</a></h1> 
+    <nav>
+      <ul class="main-nav">
+        <li><a href="https://test-it.co.kr/test.html">성격</a></li>
+        <li><a href="https://test-it.co.kr/face.html">얼굴</a></li>
+        <li><a href="https://test-it.co.kr/etc.html">그외</a></li>
+        <li><a href="https://test-it.co.kr/saju.html">사주</a></li>
+      </ul>
+    </nav>
+  </header>
+</div>
 
 <div id="app">
   <div id="screen-main" class="screen active">
     <div class="folder-wrapper">
       <div class="paperclip"></div>
-      <div class="folder-tab">PROFILE.ZIP</div>
+      <div class="folder-tab">테스트잇 367.zip</div>
       <div class="folder-body">
         <div class="folder-inner">
           <div class="sticker-title">사주 만세력 프로필</div>
@@ -488,41 +674,46 @@
   <div id="screen-input" class="screen">
     <div class="folder-wrapper">
       <div class="paperclip" style="right: auto; left: 30px; transform: rotate(-15deg);"></div>
-      <div class="folder-tab">INPUT DATA</div>
+      <div class="folder-tab">정보 입력</div>
       <div class="folder-body">
         <div class="folder-inner">
           
-          <div class="form-group-full">
-            <label>양력/음력</label>
-            <select id="sel-type"><option value="solar">양력</option><option value="lunar">음력</option></select>
+          <div class="form-group-full row-style">
+            <label>이름/닉네임</label>
+            <input type="text" id="user-name" placeholder="입력해주세요">
           </div>
-          
+
           <div class="form-inline-group">
+            <div class="input-item">
+              <label>양력/음력</label>
+              <select id="sel-type"><option value="solar">양력</option><option value="lunar">음력</option></select>
+            </div>
             <div class="input-item">
               <label>생년</label>
               <select id="sel-year"></select>
             </div>
-            <div class="input-item">
-              <label>생월</label>
-              <select id="sel-month"></select>
-            </div>
           </div>
           
           <div class="form-inline-group">
             <div class="input-item">
+              <label>생월</label>
+              <select id="sel-month"></select>
+            </div>
+            <div class="input-item">
               <label>생일</label>
               <select id="sel-day"></select>
             </div>
-            <div class="input-item">
-              <label>생시</label>
-              <select id="sel-time">
-                <option value="-1">모름</option><option value="0">자시(23:30~01:29)</option><option value="2">축시(01:30~03:29)</option>
-                <option value="4">인시(03:30~05:29)</option><option value="6">묘시(05:30~07:29)</option><option value="8">진시(07:30~09:29)</option>
-                <option value="10">사시(09:30~11:29)</option><option value="12">오시(11:30~13:29)</option><option value="14">미시(13:30~15:29)</option>
-                <option value="16">신시(15:30~17:29)</option><option value="18">유시(17:30~19:29)</option><option value="20">술시(19:30~21:29)</option>
-                <option value="22">해시(21:30~23:29)</option>
-              </select>
-            </div>
+          </div>
+          
+          <div class="form-group-full">
+            <label>생시</label>
+            <select id="sel-time">
+              <option value="-1">모름</option><option value="0">자시(23:30~01:29)</option><option value="2">축시(01:30~03:29)</option>
+              <option value="4">인시(03:30~05:29)</option><option value="6">묘시(05:30~07:29)</option><option value="8">진시(07:30~09:29)</option>
+              <option value="10">사시(09:30~11:29)</option><option value="12">오시(11:30~13:29)</option><option value="14">미시(13:30~15:29)</option>
+              <option value="16">신시(15:30~17:29)</option><option value="18">유시(17:30~19:29)</option><option value="20">술시(19:30~21:29)</option>
+              <option value="22">해시(21:30~23:29)</option>
+            </select>
           </div>
           
           <button class="btn" onclick="calculateAndShowResult()">결과 확인하기</button>
@@ -545,32 +736,47 @@
               <div class="palja-grid-box" id="res-palja-grid"></div>
             </div>
 
-            <div class="section-heading">내 사주 프로필 요약</div>
+            <div class="section-heading">내 사주 프로필</div>
             <div class="summary-grid">
               <div class="summary-col">
                 <div class="col-title">내 사주는</div>
-                <div class="col-content">
-                  <span id="res-strength-strong">강한편</span>
-                  <span id="res-strength-weak">약한편</span>
-                </div>
+                <div class="col-content" id="res-strength-content">
+                  </div>
               </div>
               <div class="summary-col">
                 <div class="col-title">매력도</div>
-                <div class="col-content">
-                  <span id="res-charm-strong">강한편</span>
-                  <span id="res-charm-weak">약한편</span>
-                </div>
+                <div class="col-content" id="res-charm-content">
+                  </div>
               </div>
               <div class="summary-col">
-                <div class="col-title">오행 정리</div>
-                <div style="font-size: 13px; font-weight: 800; line-height: 1.4;" id="res-summary"></div>
+                <div class="col-title">재물운</div>
+                <div class="col-content" id="res-wealth-content">
+                  </div>
+              </div>
+            </div>
+            
+            <div class="summary-grid" style="border-top: none;">
+              <div class="summary-col">
+                <div class="col-title">연애스타일</div>
+                <div class="col-content" id="res-love-content">
+                  </div>
+              </div>
+              <div class="summary-col">
+                <div class="col-title">인기</div>
+                <div class="col-content" id="res-pop-content">
+                  </div>
+              </div>
+              <div class="summary-col">
+                <div class="col-title">사회생활</div>
+                <div class="col-content" id="res-social-content" style="gap: 4px; font-size: 13px; letter-spacing: -0.5px;">
+                  </div>
               </div>
             </div>
 
-            <div class="section-heading">내 사주 입체 성격</div>
+            <div class="section-heading">내 사주 성격 특징</div>
             <div class="trait-list" id="res-personality"></div>
 
-            <div class="section-heading">추천 직업 매칭</div>
+            <div class="section-heading">사주로 보는 내 직업</div>
             <div class="job-grid">
               <div class="job-col">
                 <div class="job-title">[ 전생의 역할 ]</div>
@@ -581,6 +787,30 @@
                 <div class="job-desc" id="res-job-present"></div>
               </div>
             </div>
+
+            <div class="element-score-grid">
+              <div class="es-cell wood">
+                <div class="es-label">목</div>
+                <div class="es-val" id="score-wood">0.0</div>
+              </div>
+              <div class="es-cell fire">
+                <div class="es-label">화</div>
+                <div class="es-val" id="score-fire">0.0</div>
+              </div>
+              <div class="es-cell earth">
+                <div class="es-label">토</div>
+                <div class="es-val" id="score-earth">0.0</div>
+              </div>
+              <div class="es-cell metal">
+                <div class="es-label">금</div>
+                <div class="es-val" id="score-metal">0.0</div>
+              </div>
+              <div class="es-cell water">
+                <div class="es-label">수</div>
+                <div class="es-val" id="score-water">0.0</div>
+              </div>
+            </div>
+
           </div>
 
         </div>
@@ -593,6 +823,15 @@
       <button class="btn" onclick="shareTest()">테스트 공유하기</button>
     </div>
   </div>
+
+  <div class="ad-container" id="ad-container">
+      <article class="coupang_ad mt-3">
+          <script src="https://ads-partners.coupang.com/g.js"></script>
+          <script>
+              new PartnersCoupang.G({"id":798186,"template":"carousel","trackingCode":"AF4391881","width":"350","height":"140","tsource":""});
+          </script>
+      </article>
+  </div>
 </div>
 
 <div id="image-modal" class="modal-overlay">
@@ -604,6 +843,23 @@
 </div>
 
 <script>
+  const stemElements = {'갑':'목', '을':'목', '병':'화', '정':'화', '무':'토', '기':'토', '경':'금', '신':'금', '임':'수', '계':'수'};
+  
+  const jijangganWeights = {
+    '자': { '임': 10/30, '계': 20/30 },
+    '축': { '계': 9/30, '신': 3/30, '기': 18/30 },
+    '인': { '무': 7/30, '병': 7/30, '갑': 16/30 },
+    '묘': { '갑': 10/30, '을': 20/30 },
+    '진': { '을': 9/30, '계': 3/30, '무': 18/30 },
+    '사': { '무': 7/30, '경': 7/30, '병': 16/30 },
+    '오': { '병': 10/30, '기': 9/30, '정': 11/30 },
+    '미': { '정': 9/30, '을': 3/30, '기': 18/30 },
+    '신': { '무': 7/30, '임': 7/30, '경': 16/30 },
+    '유': { '경': 10/30, '신': 20/30 },
+    '술': { '신': 9/30, '정': 3/30, '무': 18/30 },
+    '해': { '무': 7/30, '갑': 7/30, '임': 16/30 }
+  };
+
   const ohaengInfo = {
     '甲':{name:'갑목', type:'목', yy:'+'}, '乙':{name:'을목', type:'목', yy:'-'},
     '丙':{name:'병화', type:'화', yy:'+'}, '丁':{name:'정화', type:'화', yy:'-'},
@@ -652,85 +908,132 @@
     '편재': { past: "큰 돈을 굴리며 판을 짜던", present: "사업 수완이 좋고 스케일이 큰" },
     '정재': { past: "알뜰살뜰 재산을 모은", present: "계산이 빠르고 현실 감각이 좋은" },
     '편관': { past: "어려운 환경을 이겨낸", present: "카리스마 있고 위기에 강한" },
-    '정관': { past: "원칙을 지키며 바르게 살던", present: "책임감이 강하고 리더십 있는" },
+    '정관': { past: "원칙을 지키며 바르게 살던", present: "책임감이 강하고 체계적인" },
     '편인': { past: "남다른 눈치와 촉을 가졌던", present: "직관력이 뛰어나고 독창적인" },
-    '정인': { past: "책을 가까이하고 지혜롭던", present: "배우기를 좋아하고 신뢰감을 주는" }
+    '정인': { past: "책을 가까이하고 지혜롭던", present: "배우기를 좋아하고 신뢰를 주는" }
   };
 
   const iljuJobs = {
-    "갑자일주": { p: "똑똑한 마을 훈장님", pr: "연구원 / 학자" }, "을축일주": { p: "재산 관리하던 마을 지주", pr: "금융인 / 자산관리사" },
-    "병인일주": { p: "전국을 누비던 보부상", pr: "스타트업 대표" }, "정묘일주": { p: "그림 그리던 궁중 화가", pr: "예술가 / 디자이너" },
-    "무진일주": { p: "듬직하고 호탕한 대장군", pr: "건축가 / 부동산 전문가" }, "기사일주": { p: "외국어 잘하던 통역사", pr: "언론인 / 홍보 전문가" },
-    "경오일주": { p: "법과 원칙 따지던 판사", pr: "법조인 / 공무원" }, "신미일주": { p: "손재주 좋은 세공 장인", pr: "정밀 데이터 분석가" },
-    "임신일주": { p: "외국 물건 팔던 무역 상인", pr: "글로벌 마케터" }, "계유일주": { p: "몰래 조사하던 암행어사", pr: "감사 / 정보 분석가" },
-    "갑술일주": { p: "아픈 사람 돕던 동네 의원", pr: "사회복지사" }, "을해일주": { p: "악기 연주하던 방랑 시인", pr: "자유로운 여행 작가" },
-    "병자일주": { p: "나라 잔치 준비하던 기획자", pr: "공공기관 관리자" }, "정축일주": { p: "도자기 예쁘게 굽던 도공", pr: "요리사 / 전문 장인" },
-    "무인일주": { p: "국경 지키던 호위 무사", pr: "보안 / 경호 전문가" }, "기묘일주": { p: "왕 옆에서 돕던 비서실장", pr: "전문 비서 / 기획자" },
+    "갑자일주": { p: "똑똑한 마을 훈장님", pr: "연구원 / 학자" }, "을축일주": { p: "마을 지주", pr: "금융인 / 자산관리사" },
+    "병인일주": { p: "전국 누비던 보부상", pr: "스타트업 대표" }, "정묘일주": { p: "그림 그리던 궁중 화가", pr: "예술가 / 디자이너" },
+    "무진일주": { p: "호탕한 대장군", pr: "건축가 / 부동산 전문가" }, "기사일주": { p: "유능한 통역사", pr: "언론인 / 홍보 전문가" },
+    "경오일주": { p: "원칙 따지던 판사", pr: "법조인 / 공무원" }, "신미일주": { p: "손재주 좋은 세공 장인", pr: "정밀 데이터 분석가" },
+    "임신일주": { p: "무역 상인", pr: "글로벌 마케터" }, "계유일주": { p: "몰래 조사하던 암행어사", pr: "감사 / 정보 분석가" },
+    "갑술일주": { p: "사람 돕던 동네 의원", pr: "사회복지사" }, "을해일주": { p: "악기 연주하던 방랑 시인", pr: "자유로운 여행 작가" },
+    "병자일주": { p: "나라 잔치 기획자", pr: "공공기관 관리자" }, "정축일주": { p: "도자기 굽던 도공", pr: "요리사 / 전문 장인" },
+    "무인일주": { p: "국경 지키던 호위 무사", pr: "보안 / 경호 전문가" }, "기묘일주": { p: "왕 옆의 비서실장", pr: "전문 비서 / 기획자" },
     "경진일주": { p: "반란군 때려잡던 장군", pr: "경영 컨설턴트" }, "신사일주": { p: "외교 문서 쓰던 엘리트", pr: "외교관 / 통번역사" },
-    "임오일주": { p: "말 타고 소식 전하던 배달꾼", pr: "물류 / 유통 전문가" }, "계미일주": { p: "역사 기록하던 서기", pr: "기록물 관리사" },
-    "갑신일주": { p: "싸움 잘하던 용맹한 장수", pr: "IT 하드웨어 엔지니어" }, "을유일주": { p: "날카로운 칼 만들던 대장장이", pr: "외과 의사" },
-    "병술일주": { p: "도둑 잡던 정의로운 경찰", pr: "수사관 / 기획자" }, "정해일주": { p: "날씨와 별자리 보던 천문학자", pr: "심리 상담가" },
-    "무자일주": { p: "나라 창고 관리하던 금고지기", pr: "은행원" }, "기축일주": { p: "땅과 농사 관리하던 어르신", pr: "회계사 / 세무사" },
-    "경인일주": { p: "큰 상점 운영하던 사장님", pr: "전문 경영인(CEO)" }, "신묘일주": { p: "예쁜 장신구 만들던 공예가", pr: "인테리어 디자이너" },
-    "임진일주": { p: "마을 사람들 통솔하던 군수", pr: "고위 공무원" }, "계사일주": { p: "나라 돈 관리하던 재무부 직원", pr: "펀드매니저 / 애널리스트" },
-    "갑오일주": { p: "말 재미있게 하던 이야기꾼", pr: "방송인 / 인플루언서" }, "을미일주": { p: "쌀 창고 지키던 관리인", pr: "투자 전문가" },
-    "병신일주": { p: "큰 물건 떼다 팔던 도매상", pr: "무역업 종사자" }, "정유일주": { p: "보석 예쁘게 깎던 보석공", pr: "주얼리 디자이너" },
-    "무술일주": { p: "성벽 튼튼하게 지키던 장군", pr: "건축 / 토목 전문가" }, "기해일주": { p: "배 타고 바다 건너던 상인", pr: "외환 딜러" },
-    "경자일주": { p: "냉정하게 법 다루던 검사", pr: "판사 / 검사" }, "신축일주": { p: "왕의 비밀 적어두던 기록관", pr: "정밀 기술 전문가" },
-    "임인일주": { p: "동네에서 제일 큰 서당 훈장님", pr: "교육 프로그램 기획자" }, "계묘일주": { p: "귀한 물건 감정하던 전문가", pr: "박물관 큐레이터" },
-    "갑진일주": { p: "수많은 군사 이끌던 대장", pr: "정치인" }, "을사일주": { p: "발 넓게 소식 전하던 외교관", pr: "아나운서 / 기자" },
-    "병오일주": { p: "의리 넘치던 동네 골목대장", pr: "스포츠 선수" }, "정미일주": { p: "아픈 사람들 정성껏 돌보던 의원", pr: "의료 / 보건 종사자" },
-    "무신일주": { p: "큰 상단 이끌던 리더", pr: "IT 플랫폼 사업가" }, "기유일주": { p: "섬세한 쇠 장식 만들던 장인", pr: "UI/UX 디자이너" },
-    "경술일주": { p: "적군 무찌르던 변방의 장군", pr: "기업 전략 기획자" }, "신해일주": { p: "글 잘 쓰고 풍류 즐기던 선비", pr: "작가 / 카피라이터" },
-    "임자일주": { p: "바다 험하게 항해하던 선장", pr: "해운업 종사자" }, "계축일주": { p: "비밀스럽게 일 처리하던 호위무사", pr: "정보보안 전문가" },
-    "갑인일주": { p: "원칙대로 꼿꼿하게 살던 선비", pr: "감사 / 경영인" }, "을묘일주": { p: "아름다운 비단 짜던 기술자", pr: "패션 디자이너" },
-    "병진일주": { p: "들판 신나게 달리던 기마병", pr: "영업 / 마케팅 전문가" }, "정사일주": { p: "불 잘 다루던 뛰어난 도공", pr: "영상 / 영화 감독" },
-    "무오일주": { p: "전쟁터 앞장서던 용감한 부대장", pr: "체육 / 피트니스 종사자" }, "기미일주": { p: "거친 땅 열심히 일구던 농부", pr: "농업 / 환경 전문가" },
-    "경신일주": { p: "무술 실력 엄청나게 좋던 무사", pr: "직업 군인 / 경찰" }, "신유일주": { p: "제일 날카로운 칼 만들던 장인", pr: "부품 설계 엔지니어" },
-    "임술일주": { p: "밤바다 지키던 듬직한 수군", pr: "고위 행정관" }, "계해일주": { p: "아주 멀리 배 타고 다니던 상인", pr: "심리치료사 / 카운슬러" }
+    "임오일주": { p: "소식 전하던 배달꾼", pr: "물류 / 유통 전문가" }, "계미일주": { p: "역사 기록하던 서기", pr: "기록물 관리사" },
+    "갑신일주": { p: "싸움 잘하던 장수", pr: "IT 하드웨어 엔지니어" }, "을유일주": { p: "칼 만들던 대장장이", pr: "외과 의사" },
+    "병술일주": { p: "도둑 잡던 정의로운 경찰", pr: "수사관 / 기획자" }, "정해일주": { p: "별자리 보던 천문학자", pr: "심리 상담가" },
+    "무자일주": { p: "나라 금고지기", pr: "은행원" }, "기축일주": { p: "땅과 농사 관리인", pr: "회계사 / 세무사" },
+    "경인일주": { p: "큰 상점 사장님", pr: "전문 경영인(CEO)" }, "신묘일주": { p: "장신구 만들던 공예가", pr: "인테리어 디자이너" },
+    "임진일주": { p: "마을 사람들 통솔하던 군수", pr: "고위 공무원" }, "계사일주": { p: "나라 돈 관리하던 재무부 직원", pr: "펀드매니저" },
+    "갑오일주": { p: "재미있게 말하던 이야기꾼", pr: "방송인 / 인플루언서" }, "을미일주": { p: "쌀 창고 지키던 관리인", pr: "투자 전문가" },
+    "병신일주": { p: "큰 물건 떼다 팔던 도매상", pr: "무역업 종사자" }, "정유일주": { p: "보석 깎던 보석공", pr: "주얼리 디자이너" },
+    "무술일주": { p: "성벽 지키던 장군", pr: "건축 / 토목 전문가" }, "기해일주": { p: "바다 건너던 상인", pr: "외환 딜러" },
+    "경자일주": { p: "법 다루던 검사", pr: "판사 / 검사" }, "신축일주": { p: "비밀 적어두던 기록관", pr: "정밀 기술 전문가" },
+    "임인일주": { p: "큰 서당 훈장님", pr: "교육 프로그램 기획자" }, "계묘일주": { p: "물건 감정하던 전문가", pr: "박물관 큐레이터" },
+    "갑진일주": { p: "군사 이끌던 대장", pr: "정치인" }, "을사일주": { p: "소식 전하던 외교관", pr: "아나운서 / 기자" },
+    "병오일주": { p: "의리 넘치던 골목대장", pr: "스포츠 선수" }, "정미일주": { p: "사람들 돌보던 의원", pr: "의료 / 보건 종사자" },
+    "무신일주": { p: "큰 상단 이끌던 리더", pr: "IT 플랫폼 사업가" }, "기유일주": { p: "쇠 장식 만들던 장인", pr: "UI/UX 디자이너" },
+    "경술일주": { p: "적군 무찌르던 변방 장군", pr: "기업 전략 기획자" }, "신해일주": { p: "풍류 즐기던 선비", pr: "작가 / 카피라이터" },
+    "임자일주": { p: "험한 바다 항해하던 선장", pr: "해운업 종사자" }, "계축일주": { p: "일 처리하던 호위무사", pr: "정보보안 전문가" },
+    "갑인일주": { p: "꼿꼿하게 살던 선비", pr: "감사 / 경영인" }, "을묘일주": { p: "아름다운 비단 짜던 기술자", pr: "패션 디자이너" },
+    "병진일주": { p: "들판 달리던 기마병", pr: "영업 / 마케팅 전문가" }, "정사일주": { p: "불 잘 다루던 뛰어난 도공", pr: "영상 / 영화 감독" },
+    "무오일주": { p: "앞장서던 용감한 부대장", pr: "체육 / 피트니스 종사자" }, "기미일주": { p: "거친 땅 일구던 농부", pr: "농업 / 환경 전문가" },
+    "경신일주": { p: "무술 실력 좋던 무사", pr: "직업 군인 / 경찰" }, "신유일주": { p: "날카로운 칼 만들던 장인", pr: "부품 설계 엔지니어" },
+    "임술일주": { p: "밤바다 지키던 수군", pr: "고위 행정관" }, "계해일주": { p: "배 타고 다니던 상인", pr: "심리치료사" }
   };
 
   const dynamicTraits = {
-    '비견': "독립심이 아주 강하고 남에게 의지하기보다 스스로 해결하려는 성향임",
-    '겁재': "승부욕이 대단히 강해 어떤 경쟁에서도 지고는 못 배기는 타고난 승부사",
-    '식신': "자신이 좋아하는 한 분야에 엄청난 집중력을 발휘하는 장인 기질이 있음",
-    '상관': "기존의 틀을 깨는 것을 좋아하고 말솜씨나 표현력이 아주 뛰어나게 발달함",
-    '편재': "스케일이 크고 통제력이 강해 다수를 아우르거나 큰 판을 짜는 데 능함",
-    '정재': "계산이 아주 빠르고 꼼꼼하며 안정적으로 상황을 유지하려는 성향이 강함",
-    '편관': "어려운 난관일수록 오히려 돌파력을 발휘하는 강한 카리스마와 책임감을 가짐",
-    '정관': "규칙과 명예를 아주 중요하게 생각하며 체계적인 시스템 속에서 빛을 발함",
-    '편인': "직관력과 영감이 대단히 뛰어나 남들이 보지 못하는 이면을 꿰뚫어 보는 눈이 있음",
-    '정인': "지적 호기심이 많고 깊이 있게 사고하며 도덕성과 신뢰를 가장 중요시함",
-    '신강': "내 주관과 에너지가 아주 강해 남의 말에 흔들림 없이 내 뜻을 밀고 나감",
-    '신약': "상황에 맞게 나를 맞추는 유연함이 있고 주변 사람들과 어울리는 능력이 뛰어남"
+    '비견': "독립심이 강해 스스로 해결하려는 성향",
+    '겁재': "경쟁을 즐기고 지기 싫어하는 타고난 승부사",
+    '식신': "한 분야에 깊이 파고드는 장인 기질이 있음",
+    '상관': "틀을 깨는 것을 좋아하고 표현력이 뛰어남",
+    '편재': "스케일이 크고 전체적인 판을 짜는 데 능함",
+    '정재': "꼼꼼하며 안정적으로 상황을 유지하려는 성향",
+    '편관': "난관일수록 돌파력을 발휘하는 카리스마",
+    '정관': "규칙과 명예를 중시하며 체계적인 성향",
+    '편인': "직관력이 뛰어나 이면을 꿰뚫어 보는 눈이 있음",
+    '정인': "지적 호기심이 많고 도덕성과 신뢰를 중시함"
+  };
+
+  const dayGanTraits = {
+    '甲': "곧고 강직하며 위로 뻗어나가려는 향상심이 강함",
+    '乙': "유연하고 끈질기며 어떤 환경에서도 살아남는 적응력",
+    '丙': "세상을 밝히는 태양처럼 열정적이고 솔직담백한 성격",
+    '丁': "따뜻하고 은근한 매력이 있으며 세심하고 배려심 넘침",
+    '戊': "태산처럼 듬직하고 흔들림이 없으며 포용력이 넓음",
+    '己': "어머니의 품처럼 다정하고 사람들을 품어주는 부드러움",
+    '庚': "강단 있고 맺고 끊음이 확실하며 의리와 원칙을 중시함",
+    '辛': "정밀하고 예리하며 보석처럼 세련된 미적 감각을 지님",
+    '壬': "바다처럼 속이 깊고 유연하며 지혜로운 사고를 가짐",
+    '癸': "이슬비처럼 부드럽게 스며드는 친화력과 직관력이 있음"
   };
 
   const iljuBaseTraits = {
-    "갑자일주": ["다정다감하고 인정이 많아 주변에 사람이 모임", "호기심이 많고 학구적인 성향이 아주 강함", "자존심이 매우 세서 남에게 굽히는 것을 싫어함", "시작은 거창하지만 마무리가 흐지부지될 때가 있음"],
-    "을축일주": ["겉보기엔 유순하지만 속에는 엄청난 고집이 있음", "책임감이 강하고 맡은 일은 끝까지 해내는 성실파", "재물에 대한 관심이 많고 현실적인 감각이 뛰어남", "인내심이 강해 힘든 상황도 묵묵히 잘 버텨냄"],
-    "병인일주": ["열정적이고 활동적이라 가만히 있는 것을 못함", "리더십이 있어 무리를 이끌고 나가는 것을 좋아함", "성격이 급해서 생각보다 행동이 먼저 나갈 때가 많음", "솔직하고 뒤끝이 없어서 대인관계가 시원시원함"],
-    "정묘일주": ["감수성이 풍부하고 예술적인 감각이 매우 뛰어남", "눈치가 빠르고 분위기 파악을 기가 막히게 잘함", "온화하고 친절하지만 선을 넘으면 냉정하게 돌아섬", "변덕이 심하고 싫증을 빨리 내는 경향이 있음"],
-    "무진일주": ["스케일이 크고 배포가 남달라서 쪼잔한 걸 싫어함", "듬직하고 믿음직스러워 주변에서 많이 의지하는 편", "한번 욱하면 물불 안 가리는 무서운 면이 숨어있음", "추진력이 엄청나서 목표가 생기면 밀어붙이는 타입"],
-    "기사일주": ["눈치가 아주 빠르고 상황 대처 능력이 탁월함", "사교성이 좋아서 어딜 가든 사람들과 잘 어울림", "말을 조리 있게 잘하고 설득력이 뛰어난 편임", "겉으로는 부드럽지만 속으로는 계산이 아주 빠름"],
-    "경오일주": ["반듯하고 예의가 바르며 원칙을 중요하게 생각함", "외모나 스타일이 세련되고 깔끔한 것을 추구하는 편", "공과 사를 명확히 구분하고 맺고 끊음이 확실함", "명예를 중요시하며 자존심 상하는 걸 극혐함"],
-    "신미일주": ["예리하고 섬세해서 남들이 놓치는 디테일을 잘 캐치함", "자존심이 하늘을 찌르고 은근한 똥고집을 자랑함", "겉은 차가워 보이지만 속은 여리고 정이 많은 외강내유", "자신의 속마음을 남에게 잘 털어놓지 않는 비밀주의자"],
-    "임신일주": ["머리 회전이 비상하고 다재다능한 타고난 천재과", "임기응변에 강하고 어떤 위기 상황도 스무스하게 넘김", "언변이 뛰어나서 말로 사람을 들었다 놨다 함", "오지랖이 넓고 사람 만나는 것을 좋아하는 인싸 재질"],
-    "계유일주": ["기억력이 아주 비상해서 과거의 일을 토씨 하나 안 틀림", "성격이 깔끔하고 정돈된 환경을 좋아하는 결벽증 기질", "호불호가 아주 명확해서 싫은 사람과는 상종도 안 함", "생각이 너무 많아서 스스로 스트레스를 사서 받는 타입"]
+    "갑자일주": ["다정다감하고 인정이 많아 사람이 모임", "호기심이 많고 학구적인 성향이 강함", "자존심이 매우 세서 굽히는 것을 싫어함", "시작은 거창하지만 마무리가 약할 때가 있음"],
+    "을축일주": ["유순해 보이나 속에는 엄청난 고집이 있음", "책임감이 강하고 끝까지 해내는 성실파", "재물에 대한 관심이 많고 현실 감각이 뛰어남", "인내심이 강해 힘든 상황도 묵묵히 버텨냄"],
+    "병인일주": ["열정적이고 활동적이라 가만히 못 있음", "리더십이 있어 무리 이끄는 것을 좋아함", "성격이 급해서 행동이 먼저 나갈 때가 많음", "솔직하고 뒤끝이 없어서 대인관계가 시원함"],
+    "정묘일주": ["감수성이 풍부하고 예술적 감각이 뛰어남", "눈치가 빠르고 분위기 파악을 아주 잘함", "온화하지만 선을 넘으면 냉정하게 돌아섬", "변덕이 심하고 싫증을 빨리 내는 경향이 있음"],
+    "무진일주": ["배포가 남달라 스케일 작은 것을 싫어함", "듬직하고 믿음직스러워 주변이 많이 의지함", "한번 욱하면 물불 안 가리는 성향이 숨어있음", "추진력이 엄청나 목표가 생기면 밀어붙임"],
+    "기사일주": ["상황 대처 능력이 탁월하고 눈치가 빠름", "사교성이 좋아 어딜 가든 잘 어울림", "말을 조리 있게 잘하고 설득력이 뛰어난 편", "겉으로는 부드럽지만 속으로는 계산이 빠름"],
+    "경오일주": ["반듯하고 예의가 바르며 원칙을 중시함", "외모나 스타일이 세련되고 깔끔함을 추구", "공과 사를 명확히 구분하고 맺고 끊음이 확실함", "명예를 중요시하며 자존심 상하는 걸 극혐함"],
+    "신미일주": ["예리하고 섬세해 숨은 디테일을 잘 캐치함", "자존심이 매우 세고 은근한 고집이 있음", "겉은 차가워 보이나 속은 여리고 정이 많음", "자신의 속마음을 남에게 잘 털어놓지 않음"],
+    "임신일주": ["머리 회전이 비상하고 다재다능한 천재과", "임기응변에 강해 위기를 부드럽게 넘김", "언변이 뛰어나 말로 사람의 마음을 잘 움직임", "오지랖이 넓고 사람 만나는 것을 좋아함"],
+    "계유일주": ["기억력이 비상해 과거의 일을 잘 기억함", "성격이 깔끔하고 정돈된 환경을 좋아함", "호불호가 명확해 싫은 사람과 엮이지 않음", "생각이 너무 많아서 스트레스를 사서 받는 편"],
+    "갑술일주": ["책임감이 강하고 타인을 돕는 것을 좋아함", "불의를 보면 참지 못하는 정의로운 성격", "현실적인 감각이 뛰어나고 융통성이 있음", "한 번 욱하면 폭발하지만 뒤끝은 없음"],
+    "을해일주": ["자유로운 영혼으로 유연하고 적응력이 뛰어남", "감수성이 풍부하고 생각의 깊이가 있음", "부드럽고 다정하지만 속고집이 꽤 센 편임", "변화를 좋아하고 새로운 것을 즐김"],
+    "병자일주": ["겉으론 화려하지만 속으론 외로움을 잘 탐", "명예를 중시하고 공과 사 구분이 확실함", "눈치가 빠르고 상황 대처 능력이 탁월함", "성격이 급하고 인내심이 다소 부족함"],
+    "정축일주": ["차분하고 온화하지만 내면에 끈기와 뚝심이 있음", "손재주가 좋고 한 분야를 깊게 파고듦", "겉보기보다 예민하고 상처를 잘 받는 편", "자신만의 세계가 뚜렷한 외유내강 스타일"],
+    "무인일주": ["독립심이 강하고 명예와 체면을 중요하게 생각함", "카리스마가 있고 추진력이 대단함", "리더십이 강해 무리를 잘 이끌고 책임짐", "자존심이 강해 지는 것을 몹시 싫어함"],
+    "기묘일주": ["섬세하고 꼼꼼하며 주변 사람을 잘 챙김", "상황 판단력이 빠르고 기획력이 뛰어남", "의심이 다소 많고 경계심이 있는 편임", "어떤 상황이든 유연하게 잘 대처함"],
+    "경진일주": ["스케일이 크고 리더십이 있어 무리를 잘 이끎", "승부욕이 강하고 결단력이 뛰어난 편", "한번 결심하면 앞만 보고 직진하는 행동파", "성격이 화끈하고 맺고 끊음이 명확함"],
+    "신사일주": ["세련되고 깔끔하며 완벽주의 성향이 있음", "논리적이고 상황 분석력이 매우 뛰어남", "직관력이 발달했고 사람을 꿰뚫어 봄", "자존심 상하는 일에는 아주 예민하게 반응함"],
+    "임오일주": ["다정다감하고 사람들과 어울리는 것을 좋아함", "재물 감각이 뛰어나고 현실적인 편임", "말을 재치 있게 잘하고 분위기 메이커 역할", "자유분방하고 구속받는 것을 싫어함"],
+    "계미일주": ["온화하고 부드러우며 인내심이 아주 강함", "직관력이 뛰어나고 사람의 마음을 잘 읽음", "보수적이고 조심스러우며 돌다리도 두드림", "자기 사람에게는 한없이 다정하고 헌신적"],
+    "갑신일주": ["결단력이 있고 맺고 끊음이 아주 확실함", "책임감이 강해 맡은 일은 끝까지 책임짐", "다소 급하고 욱하는 기질이 숨어있음", "어려운 난관도 뚫고 나가는 강한 추진력"],
+    "을유일주": ["섬세하고 예민하며 완벽을 추구하는 성향", "통찰력이 뛰어나고 팩트 폭격을 잘함", "호불호가 아주 강해 싫은 건 절대 안 함", "자기 관리가 철저하고 맺고 끊음이 칼같음"],
+    "병술일주": ["화끈하고 솔직하며 불의를 참지 못함", "책임감이 강하고 자기 사람을 끔찍이 아낌", "성격이 급하고 기분파 기질이 다분함", "언변이 뛰어나고 표현력이 아주 솔직함"],
+    "정해일주": ["예의가 바르고 다정하며 감수성이 풍부함", "생각의 깊이가 남다르고 철학적인 면이 있음", "사람의 마음을 편안하게 해주는 매력이 있음", "상처를 잘 받고 감정 기복이 다소 있는 편"],
+    "무자일주": ["현실 감각이 뛰어나고 계산이 아주 빠름", "겉은 무뚝뚝해 보여도 속은 따뜻하고 정이 많음", "속마음을 잘 드러내지 않고 비밀이 많음", "안정을 중시하고 금전적 성취욕이 강함"],
+    "기축일주": ["성실하고 묵묵하게 자기 길을 가는 뚝심", "고집이 세고 한 번 믿으면 끝까지 믿음", "변화보다는 안정을 추구하는 보수적인 성향", "손재주가 있고 한 분야에 끈덕지게 파고듦"],
+    "경인일주": ["활동적이고 진취적이며 스케일이 아주 큼", "명예와 재물에 대한 목표 의식이 뚜렷함", "성격이 호탕하고 스원시원한 의리파", "가만히 있는 것을 견디지 못하는 행동파"],
+    "신묘일주": ["깔끔하고 세련된 것을 좋아하며 미적 감각이 뜀", "예민하고 섬세해 분위기 파악을 잘함", "호불호가 명확하고 까다로운 편에 속함", "말솜씨가 좋고 사람들과의 소통에 능함"],
+    "임진일주": ["속을 알 수 없는 카리스마와 배포를 가짐", "리더십이 강하고 어떤 상황이든 여유롭게 대처함", "강한 승부욕을 내면에 숨기고 있는 전략가", "한번 욱하면 걷잡을 수 없이 무서운 성격"],
+    "계사일주": ["두뇌 회전이 빠르고 현실적인 감각이 뛰어남", "어떤 환경에서도 살아남는 적응력의 끝판왕", "눈치가 100단이고 상황 대처 능력이 훌륭함", "사교성이 좋고 대인관계를 원만하게 이끎"],
+    "갑오일주": ["표현력이 아주 뛰어나고 화술이 매끄러움", "밝고 긍정적이며 창의적인 아이디어가 넘침", "성격이 급하고 싫증을 빨리 내는 경향이 있음", "타인에게 베풀기를 좋아하고 오지랖이 넓음"],
+    "을미일주": ["유순해 보이지만 내면의 고집과 끈기가 엄청남", "현실적이고 알뜰하며 자기 것을 잘 챙김", "어려운 상황에서도 꿋꿋하게 버티는 강한 생명력", "다소 예민하고 경계심이 강한 외유내강형"],
+    "병신일주": ["다재다능하고 활동적이며 호기심이 아주 많음", "눈치가 빠르고 사람들과 금방 친해짐", "임기응변이 뛰어나고 재물 감각이 발달함", "마무리가 다소 약하고 덜렁거릴 때가 있음"],
+    "정유일주": ["섬세하고 깔끔하며 맺고 끊음이 확실함", "미적 감각이 뛰어나고 완벽주의 기질이 있음", "솔직하고 날카로운 통찰력을 겸비함", "예민하고 까다롭지만 자기 관리가 뛰어남"],
+    "무술일주": ["신용과 의리를 가장 중요하게 생각하는 진국", "한 번 결심한 것은 밀어붙이는 뚝심이 있음", "책임감이 매우 강해 리더의 자질이 돋보임", "고집이 너무 세서 타협을 잘 안 하는 편"],
+    "기해일주": ["융통성이 있고 어떤 상황이든 부드럽게 대처함", "속마음을 잘 드러내지 않지만 포용력이 뜀", "안정을 중시하고 묵묵하게 자기 일을 해냄", "생각이 깊고 직관력이 뛰어나 사람을 잘 봄"],
+    "경자일주": ["차갑고 냉정해 보이지만 속은 아주 여림", "예리한 분석력과 비판적인 사고를 가짐", "공과 사 구분이 명확하고 원칙을 중시함", "지적 호기심이 강하고 배움을 좋아함"],
+    "신축일주": ["자존심이 세고 끈기 있게 목표를 향해 나아감", "세밀하고 꼼꼼하며 자기 분야의 전문가가 됨", "고집이 세고 자기 주관을 쉽게 꺾지 않음", "속을 잘 보여주지 않는 철저한 비밀주의자"],
+    "임인일주": ["배려심이 많고 따뜻하며 사람들을 잘 포용함", "지적 호기심이 많고 다방면에 재능이 있음", "사람들과 어울리는 것을 좋아하고 사교적임", "식복이 타고나서 어딜 가든 대우를 잘 받음"],
+    "계묘일주": ["부드럽고 다정하며 주변 사람들에게 친절함", "직관력이 좋고 예술적인 감수성이 뛰어남", "경계심이 있지만 친해지면 속을 다 보여줌", "창의적이고 다재다능한 아이디어 뱅크"],
+    "갑진일주": ["스케일이 크고 배포가 있어 리더 역할을 잘함", "자존심이 세고 명예를 아주 중요하게 생각함", "추진력이 강해 한 번 시작하면 끝을 봄", "은근히 급한 성격이 있고 욱하는 기질이 있음"],
+    "을사일주": ["표현력이 좋고 화술이 뛰어나 사람을 잘 홀림", "화려하고 세련된 것을 좋아하며 눈치가 빠름", "상황에 맞게 유연하게 대처하는 능력이 있음", "감정 기복이 다소 있고 싫증을 잘 느낌"],
+    "병오일주": ["불같은 열정과 엄청난 에너지를 뿜어냄", "뒤끝 없이 솔직하고 화끈한 리더십의 소유자", "강한 자존심과 자부심으로 똘똘 뭉쳐 있음", "성격이 급해 생각보다 말이 먼저 나감"],
+    "정미일주": ["온화하고 부드럽지만 속에는 엄청난 고집이 있음", "희생정신이 강하고 남을 돕는 것을 좋아함", "책임감이 강하고 맡은 일은 묵묵히 해냄", "겉보기와 다르게 독립적이고 자립심이 강함"],
+    "무신일주": ["다재다능하고 어떤 위기든 능숙하게 넘김", "호탕하고 통이 커서 주변에 사람이 많음", "임기응변에 아주 강하고 융통성이 뛰어남", "한 가지 일에 진득하게 파고드는 힘이 있음"],
+    "기유일주": ["섬세하고 예리하며 어떤 일이든 꼼꼼하게 처리함", "미적 감각이 뛰어나고 완벽을 추구함", "깔끔하고 정돈된 환경을 좋아하며 결벽 기질", "솔직하고 날카롭게 핵심을 짚는 팩트 폭격기"],
+    "경술일주": ["의리와 신용을 목숨처럼 중요하게 생각함", "강직하고 카리스마가 넘치며 추진력이 대단함", "한 번 믿은 사람은 끝까지 책임지는 의리파", "고집이 세고 자기 주장이 아주 확고함"],
+    "신해일주": ["겉은 차가워도 속은 따뜻하고 감수성이 풍부함", "예리한 통찰력과 창의적인 아이디어를 가짐", "자유로운 성향으로 얽매이는 것을 아주 싫어함", "표현력이 좋고 대인관계를 스무스하게 함"],
+    "임자일주": ["속을 알 수 없는 깊은 생각과 강한 주관을 가짐", "한 번 마음먹은 일은 끝까지 해내는 엄청난 뚝심", "은근한 카리스마로 무리를 아우르는 통솔력", "강한 자존심을 속에 숨기고 있는 외유내강"],
+    "계축일주": ["겉보기엔 부드럽지만 내면의 고집이 대단함", "묵묵히 자기 일을 해내는 강한 인내심의 소유자", "현실적이고 계산이 빠르며 손해 보는 일은 안 함", "의심이 다소 많아 사람을 신중하게 사귐"],
+    "갑인일주": ["자존심이 하늘을 찌르고 굽히는 것을 극혐함", "독립심이 강하고 자기 주도적으로 삶을 개척함", "리더십이 강하고 어떤 상황이든 앞장서는 성향", "타협을 잘 하지 않는 꼿꼿하고 우직한 성격"],
+    "을묘일주": ["부드러워 보이지만 꺾이지 않는 강한 생명력", "고집이 세고 자기만의 확실한 신념을 가짐", "주변 사람들과 잘 어울리면서도 자기 주관이 뚜렷함", "끈기 있고 묵묵하게 자신의 목표를 달성함"],
+    "병진일주": ["밝고 명랑하며 어떤 환경에서도 적응을 잘함", "포용력이 넓고 베푸는 것을 좋아하는 대인배", "호기심이 많고 매사에 긍정적이고 활동적임", "은근한 끈기가 있어 한 가지 일을 묵묵히 해냄"],
+    "정사일주": ["겉모습은 차분해도 속에는 뜨거운 열정이 있음", "자존심이 세고 주관이 뚜렷해 남에게 안 짐", "추진력이 좋고 한 번 시작한 일은 끝을 봄", "감정 표현에 솔직하고 의리가 넘치는 성격"],
+    "무오일주": ["화끈하고 통이 크며 웬만한 일에는 꿈쩍도 안 함", "엄청난 에너지를 뿜어내는 타고난 리더", "자존심이 무척 강하고 남에게 지시받는 걸 싫어함", "추진력과 돌파력이 뛰어나 위기에 아주 강함"],
+    "기미일주": ["묵묵하고 성실하게 자기 길을 걷는 엄청난 끈기", "한 번 믿은 사람은 끝까지 챙기는 의리파", "자기 주관이 아주 확고하고 고집이 셈", "어려운 환경에서도 흔들리지 않는 뚝심의 소유자"],
+    "경신일주": ["맺고 끊음이 칼같이 확실하고 의리를 중시함", "어떤 난관도 뚫고 나가는 강력한 추진력을 가짐", "자존심이 아주 강하고 불의를 절대 참지 못함", "한 번 결심한 것은 뒤돌아보지 않고 직진함"],
+    "신유일주": ["가장 날카롭고 예리한 판단력을 가진 완벽주의자", "호불호가 극명하고 자기 관리가 아주 철저함", "세련된 미적 감각과 섬세함을 모두 갖춤", "자존심이 세고 타인의 간섭을 무척 싫어함"],
+    "임술일주": ["스케일이 크고 어떤 상황에서도 여유를 잃지 않음", "사람을 아우르는 포용력과 통솔력이 뛰어남", "속을 잘 보여주지 않는 무거운 카리스마가 있음", "책임감이 강하고 목표를 향해 진득하게 나아감"],
+    "계해일주": ["유연하고 부드러우며 사람들과 아주 잘 어울림", "속을 알 수 없는 깊이와 뛰어난 직관력을 가짐", "어떤 환경에든 물 흐르듯 자연스럽게 적응함", "생각이 깊고 조심스러우며 인내심이 뛰어남"]
   };
-
-  const stems = ['갑','을','병','정','무','기','경','신','임','계'];
-  const branches = ['자','축','인','묘','진','사','오','미','신','유','술','해'];
-  for(let i=0; i<60; i++) {
-    let name = stems[i%10] + branches[i%12] + '일주';
-    if(!iljuBaseTraits[name]) {
-      iljuBaseTraits[name] = [
-        "자신만의 주관이 뚜렷하고 소신대로 행동하는 편임",
-        "상황에 따라 유연하게 대처하는 능력이 내재되어 있음",
-        "관심 있는 분야에는 놀라운 집중력과 파급력을 보여줌",
-        "인간관계를 무작정 넓히기보다 소수의 사람과 깊게 사귐"
-      ];
-    }
-  }
 
   window.onload = function() {
     const yearSelect = document.getElementById('sel-year');
@@ -749,6 +1052,9 @@
   }
 
   function calculateAndShowResult() {
+    const userNameInput = document.getElementById('user-name').value;
+    const userName = userNameInput.trim() !== '' ? userNameInput : '이름없음';
+    
     const type = document.getElementById('sel-type').value;
     const y = parseInt(document.getElementById('sel-year').value);
     const m = parseInt(document.getElementById('sel-month').value);
@@ -763,10 +1069,10 @@
     const timeZhi = h >= 0 ? bazi.getTimeZhi() : '';
     
     const sajuArray = [
-      { gan: timeGan, zhi: timeZhi, weightGan: 1, weightZhi: 1 },
-      { gan: bazi.getDayGan(), zhi: bazi.getDayZhi(), weightGan: 0, weightZhi: 1 },
-      { gan: bazi.getMonthGan(), zhi: bazi.getMonthZhi(), weightGan: 1, weightZhi: 3 },
-      { gan: bazi.getYearGan(), zhi: bazi.getYearZhi(), weightGan: 1, weightZhi: 1 }
+      { gan: timeGan, zhi: timeZhi },
+      { gan: bazi.getDayGan(), zhi: bazi.getDayZhi() },
+      { gan: bazi.getMonthGan(), zhi: bazi.getMonthZhi() },
+      { gan: bazi.getYearGan(), zhi: bazi.getYearZhi() }
     ];
 
     const dayGan = bazi.getDayGan();
@@ -798,7 +1104,7 @@
       gridEl.appendChild(div);
     });
 
-    document.getElementById('res-ilju-title').innerText = iljuName;
+    document.getElementById('res-ilju-title').innerText = userName;
 
     const elementCounts = { '목':0, '화':0, '토':0, '금':0, '수':0 };
     let myPowerScore = 0; 
@@ -808,66 +1114,176 @@
     sajuArray.forEach(p => {
       if(p.gan && ohaengInfo[p.gan]) {
         let info = ohaengInfo[p.gan];
-        elementCounts[info.type] += p.weightGan;
-        totalScore += p.weightGan;
-        if(info.type === myType || info.type === motherElement) myPowerScore += p.weightGan;
+        elementCounts[info.type] += 1;
+        totalScore += 1;
+        if(info.type === myType || info.type === motherElement) myPowerScore += 1;
         
         let ss = getShipseong(myType, myYY, info.type, info.yy);
-        if(ss) shipseongScores[ss] += p.weightGan;
+        if(ss) shipseongScores[ss] += 1;
       }
+      
       if(p.zhi && ohaengInfo[p.zhi]) {
         let info = ohaengInfo[p.zhi];
-        elementCounts[info.type] += p.weightZhi;
-        totalScore += p.weightZhi;
-        if(info.type === myType || info.type === motherElement) myPowerScore += p.weightZhi;
-
+        
+        elementCounts[info.type] += 1;
+        totalScore += 1;
+        if(info.type === myType || info.type === motherElement) myPowerScore += 1;
         let ss = getShipseong(myType, myYY, info.type, info.yy);
-        if(ss) shipseongScores[ss] += p.weightZhi;
+        if(ss) shipseongScores[ss] += 1;
+        
+        let zhiChar = info.name.charAt(0);
+        let weights = jijangganWeights[zhiChar];
+        if(weights) {
+          for(let jGan in weights) {
+            let elType = stemElements[jGan];
+            let w = weights[jGan] * 0.5; 
+            
+            if(elType) {
+              elementCounts[elType] += w;
+              totalScore += w;
+              if(elType === myType || elType === motherElement) myPowerScore += w;
+              
+              const hanjaMap = {'갑':'甲','을':'乙','병':'丙','정':'丁','무':'戊','기':'己','경':'庚','신':'辛','임':'壬','계':'癸'};
+              let jInfo = ohaengInfo[hanjaMap[jGan]];
+              if(jInfo) {
+                 let jSs = getShipseong(myType, myYY, jInfo.type, jInfo.yy);
+                 if(jSs) shipseongScores[jSs] += w;
+              }
+            }
+          }
+        }
       }
     });
 
-    let maxElem = '', minElem = '', maxCount = -1, minCount = 99;
+    let finalPersonality = [];
+
+    // 1. 일주 성격을 가장 먼저 배치 (무조건 4줄 다 들어감)
+    if(iljuBaseTraits[iljuName]) {
+      finalPersonality.push(...iljuBaseTraits[iljuName]);
+    }
+
+    // 2. 일간(나의 본질) 성격 배치 (1줄)
+    const dayGanChar = ohaengInfo[dayGan] ? ohaengInfo[dayGan].name.charAt(0) : '';
+    if(dayGanTraits[dayGanChar]) {
+      finalPersonality.push(dayGanTraits[dayGanChar]);
+    }
+
+    let minElem = '', minCount = 99;
     for(let el in elementCounts) {
-      if(elementCounts[el] > maxCount) { maxCount = elementCounts[el]; maxElem = el; }
       if(elementCounts[el] < minCount) { minCount = elementCounts[el]; minElem = el; }
     }
     const isMuja = minCount === 0;
 
-    document.getElementById('res-summary').innerHTML = `${maxElem}기운 강함<br>${isMuja ? minElem + '기운 없음' : minElem + '기운 약함'}`;
+    let maxElemScore = -1;
+    for (let el in elementCounts) {
+        if (elementCounts[el] > maxElemScore) { maxElemScore = elementCounts[el]; }
+    }
+    let topElems = [];
+    for (let el in elementCounts) {
+        if (elementCounts[el] === maxElemScore) { topElems.push(el); }
+    }
+    
+    // 3. 가장 강한 오행 특징 (1줄)
+    if (topElems.length > 1) {
+        finalPersonality.push("특정 기운에 치우치지 않고 여러 기운이 조화를 이루고 있음");
+    } else {
+        const domTraits = {
+          '목': "성장 욕구가 강하고 진취적으로 나아가는 성향",
+          '화': "열정적이고 솔직하며 감정 표현이 풍부한 편",
+          '토': "중재자 역할을 잘하며 신용과 끈기를 중시함",
+          '금': "맺고 끊음이 확실하고 결단력과 의리가 있음",
+          '수': "지혜롭고 생각의 깊이가 있으며 유연하게 대처함"
+        };
+        if (domTraits[topElems[0]]) finalPersonality.push(domTraits[topElems[0]]);
+    }
 
-    const isStrong = (myPowerScore / totalScore) >= 0.5;
-    document.getElementById('res-strength-strong').className = isStrong ? 'circled' : '';
-    document.getElementById('res-strength-weak').className = !isStrong ? 'circled' : '';
+    let powerRatio = myPowerScore / totalScore;
+    if (powerRatio > 0.5) {
+        document.getElementById('res-strength-content').innerHTML = '<span class="circled">강한편</span><span>약한편</span>';
+    } else if (powerRatio < 0.5) {
+        document.getElementById('res-strength-content').innerHTML = '<span>강한편</span><span class="circled">약한편</span>';
+    } else {
+        document.getElementById('res-strength-content').innerHTML = '<span class="circled">중도/균형</span>';
+    }
 
     let dohwaCount = 0;
+    let hwagaeCount = 0;
     const dohwaChars = ['자', '오', '묘', '유'];
+    const hwagaeChars = ['진', '술', '축', '미'];
+    
     sajuArray.forEach(p => {
       if(p.zhi && ohaengInfo[p.zhi]) {
         let zhiChar = ohaengInfo[p.zhi].name.charAt(0);
         if(dohwaChars.includes(zhiChar)) dohwaCount++;
+        if(hwagaeChars.includes(zhiChar)) hwagaeCount++;
       }
     });
-    const isCharmStrong = dohwaCount >= 1; 
-    document.getElementById('res-charm-strong').className = isCharmStrong ? 'circled' : '';
-    document.getElementById('res-charm-weak').className = !isCharmStrong ? 'circled' : '';
 
-    let maxShipseong = '', maxSsScore = -1;
-    for(let ss in shipseongScores) {
-      if(shipseongScores[ss] > maxSsScore) { maxSsScore = shipseongScores[ss]; maxShipseong = ss; }
+    const isCharmStrong = dohwaCount >= 1; 
+    document.getElementById('res-charm-content').innerHTML = isCharmStrong ? '<span class="circled">강한편</span><span>약한편</span>' : '<span>강한편</span><span class="circled">약한편</span>';
+
+    const wealthScore = shipseongScores['편재'] + shipseongScores['정재'];
+    const isWealthStrong = wealthScore >= 1.0;
+    document.getElementById('res-wealth-content').innerHTML = isWealthStrong ? '<span class="circled">강한편</span><span>약한편</span>' : '<span>강한편</span><span class="circled">약한편</span>';
+
+    const popScore = shipseongScores['비견'] + shipseongScores['겁재'];
+    const isPopHigh = (popScore >= 1.5) || (hwagaeCount >= 1) || (dohwaCount >= 2);
+    document.getElementById('res-pop-content').innerHTML = isPopHigh ? '<span class="circled">많은편</span><span>적은편</span>' : '<span>많은편</span><span class="circled">적은편</span>';
+
+    let sweetScore = shipseongScores['정재'] + shipseongScores['정관'] + shipseongScores['식신'] + shipseongScores['정인'];
+    let tsunScore = shipseongScores['편관'] + shipseongScores['상관'] + shipseongScores['겁재'] + shipseongScores['편재'];
+    if (sweetScore > tsunScore) {
+        document.getElementById('res-love-content').innerHTML = '<span class="circled">다정다감</span><span>츤데레</span>';
+    } else if (tsunScore > sweetScore) {
+        document.getElementById('res-love-content').innerHTML = '<span>다정다감</span><span class="circled">츤데레</span>';
+    } else {
+        document.getElementById('res-love-content').innerHTML = '<span class="circled">밀당고수</span>';
     }
 
-    let finalPersonality = [];
-    if(iljuBaseTraits[iljuName]) finalPersonality.push(...iljuBaseTraits[iljuName]);
-    if(maxShipseong && dynamicTraits[maxShipseong]) finalPersonality.push(dynamicTraits[maxShipseong]);
-    finalPersonality.push(isStrong ? dynamicTraits['신강'] : dynamicTraits['신약']);
+    let myWayScore = shipseongScores['비견'] + shipseongScores['편인'] + shipseongScores['편관'];
+    let inssaScore = shipseongScores['식신'] + shipseongScores['상관'] + shipseongScores['편재'] + shipseongScores['정재'];
+    if (myWayScore > inssaScore) {
+        document.getElementById('res-social-content').innerHTML = '<span class="circled">마이웨이</span><span>인싸재질</span>';
+    } else if (inssaScore > myWayScore) {
+        document.getElementById('res-social-content').innerHTML = '<span>마이웨이</span><span class="circled">인싸재질</span>';
+    } else {
+        document.getElementById('res-social-content').innerHTML = '<span class="circled">선택적 인싸</span>';
+    }
 
+    // 4. 십성 강점 상위 딱 2개만 출력 (2줄)
+    let sortedShipseongs = Object.keys(shipseongScores).sort((a, b) => shipseongScores[b] - shipseongScores[a]);
+    let top1 = sortedShipseongs[0];
+    let top2 = sortedShipseongs[1];
+    
+    if(top1 && shipseongScores[top1] > 0 && dynamicTraits[top1]) finalPersonality.push(dynamicTraits[top1]);
+    if(top2 && shipseongScores[top2] > 0 && dynamicTraits[top2]) finalPersonality.push(dynamicTraits[top2]);
+
+    // 5. 무자(없는 오행) 특성 (0~1줄)
+    const missingTraits = {
+      '목': "새로운 시작을 주저하거나 계획성이 부족할 수 있음",
+      '화': "감정 표현이 서툴고 차분하며 이성적인 편임",
+      '토': "정착보다 변화를 추구하며 얽매이는 걸 싫어함",
+      '금': "결단력이 다소 부족하고 마무리가 약할 때가 있음",
+      '수': "현실적이고 직선적이며 융통성 발휘가 어려울 수 있음"
+    };
+    if (isMuja && missingTraits[minElem]) {
+      finalPersonality.push(missingTraits[minElem]);
+    }
+
+    finalPersonality = [...new Set(finalPersonality)]; 
     document.getElementById('res-personality').innerHTML = finalPersonality.map(t => `<div>${t}</div>`).join('');
 
     const baseJob = iljuJobs[iljuName] || { p: "부지런한 마을 관리인", pr: "사무직 종사자" };
-    const modifier = shipseongModifier[maxShipseong] || { past: "묵묵히 자기 일을 해낸", present: "안정적으로 업무를 수행하는" };
+    const modifier = shipseongModifier[top1] || { past: "묵묵히 자기 일을 해낸", present: "안정적으로 업무를 수행하는" };
 
     document.getElementById('res-job-past').innerHTML = `${modifier.past}<br>${baseJob.p}`;
     document.getElementById('res-job-present').innerHTML = `${modifier.present}<br>${baseJob.pr}`;
+
+    document.getElementById('score-wood').innerText = elementCounts['목'].toFixed(1);
+    document.getElementById('score-fire').innerText = elementCounts['화'].toFixed(1);
+    document.getElementById('score-earth').innerText = elementCounts['토'].toFixed(1);
+    document.getElementById('score-metal').innerText = elementCounts['금'].toFixed(1);
+    document.getElementById('score-water').innerText = elementCounts['수'].toFixed(1);
 
     showScreen('screen-result');
   }
@@ -900,9 +1316,9 @@
   function shareTest() {
     if (navigator.share) {
       navigator.share({
-        title: '사주 만세력 프로필 테스트',
-        text: '내 진짜 사주 오행과 심리를 분석해 입체적인 프로필을 만들어보세요!',
-        url: window.location.href,
+        title: '테스트잇 사주 만세력 프로필 테스트',
+        text: '테스트잇 사주 만세력 프로필 테스트',
+        url: "https://test-it.co.kr/test376",
       })
       .catch(console.error);
     } else {

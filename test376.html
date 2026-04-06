@@ -1,1369 +1,1388 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>테스트잇 사주 만세력 프로필 테스트</title>
-  <meta name="description" content="생년월일과 시지를 입력하면 사주팔자를 윈도우 감성 프로필 카드로 보여주는 테스트잇 사주 만세력 프로필 테스트" />
-
-  <script src="https://cdn.jsdelivr.net/npm/lunar-javascript/lunar.js"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5522499110435321" crossorigin="anonymous"></script>
   <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>테스트잇 사주 만세력 프로필 테스트</title>
+<meta name="description" content="테스트잇 사주 만세력 프로필 테스트" />
+  <meta name="keywords" content="테스트잇,성격테스트,사주만세력프로필테스트,사주만세력테스트,만세력프로필테스트,테스트잇사주,테스트잇사주프로필,테스트잇연애,연애테스트,연애mbti,연애성격테스트, 심리테스트, mbti테스트">
+<meta property="og:type" content="website" />
+<meta property="og:title" content="테스트잇 사주 만세력 프로필 테스트" />
+<meta property="og:description" content="테스트잇 사주 만세력 프로필 테스트" />
+<meta property="og:url" content="https://test-it.co.kr/test376" />
+<script src="https://cdn.jsdelivr.net/npm/lunar-javascript/lunar.js"></script>
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+<style>
+  @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+  
+  @font-face {
+    font-family: 'Umdot';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2601-4@1.1/Umdot12.woff2') format('woff2');
+    font-weight: normal;
+    font-display: swap;
+}
 
-    html, body {
-      margin: 0;
-      padding: 0;
-      font-family: "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
-      background: #0b7f7d;
-      color: #111;
-    }
+  :root {
+    --bg-blue: #9ac2e5; 
+    --folder-yellow: #fff5c0; 
+    --line-color: #1e3a8a; 
+    --text-main: #000000; /* 검정색으로 변경 */
+    --text-sub: #000000; /* 검정색으로 변경 */
+    --white: #ffffff;
+    --accent-red: #e11d48; 
+    
+    --wood-bg: #d3f9d8; --wood-txt: #2b8a3e;
+    --fire-bg: #ffe3e3; --fire-txt: #c92a2a;
+    --earth-bg: #ffebb3; --earth-txt: #d97706;
+    --metal-bg: #f1f3f5; --metal-txt: #495057;
+    --water-bg: #d0ebff; --water-txt: #0b7285;
 
-    body {
-      min-height: 100vh;
-    }
+    --win-bg: #dfdfdf;
+    --win-border-light: #ffffff;
+    --win-border-dark: #808080;
+  }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+  body {
+    font-family: 'Umdot', sans-serif;
+    background-color: var(--bg-blue);
+    background-image: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px);
+    background-size: 15px 15px;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--text-main);
+    min-height: 100vh;
+  }
 
+  .header-wrapper {
+    width: 100%;
+    background-color: var(--bg-blue);
+    border-bottom: 2px solid var(--line-color);
+  }
+
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 6px 4% !important; 
+  }
+
+  .retro-logo {
+    text-decoration: none;
+    color: #000;
+    font-size: 18px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background-color: var(--win-bg); 
+    padding: 5px 10px; 
+    border-top: 2px solid var(--win-border-light);
+    border-left: 2px solid var(--win-border-light);
+    border-right: 2px solid var(--win-border-dark);
+    border-bottom: 2px solid var(--win-border-dark);
+  }
+
+  .retro-logo:active { 
+    border-top: 2px solid var(--win-border-dark);
+    border-left: 2px solid var(--win-border-dark);
+    border-right: 2px solid var(--win-border-light);
+    border-bottom: 2px solid var(--win-border-light);
+    padding: 6px 9px 4px 11px; 
+  }
+
+  .page-header h1 {
+    margin: 0 !important;
+    padding: 0 !important;
+    border-bottom: none !important;
+  }
+
+  .main-nav {
+    display: flex;
+    flex-wrap: nowrap !important;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 12px; 
+  }
+
+  .main-nav li {
+    margin-left: 0;
+  }
+
+  .main-nav a {
+    display: block;
+    text-decoration: none;
+    color: #000;
+    font-weight: 700;
+    background: var(--win-bg);
+    border-top: 2px solid var(--win-border-light);
+    border-left: 2px solid var(--win-border-light);
+    border-right: 2px solid var(--win-border-dark);
+    border-bottom: 2px solid var(--win-border-dark);
+    padding: 4px 10px;
+    font-size: 14px; 
+    white-space: nowrap;
+    box-sizing: border-box;
+  }
+
+  .main-nav a:active {
+    border-top: 2px solid var(--win-border-dark);
+    border-left: 2px solid var(--win-border-dark);
+    border-right: 2px solid var(--win-border-light);
+    border-bottom: 2px solid var(--win-border-light);
+    padding: 5px 9px 3px 11px; 
+  }
+
+  @media (max-width: 480px) {
     .page-header {
-      position: sticky;
-      top: 0;
-      z-index: 40;
-      background: rgba(214, 214, 214, 0.92);
-      border-bottom: 2px solid #8f8f8f;
-      box-shadow: inset 0 1px 0 #fff;
+      padding: 6px 12px !important;
     }
-
-    .wrapper {
-      width: min(100%, 560px);
-      margin: 0 auto;
-      padding: 0 12px;
+    .retro-logo {
+      font-size: 16px; 
+      padding: 3px 8px; 
     }
-
-    .header-inner {
-      height: 54px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-    }
-
-    .logo {
-      font-size: 22px;
-      font-weight: 900;
-      letter-spacing: -0.04em;
-    }
-
     .main-nav {
-      display: flex;
-      gap: 10px;
-      font-size: 12px;
-      font-weight: 700;
-      color: #333;
-      flex-wrap: wrap;
-    }
-
-    .app {
-      width: min(100%, 560px);
-      margin: 0 auto;
-      padding: 14px 12px 28px;
-    }
-
-    .screen {
-      display: none;
-    }
-
-    .screen.active {
-      display: block;
-    }
-
-    .win-window {
-      border: 2px solid #111;
-      background: #d4d0c8;
-      box-shadow:
-        inset 1px 1px 0 #fff,
-        inset -1px -1px 0 #7b7b7b,
-        0 8px 24px rgba(0,0,0,0.18);
-      overflow: hidden;
-    }
-
-    .title-bar {
-      height: 34px;
-      background: #0b4ea2;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 8px 0 10px;
-      font-size: 13px;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-    }
-
-    .title-left {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .title-icon {
-      width: 14px;
-      height: 14px;
-      background: #fff;
-      border: 1px solid #08376f;
-    }
-
-    .title-buttons {
-      display: flex;
-      gap: 4px;
-    }
-
-    .win-btn {
-      width: 18px;
-      height: 18px;
-      border: 2px solid #111;
-      background: #d4d0c8;
-      box-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 #7b7b7b;
-    }
-
-    .window-body {
-      padding: 14px;
-      background: #d4d0c8;
-    }
-
-    .hero-box {
-      background: #ece9e1;
-      border: 2px solid #111;
-      box-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 #8d8d8d;
-      padding: 18px 14px 16px;
-      text-align: center;
-    }
-
-    .hero-badge {
-      display: inline-block;
-      min-height: 30px;
-      padding: 6px 12px;
-      border: 2px solid #111;
-      background: #fff4b6;
-      font-size: 12px;
-      font-weight: 800;
-      box-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 #8d8d8d;
-    }
-
-    .hero-title {
-      margin: 12px 0 0;
-      font-size: 28px;
-      line-height: 1.15;
-      font-weight: 900;
-      letter-spacing: -0.06em;
-      word-break: keep-all;
-    }
-
-    .hero-desc {
-      margin: 12px 0 0;
-      font-size: 13px;
-      line-height: 1.7;
-      color: #444;
-      word-break: keep-all;
-    }
-
-    .hero-points {
-      margin-top: 14px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-    }
-
-    .hero-point {
-      min-height: 36px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 6px 8px;
-      font-size: 11px;
-      font-weight: 800;
-      border: 2px solid #111;
-      background: #f8f8f8;
-      box-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 #979797;
-      word-break: keep-all;
-    }
-
-    .section-title {
-      margin: 0;
-      font-size: 24px;
-      line-height: 1.15;
-      font-weight: 900;
-      letter-spacing: -0.05em;
-    }
-
-    .section-desc {
-      margin: 10px 0 0;
-      font-size: 12px;
-      line-height: 1.7;
-      color: #444;
-      word-break: keep-all;
-    }
-
-    .form-card {
-      background: #ece9e1;
-      border: 2px solid #111;
-      box-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 #8d8d8d;
-      padding: 14px;
-    }
-
-    .form-grid {
-      margin-top: 14px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-    }
-
-    .field {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .field label {
-      font-size: 12px;
-      font-weight: 800;
-      color: #222;
-    }
-
-    select {
-      width: 100%;
-      height: 42px;
-      border: 2px solid #111;
-      background: #fff;
-      padding: 0 12px;
-      font-size: 13px;
-      font-weight: 700;
-      color: #111;
-      outline: none;
-      appearance: none;
-      box-shadow: inset 1px 1px 0 #7a7a7a, inset -1px -1px 0 #fff;
-      background-image:
-        linear-gradient(45deg, transparent 50%, #444 50%),
-        linear-gradient(135deg, #444 50%, transparent 50%);
-      background-position:
-        calc(100% - 18px) calc(50% - 3px),
-        calc(100% - 12px) calc(50% - 3px);
-      background-size: 6px 6px, 6px 6px;
-      background-repeat: no-repeat;
-    }
-
-    .tip-box {
-      margin-top: 12px;
-      padding: 10px 12px;
-      border: 2px solid #111;
-      background: #fff;
-      font-size: 11px;
-      line-height: 1.7;
-      color: #444;
-      box-shadow: inset 1px 1px 0 #7a7a7a, inset -1px -1px 0 #fff;
-      word-break: keep-all;
-    }
-
-    .btn-row {
-      margin-top: 14px;
-      display: flex;
-      gap: 8px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .btn-row-vertical {
-      margin-top: 14px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .btn {
-      width: 100%;
-      min-height: 42px;
-      border: 2px solid #111;
-      font-size: 13px;
-      font-weight: 900;
-      letter-spacing: -0.03em;
-      cursor: pointer;
-      background: #d4d0c8;
-      box-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 #7b7b7b;
-    }
-
-    .btn:active {
-      box-shadow: inset -1px -1px 0 #fff, inset 1px 1px 0 #7b7b7b;
-    }
-
-    .btn-pink {
-      background: #ffd8e8;
-    }
-
-    .btn-green {
-      background: #dcf3b8;
-    }
-
-    .btn-yellow {
-      background: #fff0a8;
-    }
-
-    .btn-blue {
-      background: #dcecff;
-    }
-
-    .profile-card {
-      width: 100%;
-      border: 2px solid #111;
-      background: #f4f4f4;
-      box-shadow:
-        inset 1px 1px 0 #fff,
-        inset -1px -1px 0 #8f8f8f,
-        0 8px 20px rgba(0,0,0,0.15);
-      overflow: hidden;
-    }
-
-    .profile-row {
-      border-bottom: 1px solid #111;
-    }
-
-    .profile-row:last-child {
-      border-bottom: 0;
-    }
-
-    .row-head {
-      min-height: 42px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 8px 10px;
-      font-size: 14px;
-      font-weight: 700;
-      letter-spacing: -0.04em;
-      background: #e2e2e2;
-      word-break: keep-all;
-    }
-
-    .saju-grid {
-      display: grid;
-      grid-template-columns: 104px 1fr;
-    }
-
-    .day-main {
-      border-right: 1px solid #111;
-      min-height: 118px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 10px 6px;
-      text-align: center;
-      background: #ffffff;
-      gap: 8px;
-    }
-
-    .day-main-big {
-      font-size: 27px;
-      line-height: 1;
-      font-weight: 900;
-      letter-spacing: -0.08em;
-      color: #111;
-    }
-
-    .pillar-wrap {
-      display: grid;
-      grid-template-rows: 1fr 1fr;
-    }
-
-    .pillar-row {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-    }
-
-    .pillar-row:first-child {
-      border-bottom: 1px solid #111;
-    }
-
-    .pillar-cell {
-      min-height: 59px;
-      border-right: 1px solid #111;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 4px;
-      padding: 7px 3px;
-      text-align: center;
-    }
-
-    .pillar-cell:last-child {
-      border-right: 0;
-    }
-
-    .pillar-top {
-      min-height: 12px;
-      font-size: 10px;
-      line-height: 1;
-      color: #555;
-      font-weight: 700;
-    }
-
-    .pillar-main {
-      font-size: 18px;
-      line-height: 1;
-      font-weight: 900;
-      letter-spacing: -0.05em;
-      color: #111;
-    }
-
-    .bg-wood {
-      background: #dcf4c6;
-    }
-
-    .bg-fire {
-      background: #ffdce6;
-    }
-
-    .bg-earth {
-      background: #fff0b5;
-    }
-
-    .bg-metal {
-      background: #ededed;
-    }
-
-    .bg-water {
-      background: #dcecff;
-    }
-
-    .profile-three {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-    }
-
-    .profile-box {
-      min-height: 98px;
-      padding: 10px 6px;
-      border-right: 1px solid #111;
-      text-align: center;
-      background: #fafafa;
-    }
-
-    .profile-box:last-child {
-      border-right: 0;
-    }
-
-    .profile-box-title {
-      font-size: 12px;
-      font-weight: 700;
-      margin-bottom: 10px;
-      letter-spacing: -0.04em;
-    }
-
-    .profile-box-main {
-      font-size: 22px;
-      line-height: 1.1;
-      font-weight: 900;
-      letter-spacing: -0.06em;
-      margin-bottom: 7px;
-      word-break: keep-all;
-    }
-
-    .profile-box-sub {
-      font-size: 10px;
-      line-height: 1.55;
-      color: #444;
-      word-break: keep-all;
-    }
-
-    .personality-area {
-      padding: 14px 14px 16px;
-      min-height: 170px;
-      background: #fff;
-    }
-
-    .personality-line {
-      display: block;
-      font-size: 14px;
-      line-height: 1.72;
-      word-break: keep-all;
-      color: #222;
-    }
-
-    .job-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-    }
-
-    .job-box {
-      min-height: 116px;
-      padding: 12px 8px 14px;
-      border-right: 1px solid #111;
-      text-align: center;
-      background: #fff;
-    }
-
-    .job-box:last-child {
-      border-right: 0;
-    }
-
-    .job-label {
-      font-size: 12px;
-      font-weight: 700;
-      margin-bottom: 10px;
-      letter-spacing: -0.04em;
-    }
-
-    .job-main {
-      font-size: 21px;
-      line-height: 1.28;
-      font-weight: 900;
-      letter-spacing: -0.05em;
-      margin-bottom: 8px;
-      word-break: keep-all;
-    }
-
-    .job-sub {
-      font-size: 11px;
-      line-height: 1.6;
-      color: #444;
-      word-break: keep-all;
-    }
-
-    .mini-summary {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-    }
-
-    .mini-box {
-      min-height: 50px;
-      padding: 7px 4px;
-      border-right: 1px solid #111;
-      text-align: center;
-    }
-
-    .mini-box:last-child {
-      border-right: 0;
-    }
-
-    .mini-top {
-      font-size: 9px;
-      color: #555;
-      font-weight: 700;
-      margin-bottom: 4px;
-    }
-
-    .mini-main {
-      font-size: 13px;
-      font-weight: 900;
-      letter-spacing: -0.03em;
-    }
-
-    .hidden {
-      display: none !important;
-    }
-
-    @media (max-width: 420px) {
-      .hero-title {
-        font-size: 25px;
-      }
-
-      .saju-grid {
-        grid-template-columns: 92px 1fr;
-      }
-
-      .day-main-big {
-        font-size: 24px;
-      }
-
-      .pillar-main {
-        font-size: 16px;
-      }
-
-      .profile-box-main {
-        font-size: 19px;
-      }
-
-      .job-main {
-        font-size: 18px;
-      }
-
-      .personality-line {
-        font-size: 15px;
-        line-height: 1.7;
-      }
-    }
-  </style>
+      gap: 6px; 
+    }
+    .main-nav a {
+      padding: 4px 6px; 
+      font-size: 13px; 
+      letter-spacing: -0.5px; 
+    }
+  }
+
+  #app {
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 5px; 
+    box-sizing: border-box;
+  }
+
+  .screen {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    animation: fadeIn 0.4s ease-out;
+  }
+
+  .screen.active {
+    display: flex;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  #capture-area {
+    width: 100%;
+    background-color: var(--bg-blue);
+    background-image: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px);
+    background-size: 15px 15px;
+    padding: 10px 5px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+  }
+
+  .folder-wrapper {
+    width: 100%;
+    position: relative;
+  }
+
+  .folder-tab {
+    width: auto;
+    min-width: 130px;
+    height: 35px;
+    background-color: var(--folder-yellow);
+    border: 2px solid var(--line-color);
+    border-bottom: none;
+    margin-left: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    font-weight: 800;
+    color: #000000;
+    position: relative;
+    z-index: 2;
+    padding: 0 15px;
+  }
+
+  .folder-body {
+    background-color: var(--folder-yellow);
+    border: 2px solid var(--line-color);
+    padding: 15px 10px; 
+    box-shadow: 4px 6px 0px rgba(30, 58, 138, 0.15);
+    position: relative;
+    z-index: 1;
+    margin-top: -2px;
+  }
+
+  .folder-inner {
+    border: 2px dashed #d1d5db;
+    border-color: rgba(30, 58, 138, 0.3);
+    padding: 15px;
+    background-color: transparent;
+  }
+
+  .main-img {
+    width: 100%;
+    border: 2px solid var(--line-color);
+    display: block;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+  }
+
+  .btn {
+    width: 100%;
+    padding: 14px;
+    background-color: var(--white);
+    color: #000000;
+    border: 2px solid var(--line-color);
+    border-radius: 0;
+    box-shadow: 3px 3px 0px var(--line-color);
+    font-family: 'Pretendard', sans-serif;
+    font-size: 15px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.1s;
+  }
+
+  .btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0px var(--line-color);
+  }
+  
+  .btn-highlight {
+    background-color: var(--line-color);
+    color: var(--white);
+    box-shadow: 3px 3px 0px var(--text-sub);
+  }
+
+  .btn-col-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    padding: 0 15px;
+    box-sizing: border-box;
+  }
+
+  .form-group-full {
+    margin-bottom: 15px;
+    background-color: var(--white);
+    border: 2px solid var(--line-color);
+    padding: 10px 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+  
+  .form-group-full.row-style {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .form-group-full label {
+    font-size: 14px;
+    font-weight: 700;
+    color: #000000;
+    white-space: nowrap;
+  }
+  
+  .form-group-full.row-style label {
+    margin-right: 15px;
+  }
+
+  .form-group-full.row-style input {
+    width: 60%;
+  }
+
+  .form-inline-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+
+  .input-item {
+    flex: 1;
+    background-color: var(--white);
+    border: 2px solid var(--line-color);
+    padding: 8px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-width: 0;
+  }
+
+  .input-item label {
+    font-size: 12px;
+    font-weight: 700;
+    color: #000000;
+    margin-bottom: 5px;
+  }
+
+  select, input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    font-family: 'Pretendard', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    background-color: #f8fafc;
+    border: 1.5px solid var(--line-color);
+    border-radius: 0;
+    color: #000000;
+    box-sizing: border-box;
+  }
+
+  select {
+    cursor: pointer;
+  }
+
+  select:focus, input[type="text"]:focus {
+    outline: none;
+    background-color: #fff;
+  }
+
+  .profile-table {
+    width: 100%;
+    background-color: var(--white);
+    border: 2px solid var(--line-color);
+  }
+
+  .saju-top-area {
+    display: flex;
+    border-bottom: 2px solid var(--line-color);
+  }
+
+  .ilju-title-box {
+    width: 28%; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px; 
+    font-weight: 800;
+    border-right: 2px solid var(--line-color);
+    background-color: var(--white);
+    padding: 0 5px;
+    text-align: center;
+    word-break: break-all;
+    color: #000000;
+  }
+
+  .palja-grid-box {
+    width: 72%; 
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
+
+  .palja-cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px; 
+    font-weight: 800;
+    border-right: 2px solid var(--line-color);
+    border-bottom: 2px solid var(--line-color);
+    padding: 8px 0; 
+  }
+
+  .palja-cell:nth-child(4n) { border-right: none; }
+  .palja-cell:nth-child(n+5) { border-bottom: none; }
+
+  .wood { background-color: var(--wood-bg); color: var(--wood-txt); }
+  .fire { background-color: var(--fire-bg); color: var(--fire-txt); }
+  .earth { background-color: var(--earth-bg); color: var(--earth-txt); }
+  .metal { background-color: var(--metal-bg); color: var(--metal-txt); }
+  .water { background-color: var(--water-bg); color: var(--water-txt); }
+  .empty-cell { background-color: #f1f5f9; color: #94a3b8; }
+
+  .section-heading {
+    text-align: center;
+    padding: 10px;
+    background-color: #ffe6ec; /* 연핑크 */
+    font-size: 15px;
+    font-weight: 800;
+    border-bottom: 2px solid var(--line-color);
+    letter-spacing: 0.5px;
+    color: #000000;
+  }
+
+  .summary-grid {
+    display: flex;
+    border-bottom: 2px solid var(--line-color);
+  }
+
+  .summary-col {
+    flex: 1;
+    text-align: center;
+    padding: 12px 5px; 
+    border-right: 2px solid var(--line-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .summary-col:last-child { border-right: none; }
+
+  .col-title {
+    font-size: 13px; 
+    font-weight: 800;
+    color: #000000;
+    margin-bottom: 10px; 
+    padding-bottom: 6px;
+    width: 90%;
+    border-bottom: 1px dashed #a0aec0; /* 구분선 추가 */
+  }
+
+  .col-content {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    gap: 12px; 
+    font-size: 13px;
+    font-weight: 700;
+    word-break: keep-all; 
+    letter-spacing: -0.5px;
+    color: #000000;
+  }
+
+  .circled {
+    position: relative;
+    color: var(--accent-red) !important;
+    font-weight: 800;
+    z-index: 1;
+  }
+
+  .circled::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 125%; 
+    height: 140%;
+    border: 1.5px solid var(--accent-red);
+    border-radius: 50%; 
+    z-index: -1;
+  }
+
+  .trait-list {
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 2px solid var(--line-color);
+    background-color: var(--white);
+  }
+
+  .trait-list div {
+    padding: 12px 0;
+    border-bottom: 1px dashed #cbd5e1; 
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 700;
+    text-align: left;
+    word-break: keep-all; 
+    color: #000000;
+  }
+
+  .trait-list div:last-child {
+    border-bottom: none; 
+  }
+
+  .job-grid {
+    display: flex;
+    padding: 15px 0;
+    border-bottom: 2px solid var(--line-color);
+  }
+
+  .job-col {
+    flex: 1;
+    text-align: center;
+    padding: 0 10px;
+    border-right: 2px dashed var(--line-color);
+  }
+  
+  .job-col:last-child { border-right: none; }
+
+  .job-title {
+    font-size: 13px;
+    font-weight: 800;
+    color: #000000;
+    margin-bottom: 8px;
+    text-decoration: underline;
+    text-decoration-color: var(--accent-red);
+    text-decoration-style: wavy;
+  }
+
+  .job-desc {
+    font-size: 13px;
+    font-weight: 800;
+    line-height: 1.5;
+    color: #000000;
+    word-break: keep-all; 
+  }
+
+  .element-score-grid {
+    display: flex;
+  }
+
+  .es-cell {
+    flex: 1;
+    text-align: center;
+    padding: 12px 0;
+    border-right: 2px solid var(--line-color);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .es-cell:last-child {
+    border-right: none;
+  }
+
+  .es-label {
+    font-size: 12px;
+    font-weight: 800;
+    color: #000000;
+  }
+
+  .es-val {
+    font-size: 16px;
+    font-weight: 800;
+    color: #000000;
+  }
+
+  .paperclip {
+    position: absolute;
+    top: -15px;
+    right: 30px;
+    width: 15px;
+    height: 45px;
+    border: 3px solid #cbd5e1;
+    border-radius: 10px;
+    border-bottom-left-radius: 0;
+    z-index: 10;
+    transform: rotate(15deg);
+    background: transparent;
+  }
+
+  .typewriter-container {
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 1.8;
+    color: #000000;
+    text-align: center;
+  }
+  
+  .blink-cursor {
+    animation: blink 0.8s step-end infinite;
+    color: var(--accent-red);
+    margin-left: 2px;
+  }
+  
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(30, 58, 138, 0.7);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .modal-overlay.active {
+    display: flex;
+  }
+
+  .modal-content {
+    background-color: var(--folder-yellow);
+    border: 2px solid var(--line-color);
+    border-radius: 0;
+    padding: 20px;
+    max-width: 400px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 6px 6px 0px var(--line-color);
+    text-align: center;
+    position: relative;
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 20px;
+    font-weight: 800;
+    color: #000000;
+    cursor: pointer;
+  }
+
+  .modal-text {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--accent-red);
+    margin: 10px 0 20px 0;
+  }
+
+  #modal-image-container img {
+    width: 100%;
+    border: 2px solid var(--line-color);
+    display: block;
+  }
+
+  .ad-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+  }
+</style>
 </head>
 <body>
-  <header class="page-header">
-    <div class="wrapper header-inner">
-      <a href="/" class="logo">테스트잇</a>
-      <nav class="main-nav">
-        <a href="/">성격</a>
-        <a href="/">얼굴</a>
-        <a href="/">그외</a>
-        <a href="/">사주</a>
-      </nav>
-    </div>
+
+<div class="header-wrapper">
+  <header class="page-header wrapper">
+    <h1><a href="https://test-it.co.kr/" class="retro-logo">테스트잇</a></h1> 
+    <nav>
+      <ul class="main-nav">
+        <li><a href="https://test-it.co.kr/test.html">성격</a></li>
+        <li><a href="https://test-it.co.kr/face.html">얼굴</a></li>
+        <li><a href="https://test-it.co.kr/etc.html">그외</a></li>
+        <li><a href="https://test-it.co.kr/saju.html">사주</a></li>
+      </ul>
+    </nav>
   </header>
+</div>
 
-  <main class="app">
-    <section id="mainScreen" class="screen active">
-      <div class="win-window">
-        <div class="title-bar">
-          <div class="title-left">
-            <span class="title-icon"></span>
-            <span>테스트잇 사주 만세력 프로필 테스트.exe</span>
-          </div>
-          <div class="title-buttons">
-            <span class="win-btn"></span>
-            <span class="win-btn"></span>
-            <span class="win-btn"></span>
-          </div>
+<div id="app">
+  <div id="screen-main" class="screen active">
+    <div class="folder-wrapper">
+      <div class="paperclip"></div>
+      <div class="folder-tab">테스트잇 376.zip</div>
+      <div class="folder-body">
+        <div class="folder-inner" style="padding: 15px;">
+          <img src="img_main376.png" alt="테스트잇 사주 만세력 프로필 테스트 메인" class="main-img" onclick="showScreen('screen-input')" style="cursor: pointer;">
+          <button class="btn" onclick="showScreen('screen-input')">프로필 생성하기</button>
         </div>
-        <div class="window-body">
-          <div class="hero-box">
-            <div class="hero-badge">윈도우 감성 사주 프로필</div>
-            <h1 class="hero-title">테스트잇 사주 만세력 프로필 테스트</h1>
-            <p class="hero-desc">
-              생년월일과 시지를 선택하면 복잡한 만세력 대신
-              귀여운 이력서 느낌의 프로필 카드로 사주를 정리해줘요.
-            </p>
-            <div class="hero-points">
-              <div class="hero-point">시지 선택형 입력</div>
-              <div class="hero-point">모바일 화면 최적화</div>
-              <div class="hero-point">60일주 성격 반영</div>
-              <div class="hero-point">쉬운 직업명 사용</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="screen-input" class="screen">
+    <div class="folder-wrapper">
+      <div class="paperclip" style="right: auto; left: 30px; transform: rotate(-15deg);"></div>
+      <div class="folder-tab">정보 입력</div>
+      <div class="folder-body">
+        <div class="folder-inner">
+          
+          <div class="form-group-full row-style">
+            <label>이름/닉네임</label>
+            <input type="text" id="user-name" placeholder="입력해주세요">
+          </div>
+
+          <div class="form-inline-group">
+            <div class="input-item">
+              <label>양력/음력</label>
+              <select id="sel-type"><option value="solar">양력</option><option value="lunar">음력</option></select>
             </div>
-            <div class="btn-row">
-              <button id="startBtn" class="btn btn-pink">테스트 시작하기</button>
+            <div class="input-item">
+              <label>생년</label>
+              <select id="sel-year"></select>
             </div>
+          </div>
+          
+          <div class="form-inline-group">
+            <div class="input-item">
+              <label>생월</label>
+              <select id="sel-month"></select>
+            </div>
+            <div class="input-item">
+              <label>생일</label>
+              <select id="sel-day"></select>
+            </div>
+          </div>
+          
+          <div class="form-group-full">
+            <label>생시</label>
+            <select id="sel-time">
+              <option value="-1">모름</option><option value="0">자시(23:30~01:29)</option><option value="2">축시(01:30~03:29)</option>
+              <option value="4">인시(03:30~05:29)</option><option value="6">묘시(05:30~07:29)</option><option value="8">진시(07:30~09:29)</option>
+              <option value="10">사시(09:30~11:29)</option><option value="12">오시(11:30~13:29)</option><option value="14">미시(13:30~15:29)</option>
+              <option value="16">신시(15:30~17:29)</option><option value="18">유시(17:30~19:29)</option><option value="20">술시(19:30~21:29)</option>
+              <option value="22">해시(21:30~23:29)</option>
+            </select>
+          </div>
+          
+          <button class="btn" onclick="calculateAndShowResult()">결과 확인하기</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="screen-loading" class="screen">
+    <div class="folder-wrapper">
+      <div class="paperclip"></div>
+      <div class="folder-tab">프로필 작성 중</div>
+      <div class="folder-body">
+        <div class="folder-inner" style="min-height: 250px; display: flex; align-items: center; justify-content: center;">
+          <div class="typewriter-container">
+            <span id="tw-content"></span><span class="blink-cursor">|</span>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </div>
 
-    <section id="inputScreen" class="screen">
-      <div class="win-window">
-        <div class="title-bar">
-          <div class="title-left">
-            <span class="title-icon"></span>
-            <span>생년월일시 입력</span>
-          </div>
-          <div class="title-buttons">
-            <span class="win-btn"></span>
-            <span class="win-btn"></span>
-            <span class="win-btn"></span>
-          </div>
-        </div>
-        <div class="window-body">
-          <div class="form-card">
-            <h2 class="section-title">생년월일시 입력</h2>
-            <p class="section-desc">
-              시간은 자시, 축시처럼 시지 기준으로 선택하게 해뒀어.
-            </p>
+  <div id="screen-result" class="screen">
+    <div id="capture-area">
+      <div class="folder-wrapper" style="margin-top: 0;">
+        <div class="paperclip"></div>
+        <div class="folder-tab">테스트잇 사주 만세력 프로필 테스트</div>
 
-            <div class="form-grid">
-              <div class="field">
-                <label for="calendarType">달력 기준</label>
-                <select id="calendarType">
-                  <option value="solar">양력</option>
-                  <option value="lunar">음력</option>
-                </select>
+        <div class="folder-body" style="padding: 10px;">
+          
+          <div class="profile-table">
+            <div class="saju-top-area">
+              <div class="ilju-title-box" id="res-ilju-title"></div>
+              <div class="palja-grid-box" id="res-palja-grid"></div>
+            </div>
+
+            <div class="section-heading">내 사주 프로필 요약</div>
+            <div class="summary-grid">
+              <div class="summary-col">
+                <div class="col-title">내 사주는</div>
+                <div class="col-content" id="res-strength-content">
+                  </div>
               </div>
-
-              <div id="leapWrap" class="field hidden">
-                <label for="leapType">윤달 여부</label>
-                <select id="leapType">
-                  <option value="false">아니오</option>
-                  <option value="true">윤달</option>
-                </select>
+              <div class="summary-col">
+                <div class="col-title">매력도</div>
+                <div class="col-content" id="res-charm-content">
+                  </div>
               </div>
-
-              <div class="field">
-                <label for="yearSelect">출생 연도</label>
-                <select id="yearSelect"></select>
+              <div class="summary-col">
+                <div class="col-title">재물운</div>
+                <div class="col-content" id="res-wealth-content">
+                  </div>
               </div>
-
-              <div class="field">
-                <label for="monthSelect">출생 월</label>
-                <select id="monthSelect"></select>
+            </div>
+            
+            <div class="summary-grid" style="border-top: none;">
+              <div class="summary-col">
+                <div class="col-title">연애스타일</div>
+                <div class="col-content" id="res-love-content">
+                  </div>
               </div>
-
-              <div class="field">
-                <label for="daySelect">출생 일</label>
-                <select id="daySelect"></select>
+              <div class="summary-col">
+                <div class="col-title">인기</div>
+                <div class="col-content" id="res-pop-content">
+                  </div>
               </div>
-
-              <div class="field">
-                <label for="timeBranchSelect">출생 시</label>
-                <select id="timeBranchSelect"></select>
+              <div class="summary-col">
+                <div class="col-title">사회생활</div>
+                <div class="col-content" id="res-social-content">
+                  </div>
               </div>
             </div>
 
-           
+            <div class="section-heading">내 사주 입체 성격</div>
+            <div class="trait-list" id="res-personality"></div>
 
-            <div class="btn-row">
-              <button id="backMainBtn" class="btn">이전으로</button>
-              <button id="submitBtn" class="btn btn-pink">다음으로</button>
+            <div class="section-heading">사주로 보는 내 직업</div>
+            <div class="job-grid">
+              <div class="job-col">
+                <div class="job-title">[ 전생의 역할 ]</div>
+                <div class="job-desc" id="res-job-past"></div>
+              </div>
+              <div class="job-col">
+                <div class="job-title">[ 현대의 직무 ]</div>
+                <div class="job-desc" id="res-job-present"></div>
+              </div>
             </div>
+
+            <div class="element-score-grid">
+              <div class="es-cell wood">
+                <div class="es-label">목</div>
+                <div class="es-val" id="score-wood">0.0</div>
+              </div>
+              <div class="es-cell fire">
+                <div class="es-label">화</div>
+                <div class="es-val" id="score-fire">0.0</div>
+              </div>
+              <div class="es-cell earth">
+                <div class="es-label">토</div>
+                <div class="es-val" id="score-earth">0.0</div>
+              </div>
+              <div class="es-cell metal">
+                <div class="es-label">금</div>
+                <div class="es-val" id="score-metal">0.0</div>
+              </div>
+              <div class="es-cell water">
+                <div class="es-label">수</div>
+                <div class="es-val" id="score-water">0.0</div>
+              </div>
+            </div>
+
           </div>
+
         </div>
       </div>
-    </section>
+    </div>
+    <div class="btn-col-group">
+      <button class="btn btn-highlight" onclick="saveImage()">결과 이미지 저장하기</button>
+      <button class="btn" onclick="location.reload()">다시 해보기</button>
+      <button class="btn" onclick="alert('다른 테스트 준비 중입니다!')">다른 테스트 해보기</button>
+      <button class="btn" onclick="shareTest()">테스트 공유하기</button>
+    </div>
+  </div>
 
-    <section id="resultScreen" class="screen">
-      <div class="profile-card" id="captureArea">
-        <div class="profile-row">
-          <div class="row-head">테스트잇 사주 만세력 프로필 테스트</div>
-        </div>
+  <div class="ad-container" id="ad-container">
+      <article class="coupang_ad mt-3">
+          <script src="https://ads-partners.coupang.com/g.js"></script>
+          <script>
+              new PartnersCoupang.G({"id":798186,"template":"carousel","trackingCode":"AF4391881","width":"350","height":"140","tsource":""});
+          </script>
+      </article>
+  </div>
+</div>
 
-        <div class="profile-row saju-grid">
-          <div class="day-main">
-            <div id="dayPillarMain" class="day-main-big">을사일주</div>
-          </div>
+<div id="image-modal" class="modal-overlay">
+  <div class="modal-content">
+    <div class="modal-close" onclick="closeModal()">X</div>
+    <div class="modal-text">꾹 눌러서 이미지를 저장하세요!</div>
+    <div id="modal-image-container"></div>
+  </div>
+</div>
 
-          <div class="pillar-wrap">
-            <div id="stemRow" class="pillar-row"></div>
-            <div id="branchRow" class="pillar-row"></div>
-          </div>
-        </div>
+<script>
+  const stemElements = {'갑':'목', '을':'목', '병':'화', '정':'화', '무':'토', '기':'토', '경':'금', '신':'금', '임':'수', '계':'수'};
+  
+  const jijangganWeights = {
+    '자': { '임': 10/30, '계': 20/30 },
+    '축': { '계': 9/30, '신': 3/30, '기': 18/30 },
+    '인': { '무': 7/30, '병': 7/30, '갑': 16/30 },
+    '묘': { '갑': 10/30, '을': 20/30 },
+    '진': { '을': 9/30, '계': 3/30, '무': 18/30 },
+    '사': { '무': 7/30, '경': 7/30, '병': 16/30 },
+    '오': { '병': 10/30, '기': 9/30, '정': 11/30 },
+    '미': { '정': 9/30, '을': 3/30, '기': 18/30 },
+    '신': { '무': 7/30, '임': 7/30, '경': 16/30 },
+    '유': { '경': 10/30, '신': 20/30 },
+    '술': { '신': 9/30, '정': 3/30, '무': 18/30 },
+    '해': { '무': 7/30, '갑': 7/30, '임': 16/30 }
+  };
 
-        <div class="profile-row profile-three">
-          <div class="profile-box">
-            <div class="profile-box-title">내 사주는</div>
-            <div id="strengthMain" class="profile-box-main">강한편</div>
-            <div id="strengthSub" class="profile-box-sub"></div>
-          </div>
-          <div class="profile-box">
-            <div class="profile-box-title">매력도</div>
-            <div id="charmMain" class="profile-box-main">은근강함</div>
-            <div id="charmSub" class="profile-box-sub"></div>
-          </div>
-          <div class="profile-box">
-            <div class="profile-box-title">정리</div>
-            <div id="summaryMain" class="profile-box-main">금강 수약</div>
-            <div id="summarySub" class="profile-box-sub"></div>
-          </div>
-        </div>
+  const ohaengInfo = {
+    '甲':{name:'갑목', type:'목', yy:'+'}, '乙':{name:'을목', type:'목', yy:'-'},
+    '丙':{name:'병화', type:'화', yy:'+'}, '丁':{name:'정화', type:'화', yy:'-'},
+    '戊':{name:'무토', type:'토', yy:'+'}, '己':{name:'기토', type:'토', yy:'-'},
+    '庚':{name:'경금', type:'금', yy:'+'}, '辛':{name:'신금', type:'금', yy:'-'},
+    '壬':{name:'임수', type:'수', yy:'+'}, '癸':{name:'계수', type:'수', yy:'-'},
+    '子':{name:'자수', type:'수', yy:'-'}, '丑':{name:'축토', type:'토', yy:'-'},
+    '寅':{name:'인목', type:'목', yy:'+'}, '卯':{name:'묘목', type:'목', yy:'-'},
+    '辰':{name:'진토', type:'토', yy:'+'}, '巳':{name:'사화', type:'화', yy:'+'},
+    '午':{name:'오화', type:'화', yy:'-'}, '未':{name:'미토', type:'토', yy:'-'},
+    '申':{name:'신금', type:'금', yy:'+'}, '酉':{name:'유금', type:'금', yy:'-'},
+    '戌':{name:'술토', type:'토', yy:'+'}, '亥':{name:'해수', type:'수', yy:'+'}
+  };
 
-        <div class="profile-row">
-          <div class="row-head">내 사주 프로필 성격</div>
-        </div>
+  const elementClassMap = { '목':'wood', '화':'fire', '토':'earth', '금':'metal', '수':'water' };
 
-        <div class="profile-row">
-          <div id="personalityArea" class="personality-area"></div>
-        </div>
+  const producingElement = { '목':'수', '화':'목', '토':'화', '금':'토', '수':'금' };
+  const controllingElement = { '목':'금', '화':'수', '토':'목', '금':'화', '수':'토' };
 
-        <div class="profile-row">
-          <div class="row-head">나에게 어울리는 직업</div>
-        </div>
+  function getShipseong(myType, myYY, targetType, targetYY) {
+    if(myType === targetType) return myYY === targetYY ? '비견' : '겁재';
+    if(
+      (myType==='목'&&targetType==='화') || (myType==='화'&&targetType==='토') ||
+      (myType==='토'&&targetType==='금') || (myType==='금'&&targetType==='수') || (myType==='수'&&targetType==='목')
+    ) return myYY === targetYY ? '식신' : '상관';
+    if(
+      (myType==='목'&&targetType==='토') || (myType==='화'&&targetType==='금') ||
+      (myType==='토'&&targetType==='수') || (myType==='금'&&targetType==='목') || (myType==='수'&&targetType==='화')
+    ) return myYY === targetYY ? '편재' : '정재';
+    if(
+      (targetType==='목'&&myType==='토') || (targetType==='화'&&myType==='금') ||
+      (targetType==='토'&&myType==='수') || (targetType==='금'&&myType==='목') || (targetType==='수'&&myType==='화')
+    ) return myYY === targetYY ? '편관' : '정관';
+    if(
+      (targetType==='목'&&myType==='화') || (targetType==='화'&&myType==='토') ||
+      (targetType==='토'&&myType==='금') || (targetType==='금'&&myType==='수') || (targetType==='수'&&myType==='목')
+    ) return myYY === targetYY ? '편인' : '정인';
+    return '';
+  }
 
-        <div class="profile-row job-grid">
-          <div class="job-box">
-            <div class="job-label">전생 느낌</div>
-            <div id="pastJobMain" class="job-main"></div>
-            <div id="pastJobSub" class="job-sub"></div>
-          </div>
-          <div class="job-box">
-            <div class="job-label">현재</div>
-            <div id="currentJobMain" class="job-main"></div>
-            <div id="currentJobSub" class="job-sub"></div>
-          </div>
-        </div>
+  const shipseongModifier = {
+    '비견': { past: "자기 힘으로 우뚝 선", present: "주관이 뚜렷하고 독립적인" },
+    '겁재': { past: "치열한 경쟁을 이겨낸", present: "승부욕이 강하고 끈기 있는" },
+    '식신': { past: "한 우물만 깊게 파고든", present: "타고난 재주가 있고 전문적인" },
+    '상관': { past: "말솜씨 하나로 세상을 홀린", present: "아이디어가 넘치고 트렌디한" },
+    '편재': { past: "큰 돈을 굴리며 판을 짜던", present: "사업 수완이 좋고 스케일이 큰" },
+    '정재': { past: "알뜰살뜰 재산을 모은", present: "계산이 빠르고 현실 감각이 좋은" },
+    '편관': { past: "어려운 환경을 이겨낸", present: "카리스마 있고 위기에 강한" },
+    '정관': { past: "원칙을 지키며 바르게 살던", present: "책임감이 강하고 체계적인" },
+    '편인': { past: "남다른 눈치와 촉을 가졌던", present: "직관력이 뛰어나고 독창적인" },
+    '정인': { past: "책을 가까이하고 지혜롭던", present: "배우기를 좋아하고 신뢰를 주는" }
+  };
 
-        <div class="mini-summary">
-          <div class="mini-box bg-wood">
-            <div class="mini-top">목</div>
-            <div id="woodCount" class="mini-main">0</div>
-          </div>
-          <div class="mini-box bg-fire">
-            <div class="mini-top">화</div>
-            <div id="fireCount" class="mini-main">0</div>
-          </div>
-          <div class="mini-box bg-earth">
-            <div class="mini-top">토</div>
-            <div id="earthCount" class="mini-main">0</div>
-          </div>
-          <div class="mini-box bg-metal">
-            <div class="mini-top">금</div>
-            <div id="metalCount" class="mini-main">0</div>
-          </div>
-          <div class="mini-box bg-water">
-            <div class="mini-top">수</div>
-            <div id="waterCount" class="mini-main">0</div>
-          </div>
-        </div>
-      </div>
+  const iljuJobs = {
+    "갑자일주": { p: "똑똑한 마을 훈장님", pr: "연구원 / 학자" }, "을축일주": { p: "마을 지주", pr: "금융인 / 자산관리사" },
+    "병인일주": { p: "전국 누비던 보부상", pr: "스타트업 대표" }, "정묘일주": { p: "그림 그리던 궁중 화가", pr: "예술가 / 디자이너" },
+    "무진일주": { p: "호탕한 대장군", pr: "건축가 / 부동산 전문가" }, "기사일주": { p: "유능한 통역사", pr: "언론인 / 홍보 전문가" },
+    "경오일주": { p: "원칙 따지던 판사", pr: "법조인 / 공무원" }, "신미일주": { p: "손재주 좋은 세공 장인", pr: "정밀 데이터 분석가" },
+    "임신일주": { p: "무역 상인", pr: "글로벌 마케터" }, "계유일주": { p: "몰래 조사하던 암행어사", pr: "감사 / 정보 분석가" },
+    "갑술일주": { p: "사람 돕던 동네 의원", pr: "사회복지사" }, "을해일주": { p: "악기 연주하던 방랑 시인", pr: "자유로운 여행 작가" },
+    "병자일주": { p: "나라 잔치 기획자", pr: "공공기관 관리자" }, "정축일주": { p: "도자기 굽던 도공", pr: "요리사 / 전문 장인" },
+    "무인일주": { p: "국경 지키던 호위 무사", pr: "보안 / 경호 전문가" }, "기묘일주": { p: "왕 옆의 비서실장", pr: "전문 비서 / 기획자" },
+    "경진일주": { p: "반란군 때려잡던 장군", pr: "경영 컨설턴트" }, "신사일주": { p: "외교 문서 쓰던 엘리트", pr: "외교관 / 통번역사" },
+    "임오일주": { p: "소식 전하던 배달꾼", pr: "물류 / 유통 전문가" }, "계미일주": { p: "역사 기록하던 서기", pr: "기록물 관리사" },
+    "갑신일주": { p: "싸움 잘하던 장수", pr: "IT 하드웨어 엔지니어" }, "을유일주": { p: "칼 만들던 대장장이", pr: "외과 의사" },
+    "병술일주": { p: "도둑 잡던 정의로운 경찰", pr: "수사관 / 기획자" }, "정해일주": { p: "별자리 보던 천문학자", pr: "심리 상담가" },
+    "무자일주": { p: "나라 금고지기", pr: "은행원" }, "기축일주": { p: "땅과 농사 관리인", pr: "회계사 / 세무사" },
+    "경인일주": { p: "큰 상점 사장님", pr: "전문 경영인(CEO)" }, "신묘일주": { p: "장신구 만들던 공예가", pr: "인테리어 디자이너" },
+    "임진일주": { p: "마을 사람들 통솔하던 군수", pr: "고위 공무원" }, "계사일주": { p: "나라 돈 관리하던 재무부 직원", pr: "펀드매니저" },
+    "갑오일주": { p: "재미있게 말하던 이야기꾼", pr: "방송인 / 인플루언서" }, "을미일주": { p: "쌀 창고 지키던 관리인", pr: "투자 전문가" },
+    "병신일주": { p: "큰 물건 떼다 팔던 도매상", pr: "무역업 종사자" }, "정유일주": { p: "보석 깎던 보석공", pr: "주얼리 디자이너" },
+    "무술일주": { p: "성벽 지키던 장군", pr: "건축 / 토목 전문가" }, "기해일주": { p: "바다 건너던 상인", pr: "외환 딜러" },
+    "경자일주": { p: "법 다루던 검사", pr: "판사 / 검사" }, "신축일주": { p: "비밀 적어두던 기록관", pr: "정밀 기술 전문가" },
+    "임인일주": { p: "큰 서당 훈장님", pr: "교육 프로그램 기획자" }, "계묘일주": { p: "물건 감정하던 전문가", pr: "박물관 큐레이터" },
+    "갑진일주": { p: "군사 이끌던 대장", pr: "정치인" }, "을사일주": { p: "소식 전하던 외교관", pr: "아나운서 / 기자" },
+    "병오일주": { p: "의리 넘치던 골목대장", pr: "스포츠 선수" }, "정미일주": { p: "사람들 돌보던 의원", pr: "의료 / 보건 종사자" },
+    "무신일주": { p: "큰 상단 이끌던 리더", pr: "IT 플랫폼 사업가" }, "기유일주": { p: "쇠 장식 만들던 장인", pr: "UI/UX 디자이너" },
+    "경술일주": { p: "적군 무찌르던 변방 장군", pr: "기업 전략 기획자" }, "신해일주": { p: "풍류 즐기던 선비", pr: "작가 / 카피라이터" },
+    "임자일주": { p: "험한 바다 항해하던 선장", pr: "해운업 종사자" }, "계축일주": { p: "일 처리하던 호위무사", pr: "정보보안 전문가" },
+    "갑인일주": { p: "꼿꼿하게 살던 선비", pr: "감사 / 경영인" }, "을묘일주": { p: "아름다운 비단 짜던 기술자", pr: "패션 디자이너" },
+    "병진일주": { p: "들판 달리던 기마병", pr: "영업 / 마케팅 전문가" }, "정사일주": { p: "불 잘 다루던 뛰어난 도공", pr: "영상 / 영화 감독" },
+    "무오일주": { p: "앞장서던 용감한 부대장", pr: "체육 / 피트니스 종사자" }, "기미일주": { p: "거친 땅 일구던 농부", pr: "농업 / 환경 전문가" },
+    "경신일주": { p: "무술 실력 좋던 무사", pr: "직업 군인 / 경찰" }, "신유일주": { p: "날카로운 칼 만들던 장인", pr: "부품 설계 엔지니어" },
+    "임술일주": { p: "밤바다 지키던 수군", pr: "고위 행정관" }, "계해일주": { p: "배 타고 다니던 상인", pr: "심리치료사" }
+  };
 
-      <div class="btn-row-vertical">
-        <button id="saveBtn" class="btn btn-green">결과 이미지 저장하기</button>
-        <button id="retryBtn" class="btn">다시 해보기</button>
-        <button id="otherTestBtn" class="btn btn-yellow">다른 테스트 해보기</button>
-        <button id="shareBtn" class="btn btn-blue">테스트 공유하기</button>
-      </div>
-    </section>
-  </main>
+  const dynamicTraits = {
+    '비견': "독립심이 강해 스스로 해결하려는 성향",
+    '겁재': "경쟁을 즐기고 지기 싫어하는 타고난 승부사",
+    '식신': "한 분야에 깊이 파고드는 장인 기질이 있음",
+    '상관': "틀을 깨는 것을 좋아하고 표현력이 뛰어남",
+    '편재': "스케일이 크고 전체적인 판을 짜는 데 능함",
+    '정재': "꼼꼼하며 안정적으로 상황을 유지하려는 성향",
+    '편관': "난관일수록 돌파력을 발휘하는 카리스마",
+    '정관': "규칙과 명예를 중시하며 체계적인 성향",
+    '편인': "직관력이 뛰어나 이면을 꿰뚫어 보는 눈이 있음",
+    '정인': "지적 호기심이 많고 도덕성과 신뢰를 중시함"
+  };
 
-  <script>
-    const screenMain = document.getElementById("mainScreen");
-    const screenInput = document.getElementById("inputScreen");
-    const screenResult = document.getElementById("resultScreen");
+  const dayGanTraits = {
+    '甲': "곧고 강직하며 위로 뻗어나가려는 향상심이 강함",
+    '乙': "유연하고 끈질기며 어떤 환경에서도 살아남는 적응력",
+    '丙': "세상을 밝히는 태양처럼 열정적이고 솔직담백한 성격",
+    '丁': "따뜻하고 은근한 매력이 있으며 세심하고 배려심 넘침",
+    '戊': "태산처럼 듬직하고 흔들림이 없으며 포용력이 넓음",
+    '己': "어머니의 품처럼 다정하고 사람들을 품어주는 부드러움",
+    '庚': "강단 있고 맺고 끊음이 확실하며 의리와 원칙을 중시함",
+    '辛': "정밀하고 예리하며 보석처럼 세련된 미적 감각을 지님",
+    '壬': "바다처럼 속이 깊고 유연하며 지혜로운 사고를 가짐",
+    '癸': "이슬비처럼 부드럽게 스며드는 친화력과 직관력이 있음"
+  };
 
-    const calendarType = document.getElementById("calendarType");
-    const leapWrap = document.getElementById("leapWrap");
-    const leapType = document.getElementById("leapType");
-    const yearSelect = document.getElementById("yearSelect");
-    const monthSelect = document.getElementById("monthSelect");
-    const daySelect = document.getElementById("daySelect");
-    const timeBranchSelect = document.getElementById("timeBranchSelect");
+  const iljuBaseTraits = {
+    "갑자일주": ["다정다감하고 인정이 많아 사람이 모임", "호기심이 많고 학구적인 성향이 강함", "자존심이 매우 세서 굽히는 것을 싫어함", "시작은 거창하지만 마무리가 약할 때가 있음"],
+    "을축일주": ["유순해 보이나 속에는 엄청난 고집이 있음", "책임감이 강하고 끝까지 해내는 성실파", "재물에 대한 관심이 많고 현실 감각이 뛰어남", "인내심이 강해 힘든 상황도 묵묵히 버텨냄"],
+    "병인일주": ["열정적이고 활동적이라 가만히 못 있음", "리더십이 있어 무리 이끄는 것을 좋아함", "성격이 급해서 행동이 먼저 나갈 때가 많음", "솔직하고 뒤끝이 없어서 대인관계가 시원함"],
+    "정묘일주": ["감수성이 풍부하고 예술적 감각이 뛰어남", "눈치가 빠르고 분위기 파악을 아주 잘함", "온화하지만 선을 넘으면 냉정하게 돌아섬", "변덕이 심하고 싫증을 빨리 내는 경향이 있음"],
+    "무진일주": ["배포가 남달라 스케일 작은 것을 싫어함", "듬직하고 믿음직스러워 주변이 많이 의지함", "한번 욱하면 물불 안 가리는 성향이 숨어있음", "추진력이 엄청나 목표가 생기면 밀어붙임"],
+    "기사일주": ["상황 대처 능력이 탁월하고 눈치가 빠름", "사교성이 좋아 어딜 가든 잘 어울림", "말을 조리 있게 잘하고 설득력이 뛰어난 편", "겉으로는 부드럽지만 속으로는 계산이 빠름"],
+    "경오일주": ["반듯하고 예의가 바르며 원칙을 중시함", "외모나 스타일이 세련되고 깔끔함을 추구", "공과 사를 명확히 구분하고 맺고 끊음이 확실함", "명예를 중요시하며 자존심 상하는 걸 극혐함"],
+    "신미일주": ["예리하고 섬세해 숨은 디테일을 잘 캐치함", "자존심이 매우 세고 은근한 고집이 있음", "겉은 차가워 보이나 속은 여리고 정이 많음", "자신의 속마음을 남에게 잘 털어놓지 않음"],
+    "임신일주": ["머리 회전이 비상하고 다재다능한 천재과", "임기응변에 강해 위기를 부드럽게 넘김", "언변이 뛰어나 말로 사람의 마음을 잘 움직임", "오지랖이 넓고 사람 만나는 것을 좋아함"],
+    "계유일주": ["기억력이 비상해 과거의 일을 잘 기억함", "성격이 깔끔하고 정돈된 환경을 좋아함", "호불호가 명확해 싫은 사람과 엮이지 않음", "생각이 너무 많아서 스트레스를 사서 받는 편"],
+    "갑술일주": ["책임감이 강하고 타인을 돕는 것을 좋아함", "불의를 보면 참지 못하는 정의로운 성격", "현실적인 감각이 뛰어나고 융통성이 있음", "한 번 욱하면 폭발하지만 뒤끝은 없음"],
+    "을해일주": ["자유로운 영혼으로 유연하고 적응력이 뛰어남", "감수성이 풍부하고 생각의 깊이가 있음", "부드럽고 다정하지만 속고집이 꽤 센 편임", "변화를 좋아하고 새로운 것을 즐김"],
+    "병자일주": ["겉으론 화려하지만 속으론 외로움을 잘 탐", "명예를 중시하고 공과 사 구분이 확실함", "눈치가 빠르고 상황 대처 능력이 탁월함", "성격이 급하고 인내심이 다소 부족함"],
+    "정축일주": ["차분하고 온화하지만 내면에 끈기와 뚝심이 있음", "손재주가 좋고 한 분야를 깊게 파고듦", "겉보기보다 예민하고 상처를 잘 받는 편", "자신만의 세계가 뚜렷한 외유내강 스타일"],
+    "무인일주": ["독립심이 강하고 명예와 체면을 중요하게 생각함", "카리스마가 있고 추진력이 대단함", "리더십이 강해 무리를 잘 이끌고 책임짐", "자존심이 강해 지는 것을 몹시 싫어함"],
+    "기묘일주": ["섬세하고 꼼꼼하며 주변 사람을 잘 챙김", "상황 판단력이 빠르고 기획력이 뛰어남", "의심이 다소 많고 경계심이 있는 편임", "어떤 상황이든 유연하게 잘 대처함"],
+    "경진일주": ["스케일이 크고 리더십이 있어 무리를 잘 이끎", "승부욕이 강하고 결단력이 뛰어난 편", "한번 결심하면 앞만 보고 직진하는 행동파", "성격이 화끈하고 맺고 끊음이 명확함"],
+    "신사일주": ["세련되고 깔끔하며 완벽주의 성향이 있음", "논리적이고 상황 분석력이 매우 뛰어남", "직관력이 발달했고 사람을 꿰뚫어 봄", "자존심 상하는 일에는 아주 예민하게 반응함"],
+    "임오일주": ["다정다감하고 사람들과 어울리는 것을 좋아함", "재물 감각이 뛰어나고 현실적인 편임", "말을 재치 있게 잘하고 분위기 메이커 역할", "자유분방하고 구속받는 제약을 싫어함"],
+    "계미일주": ["온화하고 부드러우며 인내심이 아주 강함", "직관력이 뛰어나고 사람의 마음을 잘 읽음", "보수적이고 조심스러우며 돌다리도 두드림", "자기 사람에게는 한없이 다정하고 헌신적"],
+    "갑신일주": ["결단력이 있고 맺고 끊음이 아주 확실함", "책임감이 강해 맡은 일은 끝까지 책임짐", "다소 급하고 욱하는 기질이 숨어있음", "어려운 난관도 뚫고 나가는 강한 추진력"],
+    "을유일주": ["섬세하고 예민하며 완벽을 추구하는 성향", "통찰력이 뛰어나고 팩트 폭격을 잘함", "호불호가 아주 강해 싫은 건 절대 안 함", "자기 관리가 철저하고 맺고 끊음이 칼같음"],
+    "병술일주": ["화끈하고 솔직하며 불의를 참지 못함", "책임감이 강하고 자기 사람을 끔찍이 아낌", "성격이 급하고 기분파 기질이 다분함", "언변이 뛰어나고 표현력이 아주 솔직함"],
+    "정해일주": ["예의가 바르고 다정하며 감수성이 풍부함", "생각의 깊이가 남다르고 철학적인 면이 있음", "사람의 마음을 편안하게 해주는 매력이 있음", "상처를 잘 받고 감정 기복이 다소 있는 편"],
+    "무자일주": ["현실 감각이 뛰어나고 계산이 아주 빠름", "겉은 무뚝뚝해 보여도 속은 따뜻하고 정이 많음", "속마음을 잘 드러내지 않고 비밀이 많음", "안정을 중시하고 금전적 성취욕이 강함"],
+    "기축일주": ["성실하고 묵묵하게 자기 길을 가는 뚝심", "고집이 세고 한 번 믿으면 끝까지 믿음", "변화보다는 안정을 추구하는 보수적인 성향", "손재주가 있고 한 분야에 끈덕지게 파고듦"],
+    "경인일주": ["활동적이고 진취적이며 스케일이 아주 큼", "명예와 재물에 대한 목표 의식이 뚜렷함", "성격이 호탕하고 스원시원한 의리파", "가만히 있는 것을 견디지 못하는 행동파"],
+    "신묘일주": ["깔끔하고 세련된 것을 좋아하며 미적 감각이 뜀", "예민하고 섬세해 분위기 파악을 잘함", "호불호가 명확하고 까다로운 편에 속함", "말솜씨가 좋고 사람들과의 소통에 능함"],
+    "임진일주": ["속을 알 수 없는 카리스마와 배포를 가짐", "리더십이 강하고 어떤 상황이든 여유롭게 대처함", "강한 승부욕을 내면에 숨기고 있는 전략가", "한번 욱하면 걷잡을 수 없이 무서운 성격"],
+    "계사일주": ["두뇌 회전이 빠르고 현실적인 감각이 뛰어남", "어떤 환경에서도 살아남는 적응력의 끝판왕", "눈치가 100단이고 상황 대처 능력이 훌륭함", "사교성이 좋고 대인관계를 원만하게 이끎"],
+    "갑오일주": ["표현력이 아주 뛰어나고 화술이 매끄러움", "밝고 긍정적이며 창의적인 아이디어가 넘침", "성격이 급하고 싫증을 빨리 내는 경향이 있음", "타인에게 베풀기를 좋아하고 오지랖이 넓음"],
+    "을미일주": ["유순해 보이지만 내면의 고집과 끈기가 엄청남", "현실적이고 알뜰하며 자기 것을 잘 챙김", "어려운 상황에서도 꿋꿋하게 버티는 강한 생명력", "다소 예민하고 경계심이 강한 외유내강형"],
+    "병신일주": ["다재다능하고 활동적이며 호기심이 아주 많음", "눈치가 빠르고 사람들과 금방 친해짐", "임기응변이 뛰어나고 재물 감각이 발달함", "마무리가 다소 약하고 덜렁거릴 때가 있음"],
+    "정유일주": ["섬세하고 깔끔하며 맺고 끊음이 확실함", "미적 감각이 뛰어나고 완벽주의 기질이 있음", "솔직하고 날카로운 통찰력을 겸비함", "예민하고 까다롭지만 자기 관리가 뛰어남"],
+    "무술일주": ["신용과 의리를 가장 중요하게 생각하는 진국", "한 번 결심한 것은 밀어붙이는 뚝심이 있음", "책임감이 매우 강해 리더의 자질이 돋보임", "고집이 너무 세서 타협을 잘 안 하는 편"],
+    "기해일주": ["융통성이 있고 어떤 상황이든 부드럽게 대처함", "속마음을 잘 드러내지 않지만 포용력이 뜀", "안정을 중시하고 묵묵하게 자기 일을 해냄", "생각이 깊고 직관력이 뛰어나 사람을 잘 봄"],
+    "경자일주": ["차갑고 냉정해 보이지만 속은 아주 여림", "예리한 분석력과 비판적인 사고를 가짐", "공과 사 구분이 명확하고 원칙을 중시함", "지적 호기심이 강하고 배움을 좋아함"],
+    "신축일주": ["자존심이 세고 끈기 있게 목표를 향해 나아감", "세밀하고 꼼꼼하며 자기 분야의 전문가가 됨", "고집이 세고 자기 주관을 쉽게 꺾지 않음", "속을 잘 보여주지 않는 철저한 비밀주의자"],
+    "임인일주": ["배려심이 많고 따뜻하며 사람들을 잘 포용함", "지적 호기심이 많고 다방면에 재능이 있음", "사람들과 어울리는 것을 좋아하고 사교적임", "식복이 타고나서 어딜 가든 대우를 잘 받음"],
+    "계묘일주": ["부드럽고 다정하며 주변 사람들에게 친절함", "직관력이 좋고 예술적인 감수성이 뛰어남", "경계심이 있지만 친해지면 속을 다 보여줌", "창의적이고 다재다능한 아이디어 뱅크"],
+    "갑진일주": ["스케일이 크고 배포가 있어 리더 역할을 잘함", "자존심이 세고 명예를 아주 중요하게 생각함", "추진력이 강해 한 번 시작하면 끝을 봄", "은근히 급한 성격이 있고 욱하는 기질이 있음"],
+    "을사일주": ["표현력이 좋고 화술이 뛰어나 사람을 잘 홀림", "화려하고 세련된 것을 좋아하며 눈치가 빠름", "상황에 맞게 유연하게 대처하는 능력이 있음", "감정 기복이 다소 있고 싫증을 잘 느낌"],
+    "병오일주": ["불같은 열정과 엄청난 에너지를 뿜어냄", "뒤끝 없이 솔직하고 화끈한 리더십의 소유자", "강한 자존심과 자부심으로 똘똘 뭉쳐 있음", "성격이 급해 생각보다 말이 먼저 나감"],
+    "정미일주": ["온화하고 부드럽지만 속에는 엄청난 고집이 있음", "희생정신이 강하고 남을 돕는 것을 좋아함", "책임감이 강하고 맡은 일은 묵묵히 해냄", "겉보기와 다르게 독립적이고 자립심이 강함"],
+    "무신일주": ["다재다능하고 어떤 위기든 능숙하게 넘김", "호탕하고 통이 커서 주변에 사람이 많음", "임기응변에 아주 강하고 융통성이 뛰어남", "한 가지 일에 진득하게 파고드는 힘이 있음"],
+    "기유일주": ["섬세하고 예리하며 어떤 일이든 꼼꼼하게 처리함", "미적 감각이 뛰어나고 완벽을 추구함", "깔끔하고 정돈된 환경을 좋아하며 결벽 기질", "솔직하고 날카롭게 핵심을 짚는 팩트 폭격기"],
+    "경술일주": ["의리와 신용을 목숨처럼 중요하게 생각함", "강직하고 카리스마가 넘치며 추진력이 대단함", "한 번 믿은 사람은 끝까지 책임지는 의리파", "고집이 세고 자기 주장이 아주 확고함"],
+    "신해일주": ["겉은 차가워도 속은 따뜻하고 감수성이 풍부함", "예리한 통찰력과 창의적인 아이디어를 가짐", "자유로운 성향으로 얽매이는 것을 아주 싫어함", "표현력이 좋고 대인관계를 스무스하게 함"],
+    "임자일주": ["속을 알 수 없는 깊은 생각과 강한 주관을 가짐", "한 번 마음먹은 일은 끝까지 해내는 엄청난 뚝심", "은근한 카리스마로 무리를 아우르는 통솔력", "강한 자존심을 속에 숨기고 있는 외유내강"],
+    "계축일주": ["겉보기엔 부드럽지만 내면의 고집이 대단함", "묵묵히 자기 일을 해내는 강한 인내심의 소유자", "현실적이고 계산이 빠르며 손해 보는 일은 안 함", "의심이 다소 많아 사람을 신중하게 사귐"],
+    "갑인일주": ["자존심이 하늘을 찌르고 굽히는 것을 극혐함", "독립심이 강하고 자기 주도적으로 삶을 개척함", "리더십이 강하고 어떤 상황이든 앞장서는 성향", "타협을 잘 하지 않는 꼿꼿하고 우직한 성격"],
+    "을묘일주": ["부드러워 보이지만 꺾이지 않는 강한 생명력", "고집이 세고 자기만의 확실한 신념을 가짐", "주변 사람들과 잘 어울리면서도 자기 주관이 뚜렷함", "끈기 있고 묵묵하게 자신의 목표를 달성함"],
+    "병진일주": ["밝고 명랑하며 어떤 환경에서도 적응을 잘함", "포용력이 넓고 베푸는 것을 좋아하는 대인배", "호기심이 많고 매사에 긍정적이고 활동적임", "은근한 끈기가 있어 한 가지 일을 묵묵히 해냄"],
+    "정사일주": ["겉모습은 차분해도 속에는 뜨거운 열정이 있음", "자존심이 세고 주관이 뚜렷해 남에게 안 짐", "추진력이 좋고 한 번 시작한 일은 끝을 봄", "감정 표현에 솔직하고 의리가 넘치는 성격"],
+    "무오일주": ["화끈하고 통이 크며 웬만한 일에는 꿈쩍도 안 함", "엄청난 에너지를 뿜어내는 타고난 리더", "자존심이 무척 강하고 남에게 지시받는 걸 싫어함", "추진력과 돌파력이 뛰어나 위기에 아주 강함"],
+    "기미일주": ["묵묵하고 성실하게 자기 길을 걷는 엄청난 끈기", "한 번 믿은 사람은 끝까지 챙기는 의리파", "자기 주관이 아주 확고하고 고집이 셈", "어려운 환경에서도 흔들리지 않는 뚝심의 소유자"],
+    "경신일주": ["맺고 끊음이 칼같이 확실하고 의리를 중시함", "어떤 난관도 뚫고 나가는 강력한 추진력을 가짐", "자존심이 아주 강하고 불의를 절대 참지 못함", "한 번 결심한 것은 뒤돌아보지 않고 직진함"],
+    "신유일주": ["가장 날카롭고 예리한 판단력을 가진 완벽주의자", "호불호가 극명하고 자기 관리가 아주 철저함", "세련된 미적 감각과 섬세함을 모두 갖춤", "자존심이 세고 타인의 간섭을 무척 싫어함"],
+    "임술일주": ["스케일이 크고 어떤 상황에서도 여유를 잃지 않음", "사람을 아우르는 포용력과 통솔력이 뛰어남", "속을 잘 보여주지 않는 무거운 카리스마가 있음", "책임감이 강하고 목표를 향해 진득하게 나아감"],
+    "계해일주": ["유연하고 부드러우며 사람들과 아주 잘 어울림", "속을 알 수 없는 깊이와 뛰어난 직관력을 가짐", "어떤 환경에든 물 흐르듯 자연스럽게 적응함", "생각이 깊고 조심스러우며 인내심이 뛰어남"]
+  };
 
-    const STEM_INFO = {
-      "갑": { element: "목", text: "갑목" },
-      "을": { element: "목", text: "을목" },
-      "병": { element: "화", text: "병화" },
-      "정": { element: "화", text: "정화" },
-      "무": { element: "토", text: "무토" },
-      "기": { element: "토", text: "기토" },
-      "경": { element: "금", text: "경금" },
-      "신": { element: "금", text: "신금" },
-      "임": { element: "수", text: "임수" },
-      "계": { element: "수", text: "계수" }
-    };
+  window.onload = function() {
+    const yearSelect = document.getElementById('sel-year');
+    const currentYear = new Date().getFullYear();
+    for(let i = currentYear; i >= 1930; i--) yearSelect.options.add(new Option(i + '년', i));
+    yearSelect.value = "1995";
+    const monthSelect = document.getElementById('sel-month');
+    for(let i = 1; i <= 12; i++) monthSelect.options.add(new Option(i + '월', i));
+    const daySelect = document.getElementById('sel-day');
+    for(let i = 1; i <= 31; i++) daySelect.options.add(new Option(i + '일', i));
+  };
 
-    const BRANCH_INFO = {
-      "자": { element: "수", text: "자수", hidden: ["계"] },
-      "축": { element: "토", text: "축토", hidden: ["기", "계", "신"] },
-      "인": { element: "목", text: "인목", hidden: ["갑", "병", "무"] },
-      "묘": { element: "목", text: "묘목", hidden: ["을"] },
-      "진": { element: "토", text: "진토", hidden: ["무", "을", "계"] },
-      "사": { element: "화", text: "사화", hidden: ["병", "무", "경"] },
-      "오": { element: "화", text: "오화", hidden: ["정", "기"] },
-      "미": { element: "토", text: "미토", hidden: ["기", "정", "을"] },
-      "신": { element: "금", text: "신금", hidden: ["경", "임", "무"] },
-      "유": { element: "금", text: "유금", hidden: ["신"] },
-      "술": { element: "토", text: "술토", hidden: ["무", "신", "정"] },
-      "해": { element: "수", text: "해수", hidden: ["임", "갑"] }
-    };
+  function showScreen(screenId) {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.getElementById(screenId).classList.add('active');
+  }
 
-    const ELEMENT_BG_CLASS = {
-      "목": "bg-wood",
-      "화": "bg-fire",
-      "토": "bg-earth",
-      "금": "bg-metal",
-      "수": "bg-water"
-    };
+  function calculateAndShowResult() {
+    const userNameInput = document.getElementById('user-name').value;
+    const userName = userNameInput.trim() !== '' ? userNameInput : '이름없음';
+    
+    const type = document.getElementById('sel-type').value;
+    const y = parseInt(document.getElementById('sel-year').value);
+    const m = parseInt(document.getElementById('sel-month').value);
+    const d = parseInt(document.getElementById('sel-day').value);
+    const h = parseInt(document.getElementById('sel-time').value);
 
-    const MONTH_SEASON = {
-      "인": "목", "묘": "목", "진": "토",
-      "사": "화", "오": "화", "미": "토",
-      "신": "금", "유": "금", "술": "토",
-      "해": "수", "자": "수", "축": "토"
-    };
-
-    const TIME_BRANCH_OPTIONS = [
-      { value: "자", label: "자시 23:30~01:29", hour: 0, minute: 30 },
-      { value: "축", label: "축시 01:30~03:29", hour: 2, minute: 0 },
-      { value: "인", label: "인시 03:30~05:29", hour: 4, minute: 0 },
-      { value: "묘", label: "묘시 05:30~07:29", hour: 6, minute: 0 },
-      { value: "진", label: "진시 07:30~09:29", hour: 8, minute: 0 },
-      { value: "사", label: "사시 09:30~11:29", hour: 10, minute: 0 },
-      { value: "오", label: "오시 11:30~13:29", hour: 12, minute: 0 },
-      { value: "미", label: "미시 13:30~15:29", hour: 14, minute: 0 },
-      { value: "신", label: "신시 15:30~17:29", hour: 16, minute: 0 },
-      { value: "유", label: "유시 17:30~19:29", hour: 18, minute: 0 },
-      { value: "술", label: "술시 19:30~21:29", hour: 20, minute: 0 },
-      { value: "해", label: "해시 21:30~23:29", hour: 22, minute: 0 }
+    let solarDate = type === 'solar' ? Solar.fromYmdHms(y, m, d, h >= 0 ? h : 12, 0, 0) : Lunar.fromYmdHms(y, m, d, h >= 0 ? h : 12, 0, 0).getSolar();
+    const lunar = solarDate.getLunar();
+    const bazi = lunar.getEightChar();
+    
+    const timeGan = h >= 0 ? bazi.getTimeGan() : '';
+    const timeZhi = h >= 0 ? bazi.getTimeZhi() : '';
+    
+    const sajuArray = [
+      { gan: timeGan, zhi: timeZhi },
+      { gan: bazi.getDayGan(), zhi: bazi.getDayZhi() },
+      { gan: bazi.getMonthGan(), zhi: bazi.getMonthZhi() },
+      { gan: bazi.getYearGan(), zhi: bazi.getYearZhi() }
     ];
 
-    const ILJU_PERSONALITY = {
-      "을사": "말과 감각이 살아 있어 표현에서 매력이 드러나는 성향"
-    };
+    const dayGan = bazi.getDayGan();
+    const dayZhi = bazi.getDayZhi();
+    
+    const myInfo = ohaengInfo[dayGan];
+    const myType = myInfo.type; 
+    const myYY = myInfo.yy; 
 
-    const PAST_JOB_BASE = {
-      "을사": "예술가"
-    };
+    const motherElement = producingElement[myType];
+    const iljuName = myInfo.name.charAt(0) + ohaengInfo[dayZhi].name.charAt(0) + "일주";
 
-    const CURRENT_JOB_BASE = {
-      "을사": "에디터"
-    };
+    const gridEl = document.getElementById('res-palja-grid');
+    gridEl.innerHTML = '';
+    
+    sajuArray.forEach(pillar => {
+      const info = ohaengInfo[pillar.gan];
+      const div = document.createElement('div');
+      div.className = `palja-cell ${info ? elementClassMap[info.type] : 'empty-cell'}`;
+      div.innerHTML = info ? info.name : '-';
+      gridEl.appendChild(div);
+    });
 
-    function showScreen(target) {
-      [screenMain, screenInput, screenResult].forEach(screen => screen.classList.remove("active"));
-      target.classList.add("active");
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
+    sajuArray.forEach(pillar => {
+      const info = ohaengInfo[pillar.zhi];
+      const div = document.createElement('div');
+      div.className = `palja-cell ${info ? elementClassMap[info.type] : 'empty-cell'}`;
+      div.innerHTML = info ? info.name : '-';
+      gridEl.appendChild(div);
+    });
 
-    function normalizeStem(v) {
-      const map = { "甲":"갑","乙":"을","丙":"병","丁":"정","戊":"무","己":"기","庚":"경","辛":"신","壬":"임","癸":"계" };
-      const s = String(v || "").trim();
-      return map[s] || s.charAt(0);
-    }
+    document.getElementById('res-ilju-title').innerText = userName;
 
-    function normalizeBranch(v) {
-      const map = { "子":"자","丑":"축","寅":"인","卯":"묘","辰":"진","巳":"사","午":"오","未":"미","申":"신","酉":"유","戌":"술","亥":"해" };
-      const s = String(v || "").trim();
-      return map[s] || s.charAt(0);
-    }
+    const elementCounts = { '목':0, '화':0, '토':0, '금':0, '수':0 };
+    let myPowerScore = 0; 
+    let totalScore = 0;
+    const shipseongScores = { '비견':0, '겁재':0, '식신':0, '상관':0, '편재':0, '정재':0, '편관':0, '정관':0, '편인':0, '정인':0 };
 
-    function getSolarDays(year, month) {
-      return new Date(year, month, 0).getDate();
-    }
-
-    function getLeapMonthOfYear(year) {
-      try {
-        return LunarYear.fromYear(year).getLeapMonth();
-      } catch (e) {
-        return 0;
+    sajuArray.forEach(p => {
+      if(p.gan && ohaengInfo[p.gan]) {
+        let info = ohaengInfo[p.gan];
+        elementCounts[info.type] += 1;
+        totalScore += 1;
+        if(info.type === myType || info.type === motherElement) myPowerScore += 1;
+        
+        let ss = getShipseong(myType, myYY, info.type, info.yy);
+        if(ss) shipseongScores[ss] += 1;
       }
-    }
-
-    function getLunarDays(year, month, isLeap) {
-      try {
-        const target = isLeap ? -month : month;
-        const monthObj = LunarYear.fromYear(year).getMonth(target);
-        return monthObj ? monthObj.getDayCount() : 30;
-      } catch (e) {
-        return 30;
-      }
-    }
-
-    function getElementOfStem(stem) {
-      return STEM_INFO[stem]?.element || "";
-    }
-
-    function getStemText(stem) {
-      return STEM_INFO[stem]?.text || stem;
-    }
-
-    function getBranchText(branch) {
-      return BRANCH_INFO[branch]?.text || branch;
-    }
-
-    function getElementOfBranch(branch) {
-      return BRANCH_INFO[branch]?.element || "";
-    }
-
-    function updateLeapVisibility() {
-      const isLunar = calendarType.value === "lunar";
-      leapWrap.classList.toggle("hidden", !isLunar);
-      if (!isLunar) leapType.value = "false";
-    }
-
-    function updateLeapEnabled() {
-      const y = Number(yearSelect.value);
-      const m = Number(monthSelect.value);
-
-      if (calendarType.value !== "lunar") {
-        leapType.disabled = true;
-        leapType.value = "false";
-        return;
-      }
-
-      const leapMonth = getLeapMonthOfYear(y);
-      if (leapMonth === m) {
-        leapType.disabled = false;
-      } else {
-        leapType.disabled = true;
-        leapType.value = "false";
-      }
-    }
-
-    function updateDayOptions() {
-      const y = Number(yearSelect.value);
-      const m = Number(monthSelect.value);
-      const current = Number(daySelect.value) || 1;
-      const isLunar = calendarType.value === "lunar";
-      const isLeap = leapType.value === "true" && !leapType.disabled;
-
-      let maxDay = 31;
-      if (isLunar) maxDay = getLunarDays(y, m, isLeap);
-      else maxDay = getSolarDays(y, m);
-
-      daySelect.innerHTML = "";
-      for (let d = 1; d <= maxDay; d++) {
-        const o = document.createElement("option");
-        o.value = String(d);
-        o.textContent = `${d}일`;
-        if (d === Math.min(current, maxDay)) o.selected = true;
-        daySelect.appendChild(o);
-      }
-    }
-
-    function initSelects() {
-      for (let y = 1950; y <= 2035; y++) {
-        const o = document.createElement("option");
-        o.value = String(y);
-        o.textContent = `${y}년`;
-        yearSelect.appendChild(o);
-      }
-
-      for (let m = 1; m <= 12; m++) {
-        const o = document.createElement("option");
-        o.value = String(m);
-        o.textContent = `${m}월`;
-        monthSelect.appendChild(o);
-      }
-
-      TIME_BRANCH_OPTIONS.forEach(item => {
-        const o = document.createElement("option");
-        o.value = item.value;
-        o.textContent = item.label;
-        timeBranchSelect.appendChild(o);
-      });
-
-      yearSelect.value = "1990";
-      monthSelect.value = "10";
-      timeBranchSelect.value = "진";
-
-      updateLeapVisibility();
-      updateLeapEnabled();
-      updateDayOptions();
-      daySelect.value = "7";
-    }
-
-    function getTimeSeed(branch) {
-      return TIME_BRANCH_OPTIONS.find(item => item.value === branch) || TIME_BRANCH_OPTIONS[4];
-    }
-
-    function buildPillars(eightChar) {
-      return {
-        year: {
-          stem: normalizeStem(eightChar.getYearGan()),
-          branch: normalizeBranch(eightChar.getYearZhi())
-        },
-        month: {
-          stem: normalizeStem(eightChar.getMonthGan()),
-          branch: normalizeBranch(eightChar.getMonthZhi())
-        },
-        day: {
-          stem: normalizeStem(eightChar.getDayGan()),
-          branch: normalizeBranch(eightChar.getDayZhi())
-        },
-        time: {
-          stem: normalizeStem(eightChar.getTimeGan()),
-          branch: normalizeBranch(eightChar.getTimeZhi())
+      
+      if(p.zhi && ohaengInfo[p.zhi]) {
+        let info = ohaengInfo[p.zhi];
+        
+        elementCounts[info.type] += 1;
+        totalScore += 1;
+        if(info.type === myType || info.type === motherElement) myPowerScore += 1;
+        let ss = getShipseong(myType, myYY, info.type, info.yy);
+        if(ss) shipseongScores[ss] += 1;
+        
+        let zhiChar = info.name.charAt(0);
+        let weights = jijangganWeights[zhiChar];
+        if(weights) {
+          for(let jGan in weights) {
+            let elType = stemElements[jGan];
+            let w = weights[jGan] * 0.5; 
+            
+            if(elType) {
+              elementCounts[elType] += w;
+              totalScore += w;
+              if(elType === myType || elType === motherElement) myPowerScore += w;
+              
+              const hanjaMap = {'갑':'甲','을':'乙','병':'丙','정':'丁','무':'戊','기':'己','경':'庚','신':'辛','임':'壬','계':'癸'};
+              let jInfo = ohaengInfo[hanjaMap[jGan]];
+              if(jInfo) {
+                 let jSs = getShipseong(myType, myYY, jInfo.type, jInfo.yy);
+                 if(jSs) shipseongScores[jSs] += w;
+              }
+            }
+          }
         }
-      };
-    }
-
-    function analyzeChart(pillars) {
-      const dayStem = pillars.day.stem;
-      const dayElement = getElementOfStem(dayStem);
-      const monthBranch = pillars.month.branch;
-
-      const elementScores = { "목": 0, "화": 0, "토": 0, "금": 0, "수": 0 };
-
-      const visibleWeights = { year: 1.0, month: 1.45, day: 1.35, time: 1.0 };
-      const hiddenWeights = {
-        year: [0.7, 0.35, 0.18],
-        month: [1.1, 0.55, 0.28],
-        day: [0.85, 0.42, 0.2],
-        time: [0.7, 0.35, 0.18]
-      };
-
-      Object.entries(pillars).forEach(([key, pillar]) => {
-        const stemEl = getElementOfStem(pillar.stem);
-        const branchEl = getElementOfBranch(pillar.branch);
-
-        if (stemEl) elementScores[stemEl] += visibleWeights[key];
-        if (branchEl) elementScores[branchEl] += key === "month" ? 0.9 : 0.55;
-
-        const hidden = BRANCH_INFO[pillar.branch].hidden;
-        hidden.forEach((stem, idx) => {
-          const el = getElementOfStem(stem);
-          const w = hiddenWeights[key][idx] || 0.15;
-          elementScores[el] += w;
-        });
-      });
-
-      const generateMap = { "목":"화", "화":"토", "토":"금", "금":"수", "수":"목" };
-      const controlMap = { "목":"토", "화":"금", "토":"수", "금":"목", "수":"화" };
-
-      const seasonElement = MONTH_SEASON[monthBranch];
-      let seasonBonus = 0;
-
-      if (seasonElement === dayElement) seasonBonus += 2.0;
-      else if (generateMap[seasonElement] === dayElement) seasonBonus += 1.0;
-      else if (controlMap[seasonElement] === dayElement) seasonBonus -= 1.0;
-      else if (controlMap[dayElement] === seasonElement) seasonBonus -= 0.8;
-
-      const support = (elementScores[dayElement] * 0.42) + seasonBonus;
-      const oppositeMap = {
-        "목": ["금", "화"],
-        "화": ["수", "토"],
-        "토": ["목", "금"],
-        "금": ["화", "수"],
-        "수": ["토", "목"]
-      };
-      const drain = oppositeMap[dayElement].reduce((sum, el) => sum + elementScores[el], 0) * 0.38;
-      const gap = support - drain;
-
-      let strengthMain = "중간형";
-      let strengthSub = "한쪽으로 크게 치우치지 않은 편";
-
-      if (gap >= 1.6) {
-        strengthMain = "강한편";
-        strengthSub = "자기 기준과 버티는 힘이 비교적 있는 편";
-      } else if (gap <= -1.1) {
-        strengthMain = "약한편";
-        strengthSub = "환경과 관계 영향을 크게 받는 편";
-      }
-
-      const dominantElement = Object.entries(elementScores).sort((a,b) => b[1] - a[1])[0][0];
-      const weakElement = Object.entries(elementScores).sort((a,b) => a[1] - b[1])[0][0];
-
-      const charmBase = (elementScores["화"] * 0.9) + (elementScores["목"] * 0.45) + (elementScores["수"] * 0.35);
-
-      let charmMain = "담백한편";
-      let charmSub = "편안함과 안정감으로 호감을 주는 편";
-
-      if (charmBase >= 4.8) {
-        charmMain = "강한편";
-        charmSub = "눈에 띄는 포인트와 반응 유도가 있는 편";
-      } else if (charmBase >= 3.3) {
-        charmMain = "은근강함";
-        charmSub = "알수록 매력이 쌓이는 편";
-      }
-
-      return {
-        elementScores,
-        strengthMain,
-        strengthSub,
-        charmMain,
-        charmSub,
-        dominantElement,
-        weakElement
-      };
-    }
-
-    function getDayPillarKey(pillars) {
-      return `${pillars.day.stem}${pillars.day.branch}`;
-    }
-
-    function buildPersonalityLines(pillars, analysis) {
-      const dayKey = getDayPillarKey(pillars);
-      const baseDayText = ILJU_PERSONALITY[dayKey] || "기본적으로 자기 흐름과 결이 분명한 성향";
-
-      return [
-        baseDayText,
-        analysis.strengthMain === "강한편"
-          ? "쉽게 휘둘리기보다 자기 기준대로 가려는 편"
-          : analysis.strengthMain === "약한편"
-            ? "사람과 환경 영향을 많이 받는 편"
-            : "강약이 한쪽으로 과하게 쏠리지는 않은 편",
-        `${analysis.dominantElement}기운이 강해서 그쪽 방식이 더 눈에 띄는 편`,
-        `${analysis.weakElement}기운은 의식적으로 보완하면 더 안정되는 편`,
-        "겉으로 보이는 인상과 실제 속마음이 완전히 같지는 않은 편",
-        "좋아하는 사람과 아닌 사람의 온도 차이가 분명한 편",
-        "결국 자기한테 맞는 리듬을 찾을 때 가장 편안해지는 타입"
-      ];
-    }
-
-    function getPastLifeJob(pillars, analysis) {
-      const dayKey = getDayPillarKey(pillars);
-      const base = PAST_JOB_BASE[dayKey] || "기획자";
-
-      return {
-        main: base,
-        sub: `${dayKey} 일주 기준 전생 느낌 직업`
-      };
-    }
-
-    function getCurrentJob(pillars, analysis) {
-      const dayKey = getDayPillarKey(pillars);
-      const base = CURRENT_JOB_BASE[dayKey] || "기획자";
-
-      return {
-        main: base,
-        sub: `${dayKey} 일주 기준 현재 잘 맞는 직업`
-      };
-    }
-
-    function renderPillars(pillars) {
-      const stemRow = document.getElementById("stemRow");
-      const branchRow = document.getElementById("branchRow");
-      stemRow.innerHTML = "";
-      branchRow.innerHTML = "";
-
-      const order = [
-        { key: "time", label: "시" },
-        { key: "day", label: "일" },
-        { key: "month", label: "월" },
-        { key: "year", label: "년" }
-      ];
-
-      order.forEach(item => {
-        const pillar = pillars[item.key];
-        const stemEl = getElementOfStem(pillar.stem);
-        const branchEl = getElementOfBranch(pillar.branch);
-
-        const stemCell = document.createElement("div");
-        stemCell.className = `pillar-cell ${ELEMENT_BG_CLASS[stemEl]}`;
-        stemCell.innerHTML = `
-          <div class="pillar-top">${item.label}</div>
-          <div class="pillar-main">${getStemText(pillar.stem)}</div>
-        `;
-        stemRow.appendChild(stemCell);
-
-        const branchCell = document.createElement("div");
-        branchCell.className = `pillar-cell ${ELEMENT_BG_CLASS[branchEl]}`;
-        branchCell.innerHTML = `
-          <div class="pillar-top">${item.label}</div>
-          <div class="pillar-main">${getBranchText(pillar.branch)}</div>
-        `;
-        branchRow.appendChild(branchCell);
-      });
-
-      document.getElementById("dayPillarMain").textContent = `${pillars.day.stem}${pillars.day.branch}일주`;
-    }
-
-    function renderCounts(elementScores) {
-      document.getElementById("woodCount").textContent = elementScores["목"].toFixed(1);
-      document.getElementById("fireCount").textContent = elementScores["화"].toFixed(1);
-      document.getElementById("earthCount").textContent = elementScores["토"].toFixed(1);
-      document.getElementById("metalCount").textContent = elementScores["금"].toFixed(1);
-      document.getElementById("waterCount").textContent = elementScores["수"].toFixed(1);
-    }
-
-    function buildResult() {
-      const y = Number(yearSelect.value);
-      const m = Number(monthSelect.value);
-      const d = Number(daySelect.value);
-      const branch = timeBranchSelect.value;
-      const timeSeed = getTimeSeed(branch);
-
-      const isSolar = calendarType.value === "solar";
-      const isLeap = leapType.value === "true" && !leapType.disabled;
-
-      let solar;
-      let lunar;
-
-      if (isSolar) {
-        solar = Solar.fromYmdHms(y, m, d, timeSeed.hour, timeSeed.minute, 0);
-        lunar = solar.getLunar();
-      } else {
-        lunar = Lunar.fromYmdHms(y, isLeap ? -m : m, d, timeSeed.hour, timeSeed.minute, 0);
-        solar = lunar.getSolar();
-      }
-
-      const eightChar = lunar.getEightChar();
-      if (eightChar.setSect) eightChar.setSect(2);
-
-      const pillars = buildPillars(eightChar);
-      const analysis = analyzeChart(pillars);
-      const personalityLines = buildPersonalityLines(pillars, analysis);
-      const pastJob = getPastLifeJob(pillars, analysis);
-      const currentJob = getCurrentJob(pillars, analysis);
-
-      renderPillars(pillars);
-
-      document.getElementById("strengthMain").textContent = analysis.strengthMain;
-      document.getElementById("strengthSub").textContent = analysis.strengthSub;
-
-      document.getElementById("charmMain").textContent = analysis.charmMain;
-      document.getElementById("charmSub").textContent = analysis.charmSub;
-
-      document.getElementById("summaryMain").textContent = `${analysis.dominantElement}강 ${analysis.weakElement}약`;
-      document.getElementById("summarySub").textContent = `${analysis.dominantElement}기운이 강하고 ${analysis.weakElement}기운이 상대적으로 약한 편`;
-
-      document.getElementById("personalityArea").innerHTML = personalityLines
-        .map(line => `<span class="personality-line">${line}</span>`)
-        .join("");
-
-      document.getElementById("pastJobMain").textContent = pastJob.main;
-      document.getElementById("pastJobSub").textContent = pastJob.sub;
-
-      document.getElementById("currentJobMain").textContent = currentJob.main;
-      document.getElementById("currentJobSub").textContent = currentJob.sub;
-
-      renderCounts(analysis.elementScores);
-    }
-
-    function saveCapture() {
-      const area = document.getElementById("captureArea");
-      html2canvas(area, {
-        backgroundColor: "#f4f4f4",
-        scale: 2,
-        useCORS: true
-      }).then(canvas => {
-        const link = document.createElement("a");
-        link.download = "saju_profile.png";
-        link.href = canvas.toDataURL("image/png");
-        link.click();
-      });
-    }
-
-    async function shareTest() {
-      const shareData = {
-        title: "테스트잇 사주 만세력 프로필 테스트",
-        text: "테스트잇 사주 만세력 프로필 테스트 해보기",
-        url: window.location.href
-      };
-
-      if (navigator.share) {
-        try {
-          await navigator.share(shareData);
-          return;
-        } catch (e) {}
-      }
-
-      try {
-        await navigator.clipboard.writeText(window.location.href);
-        alert("테스트 링크가 복사됐어요.");
-      } catch (e) {
-        alert("공유할 링크 복사에 실패했어요.");
-      }
-    }
-
-    document.getElementById("startBtn").addEventListener("click", () => showScreen(screenInput));
-    document.getElementById("backMainBtn").addEventListener("click", () => showScreen(screenMain));
-    document.getElementById("retryBtn").addEventListener("click", () => showScreen(screenInput));
-    document.getElementById("otherTestBtn").addEventListener("click", () => {
-      window.location.href = "/";
-    });
-    document.getElementById("saveBtn").addEventListener("click", saveCapture);
-    document.getElementById("shareBtn").addEventListener("click", shareTest);
-
-    document.getElementById("submitBtn").addEventListener("click", () => {
-      try {
-        buildResult();
-        showScreen(screenResult);
-      } catch (e) {
-        console.error(e);
-        alert("사주 계산 중 오류가 났어요. 날짜와 윤달 여부를 다시 확인해주세요.");
       }
     });
 
-    calendarType.addEventListener("change", () => {
-      updateLeapVisibility();
-      updateLeapEnabled();
-      updateDayOptions();
+    let finalPersonality = [];
+
+    if(iljuBaseTraits[iljuName]) {
+      finalPersonality.push(...iljuBaseTraits[iljuName]);
+    }
+
+    const dayGanChar = ohaengInfo[dayGan] ? ohaengInfo[dayGan].name.charAt(0) : '';
+    if(dayGanTraits[dayGanChar]) {
+      finalPersonality.push(dayGanTraits[dayGanChar]);
+    }
+
+    let minElem = '', minCount = 99;
+    for(let el in elementCounts) {
+      if(elementCounts[el] < minCount) { minCount = elementCounts[el]; minElem = el; }
+    }
+    const isMuja = minCount === 0;
+
+    let maxElemScore = -1;
+    for (let el in elementCounts) {
+        if (elementCounts[el] > maxElemScore) { maxElemScore = elementCounts[el]; }
+    }
+    let topElems = [];
+    for (let el in elementCounts) {
+        if (elementCounts[el] === maxElemScore) { topElems.push(el); }
+    }
+    
+    if (topElems.length > 1) {
+        finalPersonality.push("특정 기운에 치우치지 않고 여러 기운이 조화를 이루고 있음");
+    } else {
+        const domTraits = {
+          '목': "성장 욕구가 강하고 진취적으로 나아가는 성향",
+          '화': "열정적이고 솔직하며 감정 표현이 풍부한 편",
+          '토': "중재자 역할을 잘하며 신용과 끈기를 중시함",
+          '금': "맺고 끊음이 확실하고 결단력과 의리가 있음",
+          '수': "지혜롭고 생각의 깊이가 있으며 유연하게 대처함"
+        };
+        if (domTraits[topElems[0]]) finalPersonality.push(domTraits[topElems[0]]);
+    }
+
+    let powerRatio = myPowerScore / totalScore;
+    if (powerRatio > 0.5) {
+        document.getElementById('res-strength-content').innerHTML = '<span class="circled">강한편</span><span>약한편</span>';
+    } else if (powerRatio < 0.5) {
+        document.getElementById('res-strength-content').innerHTML = '<span>강한편</span><span class="circled">약한편</span>';
+    } else {
+        document.getElementById('res-strength-content').innerHTML = '<span class="circled">중도/균형</span>';
+    }
+
+    let dohwaCount = 0;
+    let hwagaeCount = 0;
+    const dohwaChars = ['자', '오', '묘', '유'];
+    const hwagaeChars = ['진', '술', '축', '미'];
+    
+    sajuArray.forEach(p => {
+      if(p.zhi && ohaengInfo[p.zhi]) {
+        let zhiChar = ohaengInfo[p.zhi].name.charAt(0);
+        if(dohwaChars.includes(zhiChar)) dohwaCount++;
+        if(hwagaeChars.includes(zhiChar)) hwagaeCount++;
+      }
     });
 
-    yearSelect.addEventListener("change", () => {
-      updateLeapEnabled();
-      updateDayOptions();
-    });
+    const isCharmStrong = dohwaCount >= 1; 
+    document.getElementById('res-charm-content').innerHTML = isCharmStrong ? '<span class="circled">강한편</span><span>약한편</span>' : '<span>강한편</span><span class="circled">약한편</span>';
 
-    monthSelect.addEventListener("change", () => {
-      updateLeapEnabled();
-      updateDayOptions();
-    });
+    const wealthScore = shipseongScores['편재'] + shipseongScores['정재'];
+    const isWealthStrong = wealthScore >= 1.0;
+    document.getElementById('res-wealth-content').innerHTML = isWealthStrong ? '<span class="circled">강한편</span><span>약한편</span>' : '<span>강한편</span><span class="circled">약한편</span>';
 
-    leapType.addEventListener("change", () => {
-      updateDayOptions();
-    });
+    const popScore = shipseongScores['비견'] + shipseongScores['겁재'];
+    const isPopHigh = (popScore >= 1.5) || (hwagaeCount >= 1) || (dohwaCount >= 2);
+    document.getElementById('res-pop-content').innerHTML = isPopHigh ? '<span class="circled">많은편</span><span>적은편</span>' : '<span>많은편</span><span class="circled">적은편</span>';
 
-    initSelects();
-  </script>
+    let sweetScore = shipseongScores['정재'] + shipseongScores['정관'] + shipseongScores['식신'] + shipseongScores['정인'];
+    let tsunScore = shipseongScores['편관'] + shipseongScores['상관'] + shipseongScores['겁재'] + shipseongScores['편재'];
+    if (sweetScore > tsunScore) {
+        document.getElementById('res-love-content').innerHTML = '<span class="circled">다정다감</span><span>츤데레</span>';
+    } else if (tsunScore > sweetScore) {
+        document.getElementById('res-love-content').innerHTML = '<span>다정다감</span><span class="circled">츤데레</span>';
+    } else {
+        document.getElementById('res-love-content').innerHTML = '<span class="circled">밀당고수</span>';
+    }
+
+    let myWayScore = shipseongScores['비견'] + shipseongScores['편인'] + shipseongScores['편관'];
+    let inssaScore = shipseongScores['식신'] + shipseongScores['상관'] + shipseongScores['편재'] + shipseongScores['정재'];
+    if (myWayScore > inssaScore) {
+        document.getElementById('res-social-content').innerHTML = '<span class="circled">마이웨이</span><span>인싸재질</span>';
+    } else if (inssaScore > myWayScore) {
+        document.getElementById('res-social-content').innerHTML = '<span>마이웨이</span><span class="circled">인싸재질</span>';
+    } else {
+        document.getElementById('res-social-content').innerHTML = '<span class="circled">선택적 인싸</span>';
+    }
+
+    let sortedShipseongs = Object.keys(shipseongScores).sort((a, b) => shipseongScores[b] - shipseongScores[a]);
+    let top1 = sortedShipseongs[0];
+    let top2 = sortedShipseongs[1];
+    
+    if(top1 && shipseongScores[top1] > 0 && dynamicTraits[top1]) finalPersonality.push(dynamicTraits[top1]);
+    if(top2 && shipseongScores[top2] > 0 && dynamicTraits[top2]) finalPersonality.push(dynamicTraits[top2]);
+
+    const missingTraits = {
+      '목': "새로운 시작을 주저하거나 계획성이 부족할 수 있음",
+      '화': "감정 표현이 서툴고 차분하며 이성적인 편임",
+      '토': "정착보다 변화를 추구하며 얽매이는 걸 싫어함",
+      '금': "결단력이 다소 부족하고 마무리가 약할 때가 있음",
+      '수': "현실적이고 직선적이며 융통성 발휘가 어려울 수 있음"
+    };
+    if (isMuja && missingTraits[minElem]) {
+      finalPersonality.push(missingTraits[minElem]);
+    }
+
+    finalPersonality = [...new Set(finalPersonality)]; 
+    document.getElementById('res-personality').innerHTML = finalPersonality.map(t => `<div>${t}</div>`).join('');
+
+    const baseJob = iljuJobs[iljuName] || { p: "부지런한 마을 관리인", pr: "사무직 종사자" };
+    const modifier = shipseongModifier[top1] || { past: "묵묵히 자기 일을 해낸", present: "안정적으로 업무를 수행하는" };
+
+    document.getElementById('res-job-past').innerHTML = `${modifier.past}<br>${baseJob.p}`;
+    document.getElementById('res-job-present').innerHTML = `${modifier.present}<br>${baseJob.pr}`;
+
+    document.getElementById('score-wood').innerText = elementCounts['목'].toFixed(1);
+    document.getElementById('score-fire').innerText = elementCounts['화'].toFixed(1);
+    document.getElementById('score-earth').innerText = elementCounts['토'].toFixed(1);
+    document.getElementById('score-metal').innerText = elementCounts['금'].toFixed(1);
+    document.getElementById('score-water').innerText = elementCounts['수'].toFixed(1);
+
+    // 바로 결과창을 띄우지 않고 로딩창 먼저 띄우기
+    showScreen('screen-loading');
+    
+    const textEl = document.getElementById('tw-content');
+    textEl.innerHTML = '';
+    const fullText = "만세력 데이터를 분석하여\n입체적인 사주 프로필을\n작성하고 있습니다...";
+    let i = 0;
+
+    function typeWriter() {
+      if (i < fullText.length) {
+        if(fullText.charAt(i) === '\n') {
+          textEl.innerHTML += '<br>';
+        } else {
+          textEl.innerHTML += fullText.charAt(i);
+        }
+        i++;
+        setTimeout(typeWriter, 60); 
+      }
+    }
+    typeWriter();
+
+    // 3초 후 결과창으로 전환
+    setTimeout(() => {
+      showScreen('screen-result');
+    }, 3000);
+  }
+
+  function saveImage() {
+    const captureTarget = document.getElementById('capture-area');
+    
+    html2canvas(captureTarget, {
+      scale: 2, 
+      backgroundColor: null,
+      logging: false,
+      useCORS: true 
+    }).then(canvas => {
+      const imgData = canvas.toDataURL("image/png");
+      const imgElement = document.createElement("img");
+      imgElement.src = imgData;
+      
+      const container = document.getElementById('modal-image-container');
+      container.innerHTML = ''; 
+      container.appendChild(imgElement);
+      
+      document.getElementById('image-modal').classList.add('active');
+    });
+  }
+
+  function closeModal() {
+    document.getElementById('image-modal').classList.remove('active');
+  }
+
+  function shareTest() {
+    if (navigator.share) {
+      navigator.share({
+        title: '테스트잇 사주 만세력 프로필 테스트',
+        text: '테스트잇 사주 만세력 프로필 테스트',
+        url: "https://test-it.co.kr/test376",
+      })
+      .catch(console.error);
+    } else {
+      alert('현재 브라우저에서는 공유 기능이 지원되지 않습니다. URL 복사해 주세요!');
+    }
+  }
+</script>
+
 </body>
 </html>

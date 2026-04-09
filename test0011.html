@@ -7,13 +7,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>테스트잇 포켓몬 픽셀 MBTI 테스트</title>
-  <meta name="description" content="포켓몬 픽셀 감성으로 보는 나의 MBTI 성격 테스트" />
+  <title>삐아 포켓몬 에디션 성격 테스트(가제)</title>
+  <meta name="description" content="삐아 포켓몬 에디션 성격 테스트(가제)" />
   <meta name="keywords" content="테스트잇, MBTI, 성격테스트, 포켓몬, 픽셀테스트, 픽셀MBTI, 테스트잇MBTI" />
 
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="테스트잇 포켓몬 픽셀 MBTI 테스트" />
-  <meta property="og:description" content="포켓몬 픽셀 감성으로 보는 나의 성격 테스트" />
+  <meta property="og:title" content="삐아 포켓몬 에디션 성격 테스트(가제)" />
+  <meta property="og:description" content="삐아 포켓몬 에디션 성격 테스트(가제)" />
   <meta property="og:image" content="https://test-it.co.kr/img_main0011.png" />
   <meta property="og:url" content="https://test-it.co.kr/test0011" />
 
@@ -23,21 +23,22 @@
 
   <style>
     :root {
-      --bg: #f7f3ea;
-      --paper: #fffdf8;
-      --folder: #f6db85;
-      --folder-light: #ffe9aa;
+      --bg: #fffaf0;
+      --paper: #fffef9;
+      --folder: #ffe46b;
+      --folder-light: #fff3a6;
       --line: #4a4136;
       --mint: #d8f0df;
       --pink: #ffd9df;
       --blue: #d9e8ff;
-      --yellow: #fff0ba;
+      --yellow: #fff28d;
+      --yellow-soft: #fff8cf;
       --text: #2a241d;
       --sub: #6b6257;
-      --shadow: 2px 2px 0 rgba(74, 65, 54, 0.18);
+      --shadow: 2px 2px 0 rgba(74, 65, 54, 0.16);
       --pixel-border: 2px solid #4a4136;
       --header-h: 68px;
-      --max-width: 760px;
+      --max-width: 620px;
     }
 
     * {
@@ -56,8 +57,8 @@
     body {
       min-height: 100vh;
       background-image:
-        linear-gradient(to right, rgba(74, 65, 54, 0.03) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(74, 65, 54, 0.03) 1px, transparent 1px);
+        linear-gradient(to right, rgba(255, 214, 51, 0.08) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 214, 51, 0.08) 1px, transparent 1px);
       background-size: 16px 16px;
     }
 
@@ -76,7 +77,7 @@
     }
 
     .wrapper {
-      width: min(calc(100% - 32px), 1100px);
+      width: min(calc(100% - 32px), 980px);
       margin: 0 auto;
     }
 
@@ -90,7 +91,7 @@
       justify-content: space-between;
       gap: 18px;
       padding: 12px 0;
-      background: rgba(247, 243, 234, 0.88);
+      background: rgba(255, 250, 240, 0.9);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid rgba(74, 65, 54, 0.06);
     }
@@ -99,15 +100,15 @@
       display: inline-flex;
       align-items: center;
       font-family: "Galmuri11", monospace;
-      font-size: 24px;
+      font-size: 22px;
       line-height: 1;
       letter-spacing: -0.02em;
       color: #5b4a2e;
       padding: 10px 14px;
-      border: 2px solid rgba(91, 74, 46, 0.22);
-      background: rgba(255, 251, 240, 0.88);
+      border: 2px solid rgba(91, 74, 46, 0.18);
+      background: rgba(255, 249, 219, 0.95);
       border-radius: 999px;
-      box-shadow: 0 2px 10px rgba(91, 74, 46, 0.08);
+      box-shadow: 0 2px 10px rgba(91, 74, 46, 0.06);
       flex: 0 0 auto;
     }
 
@@ -123,9 +124,9 @@
 
     .main-nav a {
       padding: 8px 12px;
-      border: 1.5px solid rgba(74, 65, 54, 0.18);
-      background: rgba(255, 255, 255, 0.72);
-      box-shadow: 0 1px 4px rgba(74, 65, 54, 0.06);
+      border: 1.5px solid rgba(74, 65, 54, 0.14);
+      background: rgba(255, 255, 255, 0.78);
+      box-shadow: 0 1px 4px rgba(74, 65, 54, 0.04);
       font-size: 14px;
       font-weight: 700;
       line-height: 1;
@@ -150,22 +151,22 @@
       position: relative;
       max-width: var(--max-width);
       margin: 0 auto;
-      padding-top: 28px;
+      padding-top: 24px;
     }
 
     .folder-tab {
       position: absolute;
-      left: 18px;
+      left: 16px;
       top: 0;
-      min-width: 210px;
-      padding: 12px 18px 10px;
+      min-width: 180px;
+      padding: 11px 16px 9px;
       border: var(--pixel-border);
       border-bottom: none;
       background: linear-gradient(to bottom, var(--folder-light), var(--folder));
       font-family: "Galmuri11", monospace;
-      font-size: 14px;
+      font-size: 13px;
       color: #584a32;
-      box-shadow: 0 2px 10px rgba(74, 65, 54, 0.08);
+      box-shadow: 0 2px 10px rgba(74, 65, 54, 0.06);
       z-index: 2;
       border-top-left-radius: 18px;
       border-top-right-radius: 18px;
@@ -174,40 +175,40 @@
     .folder-body {
       position: relative;
       border: var(--pixel-border);
-      background: linear-gradient(to bottom, #f7dfa0 0 52px, var(--paper) 52px 100%);
+      background: linear-gradient(to bottom, #fff185 0 48px, var(--paper) 48px 100%);
       box-shadow: var(--shadow);
-      padding: 20px 22px 24px;
-      min-height: 540px;
-      border-radius: 26px;
+      padding: 18px;
+      min-height: 0;
+      border-radius: 24px;
     }
 
     .folder-inner {
-      margin-top: 22px;
-      border: var(--pixel-border);
-      background: #fffef9;
-      padding: 18px;
-      box-shadow: inset 0 -2px 0 #eee6d8;
-      border-radius: 22px;
+      margin-top: 18px;
+      background: transparent;
+      padding: 0;
+      box-shadow: none;
+      border: none;
     }
 
     .start-only-wrap {
       display: grid;
-      gap: 18px;
+      gap: 16px;
     }
 
     .main-image-wrap {
-      border: var(--pixel-border);
-      background: #fff;
+      background: transparent;
       overflow: hidden;
-      box-shadow: var(--shadow);
-      border-radius: 20px;
+      box-shadow: none;
+      border: none;
+      border-radius: 18px;
     }
 
     .main-image {
       width: 100%;
       aspect-ratio: 4 / 5;
       object-fit: cover;
-      background: #e9eef7;
+      background: #fff7d6;
+      border-radius: 18px;
     }
 
     .start-btn,
@@ -229,17 +230,17 @@
     .action-btn:active,
     .share-modal-btn:active {
       transform: translate(1px, 1px);
-      box-shadow: 1px 1px 0 rgba(74, 65, 54, 0.16);
+      box-shadow: 1px 1px 0 rgba(74, 65, 54, 0.14);
     }
 
     .start-btn {
-      height: 60px;
+      height: 56px;
       font-family: "Galmuri11", monospace;
-      font-size: 18px;
+      font-size: 17px;
     }
 
     .progress-wrap {
-      margin-bottom: 18px;
+      margin-bottom: 16px;
       display: grid;
       gap: 10px;
     }
@@ -250,15 +251,15 @@
       justify-content: space-between;
       gap: 10px;
       font-family: "Galmuri11", monospace;
-      font-size: 13px;
+      font-size: 12px;
       color: #5f564c;
     }
 
     .progress-bar {
       width: 100%;
-      height: 22px;
+      height: 20px;
       border: var(--pixel-border);
-      background: #fff;
+      background: #fffdf3;
       overflow: hidden;
       box-shadow: inset 0 -2px 0 #eee6d8;
       border-radius: 999px;
@@ -270,8 +271,8 @@
       background:
         repeating-linear-gradient(
           90deg,
-          #7ecf92 0 14px,
-          #6bbb80 14px 28px
+          #ffe15a 0 14px,
+          #ffd43c 14px 28px
         );
       transition: width 0.25s ease;
     }
@@ -279,16 +280,16 @@
     .question-box {
       margin-top: 8px;
       border: var(--pixel-border);
-      background: #fff;
-      padding: 20px 16px;
-      box-shadow: inset 0 -2px 0 #eee6d8;
-      border-radius: 22px;
+      background: #fffef9;
+      padding: 18px 14px;
+      box-shadow: inset 0 -2px 0 #f3ecd7;
+      border-radius: 20px;
     }
 
     .question-text {
       margin: 0;
-      font-size: 24px;
-      line-height: 1.55;
+      font-size: 22px;
+      line-height: 1.5;
       font-weight: 800;
       letter-spacing: -0.03em;
     }
@@ -308,13 +309,13 @@
     .choices {
       margin-top: 16px;
       display: grid;
-      gap: 12px;
+      gap: 10px;
     }
 
     .choice-btn {
       text-align: left;
-      padding: 18px 16px;
-      background: #fffef6;
+      padding: 16px 14px;
+      background: var(--yellow-soft);
     }
 
     .choice-top {
@@ -325,12 +326,12 @@
     }
 
     .choice-badge {
-      width: 32px;
-      height: 32px;
+      width: 30px;
+      height: 30px;
       border: var(--pixel-border);
-      background: var(--pink);
+      background: #fff1a8;
       font-family: "Galmuri11", monospace;
-      font-size: 13px;
+      font-size: 12px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -340,7 +341,7 @@
 
     .choice-title {
       font-family: "Galmuri11", monospace;
-      font-size: 15px;
+      font-size: 14px;
       line-height: 1.3;
     }
 
@@ -348,7 +349,7 @@
       margin: 0;
       color: var(--sub);
       font-size: 15px;
-      line-height: 1.6;
+      line-height: 1.55;
     }
 
     .result-image-only {
@@ -356,7 +357,7 @@
       background: #fff;
       overflow: hidden;
       box-shadow: var(--shadow);
-      border-radius: 20px;
+      border-radius: 18px;
     }
 
     .result-image-only img {
@@ -385,9 +386,9 @@
     }
 
     .action-btn {
-      height: 54px;
-      background: #fffef6;
-      font-size: 16px;
+      height: 52px;
+      background: #fffbea;
+      font-size: 15px;
       font-weight: 800;
     }
 
@@ -400,7 +401,7 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      min-height: 420px;
+      min-height: 380px;
       padding: 40px 20px;
     }
 
@@ -410,35 +411,35 @@
 
     .loading-box {
       width: 100%;
-      max-width: 520px;
+      max-width: 460px;
       border: var(--pixel-border);
       background: #fffef9;
       box-shadow: var(--shadow);
-      padding: 30px 20px;
+      padding: 28px 20px;
       border-radius: 24px;
     }
 
     .loading-title {
       margin: 0;
       font-family: "Galmuri11", monospace;
-      font-size: 20px;
+      font-size: 18px;
       line-height: 1.5;
     }
 
     .loading-desc {
       margin: 12px 0 0;
       color: var(--sub);
-      font-size: 15px;
+      font-size: 14px;
       line-height: 1.7;
     }
 
     .loading-sprite {
-      width: 72px;
-      height: 72px;
+      width: 68px;
+      height: 68px;
       margin: 0 auto 18px;
       border: var(--pixel-border);
       background:
-        linear-gradient(45deg, #fff 0 50%, #ff7f8a 50% 100%);
+        linear-gradient(45deg, #fffef2 0 50%, #ffd83d 50% 100%);
       position: relative;
       box-shadow: var(--shadow);
       animation: floaty 0.8s steps(2) infinite;
@@ -532,7 +533,7 @@
 
     .share-modal-btn {
       height: 48px;
-      background: #fffef6;
+      background: #fffbea;
       font-size: 15px;
       font-weight: 800;
     }
@@ -546,7 +547,7 @@
       min-width: 220px;
       max-width: calc(100% - 32px);
       border: var(--pixel-border);
-      background: #fffef6;
+      background: #fffbea;
       box-shadow: var(--shadow);
       padding: 12px 16px;
       font-size: 14px;
@@ -558,6 +559,20 @@
 
     .toast.show {
       display: block;
+    }
+
+    @media (min-width: 769px) {
+      .main {
+        padding-top: 14px;
+      }
+
+      .folder-shell {
+        max-width: 600px;
+      }
+
+      .main-image {
+        aspect-ratio: 4 / 4.9;
+      }
     }
 
     @media (max-width: 768px) {
@@ -584,6 +599,11 @@
         padding: 7px 9px;
       }
 
+      .folder-shell {
+        max-width: 100%;
+        padding-top: 28px;
+      }
+
       .folder-tab {
         left: 12px;
         min-width: 170px;
@@ -595,12 +615,15 @@
         padding: 18px 14px 18px;
         min-height: auto;
         border-radius: 22px;
-        background: linear-gradient(to bottom, #f7dfa0 0 46px, var(--paper) 46px 100%);
+        background: linear-gradient(to bottom, #fff18a 0 46px, var(--paper) 46px 100%);
       }
 
       .folder-inner {
-        padding: 14px;
-        border-radius: 18px;
+        padding: 0;
+        border: none;
+        box-shadow: none;
+        background: transparent;
+        border-radius: 0;
         margin-top: 18px;
       }
 
@@ -660,7 +683,7 @@
           <div class="folder-inner">
             <div class="start-only-wrap">
               <div class="main-image-wrap">
-                <img src="img_main0011.png" alt="테스트잇 포켓몬 픽셀 MBTI 테스트 메인 이미지" class="main-image" />
+                <img src="img_main0011임시.png" alt="테스트잇 포켓몬 픽셀 MBTI 테스트 메인 이미지" class="main-image" />
               </div>
 
               <button type="button" class="start-btn" id="start-btn">테스트 시작하기</button>
@@ -1022,8 +1045,8 @@
 
     async function shareTest() {
       const shareData = {
-        title: "테스트잇 포켓몬 픽셀 MBTI 테스트",
-        text: "포켓몬 픽셀 감성으로 보는 나의 MBTI 성격 테스트",
+        title: "삐아 포켓몬 에디션 성격 테스트(가제)",
+        text: "삐아 포켓몬 에디션 성격 테스트(가제)",
         url: window.location.href
       };
 

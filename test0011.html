@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5522499110435321" crossorigin="anonymous"></script>
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>테스트잇 포켓몬 픽셀 MBTI 테스트</title>
+  <meta name="description" content="포켓몬 픽셀 감성으로 보는 나의 MBTI 성격 테스트" />
+  <meta name="keywords" content="테스트잇, MBTI, 성격테스트, 포켓몬, 픽셀테스트, 픽셀MBTI, 테스트잇MBTI" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="테스트잇 포켓몬 픽셀 MBTI 테스트" />
+  <meta property="og:description" content="포켓몬 픽셀 감성으로 보는 나의 성격 테스트" />
+  <meta property="og:image" content="https://test-it.co.kr/img_main0011.png" />
+  <meta property="og:url" content="https://test-it.co.kr/test-pokemon-pixel-mbti.html" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Galmuri11:wght@400;700&family=Pretendard:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #f7f3ea;
+      --paper: #fffdf8;
+      --folder: #f6db85;
+      --folder-light: #ffe9aa;
+      --line: #4a4136;
+      --mint: #d8f0df;
+      --pink: #ffd9df;
+      --blue: #d9e8ff;
+      --yellow: #fff0ba;
+      --text: #2a241d;
+      --sub: #6b6257;
+      --shadow: 2px 2px 0 rgba(74, 65, 54, 0.18);
+      --pixel-border: 2px solid #4a4136;
+      --header-h: 68px;
+      --max-width: 760px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Pretendard", sans-serif;
+      word-break: keep-all;
+    }
+
+    body {
+      min-height: 100vh;
+      background-image:
+        linear-gradient(to right, rgba(74, 65, 54, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(74, 65, 54, 0.03) 1px, transparent 1px);
+      background-size: 16px 16px;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    button {
+      font-family: inherit;
+    }
+
+    .wrapper {
+      width: min(calc(100% - 32px), 1100px);
+      margin: 0 auto;
+    }
+
+    .page-header {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      min-height: var(--header-h);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 12px 0;
+      background: rgba(247, 243, 234, 0.88);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(74, 65, 54, 0.06);
+    }
+
+    .logo-text {
+      display: inline-flex;
+      align-items: center;
+      font-family: "Galmuri11", monospace;
+      font-size: 24px;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      color: #5b4a2e;
+      padding: 10px 14px;
+      border: 2px solid rgba(91, 74, 46, 0.22);
+      background: rgba(255, 251, 240, 0.88);
+      border-radius: 999px;
+      box-shadow: 0 2px 10px rgba(91, 74, 46, 0.08);
+      flex: 0 0 auto;
+    }
+
+    .main-nav {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 8px;
+      flex: 1 1 auto;
+      min-width: 0;
+      flex-wrap: nowrap;
+    }
+
+    .main-nav a {
+      padding: 8px 12px;
+      border: 1.5px solid rgba(74, 65, 54, 0.18);
+      background: rgba(255, 255, 255, 0.72);
+      box-shadow: 0 1px 4px rgba(74, 65, 54, 0.06);
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1;
+      white-space: nowrap;
+      border-radius: 999px;
+      color: #5b5147;
+    }
+
+    .main {
+      padding: 18px 0 56px;
+    }
+
+    .screen {
+      display: none;
+    }
+
+    .screen.active {
+      display: block;
+    }
+
+    .folder-shell {
+      position: relative;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding-top: 28px;
+    }
+
+    .folder-tab {
+      position: absolute;
+      left: 18px;
+      top: 0;
+      min-width: 210px;
+      padding: 12px 18px 10px;
+      border: var(--pixel-border);
+      border-bottom: none;
+      background: linear-gradient(to bottom, var(--folder-light), var(--folder));
+      font-family: "Galmuri11", monospace;
+      font-size: 14px;
+      color: #584a32;
+      box-shadow: 0 2px 10px rgba(74, 65, 54, 0.08);
+      z-index: 2;
+      border-top-left-radius: 18px;
+      border-top-right-radius: 18px;
+    }
+
+    .folder-body {
+      position: relative;
+      border: var(--pixel-border);
+      background: linear-gradient(to bottom, #f7dfa0 0 52px, var(--paper) 52px 100%);
+      box-shadow: var(--shadow);
+      padding: 20px 22px 24px;
+      min-height: 540px;
+      border-radius: 26px;
+    }
+
+    .folder-inner {
+      margin-top: 22px;
+      border: var(--pixel-border);
+      background: #fffef9;
+      padding: 18px;
+      box-shadow: inset 0 -2px 0 #eee6d8;
+      border-radius: 22px;
+    }
+
+    .start-only-wrap {
+      display: grid;
+      gap: 18px;
+    }
+
+    .main-image-wrap {
+      border: var(--pixel-border);
+      background: #fff;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border-radius: 20px;
+    }
+
+    .main-image {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      background: #e9eef7;
+    }
+
+    .start-btn,
+    .choice-btn,
+    .action-btn,
+    .share-modal-btn {
+      width: 100%;
+      border: var(--pixel-border);
+      background: var(--yellow);
+      color: var(--text);
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      transition: transform 0.05s ease, box-shadow 0.05s ease;
+      border-radius: 18px;
+    }
+
+    .start-btn:active,
+    .choice-btn:active,
+    .action-btn:active,
+    .share-modal-btn:active {
+      transform: translate(1px, 1px);
+      box-shadow: 1px 1px 0 rgba(74, 65, 54, 0.16);
+    }
+
+    .start-btn {
+      height: 60px;
+      font-family: "Galmuri11", monospace;
+      font-size: 18px;
+    }
+
+    .progress-wrap {
+      margin-bottom: 18px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .progress-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      font-family: "Galmuri11", monospace;
+      font-size: 13px;
+      color: #5f564c;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 22px;
+      border: var(--pixel-border);
+      background: #fff;
+      overflow: hidden;
+      box-shadow: inset 0 -2px 0 #eee6d8;
+      border-radius: 999px;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background:
+        repeating-linear-gradient(
+          90deg,
+          #7ecf92 0 14px,
+          #6bbb80 14px 28px
+        );
+      transition: width 0.25s ease;
+    }
+
+    .question-box {
+      margin-top: 8px;
+      border: var(--pixel-border);
+      background: #fff;
+      padding: 20px 16px;
+      box-shadow: inset 0 -2px 0 #eee6d8;
+      border-radius: 22px;
+    }
+
+    .question-text {
+      margin: 0;
+      font-size: 24px;
+      line-height: 1.55;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .question-note {
+      margin: 10px 0 0;
+      font-size: 13px;
+      color: #8a7f72;
+      line-height: 1.5;
+      display: none;
+    }
+
+    .question-note.show {
+      display: block;
+    }
+
+    .choices {
+      margin-top: 16px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .choice-btn {
+      text-align: left;
+      padding: 18px 16px;
+      background: #fffef6;
+    }
+
+    .choice-top {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .choice-badge {
+      width: 32px;
+      height: 32px;
+      border: var(--pixel-border);
+      background: var(--pink);
+      font-family: "Galmuri11", monospace;
+      font-size: 13px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      border-radius: 10px;
+    }
+
+    .choice-title {
+      font-family: "Galmuri11", monospace;
+      font-size: 15px;
+      line-height: 1.3;
+    }
+
+    .choice-desc {
+      margin: 0;
+      color: var(--sub);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .result-image-only {
+      border: var(--pixel-border);
+      background: #fff;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border-radius: 20px;
+    }
+
+    .result-image-only img {
+      width: 100%;
+      display: block;
+    }
+
+    .result-ad-wrap {
+      margin-top: 14px;
+      border: var(--pixel-border);
+      background: #fff;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border-radius: 18px;
+    }
+
+    .result-ad-wrap img {
+      width: 100%;
+      display: block;
+    }
+
+    .action-buttons {
+      margin-top: 18px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .action-btn {
+      height: 54px;
+      background: #fffef6;
+      font-size: 16px;
+      font-weight: 800;
+    }
+
+    .action-btn.primary {
+      background: var(--yellow);
+    }
+
+    .loading {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      min-height: 420px;
+      padding: 40px 20px;
+    }
+
+    .loading.active {
+      display: flex;
+    }
+
+    .loading-box {
+      width: 100%;
+      max-width: 520px;
+      border: var(--pixel-border);
+      background: #fffef9;
+      box-shadow: var(--shadow);
+      padding: 30px 20px;
+      border-radius: 24px;
+    }
+
+    .loading-title {
+      margin: 0;
+      font-family: "Galmuri11", monospace;
+      font-size: 20px;
+      line-height: 1.5;
+    }
+
+    .loading-desc {
+      margin: 12px 0 0;
+      color: var(--sub);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .loading-sprite {
+      width: 72px;
+      height: 72px;
+      margin: 0 auto 18px;
+      border: var(--pixel-border);
+      background:
+        linear-gradient(45deg, #fff 0 50%, #ff7f8a 50% 100%);
+      position: relative;
+      box-shadow: var(--shadow);
+      animation: floaty 0.8s steps(2) infinite;
+      border-radius: 18px;
+    }
+
+    .loading-sprite::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: calc(50% - 2px);
+      width: 100%;
+      height: 4px;
+      background: #2e2a24;
+    }
+
+    .loading-sprite::after {
+      content: "";
+      position: absolute;
+      left: calc(50% - 7px);
+      top: calc(50% - 7px);
+      width: 14px;
+      height: 14px;
+      border: var(--pixel-border);
+      background: #fff9da;
+      border-radius: 4px;
+    }
+
+    @keyframes floaty {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-4px); }
+      100% { transform: translateY(0); }
+    }
+
+    .capture-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: rgba(34, 30, 24, 0.72);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .capture-modal.active {
+      display: flex;
+    }
+
+    .capture-modal-inner {
+      width: min(100%, 420px);
+      border: var(--pixel-border);
+      background: #fffef9;
+      box-shadow: 0 8px 30px rgba(34, 30, 24, 0.18);
+      padding: 16px;
+      border-radius: 24px;
+    }
+
+    .capture-modal-title {
+      margin: 0 0 12px;
+      font-family: "Galmuri11", monospace;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .capture-preview-wrap {
+      border: var(--pixel-border);
+      background: #fff;
+      overflow: hidden;
+      border-radius: 18px;
+    }
+
+    .capture-preview-wrap img {
+      width: 100%;
+      display: block;
+    }
+
+    .capture-modal-text {
+      margin: 12px 0 0;
+      color: var(--sub);
+      font-size: 14px;
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    .capture-modal-actions {
+      margin-top: 12px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .share-modal-btn {
+      height: 48px;
+      background: #fffef6;
+      font-size: 15px;
+      font-weight: 800;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 26px;
+      transform: translateX(-50%);
+      z-index: 120;
+      min-width: 220px;
+      max-width: calc(100% - 32px);
+      border: var(--pixel-border);
+      background: #fffef6;
+      box-shadow: var(--shadow);
+      padding: 12px 16px;
+      font-size: 14px;
+      line-height: 1.5;
+      text-align: center;
+      display: none;
+      border-radius: 16px;
+    }
+
+    .toast.show {
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      .wrapper {
+        width: min(calc(100% - 24px), 100%);
+      }
+
+      .page-header {
+        min-height: 62px;
+        gap: 10px;
+      }
+
+      .logo-text {
+        font-size: 20px;
+        padding: 8px 12px;
+      }
+
+      .main-nav {
+        gap: 6px;
+      }
+
+      .main-nav a {
+        font-size: 12px;
+        padding: 7px 9px;
+      }
+
+      .folder-tab {
+        left: 12px;
+        min-width: 170px;
+        padding: 10px 14px 9px;
+        font-size: 12px;
+      }
+
+      .folder-body {
+        padding: 18px 14px 18px;
+        min-height: auto;
+        border-radius: 22px;
+        background: linear-gradient(to bottom, #f7dfa0 0 46px, var(--paper) 46px 100%);
+      }
+
+      .folder-inner {
+        padding: 14px;
+        border-radius: 18px;
+        margin-top: 18px;
+      }
+
+      .main-image-wrap,
+      .result-image-only,
+      .result-ad-wrap {
+        border-radius: 16px;
+      }
+
+      .question-box {
+        border-radius: 18px;
+      }
+
+      .question-text {
+        font-size: 21px;
+      }
+
+      .start-btn {
+        font-size: 16px;
+      }
+    }
+
+    @media (max-width: 430px) {
+      .page-header {
+        gap: 8px;
+      }
+
+      .logo-text {
+        font-size: 17px;
+        padding: 8px 11px;
+      }
+
+      .main-nav a {
+        font-size: 11px;
+        padding: 6px 7px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="page-header wrapper">
+    <a href="/" class="logo-text" aria-label="테스트잇 홈">테스트잇</a>
+
+    <nav class="main-nav" aria-label="메인 메뉴">
+      <a href="/personality.html">성격</a>
+      <a href="/face.html">얼굴</a>
+      <a href="/etc.html">그외</a>
+      <a href="/saju.html">사주</a>
+    </nav>
+  </header>
+
+  <main class="main wrapper">
+    <section id="start-screen" class="screen active">
+      <div class="folder-shell">
+        <div class="folder-tab">PIXEL FOLDER</div>
+        <div class="folder-body">
+          <div class="folder-inner">
+            <div class="start-only-wrap">
+              <div class="main-image-wrap">
+                <img src="img_main0011.png" alt="테스트잇 포켓몬 픽셀 MBTI 테스트 메인 이미지" class="main-image" />
+              </div>
+
+              <button type="button" class="start-btn" id="start-btn">테스트 시작하기</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="question-screen" class="screen">
+      <div class="folder-shell">
+        <div class="folder-tab">QUESTION FOLDER</div>
+        <div class="folder-body">
+          <div class="folder-inner">
+            <div class="progress-wrap">
+              <div class="progress-top">
+                <span id="progress-text">QUESTION 1 / 12</span>
+                <span id="progress-percent">8%</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
+              </div>
+            </div>
+
+            <div class="question-box">
+              <h2 class="question-text" id="question-text"></h2>
+              <p class="question-note" id="question-note">이 문항은 결과 점수에 포함되지 않습니다.</p>
+
+              <div class="choices">
+                <button type="button" class="choice-btn" id="choice-a">
+                  <div class="choice-top">
+                    <span class="choice-badge">A</span>
+                    <span class="choice-title">선택지 A</span>
+                  </div>
+                  <p class="choice-desc" id="choice-a-text"></p>
+                </button>
+
+                <button type="button" class="choice-btn" id="choice-b">
+                  <div class="choice-top">
+                    <span class="choice-badge">B</span>
+                    <span class="choice-title">선택지 B</span>
+                  </div>
+                  <p class="choice-desc" id="choice-b-text"></p>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="loading-screen" class="loading">
+      <div class="loading-box">
+        <div class="loading-sprite" aria-hidden="true"></div>
+        <h2 class="loading-title">결과를 불러오는 중</h2>
+        <p class="loading-desc">
+          포켓몬 픽셀 데이터를 조합해서<br />
+          당신의 성격 타입을 정리하고 있습니다.
+        </p>
+      </div>
+    </section>
+
+    <section id="result-screen" class="screen">
+      <div class="folder-shell">
+        <div class="folder-tab">RESULT FOLDER</div>
+        <div class="folder-body">
+          <div class="folder-inner">
+            <div id="result-capture">
+              <div class="result-image-only">
+                <img id="result-image" src="" alt="테스트 결과 이미지" />
+              </div>
+
+              <div class="result-ad-wrap">
+                <img src="광고-문구.png" alt="광고 문구" />
+              </div>
+            </div>
+
+            <div class="action-buttons">
+              <button type="button" class="action-btn primary" id="save-btn">결과 이미지 저장하기</button>
+              <button type="button" class="action-btn" id="restart-btn">다시 해보기</button>
+              <button type="button" class="action-btn" id="other-btn">다른 테스트 해보기</button>
+              <button type="button" class="action-btn" id="share-btn">테스트 공유하기</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="capture-modal" id="capture-modal">
+    <div class="capture-modal-inner">
+      <h3 class="capture-modal-title">결과 이미지</h3>
+      <div class="capture-preview-wrap">
+        <img id="capture-preview" alt="결과 이미지 미리보기" />
+      </div>
+      <p class="capture-modal-text">
+        이미지를 꾹 눌러 저장해 주세요.
+      </p>
+      <div class="capture-modal-actions">
+        <button type="button" class="share-modal-btn" id="download-btn">바로 다운로드</button>
+        <button type="button" class="share-modal-btn" id="close-modal-btn">닫기</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    const questions = [
+      {
+        axis: "E",
+        score: true,
+        question: "처음 보는 사람들 사이에 들어갔을 때 더 자연스러운 쪽은?",
+        a: { text: "먼저 말을 붙이고 분위기를 빠르게 파악한다", value: "E" },
+        b: { text: "잠깐 지켜보다가 편한 타이밍에 천천히 섞인다", value: "I" }
+      },
+      {
+        axis: "S",
+        score: true,
+        question: "낯선 길을 찾아가야 할 때 나는?",
+        a: { text: "지도의 건물명과 거리를 꼼꼼히 확인하며 간다", value: "S" },
+        b: { text: "대략적인 방향만 보고 일단 감으로 직진한다", value: "N" }
+      },
+      {
+        axis: "T",
+        score: true,
+        question: "누군가에게 조언을 해줄 때 나의 스타일은?",
+        a: { text: "잘못된 점을 명확히 짚어주고 현실적인 대안을 준다", value: "T" },
+        b: { text: "상대방이 상처받지 않게 말을 고르고 응원 위주로 한다", value: "F" }
+      },
+      {
+        axis: "E",
+        score: true,
+        question: "스트레스를 풀고 싶을 때 나는?",
+        a: { text: "사람 만나고 밖에서 시간을 보내며 정리한다", value: "E" },
+        b: { text: "집이나 조용한 공간에서 쉬어야 회복된다", value: "I" }
+      },
+      {
+        axis: "S",
+        score: true,
+        question: "새로운 취미를 시작할 때 더 먼저 보는 것은?",
+        a: { text: "준비물, 비용, 시간처럼 실제로 필요한 정보", value: "S" },
+        b: { text: "이 취미가 내 일상에 어떤 재미를 줄지에 대한 상상", value: "N" }
+      },
+      {
+        axis: "T",
+        score: true,
+        question: "대화 중 의견 충돌이 생겼을 때 나의 태도는?",
+        a: { text: "누가 옳은지 시시비비를 가리는 것이 가장 중요하다", value: "T" },
+        b: { text: "관계가 서먹해지는 게 싫어서 적당히 양보하고 맞춘다", value: "F" }
+      },
+      {
+        axis: "E",
+        score: true,
+        question: "고민이 생겼을 때 해결 방법은?",
+        a: { text: "주변 사람들에게 말하며 조언을 구한다", value: "E" },
+        b: { text: "혼자 진지하게 생각하며 마음을 정리한다", value: "I" }
+      },
+      {
+        axis: "S",
+        score: true,
+        question: "미래를 상상할 때 주로 드는 생각은?",
+        a: { text: "당장 내일이나 이번 달에 해야 할 현실적인 계획", value: "S" },
+        b: { text: "10년 뒤 나의 모습이나 먼 미래의 막연한 꿈", value: "N" }
+      },
+      {
+        axis: "T",
+        score: true,
+        question: "시험에서 아쉽게 떨어졌을 때 듣고 싶은 말은?",
+        a: { text: "다음번엔 이 부분을 보완하면 충분히 합격할 수 있어", value: "T" },
+        b: { text: "그동안 고생 많았어 너의 노력을 내가 다 알아", value: "F" }
+      },
+      {
+        axis: null,
+        score: false,
+        question: "일주일 동안 집밖에 안 나간다면?",
+        a: { text: "답답해서 미칠 것 같고 우울해진다", value: null },
+        b: { text: "세상에서 가장 행복한 일주일이 된다", value: null }
+      },
+      {
+        axis: null,
+        score: false,
+        question: "대화할 때 나의 기본적인 태도는?",
+        a: { text: "상대방이 말하는 사실 관계를 파악하며 듣는다", value: null },
+        b: { text: "상대방의 말 뒤에 숨겨진 의도나 감정을 읽으려 한다", value: null }
+      },
+      {
+        axis: null,
+        score: false,
+        question: "상대방의 말실수를 발견했을 때 나는?",
+        a: { text: "바로 정정해주거나 팩트를 짚어준다", value: null },
+        b: { text: "무안해할까 봐 그냥 넘어가거나 분위기를 맞춘다", value: null }
+      }
+    ];
+
+    const startScreen = document.getElementById("start-screen");
+    const questionScreen = document.getElementById("question-screen");
+    const loadingScreen = document.getElementById("loading-screen");
+    const resultScreen = document.getElementById("result-screen");
+
+    const startBtn = document.getElementById("start-btn");
+
+    const progressText = document.getElementById("progress-text");
+    const progressPercent = document.getElementById("progress-percent");
+    const progressFill = document.getElementById("progress-fill");
+
+    const questionText = document.getElementById("question-text");
+    const questionNote = document.getElementById("question-note");
+    const choiceAText = document.getElementById("choice-a-text");
+    const choiceBText = document.getElementById("choice-b-text");
+    const choiceAButton = document.getElementById("choice-a");
+    const choiceBButton = document.getElementById("choice-b");
+
+    const resultImage = document.getElementById("result-image");
+
+    const saveBtn = document.getElementById("save-btn");
+    const restartBtn = document.getElementById("restart-btn");
+    const otherBtn = document.getElementById("other-btn");
+    const shareBtn = document.getElementById("share-btn");
+
+    const captureModal = document.getElementById("capture-modal");
+    const capturePreview = document.getElementById("capture-preview");
+    const closeModalBtn = document.getElementById("close-modal-btn");
+    const downloadBtn = document.getElementById("download-btn");
+    const toast = document.getElementById("toast");
+
+    let currentQuestionIndex = 0;
+    let answers = [];
+    let currentResultKey = "";
+    let currentCaptureDataUrl = "";
+
+    function showScreen(target) {
+      startScreen.classList.remove("active");
+      questionScreen.classList.remove("active");
+      resultScreen.classList.remove("active");
+      loadingScreen.classList.remove("active");
+
+      if (target === "start") startScreen.classList.add("active");
+      if (target === "question") questionScreen.classList.add("active");
+      if (target === "result") resultScreen.classList.add("active");
+      if (target === "loading") loadingScreen.classList.add("active");
+
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add("show");
+      clearTimeout(showToast.timer);
+      showToast.timer = setTimeout(() => {
+        toast.classList.remove("show");
+      }, 1800);
+    }
+
+    function startTest() {
+      currentQuestionIndex = 0;
+      answers = [];
+      renderQuestion();
+      showScreen("question");
+    }
+
+    function renderQuestion() {
+      const question = questions[currentQuestionIndex];
+      const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
+
+      progressText.textContent = `QUESTION ${currentQuestionIndex + 1} / ${questions.length}`;
+      progressPercent.textContent = `${Math.round(progress)}%`;
+      progressFill.style.width = `${progress}%`;
+
+      questionText.textContent = question.question;
+      choiceAText.textContent = question.a.text;
+      choiceBText.textContent = question.b.text;
+
+      if (question.score) {
+        questionNote.classList.remove("show");
+      } else {
+        questionNote.classList.add("show");
+      }
+    }
+
+    function selectAnswer(value) {
+      const question = questions[currentQuestionIndex];
+
+      if (question.score && value) {
+        answers.push(value);
+      }
+
+      if (currentQuestionIndex < questions.length - 1) {
+        currentQuestionIndex += 1;
+        renderQuestion();
+      } else {
+        calculateResult();
+      }
+    }
+
+    function calculateResult() {
+      showScreen("loading");
+
+      setTimeout(() => {
+        const counts = {
+          E: 0, I: 0,
+          S: 0, N: 0,
+          T: 0, F: 0
+        };
+
+        answers.forEach(answer => {
+          counts[answer] += 1;
+        });
+
+        const eOrI = counts.E >= counts.I ? "E" : "I";
+        const sOrN = counts.S >= counts.N ? "S" : "N";
+        const tOrF = counts.T >= counts.F ? "T" : "F";
+
+        currentResultKey = `${eOrI}${sOrN}${tOrF}`;
+        renderResultImage(currentResultKey);
+        showScreen("result");
+      }, 1200);
+    }
+
+    function renderResultImage(key) {
+      const imagePath = `img_${key.toLowerCase()}0011.png`;
+      resultImage.src = imagePath;
+      resultImage.alt = `${key} 결과 이미지`;
+    }
+
+    async function createCaptureImage() {
+      const target = document.getElementById("result-capture");
+
+      const canvas = await html2canvas(target, {
+        backgroundColor: "#fffef9",
+        scale: 2,
+        useCORS: true
+      });
+
+      return canvas.toDataURL("image/png");
+    }
+
+    async function openCaptureModal() {
+      try {
+        const dataUrl = await createCaptureImage();
+        currentCaptureDataUrl = dataUrl;
+        capturePreview.src = dataUrl;
+        captureModal.classList.add("active");
+      } catch (error) {
+        showToast("이미지 생성에 실패했습니다");
+      }
+    }
+
+    function downloadCurrentImage() {
+      if (!currentCaptureDataUrl) return;
+
+      const link = document.createElement("a");
+      link.href = currentCaptureDataUrl;
+      link.download = `pokemon-pixel-mbti-${currentResultKey}.png`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    async function shareTest() {
+      const shareData = {
+        title: "테스트잇 포켓몬 픽셀 MBTI 테스트",
+        text: "포켓몬 픽셀 감성으로 보는 나의 MBTI 성격 테스트",
+        url: window.location.href
+      };
+
+      if (navigator.share) {
+        try {
+          await navigator.share(shareData);
+        } catch (error) {}
+      } else {
+        try {
+          await navigator.clipboard.writeText(window.location.href);
+          showToast("링크가 복사되었습니다");
+        } catch (error) {
+          showToast("공유가 지원되지 않습니다");
+        }
+      }
+    }
+
+    startBtn.addEventListener("click", startTest);
+    choiceAButton.addEventListener("click", () => selectAnswer(questions[currentQuestionIndex].a.value));
+    choiceBButton.addEventListener("click", () => selectAnswer(questions[currentQuestionIndex].b.value));
+
+    saveBtn.addEventListener("click", openCaptureModal);
+
+    restartBtn.addEventListener("click", () => {
+      showScreen("start");
+      currentCaptureDataUrl = "";
+      captureModal.classList.remove("active");
+    });
+
+    otherBtn.addEventListener("click", () => {
+      window.location.href = "/";
+    });
+
+    shareBtn.addEventListener("click", shareTest);
+
+    closeModalBtn.addEventListener("click", () => {
+      captureModal.classList.remove("active");
+    });
+
+    downloadBtn.addEventListener("click", downloadCurrentImage);
+
+    captureModal.addEventListener("click", (e) => {
+      if (e.target === captureModal) {
+        captureModal.classList.remove("active");
+      }
+    });
+  </script>
+</body>
+</html>

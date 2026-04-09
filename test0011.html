@@ -28,16 +28,13 @@
       --folder: #ffe46b;
       --folder-light: #fff3a6;
       --line: #4a4136;
-      --mint: #d8f0df;
-      --pink: #ffd9df;
-      --blue: #d9e8ff;
       --yellow: #fff28d;
       --yellow-soft: #fff8cf;
       --text: #2a241d;
       --sub: #6b6257;
       --shadow: 2px 2px 0 rgba(74, 65, 54, 0.16);
       --pixel-border: 2px solid #4a4136;
-      --header-h: 68px;
+      --header-h: 60px;
       --max-width: 620px;
     }
 
@@ -89,9 +86,9 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 18px;
-      padding: 12px 0;
-      background: rgba(255, 250, 240, 0.9);
+      gap: 14px;
+      padding: 10px 0;
+      background: rgba(255, 250, 240, 0.88);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid rgba(74, 65, 54, 0.06);
     }
@@ -100,15 +97,15 @@
       display: inline-flex;
       align-items: center;
       font-family: "Galmuri11", monospace;
-      font-size: 22px;
+      font-size: 15px;
       line-height: 1;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.01em;
       color: #5b4a2e;
-      padding: 10px 14px;
-      border: 2px solid rgba(91, 74, 46, 0.18);
-      background: rgba(255, 249, 219, 0.95);
+      padding: 7px 10px;
+      border: 1.5px solid rgba(91, 74, 46, 0.14);
+      background: rgba(255, 248, 210, 0.92);
       border-radius: 999px;
-      box-shadow: 0 2px 10px rgba(91, 74, 46, 0.06);
+      box-shadow: 0 1px 4px rgba(91, 74, 46, 0.05);
       flex: 0 0 auto;
     }
 
@@ -116,18 +113,18 @@
       display: flex;
       align-items: center;
       justify-content: flex-end;
-      gap: 8px;
+      gap: 7px;
       flex: 1 1 auto;
       min-width: 0;
       flex-wrap: nowrap;
     }
 
     .main-nav a {
-      padding: 8px 12px;
-      border: 1.5px solid rgba(74, 65, 54, 0.14);
-      background: rgba(255, 255, 255, 0.78);
-      box-shadow: 0 1px 4px rgba(74, 65, 54, 0.04);
-      font-size: 14px;
+      padding: 7px 10px;
+      border: 1.5px solid rgba(74, 65, 54, 0.12);
+      background: rgba(255, 255, 255, 0.72);
+      box-shadow: 0 1px 4px rgba(74, 65, 54, 0.03);
+      font-size: 13px;
       font-weight: 700;
       line-height: 1;
       white-space: nowrap;
@@ -295,15 +292,7 @@
     }
 
     .question-note {
-      margin: 10px 0 0;
-      font-size: 13px;
-      color: #8a7f72;
-      line-height: 1.5;
-      display: none;
-    }
-
-    .question-note.show {
-      display: block;
+      display: none !important;
     }
 
     .choices {
@@ -319,30 +308,7 @@
     }
 
     .choice-top {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 8px;
-    }
-
-    .choice-badge {
-      width: 30px;
-      height: 30px;
-      border: var(--pixel-border);
-      background: #fff1a8;
-      font-family: "Galmuri11", monospace;
-      font-size: 12px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      border-radius: 10px;
-    }
-
-    .choice-title {
-      font-family: "Galmuri11", monospace;
-      font-size: 14px;
-      line-height: 1.3;
+      display: none;
     }
 
     .choice-desc {
@@ -350,6 +316,7 @@
       color: var(--sub);
       font-size: 15px;
       line-height: 1.55;
+      font-weight: 700;
     }
 
     .result-image-only {
@@ -581,13 +548,13 @@
       }
 
       .page-header {
-        min-height: 62px;
+        min-height: 56px;
         gap: 10px;
       }
 
       .logo-text {
-        font-size: 20px;
-        padding: 8px 12px;
+        font-size: 14px;
+        padding: 7px 9px;
       }
 
       .main-nav {
@@ -652,8 +619,8 @@
       }
 
       .logo-text {
-        font-size: 17px;
-        padding: 8px 11px;
+        font-size: 13px;
+        padding: 6px 8px;
       }
 
       .main-nav a {
@@ -710,7 +677,7 @@
 
             <div class="question-box">
               <h2 class="question-text" id="question-text"></h2>
-              <p class="question-note" id="question-note">이 문항은 결과 점수에 포함되지 않습니다.</p>
+              <p class="question-note" id="question-note"></p>
 
               <div class="choices">
                 <button type="button" class="choice-btn" id="choice-a">
@@ -891,7 +858,6 @@
     const progressFill = document.getElementById("progress-fill");
 
     const questionText = document.getElementById("question-text");
-    const questionNote = document.getElementById("question-note");
     const choiceAText = document.getElementById("choice-a-text");
     const choiceBText = document.getElementById("choice-b-text");
     const choiceAButton = document.getElementById("choice-a");
@@ -956,12 +922,6 @@
       questionText.textContent = question.question;
       choiceAText.textContent = question.a.text;
       choiceBText.textContent = question.b.text;
-
-      if (question.score) {
-        questionNote.classList.remove("show");
-      } else {
-        questionNote.classList.add("show");
-      }
     }
 
     function selectAnswer(value) {

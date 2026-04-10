@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -16,8 +14,6 @@
      ">
  
      <script src="https://js.tosspayments.com/v2/standard"></script>
-
-
 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -36,17 +32,7 @@
       <link rel="icon" type="image/png" href="favicon.png">
 <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
 
-
-
 <style>
-
-/* start 태그와 question 태그 모두 article 태그라서 article 태그에 속성을 주면 동시에 적용됨
-.start{
-    display: flex;
-    flex-direction: column;
-}
-*/
-    
    @font-face {
     font-family: 'ChosunGu';
     src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/ChosunGu.woff') format('woff');
@@ -88,19 +74,15 @@
     color: #0bd;
 }
 
-
 .page-header {
     display: flex;
     justify-content: space-between;
 }
-
     
 article{
     display: flex;
     flex-direction: column;
 }
-
- 
     
 #img{
     width: 500px;
@@ -118,7 +100,6 @@ article{
     margin: 0 auto;
 }
 
-
 .custom-jelly-button {
     width: 100%;
     max-width: 350px;
@@ -126,7 +107,7 @@ article{
     font-size: 15px !important;
     font-weight: bold;
     color: black !important;
-    background: linear-gradient(145deg, #ffcfcf, #ffcfcf); /* 분홍과 노랑 그라데이션 */
+    background: linear-gradient(145deg, #ffcfcf, #ffcfcf); 
     border: none;
     border-radius: 17px;
     box-shadow: inset -4px -4px 10px rgba(255, 255, 255, 0.7), 
@@ -137,12 +118,9 @@ article{
 }
 
 .custom-jelly-button:hover {
-    background: linear-gradient(145deg, #ffcfcf, #ffcfcf); /* 반대로 그라데이션 */
+    background: linear-gradient(145deg, #ffcfcf, #ffcfcf); 
 }
 
-
-/* 페이지 기본 스타일 */
-  /* 페이지 기본 스타일 */
   .page {
       display: none;
       margin: 0 auto;
@@ -156,43 +134,37 @@ article{
       display: block;
     }
 
-    /* 정보 입력 페이지 전체 스타일 */
     .info-page {
       text-align: center;
     }
 
-    /* "사주 정보 입력" 제목 스타일 (크기는 살짝 작게, 굵게) */
     .info-title {
       font-size: 1.2rem;
       font-weight: bold;
-      margin-bottom: 10px; /* 제목 아래 간격 */
+      margin-bottom: 10px; 
     }
 
-    /* 폼 전체 스타일: 세로 레이아웃 + 중앙 정렬 + 요소 간격 */
     .saju-form {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 10px; /* 폼 내부 요소 간격(줄임) */
+      gap: 10px; 
       margin: 0 auto;
-      max-width: 400px; /* 폼 자체 폭 제한 */
+      max-width: 400px; 
     }
 
-    /* 각 입력 그룹(이름, 성별, 생년월일, 태어난 시간, 이메일) 공통 스타일 */
     .form-group {
       width: 100%;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      gap: 3px; /* 레이블과 입력창 사이 간격(더 줄임) */
+      gap: 3px; 
     }
 
-    /* 레이블 굵게 */
     .label-bold {
       font-weight: bold;
     }
 
-    /* 단일 input, select 공통 스타일 (너비 100%) */
     .form-group input,
     .form-group select {
       width: 100%;
@@ -201,15 +173,13 @@ article{
       border: 1px solid #ddd;
     }
 
-    /* 생년월일(양력/음력 + 연/월/일)을 한 줄로 배치할 때 사용하는 컨테이너 */
     .form-group-inline {
       display: flex;
       flex-direction: row;
-      gap: 8px; /* 드롭다운 사이 간격 */
+      gap: 8px; 
       width: 100%;
     }
 
-    /* 이 컨테이너 안의 select들을 동일한 비율로 늘려 같은 폭을 맞춤 */
     .form-group-inline select {
       flex: 1;
       padding: 10px;
@@ -217,7 +187,6 @@ article{
       border: 1px solid #ddd;
     }
 
-    /* 버튼 영역(결제하기/돌아가기) */
     .button-group {
       display: flex;
       flex-direction: column;
@@ -227,32 +196,27 @@ article{
       max-width: 500px;
     }
 
-/* 결제 페이지 스타일 */
 .payment-page {
-  text-align: center; /* 페이지 전체 중앙 정렬 */
+  text-align: center; 
 }
 
-/* 결제 진행 메인 제목 */
 .payment-page h1 {
-  font-size: 1.2rem;  /* 글씨 크기 조금 줄임 */
+  font-size: 1.2rem;  
   font-weight: bold;
-  margin-bottom: 10px; /* 아래쪽 여백 */
+  margin-bottom: 10px; 
 }
 
-/* "입력 정보 확인" 등 하위 제목 */
 .payment-page h2 {
-  font-size: 1rem;    /* 더 작게 */
+  font-size: 1rem;    
   font-weight: bold;
   margin-bottom: 8px;
 }
 
-/* 일반 텍스트(이름, 생년월일, 태어난 시간, 이메일 등) */
 .payment-page p {
-  font-size: 0.9rem;  /* 일반 텍스트 크기 */
+  font-size: 0.9rem;  
   margin-bottom: 5px;
 }
 
-    
     .at-share-btn-elements{
         text-align: center;
     }
@@ -278,15 +242,9 @@ article{
       border: 1px solid #ddd;
     }
     
-    
 </style>
 
-
-
-
-
 </head>
-<!-- body 태그 style background-color 지정으로 배경색 변경-->
 <body class="container" style="background-color:#ffffff">
             
     <header class="page-header wrapper">
@@ -301,22 +259,18 @@ article{
         </u1>
     </nav>
         
-        
     </header>
 
-  <!-- 1. 사주 메인 페이지 -->
   <div id="mainPage" class="page active">
     <img src="saju_main04.png" alt="사주 예시" style="width: 100%; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
     <br><br>
     <button class="custom-jelly-button" onclick="showPage('infoPage')">💌 정보 입력하고 결제하기</button>
 </div>
 
-  <!-- 정보 입력 페이지 -->
   <div id="infoPage" class="page info-page">
     <h1 class="info-title">📄 사주 정보 입력</h1>
 
     <form id="sajuForm" class="saju-form">
-      <!-- 첫 번째 사용자 정보 -->
       <h2>🫶 본인 정보</h2>
       <div class="form-group">
         <input type="text" id="userName1" placeholder="본인 이름 (예: 홍길동)" required />
@@ -358,7 +312,6 @@ article{
         </select>
       </div>
     
-      <!-- 두 번째 사용자 정보 -->
       <h2>🫶 상대방 정보</h2>
       <div class="form-group">
         <input type="text" id="userName2" placeholder="상대방 이름 (예: 김영희)" required />
@@ -417,33 +370,29 @@ article{
     
   </div>
 
-  <!-- 결제 페이지 -->
   <div id="paymentPage" class="page payment-page">
     <h1>💳 결제 진행</h1>
     <div id="userInfo">
-      <!-- 입력 정보 확인 UI가 동적으로 삽입됨 -->
     </div>
-    <!-- Toss 위젯 렌더링 영역 (필요 시) -->
     <div id="payment-method"></div>
     <div id="agreement"></div>
    
-
     <button class="custom-jelly-button" onclick="startTossPay('우정사주', 19900)">결제하기 (19,900원)</button>
     <br>
     <button class="custom-jelly-button" onclick="showPage('infoPage')">⬅️ 정보 수정</button>
   </div>
 
   <script>
-    let tossWidgets; // Toss 위젯 인스턴스를 저장할 전역 변수
+    let tossWidgets; 
 
-    // 날짜 드롭다운 옵션 채우기 (본인과 상대방)
     function populateDateSelectors() {
       const currentYear = new Date().getFullYear();
       function fillSelects(yearId, monthId, dayId) {
         const yearSelect = document.getElementById(yearId);
         const monthSelect = document.getElementById(monthId);
         const daySelect = document.getElementById(dayId);
-        for (let y = 1900; y <= currentYear; y++) {
+        
+        for (let y = 1995; y <= currentYear; y++) {
           const option = document.createElement("option");
           option.value = y;
           option.text = y;
@@ -466,7 +415,6 @@ article{
       fillSelects("birthYear2", "birthMonth2", "birthDay2");
     }
 
-    // 페이지 전환 함수 – 결제 페이지로 전환 시 입력정보 출력 및 sessionStorage 저장, Toss 위젯 렌더링
     function showPage(pageId) {
       const pages = document.querySelectorAll('.page');
       pages.forEach(page => page.classList.remove('active'));
@@ -478,26 +426,34 @@ article{
         const birthDate1 = `${document.getElementById("birthYear1").value}-${String(document.getElementById("birthMonth1").value).padStart(2, '0')}-${String(document.getElementById("birthDay1").value).padStart(2, '0')}`;
         const birthType1 = document.getElementById("birthType1").value;
         const birthHour1 = document.getElementById("birthHour1").value;
-
+        
         const userName2 = document.getElementById("userName2").value;
         const userGender2 = document.getElementById("userGender2").value;
         const birthDate2 = `${document.getElementById("birthYear2").value}-${String(document.getElementById("birthMonth2").value).padStart(2, '0')}-${String(document.getElementById("birthDay2").value).padStart(2, '0')}`;
         const birthType2 = document.getElementById("birthType2").value;
         const birthHour2 = document.getElementById("birthHour2").value;
-
+        
         const userEmail = document.getElementById("userEmail").value;
+        
         if (!userName1 || !userName2 || !userEmail) {
-          alert("⚠️ 모든 정보를 입력해 주세요!");
+          alert("모든 정보를 입력해 주세요!");
           showPage('infoPage');
           return;
         }
+
+        const emailConfirmMessage = "입력하신 이메일 주소가 맞는지 확인해 주세요.\n\n" + userEmail + "\n\n이 주소로 우정 사주 결과가 발송됩니다.";
+        if (!confirm(emailConfirmMessage)) {
+          showPage('infoPage');
+          return;
+        }
+
         document.getElementById("userInfo").innerHTML = `
           <h2>🫶 입력 정보 확인</h2>
-          <p><strong>본인:</strong> ${userName1} (${userGender1}) / ${birthDate1} (${birthType1}) / ${birthHour1}</p>
-          <p><strong>상대방:</strong> ${userName2} (${userGender2}) / ${birthDate2} (${birthType2}) / ${birthHour2}</p>
-          <p><strong>이메일:</strong> ${userEmail}</p>
+          <p>본인: ${userName1} (${userGender1}) / ${birthDate1} (${birthType1}) / ${birthHour1}</p>
+          <p>상대방: ${userName2} (${userGender2}) / ${birthDate2} (${birthType2}) / ${birthHour2}</p>
+          <p>이메일: ${userEmail}</p>
         `;
-        // sessionStorage에 정보 저장 (두 사람 정보)
+        
         const userData = {
           user1: {
             name: userName1,
@@ -516,13 +472,12 @@ article{
           email: userEmail,
           paymentItem: "우정 사주 궁합"
         };
-        sessionStorage.setItem("userData", JSON.stringify(userData));
-        // Toss 위젯 렌더링 (가격 19900원)
+        localStorage.setItem("userData", JSON.stringify(userData));
+        
         renderTossWidgets(19900).catch(err => console.error("토스 위젯 렌더링 오류:", err));
       }
     }
 
-    // Toss 위젯 렌더링 함수
     async function renderTossWidgets(price) {
       const tossPayments = TossPayments("live_gck_6bJXmgo28e9AaeqYMave8LAnGKWx");
       tossWidgets = tossPayments.widgets({ customerKey: TossPayments.ANONYMOUS });
@@ -533,14 +488,12 @@ article{
       ]);
     }
 
- 
-  
-
     async function startTossPay(itemName, price) {
       const userName1 = document.getElementById("userName1").value;
       const userEmail = document.getElementById("userEmail").value;
+      
       if (!userName1 || !userEmail) {
-        alert("⚠️ 모든 정보를 입력해 주세요!");
+        alert("모든 정보를 입력해 주세요!");
         return;
       }
       if (!tossWidgets) {
@@ -548,7 +501,7 @@ article{
         return;
       }
       try {
-        const response = await tossWidgets.requestPayment({
+        await tossWidgets.requestPayment({
           orderId: `order_${Date.now()}`,
           orderName: itemName,
           successUrl: "https://test-it.co.kr/saju-success4.html",
@@ -556,37 +509,12 @@ article{
           customerName: userName1,
           customerEmail: userEmail,
         });
-        console.log("✅ 결제 성공:", response);
       } catch (error) {
-        console.error("❌ 결제 실패:", error);
-        alert(`❌ 결제 실패: ${error.message}`);
+        console.error("결제 실패:", error);
+        alert(`결제 실패: ${error.message}`);
       }
     }
 
-    // 결제 전 사용자 정보 저장 (sessionStorage – 두 사람 정보 포함)
-    function saveUserData() {
-      const userData = {
-        user1: {
-          name: document.getElementById("userName1").value,
-          gender: document.getElementById("userGender1").value,
-          birthDate: `${document.getElementById("birthYear1").value}-${String(document.getElementById("birthMonth1").value).padStart(2, '0')}-${String(document.getElementById("birthDay1").value).padStart(2, '0')}`,
-          birthType: document.getElementById("birthType1").value,
-          birthTime: document.getElementById("birthHour1").value
-        },
-        user2: {
-          name: document.getElementById("userName2").value,
-          gender: document.getElementById("userGender2").value,
-          birthDate: `${document.getElementById("birthYear2").value}-${String(document.getElementById("birthMonth2").value).padStart(2, '0')}-${String(document.getElementById("birthDay2").value).padStart(2, '0')}`,
-          birthType: document.getElementById("birthType2").value,
-          birthTime: document.getElementById("birthHour2").value
-        },
-        email: document.getElementById("userEmail").value,
-        paymentItem: "우정 사주 궁합"
-      };
-      sessionStorage.setItem("userData", JSON.stringify(userData));
-    }
-
-    // saveUserData를 결제 페이지 전환 시 호출(이미 showPage('paymentPage') 내에서 저장하므로 생략 가능)
     window.onload = function () {
       populateDateSelectors();
     };

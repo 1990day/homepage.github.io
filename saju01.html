@@ -374,7 +374,8 @@ function populateDateSelectors() {
     const daySelect = document.getElementById("birthDay");
     const currentYear = new Date().getFullYear();
 
-    for (let y = 1900; y <= currentYear; y++) {
+    // 1995년부터 시작하도록 수정
+    for (let y = 1995; y <= currentYear; y++) {
         const option = document.createElement("option");
         option.value = y;
         option.text = y;
@@ -414,6 +415,13 @@ function showPage(pageId) {
     
     if (!userName || !birthYear || !birthMonth || !birthDay || !birthHour || !userEmail) {
       alert("모든 정보를 입력해 주세요!");
+      showPage('infoPage');
+      return;
+    }
+    
+    // 이메일 확인 팝업 추가
+    const emailConfirmMessage = "입력하신 이메일 주소가 맞는지 확인해 주세요.\n\n" + userEmail + "\n\n이 주소로 사주 결과가 발송됩니다.";
+    if (!confirm(emailConfirmMessage)) {
       showPage('infoPage');
       return;
     }
@@ -473,7 +481,7 @@ async function startTossPay(itemName, price) {
   const userEmail = document.getElementById("userEmail").value;
 
   if (!userName || !userEmail) {
-    alert("⚠️ 모든 정보를 입력해 주세요!");
+    alert("모든 정보를 입력해 주세요!");
     return;
   }
 
@@ -496,10 +504,10 @@ async function startTossPay(itemName, price) {
       customerEmail: userEmail,
     });
 
-    console.log("✅ 결제 성공 요청 완료");
+    console.log("결제 성공 요청 완료");
   } catch (error) {
-    console.error("❌ 결제 실패:", error);
-    alert(`❌ 결제 실패: ${error.message}`);
+    console.error("결제 실패:", error);
+    alert(`결제 실패: ${error.message}`);
   }
 }
 
@@ -515,7 +523,7 @@ const userData = {
 localStorage.setItem("userData", JSON.stringify(userData));
     
 function sendToGoogleSheet(userName, userGender, birthDate, birthType, birthTime, userEmail, paymentItem) {
-    console.log("📤 전송할 데이터:", userName, userGender, birthDate, birthType, birthTime, userEmail, paymentItem);
+    console.log("전송할 데이터:", userName, userGender, birthDate, birthType, birthTime, userEmail, paymentItem);
 
     fetch("https://script.google.com/macros/s/AKfycbyyezrI0ed6LrbMRNE-zO2rrR_0FN8RwJ0uOiEJywgFQE7Mcp4IVXUM3xcqE1Sqn2Sj/exec", {
         method: "POST",
@@ -533,10 +541,10 @@ function sendToGoogleSheet(userName, userGender, birthDate, birthType, birthTime
         })
     })
     .then(() => {
-        console.log("✅ 구글 시트에 데이터 전송 완료!");
+        console.log("구글 시트에 데이터 전송 완료!");
     })
     .catch(error => {
-        console.error("❌ 데이터 전송 실패:", error);
+        console.error("데이터 전송 실패:", error);
     });
 }
 
@@ -553,18 +561,18 @@ window.onload = function () {
     const paymentItem = urlParams.get("paymentItem");
 
     if (userName && userGender && birthDate && birthType && birthTime && userEmail && paymentItem) {
-        console.log("✅ 결제 성공! 정보가 전달되었습니다.");
+        console.log("결제 성공! 정보가 전달되었습니다.");
         console.log(`이름: ${userName}, 성별: ${userGender}, 생년월일: ${birthDate}, 이메일: ${userEmail}, 결제항목: ${paymentItem}`);
 
         sendToGoogleSheet(userName, userGender, birthDate, birthType, birthTime, userEmail, paymentItem);
 
-        alert(`✅ 결제가 완료되었습니다!\n이름: ${userName}\n성별: ${userGender}\n이메일: ${userEmail}\n결제 항목: ${paymentItem}`);
+        alert(`결제가 완료되었습니다!\n이름: ${userName}\n성별: ${userGender}\n이메일: ${userEmail}\n결제 항목: ${paymentItem}`);
     } else {
-        console.log("❌ 결제 성공 정보가 없으므로 아무 작업도 하지 않습니다.");
+        console.log("결제 성공 정보가 없으므로 아무 작업도 하지 않습니다.");
     }
 };
 
-console.log("🚀 현재 환경:", window.location.hostname);
+console.log("현재 환경:", window.location.hostname);
 document.addEventListener('contextmenu', function(e) {
     e.preventDefault();
   });

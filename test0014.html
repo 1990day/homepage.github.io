@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>삐아 포켓몬 에디션 성격 테스트</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Galmuri11:wght@400;700&family=Pretendard:wght@400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* 색상 및 디자인 변수 정의 */
+    :root {
+      --bg: #fbd5cc; /* 따뜻한 핑크 배경 */
+      --paper: #fffcfb; /* 내부 배경색 */
+      --border-color: #111111; /* 기본 테두리 검은색 */
+      --pixel-border: 4px solid var(--border-color); 
+      --max-width: 500px;
+      --progress-fill: #fdf2b8; /* 프로그레스바 노란색 */
+    }
+
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg);
+      background-image: 
+        linear-gradient(45deg, rgba(0,0,0,0.02) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.02) 75%, rgba(0,0,0,0.02)),
+        linear-gradient(45deg, rgba(0,0,0,0.02) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.02) 75%, rgba(0,0,0,0.02));
+      background-size: 20px 20px;
+      background-position: 0 0, 10px 10px;
+      color: #111;
+      font-family: "Pretendard", sans-serif;
+      word-break: keep-all;
+    }
+
+    .wrapper {
+      width: min(calc(100% - 30px), var(--max-width));
+      margin: 0 auto;
+    }
+
+    /* 헤더 CSS */
+    .header-wrapper {
+      width: 100%;
+      background-color: var(--bg);
+      border-bottom: var(--pixel-border);
+    }
+
+    .page-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+    }
+
+    .page-header h1 {
+      margin: 0;
+      padding: 0;
+    }
+
+    .retro-logo {
+      font-family: "Galmuri11", monospace;
+      font-size: 16px;
+      font-weight: 700;
+      background: #fff;
+      border: 3px solid #111;
+      padding: 6px 12px;
+      text-decoration: none;
+      color: #111;
+      box-shadow: 2px 2px 0 #111;
+      display: flex;
+      align-items: center;
+      transition: all 0.1s;
+    }
+
+    .retro-logo:active {
+      transform: translate(2px, 2px);
+      box-shadow: none;
+    }
+
+    .main-nav {
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      gap: 10px;
+    }
+
+    .main-nav a {
+      display: block;
+      font-family: "Galmuri11", monospace;
+      text-decoration: none;
+      color: #111;
+      font-weight: 700;
+      background: #fff;
+      border: 3px solid #111;
+      padding: 5px 8px;
+      font-size: 13px;
+      box-shadow: 2px 2px 0 #111;
+      transition: all 0.1s;
+    }
+
+    .main-nav a:active {
+      transform: translate(2px, 2px);
+      box-shadow: none;
+    }
+
+    @media (max-width: 480px) {
+      .retro-logo {
+        font-size: 14px;
+        padding: 5px 8px;
+      }
+      .main-nav {
+        gap: 6px;
+      }
+      .main-nav a {
+        padding: 4px 6px;
+        font-size: 11px;
+      }
+    }
+
+    /* 컨테이너 */
+    .folder-shell {
+      margin-top: 20px;
+      position: relative;
+      background: var(--paper); 
+      border: var(--pixel-border); 
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: none; 
+    }
+
+    /* 결과 화면 컨테이너 패딩 축소 (이미지를 더 크게) */
+    #result-screen .folder-shell {
+      padding: 10px;
+    }
+    
+    .folder-body, .folder-inner {
+      background: var(--paper);
+      border: none;
+      padding: 0;
+    }
+
+    /* 메인 이미지 랩 */
+    .main-image-wrap {
+      width: 100%;
+      margin-bottom: 20px;
+      line-height: 0;
+      display: flex;
+      justify-content: center;
+      background: #fff;
+      border: var(--pixel-border);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .main-image {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+
+    /* 버튼 스타일 */
+    .btn-pixel {
+      width: 100%;
+      padding: 18px;
+      border: var(--pixel-border); 
+      font-family: "Galmuri11", monospace;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.1s;
+      margin-bottom: 10px;
+      border-radius: 4px;
+      box-shadow: none; 
+      color: #111;
+    }
+
+    .btn-pixel:active {
+      transform: none; 
+      opacity: 0.9;
+    }
+
+    .btn-point { 
+      background: #fbd5cc; 
+    }
+
+    .choice-btn { 
+      background: #fff; 
+      text-align: left; 
+    }
+    .choice-btn:hover { background: #fff5f3; }
+
+    /* 프로그레스바 */
+    .progress-bar-wrap {
+      position: relative;
+      margin: 15px 0 25px;
+    }
+    
+    .progress-bar {
+      height: 24px;
+      background: #fff;
+      border: var(--pixel-border);
+      border-radius: 4px;
+      position: relative; 
+    }
+    
+    .progress-fill {
+      height: 100%;
+      background: var(--progress-fill); 
+      width: 0%;
+      transition: width 0.3s ease-out;
+      position: relative; 
+      z-index: 1; 
+    }
+
+    /* 피츄 러너 */
+    .pichu-runner {
+      position: absolute;
+      right: 0; 
+      top: 50%;
+      transform: translate(50%, -50%);
+      width: 225px; 
+      height: 225px;
+      object-fit: contain;
+      z-index: 10; 
+      pointer-events: none;
+    }
+
+    /* 질문 텍스트 박스 */
+    .question-box {
+      border: var(--pixel-border);
+      background: #fff;
+      padding: 24px;
+      border-radius: 4px;
+      margin-bottom: 25px;
+      text-align: center;
+      box-shadow: none; 
+    }
+
+    .question-text {
+      font-size: 19px;
+      line-height: 1.4;
+      margin: 0;
+      font-weight: 800;
+    }
+
+    /* 로딩 화면 */
+    .loading-stage {
+      text-align: center;
+      padding: 80px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+    }
+    
+    .loading-sprite {
+      width: 60px;
+      height: 60px;
+      border: var(--pixel-border);
+      border-radius: 50%;
+      background: linear-gradient(to bottom, #ff5e5e 50%, white 50%);
+      animation: shake 0.5s infinite;
+      box-shadow: none; 
+    }
+
+    @keyframes shake {
+      0% { transform: rotate(0); }
+      25% { transform: rotate(-15deg); }
+      75% { transform: rotate(15deg); }
+      100% { transform: rotate(0); }
+    }
+
+    .screen { display: none; }
+    .screen.active { display: block; animation: fadeIn 0.4s; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* 결과 캡처 영역 */
+    #result-capture {
+      background: var(--paper);
+      padding: 0;
+      box-shadow: none; 
+    }
+    
+    .result-image-wrap {
+      border: var(--pixel-border);
+      background: #fff;
+      overflow: hidden;
+      border-radius: 8px;
+      line-height: 0;
+    }
+
+    #result-image {
+      width: 100%;
+      display: block;
+    }
+
+    .result-ad-wrap {
+      margin-top: 16px;
+      border: var(--pixel-border);
+      background: #fff;
+      overflow: hidden;
+      border-radius: 8px;
+      line-height: 0;
+    }
+
+    .result-ad-wrap img {
+      width: 100%;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header-wrapper">
+    <header class="page-header wrapper">
+      <h1><a href="https://test-it.co.kr/" class="retro-logo">테스트잇</a></h1> 
+      <nav>
+        <ul class="main-nav">
+          <li><a href="https://test-it.co.kr/test.html">성격</a></li>
+          <li><a href="https://test-it.co.kr/face.html">얼굴</a></li>
+          <li><a href="https://test-it.co.kr/etc.html">그외</a></li>
+          <li><a href="https://test-it.co.kr/saju.html">사주</a></li>
+        </ul>
+      </nav>
+    </header>
+  </div>
+
+  <main class="wrapper">
+    <section id="start-screen" class="screen active">
+      <div class="folder-shell">
+        <div class="folder-body">
+          <div class="folder-inner">
+            <div class="main-image-wrap">
+              <img src="img_main0014.png" alt="Main" class="main-image" />
+            </div>
+            <button class="btn-pixel btn-point" id="start-btn">테스트 시작하기!</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="question-screen" class="screen">
+      <div class="folder-shell">
+        <div class="folder-body">
+          <div class="folder-inner">
+            <div class="progress-bar-wrap">
+              <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill">
+                  <img src="img_pichu.png" alt="피츄" class="pichu-runner" />
+                </div>
+              </div>
+            </div>
+            <div class="question-box">
+              <h2 class="question-text" id="question-text">질문 준비 중...</h2>
+            </div>
+            <div id="choices">
+              <button class="btn-pixel choice-btn" id="choice-a">A</button>
+              <button class="btn-pixel choice-btn" id="choice-b">B</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="loading-screen" class="screen">
+      <div class="folder-shell">
+        <div class="loading-stage">
+          <div class="loading-sprite"></div>
+          <p style="font-family: 'Galmuri11'; font-weight: bold; font-size: 18px; margin: 0;">ANALYZING...</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="result-screen" class="screen">
+      <div class="folder-shell">
+        <div class="folder-body">
+          <div class="folder-inner">
+            <div id="result-capture">
+              <div class="result-image-wrap">
+                <img id="result-image" src="" alt="Result" />
+              </div>
+              <div class="result-ad-wrap">
+                <img src="광고-문구.png" alt="광고 문구" />
+              </div>
+            </div>
+            <div style="margin-top: 24px;">
+              <button class="btn-pixel btn-point" id="save-btn">결과 이미지 저장하기</button>
+              <button class="btn-pixel" id="restart-btn">다시 해보기</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const questions = [
+        {
+          axis: "E",
+          score: true,
+          question: "처음 보는 사람들 사이에 들어갔을 때 더 자연스러운 쪽은?",
+          a: { text: "먼저 말을 붙이고 분위기를 빠르게 파악한다", value: "E" },
+          b: { text: "잠깐 지켜보다가 편한 타이밍에 천천히 섞인다", value: "I" }
+        },
+        {
+          axis: "S",
+          score: true,
+          question: "낯선 길을 찾아가야 할 때 나는?",
+          a: { text: "지도의 건물명과 거리를 꼼꼼히 확인하며 간다", value: "S" },
+          b: { text: "대략적인 방향만 보고 일단 감으로 직진한다", value: "N" }
+        },
+        {
+          axis: "T",
+          score: true,
+          question: "누군가에게 조언을 해줄 때 나의 스타일은?",
+          a: { text: "잘못된 점을 명확히 짚어주고 현실적인 대안을 준다", value: "T" },
+          b: { text: "상대방이 상처받지 않게 말을 고르고 응원 위주로 한다", value: "F" }
+        },
+        {
+          axis: "E",
+          score: true,
+          question: "스트레스를 풀고 싶을 때 나는?",
+          a: { text: "사람 만나고 밖에서 시간을 보내며 정리한다", value: "E" },
+          b: { text: "집이나 조용한 공간에서 쉬어야 회복된다", value: "I" }
+        },
+        {
+          axis: "S",
+          score: true,
+          question: "새로운 취미를 시작할 때 더 먼저 보는 것은?",
+          a: { text: "준비물, 비용, 시간처럼 실제로 필요한 정보", value: "S" },
+          b: { text: "이 취미가 내 일상에 어떤 재미를 줄지에 대한 상상", value: "N" }
+        },
+        {
+          axis: "T",
+          score: true,
+          question: "대화 중 의견 충돌이 생겼을 때 나의 태도는?",
+          a: { text: "누가 옳은지 시시비비를 가리는 것이 가장 중요하다", value: "T" },
+          b: { text: "관계가 서먹해지는 게 싫어서 적당히 양보하고 맞춘다", value: "F" }
+        },
+        {
+          axis: "E",
+          score: true,
+          question: "고민이 생겼을 때 해결 방법은?",
+          a: { text: "주변 사람들에게 말하며 조언을 구한다", value: "E" },
+          b: { text: "혼자 진지하게 생각하며 마음을 정리한다", value: "I" }
+        },
+        {
+          axis: "S",
+          score: true,
+          question: "미래를 상상할 때 주로 드는 생각은?",
+          a: { text: "당장 내일이나 이번 달에 해야 할 현실적인 계획", value: "S" },
+          b: { text: "10년 뒤 나의 모습이나 먼 미래의 막연한 꿈", value: "N" }
+        },
+        {
+          axis: "T",
+          score: true,
+          question: "시험에서 아쉽게 떨어졌을 때 듣고 싶은 말은?",
+          a: { text: "다음번엔 이 부분을 보완하면 충분히 합격할 수 있어", value: "T" },
+          b: { text: "그동안 고생 많았어 너의 노력을 내가 다 알아", value: "F" }
+        },
+        {
+          axis: null,
+          score: false,
+          question: "일주일 동안 집밖에 안 나간다면?",
+          a: { text: "답답해서 미칠 것 같고 우울해진다", value: null },
+          b: { text: "세상에서 가장 행복한 일주일이 된다", value: null }
+        },
+        {
+          axis: null,
+          score: false,
+          question: "대화할 때 나의 기본적인 태도는?",
+          a: { text: "상대방이 말하는 사실 관계를 파악하며 듣는다", value: null },
+          b: { text: "상대방의 말 뒤에 숨겨진 의도나 감정을 읽으려 한다", value: null }
+        },
+        {
+          axis: null,
+          score: false,
+          question: "상대방의 말실수를 발견했을 때 나는?",
+          a: { text: "바로 정정해주거나 팩트를 짚어준다", value: null },
+          b: { text: "무안해할까 봐 그냥 넘어가거나 분위기를 맞춘다", value: null }
+        }
+      ];
+
+      let currentIdx = 0;
+      let scores = { E: 0, I: 0, S: 0, N: 0, T: 0, F: 0 };
+
+      const startBtn = document.getElementById('start-btn');
+      const questionScreen = document.getElementById('question-screen');
+      const startScreen = document.getElementById('start-screen');
+      const loadingScreen = document.getElementById('loading-screen');
+      const resultScreen = document.getElementById('result-screen');
+
+      if(startBtn) {
+        startBtn.addEventListener('click', () => {
+          startScreen.classList.remove('active');
+          questionScreen.classList.add('active');
+          showQuestion();
+        });
+      }
+
+      function showQuestion() {
+        if(currentIdx >= questions.length) {
+          showResult();
+          return;
+        }
+        const q = questions[currentIdx];
+        document.getElementById('question-text').innerText = q.question;
+        document.getElementById('choice-a').innerText = q.a.text;
+        document.getElementById('choice-b').innerText = q.b.text;
+        
+        document.getElementById('progress-fill').style.width = ((currentIdx / questions.length) * 100) + '%';
+      }
+
+      function handleChoice(btnType) {
+        const q = questions[currentIdx];
+        
+        const selectedValue = btnType === 'a' ? q.a.value : q.b.value;
+        if (selectedValue && scores.hasOwnProperty(selectedValue)) {
+          scores[selectedValue]++;
+        }
+        
+        currentIdx++;
+        showQuestion();
+      }
+
+      document.getElementById('choice-a').addEventListener('click', () => handleChoice('a'));
+      document.getElementById('choice-b').addEventListener('click', () => handleChoice('b'));
+
+      function showResult() {
+        questionScreen.classList.remove('active');
+        loadingScreen.classList.add('active');
+
+        setTimeout(() => {
+          const mbti = (scores.E >= scores.I ? 'E' : 'I') + 
+                       (scores.S >= scores.N ? 'S' : 'N') + 
+                       (scores.T >= scores.F ? 'T' : 'F');
+          
+          loadingScreen.classList.remove('active');
+          resultScreen.classList.add('active');
+          document.getElementById('result-image').src = `img_${mbti.toLowerCase()}0014.png`;
+        }, 1500);
+      }
+
+      document.getElementById('save-btn').addEventListener('click', async () => {
+        const captureArea = document.getElementById('result-capture');
+        const canvas = await html2canvas(captureArea, { backgroundColor: "#fffcfb" });
+        const link = document.createElement('a');
+        link.download = 'result.png';
+        link.href = canvas.toDataURL();
+        link.click();
+      });
+
+      document.getElementById('restart-btn').addEventListener('click', () => location.reload());
+    });
+  </script>
+</body>
+</html>

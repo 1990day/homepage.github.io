@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>동심 테스트</title>
+
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    font-family: "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
+    color: #4a4a4a;
+    background:
+      radial-gradient(circle at 15% 20%, rgba(255, 255, 255, 0.9) 0 50px, transparent 51px),
+      radial-gradient(circle at 82% 18%, rgba(255, 245, 180, 0.85) 0 62px, transparent 63px),
+      radial-gradient(circle at 20% 80%, rgba(255, 214, 232, 0.7) 0 80px, transparent 81px),
+      radial-gradient(circle at 80% 75%, rgba(194, 241, 255, 0.78) 0 90px, transparent 91px),
+      linear-gradient(180deg, #dff4ff 0%, #f4fbff 30%, #fff9eb 70%, #f9ffd8 100%);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  body::before,
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  body::before {
+    background:
+      radial-gradient(circle at 8% 14%, rgba(255,255,255,0.95) 0 16px, transparent 17px),
+      radial-gradient(circle at 24% 9%, rgba(255,255,255,0.95) 0 12px, transparent 13px),
+      radial-gradient(circle at 72% 11%, rgba(255,255,255,0.95) 0 20px, transparent 21px),
+      radial-gradient(circle at 90% 20%, rgba(255,255,255,0.95) 0 15px, transparent 16px),
+      radial-gradient(circle at 14% 64%, rgba(255,255,255,0.95) 0 15px, transparent 16px),
+      radial-gradient(circle at 88% 68%, rgba(255,255,255,0.95) 0 13px, transparent 14px);
+    opacity: 0.9;
+  }
+
+  body::after {
+    background:
+      linear-gradient(135deg, rgba(255,255,255,0.2) 25%, transparent 25%) 0 0 / 28px 28px,
+      linear-gradient(225deg, rgba(255,255,255,0.15) 25%, transparent 25%) 0 0 / 28px 28px;
+    opacity: 0.18;
+  }
+
+  .page-wrap {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    padding: 26px 16px 40px;
+  }
+
+  .window {
+    width: 100%;
+    max-width: 460px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.96);
+    border: 3px solid #7f9bb7;
+    border-radius: 24px;
+    box-shadow:
+      0 18px 0 rgba(130, 161, 191, 0.22),
+      0 28px 40px rgba(86, 123, 153, 0.18);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .window::before {
+    content: "";
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    width: 90px;
+    height: 90px;
+    background:
+      radial-gradient(circle at 30% 35%, rgba(255,255,255,0.95) 0 8px, transparent 9px),
+      radial-gradient(circle at 62% 56%, rgba(255,255,255,0.88) 0 5px, transparent 6px),
+      radial-gradient(circle at 70% 22%, rgba(255, 228, 138, 0.95) 0 12px, transparent 13px),
+      radial-gradient(circle at 55% 65%, rgba(255, 193, 214, 0.9) 0 16px, transparent 17px),
+      radial-gradient(circle at 20% 75%, rgba(178, 232, 255, 0.92) 0 18px, transparent 19px);
+    opacity: 0.7;
+    pointer-events: none;
+  }
+
+  .folder-tab {
+    position: absolute;
+    top: -2px;
+    left: 22px;
+    width: 132px;
+    height: 38px;
+    background: linear-gradient(180deg, #ffe488 0%, #ffd45f 100%);
+    border: 3px solid #7f9bb7;
+    border-bottom: none;
+    border-radius: 16px 16px 0 0;
+    box-shadow: inset 0 2px 0 rgba(255,255,255,0.55);
+  }
+
+  .title-bar {
+    position: relative;
+    padding: 16px 18px 14px;
+    background: linear-gradient(90deg, #9ed7ff 0%, #bff7f0 38%, #ffeeb5 70%, #ffd6e7 100%);
+    border-bottom: 3px solid #7f9bb7;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .title-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+  }
+
+  .title-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    background: linear-gradient(180deg, #fff8c9 0%, #ffe38d 100%);
+    border: 2px solid #7f9bb7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    box-shadow: inset 0 2px 0 rgba(255,255,255,0.65);
+    flex-shrink: 0;
+  }
+
+  .title-text {
+    font-weight: 800;
+    font-size: 15px;
+    color: #39516b;
+    letter-spacing: -0.2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .window-controls {
+    display: flex;
+    gap: 6px;
+    flex-shrink: 0;
+  }
+
+  .window-controls span {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 2px solid #7f9bb7;
+    background: #fff;
+    box-shadow: inset 0 2px 0 rgba(255,255,255,0.7);
+  }
+
+  .window-controls span:nth-child(1) { background: #ffd7df; }
+  .window-controls span:nth-child(2) { background: #fff0a8; }
+  .window-controls span:nth-child(3) { background: #c9f3cb; }
+
+  .content {
+    padding: 30px 22px 26px;
+    text-align: center;
+    position: relative;
+  }
+
+  .start-deco {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+  }
+
+  .chip {
+    padding: 7px 12px;
+    border-radius: 999px;
+    border: 2px solid #9bb7cf;
+    font-size: 12px;
+    font-weight: 700;
+    color: #5f7083;
+    background: #fff;
+    box-shadow: 0 4px 0 rgba(194, 214, 231, 0.65);
+  }
+
+  .chip.sky { background: #e8f7ff; }
+  .chip.yellow { background: #fff6c8; }
+  .chip.pink { background: #ffe5ef; }
+  .chip.green { background: #e6f9df; }
+
+  .main-illustration {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto 20px;
+    background: linear-gradient(180deg, #f7fdff 0%, #fffceb 100%);
+    border: 3px solid #b7cce0;
+    border-radius: 28px;
+    padding: 22px 18px;
+    box-shadow:
+      inset 0 3px 0 rgba(255,255,255,0.8),
+      0 10px 18px rgba(165, 196, 220, 0.2);
+    position: relative;
+  }
+
+  .main-illustration::before {
+    content: "";
+    position: absolute;
+    left: 14px;
+    right: 14px;
+    bottom: 12px;
+    height: 22px;
+    background: radial-gradient(circle, rgba(198, 233, 177, 0.7) 0 8px, transparent 9px) 0 0 / 28px 22px repeat-x;
+    opacity: 0.8;
+  }
+
+  .sun-cloud-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 18px;
+  }
+
+  .sun {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #fffdf1 0%, #ffe781 45%, #ffd24d 75%, #ffbe3b 100%);
+    border: 3px solid #e7b455;
+    box-shadow: 0 0 0 6px rgba(255, 230, 124, 0.2);
+  }
+
+  .cloud {
+    width: 84px;
+    height: 42px;
+    position: relative;
+    background: #ffffff;
+    border: 3px solid #b9d3e8;
+    border-radius: 999px;
+  }
+
+  .cloud::before,
+  .cloud::after {
+    content: "";
+    position: absolute;
+    background: #ffffff;
+    border: 3px solid #b9d3e8;
+    border-radius: 50%;
+  }
+
+  .cloud::before {
+    width: 34px;
+    height: 34px;
+    left: 10px;
+    top: -18px;
+  }
+
+  .cloud::after {
+    width: 40px;
+    height: 40px;
+    right: 10px;
+    top: -20px;
+  }
+
+  .illustration-center {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    align-items: flex-end;
+    margin-bottom: 14px;
+  }
+
+  .flower {
+    width: 64px;
+    height: 64px;
+    position: relative;
+  }
+
+  .flower .core {
+    position: absolute;
+    top: 22px;
+    left: 22px;
+    width: 20px;
+    height: 20px;
+    background: #ffd86d;
+    border: 2px solid #dca840;
+    border-radius: 50%;
+    z-index: 2;
+  }
+
+  .flower .petal {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 2px solid #d3b0c3;
+    background: #ffdff0;
+  }
+
+  .flower .p1 { top: 0; left: 20px; }
+  .flower .p2 { top: 20px; left: 0; }
+  .flower .p3 { top: 20px; right: 0; }
+  .flower .p4 { bottom: 0; left: 20px; }
+  .flower .p5 { top: 7px; right: 8px; }
+  .flower .stem {
+    position: absolute;
+    bottom: -18px;
+    left: 30px;
+    width: 4px;
+    height: 24px;
+    background: #8ac270;
+    border-radius: 999px;
+  }
+
+  .house {
+    width: 90px;
+    height: 78px;
+    position: relative;
+  }
+
+  .roof {
+    position: absolute;
+    top: 0;
+    left: 10px;
+    width: 70px;
+    height: 34px;
+    background: #ffb8c8;
+    border: 3px solid #cf8ea0;
+    border-bottom: none;
+    transform: skewY(-10deg);
+    border-radius: 10px 10px 0 0;
+  }
+
+  .home-body {
+    position: absolute;
+    bottom: 0;
+    left: 8px;
+    width: 74px;
+    height: 52px;
+    background: #fff8cf;
+    border: 3px solid #cdbd83;
+    border-radius: 10px;
+  }
+
+  .door {
+    position: absolute;
+    bottom: 0;
+    left: 31px;
+    width: 18px;
+    height: 30px;
+    background: #b8e3ff;
+    border: 2px solid #7fa8c3;
+    border-bottom: none;
+    border-radius: 8px 8px 0 0;
+  }
+
+  .window-mini {
+    position: absolute;
+    top: 14px;
+    width: 14px;
+    height: 14px;
+    background: #dff3ff;
+    border: 2px solid #91b7d5;
+    border-radius: 4px;
+  }
+
+  .window-mini.left { left: 12px; }
+  .window-mini.right { right: 12px; }
+
+  .title-main {
+    font-size: 30px;
+    line-height: 1.25;
+    font-weight: 900;
+    color: #47627f;
+    letter-spacing: -0.8px;
+    margin: 0 0 10px;
+  }
+
+  .title-sub {
+    font-size: 15px;
+    line-height: 1.7;
+    color: #6f7f90;
+    margin: 0 0 20px;
+  }
+
+  .info-card {
+    background: linear-gradient(180deg, #fffdf5 0%, #fff7dc 100%);
+    border: 2px solid #dfd1a6;
+    border-radius: 18px;
+    padding: 14px 14px 13px;
+    margin-bottom: 18px;
+    box-shadow: inset 0 2px 0 rgba(255,255,255,0.65);
+  }
+
+  .info-card p {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.7;
+    color: #7a6f54;
+    font-weight: 700;
+  }
+
+  .btn {
+    width: 100%;
+    border: 0;
+    border-radius: 18px;
+    padding: 16px 14px;
+    font-size: 17px;
+    font-weight: 900;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    color: #4d5970;
+  }
+
+  .btn:active {
+    transform: translateY(2px);
+  }
+
+  .start-btn {
+    background: linear-gradient(180deg, #ffe78b 0%, #ffd55e 100%);
+    border: 3px solid #d6ae44;
+    box-shadow:
+      inset 0 3px 0 rgba(255,255,255,0.58),
+      0 7px 0 #e8c35d;
+  }
+
+  .start-btn:hover {
+    transform: translateY(-1px);
+  }
+
+  .progress-wrap {
+    padding: 18px 18px 0;
+  }
+
+  .progress-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    font-weight: 800;
+    color: #5f7488;
+    font-size: 13px;
+  }
+
+  .progress {
+    width: 100%;
+    height: 22px;
+    background: #edf6fd;
+    border: 3px solid #adc8de;
+    border-radius: 999px;
+    padding: 3px;
+    overflow: hidden;
+    box-shadow: inset 0 2px 0 rgba(255,255,255,0.75);
+  }
+
+  .progress-bar {
+    width: 0%;
+    height: 100%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #ffcadc 0%, #ffe58f 35%, #baf0ff 68%, #c9f7b3 100%);
+    transition: width 0.28s ease;
+  }
+
+  .question-card {
+    background: linear-gradient(180deg, #ffffff 0%, #fffdf4 100%);
+    border: 3px solid #c8dcec;
+    border-radius: 24px;
+    padding: 26px 18px;
+    box-shadow:
+      inset 0 3px 0 rgba(255,255,255,0.85),
+      0 10px 18px rgba(175, 198, 221, 0.15);
+    position: relative;
+  }
+
+  .question-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 94px;
+    padding: 7px 14px;
+    border-radius: 999px;
+    background: #fff4c9;
+    border: 2px solid #e2cd89;
+    color: #7d6a31;
+    font-size: 12px;
+    font-weight: 900;
+    margin-bottom: 16px;
+    box-shadow: 0 4px 0 rgba(234, 217, 151, 0.5);
+  }
+
+  .question-text {
+    font-size: 24px;
+    line-height: 1.55;
+    font-weight: 900;
+    color: #4e6883;
+    margin: 0;
+    word-break: keep-all;
+    letter-spacing: -0.6px;
+  }
+
+  .question-hint {
+    margin-top: 14px;
+    font-size: 13px;
+    color: #8aa0b6;
+    font-weight: 700;
+  }
+
+  .button-row {
+    display: flex;
+    gap: 12px;
+    margin-top: 22px;
+  }
+
+  .ox-btn {
+    flex: 1;
+    padding: 16px 12px;
+    border-radius: 20px;
+    border: 3px solid transparent;
+    font-size: 26px;
+    font-weight: 900;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    color: #556377;
+  }
+
+  .ox-btn:active {
+    transform: translateY(2px);
+  }
+
+  .ox-btn.o {
+    background: linear-gradient(180deg, #dffff1 0%, #b8f0d2 100%);
+    border-color: #8ac7a3;
+    box-shadow:
+      inset 0 3px 0 rgba(255,255,255,0.8),
+      0 7px 0 #9ad8b2;
+  }
+
+  .ox-btn.x {
+    background: linear-gradient(180deg, #ffe7ef 0%, #ffc6d8 100%);
+    border-color: #dd9ab0;
+    box-shadow:
+      inset 0 3px 0 rgba(255,255,255,0.8),
+      0 7px 0 #ebb0c3;
+  }
+
+  .result-scene {
+    background: linear-gradient(180deg, #f0fbff 0%, #fffcef 100%);
+    border: 3px solid #c6daeb;
+    border-radius: 28px;
+    padding: 20px 16px 18px;
+    margin-bottom: 18px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .result-scene::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 42px;
+    background:
+      radial-gradient(circle at 8px 20px, rgba(177, 229, 149, 0.9) 0 14px, transparent 15px) 0 0 / 34px 42px repeat-x,
+      linear-gradient(180deg, rgba(201, 241, 166, 0.55) 0%, rgba(194, 236, 157, 0.8) 100%);
+    opacity: 0.9;
+  }
+
+  .result-emoji {
+    font-size: 52px;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .result-title {
+    font-size: 27px;
+    line-height: 1.3;
+    font-weight: 900;
+    color: #4f6d88;
+    margin: 0 0 10px;
+    letter-spacing: -0.8px;
+  }
+
+  .score-badge {
+    display: inline-block;
+    padding: 7px 14px;
+    border-radius: 999px;
+    background: #fff;
+    border: 2px solid #b7cde0;
+    color: #708396;
+    font-size: 13px;
+    font-weight: 900;
+    margin-bottom: 14px;
+    box-shadow: 0 4px 0 rgba(193, 213, 229, 0.58);
+  }
+
+  .result-desc {
+    font-size: 15px;
+    line-height: 1.78;
+    color: #617487;
+    font-weight: 700;
+    margin: 0;
+    word-break: keep-all;
+  }
+
+  .music-card {
+    margin-top: 16px;
+    background: linear-gradient(180deg, #fff1f7 0%, #fff9df 100%);
+    border: 2px solid #e7c0ce;
+    border-radius: 18px;
+    padding: 14px 12px;
+    box-shadow: inset 0 2px 0 rgba(255,255,255,0.7);
+  }
+
+  .music-label {
+    font-size: 12px;
+    font-weight: 900;
+    color: #a36b80;
+    margin-bottom: 6px;
+  }
+
+  .music-text {
+    font-size: 15px;
+    line-height: 1.65;
+    color: #75686a;
+    font-weight: 800;
+  }
+
+  .retry-btn {
+    margin-top: 2px;
+    background: linear-gradient(180deg, #cfeeff 0%, #aee1ff 100%);
+    border: 3px solid #88b8d6;
+    box-shadow:
+      inset 0 3px 0 rgba(255,255,255,0.7),
+      0 7px 0 #99c9e5;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  @media (max-width: 480px) {
+    .page-wrap {
+      padding: 20px 12px 34px;
+    }
+
+    .content {
+      padding: 26px 16px 22px;
+    }
+
+    .title-main {
+      font-size: 26px;
+    }
+
+    .question-text {
+      font-size: 21px;
+    }
+
+    .result-title {
+      font-size: 24px;
+    }
+
+    .button-row {
+      gap: 10px;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="page-wrap">
+
+    <div class="window" id="startScreen">
+      <div class="folder-tab"></div>
+      <div class="title-bar">
+        <div class="title-left">
+          <div class="title-icon">📁</div>
+          <div class="title-text">동심 테스트.exe</div>
+        </div>
+        <div class="window-controls">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="start-deco">
+          <div class="chip sky">봄바람</div>
+          <div class="chip yellow">햇살</div>
+          <div class="chip pink">추억</div>
+          <div class="chip green">동심</div>
+        </div>
+
+        <div class="main-illustration">
+          <div class="sun-cloud-row">
+            <div class="sun"></div>
+            <div class="cloud"></div>
+          </div>
+
+          <div class="illustration-center">
+            <div class="flower">
+              <div class="petal p1"></div>
+              <div class="petal p2"></div>
+              <div class="petal p3"></div>
+              <div class="petal p4"></div>
+              <div class="petal p5"></div>
+              <div class="core"></div>
+              <div class="stem"></div>
+            </div>
+
+            <div class="house">
+              <div class="roof"></div>
+              <div class="home-body">
+                <div class="window-mini left"></div>
+                <div class="window-mini right"></div>
+                <div class="door"></div>
+              </div>
+            </div>
+
+            <div class="flower" style="transform: scale(0.9);">
+              <div class="petal p1" style="background:#e6f3ff; border-color:#b5cde5;"></div>
+              <div class="petal p2" style="background:#e6f3ff; border-color:#b5cde5;"></div>
+              <div class="petal p3" style="background:#e6f3ff; border-color:#b5cde5;"></div>
+              <div class="petal p4" style="background:#e6f3ff; border-color:#b5cde5;"></div>
+              <div class="petal p5" style="background:#e6f3ff; border-color:#b5cde5;"></div>
+              <div class="core"></div>
+              <div class="stem"></div>
+            </div>
+          </div>
+        </div>
+
+        <h1 class="title-main">나의 동심 레벨은<br>어느 정도일까</h1>
+        <p class="title-sub">
+          사소한 순간에도 마음이 먼저 반응하는지,<br>
+          아직 내 안에 어린 마음이 남아있는지 확인해보는 테스트
+        </p>
+
+        <div class="info-card">
+          <p>
+            총 20문항 OX 테스트<br>
+            지금의 나 안에 남아있는 말랑한 동심을 확인해보세요
+          </p>
+        </div>
+
+        <button class="btn start-btn" onclick="startTest()">테스트 시작하기</button>
+      </div>
+    </div>
+
+    <div class="window hidden" id="testScreen">
+      <div class="folder-tab"></div>
+      <div class="title-bar">
+        <div class="title-left">
+          <div class="title-icon">🌼</div>
+          <div class="title-text">동심 체크 중...</div>
+        </div>
+        <div class="window-controls">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+
+      <div class="progress-wrap">
+        <div class="progress-top">
+          <span id="progressText">1 / 20</span>
+          <span>마음 탐색 중</span>
+        </div>
+        <div class="progress">
+          <div class="progress-bar" id="progressBar"></div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="question-card">
+          <div class="question-badge" id="questionBadge">QUESTION 1</div>
+          <p class="question-text" id="questionText"></p>
+          <div class="question-hint">생각나는 대로 바로 눌러주세요</div>
+        </div>
+
+        <div class="button-row">
+          <button class="ox-btn o" onclick="selectAnswer(true)">O</button>
+          <button class="ox-btn x" onclick="selectAnswer(false)">X</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="window hidden" id="resultScreen">
+      <div class="folder-tab"></div>
+      <div class="title-bar">
+        <div class="title-left">
+          <div class="title-icon">🎠</div>
+          <div class="title-text">결과 확인</div>
+        </div>
+        <div class="window-controls">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+
+      <div class="content" id="resultBox"></div>
+    </div>
+
+  </div>
+
+<script>
+  const questions = [
+    "나는 아직도 부를 수 있는 만화 주제가가 있다.",
+    "가끔 문방구 앞에 멈춘다.",
+    "하늘을 보면 예쁜 모양의 구름을 찾는다.",
+    "놀이공원에 가면 범퍼카 한 번은 타야한다.",
+    "뽑기 기계 앞에서 승부욕이 생긴다.",
+    "어릴 때 별명을 아직 기억한다.",
+    "남 모르게 횡단보도 하얀색 선만 밟을 때가 있다.",
+    "내가 만화의 주인공이라고 상상할 때가 있다.",
+    "우리 집에 왜 왔니 가사가 자동 재생된다.",
+    "종이를 보면 비행기 한 번은 접어본다.",
+    "음식 먹을 때 제일 맛있는 건 마지막에 먹는다.",
+    "나는 아직도 학교 앞에서 먹던 컵 떡볶이가 생각난다.",
+    "눈이 오면 첫 발자국을 찍고 싶어진다.",
+    "놀이터를 지나가면 한 번쯤 그네가 타고 싶어진다.",
+    "종 치는 소리를 들으면 괜히 반응한다.",
+    "비밀 얘기할 때 괜히 목소리가 더 작아진다.",
+    "버튼을 보면 누르고 싶다.",
+    "누군가 내 이름을 불러주면 괜히 반갑다.",
+    "나는 아직도 어릴 때 만들었던 이메일을 사용한다.",
+    "포장지를 뜯기 전에 괜히 한번 흔들어본다."
+  ];
+
+  let currentIndex = 0;
+  let score = 0;
+
+  const startScreen = document.getElementById("startScreen");
+  const testScreen = document.getElementById("testScreen");
+  const resultScreen = document.getElementById("resultScreen");
+
+  const progressBar = document.getElementById("progressBar");
+  const progressText = document.getElementById("progressText");
+  const questionBadge = document.getElementById("questionBadge");
+  const questionText = document.getElementById("questionText");
+  const resultBox = document.getElementById("resultBox");
+
+  function startTest() {
+    startScreen.classList.add("hidden");
+    testScreen.classList.remove("hidden");
+    renderQuestion();
+  }
+
+  function renderQuestion() {
+    questionText.textContent = questions[currentIndex];
+    questionBadge.textContent = "QUESTION " + (currentIndex + 1);
+    progressText.textContent = (currentIndex + 1) + " / " + questions.length;
+    progressBar.style.width = (((currentIndex + 1) / questions.length) * 100) + "%";
+  }
+
+  function selectAnswer(isYes) {
+    if (isYes) {
+      score += 1;
+    }
+
+    currentIndex += 1;
+
+    if (currentIndex < questions.length) {
+      renderQuestion();
+    } else {
+      showResult();
+    }
+  }
+
+  function showResult() {
+    testScreen.classList.add("hidden");
+    resultScreen.classList.remove("hidden");
+
+    let emoji = "";
+    let title = "";
+    let desc = "";
+    let musicText = "";
+
+    if (score >= 15) {
+      emoji = "🌈";
+      title = "전체 관람가";
+      desc = "당신의 마음속에는 영원한 동심이 있습니다.<br>작고 귀여운 순간에도 쉽게 반응하고,<br>추억을 꺼내면 금방 표정이 밝아지는 타입입니다.<br>지금도 마음 한켠에 놀이터가 남아있는 사람이에요.";
+      musicText = "4월 29일 오후 6시, LUCY의 전체 관람가를 들으면 당신의 동심이 더 환하게 깨어납니다.";
+    } else if (score >= 12) {
+      emoji = "🌼";
+      title = "12세 관람가";
+      desc = "더 어려지고 싶으시다고요?<br>당신은 어른이 되었지만 아직 마음이 꽤 말랑한 편입니다.<br>평소에는 차분해 보여도 추억 버튼이 눌리면<br>금방 어린 마음으로 돌아갈 수 있는 사람이에요.";
+      musicText = "4월 29일 오후 6시, LUCY의 전체 관람가와 함께 잠깐 더 가벼워져 보세요.";
+    } else if (score >= 10) {
+      emoji = "🌷";
+      title = "15세 관람가";
+      desc = "어린 시절이 문득문득 그리운 타입입니다.<br>마음속 깊은 곳에 동심은 남아 있지만<br>지금은 잠시 조용히 쉬고 있는 상태에 가까워요.<br>좋아했던 감정을 다시 꺼내보면 생각보다 금방 살아납니다.";
+      musicText = "4월 29일 오후 6시, LUCY의 전체 관람가와 함께 잠들어 있던 추억을 다시 불러보세요.";
+    } else {
+      emoji = "⚠️";
+      title = "어른 주의";
+      desc = "추억 복원 패치가 필요한 상태입니다.<br>지금의 당신은 현실 모드가 꽤 강하게 켜져 있어요.<br>그래도 완전히 사라진 건 아니니,<br>좋아했던 장면과 소리를 다시 만나면 충분히 돌아올 수 있습니다.";
+      musicText = "4월 29일 오후 6시, LUCY의 전체 관람가 리스닝 필수입니다.";
+    }
+
+    resultBox.innerHTML = `
+      <div class="result-scene">
+        <div class="result-emoji">${emoji}</div>
+        <h2 class="result-title">${title}</h2>
+        <div class="score-badge">동심 점수 ${score} / ${questions.length}</div>
+        <p class="result-desc">${desc}</p>
+
+        <div class="music-card">
+          <div class="music-label">LISTENING GUIDE</div>
+          <div class="music-text">${musicText}</div>
+        </div>
+      </div>
+
+      <button class="btn retry-btn" onclick="restartTest()">다시 해보기</button>
+    `;
+  }
+
+  function restartTest() {
+    currentIndex = 0;
+    score = 0;
+    resultScreen.classList.add("hidden");
+    startScreen.classList.remove("hidden");
+    progressBar.style.width = "0%";
+  }
+</script>
+</body>
+</html>

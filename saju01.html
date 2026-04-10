@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -16,14 +14,6 @@
      ">
 
      <script src="https://js.tosspayments.com/v2/standard"></script>
-
-
-
-
-
-
-
-
 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -42,18 +32,7 @@
       <link rel="icon" type="image/png" href="favicon.png">
 <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
 
-
-
-
 <style>
-
-/* start 태그와 question 태그 모두 article 태그라서 article 태그에 속성을 주면 동시에 적용됨
-.start{
-    display: flex;
-    flex-direction: column;
-}
-*/
-    
    @font-face {
     font-family: 'ChosunGu';
     src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/ChosunGu.woff') format('woff');
@@ -95,20 +74,16 @@
     color: #0bd;
 }
 
-
 .page-header {
     display: flex;
     justify-content: space-between;
 }
-
     
 article{
     display: flex;
     flex-direction: column;
 }
-
  
-    
 #img{
     width: 500px;
     height: 900px;
@@ -125,7 +100,6 @@ article{
     margin: 0 auto;
 }
 
-
 .custom-jelly-button {
     width: 100%;
     max-width: 350px;
@@ -133,7 +107,7 @@ article{
     font-size: 15px !important;
     font-weight: bold;
     color: black !important;
-    background: linear-gradient(145deg, #ffcfcf, #ffcfcf); /* 분홍과 노랑 그라데이션 */
+    background: linear-gradient(145deg, #ffcfcf, #ffcfcf);
     border: none;
     border-radius: 17px;
     box-shadow: inset -4px -4px 10px rgba(255, 255, 255, 0.7), 
@@ -144,12 +118,9 @@ article{
 }
 
 .custom-jelly-button:hover {
-    background: linear-gradient(145deg, #ffcfcf, #ffcfcf); /* 반대로 그라데이션 */
+    background: linear-gradient(145deg, #ffcfcf, #ffcfcf);
 }
 
-
-/* 페이지 기본 스타일 */
-  /* 페이지 기본 스타일 */
   .page {
       display: none;
       margin: 0 auto;
@@ -163,43 +134,37 @@ article{
       display: block;
     }
 
-    /* 정보 입력 페이지 전체 스타일 */
     .info-page {
       text-align: center;
     }
 
-    /* "사주 정보 입력" 제목 스타일 (크기는 살짝 작게, 굵게) */
     .info-title {
       font-size: 1.2rem;
       font-weight: bold;
-      margin-bottom: 10px; /* 제목 아래 간격 */
+      margin-bottom: 10px;
     }
 
-    /* 폼 전체 스타일: 세로 레이아웃 + 중앙 정렬 + 요소 간격 */
     .saju-form {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 10px; /* 폼 내부 요소 간격(줄임) */
+      gap: 10px; 
       margin: 0 auto;
-      max-width: 400px; /* 폼 자체 폭 제한 */
+      max-width: 400px; 
     }
 
-    /* 각 입력 그룹(이름, 성별, 생년월일, 태어난 시간, 이메일) 공통 스타일 */
     .form-group {
       width: 100%;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      gap: 3px; /* 레이블과 입력창 사이 간격(더 줄임) */
+      gap: 3px; 
     }
 
-    /* 레이블 굵게 */
     .label-bold {
       font-weight: bold;
     }
 
-    /* 단일 input, select 공통 스타일 (너비 100%) */
     .form-group input,
     .form-group select {
       width: 100%;
@@ -208,15 +173,13 @@ article{
       border: 1px solid #ddd;
     }
 
-    /* 생년월일(양력/음력 + 연/월/일)을 한 줄로 배치할 때 사용하는 컨테이너 */
     .form-group-inline {
       display: flex;
       flex-direction: row;
-      gap: 8px; /* 드롭다운 사이 간격 */
+      gap: 8px; 
       width: 100%;
     }
 
-    /* 이 컨테이너 안의 select들을 동일한 비율로 늘려 같은 폭을 맞춤 */
     .form-group-inline select {
       flex: 1;
       padding: 10px;
@@ -224,7 +187,6 @@ article{
       border: 1px solid #ddd;
     }
 
-    /* 버튼 영역(결제하기/돌아가기) */
     .button-group {
       display: flex;
       flex-direction: column;
@@ -234,31 +196,26 @@ article{
       max-width: 500px;
     }
 
-/* 결제 페이지 스타일 */
 .payment-page {
-  text-align: center; /* 페이지 전체 중앙 정렬 */
+  text-align: center; 
 }
 
-/* 결제 진행 메인 제목 */
 .payment-page h1 {
-  font-size: 1.2rem;  /* 글씨 크기 조금 줄임 */
+  font-size: 1.2rem;  
   font-weight: bold;
-  margin-bottom: 10px; /* 아래쪽 여백 */
+  margin-bottom: 10px; 
 }
 
-/* "입력 정보 확인" 등 하위 제목 */
 .payment-page h2 {
-  font-size: 1rem;    /* 더 작게 */
+  font-size: 1rem;    
   font-weight: bold;
   margin-bottom: 8px;
 }
 
-/* 일반 텍스트(이름, 생년월일, 태어난 시간, 이메일 등) */
 .payment-page p {
-  font-size: 0.9rem;  /* 일반 텍스트 크기 */
+  font-size: 0.9rem;  
   margin-bottom: 5px;
 }
-
     
     .at-share-btn-elements{
         text-align: center;
@@ -285,15 +242,8 @@ article{
       border: 1px solid #ddd;
     }
     
-    
 </style>
-
-
-
-
-
 </head>
-<!-- body 태그 style background-color 지정으로 배경색 변경-->
 <body class="container" style="background-color:#ffffff">
             
     <header class="page-header wrapper">
@@ -308,22 +258,18 @@ article{
         </u1>
     </nav>
         
-        
     </header>
 
-  <!-- 1. 사주 메인 페이지 -->
   <div id="mainPage" class="page active">
     <img src="saju_main01.png" alt="사주 예시" style="width: 100%; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
     <br><br>
     <button class="custom-jelly-button" onclick="showPage('infoPage')">💌 정보 입력하고 결제하기</button>
 </div>
 
-  <!-- 정보 입력 페이지 -->
   <div id="infoPage" class="page info-page">
     <h1 class="info-title">📄 사주 정보 입력</h1>
 
     <form id="sajuForm" class="saju-form">
-      <!-- 이름 -->
       <div class="form-group">
         <input
           type="text"
@@ -333,7 +279,6 @@ article{
         />
       </div>
 
-      <!-- 성별 -->
       <div class="form-group">
         <label for="userGender" class="label-bold">성별</label>
         <select id="userGender" required>
@@ -342,23 +287,19 @@ article{
         </select>
       </div>
 
-      <!-- 생년월일 (양력/음력 + 연/월/일) -->
       <div class="form-group">
         <label for="birthType" class="label-bold">생년월일</label>
         <div class="form-group-inline">
-          <!-- 양력/음력 -->
           <select id="birthType" required>
             <option value="양력">양력</option>
             <option value="음력">음력</option>
           </select>
-          <!-- 연/월/일 -->
           <select id="birthYear" required></select>
           <select id="birthMonth" required></select>
           <select id="birthDay" required></select>
         </div>
       </div>
 
-      <!-- 태어난 시간 -->
       <div class="form-group">
         <label for="birthHour" class="label-bold">태어난 시간</label>
         <select id="birthHour" required>
@@ -378,7 +319,6 @@ article{
         </select>
       </div>
 
-      <!-- 이메일 -->
       <div class="form-group">
         <label for="userEmail" class="label-bold">이메일</label>
         <input
@@ -389,7 +329,6 @@ article{
         />
       </div>
 
-      <!-- 버튼 영역 -->
       <div class="button-group">
         <button
           type="button"
@@ -409,18 +348,14 @@ article{
     </form>
   </div>
 
-<!-- 결제 페이지 -->
 <div id="paymentPage" class="page payment-page">
   <h1>💳 결제 진행</h1>
   <div id="userInfo">
-    <!-- 입력 정보 확인 UI -->
   </div>
   
-  <!-- 토스 위젯 UI를 렌더링할 영역 -->
   <div id="payment-method"></div>
   <div id="agreement"></div>
   
-
   <button class="custom-jelly-button" onclick="startTossPay('정통사주', 9900)">
     결제하기 (9,900원)
   </button>
@@ -429,21 +364,16 @@ article{
     ⬅️ 정보 수정
   </button>
 </div>
-
   
 <script>
+let tossWidgets; 
 
-let tossWidgets;  // Toss 위젯 인스턴스를 저장할 변수
-
-
-    // 날짜 드롭다운 옵션 채우기
 function populateDateSelectors() {
     const yearSelect = document.getElementById("birthYear");
     const monthSelect = document.getElementById("birthMonth");
     const daySelect = document.getElementById("birthDay");
     const currentYear = new Date().getFullYear();
 
-    // 연도 선택 (1900년부터 현재까지)
     for (let y = 1900; y <= currentYear; y++) {
         const option = document.createElement("option");
         option.value = y;
@@ -451,7 +381,6 @@ function populateDateSelectors() {
         yearSelect.add(option);
     }
 
-    // 월 선택
     for (let m = 1; m <= 12; m++) {
         const option = document.createElement("option");
         option.value = m;
@@ -459,7 +388,6 @@ function populateDateSelectors() {
         monthSelect.add(option);
     }
 
-    // 일 선택
     for (let d = 1; d <= 31; d++) {
         const option = document.createElement("option");
         option.value = d;
@@ -490,16 +418,14 @@ function showPage(pageId) {
       return;
     }
     
-    // 사용자 정보 확인 UI 업데이트
     document.getElementById("userInfo").innerHTML = `
       <h2>입력 정보 확인</h2>
-      <p><strong>이름:</strong> ${userName}</p>
-      <p><strong>생년월일:</strong> ${birthDate} (${birthType})</p>
-      <p><strong>태어난 시간:</strong> ${birthHour}</p>
-      <p><strong>이메일:</strong> ${userEmail}</p>
+      <p>이름: ${userName}</p>
+      <p>생년월일: ${birthDate} (${birthType})</p>
+      <p>태어난 시간: ${birthHour}</p>
+      <p>이메일: ${userEmail}</p>
     `;
     
-    // 여기서 sessionStorage에 사용자 정보를 저장
     const userData = {
       name: userName,
       gender: userGender,
@@ -507,24 +433,20 @@ function showPage(pageId) {
       birthType: birthType,
       time: birthHour,
       email: userEmail,
-      paymentItem: "정통사주" // 또는 동적으로 설정
+      paymentItem: "정통사주" 
     };
-    sessionStorage.setItem("userData", JSON.stringify(userData));
+    localStorage.setItem("userData", JSON.stringify(userData));
     
-    // 토스 위젯 UI 렌더링 (가격 9900원으로 설정)
     renderTossWidgets(9900).catch(err => console.error("토스 위젯 렌더링 오류:", err));
   }
 }
 
-// 페이지 로드 시 실행
 window.onload = function () {
     populateDateSelectors();
 };
 
-// 토스 위젯 UI를 렌더링하는 함수
 async function renderTossWidgets(price) {
   const tossPayments = TossPayments("live_gck_6bJXmgo28e9AaeqYMave8LAnGKWx");
-  // 전역 변수에 할당하여 재사용
   tossWidgets = tossPayments.widgets({ customerKey: TossPayments.ANONYMOUS });
   
   await tossWidgets.setAmount({
@@ -544,7 +466,6 @@ async function renderTossWidgets(price) {
   ]);
 }
 
-
 async function startTossPay(itemName, price) {
   console.log(`🚀 토스 결제 요청: 결제 항목 = ${itemName}`);
 
@@ -556,21 +477,16 @@ async function startTossPay(itemName, price) {
     return;
   }
 
-  // tossWidgets가 렌더링되어 있지 않으면 오류 처리
   if (!tossWidgets) {
     alert("결제 위젯이 초기화되지 않았습니다. 결제 페이지를 새로고침 해주세요.");
     return;
   }
 
   try {
-    // ✅ 주문 ID를 유니크하게 생성
     const orderId = `order_${Date.now()}`;
-
-    // ✅ 성공 & 실패 URL 지정 (중복 승인 방지)
     const successUrl = `https://test-it.co.kr/saju-success.html?orderId=${orderId}`;
     const failUrl = `https://test-it.co.kr/payment-fail1`;
 
-    // ✅ 결제 요청 (중복 승인 방지)
     await tossWidgets.requestPayment({
       orderId: orderId,
       orderName: itemName,
@@ -587,27 +503,21 @@ async function startTossPay(itemName, price) {
   }
 }
 
-
-
-// 결제 전 사용자 정보 저장 (예시)
 const userData = {
-  name: document.getElementById("userName").value,
-  gender: document.getElementById("userGender").value,
-  birth: `${document.getElementById("birthYear").value}-${String(document.getElementById("birthMonth").value).padStart(2, '0')}-${String(document.getElementById("birthDay").value).padStart(2, '0')}`,
-  birthType: document.getElementById("birthType").value,
-  time: document.getElementById("birthHour").value,
-  email: document.getElementById("userEmail").value,
-  paymentItem: "정통사주" // 또는 동적으로 설정
+  name: document.getElementById("userName") ? document.getElementById("userName").value : "",
+  gender: document.getElementById("userGender") ? document.getElementById("userGender").value : "",
+  birth: document.getElementById("birthYear") ? `${document.getElementById("birthYear").value}-${String(document.getElementById("birthMonth").value).padStart(2, '0')}-${String(document.getElementById("birthDay").value).padStart(2, '0')}` : "",
+  birthType: document.getElementById("birthType") ? document.getElementById("birthType").value : "",
+  time: document.getElementById("birthHour") ? document.getElementById("birthHour").value : "",
+  email: document.getElementById("userEmail") ? document.getElementById("userEmail").value : "",
+  paymentItem: "정통사주"
 };
-sessionStorage.setItem("userData", JSON.stringify(userData));
-
-
+localStorage.setItem("userData", JSON.stringify(userData));
     
 function sendToGoogleSheet(userName, userGender, birthDate, birthType, birthTime, userEmail, paymentItem) {
     console.log("📤 전송할 데이터:", userName, userGender, birthDate, birthType, birthTime, userEmail, paymentItem);
 
-
-    fetch("https://script.google.com/macros/s/AKfycbzSWc97F6-n1z0h6y0i2lhK7PJBkH31NNC6wkgygIa7mzYlifA5nbxqS1DcOcCUQ0vF/exec", {
+    fetch("https://script.google.com/macros/s/AKfycbyyezrI0ed6LrbMRNE-zO2rrR_0FN8RwJ0uOiEJywgFQE7Mcp4IVXUM3xcqE1Sqn2Sj/exec", {
         method: "POST",
         mode: "no-cors",
         headers: { "Content-Type": "application/json" },
@@ -618,7 +528,7 @@ function sendToGoogleSheet(userName, userGender, birthDate, birthType, birthTime
             birthType: birthType,
             birthTime: birthTime,
             userEmail: userEmail,
-            paymentItem: paymentItem,  // ✅ 여기서도 추가!
+            paymentItem: paymentItem,
             paymentTime: new Date().toLocaleString()
         })
     })
@@ -630,12 +540,9 @@ function sendToGoogleSheet(userName, userGender, birthDate, birthType, birthTime
     });
 }
 
-// ✅ 페이지 로딩 시 실행
 window.onload = function () {
-    // 날짜 셀렉터 초기화
     populateDateSelectors();
 
-    // 결제 성공 후 URL 파라미터 확인
     const urlParams = new URLSearchParams(window.location.search);
     const userName = urlParams.get("name");
     const userGender = urlParams.get("gender");
@@ -645,22 +552,18 @@ window.onload = function () {
     const userEmail = urlParams.get("email");
     const paymentItem = urlParams.get("paymentItem");
 
-    // ✅ 모든 필수 정보가 있을 때만 처리
     if (userName && userGender && birthDate && birthType && birthTime && userEmail && paymentItem) {
         console.log("✅ 결제 성공! 정보가 전달되었습니다.");
         console.log(`이름: ${userName}, 성별: ${userGender}, 생년월일: ${birthDate}, 이메일: ${userEmail}, 결제항목: ${paymentItem}`);
 
-        // 구글 시트로 데이터 전송
         sendToGoogleSheet(userName, userGender, birthDate, birthType, birthTime, userEmail, paymentItem);
 
-        // 성공 알림
         alert(`✅ 결제가 완료되었습니다!\n이름: ${userName}\n성별: ${userGender}\n이메일: ${userEmail}\n결제 항목: ${paymentItem}`);
     } else {
         console.log("❌ 결제 성공 정보가 없으므로 아무 작업도 하지 않습니다.");
     }
 };
 
-console.log("🚀 TossPayments 키:", tossPayments);
 console.log("🚀 현재 환경:", window.location.hostname);
 document.addEventListener('contextmenu', function(e) {
     e.preventDefault();

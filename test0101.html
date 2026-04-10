@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>동심 놀이공원 테스트</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+
+  body {
+    background-color: #dcedc8;
+    background-image: radial-gradient(#f1f8e9 15%, transparent 16%), radial-gradient(#f1f8e9 15%, transparent 16%);
+    background-size: 30px 30px;
+    background-position: 0 0, 15px 15px;
+    font-family: 'Jua', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+  }
+
+  /* 폰 프레임 */
+  .phone-frame {
+    width: 380px;
+    height: 800px;
+    background: linear-gradient(to bottom, #e1f5fe 0%, #b3e5fc 30%, #c8e6c9 40%, #aed581 100%);
+    border-radius: 40px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    border: 8px solid #f8bbd0;
+    position: relative;
+  }
+
+  /* 상단 네비게이션바 (meowstagram) */
+  .top-nav {
+    background-color: #fce4ec;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    border-bottom: 3px dashed #f48fb1;
+    z-index: 10;
+  }
+  .back-btn { color: #ba68c8; font-size: 24px; cursor: pointer; text-shadow: 1px 1px 0 #fff; }
+  .app-title {
+    color: #ec407a;
+    font-size: 24px;
+    flex-grow: 1;
+    text-align: center;
+    margin-right: 10px;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 0 #fff;
+  }
+
+  /* 유저 정보 영역 */
+  .user-info {
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(5px);
+    border-bottom: 3px solid #81c784;
+    z-index: 10;
+  }
+  .profile-pic {
+    width: 45px;
+    height: 45px;
+    background-color: #ffb74d;
+    border-radius: 50%;
+    margin-right: 15px;
+    border: 3px solid #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+  }
+  .username {
+    color: #0288d1;
+    font-size: 22px;
+    text-shadow: 1px 1px 0 #fff;
+  }
+
+  /* 메인 콘텐츠 영역 (놀이공원 배경) */
+  .content-area {
+    flex-grow: 1;
+    position: relative;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  /* --- 고정 데코레이션 (하늘, 잔디밭 요소) --- */
+  .deco-cloud { position: absolute; font-size: 40px; opacity: 0.8; }
+  .cloud1 { top: 20px; left: 10px; }
+  .cloud2 { top: 50px; right: 20px; font-size: 50px; }
+  
+  .deco-balloon { position: absolute; font-size: 30px; animation: float 4s ease-in-out infinite; }
+  .balloon1 { top: 80px; left: 40px; }
+  .balloon2 { top: 30px; right: 80px; animation-delay: 1s; }
+
+  .deco-fence { position: absolute; bottom: 120px; left: -10px; font-size: 35px; letter-spacing: -5px; white-space: nowrap; }
+  .deco-flower { position: absolute; font-size: 25px; }
+  .flower1 { bottom: 80px; left: 30px; }
+  .flower2 { bottom: 100px; right: 40px; }
+  .flower3 { bottom: 50px; left: 150px; }
+  .mushroom { position: absolute; bottom: 60px; right: 100px; font-size: 25px; }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  /* --- 각 화면별 박스 및 디자인 --- */
+  
+  /* 1. 시작 화면 박스 (놀이공원 벤치와 동물들 느낌) */
+  .main-box {
+    background-color: rgba(255, 255, 255, 0.85);
+    border: 5px solid #ffb74d;
+    border-radius: 30px;
+    width: 90%;
+    padding: 30px 10px;
+    text-align: center;
+    box-shadow: 0 10px 20px rgba(255, 152, 0, 0.2);
+    position: relative;
+    z-index: 5;
+  }
+  .main-title {
+    color: #d84315;
+    font-size: 32px;
+    margin-bottom: 10px;
+  }
+  .main-art {
+    font-size: 50px;
+    margin: 15px 0;
+  }
+  .cute-animals {
+    font-size: 35px;
+    letter-spacing: 10px;
+  }
+
+  /* 2. 질문 화면 박스 (구름 모양 테두리) */
+  .q-box {
+    background-color: #fff;
+    border: 5px dashed #4fc3f7;
+    border-radius: 40px;
+    width: 90%;
+    min-height: 150px;
+    padding: 30px 20px;
+    text-align: center;
+    box-shadow: 0 8px 15px rgba(3, 169, 244, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #0277bd;
+    font-size: 26px;
+    line-height: 1.5;
+    position: relative;
+    z-index: 5;
+  }
+  
+  .ox-container {
+    display: flex;
+    gap: 25px;
+    margin-top: 30px;
+    z-index: 5;
+  }
+  .ox-btn {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    font-family: 'Jua', sans-serif;
+    font-size: 50px;
+    cursor: pointer;
+    border: 6px solid #fff;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .ox-btn:active { transform: scale(0.9); }
+  .o-btn { background-color: #81d4fa; color: #fff; text-shadow: 2px 2px 0 #0277bd; }
+  .x-btn { background-color: #f48fb1; color: #fff; text-shadow: 2px 2px 0 #c2185b; }
+  .btn-deco { font-size: 20px; margin-top: 5px; }
+
+  /* 3. 결과 화면 박스 (디저트 가게/성 느낌) */
+  .result-box {
+    background-color: #fff3e0;
+    border: 6px solid #ffcc80;
+    border-radius: 40px 40px 10px 10px;
+    width: 95%;
+    padding: 30px 15px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(255, 152, 0, 0.3);
+    position: relative;
+    z-index: 5;
+  }
+  .result-roof {
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 50px;
+  }
+  .result-grade { color: #e65100; font-size: 36px; margin: 20px 0 15px 0; text-shadow: 2px 2px 0 #ffe0b2; }
+  .result-desc { color: #5d4037; font-size: 22px; line-height: 1.6; word-break: keep-all; padding: 0 10px; }
+
+  /* 액션 버튼 (입장하기, 다시하기 등) */
+  .action-btn {
+    background-color: #ffca28;
+    color: #d84315;
+    border: 4px solid #fff;
+    padding: 15px 45px;
+    border-radius: 40px;
+    font-family: 'Jua', sans-serif;
+    font-size: 28px;
+    cursor: pointer;
+    box-shadow: 0 8px 15px rgba(255, 193, 7, 0.4);
+    margin-top: 25px;
+    transition: all 0.1s;
+    z-index: 5;
+  }
+  .action-btn:active { transform: translateY(4px); box-shadow: 0 2px 5px rgba(255, 193, 7, 0.4); }
+
+  /* 하단 바 (인스타 프레임 유지) */
+  .bottom-nav {
+    padding: 15px 20px;
+    background-color: #fff;
+    border-top: 3px solid #f8bbd0;
+    z-index: 10;
+  }
+  .icons { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 26px; }
+  .icons-left span { margin-right: 15px; cursor: pointer; }
+  .heart { color: #ff5252; } 
+  .comment { color: #29b6f6; } 
+  .send { color: #ab47bc; }
+  .bookmark { color: #ffca28; cursor: pointer; } 
+
+  .likes { color: #ec407a; font-size: 18px; margin-bottom: 5px; font-weight: bold; }
+  .caption { color: #5c6bc0; font-size: 16px; margin-bottom: 5px; }
+  .comments-link { color: #9e9e9e; font-size: 14px; }
+
+</style>
+</head>
+<body>
+
+<div class="phone-frame">
+  <div class="top-nav">
+    <div class="back-btn" onclick="location.reload()">❮</div>
+    <div class="app-title">meowstagram 🎀</div>
+  </div>
+  
+  <div class="user-info">
+    <div class="profile-pic">🐱</div>
+    <div class="username">USERNAME</div>
+  </div>
+
+  <div class="content-area">
+    <div class="deco-cloud cloud1">☁️</div>
+    <div class="deco-cloud cloud2">☁️</div>
+    <div class="deco-balloon balloon1">🎈</div>
+    <div class="deco-balloon balloon2">🎡</div>
+    
+    <div class="deco-fence">🤺🤺🤺🤺🤺🤺🤺🤺</div>
+    <div class="deco-flower flower1">🌷</div>
+    <div class="deco-flower flower2">🌼</div>
+    <div class="deco-flower flower3">🌻</div>
+    <div class="mushroom">🍄</div>
+
+    <div id="main-screen" style="width:100%; display:flex; flex-direction:column; align-items:center;">
+      <div class="main-box">
+        <div class="main-title">동심 유원지 입장권</div>
+        <div class="main-art">⛲🎠🎢</div>
+        <div class="cute-animals">🐰🐭🐻🎀</div>
+      </div>
+      <button class="action-btn" onclick="startTest()">입장하기 🎟️</button>
+    </div>
+
+    <div id="question-screen" style="width:100%; display:none; flex-direction:column; align-items:center;">
+      <div class="q-box" id="q-text">문항</div>
+      <div class="ox-container">
+        <button class="ox-btn o-btn" onclick="answer(true)">
+          O
+          <div class="btn-deco">🐰</div>
+        </button>
+        <button class="ox-btn x-btn" onclick="answer(false)">
+          X
+          <div class="btn-deco">🐻</div>
+        </button>
+      </div>
+    </div>
+
+    <div id="result-screen" style="width:100%; display:none; flex-direction:column; align-items:center;">
+      <div class="result-box">
+        <div class="result-roof">🎪</div>
+        <div class="cute-animals" style="margin-top: 15px;">🎉🐭🐰🎉</div>
+        <div class="result-grade" id="r-grade">등급</div>
+        <div class="result-desc" id="r-desc">설명</div>
+      </div>
+      <button class="action-btn" onclick="location.reload()">다시 놀기 🔄</button>
+    </div>
+
+  </div>
+
+  <div class="bottom-nav">
+    <div class="icons">
+      <div class="icons-left">
+        <span class="heart">❤️</span>
+        <span class="comment">💬</span>
+        <span class="send">✈️</span>
+      </div>
+      <div class="bookmark">🔖</div>
+    </div>
+    <div class="likes">959 likes</div>
+    <div class="caption">username. 우리 같이 놀이공원 갈래? 🎡🌷</div>
+    <div class="comments-link">--- coments</div>
+  </div>
+</div>
+
+<script>
+  const questions = [
+    "1. 나는 아직도 부를 수 있는 만화 주제가가 있다.",
+    "2. 가끔 문방구 앞에 멈춘다.",
+    "3. 하늘을 보면 예쁜 모양의 구름을 찾는다.",
+    "4. 놀이공원에 가면 범퍼카 한 번은 타야한다.",
+    "5. 뽑기 기계 앞에서 승부욕이 생긴다.",
+    "6. 어릴 때 별명을 아직 기억한다.",
+    "7. 남 모르게 횡단보도 하얀색 선만 밟을 때가 있다.",
+    "8. 내가 만화의 주인공이라고 상상할 때가 있다.",
+    "9. '우리 집에 왜 왔니' 가사가 자동 재생된다.",
+    "10. 종이를 보면 비행기 한 번은 접어본다.",
+    "11. 음식 먹을 때 제일 맛있는 건 마지막에 먹는다.",
+    "12. 나는 아직도 학교 앞에서 먹던 컵 떡볶이가 생각난다.",
+    "13. 눈이 오면 첫 발자국을 찍고 싶어진다.",
+    "14. 놀이터를 지나가면 한 번쯤 그네가 타고 싶어진다.",
+    "15. 종 치는 소리를 들으면 괜히 반응한다.",
+    "16. 비밀 얘기할 때 괜히 목소리가 더 작아진다.",
+    "17. 버튼을 보면 누르고 싶다.",
+    "18. 누군가 내 이름을 불러주면 괜히 반갑다.",
+    "19. 나는 아직도 어릴 때 만들었던 이메일을 사용한다.",
+    "20. 포장지를 뜯기 전에 괜히 한번 흔들어본다."
+  ];
+
+  let currentQ = 0;
+  let score = 0;
+
+  function startTest() {
+    document.getElementById('main-screen').style.display = 'none';
+    document.getElementById('question-screen').style.display = 'flex';
+    showQuestion();
+  }
+
+  function showQuestion() {
+    document.getElementById('q-text').innerText = questions[currentQ];
+  }
+
+  function answer(isO) {
+    if (isO) score++;
+    currentQ++;
+
+    if (currentQ < questions.length) {
+      showQuestion();
+    } else {
+      showResult();
+    }
+  }
+
+  function showResult() {
+    document.getElementById('question-screen').style.display = 'none';
+    document.getElementById('result-screen').style.display = 'flex';
+
+    let grade = "";
+    let desc = "";
+
+    if (score >= 15) {
+      grade = "참 잘했어요 💯";
+      desc = "당신의 마음속에는 영원한 동심이 있습니다. 동물 친구들이 모두 인정하는 유원지 최고 단골손님이네요!";
+    } else if (score >= 12) {
+      grade = "보통이에요 🙂";
+      desc = "가끔은 솜사탕을 들고 회전목마를 타고 싶지 않으신가요? 아직 동심의 불꽃이 남아있어요.";
+    } else if (score >= 10) {
+      grade = "분발하세요 ✏️";
+      desc = "바쁜 일상에 치여 놀이공원의 즐거움을 잊으신 것 같아요. 토끼 친구와 함께 숨바꼭질 한 판 어때요?";
+    } else {
+      grade = "재시험 요망 ⚠️";
+      desc = "동심 세포가 쿨쿨 잠들어버렸어요! 당장 관람차 꼭대기에 올라가서 파란 하늘을 보며 소리쳐야 합니다.";
+    }
+
+    document.getElementById('r-grade').innerText = grade;
+    document.getElementById('r-desc').innerHTML = desc;
+  }
+</script>
+</body>
+</html>

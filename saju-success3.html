@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -16,13 +14,9 @@
      ">
      <script src="https://nsp.pay.naver.com/sdk/js/naverpay.min.js"></script>
 
-
-
-
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 
     <title>테스트잇 애정 사주 궁합</title>
     <meta name="description" content="테스트잇 애정 사주 궁합">
@@ -37,17 +31,7 @@
       <link rel="icon" type="image/png" href="favicon.png">
 <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
 
-
-
 <style>
-
-/* start 태그와 question 태그 모두 article 태그라서 article 태그에 속성을 주면 동시에 적용됨
-.start{
-    display: flex;
-    flex-direction: column;
-}
-*/
-    
    @font-face {
     font-family: 'ChosunGu';
     src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/ChosunGu.woff') format('woff');
@@ -89,20 +73,15 @@
     color: #0bd;
 }
 
-
 .page-header {
     display: flex;
     justify-content: space-between;
 }
-
     
 article{
     display: flex;
     flex-direction: column;
 }
-
- 
-
 
 .custom-jelly-button {
     width: 100%;
@@ -111,7 +90,7 @@ article{
     font-size: 15px !important;
     font-weight: bold;
     color: black !important;
-    background: linear-gradient(145deg, #ffcfcf, #ffcfcf); /* 분홍과 노랑 그라데이션 */
+    background: linear-gradient(145deg, #ffcfcf, #ffcfcf); 
     border: none;
     border-radius: 17px;
     box-shadow: inset -4px -4px 10px rgba(255, 255, 255, 0.7), 
@@ -122,9 +101,8 @@ article{
 }
 
 .custom-jelly-button:hover {
-    background: linear-gradient(145deg, #ffcfcf, #ffcfcf); /* 반대로 그라데이션 */
+    background: linear-gradient(145deg, #ffcfcf, #ffcfcf); 
 }
-
 
 .page {
             display: none;
@@ -146,31 +124,30 @@ article{
             border: 1px solid #ddd;
         }
 
-             /* 성공 페이지 전용 스타일 */
              .success-page {
-            text-align: center;        /* 가운데 정렬 */
-            margin: 40px auto;        /* 페이지 위아래 여백, 가운데 정렬 */
-            max-width: 600px;         /* 폭 제한 */
-            padding: 30px;            /* 안쪽 여백 */
-            background-color: #fff;   /* 배경 흰색 */
-            border-radius: 15px;      /* 모서리 둥글게 */
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 그림자 */
+            text-align: center;        
+            margin: 40px auto;        
+            max-width: 600px;         
+            padding: 30px;            
+            background-color: #fff;   
+            border-radius: 15px;      
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
         .success-title {
-            font-size: 1.2rem;        /* 글씨 크기 */
-            font-weight: bold;        /* 굵게 */
-            margin-bottom: 10px;      /* 아래쪽 여백 */
+            font-size: 1.2rem;        
+            font-weight: bold;        
+            margin-bottom: 10px;      
         }
         .success-text {
-            font-size: 1rem;          /* 본문 크기 */
-            margin-bottom: 20px;      /* 간격 */
+            font-size: 1rem;          
+            margin-bottom: 20px;      
         }
         .success-link {
             display: inline-block;    
             padding: 10px 20px;
-            background-color: #ffcfcf; /* 분홍빛 배경 */
+            background-color: #ffcfcf; 
             border-radius: 10px;
-            text-decoration: none;      /* 밑줄 제거 */
+            text-decoration: none;      
             color: black;
             font-weight: bold;
             box-shadow: inset -4px -4px 10px rgba(255, 255, 255, 0.7),
@@ -178,45 +155,11 @@ article{
                         2px 2px 8px rgba(0, 0, 0, 0.15);
         }
         .success-link:hover {
-            background: #ffbdbd;       /* hover 시 조금 진해짐 */
+            background: #ffbdbd;       
         }
-    
-    .at-share-btn-elements{
-        text-align: center;
-    }
-.share{
-    margin: 0 auto;
-}
-
-.kakao_ad{
-    width: 320px;
-    margin: 0 auto;
-}
-
-.kakao_ad2{
-    width: 320px;
-    margin: 0 auto;
-}
-.coupang_ad {
-    width: 320px;
-    margin: 0 auto;
-}
-        .custom-button {
-            width: 100%;
-            max-width: 350px;
-            margin: 0 auto;
-        }
-    
-
-  
 </style>
 
-
-
-
-
 </head>
-<!-- body 태그 style background-color 지정으로 배경색 변경-->
 <body class="container" style="background-color:#ffffff">
             
     <header class="page-header wrapper">
@@ -231,10 +174,8 @@ article{
         </u1>
     </nav>
         
-        
     </header>
 
-   <!-- 성공 페이지 -->
    <div class="success-page">
     <h1 class="success-title">💖 결제가 성공적으로 완료되었습니다!</h1>
     <p class="success-text">
@@ -243,14 +184,11 @@ article{
     <a class="success-link" href="https://test-it.co.kr/saju03">이전 페이지로 돌아가기</a>
 </div>
 <script>
-    // sessionStorage에 저장된 사용자 데이터 읽어오기
-    const storedData = sessionStorage.getItem("userData");
+    const storedData = localStorage.getItem("userData");
     const userData = storedData ? JSON.parse(storedData) : null;
 
-    // Google Sheet 전송 함수
     function sendToGoogleSheet(user1, user2, email, paymentItem) {
-      console.log("📤 전송할 데이터:", user1, user2, email, paymentItem);
-      fetch("https://script.google.com/macros/s/AKfycbwj6p-ePMu47vmeIFfnL21T3saiuYk-H8gTc1G8Z0Q4DN6VZIIGY2-rTfPH13YRKgTzEQ/exec", {
+      fetch("https://script.google.com/macros/s/AKfycbYNxWFUqw-z6PLkni75ow1bSUvKztyBiY3pbXmDwT489V6Bzy9dJrDgSW5Kjbfuwz_Bw/exec", {
           method: "POST",
           mode: "no-cors",
           headers: { "Content-Type": "application/json" },
@@ -269,11 +207,9 @@ article{
               paymentItem: paymentItem,
               paymentTime: new Date().toLocaleString()
           })
-      })
-      .then(() => { console.log("✅ 구글 시트에 데이터 전송 완료!"); })
-      .catch(error => { console.error("❌ 데이터 전송 실패:", error); });
+      });
     }
-// ✅ 결제 승인 함수
+
 async function confirmPayment() {
     const urlParams = new URLSearchParams(window.location.search);
     const paymentKey = urlParams.get("paymentKey");
@@ -281,19 +217,16 @@ async function confirmPayment() {
     const amount = urlParams.get("amount");
 
     if (!paymentKey || !orderId || !amount) {
-        console.error("❌ 결제 정보가 누락되었습니다.");
-        alert("⚠️ 결제 정보가 누락되었습니다. 다시 시도해 주세요.");
+        alert("결제 정보가 누락되었습니다. 다시 시도해 주세요.");
         return;
     }
-
-    console.log("🚀 결제 승인 요청:", { paymentKey, orderId, amount });
 
     try {
         const response = await fetch("https://api.tosspayments.com/v1/payments/confirm", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": "Basic " + btoa("live_gsk_DnyRpQWGrNL20vzK4mRb3Kwv1M9E:")  // 👉 라이브 시크릿 키로 변경해야 함!
+                "Authorization": "Basic " + btoa("live_gsk_DnyRpQWGrNL20vzK4mRb3Kwv1M9E:")  
             },
             body: JSON.stringify({
                 paymentKey: paymentKey,
@@ -302,40 +235,23 @@ async function confirmPayment() {
             })
         });
 
-        const result = await response.json();
-
         if (response.ok) {
-            console.log("✅ 결제 승인 성공:", result);
-            alert("🎉 결제가 성공적으로 완료되었습니다!");
-
-            // ✅ Google Sheet에 데이터 전송
-            sendToGoogleSheet(
-                userData.user1,
-                userData.user2,
-                userData.email,
-                userData.paymentItem
-            );
+            alert("결제가 성공적으로 완료되었습니다!");
+            if (userData) {
+                sendToGoogleSheet(userData.user1, userData.user2, userData.email, userData.paymentItem);
+                localStorage.removeItem("userData");
+            }
         } else {
-            console.error("❌ 결제 승인 실패:", result);
-            alert(`⚠️ 결제 승인 실패: ${result.message}`);
-    // 🚨 결제 실패 시 실패 페이지로 이동!
-    window.location.href = "https://test-it.co.kr/payment-fail3";
+            window.location.href = "https://test-it.co.kr/payment-fail3";
         }
     } catch (error) {
-        console.error("❌ 결제 승인 중 오류 발생:", error);
-        alert("⚠️ 결제 승인 중 오류가 발생했습니다.");
-
-        // 🚨 결제 승인 중 오류 발생 시 실패 페이지로 이동!
         window.location.href = "https://test-it.co.kr/payment-fail3";
     }
 }
 
-// ✅ 페이지 로드 시 결제 승인 실행
 window.onload = function() {
     confirmPayment();
 };
-
- 
-  </script>
+</script>
 </body>
 </html>

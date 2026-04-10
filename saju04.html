@@ -243,7 +243,6 @@ article{
     }
     
 </style>
-
 </head>
 <body class="container" style="background-color:#ffffff">
             
@@ -501,11 +500,15 @@ article{
         return;
       }
       try {
+        const orderId = `order_${Date.now()}`;
+        const successUrl = `${window.location.origin}/saju-success4.html?orderId=${orderId}`;
+        const failUrl = `${window.location.origin}/payment-fail4`;
+
         await tossWidgets.requestPayment({
-          orderId: `order_${Date.now()}`,
+          orderId: orderId,
           orderName: itemName,
-          successUrl: "https://test-it.co.kr/saju-success4.html",
-          failUrl: "https://test-it.co.kr/payment-fail4",
+          successUrl: successUrl,
+          failUrl: failUrl,
           customerName: userName1,
           customerEmail: userEmail,
         });

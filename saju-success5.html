@@ -217,7 +217,7 @@ article{
 
     function sendToGoogleSheet(user1, user2, email, paymentItem) {
       console.log("전송할 데이터:", user1, user2, email, paymentItem);
-      fetch("https://script.google.com/macros/s/AKfycbzYNxWFUqw-z6PLkni75ow1bSUvKztyBiY3pbXmDwT489V6Bzy9dJrDgSW5Kjbfuwz_Bw/exec", {
+      fetch("https://script.google.com/macros/s/AKfycbxjRaWyXIVH7ImqyFLU0em3BX1mptho0dvRiS91rwSvbKEBY4fO4I5iXdStJmGvg6hfdw/exec", {
           method: "POST",
           mode: "no-cors",
           headers: { "Content-Type": "application/json" },
@@ -252,6 +252,8 @@ async function confirmPayment() {
         return;
     }
 
+    console.log("결제 승인 요청:", { paymentKey, orderId, amount });
+
     try {
         const response = await fetch("https://api.tosspayments.com/v1/payments/confirm", {
             method: "POST",
@@ -266,8 +268,12 @@ async function confirmPayment() {
             })
         });
 
+        const result = await response.json();
+
         if (response.ok) {
+            console.log("결제 승인 성공:", result);
             alert("결제가 성공적으로 완료되었습니다!");
+
             if (userData) {
                 sendToGoogleSheet(
                     userData.user1,
@@ -276,11 +282,17 @@ async function confirmPayment() {
                     userData.paymentItem
                 );
                 localStorage.removeItem("userData");
+            } else {
+                console.log("저장된 사용자 정보가 없습니다.");
             }
         } else {
+            console.error("결제 승인 실패:", result);
+            alert(`결제 승인 실패: ${result.message}`);
             window.location.href = "https://test-it.co.kr/payment-fail5";
         }
     } catch (error) {
+        console.error("결제 승인 중 오류 발생:", error);
+        alert("결제 승인 중 오류가 발생했습니다.");
         window.location.href = "https://test-it.co.kr/payment-fail5";
     }
 }

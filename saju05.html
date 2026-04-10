@@ -243,7 +243,6 @@ article{
     }
     
 </style>
-
 </head>
 <body class="container" style="background-color:#ffffff">
             
@@ -501,11 +500,15 @@ article{
         return;
       }
       try {
-        const response = await tossWidgets.requestPayment({
-          orderId: `order_${Date.now()}`,
+        const orderId = `order_${Date.now()}`;
+        const successUrl = `${window.location.origin}/saju-success5.html?orderId=${orderId}`;
+        const failUrl = `${window.location.origin}/payment-fail5`;
+
+        await tossWidgets.requestPayment({
+          orderId: orderId,
           orderName: itemName,
-          successUrl: "https://test-it.co.kr/saju-success5.html",
-          failUrl: "https://test-it.co.kr/payment-fail5",
+          successUrl: successUrl,
+          failUrl: failUrl,
           customerName: userName1,
           customerEmail: userEmail,
         });
@@ -513,28 +516,6 @@ article{
         console.error("결제 실패:", error);
         alert(`결제 실패: ${error.message}`);
       }
-    }
-
-    function saveUserData() {
-      const userData = {
-        user1: {
-          name: document.getElementById("userName1").value,
-          gender: document.getElementById("userGender1").value,
-          birthDate: `${document.getElementById("birthYear1").value}-${String(document.getElementById("birthMonth1").value).padStart(2, '0')}-${String(document.getElementById("birthDay1").value).padStart(2, '0')}`,
-          birthType: document.getElementById("birthType1").value,
-          birthTime: document.getElementById("birthHour1").value
-        },
-        user2: {
-          name: document.getElementById("userName2").value,
-          gender: document.getElementById("userGender2").value,
-          birthDate: `${document.getElementById("birthYear2").value}-${String(document.getElementById("birthMonth2").value).padStart(2, '0')}-${String(document.getElementById("birthDay2").value).padStart(2, '0')}`,
-          birthType: document.getElementById("birthType2").value,
-          birthTime: document.getElementById("birthHour2").value
-        },
-        email: document.getElementById("userEmail").value,
-        paymentItem: "재회 사주"
-      };
-      localStorage.setItem("userData", JSON.stringify(userData));
     }
 
     window.onload = function () {

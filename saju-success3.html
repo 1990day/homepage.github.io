@@ -188,7 +188,8 @@ article{
     const userData = storedData ? JSON.parse(storedData) : null;
 
     function sendToGoogleSheet(user1, user2, email, paymentItem) {
-      fetch("https://script.google.com/macros/s/AKfycbYNxWFUqw-z6PLkni75ow1bSUvKztyBiY3pbXmDwT489V6Bzy9dJrDgSW5Kjbfuwz_Bw/exec", {
+      // 네가 준 새로운 구글 앱스 스크립트 주소 적용
+      fetch("https://script.google.com/macros/s/AKfycbxjRaWyXIVH7ImqyFLU0em3BX1mptho0dvRiS91rwSvbKEBY4fO4I5iXdStJmGvg6hfdw/exec", {
           method: "POST",
           mode: "no-cors",
           headers: { "Content-Type": "application/json" },

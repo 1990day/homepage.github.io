@@ -391,6 +391,7 @@ article{
         const monthSelect = document.getElementById(monthId);
         const daySelect = document.getElementById(dayId);
         
+        // 1995년부터 시작하도록 수정됨
         for (let y = 1995; y <= currentYear; y++) {
           const option = document.createElement("option");
           option.value = y;
@@ -440,6 +441,7 @@ article{
           return;
         }
 
+        // 이메일 확인 팝업 추가
         const emailConfirmMessage = "입력하신 이메일 주소가 맞는지 확인해 주세요.\n\n" + userEmail + "\n\n이 주소로 애정 사주 결과가 발송됩니다.";
         if (!confirm(emailConfirmMessage)) {
           showPage('infoPage');
@@ -453,6 +455,7 @@ article{
           <p>이메일: ${userEmail}</p>
         `;
         
+        // localStorage 사용
         const userData = {
           user1: {
             name: userName1,
@@ -500,11 +503,16 @@ article{
         return;
       }
       try {
+        const orderId = `order_${Date.now()}`;
+        // www 도메인 증발 방지용 origin 적용
+        const successUrl = `${window.location.origin}/saju-success3.html?orderId=${orderId}`;
+        const failUrl = `${window.location.origin}/payment-fail3`;
+
         await tossWidgets.requestPayment({
-          orderId: `order_${Date.now()}`,
+          orderId: orderId,
           orderName: itemName,
-          successUrl: "https://test-it.co.kr/saju-success3.html",
-          failUrl: "https://test-it.co.kr/payment-fail3",
+          successUrl: successUrl,
+          failUrl: failUrl,
           customerName: userName1,
           customerEmail: userEmail,
         });
@@ -514,37 +522,8 @@ article{
       }
     }
 
-    function sendToGoogleSheet(user1, user2, email, paymentItem) {
-        fetch("https://script.google.com/macros/s/AKfycbYNxWFUqw-z6PLkni75ow1bSUvKztyBiY3pbXmDwT489V6Bzy9dJrDgSW5Kjbfuwz_Bw/exec", {
-            method: "POST",
-            mode: "no-cors",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                user1Name: user1.name,
-                user1Gender: user1.gender,
-                user1BirthDate: user1.birthDate,
-                user1BirthType: user1.birthType,
-                user1BirthTime: user1.birthTime,
-                user2Name: user2.name,
-                user2Gender: user2.gender,
-                user2BirthDate: user2.birthDate,
-                user2BirthType: user2.birthType,
-                user2BirthTime: user2.birthTime,
-                userEmail: email,
-                paymentItem: paymentItem,
-                paymentTime: new Date().toLocaleString()
-            })
-        });
-    }
-
     window.onload = function () {
       populateDateSelectors();
-      
-      const storedData = localStorage.getItem("userData");
-      const userData = storedData ? JSON.parse(storedData) : null;
-      if (userData && userData.user1.name) {
-          sendToGoogleSheet(userData.user1, userData.user2, userData.email, userData.paymentItem);
-      }
     };
     document.addEventListener('contextmenu', function(e) {
     e.preventDefault();

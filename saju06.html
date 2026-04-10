@@ -373,7 +373,6 @@ function populateDateSelectors() {
     const daySelect = document.getElementById("birthDay");
     const currentYear = new Date().getFullYear();
 
-    // 1995년부터 시작하도록 수정
     for (let y = 1995; y <= currentYear; y++) {
         const option = document.createElement("option");
         option.value = y;
@@ -418,7 +417,6 @@ function showPage(pageId) {
       return;
     }
 
-    // 이메일 확인 팝업 추가
     const emailConfirmMessage = "입력하신 이메일 주소가 맞는지 확인해 주세요.\n\n" + userEmail + "\n\n이 주소로 신년 운세 결과가 발송됩니다.";
     if (!confirm(emailConfirmMessage)) {
       showPage('infoPage');
@@ -427,13 +425,12 @@ function showPage(pageId) {
     
     document.getElementById("userInfo").innerHTML = `
       <h2>입력 정보 확인</h2>
-      <p><strong>이름:</strong> ${userName}</p>
-      <p><strong>생년월일:</strong> ${birthDate} (${birthType})</p>
-      <p><strong>태어난 시간:</strong> ${birthHour}</p>
-      <p><strong>이메일:</strong> ${userEmail}</p>
+      <p>이름: ${userName}</p>
+      <p>생년월일: ${birthDate} (${birthType})</p>
+      <p>태어난 시간: ${birthHour}</p>
+      <p>이메일: ${userEmail}</p>
     `;
     
-    // localStorage 사용
     const userData = {
       name: userName,
       gender: userGender,
@@ -490,9 +487,8 @@ async function startTossPay(itemName, price) {
 
   try {
     const orderId = `order_${Date.now()}`;
-    // www 도메인 증발 방지
-    const successUrl = `${window.location.origin}/saju-success6.html?orderId=${orderId}`;
-    const failUrl = `${window.location.origin}/payment-fail6`;
+    const successUrl = `${window.location.origin}/saju-success06.html?orderId=${orderId}`;
+    const failUrl = `${window.location.origin}/payment-fail1`;
 
     await tossWidgets.requestPayment({
       orderId: orderId,

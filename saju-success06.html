@@ -188,7 +188,6 @@ article{
     const userData = storedData ? JSON.parse(storedData) : null;
 
     function sendToGoogleSheet(userName, userGender, birthDate, birthType, birthTime, userEmail, paymentItem) {
-      // 사주01, 사주06 공용 스크립트 주소 (유저가 알려준 새 주소)
       fetch("https://script.google.com/macros/s/AKfycbyyezrI0ed6LrbMRNE-zO2rrR_0FN8RwJ0uOiEJywgFQE7Mcp4IVXUM3xcqE1Sqn2Sj/exec", {
         method: "POST",
         mode: "no-cors",
@@ -220,7 +219,7 @@ article{
   
       if (!paymentKey || !orderId || !amount) {
         alert("결제 정보가 누락되었습니다. 다시 시도해 주세요.");
-        window.location.href = "https://test-it.co.kr/payment-fail6"; 
+        window.location.href = "https://test-it.co.kr/payment-fail1"; 
         return;
       }
   
@@ -256,10 +255,10 @@ article{
             localStorage.removeItem("userData");
           }
         } else {
-          window.location.href = "https://test-it.co.kr/payment-fail6"; 
+          window.location.href = "https://test-it.co.kr/payment-fail1"; 
         }
       } catch (error) {
-        window.location.href = "https://test-it.co.kr/payment-fail6"; 
+        window.location.href = "https://test-it.co.kr/payment-fail1"; 
       }
     }
 

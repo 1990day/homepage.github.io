@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>레트로 폰꾸 성격 테스트</title>
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+  <style>
+    @import url("https://cdn.jsdelivr.net/gh/neodgm/neodgm-webfont@latest/neodgm/style.css");
+
+    :root{
+      --bg:#fff5f8;
+      --phone:#ffe8f0;
+      --phone-border:#efb3c8;
+      --screen-top:#ffe0ec;
+      --screen-bottom:#fff7fb;
+      --text:#5d4d57;
+      --sub:#8d7580;
+      --pink:#f7c7da;
+      --yellow:#fff1b8;
+      --blue:#dcefff;
+      --mint:#e4f6d8;
+      --lav:#eceefe;
+      --peach:#ffe7da;
+      --line:#363033;
+      --shadow:#ffd7e5;
+      --accent:#f16f9d;
+      --accent-dark:#d85b89;
+    }
+
+    *{
+      box-sizing:border-box;
+    }
+
+    body{
+      margin:0;
+      min-height:100vh;
+      padding:24px 12px 40px;
+      display:flex;
+      justify-content:center;
+      font-family:"NeoDunggeunmo", sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 18% 18%, rgba(255,255,255,0.8) 0 34px, transparent 35px),
+        radial-gradient(circle at 82% 20%, rgba(255,228,240,0.8) 0 44px, transparent 45px),
+        radial-gradient(circle at 18% 82%, rgba(255,242,190,0.45) 0 48px, transparent 49px),
+        radial-gradient(circle at 86% 80%, rgba(221,243,255,0.45) 0 50px, transparent 51px),
+        linear-gradient(180deg,#fff4f8 0%,#fff9fb 100%);
+    }
+
+    .wrap{
+      width:100%;
+      max-width:390px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:14px;
+    }
+
+    .title{
+      font-size:17px;
+      color:#b36f8b;
+      text-align:center;
+    }
+
+    .phone{
+      width:100%;
+      min-height:740px;
+      background:linear-gradient(180deg,#fff0f6 0%,#ffe7ef 100%);
+      border:5px solid var(--phone-border);
+      border-radius:42px;
+      box-shadow:8px 8px 0 var(--shadow), inset 0 0 16px rgba(255,255,255,0.75);
+      padding:14px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .phone::before{
+      content:"";
+      position:absolute;
+      inset:10px;
+      border:2px solid rgba(239,179,200,0.45);
+      border-radius:32px;
+      pointer-events:none;
+    }
+
+    .speaker{
+      width:82px;
+      height:12px;
+      border-radius:999px;
+      margin:2px auto 12px;
+      background:linear-gradient(180deg,#f4bdd3 0%,#e89eba 100%);
+      border:2px solid #e49fbc;
+      position:relative;
+    }
+
+    .speaker::after{
+      content:"";
+      width:30px;
+      height:4px;
+      border-radius:999px;
+      background:rgba(255,255,255,0.8);
+      position:absolute;
+      left:50%;
+      top:50%;
+      transform:translate(-50%,-50%);
+    }
+
+    .screen{
+      min-height:664px;
+      border-radius:30px;
+      border:3px solid #f1bfd2;
+      background:
+        radial-gradient(circle at 18% 16%, rgba(255,255,255,0.65) 0 2px, transparent 3px),
+        radial-gradient(circle at 82% 18%, rgba(255,255,255,0.65) 0 2px, transparent 3px),
+        radial-gradient(circle at 24% 74%, rgba(255,255,255,0.65) 0 2px, transparent 3px),
+        linear-gradient(180deg,var(--screen-top) 0%,var(--screen-bottom) 100%);
+      padding:12px;
+      position:relative;
+      overflow:hidden;
+      display:none;
+      flex-direction:column;
+    }
+
+    .screen.active{
+      display:flex;
+    }
+
+    .status{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      font-size:11px;
+      color:#ae718a;
+      margin-bottom:8px;
+      padding:0 3px;
+      position:relative;
+      z-index:2;
+    }
+
+    .home-bar{
+      width:116px;
+      height:11px;
+      border-radius:999px;
+      background:linear-gradient(180deg,#f7acc8 0%,#e88fb3 100%);
+      border:2px solid #de96b2;
+      position:absolute;
+      left:50%;
+      bottom:12px;
+      transform:translateX(-50%);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,0.72);
+      z-index:3;
+    }
+
+    .float-deco{
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      z-index:1;
+    }
+
+    .float-deco span{
+      position:absolute;
+      color:rgba(255,255,255,0.95);
+      animation:twinkle 2.4s infinite ease-in-out;
+    }
+
+    .float-deco span:nth-child(1){top:42px;left:18px;font-size:17px;}
+    .float-deco span:nth-child(2){top:72px;right:22px;font-size:14px;animation-delay:.3s;}
+    .float-deco span:nth-child(3){top:150px;left:72px;font-size:14px;animation-delay:.8s;}
+    .float-deco span:nth-child(4){bottom:140px;right:24px;font-size:18px;animation-delay:1s;}
+    .float-deco span:nth-child(5){bottom:92px;left:22px;font-size:15px;animation-delay:.5s;}
+
+    @keyframes twinkle{
+      0%,100%{opacity:.45;transform:scale(.93);}
+      50%{opacity:1;transform:scale(1.07);}
+    }
+
+    .start-inner{
+      position:relative;
+      z-index:2;
+      flex:1;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding:8px 8px 40px;
+    }
+
+    .badge{
+      padding:8px 14px;
+      border-radius:999px;
+      border:2px solid #efbad0;
+      background:rgba(255,255,255,0.82);
+      color:#b87792;
+      font-size:12px;
+      margin-bottom:16px;
+    }
+
+    .preview{
+      width:230px;
+      background:#fffafe;
+      border:3px solid #efbad0;
+      border-radius:28px;
+      padding:12px;
+      box-shadow:5px 5px 0 #ffd9e6;
+      margin-bottom:18px;
+    }
+
+    .preview-top{
+      width:82px;
+      height:10px;
+      border-radius:999px;
+      margin:0 auto 12px;
+      border:2px solid #eba8c2;
+      background:linear-gradient(180deg,#f5c0d5 0%,#eca0bf 100%);
+    }
+
+    .preview-main{
+      height:146px;
+      border:2px solid #efb9ce;
+      border-radius:20px;
+      background:linear-gradient(180deg,#dff0ff 0%,#fff7cf 45%,#ffe3ee 100%);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .preview-main::before{
+      content:"MY APP";
+      position:absolute;
+      left:50%;
+      top:26px;
+      transform:translateX(-50%);
+      font-size:16px;
+      color:#665a61;
+    }
+
+    .preview-main::after{
+      content:"MUSIC";
+      position:absolute;
+      left:50%;
+      top:64px;
+      transform:translateX(-50%);
+      font-size:32px;
+      color:#5a4f55;
+      letter-spacing:2px;
+    }
+
+    .hero-title{
+      font-size:27px;
+      line-height:1.35;
+      margin:0 0 10px;
+      color:#a76883;
+    }
+
+    .hero-desc{
+      margin:0;
+      font-size:14px;
+      line-height:1.65;
+      color:var(--sub);
+    }
+
+    .primary-btn{
+      margin-top:24px;
+      border:none;
+      border-radius:999px;
+      padding:16px 26px;
+      background:linear-gradient(180deg,#ff97be 0%,var(--accent) 100%);
+      color:#fff;
+      font-family:inherit;
+      font-size:16px;
+      cursor:pointer;
+      box-shadow:0 5px 0 var(--accent-dark);
+    }
+
+    .primary-btn:active{
+      transform:translateY(4px);
+      box-shadow:0 1px 0 var(--accent-dark);
+    }
+
+    .question-inner{
+      flex:1;
+      position:relative;
+      z-index:2;
+      padding:6px 2px 42px;
+    }
+
+    .question-card{
+      background:rgba(255,255,255,0.9);
+      border:2px solid #efb9ce;
+      border-radius:24px;
+      box-shadow:4px 4px 0 #ffe2ec;
+      padding:16px 14px;
+    }
+
+    .question-head{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      font-size:12px;
+      color:#b57492;
+      margin-bottom:12px;
+    }
+
+    .progress-wrap{
+      width:100%;
+      height:16px;
+      border-radius:999px;
+      background:#fff0f6;
+      border:2px solid #efb9ce;
+      overflow:hidden;
+      margin-bottom:18px;
+    }
+
+    .progress-bar{
+      height:100%;
+      width:0%;
+      border-radius:999px;
+      background:linear-gradient(90deg,#ff99c2 0%,#fff19f 50%,#bde6ff 100%);
+      transition:width .3s ease;
+    }
+
+    .type-chip{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:7px 12px;
+      border-radius:999px;
+      border:2px solid #f1c3d5;
+      background:#fff9fc;
+      color:#b97893;
+      font-size:12px;
+      margin-bottom:14px;
+    }
+
+    .question-text{
+      font-size:19px;
+      line-height:1.6;
+      min-height:86px;
+      text-align:center;
+      color:#875f6e;
+      margin-bottom:18px;
+      word-break:keep-all;
+    }
+
+    .answer-list{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+
+    .answer-btn{
+      background:linear-gradient(180deg,#fffefe 0%,#fff2f8 100%);
+      border:2px solid #efb9ce;
+      border-radius:18px;
+      padding:15px 12px;
+      font-family:inherit;
+      font-size:14px;
+      color:#7a616c;
+      line-height:1.55;
+      cursor:pointer;
+      box-shadow:0 4px 0 #ffe1ec;
+      text-align:center;
+      word-break:keep-all;
+    }
+
+    .answer-btn:active{
+      transform:translateY(3px);
+      box-shadow:0 1px 0 #ffe1ec;
+    }
+
+    .result-inner{
+      flex:1;
+      position:relative;
+      z-index:2;
+      padding:2px 0 42px;
+    }
+
+    .story-board{
+      background:linear-gradient(180deg,#f7fbff 0%,#fffef5 42%,#fff7fb 100%);
+      border:2px solid #efbdd1;
+      border-radius:24px;
+      padding:10px;
+      min-height:585px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .story-grid{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      position:relative;
+      z-index:2;
+    }
+
+    .card{
+      border:3px solid var(--line);
+      border-radius:18px;
+      background:#fff;
+      padding:10px;
+      position:relative;
+    }
+
+    .soft-blue{ background:var(--blue); }
+    .soft-pink{ background:var(--pink); }
+    .soft-yellow{ background:var(--yellow); }
+    .soft-mint{ background:var(--mint); }
+    .soft-lav{ background:var(--lav); }
+    .soft-peach{ background:var(--peach); }
+
+    .top-card{
+      text-align:center;
+      padding:14px 12px;
+    }
+
+    .top-mini{
+      font-size:12px;
+      color:#534a4f;
+      margin-bottom:8px;
+    }
+
+    .top-app{
+      font-size:28px;
+      line-height:1.2;
+      color:#51474c;
+      margin-bottom:8px;
+      word-break:keep-all;
+    }
+
+    .top-desc{
+      font-size:14px;
+      line-height:1.5;
+      color:#665a61;
+      word-break:keep-all;
+    }
+
+    .two-col{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:10px;
+    }
+
+    .profile-card{
+      min-height:126px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      gap:7px;
+    }
+
+    .profile-icon{
+      font-size:40px;
+      line-height:1;
+    }
+
+    .section-label{
+      font-size:12px;
+      color:#4f474b;
+      margin-bottom:6px;
+    }
+
+    .app-title{
+      font-size:16px;
+      line-height:1.45;
+      color:#4f4549;
+      word-break:keep-all;
+    }
+
+    .todo-title{
+      font-size:16px;
+      margin-bottom:8px;
+      color:#4e454a;
+    }
+
+    .todo-list{
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+    }
+
+    .todo-item{
+      display:flex;
+      align-items:flex-start;
+      gap:7px;
+      font-size:12px;
+      line-height:1.45;
+      color:#51484c;
+      word-break:keep-all;
+    }
+
+    .todo-box{
+      width:14px;
+      height:14px;
+      border:2px solid var(--line);
+      border-radius:4px;
+      background:#fff;
+      flex:0 0 auto;
+      margin-top:1px;
+    }
+
+    .banner{
+      text-align:center;
+      font-size:20px;
+      line-height:1.4;
+      padding:12px 10px;
+      background:var(--pink);
+    }
+
+    .banner small{
+      display:block;
+      font-size:12px;
+      margin-top:6px;
+      color:#6f6268;
+      line-height:1.5;
+      word-break:keep-all;
+    }
+
+    .info-card{
+      min-height:96px;
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+      justify-content:flex-start;
+    }
+
+    .info-title{
+      font-size:12px;
+      color:#4e454a;
+    }
+
+    .info-name{
+      font-size:15px;
+      line-height:1.45;
+      color:#4e454a;
+      word-break:keep-all;
+    }
+
+    .info-desc{
+      font-size:12px;
+      line-height:1.45;
+      color:#6a5e64;
+      word-break:keep-all;
+    }
+
+    .corner-sticker{
+      position:absolute;
+      font-size:19px;
+      opacity:.95;
+    }
+
+    .st1{ top:8px; left:10px; }
+    .st2{ top:20px; right:12px; }
+    .st3{ bottom:90px; left:14px; }
+    .st4{ bottom:56px; right:12px; }
+
+    .actions{
+      display:none;
+      width:100%;
+      flex-direction:column;
+      gap:10px;
+    }
+
+    .action-btn{
+      width:100%;
+      border:2px solid #efb7cc;
+      border-radius:18px;
+      padding:15px;
+      background:#fff;
+      color:#bf6f8e;
+      font-family:inherit;
+      font-size:14px;
+      cursor:pointer;
+      box-shadow:0 4px 0 #efb7cc;
+    }
+
+    .action-btn.primary{
+      background:linear-gradient(180deg,#ff92bb 0%,#f06d9c 100%);
+      color:#fff;
+      border-color:#f06d9c;
+      box-shadow:0 4px 0 #d75d88;
+    }
+
+    .action-btn:active{
+      transform:translateY(4px);
+      box-shadow:none;
+    }
+
+    .modal{
+      display:none;
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,0.62);
+      backdrop-filter:blur(3px);
+      z-index:9999;
+      align-items:center;
+      justify-content:center;
+      padding:18px;
+    }
+
+    .modal-box{
+      width:100%;
+      max-width:380px;
+      background:#fff4f8;
+      border:4px solid #efb8cd;
+      border-radius:24px;
+      padding:18px;
+      text-align:center;
+      box-shadow:6px 6px 0 #ffd9e6;
+    }
+
+    .modal-title{
+      margin:0 0 12px;
+      font-size:14px;
+      color:#bf6f8f;
+      line-height:1.6;
+    }
+
+    #captureImage{
+      width:100%;
+      max-height:64vh;
+      object-fit:contain;
+      border-radius:16px;
+      border:2px solid #efbfd1;
+      background:#fff;
+    }
+
+    .close-btn{
+      margin-top:14px;
+      border:2px solid #efb7cc;
+      border-radius:16px;
+      padding:12px 16px;
+      background:#fff;
+      color:#bf6f8e;
+      font-family:inherit;
+      font-size:14px;
+      cursor:pointer;
+    }
+
+    @media (max-width:380px){
+      .two-col{
+        grid-template-columns:1fr;
+      }
+
+      .hero-title{
+        font-size:25px;
+      }
+
+      .top-app{
+        font-size:24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="modal" id="modal">
+    <div class="modal-box">
+      <p class="modal-title">이미지를 길게 눌러 저장하면 됨</p>
+      <img id="captureImage" src="" alt="결과 이미지">
+      <button class="close-btn" onclick="closeModal()">닫기</button>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="title">레트로 폰꾸 성격 테스트</div>
+
+    <div class="phone" id="phoneCase">
+      <div class="speaker"></div>
+
+      <section class="screen active" id="startScreen">
+        <div class="status">
+          <span>03/01 Fri.</span>
+          <span>LOVE MODE</span>
+          <span>100%</span>
+        </div>
+
+        <div class="float-deco">
+          <span>✦</span>
+          <span>♡</span>
+          <span>♪</span>
+          <span>✿</span>
+          <span>♡</span>
+        </div>
+
+        <div class="start-inner">
+          <div class="badge">인스스 한 장 공유용 결과</div>
+
+          <div class="preview">
+            <div class="preview-top"></div>
+            <div class="preview-main"></div>
+          </div>
+
+          <h1 class="hero-title">내 성격을<br>진짜 어플로 보여주는 테스트</h1>
+          <p class="hero-desc">
+            질문 12개에 답하면<br>
+            나랑 닮은 어플과 잘맞는 어플, 안맞는 어플까지<br>
+            한 화면에 예쁘게 정리됨
+          </p>
+
+          <button class="primary-btn" onclick="startTest()">테스트 시작하기</button>
+        </div>
+
+        <div class="home-bar"></div>
+      </section>
+
+      <section class="screen" id="questionScreen">
+        <div class="status">
+          <span id="qCount">1 / 12</span>
+          <span>MBTI TEST</span>
+          <span>LTE 100%</span>
+        </div>
+
+        <div class="float-deco">
+          <span>✦</span>
+          <span>♡</span>
+          <span>♪</span>
+          <span>✿</span>
+          <span>♡</span>
+        </div>
+
+        <div class="question-inner">
+          <div class="question-card">
+            <div class="question-head">
+              <span id="qStep">QUESTION 1</span>
+              <span id="qTypeMini">E / I</span>
+            </div>
+
+            <div class="progress-wrap">
+              <div class="progress-bar" id="progressBar"></div>
+            </div>
+
+            <div class="type-chip" id="qTypeChip">E / I 질문</div>
+            <div class="question-text" id="qText">질문 준비 중</div>
+            <div class="answer-list" id="answerList"></div>
+          </div>
+        </div>
+
+        <div class="home-bar"></div>
+      </section>
+
+      <section class="screen" id="resultScreen">
+        <div class="status">
+          <span>03/01 Fri.</span>
+          <span>MY HOME</span>
+          <span>100%</span>
+        </div>
+
+        <div class="result-inner">
+          <div class="story-board">
+            <div class="corner-sticker st1">✦</div>
+            <div class="corner-sticker st2">♡</div>
+            <div class="corner-sticker st3">✿</div>
+            <div class="corner-sticker st4">♪</div>
+
+            <div class="story-grid">
+              <div class="card soft-blue top-card">
+                <div class="top-mini">나랑 닮은 어플</div>
+                <div class="top-app" id="resultAppTop">음악</div>
+                <div class="top-desc" id="resultOneLine">한줄 설명</div>
+              </div>
+
+              <div class="two-col">
+                <div class="card soft-peach profile-card">
+                  <div class="section-label">대표 어플</div>
+                  <div class="profile-icon" id="resultIcon">🎵</div>
+                  <div class="app-title" id="resultAppName">음악</div>
+                </div>
+
+                <div class="card soft-mint">
+                  <div class="todo-title">이런 편</div>
+                  <div class="todo-list" id="resultTodo"></div>
+                </div>
+              </div>
+
+              <div class="card soft-pink banner">
+                오늘의 한마디
+                <small id="resultLock">한마디</small>
+              </div>
+
+              <div class="two-col">
+                <div class="card soft-yellow info-card">
+                  <div class="info-title">잘맞는 어플</div>
+                  <div class="info-name" id="resultGoodMatchName">-</div>
+                  <div class="info-desc" id="resultGoodMatchDesc">-</div>
+                </div>
+
+                <div class="card soft-lav info-card">
+                  <div class="info-title">안맞는 어플</div>
+                  <div class="info-name" id="resultBadMatchName">-</div>
+                  <div class="info-desc" id="resultBadMatchDesc">-</div>
+                </div>
+              </div>
+
+              <div class="two-col">
+                <div class="card soft-yellow info-card">
+                  <div class="info-title">배터리 충전 방식</div>
+                  <div class="info-desc" id="resultEnergy">-</div>
+                </div>
+
+                <div class="card soft-blue info-card">
+                  <div class="info-title">연애 위젯</div>
+                  <div class="info-desc" id="resultLove">-</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="home-bar"></div>
+      </section>
+    </div>
+
+    <div class="actions" id="bottomActions">
+      <button class="action-btn primary" onclick="captureResult()">결과 이미지 저장하기</button>
+      <button class="action-btn" onclick="restartTest()">다시 해보기</button>
+      <button class="action-btn" onclick="goOtherTest()">다른 테스트 해보기</button>
+      <button class="action-btn" onclick="shareTest()">테스트 공유하기</button>
+    </div>
+  </div>
+
+  <script>
+    const questions = [
+      { type: "EI", label: "E / I", q: "갑자기 친구가 오늘 저녁 보자고 하면", a1: "좋아 바로 나갈 준비부터 함", a2: "갑자기라 조금 고민부터 됨" },
+      { type: "EI", label: "E / I", q: "오랜만에 큰 모임에 가면 나는", a1: "여기저기 말 걸며 금방 섞임", a2: "익숙한 사람 옆에서 천천히 적응함" },
+      { type: "EI", label: "E / I", q: "하루 종일 정신없었던 날 회복법은", a1: "사람 만나고 수다 떨면 살아남", a2: "혼자 쉬어야 진짜 충전됨" },
+
+      { type: "SN", label: "S / N", q: "새 카페에 가면 제일 먼저 보는 건", a1: "자리, 메뉴, 동선 같은 실제 정보", a2: "전체 분위기와 떠오르는 느낌" },
+      { type: "SN", label: "S / N", q: "누군가 여행 얘기를 하면 더 궁금한 건", a1: "어디 갔고 뭘 했는지", a2: "어떤 기분이었고 어떤 장면이 남았는지" },
+      { type: "SN", label: "S / N", q: "새로운 일을 시작할 때 나는", a1: "지금 당장 할 수 있는 것부터 봄", a2: "앞으로 어떻게 커질지 상상부터 함" },
+
+      { type: "TF", label: "T / F", q: "친구가 속상한 일을 털어놓으면 나는", a1: "원인과 해결법부터 같이 정리해줌", a2: "그랬겠다 싶어서 마음부터 달래줌" },
+      { type: "TF", label: "T / F", q: "의견 충돌이 생기면 더 중요한 건", a1: "누가 봐도 맞는 기준인지", a2: "상대가 상처받지 않는지" },
+      { type: "TF", label: "T / F", q: "선물을 고를 때 내 기준은", a1: "자주 잘 쓸 실용성", a2: "받았을 때 기분 좋아질 감정 포인트" },
+
+      { type: "JP", label: "J / P", q: "약속 있는 날 준비 스타일은", a1: "미리 챙겨두고 여유 있게 움직임", a2: "나가기 직전에 몰아서 준비함" },
+      { type: "JP", label: "J / P", q: "할 일이 많을수록 나는", a1: "순서 정해서 체크하며 끝냄", a2: "손 가는 것부터 시작함" },
+      { type: "JP", label: "J / P", q: "갑자기 일정이 바뀌면 나는", a1: "살짝 당황하지만 다시 정리함", a2: "오히려 새 흐름이라 재밌어함" }
+    ];
+
+    const results = {
+      ISTJ: {
+        icon: "📅",
+        appName: "캘린더",
+        oneLine: "차분하게 계획 세우고 끝까지 해내는 타입",
+        todo: ["순서대로 끝냄", "시간 약속 정확함", "정리돼야 편함"],
+        energy: "혼자 조용히 몰입해서 하나씩 완성할 때 가장 충전됨",
+        love: "말보다 행동으로 꾸준히 보여주는 안정적인 연애를 선호함",
+        goodMatch: { name: "메모", desc: "정리하고 기록하는 흐름이 잘 맞음" },
+        badMatch: { name: "유튜브", desc: "계획 깨지는 알고리즘 흐름이 피곤할 수 있음" },
+        lock: "조용해 보여도 믿고 맡길 수 있는 사람"
+      },
+      ISFJ: {
+        icon: "💬",
+        appName: "카카오톡",
+        oneLine: "사람을 세심하게 챙기고 오래 기억하는 타입",
+        todo: ["작은 변화 잘 봄", "사람 챙김", "책임감 강함"],
+        energy: "편한 사람들과 따뜻한 대화를 나눌 때 가장 충전됨",
+        love: "작은 배려가 쌓이는 다정하고 안정적인 연애를 좋아함",
+        goodMatch: { name: "카카오톡", desc: "정서적인 교류와 안부 챙김이 잘 맞음" },
+        badMatch: { name: "지도", desc: "목적만 보는 흐름은 정서적으로 건조하게 느껴질 수 있음" },
+        lock: "말이 많지 않아도 다정함이 오래 남는 사람"
+      },
+      INFJ: {
+        icon: "📝",
+        appName: "노트",
+        oneLine: "깊은 생각과 섬세한 마음이 같이 있는 타입",
+        todo: ["생각 정리 자주 함", "깊은 대화 선호", "혼자 시간 필요함"],
+        energy: "혼자 사색하며 마음과 생각을 정리할 때 가장 충전됨",
+        love: "깊은 대화와 정서적 연결이 있는 관계를 선호함",
+        goodMatch: { name: "음악", desc: "감정선과 분위기를 깊게 타는 흐름이 잘 맞음" },
+        badMatch: { name: "틱톡", desc: "짧고 빠른 자극이 몰입을 자꾸 끊음" },
+        lock: "조용하지만 내면의 밀도가 높은 사람"
+      },
+      INTJ: {
+        icon: "🌐",
+        appName: "사파리",
+        oneLine: "큰 그림을 보고 효율적으로 움직이는 타입",
+        todo: ["핵심 먼저 봄", "비효율 싫어함", "혼자 집중 강함"],
+        energy: "혼자 몰입해서 완성도 높게 해낼 때 가장 충전됨",
+        love: "성장과 방향이 맞는 관계를 선호함",
+        goodMatch: { name: "메모", desc: "구조적으로 생각 정리하는 흐름이 잘 맞음" },
+        badMatch: { name: "유튜브 쇼츠", desc: "짧은 자극이 집중 흐름을 자꾸 끊음" },
+        lock: "감정보다 방향을 먼저 보는 단단한 사람"
+      },
+      ISTP: {
+        icon: "🗺️",
+        appName: "지도",
+        oneLine: "말보다 행동이 빠르고 담백한 해결형 타입",
+        todo: ["직접 해보는 편", "간섭 싫어함", "대처 빠름"],
+        energy: "자유롭게 움직이고 직접 해볼 때 가장 충전됨",
+        love: "부담 없이 편안하고 쿨한 관계를 선호함",
+        goodMatch: { name: "지도", desc: "직접 움직이고 바로 해결하는 흐름이 잘 맞음" },
+        badMatch: { name: "카카오톡", desc: "계속 이어지는 감정 대화는 피로해질 수 있음" },
+        lock: "무심해 보여도 필요할 땐 제일 빠른 사람"
+      },
+      ISFP: {
+        icon: "🖼️",
+        appName: "갤러리",
+        oneLine: "부드럽고 감각적이며 자기 취향이 분명한 타입",
+        todo: ["예쁜 것 좋아함", "평화 선호", "취향 뚜렷함"],
+        energy: "좋아하는 취향과 분위기 속에 머물 때 충전됨",
+        love: "편안하고 다정한 감성 연애를 좋아함",
+        goodMatch: { name: "갤러리", desc: "감각과 분위기를 오래 느끼는 흐름이 잘 맞음" },
+        badMatch: { name: "캘린더", desc: "딱딱한 통제감이 부담으로 느껴질 수 있음" },
+        lock: "조용하지만 취향과 감정은 또렷한 사람"
+      },
+      INFP: {
+        icon: "🎵",
+        appName: "음악",
+        oneLine: "상상력과 감정선이 풍부한 내면 집중형 타입",
+        todo: ["감정 깊음", "상상 자주 함", "진심 중요함"],
+        energy: "감정을 느끼고 상상에 잠길 때 가장 충전됨",
+        love: "진심이 느껴지는 섬세한 연애를 원함",
+        goodMatch: { name: "음악", desc: "감정선과 몰입을 깊게 타는 흐름이 잘 맞음" },
+        badMatch: { name: "엑셀", desc: "숫자와 구조만 남는 흐름은 쉽게 메마르게 느껴짐" },
+        lock: "부드러워 보여도 마음속 기준은 단단한 사람"
+      },
+      INTP: {
+        icon: "🔎",
+        appName: "구글",
+        oneLine: "궁금한 건 끝까지 파고드는 사고형 타입",
+        todo: ["궁금하면 검색함", "논리 구조 봄", "혼자 생각 많음"],
+        energy: "새 개념을 이해하고 원리를 파악할 때 가장 충전됨",
+        love: "말이 통하고 생각이 연결되는 관계를 선호함",
+        goodMatch: { name: "구글", desc: "질문하고 파고드는 흐름이 아주 잘 맞음" },
+        badMatch: { name: "인스타 릴스", desc: "빠르게 넘어가는 자극이 집중을 자꾸 깨뜨림" },
+        lock: "가만히 있어도 머릿속은 늘 바쁜 사람"
+      },
+      ESTP: {
+        icon: "📷",
+        appName: "카메라",
+        oneLine: "순간 판단과 실행이 빠른 현장형 타입",
+        todo: ["일단 해봄", "적응 빠름", "현장감 강함"],
+        energy: "직접 부딪히고 현장감 있게 움직일 때 충전됨",
+        love: "지루할 틈 없는 생동감 있는 연애를 좋아함",
+        goodMatch: { name: "카메라", desc: "순간을 바로 잡고 바로 움직이는 감각이 잘 맞음" },
+        badMatch: { name: "노트", desc: "오래 앉아 생각만 정리하는 흐름은 답답할 수 있음" },
+        lock: "재빠르게 분위기를 바꾸는 추진력 있는 사람"
+      },
+      ESFP: {
+        icon: "▶️",
+        appName: "유튜브",
+        oneLine: "분위기를 밝게 만들고 사람을 즐겁게 하는 타입",
+        todo: ["리액션 좋음", "재미 추구", "사람 좋아함"],
+        energy: "사람들과 웃고 떠들며 분위기 즐길 때 충전됨",
+        love: "같이 놀고 같이 웃는 사랑스러운 연애를 좋아함",
+        goodMatch: { name: "유튜브", desc: "즐거움과 반응이 바로 오는 흐름이 잘 맞음" },
+        badMatch: { name: "메일", desc: "딱딱하고 느린 소통은 쉽게 지루해질 수 있음" },
+        lock: "같이 있으면 공기가 밝아지는 사람"
+      },
+      ENFP: {
+        icon: "📱",
+        appName: "인스타그램",
+        oneLine: "호기심 많고 반응 빠른 무드 메이커 타입",
+        todo: ["새 자극 좋아함", "아이디어 많음", "진심이면 뜨거움"],
+        energy: "새로운 사람과 자극, 아이디어를 만날 때 충전됨",
+        love: "서로 자유롭고 재밌게 응원하는 연애를 좋아함",
+        goodMatch: { name: "인스타그램", desc: "새로운 자극과 감각을 빠르게 만나는 흐름이 잘 맞음" },
+        badMatch: { name: "캘린더", desc: "너무 고정된 규칙은 답답함으로 느껴질 수 있음" },
+        lock: "분위기와 아이디어를 같이 끌어올리는 사람"
+      },
+      ENTP: {
+        icon: "🎬",
+        appName: "유튜브",
+        oneLine: "발상 전환과 말 센스가 살아있는 타입",
+        todo: ["재치 있음", "토론 좋아함", "아이디어 많음"],
+        energy: "새로운 주제로 생각 튀기고 이야기할 때 충전됨",
+        love: "재치 있고 말 잘 통하는 관계를 선호함",
+        goodMatch: { name: "유튜브", desc: "재미와 새로운 아이디어를 계속 만나는 흐름이 잘 맞음" },
+        badMatch: { name: "캘린더", desc: "정해진 틀만 강조되는 흐름은 쉽게 질릴 수 있음" },
+        lock: "뻔한 흐름을 재미있게 뒤집는 사람"
+      },
+      ESTJ: {
+        icon: "📆",
+        appName: "캘린더",
+        oneLine: "현실 감각 좋고 추진력이 강한 실행형 타입",
+        todo: ["일처리 빠름", "기준 분명함", "정리 잘함"],
+        energy: "할 일을 정리하고 성과를 확인할 때 충전됨",
+        love: "분명하고 안정적인 관계를 선호함",
+        goodMatch: { name: "캘린더", desc: "계획과 실행 중심 흐름이 아주 잘 맞음" },
+        badMatch: { name: "넷플릭스", desc: "끝없이 늘어지는 흐름은 효율을 깨트릴 수 있음" },
+        lock: "현실적으로 끌고 가는 힘이 분명한 사람"
+      },
+      ESFJ: {
+        icon: "💌",
+        appName: "카카오톡",
+        oneLine: "공감과 배려로 관계를 따뜻하게 만드는 타입",
+        todo: ["표현 잘함", "사람 챙김", "공기 잘 읽음"],
+        energy: "사람들과 다정한 교류를 나눌 때 충전됨",
+        love: "표현과 배려가 많은 안정적인 연애를 좋아함",
+        goodMatch: { name: "카카오톡", desc: "교류와 공감이 많은 흐름이 아주 잘 맞음" },
+        badMatch: { name: "사파리", desc: "혼자만의 탐색이 길어지면 정서적으로 멀게 느껴질 수 있음" },
+        lock: "사람을 편하게 만드는 온기가 있는 사람"
+      },
+      ENFJ: {
+        icon: "🎧",
+        appName: "음악",
+        oneLine: "사람의 마음을 잘 읽고 응원하는 타입",
+        todo: ["공감 잘함", "응원해줌", "사람 장점 잘 봄"],
+        energy: "좋은 영향 주고받는 관계 속에서 충전됨",
+        love: "서로에게 힘이 되는 다정한 연애를 좋아함",
+        goodMatch: { name: "음악", desc: "감정과 위로를 자연스럽게 나누는 흐름이 잘 맞음" },
+        badMatch: { name: "지도", desc: "목적만 보는 흐름은 차갑게 느껴질 수 있음" },
+        lock: "사람을 응원하는 힘이 자연스럽게 나오는 사람"
+      },
+      ENTJ: {
+        icon: "📊",
+        appName: "메일",
+        oneLine: "크게 보고 빠르게 움직이는 주도형 타입",
+        todo: ["목표지향 강함", "판단 빠름", "주도권 잘 잡음"],
+        energy: "도전적인 목표를 세우고 성취할 때 충전됨",
+        love: "각자 방향과 성장을 존중하는 관계를 선호함",
+        goodMatch: { name: "메일", desc: "목적과 결과가 선명한 흐름이 잘 맞음" },
+        badMatch: { name: "틱톡", desc: "짧고 산만한 자극은 집중 방향을 자꾸 흐림" },
+        lock: "판을 읽고 앞으로 끌고 가는 힘이 큰 사람"
+      }
+    };
+
+    let current = 0;
+    let score = { E:0, I:0, S:0, N:0, T:0, F:0, J:0, P:0 };
+
+    function startTest() {
+      current = 0;
+      score = { E:0, I:0, S:0, N:0, T:0, F:0, J:0, P:0 };
+
+      document.getElementById("startScreen").classList.remove("active");
+      document.getElementById("resultScreen").classList.remove("active");
+      document.getElementById("questionScreen").classList.add("active");
+      document.getElementById("bottomActions").style.display = "none";
+
+      renderQuestion();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function renderQuestion() {
+      const q = questions[current];
+      document.getElementById("qCount").innerText = `${current + 1} / ${questions.length}`;
+      document.getElementById("qStep").innerText = `QUESTION ${current + 1}`;
+      document.getElementById("qTypeMini").innerText = q.label;
+      document.getElementById("qTypeChip").innerText = `${q.label} 질문`;
+      document.getElementById("qText").innerText = q.q;
+      document.getElementById("progressBar").style.width = `${((current + 1) / questions.length) * 100}%`;
+
+      const answerList = document.getElementById("answerList");
+      answerList.innerHTML = "";
+
+      const answers = [
+        { text: q.a1, type: q.type[0] },
+        { text: q.a2, type: q.type[1] }
+      ];
+
+      answers.forEach(item => {
+        const btn = document.createElement("button");
+        btn.className = "answer-btn";
+        btn.innerText = item.text;
+        btn.onclick = () => chooseAnswer(item.type);
+        answerList.appendChild(btn);
+      });
+    }
+
+    function chooseAnswer(type) {
+      score[type] += 1;
+      current += 1;
+
+      if (current < questions.length) {
+        renderQuestion();
+      } else {
+        showResult();
+      }
+    }
+
+    function getMbti() {
+      let mbti = "";
+      mbti += score.E >= score.I ? "E" : "I";
+      mbti += score.S >= score.N ? "S" : "N";
+      mbti += score.T >= score.F ? "T" : "F";
+      mbti += score.J >= score.P ? "J" : "P";
+      return mbti;
+    }
+
+    function showResult() {
+      const mbti = getMbti();
+      const data = results[mbti];
+
+      document.getElementById("questionScreen").classList.remove("active");
+      document.getElementById("resultScreen").classList.add("active");
+      document.getElementById("bottomActions").style.display = "flex";
+
+      document.getElementById("resultAppTop").innerText = data.appName;
+      document.getElementById("resultIcon").innerText = data.icon;
+      document.getElementById("resultAppName").innerText = data.appName;
+      document.getElementById("resultOneLine").innerText = data.oneLine;
+      document.getElementById("resultEnergy").innerText = data.energy;
+      document.getElementById("resultLove").innerText = data.love;
+      document.getElementById("resultGoodMatchName").innerText = data.goodMatch.name;
+      document.getElementById("resultGoodMatchDesc").innerText = data.goodMatch.desc;
+      document.getElementById("resultBadMatchName").innerText = data.badMatch.name;
+      document.getElementById("resultBadMatchDesc").innerText = data.badMatch.desc;
+      document.getElementById("resultLock").innerText = data.lock;
+
+      const todoBox = document.getElementById("resultTodo");
+      todoBox.innerHTML = "";
+      data.todo.forEach(text => {
+        const item = document.createElement("div");
+        item.className = "todo-item";
+        item.innerHTML = `<span class="todo-box"></span><span>${text}</span>`;
+        todoBox.appendChild(item);
+      });
+
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function restartTest() {
+      document.getElementById("resultScreen").classList.remove("active");
+      document.getElementById("questionScreen").classList.remove("active");
+      document.getElementById("startScreen").classList.add("active");
+      document.getElementById("bottomActions").style.display = "none";
+      current = 0;
+      score = { E:0, I:0, S:0, N:0, T:0, F:0, J:0, P:0 };
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function captureResult() {
+      const target = document.getElementById("phoneCase");
+
+      html2canvas(target, {
+        scale: 2,
+        useCORS: true,
+        backgroundColor: null
+      }).then(canvas => {
+        const imgUrl = canvas.toDataURL("image/png");
+        document.getElementById("captureImage").src = imgUrl;
+        document.getElementById("modal").style.display = "flex";
+      });
+    }
+
+    function closeModal() {
+      document.getElementById("modal").style.display = "none";
+    }
+
+    function goOtherTest() {
+      alert("다른 테스트 링크 연결만 해주면 바로 사용 가능");
+    }
+
+    function shareTest() {
+      const url = window.location.href;
+      const shareData = {
+        title: "레트로 폰꾸 성격 테스트",
+        text: "내 성격을 진짜 어플 느낌으로 보여주는 테스트",
+        url: url
+      };
+
+      if (navigator.share) {
+        navigator.share(shareData).catch(() => {});
+      } else {
+        navigator.clipboard.writeText(url).then(() => {
+          alert("링크 복사 완료");
+        });
+      }
+    }
+  </script>
+</body>
+</html>

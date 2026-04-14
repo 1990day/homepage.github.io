@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>전체 관람가 테스트</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Galmuri11&family=Pretendard:wght@400;500;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: "Pretendard", sans-serif;
+      color: #222;
+      min-height: 100%;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(255,255,255,0.95) 0 6%, rgba(255,255,255,0) 7%),
+        radial-gradient(circle at 80% 15%, rgba(255,255,255,0.9) 0 5%, rgba(255,255,255,0) 6%),
+        radial-gradient(circle at 20% 75%, rgba(255,255,255,0.7) 0 4%, rgba(255,255,255,0) 5%),
+        radial-gradient(circle at 85% 80%, rgba(255,255,255,0.8) 0 7%, rgba(255,255,255,0) 8%),
+        linear-gradient(180deg, #bde8ff 0%, #d6f2ff 35%, #fef6ff 75%, #fff8ef 100%);
+      overflow-x: hidden;
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      pointer-events: none;
+      z-index: 0;
+      border-radius: 50%;
+      opacity: 0.45;
+    }
+
+    body::before {
+      width: 220px;
+      height: 220px;
+      left: -50px;
+      top: 140px;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(255,255,255,0.95), rgba(255,255,255,0.15) 45%, rgba(173,216,255,0.1) 60%, rgba(255,255,255,0) 70%);
+      animation: floatBubble 7s ease-in-out infinite;
+    }
+
+    body::after {
+      width: 180px;
+      height: 180px;
+      right: -30px;
+      bottom: 90px;
+      background:
+        radial-gradient(circle at 35% 35%, rgba(255,255,255,0.95), rgba(255,255,255,0.18) 42%, rgba(255,182,193,0.12) 58%, rgba(255,255,255,0) 72%);
+      animation: floatBubble 9s ease-in-out infinite reverse;
+    }
+
+    @keyframes floatBubble {
+      0% {
+        transform: translateY(0px) translateX(0px) scale(1);
+      }
+      50% {
+        transform: translateY(-14px) translateX(8px) scale(1.03);
+      }
+      100% {
+        transform: translateY(0px) translateX(0px) scale(1);
+      }
+    }
+
+    @keyframes spin {
+      from { transform: translateY(-50%) rotate(0deg); }
+      to { transform: translateY(-50%) rotate(360deg); }
+    }
+
+    .wrapper {
+      width: min(100%, 1100px);
+      margin: 0 auto;
+      padding: 0 14px;
+    }
+
+    .header-wrapper {
+      width: 100%;
+      background-color: #ffe0b2;
+      border-bottom: 4px solid #e0e0e0;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .page-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+    }
+
+    .page-header h1 {
+      margin: 0;
+      padding: 0;
+    }
+
+    .retro-logo {
+      font-family: "Galmuri11", monospace;
+      font-size: 16px;
+      font-weight: 700;
+      background: #fff;
+      border: 3px solid #111;
+      padding: 6px 12px;
+      text-decoration: none;
+      color: #111;
+      box-shadow: 2px 2px 0 #111;
+      display: flex;
+      align-items: center;
+      transition: all 0.1s;
+    }
+
+    .retro-logo:active {
+      transform: translate(2px, 2px);
+      box-shadow: none;
+    }
+
+    .main-nav {
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      gap: 10px;
+    }
+
+    .main-nav a {
+      display: block;
+      font-family: "Galmuri11", monospace;
+      text-decoration: none;
+      color: #111;
+      font-weight: 700;
+      background: #fff;
+      border: 3px solid #111;
+      padding: 5px 8px;
+      font-size: 13px;
+      box-shadow: 2px 2px 0 #111;
+      transition: all 0.1s;
+    }
+
+    .main-nav a:active {
+      transform: translate(2px, 2px);
+      box-shadow: none;
+    }
+
+    .app {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      padding: 24px 14px 42px;
+    }
+
+    .screen {
+      display: none;
+      width: 100%;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    #resultScreen {
+      max-width: 760px;
+    }
+
+    .screen.active {
+      display: block;
+    }
+
+    .card {
+      position: relative;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.9);
+      border: 3px solid #222;
+      border-radius: 28px;
+      box-shadow: 0 10px 0 #b8dff2;
+      backdrop-filter: blur(7px);
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 7px 12px;
+      border: 2px solid #222;
+      border-radius: 999px;
+      background: #fff8c9;
+      font-family: "Galmuri11", monospace;
+      font-size: 13px;
+      margin-bottom: 14px;
+      box-shadow: 2px 2px 0 #222;
+    }
+
+    .start-btn,
+    .answer-btn,
+    .restart-btn,
+    .share-btn {
+      border: 3px solid #222;
+      box-shadow: 0 5px 0 #222;
+      border-radius: 20px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: transform 0.08s ease, box-shadow 0.08s ease, opacity 0.2s ease;
+      width: 100%;
+    }
+
+    .start-btn:active,
+    .answer-btn:active,
+    .restart-btn:active,
+    .share-btn:active {
+      transform: translateY(4px);
+      box-shadow: 0 1px 0 #222;
+    }
+
+    .start-btn,
+    .restart-btn {
+      margin-top: 22px;
+      padding: 18px 16px;
+      font-size: 18px;
+      background: linear-gradient(180deg, #eefaff 0%, #d9f2ff 100%);
+      color: #222;
+      box-shadow: 0 5px 0 #b8dff2;
+    }
+
+    .intro-card {
+      padding: 18px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.82) 100%);
+    }
+
+    .intro-image-wrap {
+      width: 100%;
+      border: 3px solid #222;
+      border-radius: 24px;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: 0 6px 0 #d8e7ef;
+    }
+
+    .intro-image {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .intro-bottom {
+      margin-top: 18px;
+    }
+
+    .question-card,
+    .result-card {
+      padding: 22px 18px 22px;
+    }
+
+    .question-top {
+      margin-bottom: 18px;
+    }
+
+    .question-count {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: "Galmuri11", monospace;
+      font-size: 13px;
+      margin-bottom: 10px;
+      color: #3b4450;
+      gap: 12px;
+    }
+
+    .progress-wrap {
+      width: 100%;
+      height: 26px;
+      border: 3px solid #222;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.8);
+      padding: 2px;
+      overflow: visible;
+      position: relative;
+      box-shadow: inset 0 2px 0 rgba(255,255,255,0.6);
+    }
+
+    .progress-bar {
+      position: relative;
+      height: 100%;
+      width: 0%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #91e4ff 0%, #ffd7f1 50%, #fff0a8 100%);
+      transition: width 0.25s ease;
+      overflow: visible;
+    }
+
+    .pinwheel {
+      position: absolute;
+      right: -14px;
+      top: 50%;
+      width: 30px;
+      height: 30px;
+      animation: spin 2.5s linear infinite;
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    .blade {
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      border-radius: 4px 16px 4px 16px;
+    }
+
+    .b1 {
+      top: 0;
+      left: 7px;
+      background: #7fd2a3;
+      transform: rotate(-10deg);
+    }
+
+    .b2 {
+      top: 7px;
+      right: 0;
+      background: #87cfe8;
+      transform: rotate(80deg);
+    }
+
+    .b3 {
+      bottom: 0;
+      left: 7px;
+      background: #f2c35a;
+      transform: rotate(170deg);
+    }
+
+    .b4 {
+      top: 7px;
+      left: 0;
+      background: #f3a9b8;
+      transform: rotate(260deg);
+    }
+
+    .center {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 8px;
+      height: 8px;
+      background: #2f2f68;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .question-box {
+      margin-top: 20px;
+      min-height: 180px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .question-label {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 7px 12px;
+      border: 2px solid #222;
+      border-radius: 999px;
+      background: #dff7ff;
+      font-family: "Galmuri11", monospace;
+      font-size: 12px;
+      box-shadow: 2px 2px 0 #222;
+      text-align: center;
+    }
+
+    .question-text {
+      margin: 0;
+      font-size: 22px;
+      line-height: 1.5;
+      font-weight: 800;
+      color: #222;
+      letter-spacing: -0.02em;
+      word-break: keep-all;
+      text-align: center;
+    }
+
+    .answer-group {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .answer-btn {
+      padding: 18px 10px;
+      font-size: 22px;
+      font-family: "Galmuri11", monospace;
+    }
+
+    .o-btn {
+      background: linear-gradient(180deg, #b8f6c8 0%, #7feea0 100%);
+    }
+
+    .x-btn {
+      background: linear-gradient(180deg, #ffd2e3 0%, #ffb5cb 100%);
+    }
+
+    .result-card {
+      text-align: center;
+      padding: 16px;
+    }
+
+    .result-image-wrap {
+      width: 100%;
+      margin: 0 auto;
+      border: 3px solid #222;
+      border-radius: 22px;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: 0 6px 0 #d8e7ef;
+    }
+
+    .result-image {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      aspect-ratio: auto;
+    }
+
+    .result-actions {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .restart-btn,
+    .share-btn {
+      padding: 16px 14px;
+      font-size: 16px;
+    }
+
+    .share-btn {
+      background: #fff;
+    }
+
+    @media (max-width: 480px) {
+      .retro-logo {
+        font-size: 14px;
+        padding: 5px 8px;
+      }
+
+      .main-nav {
+        gap: 6px;
+      }
+
+      .main-nav a {
+        padding: 4px 6px;
+        font-size: 11px;
+      }
+
+      .app {
+        padding: 18px 12px 30px;
+      }
+
+      .card {
+        border-radius: 22px;
+      }
+
+      .intro-card,
+      .question-card,
+      .result-card {
+        padding: 14px;
+      }
+
+      .intro-image-wrap,
+      .result-image-wrap {
+        border-radius: 18px;
+      }
+
+      .question-text {
+        font-size: 18px;
+        line-height: 1.6;
+      }
+
+      .question-box {
+        min-height: 160px;
+      }
+
+      .answer-group {
+        gap: 10px;
+      }
+
+      .answer-btn {
+        padding: 16px 8px;
+        font-size: 20px;
+      }
+
+      .progress-wrap {
+        height: 24px;
+      }
+
+      .pinwheel {
+        width: 26px;
+        height: 26px;
+        right: -12px;
+      }
+
+      .blade {
+        width: 14px;
+        height: 14px;
+      }
+
+      .b1, .b3 {
+        left: 6px;
+      }
+
+      .b2, .b4 {
+        top: 6px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="header-wrapper">
+    <header class="page-header wrapper">
+      <h1><a href="https://test-it.co.kr/" class="retro-logo">테스트잇</a></h1>
+      <nav>
+        <ul class="main-nav">
+          <li><a href="https://test-it.co.kr/test.html">성격</a></li>
+          <li><a href="https://test-it.co.kr/face.html">얼굴</a></li>
+          <li><a href="https://test-it.co.kr/etc.html">그외</a></li>
+          <li><a href="https://test-it.co.kr/saju.html">사주</a></li>
+        </ul>
+      </nav>
+    </header>
+  </div>
+
+  <main class="app">
+    <section id="introScreen" class="screen active">
+      <div class="card intro-card">
+        <div class="intro-image-wrap">
+          <img
+            src="img_main0104.png"
+            alt="동심 회복 테스트 메인 이미지"
+            class="intro-image"
+          />
+        </div>
+
+        <div class="intro-bottom">
+          <button id="startBtn" class="start-btn">테스트 시작하기</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="questionScreen" class="screen">
+      <div class="card question-card">
+        <div class="question-top">
+          <div class="question-count">
+            <span id="questionNumber">1 / 20</span>
+            <span id="progressText">진행률 5%</span>
+          </div>
+
+          <div class="progress-wrap">
+            <div id="progressBar" class="progress-bar">
+              <div class="pinwheel">
+                <div class="blade b1"></div>
+                <div class="blade b2"></div>
+                <div class="blade b3"></div>
+                <div class="blade b4"></div>
+                <div class="center"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="question-box">
+          <div class="question-label">QUESTION</div>
+          <p id="questionText" class="question-text"></p>
+        </div>
+
+        <div class="answer-group">
+          <button id="oBtn" class="answer-btn o-btn">O</button>
+          <button id="xBtn" class="answer-btn x-btn">X</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="resultScreen" class="screen">
+      <div class="card result-card">
+        <div class="result-image-wrap">
+          <img
+            id="resultImage"
+            class="result-image"
+            src="result_all.png"
+            alt="테스트 결과 이미지"
+          />
+        </div>
+
+        <div class="result-actions">
+          <button id="restartBtn" class="restart-btn">다시 테스트하기</button>
+          <button id="shareBtn" class="share-btn">결과 문구 복사하기</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const questions = [
+      "나는 아직도 부를 수 있는 만화 주제가가 있다.",
+      "가끔 문방구 앞에 멈춘다.",
+      "하늘을 보면 예쁜 모양의 구름을 찾는다.",
+      "놀이공원에 가면 범퍼카 한 번은 타야한다.",
+      "뽑기 기계 앞에서 승부욕이 생긴다.",
+      "어릴 때 별명을 아직 기억한다.",
+      "남 모르게 횡단보도 하얀색 선만 밟을 때가 있다.",
+      "내가 만화의 주인공이라고 상상할 때가 있다.",
+      "'우리 집에 왜 왔니' 가사가 자동 재생된다.",
+      "종이를 보면 비행기 한 번은 접어본다.",
+      "음식 먹을 때 제일 맛있는 건 마지막에 먹는다.",
+      "나는 아직도 학교 앞에서 먹던 컵 떡볶이가 생각난다.",
+      "눈이 오면 첫 발자국을 찍고 싶어진다.",
+      "놀이터를 지나가면 한 번쯤 그네가 타고 싶어진다.",
+      "종 치는 소리를 들으면 괜히 반응한다.",
+      "비밀 얘기할 때 괜히 목소리가 더 작아진다.",
+      "버튼을 보면 누르고 싶다.",
+      "누군가 내 이름을 불러주면 괜히 반갑다.",
+      "나는 아직도 어릴 때 만들었던 이메일을 사용한다.",
+      "포장지를 뜯기 전에 괜히 한번 흔들어본다."
+    ];
+
+    let currentQuestionIndex = 0;
+    let yesCount = 0;
+
+    const introScreen = document.getElementById("introScreen");
+    const questionScreen = document.getElementById("questionScreen");
+    const resultScreen = document.getElementById("resultScreen");
+
+    const startBtn = document.getElementById("startBtn");
+    const oBtn = document.getElementById("oBtn");
+    const xBtn = document.getElementById("xBtn");
+    const restartBtn = document.getElementById("restartBtn");
+    const shareBtn = document.getElementById("shareBtn");
+
+    const questionNumber = document.getElementById("questionNumber");
+    const progressText = document.getElementById("progressText");
+    const progressBar = document.getElementById("progressBar");
+    const questionText = document.getElementById("questionText");
+    const resultImage = document.getElementById("resultImage");
+
+    function showScreen(screen) {
+      introScreen.classList.remove("active");
+      questionScreen.classList.remove("active");
+      resultScreen.classList.remove("active");
+      screen.classList.add("active");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function startTest() {
+      currentQuestionIndex = 0;
+      yesCount = 0;
+      showScreen(questionScreen);
+      renderQuestion();
+    }
+
+    function renderQuestion() {
+      const total = questions.length;
+      const current = currentQuestionIndex + 1;
+      const progress = Math.round((current / total) * 100);
+
+      questionNumber.textContent = current + " / " + total;
+      progressText.textContent = "진행률 " + progress + "%";
+      progressBar.style.width = progress + "%";
+      questionText.textContent = questions[currentQuestionIndex];
+    }
+
+    function answerQuestion(isYes) {
+      if (isYes) {
+        yesCount += 1;
+      }
+
+      currentQuestionIndex += 1;
+
+      if (currentQuestionIndex < questions.length) {
+        renderQuestion();
+      } else {
+        showResult();
+      }
+    }
+
+    function getResultImage(score) {
+      if (score >= 16) {
+        return "result_all.png";
+      } else if (score >= 13) {
+        return "result_12.png";
+      } else if (score >= 10) {
+        return "result_15.png";
+      } else {
+        return "result_adult.png";
+      }
+    }
+
+    function showResult() {
+      const resultSrc = getResultImage(yesCount);
+      resultImage.src = resultSrc;
+      resultImage.alt = "테스트 결과 이미지";
+      showScreen(resultScreen);
+    }
+
+    function restartTest() {
+      currentQuestionIndex = 0;
+      yesCount = 0;
+      showScreen(introScreen);
+    }
+
+    function copyResultText() {
+      let resultText = "";
+
+      if (yesCount >= 16) {
+        resultText = "전체 관람가 / 당신의 마음속에는 영원한 동심이 있습니다.";
+      } else if (yesCount >= 13) {
+        resultText = "12세 관람가 / 더 어려지고 싶으시다고요? 4/29 6시 LUCY의 <전체 관람가>를 들으시면 됩니다.";
+      } else if (yesCount >= 10) {
+        resultText = "15세 관람가 / 어린 시절이 그립죠? 4/29 6시 LUCY의 <전체 관람가>와 떠나봅시다.";
+      } else {
+        resultText = "⚠️어른 주의⚠️ / 추억 복원 패치가 필요합니다. 4/29 6시 LUCY의 <전체 관람가> 리스닝 필수";
+      }
+
+      const textToCopy = "내 결과: " + resultText;
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(textToCopy)
+          .then(function () {
+            alert("결과 문구가 복사되었습니다.");
+          })
+          .catch(function () {
+            fallbackCopy(textToCopy);
+          });
+      } else {
+        fallbackCopy(textToCopy);
+      }
+    }
+
+    function fallbackCopy(text) {
+      const textarea = document.createElement("textarea");
+      textarea.value = text;
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand("copy");
+      document.body.removeChild(textarea);
+      alert("결과 문구가 복사되었습니다.");
+    }
+
+    startBtn.addEventListener("click", startTest);
+    oBtn.addEventListener("click", function () {
+      answerQuestion(true);
+    });
+    xBtn.addEventListener("click", function () {
+      answerQuestion(false);
+    });
+    restartBtn.addEventListener("click", restartTest);
+    shareBtn.addEventListener("click", copyResultText);
+  </script>
+</body>
+</html>

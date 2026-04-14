@@ -1,402 +1,1510 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>동심 놀이공원 테스트</title>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5522499110435321" crossorigin="anonymous"></script>
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>테스트잇x미스틱스토리 동심 테스트(가제)</title>
+  <meta name="description" content="테스트잇x미스틱스토리 동심 테스트(가제)" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="테스트잇x미스틱스토리 동심 테스트(가제)" />
+  <meta property="og:description" content="테스트잇x미스틱스토리 동심 테스트(가제)" />
+  <meta property="og:url" content="https://test-it.co.kr/test0101" />
+
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+@font-face {
+  font-family: 'ThinRounded';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2511-1@1.0/ThinDungGeunMo.woff2') format('woff2');
+  font-weight: normal;
+  font-display: swap;
+}
 
-  body {
-    background-color: #dcedc8;
-    background-image: radial-gradient(#f1f8e9 15%, transparent 16%), radial-gradient(#f1f8e9 15%, transparent 16%);
-    background-size: 30px 30px;
-    background-position: 0 0, 15px 15px;
-    font-family: 'Jua', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    overflow: hidden;
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'ThinRounded', Pretendard, Arial, sans-serif;
+  background: #eef8e5;
+  color: #4d6759;
+  overflow-x: hidden;
+}
+
+body {
+  min-height: 100vh;
+}
+
+:root {
+  --sky-top: #f8fbff;
+  --sky-bottom: #eef8ea;
+  --grass-main: #b9df89;
+  --grass-light: #d8efb6;
+  --path: #dbc08f;
+  --pink: #f6d6e3;
+  --pink-deep: #dfa9c1;
+  --soft-pink: #fdf1f6;
+  --yellow: #ffe9a8;
+  --yellow-deep: #efd680;
+  --tree-trunk: #9b7656;
+  --text-main: #516757;
+  --text-soft: #6f8373;
+  --shadow: 0 14px 36px rgba(105, 139, 102, 0.12);
+  --shadow-soft: 0 10px 22px rgba(112, 144, 115, 0.12);
+}
+
+.app {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 15% 10%, rgba(255,255,255,0.95) 0 70px, transparent 70px),
+    radial-gradient(circle at 85% 12%, rgba(255,255,255,0.9) 0 60px, transparent 60px),
+    linear-gradient(to bottom, var(--sky-top) 0%, #f6fbef 40%, #e7f4d2 100%);
+}
+
+/* --- 헤더 --- */
+.header-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  padding: 14px 0;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 430px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.retro-logo {
+  text-decoration: none;
+  color: #40503b;
+  font-size: 18px;
+  background: rgba(255,255,255,0.9);
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1.5px solid #e8ead7;
+  box-shadow: 0 4px 10px rgba(127, 150, 117, 0.08);
+  display: flex;
+  align-items: center;
+  transition: transform 0.15s;
+}
+
+.retro-logo:active {
+  transform: translateY(2px);
+}
+
+.page-header h1 {
+  margin: 0;
+  padding: 0;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 6px;
+}
+
+.main-nav a {
+  display: block;
+  text-decoration: none;
+  color: #7a8e7d;
+  background: rgba(255,255,255,0.8);
+  border: 1.5px solid #ecdfe4;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 13px;
+  white-space: nowrap;
+  transition: transform 0.15s, background 0.15s;
+  box-shadow: 0 3px 8px rgba(133, 153, 128, 0.06);
+}
+
+.main-nav a:hover {
+  background: #fdf4f8;
+  color: #8d7c84;
+}
+
+.main-nav a:active {
+  transform: translateY(2px);
+}
+
+/* --- 화면 전환 --- */
+.screen {
+  display: none;
+  min-height: 100vh;
+  position: relative;
+}
+
+.screen.active {
+  display: block;
+}
+
+.scene {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.sun-glow {
+  position: absolute;
+  width: 240px;
+  height: 240px;
+  right: -40px;
+  top: -50px;
+  background: radial-gradient(circle, rgba(255,244,178,0.75) 0%, rgba(255,244,178,0.2) 48%, rgba(255,244,178,0) 72%);
+  border-radius: 50%;
+  filter: blur(4px);
+}
+
+.cloud {
+  position: absolute;
+  background: rgba(255,255,255,0.95);
+  border-radius: 999px;
+  box-shadow: 0 6px 16px rgba(170, 193, 180, 0.14);
+}
+
+.cloud::before,
+.cloud::after {
+  content: "";
+  position: absolute;
+  background: rgba(255,255,255,0.95);
+  border-radius: 50%;
+}
+
+.cloud.c1 {
+  width: 108px;
+  height: 34px;
+  left: 8%;
+  top: 9%;
+  animation: drift 19s linear infinite;
+}
+
+.cloud.c1::before {
+  width: 38px;
+  height: 38px;
+  left: 16px;
+  top: -14px;
+}
+
+.cloud.c1::after {
+  width: 42px;
+  height: 42px;
+  right: 18px;
+  top: -18px;
+}
+
+.cloud.c2 {
+  width: 130px;
+  height: 38px;
+  right: 14%;
+  top: 16%;
+  animation: drift 25s linear infinite;
+}
+
+.cloud.c2::before {
+  width: 44px;
+  height: 44px;
+  left: 18px;
+  top: -16px;
+}
+
+.cloud.c2::after {
+  width: 52px;
+  height: 52px;
+  right: 20px;
+  top: -22px;
+}
+
+.cloud.c3 {
+  width: 90px;
+  height: 28px;
+  left: 52%;
+  top: 7%;
+  opacity: 0.8;
+  animation: drift 28s linear infinite;
+}
+
+.cloud.c3::before {
+  width: 30px;
+  height: 30px;
+  left: 14px;
+  top: -10px;
+}
+
+.cloud.c3::after {
+  width: 34px;
+  height: 34px;
+  right: 14px;
+  top: -14px;
+}
+
+@keyframes drift {
+  0% { transform: translateX(0); }
+  50% { transform: translateX(16px); }
+  100% { transform: translateX(0); }
+}
+
+.hill {
+  position: absolute;
+  border-radius: 50%;
+}
+
+.hill.h1 {
+  width: 130%;
+  height: 360px;
+  left: -15%;
+  bottom: -155px;
+  background: #d8efb6;
+}
+
+.hill.h2 {
+  width: 110%;
+  height: 270px;
+  right: -18%;
+  bottom: -122px;
+  background: #b9df89;
+}
+
+.hill.h3 {
+  width: 70%;
+  height: 140px;
+  left: -4%;
+  bottom: 120px;
+  background: rgba(187, 228, 146, 0.82);
+  transform: rotate(-8deg);
+  filter: blur(1px);
+}
+
+.path {
+  position: absolute;
+  width: 72%;
+  height: 190px;
+  right: -10%;
+  bottom: 85px;
+  background: #dbc08f;
+  border-radius: 60% 0 0 60%;
+  transform: rotate(-7deg);
+  box-shadow: inset 0 8px 0 rgba(255,255,255,0.15);
+  opacity: 0.88;
+}
+
+.picnic-blanket {
+  position: absolute;
+  width: 168px;
+  height: 120px;
+  left: 10%;
+  bottom: 115px;
+  border-radius: 12px;
+  background:
+    linear-gradient(to right, rgba(241,181,205,0.95) 0 18%, transparent 18% 32%, rgba(241,181,205,0.95) 32% 50%, transparent 50% 68%, rgba(241,181,205,0.95) 68% 84%, transparent 84% 100%),
+    linear-gradient(to bottom, rgba(241,181,205,0.95) 0 18%, transparent 18% 32%, rgba(241,181,205,0.95) 32% 50%, transparent 50% 68%, rgba(241,181,205,0.95) 68% 84%, transparent 84% 100%),
+    #fde8f0;
+  transform: rotate(-7deg);
+  box-shadow: var(--shadow-soft);
+  opacity: 0.95;
+}
+
+.picnic-basket {
+  position: absolute;
+  left: 17%;
+  bottom: 160px;
+  width: 36px;
+  height: 26px;
+  background: #c99d6d;
+  border-radius: 8px 8px 10px 10px;
+  box-shadow: inset 0 -5px 0 rgba(0,0,0,0.08);
+}
+
+.picnic-basket::before {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 12px;
+  border: 3px solid #b7834f;
+  border-bottom: none;
+  border-radius: 18px 18px 0 0;
+  left: 5px;
+  top: -9px;
+}
+
+.tree {
+  position: absolute;
+}
+
+.tree .trunk {
+  position: absolute;
+  bottom: 0;
+  width: 18px;
+  height: 96px;
+  background: #9b7656;
+  border-radius: 12px;
+}
+
+.tree .crown {
+  position: absolute;
+  bottom: 68px;
+  width: 120px;
+  height: 120px;
+  background: #9ad595;
+  border-radius: 50%;
+  box-shadow:
+    -26px 18px 0 8px #9cd49b,
+    30px 12px 0 4px #87c88b,
+    12px -26px 0 0 #a8dc9c;
+}
+
+.tree.tree-left {
+  left: -12px;
+  bottom: 150px;
+  transform: scale(0.96);
+}
+
+.tree.tree-left .trunk {
+  left: 56px;
+}
+
+.tree.tree-left .crown {
+  left: 6px;
+}
+
+.tree.tree-right {
+  right: 8px;
+  bottom: 138px;
+  transform: scale(1.04);
+}
+
+.tree.tree-right .trunk {
+  left: 58px;
+}
+
+.tree.tree-right .crown {
+  left: 0;
+  background: #f6c8dc;
+  box-shadow:
+    -26px 18px 0 8px #f4d6e3,
+    30px 12px 0 4px #efb8d0,
+    12px -26px 0 0 #f7dfe9;
+}
+
+.tree.tree-back {
+  left: 72%;
+  bottom: 230px;
+  transform: scale(0.58);
+  opacity: 0.72;
+}
+
+.tree.tree-back .trunk {
+  left: 56px;
+}
+
+.tree.tree-back .crown {
+  left: 0;
+  background: #9fd59f;
+  box-shadow:
+    -26px 18px 0 8px #b4e1ac,
+    30px 12px 0 4px #8bc58d,
+    12px -26px 0 0 #a7d99f;
+}
+
+.flower-clump {
+  position: absolute;
+  width: 78px;
+  height: 50px;
+  bottom: 126px;
+  right: 23%;
+}
+
+.flower-clump span {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #ffb3c6;
+  box-shadow:
+    8px 0 0 #ffd46a,
+    -8px 0 0 #ff8fb3,
+    0 8px 0 #ffc0cb,
+    0 -8px 0 #ffd98a;
+}
+
+.flower-clump span:nth-child(1) { left: 8px; top: 18px; }
+.flower-clump span:nth-child(2) { left: 30px; top: 8px; transform: scale(0.9); }
+.flower-clump span:nth-child(3) { left: 52px; top: 20px; transform: scale(1.06); }
+.flower-clump span:nth-child(4) { left: 26px; top: 28px; transform: scale(0.82); }
+
+.bush {
+  position: absolute;
+  width: 96px;
+  height: 54px;
+  background: #9ed88d;
+  border-radius: 40px;
+  bottom: 106px;
+  left: 35%;
+  box-shadow:
+    -20px 8px 0 #aedf9a,
+    18px 6px 0 #89c777;
+}
+
+.tiny-grass {
+  position: absolute;
+  width: 18px;
+  height: 14px;
+  border-left: 2px solid #8eb56a;
+  border-right: 2px solid #8eb56a;
+  border-top: 2px solid transparent;
+  border-radius: 50%;
+  opacity: 0.55;
+}
+
+.tiny-grass::before,
+.tiny-grass::after {
+  content: "";
+  position: absolute;
+  width: 2px;
+  height: 10px;
+  background: #8eb56a;
+  bottom: 0;
+  border-radius: 2px;
+}
+
+.tiny-grass::before {
+  left: 5px;
+  transform: rotate(-16deg);
+}
+
+.tiny-grass::after {
+  right: 5px;
+  transform: rotate(18deg);
+}
+
+.g1 { left: 20%; bottom: 110px; }
+.g2 { left: 46%; bottom: 132px; transform: scale(0.9); }
+.g3 { left: 67%; bottom: 118px; transform: scale(0.8); }
+.g4 { left: 84%; bottom: 154px; transform: scale(0.95); }
+.g5 { left: 7%; bottom: 155px; transform: scale(0.75); }
+.g6 { left: 58%; bottom: 170px; transform: scale(0.82); }
+
+.petals {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.petal {
+  position: absolute;
+  width: 12px;
+  height: 8px;
+  background: rgba(255,255,255,0.95);
+  border-radius: 10px 10px 10px 2px;
+  box-shadow: 0 2px 4px rgba(198, 182, 189, 0.12);
+  animation-name: fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.petal.p1 { left: 8%; top: -5%; animation-duration: 13s; animation-delay: -1s; transform: rotate(16deg); }
+.petal.p2 { left: 20%; top: -8%; animation-duration: 11s; animation-delay: -4s; transform: rotate(-14deg); }
+.petal.p3 { left: 35%; top: -6%; animation-duration: 14s; animation-delay: -2s; transform: rotate(28deg); }
+.petal.p4 { left: 52%; top: -7%; animation-duration: 15s; animation-delay: -8s; transform: rotate(-10deg); }
+.petal.p5 { left: 64%; top: -10%; animation-duration: 12s; animation-delay: -6s; transform: rotate(22deg); }
+.petal.p6 { left: 80%; top: -4%; animation-duration: 16s; animation-delay: -10s; transform: rotate(-24deg); }
+.petal.p7 { left: 92%; top: -9%; animation-duration: 17s; animation-delay: -12s; transform: rotate(12deg); }
+
+@keyframes fall {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(70px, 110vh, 0) rotate(300deg);
+    opacity: 0.85;
+  }
+}
+
+.content-wrap {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: 430px;
+  margin: 0 auto;
+  min-height: 100vh;
+  padding: 70px 18px 34px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.start-area {
+  padding-bottom: 0;
+  margin-top: 16px;
+}
+
+.start-btn {
+  width: 100%;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 24px;
+  padding: 19px 18px 20px;
+  background: linear-gradient(to bottom, #fff8df 0%, #ffe8a0 100%);
+  color: #6a785a;
+  font-size: 18px;
+  font-weight: 800;
+  box-shadow:
+    0 14px 30px rgba(198, 190, 113, 0.18),
+    inset 0 2px 0 rgba(255,255,255,0.9),
+    0 5px 0 #e7cf7d;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.start-btn:hover {
+  transform: translateY(-2px);
+}
+
+.start-btn:active {
+  transform: translateY(3px);
+}
+
+.test-wrap {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: 430px;
+  margin: 0 auto;
+  min-height: 100vh;
+  padding: 64px 16px 18px;
+  display: flex;
+  flex-direction: column;
+}
+
+.test-top {
+  padding-top: 10px;
+}
+
+.q-chip-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.q-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.82);
+  border: 1.5px solid #ecdfe4;
+  box-shadow: 0 5px 14px rgba(133, 153, 128, 0.08);
+  color: #7a8e7d;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.q-chip strong {
+  color: #637965;
+}
+
+.progress-box {
+  width: 100%;
+  background: rgba(255,255,255,0.8);
+  border: 1.5px solid #e8ead7;
+  border-radius: 999px;
+  padding: 6px;
+  box-shadow: 0 8px 18px rgba(127, 150, 117, 0.08);
+}
+
+.progress-track {
+  width: 100%;
+  height: 12px;
+  background: #edf6df;
+  border-radius: 999px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-bar {
+  width: 0%;
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(to right, #ffd3df 0%, #ffe89a 50%, #b9e194 100%);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.7);
+  transition: width 0.28s ease;
+  position: relative;
+}
+
+.progress-bar::after {
+  content: "";
+  position: absolute;
+  right: 8px;
+  top: 2px;
+  width: 20px;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.28);
+  filter: blur(1px);
+}
+
+.question-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 16px 2px 4px;
+}
+
+.question-card {
+  position: relative;
+  background: rgba(255,255,255,0.9);
+  border: 1.5px solid rgba(230, 222, 196, 0.92);
+  border-radius: 30px;
+  padding: 24px 22px 26px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(9px);
+  overflow: hidden;
+}
+
+.question-card::before {
+  content: "";
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  right: -60px;
+  top: -60px;
+  background: radial-gradient(circle, rgba(255,236,170,0.55) 0%, rgba(255,236,170,0) 70%);
+  border-radius: 50%;
+}
+
+.question-card::after {
+  content: "";
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  left: -52px;
+  bottom: -52px;
+  background: radial-gradient(circle, rgba(247,208,225,0.45) 0%, rgba(247,208,225,0) 72%);
+  border-radius: 50%;
+}
+
+.question-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 18px;
+  padding: 8px 12px;
+  background: #fdf4f8;
+  border: 1px solid #f2d6e3;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 800;
+  color: #8d7c84;
+  position: relative;
+  z-index: 2;
+}
+
+.question-label .flower-mini {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ffc3d7;
+  box-shadow:
+    7px 0 0 #ffd878,
+    3.5px 6px 0 #bfe59f,
+    3.5px -6px 0 #ffe2ea;
+  margin-right: 8px;
+}
+
+.question-text {
+  position: relative;
+  z-index: 2;
+  font-size: 22px;
+  line-height: 1.45;
+  letter-spacing: -0.9px;
+  color: #5a6f5f;
+  font-weight: 800;
+  word-break: keep-all;
+}
+
+.question-visual {
+  position: relative;
+  width: 100%;
+  height: 190px;
+  margin: 14px 0 16px;
+  overflow: hidden;
+  border-radius: 24px;
+  background: linear-gradient(to bottom, #eef7ff 0%, #f7fcf1 40%, #c7e691 100%);
+  box-shadow: 0 10px 22px rgba(112, 144, 115, 0.12);
+}
+
+.question-visual .mini-cloud {
+  position: absolute;
+  background: rgba(255,255,255,0.92);
+  border-radius: 999px;
+}
+
+.question-visual .mini-cloud::before,
+.question-visual .mini-cloud::after {
+  content: "";
+  position: absolute;
+  background: rgba(255,255,255,0.92);
+  border-radius: 50%;
+}
+
+.question-visual .mc1 {
+  width: 82px;
+  height: 26px;
+  left: 14px;
+  top: 22px;
+}
+
+.question-visual .mc1::before {
+  width: 28px;
+  height: 28px;
+  left: 12px;
+  top: -10px;
+}
+
+.question-visual .mc1::after {
+  width: 30px;
+  height: 30px;
+  right: 11px;
+  top: -12px;
+}
+
+.question-visual .mc2 {
+  width: 72px;
+  height: 24px;
+  right: 22px;
+  top: 20px;
+}
+
+.question-visual .mc2::before {
+  width: 24px;
+  height: 24px;
+  left: 10px;
+  top: -8px;
+}
+
+.question-visual .mc2::after {
+  width: 26px;
+  height: 26px;
+  right: 10px;
+  top: -10px;
+}
+
+.question-visual .mini-sun {
+  position: absolute;
+  right: 46px;
+  top: 8px;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,237,165,0.92) 0%, rgba(255,237,165,0.4) 55%, rgba(255,237,165,0) 75%);
+}
+
+.question-visual .mini-hill-back {
+  position: absolute;
+  left: -8%;
+  bottom: 40px;
+  width: 72%;
+  height: 56px;
+  border-radius: 50%;
+  background: #dff1c1;
+}
+
+.question-visual .mini-hill-front {
+  position: absolute;
+  left: -8%;
+  bottom: -16px;
+  width: 120%;
+  height: 84px;
+  border-radius: 50%;
+  background: #bfe08d;
+}
+
+.question-visual .mini-path {
+  position: absolute;
+  right: -6%;
+  bottom: 8px;
+  width: 46%;
+  height: 66px;
+  background: #d8be92;
+  border-radius: 55% 0 0 55%;
+  transform: rotate(-8deg);
+  opacity: 0.92;
+}
+
+.question-visual .mini-blanket {
+  position: absolute;
+  left: 30px;
+  bottom: 24px;
+  width: 94px;
+  height: 46px;
+  border-radius: 12px;
+  background:
+    linear-gradient(to right, rgba(240,180,205,0.95) 0 18%, transparent 18% 32%, rgba(240,180,205,0.95) 32% 50%, transparent 50% 68%, rgba(240,180,205,0.95) 68% 84%, transparent 84% 100%),
+    linear-gradient(to bottom, rgba(240,180,205,0.95) 0 18%, transparent 18% 32%, rgba(240,180,205,0.95) 32% 50%, transparent 50% 68%, rgba(240,180,205,0.95) 68% 84%, transparent 84% 100%),
+    #fde8f0;
+  transform: rotate(-8deg);
+  box-shadow: 0 8px 14px rgba(150, 123, 134, 0.12);
+}
+
+.question-visual .mini-basket {
+  position: absolute;
+  left: 54px;
+  bottom: 63px;
+  width: 22px;
+  height: 16px;
+  background: #c99d6d;
+  border-radius: 7px 7px 8px 8px;
+  z-index: 3;
+}
+
+.question-visual .mini-basket::before {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 7px;
+  border: 2px solid #b7834f;
+  border-bottom: none;
+  border-radius: 10px 10px 0 0;
+  left: 4px;
+  top: -6px;
+}
+
+.question-visual .mini-tree {
+  position: absolute;
+  right: 30px;
+  bottom: 20px;
+  width: 84px;
+  height: 118px;
+}
+
+.question-visual .mini-tree::before {
+  content: "";
+  position: absolute;
+  left: 36px;
+  bottom: 0;
+  width: 10px;
+  height: 54px;
+  background: #9a7456;
+  border-radius: 10px;
+}
+
+.question-visual .mini-tree::after {
+  content: "";
+  position: absolute;
+  left: 8px;
+  bottom: 34px;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: #f4cadc;
+  box-shadow:
+    -16px 10px 0 #f6dce7,
+    18px 8px 0 #efbad1,
+    6px -14px 0 #f9e4ee;
+}
+
+.question-visual .mini-bush {
+  position: absolute;
+  left: 160px;
+  bottom: 24px;
+  width: 62px;
+  height: 32px;
+  border-radius: 30px;
+  background: #98d582;
+  box-shadow: -12px 6px 0 #aee39d, 12px 4px 0 #88c773;
+}
+
+.question-visual .mini-flower {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: #ffb5cb;
+  border-radius: 50%;
+  box-shadow:
+    6px 0 0 #ffd56b,
+    -6px 0 0 #ff8eaf,
+    0 6px 0 #ffd0da,
+    0 -6px 0 #ffe08e;
+}
+
+.question-visual .mf1 { left: 150px; bottom: 58px; }
+.question-visual .mf2 { left: 184px; bottom: 48px; transform: scale(0.85); }
+.question-visual .mf3 { right: 106px; bottom: 55px; transform: scale(0.92); }
+
+.question-visual .mini-petals {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.question-visual .mini-petal {
+  position: absolute;
+  width: 10px;
+  height: 7px;
+  background: rgba(255, 227, 236, 0.95);
+  border-radius: 10px 10px 10px 2px;
+  box-shadow: 0 1px 3px rgba(210, 173, 188, 0.18);
+  opacity: 0;
+  animation: miniFall linear infinite;
+}
+
+.question-visual .mini-petal.mp1 { left: 10%; top: -8%; animation-duration: 6.8s; animation-delay: -0.8s; }
+.question-visual .mini-petal.mp2 { left: 24%; top: -10%; animation-duration: 7.4s; animation-delay: -2.4s; }
+.question-visual .mini-petal.mp3 { left: 40%; top: -6%; animation-duration: 6.2s; animation-delay: -1.5s; }
+.question-visual .mini-petal.mp4 { left: 58%; top: -12%; animation-duration: 7.8s; animation-delay: -3.2s; }
+.question-visual .mini-petal.mp5 { left: 73%; top: -9%; animation-duration: 6.9s; animation-delay: -4.6s; }
+.question-visual .mini-petal.mp6 { left: 86%; top: -7%; animation-duration: 8.2s; animation-delay: -2.1s; }
+
+@keyframes miniFall {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  45% {
+    transform: translate3d(10px, 60px, 0) rotate(90deg) scale(0.98);
+    opacity: 0.95;
+  }
+  75% {
+    transform: translate3d(-6px, 120px, 0) rotate(180deg) scale(0.95);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translate3d(14px, 210px, 0) rotate(280deg) scale(0.9);
+    opacity: 0;
+  }
+}
+
+.ox-area {
+  margin-top: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.ox-btn {
+  position: relative;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  min-height: 112px;
+  border-radius: 28px;
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+  overflow: hidden;
+}
+
+.ox-btn:hover {
+  transform: translateY(-2px);
+}
+
+.ox-btn:active {
+  transform: translateY(3px);
+}
+
+.ox-btn.o {
+  background: linear-gradient(to bottom, #fff8de 0%, #ffe59e 100%);
+  box-shadow:
+    0 12px 24px rgba(214, 195, 103, 0.22),
+    inset 0 2px 0 rgba(255,255,255,0.9),
+    0 5px 0 #e8cb73;
+}
+
+.ox-btn.x {
+  background: linear-gradient(to bottom, #fff1f6 0%, #ffd3e3 100%);
+  box-shadow:
+    0 12px 24px rgba(227, 165, 192, 0.18),
+    inset 0 2px 0 rgba(255,255,255,0.9),
+    0 5px 0 #ecb3cb;
+}
+
+.ox-btn .symbol {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ox-btn.o .symbol::before {
+  content: "";
+  width: 52px;
+  height: 52px;
+  border: 8px solid rgba(117, 132, 92, 0.92);
+  border-radius: 50%;
+  box-shadow: 0 2px 0 rgba(255,255,255,0.45);
+}
+
+.ox-btn.x .symbol::before,
+.ox-btn.x .symbol::after {
+  content: "";
+  position: absolute;
+  width: 62px;
+  height: 8px;
+  background: rgba(131, 104, 121, 0.92);
+  border-radius: 999px;
+}
+
+.ox-btn.x .symbol::before {
+  transform: rotate(45deg);
+}
+
+.ox-btn.x .symbol::after {
+  transform: rotate(-45deg);
+}
+
+.ox-btn .mini-flower {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.58);
+  box-shadow:
+    7px 0 0 rgba(255,255,255,0.58),
+    3.5px 6px 0 rgba(255,255,255,0.58),
+    3.5px -6px 0 rgba(255,255,255,0.58);
+  opacity: 0.9;
+}
+
+.ox-btn .f1 { left: 16px; top: 18px; transform: scale(0.8); }
+.ox-btn .f2 { right: 18px; bottom: 16px; transform: scale(0.9); }
+.ox-btn .f3 { right: 20px; top: 18px; transform: scale(0.7); }
+.ox-btn .f4 { left: 16px; bottom: 18px; transform: scale(0.78); }
+
+.result-wrap {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: 430px;
+  margin: 0 auto;
+  min-height: 100vh;
+  padding: 70px 16px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* 여기 수정 */
+.result-image-box {
+  width: 100%;
+  padding: 0;
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  backdrop-filter: none;
+  overflow: visible;
+}
+
+.result-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  border-radius: 0;
+  object-fit: contain;
+}
+
+.result-actions {
+  margin-top: 16px;
+  display: grid;
+  gap: 12px;
+}
+
+.action-btn {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 20px;
+  padding: 16px 16px;
+  font-size: 16px;
+  font-weight: 800;
+  transition: transform 0.16s ease, box-shadow 0.16s ease;
+}
+
+.action-btn:hover {
+  transform: translateY(-2px);
+}
+
+.action-btn:active {
+  transform: translateY(2px);
+}
+
+.action-btn.primary {
+  background: linear-gradient(to bottom, #fff7dc 0%, #ffe59c 100%);
+  color: #6f7757;
+  box-shadow:
+    0 10px 22px rgba(206, 188, 104, 0.2),
+    inset 0 2px 0 rgba(255,255,255,0.85),
+    0 5px 0 #e2c86f;
+}
+
+.action-btn.secondary {
+  background: linear-gradient(to bottom, #fff2f7 0%, #ffd7e5 100%);
+  color: #7b6170;
+  box-shadow:
+    0 10px 22px rgba(222, 168, 193, 0.18),
+    inset 0 2px 0 rgba(255,255,255,0.85),
+    0 5px 0 #ebb4cc;
+}
+
+@media (max-width: 430px) {
+  .question-text {
+    font-size: 19px;
   }
 
-  /* 폰 프레임 */
-  .phone-frame {
-    width: 380px;
-    height: 800px;
-    background: linear-gradient(to bottom, #e1f5fe 0%, #b3e5fc 30%, #c8e6c9 40%, #aed581 100%);
-    border-radius: 40px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    border: 8px solid #f8bbd0;
-    position: relative;
+  .question-visual {
+    height: 180px;
   }
 
-  /* 상단 네비게이션바 (meowstagram) */
-  .top-nav {
-    background-color: #fce4ec;
-    padding: 12px 20px;
-    display: flex;
-    align-items: center;
-    border-bottom: 3px dashed #f48fb1;
-    z-index: 10;
-  }
-  .back-btn { color: #ba68c8; font-size: 24px; cursor: pointer; text-shadow: 1px 1px 0 #fff; }
-  .app-title {
-    color: #ec407a;
-    font-size: 24px;
-    flex-grow: 1;
-    text-align: center;
-    margin-right: 10px;
-    letter-spacing: 2px;
-    text-shadow: 2px 2px 0 #fff;
-  }
-
-  /* 유저 정보 영역 */
-  .user-info {
-    padding: 10px 20px;
-    display: flex;
-    align-items: center;
-    background-color: rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(5px);
-    border-bottom: 3px solid #81c784;
-    z-index: 10;
-  }
-  .profile-pic {
-    width: 45px;
-    height: 45px;
-    background-color: #ffb74d;
-    border-radius: 50%;
-    margin-right: 15px;
-    border: 3px solid #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 24px;
-  }
-  .username {
-    color: #0288d1;
-    font-size: 22px;
-    text-shadow: 1px 1px 0 #fff;
-  }
-
-  /* 메인 콘텐츠 영역 (놀이공원 배경) */
-  .content-area {
-    flex-grow: 1;
-    position: relative;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-  }
-
-  /* --- 고정 데코레이션 (하늘, 잔디밭 요소) --- */
-  .deco-cloud { position: absolute; font-size: 40px; opacity: 0.8; }
-  .cloud1 { top: 20px; left: 10px; }
-  .cloud2 { top: 50px; right: 20px; font-size: 50px; }
-  
-  .deco-balloon { position: absolute; font-size: 30px; animation: float 4s ease-in-out infinite; }
-  .balloon1 { top: 80px; left: 40px; }
-  .balloon2 { top: 30px; right: 80px; animation-delay: 1s; }
-
-  .deco-fence { position: absolute; bottom: 120px; left: -10px; font-size: 35px; letter-spacing: -5px; white-space: nowrap; }
-  .deco-flower { position: absolute; font-size: 25px; }
-  .flower1 { bottom: 80px; left: 30px; }
-  .flower2 { bottom: 100px; right: 40px; }
-  .flower3 { bottom: 50px; left: 150px; }
-  .mushroom { position: absolute; bottom: 60px; right: 100px; font-size: 25px; }
-
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-  }
-
-  /* --- 각 화면별 박스 및 디자인 --- */
-  
-  /* 1. 시작 화면 박스 (놀이공원 벤치와 동물들 느낌) */
-  .main-box {
-    background-color: rgba(255, 255, 255, 0.85);
-    border: 5px solid #ffb74d;
-    border-radius: 30px;
-    width: 90%;
-    padding: 30px 10px;
-    text-align: center;
-    box-shadow: 0 10px 20px rgba(255, 152, 0, 0.2);
-    position: relative;
-    z-index: 5;
-  }
-  .main-title {
-    color: #d84315;
-    font-size: 32px;
-    margin-bottom: 10px;
-  }
-  .main-art {
-    font-size: 50px;
-    margin: 15px 0;
-  }
-  .cute-animals {
-    font-size: 35px;
-    letter-spacing: 10px;
-  }
-
-  /* 2. 질문 화면 박스 (구름 모양 테두리) */
-  .q-box {
-    background-color: #fff;
-    border: 5px dashed #4fc3f7;
-    border-radius: 40px;
-    width: 90%;
-    min-height: 150px;
-    padding: 30px 20px;
-    text-align: center;
-    box-shadow: 0 8px 15px rgba(3, 169, 244, 0.2);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: #0277bd;
-    font-size: 26px;
-    line-height: 1.5;
-    position: relative;
-    z-index: 5;
-  }
-  
-  .ox-container {
-    display: flex;
-    gap: 25px;
-    margin-top: 30px;
-    z-index: 5;
-  }
   .ox-btn {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    font-family: 'Jua', sans-serif;
-    font-size: 50px;
-    cursor: pointer;
-    border: 6px solid #fff;
-    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
-    transition: transform 0.2s;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    min-height: 108px;
   }
-  .ox-btn:active { transform: scale(0.9); }
-  .o-btn { background-color: #81d4fa; color: #fff; text-shadow: 2px 2px 0 #0277bd; }
-  .x-btn { background-color: #f48fb1; color: #fff; text-shadow: 2px 2px 0 #c2185b; }
-  .btn-deco { font-size: 20px; margin-top: 5px; }
-
-  /* 3. 결과 화면 박스 (디저트 가게/성 느낌) */
-  .result-box {
-    background-color: #fff3e0;
-    border: 6px solid #ffcc80;
-    border-radius: 40px 40px 10px 10px;
-    width: 95%;
-    padding: 30px 15px;
-    text-align: center;
-    box-shadow: 0 10px 25px rgba(255, 152, 0, 0.3);
-    position: relative;
-    z-index: 5;
-  }
-  .result-roof {
-    position: absolute;
-    top: -25px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 50px;
-  }
-  .result-grade { color: #e65100; font-size: 36px; margin: 20px 0 15px 0; text-shadow: 2px 2px 0 #ffe0b2; }
-  .result-desc { color: #5d4037; font-size: 22px; line-height: 1.6; word-break: keep-all; padding: 0 10px; }
-
-  /* 액션 버튼 (입장하기, 다시하기 등) */
-  .action-btn {
-    background-color: #ffca28;
-    color: #d84315;
-    border: 4px solid #fff;
-    padding: 15px 45px;
-    border-radius: 40px;
-    font-family: 'Jua', sans-serif;
-    font-size: 28px;
-    cursor: pointer;
-    box-shadow: 0 8px 15px rgba(255, 193, 7, 0.4);
-    margin-top: 25px;
-    transition: all 0.1s;
-    z-index: 5;
-  }
-  .action-btn:active { transform: translateY(4px); box-shadow: 0 2px 5px rgba(255, 193, 7, 0.4); }
-
-  /* 하단 바 (인스타 프레임 유지) */
-  .bottom-nav {
-    padding: 15px 20px;
-    background-color: #fff;
-    border-top: 3px solid #f8bbd0;
-    z-index: 10;
-  }
-  .icons { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 26px; }
-  .icons-left span { margin-right: 15px; cursor: pointer; }
-  .heart { color: #ff5252; } 
-  .comment { color: #29b6f6; } 
-  .send { color: #ab47bc; }
-  .bookmark { color: #ffca28; cursor: pointer; } 
-
-  .likes { color: #ec407a; font-size: 18px; margin-bottom: 5px; font-weight: bold; }
-  .caption { color: #5c6bc0; font-size: 16px; margin-bottom: 5px; }
-  .comments-link { color: #9e9e9e; font-size: 14px; }
-
+}
 </style>
 </head>
 <body>
-
-<div class="phone-frame">
-  <div class="top-nav">
-    <div class="back-btn" onclick="location.reload()">❮</div>
-    <div class="app-title">meowstagram 🎀</div>
-  </div>
-  
-  <div class="user-info">
-    <div class="profile-pic">🐱</div>
-    <div class="username">USERNAME</div>
-  </div>
-
-  <div class="content-area">
-    <div class="deco-cloud cloud1">☁️</div>
-    <div class="deco-cloud cloud2">☁️</div>
-    <div class="deco-balloon balloon1">🎈</div>
-    <div class="deco-balloon balloon2">🎡</div>
-    
-    <div class="deco-fence">🤺🤺🤺🤺🤺🤺🤺🤺</div>
-    <div class="deco-flower flower1">🌷</div>
-    <div class="deco-flower flower2">🌼</div>
-    <div class="deco-flower flower3">🌻</div>
-    <div class="mushroom">🍄</div>
-
-    <div id="main-screen" style="width:100%; display:flex; flex-direction:column; align-items:center;">
-      <div class="main-box">
-        <div class="main-title">동심 유원지 입장권</div>
-        <div class="main-art">⛲🎠🎢</div>
-        <div class="cute-animals">🐰🐭🐻🎀</div>
-      </div>
-      <button class="action-btn" onclick="startTest()">입장하기 🎟️</button>
+  <div class="app">
+    <div class="header-wrapper">
+      <header class="page-header">
+        <h1><a href="https://test-it.co.kr/" class="retro-logo">테스트잇</a></h1> 
+        <nav>
+          <ul class="main-nav">
+            <li><a href="https://test-it.co.kr/test.html">성격</a></li>
+            <li><a href="https://test-it.co.kr/face.html">얼굴</a></li>
+            <li><a href="https://test-it.co.kr/etc.html">그외</a></li>
+            <li><a href="https://test-it.co.kr/saju.html">사주</a></li>
+          </ul>
+        </nav>
+      </header>
     </div>
 
-    <div id="question-screen" style="width:100%; display:none; flex-direction:column; align-items:center;">
-      <div class="q-box" id="q-text">문항</div>
-      <div class="ox-container">
-        <button class="ox-btn o-btn" onclick="answer(true)">
-          O
-          <div class="btn-deco">🐰</div>
-        </button>
-        <button class="ox-btn x-btn" onclick="answer(false)">
-          X
-          <div class="btn-deco">🐻</div>
-        </button>
-      </div>
-    </div>
+    <section class="screen main-screen active" id="mainScreen">
+      <div class="scene">
+        <div class="sun-glow"></div>
+        <div class="cloud c1"></div>
+        <div class="cloud c2"></div>
+        <div class="cloud c3"></div>
+        <div class="hill h3"></div>
+        <div class="hill h1"></div>
+        <div class="hill h2"></div>
+        <div class="path"></div>
+        <div class="picnic-blanket"></div>
+        <div class="picnic-basket"></div>
 
-    <div id="result-screen" style="width:100%; display:none; flex-direction:column; align-items:center;">
-      <div class="result-box">
-        <div class="result-roof">🎪</div>
-        <div class="cute-animals" style="margin-top: 15px;">🎉🐭🐰🎉</div>
-        <div class="result-grade" id="r-grade">등급</div>
-        <div class="result-desc" id="r-desc">설명</div>
-      </div>
-      <button class="action-btn" onclick="location.reload()">다시 놀기 🔄</button>
-    </div>
+        <div class="tree tree-left">
+          <div class="trunk"></div>
+          <div class="crown"></div>
+        </div>
 
+        <div class="tree tree-right">
+          <div class="trunk"></div>
+          <div class="crown"></div>
+        </div>
+
+        <div class="tree tree-back">
+          <div class="trunk"></div>
+          <div class="crown"></div>
+        </div>
+
+        <div class="flower-clump">
+          <span></span><span></span><span></span><span></span>
+        </div>
+
+        <div class="bush"></div>
+        <div class="tiny-grass g1"></div>
+        <div class="tiny-grass g2"></div>
+        <div class="tiny-grass g3"></div>
+        <div class="tiny-grass g4"></div>
+        <div class="tiny-grass g5"></div>
+        <div class="tiny-grass g6"></div>
+
+        <div class="petals">
+          <span class="petal p1"></span>
+          <span class="petal p2"></span>
+          <span class="petal p3"></span>
+          <span class="petal p4"></span>
+          <span class="petal p5"></span>
+          <span class="petal p6"></span>
+          <span class="petal p7"></span>
+        </div>
+      </div>
+
+      <div class="content-wrap">
+        <img src="img_main0101.png" alt="동심 테스트" style="width: 100%; border-radius: 24px; box-shadow: var(--shadow); margin-bottom: 20px;">
+        <div class="start-area" style="margin-top: 0; padding-bottom: 0;">
+          <button class="start-btn" id="startBtn">테스트 시작하기</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen test-screen" id="testScreen">
+      <div class="scene">
+        <div class="sun-glow" style="right:auto; left:-40px; top:-60px;"></div>
+        <div class="cloud c1" style="top:7%; left:5%;"></div>
+        <div class="cloud c2" style="top:12%; right:10%;"></div>
+        <div class="hill h1"></div>
+        <div class="hill h2"></div>
+
+        <div class="petals">
+          <span class="petal p1"></span>
+          <span class="petal p2"></span>
+          <span class="petal p3"></span>
+          <span class="petal p4"></span>
+          <span class="petal p5"></span>
+          <span class="petal p6"></span>
+          <span class="petal p7"></span>
+        </div>
+      </div>
+
+      <div class="test-wrap">
+        <div class="test-top">
+          <div class="q-chip-row">
+            <div class="q-chip"><strong id="questionCount">QUESTION 1 / 20</strong></div>
+            <div class="q-chip">OX TEST</div>
+          </div>
+
+          <div class="progress-box">
+            <div class="progress-track">
+              <div class="progress-bar" id="progressBar"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="question-area">
+          <div class="question-card" id="questionCard">
+            <div class="question-label">
+              <span class="flower-mini"></span>
+              나의 동심 체크
+            </div>
+            <div class="question-text" id="questionText"></div>
+          </div>
+
+          <div class="question-visual">
+            <div class="mini-sun"></div>
+            <div class="mini-cloud mc1"></div>
+            <div class="mini-cloud mc2"></div>
+            <div class="mini-hill-back"></div>
+            <div class="mini-hill-front"></div>
+            <div class="mini-path"></div>
+            <div class="mini-blanket"></div>
+            <div class="mini-basket"></div>
+            <div class="mini-bush"></div>
+            <div class="mini-tree"></div>
+            <div class="mini-flower mf1"></div>
+            <div class="mini-flower mf2"></div>
+            <div class="mini-flower mf3"></div>
+
+            <div class="mini-petals">
+              <span class="mini-petal mp1"></span>
+              <span class="mini-petal mp2"></span>
+              <span class="mini-petal mp3"></span>
+              <span class="mini-petal mp4"></span>
+              <span class="mini-petal mp5"></span>
+              <span class="mini-petal mp6"></span>
+            </div>
+          </div>
+
+          <div class="ox-area">
+            <button class="ox-btn o" id="yesBtn" aria-label="O">
+              <span class="mini-flower f1"></span>
+              <span class="mini-flower f2"></span>
+              <span class="symbol"></span>
+            </button>
+
+            <button class="ox-btn x" id="noBtn" aria-label="X">
+              <span class="mini-flower f3"></span>
+              <span class="mini-flower f4"></span>
+              <span class="symbol"></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen result-screen" id="resultScreen">
+      <div class="scene">
+        <div class="sun-glow"></div>
+        <div class="cloud c1" style="left:12%; top:10%;"></div>
+        <div class="cloud c2" style="right:9%; top:17%;"></div>
+        <div class="hill h3" style="bottom:112px;"></div>
+        <div class="hill h1"></div>
+        <div class="hill h2"></div>
+
+        <div class="petals">
+          <span class="petal p1"></span>
+          <span class="petal p2"></span>
+          <span class="petal p3"></span>
+          <span class="petal p4"></span>
+          <span class="petal p5"></span>
+          <span class="petal p6"></span>
+          <span class="petal p7"></span>
+        </div>
+      </div>
+
+      <div class="result-wrap">
+        <div class="result-image-box">
+          <img id="resultImage" class="result-image" src="img0101_1.png" alt="동심 테스트 결과">
+        </div>
+
+        <div class="result-actions">
+          <button class="action-btn primary" id="saveImageBtn">결과 이미지 저장하기</button>
+          <button class="action-btn secondary" id="goMainBtn">다시 해보기</button>
+          <button class="action-btn secondary" id="shareBtn">테스트 공유하기</button>
+        </div>
+      </div>
+    </section>
   </div>
-
-  <div class="bottom-nav">
-    <div class="icons">
-      <div class="icons-left">
-        <span class="heart">❤️</span>
-        <span class="comment">💬</span>
-        <span class="send">✈️</span>
-      </div>
-      <div class="bookmark">🔖</div>
-    </div>
-    <div class="likes">959 likes</div>
-    <div class="caption">username. 우리 같이 놀이공원 갈래? 🎡🌷</div>
-    <div class="comments-link">--- coments</div>
-  </div>
-</div>
 
 <script>
-  const questions = [
-    "1. 나는 아직도 부를 수 있는 만화 주제가가 있다.",
-    "2. 가끔 문방구 앞에 멈춘다.",
-    "3. 하늘을 보면 예쁜 모양의 구름을 찾는다.",
-    "4. 놀이공원에 가면 범퍼카 한 번은 타야한다.",
-    "5. 뽑기 기계 앞에서 승부욕이 생긴다.",
-    "6. 어릴 때 별명을 아직 기억한다.",
-    "7. 남 모르게 횡단보도 하얀색 선만 밟을 때가 있다.",
-    "8. 내가 만화의 주인공이라고 상상할 때가 있다.",
-    "9. '우리 집에 왜 왔니' 가사가 자동 재생된다.",
-    "10. 종이를 보면 비행기 한 번은 접어본다.",
-    "11. 음식 먹을 때 제일 맛있는 건 마지막에 먹는다.",
-    "12. 나는 아직도 학교 앞에서 먹던 컵 떡볶이가 생각난다.",
-    "13. 눈이 오면 첫 발자국을 찍고 싶어진다.",
-    "14. 놀이터를 지나가면 한 번쯤 그네가 타고 싶어진다.",
-    "15. 종 치는 소리를 들으면 괜히 반응한다.",
-    "16. 비밀 얘기할 때 괜히 목소리가 더 작아진다.",
-    "17. 버튼을 보면 누르고 싶다.",
-    "18. 누군가 내 이름을 불러주면 괜히 반갑다.",
-    "19. 나는 아직도 어릴 때 만들었던 이메일을 사용한다.",
-    "20. 포장지를 뜯기 전에 괜히 한번 흔들어본다."
-  ];
+const questions = [
+  "나는 아직도 부를 수 있는 만화 주제가가 있다.",
+  "가끔 문방구 앞에 멈춘다.",
+  "하늘을 보면 예쁜 모양의 구름을 찾는다.",
+  "놀이공원에 가면 범퍼카 한 번은 타야한다.",
+  "뽑기 기계 앞에서 승부욕이 생긴다.",
+  "어릴 때 별명을 아직 기억한다.",
+  "남 모르게 횡단보도 하얀색 선만 밟을 때가 있다.",
+  "내가 만화의 주인공이라고 상상할 때가 있다.",
+  "우리 집에 왜 왔니 가사가 자동 재생된다.",
+  "종이를 보면 비행기 한 번은 접어본다.",
+  "음식 먹을 때 제일 맛있는 건 마지막에 먹는다.",
+  "나는 아직도 학교 앞에서 먹던 컵 떡볶이가 생각난다.",
+  "눈이 오면 첫 발자국을 찍고 싶어진다.",
+  "놀이터를 지나가면 한 번쯤 그네가 타고 싶어진다.",
+  "종 치는 소리를 들으면 괜히 반응한다.",
+  "비밀 얘기할 때 괜히 목소리가 더 작아진다.",
+  "버튼을 보면 누르고 싶다.",
+  "누군가 내 이름을 불러주면 괜히 반갑다.",
+  "나는 아직도 어릴 때 만들었던 이메일을 사용한다.",
+  "포장지를 뜯기 전에 괜히 한번 흔들어본다."
+];
 
-  let currentQ = 0;
-  let score = 0;
+const mainScreen = document.getElementById("mainScreen");
+const testScreen = document.getElementById("testScreen");
+const resultScreen = document.getElementById("resultScreen");
 
-  function startTest() {
-    document.getElementById('main-screen').style.display = 'none';
-    document.getElementById('question-screen').style.display = 'flex';
-    showQuestion();
+const startBtn = document.getElementById("startBtn");
+const yesBtn = document.getElementById("yesBtn");
+const noBtn = document.getElementById("noBtn");
+const saveImageBtn = document.getElementById("saveImageBtn");
+const goMainBtn = document.getElementById("goMainBtn");
+const shareBtn = document.getElementById("shareBtn");
+
+const questionCount = document.getElementById("questionCount");
+const progressBar = document.getElementById("progressBar");
+const questionText = document.getElementById("questionText");
+const resultImage = document.getElementById("resultImage");
+
+let currentIndex = 0;
+let score = 0;
+let locked = false;
+
+function showScreen(screen) {
+  mainScreen.classList.remove("active");
+  testScreen.classList.remove("active");
+  resultScreen.classList.remove("active");
+  screen.classList.add("active");
+  window.scrollTo(0, 0);
+}
+
+function renderQuestion() {
+  questionCount.textContent = `QUESTION ${currentIndex + 1} / ${questions.length}`;
+  questionText.textContent = questions[currentIndex];
+  progressBar.style.width = `${(currentIndex / questions.length) * 100}%`;
+}
+
+function startTest() {
+  currentIndex = 0;
+  score = 0;
+  locked = false;
+  renderQuestion();
+  showScreen(testScreen);
+}
+
+function chooseAnswer(isYes) {
+  if (locked) return;
+  locked = true;
+
+  if (isYes) {
+    score += 1;
   }
 
-  function showQuestion() {
-    document.getElementById('q-text').innerText = questions[currentQ];
-  }
+  currentIndex += 1;
 
-  function answer(isO) {
-    if (isO) score++;
-    currentQ++;
-
-    if (currentQ < questions.length) {
-      showQuestion();
+  setTimeout(() => {
+    if (currentIndex < questions.length) {
+      renderQuestion();
+      locked = false;
     } else {
       showResult();
     }
+  }, 160);
+}
+
+function showResult() {
+  progressBar.style.width = "100%";
+  resultImage.src = `img0101_${score}.png`;
+  resultImage.alt = `동심 테스트 결과 ${score}점`;
+  showScreen(resultScreen);
+  locked = false;
+}
+
+function goMain() {
+  showScreen(mainScreen);
+}
+
+startBtn.addEventListener("click", startTest);
+yesBtn.addEventListener("click", () => chooseAnswer(true));
+noBtn.addEventListener("click", () => chooseAnswer(false));
+goMainBtn.addEventListener("click", goMain);
+
+saveImageBtn.addEventListener("click", () => {
+  const link = document.createElement("a");
+  link.href = resultImage.src;
+  link.download = "동심테스트_결과.png";
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+});
+
+shareBtn.addEventListener("click", () => {
+  if (navigator.share) {
+    navigator.share({
+      title: "동심 테스트",
+      text: "나의 동심 지수는 몇 점일까? 테스트해보세요!",
+      url: window.location.href,
+    }).catch(console.error);
+  } else {
+    navigator.clipboard.writeText(window.location.href).then(() => {
+      alert("테스트 링크가 복사되었습니다!");
+    });
   }
-
-  function showResult() {
-    document.getElementById('question-screen').style.display = 'none';
-    document.getElementById('result-screen').style.display = 'flex';
-
-    let grade = "";
-    let desc = "";
-
-    if (score >= 15) {
-      grade = "참 잘했어요 💯";
-      desc = "당신의 마음속에는 영원한 동심이 있습니다. 동물 친구들이 모두 인정하는 유원지 최고 단골손님이네요!";
-    } else if (score >= 12) {
-      grade = "보통이에요 🙂";
-      desc = "가끔은 솜사탕을 들고 회전목마를 타고 싶지 않으신가요? 아직 동심의 불꽃이 남아있어요.";
-    } else if (score >= 10) {
-      grade = "분발하세요 ✏️";
-      desc = "바쁜 일상에 치여 놀이공원의 즐거움을 잊으신 것 같아요. 토끼 친구와 함께 숨바꼭질 한 판 어때요?";
-    } else {
-      grade = "재시험 요망 ⚠️";
-      desc = "동심 세포가 쿨쿨 잠들어버렸어요! 당장 관람차 꼭대기에 올라가서 파란 하늘을 보며 소리쳐야 합니다.";
-    }
-
-    document.getElementById('r-grade').innerText = grade;
-    document.getElementById('r-desc').innerHTML = desc;
-  }
+});
 </script>
 </body>
 </html>

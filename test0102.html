@@ -184,20 +184,6 @@
       opacity: 0.95;
     }
 
-    .folder-tab {
-      position: absolute;
-      top: -2px;
-      left: 22px;
-      width: 140px;
-      height: 40px;
-      border: 3px solid var(--line);
-      border-bottom: none;
-      border-radius: 16px 16px 0 0;
-      background: linear-gradient(180deg, #fff1a9 0%, #ffd96d 100%);
-      box-shadow: inset 0 3px 0 rgba(255,255,255,0.55);
-      z-index: 2;
-    }
-
     .title-bar {
       position: relative;
       z-index: 3;
@@ -840,31 +826,15 @@
   <div class="page-wrap">
 
     <div class="window" id="startScreen">
-      <div class="folder-tab"></div>
-
-      <div class="title-bar">
-        <div class="title-left">
-          <div class="title-icon">🎡</div>
-          <div class="title-text">테스트잇x미스틱스토리 동심 테스트(가제)</div>
-        </div>
-        <div class="window-controls">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </div>
-
       <div class="content">
         <div class="main-image-wrap">
-          <img src="img_main0101임시2.png" alt="동심 테스트 메인 이미지" class="main-image">
+          <img src="img_main0101임시.png" alt="동심 테스트 메인 이미지" class="main-image">
         </div>
         <button class="btn start-btn" onclick="startTest()">테스트 시작하기</button>
       </div>
     </div>
 
     <div class="window hidden" id="testScreen">
-      <div class="folder-tab"></div>
-
       <div class="title-bar">
         <div class="title-left">
           <div class="title-icon">🎠</div>
@@ -943,8 +913,6 @@
     </div>
 
     <div class="window hidden" id="resultScreen">
-      <div class="folder-tab"></div>
-
       <div class="title-bar">
         <div class="title-left">
           <div class="title-icon">🎪</div>

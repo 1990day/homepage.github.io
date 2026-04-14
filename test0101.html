@@ -73,7 +73,7 @@ body {
   left: 0;
   width: 100%;
   z-index: 100;
-  padding: 14px 0;
+  padding: 10px 0;
 }
 
 .page-header {
@@ -544,15 +544,26 @@ body {
   max-width: 430px;
   margin: 0 auto;
   min-height: 100vh;
-  padding: 70px 18px 34px;
+  padding: 52px 18px 34px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .start-area {
   padding-bottom: 0;
-  margin-top: 16px;
+  margin-top: 0;
+}
+
+.main-hero-img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+  margin: 0 0 14px;
 }
 
 .start-btn {
@@ -1095,7 +1106,6 @@ body {
 .ox-btn .f3 { right: 20px; top: 18px; transform: scale(0.7); }
 .ox-btn .f4 { left: 16px; bottom: 18px; transform: scale(0.78); }
 
-/* result 화면 수정 */
 .result-wrap {
   position: relative;
   z-index: 3;
@@ -1173,6 +1183,14 @@ body {
 }
 
 @media (max-width: 430px) {
+  .content-wrap {
+    padding: 48px 14px 24px;
+  }
+
+  .main-hero-img {
+    margin-bottom: 12px;
+  }
+
   .question-text {
     font-size: 19px;
   }
@@ -1263,8 +1281,8 @@ body {
       </div>
 
       <div class="content-wrap">
-        <img src="img_main0101.png" alt="동심 테스트" style="width: 100%; border-radius: 24px; box-shadow: var(--shadow); margin-bottom: 20px;">
-        <div class="start-area" style="margin-top: 0; padding-bottom: 0;">
+        <img src="img_main0101.png" alt="동심 테스트" class="main-hero-img">
+        <div class="start-area">
           <button class="start-btn" id="startBtn">테스트 시작하기</button>
         </div>
       </div>

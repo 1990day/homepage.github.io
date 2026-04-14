@@ -14,7 +14,7 @@
   <meta property="og:description" content="테스트잇x미스틱스토리 동심 테스트(가제)" />
   <meta property="og:url" content="https://test-it.co.kr/test0104" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Galmuri11&family=Pretendard:wght@400;500;700;800&display=swap" rel="stylesheet" />
 
@@ -176,7 +176,7 @@
     }
 
     #resultScreen {
-      max-width: 760px;
+      max-width: 560px;
     }
 
     .screen.active {
@@ -421,20 +421,27 @@
 
     .result-image-wrap {
       width: 100%;
+      max-width: 460px;
       margin: 0 auto;
       border: 3px solid #222;
       border-radius: 22px;
       overflow: hidden;
       background: #fff;
       box-shadow: 0 6px 0 #d8e7ef;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+      min-height: 240px;
     }
 
     .result-image {
       display: block;
       width: 100%;
       height: auto;
+      max-width: 100%;
+      max-height: 68vh;
       object-fit: contain;
-      aspect-ratio: auto;
     }
 
     .result-actions {
@@ -442,6 +449,9 @@
       grid-template-columns: 1fr;
       gap: 12px;
       margin-top: 18px;
+      max-width: 460px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .restart-btn,
@@ -528,6 +538,24 @@
       .b2, .b4 {
         top: 6px;
       }
+
+      #resultScreen {
+        max-width: 100%;
+      }
+
+      .result-image-wrap {
+        max-width: 100%;
+        min-height: 180px;
+        padding: 8px;
+      }
+
+      .result-image {
+        max-height: 58vh;
+      }
+
+      .result-actions {
+        max-width: 100%;
+      }
     }
   </style>
 </head>
@@ -602,7 +630,6 @@
           <img
             id="resultImage"
             class="result-image"
-            src="result_all.png"
             alt="테스트 결과 이미지"
           />
         </div>
@@ -639,6 +666,13 @@
       "포장지를 뜯기 전에 괜히 한번 흔들어본다."
     ];
 
+    const RESULT_IMAGES = {
+      all: "result_all.png",
+      age12: "result_12.png",
+      age15: "result_15.png",
+      adult: "result_adult.png"
+    };
+
     let currentQuestionIndex = 0;
     let yesCount = 0;
 
@@ -657,6 +691,13 @@
     const progressBar = document.getElementById("progressBar");
     const questionText = document.getElementById("questionText");
     const resultImage = document.getElementById("resultImage");
+
+    function preloadImages(imageList) {
+      imageList.forEach(function (src) {
+        const img = new Image();
+        img.src = src;
+      });
+    }
 
     function showScreen(screen) {
       introScreen.classList.remove("active");
@@ -700,26 +741,42 @@
 
     function getResultImage(score) {
       if (score >= 16) {
-        return "result_all.png";
+        return RESULT_IMAGES.all;
       } else if (score >= 13) {
-        return "result_12.png";
+        return RESULT_IMAGES.age12;
       } else if (score >= 10) {
-        return "result_15.png";
+        return RESULT_IMAGES.age15;
       } else {
-        return "result_adult.png";
+        return RESULT_IMAGES.adult;
       }
     }
 
     function showResult() {
       const resultSrc = getResultImage(yesCount);
-      resultImage.src = resultSrc;
-      resultImage.alt = "테스트 결과 이미지";
-      showScreen(resultScreen);
+
+      resultImage.style.visibility = "hidden";
+      resultImage.removeAttribute("src");
+
+      const loader = new Image();
+      loader.onload = function () {
+        resultImage.src = resultSrc;
+        resultImage.alt = "테스트 결과 이미지";
+        resultImage.style.visibility = "visible";
+        showScreen(resultScreen);
+      };
+      loader.onerror = function () {
+        resultImage.src = resultSrc;
+        resultImage.alt = "테스트 결과 이미지";
+        resultImage.style.visibility = "visible";
+        showScreen(resultScreen);
+      };
+      loader.src = resultSrc;
     }
 
     function restartTest() {
       currentQuestionIndex = 0;
       yesCount = 0;
+      progressBar.style.width = "0%";
       showScreen(introScreen);
     }
 
@@ -760,6 +817,14 @@
       document.body.removeChild(textarea);
       alert("결과 문구가 복사되었습니다.");
     }
+
+    preloadImages([
+      RESULT_IMAGES.all,
+      RESULT_IMAGES.age12,
+      RESULT_IMAGES.age15,
+      RESULT_IMAGES.adult,
+      "img_main0104.png"
+    ]);
 
     startBtn.addEventListener("click", startTest);
     oBtn.addEventListener("click", function () {

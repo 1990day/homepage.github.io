@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5522499110435321" crossorigin="anonymous"></script>
-  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+   <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -1096,6 +1095,7 @@ body {
 .ox-btn .f3 { right: 20px; top: 18px; transform: scale(0.7); }
 .ox-btn .f4 { left: 16px; bottom: 18px; transform: scale(0.78); }
 
+/* result 화면 수정 */
 .result-wrap {
   position: relative;
   z-index: 3;
@@ -1103,16 +1103,16 @@ body {
   max-width: 430px;
   margin: 0 auto;
   min-height: 100vh;
-  padding: 70px 16px 30px;
+  padding: 60px 16px 24px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
-/* 여기 수정 */
 .result-image-box {
   width: 100%;
   padding: 0;
+  margin-top: 0;
   background: transparent;
   border-radius: 0;
   box-shadow: none;
@@ -1130,7 +1130,7 @@ body {
 }
 
 .result-actions {
-  margin-top: 16px;
+  margin-top: 14px;
   display: grid;
   gap: 12px;
 }
@@ -1183,6 +1183,14 @@ body {
 
   .ox-btn {
     min-height: 108px;
+  }
+
+  .result-wrap {
+    padding: 52px 14px 22px;
+  }
+
+  .result-actions {
+    margin-top: 12px;
   }
 }
 </style>

@@ -16,7 +16,7 @@
   <meta property="og:description" content="나와 어울리는 포켓몬 탐구 테스트" />
   <meta property="og:image" content="https://test-it.co.kr/img_main0011.png" />
   <meta property="og:url" content="https://test-it.co.kr/test0011" />
-
+  <link rel="icon" type="image/png" href="favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Galmuri11:wght@400;700&family=Pretendard:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -253,11 +253,12 @@
     }
 
     .progress-bar {
+      position: relative;
       width: 100%;
       height: 20px;
       border: var(--pixel-border);
       background: var(--paper);
-      overflow: hidden;
+      overflow: visible;
       box-shadow: inset 0 -2px 0 rgba(74, 65, 54, 0.06);
       border-radius: 999px;
     }
@@ -272,6 +273,25 @@
           #ebd65c 14px 28px
         );
       transition: width 0.25s ease;
+      border-radius: 999px;
+    }
+
+    .progress-pichu {
+      position: absolute;
+      top: 50%;
+      left: 0%;
+      width: 36px;
+      height: 36px;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      z-index: 3;
+      image-rendering: pixelated;
+    }
+
+    .progress-pichu img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
     }
 
     .question-box {
@@ -305,6 +325,11 @@
       text-align: left;
       padding: 16px 14px;
       background: var(--yellow-soft);
+    }
+
+    .choice-btn:disabled {
+      opacity: 0.7;
+      cursor: default;
     }
 
     .choice-top {
@@ -404,7 +429,7 @@
       width: 68px;
       height: 68px;
       margin: 0 auto 18px;
-      background: url('ld_img0011.png') no-repeat center/contain;
+      background: url("ld_img0011.png") no-repeat center/contain;
       position: relative;
       animation: floaty 0.8s steps(2) infinite;
     }
@@ -581,6 +606,11 @@
       .start-btn {
         font-size: 16px;
       }
+
+      .progress-pichu {
+        width: 33px;
+        height: 33px;
+      }
     }
 
     @media (max-width: 430px) {
@@ -596,6 +626,11 @@
       .main-nav a {
         font-size: 11px;
         padding: 6px 7px;
+      }
+
+      .progress-pichu {
+        width: 30px;
+        height: 30px;
       }
     }
   </style>
@@ -640,8 +675,11 @@
                 <span id="progress-text">QUESTION 1 / 12</span>
                 <span id="progress-percent">8%</span>
               </div>
-              <div class="progress-bar">
+              <div class="progress-bar" id="progress-bar">
                 <div class="progress-fill" id="progress-fill"></div>
+                <div class="progress-pichu" id="progress-pichu">
+                  <img id="progress-pichu-img" src="피츄1.png" alt="" />
+                </div>
               </div>
             </div>
 
@@ -816,6 +854,8 @@
       }
     ];
 
+    const pichuFrames = ["피츄1.png", "피츄2.png", "피츄3.png", "피츄4.png"];
+
     const startScreen = document.getElementById("start-screen");
     const questionScreen = document.getElementById("question-screen");
     const loadingScreen = document.getElementById("loading-screen");
@@ -826,6 +866,8 @@
     const progressText = document.getElementById("progress-text");
     const progressPercent = document.getElementById("progress-percent");
     const progressFill = document.getElementById("progress-fill");
+    const progressPichu = document.getElementById("progress-pichu");
+    const progressPichuImg = document.getElementById("progress-pichu-img");
 
     const questionText = document.getElementById("question-text");
     const choiceAText = document.getElementById("choice-a-text");
@@ -850,6 +892,11 @@
     let answers = [];
     let currentResultKey = "";
     let currentCaptureDataUrl = "";
+    let pichuFrameIndex = 0;
+
+    let loadingTimer = null;
+    let isSubmitting = false;
+    let latestResultRequestId = 0;
 
     function showScreen(target) {
       startScreen.classList.remove("active");
@@ -874,11 +921,34 @@
       }, 1800);
     }
 
-    function startTest() {
+    function clearPendingResultTimer() {
+      if (loadingTimer) {
+        clearTimeout(loadingTimer);
+        loadingTimer = null;
+      }
+    }
+
+    function resetTestState() {
+      clearPendingResultTimer();
+      isSubmitting = false;
       currentQuestionIndex = 0;
       answers = [];
+      currentResultKey = "";
+      currentCaptureDataUrl = "";
+      resultImage.removeAttribute("src");
+      choiceAButton.disabled = false;
+      choiceBButton.disabled = false;
+    }
+
+    function startTest() {
+      resetTestState();
       renderQuestion();
       showScreen("question");
+    }
+
+    function updateProgressPichu(progress) {
+      const clampedProgress = Math.max(0, Math.min(progress, 100));
+      progressPichu.style.left = `${clampedProgress}%`;
     }
 
     function renderQuestion() {
@@ -888,6 +958,7 @@
       progressText.textContent = `QUESTION ${currentQuestionIndex + 1} / ${questions.length}`;
       progressPercent.textContent = `${Math.round(progress)}%`;
       progressFill.style.width = `${progress}%`;
+      updateProgressPichu(progress);
 
       questionText.textContent = question.question;
       choiceAText.textContent = question.a.text;
@@ -895,6 +966,8 @@
     }
 
     function selectAnswer(value) {
+      if (isSubmitting) return;
+
       const question = questions[currentQuestionIndex];
 
       if (question.score && value) {
@@ -910,9 +983,19 @@
     }
 
     function calculateResult() {
+      if (isSubmitting) return;
+
+      isSubmitting = true;
+      choiceAButton.disabled = true;
+      choiceBButton.disabled = true;
+      clearPendingResultTimer();
+
+      const requestId = ++latestResultRequestId;
       showScreen("loading");
 
-      setTimeout(() => {
+      loadingTimer = setTimeout(() => {
+        if (requestId !== latestResultRequestId) return;
+
         const counts = {
           E: 0, I: 0,
           S: 0, N: 0,
@@ -920,7 +1003,9 @@
         };
 
         answers.forEach(answer => {
-          counts[answer] += 1;
+          if (counts[answer] !== undefined) {
+            counts[answer] += 1;
+          }
         });
 
         const eOrI = counts.E >= counts.I ? "E" : "I";
@@ -929,12 +1014,18 @@
 
         currentResultKey = `${eOrI}${sOrN}${tOrF}`;
         renderResultImage(currentResultKey);
+
+        loadingTimer = null;
+        isSubmitting = false;
+        choiceAButton.disabled = false;
+        choiceBButton.disabled = false;
+
         showScreen("result");
       }, 1200);
     }
 
     function renderResultImage(key) {
-      const imagePath = `img_${key.toLowerCase()}0011.png`;
+      const imagePath = `img_${key.toLowerCase()}0011.png?cb=${Date.now()}`;
       resultImage.src = imagePath;
       resultImage.alt = `${key} 결과 이미지`;
     }
@@ -967,7 +1058,7 @@
 
       const link = document.createElement("a");
       link.href = currentCaptureDataUrl;
-      link.download = `pokemon-pixel-mbti-${currentResultKey}.png`;
+      link.download = `pokemon-mbti-${currentResultKey}.png`;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
@@ -994,16 +1085,29 @@
       }
     }
 
+    function startPichuAnimation() {
+      setInterval(() => {
+        pichuFrameIndex = (pichuFrameIndex + 1) % pichuFrames.length;
+        progressPichuImg.src = pichuFrames[pichuFrameIndex];
+      }, 350);
+    }
+
     startBtn.addEventListener("click", startTest);
-    choiceAButton.addEventListener("click", () => selectAnswer(questions[currentQuestionIndex].a.value));
-    choiceBButton.addEventListener("click", () => selectAnswer(questions[currentQuestionIndex].b.value));
+
+    choiceAButton.addEventListener("click", () => {
+      selectAnswer(questions[currentQuestionIndex].a.value);
+    });
+
+    choiceBButton.addEventListener("click", () => {
+      selectAnswer(questions[currentQuestionIndex].b.value);
+    });
 
     saveBtn.addEventListener("click", openCaptureModal);
 
     restartBtn.addEventListener("click", () => {
-      showScreen("start");
-      currentCaptureDataUrl = "";
+      resetTestState();
       captureModal.classList.remove("active");
+      showScreen("start");
     });
 
     otherBtn.addEventListener("click", () => {
@@ -1018,11 +1122,14 @@
 
     downloadBtn.addEventListener("click", downloadCurrentImage);
 
-    captureModal.addEventListener("click", (e) => {
+    captureModal.addEventListener("click", e => {
       if (e.target === captureModal) {
         captureModal.classList.remove("active");
       }
     });
+
+    startPichuAnimation();
+    updateProgressPichu(0);
   </script>
 </body>
 </html>

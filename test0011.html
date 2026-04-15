@@ -7,13 +7,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>삐아 포켓몬 에디션 성격 테스트(가제)</title>
-  <meta name="description" content="삐아 포켓몬 에디션 성격 테스트(가제)" />
+  <title>나와 어울리는 포켓몬 탐구 테스트</title>
+  <meta name="description" content="나와 어울리는 포켓몬 탐구 테스트" />
   <meta name="keywords" content="테스트잇, MBTI, 성격테스트, 포켓몬, 픽셀테스트, 픽셀MBTI, 테스트잇MBTI" />
 
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="삐아 포켓몬 에디션 성격 테스트(가제)" />
-  <meta property="og:description" content="삐아 포켓몬 에디션 성격 테스트(가제)" />
+  <meta property="og:title" content="나와 어울리는 포켓몬 탐구 테스트" />
+  <meta property="og:description" content="나와 어울리는 포켓몬 탐구 테스트" />
   <meta property="og:image" content="https://test-it.co.kr/img_main0011.png" />
   <meta property="og:url" content="https://test-it.co.kr/test0011" />
 
@@ -23,13 +23,13 @@
 
   <style>
     :root {
-      --bg: #fffaf0;
-      --paper: #fffef9;
-      --folder: #ffe46b;
-      --folder-light: #fff3a6;
+      --bg: #fefce0;
+      --paper: #ffffff;
+      --folder: #f9eb91;
+      --folder-light: #fefce0;
       --line: #4a4136;
-      --yellow: #fff28d;
-      --yellow-soft: #fff8cf;
+      --yellow: #f9eb91;
+      --yellow-soft: #fefce0;
       --text: #2a241d;
       --sub: #6b6257;
       --shadow: 2px 2px 0 rgba(74, 65, 54, 0.16);
@@ -54,8 +54,8 @@
     body {
       min-height: 100vh;
       background-image:
-        linear-gradient(to right, rgba(255, 214, 51, 0.08) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 214, 51, 0.08) 1px, transparent 1px);
+        linear-gradient(to right, rgba(249, 235, 145, 0.4) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(249, 235, 145, 0.4) 1px, transparent 1px);
       background-size: 16px 16px;
     }
 
@@ -88,7 +88,7 @@
       justify-content: space-between;
       gap: 14px;
       padding: 10px 0;
-      background: rgba(255, 250, 240, 0.88);
+      background: rgba(254, 252, 224, 0.88);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid rgba(74, 65, 54, 0.06);
     }
@@ -103,7 +103,7 @@
       color: #5b4a2e;
       padding: 7px 10px;
       border: 1.5px solid rgba(91, 74, 46, 0.14);
-      background: rgba(255, 248, 210, 0.92);
+      background: var(--folder);
       border-radius: 999px;
       box-shadow: 0 1px 4px rgba(91, 74, 46, 0.05);
       flex: 0 0 auto;
@@ -122,7 +122,7 @@
     .main-nav a {
       padding: 7px 10px;
       border: 1.5px solid rgba(74, 65, 54, 0.12);
-      background: rgba(255, 255, 255, 0.72);
+      background: rgba(255, 255, 255, 0.9);
       box-shadow: 0 1px 4px rgba(74, 65, 54, 0.03);
       font-size: 13px;
       font-weight: 700;
@@ -172,7 +172,7 @@
     .folder-body {
       position: relative;
       border: var(--pixel-border);
-      background: linear-gradient(to bottom, #fff185 0 48px, var(--paper) 48px 100%);
+      background: linear-gradient(to bottom, var(--folder-light) 0 48px, var(--paper) 48px 100%);
       box-shadow: var(--shadow);
       padding: 18px;
       min-height: 0;
@@ -204,7 +204,7 @@
       width: 100%;
       height: auto;
       display: block;
-      background: #fff7d6;
+      background: var(--bg);
       border-radius: 18px;
     }
 
@@ -256,9 +256,9 @@
       width: 100%;
       height: 20px;
       border: var(--pixel-border);
-      background: #fffdf3;
+      background: var(--paper);
       overflow: hidden;
-      box-shadow: inset 0 -2px 0 #eee6d8;
+      box-shadow: inset 0 -2px 0 rgba(74, 65, 54, 0.06);
       border-radius: 999px;
     }
 
@@ -268,8 +268,8 @@
       background:
         repeating-linear-gradient(
           90deg,
-          #ffe15a 0 14px,
-          #ffd43c 14px 28px
+          var(--folder) 0 14px,
+          #ebd65c 14px 28px
         );
       transition: width 0.25s ease;
     }
@@ -277,9 +277,9 @@
     .question-box {
       margin-top: 8px;
       border: var(--pixel-border);
-      background: #fffef9;
+      background: var(--paper);
       padding: 18px 14px;
-      box-shadow: inset 0 -2px 0 #f3ecd7;
+      box-shadow: inset 0 -2px 0 rgba(74, 65, 54, 0.06);
       border-radius: 20px;
     }
 
@@ -321,7 +321,7 @@
 
     .result-image-only {
       border: var(--pixel-border);
-      background: #fff;
+      background: var(--paper);
       overflow: hidden;
       box-shadow: var(--shadow);
       border-radius: 18px;
@@ -335,7 +335,7 @@
     .result-ad-wrap {
       margin-top: 14px;
       border: var(--pixel-border);
-      background: #fff;
+      background: var(--paper);
       overflow: hidden;
       box-shadow: var(--shadow);
       border-radius: 18px;
@@ -354,7 +354,7 @@
 
     .action-btn {
       height: 52px;
-      background: #fffbea;
+      background: var(--bg);
       font-size: 15px;
       font-weight: 800;
     }
@@ -380,7 +380,7 @@
       width: 100%;
       max-width: 460px;
       border: var(--pixel-border);
-      background: #fffef9;
+      background: var(--paper);
       box-shadow: var(--shadow);
       padding: 28px 20px;
       border-radius: 24px;
@@ -404,35 +404,9 @@
       width: 68px;
       height: 68px;
       margin: 0 auto 18px;
-      border: var(--pixel-border);
-      background:
-        linear-gradient(45deg, #fffef2 0 50%, #ffd83d 50% 100%);
+      background: url('ld_img0011.png') no-repeat center/contain;
       position: relative;
-      box-shadow: var(--shadow);
       animation: floaty 0.8s steps(2) infinite;
-      border-radius: 18px;
-    }
-
-    .loading-sprite::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: calc(50% - 2px);
-      width: 100%;
-      height: 4px;
-      background: #2e2a24;
-    }
-
-    .loading-sprite::after {
-      content: "";
-      position: absolute;
-      left: calc(50% - 7px);
-      top: calc(50% - 7px);
-      width: 14px;
-      height: 14px;
-      border: var(--pixel-border);
-      background: #fff9da;
-      border-radius: 4px;
     }
 
     @keyframes floaty {
@@ -459,7 +433,7 @@
     .capture-modal-inner {
       width: min(100%, 420px);
       border: var(--pixel-border);
-      background: #fffef9;
+      background: var(--paper);
       box-shadow: 0 8px 30px rgba(34, 30, 24, 0.18);
       padding: 16px;
       border-radius: 24px;
@@ -474,7 +448,7 @@
 
     .capture-preview-wrap {
       border: var(--pixel-border);
-      background: #fff;
+      background: var(--paper);
       overflow: hidden;
       border-radius: 18px;
     }
@@ -500,7 +474,7 @@
 
     .share-modal-btn {
       height: 48px;
-      background: #fffbea;
+      background: var(--bg);
       font-size: 15px;
       font-weight: 800;
     }
@@ -514,7 +488,7 @@
       min-width: 220px;
       max-width: calc(100% - 32px);
       border: var(--pixel-border);
-      background: #fffbea;
+      background: var(--bg);
       box-shadow: var(--shadow);
       padding: 12px 16px;
       font-size: 14px;
@@ -578,7 +552,7 @@
         padding: 18px 14px 18px;
         min-height: auto;
         border-radius: 22px;
-        background: linear-gradient(to bottom, #fff18a 0 46px, var(--paper) 46px 100%);
+        background: linear-gradient(to bottom, var(--folder-light) 0 46px, var(--paper) 46px 100%);
       }
 
       .folder-inner {
@@ -641,12 +615,12 @@
   <main class="main wrapper">
     <section id="start-screen" class="screen active">
       <div class="folder-shell">
-        <div class="folder-tab">삐아 포켓몬 성격 테스트</div>
+        <div class="folder-tab">나와 어울리는 포켓몬 탐구 테스트</div>
         <div class="folder-body">
           <div class="folder-inner">
             <div class="start-only-wrap">
               <div class="main-image-wrap">
-                <img src="img_main0011임시.png" alt="테스트잇 포켓몬 픽셀 MBTI 테스트 메인 이미지" class="main-image" />
+                <img src="img_main0011.png" alt="나와 어울리는 포켓몬 탐구 테스트 이미지" class="main-image" />
               </div>
 
               <button type="button" class="start-btn" id="start-btn">테스트 시작하기</button>
@@ -658,7 +632,7 @@
 
     <section id="question-screen" class="screen">
       <div class="folder-shell">
-        <div class="folder-tab">삐아 포켓몬 성격 테스트</div>
+        <div class="folder-tab">나와 어울리는 포켓몬 탐구 테스트</div>
         <div class="folder-body">
           <div class="folder-inner">
             <div class="progress-wrap">
@@ -711,7 +685,7 @@
 
     <section id="result-screen" class="screen">
       <div class="folder-shell">
-        <div class="folder-tab">삐아 포켓몬 성격 테스트</div>
+        <div class="folder-tab">나와 어울리는 포켓몬 탐구 테스트</div>
         <div class="folder-body">
           <div class="folder-inner">
             <div id="result-capture">
@@ -969,7 +943,7 @@
       const target = document.getElementById("result-capture");
 
       const canvas = await html2canvas(target, {
-        backgroundColor: "#fffef9",
+        backgroundColor: "#ffffff",
         scale: 2,
         useCORS: true
       });
@@ -1001,8 +975,8 @@
 
     async function shareTest() {
       const shareData = {
-        title: "삐아 포켓몬 에디션 성격 테스트(가제)",
-        text: "삐아 포켓몬 에디션 성격 테스트(가제)",
+        title: "나와 어울리는 포켓몬 탐구 테스트",
+        text: "나와 어울리는 포켓몬 탐구 테스트",
         url: window.location.href
       };
 

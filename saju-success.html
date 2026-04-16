@@ -254,6 +254,15 @@ article{
   
           // localStorage에서 정보 가져오기
           const userData = JSON.parse(localStorage.getItem("userData"));
+
+          // 결제 항목에 따라 돌아가기 링크 알아서 바꿔주기
+          const returnLink = document.querySelector(".success-link");
+          if (userData && userData.paymentItem === "확답사주") {
+              returnLink.href = "https://test-it.co.kr/saju07";
+          } else {
+              returnLink.href = "https://test-it.co.kr/saju01";
+          }
+
           if (userData && userData.name) {
             sendToGoogleSheet(
               userData.name,

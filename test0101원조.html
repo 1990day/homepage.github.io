@@ -38,6 +38,10 @@ body {
   min-height: 100vh;
 }
 
+body.modal-open {
+  overflow: hidden;
+}
+
 :root {
   --sky-top: #f8fbff;
   --sky-bottom: #eef8ea;
@@ -54,6 +58,10 @@ body {
   --text-soft: #6f8373;
   --shadow: 0 14px 36px rgba(105, 139, 102, 0.12);
   --shadow-soft: 0 10px 22px rgba(112, 144, 115, 0.12);
+
+  --line: #7ea3bf;
+  --text: #58708b;
+  --header-line: #a9cbe0;
 }
 
 .app {
@@ -301,47 +309,160 @@ body {
   opacity: 0.88;
 }
 
-.picnic-blanket {
-  position: absolute;
-  width: 168px;
-  height: 120px;
-  left: 10%;
-  bottom: 115px;
-  border-radius: 12px;
-  background:
-    linear-gradient(to right, rgba(241,181,205,0.95) 0 18%, transparent 18% 32%, rgba(241,181,205,0.95) 32% 50%, transparent 50% 68%, rgba(241,181,205,0.95) 68% 84%, transparent 84% 100%),
-    linear-gradient(to bottom, rgba(241,181,205,0.95) 0 18%, transparent 18% 32%, rgba(241,181,205,0.95) 32% 50%, transparent 50% 68%, rgba(241,181,205,0.95) 68% 84%, transparent 84% 100%),
-    #fde8f0;
-  transform: rotate(-7deg);
-  box-shadow: var(--shadow-soft);
-  opacity: 0.95;
-}
-
+.picnic-blanket,
 .picnic-basket {
-  position: absolute;
-  left: 17%;
-  bottom: 160px;
-  width: 36px;
-  height: 26px;
-  background: #c99d6d;
-  border-radius: 8px 8px 10px 10px;
-  box-shadow: inset 0 -5px 0 rgba(0,0,0,0.08);
+  display: none;
 }
 
-.picnic-basket::before {
-  content: "";
+/* 메인화면 움직이는 대관람차 */
+.main-wheel {
+  position: absolute;
+  left: 18%;   /* 기존보다 오른쪽 이동 */
+  bottom: 110px;
+
+  width: 135px;   /* 살짝 작게 */
+  height: 135px;
+
+  transform: rotate(-4deg);
+  z-index: 5;   /* 나무보다 앞으로 */
+}
+
+.main-wheel .wheel-frame {
+  position: absolute;
+  inset: 0;
+}
+
+.main-wheel .wheel-rotator {
+  position: absolute;
+  inset: 0;
+  animation: wheelTurn 90s linear infinite;
+  transform-origin: center center;
+}
+
+.main-wheel .wheel-outer {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 8px solid #7fc8ef;
+  background: rgba(255,255,255,0.22);
+}
+
+.main-wheel .wheel-inner {
+  position: absolute;
+  left: 25px;
+  top: 25px;
+  width: 102px;
+  height: 102px;
+  border-radius: 50%;
+  border: 8px solid #f4a8c9;
+}
+
+.main-wheel .wheel-hub {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 22px;
+  height: 22px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: #ff8fbe;
+  border: 4px solid #d66b98;
+  z-index: 6;
+}
+
+.main-wheel .wheel-spoke {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 5px;
+  height: 64px;
+  margin-left: -2.5px;
+  margin-top: -2px;
+  border-radius: 999px;
+  background: linear-gradient(to bottom, #ffd970 0%, #f69ac4 100%);
+  transform-origin: center top;
+  z-index: 1;
+}
+
+.main-wheel .ws1 { transform: rotate(0deg); }
+.main-wheel .ws2 { transform: rotate(45deg); }
+.main-wheel .ws3 { transform: rotate(90deg); }
+.main-wheel .ws4 { transform: rotate(135deg); }
+.main-wheel .ws5 { transform: rotate(180deg); }
+.main-wheel .ws6 { transform: rotate(225deg); }
+.main-wheel .ws7 { transform: rotate(270deg); }
+.main-wheel .ws8 { transform: rotate(315deg); }
+
+.main-wheel .wheel-cabin {
   position: absolute;
   width: 20px;
-  height: 12px;
-  border: 3px solid #b7834f;
-  border-bottom: none;
-  border-radius: 18px 18px 0 0;
-  left: 5px;
-  top: -9px;
+  height: 18px;
+  border-radius: 8px 8px 7px 7px;
+  border: 2px solid #8cb7cf;
+  background: linear-gradient(180deg, #ffffff 0 42%, #dff6ff 42% 100%);
+  z-index: 6;
+  animation: counterWheelTurn 90s linear infinite;
+  transform-origin: center center;
+}
+
+.main-wheel .wheel-cabin::before {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 3px;
+  width: 8px;
+  height: 4px;
+  border-radius: 3px 3px 2px 2px;
+  border: 1.5px solid #9cb8cb;
+  background: #eefaff;
+}
+
+.main-wheel .wheel-cabin::after {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: -8px;
+  width: 2px;
+  height: 8px;
+  border-radius: 999px;
+  background: #ffd75f;
+  border: 1px solid #8fb7ce;
+}
+
+.main-wheel .wc1 { top: -7px; left: 66px; background: linear-gradient(180deg, #ffffff 0 42%, #e4ebff 42% 100%); }
+.main-wheel .wc2 { top: 17px; right: 6px; background: linear-gradient(180deg, #ffffff 0 42%, #fff6b9 42% 100%); }
+.main-wheel .wc3 { top: 67px; right: -3px; background: linear-gradient(180deg, #ffffff 0 42%, #ffe1ec 42% 100%); }
+.main-wheel .wc4 { bottom: 17px; right: 6px; background: linear-gradient(180deg, #ffffff 0 42%, #dff2ff 42% 100%); }
+.main-wheel .wc5 { bottom: -7px; left: 66px; background: linear-gradient(180deg, #ffffff 0 42%, #e2f8ff 42% 100%); }
+.main-wheel .wc6 { bottom: 17px; left: 6px; background: linear-gradient(180deg, #ffffff 0 42%, #fff2b8 42% 100%); }
+.main-wheel .wc7 { top: 67px; left: -3px; background: linear-gradient(180deg, #ffffff 0 42%, #dbf1ff 42% 100%); }
+.main-wheel .wc8 { top: 17px; left: 6px; background: linear-gradient(180deg, #ffffff 0 42%, #ffe9f0 42% 100%); }
+
+.main-wheel .wheel-leg {
+  position: absolute;
+  bottom: -4px;
+  width: 6px;
+  height: 56px;
+  background: #74c5ea;
+  border-radius: 999px;
+  z-index: 0;
+}
+
+.main-wheel .wl1 {
+  left: 54px;
+  transform: rotate(18deg);
+  transform-origin: bottom center;
+}
+
+.main-wheel .wl2 {
+  left: 92px;
+  transform: rotate(-18deg);
+  transform-origin: bottom center;
 }
 
 .tree {
   position: absolute;
+   z-index: 1;
 }
 
 .tree .trunk {
@@ -425,6 +546,7 @@ body {
   height: 50px;
   bottom: 126px;
   right: 23%;
+   z-index: 1;
 }
 
 .flower-clump span {
@@ -456,6 +578,7 @@ body {
   box-shadow:
     -20px 8px 0 #aedf9a,
     18px 6px 0 #89c777;
+      z-index: 1;
 }
 
 .tiny-grass {
@@ -563,11 +686,11 @@ body {
   object-fit: contain;
   border-radius: 24px;
   box-shadow: var(--shadow);
-  margin: 30px 0 14px; /* 헤더와의 간격을 위해 위쪽 마진 30px로 수정 */
+  margin: 30px 0 14px;
 }
 
 .start-btn {
-  font-family: inherit; /* 폰트 상속 추가 */
+  font-family: inherit;
   width: 100%;
   border: none;
   outline: none;
@@ -593,6 +716,7 @@ body {
   transform: translateY(3px);
 }
 
+/* 질문화면 */
 .test-wrap {
   position: relative;
   z-index: 3;
@@ -600,512 +724,552 @@ body {
   max-width: 550px;
   margin: 0 auto;
   min-height: 100vh;
-  padding: 64px 16px 18px;
+  padding: 64px 14px 38px;
+}
+
+.test-window {
+  width: 100%;
+  position: relative;
+  background: rgba(255,255,255,0.97);
+  border: 3px solid var(--line);
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow:
+    0 16px 0 rgba(149, 189, 214, 0.35),
+    0 30px 40px rgba(105, 150, 181, 0.16);
+}
+
+.test-window::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 88% 18%, rgba(255,223,126,0.28) 0 58px, transparent 59px),
+    radial-gradient(circle at 14% 82%, rgba(207,255,190,0.32) 0 92px, transparent 93px),
+    radial-gradient(circle at 80% 78%, rgba(255,211,233,0.24) 0 82px, transparent 83px);
+  opacity: 0.95;
+}
+
+.title-bar {
+  position: relative;
+  z-index: 3;
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 16px 14px;
+  border-bottom: 3px solid var(--line);
+  background: linear-gradient(90deg, #a5e4ff 0%, #cbfff3 28%, #fff1a8 64%, #ffd7e7 100%);
+  min-height: 68px;
 }
 
-.test-top {
-  padding-top: 10px;
+.title-left {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  width: 100%;
 }
 
-.q-chip-row {
+.title-text {
+  font-size: 15px;
+  font-weight: 900;
+  color: #3f5d78;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  letter-spacing: -0.2px;
+  text-align: center;
+  width: 100%;
+  padding: 0 12px;
+}
+
+.progress-wrap {
+  position: relative;
+  z-index: 2;
+  padding: 16px 16px 0;
+}
+
+.progress-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 14px;
+  gap: 10px;
+  margin-bottom: 10px;
+  font-size: 13px;
+  color: #688096;
+  font-weight: 900;
 }
 
-.q-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 12px;
-  border-radius: 999px;
-  background: rgba(255,255,255,0.82);
-  border: 1.5px solid #ecdfe4;
-  box-shadow: 0 5px 14px rgba(133, 153, 128, 0.08);
-  color: #7a8e7d;
-  font-size: 12px;
-  font-weight: 800;
-}
-
-.q-chip strong {
-  color: #637965;
-}
-
-.progress-box {
+.progress {
   width: 100%;
-  background: rgba(255,255,255,0.8);
-  border: 1.5px solid #e8ead7;
+  height: 22px;
+  padding: 3px;
   border-radius: 999px;
-  padding: 6px;
-  box-shadow: 0 8px 18px rgba(127, 150, 117, 0.08);
-}
-
-.progress-track {
-  width: 100%;
-  height: 12px;
-  background: #edf6df;
-  border-radius: 999px;
+  border: 3px solid #b0cadf;
+  background: #edf8ff;
+  box-shadow: inset 0 2px 0 rgba(255,255,255,0.75);
   overflow: hidden;
-  position: relative;
 }
 
 .progress-bar {
   width: 0%;
   height: 100%;
   border-radius: 999px;
-  background: linear-gradient(to right, #ffd3df 0%, #ffe89a 50%, #b9e194 100%);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.7);
-  transition: width 0.28s ease;
-  position: relative;
+  background: linear-gradient(90deg, #ffbfd7 0%, #ffe78d 30%, #b8efff 64%, #cef4b1 100%);
+  transition: width 0.3s ease;
 }
 
-.progress-bar::after {
+.test-content {
+  position: relative;
+  z-index: 2;
+  padding: 22px 18px 24px;
+  text-align: center;
+}
+
+.question-scene {
+  position: relative;
+  margin-bottom: 16px;
+  height: 126px;
+  border-radius: 24px;
+  border: 3px solid #c7dcec;
+  background: linear-gradient(180deg, #e3f8ff 0%, #f7fffd 48%, #f7ffe4 100%);
+  overflow: hidden;
+  box-shadow:
+    inset 0 3px 0 rgba(255,255,255,0.82),
+    0 10px 18px rgba(170, 196, 214, 0.15);
+}
+
+.question-scene .mini-cloud {
+  position: absolute;
+  height: 18px;
+  border-radius: 999px;
+  border: 2px solid #bed8eb;
+  background: rgba(255,255,255,0.95);
+}
+
+.question-scene .mini-cloud::before,
+.question-scene .mini-cloud::after {
   content: "";
   position: absolute;
-  right: 8px;
-  top: 2px;
-  width: 20px;
-  height: 8px;
-  border-radius: 999px;
-  background: rgba(255,255,255,0.28);
-  filter: blur(1px);
+  border-radius: 50%;
+  border: 2px solid #bed8eb;
+  background: rgba(255,255,255,0.95);
 }
 
-.question-area {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  padding: 16px 2px 4px;
+.question-scene .mini-cloud.m1 {
+  width: 50px;
+  top: 18px;
+  left: 18px;
+  animation: cloudFloatA 10s ease-in-out infinite alternate;
+}
+
+.question-scene .mini-cloud.m1::before {
+  width: 18px;
+  height: 18px;
+  top: -10px;
+  left: 8px;
+}
+
+.question-scene .mini-cloud.m1::after {
+  width: 20px;
+  height: 20px;
+  top: -11px;
+  right: 8px;
+}
+
+.question-scene .mini-cloud.m2 {
+  width: 58px;
+  top: 26px;
+  right: 20px;
+  animation: cloudFloatB 11.5s ease-in-out infinite alternate;
+}
+
+.question-scene .mini-cloud.m2::before {
+  width: 20px;
+  height: 20px;
+  top: -10px;
+  left: 8px;
+}
+
+.question-scene .mini-cloud.m2::after {
+  width: 22px;
+  height: 22px;
+  top: -12px;
+  right: 8px;
+}
+
+.question-scene .wheel-mini-wrap {
+  position: absolute;
+  left: 50%;
+  bottom: 12px;
+  width: 96px;
+  height: 96px;
+  transform: translateX(-50%);
+}
+
+.question-scene .wheel-shell {
+  position: absolute;
+  inset: 0;
+}
+
+.question-scene .wheel-rotator {
+  position: absolute;
+  inset: 0;
+  animation: wheelTurn 90s linear infinite;
+  transform-origin: center center;
+}
+
+.question-scene .wheel-mini-wheel {
+  position: absolute;
+  inset: 0;
+}
+
+.question-scene .wheel-mini-outer {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 4px solid #77cdef;
+  z-index: 2;
+}
+
+.question-scene .wheel-mini-inner {
+  position: absolute;
+  left: 15px;
+  top: 15px;
+  width: 66px;
+  height: 66px;
+  border-radius: 50%;
+  border: 4px solid #f3a0c7;
+  z-index: 1;
+}
+
+.question-scene .wheel-hub {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 18px;
+  height: 18px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: #ff94c4;
+  border: 3px solid #da6d9d;
+  z-index: 6;
+}
+
+.question-scene .wheel-line {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 4px;
+  height: 42px;
+  margin-left: -2px;
+  margin-top: -2px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #ffd86d 0%, #f699c4 100%);
+  transform-origin: center top;
+  z-index: 1;
+}
+
+.question-scene .w1 { transform: rotate(0deg); }
+.question-scene .w2 { transform: rotate(45deg); }
+.question-scene .w3 { transform: rotate(90deg); }
+.question-scene .w4 { transform: rotate(135deg); }
+.question-scene .w5 { transform: rotate(180deg); }
+.question-scene .w6 { transform: rotate(225deg); }
+.question-scene .w7 { transform: rotate(270deg); }
+.question-scene .w8 { transform: rotate(315deg); }
+
+.question-scene .mini-cabin {
+  position: absolute;
+  width: 16px;
+  height: 14px;
+  border-radius: 7px 7px 6px 6px;
+  border: 2px solid #8cb7cf;
+  background: linear-gradient(180deg, #ffffff 0 40%, #dff6ff 40% 100%);
+  z-index: 5;
+  transform-origin: center center;
+  animation: counterWheelTurn 90s linear infinite;
+}
+
+.question-scene .mini-cabin::before {
+  content: "";
+  position: absolute;
+  left: 3px;
+  top: 2px;
+  width: 6px;
+  height: 3px;
+  border-radius: 3px 3px 2px 2px;
+  border: 1.5px solid #9cb8cb;
+  background: #eefaff;
+}
+
+.question-scene .mini-cabin::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: -6px;
+  width: 2px;
+  height: 6px;
+  border-radius: 999px;
+  background: #ffd75f;
+  border: 1.5px solid #8fb7ce;
+}
+
+.question-scene .mc1c { top: -5px; left: 40px; background: linear-gradient(180deg, #ffffff 0 40%, #e4ebff 40% 100%); }
+.question-scene .mc2c { top: 10px; right: 7px; background: linear-gradient(180deg, #ffffff 0 40%, #fff6b9 40% 100%); }
+.question-scene .mc3c { right: -2px; top: 40px; background: linear-gradient(180deg, #ffffff 0 40%, #ffe1ec 40% 100%); }
+.question-scene .mc4c { bottom: 10px; right: 7px; background: linear-gradient(180deg, #ffffff 0 40%, #dff2ff 40% 100%); }
+.question-scene .mc5c { bottom: -5px; left: 40px; background: linear-gradient(180deg, #ffffff 0 40%, #e2f8ff 40% 100%); }
+.question-scene .mc6c { bottom: 10px; left: 7px; background: linear-gradient(180deg, #ffffff 0 40%, #fff2b8 40% 100%); }
+.question-scene .mc7c { left: -2px; top: 40px; background: linear-gradient(180deg, #ffffff 0 40%, #dbf1ff 40% 100%); }
+.question-scene .mc8c { top: 10px; left: 7px; background: linear-gradient(180deg, #ffffff 0 40%, #ffe9f0 40% 100%); }
+
+.question-scene .mini-leg {
+  position: absolute;
+  bottom: 0;
+  width: 4px;
+  height: 42px;
+  background: #74c5ea;
+  border-radius: 999px;
+  z-index: 1;
+}
+
+.question-scene .ml1 {
+  left: calc(50% - 18px);
+  transform: rotate(18deg);
+  transform-origin: bottom center;
+}
+
+.question-scene .ml2 {
+  left: calc(50% + 14px);
+  transform: rotate(-18deg);
+  transform-origin: bottom center;
+}
+
+.question-scene .grass {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 26px;
+  background:
+    radial-gradient(circle at 8px 16px, rgba(198,238,148,0.95) 0 12px, transparent 13px) 0 0 / 28px 24px repeat-x,
+    linear-gradient(180deg, rgba(212,248,174,0.8) 0%, rgba(189,234,144,0.95) 100%);
+  z-index: 0;
+}
+
+/* 3칸 빨간 기차 */
+.question-scene .train {
+  position: absolute;
+  right: 10px;
+  bottom: 12px;
+  width: 124px;
+  height: 58px;
+  animation: trainBob 2.8s ease-in-out infinite;
+}
+
+.question-scene .engine {
+  position: absolute;
+  left: 0;
+  bottom: 12px;
+  width: 34px;
+  height: 24px;
+  background: #ef6d6d;
+  border-radius: 10px 10px 8px 8px;
+  border: 2px solid #d85b5b;
+}
+
+.question-scene .engine::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: -15px;
+  width: 18px;
+  height: 16px;
+  background: #ef6d6d;
+  border-radius: 7px 7px 0 0;
+  border: 2px solid #d85b5b;
+  border-bottom: none;
+}
+
+.question-scene .engine::after {
+  content: "";
+  position: absolute;
+  right: 5px;
+  top: -10px;
+  width: 6px;
+  height: 10px;
+  background: #ef6d6d;
+  border: 2px solid #d85b5b;
+  border-bottom: none;
+  border-radius: 3px 3px 0 0;
+}
+
+.question-scene .engine-window {
+  position: absolute;
+  left: 8px;
+  top: 4px;
+  width: 10px;
+  height: 8px;
+  background: #fff7ea;
+  border-radius: 3px;
+}
+
+.question-scene .car {
+  position: absolute;
+  bottom: 12px;
+  width: 24px;
+  height: 20px;
+  background: #ef6d6d;
+  border: 2px solid #d85b5b;
+  border-radius: 6px;
+}
+
+.question-scene .car1 { left: 42px; }
+.question-scene .car2 { left: 72px; }
+.question-scene .car3 { left: 102px; }
+
+.question-scene .car::before,
+.question-scene .car::after {
+  content: "";
+  position: absolute;
+  top: 4px;
+  width: 6px;
+  height: 8px;
+  background: #fff7ea;
+  border-radius: 3px;
+}
+
+.question-scene .car::before { left: 4px; }
+.question-scene .car::after { right: 4px; }
+
+.question-scene .link {
+  position: absolute;
+  height: 2px;
+  background: #7f8fa3;
+  bottom: 21px;
+}
+
+.question-scene .link1 { left: 34px; width: 8px; }
+.question-scene .link2 { left: 66px; width: 6px; }
+.question-scene .link3 { left: 96px; width: 6px; }
+
+.question-scene .wheel {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: #5f6470;
+  border: 2px solid #efe9d4;
+  border-radius: 50%;
+  bottom: 0;
+}
+
+.question-scene .w-e1 { left: 5px; }
+.question-scene .w-e2 { left: 21px; }
+
+.question-scene .w-c11 { left: 45px; }
+.question-scene .w-c12 { left: 57px; }
+
+.question-scene .w-c21 { left: 75px; }
+.question-scene .w-c22 { left: 87px; }
+
+.question-scene .w-c31 { left: 105px; }
+.question-scene .w-c32 { left: 117px; }
+
+.question-scene .smoke {
+  position: absolute;
+  left: 8px;
+  top: -8px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.95);
+  box-shadow:
+    -8px -6px 0 1px rgba(255,255,255,0.8),
+    8px -7px 0 1px rgba(255,255,255,0.75);
+  animation: smokePop 2.2s ease-in-out infinite;
 }
 
 .question-card {
   position: relative;
-  background: rgba(255,255,255,0.9);
-  border: 1.5px solid rgba(230, 222, 196, 0.92);
-  border-radius: 30px;
-  padding: 24px 22px 26px;
-  box-shadow: var(--shadow);
-  backdrop-filter: blur(9px);
-  overflow: hidden;
+  background: linear-gradient(180deg, #ffffff 0%, #fffdf4 100%);
+  border: 3px solid #c8dcec;
+  border-radius: 26px;
+  padding: 22px 16px 18px;
+  box-shadow:
+    inset 0 3px 0 rgba(255,255,255,0.86),
+    0 10px 18px rgba(170, 196, 214, 0.15);
 }
 
-.question-card::before {
-  content: "";
-  position: absolute;
-  width: 150px;
-  height: 150px;
-  right: -60px;
-  top: -60px;
-  background: radial-gradient(circle, rgba(255,236,170,0.55) 0%, rgba(255,236,170,0) 70%);
-  border-radius: 50%;
-}
-
-.question-card::after {
-  content: "";
-  position: absolute;
-  width: 120px;
-  height: 120px;
-  left: -52px;
-  bottom: -52px;
-  background: radial-gradient(circle, rgba(247,208,225,0.45) 0%, rgba(247,208,225,0) 72%);
-  border-radius: 50%;
-}
-
-.question-label {
+.question-badge {
   display: inline-flex;
   align-items: center;
-  gap: 7px;
-  margin-bottom: 18px;
-  padding: 8px 12px;
-  background: #fdf4f8;
-  border: 1px solid #f2d6e3;
+  justify-content: center;
+  min-width: 106px;
+  padding: 7px 14px;
   border-radius: 999px;
+  margin-bottom: 14px;
+  background: #fff5c7;
+  border: 2px solid #e2cd88;
+  color: #7a6833;
   font-size: 12px;
-  font-weight: 800;
-  color: #8d7c84;
-  position: relative;
-  z-index: 2;
-}
-
-.question-label .flower-mini {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #ffc3d7;
-  box-shadow:
-    7px 0 0 #ffd878,
-    3.5px 6px 0 #bfe59f,
-    3.5px -6px 0 #ffe2ea;
-  margin-right: 8px;
+  font-weight: 900;
+  box-shadow: 0 4px 0 rgba(235, 220, 165, 0.5);
 }
 
 .question-text {
-  position: relative;
-  z-index: 2;
-  font-size: 22px;
-  line-height: 1.45;
-  letter-spacing: -0.9px;
-  color: #5a6f5f;
-  font-weight: 800;
+  margin: 0;
+  font-size: 20px;
+  line-height: 1.5;
+  font-weight: 900;
+  color: #4f6a84;
+  letter-spacing: -0.4px;
   word-break: keep-all;
 }
 
-.question-visual {
-  position: relative;
-  width: 100%;
-  height: 190px;
-  margin: 14px 0 16px;
-  overflow: hidden;
-  border-radius: 24px;
-  background: linear-gradient(to bottom, #eef7ff 0%, #f7fcf1 40%, #c7e691 100%);
-  box-shadow: 0 10px 22px rgba(112, 144, 115, 0.12);
-}
-
-.question-visual .mini-cloud {
-  position: absolute;
-  background: rgba(255,255,255,0.92);
-  border-radius: 999px;
-}
-
-.question-visual .mini-cloud::before,
-.question-visual .mini-cloud::after {
-  content: "";
-  position: absolute;
-  background: rgba(255,255,255,0.92);
-  border-radius: 50%;
-}
-
-.question-visual .mc1 {
-  width: 82px;
-  height: 26px;
-  left: 14px;
-  top: 22px;
-}
-
-.question-visual .mc1::before {
-  width: 28px;
-  height: 28px;
-  left: 12px;
-  top: -10px;
-}
-
-.question-visual .mc1::after {
-  width: 30px;
-  height: 30px;
-  right: 11px;
-  top: -12px;
-}
-
-.question-visual .mc2 {
-  width: 72px;
-  height: 24px;
-  right: 22px;
-  top: 20px;
-}
-
-.question-visual .mc2::before {
-  width: 24px;
-  height: 24px;
-  left: 10px;
-  top: -8px;
-}
-
-.question-visual .mc2::after {
-  width: 26px;
-  height: 26px;
-  right: 10px;
-  top: -10px;
-}
-
-.question-visual .mini-sun {
-  position: absolute;
-  right: 46px;
-  top: 8px;
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(255,237,165,0.92) 0%, rgba(255,237,165,0.4) 55%, rgba(255,237,165,0) 75%);
-}
-
-.question-visual .mini-hill-back {
-  position: absolute;
-  left: -8%;
-  bottom: 40px;
-  width: 72%;
-  height: 56px;
-  border-radius: 50%;
-  background: #dff1c1;
-}
-
-.question-visual .mini-hill-front {
-  position: absolute;
-  left: -8%;
-  bottom: -16px;
-  width: 120%;
-  height: 84px;
-  border-radius: 50%;
-  background: #bfe08d;
-}
-
-.question-visual .mini-path {
-  position: absolute;
-  right: -6%;
-  bottom: 8px;
-  width: 46%;
-  height: 66px;
-  background: #d8be92;
-  border-radius: 55% 0 0 55%;
-  transform: rotate(-8deg);
-  opacity: 0.92;
-}
-
-.question-visual .mini-blanket {
-  position: absolute;
-  left: 30px;
-  bottom: 24px;
-  width: 94px;
-  height: 46px;
-  border-radius: 12px;
-  background:
-    linear-gradient(to right, rgba(240,180,205,0.95) 0 18%, transparent 18% 32%, rgba(240,180,205,0.95) 32% 50%, transparent 50% 68%, rgba(240,180,205,0.95) 68% 84%, transparent 84% 100%),
-    linear-gradient(to bottom, rgba(240,180,205,0.95) 0 18%, transparent 18% 32%, rgba(240,180,205,0.95) 32% 50%, transparent 50% 68%, rgba(240,180,205,0.95) 68% 84%, transparent 84% 100%),
-    #fde8f0;
-  transform: rotate(-8deg);
-  box-shadow: 0 8px 14px rgba(150, 123, 134, 0.12);
-}
-
-.question-visual .mini-basket {
-  position: absolute;
-  left: 54px;
-  bottom: 63px;
-  width: 22px;
-  height: 16px;
-  background: #c99d6d;
-  border-radius: 7px 7px 8px 8px;
-  z-index: 3;
-}
-
-.question-visual .mini-basket::before {
-  content: "";
-  position: absolute;
-  width: 10px;
-  height: 7px;
-  border: 2px solid #b7834f;
-  border-bottom: none;
-  border-radius: 10px 10px 0 0;
-  left: 4px;
-  top: -6px;
-}
-
-.question-visual .mini-tree {
-  position: absolute;
-  right: 30px;
-  bottom: 20px;
-  width: 84px;
-  height: 118px;
-}
-
-.question-visual .mini-tree::before {
-  content: "";
-  position: absolute;
-  left: 36px;
-  bottom: 0;
-  width: 10px;
-  height: 54px;
-  background: #9a7456;
-  border-radius: 10px;
-}
-
-.question-visual .mini-tree::after {
-  content: "";
-  position: absolute;
-  left: 8px;
-  bottom: 34px;
-  width: 68px;
-  height: 68px;
-  border-radius: 50%;
-  background: #f4cadc;
-  box-shadow:
-    -16px 10px 0 #f6dce7,
-    18px 8px 0 #efbad1,
-    6px -14px 0 #f9e4ee;
-}
-
-.question-visual .mini-bush {
-  position: absolute;
-  left: 160px;
-  bottom: 24px;
-  width: 62px;
-  height: 32px;
-  border-radius: 30px;
-  background: #98d582;
-  box-shadow: -12px 6px 0 #aee39d, 12px 4px 0 #88c773;
-}
-
-.question-visual .mini-flower {
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  background: #ffb5cb;
-  border-radius: 50%;
-  box-shadow:
-    6px 0 0 #ffd56b,
-    -6px 0 0 #ff8eaf,
-    0 6px 0 #ffd0da,
-    0 -6px 0 #ffe08e;
-}
-
-.question-visual .mf1 { left: 150px; bottom: 58px; }
-.question-visual .mf2 { left: 184px; bottom: 48px; transform: scale(0.85); }
-.question-visual .mf3 { right: 106px; bottom: 55px; transform: scale(0.92); }
-
-.question-visual .mini-petals {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  z-index: 2;
-  pointer-events: none;
-}
-
-.question-visual .mini-petal {
-  position: absolute;
-  width: 10px;
-  height: 7px;
-  background: rgba(255, 227, 236, 0.95);
-  border-radius: 10px 10px 10px 2px;
-  box-shadow: 0 1px 3px rgba(210, 173, 188, 0.18);
-  opacity: 0;
-  animation: miniFall linear infinite;
-}
-
-.question-visual .mini-petal.mp1 { left: 10%; top: -8%; animation-duration: 6.8s; animation-delay: -0.8s; }
-.question-visual .mini-petal.mp2 { left: 24%; top: -10%; animation-duration: 7.4s; animation-delay: -2.4s; }
-.question-visual .mini-petal.mp3 { left: 40%; top: -6%; animation-duration: 6.2s; animation-delay: -1.5s; }
-.question-visual .mini-petal.mp4 { left: 58%; top: -12%; animation-duration: 7.8s; animation-delay: -3.2s; }
-.question-visual .mini-petal.mp5 { left: 73%; top: -9%; animation-duration: 6.9s; animation-delay: -4.6s; }
-.question-visual .mini-petal.mp6 { left: 86%; top: -7%; animation-duration: 8.2s; animation-delay: -2.1s; }
-
-@keyframes miniFall {
-  0% {
-    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
-    opacity: 0;
-  }
-  12% {
-    opacity: 1;
-  }
-  45% {
-    transform: translate3d(10px, 60px, 0) rotate(90deg) scale(0.98);
-    opacity: 0.95;
-  }
-  75% {
-    transform: translate3d(-6px, 120px, 0) rotate(180deg) scale(0.95);
-    opacity: 0.9;
-  }
-  100% {
-    transform: translate3d(14px, 210px, 0) rotate(280deg) scale(0.9);
-    opacity: 0;
-  }
-}
-
-.ox-area {
-  margin-top: 0;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
+.button-row {
+  display: flex;
+  gap: 12px;
+  margin-top: 18px;
 }
 
 .ox-btn {
-  position: relative;
-  border: none;
-  outline: none;
+  flex: 1;
+  padding: 16px 12px;
+  border-radius: 22px;
+  border: 3px solid transparent;
+  font-size: 28px;
+  font-weight: 900;
   cursor: pointer;
-  min-height: 112px;
-  border-radius: 28px;
-  box-shadow: var(--shadow-soft);
-  transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
-  overflow: hidden;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  color: #53657a;
+  font-family: inherit;
 }
 
 .ox-btn:hover {
-  transform: translateY(-2px);
+  transform: translateY(-1px);
 }
 
 .ox-btn:active {
-  transform: translateY(3px);
+  transform: translateY(2px);
 }
 
 .ox-btn.o {
-  background: linear-gradient(to bottom, #fff8de 0%, #ffe59e 100%);
+  background: linear-gradient(180deg, #ddfff0 0%, #baf4d3 100%);
+  border-color: #8cc9a6;
   box-shadow:
-    0 12px 24px rgba(214, 195, 103, 0.22),
-    inset 0 2px 0 rgba(255,255,255,0.9),
-    0 5px 0 #e8cb73;
+    inset 0 3px 0 rgba(255,255,255,0.8),
+    0 8px 0 #9dd9b7;
 }
 
 .ox-btn.x {
-  background: linear-gradient(to bottom, #fff1f6 0%, #ffd3e3 100%);
+  background: linear-gradient(180deg, #ffe9f1 0%, #ffcfe0 100%);
+  border-color: #dea2b6;
   box-shadow:
-    0 12px 24px rgba(227, 165, 192, 0.18),
-    inset 0 2px 0 rgba(255,255,255,0.9),
-    0 5px 0 #ecb3cb;
+    inset 0 3px 0 rgba(255,255,255,0.8),
+    0 8px 0 #ecb5c8;
 }
-
-.ox-btn .symbol {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.ox-btn.o .symbol::before {
-  content: "";
-  width: 52px;
-  height: 52px;
-  border: 8px solid rgba(117, 132, 92, 0.92);
-  border-radius: 50%;
-  box-shadow: 0 2px 0 rgba(255,255,255,0.45);
-}
-
-.ox-btn.x .symbol::before,
-.ox-btn.x .symbol::after {
-  content: "";
-  position: absolute;
-  width: 62px;
-  height: 8px;
-  background: rgba(131, 104, 121, 0.92);
-  border-radius: 999px;
-}
-
-.ox-btn.x .symbol::before {
-  transform: rotate(45deg);
-}
-
-.ox-btn.x .symbol::after {
-  transform: rotate(-45deg);
-}
-
-.ox-btn .mini-flower {
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.58);
-  box-shadow:
-    7px 0 0 rgba(255,255,255,0.58),
-    3.5px 6px 0 rgba(255,255,255,0.58),
-    3.5px -6px 0 rgba(255,255,255,0.58);
-  opacity: 0.9;
-}
-
-.ox-btn .f1 { left: 16px; top: 18px; transform: scale(0.8); }
-.ox-btn .f2 { right: 18px; bottom: 16px; transform: scale(0.9); }
-.ox-btn .f3 { right: 20px; top: 18px; transform: scale(0.7); }
-.ox-btn .f4 { left: 16px; bottom: 18px; transform: scale(0.78); }
 
 .result-wrap {
   position: relative;
@@ -1147,7 +1311,7 @@ body {
 }
 
 .action-btn {
-  font-family: inherit; /* 폰트 상속 추가 */
+  font-family: inherit;
   border: none;
   outline: none;
   cursor: pointer;
@@ -1184,7 +1348,131 @@ body {
     0 5px 0 #ebb4cc;
 }
 
-@media (max-width: 430px) {
+/* 저장용 이미지 모달 */
+.image-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+  background: rgba(37, 43, 48, 0.72);
+  backdrop-filter: blur(4px);
+}
+
+.image-modal.active {
+  display: flex;
+}
+
+.image-modal-backdrop {
+  position: absolute;
+  inset: 0;
+}
+
+.image-modal-panel {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 520px;
+  background: linear-gradient(180deg, #fffefb 0%, #fff7f1 100%);
+  border: 3px solid #c8dcec;
+  border-radius: 28px;
+  padding: 16px 16px 18px;
+  box-shadow:
+    0 20px 40px rgba(0,0,0,0.18),
+    inset 0 2px 0 rgba(255,255,255,0.85);
+}
+
+.image-modal-title {
+  font-size: 16px;
+  font-weight: 900;
+  color: #5a738b;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.image-modal-desc {
+  font-size: 13px;
+  line-height: 1.5;
+  color: #7a8a96;
+  text-align: center;
+  margin-bottom: 14px;
+}
+
+.image-modal-preview {
+  width: 100%;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #fff;
+  border: 2px solid #d7e5f0;
+}
+
+.image-modal-preview img {
+  display: block;
+  width: 100%;
+  height: auto;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.image-modal-close {
+  margin-top: 14px;
+  width: 100%;
+  border: none;
+  border-radius: 18px;
+  padding: 14px 14px;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 900;
+  cursor: pointer;
+  color: #6a6f79;
+  background: linear-gradient(180deg, #f0f7ff 0%, #dfefff 100%);
+  border: 2px solid #bdd5ea;
+  box-shadow:
+    inset 0 2px 0 rgba(255,255,255,0.9),
+    0 5px 0 #c7ddf0;
+}
+
+.image-modal-close:active {
+  transform: translateY(2px);
+}
+
+@keyframes cloudFloatA {
+  0% { transform: translateX(0px); }
+  50% { transform: translateX(6px) translateY(-1px); }
+  100% { transform: translateX(12px); }
+}
+
+@keyframes cloudFloatB {
+  0% { transform: translateX(0px); }
+  50% { transform: translateX(-5px) translateY(1px); }
+  100% { transform: translateX(-10px); }
+}
+
+@keyframes wheelTurn {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes counterWheelTurn {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(-360deg); }
+}
+
+@keyframes trainBob {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-1px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes smokePop {
+  0% { transform: translateY(0) scale(1); opacity: 0.9; }
+  50% { transform: translateY(-2px) scale(1.06); opacity: 1; }
+  100% { transform: translateY(0) scale(1); opacity: 0.9; }
+}
+
+@media (max-width: 480px) {
   .content-wrap {
     padding: 48px 14px 24px;
   }
@@ -1193,16 +1481,72 @@ body {
     margin-bottom: 12px;
   }
 
+  .main-wheel {
+    left: 18px;
+    bottom: 48px;
+    width: 108px;
+    height: 108px;
+    transform: rotate(-4deg);
+    z-index: 6;
+  }
+
+  .main-wheel .wheel-inner {
+    left: 18px;
+    top: 18px;
+    width: 72px;
+    height: 72px;
+  }
+
+  .main-wheel .wheel-spoke {
+    height: 46px;
+  }
+
+  .main-wheel .wheel-cabin {
+    width: 15px;
+    height: 14px;
+  }
+
+  .main-wheel .wc1 { top: -5px; left: 46px; }
+  .main-wheel .wc2 { top: 11px; right: 4px; }
+  .main-wheel .wc3 { top: 46px; right: -3px; }
+  .main-wheel .wc4 { bottom: 11px; right: 4px; }
+  .main-wheel .wc5 { bottom: -5px; left: 46px; }
+  .main-wheel .wc6 { bottom: 11px; left: 4px; }
+  .main-wheel .wc7 { top: 46px; left: -3px; }
+  .main-wheel .wc8 { top: 11px; left: 4px; }
+
+  .main-wheel .wl1 {
+    left: 38px;
+    height: 40px;
+  }
+
+  .main-wheel .wl2 {
+    left: 64px;
+    height: 40px;
+  }
+
+  .test-wrap {
+    padding: 58px 10px 34px;
+  }
+
+  .test-content {
+    padding: 20px 14px 20px;
+  }
+
   .question-text {
-    font-size: 19px;
+    font-size: 18px;
+    line-height: 1.45;
   }
 
-  .question-visual {
-    height: 180px;
+  .title-text {
+    font-size: 14px;
+    padding: 0 6px;
   }
 
-  .ox-btn {
-    min-height: 108px;
+  .question-scene .train {
+    right: 6px;
+    transform: scale(0.92);
+    transform-origin: right bottom;
   }
 
   .result-wrap {
@@ -1211,6 +1555,19 @@ body {
 
   .result-actions {
     margin-top: 12px;
+  }
+
+  .action-btn {
+    font-size: 15px;
+    padding: 15px 14px;
+  }
+
+  .image-modal {
+    padding: 18px 10px;
+  }
+
+  .image-modal-panel {
+    padding: 14px 12px 14px;
   }
 }
 </style>
@@ -1241,13 +1598,40 @@ body {
         <div class="hill h1"></div>
         <div class="hill h2"></div>
         <div class="path"></div>
-        <div class="picnic-blanket"></div>
-        <div class="picnic-basket"></div>
 
-        <div class="tree tree-left">
-          <div class="trunk"></div>
-          <div class="crown"></div>
+        <div class="main-wheel">
+          <div class="wheel-frame">
+            <div class="wheel-leg wl1"></div>
+            <div class="wheel-leg wl2"></div>
+
+            <div class="wheel-rotator">
+              <div class="wheel-outer"></div>
+              <div class="wheel-inner"></div>
+
+              <div class="wheel-spoke ws1"></div>
+              <div class="wheel-spoke ws2"></div>
+              <div class="wheel-spoke ws3"></div>
+              <div class="wheel-spoke ws4"></div>
+              <div class="wheel-spoke ws5"></div>
+              <div class="wheel-spoke ws6"></div>
+              <div class="wheel-spoke ws7"></div>
+              <div class="wheel-spoke ws8"></div>
+
+              <div class="wheel-cabin wc1"></div>
+              <div class="wheel-cabin wc2"></div>
+              <div class="wheel-cabin wc3"></div>
+              <div class="wheel-cabin wc4"></div>
+              <div class="wheel-cabin wc5"></div>
+              <div class="wheel-cabin wc6"></div>
+              <div class="wheel-cabin wc7"></div>
+              <div class="wheel-cabin wc8"></div>
+            </div>
+
+            <div class="wheel-hub"></div>
+          </div>
         </div>
+
+    
 
         <div class="tree tree-right">
           <div class="trunk"></div>
@@ -1310,65 +1694,102 @@ body {
       </div>
 
       <div class="test-wrap">
-        <div class="test-top">
-          <div class="q-chip-row">
-            <div class="q-chip"><strong id="questionCount">QUESTION 1 / 20</strong></div>
-            <div class="q-chip">OX TEST</div>
+        <div class="test-window">
+          <div class="title-bar">
+            <div class="title-left">
+              <div class="title-text">동심 체크 중...</div>
+            </div>
           </div>
 
-          <div class="progress-box">
-            <div class="progress-track">
+          <div class="progress-wrap">
+            <div class="progress-top">
+              <span id="progressText">1 / 20</span>
+              <span>테스트 진행 중</span>
+            </div>
+            <div class="progress">
               <div class="progress-bar" id="progressBar"></div>
             </div>
           </div>
-        </div>
 
-        <div class="question-area">
-          <div class="question-card" id="questionCard">
-            <div class="question-label">
-              <span class="flower-mini"></span>
-              나의 동심 체크
+          <div class="test-content">
+            <div class="question-scene">
+              <div class="mini-cloud m1"></div>
+              <div class="mini-cloud m2"></div>
+
+              <div class="wheel-mini-wrap">
+                <div class="wheel-shell">
+                  <div class="wheel-rotator">
+                    <div class="wheel-mini-wheel">
+                      <div class="wheel-mini-outer"></div>
+                      <div class="wheel-mini-inner"></div>
+
+                      <div class="wheel-line w1"></div>
+                      <div class="wheel-line w2"></div>
+                      <div class="wheel-line w3"></div>
+                      <div class="wheel-line w4"></div>
+                      <div class="wheel-line w5"></div>
+                      <div class="wheel-line w6"></div>
+                      <div class="wheel-line w7"></div>
+                      <div class="wheel-line w8"></div>
+
+                      <div class="mini-cabin mc1c"></div>
+                      <div class="mini-cabin mc2c"></div>
+                      <div class="mini-cabin mc3c"></div>
+                      <div class="mini-cabin mc4c"></div>
+                      <div class="mini-cabin mc5c"></div>
+                      <div class="mini-cabin mc6c"></div>
+                      <div class="mini-cabin mc7c"></div>
+                      <div class="mini-cabin mc8c"></div>
+                    </div>
+                  </div>
+
+                  <div class="wheel-hub"></div>
+                </div>
+              </div>
+
+              <div class="mini-leg ml1"></div>
+              <div class="mini-leg ml2"></div>
+
+              <div class="train">
+                <div class="smoke"></div>
+                <div class="engine">
+                  <div class="engine-window"></div>
+                </div>
+
+                <div class="link link1"></div>
+                <div class="car car1"></div>
+
+                <div class="link link2"></div>
+                <div class="car car2"></div>
+
+                <div class="link link3"></div>
+                <div class="car car3"></div>
+
+                <div class="wheel w-e1"></div>
+                <div class="wheel w-e2"></div>
+
+                <div class="wheel w-c11"></div>
+                <div class="wheel w-c12"></div>
+
+                <div class="wheel w-c21"></div>
+                <div class="wheel w-c22"></div>
+
+                <div class="wheel w-c31"></div>
+                <div class="wheel w-c32"></div>
+              </div>
+
+              <div class="grass"></div>
             </div>
-            <div class="question-text" id="questionText"></div>
-          </div>
 
-          <div class="question-visual">
-            <div class="mini-sun"></div>
-            <div class="mini-cloud mc1"></div>
-            <div class="mini-cloud mc2"></div>
-            <div class="mini-hill-back"></div>
-            <div class="mini-hill-front"></div>
-            <div class="mini-path"></div>
-            <div class="mini-blanket"></div>
-            <div class="mini-basket"></div>
-            <div class="mini-bush"></div>
-            <div class="mini-tree"></div>
-            <div class="mini-flower mf1"></div>
-            <div class="mini-flower mf2"></div>
-            <div class="mini-flower mf3"></div>
+            <div class="question-card">
+              <div class="question-badge" id="questionBadge">QUESTION 1</div>
+              <p class="question-text" id="questionText"></p>
 
-            <div class="mini-petals">
-              <span class="mini-petal mp1"></span>
-              <span class="mini-petal mp2"></span>
-              <span class="mini-petal mp3"></span>
-              <span class="mini-petal mp4"></span>
-              <span class="mini-petal mp5"></span>
-              <span class="mini-petal mp6"></span>
+              <div class="button-row">
+                <button class="ox-btn o" id="yesBtn">O</button>
+                <button class="ox-btn x" id="noBtn">X</button>
+              </div>
             </div>
-          </div>
-
-          <div class="ox-area">
-            <button class="ox-btn o" id="yesBtn" aria-label="O">
-              <span class="mini-flower f1"></span>
-              <span class="mini-flower f2"></span>
-              <span class="symbol"></span>
-            </button>
-
-            <button class="ox-btn x" id="noBtn" aria-label="X">
-              <span class="mini-flower f3"></span>
-              <span class="mini-flower f4"></span>
-              <span class="symbol"></span>
-            </button>
           </div>
         </div>
       </div>
@@ -1402,10 +1823,23 @@ body {
         <div class="result-actions">
           <button class="action-btn primary" id="saveImageBtn">결과 이미지 저장하기</button>
           <button class="action-btn secondary" id="goMainBtn">다시 해보기</button>
+          <button class="action-btn secondary" id="otherTestBtn">다른 테스트 해보기</button>
           <button class="action-btn secondary" id="shareBtn">테스트 공유하기</button>
         </div>
       </div>
     </section>
+  </div>
+
+  <div class="image-modal" id="imageModal">
+    <div class="image-modal-backdrop" id="imageModalBackdrop"></div>
+    <div class="image-modal-panel">
+      <div class="image-modal-title">결과 이미지를 길게 눌러 저장해보세요</div>
+      <div class="image-modal-desc">모바일에서는 이미지를 꾹 눌러 저장할 수 있어요.</div>
+      <div class="image-modal-preview">
+        <img id="modalResultImage" src="" alt="저장용 결과 이미지">
+      </div>
+      <button class="image-modal-close" id="closeModalBtn">닫기</button>
+    </div>
   </div>
 
 <script>
@@ -1441,12 +1875,19 @@ const yesBtn = document.getElementById("yesBtn");
 const noBtn = document.getElementById("noBtn");
 const saveImageBtn = document.getElementById("saveImageBtn");
 const goMainBtn = document.getElementById("goMainBtn");
+const otherTestBtn = document.getElementById("otherTestBtn");
 const shareBtn = document.getElementById("shareBtn");
 
-const questionCount = document.getElementById("questionCount");
-const progressBar = document.getElementById("progressBar");
 const questionText = document.getElementById("questionText");
 const resultImage = document.getElementById("resultImage");
+const questionBadge = document.getElementById("questionBadge");
+const progressText = document.getElementById("progressText");
+const progressBar = document.getElementById("progressBar");
+
+const imageModal = document.getElementById("imageModal");
+const imageModalBackdrop = document.getElementById("imageModalBackdrop");
+const modalResultImage = document.getElementById("modalResultImage");
+const closeModalBtn = document.getElementById("closeModalBtn");
 
 let currentIndex = 0;
 let score = 0;
@@ -1461,9 +1902,10 @@ function showScreen(screen) {
 }
 
 function renderQuestion() {
-  questionCount.textContent = `QUESTION ${currentIndex + 1} / ${questions.length}`;
   questionText.textContent = questions[currentIndex];
-  progressBar.style.width = `${(currentIndex / questions.length) * 100}%`;
+  questionBadge.textContent = "QUESTION " + (currentIndex + 1);
+  progressText.textContent = (currentIndex + 1) + " / " + questions.length;
+  progressBar.style.width = (((currentIndex + 1) / questions.length) * 100) + "%";
 }
 
 function startTest() {
@@ -1495,7 +1937,6 @@ function chooseAnswer(isYes) {
 }
 
 function showResult() {
-  progressBar.style.width = "100%";
   resultImage.src = `img0101_${score}.png`;
   resultImage.alt = `동심 테스트 결과 ${score}점`;
   showScreen(resultScreen);
@@ -1503,7 +1944,20 @@ function showResult() {
 }
 
 function goMain() {
+  closeImageModal();
   showScreen(mainScreen);
+}
+
+function openImageModal() {
+  modalResultImage.src = resultImage.src;
+  modalResultImage.alt = resultImage.alt;
+  imageModal.classList.add("active");
+  document.body.classList.add("modal-open");
+}
+
+function closeImageModal() {
+  imageModal.classList.remove("active");
+  document.body.classList.remove("modal-open");
 }
 
 startBtn.addEventListener("click", startTest);
@@ -1511,13 +1965,12 @@ yesBtn.addEventListener("click", () => chooseAnswer(true));
 noBtn.addEventListener("click", () => chooseAnswer(false));
 goMainBtn.addEventListener("click", goMain);
 
-saveImageBtn.addEventListener("click", () => {
-  const link = document.createElement("a");
-  link.href = resultImage.src;
-  link.download = "동심테스트_결과.png";
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
+saveImageBtn.addEventListener("click", openImageModal);
+closeModalBtn.addEventListener("click", closeImageModal);
+imageModalBackdrop.addEventListener("click", closeImageModal);
+
+otherTestBtn.addEventListener("click", () => {
+  window.location.href = "https://test-it.co.kr/";
 });
 
 shareBtn.addEventListener("click", () => {
@@ -1531,6 +1984,12 @@ shareBtn.addEventListener("click", () => {
     navigator.clipboard.writeText(window.location.href).then(() => {
       alert("테스트 링크가 복사되었습니다!");
     });
+  }
+});
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && imageModal.classList.contains("active")) {
+    closeImageModal();
   }
 });
 </script>

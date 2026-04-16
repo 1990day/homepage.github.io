@@ -317,12 +317,13 @@ body.modal-open {
 /* 메인화면 움직이는 대관람차 */
 .main-wheel {
   position: absolute;
-  left: 10%;
-  bottom: 102px;
-  width: 152px;
-  height: 152px;
-  transform: rotate(-6deg);
+  left: 18%;
+  bottom: 108px;
+  width: 138px;
+  height: 138px;
+  transform: rotate(-4deg);
   filter: drop-shadow(0 10px 18px rgba(112, 144, 115, 0.18));
+  z-index: 6;
 }
 
 .main-wheel .wheel-frame {
@@ -347,10 +348,10 @@ body.modal-open {
 
 .main-wheel .wheel-inner {
   position: absolute;
-  left: 25px;
-  top: 25px;
-  width: 102px;
-  height: 102px;
+  left: 22px;
+  top: 22px;
+  width: 94px;
+  height: 94px;
   border-radius: 50%;
   border: 8px solid #f4a8c9;
 }
@@ -373,7 +374,7 @@ body.modal-open {
   left: 50%;
   top: 50%;
   width: 5px;
-  height: 64px;
+  height: 58px;
   margin-left: -2.5px;
   margin-top: -2px;
   border-radius: 999px;
@@ -393,8 +394,8 @@ body.modal-open {
 
 .main-wheel .wheel-cabin {
   position: absolute;
-  width: 20px;
-  height: 18px;
+  width: 18px;
+  height: 16px;
   border-radius: 8px 8px 7px 7px;
   border: 2px solid #8cb7cf;
   background: linear-gradient(180deg, #ffffff 0 42%, #dff6ff 42% 100%);
@@ -408,7 +409,7 @@ body.modal-open {
   position: absolute;
   left: 4px;
   top: 3px;
-  width: 8px;
+  width: 7px;
   height: 4px;
   border-radius: 3px 3px 2px 2px;
   border: 1.5px solid #9cb8cb;
@@ -418,7 +419,7 @@ body.modal-open {
 .main-wheel .wheel-cabin::after {
   content: "";
   position: absolute;
-  left: 7px;
+  left: 6px;
   top: -8px;
   width: 2px;
   height: 8px;
@@ -427,39 +428,43 @@ body.modal-open {
   border: 1px solid #8fb7ce;
 }
 
-.main-wheel .wc1 { top: -7px; left: 66px; background: linear-gradient(180deg, #ffffff 0 42%, #e4ebff 42% 100%); }
-.main-wheel .wc2 { top: 17px; right: 6px; background: linear-gradient(180deg, #ffffff 0 42%, #fff6b9 42% 100%); }
-.main-wheel .wc3 { top: 67px; right: -3px; background: linear-gradient(180deg, #ffffff 0 42%, #ffe1ec 42% 100%); }
-.main-wheel .wc4 { bottom: 17px; right: 6px; background: linear-gradient(180deg, #ffffff 0 42%, #dff2ff 42% 100%); }
-.main-wheel .wc5 { bottom: -7px; left: 66px; background: linear-gradient(180deg, #ffffff 0 42%, #e2f8ff 42% 100%); }
-.main-wheel .wc6 { bottom: 17px; left: 6px; background: linear-gradient(180deg, #ffffff 0 42%, #fff2b8 42% 100%); }
-.main-wheel .wc7 { top: 67px; left: -3px; background: linear-gradient(180deg, #ffffff 0 42%, #dbf1ff 42% 100%); }
-.main-wheel .wc8 { top: 17px; left: 6px; background: linear-gradient(180deg, #ffffff 0 42%, #ffe9f0 42% 100%); }
+.main-wheel .wc1 { top: -6px; left: 60px; background: linear-gradient(180deg, #ffffff 0 42%, #e4ebff 42% 100%); }
+.main-wheel .wc2 { top: 15px; right: 5px; background: linear-gradient(180deg, #ffffff 0 42%, #fff6b9 42% 100%); }
+.main-wheel .wc3 { top: 60px; right: -3px; background: linear-gradient(180deg, #ffffff 0 42%, #ffe1ec 42% 100%); }
+.main-wheel .wc4 { bottom: 15px; right: 5px; background: linear-gradient(180deg, #ffffff 0 42%, #dff2ff 42% 100%); }
+.main-wheel .wc5 { bottom: -6px; left: 60px; background: linear-gradient(180deg, #ffffff 0 42%, #e2f8ff 42% 100%); }
+.main-wheel .wc6 { bottom: 15px; left: 5px; background: linear-gradient(180deg, #ffffff 0 42%, #fff2b8 42% 100%); }
+.main-wheel .wc7 { top: 60px; left: -3px; background: linear-gradient(180deg, #ffffff 0 42%, #dbf1ff 42% 100%); }
+.main-wheel .wc8 { top: 15px; left: 5px; background: linear-gradient(180deg, #ffffff 0 42%, #ffe9f0 42% 100%); }
 
 .main-wheel .wheel-leg {
   position: absolute;
   bottom: -4px;
   width: 6px;
-  height: 56px;
+  height: 50px;
   background: #74c5ea;
   border-radius: 999px;
   z-index: 0;
 }
 
 .main-wheel .wl1 {
-  left: 54px;
+  left: 48px;
   transform: rotate(18deg);
   transform-origin: bottom center;
 }
 
 .main-wheel .wl2 {
-  left: 92px;
+  left: 82px;
   transform: rotate(-18deg);
   transform-origin: bottom center;
 }
 
-.tree {
+.tree,
+.bush,
+.flower-clump,
+.tiny-grass {
   position: absolute;
+  z-index: 1;
 }
 
 .tree .trunk {
@@ -484,18 +489,9 @@ body.modal-open {
     12px -26px 0 0 #a8dc9c;
 }
 
+/* 왼쪽 큰 나무 숨김 */
 .tree.tree-left {
-  left: -12px;
-  bottom: 150px;
-  transform: scale(0.96);
-}
-
-.tree.tree-left .trunk {
-  left: 56px;
-}
-
-.tree.tree-left .crown {
-  left: 6px;
+  display: none;
 }
 
 .tree.tree-right {
@@ -510,11 +506,11 @@ body.modal-open {
 
 .tree.tree-right .crown {
   left: 0;
-  background: #f6c8dc;
+  background: #9fd59f;
   box-shadow:
-    -26px 18px 0 8px #f4d6e3,
-    30px 12px 0 4px #efb8d0,
-    12px -26px 0 0 #f7dfe9;
+    -26px 18px 0 8px #bfe4b4,
+    30px 12px 0 4px #a7d9a0,
+    12px -26px 0 0 #c8e9bf;
 }
 
 .tree.tree-back {
@@ -538,7 +534,6 @@ body.modal-open {
 }
 
 .flower-clump {
-  position: absolute;
   width: 78px;
   height: 50px;
   bottom: 126px;
@@ -564,7 +559,6 @@ body.modal-open {
 .flower-clump span:nth-child(4) { left: 26px; top: 28px; transform: scale(0.82); }
 
 .bush {
-  position: absolute;
   width: 96px;
   height: 54px;
   background: #9ed88d;
@@ -577,7 +571,6 @@ body.modal-open {
 }
 
 .tiny-grass {
-  position: absolute;
   width: 18px;
   height: 14px;
   border-left: 2px solid #8eb56a;
@@ -1477,45 +1470,69 @@ body.modal-open {
   }
 
   .main-wheel {
-    left: 9%;
-    bottom: 104px;
-    width: 132px;
-    height: 132px;
+    left: 18px;
+    bottom: 46px;
+    width: 108px;
+    height: 108px;
+    transform: rotate(-4deg);
+    z-index: 6;
   }
 
   .main-wheel .wheel-inner {
-    left: 22px;
-    top: 22px;
-    width: 88px;
-    height: 88px;
+    left: 18px;
+    top: 18px;
+    width: 72px;
+    height: 72px;
   }
 
   .main-wheel .wheel-spoke {
-    height: 55px;
+    height: 46px;
   }
 
   .main-wheel .wheel-cabin {
-    width: 18px;
-    height: 16px;
+    width: 14px;
+    height: 13px;
   }
 
-  .main-wheel .wc1 { top: -6px; left: 57px; }
-  .main-wheel .wc2 { top: 14px; right: 5px; }
-  .main-wheel .wc3 { top: 57px; right: -3px; }
-  .main-wheel .wc4 { bottom: 14px; right: 5px; }
-  .main-wheel .wc5 { bottom: -6px; left: 57px; }
-  .main-wheel .wc6 { bottom: 14px; left: 5px; }
-  .main-wheel .wc7 { top: 57px; left: -3px; }
-  .main-wheel .wc8 { top: 14px; left: 5px; }
+  .main-wheel .wc1 { top: -5px; left: 46px; }
+  .main-wheel .wc2 { top: 11px; right: 4px; }
+  .main-wheel .wc3 { top: 46px; right: -3px; }
+  .main-wheel .wc4 { bottom: 11px; right: 4px; }
+  .main-wheel .wc5 { bottom: -5px; left: 46px; }
+  .main-wheel .wc6 { bottom: 11px; left: 4px; }
+  .main-wheel .wc7 { top: 46px; left: -3px; }
+  .main-wheel .wc8 { top: 11px; left: 4px; }
 
   .main-wheel .wl1 {
-    left: 46px;
-    height: 48px;
+    left: 38px;
+    height: 40px;
   }
 
   .main-wheel .wl2 {
-    left: 80px;
-    height: 48px;
+    left: 64px;
+    height: 40px;
+  }
+
+  .tree.tree-left {
+    display: none;
+  }
+
+  .tree.tree-right {
+    right: -8px;
+    bottom: 154px;
+    transform: scale(0.9);
+  }
+
+  .bush {
+    left: 33%;
+    bottom: 102px;
+    transform: scale(0.9);
+  }
+
+  .flower-clump {
+    right: 18%;
+    bottom: 118px;
+    transform: scale(0.92);
   }
 
   .test-wrap {

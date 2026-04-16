@@ -1,0 +1,1356 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>사주 세포 - 레트로 우주 에디션</title>
+<script src="https://fastly.jsdelivr.net/npm/lunar-javascript/lunar.js"></script>
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+<style>
+    @font-face {
+        font-family: 'Galmuri14';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.0/Galmuri14.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    :root {
+        --bg-color: #ffd1dc; 
+        --pink-wall: #e6e6fa; 
+        --floor-dot: #cdaee0; 
+
+        --win-gray: #d4d0c8; 
+        --win-bg: #dfdbd4; 
+        --win-light: #ffffff; 
+        --win-dark: #808080; 
+        --win-deep: #404040; 
+
+        --title-pink-1: #ffb6c1; 
+        --title-pink-2: #dda0dd; 
+
+        --text-main: #000000; 
+        --text-soft: #222222; 
+        --point-pink: #8b008b; 
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    html, body {
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: 'Galmuri14', sans-serif;
+        min-height: 100vh;
+        color: var(--text-main);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        overflow-x: hidden;
+        background: linear-gradient(180deg, var(--bg-color) 0%, var(--pink-wall) 100%);
+        position: relative;
+        -webkit-font-smoothing: none;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: crispEdges;
+    }
+
+    body::before {
+        content: '';
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        background: radial-gradient(circle at 1px 1px, var(--floor-dot) 1.5px, transparent 1.5px);
+        background-size: 18px 18px;
+        opacity: 0.6;
+        z-index: 0;
+    }
+
+    .stars {
+        display: none;
+    }
+
+    .header-wrapper {
+        width: 100%;
+        background: var(--win-gray);
+        border-bottom: 2px solid var(--win-deep);
+        box-shadow: 0 1px 0 var(--win-light) inset;
+        position: relative;
+        z-index: 20;
+    }
+
+    .page-header {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 12px 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .page-header h1 {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+    }
+
+    .retro-logo {
+        text-decoration: none;
+        color: var(--text-main);
+        font-size: 20px;
+        text-shadow: 1px 1px 0 #fff;
+    }
+
+    .main-nav {
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        gap: 8px;
+        flex-wrap: nowrap;
+    }
+
+    .main-nav a {
+        text-decoration: none;
+        color: var(--text-main);
+        font-size: 15px;
+        padding: 8px 12px;
+        background: var(--win-gray);
+        border-top: 2px solid var(--win-light);
+        border-left: 2px solid var(--win-light);
+        border-right: 2px solid var(--win-dark);
+        border-bottom: 2px solid var(--win-dark);
+        white-space: nowrap;
+    }
+
+    .layout-container {
+        width: 100%;
+        max-width: 560px;
+        padding: 28px 14px 42px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        z-index: 10;
+    }
+
+    .space-terminal {
+        width: 100%;
+        background: var(--win-gray);
+        border-top: 3px solid var(--win-light);
+        border-left: 3px solid var(--win-light);
+        border-right: 3px solid var(--win-deep);
+        border-bottom: 3px solid var(--win-deep);
+        box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.15);
+        overflow: hidden;
+        position: relative;
+    }
+
+    .terminal-header {
+        background: linear-gradient(90deg, var(--title-pink-1) 0%, var(--title-pink-2) 100%);
+        padding: 8px 14px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .terminal-title {
+        color: #000;
+        font-size: clamp(13px, 4vw, 17px);
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        white-space: nowrap;
+    }
+
+    .terminal-controls {
+        display: flex;
+        gap: 5px;
+        align-items: center;
+    }
+
+    .terminal-controls span {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        background: var(--win-gray);
+        border-top: 2px solid var(--win-light);
+        border-left: 2px solid var(--win-light);
+        border-right: 2px solid var(--win-dark);
+        border-bottom: 2px solid var(--win-dark);
+        position: relative;
+    }
+
+    .terminal-controls span:nth-child(1)::before {
+        content: "_";
+        position: absolute;
+        left: 50%;
+        top: 35%;
+        transform: translate(-50%, -50%);
+        font-size: 14px;
+        color: var(--text-main);
+    }
+
+    .terminal-controls span:nth-child(2)::before {
+        content: "□";
+        position: absolute;
+        left: 50%;
+        top: 45%;
+        transform: translate(-50%, -50%);
+        font-size: 14px;
+        color: var(--text-main);
+    }
+
+    .terminal-controls span:nth-child(3)::before {
+        content: "×";
+        position: absolute;
+        left: 50%;
+        top: 48%;
+        transform: translate(-50%, -50%);
+        font-size: 16px;
+        color: var(--text-main);
+    }
+
+    .terminal-content {
+        background: var(--win-bg);
+        padding: 24px 18px;
+        min-height: 480px; 
+        position: relative;
+    }
+
+    .screen {
+        display: none;
+        flex-direction: column;
+        height: 100%;
+        position: relative;
+        z-index: 1;
+    }
+
+    .screen.active {
+        display: flex;
+    }
+
+    h2 {
+        text-align: center;
+        font-size: 26px;
+        color: var(--point-pink);
+        margin: 10px 0 22px;
+        line-height: 1.45;
+    }
+
+    .intro-text {
+        font-size: 17px;
+        line-height: 1.8;
+        text-align: center;
+        margin-bottom: 18px;
+        color: var(--text-main);
+        background: var(--win-gray);
+        border-top: 2px solid var(--win-dark);
+        border-left: 2px solid var(--win-dark);
+        border-right: 2px solid var(--win-light);
+        border-bottom: 2px solid var(--win-light);
+        padding: 14px 16px;
+        word-break: keep-all;
+    }
+
+    .scanner-monitor {
+        background: var(--win-gray);
+        border-top: 2px solid var(--win-dark);
+        border-left: 2px solid var(--win-dark);
+        border-right: 2px solid var(--win-light);
+        border-bottom: 2px solid var(--win-light);
+        padding: 12px;
+        margin-bottom: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .scanner-screen {
+        background: #111;
+        height: 140px;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-top: 3px solid var(--win-deep);
+        border-left: 3px solid var(--win-deep);
+        border-right: 3px solid var(--win-light);
+        border-bottom: 3px solid var(--win-light);
+    }
+
+    .scan-icon {
+        font-size: 52px;
+        opacity: 0.9;
+        filter: drop-shadow(0 0 12px #ffb6c1);
+        animation: pulseIcon 2s infinite;
+    }
+
+    .scan-line {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: rgba(221, 160, 221, 0.8);
+        box-shadow: 0 0 15px 3px rgba(221, 160, 221, 0.6);
+        animation: scanMove 2.5s linear infinite;
+        z-index: 2;
+    }
+
+    .scanner-grid {
+        position: absolute;
+        inset: 0;
+        background-image: 
+            linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+        background-size: 20px 20px;
+        z-index: 1;
+    }
+
+    .scanner-text {
+        font-size: 14px;
+        color: #000;
+        font-family: 'Galmuri14', sans-serif;
+        text-align: left;
+        line-height: 1.6;
+        background: #fff;
+        padding: 8px 10px;
+        border: 1px solid var(--win-dark);
+    }
+
+    @keyframes scanMove {
+        0% { top: 0; opacity: 0; }
+        10% { opacity: 1; }
+        90% { opacity: 1; }
+        100% { top: 100%; opacity: 0; }
+    }
+
+    @keyframes pulseIcon {
+        0% { transform: scale(0.95); opacity: 0.6; }
+        50% { transform: scale(1.05); opacity: 1; }
+        100% { transform: scale(0.95); opacity: 0.6; }
+    }
+
+    .input-line {
+        margin-bottom: 20px;
+    }
+
+    .input-line label {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 16px;
+        color: var(--text-main);
+    }
+
+    input[type="text"],
+    select {
+        width: 100%;
+        min-height: 50px;
+        padding: 10px 14px;
+        background: #f5f5f5;
+        color: var(--text-main);
+        font-family: 'Galmuri14', sans-serif;
+        font-size: 17px;
+        border-top: 2px solid var(--win-dark);
+        border-left: 2px solid var(--win-dark);
+        border-right: 2px solid var(--win-light);
+        border-bottom: 2px solid var(--win-light);
+        outline: none;
+        appearance: none;
+        -webkit-appearance: none;
+        border-radius: 0;
+    }
+
+    input[type="text"]::placeholder {
+        color: #999999;
+    }
+
+    input[type="text"]:focus,
+    select:focus {
+        background: #ffffff;
+    }
+
+    .date-row {
+        display: flex;
+        gap: 8px;
+    }
+
+    .radio-group {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    .radio-group input {
+        display: none;
+    }
+
+    .radio-group label {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 50px;
+        background: var(--win-gray);
+        color: var(--text-main);
+        font-size: 17px;
+        cursor: pointer;
+        border-top: 2px solid var(--win-light);
+        border-left: 2px solid var(--win-light);
+        border-right: 2px solid var(--win-dark);
+        border-bottom: 2px solid var(--win-dark);
+    }
+
+    .radio-group input:checked + label {
+        background: #e6ccff; 
+        border-top: 2px solid var(--win-dark);
+        border-left: 2px solid var(--win-dark);
+        border-right: 2px solid var(--win-light);
+        border-bottom: 2px solid var(--win-light);
+    }
+
+    .btn-action {
+        width: 100%;
+        min-height: 58px;
+        margin-top: 15px;
+        background: #e6ccff; 
+        color: #000;
+        font-family: 'Galmuri14', sans-serif;
+        font-size: 19px;
+        cursor: pointer;
+        border-top: 2px solid var(--win-light);
+        border-left: 2px solid var(--win-light);
+        border-right: 2px solid var(--win-dark);
+        border-bottom: 2px solid var(--win-dark);
+        border-radius: 0;
+        box-shadow: 1px 1px 0 var(--win-deep);
+    }
+
+    .btn-action:active {
+        border-top: 2px solid var(--win-dark);
+        border-left: 2px solid var(--win-dark);
+        border-right: 2px solid var(--win-light);
+        border-bottom: 2px solid var(--win-light);
+        transform: translateY(1px);
+        box-shadow: none;
+    }
+
+    .result-header {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    /* 플렉스박스 버그 원천 차단: inline-block으로 아날로그 방식 적용 */
+    .search-bar-style {
+        display: inline-block; 
+        background: var(--win-gray);
+        color: var(--text-main);
+        min-height: 46px;
+        padding: 10px 16px;
+        font-size: 16px;
+        border-top: 2px solid var(--win-dark);
+        border-left: 2px solid var(--win-dark);
+        border-right: 2px solid var(--win-light);
+        border-bottom: 2px solid var(--win-light);
+        line-height: 1.5;
+        word-break: keep-all;
+        text-align: center;
+    }
+
+    .search-icon {
+        font-size: 18px;
+        vertical-align: middle;
+        margin-right: 4px;
+    }
+
+    /* 캡처 증발 방지 */
+    .res-name {
+        color: #8b008b !important;
+        font-weight: bold;
+    }
+
+    .data-card-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px; 
+        padding-bottom: 10px;
+    }
+
+    .data-card {
+        background: var(--win-gray);
+        min-height: 145px;
+        padding: 24px 10px 12px;
+        text-align: center;
+        position: relative;
+        border-top: 2px solid var(--win-light);
+        border-left: 2px solid var(--win-light);
+        border-right: 2px solid var(--win-dark);
+        border-bottom: 2px solid var(--win-dark);
+        box-shadow: 2px 2px 0 var(--win-deep); 
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    .data-card::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        height: 18px;
+        background: var(--card-color);
+        border-bottom: 2px solid var(--win-dark);
+    }
+
+    .card-icon {
+        font-size: 32px;
+        margin-top: 4px;
+        margin-bottom: 8px;
+    }
+
+    .card-title {
+        font-size: 15px;
+        font-weight: 600;
+        margin-bottom: 8px;
+        color: var(--text-main);
+        background: var(--win-bg);
+        border: 1px solid var(--win-dark); 
+        padding: 4px 8px;
+        line-height: 1.4;
+    }
+
+    .card-desc {
+        font-size: 15px;
+        line-height: 1.45;
+        word-break: keep-all;
+        margin: 0;
+        color: #000000;
+        font-weight: bold;
+        padding: 0 2px;
+        letter-spacing: -0.3px;
+    }
+
+    .external-buttons {
+        margin-top: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+        z-index: 10;
+    }
+
+    .btn-outside {
+        width: 100%;
+        min-height: 56px;
+        background: var(--win-gray);
+        color: var(--text-main);
+        font-family: 'Galmuri14', sans-serif;
+        font-size: 17px;
+        cursor: pointer;
+        border-top: 2px solid var(--win-light);
+        border-left: 2px solid var(--win-light);
+        border-right: 2px solid var(--win-dark);
+        border-bottom: 2px solid var(--win-dark);
+        border-radius: 0;
+        box-shadow: 1px 1px 0 var(--win-deep);
+    }
+
+    .btn-outside:active {
+        border-top: 2px solid var(--win-dark);
+        border-left: 2px solid var(--win-dark);
+        border-right: 2px solid var(--win-light);
+        border-bottom: 2px solid var(--win-light);
+        transform: translateY(1px);
+        box-shadow: none;
+    }
+
+    #imageModal {
+        position: fixed;
+        inset: 0;
+        background: rgba(40, 10, 20, 0.85);
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        padding: 20px;
+    }
+
+    #modalImage {
+        max-width: 90%;
+        max-height: 70vh;
+        border-top: 3px solid var(--win-light);
+        border-left: 3px solid var(--win-light);
+        border-right: 3px solid var(--win-dark);
+        border-bottom: 3px solid var(--win-dark);
+        background: var(--win-gray);
+    }
+
+    .modal-text {
+        color: #fff;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        font-size: 16px;
+    }
+
+    .modal-close {
+        background: var(--win-gray);
+        color: var(--text-main);
+        padding: 16px 32px;
+        font-family: inherit;
+        font-size: 16px;
+        cursor: pointer;
+        border-top: 2px solid var(--win-light);
+        border-left: 2px solid var(--win-light);
+        border-right: 2px solid var(--win-dark);
+        border-bottom: 2px solid var(--win-dark);
+        border-radius: 0;
+    }
+
+    .ad-container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+        z-index: 10;
+    }
+
+    @media (max-width: 480px) {
+        .page-header {
+            padding: 12px 10px;
+            flex-direction: row; 
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .main-nav {
+            gap: 4px;
+        }
+
+        .main-nav a {
+            font-size: 13px;
+            padding: 6px 6px;
+        }
+
+        .retro-logo {
+            font-size: 17px;
+        }
+
+        .layout-container {
+            padding: 20px 12px 30px;
+        }
+
+        .terminal-content {
+            padding: 20px 14px;
+            min-height: 460px; 
+        }
+
+        h2 {
+            font-size: 24px;
+        }
+
+        .intro-text {
+            font-size: 15px;
+            padding: 12px;
+        }
+
+        .scanner-screen {
+            height: 120px;
+        }
+        
+        .scan-icon {
+            font-size: 46px;
+        }
+
+        .scanner-text {
+            font-size: 13px;
+        }
+
+        .search-bar-style {
+            font-size: 15px;
+            min-height: 42px;
+            padding: 10px 12px;
+        }
+
+        .data-card-grid {
+            gap: 10px; 
+        }
+
+        .data-card {
+            min-height: 135px;
+            padding: 22px 6px 10px;
+        }
+
+        .card-icon {
+            font-size: 28px;
+            margin-top: 0px;
+            margin-bottom: 6px;
+        }
+
+        .card-title {
+            font-size: 14px;
+            padding: 4px 6px;
+            margin-bottom: 6px;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            line-height: 1.35;
+        }
+    }
+</style>
+</head>
+<body>
+
+<div class="stars" id="starfield"></div>
+
+  <div class="header-wrapper">
+    <header class="page-header wrapper">
+      <h1><a href="https://test-it.co.kr/" class="retro-logo">테스트잇</a></h1> 
+      <nav>
+        <ul class="main-nav">
+          <li><a href="https://test-it.co.kr/test.html">성격</a></li>
+          <li><a href="https://test-it.co.kr/face.html">얼굴</a></li>
+          <li><a href="https://test-it.co.kr/etc.html">그외</a></li>
+          <li><a href="https://test-it.co.kr/saju.html">사주</a></li>
+        </ul>
+      </nav>
+    </header>
+  </div>
+
+<div class="layout-container">
+    <div class="space-terminal" id="captureArea">
+        <div class="terminal-header">
+            <div class="terminal-title">테스트잇 내 사주의 세포들 테스트</div>
+            <div class="terminal-controls">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+
+        <div class="terminal-content">
+            <div id="screen-start" class="screen active">
+                <h2>사주 세포 탐색기</h2>
+                <div class="intro-text">
+                    사주를 스캔하여 핵심 세포 8가지를 추출합니다.
+                </div>
+                
+                <div class="scanner-monitor">
+                    <div class="scanner-screen">
+                        <div class="scanner-grid"></div>
+                        <div class="scan-line"></div>
+                        <div class="scan-icon">🔮</div>
+                    </div>
+                    <div class="scanner-text">
+                        > Loading system modules...<br>
+                        > Ready to scan cell data_<br>
+                    </div>
+                </div>
+
+                <button class="btn-action" onclick="showScreen('screen-input')">테스트 시작하기</button>
+            </div>
+
+            <div id="screen-input" class="screen">
+                <div style="flex-grow:1;">
+                    <h2 style="font-size:22px;">[정보를 입력해주세요]</h2>
+
+                    <div class="input-line">
+                        <label>▶ 이름이나 닉네임</label>
+                        <input type="text" id="userName" placeholder="이름을 입력하세요">
+                    </div>
+
+                    <div class="input-line">
+                        <label>▶ 양력/음력</label>
+                        <div class="radio-group">
+                            <input type="radio" name="calendar" id="solar" value="solar" checked>
+                            <label for="solar">양력</label>
+
+                            <input type="radio" name="calendar" id="lunar" value="lunar">
+                            <label for="lunar">음력</label>
+                        </div>
+                    </div>
+
+                    <div class="input-line">
+                        <label>▶ 생년월일</label>
+                        <div class="date-row">
+                            <select id="year"></select>
+                            <select id="month"></select>
+                            <select id="day"></select>
+                        </div>
+                    </div>
+
+                    <div class="input-line">
+                        <label>▶ 태어난 시간</label>
+                        <select id="time">
+                            <option value="-1">모름 (선택 안함)</option>
+                            <option value="0">자시(23:30~01:29)</option>
+                            <option value="2">축시(01:30~03:29)</option>
+                            <option value="4">인시(03:30~05:29)</option>
+                            <option value="6">묘시(05:30~07:29)</option>
+                            <option value="8">진시(07:30~09:29)</option>
+                            <option value="10">사시(09:30~11:29)</option>
+                            <option value="12">오시(11:30~13:29)</option>
+                            <option value="14">미시(13:30~15:29)</option>
+                            <option value="16">신시(15:30~17:29)</option>
+                            <option value="18">유시(17:30~19:29)</option>
+                            <option value="20">술시(19:30~21:29)</option>
+                            <option value="22">해시(21:30~23:29)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button class="btn-action" onclick="calculateResult()">▶ 결과 보러가기</button>
+            </div>
+
+            <div id="screen-loading" class="screen">
+                <div style="flex-grow:1; display:flex; flex-direction:column; justify-content:center;">
+                    <h2>사주 스캔 중...</h2>
+                    
+                    <div class="scanner-monitor">
+                        <div class="scanner-screen">
+                            <div class="scanner-grid"></div>
+                            <div class="scan-line" style="animation-duration: 1.5s;"></div>
+                            <div class="scan-icon" style="animation-duration: 1s;">🔮</div>
+                        </div>
+                        <div class="scanner-text" id="loadingText">
+                            > 사주 분석 시작_<br>> 모든 세포 스캔 중...
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="screen-result" class="screen">
+                <div class="result-header">
+                    <div class="search-bar-style">
+                        <span class="search-icon">🔍</span>
+                        <span class="res-name" id="resName"></span>님의 사주 세포들
+                    </div>
+                </div>
+
+                <div class="data-card-grid" id="cellContainer"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="externalButtons" class="external-buttons" style="display:none;">
+        <button class="btn-outside" onclick="saveAsImage()">결과 이미지 저장하기</button>
+        <button class="btn-outside" onclick="resetApp()">다시 해보기</button>
+        <button class="btn-outside" onclick="location.href='https://test-it.co.kr/'">다른 테스트 하러가기</button>
+        <button class="btn-outside" onclick="shareTest()">테스트 공유하기</button>
+    </div>
+
+    <div class="ad-container" id="ad-container">
+      <article class="coupang_ad mt-3">
+        <script src="https://ads-partners.coupang.com/g.js"></script>
+        <script>
+          new PartnersCoupang.G({"id":798186,"template":"carousel","trackingCode":"AF4391881","width":"350","height":"140","tsource":""});
+        </script>
+      </article>
+    </div>
+
+</div>
+
+<div id="imageModal">
+    <img id="modalImage" src="" alt="결과 이미지">
+    <div class="modal-text">이미지를 꾹 눌러서 저장하세요</div>
+    <button class="modal-close" onclick="closeModal()">닫기</button>
+</div>
+
+<script>
+    function initDropdowns() {
+        const ySel = document.getElementById("year");
+        const mSel = document.getElementById("month");
+        const dSel = document.getElementById("day");
+
+        for (let i = 2024; i >= 1950; i--) {
+            const o = document.createElement("option");
+            o.value = i;
+            o.text = i + "년";
+            if (i === 1995) o.selected = true;
+            ySel.appendChild(o);
+        }
+
+        for (let i = 1; i <= 12; i++) {
+            const o = document.createElement("option");
+            o.value = i;
+            o.text = i + "월";
+            mSel.appendChild(o);
+        }
+
+        for (let i = 1; i <= 31; i++) {
+            const o = document.createElement("option");
+            o.value = i;
+            o.text = i + "일";
+            dSel.appendChild(o);
+        }
+    }
+
+    function showScreen(id) {
+        document.querySelectorAll(".screen").forEach(screen => screen.classList.remove("active"));
+        document.getElementById(id).classList.add("active");
+
+        if (id === "screen-start" || id === "screen-input" || id === "screen-loading") {
+            document.getElementById("externalButtons").style.display = "none";
+        } else if (id === "screen-result") {
+            document.getElementById("externalButtons").style.display = "flex";
+        }
+    }
+
+    function resetApp() {
+        document.getElementById("userName").value = "";
+        showScreen("screen-start");
+    }
+
+    function shareTest() {
+        const shareData = {
+            title: '테스트잇 내 사주의 세포들 테스트',
+            text: '나의 사주팔자 데이터를 스캔하여 핵심 세포를 추출해보세요!',
+            url: window.location.href
+        };
+
+        if (navigator.share) {
+            navigator.share(shareData).catch((error) => console.log('공유 실패:', error));
+        } else {
+            navigator.clipboard.writeText(window.location.href).then(() => {
+                alert('테스트 링크가 복사되었습니다!');
+            });
+        }
+    }
+
+    let currentSeed = 0;
+
+    function seededRandom() {
+        const x = Math.sin(currentSeed++) * 10000;
+        return x - Math.floor(x);
+    }
+
+    function shuffleArray(array) {
+        const arr = [...array];
+        for (let i = arr.length - 1; i > 0; i--) {
+            const j = Math.floor(seededRandom() * (i + 1));
+            [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr;
+    }
+
+    function hasAnyChar(pool, targets) {
+        return targets.some(char => pool.includes(char));
+    }
+
+    function getGanList(chars) {
+        return chars.filter((_, i) => i % 2 === 0);
+    }
+
+    function getZhiList(chars) {
+        return chars.filter((_, i) => i % 2 !== 0);
+    }
+
+    const getElementInfo = (char) => {
+        const map = {
+            "甲":"목", "乙":"목", "寅":"목", "卯":"목",
+            "丙":"화", "丁":"화", "巳":"화", "午":"화",
+            "戊":"토", "己":"토", "辰":"토", "戌":"토", "丑":"토", "未":"토",
+            "庚":"금", "辛":"금", "申":"금", "酉":"금",
+            "壬":"수", "癸":"수", "亥":"수", "子":"수"
+        };
+        return map[char] || "";
+    };
+
+    const getDetailDeity = (myGan, targetChar) => {
+        const yinYang = {
+            "甲":"+", "丙":"+", "戊":"+", "庚":"+", "壬":"+",
+            "寅":"+", "辰":"+", "巳":"+", "申":"+", "戌":"+", "亥":"+",
+            "乙":"-", "丁":"-", "己":"-", "辛":"-", "癸":"-",
+            "卯":"-", "丑":"-", "午":"-", "未":"-", "酉":"-", "子":"-"
+        };
+
+        const myE = getElementInfo(myGan);
+        const tE = getElementInfo(targetChar);
+        const myY = yinYang[myGan];
+        const tY = yinYang[targetChar];
+        const sameYinYang = myY === tY;
+
+        if (myE === tE) return sameYinYang ? "비견" : "겁재";
+        if ((myE === "목" && tE === "화") || (myE === "화" && tE === "토") || (myE === "토" && tE === "금") || (myE === "금" && tE === "수") || (myE === "수" && tE === "목")) return sameYinYang ? "식신" : "상관";
+        if ((myE === "목" && tE === "토") || (myE === "화" && tE === "금") || (myE === "토" && tE === "수") || (myE === "금" && tE === "목") || (myE === "수" && tE === "화")) return sameYinYang ? "편재" : "정재";
+        if ((myE === "목" && tE === "금") || (myE === "화" && tE === "수") || (myE === "토" && tE === "목") || (myE === "금" && tE === "화") || (myE === "수" && tE === "토")) return sameYinYang ? "편관" : "정관";
+        if ((myE === "목" && tE === "수") || (myE === "화" && tE === "목") || (myE === "토" && tE === "화") || (myE === "금" && tE === "토") || (myE === "수" && tE === "금")) return sameYinYang ? "편인" : "정인";
+        return "";
+    };
+
+    function processLoadingAndShowResult() {
+        showScreen("screen-loading");
+        const loadingText = document.getElementById("loadingText");
+        loadingText.innerHTML = "> 사주 분석 시작_<br>> 모든 세포 스캔 중...";
+        
+        setTimeout(() => {
+            loadingText.innerHTML += "<br>> 사주 세포 추출 진행 중_";
+        }, 1000);
+
+        setTimeout(() => {
+            loadingText.innerHTML += "<br>> 스캔 완료! 결과를 로드합니다.";
+        }, 2000);
+
+        setTimeout(() => {
+            showScreen("screen-result");
+        }, 3000);
+    }
+
+    function calculateResult() {
+        const name = document.getElementById("userName").value.trim();
+        if (!name) {
+            alert("이름을 입력해주세요.");
+            return;
+        }
+
+        const isSolar = document.getElementById("solar").checked;
+        const year = parseInt(document.getElementById("year").value, 10);
+        const month = parseInt(document.getElementById("month").value, 10);
+        const day = parseInt(document.getElementById("day").value, 10);
+        const timeOption = parseInt(document.getElementById("time").value, 10);
+        const hour = timeOption === -1 ? 12 : timeOption;
+
+        currentSeed = year * 1000000 + month * 10000 + day * 100 + hour;
+
+        let date;
+        if (isSolar) {
+            date = Solar.fromYmdHms(year, month, day, hour, 0, 0).getLunar();
+        } else {
+            date = Lunar.fromYmdHms(year, month, day, hour, 0, 0);
+        }
+
+        const bazi = date.getEightChar();
+        const chars = [
+            bazi.getYearGan(),
+            bazi.getYearZhi(),
+            bazi.getMonthGan(),
+            bazi.getMonthZhi(),
+            bazi.getDayGan(),
+            bazi.getDayZhi()
+        ];
+
+        if (timeOption !== -1) {
+            chars.push(bazi.getTimeGan(), bazi.getTimeZhi());
+        }
+
+        const dayGan = bazi.getDayGan();
+        const dayZhi = bazi.getDayZhi();
+        const monthZhi = bazi.getMonthZhi();
+        const zhiStr = chars.filter((c, i) => i % 2 !== 0).join("");
+        const dayPillar = dayGan + dayZhi;
+        const ganList = getGanList(chars);
+        const zhiList = getZhiList(chars);
+
+        const elements = {"목":0,"화":0,"토":0,"금":0,"수":0};
+        const deities = {"비견":0,"겁재":0,"식신":0,"상관":0,"편재":0,"정재":0,"편관":0,"정관":0,"편인":0,"정인":0};
+
+        chars.forEach(char => {
+            const el = getElementInfo(char);
+            if (el) elements[el]++;
+
+            const deity = getDetailDeity(dayGan, char);
+            if (deity) deities[deity]++;
+        });
+
+        const highPriorityCells = [];
+
+        if (/[子午卯酉]/.test(zhiStr)) highPriorityCells.push({i:"🌸",n:"도화세포",d:"가만히 있어도 시선을 끄는 마성의 매력"});
+        if (/[寅申巳亥]/.test(zhiStr)) highPriorityCells.push({i:"✈️",n:"역마세포",d:"돌아다니고 경험해야 에너지가 솟구침"});
+        if (/[辰戌丑未]/.test(zhiStr)) highPriorityCells.push({i:"🎭",n:"화개세포",d:"뛰어난 예술적 감각과 감성적인 내면"});
+        if (["甲午","丙寅","丁未","戊辰","庚戌","辛酉","壬子"].includes(dayPillar)) {
+            highPriorityCells.push({i:"💋",n:"홍염세포",d:"특정 사람을 지독하게 홀려버리는 끌림"});
+        }
+
+        const guimunPairs = [["子","酉"],["丑","午"],["寅","未"],["卯","申"],["辰","亥"],["巳","戌"]];
+        const hasGuimun = guimunPairs.some(pair => zhiStr.includes(pair[0]) && zhiStr.includes(pair[1]));
+        if (hasGuimun) highPriorityCells.push({i:"🚪",n:"귀문세포",d:"남들이 못 보는 걸 캐치하는 놀라운 직관력"});
+
+        const hyunchimChars = ["甲","申","卯","午","辛"];
+        const hyunchimCount = chars.filter(c => hyunchimChars.includes(c)).length;
+        if (hyunchimCount >= 2) highPriorityCells.push({i:"🪡",n:"현침세포",d:"핵심을 찌르는 예리함과 정교한 능력"});
+
+        const cheoneul = {
+            "甲":["丑","未"], "戊":["丑","未"], "庚":["丑","未"],
+            "乙":["子","申"], "己":["子","申"],
+            "丙":["亥","酉"], "丁":["亥","酉"],
+            "辛":["寅","午"],
+            "壬":["巳","卯"],
+            "癸":["巳","卯"]
+        };
+        if (cheoneul[dayGan] && chars.some(z => cheoneul[dayGan].includes(z))) {
+            highPriorityCells.push({i:"👼",n:"천을귀인세포",d:"위기의 순간에 나를 돕는 귀인이 나타남"});
+        }
+
+        const munchang = {"甲":"巳","乙":"午","丙":"申","戊":"申","丁":"酉","己":"酉","庚":"亥","辛":"子","壬":"寅","癸":"卯"};
+        if (chars.includes(munchang[dayGan])) {
+            highPriorityCells.push({i:"🎓",n:"문창귀인세포",d:"머리 회전이 빠르고 배움을 스폰지처럼 흡수함"});
+        }
+
+        if (["戊辰","丁丑","丙戌","乙未","甲辰","癸丑","壬戌"].includes(dayPillar)) {
+            highPriorityCells.push({i:"🐅",n:"백호세포",d:"평소엔 온순하지만 한번 화나면 물불 안 가리는 폭발력"});
+        }
+
+        if (["庚辰","庚戌","壬辰","壬戌","戊戌","戊辰"].includes(dayPillar)) {
+            highPriorityCells.push({i:"⚡",n:"괴강세포",d:"주변을 압도하는 강력한 카리스마와 리더십"});
+        }
+
+        const yangin = {"甲":"卯", "丙":"午", "戊":"午", "庚":"酉", "壬":"子"};
+        if (yangin[dayGan] && chars.includes(yangin[dayGan])) {
+            highPriorityCells.push({i:"🗡️",n:"양인세포",d:"어떤 고난도 이겨내는 꺾이지 않는 불굴의 의지"});
+        }
+
+        const wonjinPairs = [["子","未"],["丑","午"],["寅","酉"],["卯","申"],["辰","亥"],["巳","戌"]];
+        const hasWonjin = wonjinPairs.some(pair => zhiStr.includes(pair[0]) && zhiStr.includes(pair[1]));
+        if (hasWonjin) highPriorityCells.push({i:"🌀",n:"원진세포",d:"예술적 감수성이 뛰어나고 호불호가 매우 뚜렷함"});
+
+        const geumyeo = {"甲":"辰", "乙":"巳", "丙":"未", "丁":"申", "戊":"未", "己":"申", "庚":"戌", "辛":"亥", "壬":"丑", "癸":"寅"};
+        if (chars.includes(geumyeo[dayGan])) {
+            highPriorityCells.push({i:"👑",n:"금여세포",d:"어딜 가나 대우받고 자연스러운 귀티가 흐름"});
+        }
+
+        const amrok = {"甲":"亥", "乙":"戌", "丙":"申", "丁":"未", "戊":"申", "己":"未", "庚":"巳", "辛":"辰", "壬":"寅", "癸":"丑"};
+        if (chars.includes(amrok[dayGan])) {
+            highPriorityCells.push({i:"🎁",n:"암록세포",d:"보이지 않는 곳에서 나를 돕는 뜻밖의 행운"});
+        }
+
+        const cheondeokMap = {
+            "子":["巳"], "丑":["庚"], "寅":["丁"], "卯":["申"],
+            "辰":["壬"], "巳":["辛"], "午":["亥"], "未":["甲"],
+            "申":["癸"], "酉":["寅"], "戌":["丙"], "亥":["乙"]
+        };
+
+        if (cheondeokMap[monthZhi]) {
+            const target = cheondeokMap[monthZhi][0];
+            if (chars.includes(target)) {
+                highPriorityCells.push({i:"🌟",n:"천덕귀인세포",d:"위기에서 한 번 더 풀리게 만드는 보호막 같은 복"});
+            }
+        }
+
+        const taegukMap = {
+            "甲":["子","午"], "乙":["子","午"], "丙":["卯","酉"], "丁":["卯","酉"],
+            "戊":["辰","戌","丑","未"], "己":["辰","戌","丑","未"],
+            "庚":["寅","亥"], "辛":["寅","亥"], "壬":["巳","申"], "癸":["巳","申"]
+        };
+
+        if (taegukMap[dayGan] && hasAnyChar(zhiList, taegukMap[dayGan])) {
+            highPriorityCells.push({i:"☯️",n:"태극귀인세포",d:"큰 고비에서도 결국 자기 힘으로 풀어내는 저력"});
+        }
+
+        const normalPriorityCells = [];
+
+        const iljuInfo = {
+            "甲子":{i:"🌲",n:"갑자세포",d:"순수하고 정 많은 따뜻한 리더"},
+            "乙丑":{i:"🌿",n:"을축세포",d:"끈기 하나로 버티는 외유내강"},
+            "丙寅":{i:"☀️",n:"병인세포",d:"따뜻한 오지랖의 인간 난로"},
+            "丁卯":{i:"🕯️",n:"정묘세포",d:"눈치 빠르고 매력 넘치는 촛불"},
+            "戊辰":{i:"⛰️",n:"무진세포",d:"태산 같은 스케일과 강한 고집"},
+            "己巳":{i:"👩‍🌾",n:"기사세포",d:"속을 알 수 없는 꼼꼼한 지략가"},
+            "庚午":{i:"🪨",n:"경오세포",d:"반듯하고 불의를 못 참는 성격"},
+            "辛未":{i:"💎",n:"신미세포",d:"예민하지만 속은 다정한 보석"},
+            "壬申":{i:"🌊",n:"임신세포",d:"다재다능하고 자유로운 영혼"},
+            "癸酉":{i:"💧",n:"계유세포",d:"맑고 순수하지만 직관력이 뛰어남"},
+
+            "甲戌":{i:"🌲",n:"갑술세포",d:"책임감 강하고 의리 있는 성격"},
+            "乙亥":{i:"🌿",n:"을해세포",d:"어디서든 잘 적응하는 유연함"},
+            "丙子":{i:"☀️",n:"병자세포",d:"조용하지만 확실하게 빛나는 존재"},
+            "丁丑":{i:"🕯️",n:"정축세포",d:"은근한 끈기와 깊은 내면의 소유자"},
+            "戊寅":{i:"⛰️",n:"무인세포",d:"추진력 갑, 행동으로 보여주는 타입"},
+            "己卯":{i:"👩‍🌾",n:"기묘세포",d:"여리고 예민하지만 생활력이 강함"},
+            "庚辰":{i:"🪨",n:"경진세포",d:"한번 마음먹으면 끝장보는 불도저"},
+            "辛巳":{i:"💎",n:"신사세포",d:"치밀하고 완벽을 추구하는 칼잡이"},
+            "壬午":{i:"🌊",n:"임오세포",d:"다정다감하고 융통성이 철철 넘침"},
+            "癸未":{i:"💧",n:"계미세포",d:"부드러움 속에 숨겨진 날카로움"},
+
+            "甲申":{i:"🌲",n:"갑신세포",d:"재주 많고 눈치 빠른 행동파"},
+            "乙酉":{i:"🌿",n:"을유세포",d:"결단력 있고 맺고 끊음이 확실함"},
+            "丙戌":{i:"☀️",n:"병술세포",d:"뜨거운 열정과 의리의 사나이/여장부"},
+            "丁亥":{i:"🕯️",n:"정해세포",d:"감수성 풍부하고 다정한 낭만파"},
+            "戊子":{i:"⛰️",n:"무자세포",d:"속이 깊고 현실 감각이 매우 뛰어남"},
+            "己丑":{i:"👩‍🌾",n:"기축세포",d:"황소고집이지만 묵묵하고 믿음직함"},
+            "庚寅":{i:"🪨",n:"경인세포",d:"활동적이고 변화를 두려워하지 않음"},
+            "辛卯":{i:"💎",n:"신묘세포",d:"호기심 많고 미적 감각이 탁월함"},
+            "壬辰":{i:"🌊",n:"임진세포",d:"속을 짐작하기 힘든 엄청난 스케일"},
+            "癸巳":{i:"💧",n:"계사세포",d:"머리 회전 빠르고 처세술의 달인"},
+
+            "甲午":{i:"🌲",n:"갑오세포",d:"자유롭고 톡톡 튀는 아이디어 뱅크"},
+            "乙未":{i:"🌿",n:"을미세포",d:"온화해 보이지만 속으론 철저함"},
+            "丙申":{i:"☀️",n:"병신세포",d:"호기심 천국, 다재다능한 팔방미인"},
+            "丁酉":{i:"🕯️",n:"정유세포",d:"섬세하고 예리한 완벽주의자"},
+            "戊戌":{i:"⛰️",n:"무술세포",d:"신념이 확고하고 한 우물만 파는 타입"},
+            "己亥":{i:"👩‍🌾",n:"기해세포",d:"순둥순둥하지만 은근한 고집쟁이"},
+            "庚子":{i:"🪨",n:"경자세포",d:"차갑지만 속은 여린 진정한 츤데레"},
+            "辛丑":{i:"💎",n:"신축세포",d:"인내심 강하고 예리한 관찰자"},
+            "壬寅":{i:"🌊",n:"임인세포",d:"시작을 잘하고 통통 튀는 꿀매력"},
+            "癸卯":{i:"💧",n:"계묘세포",d:"상냥하고 다정해서 늘 인기가 많음"},
+
+            "甲辰":{i:"🌲",n:"갑진세포",d:"이상이 높고 진취적인 성향"},
+            "乙巳":{i:"🌿",n:"을사세포",d:"말주변이 좋고 사교성이 매우 뛰어남"},
+            "丙午":{i:"☀️",n:"병오세포",d:"에너지 폭발, 열정 넘치는 핵인싸"},
+            "丁未":{i:"🕯️",n:"정미세포",d:"강한 자존심과 따뜻한 마음의 소유자"},
+            "戊申":{i:"⛰️",n:"무신세포",d:"다재다능하고 현실적인 수완가"},
+            "己酉":{i:"👩‍🌾",n:"기유세포",d:"깔끔하고 기억력이 아주 비상함"},
+            "庚戌":{i:"🪨",n:"경술세포",d:"의리파, 한번 꽂히면 그대로 직진함"},
+            "辛亥":{i:"💎",n:"신해세포",d:"깔끔하고 세련된 지식인 스타일"},
+            "壬子":{i:"🌊",n:"임자세포",d:"고집 세고 경쟁에서 절대 지기 싫어함"},
+            "癸丑":{i:"💧",n:"계축세포",d:"끈질기게 목표를 파고드는 강한 집념"},
+
+            "甲寅":{i:"🌲",n:"갑인세포",d:"자립심 강하고 당당한 마이웨이"},
+            "乙卯":{i:"🌿",n:"을묘세포",d:"겉은 부드러우나 속은 강철 같음"},
+            "丙辰":{i:"☀️",n:"병진세포",d:"마음이 넓고 남에게 베풀기를 좋아함"},
+            "丁巳":{i:"🕯️",n:"정사세포",d:"경쟁심 강하고 화끈한 불꽃 성격"},
+            "戊午":{i:"⛰️",n:"무오세포",d:"불같은 성격이지만 뒤끝은 전혀 없음"},
+            "己未":{i:"👩‍🌾",n:"기미세포",d:"주관이 뚜렷하고 흔들림이 없음"},
+            "庚申":{i:"🪨",n:"경신세포",d:"의리 빼면 시체, 강직하고 단호함"},
+            "辛酉":{i:"💎",n:"신유세포",d:"정확하고 빈틈을 절대 허락하지 않음"},
+            "壬戌":{i:"🌊",n:"임술세포",d:"책임감 강하고 리더십이 아주 뛰어남"},
+            "癸亥":{i:"💧",n:"계해세포",d:"생각이 깊고 세상을 보는 통찰력이 남다름"}
+        };
+
+        if (iljuInfo[dayPillar]) normalPriorityCells.push(iljuInfo[dayPillar]);
+
+        if (elements["목"] >= 3) normalPriorityCells.push({i:"🌱",n:"목기운세포",d:"호기심 넘치고 새로운 시작을 두려워 안함"});
+        if (elements["화"] >= 3) normalPriorityCells.push({i:"🔥",n:"화기운세포",d:"다혈질이지만 뒤끝 하나 없이 화끈함"});
+        if (elements["토"] >= 3) normalPriorityCells.push({i:"🧱",n:"토기운세포",d:"안정을 추구하고 변화보다 유지를 선호함"});
+        if (elements["금"] >= 3) normalPriorityCells.push({i:"⚔️",n:"금기운세포",d:"맺고 끊음이 확실하고 단호박 같은 냉철함"});
+        if (elements["수"] >= 3) normalPriorityCells.push({i:"🧠",n:"수기운세포",d:"생각의 꼬리를 무는 딥 씽커"});
+
+        if (deities["비견"] >= 2 || deities["겁재"] >= 2) normalPriorityCells.push({i:"🥊",n:"승부사세포",d:"자존심 세고 경쟁이 붙으면 지기 싫어함"});
+        if (deities["식신"] >= 2 || deities["상관"] >= 2) normalPriorityCells.push({i:"🗣️",n:"표현력세포",d:"할 말은 해야 직성이 풀리고 재주가 많음"});
+        if (deities["편재"] >= 2 || deities["정재"] >= 2) normalPriorityCells.push({i:"💸",n:"현실감각세포",d:"계산이 빠르고 현실적인 이득을 잘 챙김"});
+        if (deities["편관"] >= 2 || deities["정관"] >= 2) normalPriorityCells.push({i:"📏",n:"바른생활세포",d:"나만의 규칙이 있고 책임감이 엄청나게 강함"});
+        if (deities["편인"] >= 2 || deities["정인"] >= 2) normalPriorityCells.push({i:"👽",n:"4차원세포",d:"남들과 다르게 생각하는 독특한 아이디어 뱅크"});
+
+        if (zhiStr.includes("辰")) normalPriorityCells.push({i:"🐲",n:"용세포",d:"꿈이 크고 이상을 향해 나아가는 낭만파"});
+        if (zhiStr.includes("戌")) normalPriorityCells.push({i:"🐶",n:"강아지세포",d:"내 사람이다 싶으면 간 쓸개 다 빼줌"});
+        if (zhiStr.includes("亥")) normalPriorityCells.push({i:"🐷",n:"돼지세포",d:"어떻게든 되겠지 마인드로 은근히 낙천적임"});
+
+        let finalCells = [];
+        let uniqueHigh = [];
+        let seen = new Set();
+
+        for (let c of highPriorityCells) {
+            if (c && !seen.has(c.n)) {
+                seen.add(c.n);
+                uniqueHigh.push(c);
+            }
+        }
+
+        let uniqueNormal = [];
+        for (let c of normalPriorityCells) {
+            if (c && !seen.has(c.n)) {
+                seen.add(c.n);
+                uniqueNormal.push(c);
+            }
+        }
+
+        uniqueHigh = shuffleArray(uniqueHigh);
+        uniqueNormal = shuffleArray(uniqueNormal);
+
+        finalCells = [...uniqueHigh, ...uniqueNormal].slice(0, 8);
+
+        if (finalCells.length < 8) {
+            const extraCells = [];
+
+            const sortedElements = Object.entries(elements)
+                .sort((a, b) => b[1] - a[1])
+                .filter(item => item[1] > 0);
+
+            const elementExtraMap = {
+                "목": {i:"🌿", n:"목보강세포", d:"자라나는 힘이 강하고 새 흐름을 잘 탄다"},
+                "화": {i:"✨", n:"화보강세포", d:"반응이 빠르고 존재감이 선명하게 드러난다"},
+                "토": {i:"🪐", n:"토보강세포", d:"쉽게 흔들리지 않고 중심을 오래 지킨다"},
+                "금": {i:"🛰️", n:"금보강세포", d:"판단이 또렷하고 기준이 분명하다"},
+                "수": {i:"🌙", n:"수보강세포", d:"감각이 깊고 흐름을 읽는 힘이 좋다"}
+            };
+
+            sortedElements.forEach(([key]) => {
+                if (elementExtraMap[key]) extraCells.push(elementExtraMap[key]);
+            });
+
+            const sortedDeities = Object.entries(deities)
+                .sort((a, b) => b[1] - a[1])
+                .filter(item => item[1] > 0);
+
+            const deityExtraMap = {
+                "비견": {i:"🧩", n:"비견보강세포", d:"내 힘으로 밀어붙이는 독립성이 강하다"},
+                "겁재": {i:"🔥", n:"겁재보강세포", d:"승부욕이 붙으면 쉽게 물러서지 않는다"},
+                "식신": {i:"🎨", n:"식신보강세포", d:"표현과 생산의 리듬이 좋은 편이다"},
+                "상관": {i:"🎯", n:"상관보강세포", d:"핵심을 빨리 캐치하고 반응도 빠르다"},
+                "편재": {i:"💸", n:"편재보강세포", d:"기회를 실속으로 바꾸는 감각이 있다"},
+                "정재": {i:"📦", n:"정재보강세포", d:"생활 감각과 현실 감각이 단단하다"},
+                "편관": {i:"⚔️", n:"편관보강세포", d:"압박이 와도 버티는 힘이 있다"},
+                "정관": {i:"📏", n:"정관보강세포", d:"기준과 책임을 꽤 중요하게 여긴다"},
+                "편인": {i:"🌀", n:"편인보강세포", d:"남들과 다른 시선으로 보는 힘이 있다"},
+                "정인": {i:"📚", n:"정인보강세포", d:"배움과 흡수력이 좋은 편이다"}
+            };
+
+            sortedDeities.forEach(([key]) => {
+                if (deityExtraMap[key]) extraCells.push(deityExtraMap[key]);
+            });
+
+            for (let c of extraCells) {
+                if (finalCells.length >= 8) break;
+                if (!finalCells.some(item => item.n === c.n)) {
+                    finalCells.push(c);
+                }
+            }
+        }
+
+        finalCells = shuffleArray(finalCells).slice(0, 8);
+
+        document.getElementById("resName").innerHTML = name;
+
+        const cardColors = ["#ffcce0", "#e6ccff", "#f3d9fa", "#ffdbec", "#d1c4e9", "#f8bbd0", "#e1bee7", "#fce4ec"];
+        const shuffledColors = shuffleArray(cardColors);
+
+        const container = document.getElementById("cellContainer");
+        container.innerHTML = "";
+
+        finalCells.forEach((cell, idx) => {
+            container.innerHTML += `
+                <div class="data-card" style="--card-color: ${shuffledColors[idx]};">
+                    <div class="card-icon">${cell.i}</div>
+                    <div class="card-title">${cell.n}</div>
+                    <div class="card-desc">${cell.d}</div>
+                </div>
+            `;
+        });
+
+        processLoadingAndShowResult();
+    }
+
+    function saveAsImage() {
+        const wrapper = document.getElementById("captureArea");
+
+        // 브라우저가 화면에 이름을 완전히 새겨넣을 시간을 0.5초(500ms)로 늘렸습니다.
+        setTimeout(() => {
+            html2canvas(wrapper, {
+                scale: 2,
+                backgroundColor: "#dfdbd4", // 투명 대신 배경색을 확실히 지정
+                useCORS: true
+            }).then(canvas => {
+                document.getElementById("modalImage").src = canvas.toDataURL("image/png");
+                document.getElementById("imageModal").style.display = "flex";
+            }).catch(err => {
+                console.log("캡처 에러: ", err);
+            });
+        }, 500);
+    }
+
+    function closeModal() {
+        document.getElementById("imageModal").style.display = "none";
+    }
+
+    window.onload = () => {
+        initDropdowns();
+    };
+</script>
+
+</body>
+</html>

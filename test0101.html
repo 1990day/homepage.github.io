@@ -6,11 +6,11 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>테스트잇x미스틱스토리 동심 테스트(가제)</title>
-  <meta name="description" content="테스트잇x미스틱스토리 동심 테스트(가제)" />
+  <title>LUCY의 동심 테스트</title>
+  <meta name="description" content="LUCY의 동심 테스트" />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="테스트잇x미스틱스토리 동심 테스트(가제)" />
-  <meta property="og:description" content="테스트잇x미스틱스토리 동심 테스트(가제)" />
+  <meta property="og:title" content="LUCY의 동심 테스트" />
+  <meta property="og:description" content="LUCY의 동심 테스트" />
   <meta property="og:url" content="https://test-it.co.kr/test0101" />
 
 <style>
@@ -36,6 +36,10 @@ html, body {
 
 body {
   min-height: 100vh;
+}
+
+body.modal-open {
+  overflow: hidden;
 }
 
 :root {
@@ -310,7 +314,7 @@ body {
   display: none;
 }
 
-/* 메인화면 대관람차 */
+/* 메인화면 움직이는 대관람차 */
 .main-wheel {
   position: absolute;
   left: 10%;
@@ -1050,101 +1054,137 @@ body {
   z-index: 0;
 }
 
-/* 질문화면 오른쪽 빨간 기차 */
+/* 3칸 빨간 기차 */
 .question-scene .train {
   position: absolute;
-  right: 18px;
-  bottom: 18px;
-  width: 78px;
-  height: 54px;
+  right: 10px;
+  bottom: 12px;
+  width: 124px;
+  height: 58px;
   animation: trainBob 2.8s ease-in-out infinite;
 }
 
-.question-scene .train-engine {
-  position: absolute;
-  right: 0;
-  bottom: 10px;
-  width: 44px;
-  height: 24px;
-  border: 3px solid #b85f5f;
-  border-radius: 10px 12px 8px 8px;
-  background: linear-gradient(180deg, #ff8f8f 0%, #ef5b5b 100%);
-}
-
-.question-scene .train-engine::before {
-  content: "";
-  position: absolute;
-  left: 7px;
-  top: -16px;
-  width: 18px;
-  height: 18px;
-  border: 3px solid #b85f5f;
-  border-bottom: none;
-  border-radius: 8px 8px 0 0;
-  background: linear-gradient(180deg, #ffd0d0 0%, #ff8f8f 100%);
-}
-
-.question-scene .train-engine::after {
-  content: "";
-  position: absolute;
-  right: 5px;
-  top: 5px;
-  width: 10px;
-  height: 8px;
-  border-radius: 2px;
-  background: #ffe8a8;
-  border: 2px solid #d9b86d;
-}
-
-.question-scene .train-cabin {
+.question-scene .engine {
   position: absolute;
   left: 0;
   bottom: 12px;
-  width: 30px;
-  height: 20px;
-  border: 3px solid #b85f5f;
-  border-radius: 8px;
-  background: linear-gradient(180deg, #ffc0c0 0%, #ff7b7b 100%);
+  width: 34px;
+  height: 24px;
+  background: #ef6d6d;
+  border-radius: 10px 10px 8px 8px;
+  border: 2px solid #d85b5b;
 }
 
-.question-scene .train-link {
+.question-scene .engine::before {
+  content: "";
   position: absolute;
-  left: 28px;
-  bottom: 18px;
+  left: 2px;
+  top: -15px;
+  width: 18px;
+  height: 16px;
+  background: #ef6d6d;
+  border-radius: 7px 7px 0 0;
+  border: 2px solid #d85b5b;
+  border-bottom: none;
+}
+
+.question-scene .engine::after {
+  content: "";
+  position: absolute;
+  right: 5px;
+  top: -10px;
+  width: 6px;
+  height: 10px;
+  background: #ef6d6d;
+  border: 2px solid #d85b5b;
+  border-bottom: none;
+  border-radius: 3px 3px 0 0;
+}
+
+.question-scene .engine-window {
+  position: absolute;
+  left: 8px;
+  top: 4px;
   width: 10px;
-  height: 4px;
-  border-radius: 999px;
-  background: #8cb7cf;
+  height: 8px;
+  background: #fff7ea;
+  border-radius: 3px;
 }
 
-.question-scene .train-smoke {
+.question-scene .car {
   position: absolute;
-  right: 16px;
-  top: -2px;
+  bottom: 12px;
+  width: 24px;
+  height: 20px;
+  background: #ef6d6d;
+  border: 2px solid #d85b5b;
+  border-radius: 6px;
+}
+
+.question-scene .car1 { left: 42px; }
+.question-scene .car2 { left: 72px; }
+.question-scene .car3 { left: 102px; }
+
+.question-scene .car::before,
+.question-scene .car::after {
+  content: "";
+  position: absolute;
+  top: 4px;
+  width: 6px;
+  height: 8px;
+  background: #fff7ea;
+  border-radius: 3px;
+}
+
+.question-scene .car::before { left: 4px; }
+.question-scene .car::after { right: 4px; }
+
+.question-scene .link {
+  position: absolute;
+  height: 2px;
+  background: #7f8fa3;
+  bottom: 21px;
+}
+
+.question-scene .link1 { left: 34px; width: 8px; }
+.question-scene .link2 { left: 66px; width: 6px; }
+.question-scene .link3 { left: 96px; width: 6px; }
+
+.question-scene .wheel {
+  position: absolute;
   width: 10px;
   height: 10px;
+  background: #5f6470;
+  border: 2px solid #efe9d4;
+  border-radius: 50%;
+  bottom: 0;
+}
+
+.question-scene .w-e1 { left: 5px; }
+.question-scene .w-e2 { left: 21px; }
+
+.question-scene .w-c11 { left: 45px; }
+.question-scene .w-c12 { left: 57px; }
+
+.question-scene .w-c21 { left: 75px; }
+.question-scene .w-c22 { left: 87px; }
+
+.question-scene .w-c31 { left: 105px; }
+.question-scene .w-c32 { left: 117px; }
+
+.question-scene .smoke {
+  position: absolute;
+  left: 8px;
+  top: -8px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   background: rgba(255,255,255,0.95);
   box-shadow:
-    -10px -8px 0 2px rgba(255,255,255,0.82),
-    -22px -14px 0 4px rgba(255,255,255,0.68);
+    -8px -6px 0 1px rgba(255,255,255,0.8),
+    8px -7px 0 1px rgba(255,255,255,0.75);
   animation: smokePop 2.2s ease-in-out infinite;
 }
-
-.question-scene .train-wheel {
-  position: absolute;
-  bottom: 0;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: #4f6a84;
-  border: 3px solid #d8f1ff;
-}
-
-.question-scene .tw1 { left: 6px; }
-.question-scene .tw2 { left: 24px; }
-.question-scene .tw3 { right: 20px; }
-.question-scene .tw4 { right: 2px; }
 
 .question-card {
   position: relative;
@@ -1303,6 +1343,96 @@ body {
     0 5px 0 #ebb4cc;
 }
 
+/* 저장용 이미지 모달 */
+.image-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+  background: rgba(37, 43, 48, 0.72);
+  backdrop-filter: blur(4px);
+}
+
+.image-modal.active {
+  display: flex;
+}
+
+.image-modal-backdrop {
+  position: absolute;
+  inset: 0;
+}
+
+.image-modal-panel {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 520px;
+  background: linear-gradient(180deg, #fffefb 0%, #fff7f1 100%);
+  border: 3px solid #c8dcec;
+  border-radius: 28px;
+  padding: 16px 16px 18px;
+  box-shadow:
+    0 20px 40px rgba(0,0,0,0.18),
+    inset 0 2px 0 rgba(255,255,255,0.85);
+}
+
+.image-modal-title {
+  font-size: 16px;
+  font-weight: 900;
+  color: #5a738b;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.image-modal-desc {
+  font-size: 13px;
+  line-height: 1.5;
+  color: #7a8a96;
+  text-align: center;
+  margin-bottom: 14px;
+}
+
+.image-modal-preview {
+  width: 100%;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #fff;
+  border: 2px solid #d7e5f0;
+}
+
+.image-modal-preview img {
+  display: block;
+  width: 100%;
+  height: auto;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.image-modal-close {
+  margin-top: 14px;
+  width: 100%;
+  border: none;
+  border-radius: 18px;
+  padding: 14px 14px;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 900;
+  cursor: pointer;
+  color: #6a6f79;
+  background: linear-gradient(180deg, #f0f7ff 0%, #dfefff 100%);
+  border: 2px solid #bdd5ea;
+  box-shadow:
+    inset 0 2px 0 rgba(255,255,255,0.9),
+    0 5px 0 #c7ddf0;
+}
+
+.image-modal-close:active {
+  transform: translateY(2px);
+}
+
 @keyframes cloudFloatA {
   0% { transform: translateX(0px); }
   50% { transform: translateX(6px) translateY(-1px); }
@@ -1406,12 +1536,31 @@ body {
     padding: 0 6px;
   }
 
+  .question-scene .train {
+    right: 6px;
+    transform: scale(0.92);
+    transform-origin: right bottom;
+  }
+
   .result-wrap {
     padding: 52px 14px 22px;
   }
 
   .result-actions {
     margin-top: 12px;
+  }
+
+  .action-btn {
+    font-size: 15px;
+    padding: 15px 14px;
+  }
+
+  .image-modal {
+    padding: 18px 10px;
+  }
+
+  .image-modal-panel {
+    padding: 14px 12px 14px;
   }
 }
 </style>
@@ -1514,7 +1663,7 @@ body {
       </div>
 
       <div class="content-wrap">
-        <img src="img_main0102임시2.png" alt="동심 테스트" class="main-hero-img">
+        <img src="img_main0101.png" alt="동심 테스트" class="main-hero-img">
         <div class="start-area">
           <button class="start-btn" id="startBtn">테스트 시작하기</button>
         </div>
@@ -1598,14 +1747,31 @@ body {
               <div class="mini-leg ml2"></div>
 
               <div class="train">
-                <div class="train-smoke"></div>
-                <div class="train-cabin"></div>
-                <div class="train-link"></div>
-                <div class="train-engine"></div>
-                <div class="train-wheel tw1"></div>
-                <div class="train-wheel tw2"></div>
-                <div class="train-wheel tw3"></div>
-                <div class="train-wheel tw4"></div>
+                <div class="smoke"></div>
+                <div class="engine">
+                  <div class="engine-window"></div>
+                </div>
+
+                <div class="link link1"></div>
+                <div class="car car1"></div>
+
+                <div class="link link2"></div>
+                <div class="car car2"></div>
+
+                <div class="link link3"></div>
+                <div class="car car3"></div>
+
+                <div class="wheel w-e1"></div>
+                <div class="wheel w-e2"></div>
+
+                <div class="wheel w-c11"></div>
+                <div class="wheel w-c12"></div>
+
+                <div class="wheel w-c21"></div>
+                <div class="wheel w-c22"></div>
+
+                <div class="wheel w-c31"></div>
+                <div class="wheel w-c32"></div>
               </div>
 
               <div class="grass"></div>
@@ -1647,16 +1813,29 @@ body {
 
       <div class="result-wrap">
         <div class="result-image-box">
-          <img id="resultImage" class="result-image" src="img0101_1.png" alt="동심 테스트 결과">
+          <img id="resultImage" class="result-image" src="img0102_1.png" alt="동심 테스트 결과">
         </div>
 
         <div class="result-actions">
           <button class="action-btn primary" id="saveImageBtn">결과 이미지 저장하기</button>
           <button class="action-btn secondary" id="goMainBtn">다시 해보기</button>
+          <button class="action-btn secondary" id="otherTestBtn">다른 테스트 해보기</button>
           <button class="action-btn secondary" id="shareBtn">테스트 공유하기</button>
         </div>
       </div>
     </section>
+  </div>
+
+  <div class="image-modal" id="imageModal">
+    <div class="image-modal-backdrop" id="imageModalBackdrop"></div>
+    <div class="image-modal-panel">
+      <div class="image-modal-title">결과 이미지를 길게 눌러 저장해보세요</div>
+      <div class="image-modal-desc">모바일에서는 이미지를 꾹 눌러 저장할 수 있어요.</div>
+      <div class="image-modal-preview">
+        <img id="modalResultImage" src="" alt="저장용 결과 이미지">
+      </div>
+      <button class="image-modal-close" id="closeModalBtn">닫기</button>
+    </div>
   </div>
 
 <script>
@@ -1692,6 +1871,7 @@ const yesBtn = document.getElementById("yesBtn");
 const noBtn = document.getElementById("noBtn");
 const saveImageBtn = document.getElementById("saveImageBtn");
 const goMainBtn = document.getElementById("goMainBtn");
+const otherTestBtn = document.getElementById("otherTestBtn");
 const shareBtn = document.getElementById("shareBtn");
 
 const questionText = document.getElementById("questionText");
@@ -1699,6 +1879,11 @@ const resultImage = document.getElementById("resultImage");
 const questionBadge = document.getElementById("questionBadge");
 const progressText = document.getElementById("progressText");
 const progressBar = document.getElementById("progressBar");
+
+const imageModal = document.getElementById("imageModal");
+const imageModalBackdrop = document.getElementById("imageModalBackdrop");
+const modalResultImage = document.getElementById("modalResultImage");
+const closeModalBtn = document.getElementById("closeModalBtn");
 
 let currentIndex = 0;
 let score = 0;
@@ -1748,14 +1933,27 @@ function chooseAnswer(isYes) {
 }
 
 function showResult() {
-  resultImage.src = `img0101_${score}.png`;
+  resultImage.src = `img0102_${score}.png`;
   resultImage.alt = `동심 테스트 결과 ${score}점`;
   showScreen(resultScreen);
   locked = false;
 }
 
 function goMain() {
+  closeImageModal();
   showScreen(mainScreen);
+}
+
+function openImageModal() {
+  modalResultImage.src = resultImage.src;
+  modalResultImage.alt = resultImage.alt;
+  imageModal.classList.add("active");
+  document.body.classList.add("modal-open");
+}
+
+function closeImageModal() {
+  imageModal.classList.remove("active");
+  document.body.classList.remove("modal-open");
 }
 
 startBtn.addEventListener("click", startTest);
@@ -1763,26 +1961,31 @@ yesBtn.addEventListener("click", () => chooseAnswer(true));
 noBtn.addEventListener("click", () => chooseAnswer(false));
 goMainBtn.addEventListener("click", goMain);
 
-saveImageBtn.addEventListener("click", () => {
-  const link = document.createElement("a");
-  link.href = resultImage.src;
-  link.download = "동심테스트_결과.png";
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
+saveImageBtn.addEventListener("click", openImageModal);
+closeModalBtn.addEventListener("click", closeImageModal);
+imageModalBackdrop.addEventListener("click", closeImageModal);
+
+otherTestBtn.addEventListener("click", () => {
+  window.location.href = "https://test-it.co.kr/";
 });
 
 shareBtn.addEventListener("click", () => {
   if (navigator.share) {
     navigator.share({
-      title: "동심 테스트",
-      text: "나의 동심 지수는 몇 점일까? 테스트해보세요!",
+      title: "LUCY의 동심 테스트",
+      text: "LUCY의 동심 테스트",
       url: window.location.href,
     }).catch(console.error);
   } else {
     navigator.clipboard.writeText(window.location.href).then(() => {
       alert("테스트 링크가 복사되었습니다!");
     });
+  }
+});
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && imageModal.classList.contains("active")) {
+    closeImageModal();
   }
 });
 </script>

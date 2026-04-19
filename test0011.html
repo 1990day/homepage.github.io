@@ -14,7 +14,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:title" content="나와 어울리는 포켓몬 탐구 테스트" />
   <meta property="og:description" content="나와 어울리는 포켓몬 탐구 테스트" />
-  <meta property="og:image" content="https://test-it.co.kr/img_main0011.png" />
+  <meta property="og:image" content="https://test-it.co.kr/img_main0011(4).png" />
   <meta property="og:url" content="https://test-it.co.kr/test0011" />
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -536,18 +536,18 @@
     .copyright-text {
       margin-top: 20px;
       text-align: center;
-      font-size: 12px; /* 폰에서 너무 작지 않게 12px로 변경 */
+      font-size: 10px;
       color: var(--sub);
       font-weight: 600;
+      white-space: nowrap;
+      letter-spacing: -0.02em;
     }
 
     @media (min-width: 769px) {
       .copyright-text {
-        font-size: 14px;
+        font-size: 12px;
       }
-    }
-
-    @media (min-width: 769px) {
+      
       .main {
         padding-top: 14px;
       }
@@ -652,6 +652,10 @@
         width: 30px;
         height: 30px;
       }
+      
+      .copyright-text {
+        font-size: 9px;
+      }
     }
   </style>
 </head>
@@ -678,8 +682,6 @@
                 <img src="img_main0011(4).png" alt="나와 어울리는 포켓몬 탐구 테스트 이미지" class="main-image" />
               </div>
               
-             
-
               <button type="button" class="start-btn" id="start-btn">테스트 시작하기</button>
             </div>
           </div>
@@ -1063,7 +1065,7 @@
     }
 
     async function createCaptureImage() {
-      const target = document.getElementById("result-capture");
+      const target = document.querySelector(".result-image-only");
 
       const canvas = await html2canvas(target, {
         backgroundColor: "#ffffff",

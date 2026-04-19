@@ -1,0 +1,1346 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>나의 키링 성격 테스트</title>
+  <meta name="description" content="나와 닮은 키링으로 알아보는 성격 테스트" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="나의 키링 성격 테스트" />
+  <meta property="og:description" content="나와 닮은 키링으로 알아보는 성격 테스트" />
+  <meta property="og:image" content="img_og.png" />
+
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
+  <style>
+    @font-face {
+      font-family: "Pretendard";
+      src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff") format("woff");
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    :root {
+      --bg: #d8d5dc;
+      --dot: rgba(255,255,255,0.18);
+
+      --book-outer: #f5edf2;
+      --book-inner: #efdde6;
+      --book-line: #cbbbc4;
+
+      --win-bg: #ece7ee;
+      --win-border-light: #ffffff;
+      --win-border-dark: #aaa4af;
+
+      --win-border: #a8a2ad;
+      --win-shadow: rgba(104, 97, 110, 0.16);
+      --pane-bg: #f6f4f5;
+      --pane-bottom: #d9d7dc;
+
+      --title-blue-1: #918fd8;
+      --title-blue-2: #7d79c9;
+      --title-pink-1: #e7bfd2;
+      --title-pink-2: #d8acbe;
+
+      --text: #4f4a52;
+      --text-soft: #7a727d;
+      --white: #ffffff;
+      --btn-bg: #f0dbe5;
+      --btn-border: #c9aebb;
+      --btn-hover: #e8c9d6;
+      --line-paper: #d9d5da;
+      --taskbar: #ddd8e0;
+      --taskbar-border: #bdb7c1;
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+      font-family: "Pretendard", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle, var(--dot) 1px, transparent 1px),
+        linear-gradient(180deg, #d9d6dc 0%, #d4d1d8 100%);
+      background-size: 12px 12px, 100% 100%;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    button {
+      font-family: inherit;
+      border: none;
+      background: none;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .header-wrapper {
+      width: 100%;
+      background-color: var(--win-bg);
+      border-bottom: 2px outset var(--win-border-light);
+      box-shadow: 0 1px 0 var(--win-border-light);
+      align-self: flex-start;
+      margin-bottom: 20px;
+    }
+
+    .page-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 6px 4% !important;
+    }
+
+    .retro-logo {
+      text-decoration: none;
+      color: var(--text);
+      font-size: 18px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      background-color: var(--win-bg);
+      padding: 5px 10px;
+      border-top: 2px solid var(--win-border-light);
+      border-left: 2px solid var(--win-border-light);
+      border-right: 2px solid var(--win-border-dark);
+      border-bottom: 2px solid var(--win-border-dark);
+    }
+
+    .retro-logo:active {
+      border-top: 2px solid var(--win-border-dark);
+      border-left: 2px solid var(--win-border-dark);
+      border-right: 2px solid var(--win-border-light);
+      border-bottom: 2px solid var(--win-border-light);
+      padding: 6px 9px 4px 11px;
+    }
+
+    .page-header h1 {
+      margin: 0 !important;
+      padding: 0 !important;
+      border-bottom: none !important;
+    }
+
+    .main-nav {
+      display: flex;
+      flex-wrap: nowrap !important;
+      align-items: center;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      gap: 14px;
+    }
+
+    .main-nav li {
+      margin-left: 0;
+    }
+
+    .main-nav a {
+      display: block;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 700;
+      background: var(--win-bg);
+      border-top: 2px solid var(--win-border-light);
+      border-left: 2px solid var(--win-border-light);
+      border-right: 2px solid var(--win-border-dark);
+      border-bottom: 2px solid var(--win-border-dark);
+      padding: 6px 12px;
+      font-size: 15px;
+      white-space: nowrap;
+      box-sizing: border-box;
+    }
+
+    .main-nav a:active {
+      border-top: 2px solid var(--win-border-dark);
+      border-left: 2px solid var(--win-border-dark);
+      border-right: 2px solid var(--win-border-light);
+      border-bottom: 2px solid var(--win-border-light);
+      padding: 7px 11px 5px 13px;
+    }
+
+    .page-wrap {
+      width: 100%;
+      max-width: 430px;
+      padding: 0 10px 28px;
+    }
+
+    .screen {
+      display: none;
+    }
+
+    .screen.active {
+      display: block;
+    }
+
+    .start-card {
+      background: linear-gradient(180deg, #f5edf2, #efdfe7);
+      border: 2px solid var(--book-line);
+      border-radius: 28px;
+      box-shadow:
+        0 14px 30px rgba(0,0,0,0.12),
+        inset 0 0 0 10px #f9f3f7;
+      padding: 16px;
+    }
+
+    .start-image-wrap {
+      width: 100%;
+      border: 2px solid #bfb8c2;
+      background: #f6f6f6;
+      overflow: hidden;
+      box-shadow: 0 6px 16px rgba(101, 93, 105, 0.12);
+    }
+
+    .start-image-wrap img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      display: block;
+    }
+
+    .start-btn {
+      width: 100%;
+      min-height: 58px;
+      margin-top: 14px;
+      border: 2px solid var(--btn-border);
+      background: linear-gradient(180deg, #fffefe, var(--btn-bg));
+      color: #5f5962;
+      font-size: 18px;
+      font-weight: 800;
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.95),
+        0 3px 8px rgba(120, 113, 122, 0.08);
+    }
+
+    .start-btn:hover,
+    .action-btn:hover,
+    .choice-btn:hover {
+      background: linear-gradient(180deg, #fffefe, var(--btn-hover));
+    }
+
+    .start-btn:active,
+    .action-btn:active,
+    .choice-btn:active {
+      transform: translateY(1px);
+    }
+
+    .notebook {
+      position: relative;
+      width: 100%;
+      background: linear-gradient(180deg, var(--book-outer), #f0e6ed);
+      border: 2px solid var(--book-line);
+      border-radius: 28px;
+      box-shadow:
+        0 14px 30px rgba(0,0,0,0.12),
+        inset 0 0 0 10px #f9f3f7,
+        inset 0 0 0 24px var(--book-inner);
+      padding: 18px 14px 18px;
+    }
+
+    .ring {
+      position: absolute;
+      right: -11px;
+      width: 42px;
+      height: 14px;
+      border-radius: 999px;
+      border: 2px solid #8d8a90;
+      background: linear-gradient(180deg, #f9f9f9, #d7d5d9);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.9);
+    }
+
+    .ring::before,
+    .ring::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #8a878d;
+      transform: translateY(-50%);
+    }
+
+    .ring::before { left: 5px; }
+    .ring::after { right: 5px; }
+
+    .ring.r1 { top: 132px; }
+    .ring.r2 { top: 180px; }
+    .ring.r3 { top: 382px; }
+    .ring.r4 { top: 430px; }
+
+    .os-window {
+      background: #eceaec;
+      border: 2px solid var(--win-border);
+      box-shadow:
+        0 2px 0 rgba(255,255,255,0.8),
+        0 6px 18px var(--win-shadow);
+      margin-bottom: 12px;
+    }
+
+    .window-titlebar {
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 8px 0 10px;
+      border-bottom: 2px solid var(--win-border);
+      color: #f8f8fb;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .window-titlebar.blue {
+      background: linear-gradient(90deg, var(--title-blue-1), var(--title-blue-2));
+    }
+
+    .window-titlebar.pink {
+      background: linear-gradient(90deg, var(--title-pink-1), var(--title-pink-2));
+    }
+
+    .title-left {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      min-width: 0;
+    }
+
+    .window-icon {
+      width: 12px;
+      height: 12px;
+      border: 1px solid rgba(255,255,255,0.8);
+      background:
+        linear-gradient(135deg, #b3ef9e 0 33%, #ffffff 33% 66%, #d79bff 66% 100%);
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,0.08);
+      flex-shrink: 0;
+    }
+
+    .window-title {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .window-controls {
+      display: flex;
+      gap: 4px;
+      flex-shrink: 0;
+    }
+
+    .ctrl {
+      width: 20px;
+      height: 20px;
+      border: 2px solid rgba(81, 77, 87, 0.5);
+      background: linear-gradient(180deg, #f7f7f8, #dad8de);
+      position: relative;
+    }
+
+    .ctrl.min::before,
+    .ctrl.max::before,
+    .ctrl.close::before,
+    .ctrl.close::after {
+      content: "";
+      position: absolute;
+      background: #5e5962;
+    }
+
+    .ctrl.min::before {
+      width: 8px;
+      height: 2px;
+      left: 4px;
+      bottom: 4px;
+    }
+
+    .ctrl.max::before {
+      width: 8px;
+      height: 6px;
+      left: 4px;
+      top: 4px;
+      border: 2px solid #5e5962;
+      background: transparent;
+      box-sizing: border-box;
+    }
+
+    .ctrl.close::before,
+    .ctrl.close::after {
+      width: 10px;
+      height: 2px;
+      left: 3px;
+      top: 8px;
+    }
+
+    .ctrl.close::before {
+      transform: rotate(45deg);
+    }
+
+    .ctrl.close::after {
+      transform: rotate(-45deg);
+    }
+
+    .window-body {
+      background: var(--pane-bg);
+      border-top: 1px solid rgba(255,255,255,0.8);
+      position: relative;
+    }
+
+    .notes-body {
+      padding: 0;
+      height: 238px;
+      display: flex;
+      flex-direction: column;
+      background: #f4f2f2;
+    }
+
+    .notes-header {
+      height: 32px;
+      display: flex;
+      align-items: center;
+      padding: 0 14px;
+      font-size: 14px;
+      color: #6d676f;
+      border-bottom: 2px solid #c7c2c8;
+      background: #efeded;
+    }
+
+    .notes-paper {
+      position: relative;
+      flex: 1;
+      padding: 42px 44px 14px 14px;
+      background:
+        repeating-linear-gradient(
+          to bottom,
+          #f4f2f2 0 24px,
+          var(--line-paper) 24px 26px
+        );
+    }
+
+    .progress-note {
+      position: absolute;
+      left: 14px;
+      right: 44px;
+      top: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      font-weight: 700;
+      color: #88818a;
+      z-index: 2;
+    }
+
+    .notes-content {
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .question-line {
+      font-size: 21px;
+      line-height: 1.5;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      word-break: keep-all;
+      color: #4d4851;
+      text-shadow: 0 1px 0 rgba(255,255,255,0.8);
+      padding-right: 4px;
+    }
+
+    .scrollbar {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 40px;
+      height: 100%;
+      border-left: 2px solid #c7c2c8;
+      background: linear-gradient(180deg, #f1efef, #ece8ea);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .scroll-arrow {
+      width: 100%;
+      height: 32px;
+      border-bottom: 2px solid #c7c2c8;
+      position: relative;
+      background: linear-gradient(180deg, #f7f6f6, #e4e1e4);
+    }
+
+    .scroll-arrow.down {
+      margin-top: auto;
+      border-top: 2px solid #c7c2c8;
+      border-bottom: none;
+    }
+
+    .scroll-arrow::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 9px;
+      height: 9px;
+      border-left: 2px solid #7d7780;
+      border-top: 2px solid #7d7780;
+      transform: translate(-50%, -35%) rotate(45deg);
+    }
+
+    .scroll-arrow.down::before {
+      transform: translate(-50%, -65%) rotate(225deg);
+    }
+
+    .scroll-thumb-track {
+      flex: 1;
+      width: 100%;
+      background: linear-gradient(180deg, #f0ecef, #efe6eb);
+      position: relative;
+    }
+
+    .scroll-thumb {
+      width: 24px;
+      height: 76px;
+      margin: 0 auto;
+      margin-top: 10px;
+      border: 2px solid #c7c2c8;
+      background: linear-gradient(180deg, #f1efef, #dad6da);
+      transition: margin-top 0.2s ease;
+    }
+
+    .window-footer {
+      height: 36px;
+      border-top: 2px solid #d3cfd4;
+      background: linear-gradient(180deg, #d8d6db, #cfccd3);
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 0 8px;
+    }
+
+    .find-btn {
+      height: 28px;
+      padding: 0 12px;
+      border: 2px solid #aeabb1;
+      background: linear-gradient(180deg, #faf9fa, #dddbe0);
+      color: #67616a;
+      font-size: 13px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      position: relative;
+    }
+
+    .find-btn::before {
+      content: "";
+      width: 12px;
+      height: 12px;
+      border: 2px solid #6f6871;
+      border-radius: 50%;
+      display: inline-block;
+      position: relative;
+      box-sizing: border-box;
+      transform: translateY(1px);
+    }
+
+    .find-btn::after {
+      content: "";
+      width: 7px;
+      height: 2px;
+      background: #6f6871;
+      position: absolute;
+      transform: translate(11px, 5px) rotate(45deg);
+    }
+
+    .answers-window-body {
+      min-height: 168px;
+      background: #f6f6f6;
+      padding: 14px;
+    }
+
+    .choice-area {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .choice-btn {
+      width: 100%;
+      min-height: 72px;
+      padding: 16px 14px;
+      text-align: left;
+      border: 2px solid #c8bcc3;
+      background: linear-gradient(180deg, #fffefd, #f3edf1);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.95),
+        0 3px 8px rgba(120, 113, 122, 0.08);
+      color: #5a545d;
+      font-size: 15px;
+      line-height: 1.5;
+      font-weight: 700;
+      word-break: keep-all;
+    }
+
+    .result-window-body {
+      background: #f6f6f6;
+      padding: 10px;
+    }
+
+    .result-image-wrap {
+      width: 100%;
+      min-height: 410px;
+      background: #f6f6f6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border: 1px solid #d2ccd3;
+    }
+
+    .result-image-wrap img {
+      width: 100%;
+      height: auto;
+      max-height: 760px;
+      object-fit: contain;
+      background: #f6f6f6;
+    }
+
+    .action-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 10px 0 0;
+    }
+
+    .action-btn {
+      width: 100%;
+      min-height: 52px;
+      border: 2px solid var(--btn-border);
+      background: linear-gradient(180deg, #fffefe, var(--btn-bg));
+      color: #5f5962;
+      font-size: 16px;
+      font-weight: 700;
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.95),
+        0 3px 8px rgba(120, 113, 122, 0.08);
+    }
+
+    .taskbar {
+      margin-top: 12px;
+      height: 44px;
+      border: 2px solid var(--taskbar-border);
+      background: linear-gradient(180deg, #e6e1e8, var(--taskbar));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.8);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 8px;
+    }
+
+    .taskbar-left,
+    .taskbar-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .task-btn,
+    .task-icon {
+      height: 30px;
+      border: 2px solid #b5afb7;
+      background: linear-gradient(180deg, #faf9fb, #dcd9df);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.85);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6a646d;
+    }
+
+    .task-icon {
+      width: 30px;
+      position: relative;
+    }
+
+    .task-icon.monitor::before {
+      content: "";
+      width: 16px;
+      height: 10px;
+      border: 2px solid #b892bc;
+      background: #efe4ee;
+      display: block;
+    }
+
+    .task-icon.monitor::after {
+      content: "";
+      position: absolute;
+      bottom: 5px;
+      width: 12px;
+      height: 2px;
+      background: #8f8891;
+    }
+
+    .task-btn.file {
+      min-width: 88px;
+      gap: 8px;
+      padding: 0 12px;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .folder-icon {
+      width: 18px;
+      height: 12px;
+      position: relative;
+      background: #edd88d;
+      border: 2px solid #c6b06c;
+    }
+
+    .folder-icon::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: -6px;
+      width: 10px;
+      height: 6px;
+      background: #f3e19d;
+      border: 2px solid #c6b06c;
+      border-bottom: none;
+      box-sizing: border-box;
+    }
+
+    .task-mini {
+      width: 54px;
+      height: 30px;
+      border: 2px solid #b5afb7;
+      background: linear-gradient(180deg, #faf9fb, #dcd9df);
+      position: relative;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.85);
+    }
+
+    .task-mini::before,
+    .task-mini::after {
+      content: "";
+      position: absolute;
+      top: 7px;
+      height: 8px;
+      background: #b0abb1;
+    }
+
+    .task-mini::before {
+      left: 8px;
+      width: 22px;
+    }
+
+    .task-mini::after {
+      right: 8px;
+      width: 12px;
+    }
+
+    .ad-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 14px;
+      margin-bottom: 4px;
+    }
+
+    .coupang_ad {
+      width: 350px;
+      max-width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .capture-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(59, 53, 62, 0.72);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      z-index: 1000;
+    }
+
+    .capture-modal.show {
+      display: flex;
+    }
+
+    .capture-card {
+      width: 100%;
+      max-width: 430px;
+    }
+
+    .capture-preview-body {
+      background: #f6f6f6;
+      padding: 10px;
+    }
+
+    .capture-preview-body img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: contain;
+      background: #f6f6f6;
+      border: 1px solid #d2ccd3;
+    }
+
+    @media (max-width: 480px) {
+      .page-header {
+        padding: 6px 12px !important;
+      }
+
+      .retro-logo {
+        font-size: 16px;
+        padding: 3px 8px;
+      }
+
+      .main-nav {
+        gap: 8px;
+      }
+
+      .main-nav a {
+        padding: 5px 8px;
+        font-size: 14px;
+        letter-spacing: -0.5px;
+      }
+
+      .page-wrap {
+        padding: 0 8px 24px;
+      }
+
+      .notebook {
+        padding: 16px 12px 16px;
+      }
+
+      .ring.r1 { top: 128px; }
+      .ring.r2 { top: 176px; }
+      .ring.r3 { top: 370px; }
+      .ring.r4 { top: 418px; }
+
+      .notes-body {
+        height: 224px;
+      }
+
+      .question-line {
+        font-size: 18px;
+      }
+
+      .answers-window-body {
+        min-height: 156px;
+        padding: 12px;
+      }
+
+      .choice-btn {
+        min-height: 66px;
+        font-size: 14px;
+        padding: 14px 12px;
+      }
+
+      .result-image-wrap {
+        min-height: 360px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="header-wrapper">
+    <header class="page-header wrapper">
+      <h1><a href="https://test-it.co.kr/" class="retro-logo">테스트잇</a></h1>
+      <nav>
+        <ul class="main-nav">
+          <li><a href="https://test-it.co.kr/test.html">성격</a></li>
+          <li><a href="https://test-it.co.kr/face.html">얼굴</a></li>
+          <li><a href="https://test-it.co.kr/etc.html">그외</a></li>
+          <li><a href="https://test-it.co.kr/saju.html">사주</a></li>
+        </ul>
+      </nav>
+    </header>
+  </div>
+
+  <div class="page-wrap">
+    <section id="startScreen" class="screen active" aria-label="시작 화면">
+      <div class="start-card">
+        <div class="start-image-wrap">
+          <img src="img_main379.png" alt="나의 키링 성격 테스트 메인 이미지" />
+        </div>
+        <button id="startBtn" class="start-btn" type="button">테스트 시작하기</button>
+      </div>
+
+      <div class="ad-container" id="ad-container-start">
+        <article class="coupang_ad mt-3">
+          <script src="https://ads-partners.coupang.com/g.js"></script>
+          <script>
+            new PartnersCoupang.G({"id":798186,"template":"carousel","trackingCode":"AF4391881","width":"350","height":"140","tsource":""});
+          </script>
+        </article>
+      </div>
+    </section>
+
+    <section id="quizScreen" class="screen" aria-label="질문 화면">
+      <div class="notebook">
+        <span class="ring r1"></span>
+        <span class="ring r2"></span>
+        <span class="ring r3"></span>
+        <span class="ring r4"></span>
+
+        <div class="os-window">
+          <div class="window-titlebar blue">
+            <div class="title-left">
+              <span class="window-icon"></span>
+              <span class="window-title">Notes</span>
+            </div>
+            <div class="window-controls">
+              <span class="ctrl min"></span>
+              <span class="ctrl max"></span>
+              <span class="ctrl close"></span>
+            </div>
+          </div>
+
+          <div class="window-body notes-body">
+            <div class="notes-header">Notes</div>
+            <div class="notes-paper">
+              <div class="progress-note">
+                <span id="progressText">QUESTION 1 / 12</span>
+                <span id="progressPercent">8%</span>
+              </div>
+
+              <div class="notes-content">
+                <div id="questionText" class="question-line"></div>
+              </div>
+            </div>
+
+            <div class="scrollbar" aria-hidden="true">
+              <div class="scroll-arrow"></div>
+              <div class="scroll-thumb-track">
+                <div id="scrollThumb" class="scroll-thumb"></div>
+              </div>
+              <div class="scroll-arrow down"></div>
+            </div>
+
+            <div class="window-footer">
+              <div class="find-btn">Find</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="os-window">
+          <div class="window-titlebar pink">
+            <div class="title-left">
+              <span class="window-icon"></span>
+              <span class="window-title">Untitled</span>
+            </div>
+            <div class="window-controls">
+              <span class="ctrl min"></span>
+              <span class="ctrl max"></span>
+              <span class="ctrl close"></span>
+            </div>
+          </div>
+
+          <div class="window-body answers-window-body">
+            <div class="choice-area">
+              <button id="choiceA" class="choice-btn" type="button">
+                <span id="choiceAText"></span>
+              </button>
+              <button id="choiceB" class="choice-btn" type="button">
+                <span id="choiceBText"></span>
+              </button>
+            </div>
+          </div>
+
+          <div class="window-footer"></div>
+        </div>
+
+        <div class="taskbar">
+          <div class="taskbar-left">
+            <div class="task-icon monitor"></div>
+            <div class="task-btn file">
+              <span class="folder-icon"></span>
+              <span>File</span>
+            </div>
+          </div>
+          <div class="taskbar-right">
+            <div class="task-mini"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ad-container" id="ad-container">
+        <article class="coupang_ad mt-3">
+          <script>
+            if (!window.__coupangAdQuizLoaded) {
+              window.__coupangAdQuizLoaded = true;
+              new PartnersCoupang.G({"id":798186,"template":"carousel","trackingCode":"AF4391881","width":"350","height":"140","tsource":""});
+            }
+          </script>
+        </article>
+      </div>
+    </section>
+
+    <section id="resultScreen" class="screen" aria-label="결과 화면">
+      <div class="notebook">
+        <span class="ring r1"></span>
+        <span class="ring r2"></span>
+        <span class="ring r3"></span>
+        <span class="ring r4"></span>
+
+        <div class="os-window">
+          <div class="window-titlebar blue">
+            <div class="title-left">
+              <span class="window-icon"></span>
+              <span class="window-title">Image Viewer</span>
+            </div>
+            <div class="window-controls">
+              <span class="ctrl min"></span>
+              <span class="ctrl max"></span>
+              <span class="ctrl close"></span>
+            </div>
+          </div>
+
+          <div id="resultCaptureArea" class="window-body result-window-body">
+            <div class="result-image-wrap">
+              <img id="resultImage" src="img_enfp379.png" alt="결과 이미지" />
+            </div>
+          </div>
+
+          <div class="window-footer"></div>
+        </div>
+
+        <div class="action-buttons">
+          <button id="saveImageBtn" class="action-btn" type="button">결과 이미지 저장하기</button>
+          <button id="retryBtn" class="action-btn" type="button">다시 해보기</button>
+          <button id="otherTestBtn" class="action-btn" type="button">다른 테스트 해보기</button>
+          <button id="shareBtn" class="action-btn" type="button">테스트 공유하기</button>
+        </div>
+
+        <div class="taskbar">
+          <div class="taskbar-left">
+            <div class="task-icon monitor"></div>
+            <div class="task-btn file">
+              <span class="folder-icon"></span>
+              <span>File</span>
+            </div>
+          </div>
+          <div class="taskbar-right">
+            <div class="task-mini"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ad-container" id="ad-container-result">
+        <article class="coupang_ad mt-3">
+          <script>
+            if (!window.__coupangAdResultLoaded) {
+              window.__coupangAdResultLoaded = true;
+              new PartnersCoupang.G({"id":798186,"template":"carousel","trackingCode":"AF4391881","width":"350","height":"140","tsource":""});
+            }
+          </script>
+        </article>
+      </div>
+    </section>
+  </div>
+
+  <div id="captureModal" class="capture-modal" aria-hidden="true">
+    <div class="capture-card">
+      <div class="os-window" style="margin-bottom:0;">
+        <div class="window-titlebar pink">
+          <div class="title-left">
+            <span class="window-icon"></span>
+            <span class="window-title">Image Viewer</span>
+          </div>
+          <div class="window-controls">
+            <span class="ctrl min"></span>
+            <span class="ctrl max"></span>
+            <span class="ctrl close"></span>
+          </div>
+        </div>
+
+        <div class="capture-preview-body">
+          <img id="capturePreviewImage" src="" alt="저장용 결과 이미지" />
+        </div>
+
+        <div class="window-footer">
+          <button id="closeModalBtn" class="action-btn" type="button" style="min-height:30px; width:110px; font-size:14px;">닫기</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const questions = [
+      {
+        a: { text: "사람 많은 자리도 재밌다. 만나고 오면 오히려 기분이 올라간다.", type: "E" },
+        b: { text: "좋은 사람이어도 오래 있으면 기가 빠진다. 혼자 쉬는 시간이 꼭 필요하다.", type: "I" },
+        question: "친구들과 약속이 생겼을 때, 나는 어떤 쪽에 더 가까나요?"
+      },
+      {
+        a: { text: "먼저 분위기 보고 말 걸면서 금방 섞인다.", type: "E" },
+        b: { text: "누가 먼저 말 걸어주면 편하다. 천천히 적응하는 편이다.", type: "I" },
+        question: "처음 가는 모임에 도착했을 때 내 행동은?"
+      },
+      {
+        a: { text: "일단 누군가에게 말하면서 정리한다.", type: "E" },
+        b: { text: "혼자 생각하고 마음이 정리된 뒤 말한다.", type: "I" },
+        question: "기분이 복잡할 때 나는 어떻게 정리하나요?"
+      },
+      {
+        a: { text: "재질, 크기, 실물 색감처럼 직접 보이는 요소가 중요하다.", type: "S" },
+        b: { text: "그 키링이 주는 분위기나 스토리가 더 중요하다.", type: "N" },
+        question: "새 키링을 고를 때 더 끌리는 기준은?"
+      },
+      {
+        a: { text: "실용적이고 오래 쓸 수 있는 걸 먼저 본다.", type: "S" },
+        b: { text: "이걸 달고 다니는 내 모습까지 상상하면서 고른다.", type: "N" },
+        question: "여행지 기념품 가게에 들어가면 나는?"
+      },
+      {
+        a: { text: "크기나 촉감, 색 조합부터 눈에 들어온다.", type: "S" },
+        b: { text: "왠지 그 친구랑 닮은 느낌이라 의미를 붙여본다.", type: "N" },
+        question: "친구가 평범한 키링 하나를 보여줬을 때 나는?"
+      },
+      {
+        a: { text: "어디서 잃어버렸는지부터 따져보고 찾는 방법을 말해준다.", type: "T" },
+        b: { text: "얼마나 아쉬울지 먼저 공감해주고 같이 속상해한다.", type: "F" },
+        question: "친구가 키링을 잃어버리고 속상해할 때 나는?"
+      },
+      {
+        a: { text: "상대가 실제로 잘 쓸지, 관리가 쉬운지 본다.", type: "T" },
+        b: { text: "상대가 받았을 때 기분 좋아할 포인트를 먼저 본다.", type: "F" },
+        question: "선물용 키링을 고를 때 더 중요하게 보는 건?"
+      },
+      {
+        a: { text: "왜 그게 좋은지 이유부터 묻고 납득해본다.", type: "T" },
+        b: { text: "취향은 다 다르니까 느낌만 좋으면 됐다고 생각한다.", type: "F" },
+        question: "키링 취향이 전혀 다른 친구와 같이 쇼핑하면 나는?"
+      },
+      {
+        a: { text: "어디에 달지 미리 정하고 깔끔하게 맞춘다.", type: "J" },
+        b: { text: "기분 따라 바꾸고 이것저것 섞어 다는 편이다.", type: "P" },
+        question: "가방에 키링을 달 때 나는 어떤 편인가요?"
+      },
+      {
+        a: { text: "사기 전에 비교도 하고 어울릴 가방까지 생각해본다.", type: "J" },
+        b: { text: "보자마자 마음에 들면 바로 산다.", type: "P" },
+        question: "새 키링을 사게 되면 나는 보통?"
+      },
+      {
+        a: { text: "미리 코디와 소지품까지 맞춰두고 챙긴다.", type: "J" },
+        b: { text: "당일에 그날 기분 보고 골라서 단다.", type: "P" },
+        question: "여행 가기 전 키링 챙기는 스타일은?"
+      }
+    ];
+
+    const results = {
+      ISTJ: { title: "클래식 열쇠 키링" },
+      ISFJ: { title: "포근한 곰돌이 키링" },
+      INFJ: { title: "별빛 문장 키링" },
+      INTJ: { title: "실버 메탈 키링" },
+      ISTP: { title: "무광 카라비너 키링" },
+      ISFP: { title: "꽃잎 리본 키링" },
+      INFP: { title: "네잎클로버 키링" },
+      INTP: { title: "투명 아크릴 키링" },
+      ESTP: { title: "체인 스트랩 키링" },
+      ESFP: { title: "스마일 인형 키링" },
+      ENFP: { title: "반짝 하트 비즈 키링" },
+      ENTP: { title: "번개 포인트 키링" },
+      ESTJ: { title: "탄탄 가죽 태그 키링" },
+      ESFJ: { title: "하트 리본 키링" },
+      ENFJ: { title: "행운 부적 키링" },
+      ENTJ: { title: "블랙 심볼 키링" }
+    };
+
+    const screens = {
+      start: document.getElementById("startScreen"),
+      quiz: document.getElementById("quizScreen"),
+      result: document.getElementById("resultScreen")
+    };
+
+    const startBtn = document.getElementById("startBtn");
+    const progressText = document.getElementById("progressText");
+    const progressPercent = document.getElementById("progressPercent");
+    const questionText = document.getElementById("questionText");
+    const choiceAText = document.getElementById("choiceAText");
+    const choiceBText = document.getElementById("choiceBText");
+    const choiceA = document.getElementById("choiceA");
+    const choiceB = document.getElementById("choiceB");
+    const scrollThumb = document.getElementById("scrollThumb");
+
+    const resultImage = document.getElementById("resultImage");
+    const saveImageBtn = document.getElementById("saveImageBtn");
+    const retryBtn = document.getElementById("retryBtn");
+    const otherTestBtn = document.getElementById("otherTestBtn");
+    const shareBtn = document.getElementById("shareBtn");
+
+    const captureModal = document.getElementById("captureModal");
+    const capturePreviewImage = document.getElementById("capturePreviewImage");
+    const closeModalBtn = document.getElementById("closeModalBtn");
+
+    let currentIndex = 0;
+    let currentResultType = "ENFP";
+    let scores = {
+      E: 0,
+      I: 0,
+      S: 0,
+      N: 0,
+      T: 0,
+      F: 0,
+      J: 0,
+      P: 0
+    };
+
+    function showScreen(name) {
+      Object.values(screens).forEach((screen) => screen.classList.remove("active"));
+      screens[name].classList.add("active");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function resetScores() {
+      currentIndex = 0;
+      scores = {
+        E: 0,
+        I: 0,
+        S: 0,
+        N: 0,
+        T: 0,
+        F: 0,
+        J: 0,
+        P: 0
+      };
+    }
+
+    function updateProgress() {
+      const currentNumber = currentIndex + 1;
+      const percent = Math.round((currentNumber / questions.length) * 100);
+      progressText.textContent = `QUESTION ${currentNumber} / ${questions.length}`;
+      progressPercent.textContent = `${percent}%`;
+
+      const minTop = 10;
+      const maxTop = 84;
+      const thumbTop = minTop + ((maxTop - minTop) * (currentNumber - 1) / (questions.length - 1));
+      scrollThumb.style.marginTop = `${thumbTop}px`;
+    }
+
+    function renderQuestion() {
+      const q = questions[currentIndex];
+      updateProgress();
+      questionText.textContent = q.question;
+      choiceAText.textContent = q.a.text;
+      choiceBText.textContent = q.b.text;
+    }
+
+    function calculateMbti() {
+      const ei = scores.E >= scores.I ? "E" : "I";
+      const sn = scores.S >= scores.N ? "S" : "N";
+      const tf = scores.T >= scores.F ? "T" : "F";
+      const jp = scores.J >= scores.P ? "J" : "P";
+      return `${ei}${sn}${tf}${jp}`;
+    }
+
+    function renderResult() {
+      currentResultType = calculateMbti();
+      const imageFileName = `img_${currentResultType.toLowerCase()}379.png`;
+      resultImage.src = imageFileName;
+      resultImage.alt = `${currentResultType} 결과 이미지`;
+      capturePreviewImage.src = imageFileName;
+      capturePreviewImage.alt = `${currentResultType} 저장용 결과 이미지`;
+    }
+
+    function handleAnswer(type) {
+      scores[type] += 1;
+      currentIndex += 1;
+
+      if (currentIndex < questions.length) {
+        renderQuestion();
+      } else {
+        renderResult();
+        showScreen("result");
+      }
+    }
+
+    startBtn.addEventListener("click", () => {
+      resetScores();
+      renderQuestion();
+      showScreen("quiz");
+    });
+
+    choiceA.addEventListener("click", () => {
+      handleAnswer(questions[currentIndex].a.type);
+    });
+
+    choiceB.addEventListener("click", () => {
+      handleAnswer(questions[currentIndex].b.type);
+    });
+
+    retryBtn.addEventListener("click", () => {
+      resetScores();
+      showScreen("start");
+    });
+
+    otherTestBtn.addEventListener("click", () => {
+      window.location.href = "https://test-it.co.kr/";
+    });
+
+    shareBtn.addEventListener("click", async () => {
+      const shareData = {
+        title: "나의 키링 성격 테스트",
+        text: `내 결과는 ${currentResultType} ${results[currentResultType].title}입니다.`,
+        url: window.location.href
+      };
+
+      try {
+        if (navigator.share) {
+          await navigator.share(shareData);
+        } else {
+          await navigator.clipboard.writeText(window.location.href);
+          alert("테스트 링크가 복사되었습니다.");
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    });
+
+    saveImageBtn.addEventListener("click", () => {
+      capturePreviewImage.src = resultImage.src;
+      captureModal.classList.add("show");
+      captureModal.setAttribute("aria-hidden", "false");
+    });
+
+    closeModalBtn.addEventListener("click", () => {
+      captureModal.classList.remove("show");
+      captureModal.setAttribute("aria-hidden", "true");
+    });
+
+    captureModal.addEventListener("click", (e) => {
+      if (e.target === captureModal) {
+        captureModal.classList.remove("show");
+        captureModal.setAttribute("aria-hidden", "true");
+      }
+    });
+
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        captureModal.classList.remove("show");
+        captureModal.setAttribute("aria-hidden", "true");
+      }
+    });
+  </script>
+</body>
+</html>

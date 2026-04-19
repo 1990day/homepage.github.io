@@ -426,12 +426,18 @@
     }
 
     .loading-sprite {
-      width: 68px;
-      height: 68px;
-      margin: 0 auto 18px;
-      background: url("ld_img0011.png") no-repeat center/contain;
+      width: 120px;
+      height: 120px;
+      display: block;
+      margin: 0 auto 10px auto;
+      background: url("ld_img0011.png") no-repeat center center / contain;
       position: relative;
       animation: floaty 0.8s steps(2) infinite;
+      
+      image-rendering: -moz-crisp-edges;
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: crisp-edges;
+      image-rendering: pixelated;
     }
 
     @keyframes floaty {
@@ -525,6 +531,20 @@
 
     .toast.show {
       display: block;
+    }
+
+    .copyright-text {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 12px; /* 폰에서 너무 작지 않게 12px로 변경 */
+      color: var(--sub);
+      font-weight: 600;
+    }
+
+    @media (min-width: 769px) {
+      .copyright-text {
+        font-size: 14px;
+      }
     }
 
     @media (min-width: 769px) {
@@ -657,6 +677,10 @@
               <div class="main-image-wrap">
                 <img src="img_main0011.png" alt="나와 어울리는 포켓몬 탐구 테스트 이미지" class="main-image" />
               </div>
+              
+              <div class="copyright-text" style="margin-top: -8px; margin-bottom: 4px;">
+                ©Pokémon. ©Nintendo/Creatures Inc./GAME FREAK inc.
+              </div>
 
               <button type="button" class="start-btn" id="start-btn">테스트 시작하기</button>
             </div>
@@ -704,6 +728,11 @@
                   <p class="choice-desc" id="choice-b-text"></p>
                 </button>
               </div>
+              
+              <div class="copyright-text">
+                ©Pokémon. ©Nintendo/Creatures Inc./GAME FREAK inc.
+              </div>
+
             </div>
           </div>
         </div>
@@ -713,6 +742,11 @@
     <section id="loading-screen" class="loading">
       <div class="loading-box">
         <div class="loading-sprite" aria-hidden="true"></div>
+        
+        <div class="copyright-text" style="margin-top: 0; margin-bottom: 24px;">
+          ©Pokémon. ©Nintendo/Creatures Inc./GAME FREAK inc.
+        </div>
+        
         <h2 class="loading-title">결과를 불러오는 중</h2>
         <p class="loading-desc">
           성격 데이터를 조합해서<br />
@@ -842,7 +876,7 @@
         axis: null,
         score: false,
         question: "대화할 때 나의 기본적인 태도는?",
-        a: { text: "상대방이 말하는 사실 관계를 파악하며 듣는다", value: null },
+        a: { text: "상대방이 말하는 사실 관계 파악하며 듣는다", value: null },
         b: { text: "상대방의 말 뒤에 숨겨진 의도나 감정을 읽으려 한다", value: null }
       },
       {

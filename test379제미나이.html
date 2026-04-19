@@ -165,7 +165,7 @@
     border-radius: 20px;
     border: 3px solid #fff;
     box-shadow: 0 0 0 4px var(--board-border), 5px 5px 15px rgba(0,0,0,0.1);
-    padding: 30px 20px;
+    padding: 15px; /* 보드 패딩을 줄였습니다 */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -237,7 +237,7 @@
   }
 
   /* 본문 영역 */
-  .window-body { padding: 20px 15px; text-align: center; background: #ececec; border: 2px solid #fff; border-right-color: #ccc; border-bottom-color: #ccc; margin: 2px; }
+  .window-body { padding: 10px 10px; text-align: center; background: #ececec; border: 2px solid #fff; border-right-color: #ccc; border-bottom-color: #ccc; margin: 2px; }
   
   /* 이미지들 */
   #main-img, #result-img {
@@ -247,7 +247,7 @@
     object-fit: contain; 
     border: 2px solid;
     border-color: var(--win-border-dark) var(--win-border-light) var(--win-border-light) var(--win-border-dark);
-    margin: 0 auto 20px; 
+    margin: 0 auto 10px; /* 이미지 하단 여백 줄임 */
     display: block;
     background-color: #fff;
   }
@@ -354,6 +354,16 @@
     border-color: #888 #fff #fff #888;
     font-size: 12px;
   }
+
+  /* 저장 가이드 문구 */
+  #save-guide-text {
+    display: none; /* 평소에는 숨김 */
+    font-size: 14px;
+    color: var(--win-title-pink);
+    font-weight: bold;
+    margin-bottom: 10px;
+    word-break: keep-all;
+  }
 </style>
 </head>
 <body>
@@ -432,6 +442,7 @@
         </div>
       </div>
       <div class="window-body">
+        <div id="save-guide-text">이미지를 꾹 누르면 저장할 수 있습니다.</div>
         <img id="result-img" src="" alt="결과 이미지 로딩 중...">
         
         <div class="btn-stack">
@@ -533,6 +544,8 @@
   }
 
   function goHome() {
+    // 다시 시작할 때 저장 가이드 문구 숨김
+    document.getElementById('save-guide-text').style.display = 'none';
     showPage('main-page');
   }
 
@@ -548,8 +561,9 @@
     }
   }
 
+  // 버튼 클릭 시 가이드 문구를 화면에 표시
   function showSaveGuide() {
-    alert("이미지를 꾹 누르면 저장할 수 있습니다");
+    document.getElementById('save-guide-text').style.display = 'block';
   }
 </script>
 

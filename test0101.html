@@ -21,6 +21,13 @@
   font-display: swap;
 }
 
+@font-face {
+    font-family: 'NanumSquareRound';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff') format('woff');
+    font-weight: normal;
+    font-display: swap;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -28,7 +35,7 @@
 html, body {
   margin: 0;
   padding: 0;
-  font-family: 'ThinRounded', Pretendard, Arial, sans-serif;
+  font-family: 'NanumSquareRound', Pretendard, Arial, sans-serif;
   background: #eef8e5;
   color: #4d6759;
   overflow-x: hidden;
@@ -1046,136 +1053,90 @@ body.modal-open {
   z-index: 0;
 }
 
-/* 3칸 빨간 기차 */
+/* 이미지 모티브 단일 기차 수정본 */
 .question-scene .train {
   position: absolute;
-  right: 10px;
-  bottom: 12px;
-  width: 124px;
-  height: 58px;
-  animation: trainBob 2.8s ease-in-out infinite;
-}
-
-.question-scene .engine {
-  position: absolute;
-  left: 0;
-  bottom: 12px;
-  width: 34px;
-  height: 24px;
-  background: #ef6d6d;
-  border-radius: 10px 10px 8px 8px;
-  border: 2px solid #d85b5b;
-}
-
-.question-scene .engine::before {
-  content: "";
-  position: absolute;
-  left: 2px;
-  top: -15px;
-  width: 18px;
-  height: 16px;
-  background: #ef6d6d;
-  border-radius: 7px 7px 0 0;
-  border: 2px solid #d85b5b;
-  border-bottom: none;
-}
-
-.question-scene .engine::after {
-  content: "";
-  position: absolute;
-  right: 5px;
-  top: -10px;
-  width: 6px;
-  height: 10px;
-  background: #ef6d6d;
-  border: 2px solid #d85b5b;
-  border-bottom: none;
-  border-radius: 3px 3px 0 0;
-}
-
-.question-scene .engine-window {
-  position: absolute;
-  left: 8px;
-  top: 4px;
-  width: 10px;
-  height: 8px;
-  background: #fff7ea;
-  border-radius: 3px;
-}
-
-.question-scene .car {
-  position: absolute;
-  bottom: 12px;
-  width: 24px;
-  height: 20px;
-  background: #ef6d6d;
-  border: 2px solid #d85b5b;
-  border-radius: 6px;
-}
-
-.question-scene .car1 { left: 42px; }
-.question-scene .car2 { left: 72px; }
-.question-scene .car3 { left: 102px; }
-
-.question-scene .car::before,
-.question-scene .car::after {
-  content: "";
-  position: absolute;
-  top: 4px;
-  width: 6px;
-  height: 8px;
-  background: #fff7ea;
-  border-radius: 3px;
-}
-
-.question-scene .car::before { left: 4px; }
-.question-scene .car::after { right: 4px; }
-
-.question-scene .link {
-  position: absolute;
-  height: 2px;
-  background: #7f8fa3;
-  bottom: 21px;
-}
-
-.question-scene .link1 { left: 34px; width: 8px; }
-.question-scene .link2 { left: 66px; width: 6px; }
-.question-scene .link3 { left: 96px; width: 6px; }
-
-.question-scene .wheel {
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  background: #5f6470;
-  border: 2px solid #efe9d4;
-  border-radius: 50%;
-  bottom: 0;
-}
-
-.question-scene .w-e1 { left: 5px; }
-.question-scene .w-e2 { left: 21px; }
-
-.question-scene .w-c11 { left: 45px; }
-.question-scene .w-c12 { left: 57px; }
-
-.question-scene .w-c21 { left: 75px; }
-.question-scene .w-c22 { left: 87px; }
-
-.question-scene .w-c31 { left: 105px; }
-.question-scene .w-c32 { left: 117px; }
-
-.question-scene .smoke {
-  position: absolute;
-  left: 8px;
-  top: -8px;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.95);
+  right: 15px;
+  bottom: 18px; /* 땅에 서 있게 하려고 값 수정 */
+  width: 104px;
+  height: 28px;
+  background: #f06a6a;
+  border-radius: 4px;
+  border: 2px solid #b03838;
   box-shadow:
-    -8px -6px 0 1px rgba(255,255,255,0.8),
-    8px -7px 0 1px rgba(255,255,255,0.75);
-  animation: smokePop 2.2s ease-in-out infinite;
+    inset 0 -4px 0 0 #fbd863,
+    inset 0 -6px 0 0 #b03838;
+  /* animation 제거 */
+  transform: scaleX(-1); /* 왼쪽을 보게 하려고 수평 뒤집기 */
+  transform-origin: center center;
+  z-index: 5;
+}
+
+/* 지붕 디테일 */
+.question-scene .train::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: 2px;
+  right: 2px;
+  height: 4px;
+  background: #e85a5a;
+  border-radius: 6px 6px 0 0;
+  border: 1.5px solid #b03838;
+  border-bottom: none;
+}
+
+/* 창문들 */
+.question-scene .train-windows {
+  position: absolute;
+  top: 4px;
+  left: 8px;
+  right: 8px;
+  height: 10px;
+  display: flex;
+  gap: 3px;
+  justify-content: space-between;
+}
+.question-scene .window {
+  flex: 1;
+  background: linear-gradient(180deg, #62b1e8 0%, #a2d6f5 100%);
+  border: 1.5px solid #4884ad;
+  border-radius: 1px;
+}
+
+/* 앞문/뒷문 디테일 */
+.question-scene .train-doors {
+  position: absolute;
+  top: 3px;
+  bottom: 8px;
+  left: 2px;
+  width: 5px;
+  border: 1px solid #b03838;
+  background: #f06a6a;
+  border-radius: 1px;
+}
+.question-scene .train-doors.right {
+  left: auto;
+  right: 2px;
+}
+
+/* 바퀴/하부 */
+.question-scene .train-base {
+  position: absolute;
+  bottom: -6px;
+  left: 12px;
+  right: 12px;
+  height: 4px;
+  background: #606470;
+  border-radius: 2px;
+  display: flex;
+  justify-content: space-between;
+}
+.question-scene .train-wheel {
+  width: 8px;
+  height: 5px;
+  background: #404450;
+  border-radius: 0 0 4px 4px;
 }
 
 .question-card {
@@ -1447,16 +1408,10 @@ body.modal-open {
   to { transform: rotate(-360deg); }
 }
 
-@keyframes trainBob {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-1px); }
-  100% { transform: translateY(0); }
-}
-
-@keyframes smokePop {
-  0% { transform: translateY(0) scale(1); opacity: 0.9; }
-  50% { transform: translateY(-2px) scale(1.06); opacity: 1; }
-  100% { transform: translateY(0) scale(1); opacity: 0.9; }
+@keyframes trainFly {
+  0% { transform: translateY(0) rotate(-22deg); }
+  50% { transform: translateY(-5px) rotate(-25deg); }
+  100% { transform: translateY(0) rotate(-22deg); }
 }
 
 @media (max-width: 480px) {
@@ -1553,10 +1508,9 @@ body.modal-open {
   }
 
   .question-scene .train {
-    right: 2px;
-    bottom: 10px;
-    transform: scale(0.72);
-    transform-origin: right bottom;
+    right: 5px;
+    bottom: 18px; /* 모바일에서도 땅에 서 있게 하려고 값 수정 */
+    transform: scale(0.8) scaleX(-1); /* rotate 제거, scaleX(-1) 추가 */
   }
 
   .result-wrap {
@@ -1586,7 +1540,7 @@ body.modal-open {
   <div class="app">
     <div class="header-wrapper">
       <header class="page-header">
-        <h1><a href="https://test-it.co.kr/" class="retro-logo">테스트잇</a></h1> 
+        <h1><a href="https://test-it.co.kr/" class="retro-logo">테스트잇</a></h1>
         <nav>
           <ul class="main-nav">
             <li><a href="https://test-it.co.kr/test.html">성격</a></li>
@@ -1764,33 +1718,26 @@ body.modal-open {
               <div class="mini-leg ml2"></div>
 
               <div class="train">
-                <div class="smoke"></div>
-                <div class="engine">
-                  <div class="engine-window"></div>
+                <div class="train-doors left"></div>
+                <div class="train-doors right"></div>
+
+                <div class="train-windows">
+                  <div class="window"></div>
+                  <div class="window"></div>
+                  <div class="window"></div>
+                  <div class="window"></div>
+                  <div class="window"></div>
+                  <div class="window"></div>
+                  <div class="window"></div>
                 </div>
 
-                <div class="link link1"></div>
-                <div class="car car1"></div>
-
-                <div class="link link2"></div>
-                <div class="car car2"></div>
-
-                <div class="link link3"></div>
-                <div class="car car3"></div>
-
-                <div class="wheel w-e1"></div>
-                <div class="wheel w-e2"></div>
-
-                <div class="wheel w-c11"></div>
-                <div class="wheel w-c12"></div>
-
-                <div class="wheel w-c21"></div>
-                <div class="wheel w-c22"></div>
-
-                <div class="wheel w-c31"></div>
-                <div class="wheel w-c32"></div>
+                <div class="train-base">
+                  <div class="train-wheel"></div>
+                  <div class="train-wheel"></div>
+                  <div class="train-wheel"></div>
+                  <div class="train-wheel"></div>
+                </div>
               </div>
-
               <div class="grass"></div>
             </div>
 

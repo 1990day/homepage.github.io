@@ -1072,9 +1072,16 @@ function shareTest() {
 
         const highPriorityCells = [];
 
-        if (/[子午卯酉]/.test(zhiStr)) highPriorityCells.push({i:"🌸",n:"도화세포",d:"가만히 있어도 시선을 끄는 마성의 매력"});
-        if (/[寅申巳亥]/.test(zhiStr)) highPriorityCells.push({i:"✈️",n:"역마세포",d:"돌아다니고 경험해야 에너지가 솟구침"});
-        if (/[辰戌丑未]/.test(zhiStr)) highPriorityCells.push({i:"🎭",n:"화개세포",d:"뛰어난 예술적 감각과 감성적인 내면"});
+        // 수정됨: 도화, 역마, 화개는 2개 이상일 때만 나오도록 조건 강화
+        const dohwaCount = zhiList.filter(z => ["子","午","卯","酉"].includes(z)).length;
+        if (dohwaCount >= 2) highPriorityCells.push({i:"🌸",n:"도화세포",d:"가만히 있어도 시선을 끄는 마성의 매력"});
+        
+        const yeokmaCount = zhiList.filter(z => ["寅","申","巳","亥"].includes(z)).length;
+        if (yeokmaCount >= 2) highPriorityCells.push({i:"✈️",n:"역마세포",d:"돌아다니고 경험해야 에너지가 솟구침"});
+        
+        const hwagaeCount = zhiList.filter(z => ["辰","戌","丑","未"].includes(z)).length;
+        if (hwagaeCount >= 2) highPriorityCells.push({i:"🎭",n:"화개세포",d:"뛰어난 예술적 감각과 감성적인 내면"});
+
         if (["甲午","丙寅","丁未","戊辰","庚戌","辛酉","壬子"].includes(dayPillar)) {
             highPriorityCells.push({i:"💋",n:"홍염세포",d:"특정 사람을 지독하게 홀려버리는 끌림"});
         }
@@ -1167,7 +1174,6 @@ function shareTest() {
             "辛未":{i:"💎",n:"신미세포",d:"예민하지만 속은 다정한 보석"},
             "壬申":{i:"🌊",n:"임신세포",d:"다재다능하고 자유로운 영혼"},
             "癸酉":{i:"💧",n:"계유세포",d:"맑고 순수하지만 직관력이 뛰어남"},
-
             "甲戌":{i:"🌲",n:"갑술세포",d:"책임감 강하고 의리 있는 성격"},
             "乙亥":{i:"🌿",n:"을해세포",d:"어디서든 잘 적응하는 유연함"},
             "丙子":{i:"☀️",n:"병자세포",d:"조용하지만 확실하게 빛나는 존재"},
@@ -1178,7 +1184,6 @@ function shareTest() {
             "辛巳":{i:"💎",n:"신사세포",d:"치밀하고 완벽을 추구하는 칼잡이"},
             "壬午":{i:"🌊",n:"임오세포",d:"다정다감하고 융통성이 철철 넘침"},
             "癸未":{i:"💧",n:"계미세포",d:"부드러움 속에 숨겨진 날카로움"},
-
             "甲申":{i:"🌲",n:"갑신세포",d:"재주 많고 눈치 빠른 행동파"},
             "乙酉":{i:"🌿",n:"을유세포",d:"결단력 있고 맺고 끊음이 확실함"},
             "丙戌":{i:"☀️",n:"병술세포",d:"뜨거운 열정과 의리의 사나이/여장부"},
@@ -1189,7 +1194,6 @@ function shareTest() {
             "辛卯":{i:"💎",n:"신묘세포",d:"호기심 많고 미적 감각이 탁월함"},
             "壬辰":{i:"🌊",n:"임진세포",d:"속을 짐작하기 힘든 엄청난 스케일"},
             "癸巳":{i:"💧",n:"계사세포",d:"머리 회전 빠르고 처세술의 달인"},
-
             "甲午":{i:"🌲",n:"갑오세포",d:"자유롭고 톡톡 튀는 아이디어 뱅크"},
             "乙未":{i:"🌿",n:"을미세포",d:"온화해 보이지만 속으론 철저함"},
             "丙申":{i:"☀️",n:"병신세포",d:"호기심 천국, 다재다능한 팔방미인"},
@@ -1200,7 +1204,6 @@ function shareTest() {
             "辛丑":{i:"💎",n:"신축세포",d:"인내심 강하고 예리한 관찰자"},
             "壬寅":{i:"🌊",n:"임인세포",d:"시작을 잘하고 통통 튀는 꿀매력"},
             "癸卯":{i:"💧",n:"계묘세포",d:"상냥하고 다정해서 늘 인기가 많음"},
-
             "甲辰":{i:"🌲",n:"갑진세포",d:"이상이 높고 진취적인 성향"},
             "乙巳":{i:"🌿",n:"을사세포",d:"말주변이 좋고 사교성이 매우 뛰어남"},
             "丙午":{i:"☀️",n:"병오세포",d:"에너지 폭발, 열정 넘치는 핵인싸"},
@@ -1211,7 +1214,6 @@ function shareTest() {
             "辛亥":{i:"💎",n:"신해세포",d:"깔끔하고 세련된 지식인 스타일"},
             "壬子":{i:"🌊",n:"임자세포",d:"고집 세고 경쟁에서 절대 지기 싫어함"},
             "癸丑":{i:"💧",n:"계축세포",d:"끈질기게 목표를 파고드는 강한 집념"},
-
             "甲寅":{i:"🌲",n:"갑인세포",d:"자립심 강하고 당당한 마이웨이"},
             "乙卯":{i:"🌿",n:"을묘세포",d:"겉은 부드러우나 속은 강철 같음"},
             "丙辰":{i:"☀️",n:"병진세포",d:"마음이 넓고 남에게 베풀기를 좋아함"},
@@ -1238,9 +1240,10 @@ function shareTest() {
         if (deities["편관"] >= 2 || deities["정관"] >= 2) normalPriorityCells.push({i:"📏",n:"바른생활세포",d:"나만의 규칙이 있고 책임감이 엄청나게 강함"});
         if (deities["편인"] >= 2 || deities["정인"] >= 2) normalPriorityCells.push({i:"👽",n:"4차원세포",d:"남들과 다르게 생각하는 독특한 아이디어 뱅크"});
 
-        if (zhiStr.includes("辰")) normalPriorityCells.push({i:"🐲",n:"용세포",d:"꿈이 크고 이상을 향해 나아가는 낭만파"});
-        if (zhiStr.includes("戌")) normalPriorityCells.push({i:"🐶",n:"강아지세포",d:"내 사람이다 싶으면 간 쓸개 다 빼줌"});
-        if (zhiStr.includes("亥")) normalPriorityCells.push({i:"🐷",n:"돼지세포",d:"어떻게든 되겠지 마인드로 은근히 낙천적임"});
+        // 수정됨: 동물 세포는 일지(본인 자리)에 있을 때만 등장하도록 특화
+        if (dayZhi === "辰") normalPriorityCells.push({i:"🐲",n:"용세포",d:"꿈이 크고 이상을 향해 나아가는 낭만파"});
+        if (dayZhi === "戌") normalPriorityCells.push({i:"🐶",n:"강아지세포",d:"내 사람이다 싶으면 간 쓸개 다 빼줌"});
+        if (dayZhi === "亥") normalPriorityCells.push({i:"🐷",n:"돼지세포",d:"어떻게든 되겠지 마인드로 은근히 낙천적임"});
 
         let finalCells = [];
         let uniqueHigh = [];
@@ -1269,7 +1272,8 @@ function shareTest() {
         if (finalCells.length < 8) {
             const extraCells = [];
 
-            const sortedElements = Object.entries(elements)
+            // 수정됨: 보강 세포가 매번 똑같이 들어가는 현상 방지를 위해 셔플 후 정렬
+            const sortedElements = shuffleArray(Object.entries(elements))
                 .sort((a, b) => b[1] - a[1])
                 .filter(item => item[1] > 0);
 
@@ -1285,7 +1289,8 @@ function shareTest() {
                 if (elementExtraMap[key]) extraCells.push(elementExtraMap[key]);
             });
 
-            const sortedDeities = Object.entries(deities)
+            // 십성 보강 세포도 마찬가지로 셔플 후 정렬
+            const sortedDeities = shuffleArray(Object.entries(deities))
                 .sort((a, b) => b[1] - a[1])
                 .filter(item => item[1] > 0);
 

@@ -184,7 +184,12 @@
       align-items: flex-start;
       gap: 12px;
       margin-bottom: 14px;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
+    }
+
+    .head-top > div:first-child {
+      min-width: 0;
+      flex: 1;
     }
 
     .head-mini {
@@ -205,6 +210,12 @@
       font-family: "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
     }
 
+    .result-main-title {
+      font-size: 26px;
+      line-height: 1.24;
+      letter-spacing: -0.045em;
+    }
+
     .stamp {
       border: 2px solid #df5d5d;
       color: #df5d5d;
@@ -216,6 +227,7 @@
       background: rgba(247,242,232,0.92);
       white-space: nowrap;
       text-align: center;
+      flex-shrink: 0;
     }
 
     .meta-table {
@@ -656,8 +668,16 @@
         font-size: 26px;
       }
 
+      .result-main-title {
+        font-size: 20px;
+        line-height: 1.28;
+        letter-spacing: -0.05em;
+      }
+
       .stamp {
         transform: none;
+        padding: 8px 10px;
+        font-size: 11px;
       }
 
       .meta-table th,
@@ -708,6 +728,31 @@
 
       .outside-actions {
         grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .page {
+        padding: 18px 12px 20px;
+      }
+
+      .head-top {
+        gap: 8px;
+      }
+
+      .result-main-title {
+        font-size: 17px;
+        line-height: 1.26;
+        letter-spacing: -0.06em;
+      }
+
+      .head-mini {
+        font-size: 11px;
+      }
+
+      .stamp {
+        padding: 7px 9px;
+        font-size: 10px;
       }
     }
   </style>
@@ -799,7 +844,7 @@
               <div class="head-top">
                 <div>
                   <div class="head-mini">채점 결과표</div>
-                  <h2 class="main-title">테스트잇 연애 성향 평가 결과</h2>
+                  <h2 class="main-title result-main-title">테스트잇 연애 성향 평가 결과</h2>
                 </div>
                 <div class="stamp">채점완료</div>
               </div>

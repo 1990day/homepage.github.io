@@ -22,7 +22,7 @@
       --sub: #4f4a42;
       --line: #111;
       --soft-line: #cfc7ba;
-      --red: #ef8d9a;
+      --red: #df5d5d;
 
       --win-bg: #e9e2d6;
       --win-border-light: #fffaf1;
@@ -136,6 +136,7 @@
       padding: 0 10px 30px;
     }
 
+    /* 여기서부터 수정: paper 클래스에 캡처될 배경이 다 있으니 여기가 기준이 되어야 함 */
     .paper {
       width: 100%;
       max-width: 740px;
@@ -167,7 +168,6 @@
       position: relative;
       z-index: 1;
       padding: 28px 26px 28px;
-      min-height: 860px;
       background: transparent;
     }
 
@@ -216,9 +216,15 @@
       letter-spacing: -0.045em;
     }
 
+    .stamp-wrap {
+      position: relative;
+      display: inline-block;
+      flex-shrink: 0;
+    }
+
     .stamp {
-      border: 2px solid #df5d5d;
-      color: #df5d5d;
+      border: 2px solid var(--red);
+      color: var(--red);
       font-size: 12px;
       font-weight: 900;
       line-height: 1.15;
@@ -227,7 +233,8 @@
       background: rgba(247,242,232,0.92);
       white-space: nowrap;
       text-align: center;
-      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
     }
 
     .meta-table {
@@ -257,34 +264,74 @@
     .intro-sheet {
       border: 1px solid var(--line);
       background: rgba(247,242,232,0.72);
-      padding: 56px 18px;
+      padding: 60px 18px;
       text-align: center;
       margin-bottom: 18px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
     }
 
-    .intro-main {
-      font-size: 12px;
+    .main-stamp {
+      display: inline-block;
+      border: 4px solid var(--red);
+      border-radius: 8px;
+      color: var(--red);
+      padding: 24px 36px;
+      transform: rotate(-4deg);
+      background: rgba(247,242,232,0.9);
+      position: relative;
+      z-index: 1;
+    }
+
+    .main-stamp::after {
+      content: "";
+      position: absolute;
+      top: -8px; left: -8px; right: -8px; bottom: -8px;
+      border: 1.5px solid var(--red);
+      border-radius: 12px;
+      pointer-events: none;
+    }
+
+    .stamp-text-small {
+      font-size: 15px;
       font-weight: 900;
-      color: #5a544c;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.15em;
       margin-bottom: 12px;
+      border-bottom: 2px solid var(--red);
+      padding-bottom: 8px;
     }
 
-    .intro-title {
-      font-size: 36px;
-      line-height: 1.2;
+    .stamp-text-large {
+      font-size: 32px;
+      line-height: 1.3;
       font-weight: 900;
       letter-spacing: -0.04em;
-      margin: 0 0 10px;
-      word-break: keep-all;
+      margin: 0;
       font-family: "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
     }
 
-    .intro-sub {
-      font-size: 16px;
-      font-weight: 700;
-      color: #444;
-      margin: 0;
+    .doodle-star {
+      position: absolute;
+      top: -35px;
+      left: -35px;
+      width: 40px;
+      height: 40px;
+      z-index: 2;
+      pointer-events: none;
+      transform: rotate(-15deg);
+    }
+
+    .doodle-heart {
+      position: absolute;
+      bottom: -35px;
+      right: -35px;
+      width: 45px;
+      height: 45px;
+      z-index: 2;
+      pointer-events: none;
+      transform: rotate(10deg);
     }
 
     .start-row {
@@ -437,6 +484,7 @@
 
     .result-paper {
       background: transparent;
+      position: relative;
     }
 
     .result-headline {
@@ -686,10 +734,26 @@
         padding: 9px 6px;
       }
 
-      .intro-title {
+      .main-stamp {
+        padding: 20px 28px;
+        border-width: 3px;
+      }
+
+      .main-stamp::after {
+        top: -6px; left: -6px; right: -6px; bottom: -6px;
+      }
+
+      .stamp-text-large {
         font-size: 26px;
       }
 
+      .doodle-star {
+        width: 30px; height: 30px; top: -25px; left: -25px;
+      }
+      .doodle-heart {
+        width: 35px; height: 35px; bottom: -25px; right: -25px;
+      }
+      
       .question-text {
         font-size: 22px;
         margin-bottom: 22px;
@@ -773,28 +837,32 @@
   </div>
 
   <div class="container">
-    <div class="paper">
+    <div class="paper" id="captureArea">
       <div class="page">
-        <section id="introScreen">
+        
+        <section id="introScreen" style="position: relative;">
           <div class="head-block">
             <div class="head-top">
               <div>
                 <div class="head-mini">테스트잇</div>
                 <h1 class="main-title">연애 성향 모의고사 테스트</h1>
               </div>
-              <div class="stamp">시험지</div>
+              
+              <div class="stamp-wrap">
+                <div class="stamp">시험지</div>
+              </div>
             </div>
 
             <table class="meta-table">
               <tr>
                 <th>시험명</th>
-                <td>연애 성향 모의고사</td>
+                <td>연애 성향</td>
                 <th>문항수</th>
                 <td>12문항</td>
               </tr>
               <tr>
                 <th>성명</th>
-                <td>연애 성향 응시자</td>
+                <td>응시자</td>
                 <th>유형</th>
                 <td>객관식</td>
               </tr>
@@ -802,9 +870,18 @@
           </div>
 
           <div class="intro-sheet">
-            <div class="intro-main">테스트잇</div>
-            <h2 class="intro-title">연애 성향 모의고사 테스트</h2>
-            <p class="intro-sub">지금의 나와 더 가까운 답을 고르세요.</p>
+            <div class="stamp-wrap">
+              <div class="main-stamp">
+                <div class="stamp-text-small">테스트잇</div>
+                <h2 class="stamp-text-large">연애 성향<br>모의고사 테스트</h2>
+              </div>
+              <svg class="doodle-star" viewBox="0 0 60 60">
+                <path d="M30,5 Q34,15 38,22 Q45,22 56,22 Q48,28 42,32 Q44,42 46,50 Q38,45 30,40 Q22,45 14,50 Q16,42 18,32 Q10,28 4,22 Q15,22 22,22 Q26,15 30,5 Z" fill="none" stroke="var(--red)" stroke-width="2.5" stroke-linejoin="round" />
+              </svg>
+              <svg class="doodle-heart" viewBox="0 0 60 60">
+                <path d="M30,50 C30,50 10,35 10,20 C10,10 25,10 30,20 C35,10 50,10 50,20 C50,35 30,50 30,50 Z" fill="none" stroke="var(--red)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
           </div>
 
           <div class="start-row">
@@ -839,14 +916,17 @@
         </section>
 
         <section id="resultScreen" class="hidden">
-          <div id="captureArea" class="result-paper">
+          <div class="result-paper">
             <div class="head-block">
               <div class="head-top">
                 <div>
                   <div class="head-mini">채점 결과표</div>
                   <h2 class="main-title result-main-title">테스트잇 연애 성향 평가 결과</h2>
                 </div>
-                <div class="stamp">채점완료</div>
+                
+                <div class="stamp-wrap">
+                  <div class="stamp">채점완료</div>
+                </div>
               </div>
 
               <table class="meta-table">
@@ -947,10 +1027,10 @@
       },
       {
         section: "1영역",
-        text: "상대가 서운해 보일 때 내 반응은",
+        text: "친구들과 다 같이 모인 자리에서 애인을 대하는 태도는",
         answers: [
-          { text: "왜 그런지 바로 물어보고 풀어주고 싶다", type: "warm" },
-          { text: "마음은 쓰이지만 티 내는 건 조금 서툴다", type: "tsun" }
+          { text: "평소보다 더 다정하게 챙긴다" },
+          { text: "쑥스러워서 장난치며 틱틱댄다", type: "tsun" }
         ]
       },
       {
@@ -1019,10 +1099,10 @@
       },
       {
         section: "4영역",
-        text: "연애 중 나만의 시간에 대한 생각은",
+        text: "연인끼리 핸드폰 비밀번호를 공유하는 것에 대한 입장은",
         answers: [
-          { text: "연인끼리는 숨김 없이 가까운 편이 좋다", type: "transparent" },
-          { text: "사랑과 별개로 내 시간은 꼭 필요하다", type: "independent" }
+          { text: "숨길 건 없다. 당연히 공유할 수 있다", type: "transparent" },
+          { text: "아무리 사랑해도 프라이버시는 필수다", type: "independent" }
         ]
       }
     ];
@@ -1144,7 +1224,7 @@
                      C132 52, 109 60, 75 60
                      C42 60, 18 52, 18 36"
                   fill="none"
-                  stroke="#ef8d9a"
+                  stroke="#df5d5d"
                   stroke-width="3.2"
                   stroke-linecap="round"
                   stroke-linejoin="round"
@@ -1228,7 +1308,7 @@
       if (!latestImageDataUrl) return;
       const a = document.createElement("a");
       a.href = latestImageDataUrl;
-      a.download = "love-type-result.png";
+      a.download = "test380-result.png";
       a.click();
     }
 
@@ -1237,7 +1317,7 @@
     }
 
     function shareTest() {
-      const url = "https://test-it.co.kr/test-love-exam";
+      const url = "https://test-it.co.kr/test380";
       const shareData = {
         title: "테스트잇 연애 성향 모의고사 테스트",
         text: "테스트잇 연애 성향 모의고사 테스트",
@@ -1261,5 +1341,7 @@
       if (e.target.id === "saveModal") closeSaveModal();
     });
   </script>
+
+  
 </body>
 </html>

@@ -11,11 +11,10 @@
             --win-bg: #ffd1dc; 
             --win-border-light: #fff0f3;
             --win-border-dark: #ffb6c1;
-            --text: #222222;
+            --text: #111111;
             --bg-color: #ffe4e8; 
-            --point-color: #ff4d6d; 
-            --exam-line: #333333;
-            --paper-bg: #f7f6f2; 
+            --point-color: #e53935; 
+            --paper-bg: #fcfbf9; 
         }
 
         body {
@@ -37,208 +36,284 @@
             box-shadow: 0 1px 0 var(--win-border-light); 
             align-self: flex-start;
             margin-bottom: 20px; 
+            z-index: 100;
         }
 
-        .page-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 6px 4% !important; 
-        }
-
-        .retro-logo {
-            text-decoration: none;
-            color: var(--text);
-            font-size: 18px;
-            font-weight: 800;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            background-color: var(--win-bg); 
-            padding: 5px 10px; 
-            border-top: 2px solid var(--win-border-light);
-            border-left: 2px solid var(--win-border-light);
-            border-right: 2px solid var(--win-border-dark);
-            border-bottom: 2px solid var(--win-border-dark);
-        }
-
+        .page-header { display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin: 0 auto; padding: 6px 4% !important; }
+        .retro-logo { text-decoration: none; color: var(--text); font-size: 18px; font-weight: 800; display: flex; align-items: center; gap: 5px; background-color: var(--win-bg); padding: 5px 10px; border-top: 2px solid var(--win-border-light); border-left: 2px solid var(--win-border-light); border-right: 2px solid var(--win-border-dark); border-bottom: 2px solid var(--win-border-dark); }
+        .retro-logo:active { border-top: 2px solid var(--win-border-dark); border-left: 2px solid var(--win-border-dark); border-right: 2px solid var(--win-border-light); border-bottom: 2px solid var(--win-border-light); padding: 6px 9px 4px 11px; }
         .page-header h1 { margin: 0 !important; padding: 0 !important; border-bottom: none !important; }
-
-        .main-nav {
-            display: flex;
-            flex-wrap: nowrap !important;
-            align-items: center;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            gap: 14px; 
-        }
-
-        .main-nav a {
-            display: block;
-            text-decoration: none;
-            color: var(--text);
-            font-weight: 700;
-            background: var(--win-bg);
-            border-top: 2px solid var(--win-border-light);
-            border-left: 2px solid var(--win-border-light);
-            border-right: 2px solid var(--win-border-dark);
-            border-bottom: 2px solid var(--win-border-dark);
-            padding: 6px 12px;
-            font-size: 15px; 
-            white-space: nowrap;
-        }
+        .main-nav { display: flex; flex-wrap: nowrap !important; align-items: center; list-style: none; margin: 0; padding: 0; gap: 14px; }
+        .main-nav a { display: block; text-decoration: none; color: var(--text); font-weight: 700; background: var(--win-bg); border-top: 2px solid var(--win-border-light); border-left: 2px solid var(--win-border-light); border-right: 2px solid var(--win-border-dark); border-bottom: 2px solid var(--win-border-dark); padding: 6px 12px; font-size: 15px; white-space: nowrap; }
+        .main-nav a:active { border-top: 2px solid var(--win-border-dark); border-left: 2px solid var(--win-border-dark); border-right: 2px solid var(--win-border-light); border-bottom: 2px solid var(--win-border-light); padding: 7px 11px 5px 13px; }
 
         .exam-paper {
             background-color: var(--paper-bg); 
-            width: 95%;
+            width: 96%;
             max-width: 650px;
             height: auto; 
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); 
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); 
             margin-bottom: 20px;
-            border: 1px solid #dcd7c9;
             position: relative;
             box-sizing: border-box;
             z-index: 10;
+            overflow: hidden;
+            border: 1px solid #dcd7c9;
         }
 
-        .screen {
-            display: none;
-            flex-direction: column;
-            padding: 40px 30px;
+        .exam-watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-30deg);
+            font-size: 80px;
+            font-weight: 900;
+            color: rgba(0, 0, 0, 0.02);
+            white-space: nowrap;
+            pointer-events: none;
+            z-index: 0;
+            user-select: none;
         }
 
+        .screen { display: none; flex-direction: column; padding: 40px 30px; position: relative; z-index: 1; }
         .screen.active { display: flex; }
 
         .cover-box {
-            border: 4px solid var(--exam-line);
-            padding: 30px 20px;
+            border-top: 4px solid #000;
+            border-bottom: 4px solid #000;
+            padding: 30px 10px;
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
         }
 
-        .cover-year { font-size: 16px; font-weight: 700; display: block; margin-bottom: 10px; }
+        .cover-year { font-size: 16px; font-weight: 800; display: block; margin-bottom: 15px; letter-spacing: 1px; }
         
         .cover-title { 
-            font-size: 38px; 
+            font-size: 44px; 
             font-weight: 900; 
             margin: 0; 
-            letter-spacing: 1px; 
-            line-height: 1.3;
+            letter-spacing: -1px; 
+            line-height: 1.2;
         }
         
         .title-top {
-            font-size: 0.8em;
-            color: var(--point-color);
+            font-size: 22px;
+            font-weight: 800;
             display: block;
             margin-bottom: 5px;
-        }
-        
-        .title-bottom {
-            display: block;
-            word-break: keep-all;
+            letter-spacing: 0;
         }
 
-        .cover-period { font-size: 18px; font-weight: 700; display: inline-block; margin-top: 15px; border-top: 2px solid var(--exam-line); padding-top: 10px; width: 50%; }
+        .cover-period { 
+            font-size: 18px; 
+            font-weight: 800; 
+            display: inline-block; 
+            margin-top: 20px; 
+            background-color: #000;
+            color: #fff;
+            padding: 5px 15px;
+            border-radius: 20px;
+        }
 
-        .fake-input-area { display: flex; justify-content: flex-end; margin-bottom: 40px; font-size: 16px; font-weight: 700; }
-        .fake-field { margin-left: 20px; display: flex; align-items: flex-end; }
-        .fake-line { display: inline-block; width: 120px; border-bottom: 1px solid #000; margin-left: 10px; height: 20px; }
+        .student-info-table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 2px solid #000;
+            margin-bottom: 40px;
+        }
+        .student-info-table th, .student-info-table td {
+            border: 1px solid #000;
+            padding: 12px;
+            text-align: center;
+        }
+        .student-info-table th {
+            font-size: 16px;
+            font-weight: 800;
+            width: 30%;
+        }
+        .student-info-table td {
+            font-size: 16px;
+            font-weight: 600;
+        }
 
-        .start-btn { background-color: transparent; border: 3px solid var(--exam-line); padding: 15px; font-family: inherit; font-size: 18px; font-weight: 800; cursor: pointer; margin-top: 20px; }
+        .start-btn { 
+            background-color: #fff; 
+            border: 2px solid #000; 
+            padding: 18px; 
+            font-family: inherit; 
+            font-size: 20px; 
+            font-weight: 900; 
+            cursor: pointer; 
+            transition: all 0.2s;
+            box-shadow: 4px 4px 0 #000; 
+        }
+        .start-btn:active { box-shadow: 0 0 0 #000; transform: translateY(4px) translateX(4px); }
 
-        /* 모의고사 질문 화면 스타일 */
         .q-header { 
             display: flex; justify-content: space-between; align-items: center; 
-            border-top: 4px solid var(--exam-line); border-bottom: 1px solid var(--exam-line); 
-            padding: 12px 5px; margin-bottom: 25px; font-weight: 900; font-size: 16px; 
+            border-bottom: 1px solid #000; 
+            padding-bottom: 8px; margin-bottom: 25px; 
+            font-weight: 900; font-size: 14px; 
         }
-        
-        .progress-bar-bg { width: 100%; height: 4px; background-color: #e0dcd3; margin-bottom: 30px; display: none; }
-        
-        .question-title { font-size: 20px; font-weight: 700; line-height: 1.5; margin-bottom: 30px; word-break: keep-all; }
-        .q-score { font-size: 15px; font-weight: 400; color: #444; margin-left: 5px; }
+        .q-header-left { border: 2px solid #000; padding: 2px 8px; border-radius: 12px; }
+        .q-header-right { font-size: 18px; font-weight: 900; }
 
-        .options-wrapper { width: 100%; display: flex; flex-direction: column; }
+        .question-box {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+        }
+
+        .q-num {
+            font-size: 22px;
+            font-weight: 900;
+            margin-right: 8px;
+            line-height: 1.4;
+        }
+
+        .q-text { 
+            font-size: 20px; 
+            font-weight: 700; 
+            line-height: 1.5; 
+            word-break: keep-all; 
+            flex: 1;
+        }
+
+        .q-score { font-size: 15px; font-weight: 800; margin-left: 5px; white-space: nowrap; }
+
+        .options-wrapper { width: 100%; display: flex; flex-direction: column; padding-left: 10px; box-sizing: border-box; }
 
         .option-btn { 
-            width: 100%; box-sizing: border-box; background-color: transparent; 
-            border: none; border-bottom: 1px dotted #888; 
-            padding: 16px 10px; margin-bottom: 8px; font-family: inherit; 
+            width: 100%; box-sizing: border-box; background-color: #fff; 
+            border: 2px solid #ccc; border-radius: 8px;
+            padding: 16px 15px; margin-bottom: 15px; font-family: inherit; 
             font-size: 17px; text-align: left; cursor: pointer; line-height: 1.5; 
+            transition: all 0.2s;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
         }
-        .option-btn:hover { background-color: rgba(0,0,0,0.04); }
-        .option-btn:last-child { border-bottom: none; }
+        .option-btn:hover { background-color: #f9f9f9; border-color: #000; box-shadow: 2px 2px 5px rgba(0,0,0,0.15); }
 
-        /* 결과 화면 스타일 */
-        .result-title-area { text-align: center; border-bottom: 4px double var(--exam-line); padding-bottom: 15px; margin-bottom: 25px; position: relative; }
-        
-        /* 채점 완료 도장 */
+        .next-page-indicator {
+            text-align: right;
+            font-size: 14px;
+            font-weight: 800;
+            margin-top: 30px;
+            border-top: 1px solid #000;
+            padding-top: 10px;
+        }
+
+        /* 캡처 에러를 방지하는 아주 안전한 헤더 디자인 */
+        .result-header {
+            text-align: center;
+            border-top: 4px double #000;
+            border-bottom: 4px double #000;
+            padding: 20px 0 15px 0;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .result-main-title { font-size: 32px; font-weight: 900; margin-bottom: 5px; letter-spacing: 5px; }
+        .result-subtitle { font-size: 16px; font-weight: 800; color: #222; }
+
+        /* 도장 캡처 에러 방지용 안전한 코드 */
         .exam-stamp {
             position: absolute;
-            top: -15px;
-            right: -10px;
-            border: 4px solid var(--point-color);
+            top: 25px; 
+            right: 15px;
+            border: 3px solid var(--point-color);
+            background-color: transparent !important;
             color: var(--point-color);
-            font-size: 18px;
+            font-size: 17px;
             font-weight: 900;
-            padding: 10px 15px;
+            padding: 8px 15px;
             border-radius: 50%;
-            transform: rotate(-20deg);
-            background-color: transparent;
+            transform: rotate(-15deg);
             z-index: 10;
             letter-spacing: 1px;
-            box-shadow: inset 0 0 0 2px var(--point-color);
         }
 
-        .result-main-title { font-size: 28px; font-weight: 900; margin-bottom: 5px; letter-spacing: 2px; }
-        .result-subtitle { font-size: 16px; font-weight: 700; color: #444; }
+        .score-table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 2px solid #000;
+            margin-bottom: 30px;
+        }
+        .score-table th, .score-table td {
+            border: 1px solid #000;
+            padding: 15px 10px;
+            text-align: center;
+        }
+        .score-table th { background-color: #eee; font-size: 16px; font-weight: 800; }
+        .score-table td { font-size: 15px; line-height: 1.6; word-break: keep-all; font-weight: 600;}
 
-        .overall-eval { padding: 0 10px 25px 10px; margin-bottom: 30px; text-align: center; border-bottom: 2px dashed #aaa; }
-        .overall-eval-title { font-size: 20px; font-weight: 900; margin-bottom: 15px; display: inline-block; }
-        .overall-eval-title::before, .overall-eval-title::after { content: "※"; margin: 0 5px; color: #555; }
-        .overall-text { font-size: 16px; line-height: 1.7; word-break: keep-all; }
-        .overall-types { font-size: 20px; font-weight: 900; margin-top: 20px; text-align: center; color: var(--point-color); }
+        .result-grid-table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 2px solid #000;
+        }
+        .result-grid-table th {
+            border: 1px solid #000;
+            background-color: #eee;
+            padding: 10px;
+            font-size: 15px;
+            font-weight: 800;
+        }
+        .result-grid-table td {
+            border: 1px solid #000;
+            padding: 25px 15px;
+            text-align: center;
+            vertical-align: top;
+            width: 50%;
+        }
 
-        .result-grid { display: grid; grid-template-columns: 1fr 1fr; padding: 10px; position: relative; }
-        .result-grid::after { content: ""; position: absolute; top: 10px; bottom: 10px; left: 50%; border-left: 1px dashed #aaa; z-index: 1; }
-        .result-section { text-align: center; padding: 20px 10px; display: flex; flex-direction: column; align-items: center; position: relative; }
-        .result-section:nth-child(1), .result-section:nth-child(2) { border-bottom: 1px dashed #aaa; }
-        .section-label { display: block; width: 100%; font-size: 15px; font-weight: 900; margin-bottom: 15px; text-align: center; }
         .type-wrapper { position: relative; display: inline-block; margin-bottom: 15px; }
         .section-type { font-size: 26px; font-weight: 900; color: #000; position: relative; z-index: 2; }
-        .red-circle-mark { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-5deg); width: 140%; height: 150%; border: 4px solid var(--point-color); border-radius: 50% 40% 50% 40% / 40% 50% 40% 50%; opacity: 0.6; pointer-events: none; z-index: 1; }
-        .section-desc { display: block; width: 100%; font-size: 14px; line-height: 1.5; word-break: keep-all; color: #222; }
+        
+        /* 캡처 시 안전하게 렌더링되는 원형 코드 */
+        .red-circle-mark { 
+            position: absolute; 
+            top: 50%; left: 50%; 
+            transform: translate(-50%, -50%) rotate(-5deg); 
+            width: 130%; height: 150%; 
+            border: 3px solid var(--point-color); 
+            border-radius: 50%; 
+            opacity: 0.7; 
+            background-color: transparent !important;
+            pointer-events: none; 
+            z-index: 1; 
+        }
+
+        .section-desc { display: block; width: 100%; font-size: 14px; line-height: 1.5; word-break: keep-all; color: #222; font-weight: 600;}
 
         .action-buttons { display: none; flex-direction: column; gap: 12px; width: 95%; max-width: 650px; margin-bottom: 30px; }
-        .action-btn { background-color: #222; color: #fff; border: none; padding: 18px; font-family: inherit; font-size: 18px; font-weight: 700; cursor: pointer; width: 100%; text-align: center; }
+        .action-btn { background-color: #222; color: #fff; border: none; padding: 18px; font-family: inherit; font-size: 18px; font-weight: 800; cursor: pointer; width: 100%; text-align: center; box-shadow: 4px 4px 0 #000; transition: all 0.2s;}
+        .action-btn:active { box-shadow: 0 0 0 #000; transform: translateY(4px) translateX(4px); }
         .action-btn.point { background-color: var(--point-color); }
 
         .ad-container { width: 100%; max-width: 650px; display: flex; justify-content: center; margin: 20px 0 40px 0; text-align: center; }
         .coupang_ad { display: inline-block; margin: 0 auto; }
 
         .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); z-index: 9999; flex-direction: column; justify-content: center; align-items: center; padding: 20px; box-sizing: border-box; }
-        .modal-content { background: #fff; padding: 20px; border-radius: 10px; text-align: center; max-width: 100%; max-height: 90vh; overflow-y: auto; }
-        #captured-image { max-width: 100%; height: auto; border: 1px solid #ccc; margin-bottom: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
-        .close-modal-btn { background: #222; color: #fff; border: none; padding: 12px 30px; font-weight: 700; font-size: 16px; cursor: pointer; }
+        .modal-content { background: var(--paper-bg); padding: 20px; border-radius: 0; border: 2px solid #000; text-align: center; max-width: 100%; max-height: 90vh; overflow-y: auto; }
+        #captured-image { max-width: 100%; height: auto; border: 1px solid #ccc; margin-bottom: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
+        .close-modal-btn { background: #000; color: #fff; border: none; padding: 15px 40px; font-weight: 800; font-size: 16px; cursor: pointer; }
 
         @media (max-width: 480px) {
             .page-header { padding: 6px 12px !important; }
             .screen { padding: 30px 15px; }
             
-            .cover-title { font-size: 26px; }
-            .title-top { font-size: 0.9em; }
-            .title-bottom { font-size: 1.1em; letter-spacing: -1px; }
+            .cover-title { font-size: 32px; }
+            .title-top { font-size: 18px; }
             
-            .exam-stamp { padding: 8px 12px; font-size: 14px; top: -10px; right: 0; }
+            .exam-stamp { padding: 6px 10px; font-size: 14px; top: 20px; right: 5px; }
 
-            .result-grid { gap: 10px; padding: 5px; }
+            .result-main-title { font-size: 24px; letter-spacing: 2px;}
             .section-type { font-size: 22px; }
             .result-subtitle { font-size: 14px; letter-spacing: -0.5px; }
             .question-title { font-size: 18px; }
-            .option-btn { font-size: 15px; }
+            .option-btn { font-size: 15px; padding: 14px 12px; }
+            .q-num { font-size: 20px; }
+            .q-text { font-size: 18px; }
         }
     </style>
 </head>
@@ -259,69 +334,103 @@
 </div>
 
 <div class="exam-paper" id="exam-paper">
+    <div class="exam-watermark">연애탐구영역</div>
+
     <div id="screen-intro" class="screen active">
         <div class="cover-box">
             <span class="cover-year">2026학년도 대학수학능력시험 모의평가</span>
             <h1 class="cover-title">
                 <span class="title-top">테스트잇</span>
-                <span class="title-bottom">연애 성향 모의고사 테스트</span>
+                연애 성향 모의고사
             </h1>
             <span class="cover-period">제 1 교시</span>
         </div>
-        <div class="fake-input-area">
-            <div class="fake-field">수험번호 <span class="fake-line"></span></div>
-            <div class="fake-field">성 명 <span class="fake-line"></span></div>
-        </div>
+        
+        <table class="student-info-table">
+            <tr>
+                <th>수험번호</th>
+                <td></td>
+            </tr>
+            <tr>
+                <th>성 명</th>
+                <td></td>
+            </tr>
+        </table>
+
         <button class="start-btn" onclick="startTest()">시험 응시 시작</button>
     </div>
 
     <div id="screen-quiz" class="screen">
         <div class="q-header">
-            <span>연애탐구영역</span>
-            <span id="current-q-num-display">1 / 12</span>
+            <span class="q-header-left">연애탐구영역</span>
+            <span class="q-header-right" id="current-q-num-display">1</span>
         </div>
-        <div class="question-title">
-            <span id="q-num-label">1.</span> <span id="q-text-display">질문 내용</span> <span class="q-score">[3점]</span>
+        
+        <div class="question-box">
+            <span class="q-num" id="q-num-label">1.</span>
+            <div class="q-text">
+                <span id="q-text-display">질문 내용</span>
+                <span class="q-score">[3점]</span>
+            </div>
         </div>
+
         <div class="options-wrapper">
             <button class="option-btn" id="btn-A" onclick="selectOption('A')">선택지 A</button>
             <button class="option-btn" id="btn-B" onclick="selectOption('B')">선택지 B</button>
         </div>
+
+        <div class="next-page-indicator">다음 페이지로 이어집니다 ▷</div>
     </div>
 
     <div id="screen-result" class="screen">
-        <div class="result-title-area">
+        <div class="result-header">
             <div class="exam-stamp">채점 완료</div>
-            <div class="result-main-title">채점 결과 통지표</div>
+            <div class="result-main-title">성 적 통 지 표</div>
             <div class="result-subtitle">테스트잇 연애 성향 모의고사 테스트</div>
         </div>
-        <div class="overall-eval">
-            <div class="overall-eval-title">종합 평가</div>
-            <div class="overall-text" id="overall-desc"></div>
-            <div class="overall-types" id="overall-types-text"></div>
-        </div>
-        <div class="result-grid">
-            <div class="result-section">
-                <div class="section-label">[제1구역] 표현 영역</div>
-                <div class="type-wrapper"><div class="red-circle-mark"></div><div class="section-type" id="res-type-1">유형</div></div>
-                <div class="section-desc" id="res-desc-1">설명</div>
-            </div>
-            <div class="result-section">
-                <div class="section-label">[제2구역] 멘탈 영역</div>
-                <div class="type-wrapper"><div class="red-circle-mark"></div><div class="section-type" id="res-type-2">유형</div></div>
-                <div class="section-desc" id="res-desc-2">설명</div>
-            </div>
-            <div class="result-section">
-                <div class="section-label">[제3구역] 행동 영역</div>
-                <div class="type-wrapper"><div class="red-circle-mark"></div><div class="section-type" id="res-type-3">유형</div></div>
-                <div class="section-desc" id="res-desc-3">설명</div>
-            </div>
-            <div class="result-section">
-                <div class="section-label">[제4구역] 공유 영역</div>
-                <div class="type-wrapper"><div class="red-circle-mark"></div><div class="section-type" id="res-type-4">유형</div></div>
-                <div class="section-desc" id="res-desc-4">설명</div>
-            </div>
-        </div>
+        
+        <table class="score-table">
+            <tr>
+                <th>종합 평가</th>
+            </tr>
+            <tr>
+                <td id="overall-desc" style="padding: 25px 15px;"></td>
+            </tr>
+            <tr>
+                <td style="font-size: 18px; font-weight: 900; color: var(--point-color);" id="overall-types-text"></td>
+            </tr>
+        </table>
+
+        <table class="result-grid-table">
+            <tr>
+                <th>[제1구역] 표현</th>
+                <th>[제2구역] 멘탈</th>
+            </tr>
+            <tr>
+                <td>
+                    <div class="type-wrapper"><div class="red-circle-mark"></div><div class="section-type" id="res-type-1">유형</div></div>
+                    <div class="section-desc" id="res-desc-1">설명</div>
+                </td>
+                <td>
+                    <div class="type-wrapper"><div class="red-circle-mark"></div><div class="section-type" id="res-type-2">유형</div></div>
+                    <div class="section-desc" id="res-desc-2">설명</div>
+                </td>
+            </tr>
+            <tr>
+                <th>[제3구역] 행동</th>
+                <th>[제4구역] 공유</th>
+            </tr>
+            <tr>
+                <td>
+                    <div class="type-wrapper"><div class="red-circle-mark"></div><div class="section-type" id="res-type-3">유형</div></div>
+                    <div class="section-desc" id="res-desc-3">설명</div>
+                </td>
+                <td>
+                    <div class="type-wrapper"><div class="red-circle-mark"></div><div class="section-type" id="res-type-4">유형</div></div>
+                    <div class="section-desc" id="res-desc-4">설명</div>
+                </td>
+            </tr>
+        </table>
     </div>
 </div>
 
@@ -343,27 +452,27 @@
 
 <div class="modal-overlay" id="saveModal">
     <div class="modal-content">
-        <p>이미지를 꾹 눌러서 저장하세요</p>
+        <p style="font-weight: 800; font-size: 18px; margin-top: 0;">👇 이미지를 꾹 눌러서 저장하세요 👇</p>
         <img id="captured-image" src="" alt="결과 이미지">
         <br>
-        <button class="close-modal-btn" onclick="closeSaveModal()">닫기</button>
+        <button class="close-modal-btn" onclick="closeSaveModal()">닫 기</button>
     </div>
 </div>
 
 <script>
     const questions = [
-        { q: "우울하다는 애인의 말에 나의 첫 반응은?", a: "① 먼저 공감하며 따뜻하게 다독인다.", b: "② 묵묵히 달콤한 간식을 건넨다." },
-        { q: "기념일 선물을 전달할 때 나의 스타일은?", a: "① 정성스런 편지와 함께 로맨틱하게 준다.", b: "② '오다 주웠다'며 무심한 척 건넨다." },
-        { q: "친구들과 다 같이 모인 자리에서 애인을 대할 때?", a: "① 평소처럼 다정하게 챙긴다.", b: "② 쑥스러워서 장난치며 틱틱댄다." },
-        { q: "애인이 2시간째 연락이 안 될 때, 나의 속마음은?", a: "① '바쁜가 보네' 하고 내 할 일을 한다.", b: "② '무슨 일 있나?' 온갖 상상을 한다." },
-        { q: "크게 다툰 직후, 내가 원하는 대처는?", a: "① 감정을 추스르고 이성적으로 대화한다.", b: "② 불안해서 당장 오해를 풀어야 한다." },
-        { q: "애인이 이성 친구와 밥을 먹는다고 하면?", a: "① 쿨하게 다녀오라고 한다.", b: "② 겉으론 웃어도 속으론 몹시 신경 쓰인다." },
-        { q: "마음에 드는 사람을 발견했을 때?", a: "① 고민 없이 바로 연락처를 묻는다.", b: "② 주변을 맴돌며 천천히 관찰한다." },
-        { q: "썸에서 연애를 시작하기까지 걸리는 시간은?", a: "① 호감만 확실하면 며칠 만에도 가능.", b: "② 확신이 들 때까지 오래 지켜본다." },
-        { q: "내 마음을 상대방에게 표현하는 방식은?", a: "① '너 좋아해!' 빠르고 솔직하게 직진.", b: "② 상대방의 반응을 살피며 은근하게." },
-        { q: "연인 간의 이상적인 연락과 일상 공유는?", a: "① 사소한 일상까지 전부 공유해야 한다.", b: "② 용건 위주로, 각자의 시간도 중요하다." },
-        { q: "쉬는 날, 내가 생각하는 완벽한 주말 데이트는?", a: "① 주말 내내 온종일 함께 있는다.", b: "② 하루는 만나고 하루는 나 혼자 쉰다." },
-        { q: "연인끼리 핸드폰 비밀번호 공유하는 것에 대해?", a: "① 숨길 건 없다. 당연히 공유할 수 있다.", b: "② 아무리 사랑해도 프라이버시는 필수다." }
+        { q: "우울하다는 애인의 말에 나의 첫 반응으로 가장 적절한 것은?", a: "① 먼저 공감하며 따뜻하게 다독인다.", b: "② 묵묵히 달콤한 간식을 건넨다." },
+        { q: "기념일 선물을 전달할 때 나의 스타일로 알맞은 것은?", a: "① 정성스런 편지와 함께 로맨틱하게 준다.", b: "② '오다 주웠다'며 무심한 척 건넨다." },
+        { q: "친구들과 다 같이 모인 자리에서 애인을 대하는 태도는?", a: "① 평소처럼 다정하게 챙긴다.", b: "② 쑥스러워서 장난치며 틱틱댄다." },
+        { q: "애인이 2시간째 연락이 안 될 때, 나의 속마음으로 적절한 것은?", a: "① '바쁜가 보네' 하고 내 할 일을 한다.", b: "② '무슨 일 있나?' 온갖 상상을 한다." },
+        { q: "크게 다툰 직후, 본인이 가장 선호하는 대처 방식은?", a: "① 감정을 추스르고 이성적으로 대화한다.", b: "② 불안해서 당장 오해를 풀어야 한다." },
+        { q: "애인이 이성 친구와 밥을 먹는다고 할 때의 반응은?", a: "① 쿨하게 다녀오라고 한다.", b: "② 겉으론 웃어도 속으론 몹시 신경 쓰인다." },
+        { q: "마음에 드는 사람을 발견했을 때의 행동으로 알맞은 것은?", a: "① 고민 없이 바로 연락처를 묻는다.", b: "② 주변을 맴돌며 천천히 관찰한다." },
+        { q: "썸에서 연애를 시작하기까지 걸리는 시간은 어느 정도인가?", a: "① 호감만 확실하면 며칠 만에도 가능하다.", b: "② 확신이 들 때까지 오래 지켜본다." },
+        { q: "내 마음을 상대방에게 표현하는 방식으로 적절한 것은?", a: "① '너 좋아해!' 빠르고 솔직하게 직진한다.", b: "② 상대방의 반응을 살피며 은근하게 다가간다." },
+        { q: "연인 간의 이상적인 연락과 일상 공유에 대한 생각은?", a: "① 사소한 일상까지 전부 공유해야 한다.", b: "② 용건 위주로, 각자의 시간도 중요하다." },
+        { q: "쉬는 날, 본인이 생각하는 완벽한 주말 데이트는?", a: "① 주말 내내 온종일 함께 있는다.", b: "② 하루는 만나고 하루는 나 혼자 쉰다." },
+        { q: "연인끼리 핸드폰 비밀번호를 공유하는 것에 대한 입장은?", a: "① 숨길 건 없다. 당연히 공유할 수 있다.", b: "② 아무리 사랑해도 프라이버시는 필수다." }
     ];
 
     let currentStep = 0;
@@ -381,12 +490,16 @@
     }
 
     function updateQuestion() {
-        document.getElementById('current-q-num-display').innerText = `${currentStep + 1} / 12`;
+        document.getElementById('current-q-num-display').innerText = currentStep + 1;
         const qData = questions[currentStep];
         document.getElementById('q-num-label').innerText = `${currentStep + 1}.`;
         document.getElementById('q-text-display').innerText = qData.q;
         document.getElementById('btn-A').innerText = qData.a;
         document.getElementById('btn-B').innerText = qData.b;
+        
+        if(currentStep === 11) {
+            document.querySelector('.next-page-indicator').style.display = 'none';
+        }
     }
 
     function selectOption(choice) {
@@ -407,7 +520,12 @@
         const res3 = score.type3 >= 2 ? "직진형" : "신중형";
         const res4 = score.type4 >= 2 ? "투명형" : "독립형";
 
-        document.getElementById('overall-desc').innerHTML = `수험생님은 연인에게 <span style="color:var(--point-color); font-weight:900;">${res1}</span> 모습으로 다가가며, 평소 연애 멘탈에 있어서는 <span style="color:var(--point-color); font-weight:900;">${res2}</span> 태도를 보입니다. 호감이 생겼을 때는 <span style="color:var(--point-color); font-weight:900;">${res3}</span>으로 행동하고, 사생활 공유에 있어서는 <span style="color:var(--point-color); font-weight:900;">${res4}</span> 성향을 가지고 있습니다.`;
+        const text1 = score.type1 >= 2 ? "표현은 따뜻하고" : "무심한 척 챙겨주는 편이고";
+        const text2 = score.type2 >= 2 ? "갈등 앞에서도 차분하게 중심을 잡으며" : "관계에서는 확인이 자주 필요하며";
+        const text3 = score.type3 >= 2 ? "마음이 움직이면 망설임 없이 다가가고" : "마음이 움직여도 쉽게 서두르지 않고";
+        const text4 = score.type4 >= 2 ? "가까울수록 더 많이 일상을 공유하고 싶어 하는" : "사랑하는 사이라도 각자의 시간과 영역을 존중받고 싶어 하는";
+
+        document.getElementById('overall-desc').innerHTML = `수험생님은 <span style="color:var(--point-color); font-weight:900;">${text1}</span>, <span style="color:var(--point-color); font-weight:900;">${text2}</span>, <span style="color:var(--point-color); font-weight:900;">${text3}</span>, <span style="color:var(--point-color); font-weight:900;">${text4}</span> 타입입니다.`;
         document.getElementById('overall-types-text').innerText = `[ ${res1} · ${res2} · ${res3} · ${res4} ]`;
         
         document.getElementById('res-type-1').innerText = res1;
@@ -425,16 +543,14 @@
 
     function captureResult() {
         window.scrollTo(0, 0); 
-        html2canvas(document.getElementById('exam-paper'), { scale: 2, backgroundColor: '#f7f6f2' }).then(canvas => {
+        html2canvas(document.getElementById('exam-paper'), { scale: 2, backgroundColor: '#fcfbf9' }).then(canvas => {
             document.getElementById('captured-image').src = canvas.toDataURL('image/png');
             document.getElementById('saveModal').style.display = 'flex';
         });
     }
 
-    function closeSaveModal() { 
-        document.getElementById('saveModal').style.display = 'none'; 
-    }
-
+    function closeSaveModal() { document.getElementById('saveModal').style.display = 'none'; }
+    
     document.getElementById("saveModal").addEventListener("click", function(e) {
         if (e.target.id === "saveModal") {
             closeSaveModal();
@@ -444,8 +560,8 @@
     function shareTest() {
         const url = "https://test-it.co.kr/test380";
         const shareData = {
-            title: "연애 성향 평가 시험지",
-            text: "연애 성향 평가 시험지",
+            title: "연애 성향 모의고사 테스트",
+            text: "연애 성향 모의고사 테스트",
             url: url
         };
 

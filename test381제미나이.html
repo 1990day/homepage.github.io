@@ -15,9 +15,11 @@
     --c-good: #87cefa;
     --c-bad: #dda0dd;
     --c-detail: #fff;
+    --kitsch-main: #FFB6C1;
+    --kitsch-btn: #FF69B4;
+    --kitsch-border: #000;
   }
 
-  /* 16가지 MBTI 다채로운 파스텔 컬러 조합 */
   body.theme-istj { --c-bg: #e3f2fd; --c-pill1: #bbdefb; --c-pill2: #c8e6c9; --c-good: #d1c4e9; --c-bad: #ffcdd2; }
   body.theme-isfj { --c-bg: #e8f5e9; --c-pill1: #c8e6c9; --c-pill2: #fff9c4; --c-good: #b2dfdb; --c-bad: #ffcc80; }
   body.theme-infj { --c-bg: #f3e5f5; --c-pill1: #e1bee7; --c-pill2: #d1c4e9; --c-good: #b3e5fc; --c-bad: #f8bbd0; }
@@ -40,7 +42,7 @@
     padding: 0;
     padding-top: 60px;
     padding-bottom: 40px;
-    background-color: #f5f5f5;
+    background-color: #f0f0f0;
     font-family: 'DungGeunMo', sans-serif;
     display: flex;
     flex-direction: column;
@@ -48,7 +50,7 @@
     min-height: 100vh;
   }
 
-  /* 고정 헤더 */
+  /* Test It 브랜드 고정 헤더 */
   .test-it-header {
     position: fixed;
     top: 0;
@@ -67,34 +69,35 @@
   .test-it-header .logo { font-weight: bold; font-size: 18px; color: #000; }
   .test-it-header .nav { display: flex; gap: 15px; font-size: 14px; color: #000; font-weight: bold; }
 
-  /* 기기 프레임 (밝은 색상) */
+  /* 폴더폰 기기 프레임 */
   #app {
     width: 100%;
-    max-width: 380px;
-    background-color: #fff;
-    border: 3px solid #000;
-    border-radius: 15px;
+    max-width: 360px;
+    background-color: var(--kitsch-main);
+    border: 3px solid var(--kitsch-border);
+    border-radius: 20px 20px 20px 20px;
+    padding: 20px 15px 20px 15px;
+    box-shadow: inset 4px 4px 8px rgba(255,255,255,0.5), inset -4px -4px 8px rgba(0,0,0,0.2), 0 10px 20px rgba(0,0,0,0.2);
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     position: relative;
-    overflow: hidden;
   }
 
-  /* 스피커 */
-  .speaker {
-    height: 25px;
-    background-color: #fff;
+  /* 폴더폰 상단 스피커 영역 */
+  .speaker-area {
     display: flex;
     justify-content: center;
     align-items: center;
-    border-bottom: 2px solid #000;
+    margin-bottom: 15px;
   }
   .speaker-hole {
-    width: 50px;
-    height: 5px;
-    background-color: #000;
-    border-radius: 3px;
+    width: 60px;
+    height: 6px;
+    background-color: #222;
+    border-radius: 5px;
+    border: 1px solid #000;
+    box-shadow: inset 0px 2px 0px rgba(0,0,0,0.8);
   }
 
   /* 시작/질문 화면 */
@@ -107,17 +110,19 @@
     box-sizing: border-box;
     text-align: center;
     background-color: var(--c-bg);
-    min-height: 500px;
+    min-height: 480px;
+    border: 3px solid var(--kitsch-border);
+    border-radius: 12px;
   }
 
-  h1 { font-size: 28px; margin-bottom: 10px; color: #000; }
-  .subtitle { font-size: 14px; margin-bottom: 40px; color: #333; line-height: 1.4; }
+  h1 { font-size: 26px; margin-bottom: 10px; color: #000; }
+  .subtitle { font-size: 14px; margin-bottom: 40px; color: #333; line-height: 1.5; }
   
-  .start-btn {
-    background-color: var(--c-pill1);
-    color: #000;
-    border: 2px solid #000;
-    border-radius: 8px;
+  .kitsch-btn {
+    background-color: var(--kitsch-btn);
+    color: #fff;
+    border: 3px solid var(--kitsch-border);
+    border-radius: 10px;
     padding: 15px 20px;
     font-size: 16px;
     font-weight: bold;
@@ -125,44 +130,50 @@
     font-family: inherit;
     width: 100%;
     margin-bottom: 15px;
+    box-shadow: 2px 2px 0px var(--kitsch-border);
+  }
+  .kitsch-btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: 0px 0px 0px var(--kitsch-border);
   }
 
   .progress-container {
     width: 100%;
-    height: 14px;
+    height: 20px;
     background-color: #fff;
-    border: 2px solid #000;
-    border-radius: 7px;
+    border: 3px solid var(--kitsch-border);
+    border-radius: 10px;
     margin-bottom: 40px;
     overflow: hidden;
   }
   .progress-bar {
     height: 100%;
-    background-color: #000;
+    background-color: var(--kitsch-btn);
     width: 0%;
     transition: width 0.3s;
   }
 
   #question-text { 
-    font-size: 20px; 
+    font-size: 18px; 
     margin-bottom: 50px; 
     line-height: 1.6; 
     background: #fff; 
     padding: 20px; 
-    border: 2px solid #000; 
-    border-radius: 8px; 
+    border: 3px solid var(--kitsch-border);
+    border-radius: 12px;
     font-weight: bold;
     width: 100%;
     box-sizing: border-box;
+    box-shadow: 2px 2px 0px var(--kitsch-border);
   }
 
-  /* 결과 화면 */
+  /* 결과 화면 컨테이너 */
   #result-screen {
     display: none;
     flex-direction: column;
-    background-color: #fff;
   }
 
+  /* 캡처되는 화면 (폴더폰 액정) */
   #capture-area {
     width: 100%;
     aspect-ratio: 9 / 16;
@@ -172,13 +183,14 @@
     box-sizing: border-box;
     overflow: hidden;
     position: relative;
+    border: 3px solid var(--kitsch-border);
+    border-radius: 8px;
   }
 
-  /* 수정된 상태바 */
   .status-bar {
     height: 24px;
     background-color: #000;
-    color: #00ff00;
+    color: #39ff14;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -189,7 +201,7 @@
 
   .folder-top {
     height: 40%;
-    border-bottom: 2px solid #000;
+    border-bottom: 3px solid #000;
     position: relative;
     display: flex;
     justify-content: center;
@@ -198,23 +210,27 @@
     background-color: #111;
   }
 
-  #noise-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  /* 지지직 거리는 노이즈 패턴 */
+  #noise-overlay {
     position: absolute;
-    z-index: 1;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAIklEQVQIW2NkQAKrVq36zwjjgzhhYWGMYAEYB8RmROaABADeOQ8CXl/xfgAAAABJRU5ErkJggg==');
+    background-repeat: repeat;
+    z-index: 2;
     display: none;
-    image-rendering: pixelated;
   }
 
+  /* 고전적인 VCR 폰트 */
   #no-signal-text {
     position: absolute;
     color: #fff;
-    font-size: 32px;
-    letter-spacing: 2px;
-    z-index: 2;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    z-index: 3;
     display: none;
+    text-shadow: 2px 2px 0px #000;
   }
 
   #image-upload {
@@ -233,6 +249,7 @@
     text-align: center;
     line-height: 1.6;
     z-index: 5;
+    text-shadow: 1px 1px 2px #000;
   }
 
   #preview-img-final {
@@ -248,16 +265,15 @@
 
   .folder-bottom {
     flex: 1;
-    padding: 15px;
+    padding: 12px;
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
     background-color: var(--c-bg);
   }
 
-  .trait-row { display: flex; gap: 10px; margin-bottom: 10px; }
+  .trait-row { display: flex; gap: 8px; margin-bottom: 12px; }
 
-  /* 촌스러운 그림자 완전 삭제, 깔끔한 단선 플랫 디자인 */
   .retro-box {
     color: #000;
     border: 2px solid #000;
@@ -266,62 +282,80 @@
     justify-content: center;
     align-items: center;
     text-align: center;
+    background: #fff;
   }
 
-  .circle { border-radius: 50%; width: 60px; height: 60px; font-weight: bold; font-size: 16px; line-height: 1.2; background-color: #fff; }
-  .pill { border-radius: 25px; padding: 5px 10px; font-size: 14px; flex: 1; font-weight: bold; }
+  .circle { border-radius: 50%; width: 55px; height: 55px; font-weight: bold; font-size: 15px; line-height: 1.2; }
+  .pill { border-radius: 20px; padding: 6px 10px; font-size: 14px; flex: 1; font-weight: bold; }
   
-  .rect-small { height: 100%; display: flex; flex-direction: column; font-size: 14px; font-weight: bold; padding: 12px 0;}
-  .rect-small span { font-size: 11px; opacity: 0.7; margin-bottom: 5px; font-weight: normal; }
-  
-  /* 양쪽 높이 맞춤 */
-  .rect-tall { 
-    height: 100%; 
+  .content-split {
     display: flex;
-    flex-direction: column; 
-    align-items: flex-start; 
-    justify-content: space-evenly; 
-    text-align: left; 
-    font-size: 12px; 
-    padding: 10px 12px;
-    background-color: var(--c-detail);
-    line-height: 1.5;
-    box-sizing: border-box;
-  }
-  
-  .trait-item {
-    width: 100%;
-    white-space: normal; /* 글이 길면 줄바꿈 되도록 허용 */
-    word-break: keep-all;
+    gap: 8px;
+    flex: 1;
+    align-items: stretch;
   }
 
-  /* 폰 외부 버튼 4개 영역 */
+  .good-bad-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 0.4;
+  }
+
+  .rect-small { 
+    flex: 1; 
+    display: flex; 
+    flex-direction: column; 
+    font-size: 14px; 
+    font-weight: bold; 
+    padding: 6px 0;
+  }
+  .rect-small span { font-size: 11px; opacity: 0.7; margin-bottom: 2px; font-weight: normal; }
+  
+  /* 성격 특징 버튼 그리드 */
+  .traits-grid {
+    flex: 1.6;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    align-content: stretch;
+  }
+
+  /* 버튼 그림자 완전히 제거 및 깔끔하게 처리 */
+  .trait-btn {
+    border: 2px solid #000;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+    word-break: keep-all;
+    text-align: center;
+    line-height: 1.3;
+  }
+
+  /* 8개 버튼에 각각 예쁘고 다채로운 마카롱 하이틴 파스텔 톤 부여 */
+  .trait-btn:nth-child(1) { background-color: #FFB3BA; } /* 피치 핑크 */
+  .trait-btn:nth-child(2) { background-color: #FFDFBA; } /* 파스텔 오렌지 */
+  .trait-btn:nth-child(3) { background-color: #FFFFBA; } /* 레몬 옐로우 */
+  .trait-btn:nth-child(4) { background-color: #BAFFC9; } /* 애플 민트 */
+  .trait-btn:nth-child(5) { background-color: #BAE1FF; } /* 베이비 블루 */
+  .trait-btn:nth-child(6) { background-color: #D4B0FF; } /* 라벤더 퍼플 */
+  .trait-btn:nth-child(7) { background-color: #FFC8E3; } /* 딸기우유 핑크 */
+  .trait-btn:nth-child(8) { background-color: #B2F0E6; } /* 아쿠아 민트 */
+
+  /* 외부 버튼 (저장, 다시하기 등) */
   .external-actions {
     width: 100%;
-    max-width: 380px;
+    max-width: 360px;
     margin-top: 15px;
     display: none;
     flex-direction: column;
     gap: 8px;
   }
 
-  .ext-btn {
-    background-color: #fff;
-    color: #000;
-    border: 2px solid #000;
-    border-radius: 8px;
-    padding: 15px;
-    font-size: 15px;
-    font-weight: bold;
-    cursor: pointer;
-    font-family: inherit;
-    transition: background-color 0.1s;
-  }
-  .ext-btn:active { background-color: #eee; }
-  .ext-btn.primary { background-color: #000; color: #fff; }
-  .ext-btn.primary:active { background-color: #333; }
-
-  /* 꾹 눌러서 저장하는 모달 */
   #final-save-modal {
     display: none;
     position: fixed;
@@ -340,12 +374,11 @@
   #final-captured-image {
     width: 90%;
     max-width: 350px;
-    border: 2px solid #fff;
-    border-radius: 10px;
+    border: 3px solid #FF69B4;
+    border-radius: 12px;
     margin-bottom: 20px;
   }
 
-  /* 사진 편집 모달 */
   #edit-modal {
     display: none;
     position: fixed;
@@ -360,9 +393,9 @@
   #edit-container {
     width: 90%;
     max-width: 350px;
-    background-color: #fff;
-    border: 2px solid #000;
-    border-radius: 10px;
+    background-color: #FFE4E1;
+    border: 3px solid #000;
+    border-radius: 15px;
     padding: 15px;
     box-sizing: border-box;
     display: flex;
@@ -374,7 +407,8 @@
   #canvas-container {
     width: 100%;
     aspect-ratio: 1.5 / 1;
-    border: 2px solid #000;
+    border: 3px solid #000;
+    border-radius: 8px;
     background-color: #ccc;
     position: relative;
     overflow: hidden;
@@ -384,28 +418,17 @@
   #canvas-container:active { cursor: grabbing; }
   canvas { display: block; width: 100%; height: 100%; }
 
-  /* PC 전용 방향/줌 컨트롤러 */
-  .pc-controls {
-    display: flex;
-    justify-content: center;
-    gap: 5px;
-    margin-top: 10px;
-  }
-  .pc-btn {
-    padding: 8px 12px; border: 2px solid #000; border-radius: 5px; background: #eee; cursor: pointer; font-weight: bold; font-family: inherit;
+  .pc-controls { display: flex; justify-content: center; gap: 5px; margin-top: 10px; }
+  
+  @media (max-width: 768px) {
+    .pc-controls { display: none !important; }
   }
 
   .edit-controls { margin-top: 15px; display: flex; flex-direction: column; gap: 10px; }
-  .control-row { display: flex; align-items: center; justify-content: space-between; font-size: 14px; }
+  .control-row { display: flex; align-items: center; justify-content: space-between; font-size: 14px; font-weight: bold; }
   .control-row input[type="range"] { flex: 1; margin: 0 10px; }
-  .control-row input[type="checkbox"] { transform: scale(1.5); }
 
   .edit-actions { display: flex; gap: 10px; margin-top: 15px; }
-  .modal-btn {
-    flex: 1; padding: 12px; border: 2px solid #000; border-radius: 8px;
-    font-family: inherit; font-weight: bold; cursor: pointer; font-size: 14px; background: #fff;
-  }
-  .modal-btn.primary { background: #000; color: #fff; }
 
 </style>
 </head>
@@ -422,12 +445,12 @@
 </header>
 
 <div id="app">
-  <div class="speaker"><div class="speaker-hole"></div></div>
+  <div class="speaker-area"><div class="speaker-hole"></div></div>
   
   <div id="main-screen" class="screen">
     <h1>성격 테스트로그</h1>
     <div class="subtitle">나의 지금을<br>폴더폰 감성으로 기록하기</div>
-    <button class="start-btn" onclick="startTest()">테스트 시작하기</button>
+    <button class="kitsch-btn" onclick="startTest()">테스트 시작하기</button>
   </div>
 
   <div id="question-screen" class="screen" style="display:none;">
@@ -435,8 +458,8 @@
       <div class="progress-bar" id="progress"></div>
     </div>
     <div id="question-text">질문이 표시됩니다.</div>
-    <button class="start-btn" id="btn-a" onclick="selectAnswer('A')">A 선택지</button>
-    <button class="start-btn" id="btn-b" onclick="selectAnswer('B')">B 선택지</button>
+    <button class="kitsch-btn" style="background-color: #fff; color:#000;" id="btn-a" onclick="selectAnswer('A')">A 선택지</button>
+    <button class="kitsch-btn" style="background-color: #fff; color:#000;" id="btn-b" onclick="selectAnswer('B')">B 선택지</button>
   </div>
 
   <div id="result-screen">
@@ -447,11 +470,11 @@
       </div>
       
       <div class="folder-top" id="folder-top">
-        <img id="noise-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAIklEQVQIW2NkQAKrVq36zwjjgzhhYWGMYAEYB8RmROaABADeOQ8CXl/xfgAAAABJRU5ErkJggg==">
+        <div id="noise-overlay"></div>
         <div id="no-signal-text">NO SIGNAL</div>
         
         <input type="file" id="image-upload" accept="image/*">
-        <div class="upload-placeholder" id="upload-placeholder">📸<br>터치하여 사진 촬영<br>또는 업로드</div>
+        <div class="upload-placeholder" id="upload-placeholder">📸<br>터치하여 사진 업로드</div>
         <img id="preview-img-final" alt="최종 사진">
       </div>
       
@@ -464,12 +487,12 @@
           </div>
         </div>
         
-        <div style="display: flex; gap: 10px; flex: 1; align-items: stretch;">
-          <div style="display: flex; flex-direction: column; gap: 8px; flex: 1;">
+        <div class="content-split">
+          <div class="good-bad-container">
             <div class="retro-box rect-small" style="background-color: var(--c-good);"><span>GOOD</span><div id="res-good">장점</div></div>
             <div class="retro-box rect-small" style="background-color: var(--c-bad);"><span>BAD</span><div id="res-bad">단점</div></div>
           </div>
-          <div class="retro-box rect-tall" style="flex: 1.5;" id="res-details">
+          <div class="traits-grid" id="res-details">
             </div>
         </div>
       </div>
@@ -478,16 +501,15 @@
 </div>
 
 <div class="external-actions" id="external-actions">
-  <button class="ext-btn primary" onclick="captureAndShowImage()">결과 이미지 저장하기</button>
-  <button class="ext-btn" onclick="location.reload()">다시 해보기</button>
-  <button class="ext-btn" onclick="alert('다른 테스트 페이지로 이동합니다.')">다른 테스트 해보기</button>
-  <button class="ext-btn" onclick="shareTest()">테스트 공유하기</button>
+  <button class="kitsch-btn" style="background:#000;" onclick="captureAndShowImage()">결과 이미지 저장하기</button>
+  <button class="kitsch-btn" style="background:#fff; color:#000;" onclick="location.reload()">다시 해보기</button>
+  <button class="kitsch-btn" style="background:#fff; color:#000;" onclick="alert('다른 테스트 페이지로 이동합니다.')">다른 테스트 해보기</button>
 </div>
 
 <div id="final-save-modal">
   <div class="save-guide-text">결과가 완성되었습니다!<br>이미지를 꾹 눌러서 저장해주세요.</div>
   <img id="final-captured-image" src="" alt="완성된 이미지">
-  <button class="ext-btn" style="width:90%; max-width:350px; background:#fff;" onclick="document.getElementById('final-save-modal').style.display='none'">닫기</button>
+  <button class="kitsch-btn" style="width:90%; max-width:350px; background:#fff; color:#000;" onclick="document.getElementById('final-save-modal').style.display='none'">닫기</button>
 </div>
 
 <div id="edit-modal">
@@ -498,12 +520,12 @@
     </div>
     
     <div class="pc-controls">
-      <button class="pc-btn" onclick="adjustCanvas('zoomIn')">+</button>
-      <button class="pc-btn" onclick="adjustCanvas('zoomOut')">-</button>
-      <button class="pc-btn" onclick="adjustCanvas('up')">▲</button>
-      <button class="pc-btn" onclick="adjustCanvas('down')">▼</button>
-      <button class="pc-btn" onclick="adjustCanvas('left')">◀</button>
-      <button class="pc-btn" onclick="adjustCanvas('right')">▶</button>
+      <button class="kitsch-btn" style="padding:8px; margin-bottom:0;" onclick="adjustCanvas('zoomIn')">+</button>
+      <button class="kitsch-btn" style="padding:8px; margin-bottom:0;" onclick="adjustCanvas('zoomOut')">-</button>
+      <button class="kitsch-btn" style="padding:8px; margin-bottom:0;" onclick="adjustCanvas('up')">▲</button>
+      <button class="kitsch-btn" style="padding:8px; margin-bottom:0;" onclick="adjustCanvas('down')">▼</button>
+      <button class="kitsch-btn" style="padding:8px; margin-bottom:0;" onclick="adjustCanvas('left')">◀</button>
+      <button class="kitsch-btn" style="padding:8px; margin-bottom:0;" onclick="adjustCanvas('right')">▶</button>
     </div>
     
     <div class="edit-controls">
@@ -513,23 +535,23 @@
       </div>
       <div class="control-row">
         <span>흑백 필터</span>
-        <input type="checkbox" id="grayscale-check">
+        <input type="checkbox" id="grayscale-check" style="transform: scale(1.5);">
       </div>
     </div>
 
     <div class="edit-actions">
-      <button class="modal-btn" onclick="closeEditModal()">취소</button>
-      <button class="modal-btn primary" onclick="applyEdit()">적용하기</button>
+      <button class="kitsch-btn" style="background:#ff4d4d; margin-bottom:0; padding:10px;" onclick="deletePhoto()">사진 삭제</button>
+      <button class="kitsch-btn" style="background:#fff; color:#000; margin-bottom:0; padding:10px;" onclick="closeEditModal()">취소</button>
+      <button class="kitsch-btn" style="background:#000; margin-bottom:0; padding:10px;" onclick="applyEdit()">적용하기</button>
     </div>
   </div>
 </div>
 
 <script>
-  // 질문 데이터
   const qnaList = [
     { q: "주말에 갑자기 일정이 취소되었다!", a: { text: "아싸! 집에서 뒹굴거려야지", type: "I" }, b: { text: "심심한데 다른 친구 번개할까?", type: "E" } },
     { q: "처음 가는 모임 장소에 도착했다.", a: { text: "옆 사람에게 먼저 말을 걸어본다", type: "E" }, b: { text: "누군가 말 걸어주길 기다린다", type: "I" } },
-    { q: "스트레스를 잔뜩 받았을 때 나는?", a: { text: "혼자 조용히 생각 정리할 시간이 필요해", type: "I" }, b: { text: "사람들과 만나서 수다 떨며 푼다!", type: "E" } },
+    { q: "스트레스를 잔뜩 받았을 때 나는?", a: { text: "혼자 조용히 생각 정리할 시간 필요", type: "I" }, b: { text: "사람들과 만나서 수다 떨며 푼다!", type: "E" } },
     { q: "멍 때릴 때 내 머릿속은?", a: { text: "진짜 아무 생각 없음 (백지 상태)", type: "S" }, b: { text: "만약에 지구에 좀비가 나타난다면..?", type: "N" } },
     { q: "요리 레시피를 볼 때 나는?", a: { text: "적혀있는 정량 그대로 계량해서 넣는다", type: "S" }, b: { text: "대충 눈대중으로 감칠맛을 더한다", type: "N" } },
     { q: "노래를 들을 때 더 끌리는 것은?", a: { text: "멜로디와 분위기가 좋은 노래", type: "S" }, b: { text: "가사의 의미가 와닿는 노래", type: "N" } },
@@ -541,24 +563,23 @@
     { q: "과제가 주어졌을 때 나는?", a: { text: "미리미리 조금씩 해둔다", type: "J" }, b: { text: "마감 직전 엄청난 집중력으로 끝낸다", type: "P" } }
   ];
 
-  // 성격 데이터 (해시태그 없음, 설명 구체적)
-  const resultsData = {
-    "ISTJ": { k1: "원칙주의", k2: "약속칼같이", good: "책임감최고", bad: "융통성제로", details: ["- 룰루랄라 원칙주의 라이프", "- 지각은 절대 용납 불가", "- 인간 알파고급 놀라운 기억력", "- 튀는 것보단 안정적인 게 최고", "- 계획 틀어지면 극심한 스트레스", "- 내 사람에겐 확실한 츤데레"] },
-    "ISFJ": { k1: "다정다감", k2: "눈치백단", good: "섬세한센스", bad: "거절못함", details: ["- 남 챙겨주는 것에 진심인 힐러", "- 눈치 백단 분위기 파악 장인", "- 내 사람에게 한없이 다정함", "- 부탁받으면 거절 못해 끙끙댐", "- 사소한 것도 다 기억해주는 센스", "- 익숙하고 편안한 게 제일 좋아"] },
-    "INFJ": { k1: "통찰력갑", k2: "완벽주의", good: "사람보는눈", bad: "유리멘탈", details: ["- 혼자만의 동굴 시간 무조건 필수", "- 겉으론 웃어도 속으론 분석 완료", "- 사람 보는 눈이 남다르게 탁월함", "- 완벽주의라 스스로 피곤한 스타일", "- 선 넘는 무례함은 가차없이 손절", "- 마음속에 이상적인 세계가 있음"] },
-    "INTJ": { k1: "독립적", k2: "분석왕", good: "논리적사고", bad: "공감능력", details: ["- 남 눈치 안 보는 독보적 마이웨이", "- 비효율적인 일처리 보면 답답함", "- 한 번 꽂힌 분야는 전문가 수준", "- 감정에 호소하는 떼쓰기 극혐함", "- 목표 세우면 끝까지 파고드는 편", "- 무논리 대화는 빠르게 차단함"] },
-    "ISTP": { k1: "가성비갑", k2: "귀차니즘", good: "임기응변", bad: "영혼없음", details: ["- 쓸데없는 곳에 에너지 낭비 안 함", "- 평소엔 누워있다가 벼락치기 천재", "- 남 일에 관심 없고 간섭받기 싫음", "- 기계나 도구 다루는 센스가 타고남", "- 카톡 답장 느려도 악의는 없음", "- 감정 소모하는 거 제일 피곤함"] },
-    "ISFP": { k1: "자유영혼", k2: "침대혼연일체", good: "수용적태도", bad: "결정장애", details: ["- 갈등 싫어서 웬만하면 다 맞춰줌", "- 집 밖으로 나가는 순간 체력 방전", "- 내 공간 침범당하면 예민해짐", "- 칭찬받으면 속으로 탭댄스 춤", "- 꼼꼼한 계획보단 현재가 중요함", "- 감수성 풍부하고 은근 예민보스"] },
-    "INFP": { k1: "유리멘탈", k2: "과몰입장인", good: "공감능력", bad: "상처잘받음", details: ["- 머릿속에 온갖 상상과 망상 가득", "- 남의 아픔에 내 일처럼 공감함", "- 사소한 말 한마디에 상처받고 며칠 밤샘", "- 하나에 꽂히면 덕질에 진심인 편", "- 규칙보단 자유롭고 감성적인 삶", "- 혼자 있는 시간 꼭 필요한 내적관종"] },
-    "INTP": { k1: "팩트폭격", k2: "아이디어", good: "객관적시선", bad: "귀차니즘", details: ["- 관심 없는 주제엔 영혼 없이 대답", "- 멍 때리는 중에도 머리는 풀가동", "- 비논리적인 소리 들으면 반박장전", "- 혼자 있는 게 제일 평화롭고 좋음", "- 기발한 아이디어는 많은데 실행력 0", "- 세상만사 귀찮은 자발적 아싸"] },
-    "ESTP": { k1: "적응력갑", k2: "인싸재질", good: "실행력갑", bad: "계획없음", details: ["- 지루하고 정적인 분위기 절대 못 참음", "- 일단 저지르고 몸으로 부딪히는 편", "- 눈치 엄청 빨라서 파악 기가 막힘", "- 처음 본 사람이랑도 5분 만에 절친", "- 인생은 폼생폼사 재미가 제일 중요", "- 복잡한 고민은 쿨하게 패스함"] },
-    "ESFP": { k1: "에너지뿜뿜", k2: "관종끼다분", good: "분위기메이커", bad: "산만함", details: ["- 약속 없으면 입안에 가시가 돋음", "- 어디서든 주목받는 걸 은근히 즐김", "- 침묵 흐르는 어색한 상황 절대 못 참음", "- 노래방 가면 마이크 안 놓는 흥부자", "- 심각한 일도 자고 일어나면 잊어버림", "- 에너지 넘치고 사람 만나는 게 최고"] },
-    "ENFP": { k1: "리액션장인", k2: "감정기복", good: "창의력대장", bad: "금방질림", details: ["- 항상 텐션 높고 사람을 너무 좋아함", "- 머릿속에 해보고 싶은 게 오조오억개", "- 기분 좋고 나쁜 게 얼굴에 다 티남", "- 낯가림 제로 폭풍 친화력의 소유자", "- 반복되는 일상은 지루해서 못 견딤", "- 리액션 장인이라 얘기할 맛 남"] },
-    "ENTP": { k1: "토론광", k2: "자신감만렙", good: "기발한발상", bad: "고집불통", details: ["- 팩트 폭력기로 뼈 때리는 말 필터링 없음", "- 내가 맞다고 생각하면 절대 안 굽힘", "- 남들이 안 하는 독특하고 기발한 생각", "- 재밌어 보이면 물불 안 가리고 직진", "- 논쟁하는 걸 은근히 즐기고 말싸움 안 짐", "- 화내고 돌아서면 뒤끝 없이 쿨함"] },
-    "ESTJ": { k1: "칼같은규칙", k2: "워커홀릭", good: "강력한리더십", bad: "융통성제로", details: ["- 일 미루는 꼴 못 보고 계획대로 착착", "- 호불호가 매우 확실하고 돌려 말하기 못함", "- 조별 과제 답답하면 그냥 내가 다 해버림", "- 규칙 매뉴얼 무조건 지켜야 마음 편함", "- 위로보단 현실적이고 실질적인 해결책", "- 팩트로 뼈 때리는 든든한 리더"] },
-    "ESFJ": { k1: "다정한오지랖", k2: "친화력갑", good: "분위기메이커", bad: "인정욕구", details: ["- 주변 사람들 알뜰살뜰 챙기는 다정 보스", "- 남한테 미움받는 거 싫어해서 싫은 소리 못함", "- 리액션 알파고급 분위기 띄우기 달인", "- 칭찬 한 번 해주면 에너지 200% 충전", "- 소외되는 사람 없게 무리 전체 신경 씀", "- 조화롭고 평화로운 분위기가 제일 좋음"] },
-    "ENFJ": { k1: "오지랖태평양", k2: "긍정에너지", good: "공감능력", bad: "감정소모", details: ["- 남의 일도 내 일처럼 진심으로 공감하고 화냄", "- 긍정 에너지가 넘쳐서 주변을 밝혀줌", "- 남 돕는 데 진심이라 오지랖이 넓은 편", "- 비판받으면 겉으론 웃어도 속으론 상처 받음", "- 모두가 행복하고 조화로운 세상을 꿈꿈", "- 말 예쁘게 하고 사람을 잘 이끌어줌"] },
-    "ENTJ": { k1: "완벽주의", k2: "통솔력갑", good: "빠른결단력", bad: "팩폭살인마", details: ["- 일 답답하게 하는 사람 보면 복장 터짐", "- 감정 호소 금지 무조건 효율이 최우선", "- 목표 세우면 무슨 수를 써서라도 해냄", "- 카리스마 넘치는 타고난 리더 재질", "- 시간 낭비하는 걸 세상에서 제일 아까워함", "- 팩트로 순살 만드는 논리적인 불도저"] }
+const resultsData = {
+    "ISTJ": { k1: "원칙주의", k2: "약속칼같이", good: "책임감최고", bad: "융통성제로", details: ["원칙대로 살기", "지각 절대불가", "인간 알파고", "안정감이 최고", "계획충의 정석", "속 깊은 츤데레", "거짓말 극혐함", "묵묵한 책임감"] },
+    "ISFJ": { k1: "다정다감", k2: "눈치백단", good: "섬세한센스", bad: "거절을못함", details: ["따뜻한 힐러상", "분위기 파악왕", "내사람 챙기기", "거절 못해 끙끙", "사소한것 기억", "익숙함이 편해", "눈치 많이 보는", "배려심 끝판왕"] },
+    "INFJ": { k1: "통찰력갑", k2: "완벽주의", good: "사람보는눈", bad: "유리멘탈", details: ["동굴시간 필수", "속으론 다알아", "통찰력 대마왕", "피곤한 완벽함", "무례하면 손절", "이상향을 꿈꿈", "생각이 너무많아", "속을 알수없음"] },
+    "INTJ": { k1: "독립적", k2: "분석왕", good: "논리적사고", bad: "공감능력", details: ["독보적 마이웨이", "비효율은 답답", "한분야 전문가", "감정호소 극혐", "목표향해 직진", "무논리 안통함", "혼자만의 계획", "냉철한 이성파"] },
+    "ISTP": { k1: "가성비갑", k2: "귀차니즘", good: "임기응변", bad: "영혼없음", details: ["에너지 아끼기", "벼락치기 천재", "간섭받기 싫어", "도구활용 장인", "답장느림 주의", "감정소모 피곤", "만사가 귀찮아", "빠른 임기응변"] },
+    "ISFP": { k1: "자유영혼", k2: "침대혼연일체", good: "수용적태도", bad: "결정장애", details: ["웬만하면 맞춰줌", "외출시 방전됨", "내공간은 필수", "칭찬에 약한타입", "현재가 젤중요", "은근한 예민보스", "누워있는게 최고", "평화주의자임"] },
+    "INFP": { k1: "유리멘탈", k2: "과몰입장인", good: "공감능력", bad: "상처잘받음", details: ["망상과 상상력", "내일처럼 공감", "사소한말 상처", "덕질에는 진심", "자유로운 영혼", "은근한 관종끼", "심한 감정기복", "세심한 감수성"] },
+    "INTP": { k1: "팩트폭격", k2: "아이디어", good: "객관적시선", bad: "귀차니즘", details: ["영혼없는 대답", "머리는 풀가동", "비논리는 반박", "혼자가 젤평화", "아이디어 넘침", "자발적 아싸", "지적호기심 폭발", "팩트 폭격기"] },
+    "ESTP": { k1: "적응력갑", k2: "인싸재질", good: "실행력갑", bad: "계획없음", details: ["조용한곳 못참아", "몸으로 부딪혀", "엄청난 눈치력", "금세 친해지는", "재미가 제일중요", "복잡한건 패스", "스릴을 즐김", "타고난 승부사"] },
+    "ESFP": { k1: "에너지뿜뿜", k2: "관종끼다분", good: "분위기메이커", bad: "산만함", details: ["약속없음 우울", "주목받기 즐김", "어색침묵 못참아", "마이크 내꺼야", "자고나면 까먹음", "사람만남 충전", "폭풍 리액션", "파티의 주인공"] },
+    "ENFP": { k1: "리액션장인", k2: "감정기복", good: "창의력대장", bad: "금방질림", details: ["텐션높은 인싸", "하고싶은거 많음", "얼굴에 다티남", "폭풍 친화력", "반복일상 지루해", "대화할 맛이남", "금사빠 금사식", "통통튀는 매력"] },
+    "ENTP": { k1: "토론광", k2: "자신감만렙", good: "기발한발상", bad: "고집불통", details: ["뼈때리는 팩폭", "내말이 다맞아", "기발한 아이디어", "재밌으면 직진", "말싸움 안지는", "뒤끝없이 쿨함", "논쟁을 즐기는", "브레이크 고장"] },
+    "ESTJ": { k1: "칼같은규칙", k2: "워커홀릭", good: "강력한리더십", bad: "융통성제로", details: ["일미루기 극혐", "돌려말하기 못함", "답답하면 내가함", "규칙은 무조건", "현실적 해결책", "팩트로 뼈때림", "효율이 생명임", "단호한 리더"] },
+    "ESFJ": { k1: "다정한오지랖", k2: "친화력갑", good: "분위기메이커", bad: "인정욕구", details: ["알뜰살뜰 다정함", "싫은소리 못함", "분위기 띄우기", "칭찬으로 충전", "소외된사람 챙김", "평화로운 분위기", "공감능력 만렙", "다정한 오지랖"] },
+    "ENFJ": { k1: "오지랖태평양", k2: "긍정에너지", good: "공감능력", bad: "감정소모", details: ["내일처럼 공감", "긍정에너지 뿜뿜", "오지랖이 넓은편", "속으로 상처받음", "조화로운 세상", "잘 이끌어주는", "인류애 가득함", "따뜻한 카리스마"] },
+    "ENTJ": { k1: "완벽주의", k2: "통솔력갑", good: "빠른결단력", bad: "팩트폭격기", details: ["답답하면 속터짐", "효율이 최우선", "목표는 달성한다", "타고난 리더재질", "시간낭비 아까워", "논리적 불도저", "이성적인 판단", "압도적 카리스마"] }
   };
 
   let currentQ = 0;
@@ -613,12 +634,15 @@
     
     let detailsHtml = '';
     resData.details.forEach(item => {
-      detailsHtml += `<div class="trait-item">${item}</div>`;
+      detailsHtml += `<div class="trait-btn"><span>${item}</span></div>`;
     });
     document.getElementById('res-details').innerHTML = detailsHtml;
+    
+    document.getElementById('noise-overlay').style.display = 'none';
+    document.getElementById('no-signal-text').style.display = 'none';
+    document.getElementById('upload-placeholder').style.display = 'block';
   }
 
-  // --- Canvas 사진 편집 로직 ---
   const imageUpload = document.getElementById('image-upload');
   const editModal = document.getElementById('edit-modal');
   const canvasContainer = document.getElementById('canvas-container');
@@ -629,8 +653,7 @@
   const brightnessSlider = document.getElementById('brightness-slider');
   const grayscaleCheck = document.getElementById('grayscale-check');
   const uploadPlaceholder = document.getElementById('upload-placeholder');
-  
-  const noiseImg = document.getElementById('noise-img');
+  const noiseOverlay = document.getElementById('noise-overlay');
   const noSignalText = document.getElementById('no-signal-text');
 
   let imgObj = new Image();
@@ -688,7 +711,6 @@
     ctx.restore();
   }
 
-  // PC용 방향 컨트롤러 함수
   function adjustCanvas(action) {
     const step = 20;
     if (action === 'zoomIn') imgScale *= 1.1;
@@ -771,27 +793,41 @@
     imageUpload.value = '';
   }
 
-  function applyEdit() {
-    previewImgFinal.src = canvas.toDataURL('image/jpeg', 0.9);
-    previewImgFinal.style.display = 'block';
+  function deletePhoto() {
+    imgObj.src = '';
+    previewImgFinal.src = '';
+    previewImgFinal.style.display = 'none';
     
-    uploadPlaceholder.style.display = 'none';
+    noiseOverlay.style.display = 'none';
+    noSignalText.style.display = 'none';
+    uploadPlaceholder.style.display = 'block';
+    
     closeEditModal();
   }
 
-  // --- 꾹 눌러서 저장하는 모달 로직 ---
+  function applyEdit() {
+    previewImgFinal.src = canvas.toDataURL('image/png');
+    previewImgFinal.style.display = 'block';
+    
+    noiseOverlay.style.display = 'none';
+    noSignalText.style.display = 'none';
+    uploadPlaceholder.style.display = 'none';
+    
+    closeEditModal();
+  }
+
   function captureAndShowImage() {
     const captureArea = document.getElementById('capture-area');
     const isUploaded = previewImgFinal.src && previewImgFinal.style.display !== 'none';
     
     if (!isUploaded) {
-      noiseImg.style.display = 'block';
+      noiseOverlay.style.display = 'block';
       noSignalText.style.display = 'block';
       uploadPlaceholder.style.display = 'none';
     }
 
     setTimeout(() => {
-      html2canvas(captureArea, { scale: 2, useCORS: true, backgroundColor: null }).then(canvas => {
+      html2canvas(captureArea, { scale: 3, useCORS: true, backgroundColor: null }).then(canvas => {
         const finalModal = document.getElementById('final-save-modal');
         const finalImage = document.getElementById('final-captured-image');
         
@@ -799,24 +835,12 @@
         finalModal.style.display = 'flex';
         
         if (!isUploaded) {
-          noiseImg.style.display = 'none';
+          noiseOverlay.style.display = 'none';
           noSignalText.style.display = 'none';
           uploadPlaceholder.style.display = 'block';
         }
       });
-    }, 150);
-  }
-
-  function shareTest() {
-    if (navigator.share) {
-      navigator.share({
-        title: '성격 테스트로그',
-        text: '나의 성격을 폴더폰 감성으로 확인해보세요!',
-        url: window.location.href
-      }).catch(console.error);
-    } else {
-      alert('링크가 복사되었습니다!');
-    }
+    }, 200);
   }
 </script>
 

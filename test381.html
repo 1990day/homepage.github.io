@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>테스트잇 성격 테스트로그</title>
-  <meta name="description" content="레트로 폴더폰 감성 성격 테스트로그" />
+  <meta name="description" content="옛날 핸드폰 감성으로 저장하는 성격 테스트로그" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="테스트잇 성격 테스트로그" />
-  <meta property="og:description" content="사진과 함께 저장하는 레트로 폴더폰 감성 테스트" />
+  <meta property="og:description" content="사진과 함께 저장하는 레트로 성격 테스트로그" />
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 
   <style>
     @font-face {
@@ -38,85 +38,101 @@
       margin: 0;
       padding: 0;
       font-family: "Pretendard", sans-serif;
-      color: #272a35;
-      background: #eef1f5;
+      background: #eceff3;
+      color: #232631;
     }
 
     body.theme-blue {
-      --shell1: #b7c9df;
-      --shell2: #c8d6e7;
-      --shell3: #dfe8f2;
-      --shell4: #edf3f8;
-      --panel1: #edf1f4;
-      --panel2: #e6ebf0;
-      --line: #404452;
-      --soft: #6b7386;
-      --chip: #d3deea;
-      --chip2: #e8f0f7;
-      --buttonA: #cfdbeb;
-      --buttonB: #e8eff7;
-      --shadow: rgba(79, 97, 125, 0.18);
-      --bg1: #e9eef4;
-      --bg2: #dde6f0;
+      --shell-main: #d5e4f2;
+      --shell-sub: #edf4fa;
+      --panel-bg: #dfe8ef;
+      --panel-inner: #edf3f8;
+      --line: #2e3440;
+      --muted: #6f7788;
+      --screen-green: #00ff2f;
+      --mylog: #efefea;
+      --pill-a: #aad8f3;
+      --pill-b: #c9b0d8;
+      --box-a: #efc2d1;
+      --box-b: #cfc1e7;
+      --box-c: #d5ebd7;
+      --box-d: #f0dcb8;
+      --box-e: #bfe3ea;
+      --box-f: #ead3c5;
+      --box-g: #e8d4f0;
+      --box-h: #d5e0b9;
+      --editor-bg: #f7fafc;
     }
 
     body.theme-pink {
-      --shell1: #e0b8ca;
-      --shell2: #e8cad8;
-      --shell3: #f1dfe8;
-      --shell4: #f6eff3;
-      --panel1: #f2edf0;
-      --panel2: #ece6eb;
-      --line: #45404c;
-      --soft: #786b79;
-      --chip: #ead2dd;
-      --chip2: #f4eaf0;
-      --buttonA: #e8d2dc;
-      --buttonB: #f5edf1;
-      --shadow: rgba(130, 92, 111, 0.18);
-      --bg1: #f1e8ee;
-      --bg2: #eadce5;
+      --shell-main: #f0c7d8;
+      --shell-sub: #f7e8ee;
+      --panel-bg: #eadbe3;
+      --panel-inner: #f4edf1;
+      --line: #3a3440;
+      --muted: #7b6f79;
+      --screen-green: #00ff2f;
+      --mylog: #f5efe8;
+      --pill-a: #f0c1d3;
+      --pill-b: #d8bde4;
+      --box-a: #eebdcb;
+      --box-b: #d9caeb;
+      --box-c: #d7ead7;
+      --box-d: #efd8b5;
+      --box-e: #cbe3ea;
+      --box-f: #edd8cc;
+      --box-g: #e7cfe7;
+      --box-h: #dce7c7;
+      --editor-bg: #fcf7f9;
     }
 
     body.theme-mint {
-      --shell1: #bfd8d3;
-      --shell2: #cee3df;
-      --shell3: #dfedea;
-      --shell4: #eef6f4;
-      --panel1: #edf3f1;
-      --panel2: #e7efed;
-      --line: #3f4b4a;
-      --soft: #647271;
-      --chip: #d2e4e0;
-      --chip2: #eaf4f1;
-      --buttonA: #d2e3df;
-      --buttonB: #edf5f3;
-      --shadow: rgba(88, 120, 117, 0.18);
-      --bg1: #e7f0ee;
-      --bg2: #dbe7e4;
+      --shell-main: #c6dfd6;
+      --shell-sub: #e8f2ee;
+      --panel-bg: #d8e8e2;
+      --panel-inner: #eef5f2;
+      --line: #31403d;
+      --muted: #667470;
+      --screen-green: #00ff2f;
+      --mylog: #f2f0e9;
+      --pill-a: #abdcd4;
+      --pill-b: #c8c6e6;
+      --box-a: #edd0c6;
+      --box-b: #cfe0f0;
+      --box-c: #d4e9d1;
+      --box-d: #eedbbd;
+      --box-e: #c4e5dc;
+      --box-f: #e9d7e4;
+      --box-g: #d8e1f0;
+      --box-h: #e4e1be;
+      --editor-bg: #f6fbf9;
     }
 
     body.theme-lavender {
-      --shell1: #cfc8e3;
-      --shell2: #dcd8ea;
-      --shell3: #ebe8f3;
-      --shell4: #f3f1f8;
-      --panel1: #f0eef5;
-      --panel2: #e9e7f0;
-      --line: #474356;
-      --soft: #706a82;
-      --chip: #ddd7ea;
-      --chip2: #f0edf7;
-      --buttonA: #d9d4e6;
-      --buttonB: #f0edf7;
-      --shadow: rgba(100, 93, 132, 0.18);
-      --bg1: #ece9f4;
-      --bg2: #e1dded;
+      --shell-main: #d5d0ea;
+      --shell-sub: #efedf8;
+      --panel-bg: #e0deef;
+      --panel-inner: #f3f2f8;
+      --line: #3a3950;
+      --muted: #74728a;
+      --screen-green: #00ff2f;
+      --mylog: #f1efe8;
+      --pill-a: #b9d6f0;
+      --pill-b: #d6bee3;
+      --box-a: #edc5d2;
+      --box-b: #ccc5ea;
+      --box-c: #d7ead5;
+      --box-d: #eeddbf;
+      --box-e: #c7e0ef;
+      --box-f: #e8d8ca;
+      --box-g: #ddd0ef;
+      --box-h: #dbe6c8;
+      --editor-bg: #f8f8fc;
     }
 
     a {
-      text-decoration: none;
       color: inherit;
+      text-decoration: none;
     }
 
     .page-header {
@@ -140,12 +156,12 @@
       flex-wrap: wrap;
       justify-content: flex-end;
       font-size: 11px;
-      color: var(--soft);
+      color: var(--muted);
     }
 
     .main-nav a {
       border: 1.5px solid var(--line);
-      background: rgba(255,255,255,0.8);
+      background: #fff;
       border-radius: 999px;
       padding: 5px 8px;
     }
@@ -167,15 +183,15 @@
 
     .card {
       border: 2.5px solid var(--line);
-      border-radius: 30px;
-      background: rgba(255,255,255,0.86);
-      box-shadow: 0 14px 30px rgba(40, 43, 55, 0.08);
+      border-radius: 28px;
+      background: #fff;
       overflow: hidden;
+      box-shadow: 0 10px 24px rgba(25, 29, 39, 0.08);
     }
 
     .start-card {
       padding: 18px 16px 20px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.94), rgba(255,255,255,0.88));
+      background: var(--panel-inner);
     }
 
     .mini-label {
@@ -186,7 +202,7 @@
       padding: 6px 10px;
       font-family: "Galmuri9", sans-serif;
       font-size: 10px;
-      color: var(--soft);
+      color: var(--muted);
       margin-bottom: 12px;
     }
 
@@ -201,130 +217,138 @@
       width: 100%;
       max-width: 300px;
       margin: 0 auto 16px;
-      padding: 12px;
+      padding: 10px;
       border: 3px solid var(--line);
-      border-radius: 40px;
-      background: linear-gradient(180deg, var(--shell1) 0%, var(--shell2) 34%, var(--shell3) 70%, var(--shell4) 100%);
-      box-shadow: inset 0 0 0 3px rgba(255,255,255,0.42), 0 10px 26px var(--shadow);
+      border-radius: 26px;
+      background: var(--shell-main);
+      box-shadow: inset 0 0 0 3px var(--shell-sub);
       position: relative;
     }
 
     .phone-hero::before {
       content: "";
       position: absolute;
-      left: 8px;
-      right: 8px;
-      top: 47.8%;
-      height: 9px;
+      left: 10px;
+      right: 10px;
+      top: 49%;
+      height: 8px;
       border-radius: 999px;
-      background: rgba(64, 68, 82, 0.16);
+      background: rgba(46, 52, 64, 0.16);
     }
 
     .phone-half {
       border: 2px solid var(--line);
-      border-radius: 24px;
+      border-radius: 20px;
       overflow: hidden;
-      background: #fff;
+      background: var(--panel-inner);
       position: relative;
     }
 
     .phone-top {
-      height: 160px;
+      height: 170px;
       margin-bottom: 8px;
-      padding: 20px 18px 18px;
-      background: linear-gradient(180deg, #fafcff 0%, var(--bg1) 100%);
+      padding: 16px;
     }
 
     .phone-bottom {
-      min-height: 240px;
-      padding: 14px 12px;
-      background: linear-gradient(180deg, var(--panel1) 0%, var(--panel2) 100%);
+      min-height: 235px;
+      padding: 12px;
     }
 
     .speaker {
       position: absolute;
-      top: 11px;
+      top: 10px;
       left: 50%;
       transform: translateX(-50%);
-      width: 60px;
-      height: 7px;
+      width: 62px;
+      height: 6px;
       border-radius: 999px;
-      background: rgba(64, 68, 82, 0.12);
+      background: rgba(46, 52, 64, 0.12);
     }
 
     .hero-screen {
       width: 100%;
       height: 100%;
       border: 2px solid var(--line);
-      border-radius: 18px;
-      background: linear-gradient(180deg, var(--bg2) 0%, var(--bg1) 100%);
+      border-radius: 14px;
+      background: #000;
       position: relative;
-      overflow: hidden;
     }
 
     .hero-screen::before {
-      content: "";
+      content: "터치하여 사진 촬영\A또는 업로드";
+      white-space: pre;
       position: absolute;
-      inset: 8px;
-      border: 2px solid rgba(64, 68, 82, 0.28);
-      border-radius: 14px;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
+      font-size: 13px;
+      line-height: 1.7;
+      font-weight: 700;
     }
 
     .hero-screen::after {
-      content: "MY LOG";
+      content: "";
       position: absolute;
-      left: 50%;
-      bottom: 10px;
-      transform: translateX(-50%);
-      font-family: "Galmuri11", sans-serif;
-      font-size: 17px;
-      color: rgba(64, 68, 82, 0.8);
+      top: 10px;
+      left: 12px;
+      width: 95px;
+      height: 10px;
+      background: linear-gradient(90deg, #00ff2f 0 80%, transparent 80% 100%);
     }
 
-    .hero-line {
-      width: 56%;
-      height: 16px;
+    .hero-mini-row {
+      display: grid;
+      grid-template-columns: 70px 1fr;
+      gap: 10px;
+      margin-bottom: 10px;
+      align-items: center;
+    }
+
+    .hero-circle {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      border: 2px solid var(--line);
+      background: var(--mylog);
+    }
+
+    .hero-pills {
+      display: grid;
+      gap: 10px;
+    }
+
+    .hero-pills div {
+      height: 30px;
       border-radius: 999px;
       border: 2px solid var(--line);
-      background: #fff;
-      margin-bottom: 10px;
+      background: var(--pill-a);
     }
 
-    .hero-box {
-      width: 100%;
-      height: 52px;
-      border-radius: 16px;
-      border: 2px solid var(--line);
-      background: #fff;
-      margin-bottom: 10px;
+    .hero-pills div:last-child {
+      background: var(--pill-b);
     }
 
     .hero-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 10px;
-      margin-bottom: 12px;
     }
 
     .hero-grid div {
-      min-height: 82px;
-      border-radius: 16px;
+      min-height: 96px;
       border: 2px solid var(--line);
+      border-radius: 14px;
       background: #fff;
-    }
-
-    .hero-pill {
-      width: 100%;
-      height: 54px;
-      border-radius: 999px;
-      border: 2px solid var(--line);
-      background: linear-gradient(90deg, var(--buttonA) 0%, var(--buttonB) 100%);
     }
 
     .btn {
       width: 100%;
       border: 2px solid var(--line);
-      border-radius: 18px;
+      border-radius: 16px;
       padding: 15px 16px;
       font-size: 15px;
       font-weight: 800;
@@ -333,18 +357,18 @@
     }
 
     .btn-primary {
-      background: linear-gradient(180deg, #303442 0%, #20242f 100%);
+      background: #2d3440;
       color: #fff;
     }
 
     .btn-soft {
       background: #fff;
-      color: #2a2e3a;
+      color: #2d3440;
     }
 
     .question-card {
       padding: 18px 15px 20px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.89));
+      background: var(--panel-inner);
     }
 
     .question-meta {
@@ -353,7 +377,7 @@
       align-items: center;
       font-family: "Galmuri9", sans-serif;
       font-size: 11px;
-      color: var(--soft);
+      color: var(--muted);
       margin-bottom: 12px;
     }
 
@@ -371,7 +395,7 @@
       width: 0%;
       height: 100%;
       border-radius: 999px;
-      background: linear-gradient(90deg, var(--buttonA) 0%, var(--buttonB) 100%);
+      background: #7fd1f0;
       transition: width 0.2s ease;
     }
 
@@ -387,7 +411,7 @@
       width: 100%;
       text-align: left;
       border: 2px solid var(--line);
-      border-radius: 20px;
+      border-radius: 18px;
       background: #fff;
       padding: 16px 14px;
       font-size: 15px;
@@ -399,71 +423,98 @@
     }
 
     .result-card {
-      padding: 14px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.89));
+      padding: 10px;
+      background: var(--panel-inner);
     }
 
-    .folder-phone {
+    .capture-phone {
       width: 100%;
-      max-width: 380px;
-      margin: 0 auto;
-      padding: 12px;
       border: 3px solid var(--line);
-      border-radius: 40px;
-      background: linear-gradient(180deg, var(--shell1) 0%, var(--shell2) 30%, var(--shell3) 64%, var(--shell4) 100%);
-      box-shadow: inset 0 0 0 3px rgba(255,255,255,0.42), 0 16px 30px var(--shadow);
+      border-radius: 26px;
+      background: var(--shell-main);
+      box-shadow: inset 0 0 0 3px var(--shell-sub);
+      padding: 10px;
       position: relative;
     }
 
-    .folder-phone::before {
+    .capture-phone::before {
       content: "";
       position: absolute;
       left: 8px;
       right: 8px;
-      top: 36%;
-      height: 9px;
+      top: 49%;
+      height: 8px;
       border-radius: 999px;
-      background: rgba(64, 68, 82, 0.17);
+      background: rgba(46, 52, 64, 0.16);
     }
 
-    .folder-top,
-    .folder-bottom {
+    .capture-top,
+    .capture-bottom {
       border: 2px solid var(--line);
-      border-radius: 24px;
+      border-radius: 20px;
       overflow: hidden;
-      background: #fff;
+      background: var(--panel-bg);
       position: relative;
     }
 
-    .folder-top {
-      height: 215px;
+    .capture-top {
+      height: 292px;
       margin-bottom: 8px;
-      padding: 22px 18px 18px;
-      background: linear-gradient(180deg, #f9fbff 0%, var(--bg1) 100%);
+      padding: 18px 10px 10px;
     }
 
-    .folder-bottom {
-      min-height: 365px;
-      padding: 18px 16px 18px;
-      background: linear-gradient(180deg, var(--panel1) 0%, var(--panel2) 100%);
+    .capture-bottom {
+      min-height: 282px;
+      padding: 10px;
     }
 
     .photo-frame {
       width: 100%;
       height: 100%;
       border: 2px solid var(--line);
-      border-radius: 20px;
-      background: #dfe6ee;
+      border-radius: 12px;
+      background: #000;
       overflow: hidden;
       position: relative;
       cursor: pointer;
     }
 
+    .screen-bar {
+      height: 18px;
+      background: #000;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 3;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 8px;
+      border-bottom: 1px solid rgba(0,255,47,0.32);
+      color: var(--screen-green);
+      font-family: "Galmuri9", sans-serif;
+      font-size: 10px;
+    }
+
+    .battery {
+      display: flex;
+      gap: 2px;
+      align-items: center;
+    }
+
+    .battery span {
+      width: 8px;
+      height: 10px;
+      background: var(--screen-green);
+      display: block;
+    }
+
     .photo-frame-inner {
       position: absolute;
-      inset: 0;
+      inset: 18px 0 0 0;
       overflow: hidden;
-      background: linear-gradient(180deg, var(--bg2) 0%, var(--bg1) 100%);
+      background: #000;
     }
 
     .photo-image {
@@ -479,207 +530,174 @@
       will-change: transform, filter, width, height;
     }
 
-    .retro-static {
+    .overlay-empty,
+    .overlay-nosignal {
       position: absolute;
       inset: 0;
-      overflow: hidden;
-      background:
-        radial-gradient(circle at 20% 30%, rgba(255,255,255,0.28) 0%, transparent 30%),
-        radial-gradient(circle at 80% 70%, rgba(255,255,255,0.2) 0%, transparent 28%),
-        linear-gradient(90deg, #111 0%, #666 18%, #d8d8d8 36%, #7a7a7a 58%, #f0f0f0 76%, #333 100%);
-      filter: contrast(1.15);
     }
 
-    .retro-static::before {
+    .overlay-empty {
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
+      padding: 14px;
+    }
+
+    .overlay-empty-text {
+      font-size: 14px;
+      line-height: 1.7;
+      font-weight: 700;
+    }
+
+    .overlay-nosignal {
+      background: #000;
+      overflow: hidden;
+    }
+
+    .overlay-nosignal::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(#ff4b4b 0.7px, transparent 0.7px),
+        radial-gradient(#4dff6c 0.7px, transparent 0.7px),
+        radial-gradient(#4db8ff 0.7px, transparent 0.7px),
+        radial-gradient(#ffffff 0.55px, transparent 0.55px);
+      background-size: 4px 4px, 4px 4px, 4px 4px, 3px 3px;
+      background-position: 0 0, 1px 2px, 2px 1px, 1px 1px;
+      opacity: 0.95;
+    }
+
+    .overlay-nosignal::after {
       content: "";
       position: absolute;
       inset: 0;
       background:
         repeating-linear-gradient(
           180deg,
-          rgba(255,255,255,0.06) 0px,
-          rgba(255,255,255,0.06) 1px,
-          rgba(0,0,0,0.14) 1px,
-          rgba(0,0,0,0.14) 3px
+          rgba(255,255,255,0.08) 0px,
+          rgba(255,255,255,0.08) 1px,
+          rgba(0,0,0,0.18) 1px,
+          rgba(0,0,0,0.18) 3px
         );
       mix-blend-mode: overlay;
     }
 
-    .retro-static::after {
-      content: "";
-      position: absolute;
-      top: -35%;
-      left: 0;
-      width: 100%;
-      height: 32%;
-      background: rgba(255,255,255,0.22);
-      filter: blur(8px);
-      animation: scanline 1.4s linear infinite;
-    }
-
-    .retro-static-noise {
+    .overlay-nosignal-text {
       position: absolute;
       inset: 0;
-      opacity: 0.34;
-      background-image:
-        radial-gradient(#fff 0.7px, transparent 0.7px),
-        radial-gradient(#000 0.7px, transparent 0.7px);
-      background-position: 0 0, 2px 2px;
-      background-size: 4px 4px;
-      mix-blend-mode: overlay;
-      animation: noiseMove 0.15s steps(4) infinite;
-    }
-
-    .retro-static-text {
-      position: absolute;
-      inset: 0;
-      z-index: 3;
+      z-index: 2;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-direction: column;
       color: #fff;
       text-align: center;
-      text-shadow: 0 1px 0 rgba(0,0,0,0.5);
+      text-shadow: 0 1px 0 rgba(0,0,0,0.45);
       font-family: "Galmuri11", sans-serif;
       padding: 12px;
-      animation: flicker 0.22s infinite steps(2);
     }
 
-    .retro-static-main {
+    .overlay-nosignal-main {
       font-size: 16px;
       margin-bottom: 6px;
     }
 
-    .retro-static-sub {
+    .overlay-nosignal-sub {
       font-family: "Galmuri9", sans-serif;
       font-size: 9px;
       line-height: 1.45;
-      opacity: 0.95;
+      opacity: 0.96;
     }
 
-    @keyframes scanline {
-      0% { top: -35%; }
-      100% { top: 120%; }
+    .result-top-row {
+      display: grid;
+      grid-template-columns: 72px 1fr;
+      gap: 10px;
+      margin-bottom: 10px;
+      align-items: start;
     }
 
-    @keyframes noiseMove {
-      0% { transform: translate(0, 0); }
-      25% { transform: translate(-2px, 1px); }
-      50% { transform: translate(2px, -1px); }
-      75% { transform: translate(1px, 2px); }
-      100% { transform: translate(0, 0); }
-    }
-
-    @keyframes flicker {
-      0% { opacity: 0.95; }
-      25% { opacity: 0.88; }
-      50% { opacity: 1; }
-      75% { opacity: 0.92; }
-      100% { opacity: 0.97; }
-    }
-
-    .result-head {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 16px;
-    }
-
-    .my-log-badge {
-      width: 78px;
-      height: 78px;
+    .my-log {
+      width: 72px;
+      height: 72px;
       border-radius: 50%;
       border: 2px solid var(--line);
-      background: radial-gradient(circle at 35% 28%, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.95) 16%, var(--chip) 16%, var(--buttonA) 100%);
+      background: var(--mylog);
       display: flex;
       align-items: center;
       justify-content: center;
       font-family: "Galmuri11", sans-serif;
-      font-size: 18px;
-      color: #313644;
-      flex-shrink: 0;
+      font-size: 16px;
+      text-align: center;
+      line-height: 1.1;
     }
 
-    .result-head-copy {
-      flex: 1;
-      min-width: 0;
-    }
-
-    .result-small {
-      font-family: "Galmuri9", sans-serif;
-      font-size: 10px;
-      color: var(--soft);
-      margin-bottom: 6px;
-    }
-
-    .result-summary {
-      font-size: 14px;
-      line-height: 1.65;
-      color: #575f73;
-      word-break: keep-all;
-    }
-
-    .wide-box {
-      border: 2px solid var(--line);
-      border-radius: 18px;
-      background: #fff;
-      padding: 14px 14px;
-      margin-bottom: 16px;
-      position: relative;
-    }
-
-    .wide-box::after {
-      content: "";
-      position: absolute;
-      left: 20px;
-      bottom: -11px;
-      width: 18px;
-      height: 18px;
-      background: #fff;
-      border-right: 2px solid var(--line);
-      border-bottom: 2px solid var(--line);
-      transform: rotate(45deg);
-    }
-
-    .wide-box-label {
-      font-family: "Galmuri9", sans-serif;
-      font-size: 10px;
-      color: var(--soft);
-      margin-bottom: 8px;
-    }
-
-    .wide-box-text {
-      font-size: 15px;
-      line-height: 1.6;
-      font-weight: 800;
-      word-break: keep-all;
-    }
-
-    .personality-grid {
+    .top-pills {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
+      gap: 8px;
     }
 
-    .personality-pill {
-      min-height: 92px;
+    .top-pill {
+      min-height: 30px;
+      border-radius: 999px;
       border: 2px solid var(--line);
-      border-radius: 18px;
-      background: linear-gradient(180deg, #fff 0%, var(--chip2) 100%);
-      padding: 13px 12px;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
-      font-size: 14px;
-      line-height: 1.55;
+      padding: 6px 12px;
+      font-size: 13px;
       font-weight: 800;
-      word-break: keep-all;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      background: var(--pill-a);
     }
 
+    .top-pill.second {
+      background: var(--pill-b);
+    }
+
+    .traits-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .trait-box {
+      min-height: 72px;
+      height: 72px;
+      border: 2px solid var(--line);
+      border-radius: 14px;
+      padding: 10px 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 12px;
+      line-height: 1;
+      font-weight: 800;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      background: #fff;
+    }
+
+    .trait-box.c1 { background: var(--box-a); }
+    .trait-box.c2 { background: var(--box-b); }
+    .trait-box.c3 { background: var(--box-c); }
+    .trait-box.c4 { background: var(--box-d); }
+    .trait-box.c5 { background: var(--box-e); }
+    .trait-box.c6 { background: var(--box-f); }
+    .trait-box.c7 { background: var(--box-g); }
+    .trait-box.c8 { background: var(--box-h); }
+
     .result-actions {
-      margin-top: 14px;
+      margin-top: 12px;
       display: grid;
       gap: 10px;
     }
@@ -688,7 +706,7 @@
       text-align: center;
       font-size: 12px;
       line-height: 1.55;
-      color: var(--soft);
+      color: var(--muted);
       margin-top: 2px;
     }
 
@@ -721,8 +739,8 @@
       width: 100%;
       max-width: 430px;
       border: 2px solid var(--line);
-      border-radius: 28px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(255,255,255,0.94));
+      border-radius: 24px;
+      background: var(--editor-bg);
       box-shadow: 0 18px 40px rgba(24, 27, 39, 0.22);
       padding: 16px 14px 14px;
     }
@@ -767,11 +785,36 @@
       margin: 0 auto 14px;
       aspect-ratio: 1 / 1;
       border: 2px solid var(--line);
-      border-radius: 20px;
+      border-radius: 12px;
       overflow: hidden;
-      background: linear-gradient(180deg, var(--bg2) 0%, var(--bg1) 100%);
+      background: #000;
       position: relative;
       touch-action: none;
+    }
+
+    .editor-screenbar {
+      height: 18px;
+      background: #000;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 3;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 8px;
+      border-bottom: 1px solid rgba(0,255,47,0.32);
+      color: var(--screen-green);
+      font-family: "Galmuri9", sans-serif;
+      font-size: 10px;
+    }
+
+    .editor-preview-inner {
+      position: absolute;
+      inset: 18px 0 0 0;
+      overflow: hidden;
+      background: #000;
     }
 
     .editor-preview-img {
@@ -787,11 +830,6 @@
       pointer-events: none;
     }
 
-    .editor-static {
-      position: absolute;
-      inset: 0;
-    }
-
     .filter-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -801,7 +839,7 @@
 
     .filter-btn {
       border: 2px solid var(--line);
-      border-radius: 16px;
+      border-radius: 14px;
       background: #fff;
       padding: 12px 8px;
       font-size: 13px;
@@ -811,7 +849,7 @@
     }
 
     .filter-btn.active {
-      background: linear-gradient(180deg, var(--buttonA) 0%, var(--buttonB) 100%);
+      background: #c9d7e8;
     }
 
     .range-grid {
@@ -822,7 +860,7 @@
 
     .range-box {
       border: 2px solid var(--line);
-      border-radius: 16px;
+      border-radius: 14px;
       background: #fff;
       padding: 10px 12px;
     }
@@ -840,12 +878,12 @@
     .range-value {
       font-family: "Galmuri9", sans-serif;
       font-size: 10px;
-      color: var(--soft);
+      color: var(--muted);
     }
 
     input[type="range"] {
       width: 100%;
-      accent-color: #7a8294;
+      accent-color: #6c7488;
     }
 
     .editor-helper,
@@ -853,7 +891,7 @@
       text-align: center;
       font-size: 12px;
       line-height: 1.55;
-      color: var(--soft);
+      color: var(--muted);
       margin-bottom: 12px;
     }
 
@@ -869,7 +907,7 @@
       overflow: auto;
       margin-bottom: 12px;
       border: 2px solid var(--line);
-      border-radius: 18px;
+      border-radius: 14px;
       background: #fff;
       padding: 10px;
     }
@@ -877,7 +915,15 @@
     .save-preview-wrap img {
       width: 100%;
       display: block;
-      border-radius: 12px;
+      border-radius: 10px;
+    }
+
+    @media (pointer: coarse) {
+      .range-box.zoom-box,
+      .range-box.x-box,
+      .range-box.y-box {
+        display: none;
+      }
     }
 
     @media (max-width: 420px) {
@@ -889,14 +935,8 @@
         font-size: 22px;
       }
 
-      .folder-top {
-        height: 205px;
-      }
-
-      .my-log-badge {
-        width: 72px;
-        height: 72px;
-        font-size: 17px;
+      .capture-top {
+        height: 272px;
       }
 
       .editor-actions {
@@ -919,7 +959,7 @@
   <main class="wrapper">
     <section id="startScreen" class="screen active">
       <div class="card start-card">
-        <div class="mini-label">retro folder phone</div>
+        <div class="mini-label">retro phone mood</div>
         <h1 class="main-title">성격 테스트로그</h1>
 
         <div class="phone-hero">
@@ -928,15 +968,19 @@
             <div class="hero-screen"></div>
           </div>
           <div class="phone-half phone-bottom">
-            <div class="hero-line"></div>
-            <div class="hero-box"></div>
+            <div class="hero-mini-row">
+              <div class="hero-circle"></div>
+              <div class="hero-pills">
+                <div></div>
+                <div></div>
+              </div>
+            </div>
             <div class="hero-grid">
               <div></div>
               <div></div>
               <div></div>
               <div></div>
             </div>
-            <div class="hero-pill"></div>
           </div>
         </div>
 
@@ -964,45 +1008,51 @@
 
     <section id="resultScreen" class="screen">
       <div class="card result-card">
-        <div id="captureArea" class="folder-phone">
-          <div class="folder-top">
+        <div id="captureArea" class="capture-phone">
+          <div class="capture-top">
             <div class="speaker"></div>
 
             <div class="photo-frame" id="photoFrame">
+              <div class="screen-bar">
+                <span>테스트잇 성격 로그</span>
+                <div class="battery"><span></span><span></span><span></span></div>
+              </div>
+
               <div class="photo-frame-inner" id="photoViewport">
-                <div class="retro-static" id="noSignalLayer">
-                  <div class="retro-static-noise"></div>
-                  <div class="retro-static-text">
-                    <div class="retro-static-main">NO SIGNAL</div>
-                    <div class="retro-static-sub">image not selected</div>
+                <div class="overlay-empty" id="emptyOverlay">
+                  <div class="overlay-empty-text">터치하여 사진 촬영<br>또는 업로드</div>
+                </div>
+
+                <div class="overlay-nosignal" id="noSignalOverlay" style="display:none;">
+                  <div class="overlay-nosignal-text">
+                    <div class="overlay-nosignal-main">NO SIGNAL</div>
+                    <div class="overlay-nosignal-sub">touch to select image</div>
                   </div>
                 </div>
+
                 <img id="resultPhotoImg" class="photo-image" alt="업로드 사진">
               </div>
             </div>
           </div>
 
-          <div class="folder-bottom">
-            <div class="result-head">
-              <div class="my-log-badge">MY LOG</div>
-              <div class="result-head-copy">
-                <div class="result-small">성격 테스트로그 결과</div>
-                <div class="result-summary" id="resultSummary">해야 할 걸 빠르게 정리하고 바로 실행하는 현실형 타입.</div>
+          <div class="capture-bottom">
+            <div class="result-top-row">
+              <div class="my-log">MY<br>LOG</div>
+              <div class="top-pills">
+                <div class="top-pill" id="topKeyword1">유리멘탈</div>
+                <div class="top-pill second" id="topKeyword2">과몰입장인</div>
               </div>
             </div>
 
-            <div class="wide-box">
-              <div class="wide-box-label">한 줄 성격</div>
-              <div class="wide-box-text" id="resultOneLine">효율과 책임감이 같이 움직이는 편</div>
-            </div>
-
-            <div class="personality-grid" id="personalityGrid">
-              <div class="personality-pill" id="trait1">할 말이 분명하고 빠름</div>
-              <div class="personality-pill" id="trait2">답답한 흐름을 잘 못 참음</div>
-              <div class="personality-pill" id="trait3">일 처리 속도가 꽤 좋음</div>
-              <div class="personality-pill" id="trait4">정리된 구조 안에서 강함</div>
-              <div class="personality-pill" id="trait5">판단할 때 망설임이 적은 편</div>
-              <div class="personality-pill" id="trait6">일이 쌓이면 바로 정리부터 함</div>
+            <div class="traits-grid">
+              <div class="trait-box c1" id="trait1">머릿속 상상 과다</div>
+              <div class="trait-box c2" id="trait2">남 일에도 같이 아픔</div>
+              <div class="trait-box c3" id="trait3">한마디에도 오래 남음</div>
+              <div class="trait-box c4" id="trait4">하나에 꽂히면 깊어짐</div>
+              <div class="trait-box c5" id="trait5">규칙보다 감정 우선</div>
+              <div class="trait-box c6" id="trait6">혼자 시간 꼭 필요함</div>
+              <div class="trait-box c7" id="trait7">좋아하는 건 오래 품음</div>
+              <div class="trait-box c8" id="trait8">현실보다 마음이 큼</div>
             </div>
           </div>
         </div>
@@ -1011,7 +1061,7 @@
           <button class="btn btn-primary" id="saveBtn">결과 이미지 저장하기</button>
           <button class="btn btn-soft" id="retryBtn">다시 해보기</button>
           <button class="btn btn-soft" id="shareBtn">테스트 공유하기</button>
-          <div class="helper">사진 부분을 누르면 촬영 또는 업로드 후 바로 편집창이 열려요.</div>
+          <div class="helper">사진 영역을 누르면 촬영 또는 업로드 후 바로 편집창이 열려요.</div>
         </div>
 
         <input type="file" id="uploadInput" class="hidden-input" accept="image/*">
@@ -1039,14 +1089,18 @@
       </div>
 
       <div class="editor-preview" id="editorPreview">
-        <div class="editor-static retro-static" id="editorNoSignal">
-          <div class="retro-static-noise"></div>
-          <div class="retro-static-text">
-            <div class="retro-static-main">NO SIGNAL</div>
-            <div class="retro-static-sub">image not loaded</div>
-          </div>
+        <div class="editor-screenbar">
+          <span>테스트잇 성격 로그</span>
+          <div class="battery"><span></span><span></span><span></span></div>
         </div>
-        <img id="editorPreviewImg" class="editor-preview-img" alt="편집 이미지">
+
+        <div class="editor-preview-inner" id="editorPreviewInner">
+          <div class="overlay-empty" id="editorEmptyOverlay">
+            <div class="overlay-empty-text">사진을 선택해 주세요</div>
+          </div>
+
+          <img id="editorPreviewImg" class="editor-preview-img" alt="편집 이미지">
+        </div>
       </div>
 
       <div class="filter-row">
@@ -1055,7 +1109,7 @@
       </div>
 
       <div class="range-grid">
-        <div class="range-box">
+        <div class="range-box zoom-box">
           <div class="range-label">
             <span>확대</span>
             <span class="range-value" id="zoomValue">1.00x</span>
@@ -1063,20 +1117,20 @@
           <input type="range" id="zoomRange" min="0.8" max="3" step="0.01" value="1">
         </div>
 
-        <div class="range-box">
+        <div class="range-box x-box">
           <div class="range-label">
             <span>좌우</span>
             <span class="range-value" id="xValue">0</span>
           </div>
-          <input type="range" id="xRange" min="-220" max="220" step="1" value="0">
+          <input type="range" id="xRange" min="-260" max="260" step="1" value="0">
         </div>
 
-        <div class="range-box">
+        <div class="range-box y-box">
           <div class="range-label">
             <span>상하</span>
             <span class="range-value" id="yValue">0</span>
           </div>
-          <input type="range" id="yRange" min="-220" max="220" step="1" value="0">
+          <input type="range" id="yRange" min="-260" max="260" step="1" value="0">
         </div>
 
         <div class="range-box">
@@ -1136,219 +1190,252 @@
     const resultData = {
       INTJ: {
         theme: "blue",
-        summary: "겉은 담백한데 안쪽에서는 이미 방향과 구조가 다 정리된 타입.",
-        oneLine: "말은 적어도 중심은 쉽게 안 흔들리는 편",
+        keyword1: "판짜는뇌",
+        keyword2: "조용한강자",
         traits: [
-          "혼자 있을 때 생각이 제일 선명함",
-          "허술한 흐름을 금방 잡아냄",
-          "정확한 말만 남기려는 편",
-          "한 번 정하면 오래 밀고 감",
-          "계획 안에 들어가면 집중력이 강함",
-          "감정보다 구조를 먼저 보는 편"
+          "혼자 있을 때 생각 선명",
+          "허술한 흐름 바로 포착",
+          "정확한 말만 남기려 함",
+          "한 번 정하면 오래 감",
+          "계획 안에서 집중력 강함",
+          "감정보다 구조 먼저 봄",
+          "괜히 말 늘이지 않음",
+          "기준이 꽤 단단한 편"
         ]
       },
       INTP: {
         theme: "lavender",
-        summary: "겉으로는 느슨해 보여도 머릿속 연결은 계속 돌아가는 타입.",
-        oneLine: "생각은 깊고 반응은 담백한 편",
+        keyword1: "생각과다",
+        keyword2: "혼자천재",
         traits: [
-          "혼자 파고드는 시간에 강함",
-          "뜬금없는데 맞는 생각이 많음",
-          "재미 없으면 집중이 꺼짐",
-          "관찰 후 한마디가 날카로움",
+          "혼자 파고드는 시간 강함",
+          "뜬금없는데 맞는 생각 많음",
+          "재미 없으면 집중 꺼짐",
+          "관찰 후 한마디 날카로움",
           "새 관점 찾는 걸 좋아함",
-          "머릿속 정리가 말보다 빠름"
+          "머릿속 정리가 더 빠름",
+          "말보다 사고가 먼저 감",
+          "의외로 디테일에 집요함"
         ]
       },
       ENTJ: {
         theme: "blue",
-        summary: "흐름을 읽고 정리하고 끌고 가는 속도가 빠른 타입.",
-        oneLine: "결정도 빠르고 판 짜는 감도 좋은 편",
+        keyword1: "직진리더",
+        keyword2: "정리중독",
         traits: [
-          "비효율을 보면 바로 답답함",
-          "할 말은 분명하게 하는 스타일",
-          "주도권 잡을 때 제일 편함",
+          "비효율 보면 바로 답답함",
+          "할 말은 분명하게 함",
+          "주도권 잡을 때 편함",
           "크게 보고 크게 움직임",
-          "정리부터 하고 바로 실행함",
-          "멈칫하는 시간보다 돌파가 빠름"
+          "정리 후 바로 실행함",
+          "멈칫하는 시간 짧은 편",
+          "결정 속도가 빠른 편",
+          "흐름 통제력이 꽤 강함"
         ]
       },
       ENTP: {
         theme: "lavender",
-        summary: "재미, 말센스, 아이디어가 동시에 살아 있는 타입.",
-        oneLine: "틀보다 재밌는 흐름에 더 빨리 반응함",
+        keyword1: "말잘함",
+        keyword2: "아이디어폭주",
         traits: [
-          "순간 재치가 좋고 말이 살아 있음",
-          "새 자극에 쉽게 심장이 뜀",
+          "순간 재치가 진짜 좋음",
+          "새 자극에 쉽게 들뜸",
           "고정된 틀에 오래 못 있음",
-          "분위기를 확 뒤집는 포인트가 있음",
-          "대화에서 아이디어가 튀어나옴",
-          "지루함을 가장 못 견디는 편"
+          "분위기 뒤집는 포인트 있음",
+          "대화에서 생각이 튀어나옴",
+          "지루함을 제일 못 참음",
+          "말하다가 아이디어 생김",
+          "재밌는 쪽으로 먼저 감"
         ]
       },
       INFJ: {
         theme: "lavender",
-        summary: "겉은 조용한데 감정선과 생각의 밀도가 꽤 깊은 타입.",
-        oneLine: "티는 적어도 속은 오래 남는 편",
+        keyword1: "조용한과몰입",
+        keyword2: "분위기캐치",
         traits: [
-          "사람 분위기와 마음을 잘 읽음",
-          "혼자 정리하는 시간이 꼭 필요함",
-          "좋아하는 건 깊고 오래 품음",
+          "사람 분위기랑 마음 잘 읽음",
+          "혼자 정리하는 시간 필요",
+          "좋아하는 건 깊고 오래 감",
           "겉보다 속결이 훨씬 진함",
-          "말보다 느낌으로 기억하는 편",
-          "조용한데 오래 남는 인상이 있음"
+          "말보다 느낌으로 기억함",
+          "조용한데 오래 남는 인상",
+          "겉으론 차분한 편",
+          "내면은 생각이 아주 많음"
         ]
       },
       INFP: {
         theme: "pink",
-        summary: "부드러워 보여도 자기 마음의 기준은 분명한 타입.",
-        oneLine: "감정도 중요하지만 진심은 더 중요함",
+        keyword1: "유리멘탈",
+        keyword2: "과몰입장인",
         traits: [
-          "좋아하는 것엔 깊게 빠짐",
-          "억지로 맞추는 건 오래 못 감",
-          "상상과 감수성이 꽤 풍부함",
-          "말보다 분위기로 감정이 드러남",
-          "겉보다 속이 더 단단한 편",
-          "진짜 마음에는 쉽게 타협 안 함"
+          "머릿속 상상 과다",
+          "남 일에도 같이 아픔",
+          "한마디에도 오래 남음",
+          "하나에 꽂히면 깊어짐",
+          "규칙보다 감정 우선",
+          "혼자 시간 꼭 필요함",
+          "좋아하는 건 오래 품음",
+          "현실보다 마음이 큼"
         ]
       },
       ENFJ: {
         theme: "pink",
-        summary: "사람을 편하게 만들고 흐름을 부드럽게 이끄는 타입.",
-        oneLine: "표현도 빠르고 챙김도 자연스러운 편",
+        keyword1: "분위기장인",
+        keyword2: "다정수집가",
         traits: [
-          "상대 반응을 금방 읽는 편",
-          "챙기는 행동이 진짜 빠름",
+          "상대 반응을 금방 읽음",
+          "챙기는 행동이 매우 빠름",
           "관계 분위기 정리에 강함",
           "좋아하면 표현이 분명함",
-          "사람들 사이 흐름을 잘 맞춤",
-          "따뜻함이 행동으로 바로 나옴"
+          "사람들 흐름을 잘 맞춤",
+          "따뜻함이 행동으로 나옴",
+          "눈치가 꽤 빠른 편",
+          "분위기 메이킹 잘함"
         ]
       },
       ENFP: {
         theme: "mint",
-        summary: "기분이 올라오면 표정부터 달라지고 좋은 건 바로 티나는 타입.",
-        oneLine: "설렘도 빠르고 표현도 빠른 편",
+        keyword1: "설렘탐지기",
+        keyword2: "흥폭주형",
         traits: [
-          "가만히 있어도 존재감이 남",
-          "마음 가면 바로 움직이는 편",
-          "좋아하면 반응이 숨겨지지 않음",
+          "가만히 있어도 존재감 큼",
+          "마음 가면 바로 움직임",
+          "좋아하면 반응 숨기기 힘듦",
           "재미와 감정에 진심임",
-          "새로운 분위기에 쉽게 들뜸",
-          "지금 꽂힌 것에 몰입이 빠름"
+          "새 분위기에 쉽게 들뜸",
+          "꽂힌 것에 몰입이 빠름",
+          "표정 변화가 큰 편",
+          "좋아하는 일엔 진짜 뜨거움"
         ]
       },
       ISTJ: {
         theme: "blue",
-        summary: "흔들림보다 안정감을 만들고 자기 몫을 끝까지 해내는 타입.",
-        oneLine: "과장 없이 묵직하게 믿음 주는 편",
+        keyword1: "묵직한신뢰",
+        keyword2: "정리본능",
         traits: [
-          "기준이 분명해서 흐름이 안정적임",
-          "맡은 일은 끝까지 끌고 감",
-          "즉흥보다 준비된 상태가 편함",
+          "기준이 분명해서 안정적임",
+          "맡은 일은 끝까지 감",
+          "즉흥보다 준비가 편함",
           "작은 변화도 잘 챙김",
-          "해야 할 걸 놓치지 않는 편",
-          "조용하지만 책임감이 강함"
+          "해야 할 걸 잘 안 놓침",
+          "조용하지만 책임감 강함",
+          "신뢰감을 주는 편",
+          "흔들림보다 꾸준함 택함"
         ]
       },
       ISFJ: {
         theme: "pink",
-        summary: "티는 많이 안 내도 세심하게 챙기고 오래 기억하는 타입.",
-        oneLine: "소란스럽지 않아도 다정함이 남는 편",
+        keyword1: "조용한다정",
+        keyword2: "기억창고",
         traits: [
           "작은 포인트를 잘 기억함",
-          "관계 온도 변화에 민감함",
+          "관계 온도 변화에 민감",
           "익숙한 흐름에서 편안함",
-          "마음 주면 오래 가는 스타일",
-          "챙김이 말보다 행동으로 나옴",
-          "조용히 뒤를 받쳐주는 편"
+          "마음 주면 오래 감",
+          "챙김이 행동으로 나옴",
+          "조용히 뒤를 받쳐줌",
+          "상대 취향을 잘 기억함",
+          "부담 없이 다정한 편"
         ]
       },
       ESTJ: {
         theme: "blue",
-        summary: "해야 할 걸 빠르게 정리하고 바로 실행하는 현실형 타입.",
-        oneLine: "효율과 책임감이 같이 움직이는 편",
+        keyword1: "일처리왕",
+        keyword2: "속도중요",
         traits: [
           "할 말이 분명하고 빠름",
-          "답답한 흐름을 잘 못 참음",
-          "일 처리 속도가 꽤 좋음",
+          "답답한 흐름을 못 참음",
+          "일 처리 속도가 좋음",
           "정리된 구조 안에서 강함",
-          "판단할 때 망설임이 적은 편",
-          "일이 쌓이면 바로 정리부터 함"
+          "판단할 때 망설임 적음",
+          "일 쌓이면 정리부터 함",
+          "효율을 꽤 중요하게 봄",
+          "실행력이 강한 편"
         ]
       },
       ESFJ: {
         theme: "pink",
-        summary: "표현도 확실하고 정도 많아서 관계를 안정적으로 이어가는 타입.",
-        oneLine: "따뜻함이 행동으로 바로 드러나는 편",
+        keyword1: "챙김만렙",
+        keyword2: "따뜻한현실형",
         traits: [
-          "반응이 빠르고 살가운 편",
-          "챙기는 행동이 자연스럽게 나옴",
-          "좋은 분위기 유지에 신경 씀",
-          "호감 있으면 정성이 눈에 띔",
-          "사람들 기분을 잘 살핌",
-          "현실적으로 챙겨주는 편"
+          "반응이 빠르고 살가움",
+          "챙기는 행동이 자연스러움",
+          "좋은 분위기 유지 신경 씀",
+          "호감 있으면 정성이 보임",
+          "사람 기분을 잘 살핌",
+          "현실적으로 챙겨주는 편",
+          "관계의 온도 유지 잘함",
+          "배려가 생활에 녹아 있음"
         ]
       },
       ISTP: {
         theme: "mint",
-        summary: "말보다 행동, 설명보다 감각이 먼저 움직이는 타입.",
-        oneLine: "조용해 보여도 필요한 순간엔 제일 빠름",
+        keyword1: "쿨한실전파",
+        keyword2: "행동우선",
         traits: [
           "쿨하고 담백한 결이 강함",
-          "혼자 집중할 때 힘이 잘 남",
-          "과한 간섭은 진짜 답답해함",
-          "상황 판단이 꽤 현실적임",
+          "혼자 집중할 때 힘 남",
+          "과한 간섭은 진짜 답답함",
+          "상황 판단이 현실적임",
           "필요할 때만 바로 움직임",
-          "말수보다 결과가 먼저 나옴"
+          "말수보다 결과가 먼저 나옴",
+          "실전 대응이 꽤 강함",
+          "혼자 해내는 힘이 있음"
         ]
       },
       ISFP: {
         theme: "pink",
-        summary: "잔잔하고 유연하지만 취향과 감정은 분명한 타입.",
-        oneLine: "편안해 보여도 내 마음 기준은 또렷함",
+        keyword1: "잔잔한취향파",
+        keyword2: "감각생활자",
         traits: [
-          "무드와 감각에 민감한 편",
-          "억지 분위기를 오래 못 견딤",
+          "무드와 감각에 민감함",
+          "억지 분위기를 못 견딤",
           "좋아하는 건 확실히 좋아함",
           "조용히 자기 방식대로 감",
-          "편안한 분위기에서 더 살아남",
-          "취향이 생각보다 분명한 편"
+          "편한 분위기에서 더 살아남",
+          "취향이 생각보다 분명함",
+          "은근히 고집이 있는 편",
+          "잔잔한데 결이 뚜렷함"
         ]
       },
       ESTP: {
         theme: "mint",
-        summary: "생각만 하기보다 먼저 부딪히고 움직이는 데 강한 타입.",
-        oneLine: "현장감, 순발력, 재미를 잘 탐",
+        keyword1: "순간반응형",
+        keyword2: "현장체질",
         traits: [
           "반응 속도가 꽤 빠름",
-          "기회 보이면 바로 잡으려 함",
-          "답답한 템포를 잘 못 참음",
+          "기회 보이면 바로 잡음",
+          "답답한 템포를 못 참음",
           "지금 이 순간 감각이 살아 있음",
-          "즉흥 대응이 꽤 강한 편",
-          "가만히 있는 시간보다 현장이 편함"
+          "즉흥 대응이 꽤 강함",
+          "현장이 제일 편한 편",
+          "생각보다 행동이 먼저 감",
+          "순간 판단력이 좋음"
         ]
       },
       ESFP: {
         theme: "pink",
-        summary: "밝고 생기 있고 지금 이 순간을 즐기는 힘이 큰 타입.",
-        oneLine: "즐거움도 애정 표현도 자연스럽게 나오는 편",
+        keyword1: "생기충전형",
+        keyword2: "즐거움탐색",
         traits: [
-          "분위기를 환하게 만드는 편",
+          "분위기를 환하게 만듦",
           "감정 표현이 솔직하고 빠름",
           "지금의 재미를 놓치지 않음",
           "호감 생기면 반응도 분명함",
-          "사람 많은 자리에서도 금방 풀림",
-          "눈에 띄는 생기가 있는 편"
+          "사람 많은 자리도 잘 풀림",
+          "눈에 띄는 생기가 있음",
+          "분위기 타는 감각이 좋음",
+          "좋은 순간을 크게 즐김"
         ]
       }
     };
 
     let currentQuestion = 0;
     let scores = { E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0 };
-    let currentResultType = "ESTJ";
+    let currentResultType = "INFP";
     let uploadedImage = "";
     let lastGeneratedImage = "";
+    let overlayMode = "empty";
 
     const editState = {
       scale: 1,
@@ -1382,19 +1469,22 @@
     const optionA = document.getElementById("optionA");
     const optionB = document.getElementById("optionB");
 
-    const resultSummary = document.getElementById("resultSummary");
-    const resultOneLine = document.getElementById("resultOneLine");
+    const topKeyword1 = document.getElementById("topKeyword1");
+    const topKeyword2 = document.getElementById("topKeyword2");
     const trait1 = document.getElementById("trait1");
     const trait2 = document.getElementById("trait2");
     const trait3 = document.getElementById("trait3");
     const trait4 = document.getElementById("trait4");
     const trait5 = document.getElementById("trait5");
     const trait6 = document.getElementById("trait6");
+    const trait7 = document.getElementById("trait7");
+    const trait8 = document.getElementById("trait8");
 
     const photoFrame = document.getElementById("photoFrame");
     const photoViewport = document.getElementById("photoViewport");
     const resultPhotoImg = document.getElementById("resultPhotoImg");
-    const noSignalLayer = document.getElementById("noSignalLayer");
+    const emptyOverlay = document.getElementById("emptyOverlay");
+    const noSignalOverlay = document.getElementById("noSignalOverlay");
 
     const uploadInput = document.getElementById("uploadInput");
     const cameraInput = document.getElementById("cameraInput");
@@ -1407,8 +1497,9 @@
     const editorModal = document.getElementById("editorModal");
     const closeEditorBtn = document.getElementById("closeEditorBtn");
     const editorPreview = document.getElementById("editorPreview");
+    const editorPreviewInner = document.getElementById("editorPreviewInner");
     const editorPreviewImg = document.getElementById("editorPreviewImg");
-    const editorNoSignal = document.getElementById("editorNoSignal");
+    const editorEmptyOverlay = document.getElementById("editorEmptyOverlay");
 
     const zoomRange = document.getElementById("zoomRange");
     const xRange = document.getElementById("xRange");
@@ -1561,14 +1652,16 @@
       document.body.className = "";
       document.body.classList.add(`theme-${data.theme}`);
 
-      resultSummary.textContent = data.summary;
-      resultOneLine.textContent = data.oneLine;
+      topKeyword1.textContent = data.keyword1;
+      topKeyword2.textContent = data.keyword2;
       trait1.textContent = data.traits[0];
       trait2.textContent = data.traits[1];
       trait3.textContent = data.traits[2];
       trait4.textContent = data.traits[3];
       trait5.textContent = data.traits[4];
       trait6.textContent = data.traits[5];
+      trait7.textContent = data.traits[6];
+      trait8.textContent = data.traits[7];
 
       renderAllPhotos();
       showScreen("result");
@@ -1601,6 +1694,8 @@
       const reader = new FileReader();
       reader.onload = function(e) {
         uploadedImage = e.target.result;
+        overlayMode = "empty";
+
         editState.scale = 1;
         editState.x = 0;
         editState.y = 0;
@@ -1631,6 +1726,7 @@
 
     function removePhoto() {
       uploadedImage = "";
+      overlayMode = "empty";
       editState.scale = 1;
       editState.x = 0;
       editState.y = 0;
@@ -1669,25 +1765,53 @@
       });
     }
 
+    function updateOverlayState(mode) {
+      overlayMode = mode;
+      if (uploadedImage) {
+        emptyOverlay.style.display = "none";
+        noSignalOverlay.style.display = "none";
+        return;
+      }
+
+      if (mode === "nosignal") {
+        emptyOverlay.style.display = "none";
+        noSignalOverlay.style.display = "block";
+      } else {
+        emptyOverlay.style.display = "flex";
+        noSignalOverlay.style.display = "none";
+      }
+    }
+
     function getFilterCss() {
       const b = editState.brightness / 100;
       if (editState.mono) {
-        return `brightness(${b}) grayscale(1) contrast(1.02)`;
+        return `brightness(${b}) grayscale(1) contrast(1.05)`;
       }
       return `brightness(${b})`;
     }
 
     function renderAllPhotos() {
-      renderSinglePhoto(resultPhotoImg, noSignalLayer, photoViewport);
-      renderSinglePhoto(editorPreviewImg, editorNoSignal, editorPreview);
+      renderSinglePhoto(resultPhotoImg, photoViewport, false);
+      renderSinglePhoto(editorPreviewImg, editorPreviewInner, true);
     }
 
-    function renderSinglePhoto(imgEl, staticEl, viewportEl) {
+    function renderSinglePhoto(imgEl, viewportEl, isEditor = false) {
       if (!uploadedImage) {
         imgEl.style.display = "none";
         imgEl.removeAttribute("src");
-        staticEl.style.display = "block";
+        if (isEditor) {
+          editorEmptyOverlay.style.display = "flex";
+        } else {
+          updateOverlayState(overlayMode);
+        }
         return;
+      }
+
+      if (isEditor) {
+        editorEmptyOverlay.style.display = "none";
+      } else {
+        emptyOverlay.style.display = "none";
+        noSignalOverlay.style.display = "none";
       }
 
       if (imgEl.getAttribute("src") !== uploadedImage) {
@@ -1695,12 +1819,13 @@
       }
 
       imgEl.style.display = "block";
-      staticEl.style.display = "none";
+
+      const apply = () => applyPhotoLayout(imgEl, viewportEl);
 
       if (!imgEl.complete) {
-        imgEl.onload = () => applyPhotoLayout(imgEl, viewportEl);
+        imgEl.onload = apply;
       } else {
-        applyPhotoLayout(imgEl, viewportEl);
+        apply();
       }
     }
 
@@ -1811,24 +1936,103 @@
 
     function clampEditState() {
       editState.scale = Math.min(3, Math.max(0.8, editState.scale));
-      editState.x = Math.min(220, Math.max(-220, editState.x));
-      editState.y = Math.min(220, Math.max(-220, editState.y));
+      editState.x = Math.min(260, Math.max(-260, editState.x));
+      editState.y = Math.min(260, Math.max(-260, editState.y));
       editState.brightness = Math.min(160, Math.max(60, editState.brightness));
     }
 
+    function waitForPaint() {
+      return new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+    }
+
+    function drawEditedPhotoToCanvas(canvas, captureArea) {
+      if (!uploadedImage) return Promise.resolve(canvas);
+
+      return new Promise(resolve => {
+        const img = new Image();
+        img.onload = () => {
+          const captureRect = captureArea.getBoundingClientRect();
+          const viewportRect = photoViewport.getBoundingClientRect();
+
+          const scaleX = canvas.width / captureRect.width;
+          const scaleY = canvas.height / captureRect.height;
+
+          const vx = (viewportRect.left - captureRect.left) * scaleX;
+          const vy = (viewportRect.top - captureRect.top) * scaleY;
+          const vw = viewportRect.width * scaleX;
+          const vh = viewportRect.height * scaleY;
+
+          const iw = img.naturalWidth;
+          const ih = img.naturalHeight;
+          const coverScale = Math.max(vw / iw, vh / ih);
+
+          const baseWidth = iw * coverScale;
+          const baseHeight = ih * coverScale;
+          const finalWidth = baseWidth * editState.scale;
+          const finalHeight = baseHeight * editState.scale;
+
+          const centerX = vx + vw / 2;
+          const centerY = vy + vh / 2;
+          const drawX = centerX - finalWidth / 2 + editState.x * scaleX;
+          const drawY = centerY - finalHeight / 2 + editState.y * scaleY;
+
+          const ctx = canvas.getContext("2d");
+          ctx.save();
+          ctx.beginPath();
+          ctx.rect(vx, vy, vw, vh);
+          ctx.clip();
+
+          let filter = `brightness(${editState.brightness}%)`;
+          if (editState.mono) {
+            filter += " grayscale(100%) contrast(105%)";
+          }
+          ctx.filter = filter;
+
+          ctx.drawImage(img, drawX, drawY, finalWidth, finalHeight);
+          ctx.restore();
+          resolve(canvas);
+        };
+        img.src = uploadedImage;
+      });
+    }
+
     async function openSavePreview() {
-      renderAllPhotos();
+      if (!uploadedImage) {
+        updateOverlayState("nosignal");
+      } else {
+        updateOverlayState("empty");
+      }
+
+      await waitForPaint();
 
       const captureArea = document.getElementById("captureArea");
-      const canvas = await html2canvas(captureArea, {
+      const wasImageVisible = uploadedImage && resultPhotoImg.style.display !== "none";
+
+      if (uploadedImage) {
+        resultPhotoImg.style.visibility = "hidden";
+        await waitForPaint();
+      }
+
+      let canvas = await html2canvas(captureArea, {
         backgroundColor: null,
         scale: 2,
         useCORS: true
       });
 
+      if (uploadedImage) {
+        canvas = await drawEditedPhotoToCanvas(canvas, captureArea);
+        resultPhotoImg.style.visibility = "visible";
+      }
+
       lastGeneratedImage = canvas.toDataURL("image/png");
       savePreviewImage.src = lastGeneratedImage;
       saveModal.classList.add("active");
+
+      if (!uploadedImage) {
+        updateOverlayState("empty");
+      } else if (wasImageVisible) {
+        renderAllPhotos();
+      }
     }
 
     function closeSavePreview() {
@@ -1838,7 +2042,7 @@
     async function shareTest() {
       const shareData = {
         title: "테스트잇 성격 테스트로그",
-        text: "폴더폰 감성으로 저장하는 성격 테스트로그",
+        text: "옛날 핸드폰 감성으로 저장하는 성격 테스트로그",
         url: window.location.href
       };
 
@@ -1859,9 +2063,10 @@
     function resetTest() {
       currentQuestion = 0;
       scores = { E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0 };
-      currentResultType = "ESTJ";
+      currentResultType = "INFP";
       uploadedImage = "";
       lastGeneratedImage = "";
+      overlayMode = "empty";
 
       editState.scale = 1;
       editState.x = 0;
@@ -1873,6 +2078,9 @@
       syncEditorNumbers();
       syncFilterButtons();
       renderAllPhotos();
+
+      uploadInput.value = "";
+      cameraInput.value = "";
 
       closePicker();
       closeEditor();

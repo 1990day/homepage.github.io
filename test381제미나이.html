@@ -72,11 +72,11 @@
   /* 폴더폰 기기 프레임 */
   #app {
     width: 100%;
-    max-width: 360px;
+    max-width: 500px; /* 360px에서 500px로 확대 */
     background-color: var(--kitsch-main);
     border: 3px solid var(--kitsch-border);
-    border-radius: 20px 20px 20px 20px;
-    padding: 20px 15px 20px 15px;
+    border-radius: 20px;
+    padding: 20px 15px;
     box-shadow: inset 4px 4px 8px rgba(255,255,255,0.5), inset -4px -4px 8px rgba(0,0,0,0.2), 0 10px 20px rgba(0,0,0,0.2);
     box-sizing: border-box;
     display: flex;
@@ -285,7 +285,7 @@
     background: #fff;
   }
 
-  .circle { border-radius: 50%; width: 55px; height: 55px; font-weight: bold; font-size: 15px; line-height: 1.2; }
+  .circle { border-radius: 50%; width: 55px; height: 55px; font-weight: bold; font-size: 15px; line-height: 1.2; flex-shrink: 0; }
   .pill { border-radius: 20px; padding: 6px 10px; font-size: 14px; flex: 1; font-weight: bold; }
   
   .content-split {
@@ -325,7 +325,7 @@
   .trait-btn {
     border: 2px solid #000;
     border-radius: 8px;
-    font-size: 12px;
+    font-size: 13px; /* 너비가 넓어져서 폰트 크기 살짝 키움 */
     font-weight: bold;
     display: flex;
     align-items: center;
@@ -337,19 +337,19 @@
   }
 
   /* 8개 버튼에 각각 예쁘고 다채로운 마카롱 하이틴 파스텔 톤 부여 */
-  .trait-btn:nth-child(1) { background-color: #FFB3BA; } /* 피치 핑크 */
-  .trait-btn:nth-child(2) { background-color: #FFDFBA; } /* 파스텔 오렌지 */
-  .trait-btn:nth-child(3) { background-color: #FFFFBA; } /* 레몬 옐로우 */
-  .trait-btn:nth-child(4) { background-color: #BAFFC9; } /* 애플 민트 */
-  .trait-btn:nth-child(5) { background-color: #BAE1FF; } /* 베이비 블루 */
-  .trait-btn:nth-child(6) { background-color: #D4B0FF; } /* 라벤더 퍼플 */
-  .trait-btn:nth-child(7) { background-color: #FFC8E3; } /* 딸기우유 핑크 */
-  .trait-btn:nth-child(8) { background-color: #B2F0E6; } /* 아쿠아 민트 */
+  .trait-btn:nth-child(1) { background-color: #FFB3BA; }
+  .trait-btn:nth-child(2) { background-color: #FFDFBA; }
+  .trait-btn:nth-child(3) { background-color: #FFFFBA; }
+  .trait-btn:nth-child(4) { background-color: #BAFFC9; }
+  .trait-btn:nth-child(5) { background-color: #BAE1FF; }
+  .trait-btn:nth-child(6) { background-color: #D4B0FF; }
+  .trait-btn:nth-child(7) { background-color: #FFC8E3; }
+  .trait-btn:nth-child(8) { background-color: #B2F0E6; }
 
   /* 외부 버튼 (저장, 다시하기 등) */
   .external-actions {
     width: 100%;
-    max-width: 360px;
+    max-width: 500px; /* 여기도 500px로 통일 */
     margin-top: 15px;
     display: none;
     flex-direction: column;
@@ -373,7 +373,7 @@
 
   #final-captured-image {
     width: 90%;
-    max-width: 350px;
+    max-width: 450px;
     border: 3px solid #FF69B4;
     border-radius: 12px;
     margin-bottom: 20px;
@@ -392,7 +392,7 @@
 
   #edit-container {
     width: 90%;
-    max-width: 350px;
+    max-width: 400px;
     background-color: #FFE4E1;
     border: 3px solid #000;
     border-radius: 15px;
@@ -563,7 +563,7 @@
     { q: "과제가 주어졌을 때 나는?", a: { text: "미리미리 조금씩 해둔다", type: "J" }, b: { text: "마감 직전 엄청난 집중력으로 끝낸다", type: "P" } }
   ];
 
-const resultsData = {
+  const resultsData = {
     "ISTJ": { k1: "원칙주의", k2: "약속칼같이", good: "책임감최고", bad: "융통성제로", details: ["원칙대로 살기", "지각 절대불가", "인간 알파고", "안정감이 최고", "계획충의 정석", "속 깊은 츤데레", "거짓말 극혐함", "묵묵한 책임감"] },
     "ISFJ": { k1: "다정다감", k2: "눈치백단", good: "섬세한센스", bad: "거절을못함", details: ["따뜻한 힐러상", "분위기 파악왕", "내사람 챙기기", "거절 못해 끙끙", "사소한것 기억", "익숙함이 편해", "눈치 많이 보는", "배려심 끝판왕"] },
     "INFJ": { k1: "통찰력갑", k2: "완벽주의", good: "사람보는눈", bad: "유리멘탈", details: ["동굴시간 필수", "속으론 다알아", "통찰력 대마왕", "피곤한 완벽함", "무례하면 손절", "이상향을 꿈꿈", "생각이 너무많아", "속을 알수없음"] },

@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>테스트잇 - 성격 테스트로그</title>
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DungGeunMo&display=swap');
+
+  :root {
+    --theme-bg: #fff0f5;
+    --theme-point: #ffb6c1;
+    --theme-btn: #ff69b4;
+  }
+
+  /* 16가지 MBTI 쨍하고 다채로운 플랫 컬러 테마 */
+  body.theme-istj { --theme-bg: #e3f2fd; --theme-point: #90caf9; --theme-btn: #42a5f5; }
+  body.theme-isfj { --theme-bg: #e8f5e9; --theme-point: #a5d6a7; --theme-btn: #66bb6a; }
+  body.theme-infj { --theme-bg: #f3e5f5; --theme-point: #ce93d8; --theme-btn: #ab47bc; }
+  body.theme-intj { --theme-bg: #ede7f6; --theme-point: #b39ddb; --theme-btn: #7e57c2; }
+  body.theme-istp { --theme-bg: #e0f7fa; --theme-point: #80deea; --theme-btn: #26c6da; }
+  body.theme-isfp { --theme-bg: #f1f8e9; --theme-point: #c5e1a5; --theme-btn: #9ccc65; }
+  body.theme-infp { --theme-bg: #e1f5fe; --theme-point: #81d4fa; --theme-btn: #29b6f6; }
+  body.theme-intp { --theme-bg: #fce4ec; --theme-point: #f48fb1; --theme-btn: #ec407a; }
+  body.theme-estp { --theme-bg: #fffde7; --theme-point: #fff59d; --theme-btn: #fbc02d; }
+  body.theme-esfp { --theme-bg: #fff3e0; --theme-point: #ffcc80; --theme-btn: #ffa726; }
+  body.theme-enfp { --theme-bg: #fbe9e7; --theme-point: #ffab91; --theme-btn: #ff7043; }
+  body.theme-entp { --theme-bg: #fff8e1; --theme-point: #ffe082; --theme-btn: #ffca28; }
+  body.theme-estj { --theme-bg: #f0f4c3; --theme-point: #e6ee9c; --theme-btn: #cddc39; }
+  body.theme-esfj { --theme-bg: #fff9c4; --theme-point: #fff59d; --theme-btn: #fdd835; }
+  body.theme-enfj { --theme-bg: #fce4ec; --theme-point: #f8bbd0; --theme-btn: #f06292; }
+  body.theme-entj { --theme-bg: #ffebee; --theme-point: #ef9a9a; --theme-btn: #ef5350; }
+
+  body {
+    margin: 0;
+    padding: 0;
+    padding-top: 60px;
+    padding-bottom: 40px;
+    background-color: #f0f0f0;
+    font-family: 'DungGeunMo', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+  }
+
+  /* 테스트잇 헤더 */
+  .test-it-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    box-sizing: border-box;
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.7);
+    z-index: 1000;
+    border-bottom: 2px solid #000;
+  }
+  .test-it-header .logo { font-weight: bold; font-size: 18px; color: #000; }
+  .test-it-header .nav { display: flex; gap: 15px; font-size: 14px; color: #000; font-weight: bold; }
+
+  /* 밝은 톤의 폰 프레임 */
+  #app {
+    width: 100%;
+    max-width: 380px;
+    background-color: #fafafa;
+    border: 4px solid #000;
+    border-radius: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    overflow: hidden;
+  }
+
+  /* 스피커 */
+  .speaker {
+    height: 30px;
+    background-color: #fafafa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 2px solid #000;
+  }
+  .speaker-hole {
+    width: 60px;
+    height: 6px;
+    background-color: #333;
+    border-radius: 3px;
+  }
+
+  /* 메인/질문 스크린 */
+  .screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 20px;
+    box-sizing: border-box;
+    text-align: center;
+    background-color: var(--theme-bg);
+    min-height: 500px;
+  }
+
+  h1 { font-size: 28px; margin-bottom: 10px; color: #000; }
+  .subtitle { font-size: 14px; margin-bottom: 40px; color: #333; line-height: 1.4; }
+  
+  /* 깔끔한 플랫 버튼 */
+  .btn {
+    background-color: var(--theme-btn);
+    color: #000;
+    border: 2px solid #000;
+    border-radius: 8px;
+    padding: 15px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: inherit;
+    width: 100%;
+    margin-bottom: 15px;
+    box-shadow: 2px 2px 0 #000;
+    transition: transform 0.1s, box-shadow 0.1s;
+  }
+
+  .btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: 0 0 0 #000;
+  }
+
+  .progress-container {
+    width: 100%;
+    height: 14px;
+    background-color: #fff;
+    border: 2px solid #000;
+    border-radius: 7px;
+    margin-bottom: 40px;
+    overflow: hidden;
+  }
+  .progress-bar {
+    height: 100%;
+    background-color: var(--theme-btn);
+    width: 0%;
+    transition: width 0.3s;
+  }
+
+  #question-text { 
+    font-size: 20px; 
+    margin-bottom: 50px; 
+    line-height: 1.6; 
+    background: #fff; 
+    padding: 20px; 
+    border: 2px solid #000; 
+    border-radius: 12px; 
+    box-shadow: 2px 2px 0 #000;
+    font-weight: bold;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* 결과 화면 */
+  #result-screen {
+    display: none;
+    flex-direction: column;
+    padding: 10px;
+    background-color: #fafafa;
+  }
+
+  #capture-area {
+    width: 100%;
+    aspect-ratio: 9 / 16;
+    background-color: var(--theme-bg);
+    border: 2px solid #000;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .status-bar {
+    height: 24px;
+    background-color: #000;
+    color: #00ff00;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    font-size: 12px;
+    z-index: 10;
+  }
+
+  .folder-top {
+    height: 40%;
+    border-bottom: 2px solid #000;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background-color: #333;
+  }
+
+  #noise-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    z-index: 1;
+    display: none;
+    image-rendering: pixelated;
+  }
+
+  #no-signal-text {
+    position: absolute;
+    color: #fff;
+    font-size: 32px;
+    letter-spacing: 2px;
+    z-index: 2;
+    text-shadow: 2px 2px 0 #000;
+    display: none;
+  }
+
+  #image-upload {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 10;
+  }
+
+  .upload-placeholder {
+    font-size: 16px;
+    color: #fff;
+    pointer-events: none;
+    text-align: center;
+    line-height: 1.6;
+    text-shadow: 2px 2px 0 #000;
+    z-index: 5;
+  }
+
+  #preview-img-final {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 8;
+  }
+
+  .folder-bottom {
+    flex: 1;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    background-color: var(--theme-bg);
+  }
+
+  .trait-row { display: flex; gap: 8px; margin-bottom: 8px; }
+
+  /* 단색 그림자로 깔끔한 레트로 박스 */
+  .retro-box {
+    background-color: var(--theme-point);
+    color: #000;
+    border: 2px solid #000;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-shadow: 2px 2px 0 #000;
+  }
+
+  .circle { border-radius: 50%; width: 60px; height: 60px; font-weight: bold; font-size: 16px; line-height: 1.2; background-color: #fff; }
+  .pill { border-radius: 25px; padding: 5px 10px; font-size: 14px; flex: 1; font-weight: bold; }
+  .rect-wide { width: 100%; height: 38px; font-weight: bold; font-size: 15px; margin-bottom: 8px; background-color: #fff; }
+  
+  /* 양쪽 칸 높이 맞춤 (stretch 속성 활용) */
+  .rect-small { height: 100%; display: flex; flex-direction: column; font-size: 13px; font-weight: bold; background-color: var(--theme-point); padding: 10px 0;}
+  .rect-small span { font-size: 10px; opacity: 0.7; margin-bottom: 5px; font-weight: normal; }
+  
+  .rect-tall { 
+    height: 100%; 
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-start; 
+    justify-content: space-evenly; 
+    text-align: left; 
+    font-size: 12px; 
+    padding: 10px 12px;
+    background-color: #fff;
+    line-height: 1.4;
+    box-sizing: border-box;
+  }
+  
+  .trait-item {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* 기기 바깥 하단 버튼 4개 영역 */
+  .external-actions {
+    width: 100%;
+    max-width: 380px;
+    margin-top: 20px;
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .ext-btn {
+    background-color: #fff;
+    color: #000;
+    border: 2px solid #000;
+    border-radius: 8px;
+    padding: 15px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: inherit;
+    box-shadow: 2px 2px 0 #000;
+    transition: transform 0.1s, box-shadow 0.1s;
+  }
+  .ext-btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: 0 0 0 #000;
+  }
+  .ext-btn.primary {
+    background-color: #000;
+    color: #fff;
+  }
+
+  /* 꾹 눌러서 저장하는 모달 창 */
+  #final-save-modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.9);
+    z-index: 3000;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .save-guide-text {
+    color: #fff; font-size: 16px; margin-bottom: 15px; font-weight: bold;
+  }
+
+  #final-captured-image {
+    width: 90%;
+    max-width: 350px;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+
+  /* 편집 캔버스 */
+  #edit-modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.9);
+    z-index: 2000;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #edit-container {
+    width: 90%;
+    max-width: 350px;
+    background-color: #fff;
+    border: 2px solid #000;
+    border-radius: 10px;
+    padding: 15px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .edit-title { font-size: 18px; font-weight: bold; margin-bottom: 10px; text-align: center; }
+
+  #canvas-container {
+    width: 100%;
+    aspect-ratio: 1.5 / 1;
+    border: 2px solid #000;
+    background-color: #ccc;
+    position: relative;
+    overflow: hidden;
+    touch-action: none;
+    cursor: grab;
+  }
+  #canvas-container:active { cursor: grabbing; }
+  
+  canvas { display: block; width: 100%; height: 100%; }
+
+  .canvas-hint {
+    position: absolute;
+    bottom: 5px; left: 5px;
+    background: rgba(0,0,0,0.6); color: #fff;
+    font-size: 10px; padding: 2px 5px; border-radius: 3px;
+    pointer-events: none;
+  }
+
+  .edit-controls { margin-top: 15px; display: flex; flex-direction: column; gap: 10px; }
+  .control-row { display: flex; align-items: center; justify-content: space-between; font-size: 14px; }
+  .control-row input[type="range"] { flex: 1; margin: 0 10px; }
+  .control-row input[type="checkbox"] { transform: scale(1.5); }
+
+  .edit-actions { display: flex; gap: 10px; margin-top: 15px; }
+  .modal-btn {
+    flex: 1; padding: 12px; border: 2px solid #000; border-radius: 8px;
+    font-family: inherit; font-weight: bold; cursor: pointer; font-size: 14px;
+    box-shadow: 2px 2px 0 #000; background: #fff;
+  }
+  .modal-btn.primary { background: var(--theme-btn); color: #000; }
+  .modal-btn:active { transform: translate(2px, 2px); box-shadow: 0 0 0 #000; }
+
+</style>
+</head>
+<body class="theme-enfp">
+
+<header class="test-it-header">
+  <div class="logo">TEST IT</div>
+  <div class="nav">
+    <span>성격</span>
+    <span>얼굴</span>
+    <span>그외</span>
+    <span>사주</span>
+  </div>
+</header>
+
+<div id="app">
+  <div class="speaker"><div class="speaker-hole"></div></div>
+  
+  <div id="main-screen" class="screen">
+    <h1>성격 테스트로그</h1>
+    <div class="subtitle">나의 지금을<br>폴더폰 감성으로 기록하기</div>
+    <button class="btn" onclick="startTest()">테스트 시작하기</button>
+  </div>
+
+  <div id="question-screen" class="screen" style="display:none;">
+    <div class="progress-container">
+      <div class="progress-bar" id="progress"></div>
+    </div>
+    <div id="question-text">질문이 표시됩니다.</div>
+    <button class="btn" id="btn-a" onclick="selectAnswer('A')">A 선택지</button>
+    <button class="btn" id="btn-b" onclick="selectAnswer('B')">B 선택지</button>
+  </div>
+
+  <div id="result-screen">
+    <div id="capture-area">
+      <div class="status-bar">
+        <span>TEST_IT</span>
+        <span>12:00 PM</span>
+        <span>[■■■]</span>
+      </div>
+      
+      <div class="folder-top" id="folder-top">
+        <img id="noise-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAIklEQVQIW2NkQAKrVq36zwjjgzhhYWGMYAEYB8RmROaABADeOQ8CXl/xfgAAAABJRU5ErkJggg==">
+        <div id="no-signal-text">NO SIGNAL</div>
+        
+        <input type="file" id="image-upload" accept="image/*">
+        <div class="upload-placeholder" id="upload-placeholder">📸<br>터치하여 사진 촬영<br>또는 업로드</div>
+        <img id="preview-img-final" alt="최종 사진">
+      </div>
+      
+      <div class="folder-bottom">
+        <div class="trait-row">
+          <div class="retro-box circle">MY<br>LOG</div>
+          <div style="display: flex; flex-direction: column; gap: 8px; flex: 1;">
+            <div class="retro-box pill" id="res-keyword1">키워드1</div>
+            <div class="retro-box pill" id="res-keyword2">키워드2</div>
+          </div>
+        </div>
+        <div class="retro-box rect-wide" id="res-summary">한 줄 요약 성격 텍스트</div>
+        
+        <div style="display: flex; gap: 8px; flex: 1; align-items: stretch;">
+          <div style="display: flex; flex-direction: column; gap: 8px; flex: 1; height: 100%;">
+            <div class="retro-box rect-small"><span>GOOD</span><div id="res-good">장점</div></div>
+            <div class="retro-box rect-small"><span>BAD</span><div id="res-bad">단점</div></div>
+          </div>
+          <div class="retro-box rect-tall" style="flex: 1.6;" id="res-details">
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="external-actions" id="external-actions">
+  <button class="ext-btn primary" onclick="captureAndShowImage()">결과 이미지 저장하기</button>
+  <button class="ext-btn" onclick="location.reload()">다시 해보기</button>
+  <button class="ext-btn" onclick="alert('다른 테스트 페이지로 이동합니다.')">다른 테스트 해보기</button>
+  <button class="ext-btn" onclick="shareTest()">테스트 공유하기</button>
+</div>
+
+<div id="final-save-modal">
+  <div class="save-guide-text">이미지를 꾹 눌러서 저장해주세요</div>
+  <img id="final-captured-image" src="" alt="완성된 이미지">
+  <button class="ext-btn" style="width:90%; max-width:350px;" onclick="document.getElementById('final-save-modal').style.display='none'">닫기</button>
+</div>
+
+<div id="edit-modal">
+  <div id="edit-container">
+    <div class="edit-title">사진 편집</div>
+    <div id="canvas-container">
+      <canvas id="edit-canvas"></canvas>
+      <div class="canvas-hint">드래그: 이동 / 확대축소 지원</div>
+    </div>
+    
+    <div class="edit-controls">
+      <div class="control-row">
+        <span>밝기</span>
+        <input type="range" id="brightness-slider" min="50" max="150" value="100">
+      </div>
+      <div class="control-row">
+        <span>흑백 필터</span>
+        <input type="checkbox" id="grayscale-check">
+      </div>
+    </div>
+
+    <div class="edit-actions">
+      <button class="modal-btn" onclick="closeEditModal()">취소</button>
+      <button class="modal-btn primary" onclick="applyEdit()">적용하기</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // 질문 데이터
+  const qnaList = [
+    { q: "주말에 갑자기 일정이 취소되었다!", a: { text: "아싸! 집에서 뒹굴거려야지", type: "I" }, b: { text: "심심한데 다른 친구 번개할까?", type: "E" } },
+    { q: "처음 가는 모임 장소에 도착했다.", a: { text: "옆 사람에게 먼저 말을 걸어본다", type: "E" }, b: { text: "누군가 말 걸어주길 기다린다", type: "I" } },
+    { q: "스트레스를 잔뜩 받았을 때 나는?", a: { text: "혼자 조용히 생각 정리할 시간이 필요해", type: "I" }, b: { text: "사람들과 만나서 수다 떨며 푼다!", type: "E" } },
+    { q: "멍 때릴 때 내 머릿속은?", a: { text: "진짜 아무 생각 없음 (백지 상태)", type: "S" }, b: { text: "만약에 지구에 좀비가 나타난다면..?", type: "N" } },
+    { q: "요리 레시피를 볼 때 나는?", a: { text: "적혀있는 정량 그대로 계량해서 넣는다", type: "S" }, b: { text: "대충 눈대중으로 감칠맛을 더한다", type: "N" } },
+    { q: "노래를 들을 때 더 끌리는 것은?", a: { text: "멜로디와 분위기가 좋은 노래", type: "S" }, b: { text: "가사의 의미가 와닿는 노래", type: "N" } },
+    { q: "친구가 '나 우울해서 화분 샀어' 라고 한다면?", a: { text: "무슨 일 있어? 왜 우울해 ㅠㅠ", type: "F" }, b: { text: "무슨 화분 샀어? 물은 얼마나 줘?", type: "T" } },
+    { q: "결정을 내려야 할 때 더 중요한 기준은?", a: { text: "논리적이고 합리적인 판단", type: "T" }, b: { text: "모두가 상처받지 않는 방향", type: "F" } },
+    { q: "내가 더 듣기 좋은 칭찬은?", a: { text: "너 진짜 센스있고 다정하다", type: "F" }, b: { text: "너 일 진짜 깔끔하게 잘한다", type: "T" } },
+    { q: "여행을 떠나기 전 나의 준비 과정은?", a: { text: "일자별, 시간별로 계획을 쫙 세운다", type: "J" }, b: { text: "일단 숙소랑 교통만 하고 가서 생각한다", type: "P" } },
+    { q: "내 컴퓨터 바탕화면의 상태는?", a: { text: "폴더별로 깔끔하게 정리되어 있다", type: "J" }, b: { text: "파일들이 여기저기 흩어져 있다", type: "P" } },
+    { q: "과제가 주어졌을 때 나는?", a: { text: "미리미리 조금씩 해둔다", type: "J" }, b: { text: "마감 직전 엄청난 집중력으로 끝낸다", type: "P" } }
+  ];
+
+  // 성격 데이터 (해시태그 제거됨)
+  const resultsData = {
+    "ISTJ": { summary: "흔들림 없는 든든한 인간 국밥", k1: "원칙주의", k2: "약속칼같이", good: "책임감최고", bad: "융통성제로", details: ["- 룰루랄라 원칙주의 라이프", "- 약속시간 지각 절대 용납 불가", "- 인간 알파고급 놀라운 기억력", "- 튀는 것보단 안정적인 게 최고", "- 계획 틀어지면 극심한 스트레스", "- 내 사람에겐 확실한 츤데레"] },
+    "ISFJ": { summary: "따뜻한 배려의 인간 힐러", k1: "다정다감", k2: "눈치백단", good: "섬세한센스", bad: "거절못함", details: ["- 남 챙겨주는 것에 진심인 힐러", "- 눈치 백단 분위기 파악 장인", "- 내 사람에게 한없이 다정함", "- 부탁받으면 거절 못해 끙끙", "- 사소한 것도 다 기억해주는 센스", "- 익숙하고 편안한 게 제일 좋아"] },
+    "INFJ": { summary: "통찰력 만렙 겉차속따", k1: "통찰력갑", k2: "완벽주의", good: "사람보는눈", bad: "유리멘탈", details: ["- 혼자만의 동굴 시간 무조건 필수", "- 겉으론 웃어도 속으론 분석 완료", "- 사람 보는 눈이 남다르게 탁월함", "- 완벽주의라 스스로 피곤한 스타일", "- 선 넘는 무례함은 가차없이 손절", "- 마음속에 이상적인 세계가 있음"] },
+    "INTJ": { summary: "치밀한 마이웨이 팩폭러", k1: "독립적", k2: "분석왕", good: "논리적사고", bad: "공감능력", details: ["- 남 눈치 안 보는 독보적 마이웨이", "- 비효율적인 일처리 보면 답답함", "- 한 번 꽂힌 분야는 전문가 수준", "- 감정에 호소하는 떼쓰기 극혐함", "- 목표 세우면 끝까지 파고드는 편", "- 무논리 대화는 빠르게 차단함"] },
+    "ISTP": { summary: "마이웨이 효율 끝판왕", k1: "가성비갑", k2: "귀차니즘", good: "임기응변", bad: "영혼없음", details: ["- 쓸데없는 곳에 에너지 낭비 안 함", "- 평소엔 누워있다가 벼락치기 천재", "- 남 일에 관심 없고 간섭받기 싫음", "- 기계나 도구 다루는 센스가 타고남", "- 카톡 답장 느려도 악의는 없음", "- 감정 소모하는 거 제일 피곤함"] },
+    "ISFP": { summary: "누워있는게 제일 좋은 평화러", k1: "자유영혼", k2: "침대혼연일체", good: "수용적태도", bad: "결정장애", details: ["- 갈등 싫어서 웬만하면 다 맞춰줌", "- 집 밖으로 나가는 순간 체력 방전", "- 내 공간 침범당하면 예민해짐", "- 칭찬받으면 속으로 탭댄스 춤", "- 꼼꼼한 계획보단 현재가 중요함", "- 감수성 풍부하고 은근 예민보스"] },
+    "INFP": { summary: "망상과 상상 풀가동 몽상가", k1: "유리멘탈", k2: "과몰입장인", good: "공감능력", bad: "상처잘받음", details: ["- 머릿속에 온갖 상상과 망상 가득", "- 남의 아픔에 내 일처럼 공감함", "- 사소한 말 한마디에 며칠 밤샘", "- 하나에 꽂히면 덕질에 진심인 편", "- 규칙보단 자유롭고 감성적인 삶", "- 혼자 있는 시간 꼭 필요한 내적관종"] },
+    "INTP": { summary: "호기심 많은 자발적 아싸", k1: "팩트폭격", k2: "아이디어", good: "객관적시선", bad: "귀차니즘", details: ["- 관심 없는 주제엔 영혼 1도 없이 대답", "- 멍 때리는 중에도 머리는 풀가동", "- 비논리적인 소리 들으면 반박장전", "- 혼자 있는 게 제일 평화롭고 좋음", "- 기발한 아이디어는 많은데 실행력 0", "- 세상만사 귀찮은 자발적 아싸"] },
+    "ESTP": { summary: "스릴을 즐기는 마라맛 행동파", k1: "적응력갑", k2: "인싸재질", good: "실행력갑", bad: "계획없음", details: ["- 지루하고 정적인 분위기 절대 못 참음", "- 일단 저지르고 몸으로 부딪히는 편", "- 눈치 엄청 빨라서 상황 파악 기가 막힘", "- 처음 본 사람이랑도 5분 만에 절친", "- 인생은 폼생폼사 재미가 제일 중요", "- 복잡한 고민은 쿨하게 패스함"] },
+    "ESFP": { summary: "텐션 폭발 파워 연예인", k1: "에너지뿜뿜", k2: "관종끼다분", good: "분위기메이커", bad: "산만함", details: ["- 약속 없으면 입안에 가시가 돋음", "- 어디서든 주목받는 걸 은근히 즐김", "- 침묵 흐르는 어색한 상황 절대 못 참음", "- 노래방 가면 마이크 안 놓는 흥부자", "- 심각한 일도 자고 일어나면 잊어버림", "- 에너지 넘치고 사람 만나는 게 최고"] },
+    "ENFP": { summary: "통통 튀는 인간 비타민", k1: "리액션장인", k2: "감정기복", good: "창의력대장", bad: "금방질림", details: ["- 항상 텐션 높고 사람을 너무 좋아함", "- 머릿속에 해보고 싶은 게 오조오억개", "- 기분 좋고 나쁜 게 얼굴에 다 티남", "- 낯가림 제로 폭풍 친화력의 소유자", "- 반복되는 일상은 지루해서 못 견딤", "- 리액션 장인이라 얘기할 맛 남"] },
+    "ENTP": { summary: "마라맛 솔직함의 대명사", k1: "토론광", k2: "자신감만렙", good: "기발한발상", bad: "고집불통", details: ["- 팩트 폭력기로 뼈 때리는 말 필터링 없이 함", "- 내가 맞다고 생각하면 절대 뜻을 굽히지 않음", "- 남들이 안 하는 독특하고 기발한 생각 잘함", "- 재밌어 보이는 일엔 물불 안 가리고 뛰어듦", "- 논쟁하는 걸 은근히 즐기고 말싸움 안 짐", "- 화내고 돌아서면 뒤끝 없이 쿨함"] },
+    "ESTJ": { summary: "체계적인 프로 일잘러", k1: "칼같은규칙", k2: "워커홀릭", good: "강력한리더십", bad: "융통성제로", details: ["- 일 미루는 꼴 못 보고 계획대로 착착 진행해야 함", "- 호불호가 매우 확실하고 돌려 말하기 못함", "- 조별 과제 답답하면 그냥 내가 다 해버림", "- 규칙 매뉴얼 무조건 지켜야 마음 편함", "- 위로보단 현실적이고 실질적인 해결책", "- 팩트로 뼈 때리는 든든한 리더"] },
+    "ESFJ": { summary: "리액션 봇 인싸력 만렙", k1: "다정한오지랖", k2: "친화력갑", good: "분위기메이커", bad: "인정욕구", details: ["- 주변 사람들 알뜰살뜰 챙기는 다정 보스", "- 남한테 미움받는 거 싫어해서 싫은 소리 잘 못함", "- 리액션 알파고급 분위기 띄우기 달인", "- 칭찬 한 번 해주면 에너지 200% 충전", "- 소외되는 사람 없게 무리 전체 신경 씀", "- 조화롭고 평화로운 분위기가 제일 좋음"] },
+    "ENFJ": { summary: "인류애 넘치는 따뜻한 리더", k1: "오지랖태평양", k2: "긍정에너지", good: "공감능력", bad: "감정소모", details: ["- 남의 일도 내 일처럼 진심으로 공감하고 화냄", "- 긍정 에너지가 넘쳐서 주변을 밝혀줌", "- 남 돕는 데 진심이라 오지랖이 넓은 편", "- 비판받으면 겉으론 웃어도 속으론 엄청 신경 씀", "- 모두가 행복하고 조화로운 세상을 꿈꾸는 평화주의자", "- 말 예쁘게 하고 사람을 잘 이끌어줌"] },
+    "ENTJ": { summary: "불도저 같은 목표 달성러", k1: "완벽주의", k2: "통솔력갑", good: "빠른결단력", bad: "팩폭살인마", details: ["- 일 못하고 답답하게 구는 사람 보면 복장 터짐", "- 감정 호소 금지 무조건 효율이 최우선", "- 목표 세우면 무슨 수를 써서라도 해냄", "- 카리스마 넘치는 타고난 리더 재질", "- 시간 낭비하는 걸 세상에서 제일 아까워함", "- 팩트로 순살 만드는 논리적인 불도저"] }
+  };
+
+  let currentQ = 0;
+  let scores = { E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0 };
+
+  function startTest() {
+    document.getElementById('main-screen').style.display = 'none';
+    document.getElementById('question-screen').style.display = 'flex';
+    showQuestion();
+  }
+
+  function showQuestion() {
+    const qData = qnaList[currentQ];
+    document.getElementById('question-text').innerHTML = `<span style="font-size:14px; color:#555;">Q${currentQ + 1}.</span><br>${qData.q}`;
+    document.getElementById('btn-a').innerText = qData.a.text;
+    document.getElementById('btn-b').innerText = qData.b.text;
+    const percent = (currentQ / qnaList.length) * 100;
+    document.getElementById('progress').style.width = percent + '%';
+  }
+
+  function selectAnswer(choice) {
+    const qData = qnaList[currentQ];
+    const selectedType = choice === 'A' ? qData.a.type : qData.b.type;
+    scores[selectedType]++;
+    
+    currentQ++;
+    if (currentQ >= qnaList.length) {
+      document.getElementById('progress').style.width = '100%';
+      setTimeout(calculateResult, 300);
+    } else {
+      showQuestion();
+    }
+  }
+
+  function calculateResult() {
+    let mbti = "";
+    mbti += (scores.E >= scores.I) ? "E" : "I";
+    mbti += (scores.S >= scores.N) ? "S" : "N";
+    mbti += (scores.T >= scores.F) ? "T" : "F";
+    mbti += (scores.J >= scores.P) ? "J" : "P";
+
+    document.getElementById('question-screen').style.display = 'none';
+    document.getElementById('result-screen').style.display = 'flex';
+    document.getElementById('external-actions').style.display = 'flex'; // 외부 버튼 표시
+    document.body.className = 'theme-' + mbti.toLowerCase();
+
+    const resData = resultsData[mbti];
+    document.getElementById('res-keyword1').innerText = resData.k1; // 해시태그 없음
+    document.getElementById('res-keyword2').innerText = resData.k2; // 해시태그 없음
+    document.getElementById('res-summary').innerText = resData.summary;
+    document.getElementById('res-good').innerText = resData.good;
+    document.getElementById('res-bad').innerText = resData.bad;
+    
+    let detailsHtml = '';
+    resData.details.forEach(item => {
+      detailsHtml += `<div class="trait-item">${item}</div>`;
+    });
+    document.getElementById('res-details').innerHTML = detailsHtml;
+  }
+
+  // --- 강력한 Canvas 사진 편집 로직 ---
+  const imageUpload = document.getElementById('image-upload');
+  const editModal = document.getElementById('edit-modal');
+  const canvasContainer = document.getElementById('canvas-container');
+  const canvas = document.getElementById('edit-canvas');
+  const ctx = canvas.getContext('2d');
+  const previewImgFinal = document.getElementById('preview-img-final');
+  
+  const brightnessSlider = document.getElementById('brightness-slider');
+  const grayscaleCheck = document.getElementById('grayscale-check');
+  const uploadPlaceholder = document.getElementById('upload-placeholder');
+  
+  const noiseImg = document.getElementById('noise-img');
+  const noSignalText = document.getElementById('no-signal-text');
+
+  let imgObj = new Image();
+  let imgX = 0, imgY = 0, imgScale = 1;
+  let isDragging = false;
+  let startX, startY;
+  let initialDist = null;
+  let initialScale = 1;
+
+  function resizeCanvas() {
+    canvas.width = canvasContainer.clientWidth;
+    canvas.height = canvasContainer.clientHeight;
+    renderCanvas();
+  }
+
+  imageUpload.addEventListener('change', function(e) {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function(event) {
+        imgObj.onload = function() {
+          editModal.style.display = 'flex';
+          resizeCanvas();
+          const scaleW = canvas.width / imgObj.width;
+          const scaleH = canvas.height / imgObj.height;
+          imgScale = Math.max(scaleW, scaleH);
+          imgX = (canvas.width - imgObj.width * imgScale) / 2;
+          imgY = (canvas.height - imgObj.height * imgScale) / 2;
+          
+          brightnessSlider.value = 100;
+          grayscaleCheck.checked = false;
+          renderCanvas();
+        };
+        imgObj.src = event.target.result;
+      }
+      reader.readAsDataURL(file);
+    }
+  });
+
+  brightnessSlider.addEventListener('input', renderCanvas);
+  grayscaleCheck.addEventListener('change', renderCanvas);
+
+  function renderCanvas() {
+    if (!imgObj.src) return;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    ctx.save();
+    let filterStr = `brightness(${brightnessSlider.value}%)`;
+    if (grayscaleCheck.checked) filterStr += ` grayscale(100%)`;
+    ctx.filter = filterStr;
+    
+    ctx.translate(imgX, imgY);
+    ctx.scale(imgScale, imgScale);
+    ctx.drawImage(imgObj, 0, 0);
+    ctx.restore();
+  }
+
+  function getDistance(touches) {
+    return Math.hypot(touches[0].clientX - touches[1].clientX, touches[0].clientY - touches[1].clientY);
+  }
+
+  canvasContainer.addEventListener('mousedown', (e) => {
+    isDragging = true;
+    startX = e.clientX - imgX;
+    startY = e.clientY - imgY;
+  });
+
+  canvasContainer.addEventListener('touchstart', (e) => {
+    if (e.touches.length === 1) {
+      isDragging = true;
+      startX = e.touches[0].clientX - imgX;
+      startY = e.touches[0].clientY - imgY;
+    } else if (e.touches.length === 2) {
+      isDragging = false;
+      initialDist = getDistance(e.touches);
+      initialScale = imgScale;
+    }
+  }, {passive: false});
+
+  window.addEventListener('mousemove', (e) => {
+    if (isDragging) {
+      imgX = e.clientX - startX;
+      imgY = e.clientY - startY;
+      renderCanvas();
+    }
+  });
+
+  window.addEventListener('touchmove', (e) => {
+    if (isDragging && e.touches.length === 1) {
+      e.preventDefault();
+      imgX = e.touches[0].clientX - startX;
+      imgY = e.touches[0].clientY - startY;
+      renderCanvas();
+    } else if (e.touches.length === 2) {
+      e.preventDefault();
+      const currentDist = getDistance(e.touches);
+      if (initialDist) {
+        const factor = currentDist / initialDist;
+        imgScale = initialScale * factor;
+        if (imgScale < 0.1) imgScale = 0.1;
+        renderCanvas();
+      }
+    }
+  }, {passive: false});
+
+  window.addEventListener('mouseup', () => isDragging = false);
+  window.addEventListener('touchend', () => isDragging = false);
+
+  canvasContainer.addEventListener('wheel', (e) => {
+    e.preventDefault();
+    const rect = canvas.getBoundingClientRect();
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+    
+    const wheelFactor = e.deltaY > 0 ? 0.9 : 1.1;
+    const newScale = imgScale * wheelFactor;
+    
+    imgX = mouseX - (mouseX - imgX) * (newScale / imgScale);
+    imgY = mouseY - (mouseY - imgY) * (newScale / imgScale);
+    imgScale = newScale;
+    renderCanvas();
+  });
+
+  function closeEditModal() {
+    editModal.style.display = 'none';
+    imageUpload.value = '';
+  }
+
+  function applyEdit() {
+    previewImgFinal.src = canvas.toDataURL('image/jpeg', 0.9);
+    previewImgFinal.style.display = 'block';
+    
+    uploadPlaceholder.style.display = 'none';
+    closeEditModal();
+  }
+
+  // --- 최종 꾹 눌러서 저장하는 로직 ---
+  function captureAndShowImage() {
+    const captureArea = document.getElementById('capture-area');
+    const isUploaded = previewImgFinal.src && previewImgFinal.style.display !== 'none';
+    
+    // 사진이 없으면 숨겨놨던 노이즈와 텍스트를 강제로 켬
+    if (!isUploaded) {
+      noiseImg.style.display = 'block';
+      noSignalText.style.display = 'block';
+      uploadPlaceholder.style.display = 'none';
+    }
+
+    setTimeout(() => {
+      html2canvas(captureArea, { scale: 2, useCORS: true, backgroundColor: null }).then(canvas => {
+        // 모달 띄우기
+        const finalModal = document.getElementById('final-save-modal');
+        const finalImage = document.getElementById('final-captured-image');
+        
+        finalImage.src = canvas.toDataURL('image/png');
+        finalModal.style.display = 'flex';
+        
+        // 캡처가 끝나면 다시 원상복구
+        if (!isUploaded) {
+          noiseImg.style.display = 'none';
+          noSignalText.style.display = 'none';
+          uploadPlaceholder.style.display = 'block';
+        }
+      });
+    }, 150);
+  }
+
+  function shareTest() {
+    if (navigator.share) {
+      navigator.share({
+        title: '성격 테스트로그',
+        text: '나의 성격을 폴더폰 감성으로 확인해보세요!',
+        url: window.location.href
+      }).catch(console.error);
+    } else {
+      alert('링크가 복사되었습니다!');
+    }
+  }
+</script>
+
+</body>
+</html>

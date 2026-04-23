@@ -1,0 +1,1927 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>테스트잇 성격 테스트로그</title>
+  <meta name="description" content="폴더폰 감성으로 저장하는 성격 테스트로그" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="테스트잇 성격 테스트로그" />
+  <meta property="og:description" content="결과창에서 사진 넣고 저장하는 레트로 폴더폰 테스트" />
+
+  <style>
+    @font-face {
+      font-family: "Pretendard";
+      src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff") format("woff");
+      font-weight: 400;
+    }
+
+    @font-face {
+      font-family: "Galmuri11";
+      src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/Galmuri11.woff2") format("woff2");
+      font-weight: 400;
+    }
+
+    @font-face {
+      font-family: "Galmuri9";
+      src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/Galmuri9.woff2") format("woff2");
+      font-weight: 400;
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: "Pretendard", sans-serif;
+      background:
+        radial-gradient(circle at top, #edf4ff 0%, #f6f8ff 35%, #eef1f7 100%);
+      color: #242734;
+    }
+
+    body.theme-pink {
+      --shell-a: #f1bfd4;
+      --shell-b: #f8d6e5;
+      --shell-c: #fbe7ef;
+      --shell-d: #f8f0f5;
+
+      --panel-a: #f7f3f6;
+      --panel-b: #f2eef2;
+      --line: #3a3f4d;
+      --ink-soft: #70788c;
+
+      --accent-a: #e6b1cb;
+      --accent-b: #efd0e0;
+      --accent-c: #f6e4ee;
+
+      --tag-a: #ead0de;
+      --tag-b: #f5ebf1;
+
+      --button-a: #efdae5;
+      --button-b: #f8f0f4;
+      --shadow: rgba(128, 89, 109, 0.16);
+    }
+
+    body.theme-blue {
+      --shell-a: #c8d9ef;
+      --shell-b: #dbe7f5;
+      --shell-c: #ebf2fa;
+      --shell-d: #f3f6fb;
+
+      --panel-a: #eef2f6;
+      --panel-b: #e8edf3;
+      --line: #3a3f4d;
+      --ink-soft: #70788c;
+
+      --accent-a: #c7d9ec;
+      --accent-b: #dbe7f5;
+      --accent-c: #edf4fb;
+
+      --tag-a: #d9e5f1;
+      --tag-b: #eef4fa;
+
+      --button-a: #d9e6f3;
+      --button-b: #eef4fa;
+      --shadow: rgba(91, 117, 150, 0.16);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page-header {
+      width: 100%;
+      max-width: 430px;
+      margin: 0 auto;
+      padding: 16px 16px 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: "Galmuri11", sans-serif;
+      font-size: 20px;
+    }
+
+    .main-nav {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      font-size: 11px;
+      color: #5c6478;
+    }
+
+    .main-nav a {
+      border: 1.5px solid var(--line);
+      background: rgba(255,255,255,0.78);
+      border-radius: 999px;
+      padding: 5px 8px;
+    }
+
+    .wrapper {
+      width: 100%;
+      max-width: 430px;
+      margin: 0 auto;
+      padding: 0 14px 42px;
+    }
+
+    .screen {
+      display: none;
+    }
+
+    .screen.active {
+      display: block;
+    }
+
+    .card {
+      border: 2.5px solid var(--line);
+      border-radius: 30px;
+      background: rgba(255,255,255,0.84);
+      box-shadow: 0 14px 32px rgba(58, 63, 77, 0.08);
+      overflow: hidden;
+    }
+
+    .start-card {
+      padding: 18px 16px 20px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.86));
+    }
+
+    .mini-label {
+      display: inline-block;
+      font-family: "Galmuri9", sans-serif;
+      font-size: 10px;
+      border: 2px solid var(--line);
+      border-radius: 999px;
+      background: #fff;
+      padding: 6px 10px;
+      margin-bottom: 14px;
+      color: #657087;
+    }
+
+    .main-title {
+      font-family: "Galmuri11", sans-serif;
+      font-size: 28px;
+      line-height: 1.4;
+      margin: 0 0 14px;
+    }
+
+    .phone-hero {
+      width: 100%;
+      max-width: 290px;
+      margin: 0 auto 16px;
+      border: 3px solid var(--line);
+      border-radius: 38px;
+      padding: 12px;
+      background:
+        linear-gradient(180deg, var(--shell-a) 0%, var(--shell-b) 34%, var(--shell-c) 68%, var(--shell-d) 100%);
+      box-shadow:
+        inset 0 0 0 3px rgba(255,255,255,0.42),
+        0 10px 24px var(--shadow);
+      position: relative;
+    }
+
+    .phone-hero::before {
+      content: "";
+      position: absolute;
+      left: 8px;
+      right: 8px;
+      top: 48.8%;
+      height: 8px;
+      border-radius: 999px;
+      background: rgba(58, 63, 77, 0.16);
+    }
+
+    .phone-top,
+    .phone-bottom {
+      border: 2px solid var(--line);
+      border-radius: 24px;
+      overflow: hidden;
+      background: #fff;
+      position: relative;
+    }
+
+    .phone-top {
+      height: 148px;
+      margin-bottom: 8px;
+      background:
+        linear-gradient(180deg, #f9fbff 0%, #eef2f7 100%);
+      padding: 18px;
+    }
+
+    .speaker {
+      position: absolute;
+      top: 11px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 56px;
+      height: 7px;
+      border-radius: 999px;
+      background: rgba(58, 63, 77, 0.12);
+    }
+
+    .hero-screen {
+      width: 100%;
+      height: 100%;
+      border: 2px solid var(--line);
+      border-radius: 18px;
+      background:
+        linear-gradient(180deg, var(--accent-b) 0%, var(--accent-c) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-screen::before {
+      content: "";
+      position: absolute;
+      inset: 10px;
+      border: 2px solid rgba(58, 63, 77, 0.28);
+      border-radius: 14px;
+    }
+
+    .hero-screen::after {
+      content: "MY LOG";
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: "Galmuri11", sans-serif;
+      font-size: 16px;
+      color: rgba(58, 63, 77, 0.85);
+    }
+
+    .phone-bottom {
+      min-height: 240px;
+      background:
+        linear-gradient(180deg, var(--panel-a) 0%, var(--panel-b) 100%);
+      padding: 14px 12px;
+    }
+
+    .hero-line {
+      width: 52%;
+      height: 16px;
+      border-radius: 999px;
+      border: 2px solid var(--line);
+      background: #fff;
+      margin-bottom: 10px;
+    }
+
+    .hero-box {
+      width: 100%;
+      height: 54px;
+      border-radius: 16px;
+      border: 2px solid var(--line);
+      background: #fff;
+      margin-bottom: 10px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .hero-tag-box {
+      height: 84px;
+      border-radius: 16px;
+      border: 2px solid var(--line);
+      background: #fff;
+    }
+
+    .hero-pill {
+      width: 100%;
+      height: 52px;
+      border-radius: 999px;
+      border: 2px solid var(--line);
+      background:
+        linear-gradient(90deg, var(--button-a) 0%, var(--button-b) 100%);
+    }
+
+    .btn {
+      width: 100%;
+      border: 2px solid var(--line);
+      border-radius: 18px;
+      padding: 15px 16px;
+      font-size: 15px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: 0.15s ease;
+      font-family: "Pretendard", sans-serif;
+    }
+
+    .btn:active {
+      transform: scale(0.985);
+    }
+
+    .btn-primary {
+      background:
+        linear-gradient(180deg, #2f3441 0%, #20242e 100%);
+      color: #fff;
+    }
+
+    .btn-soft {
+      background: #fff;
+      color: #2b303d;
+    }
+
+    .start-actions,
+    .result-actions {
+      display: grid;
+      gap: 10px;
+    }
+
+    .question-card {
+      padding: 18px 15px 20px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.88));
+    }
+
+    .question-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: "Galmuri9", sans-serif;
+      font-size: 11px;
+      color: #647088;
+      margin-bottom: 12px;
+    }
+
+    .progress-track {
+      width: 100%;
+      height: 14px;
+      border-radius: 999px;
+      border: 2px solid var(--line);
+      background: #fff;
+      padding: 2px;
+      margin-bottom: 20px;
+    }
+
+    .progress-bar {
+      width: 0%;
+      height: 100%;
+      border-radius: 999px;
+      background:
+        linear-gradient(90deg, var(--accent-a) 0%, var(--accent-b) 55%, var(--accent-c) 100%);
+      transition: width 0.2s ease;
+    }
+
+    .question-title {
+      margin: 0 0 18px;
+      font-size: 24px;
+      line-height: 1.5;
+      font-weight: 800;
+      word-break: keep-all;
+    }
+
+    .option-btn {
+      width: 100%;
+      text-align: left;
+      border: 2px solid var(--line);
+      border-radius: 20px;
+      background: #fff;
+      padding: 16px 14px;
+      font-size: 15px;
+      line-height: 1.65;
+      font-weight: 700;
+      margin-bottom: 11px;
+      cursor: pointer;
+      font-family: "Pretendard", sans-serif;
+    }
+
+    .result-card {
+      padding: 14px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.88));
+    }
+
+    .theme-row {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .theme-btn {
+      border: 2px solid var(--line);
+      background: #fff;
+      border-radius: 999px;
+      padding: 7px 10px;
+      font-size: 11px;
+      font-weight: 900;
+      cursor: pointer;
+      font-family: "Pretendard", sans-serif;
+    }
+
+    .theme-btn.active {
+      background: #2b303d;
+      color: #fff;
+    }
+
+    .folder-phone {
+      width: 100%;
+      max-width: 372px;
+      margin: 0 auto;
+      border: 3px solid var(--line);
+      border-radius: 38px;
+      padding: 12px;
+      background:
+        linear-gradient(180deg, var(--shell-a) 0%, var(--shell-b) 30%, var(--shell-c) 64%, var(--shell-d) 100%);
+      box-shadow:
+        inset 0 0 0 3px rgba(255,255,255,0.42),
+        0 16px 30px var(--shadow);
+      position: relative;
+    }
+
+    .folder-phone::before {
+      content: "";
+      position: absolute;
+      left: 8px;
+      right: 8px;
+      top: 35.4%;
+      height: 9px;
+      border-radius: 999px;
+      background: rgba(58, 63, 77, 0.18);
+    }
+
+    .folder-top,
+    .folder-bottom {
+      border: 2px solid var(--line);
+      border-radius: 24px;
+      overflow: hidden;
+      background: #fff;
+      position: relative;
+    }
+
+    .folder-top {
+      height: 190px;
+      margin-bottom: 8px;
+      padding: 24px 18px 18px;
+      background:
+        linear-gradient(180deg, #f9fbff 0%, #eef2f7 100%);
+    }
+
+    .folder-bottom {
+      min-height: 360px;
+      padding: 18px 16px 18px;
+      background:
+        linear-gradient(180deg, var(--panel-a) 0%, var(--panel-b) 100%);
+    }
+
+    .photo-frame {
+      width: 100%;
+      height: 100%;
+      border: 2px solid var(--line);
+      border-radius: 20px;
+      background: #e9eef4;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      touch-action: manipulation;
+    }
+
+    .photo-frame-inner {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, #eef3f8 0%, #e5ebf3 100%);
+    }
+
+    .photo-image {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      max-width: none;
+      max-height: none;
+      user-select: none;
+      pointer-events: none;
+      display: none;
+      transform-origin: center center;
+      will-change: transform, filter, width, height;
+    }
+
+    .no-signal {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      background:
+        linear-gradient(90deg,
+          #2b2b2b 0%,
+          #61656a 14%,
+          #b2b7be 28%,
+          #dadfe5 40%,
+          #8f949b 56%,
+          #3f4347 72%,
+          #d3d8de 88%,
+          #242628 100%);
+    }
+
+    .no-signal::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(
+          180deg,
+          rgba(255,255,255,0.04) 0px,
+          rgba(255,255,255,0.04) 2px,
+          rgba(0,0,0,0.1) 2px,
+          rgba(0,0,0,0.1) 4px
+        );
+      mix-blend-mode: overlay;
+    }
+
+    .no-signal::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: -30%;
+      width: 100%;
+      height: 28%;
+      background: rgba(255,255,255,0.22);
+      filter: blur(8px);
+      animation: scanline 1.6s linear infinite;
+    }
+
+    .no-signal-text {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      color: #fff;
+      text-align: center;
+      text-shadow: 0 1px 0 rgba(0,0,0,0.45);
+      font-family: "Galmuri11", sans-serif;
+      animation: flicker 0.22s infinite steps(2);
+      padding: 12px;
+    }
+
+    .no-signal-main {
+      font-size: 16px;
+      margin-bottom: 6px;
+      letter-spacing: 0.5px;
+    }
+
+    .no-signal-sub {
+      font-family: "Galmuri9", sans-serif;
+      font-size: 9px;
+      line-height: 1.45;
+      opacity: 0.95;
+    }
+
+    @keyframes scanline {
+      0% { top: -30%; }
+      100% { top: 120%; }
+    }
+
+    @keyframes flicker {
+      0% { opacity: 0.96; }
+      25% { opacity: 0.88; }
+      50% { opacity: 1; }
+      75% { opacity: 0.92; }
+      100% { opacity: 0.97; }
+    }
+
+    .result-top-line {
+      display: grid;
+      grid-template-columns: 74px 1fr;
+      gap: 12px;
+      align-items: start;
+      margin-bottom: 16px;
+    }
+
+    .log-badge {
+      width: 74px;
+      height: 74px;
+      border-radius: 50%;
+      border: 2px solid var(--line);
+      background:
+        radial-gradient(circle at 35% 30%, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.95) 18%, var(--accent-b) 18%, var(--accent-a) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Galmuri11", sans-serif;
+      font-size: 16px;
+      color: #2f3442;
+      letter-spacing: -0.2px;
+    }
+
+    .result-header-text {
+      min-width: 0;
+    }
+
+    .result-small-title {
+      font-family: "Galmuri9", sans-serif;
+      font-size: 10px;
+      color: #6a7286;
+      margin-bottom: 6px;
+    }
+
+    .result-name {
+      font-family: "Galmuri11", sans-serif;
+      font-size: 19px;
+      line-height: 1.38;
+      margin-bottom: 8px;
+      word-break: keep-all;
+    }
+
+    .result-summary {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #596074;
+      word-break: keep-all;
+    }
+
+    .line-box {
+      border: 2px solid var(--line);
+      border-radius: 18px;
+      background: #fff;
+      padding: 14px 14px;
+      margin-bottom: 14px;
+      position: relative;
+    }
+
+    .line-box::after {
+      content: "";
+      position: absolute;
+      left: 20px;
+      bottom: -11px;
+      width: 18px;
+      height: 18px;
+      background: #fff;
+      border-right: 2px solid var(--line);
+      border-bottom: 2px solid var(--line);
+      transform: rotate(45deg);
+    }
+
+    .line-label {
+      font-family: "Galmuri9", sans-serif;
+      font-size: 10px;
+      color: #6a7286;
+      margin-bottom: 8px;
+    }
+
+    .line-text {
+      font-size: 15px;
+      line-height: 1.6;
+      font-weight: 800;
+      word-break: keep-all;
+    }
+
+    .personality-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .personality-btn {
+      min-height: 94px;
+      border: 2px solid var(--line);
+      border-radius: 18px;
+      background:
+        linear-gradient(180deg, #fff 0%, var(--tag-b) 100%);
+      padding: 12px 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
+    }
+
+    .personality-chip {
+      display: inline-block;
+      align-self: flex-start;
+      border: 1.5px solid var(--line);
+      border-radius: 999px;
+      background: var(--tag-a);
+      padding: 4px 9px;
+      font-family: "Galmuri9", sans-serif;
+      font-size: 9px;
+      color: #4f596f;
+      margin-bottom: 10px;
+    }
+
+    .personality-text {
+      font-size: 14px;
+      line-height: 1.55;
+      font-weight: 800;
+      word-break: keep-all;
+    }
+
+    .result-actions {
+      margin-top: 14px;
+    }
+
+    .helper {
+      margin-top: 2px;
+      text-align: center;
+      font-size: 12px;
+      line-height: 1.55;
+      color: #687084;
+    }
+
+    .hidden-input {
+      display: none;
+    }
+
+    .editor-modal,
+    .picker-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(17, 20, 29, 0.64);
+      display: none;
+      align-items: flex-end;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    .editor-modal.active,
+    .picker-modal.active {
+      display: flex;
+    }
+
+    .editor-sheet,
+    .picker-sheet {
+      width: 100%;
+      max-width: 430px;
+      border: 2px solid var(--line);
+      border-radius: 28px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.98), rgba(255,255,255,0.94));
+      box-shadow: 0 18px 40px rgba(24, 27, 39, 0.22);
+      padding: 16px 14px 14px;
+    }
+
+    .picker-title,
+    .editor-title {
+      font-family: "Galmuri11", sans-serif;
+      font-size: 18px;
+      margin-bottom: 12px;
+    }
+
+    .picker-actions {
+      display: grid;
+      gap: 10px;
+    }
+
+    .editor-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .close-btn {
+      border: 2px solid var(--line);
+      border-radius: 999px;
+      background: #fff;
+      padding: 7px 10px;
+      font-size: 12px;
+      font-weight: 900;
+      cursor: pointer;
+      font-family: "Pretendard", sans-serif;
+    }
+
+    .editor-preview {
+      width: 100%;
+      max-width: 290px;
+      margin: 0 auto 14px;
+      aspect-ratio: 1 / 1;
+      border: 2px solid var(--line);
+      border-radius: 20px;
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, #edf2f7 0%, #e4eaf1 100%);
+      position: relative;
+      touch-action: none;
+    }
+
+    .editor-preview-img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      max-width: none;
+      max-height: none;
+      display: none;
+      transform-origin: center center;
+      will-change: transform, filter, width, height;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    .editor-no-signal {
+      position: absolute;
+      inset: 0;
+    }
+
+    .filter-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .filter-btn {
+      border: 2px solid var(--line);
+      border-radius: 16px;
+      background: #fff;
+      padding: 12px 8px;
+      font-size: 13px;
+      font-weight: 900;
+      cursor: pointer;
+      font-family: "Pretendard", sans-serif;
+    }
+
+    .filter-btn.active {
+      background:
+        linear-gradient(180deg, var(--button-a) 0%, var(--button-b) 100%);
+    }
+
+    .desktop-controls {
+      display: none;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .range-box {
+      border: 2px solid var(--line);
+      border-radius: 16px;
+      background: #fff;
+      padding: 10px 12px;
+    }
+
+    .range-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      font-weight: 900;
+      color: #4e566a;
+      margin-bottom: 8px;
+    }
+
+    .range-value {
+      font-family: "Galmuri9", sans-serif;
+      font-size: 10px;
+      color: #6d7588;
+    }
+
+    input[type="range"] {
+      width: 100%;
+      accent-color: #7d889e;
+    }
+
+    .editor-helper {
+      text-align: center;
+      font-size: 12px;
+      line-height: 1.55;
+      color: #687084;
+      margin-bottom: 12px;
+    }
+
+    .editor-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 10px;
+    }
+
+    @media (pointer: fine) {
+      .desktop-controls {
+        display: grid;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .main-title {
+        font-size: 25px;
+      }
+
+      .question-title {
+        font-size: 22px;
+      }
+
+      .result-name {
+        font-size: 18px;
+      }
+
+      .result-top-line {
+        grid-template-columns: 68px 1fr;
+      }
+
+      .log-badge {
+        width: 68px;
+        height: 68px;
+        font-size: 15px;
+      }
+
+      .editor-actions {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body class="theme-blue">
+  <header class="page-header">
+    <a href="https://test-it.co.kr/" class="logo">test-it</a>
+    <nav class="main-nav">
+      <a href="https://test-it.co.kr/test.html">성격</a>
+      <a href="https://test-it.co.kr/face.html">얼굴</a>
+      <a href="https://test-it.co.kr/etc.html">그외</a>
+      <a href="https://test-it.co.kr/saju.html">사주</a>
+    </nav>
+  </header>
+
+  <main class="wrapper">
+    <section id="startScreen" class="screen active">
+      <div class="card start-card">
+        <div class="mini-label">retro folder phone</div>
+        <h1 class="main-title">성격 테스트로그</h1>
+
+        <div class="phone-hero">
+          <div class="phone-top">
+            <div class="speaker"></div>
+            <div class="hero-screen"></div>
+          </div>
+          <div class="phone-bottom">
+            <div class="hero-line"></div>
+            <div class="hero-box"></div>
+            <div class="hero-grid">
+              <div class="hero-tag-box"></div>
+              <div class="hero-tag-box"></div>
+              <div class="hero-tag-box"></div>
+              <div class="hero-tag-box"></div>
+            </div>
+            <div class="hero-pill"></div>
+          </div>
+        </div>
+
+        <div class="start-actions">
+          <button class="btn btn-primary" id="startBtn">테스트 시작하기</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="questionScreen" class="screen">
+      <div class="card question-card">
+        <div class="question-meta">
+          <span id="questionCount">QUESTION 1 / 12</span>
+          <span id="questionPercent">8%</span>
+        </div>
+
+        <div class="progress-track">
+          <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <h2 class="question-title" id="questionTitle"></h2>
+
+        <button class="option-btn" id="optionA"></button>
+        <button class="option-btn" id="optionB"></button>
+      </div>
+    </section>
+
+    <section id="resultScreen" class="screen">
+      <div class="card result-card">
+        <div class="theme-row">
+          <button class="theme-btn active" data-theme="blue">블루</button>
+          <button class="theme-btn" data-theme="pink">핑크</button>
+        </div>
+
+        <div id="captureArea" class="folder-phone">
+          <div class="folder-top">
+            <div class="speaker"></div>
+            <div class="photo-frame" id="photoFrame">
+              <div class="photo-frame-inner" id="photoResultViewport">
+                <div class="no-signal" id="noSignalLayer">
+                  <div class="no-signal-text">
+                    <div class="no-signal-main">NO SIGNAL</div>
+                    <div class="no-signal-sub">image not selected</div>
+                  </div>
+                </div>
+                <img id="resultPhotoImg" class="photo-image" alt="업로드 이미지">
+              </div>
+            </div>
+          </div>
+
+          <div class="folder-bottom">
+            <div class="result-top-line">
+              <div class="log-badge">MY LOG</div>
+
+              <div class="result-header-text">
+                <div class="result-small-title">성격 테스트로그 결과</div>
+                <div class="result-name" id="resultName">똑부러진 실행 정리형</div>
+                <div class="result-summary" id="resultSummary">해야 할 걸 빠르게 정리하고 바로 실행하는 현실형 타입.</div>
+              </div>
+            </div>
+
+            <div class="line-box">
+              <div class="line-label">한 줄 성격</div>
+              <div class="line-text" id="resultOneLine">효율과 책임감이 같이 움직이는 편</div>
+            </div>
+
+            <div class="personality-grid">
+              <div class="personality-btn">
+                <div class="personality-chip">성격 1</div>
+                <div class="personality-text" id="trait1">할 말이 분명하고 빠름</div>
+              </div>
+
+              <div class="personality-btn">
+                <div class="personality-chip">성격 2</div>
+                <div class="personality-text" id="trait2">답답한 흐름을 잘 못 참음</div>
+              </div>
+
+              <div class="personality-btn">
+                <div class="personality-chip">성격 3</div>
+                <div class="personality-text" id="trait3">일 처리 속도가 꽤 좋음</div>
+              </div>
+
+              <div class="personality-btn">
+                <div class="personality-chip">성격 4</div>
+                <div class="personality-text" id="trait4">정리된 구조 안에서 강함</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="result-actions">
+          <button class="btn btn-primary" id="saveBtn">결과 이미지 저장하기</button>
+          <button class="btn btn-soft" id="retryBtn">다시 해보기</button>
+          <button class="btn btn-soft" id="shareBtn">테스트 공유하기</button>
+          <div class="helper">사진 부분을 누르면 촬영 또는 업로드 후 바로 편집창이 열려요.</div>
+        </div>
+
+        <input type="file" id="uploadInput" class="hidden-input" accept="image/*">
+        <input type="file" id="cameraInput" class="hidden-input" accept="image/*" capture="environment">
+      </div>
+    </section>
+  </main>
+
+  <div class="picker-modal" id="pickerModal">
+    <div class="picker-sheet">
+      <div class="picker-title">사진 선택</div>
+      <div class="picker-actions">
+        <button class="btn btn-soft" id="pickerCameraBtn">사진 촬영</button>
+        <button class="btn btn-soft" id="pickerUploadBtn">사진 업로드</button>
+        <button class="btn btn-primary" id="pickerCloseBtn">닫기</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="editor-modal" id="editorModal">
+    <div class="editor-sheet">
+      <div class="editor-top">
+        <div class="editor-title">사진 편집</div>
+        <button class="close-btn" id="closeEditorBtn">닫기</button>
+      </div>
+
+      <div class="editor-preview" id="editorPreview">
+        <div class="editor-no-signal no-signal" id="editorNoSignal">
+          <div class="no-signal-text">
+            <div class="no-signal-main">NO SIGNAL</div>
+            <div class="no-signal-sub">image not loaded</div>
+          </div>
+        </div>
+        <img id="editorPreviewImg" class="editor-preview-img" alt="편집 이미지">
+      </div>
+
+      <div class="filter-row">
+        <button class="filter-btn active" data-filter="normal">원본</button>
+        <button class="filter-btn" data-filter="bright">밝게</button>
+        <button class="filter-btn" data-filter="mono">흑백</button>
+      </div>
+
+      <div class="desktop-controls">
+        <div class="range-box">
+          <div class="range-label">
+            <span>확대</span>
+            <span class="range-value" id="zoomValue">1.00x</span>
+          </div>
+          <input type="range" id="zoomRange" min="0.8" max="3" step="0.01" value="1">
+        </div>
+
+        <div class="range-box">
+          <div class="range-label">
+            <span>좌우</span>
+            <span class="range-value" id="xValue">0</span>
+          </div>
+          <input type="range" id="xRange" min="-180" max="180" step="1" value="0">
+        </div>
+
+        <div class="range-box">
+          <div class="range-label">
+            <span>상하</span>
+            <span class="range-value" id="yValue">0</span>
+          </div>
+          <input type="range" id="yRange" min="-180" max="180" step="1" value="0">
+        </div>
+      </div>
+
+      <div class="editor-helper">폰에서는 손가락으로 이동하고 두 손가락으로 확대할 수 있어요.</div>
+
+      <div class="editor-actions">
+        <button class="btn btn-soft" id="resetEditBtn">초기화</button>
+        <button class="btn btn-soft" id="removePhotoBtn">사진 제거</button>
+        <button class="btn btn-primary" id="applyEditBtn">적용하기</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const questions = [
+      {
+        question: "쉬는 날 갑자기 시간이 비면 더 끌리는 쪽은?",
+        a: { text: "바로 누구 만나거나 밖으로 나가고 싶다", value: "E" },
+        b: { text: "혼자 조용히 쉬면서 리듬을 회복하고 싶다", value: "I" }
+      },
+      {
+        question: "낯선 공간에 가면 먼저 잡히는 건?",
+        a: { text: "분위기, 조명, 사람들 표정 같은 실제 디테일", value: "S" },
+        b: { text: "여기서 벌어질 장면이나 느낌 같은 상상", value: "N" }
+      },
+      {
+        question: "친구가 힘들다고 하면 먼저 드는 건?",
+        a: { text: "상황을 정리하고 해결 포인트를 찾아준다", value: "T" },
+        b: { text: "마음부터 읽어주고 감정을 같이 받아준다", value: "F" }
+      },
+      {
+        question: "약속 있는 날 내 기본 모드는?",
+        a: { text: "미리 준비해서 흐름을 안정적으로 맞춘다", value: "J" },
+        b: { text: "당일 기분과 흐름에 맞게 움직이는 편이다", value: "P" }
+      },
+      {
+        question: "재밌는 일이 생기면 나는 보통?",
+        a: { text: "바로 누군가에게 말하고 싶어진다", value: "E" },
+        b: { text: "혼자 먼저 곱씹고 정리한 뒤 말한다", value: "I" }
+      },
+      {
+        question: "콘텐츠를 볼 때 더 집중되는 건?",
+        a: { text: "설정, 소품, 장면 같은 보이는 정보", value: "S" },
+        b: { text: "숨은 의미, 연결점, 다음 전개 상상", value: "N" }
+      },
+      {
+        question: "갈등이 생겼을 때 더 중요한 건?",
+        a: { text: "납득 가능한 기준과 사실관계", value: "T" },
+        b: { text: "상처받은 마음과 관계의 온도", value: "F" }
+      },
+      {
+        question: "여행 준비를 할 때 더 가까운 모습은?",
+        a: { text: "시간표와 동선을 미리 어느 정도 정해둔다", value: "J" },
+        b: { text: "핵심만 정하고 나머지는 가서 정한다", value: "P" }
+      },
+      {
+        question: "기분이 떨어졌을 때 회복 방식은?",
+        a: { text: "사람 만나거나 대화하면서 다시 올라온다", value: "E" },
+        b: { text: "혼자 있는 시간이 있어야 풀린다", value: "I" }
+      },
+      {
+        question: "칭찬을 들을 때 더 와닿는 말은?",
+        a: { text: "실제로 잘한 부분을 구체적으로 말해주는 것", value: "S" },
+        b: { text: "내 가능성이나 분위기를 알아봐주는 것", value: "N" }
+      },
+      {
+        question: "결정이 어려울 때 마지막 기준은?",
+        a: { text: "뭐가 더 효율적이고 맞는가", value: "T" },
+        b: { text: "뭐가 더 마음에 남고 진짜 끌리는가", value: "F" }
+      },
+      {
+        question: "할 일이 쌓이면 나는 보통?",
+        a: { text: "순서 정리해서 하나씩 치운다", value: "J" },
+        b: { text: "급한 거부터 감각적으로 처리한다", value: "P" }
+      }
+    ];
+
+    const resultData = {
+      INTJ: {
+        name: "조용한 설계 저장형",
+        summary: "겉은 담백한데 안쪽에서는 이미 방향과 구조가 다 정리된 타입.",
+        oneLine: "말은 적어도 중심은 쉽게 안 흔들리는 편",
+        traits: [
+          "혼자 있을 때 생각이 제일 선명함",
+          "허술한 흐름을 금방 잡아냄",
+          "정확한 말만 남기려는 편",
+          "한 번 정하면 오래 밀고 감"
+        ],
+        theme: "blue"
+      },
+      INTP: {
+        name: "무심한 상상 저장형",
+        summary: "겉으로는 느슨해 보여도 머릿속 연결은 계속 돌아가는 타입.",
+        oneLine: "생각은 깊고 반응은 담백한 편",
+        traits: [
+          "혼자 파고드는 시간에 강함",
+          "뜬금없는데 맞는 생각이 많음",
+          "재미 없으면 집중이 꺼짐",
+          "관찰 후 한마디가 날카로움"
+        ],
+        theme: "blue"
+      },
+      ENTJ: {
+        name: "시원한 직진 리더형",
+        summary: "흐름을 읽고 정리하고 끌고 가는 속도가 빠른 타입.",
+        oneLine: "결정도 빠르고 판 짜는 감도 좋은 편",
+        traits: [
+          "비효율을 보면 바로 답답함",
+          "할 말은 분명하게 하는 스타일",
+          "주도권 잡을 때 제일 편함",
+          "크게 보고 크게 움직임"
+        ],
+        theme: "blue"
+      },
+      ENTP: {
+        name: "반전 장난 아이디어형",
+        summary: "재미, 말센스, 아이디어가 동시에 살아 있는 타입.",
+        oneLine: "틀보다 재밌는 흐름에 더 빨리 반응함",
+        traits: [
+          "순간 재치가 좋고 말이 살아 있음",
+          "새 자극에 쉽게 심장이 뜀",
+          "고정된 틀에 오래 못 있음",
+          "분위기를 확 뒤집는 포인트가 있음"
+        ],
+        theme: "blue"
+      },
+      INFJ: {
+        name: "잔잔한 몰입 기록형",
+        summary: "겉은 조용한데 감정선과 생각의 밀도가 꽤 깊은 타입.",
+        oneLine: "티는 적어도 속은 오래 남는 편",
+        traits: [
+          "사람 분위기와 마음을 잘 읽음",
+          "혼자 정리하는 시간이 꼭 필요함",
+          "좋아하는 건 깊고 오래 품음",
+          "겉보다 속결이 훨씬 진함"
+        ],
+        theme: "pink"
+      },
+      INFP: {
+        name: "여린데 단단한 무드형",
+        summary: "부드러워 보여도 자기 마음의 기준은 분명한 타입.",
+        oneLine: "감정도 중요하지만 진심은 더 중요함",
+        traits: [
+          "좋아하는 것엔 깊게 빠짐",
+          "억지로 맞추는 건 오래 못 감",
+          "상상과 감수성이 꽤 풍부함",
+          "말보다 분위기로 감정이 드러남"
+        ],
+        theme: "pink"
+      },
+      ENFJ: {
+        name: "다정한 분위기 메이커형",
+        summary: "사람을 편하게 만들고 흐름을 부드럽게 이끄는 타입.",
+        oneLine: "표현도 빠르고 챙김도 자연스러운 편",
+        traits: [
+          "상대 반응을 금방 읽는 편",
+          "챙기는 행동이 진짜 빠름",
+          "관계 분위기 정리에 강함",
+          "좋아하면 표현이 분명함"
+        ],
+        theme: "pink"
+      },
+      ENFP: {
+        name: "반짝 직진 저장형",
+        summary: "기분이 올라오면 표정부터 달라지고 좋은 건 바로 티나는 타입.",
+        oneLine: "설렘도 빠르고 표현도 빠른 편",
+        traits: [
+          "가만히 있어도 존재감이 남",
+          "마음 가면 바로 움직이는 편",
+          "좋아하면 반응이 숨겨지지 않음",
+          "재미와 감정에 진심임"
+        ],
+        theme: "pink"
+      },
+      ISTJ: {
+        name: "차분한 현실 정리형",
+        summary: "흔들림보다 안정감을 만들고 자기 몫을 끝까지 해내는 타입.",
+        oneLine: "과장 없이 묵직하게 믿음 주는 편",
+        traits: [
+          "기준이 분명해서 흐름이 안정적임",
+          "맡은 일은 끝까지 끌고 감",
+          "즉흥보다 준비된 상태가 편함",
+          "작은 변화도 잘 챙김"
+        ],
+        theme: "blue"
+      },
+      ISFJ: {
+        name: "조용한 배려 저장형",
+        summary: "티는 많이 안 내도 세심하게 챙기고 오래 기억하는 타입.",
+        oneLine: "소란스럽지 않아도 다정함이 남는 편",
+        traits: [
+          "작은 포인트를 잘 기억함",
+          "관계 온도 변화에 민감함",
+          "익숙한 흐름에서 편안함",
+          "마음 주면 오래 가는 스타일"
+        ],
+        theme: "pink"
+      },
+      ESTJ: {
+        name: "똑부러진 실행 정리형",
+        summary: "해야 할 걸 빠르게 정리하고 바로 실행하는 현실형 타입.",
+        oneLine: "효율과 책임감이 같이 움직이는 편",
+        traits: [
+          "할 말이 분명하고 빠름",
+          "답답한 흐름을 잘 못 참음",
+          "일 처리 속도가 꽤 좋음",
+          "정리된 구조 안에서 강함"
+        ],
+        theme: "blue"
+      },
+      ESFJ: {
+        name: "살갑고 확실한 챙김형",
+        summary: "표현도 확실하고 정도 많아서 관계를 안정적으로 이어가는 타입.",
+        oneLine: "따뜻함이 행동으로 바로 드러나는 편",
+        traits: [
+          "반응이 빠르고 살가운 편",
+          "챙기는 행동이 자연스럽게 나옴",
+          "좋은 분위기 유지에 신경 씀",
+          "호감 있으면 정성이 눈에 띔"
+        ],
+        theme: "pink"
+      },
+      ISTP: {
+        name: "담백한 실전 감각형",
+        summary: "말보다 행동, 설명보다 감각이 먼저 움직이는 타입.",
+        oneLine: "조용해 보여도 필요한 순간엔 제일 빠름",
+        traits: [
+          "쿨하고 담백한 결이 강함",
+          "혼자 집중할 때 힘이 잘 남",
+          "과한 간섭은 진짜 답답해함",
+          "상황 판단이 꽤 현실적임"
+        ],
+        theme: "blue"
+      },
+      ISFP: {
+        name: "부드러운 자유 무드형",
+        summary: "잔잔하고 유연하지만 취향과 감정은 분명한 타입.",
+        oneLine: "편안해 보여도 내 마음 기준은 또렷함",
+        traits: [
+          "무드와 감각에 민감한 편",
+          "억지 분위기를 오래 못 견딤",
+          "좋아하는 건 확실히 좋아함",
+          "조용히 자기 방식대로 감"
+        ],
+        theme: "pink"
+      },
+      ESTP: {
+        name: "즉각 반응 액션형",
+        summary: "생각만 하기보다 먼저 부딪히고 움직이는 데 강한 타입.",
+        oneLine: "현장감, 순발력, 재미를 잘 탐",
+        traits: [
+          "반응 속도가 꽤 빠름",
+          "기회 보이면 바로 잡으려 함",
+          "답답한 템포를 잘 못 참음",
+          "지금 이 순간 감각이 살아 있음"
+        ],
+        theme: "blue"
+      },
+      ESFP: {
+        name: "사랑스러운 현장 무드형",
+        summary: "밝고 생기 있고 지금 이 순간을 즐기는 힘이 큰 타입.",
+        oneLine: "즐거움도 애정 표현도 자연스럽게 나오는 편",
+        traits: [
+          "분위기를 환하게 만드는 편",
+          "감정 표현이 솔직하고 빠름",
+          "지금의 재미를 놓치지 않음",
+          "호감 생기면 반응도 분명함"
+        ],
+        theme: "pink"
+      }
+    };
+
+    let currentQuestion = 0;
+    let scores = { E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0 };
+
+    let uploadedImage = "";
+    let currentResultType = "ESTJ";
+
+    const editState = {
+      scale: 1,
+      x: 0,
+      y: 0,
+      filter: "normal"
+    };
+
+    const gestureState = {
+      dragging: false,
+      lastX: 0,
+      lastY: 0,
+      pinchStartDist: 0,
+      pinchStartScale: 1,
+      pinchStartCenterX: 0,
+      pinchStartCenterY: 0,
+      pinchStartOffsetX: 0,
+      pinchStartOffsetY: 0
+    };
+
+    const startScreen = document.getElementById("startScreen");
+    const questionScreen = document.getElementById("questionScreen");
+    const resultScreen = document.getElementById("resultScreen");
+
+    const startBtn = document.getElementById("startBtn");
+    const questionCount = document.getElementById("questionCount");
+    const questionPercent = document.getElementById("questionPercent");
+    const progressBar = document.getElementById("progressBar");
+    const questionTitle = document.getElementById("questionTitle");
+    const optionA = document.getElementById("optionA");
+    const optionB = document.getElementById("optionB");
+
+    const resultName = document.getElementById("resultName");
+    const resultSummary = document.getElementById("resultSummary");
+    const resultOneLine = document.getElementById("resultOneLine");
+    const trait1 = document.getElementById("trait1");
+    const trait2 = document.getElementById("trait2");
+    const trait3 = document.getElementById("trait3");
+    const trait4 = document.getElementById("trait4");
+
+    const photoFrame = document.getElementById("photoFrame");
+    const photoResultViewport = document.getElementById("photoResultViewport");
+    const resultPhotoImg = document.getElementById("resultPhotoImg");
+    const noSignalLayer = document.getElementById("noSignalLayer");
+
+    const uploadInput = document.getElementById("uploadInput");
+    const cameraInput = document.getElementById("cameraInput");
+
+    const pickerModal = document.getElementById("pickerModal");
+    const pickerCameraBtn = document.getElementById("pickerCameraBtn");
+    const pickerUploadBtn = document.getElementById("pickerUploadBtn");
+    const pickerCloseBtn = document.getElementById("pickerCloseBtn");
+
+    const editorModal = document.getElementById("editorModal");
+    const closeEditorBtn = document.getElementById("closeEditorBtn");
+    const editorPreview = document.getElementById("editorPreview");
+    const editorPreviewImg = document.getElementById("editorPreviewImg");
+    const editorNoSignal = document.getElementById("editorNoSignal");
+
+    const zoomRange = document.getElementById("zoomRange");
+    const xRange = document.getElementById("xRange");
+    const yRange = document.getElementById("yRange");
+    const zoomValue = document.getElementById("zoomValue");
+    const xValue = document.getElementById("xValue");
+    const yValue = document.getElementById("yValue");
+
+    const resetEditBtn = document.getElementById("resetEditBtn");
+    const removePhotoBtn = document.getElementById("removePhotoBtn");
+    const applyEditBtn = document.getElementById("applyEditBtn");
+
+    const saveBtn = document.getElementById("saveBtn");
+    const retryBtn = document.getElementById("retryBtn");
+    const shareBtn = document.getElementById("shareBtn");
+
+    const themeButtons = document.querySelectorAll(".theme-btn");
+    const filterButtons = document.querySelectorAll(".filter-btn");
+
+    startBtn.addEventListener("click", () => {
+      showScreen("question");
+      renderQuestion();
+    });
+
+    optionA.addEventListener("click", () => selectAnswer("a"));
+    optionB.addEventListener("click", () => selectAnswer("b"));
+
+    themeButtons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const theme = btn.dataset.theme;
+        applyTheme(theme);
+        syncThemeButtons(theme);
+      });
+    });
+
+    photoFrame.addEventListener("click", () => {
+      openPicker();
+    });
+
+    pickerCameraBtn.addEventListener("click", () => {
+      closePicker();
+      cameraInput.click();
+    });
+
+    pickerUploadBtn.addEventListener("click", () => {
+      closePicker();
+      uploadInput.click();
+    });
+
+    pickerCloseBtn.addEventListener("click", closePicker);
+
+    uploadInput.addEventListener("change", handleImageSelection);
+    cameraInput.addEventListener("change", handleImageSelection);
+
+    closeEditorBtn.addEventListener("click", closeEditor);
+    resetEditBtn.addEventListener("click", resetEditorState);
+    removePhotoBtn.addEventListener("click", removePhoto);
+    applyEditBtn.addEventListener("click", applyEditorAndClose);
+
+    zoomRange.addEventListener("input", () => {
+      editState.scale = Number(zoomRange.value);
+      editState.x = Number(xRange.value);
+      editState.y = Number(yRange.value);
+      syncRangeValues();
+      renderAllPhotos();
+    });
+
+    xRange.addEventListener("input", () => {
+      editState.x = Number(xRange.value);
+      syncRangeValues();
+      renderAllPhotos();
+    });
+
+    yRange.addEventListener("input", () => {
+      editState.y = Number(yRange.value);
+      syncRangeValues();
+      renderAllPhotos();
+    });
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        editState.filter = btn.dataset.filter;
+        syncFilterButtons();
+        renderAllPhotos();
+      });
+    });
+
+    saveBtn.addEventListener("click", saveResultImage);
+    retryBtn.addEventListener("click", resetTest);
+    shareBtn.addEventListener("click", shareTest);
+
+    window.addEventListener("resize", renderAllPhotos);
+
+    setupTouchEditor();
+
+    function showScreen(type) {
+      startScreen.classList.remove("active");
+      questionScreen.classList.remove("active");
+      resultScreen.classList.remove("active");
+
+      if (type === "start") startScreen.classList.add("active");
+      if (type === "question") questionScreen.classList.add("active");
+      if (type === "result") resultScreen.classList.add("active");
+
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function renderQuestion() {
+      const q = questions[currentQuestion];
+      const percent = Math.round(((currentQuestion + 1) / questions.length) * 100);
+
+      questionCount.textContent = `QUESTION ${currentQuestion + 1} / ${questions.length}`;
+      questionPercent.textContent = `${percent}%`;
+      progressBar.style.width = `${percent}%`;
+      questionTitle.textContent = q.question;
+      optionA.textContent = q.a.text;
+      optionB.textContent = q.b.text;
+    }
+
+    function selectAnswer(choice) {
+      const q = questions[currentQuestion];
+      const selected = q[choice];
+      scores[selected.value] += 1;
+      currentQuestion += 1;
+
+      if (currentQuestion < questions.length) {
+        renderQuestion();
+      } else {
+        showResult();
+      }
+    }
+
+    function getMbti() {
+      const ei = scores.E >= scores.I ? "E" : "I";
+      const sn = scores.S >= scores.N ? "S" : "N";
+      const tf = scores.T >= scores.F ? "T" : "F";
+      const jp = scores.J >= scores.P ? "J" : "P";
+      return `${ei}${sn}${tf}${jp}`;
+    }
+
+    function showResult() {
+      currentResultType = getMbti();
+      const data = resultData[currentResultType];
+
+      resultName.textContent = data.name;
+      resultSummary.textContent = data.summary;
+      resultOneLine.textContent = data.oneLine;
+      trait1.textContent = data.traits[0];
+      trait2.textContent = data.traits[1];
+      trait3.textContent = data.traits[2];
+      trait4.textContent = data.traits[3];
+
+      applyTheme(data.theme);
+      syncThemeButtons(data.theme);
+      renderAllPhotos();
+      showScreen("result");
+    }
+
+    function applyTheme(theme) {
+      document.body.classList.remove("theme-blue", "theme-pink");
+      document.body.classList.add(`theme-${theme}`);
+    }
+
+    function syncThemeButtons(theme) {
+      themeButtons.forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.theme === theme);
+      });
+    }
+
+    function openPicker() {
+      pickerModal.classList.add("active");
+    }
+
+    function closePicker() {
+      pickerModal.classList.remove("active");
+    }
+
+    function openEditor() {
+      editorModal.classList.add("active");
+      syncRangeInputs();
+      syncRangeValues();
+      syncFilterButtons();
+      renderAllPhotos();
+    }
+
+    function closeEditor() {
+      editorModal.classList.remove("active");
+    }
+
+    function handleImageSelection(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        uploadedImage = e.target.result;
+        editState.scale = 1;
+        editState.x = 0;
+        editState.y = 0;
+        editState.filter = "normal";
+
+        renderAllPhotos();
+
+        uploadInput.value = "";
+        cameraInput.value = "";
+        openEditor();
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function removePhoto() {
+      uploadedImage = "";
+      editState.scale = 1;
+      editState.x = 0;
+      editState.y = 0;
+      editState.filter = "normal";
+      syncRangeInputs();
+      syncRangeValues();
+      syncFilterButtons();
+      renderAllPhotos();
+      closeEditor();
+    }
+
+    function applyEditorAndClose() {
+      renderAllPhotos();
+      closeEditor();
+    }
+
+    function resetEditorState() {
+      editState.scale = 1;
+      editState.x = 0;
+      editState.y = 0;
+      editState.filter = "normal";
+      syncRangeInputs();
+      syncRangeValues();
+      syncFilterButtons();
+      renderAllPhotos();
+    }
+
+    function syncRangeInputs() {
+      zoomRange.value = editState.scale;
+      xRange.value = editState.x;
+      yRange.value = editState.y;
+    }
+
+    function syncRangeValues() {
+      zoomValue.textContent = `${editState.scale.toFixed(2)}x`;
+      xValue.textContent = `${Math.round(editState.x)}`;
+      yValue.textContent = `${Math.round(editState.y)}`;
+    }
+
+    function syncFilterButtons() {
+      filterButtons.forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.filter === editState.filter);
+      });
+    }
+
+    function getFilterCss() {
+      if (editState.filter === "bright") return "brightness(1.18) saturate(1.02)";
+      if (editState.filter === "mono") return "grayscale(1) contrast(1.05)";
+      return "none";
+    }
+
+    function renderAllPhotos() {
+      renderSinglePhoto(resultPhotoImg, noSignalLayer, photoResultViewport);
+      renderSinglePhoto(editorPreviewImg, editorNoSignal, editorPreview);
+    }
+
+    function renderSinglePhoto(imgEl, noSignalEl, viewportEl) {
+      if (!uploadedImage) {
+        imgEl.style.display = "none";
+        imgEl.removeAttribute("src");
+        noSignalEl.style.display = "block";
+        return;
+      }
+
+      if (imgEl.getAttribute("src") !== uploadedImage) {
+        imgEl.src = uploadedImage;
+      }
+
+      imgEl.style.display = "block";
+      noSignalEl.style.display = "none";
+
+      if (!imgEl.complete) {
+        imgEl.onload = () => applyPhotoLayout(imgEl, viewportEl);
+      } else {
+        applyPhotoLayout(imgEl, viewportEl);
+      }
+    }
+
+    function applyPhotoLayout(imgEl, viewportEl) {
+      const vw = viewportEl.clientWidth;
+      const vh = viewportEl.clientHeight;
+      const iw = imgEl.naturalWidth || 1;
+      const ih = imgEl.naturalHeight || 1;
+
+      const coverScale = Math.max(vw / iw, vh / ih);
+      const baseWidth = iw * coverScale;
+      const baseHeight = ih * coverScale;
+
+      imgEl.style.width = `${baseWidth}px`;
+      imgEl.style.height = `${baseHeight}px`;
+      imgEl.style.transform = `translate(calc(-50% + ${editState.x}px), calc(-50% + ${editState.y}px)) scale(${editState.scale})`;
+      imgEl.style.filter = getFilterCss();
+    }
+
+    function setupTouchEditor() {
+      editorPreview.addEventListener("touchstart", handleTouchStart, { passive: false });
+      editorPreview.addEventListener("touchmove", handleTouchMove, { passive: false });
+      editorPreview.addEventListener("touchend", handleTouchEnd, { passive: false });
+      editorPreview.addEventListener("touchcancel", handleTouchEnd, { passive: false });
+    }
+
+    function getDistance(t1, t2) {
+      const dx = t1.clientX - t2.clientX;
+      const dy = t1.clientY - t2.clientY;
+      return Math.sqrt(dx * dx + dy * dy);
+    }
+
+    function getCenter(t1, t2) {
+      return {
+        x: (t1.clientX + t2.clientX) / 2,
+        y: (t1.clientY + t2.clientY) / 2
+      };
+    }
+
+    function handleTouchStart(e) {
+      if (!uploadedImage) return;
+
+      if (e.touches.length === 1) {
+        gestureState.dragging = true;
+        gestureState.lastX = e.touches[0].clientX;
+        gestureState.lastY = e.touches[0].clientY;
+      }
+
+      if (e.touches.length === 2) {
+        gestureState.dragging = false;
+        gestureState.pinchStartDist = getDistance(e.touches[0], e.touches[1]);
+        gestureState.pinchStartScale = editState.scale;
+        const center = getCenter(e.touches[0], e.touches[1]);
+        gestureState.pinchStartCenterX = center.x;
+        gestureState.pinchStartCenterY = center.y;
+        gestureState.pinchStartOffsetX = editState.x;
+        gestureState.pinchStartOffsetY = editState.y;
+      }
+    }
+
+    function handleTouchMove(e) {
+      if (!uploadedImage) return;
+
+      if (e.touches.length === 1 && gestureState.dragging) {
+        e.preventDefault();
+        const dx = e.touches[0].clientX - gestureState.lastX;
+        const dy = e.touches[0].clientY - gestureState.lastY;
+        gestureState.lastX = e.touches[0].clientX;
+        gestureState.lastY = e.touches[0].clientY;
+
+        editState.x += dx;
+        editState.y += dy;
+
+        clampEditState();
+        syncRangeInputs();
+        syncRangeValues();
+        renderAllPhotos();
+      }
+
+      if (e.touches.length === 2) {
+        e.preventDefault();
+        const dist = getDistance(e.touches[0], e.touches[1]);
+        const center = getCenter(e.touches[0], e.touches[1]);
+
+        const ratio = dist / gestureState.pinchStartDist;
+        editState.scale = Math.min(3, Math.max(0.8, gestureState.pinchStartScale * ratio));
+        editState.x = gestureState.pinchStartOffsetX + (center.x - gestureState.pinchStartCenterX);
+        editState.y = gestureState.pinchStartOffsetY + (center.y - gestureState.pinchStartCenterY);
+
+        clampEditState();
+        syncRangeInputs();
+        syncRangeValues();
+        renderAllPhotos();
+      }
+    }
+
+    function handleTouchEnd(e) {
+      if (e.touches.length === 0) {
+        gestureState.dragging = false;
+      }
+
+      if (e.touches.length === 1) {
+        gestureState.dragging = true;
+        gestureState.lastX = e.touches[0].clientX;
+        gestureState.lastY = e.touches[0].clientY;
+      }
+    }
+
+    function clampEditState() {
+      editState.scale = Math.min(3, Math.max(0.8, editState.scale));
+      editState.x = Math.min(180, Math.max(-180, editState.x));
+      editState.y = Math.min(180, Math.max(-180, editState.y));
+    }
+
+    async function saveResultImage() {
+      renderAllPhotos();
+
+      const captureArea = document.getElementById("captureArea");
+      const canvas = await html2canvas(captureArea, {
+        backgroundColor: null,
+        scale: 2,
+        useCORS: true
+      });
+
+      const link = document.createElement("a");
+      link.download = `testlog-${currentResultType}.png`;
+      link.href = canvas.toDataURL("image/png");
+      link.click();
+    }
+
+    async function shareTest() {
+      const shareData = {
+        title: "테스트잇 성격 테스트로그",
+        text: "폴더폰 감성으로 저장하는 성격 테스트로그",
+        url: window.location.href
+      };
+
+      if (navigator.share) {
+        try {
+          await navigator.share(shareData);
+        } catch (e) {}
+      } else {
+        try {
+          await navigator.clipboard.writeText(window.location.href);
+          alert("테스트 링크가 복사되었어요.");
+        } catch (e) {
+          alert("공유 기능을 사용할 수 없어요.");
+        }
+      }
+    }
+
+    function resetTest() {
+      currentQuestion = 0;
+      scores = { E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0 };
+      uploadedImage = "";
+      editState.scale = 1;
+      editState.x = 0;
+      editState.y = 0;
+      editState.filter = "normal";
+
+      syncRangeInputs();
+      syncRangeValues();
+      syncFilterButtons();
+      renderAllPhotos();
+
+      closePicker();
+      closeEditor();
+      showScreen("start");
+    }
+
+    syncRangeInputs();
+    syncRangeValues();
+    syncFilterButtons();
+    renderAllPhotos();
+  </script>
+</body>
+</html>

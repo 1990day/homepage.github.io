@@ -48,7 +48,6 @@
   body {
     margin: 0;
     padding: 0;
-    /* 상단 빈칸 문제 해결을 위해 padding-top: 60px 삭제 */
     padding-bottom: 40px;
     background-color: #f5f2eb;
     font-family: 'DungGeunMo', sans-serif;
@@ -58,7 +57,6 @@
     min-height: 100vh;
   }
 
-  /* 헤더 스타일 */
   .header-wrapper {
     width: 100%;
     background-color: var(--win-bg);
@@ -145,26 +143,6 @@
     padding: 7px 11px 5px 13px;
   }
 
-  @media (max-width: 480px) {
-    .page-header {
-      padding: 6px 12px !important;
-    }
-    .retro-logo {
-      font-size: 16px;
-      padding: 3px 8px;
-    }
-    .main-nav {
-      gap: 8px;
-    }
-    .main-nav a {
-      padding: 5px 8px;
-      font-size: 14px;
-      letter-spacing: -0.5px;
-    }
-  }
-
-  /* ------------------------------------------------ */
-
   #app {
     width: 100%;
     max-width: 500px; 
@@ -218,19 +196,16 @@
     flex-direction: column;
   }
 
-  /* 시작 화면 (비율 고정) */
   #main-screen {
     background-color: var(--retro-lcd);
     aspect-ratio: 3 / 4; 
   }
 
-  /* 질문 화면 (세로가 너무 길어지지 않게 aspect-ratio 해제 후 최소 높이 설정) */
   #question-screen {
     background-color: var(--retro-lcd);
     min-height: 380px; 
   }
 
-  /* 결과 화면 */
   #result-screen {
     background-color: var(--c-bg); 
     height: auto;
@@ -639,8 +614,66 @@
 
   .pc-controls { display: flex; justify-content: center; gap: 5px; margin-top: 15px; }
   
-  @media (max-width: 768px) {
-    .pc-controls { display: none !important; }
+  @media (max-width: 480px) {
+    .page-header {
+      padding: 6px 12px !important;
+    }
+    .retro-logo {
+      font-size: 16px;
+      padding: 3px 8px;
+    }
+    .main-nav {
+      gap: 8px;
+    }
+    .main-nav a {
+      padding: 5px 8px;
+      font-size: 14px;
+      letter-spacing: -0.5px;
+    }
+
+    /* 모바일 화면 패딩 축소 */
+    #app {
+      padding: 15px 10px 25px 10px;
+      border-radius: 30px 30px 40px 40px;
+    }
+    .screen-glass {
+      padding: 15px 10px 25px 10px;
+    }
+    .folder-bottom {
+      padding: 15px 10px;
+    }
+    .trait-row {
+      gap: 8px;
+      margin-bottom: 15px;
+    }
+    .content-split {
+      gap: 8px;
+    }
+    .good-bad-container {
+      gap: 8px;
+    }
+    .traits-grid {
+      gap: 8px;
+    }
+    .circle {
+      width: 60px;
+      font-size: 14px;
+    }
+    .pill {
+      padding: 8px;
+      font-size: 13px;
+    }
+    .rect-small {
+      padding: 12px 0;
+      font-size: 13px;
+    }
+    .trait-btn {
+      padding: 8px 4px;
+      font-size: 12px;
+    }
+    .pc-controls { 
+      display: none !important; 
+    }
   }
 
   .pc-controls button {

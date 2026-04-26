@@ -199,7 +199,7 @@
 
   #main-screen {
     background-color: var(--retro-lcd);
-    aspect-ratio: 3 / 4; 
+    min-height: 380px; 
   }
 
   #question-screen {
@@ -301,17 +301,14 @@
     font-family: inherit;
     font-weight: 800;
     font-size: 16px;
-    padding: 15px;
-    border-top: 2px solid var(--win-border-light);
-    border-left: 2px solid var(--win-border-light);
-    border-right: 2px solid var(--win-border-dark);
-    border-bottom: 2px solid var(--win-border-dark);
-    box-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 #000, 0 2px 4px rgba(0,0,0,0.2);
+    padding: 12px;
+    border: 2px solid var(--lcd-text);
+    box-shadow: inset -2px -2px 0 rgba(46,53,46,0.2);
     cursor: pointer;
-    width: 100%;
-    max-width: 500px;
+    width: 90%;
+    max-width: 360px;
     box-sizing: border-box;
-    margin-bottom: 10px;
+    margin: 0 auto;
     text-align: center;
     word-break: keep-all;
   }
@@ -319,15 +316,13 @@
   .start-btn-external {
     margin-top: 25px;
     font-size: 18px;
+    display: block;
   }
 
   .start-btn-external:active, .ext-btn:active {
-    border-top: 2px solid var(--win-border-dark);
-    border-left: 2px solid var(--win-border-dark);
-    border-right: 2px solid var(--win-border-light);
-    border-bottom: 2px solid var(--win-border-light);
-    box-shadow: inset 1px 1px 0 #000, inset -1px -1px 0 #fff;
-    padding: 16px 14px 14px 16px;
+    background-color: #d0d0d0;
+    box-shadow: inset 2px 2px 0 rgba(46,53,46,0.2);
+    padding: 13px 11px 11px 13px;
   }
 
   .progress-container {
@@ -554,11 +549,11 @@
 
   .external-actions {
     width: 100%;
-    max-width: 500px; 
     margin-top: 20px;
     display: none;
     flex-direction: column;
-    gap: 8px;
+    align-items: center;
+    gap: 6px;
     box-sizing: border-box;
   }
 
@@ -747,20 +742,19 @@
   
   <div class="screen-glass">
     
-    <div id="main-screen" class="lcd-screen">
+<div id="main-screen" class="lcd-screen">
       <div class="status-bar">
-        <span>테스트잇 성격 로그 테스트</span>
+        <span>테스트잇 셋로그 성격 테스트</span>
         <div class="battery-icon">[■■■]</div>
       </div>
-      <div class="screen-content">
-        <div class="retro-title">성격<br>테스트로그</div>
-        <div class="retro-subtitle">나의 지금을<br>폴더폰 감성으로 기록하기</div>
+      <div class="screen-content" style="padding: 0;">
+        <img src="img_main381.png" alt="테스트 메인 이미지" style="width: 100%; height: 100%; object-fit: cover; display: block;">
       </div>
     </div>
 
     <div id="question-screen" class="lcd-screen" style="display:none;">
       <div class="status-bar">
-        <span>테스트잇 성격 로그 테스트</span>
+        <span>테스트잇 셋로그 성격 테스트</span>
         <div class="battery-icon">[■■■]</div>
       </div>
       <div class="screen-content">
@@ -775,7 +769,7 @@
 
     <div id="result-screen" class="lcd-screen" style="display:none;">
       <div class="status-bar" style="background:transparent; border-bottom:1px solid #000; margin-bottom:0;">
-        <span>테스트잇 성격 로그 테스트</span>
+        <span>테스트잇 셋로그 성격 테스트</span>
         <div class="battery-icon">[■■■]</div>
       </div>
       

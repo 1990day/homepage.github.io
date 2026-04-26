@@ -20,6 +20,7 @@
     --phone-body: #d9d9d9;
     --phone-border: #999999;
     --retro-lcd: #c4d4af; 
+    --lcd-text: #2e352e; /* 추가된 텍스트/테두리 색상 */
 
     /* 헤더 및 외부 버튼용 윈도우 스타일 색상 */
     --win-bg: #e0e0e0;
@@ -258,7 +259,7 @@
 
   .retro-title {
     font-size: 28px;
-    color: #000;
+    color: var(--lcd-text);
     margin-top: 10px;
     margin-bottom: 20px;
     line-height: 1.2;
@@ -266,7 +267,7 @@
   }
   
   .retro-subtitle {
-    color: #000;
+    color: var(--lcd-text);
     font-size: 14px;
     margin-bottom: 30px;
     line-height: 1.5;
@@ -274,8 +275,8 @@
 
   .pixel-btn {
     background-color: transparent;
-    color: #000;
-    border: 2px solid #000;
+    color: var(--lcd-text);
+    border: 2px solid var(--lcd-text);
     border-radius: 0;
     padding: 12px 15px;
     font-size: 15px;
@@ -286,10 +287,12 @@
     margin-bottom: 10px;
     text-align: center;
     word-break: keep-all;
+    box-shadow: inset -2px -2px 0 rgba(46,53,46,0.42);
   }
   .pixel-btn:active {
-    background-color: #000;
+    background-color: var(--lcd-text);
     color: var(--retro-lcd);
+    box-shadow: inset 2px 2px 0 rgba(0,0,0,0.4);
   }
 
   .start-btn-external, .ext-btn {
@@ -331,13 +334,13 @@
     width: 100%;
     height: 10px;
     background-color: transparent;
-    border: 2px solid #000;
+    border: 2px solid var(--lcd-text);
     margin-bottom: 30px;
     overflow: hidden;
   }
   .progress-bar {
     height: 100%;
-    background-color: #000;
+    background-color: var(--lcd-text);
     width: 0%;
     transition: width 0.2s;
   }
@@ -346,7 +349,7 @@
     font-size: 18px; 
     margin-bottom: 30px; 
     line-height: 1.5; 
-    color: #000;
+    color: var(--lcd-text);
     font-weight: bold;
     width: 100%;
     word-break: keep-all;
@@ -463,19 +466,20 @@
   }
 
   .retro-box {
-    color: #000;
-    border: 2px solid #000;
-    border-radius: 12px; 
+    color: var(--lcd-text);
+    border: 2px solid var(--lcd-text);
+    border-radius: 0; 
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     background: #fff;
+    box-shadow: inset -2px -2px 0 rgba(46,53,46,0.2);
   }
 
   .circle { 
     width: 80px; 
-    border-radius: 40px; 
+    border-radius: 0; 
     font-weight: bold; 
     font-size: 16px; 
     line-height: 1.3; 
@@ -483,7 +487,7 @@
   }
   
   .pill { 
-    border-radius: 20px; 
+    border-radius: 0; 
     padding: 12px; 
     font-size: 15px; 
     flex: 1; 
@@ -511,7 +515,7 @@
     font-size: 15px; 
     font-weight: bold; 
     padding: 18px 0; 
-    border-radius: 12px;
+    border-radius: 0;
   }
   .rect-small span { font-size: 12px; opacity: 0.7; margin-bottom: 6px; font-weight: normal; }
   
@@ -524,8 +528,8 @@
   }
 
   .trait-btn {
-    border: 2px solid #000;
-    border-radius: 10px;
+    border: 2px solid var(--lcd-text);
+    border-radius: 0;
     font-size: 14px;
     font-weight: bold;
     display: flex;
@@ -535,7 +539,8 @@
     word-break: keep-all;
     text-align: center;
     line-height: 1.4;
-    color: #000;
+    color: var(--lcd-text);
+    box-shadow: inset -2px -2px 0 rgba(46,53,46,0.18);
   }
 
   .trait-btn:nth-child(1) { background-color: #FFB3BA; }
@@ -631,7 +636,6 @@
       letter-spacing: -0.5px;
     }
 
-    /* 모바일 화면 패딩 축소 */
     #app {
       padding: 15px 10px 25px 10px;
       border-radius: 30px 30px 40px 40px;

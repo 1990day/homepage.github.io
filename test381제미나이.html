@@ -15,9 +15,13 @@
     --c-good: #87cefa;
     --c-bad: #dda0dd;
     --c-detail: #fff;
-    --kitsch-main: #FFB6C1;
-    --kitsch-btn: #FF69B4;
-    --kitsch-border: #000;
+    
+    /* 핑크 폰 디자인용 변수 */
+    --kitsch-main: #FFD1DC;
+    --kitsch-btn: #FFF;
+    --kitsch-border: #FF69B4;
+    --kitsch-shadow: #FFB6C1;
+    --kitsch-text: #FF1493;
   }
 
   body.theme-istj { --c-bg: #e3f2fd; --c-pill1: #bbdefb; --c-pill2: #c8e6c9; --c-good: #d1c4e9; --c-bad: #ffcdd2; }
@@ -42,7 +46,9 @@
     padding: 0;
     padding-top: 60px;
     padding-bottom: 40px;
-    background-color: #f0f0f0;
+    background-color: #FFF0F5;
+    background-image: radial-gradient(#FFB6C1 1px, transparent 1px);
+    background-size: 20px 20px;
     font-family: 'DungGeunMo', sans-serif;
     display: flex;
     flex-direction: column;
@@ -50,7 +56,6 @@
     min-height: 100vh;
   }
 
-  /* Test It 브랜드 고정 헤더 */
   .test-it-header {
     position: fixed;
     top: 0;
@@ -62,67 +67,119 @@
     padding: 15px 20px;
     box-sizing: border-box;
     backdrop-filter: blur(10px);
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 240, 245, 0.9);
     z-index: 1000;
-    border-bottom: 2px solid #000;
+    border-bottom: 3px solid var(--kitsch-border);
   }
-  .test-it-header .logo { font-weight: bold; font-size: 18px; color: #000; }
-  .test-it-header .nav { display: flex; gap: 15px; font-size: 14px; color: #000; font-weight: bold; }
+  .test-it-header .logo { font-weight: bold; font-size: 18px; color: var(--kitsch-text); }
+  .test-it-header .nav { display: flex; gap: 15px; font-size: 14px; color: var(--kitsch-border); font-weight: bold; }
 
-  /* 폴더폰 기기 프레임 */
   #app {
     width: 100%;
-    max-width: 500px; /* 360px에서 500px로 확대 */
-    background-color: var(--kitsch-main);
-    border: 3px solid var(--kitsch-border);
-    border-radius: 20px;
-    padding: 20px 15px;
-    box-shadow: inset 4px 4px 8px rgba(255,255,255,0.5), inset -4px -4px 8px rgba(0,0,0,0.2), 0 10px 20px rgba(0,0,0,0.2);
+    max-width: 500px;
+    background: linear-gradient(135deg, #FFE4E1 0%, #FFC0CB 100%);
+    border: 4px solid var(--kitsch-border);
+    border-radius: 40px;
+    padding: 25px 20px;
+    box-shadow: inset 8px 8px 15px rgba(255,255,255,0.8), inset -8px -8px 15px rgba(255,105,180,0.3), 0 15px 25px rgba(255,105,180,0.2);
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     position: relative;
   }
 
-  /* 폴더폰 상단 스피커 영역 */
   .speaker-area {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
   }
   .speaker-hole {
-    width: 60px;
-    height: 6px;
-    background-color: #222;
-    border-radius: 5px;
-    border: 1px solid #000;
-    box-shadow: inset 0px 2px 0px rgba(0,0,0,0.8);
+    width: 70px;
+    height: 10px;
+    background-color: #FFB6C1;
+    border-radius: 10px;
+    border: 2px solid var(--kitsch-border);
+    box-shadow: inset 0px 3px 5px rgba(255,105,180,0.4);
   }
 
-  /* 시작/질문 화면 */
-  .screen {
+  .lcd-screen {
+    width: 100%;
+    background-color: var(--c-bg);
+    border: 4px solid var(--kitsch-border);
+    border-radius: 20px;
+    box-sizing: border-box;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    box-shadow: inset 0 0 15px rgba(255,105,180,0.15);
+  }
+
+  #main-screen, #question-screen {
+    min-height: 400px;
+  }
+
+  #result-screen {
+    display: none;
+    flex-direction: column;
+    aspect-ratio: 9 / 16;
+  }
+
+  .status-bar {
+    height: 28px;
+    background-color: #FFB6C1;
+    color: #FFF;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 12px;
+    font-size: 13px;
+    z-index: 10;
+    flex-shrink: 0;
+    font-weight: bold;
+    border-bottom: 2px solid var(--kitsch-border);
+  }
+
+  .screen-content {
+    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 30px 20px;
+    padding: 20px;
     box-sizing: border-box;
     text-align: center;
-    background-color: var(--c-bg);
-    min-height: 480px;
-    border: 3px solid var(--kitsch-border);
-    border-radius: 12px;
+    background-image: radial-gradient(#FFF 2px, transparent 2px);
+    background-size: 30px 30px;
   }
 
-  h1 { font-size: 26px; margin-bottom: 10px; color: #000; }
-  .subtitle { font-size: 14px; margin-bottom: 40px; color: #333; line-height: 1.5; }
+  .retro-title {
+    font-size: 34px;
+    color: var(--kitsch-text);
+    text-shadow: 2px 2px 0px #FFF, -2px -2px 0px #FFB6C1;
+    margin-bottom: 20px;
+    line-height: 1.3;
+    letter-spacing: -1px;
+  }
   
+  .retro-subtitle {
+    background: #FFF;
+    color: var(--kitsch-text);
+    padding: 10px 20px;
+    font-size: 15px;
+    border: 2px dashed var(--kitsch-border);
+    border-radius: 20px;
+    margin-bottom: 50px;
+    line-height: 1.5;
+    box-shadow: 0px 4px 0px var(--kitsch-shadow);
+  }
+
   .kitsch-btn {
     background-color: var(--kitsch-btn);
-    color: #fff;
+    color: var(--kitsch-text);
     border: 3px solid var(--kitsch-border);
-    border-radius: 10px;
+    border-radius: 25px;
     padding: 15px 20px;
     font-size: 16px;
     font-weight: bold;
@@ -130,73 +187,75 @@
     font-family: inherit;
     width: 100%;
     margin-bottom: 15px;
-    box-shadow: 2px 2px 0px var(--kitsch-border);
+    box-shadow: 0px 5px 0px var(--kitsch-shadow);
+    transition: transform 0.1s, box-shadow 0.1s;
   }
   .kitsch-btn:active {
-    transform: translate(2px, 2px);
-    box-shadow: 0px 0px 0px var(--kitsch-border);
+    transform: translateY(5px);
+    box-shadow: 0px 0px 0px var(--kitsch-shadow);
+  }
+
+  .blink-btn {
+    animation: jelly-bounce 2s infinite;
+  }
+  @keyframes jelly-bounce {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.03); }
   }
 
   .progress-container {
     width: 100%;
     height: 20px;
-    background-color: #fff;
-    border: 3px solid var(--kitsch-border);
+    background-color: #FFF;
     border-radius: 10px;
+    border: 3px solid var(--kitsch-border);
     margin-bottom: 40px;
     overflow: hidden;
+    box-shadow: inset 0 2px 5px rgba(255,105,180,0.2);
   }
   .progress-bar {
     height: 100%;
-    background-color: var(--kitsch-btn);
+    background: linear-gradient(90deg, #FFB6C1, #FF69B4);
     width: 0%;
-    transition: width 0.3s;
+    transition: width 0.3s ease-in-out;
   }
 
   #question-text { 
-    font-size: 18px; 
+    font-size: 20px; 
     margin-bottom: 50px; 
     line-height: 1.6; 
-    background: #fff; 
+    background: #FFF;
     padding: 20px; 
     border: 3px solid var(--kitsch-border);
-    border-radius: 12px;
+    border-radius: 15px;
+    color: var(--kitsch-text);
     font-weight: bold;
     width: 100%;
     box-sizing: border-box;
-    box-shadow: 2px 2px 0px var(--kitsch-border);
+    word-break: keep-all;
+    box-shadow: 0 4px 0 var(--kitsch-shadow);
   }
 
-  /* 결과 화면 컨테이너 */
-  #result-screen {
-    display: none;
-    flex-direction: column;
-  }
-
-  /* 캡처되는 화면 (폴더폰 액정) */
-  #capture-area {
-    width: 100%;
-    aspect-ratio: 9 / 16;
-    background-color: var(--c-bg);
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
-    overflow: hidden;
-    position: relative;
+  .answer-btn {
+    background-color: #FFF;
+    color: var(--kitsch-text);
     border: 3px solid var(--kitsch-border);
-    border-radius: 8px;
+    border-radius: 20px;
+    padding: 18px 15px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: inherit;
+    width: 100%;
+    margin-bottom: 15px;
+    box-shadow: 0px 5px 0px var(--kitsch-shadow);
+    transition: all 0.1s;
+    word-break: keep-all;
   }
-
-  .status-bar {
-    height: 24px;
-    background-color: #000;
-    color: #39ff14;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 10px;
-    font-size: 12px;
-    z-index: 10;
+  .answer-btn:active {
+    transform: translateY(5px);
+    box-shadow: 0px 0px 0px var(--kitsch-shadow);
+    background-color: #FFF0F5;
   }
 
   .folder-top {
@@ -210,7 +269,6 @@
     background-color: #111;
   }
 
-  /* 지지직 거리는 노이즈 패턴 */
   #noise-overlay {
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
@@ -220,7 +278,6 @@
     display: none;
   }
 
-  /* 고전적인 VCR 폰트 */
   #no-signal-text {
     position: absolute;
     color: #fff;
@@ -312,7 +369,6 @@
   }
   .rect-small span { font-size: 11px; opacity: 0.7; margin-bottom: 2px; font-weight: normal; }
   
-  /* 성격 특징 버튼 그리드 */
   .traits-grid {
     flex: 1.6;
     display: grid;
@@ -321,11 +377,10 @@
     align-content: stretch;
   }
 
-  /* 버튼 그림자 완전히 제거 및 깔끔하게 처리 */
   .trait-btn {
     border: 2px solid #000;
     border-radius: 8px;
-    font-size: 13px; /* 너비가 넓어져서 폰트 크기 살짝 키움 */
+    font-size: 13px;
     font-weight: bold;
     display: flex;
     align-items: center;
@@ -334,9 +389,9 @@
     word-break: keep-all;
     text-align: center;
     line-height: 1.3;
+    color: #000;
   }
 
-  /* 8개 버튼에 각각 예쁘고 다채로운 마카롱 하이틴 파스텔 톤 부여 */
   .trait-btn:nth-child(1) { background-color: #FFB3BA; }
   .trait-btn:nth-child(2) { background-color: #FFDFBA; }
   .trait-btn:nth-child(3) { background-color: #FFFFBA; }
@@ -346,21 +401,20 @@
   .trait-btn:nth-child(7) { background-color: #FFC8E3; }
   .trait-btn:nth-child(8) { background-color: #B2F0E6; }
 
-  /* 외부 버튼 (저장, 다시하기 등) */
   .external-actions {
     width: 100%;
-    max-width: 500px; /* 여기도 500px로 통일 */
-    margin-top: 15px;
+    max-width: 500px;
+    margin-top: 20px;
     display: none;
     flex-direction: column;
-    gap: 8px;
+    gap: 10px;
   }
 
   #final-save-modal {
     display: none;
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
-    background-color: rgba(0,0,0,0.9);
+    background-color: rgba(255,182,193,0.95);
     z-index: 3000;
     flex-direction: column;
     align-items: center;
@@ -368,22 +422,24 @@
   }
   
   .save-guide-text {
-    color: #fff; font-size: 16px; margin-bottom: 15px; font-weight: bold; text-align: center; line-height: 1.4;
+    color: var(--kitsch-text); font-size: 18px; margin-bottom: 20px; font-weight: bold; text-align: center; line-height: 1.5;
+    background: #FFF; padding: 15px; border-radius: 20px; border: 3px solid var(--kitsch-border);
   }
 
   #final-captured-image {
     width: 90%;
     max-width: 450px;
-    border: 3px solid #FF69B4;
-    border-radius: 12px;
-    margin-bottom: 20px;
+    border: 4px solid var(--kitsch-border);
+    border-radius: 20px;
+    margin-bottom: 25px;
+    box-shadow: 0 10px 20px rgba(255,105,180,0.3);
   }
 
   #edit-modal {
     display: none;
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
-    background-color: rgba(0,0,0,0.9);
+    background-color: rgba(255,182,193,0.95);
     z-index: 2000;
     flex-direction: column;
     justify-content: center;
@@ -393,23 +449,24 @@
   #edit-container {
     width: 90%;
     max-width: 400px;
-    background-color: #FFE4E1;
-    border: 3px solid #000;
-    border-radius: 15px;
-    padding: 15px;
+    background-color: #FFF;
+    border: 4px solid var(--kitsch-border);
+    border-radius: 25px;
+    padding: 20px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
+    box-shadow: 0 10px 20px rgba(255,105,180,0.2);
   }
 
-  .edit-title { font-size: 18px; font-weight: bold; margin-bottom: 10px; text-align: center; }
+  .edit-title { font-size: 20px; font-weight: bold; margin-bottom: 15px; text-align: center; color: var(--kitsch-text); }
 
   #canvas-container {
     width: 100%;
     aspect-ratio: 1.5 / 1;
-    border: 3px solid #000;
-    border-radius: 8px;
-    background-color: #ccc;
+    border: 3px solid var(--kitsch-border);
+    border-radius: 15px;
+    background-color: #FFF0F5;
     position: relative;
     overflow: hidden;
     touch-action: none;
@@ -418,17 +475,17 @@
   #canvas-container:active { cursor: grabbing; }
   canvas { display: block; width: 100%; height: 100%; }
 
-  .pc-controls { display: flex; justify-content: center; gap: 5px; margin-top: 10px; }
+  .pc-controls { display: flex; justify-content: center; gap: 8px; margin-top: 15px; }
   
   @media (max-width: 768px) {
     .pc-controls { display: none !important; }
   }
 
-  .edit-controls { margin-top: 15px; display: flex; flex-direction: column; gap: 10px; }
-  .control-row { display: flex; align-items: center; justify-content: space-between; font-size: 14px; font-weight: bold; }
-  .control-row input[type="range"] { flex: 1; margin: 0 10px; }
+  .edit-controls { margin-top: 20px; display: flex; flex-direction: column; gap: 12px; color: var(--kitsch-text); }
+  .control-row { display: flex; align-items: center; justify-content: space-between; font-size: 15px; font-weight: bold; }
+  .control-row input[type="range"] { flex: 1; margin: 0 10px; accent-color: var(--kitsch-border); }
 
-  .edit-actions { display: flex; gap: 10px; margin-top: 15px; }
+  .edit-actions { display: flex; gap: 10px; margin-top: 20px; }
 
 </style>
 </head>
@@ -447,53 +504,65 @@
 <div id="app">
   <div class="speaker-area"><div class="speaker-hole"></div></div>
   
-  <div id="main-screen" class="screen">
-    <h1>성격 테스트로그</h1>
-    <div class="subtitle">나의 지금을<br>폴더폰 감성으로 기록하기</div>
-    <button class="kitsch-btn" onclick="startTest()">테스트 시작하기</button>
-  </div>
-
-  <div id="question-screen" class="screen" style="display:none;">
-    <div class="progress-container">
-      <div class="progress-bar" id="progress"></div>
+  <div id="main-screen" class="lcd-screen">
+    <div class="status-bar">
+      <span>T lll</span>
+      <span>12:00</span>
+      <span>💖💖💖</span>
     </div>
-    <div id="question-text">질문이 표시됩니다.</div>
-    <button class="kitsch-btn" style="background-color: #fff; color:#000;" id="btn-a" onclick="selectAnswer('A')">A 선택지</button>
-    <button class="kitsch-btn" style="background-color: #fff; color:#000;" id="btn-b" onclick="selectAnswer('B')">B 선택지</button>
+    <div class="screen-content">
+      <div class="retro-title">성격<br>테스트로그</div>
+      <div class="retro-subtitle">나의 지금을<br>폴더폰 감성으로 기록하기</div>
+      <button class="kitsch-btn blink-btn" onclick="startTest()">PRESS START</button>
+    </div>
   </div>
 
-  <div id="result-screen">
-    <div id="capture-area">
-      <div class="status-bar">
-        <span>테스트잇 성격 로그 테스트</span>
-        <span>[■■■]</span>
+  <div id="question-screen" class="lcd-screen" style="display:none;">
+    <div class="status-bar">
+      <span>T lll</span>
+      <span>12:00</span>
+      <span>💖💖💖</span>
+    </div>
+    <div class="screen-content" style="justify-content: flex-start; padding-top: 40px;">
+      <div class="progress-container">
+        <div class="progress-bar" id="progress"></div>
       </div>
+      <div id="question-text">질문이 표시됩니다.</div>
+      <button class="answer-btn" id="btn-a" onclick="selectAnswer('A')">A 선택지</button>
+      <button class="answer-btn" id="btn-b" onclick="selectAnswer('B')">B 선택지</button>
+    </div>
+  </div>
+
+  <div id="result-screen" class="lcd-screen" style="display:none;">
+    <div class="status-bar">
+      <span>테스트잇 성격 로그 테스트</span>
+      <span>💖💖💖</span>
+    </div>
+    
+    <div class="folder-top" id="folder-top">
+      <div id="noise-overlay"></div>
+      <div id="no-signal-text">NO SIGNAL</div>
       
-      <div class="folder-top" id="folder-top">
-        <div id="noise-overlay"></div>
-        <div id="no-signal-text">NO SIGNAL</div>
-        
-        <input type="file" id="image-upload" accept="image/*">
-        <div class="upload-placeholder" id="upload-placeholder">📸<br>터치하여 사진 업로드</div>
-        <img id="preview-img-final" alt="최종 사진">
-      </div>
-      
-      <div class="folder-bottom">
-        <div class="trait-row">
-          <div class="retro-box circle">MY<br>LOG</div>
-          <div style="display: flex; flex-direction: column; gap: 8px; flex: 1;">
-            <div class="retro-box pill" id="res-keyword1" style="background-color: var(--c-pill1);">키워드1</div>
-            <div class="retro-box pill" id="res-keyword2" style="background-color: var(--c-pill2);">키워드2</div>
-          </div>
+      <input type="file" id="image-upload" accept="image/*">
+      <div class="upload-placeholder" id="upload-placeholder">📸<br>터치하여 사진 업로드</div>
+      <img id="preview-img-final" alt="최종 사진">
+    </div>
+    
+    <div class="folder-bottom">
+      <div class="trait-row">
+        <div class="retro-box circle">MY<br>LOG</div>
+        <div style="display: flex; flex-direction: column; gap: 8px; flex: 1;">
+          <div class="retro-box pill" id="res-keyword1" style="background-color: var(--c-pill1);">키워드1</div>
+          <div class="retro-box pill" id="res-keyword2" style="background-color: var(--c-pill2);">키워드2</div>
         </div>
-        
-        <div class="content-split">
-          <div class="good-bad-container">
-            <div class="retro-box rect-small" style="background-color: var(--c-good);"><span>GOOD</span><div id="res-good">장점</div></div>
-            <div class="retro-box rect-small" style="background-color: var(--c-bad);"><span>BAD</span><div id="res-bad">단점</div></div>
-          </div>
-          <div class="traits-grid" id="res-details">
-            </div>
+      </div>
+      
+      <div class="content-split">
+        <div class="good-bad-container">
+          <div class="retro-box rect-small" style="background-color: var(--c-good);"><span>GOOD</span><div id="res-good">장점</div></div>
+          <div class="retro-box rect-small" style="background-color: var(--c-bad);"><span>BAD</span><div id="res-bad">단점</div></div>
+        </div>
+        <div class="traits-grid" id="res-details">
         </div>
       </div>
     </div>
@@ -501,15 +570,15 @@
 </div>
 
 <div class="external-actions" id="external-actions">
-  <button class="kitsch-btn" style="background:#000;" onclick="captureAndShowImage()">결과 이미지 저장하기</button>
-  <button class="kitsch-btn" style="background:#fff; color:#000;" onclick="location.reload()">다시 해보기</button>
-  <button class="kitsch-btn" style="background:#fff; color:#000;" onclick="alert('다른 테스트 페이지로 이동합니다.')">다른 테스트 해보기</button>
+  <button class="kitsch-btn" style="background:#FF69B4; color:#FFF; border-color:#FF1493;" onclick="captureAndShowImage()">결과 이미지 저장하기</button>
+  <button class="kitsch-btn" onclick="location.reload()">다시 해보기</button>
+  <button class="kitsch-btn" onclick="alert('다른 테스트 페이지로 이동합니다.')">다른 테스트 해보기</button>
 </div>
 
 <div id="final-save-modal">
   <div class="save-guide-text">결과가 완성되었습니다!<br>이미지를 꾹 눌러서 저장해주세요.</div>
   <img id="final-captured-image" src="" alt="완성된 이미지">
-  <button class="kitsch-btn" style="width:90%; max-width:350px; background:#fff; color:#000;" onclick="document.getElementById('final-save-modal').style.display='none'">닫기</button>
+  <button class="kitsch-btn" style="width:90%; max-width:350px;" onclick="document.getElementById('final-save-modal').style.display='none'">닫기</button>
 </div>
 
 <div id="edit-modal">
@@ -540,9 +609,9 @@
     </div>
 
     <div class="edit-actions">
-      <button class="kitsch-btn" style="background:#ff4d4d; margin-bottom:0; padding:10px;" onclick="deletePhoto()">사진 삭제</button>
-      <button class="kitsch-btn" style="background:#fff; color:#000; margin-bottom:0; padding:10px;" onclick="closeEditModal()">취소</button>
-      <button class="kitsch-btn" style="background:#000; margin-bottom:0; padding:10px;" onclick="applyEdit()">적용하기</button>
+      <button class="kitsch-btn" style="background:#ff4d4d; color:#FFF; border-color:#cc0000; margin-bottom:0; padding:10px;" onclick="deletePhoto()">사진 삭제</button>
+      <button class="kitsch-btn" style="margin-bottom:0; padding:10px;" onclick="closeEditModal()">취소</button>
+      <button class="kitsch-btn" style="background:#FF69B4; color:#FFF; border-color:#FF1493; margin-bottom:0; padding:10px;" onclick="applyEdit()">적용하기</button>
     </div>
   </div>
 </div>
@@ -564,22 +633,22 @@
   ];
 
   const resultsData = {
-    "ISTJ": { k1: "원칙주의", k2: "약속칼같이", good: "책임감최고", bad: "융통성제로", details: ["원칙대로 살기", "지각 절대불가", "인간 알파고", "안정감이 최고", "계획충의 정석", "속 깊은 츤데레", "거짓말 극혐함", "묵묵한 책임감"] },
-    "ISFJ": { k1: "다정다감", k2: "눈치백단", good: "섬세한센스", bad: "거절을못함", details: ["따뜻한 힐러상", "분위기 파악왕", "내사람 챙기기", "거절 못해 끙끙", "사소한것 기억", "익숙함이 편해", "눈치 많이 보는", "배려심 끝판왕"] },
-    "INFJ": { k1: "통찰력갑", k2: "완벽주의", good: "사람보는눈", bad: "유리멘탈", details: ["동굴시간 필수", "속으론 다알아", "통찰력 대마왕", "피곤한 완벽함", "무례하면 손절", "이상향을 꿈꿈", "생각이 너무많아", "속을 알수없음"] },
-    "INTJ": { k1: "독립적", k2: "분석왕", good: "논리적사고", bad: "공감능력", details: ["독보적 마이웨이", "비효율은 답답", "한분야 전문가", "감정호소 극혐", "목표향해 직진", "무논리 안통함", "혼자만의 계획", "냉철한 이성파"] },
+    "ISTJ": { k1: "원칙주의", k2: "칼약속", good: "책임감갑", bad: "융통성제로", details: ["원칙대로 살기", "지각 절대불가", "인간 알파고", "안정감이 최고", "계획충의 정석", "속 깊은 츤데레", "거짓말 극혐함", "묵묵한 책임감"] },
+    "ISFJ": { k1: "다정다감", k2: "눈치백단", good: "세심함", bad: "거절못함", details: ["따뜻한 힐러상", "분위기 파악왕", "내사람 챙기기", "거절 못해 끙끙", "사소한것 기억", "익숙함이 편해", "눈치 많이 보는", "배려심 끝판왕"] },
+    "INFJ": { k1: "통찰력갑", k2: "완벽주의", good: "통찰력", bad: "유리멘탈", details: ["동굴시간 필수", "속으론 다알아", "통찰력 대마왕", "피곤한 완벽함", "무례하면 손절", "이상향을 꿈꿈", "생각이 너무많아", "속을 알수없음"] },
+    "INTJ": { k1: "독립적", k2: "분석왕", good: "논리적임", bad: "공감능력", details: ["독보적 마이웨이", "비효율은 답답", "한분야 전문가", "감정호소 극혐", "목표향해 직진", "무논리 안통함", "혼자만의 계획", "냉철한 이성파"] },
     "ISTP": { k1: "가성비갑", k2: "귀차니즘", good: "임기응변", bad: "영혼없음", details: ["에너지 아끼기", "벼락치기 천재", "간섭받기 싫어", "도구활용 장인", "답장느림 주의", "감정소모 피곤", "만사가 귀찮아", "빠른 임기응변"] },
-    "ISFP": { k1: "자유영혼", k2: "침대혼연일체", good: "수용적태도", bad: "결정장애", details: ["웬만하면 맞춰줌", "외출시 방전됨", "내공간은 필수", "칭찬에 약한타입", "현재가 젤중요", "은근한 예민보스", "누워있는게 최고", "평화주의자임"] },
-    "INFP": { k1: "유리멘탈", k2: "과몰입장인", good: "공감능력", bad: "상처잘받음", details: ["망상과 상상력", "내일처럼 공감", "사소한말 상처", "덕질에는 진심", "자유로운 영혼", "은근한 관종끼", "심한 감정기복", "세심한 감수성"] },
-    "INTP": { k1: "팩트폭격", k2: "아이디어", good: "객관적시선", bad: "귀차니즘", details: ["영혼없는 대답", "머리는 풀가동", "비논리는 반박", "혼자가 젤평화", "아이디어 넘침", "자발적 아싸", "지적호기심 폭발", "팩트 폭격기"] },
+    "ISFP": { k1: "자유영혼", k2: "방구석러", good: "수용적임", bad: "결정장애", details: ["웬만하면 맞춰줌", "외출시 방전됨", "내공간은 필수", "칭찬에 약한타입", "현재가 젤중요", "은근한 예민보스", "누워있는게 최고", "평화주의자임"] },
+    "INFP": { k1: "유리멘탈", k2: "과몰입", good: "공감능력", bad: "유리멘탈", details: ["망상과 상상력", "내일처럼 공감", "사소한말 상처", "덕질에는 진심", "자유로운 영혼", "은근한 관종끼", "심한 감정기복", "세심한 감수성"] },
+    "INTP": { k1: "팩트폭격", k2: "아이디어", good: "객관적임", bad: "귀차니즘", details: ["영혼없는 대답", "머리는 풀가동", "비논리는 반박", "혼자가 젤평화", "아이디어 넘침", "자발적 아싸", "지적호기심 폭발", "팩트 폭격기"] },
     "ESTP": { k1: "적응력갑", k2: "인싸재질", good: "실행력갑", bad: "계획없음", details: ["조용한곳 못참아", "몸으로 부딪혀", "엄청난 눈치력", "금세 친해지는", "재미가 제일중요", "복잡한건 패스", "스릴을 즐김", "타고난 승부사"] },
-    "ESFP": { k1: "에너지뿜뿜", k2: "관종끼다분", good: "분위기메이커", bad: "산만함", details: ["약속없음 우울", "주목받기 즐김", "어색침묵 못참아", "마이크 내꺼야", "자고나면 까먹음", "사람만남 충전", "폭풍 리액션", "파티의 주인공"] },
-    "ENFP": { k1: "리액션장인", k2: "감정기복", good: "창의력대장", bad: "금방질림", details: ["텐션높은 인싸", "하고싶은거 많음", "얼굴에 다티남", "폭풍 친화력", "반복일상 지루해", "대화할 맛이남", "금사빠 금사식", "통통튀는 매력"] },
-    "ENTP": { k1: "토론광", k2: "자신감만렙", good: "기발한발상", bad: "고집불통", details: ["뼈때리는 팩폭", "내말이 다맞아", "기발한 아이디어", "재밌으면 직진", "말싸움 안지는", "뒤끝없이 쿨함", "논쟁을 즐기는", "브레이크 고장"] },
-    "ESTJ": { k1: "칼같은규칙", k2: "워커홀릭", good: "강력한리더십", bad: "융통성제로", details: ["일미루기 극혐", "돌려말하기 못함", "답답하면 내가함", "규칙은 무조건", "현실적 해결책", "팩트로 뼈때림", "효율이 생명임", "단호한 리더"] },
-    "ESFJ": { k1: "다정한오지랖", k2: "친화력갑", good: "분위기메이커", bad: "인정욕구", details: ["알뜰살뜰 다정함", "싫은소리 못함", "분위기 띄우기", "칭찬으로 충전", "소외된사람 챙김", "평화로운 분위기", "공감능력 만렙", "다정한 오지랖"] },
-    "ENFJ": { k1: "오지랖태평양", k2: "긍정에너지", good: "공감능력", bad: "감정소모", details: ["내일처럼 공감", "긍정에너지 뿜뿜", "오지랖이 넓은편", "속으로 상처받음", "조화로운 세상", "잘 이끌어주는", "인류애 가득함", "따뜻한 카리스마"] },
-    "ENTJ": { k1: "완벽주의", k2: "통솔력갑", good: "빠른결단력", bad: "팩트폭격기", details: ["답답하면 속터짐", "효율이 최우선", "목표는 달성한다", "타고난 리더재질", "시간낭비 아까워", "논리적 불도저", "이성적인 판단", "압도적 카리스마"] }
+    "ESFP": { k1: "에너지갑", k2: "관심집중", good: "핵인싸", bad: "산만함", details: ["약속없음 우울", "주목받기 즐김", "어색침묵 못참아", "마이크 내꺼야", "자고나면 까먹음", "사람만남 충전", "폭풍 리액션", "파티의 주인공"] },
+    "ENFP": { k1: "리액션갑", k2: "감정기복", good: "창의력갑", bad: "금방질림", details: ["텐션높은 인싸", "하고싶은거 많음", "얼굴에 다티남", "폭풍 친화력", "반복일상 지루해", "대화할 맛이남", "금사빠 금사식", "통통튀는 매력"] },
+    "ENTP": { k1: "토론광", k2: "자신감갑", good: "기발함", bad: "고집불통", details: ["뼈때리는 팩폭", "내말이 다맞아", "기발한 아이디어", "재밌으면 직진", "말싸움 안지는", "뒤끝없이 쿨함", "논쟁을 즐기는", "브레이크 고장"] },
+    "ESTJ": { k1: "칼규칙", k2: "워커홀릭", good: "리더십갑", bad: "융통성제로", details: ["일미루기 극혐", "돌려말하기 못함", "답답하면 내가함", "규칙은 무조건", "현실적 해결책", "팩트로 뼈때림", "효율이 생명임", "단호한 리더"] },
+    "ESFJ": { k1: "다정함", k2: "친화력갑", good: "핵인싸", bad: "인정욕구", details: ["알뜰살뜰 다정함", "싫은소리 못함", "분위기 띄우기", "칭찬으로 충전", "소외된사람 챙김", "평화로운 분위기", "공감능력 만렙", "다정한 오지랖"] },
+    "ENFJ": { k1: "오지랖", k2: "긍정왕", good: "공감능력", bad: "감정소모", details: ["내일처럼 공감", "긍정에너지 뿜뿜", "오지랖이 넓은편", "속으로 상처받음", "조화로운 세상", "잘 이끌어주는", "인류애 가득함", "따뜻한 카리스마"] },
+    "ENTJ": { k1: "완벽주의", k2: "통솔력갑", good: "빠른결단", bad: "팩트폭격", details: ["답답하면 속터짐", "효율이 최우선", "목표 달성한다", "타고난 리더재질", "시간낭비 아까워", "논리적 불도저", "이성적인 판단", "압도적 카리스마"] }
   };
 
   let currentQ = 0;
@@ -593,7 +662,7 @@
 
   function showQuestion() {
     const qData = qnaList[currentQ];
-    document.getElementById('question-text').innerHTML = `<span style="font-size:14px; color:#555;">Q${currentQ + 1}.</span><br>${qData.q}`;
+    document.getElementById('question-text').innerHTML = `<span style="font-size:14px; color:#FF69B4;">Q${currentQ + 1}.</span><br><br>${qData.q}`;
     document.getElementById('btn-a').innerText = qData.a.text;
     document.getElementById('btn-b').innerText = qData.b.text;
     const percent = (currentQ / qnaList.length) * 100;
@@ -663,9 +732,11 @@
   let initialDist = null;
   let initialScale = 1;
 
+  const HIGH_RES_SCALE = 4;
+
   function resizeCanvas() {
-    canvas.width = canvasContainer.clientWidth;
-    canvas.height = canvasContainer.clientHeight;
+    canvas.width = canvasContainer.clientWidth * HIGH_RES_SCALE;
+    canvas.height = canvasContainer.clientHeight * HIGH_RES_SCALE;
     renderCanvas();
   }
 
@@ -677,11 +748,13 @@
         imgObj.onload = function() {
           editModal.style.display = 'flex';
           resizeCanvas();
-          const scaleW = canvas.width / imgObj.width;
-          const scaleH = canvas.height / imgObj.height;
+          
+          const scaleW = canvasContainer.clientWidth / imgObj.width;
+          const scaleH = canvasContainer.clientHeight / imgObj.height;
           imgScale = Math.max(scaleW, scaleH);
-          imgX = (canvas.width - imgObj.width * imgScale) / 2;
-          imgY = (canvas.height - imgObj.height * imgScale) / 2;
+          
+          imgX = (canvasContainer.clientWidth - imgObj.width * imgScale) / 2;
+          imgY = (canvasContainer.clientHeight - imgObj.height * imgScale) / 2;
           
           brightnessSlider.value = 100;
           grayscaleCheck.checked = false;
@@ -698,6 +771,7 @@
 
   function renderCanvas() {
     if (!imgObj.src) return;
+    
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     
     ctx.save();
@@ -705,8 +779,8 @@
     if (grayscaleCheck.checked) filterStr += ` grayscale(100%)`;
     ctx.filter = filterStr;
     
-    ctx.translate(imgX, imgY);
-    ctx.scale(imgScale, imgScale);
+    ctx.translate(imgX * HIGH_RES_SCALE, imgY * HIGH_RES_SCALE);
+    ctx.scale(imgScale * HIGH_RES_SCALE, imgScale * HIGH_RES_SCALE);
     ctx.drawImage(imgObj, 0, 0);
     ctx.restore();
   }
@@ -775,7 +849,7 @@
 
   canvasContainer.addEventListener('wheel', (e) => {
     e.preventDefault();
-    const rect = canvas.getBoundingClientRect();
+    const rect = canvasContainer.getBoundingClientRect();
     const mouseX = e.clientX - rect.left;
     const mouseY = e.clientY - rect.top;
     
@@ -816,32 +890,32 @@
     closeEditModal();
   }
 
-  function captureAndShowImage() {
-    const captureArea = document.getElementById('capture-area');
-    const isUploaded = previewImgFinal.src && previewImgFinal.style.display !== 'none';
-    
-    if (!isUploaded) {
-      noiseOverlay.style.display = 'block';
-      noSignalText.style.display = 'block';
-      uploadPlaceholder.style.display = 'none';
-    }
-
-    setTimeout(() => {
-      html2canvas(captureArea, { scale: 3, useCORS: true, backgroundColor: null }).then(canvas => {
-        const finalModal = document.getElementById('final-save-modal');
-        const finalImage = document.getElementById('final-captured-image');
-        
-        finalImage.src = canvas.toDataURL('image/png');
-        finalModal.style.display = 'flex';
-        
-        if (!isUploaded) {
-          noiseOverlay.style.display = 'none';
-          noSignalText.style.display = 'none';
-          uploadPlaceholder.style.display = 'block';
-        }
-      });
-    }, 200);
+ function captureAndShowImage() {
+  const captureArea = document.getElementById('app');
+  const isUploaded = previewImgFinal.src && previewImgFinal.style.display !== 'none';
+  
+  if (!isUploaded) {
+    noiseOverlay.style.display = 'block';
+    noSignalText.style.display = 'block';
+    uploadPlaceholder.style.display = 'none';
   }
+
+  setTimeout(() => {
+    html2canvas(captureArea, { scale: 3, useCORS: true, backgroundColor: null }).then(canvas => {
+      const finalModal = document.getElementById('final-save-modal');
+      const finalImage = document.getElementById('final-captured-image');
+      
+      finalImage.src = canvas.toDataURL('image/png');
+      finalModal.style.display = 'flex';
+      
+      if (!isUploaded) {
+        noiseOverlay.style.display = 'none';
+        noSignalText.style.display = 'none';
+        uploadPlaceholder.style.display = 'block';
+      }
+    });
+  }, 200);
+}
 </script>
 
 </body>

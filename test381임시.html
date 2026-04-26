@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>테스트잇 - 성격 테스트로그</title>
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DungGeunMo&display=swap');
+
+  :root {
+    --c-bg: #fff0f5;
+    --c-pill1: #ffb6c1;
+    --c-pill2: #ffdab9;
+    --c-good: #87cefa;
+    --c-bad: #dda0dd;
+    --c-detail: #fff;
+    
+    /* 레트로 폰 바디 색상 - 회색(실버) */
+    --phone-body: #d9d9d9;
+    --phone-border: #999999;
+    --retro-lcd: #c4d4af; 
+
+    /* 헤더 및 외부 버튼용 윈도우 스타일 색상 */
+    --win-bg: #e0e0e0;
+    --win-border-light: #ffffff;
+    --win-border-dark: #000000;
+    --text: #000000;
+  }
+
+  body.theme-istj { --c-bg: #e3f2fd; --c-pill1: #bbdefb; --c-pill2: #c8e6c9; --c-good: #d1c4e9; --c-bad: #ffcdd2; }
+  body.theme-isfj { --c-bg: #e8f5e9; --c-pill1: #c8e6c9; --c-pill2: #fff9c4; --c-good: #b2dfdb; --c-bad: #ffcc80; }
+  body.theme-infj { --c-bg: #f3e5f5; --c-pill1: #e1bee7; --c-pill2: #d1c4e9; --c-good: #b3e5fc; --c-bad: #f8bbd0; }
+  body.theme-intj { --c-bg: #ede7f6; --c-pill1: #d1c4e9; --c-pill2: #c5cae9; --c-good: #b2ebf2; --c-bad: #ffcdd2; }
+  body.theme-istp { --c-bg: #e0f7fa; --c-pill1: #b2ebf2; --c-pill2: #b2dfdb; --c-good: #c8e6c9; --c-bad: #cfd8dc; }
+  body.theme-isfp { --c-bg: #f1f8e9; --c-pill1: #dcedc8; --c-pill2: #fff9c4; --c-good: #ffcc80; --c-bad: #ffab91; }
+  body.theme-infp { --c-bg: #e1f5fe; --c-pill1: #b3e5fc; --c-pill2: #e1bee7; --c-good: #f8bbd0; --c-bad: #d1c4e9; }
+  body.theme-intp { --c-bg: #fafafa; --c-pill1: #cfd8dc; --c-pill2: #d1c4e9; --c-good: #b2ebf2; --c-bad: #f48fb1; }
+  body.theme-estp { --c-bg: #fffde7; --c-pill1: #fff59d; --c-pill2: #ffcc80; --c-good: #ffab91; --c-bad: #b2dfdb; }
+  body.theme-esfp { --c-bg: #fff3e0; --c-pill1: #ffe082; --c-pill2: #ffab91; --c-good: #f8bbd0; --c-bad: #b2ebf2; }
+  body.theme-enfp { --c-bg: #fce4ec; --c-pill1: #f8bbd0; --c-pill2: #ffe082; --c-good: #b3e5fc; --c-bad: #d1c4e9; }
+  body.theme-entp { --c-bg: #fff8e1; --c-pill1: #ffe082; --c-pill2: #ffcc80; --c-good: #dce775; --c-bad: #ffab91; }
+  body.theme-estj { --c-bg: #f0f4c3; --c-pill1: #dce775; --c-pill2: #fff59d; --c-good: #ffcc80; --c-bad: #b2dfdb; }
+  body.theme-esfj { --c-bg: #fff9c4; --c-pill1: #fff59d; --c-pill2: #ffcc80; --c-good: #f8bbd0; --c-bad: #b3e5fc; }
+  body.theme-enfj { --c-bg: #fce4ec; --c-pill1: #f48fb1; --c-pill2: #ce93d8; --c-good: #81d4fa; --c-bad: #80cbc4; }
+  body.theme-entj { --c-bg: #ffebee; --c-pill1: #ef9a9a; --c-pill2: #ffab91; --c-good: #ffe082; --c-bad: #b3e5fc; }
+
+  body {
+    margin: 0;
+    padding: 0;
+    padding-bottom: 40px;
+    background-color: #f5f2eb;
+    font-family: 'DungGeunMo', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+  }
+
+  /* --- 사용자가 제공한 헤더 스타일 완벽 반영 --- */
+  .header-wrapper {
+    width: 100%;
+    background-color: var(--win-bg); 
+    border-bottom: 2px outset var(--win-border-light); 
+    box-shadow: 0 1px 0 var(--win-border-light); 
+    align-self: flex-start;
+    margin-bottom: 30px; 
+  }
+
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 6px 4% !important; 
+  }
+
+  .retro-logo {
+    text-decoration: none;
+    color: var(--text);
+    font-size: 18px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background-color: var(--win-bg); 
+    padding: 5px 10px; 
+    border-top: 2px solid var(--win-border-light);
+    border-left: 2px solid var(--win-border-light);
+    border-right: 2px solid var(--win-border-dark);
+    border-bottom: 2px solid var(--win-border-dark);
+  }
+
+  .retro-logo:active { 
+    border-top: 2px solid var(--win-border-dark);
+    border-left: 2px solid var(--win-border-dark);
+    border-right: 2px solid var(--win-border-light);
+    border-bottom: 2px solid var(--win-border-light);
+    padding: 6px 9px 4px 11px; 
+  }
+
+  .page-header h1 {
+    margin: 0 !important;
+    padding: 0 !important;
+    border-bottom: none !important;
+  }
+
+  .main-nav {
+    display: flex;
+    flex-wrap: nowrap !important;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 14px; 
+  }
+
+  .main-nav li {
+    margin-left: 0;
+  }
+
+  .main-nav a {
+    display: block;
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 700;
+    background: var(--win-bg);
+    border-top: 2px solid var(--win-border-light);
+    border-left: 2px solid var(--win-border-light);
+    border-right: 2px solid var(--win-border-dark);
+    border-bottom: 2px solid var(--win-border-dark);
+    padding: 6px 12px;
+    font-size: 15px; 
+    white-space: nowrap;
+    box-sizing: border-box;
+  }
+
+  .main-nav a:active {
+    border-top: 2px solid var(--win-border-dark);
+    border-left: 2px solid var(--win-border-dark);
+    border-right: 2px solid var(--win-border-light);
+    border-bottom: 2px solid var(--win-border-light);
+    padding: 7px 11px 5px 13px; 
+  }
+
+  @media (max-width: 480px) {
+    .page-header {
+      padding: 6px 12px !important;
+    }
+    .retro-logo {
+      font-size: 16px; 
+      padding: 3px 8px; 
+    }
+    .main-nav {
+      gap: 8px; 
+    }
+    .main-nav a {
+      padding: 5px 8px; 
+      font-size: 14px; 
+      letter-spacing: -0.5px; 
+    }
+  }
+
+  /* ------------------------------------------------ */
+
+  #app {
+    width: 100%;
+    max-width: 500px; 
+    background-color: var(--phone-body);
+    border: 3px solid var(--phone-border);
+    border-radius: 40px 40px 50px 50px;
+    padding: 20px 20px 30px 20px; 
+    box-shadow: inset 4px 4px 10px rgba(255,255,255,0.6), inset -4px -4px 12px rgba(0,0,0,0.15), 5px 15px 25px rgba(0,0,0,0.2);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  .phone-top-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .speaker-hole {
+    width: 50px;
+    height: 6px;
+    background-color: #222;
+    border-radius: 10px;
+    border: 1px solid #000;
+    box-shadow: inset 0px 2px 3px rgba(0,0,0,0.8);
+    margin-bottom: 5px; 
+  }
+
+  .screen-glass {
+    background: #2b2b2b;
+    border-radius: 20px 20px 30px 30px;
+    padding: 20px 15px 35px 15px;
+    border: 2px solid #111;
+    box-shadow: inset 0 0 15px rgba(0,0,0,0.9), 0 2px 3px rgba(255,255,255,0.4);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  .lcd-screen {
+    width: 100%;
+    border: 3px solid #000;
+    border-radius: 4px;
+    box-sizing: border-box;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #main-screen, #question-screen {
+    background-color: var(--retro-lcd);
+    aspect-ratio: 3 / 4; 
+  }
+
+  #result-screen {
+    background-color: var(--c-bg); 
+    height: auto;
+  }
+
+  .status-bar {
+    height: 24px;
+    color: #000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 8px;
+    font-size: 12px;
+    z-index: 10;
+    flex-shrink: 0;
+    border-bottom: 2px dashed rgba(0,0,0,0.3);
+    margin-bottom: 10px;
+  }
+
+  .battery-icon {
+    display: flex;
+    align-items: center;
+    margin-right: 5px;
+  }
+
+  .glass-bottom-text {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    color: #888;
+    font-size: 11px;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+
+  .screen-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    text-align: center;
+  }
+
+  .retro-title {
+    font-size: 28px;
+    color: #000;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    letter-spacing: -1px;
+  }
+  
+  .retro-subtitle {
+    color: #000;
+    font-size: 14px;
+    margin-bottom: 30px;
+    line-height: 1.5;
+  }
+
+  .pixel-btn {
+    background-color: transparent;
+    color: #000;
+    border: 2px solid #000;
+    border-radius: 0;
+    padding: 12px 15px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: inherit;
+    width: 100%;
+    margin-bottom: 10px;
+    text-align: center;
+    word-break: keep-all;
+  }
+  .pixel-btn:active {
+    background-color: #000;
+    color: var(--retro-lcd);
+  }
+
+  /* 시작 버튼 및 외부 버튼을 헤더 디자인과 맞춘 레트로 윈도우 스타일로 변경 */
+  .start-btn-external, .ext-btn {
+    background-color: var(--win-bg);
+    color: var(--text);
+    font-family: inherit;
+    font-weight: 800;
+    font-size: 16px;
+    padding: 15px;
+    border-top: 2px solid var(--win-border-light);
+    border-left: 2px solid var(--win-border-light);
+    border-right: 2px solid var(--win-border-dark);
+    border-bottom: 2px solid var(--win-border-dark);
+    box-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 #000, 0 2px 4px rgba(0,0,0,0.2);
+    cursor: pointer;
+    width: 100%;
+    max-width: 500px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    text-align: center;
+    word-break: keep-all;
+  }
+  
+  .start-btn-external {
+    margin-top: 25px;
+    font-size: 18px;
+  }
+
+  .start-btn-external:active, .ext-btn:active {
+    border-top: 2px solid var(--win-border-dark);
+    border-left: 2px solid var(--win-border-dark);
+    border-right: 2px solid var(--win-border-light);
+    border-bottom: 2px solid var(--win-border-light);
+    box-shadow: inset 1px 1px 0 #000, inset -1px -1px 0 #fff;
+    padding: 16px 14px 14px 16px;
+  }
+
+  .progress-container {
+    width: 100%;
+    height: 10px;
+    background-color: transparent;
+    border: 2px solid #000;
+    margin-bottom: 30px;
+    overflow: hidden;
+  }
+  .progress-bar {
+    height: 100%;
+    background-color: #000;
+    width: 0%;
+    transition: width 0.2s;
+  }
+
+  #question-text { 
+    font-size: 18px; 
+    margin-bottom: 30px; 
+    line-height: 1.5; 
+    color: #000;
+    font-weight: bold;
+    width: 100%;
+    word-break: keep-all;
+  }
+
+  .minimal-keypad {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 25px;
+  }
+  
+  .pad-btn {
+    background: #eee;
+    border: 2px solid #999;
+    box-shadow: inset 2px 2px 4px #fff, 2px 2px 4px rgba(0,0,0,0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+  }
+  
+  .btn-side {
+    width: 40px;
+    height: 20px;
+    border-radius: 10px;
+  }
+  
+  .btn-center {
+    width: 50px;
+    height: 40px;
+    border-radius: 20px;
+    font-size: 12px;
+  }
+
+  .folder-top {
+    aspect-ratio: 4 / 3; 
+    border-bottom: 3px solid #000;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background-color: #111;
+  }
+
+  #noise-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAIklEQVQIW2NkQAKrVq36zwjjgzhhYWGMYAEYB8RmROaABADeOQ8CXl/xfgAAAABJRU5ErkJggg==');
+    background-repeat: repeat;
+    z-index: 2;
+    display: none;
+  }
+
+  #no-signal-text {
+    position: absolute;
+    color: #fff;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    z-index: 3;
+    display: none;
+    text-shadow: 2px 2px 0px #000;
+  }
+
+  #image-upload {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 10;
+  }
+
+  .upload-placeholder {
+    font-size: 16px;
+    color: #fff;
+    pointer-events: none;
+    text-align: center;
+    line-height: 1.6;
+    z-index: 5;
+    text-shadow: 1px 1px 2px #000;
+  }
+
+  #preview-img-final {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 8;
+  }
+
+  .folder-bottom {
+    flex: 1;
+    padding: 25px 20px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+  }
+
+  .trait-row { 
+    display: flex; 
+    gap: 15px; 
+    margin-bottom: 25px; 
+    align-items: stretch; 
+  }
+
+  .retro-box {
+    color: #000;
+    border: 2px solid #000;
+    border-radius: 12px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: #fff;
+  }
+
+  .circle { 
+    width: 80px; 
+    border-radius: 40px; 
+    font-weight: bold; 
+    font-size: 16px; 
+    line-height: 1.3; 
+    flex-shrink: 0; 
+  }
+  
+  .pill { 
+    border-radius: 20px; 
+    padding: 12px; 
+    font-size: 15px; 
+    flex: 1; 
+    font-weight: bold; 
+  }
+  
+  .content-split {
+    display: flex;
+    gap: 15px; 
+    flex: 1;
+    align-items: stretch;
+  }
+
+  .good-bad-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; 
+    flex: 0.4;
+  }
+
+  .rect-small { 
+    flex: 1; 
+    display: flex; 
+    flex-direction: column; 
+    font-size: 15px; 
+    font-weight: bold; 
+    padding: 18px 0; 
+    border-radius: 12px;
+  }
+  .rect-small span { font-size: 12px; opacity: 0.7; margin-bottom: 6px; font-weight: normal; }
+  
+  .traits-grid {
+    flex: 1.6;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px; 
+    align-content: stretch;
+  }
+
+  .trait-btn {
+    border: 2px solid #000;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px; 
+    word-break: keep-all;
+    text-align: center;
+    line-height: 1.4;
+    color: #000;
+  }
+
+  .trait-btn:nth-child(1) { background-color: #FFB3BA; }
+  .trait-btn:nth-child(2) { background-color: #FFDFBA; }
+  .trait-btn:nth-child(3) { background-color: #FFFFBA; }
+  .trait-btn:nth-child(4) { background-color: #BAFFC9; }
+  .trait-btn:nth-child(5) { background-color: #BAE1FF; }
+  .trait-btn:nth-child(6) { background-color: #D4B0FF; }
+  .trait-btn:nth-child(7) { background-color: #FFC8E3; }
+  .trait-btn:nth-child(8) { background-color: #B2F0E6; }
+
+  .external-actions {
+    width: 100%;
+    max-width: 500px; 
+    margin-top: 20px;
+    display: none;
+    flex-direction: column;
+    gap: 8px;
+    box-sizing: border-box;
+  }
+
+  #final-save-modal, #edit-modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.85);
+    z-index: 3000;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .save-guide-text {
+    color: #fff; font-size: 16px; margin-bottom: 20px; font-weight: bold; text-align: center; line-height: 1.5;
+  }
+
+  #final-captured-image {
+    width: 90%;
+    max-width: 400px;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    margin-bottom: 25px;
+  }
+
+  #edit-container {
+    width: 90%;
+    max-width: 400px;
+    background-color: var(--win-bg);
+    border-top: 2px solid var(--win-border-light);
+    border-left: 2px solid var(--win-border-light);
+    border-right: 2px solid var(--win-border-dark);
+    border-bottom: 2px solid var(--win-border-dark);
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .edit-title { font-size: 18px; font-weight: bold; margin-bottom: 15px; text-align: center; color: #000; }
+
+  #canvas-container {
+    width: 100%;
+    aspect-ratio: 1.5 / 1;
+    border-top: 2px solid var(--win-border-dark);
+    border-left: 2px solid var(--win-border-dark);
+    border-right: 2px solid var(--win-border-light);
+    border-bottom: 2px solid var(--win-border-light);
+    background-color: #eee;
+    position: relative;
+    overflow: hidden;
+    touch-action: none;
+    cursor: grab;
+  }
+  #canvas-container:active { cursor: grabbing; }
+  canvas { display: block; width: 100%; height: 100%; }
+
+  .pc-controls { display: flex; justify-content: center; gap: 5px; margin-top: 15px; }
+  
+  @media (max-width: 768px) {
+    .pc-controls { display: none !important; }
+  }
+
+  .pc-controls button {
+    background-color: var(--win-bg);
+    border-top: 2px solid var(--win-border-light);
+    border-left: 2px solid var(--win-border-light);
+    border-right: 2px solid var(--win-border-dark);
+    border-bottom: 2px solid var(--win-border-dark);
+    font-weight: bold;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  .pc-controls button:active {
+    border-top: 2px solid var(--win-border-dark);
+    border-left: 2px solid var(--win-border-dark);
+    border-right: 2px solid var(--win-border-light);
+    border-bottom: 2px solid var(--win-border-light);
+  }
+
+  .edit-controls { margin-top: 20px; display: flex; flex-direction: column; gap: 12px; color: #000; }
+  .control-row { display: flex; align-items: center; justify-content: space-between; font-size: 14px; font-weight: bold; }
+  .control-row input[type="range"] { flex: 1; margin: 0 10px; }
+
+  .edit-actions { display: flex; gap: 10px; margin-top: 20px; }
+  .edit-actions button { 
+    flex: 1; 
+    padding: 10px; 
+    background-color: var(--win-bg);
+    border-top: 2px solid var(--win-border-light);
+    border-left: 2px solid var(--win-border-light);
+    border-right: 2px solid var(--win-border-dark);
+    border-bottom: 2px solid var(--win-border-dark);
+    font-weight: bold; 
+    font-family: inherit; 
+    cursor: pointer; 
+  }
+  .edit-actions button:active {
+    border-top: 2px solid var(--win-border-dark);
+    border-left: 2px solid var(--win-border-dark);
+    border-right: 2px solid var(--win-border-light);
+    border-bottom: 2px solid var(--win-border-light);
+  }
+
+</style>
+</head>
+<body>
+
+<div class="header-wrapper">
+  <header class="page-header wrapper">
+    <h1><a href="https://test-it.co.kr/" class="retro-logo">테스트잇</a></h1> 
+    <nav>
+      <ul class="main-nav">
+        <li><a href="https://test-it.co.kr/test.html">성격</a></li>
+        <li><a href="https://test-it.co.kr/face.html">얼굴</a></li>
+        <li><a href="https://test-it.co.kr/etc.html">그외</a></li>
+        <li><a href="https://test-it.co.kr/saju.html">사주</a></li>
+      </ul>
+    </nav>
+  </header>
+</div>
+
+<div id="app">
+  
+  <div class="phone-top-area">
+    <div class="speaker-hole"></div>
+  </div>
+  
+  <div class="screen-glass">
+    
+    <div id="main-screen" class="lcd-screen">
+      <div class="status-bar">
+        <span>테스트잇 성격 로그 테스트</span>
+        <div class="battery-icon">[■■■]</div>
+      </div>
+      <div class="screen-content">
+        <div class="retro-title">성격<br>테스트로그</div>
+        <div class="retro-subtitle">나의 지금을<br>폴더폰 감성으로 기록하기</div>
+      </div>
+    </div>
+
+    <div id="question-screen" class="lcd-screen" style="display:none;">
+      <div class="status-bar">
+        <span>테스트잇 성격 로그 테스트</span>
+        <div class="battery-icon">[■■■]</div>
+      </div>
+      <div class="screen-content">
+        <div class="progress-container">
+          <div class="progress-bar" id="progress"></div>
+        </div>
+        <div id="question-text">질문이 표시됩니다.</div>
+        <button class="pixel-btn" id="btn-a" onclick="selectAnswer('A')">A 선택지</button>
+        <button class="pixel-btn" id="btn-b" onclick="selectAnswer('B')">B 선택지</button>
+      </div>
+    </div>
+
+    <div id="result-screen" class="lcd-screen" style="display:none;">
+      <div class="status-bar" style="background:transparent; border-bottom:1px solid #000; margin-bottom:0;">
+        <span>테스트잇 성격 로그 테스트</span>
+        <div class="battery-icon">[■■■]</div>
+      </div>
+      
+      <div class="folder-top" id="folder-top">
+        <div id="noise-overlay"></div>
+        <div id="no-signal-text">NO SIGNAL</div>
+        
+        <input type="file" id="image-upload" accept="image/*">
+        <div class="upload-placeholder" id="upload-placeholder">📸<br>터치하여 사진 업로드</div>
+        <img id="preview-img-final" alt="최종 사진">
+      </div>
+      
+      <div class="folder-bottom">
+        <div class="trait-row">
+          <div class="retro-box circle">MY<br>LOG</div>
+          <div style="display: flex; flex-direction: column; gap: 12px; flex: 1;">
+            <div class="retro-box pill" id="res-keyword1" style="background-color: var(--c-pill1);">키워드1</div>
+            <div class="retro-box pill" id="res-keyword2" style="background-color: var(--c-pill2);">키워드2</div>
+          </div>
+        </div>
+        
+        <div class="content-split">
+          <div class="good-bad-container">
+            <div class="retro-box rect-small" style="background-color: var(--c-good);"><span>GOOD</span><div id="res-good">장점</div></div>
+            <div class="retro-box rect-small" style="background-color: var(--c-bad);"><span>BAD</span><div id="res-bad">단점</div></div>
+          </div>
+          <div class="traits-grid" id="res-details">
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="glass-bottom-text">
+      <span>MENU</span>
+      <span>♥</span>
+      <span>NEXT</span>
+    </div>
+
+  </div>
+
+  <div class="minimal-keypad">
+    <div class="pad-btn btn-side">ㅡ</div>
+    <div class="pad-btn btn-center">OK</div>
+    <div class="pad-btn btn-side">ㅡ</div>
+  </div>
+
+</div>
+
+<button id="external-start-btn" class="start-btn-external" onclick="startTest()">테스트 시작하기</button>
+
+<div class="external-actions" id="external-actions">
+  <button class="ext-btn" onclick="captureAndShowImage()">결과 이미지 저장하기</button>
+  <button class="ext-btn" onclick="location.reload()">다시 해보기</button>
+  <button class="ext-btn" onclick="location.href='https://test-it.co.kr/'">다른 테스트 해보기</button>
+  <button class="ext-btn" onclick="shareTest()">테스트 공유하기</button>
+</div>
+
+<div id="final-save-modal">
+  <div class="save-guide-text">결과가 완성되었습니다!<br>이미지를 꾹 눌러서 저장해주세요.</div>
+  <img id="final-captured-image" src="" alt="완성된 이미지">
+  <button class="ext-btn" style="width:90%; max-width:350px;" onclick="document.getElementById('final-save-modal').style.display='none'">닫기</button>
+</div>
+
+<div id="edit-modal">
+  <div id="edit-container">
+    <div class="edit-title">사진 편집</div>
+    <div id="canvas-container">
+      <canvas id="edit-canvas"></canvas>
+    </div>
+    
+    <div class="pc-controls">
+      <button onclick="adjustCanvas('zoomIn')">+</button>
+      <button onclick="adjustCanvas('zoomOut')">-</button>
+      <button onclick="adjustCanvas('up')">▲</button>
+      <button onclick="adjustCanvas('down')">▼</button>
+      <button onclick="adjustCanvas('left')">◀</button>
+      <button onclick="adjustCanvas('right')">▶</button>
+    </div>
+    
+    <div class="edit-controls">
+      <div class="control-row">
+        <span>밝기</span>
+        <input type="range" id="brightness-slider" min="50" max="150" value="100">
+      </div>
+      <div class="control-row">
+        <span>흑백 필터</span>
+        <input type="checkbox" id="grayscale-check" style="transform: scale(1.5);">
+      </div>
+    </div>
+
+    <div class="edit-actions">
+      <button style="color:red;" onclick="deletePhoto()">삭제</button>
+      <button onclick="closeEditModal()">취소</button>
+      <button onclick="applyEdit()">적용</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const qnaList = [
+    { q: "주말에 갑자기 일정이 취소되었다!", a: { text: "아싸! 뒹굴거려야지", type: "I" }, b: { text: "다른 친구 번개할까?", type: "E" } },
+    { q: "처음 가는 모임 장소에 도착했다.", a: { text: "먼저 말을 걸어본다", type: "E" }, b: { text: "말 걸어주길 기다린다", type: "I" } },
+    { q: "스트레스를 잔뜩 받았을 때 나는?", a: { text: "조용히 생각할 시간 필요", type: "I" }, b: { text: "수다 떨면서 푼다!", type: "E" } },
+    { q: "멍 때릴 때 내 머릿속은?", a: { text: "진짜 아무 생각 없음", type: "S" }, b: { text: "지구에 좀비가 온다면?", type: "N" } },
+    { q: "요리 레시피를 볼 때 나는?", a: { text: "정량 그대로 계량한다", type: "S" }, b: { text: "대충 눈대중으로 넣는다", type: "N" } },
+    { q: "노래를 들을 때 더 끌리는 것은?", a: { text: "멜로디와 분위기", type: "S" }, b: { text: "가사의 의미", type: "N" } },
+    { q: "친구가 '우울해서 화분 샀어' 라면?", a: { text: "무슨 일 있어? ㅠㅠ", type: "F" }, b: { text: "무슨 화분 샀어?", type: "T" } },
+    { q: "결정을 내려야 할 때 중요 기준은?", a: { text: "논리적이고 합리적인 판단", type: "T" }, b: { text: "모두 상처받지 않는 방향", type: "F" } },
+    { q: "내가 더 듣기 좋은 칭찬은?", a: { text: "너 진짜 센스있다", type: "F" }, b: { text: "너 일 진짜 잘한다", type: "T" } },
+    { q: "여행 떠나기 전 나의 준비 과정은?", a: { text: "시간별로 계획을 세운다", type: "J" }, b: { text: "일단 가서 생각한다", type: "P" } },
+    { q: "내 컴퓨터 바탕화면의 상태는?", a: { text: "폴더별로 정리되어 있다", type: "J" }, b: { text: "여기저기 흩어져 있다", type: "P" } },
+    { q: "과제가 주어졌을 때 나는?", a: { text: "미리미리 조금씩 해둔다", type: "J" }, b: { text: "마감 직전 엄청난 집중력", type: "P" } }
+  ];
+
+  const resultsData = {
+    "ISTJ": { k1: "원칙주의", k2: "칼약속", good: "책임감갑", bad: "융통성무", details: ["원칙대로 살기", "지각 절대불가", "인간 알파고", "안정감이 최고", "계획충의 정석", "속 깊은 츤데레", "거짓말 극혐함", "묵묵한 책임감"] },
+    "ISFJ": { k1: "다정다감", k2: "눈치백단", good: "세심함", bad: "거절못함", details: ["따뜻한 힐러상", "분위기 파악왕", "내사람 챙기기", "거절 못해 끙끙", "사소한것 기억", "익숙함이 편해", "눈치 많이 보는", "배려심 끝판왕"] },
+    "INFJ": { k1: "통찰력갑", k2: "완벽주의", good: "통찰력", bad: "유리멘탈", details: ["동굴시간 필수", "속으론 다알아", "통찰력 대마왕", "피곤한 완벽함", "무례하면 손절", "이상향을 꿈꿈", "생각이 너무많아", "속을 알수없음"] },
+    "INTJ": { k1: "독립적", k2: "분석왕", good: "논리적임", bad: "공감능력", details: ["독보적 마이웨이", "비효율은 답답", "한분야 전문가", "감정호소 극혐", "목표향해 직진", "무논리 안통함", "혼자만의 계획", "냉철한 이성파"] },
+    "ISTP": { k1: "가성비갑", k2: "귀차니즘", good: "임기응변", bad: "영혼없음", details: ["에너지 아끼기", "벼락치기 천재", "간섭받기 싫어", "도구활용 장인", "답장느림 주의", "감정소모 피곤", "만사가 귀찮아", "빠른 임기응변"] },
+    "ISFP": { k1: "자유영혼", k2: "방구석러", good: "수용적임", bad: "결정장애", details: ["웬만하면 맞춰줌", "외출시 방전됨", "내공간은 필수", "칭찬에 약한타입", "현재가 젤중요", "은근한 예민보스", "누워있는게 최고", "평화주의자임"] },
+    "INFP": { k1: "유리멘탈", k2: "과몰입", good: "공감능력", bad: "상처받음", details: ["망상과 상상력", "내일처럼 공감", "사소한말 상처", "덕질에는 진심", "자유로운 영혼", "은근한 관종끼", "심한 감정기복", "세심한 감수성"] },
+    "INTP": { k1: "팩트폭격", k2: "아이디어", good: "객관적임", bad: "귀차니즘", details: ["영혼없는 대답", "머리는 풀가동", "비논리는 반박", "혼자가 젤평화", "아이디어 넘침", "자발적 아싸", "지적호기심 폭발", "팩트 폭격기"] },
+    "ESTP": { k1: "적응력갑", k2: "인싸재질", good: "실행력갑", bad: "계획없음", details: ["조용한곳 못참아", "몸으로 부딪혀", "엄청난 눈치력", "금세 친해지는", "재미가 제일중요", "복잡한건 패스", "스릴을 즐김", "타고난 승부사"] },
+    "ESFP": { k1: "에너지갑", k2: "관심집중", good: "핵인싸", bad: "산만함", details: ["약속없음 우울", "주목받기 즐김", "어색침묵 못참아", "마이크 내꺼야", "자고나면 까먹음", "사람만남 충전", "폭풍 리액션", "파티의 주인공"] },
+    "ENFP": { k1: "리액션갑", k2: "감정기복", good: "창의력갑", bad: "금방질림", details: ["텐션높은 인싸", "하고싶은거 많음", "얼굴에 다티남", "폭풍 친화력", "반복일상 지루해", "대화할 맛이남", "금사빠 금사식", "통통튀는 매력"] },
+    "ENTP": { k1: "토론광", k2: "자신감갑", good: "기발함", bad: "고집불통", details: ["뼈때리는 팩폭", "내말이 다맞아", "기발한 아이디어", "재밌으면 직진", "말싸움 안지는", "뒤끝없이 쿨함", "논쟁을 즐기는", "브레이크 고장"] },
+    "ESTJ": { k1: "칼규칙", k2: "워커홀릭", good: "리더십갑", bad: "융통성제로", details: ["일미루기 극혐", "돌려말하기 못함", "답답하면 내가함", "규칙은 무조건", "현실적 해결책", "팩트로 뼈때림", "효율이 생명임", "단호한 리더"] },
+    "ESFJ": { k1: "다정함", k2: "친화력갑", good: "핵인싸", bad: "인정욕구", details: ["알뜰살뜰 다정함", "싫은소리 못함", "분위기 띄우기", "칭찬으로 충전", "소외된사람 챙김", "평화로운 분위기", "공감능력 만렙", "다정한 오지랖"] },
+    "ENFJ": { k1: "오지랖", k2: "긍정왕", good: "공감능력", bad: "감정소모", details: ["내일처럼 공감", "긍정에너지 뿜뿜", "오지랖이 넓은편", "속으로 상처받음", "조화로운 세상", "잘 이끌어주는", "인류애 가득함", "따뜻한 카리스마"] },
+    "ENTJ": { k1: "완벽주의", k2: "통솔력갑", good: "빠른결단", bad: "팩트폭격", details: ["답답하면 속터짐", "효율이 최우선", "목표 달성한다", "타고난 리더재질", "시간낭비 아까워", "논리적 불도저", "이성적인 판단", "압도적 카리스마"] }
+  };
+
+  let currentQ = 0;
+  let scores = { E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0 };
+
+  function startTest() {
+    document.getElementById('main-screen').style.display = 'none';
+    document.getElementById('question-screen').style.display = 'flex';
+    document.getElementById('external-start-btn').style.display = 'none'; 
+    showQuestion();
+  }
+
+  function showQuestion() {
+    const qData = qnaList[currentQ];
+    document.getElementById('question-text').innerHTML = `Q${currentQ + 1}.<br><br>${qData.q}`;
+    document.getElementById('btn-a').innerText = qData.a.text;
+    document.getElementById('btn-b').innerText = qData.b.text;
+    const percent = (currentQ / qnaList.length) * 100;
+    document.getElementById('progress').style.width = percent + '%';
+  }
+
+  function selectAnswer(choice) {
+    const qData = qnaList[currentQ];
+    const selectedType = choice === 'A' ? qData.a.type : qData.b.type;
+    scores[selectedType]++;
+    
+    currentQ++;
+    if (currentQ >= qnaList.length) {
+      document.getElementById('progress').style.width = '100%';
+      setTimeout(calculateResult, 300);
+    } else {
+      showQuestion();
+    }
+  }
+
+  function calculateResult() {
+    let mbti = "";
+    mbti += (scores.E >= scores.I) ? "E" : "I";
+    mbti += (scores.S >= scores.N) ? "S" : "N";
+    mbti += (scores.T >= scores.F) ? "T" : "F";
+    mbti += (scores.J >= scores.P) ? "J" : "P";
+
+    document.getElementById('question-screen').style.display = 'none';
+    document.getElementById('result-screen').style.display = 'flex';
+    document.getElementById('external-actions').style.display = 'flex'; 
+    document.body.className = 'theme-' + mbti.toLowerCase();
+
+    const resData = resultsData[mbti];
+    document.getElementById('res-keyword1').innerText = resData.k1; 
+    document.getElementById('res-keyword2').innerText = resData.k2; 
+    document.getElementById('res-good').innerText = resData.good;
+    document.getElementById('res-bad').innerText = resData.bad;
+    
+    let detailsHtml = '';
+    resData.details.forEach(item => {
+      detailsHtml += `<div class="trait-btn"><span>${item}</span></div>`;
+    });
+    document.getElementById('res-details').innerHTML = detailsHtml;
+    
+    document.getElementById('noise-overlay').style.display = 'none';
+    document.getElementById('no-signal-text').style.display = 'none';
+    document.getElementById('upload-placeholder').style.display = 'block';
+  }
+
+  function shareTest() {
+    const url = window.location.href;
+    navigator.clipboard.writeText(url).then(() => {
+      alert('테스트 링크가 복사되었습니다!');
+    }).catch(() => {
+      alert('링크 복사에 실패했습니다.');
+    });
+  }
+
+  const imageUpload = document.getElementById('image-upload');
+  const editModal = document.getElementById('edit-modal');
+  const canvasContainer = document.getElementById('canvas-container');
+  const canvas = document.getElementById('edit-canvas');
+  const ctx = canvas.getContext('2d');
+  const previewImgFinal = document.getElementById('preview-img-final');
+  
+  const brightnessSlider = document.getElementById('brightness-slider');
+  const grayscaleCheck = document.getElementById('grayscale-check');
+  const uploadPlaceholder = document.getElementById('upload-placeholder');
+  const noiseOverlay = document.getElementById('noise-overlay');
+  const noSignalText = document.getElementById('no-signal-text');
+
+  let imgObj = new Image();
+  let imgX = 0, imgY = 0, imgScale = 1;
+  let isDragging = false;
+  let startX, startY;
+  let initialDist = null;
+  let initialScale = 1;
+
+  const HIGH_RES_SCALE = 4;
+
+  function resizeCanvas() {
+    canvas.width = canvasContainer.clientWidth * HIGH_RES_SCALE;
+    canvas.height = canvasContainer.clientHeight * HIGH_RES_SCALE;
+    renderCanvas();
+  }
+
+  imageUpload.addEventListener('change', function(e) {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function(event) {
+        imgObj.onload = function() {
+          editModal.style.display = 'flex';
+          resizeCanvas();
+          
+          const scaleW = canvasContainer.clientWidth / imgObj.width;
+          const scaleH = canvasContainer.clientHeight / imgObj.height;
+          imgScale = Math.max(scaleW, scaleH);
+          
+          imgX = (canvasContainer.clientWidth - imgObj.width * imgScale) / 2;
+          imgY = (canvasContainer.clientHeight - imgObj.height * imgScale) / 2;
+          
+          brightnessSlider.value = 100;
+          grayscaleCheck.checked = false;
+          renderCanvas();
+        };
+        imgObj.src = event.target.result;
+      }
+      reader.readAsDataURL(file);
+    }
+  });
+
+  brightnessSlider.addEventListener('input', renderCanvas);
+  grayscaleCheck.addEventListener('change', renderCanvas);
+
+  function renderCanvas() {
+    if (!imgObj.src) return;
+    
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    ctx.save();
+    let filterStr = `brightness(${brightnessSlider.value}%)`;
+    if (grayscaleCheck.checked) filterStr += ` grayscale(100%)`;
+    ctx.filter = filterStr;
+    
+    ctx.translate(imgX * HIGH_RES_SCALE, imgY * HIGH_RES_SCALE);
+    ctx.scale(imgScale * HIGH_RES_SCALE, imgScale * HIGH_RES_SCALE);
+    ctx.drawImage(imgObj, 0, 0);
+    ctx.restore();
+  }
+
+  function adjustCanvas(action) {
+    const step = 20;
+    if (action === 'zoomIn') imgScale *= 1.1;
+    if (action === 'zoomOut') imgScale *= 0.9;
+    if (action === 'up') imgY -= step;
+    if (action === 'down') imgY += step;
+    if (action === 'left') imgX -= step;
+    if (action === 'right') imgX += step;
+    renderCanvas();
+  }
+
+  function getDistance(touches) {
+    return Math.hypot(touches[0].clientX - touches[1].clientX, touches[0].clientY - touches[1].clientY);
+  }
+
+  canvasContainer.addEventListener('mousedown', (e) => {
+    isDragging = true;
+    startX = e.clientX - imgX;
+    startY = e.clientY - imgY;
+  });
+
+  canvasContainer.addEventListener('touchstart', (e) => {
+    if (e.touches.length === 1) {
+      isDragging = true;
+      startX = e.touches[0].clientX - imgX;
+      startY = e.touches[0].clientY - imgY;
+    } else if (e.touches.length === 2) {
+      isDragging = false;
+      initialDist = getDistance(e.touches);
+      initialScale = imgScale;
+    }
+  }, {passive: false});
+
+  window.addEventListener('mousemove', (e) => {
+    if (isDragging) {
+      imgX = e.clientX - startX;
+      imgY = e.clientY - startY;
+      renderCanvas();
+    }
+  });
+
+  window.addEventListener('touchmove', (e) => {
+    if (isDragging && e.touches.length === 1) {
+      e.preventDefault();
+      imgX = e.touches[0].clientX - startX;
+      imgY = e.touches[0].clientY - startY;
+      renderCanvas();
+    } else if (e.touches.length === 2) {
+      e.preventDefault();
+      const currentDist = getDistance(e.touches);
+      if (initialDist) {
+        const factor = currentDist / initialDist;
+        imgScale = initialScale * factor;
+        if (imgScale < 0.1) imgScale = 0.1;
+        renderCanvas();
+      }
+    }
+  }, {passive: false});
+
+  window.addEventListener('mouseup', () => isDragging = false);
+  window.addEventListener('touchend', () => isDragging = false);
+
+  canvasContainer.addEventListener('wheel', (e) => {
+    e.preventDefault();
+    const rect = canvasContainer.getBoundingClientRect();
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+    
+    const wheelFactor = e.deltaY > 0 ? 0.9 : 1.1;
+    const newScale = imgScale * wheelFactor;
+    
+    imgX = mouseX - (mouseX - imgX) * (newScale / imgScale);
+    imgY = mouseY - (mouseY - imgY) * (newScale / imgScale);
+    imgScale = newScale;
+    renderCanvas();
+  });
+
+  function closeEditModal() {
+    editModal.style.display = 'none';
+    imageUpload.value = '';
+  }
+
+  function deletePhoto() {
+    imgObj.src = '';
+    previewImgFinal.src = '';
+    previewImgFinal.style.display = 'none';
+    
+    noiseOverlay.style.display = 'none';
+    noSignalText.style.display = 'none';
+    uploadPlaceholder.style.display = 'block';
+    
+    closeEditModal();
+  }
+
+  function applyEdit() {
+    previewImgFinal.src = canvas.toDataURL('image/png');
+    previewImgFinal.style.display = 'block';
+    
+    noiseOverlay.style.display = 'none';
+    noSignalText.style.display = 'none';
+    uploadPlaceholder.style.display = 'none';
+    
+    closeEditModal();
+  }
+
+ function captureAndShowImage() {
+  const captureArea = document.getElementById('app');
+  const isUploaded = previewImgFinal.src && previewImgFinal.style.display !== 'none';
+  
+  if (!isUploaded) {
+    noiseOverlay.style.display = 'block';
+    noSignalText.style.display = 'block';
+    uploadPlaceholder.style.display = 'none';
+  }
+
+  setTimeout(() => {
+    html2canvas(captureArea, { scale: 3, useCORS: true, backgroundColor: null }).then(canvas => {
+      const finalModal = document.getElementById('final-save-modal');
+      const finalImage = document.getElementById('final-captured-image');
+      
+      finalImage.src = canvas.toDataURL('image/png');
+      finalModal.style.display = 'flex';
+      
+      if (!isUploaded) {
+        noiseOverlay.style.display = 'none';
+        noSignalText.style.display = 'none';
+        uploadPlaceholder.style.display = 'block';
+      }
+    });
+  }, 200);
+}
+</script>
+
+</body>
+</html>

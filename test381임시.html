@@ -48,6 +48,7 @@
   body {
     margin: 0;
     padding: 0;
+    /* 상단 빈칸 문제 해결을 위해 padding-top: 60px 삭제 */
     padding-bottom: 40px;
     background-color: #f5f2eb;
     font-family: 'DungGeunMo', sans-serif;
@@ -57,14 +58,14 @@
     min-height: 100vh;
   }
 
-  /* --- 사용자가 제공한 헤더 스타일 완벽 반영 --- */
+  /* 헤더 스타일 */
   .header-wrapper {
     width: 100%;
-    background-color: var(--win-bg); 
-    border-bottom: 2px outset var(--win-border-light); 
-    box-shadow: 0 1px 0 var(--win-border-light); 
+    background-color: var(--win-bg);
+    border-bottom: 2px outset var(--win-border-light);
+    box-shadow: 0 1px 0 var(--win-border-light);
     align-self: flex-start;
-    margin-bottom: 30px; 
+    margin-bottom: 20px;
   }
 
   .page-header {
@@ -73,7 +74,7 @@
     align-items: center;
     max-width: 1100px;
     margin: 0 auto;
-    padding: 6px 4% !important; 
+    padding: 6px 4% !important;
   }
 
   .retro-logo {
@@ -84,20 +85,20 @@
     display: flex;
     align-items: center;
     gap: 5px;
-    background-color: var(--win-bg); 
-    padding: 5px 10px; 
+    background-color: var(--win-bg);
+    padding: 5px 10px;
     border-top: 2px solid var(--win-border-light);
     border-left: 2px solid var(--win-border-light);
     border-right: 2px solid var(--win-border-dark);
     border-bottom: 2px solid var(--win-border-dark);
   }
 
-  .retro-logo:active { 
+  .retro-logo:active {
     border-top: 2px solid var(--win-border-dark);
     border-left: 2px solid var(--win-border-dark);
     border-right: 2px solid var(--win-border-light);
     border-bottom: 2px solid var(--win-border-light);
-    padding: 6px 9px 4px 11px; 
+    padding: 6px 9px 4px 11px;
   }
 
   .page-header h1 {
@@ -113,7 +114,7 @@
     list-style: none;
     margin: 0;
     padding: 0;
-    gap: 14px; 
+    gap: 14px;
   }
 
   .main-nav li {
@@ -131,7 +132,7 @@
     border-right: 2px solid var(--win-border-dark);
     border-bottom: 2px solid var(--win-border-dark);
     padding: 6px 12px;
-    font-size: 15px; 
+    font-size: 15px;
     white-space: nowrap;
     box-sizing: border-box;
   }
@@ -141,7 +142,7 @@
     border-left: 2px solid var(--win-border-dark);
     border-right: 2px solid var(--win-border-light);
     border-bottom: 2px solid var(--win-border-light);
-    padding: 7px 11px 5px 13px; 
+    padding: 7px 11px 5px 13px;
   }
 
   @media (max-width: 480px) {
@@ -149,16 +150,16 @@
       padding: 6px 12px !important;
     }
     .retro-logo {
-      font-size: 16px; 
-      padding: 3px 8px; 
+      font-size: 16px;
+      padding: 3px 8px;
     }
     .main-nav {
-      gap: 8px; 
+      gap: 8px;
     }
     .main-nav a {
-      padding: 5px 8px; 
-      font-size: 14px; 
-      letter-spacing: -0.5px; 
+      padding: 5px 8px;
+      font-size: 14px;
+      letter-spacing: -0.5px;
     }
   }
 
@@ -217,11 +218,19 @@
     flex-direction: column;
   }
 
-  #main-screen, #question-screen {
+  /* 시작 화면 (비율 고정) */
+  #main-screen {
     background-color: var(--retro-lcd);
     aspect-ratio: 3 / 4; 
   }
 
+  /* 질문 화면 (세로가 너무 길어지지 않게 aspect-ratio 해제 후 최소 높이 설정) */
+  #question-screen {
+    background-color: var(--retro-lcd);
+    min-height: 380px; 
+  }
+
+  /* 결과 화면 */
   #result-screen {
     background-color: var(--c-bg); 
     height: auto;
@@ -308,7 +317,6 @@
     color: var(--retro-lcd);
   }
 
-  /* 시작 버튼 및 외부 버튼을 헤더 디자인과 맞춘 레트로 윈도우 스타일로 변경 */
   .start-btn-external, .ext-btn {
     background-color: var(--win-bg);
     color: var(--text);
@@ -788,6 +796,15 @@
   <button class="ext-btn" onclick="shareTest()">테스트 공유하기</button>
 </div>
 
+<div class="ad-container" id="ad-container" style="margin-top: 30px; margin-bottom: 20px; display: flex; justify-content: center; width: 100%;">
+  <article class="coupang_ad mt-3">
+    <script src="https://ads-partners.coupang.com/g.js"></script>
+    <script>
+      new PartnersCoupang.G({"id":798186,"template":"carousel","trackingCode":"AF4391881","width":"350","height":"140","tsource":""});
+    </script>
+  </article>
+</div>
+
 <div id="final-save-modal">
   <div class="save-guide-text">결과가 완성되었습니다!<br>이미지를 꾹 눌러서 저장해주세요.</div>
   <img id="final-captured-image" src="" alt="완성된 이미지">
@@ -1114,7 +1131,7 @@
   }
 
  function captureAndShowImage() {
-  const captureArea = document.getElementById('app');
+  const captureArea = document.getElementById('result-screen'); 
   const isUploaded = previewImgFinal.src && previewImgFinal.style.display !== 'none';
   
   if (!isUploaded) {

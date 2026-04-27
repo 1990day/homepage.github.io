@@ -287,7 +287,7 @@
   .pixel-btn {
     background-color: transparent;
     color: var(--lcd-text);
-    border: 2px solid var(--lcd-text);
+    border: 1px solid var(--lcd-text);
     border-radius: 0;
     padding: 12px 15px;
     font-size: 15px;
@@ -298,7 +298,7 @@
     margin-bottom: 10px;
     text-align: center;
     word-break: keep-all;
-    box-shadow: inset -2px -2px 0 rgba(46,53,46,0.42);
+    box-shadow: 2px 2px 0 var(--lcd-text);
   }
   .pixel-btn:active {
     background-color: var(--lcd-text);
@@ -313,8 +313,8 @@
     font-weight: 800;
     font-size: 16px;
     padding: 12px;
-    border: 2px solid var(--lcd-text);
-    box-shadow: inset -2px -2px 0 rgba(46,53,46,0.2);
+    border: 1px solid var(--lcd-text);
+    box-shadow: 2px 2px 0 var(--lcd-text);
     cursor: pointer;
     width: 90%;
     max-width: 360px;
@@ -332,8 +332,8 @@
 
   .start-btn-external:active, .ext-btn:active {
     background-color: #d0d0d0;
-    box-shadow: inset 2px 2px 0 rgba(46,53,46,0.2);
-    padding: 13px 11px 11px 13px;
+    box-shadow: 1px 1px 0 var(--lcd-text);
+    transform: translate(1px, 1px);
   }
 
   .progress-container {
@@ -473,14 +473,14 @@
 
   .retro-box {
     color: var(--lcd-text);
-    border: 2px solid var(--lcd-text);
+    border: 1px solid var(--lcd-text);
     border-radius: 0; 
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     background: #fff;
-    box-shadow: inset -2px -2px 0 rgba(46,53,46,0.2);
+    box-shadow: 2px 2px 0 var(--lcd-text);
   }
 
   .circle { 
@@ -534,7 +534,7 @@
   }
 
   .trait-btn {
-    border: 2px solid var(--lcd-text);
+    border: 1px solid var(--lcd-text);
     border-radius: 0;
     font-size: 14px;
     font-weight: bold;
@@ -546,7 +546,7 @@
     text-align: center;
     line-height: 1.4;
     color: var(--lcd-text);
-    box-shadow: inset -2px -2px 0 rgba(46,53,46,0.18);
+    box-shadow: 2px 2px 0 var(--lcd-text);
   }
 
   .trait-btn:nth-child(1) { background-color: #FFB3BA; }
@@ -1191,7 +1191,7 @@
   }
 
   setTimeout(() => {
-    html2canvas(captureArea, { scale: 3, useCORS: true, backgroundColor: null }).then(canvas => {
+    html2canvas(captureArea, { scale: 1.5, useCORS: true, backgroundColor: null }).then(canvas => {
       const finalModal = document.getElementById('final-save-modal');
       const finalImage = document.getElementById('final-captured-image');
       

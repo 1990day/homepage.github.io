@@ -592,14 +592,16 @@
     color: #fff; font-size: 16px; margin-bottom: 20px; font-weight: bold; text-align: center; line-height: 1.5;
   }
 
-  #final-captured-image {
+ #final-captured-image {
     width: 90%;
     max-width: 400px;
+    max-height: 60vh; /* 화면 전체 높이의 60%까지만 커지도록 제한 */
+    object-fit: contain; /* 가로세로 비율을 유지하면서 화면 안에 다 들어오도록 축소 */
     border: 2px solid #fff;
     border-radius: 10px;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
   }
-
+  
   #edit-container {
     width: 90%;
     max-width: 400px;

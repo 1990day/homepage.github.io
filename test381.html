@@ -223,14 +223,15 @@
     height: auto;
   }
 
-  .status-bar {
+.status-bar {
     height: 24px;
     color: #000;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 8px;
-    font-size: 12px;
+    font-size: 14px; /* 12px에서 14px로 크기 증가 */
+    font-weight: bold; /* 글씨를 굵게 하여 선명하게 만듦 */
     z-index: 10;
     flex-shrink: 0;
     border-bottom: 2px dashed rgba(0,0,0,0.3);

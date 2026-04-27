@@ -754,7 +754,8 @@
       }
     ];
 
-    const pichuFrames = ["피츄1.png", "피츄2.png"];
+   const timestamp = Date.now();
+const pichuFrames = [`피츄1.png?v=${timestamp}`, `피츄2.png?v=${timestamp}`];
 
     const startScreen = document.getElementById("start-screen");
     const questionScreen = document.getElementById("question-screen");

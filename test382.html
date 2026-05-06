@@ -17,7 +17,7 @@
       <link rel="icon" type="image/png" href="favicon.png">
 
   <script src="https://cdn.jsdelivr.net/npm/astronomy-engine@2.1.19/astronomy.browser.min.js"></script>
-  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
 
   <style>
     @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
@@ -1382,7 +1382,7 @@
                     </div>
                   </div>
 
-                  <p class="hint-text">정확한 결과를 위해 태어난 시간을 입력하는 것이 좋음.</p>
+                 <p class="hint-text">태어난 시간을 모르면 낮 12시 기준으로 계산됨.</p>
                 </div>
               </div>
 
@@ -2085,10 +2085,15 @@
       selDay.value = Math.min(previousDay, lastDay);
     }
 
-    unknownTime.addEventListener("change", () => {
-      selHour.disabled = unknownTime.checked;
-      selMin.disabled = unknownTime.checked;
-    });
+   unknownTime.addEventListener("change", () => {
+  selHour.disabled = unknownTime.checked;
+  selMin.disabled = unknownTime.checked;
+
+  if (unknownTime.checked) {
+    selHour.value = 12;
+    selMin.value = 0;
+  }
+});
 
     function getPlaceKey(place) {
       if (!place) return "";
@@ -2262,10 +2267,6 @@
         return;
       }
 
-      if (unknownTime.checked) {
-        alert("정확한 결과를 위해 태어난 시간을 입력해 주세요.");
-        return;
-      }
 
       if (!isValidSelectedDate()) {
         alert("올바른 생년월일을 선택해 주세요.");
@@ -2434,8 +2435,8 @@
       const y = Number(selYear.value);
       const m = Number(selMonth.value);
       const d = Number(selDay.value);
-      const h = Number(selHour.value);
-      const min = Number(selMin.value);
+    const h = unknownTime.checked ? 12 : Number(selHour.value);
+const min = unknownTime.checked ? 0 : Number(selMin.value);
 
       const utcDate = localKstToUtcDate(y, m, d, h, min);
       const astroTime = new Astronomy.AstroTime(utcDate);

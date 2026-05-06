@@ -2098,49 +2098,99 @@
       searchPlaces(placeInput.value.trim());
     });
 
-    async function searchPlaces(query) {
-      if (!query) {
-        renderSuggestions(FALLBACK_PLACES.slice(0, 30));
-        return;
-      }
+   async function searchPlaces(query) {
+  const cleanQuery = query.trim();
 
-      if (KAKAO_REST_API_KEY) {
-        try {
-          const url = `https://dapi.kakao.com/v2/local/search/keyword.json?query=${encodeURIComponent(query)}&size=15`;
-          const res = await fetch(url, {
-            headers: { Authorization: `KakaoAK ${KAKAO_REST_API_KEY}` }
-          });
+  if (!cleanQuery) {
+    renderSuggestions(FALLBACK_PLACES.slice(0, 30));
+    return;
+  }
 
-          if (res.ok) {
-            const data = await res.json();
-            const list = data.documents
-              .filter(item => item.x && item.y)
-              .map(item => ({
-                name: item.place_name || item.address_name || query,
-                address: item.road_address_name || item.address_name || item.place_name,
-                lat: Number(item.y),
-                lon: Number(item.x)
-              }));
+  const isRegionLikeQuery = /[시군구동읍면리]$/.test(cleanQuery);
 
-            if (list.length) {
-              renderSuggestions(list);
-              return;
-            }
-          }
-        } catch (error) {
-          console.warn(error);
+  if (KAKAO_REST_API_KEY) {
+    try {
+      const addressUrl = `https://dapi.kakao.com/v2/local/search/address.json?query=${encodeURIComponent(cleanQuery)}&size=15`;
+      const addressRes = await fetch(addressUrl, {
+        headers: { Authorization: `KakaoAK ${KAKAO_REST_API_KEY}` }
+      });
+
+      if (addressRes.ok) {
+        const addressData = await addressRes.json();
+
+        const addressList = addressData.documents
+          .filter(item => item.x && item.y && item.address)
+          .map(item => {
+            const address = item.address;
+
+            const regionName =
+              address.region_3depth_name ||
+              address.region_2depth_name ||
+              address.region_1depth_name ||
+              item.address_name ||
+              cleanQuery;
+
+            const displayAddress = [
+              address.region_1depth_name,
+              address.region_2depth_name,
+              address.region_3depth_name
+            ].filter(Boolean).join(" ");
+
+            return {
+              name: regionName,
+              address: displayAddress || item.address_name || cleanQuery,
+              lat: Number(item.y),
+              lon: Number(item.x)
+            };
+          })
+          .filter((place, index, self) =>
+            index === self.findIndex(item => item.address === place.address)
+          );
+
+        if (addressList.length) {
+          renderSuggestions(addressList);
+          return;
         }
       }
 
-      const normalizedQuery = normalizePlaceQuery(query);
-      const lower = normalizedQuery.toLowerCase();
+      if (!isRegionLikeQuery) {
+        const keywordUrl = `https://dapi.kakao.com/v2/local/search/keyword.json?query=${encodeURIComponent(cleanQuery)}&size=15`;
+        const keywordRes = await fetch(keywordUrl, {
+          headers: { Authorization: `KakaoAK ${KAKAO_REST_API_KEY}` }
+        });
 
-      const fallback = FALLBACK_PLACES.filter(place =>
-        `${place.name} ${place.address}`.toLowerCase().includes(lower)
-      ).slice(0, 50);
+        if (keywordRes.ok) {
+          const keywordData = await keywordRes.json();
 
-      renderSuggestions(fallback);
+          const keywordList = keywordData.documents
+            .filter(item => item.x && item.y)
+            .map(item => ({
+              name: item.place_name || item.address_name || cleanQuery,
+              address: item.road_address_name || item.address_name || item.place_name,
+              lat: Number(item.y),
+              lon: Number(item.x)
+            }));
+
+          if (keywordList.length) {
+            renderSuggestions(keywordList);
+            return;
+          }
+        }
+      }
+    } catch (error) {
+      console.warn(error);
     }
+  }
+
+  const normalizedQuery = normalizePlaceQuery(cleanQuery);
+  const lower = normalizedQuery.toLowerCase();
+
+  const fallback = FALLBACK_PLACES.filter(place =>
+    `${place.name} ${place.address}`.toLowerCase().includes(lower)
+  ).slice(0, 50);
+
+  renderSuggestions(fallback);
+}
 
     function normalizePlaceQuery(query) {
       return query
@@ -2149,40 +2199,43 @@
         .replaceAll("강원도", "강원특별자치도");
     }
 
-    function renderSuggestions(list) {
-      if (!list.length) {
-        suggestions.innerHTML = `
-          <div class="suggestion-item">
-            검색 결과가 없어요
-            <small>더 큰 지역명으로 다시 입력해 주세요.</small>
-          </div>
-        `;
-        return;
-      }
+  function renderSuggestions(list) {
+  if (!list.length) {
+    suggestions.innerHTML = `
+      <div class="suggestion-item">
+        검색 결과가 없어요
+        <small>시, 군, 구, 동 이름으로 다시 입력해 주세요.</small>
+      </div>
+    `;
+    return;
+  }
 
-      suggestions.innerHTML = list.map((place, index) => {
-        const activeClass = selectedPlaceKey && selectedPlaceKey === getPlaceKey(place) ? "active" : "";
-        return `
-          <div class="suggestion-item ${activeClass}" data-index="${index}">
-            ${place.name}
-            <small>${place.address || ""} · 위도 ${place.lat.toFixed(4)} · 경도 ${place.lon.toFixed(4)}</small>
-          </div>
-        `;
-      }).join("");
+  suggestions.innerHTML = list.map((place, index) => {
+    const activeClass = selectedPlaceKey && selectedPlaceKey === getPlaceKey(place) ? "active" : "";
 
-      [...suggestions.querySelectorAll(".suggestion-item")].forEach((item, index) => {
-        if (list[index]) {
-          item.addEventListener("click", () => {
-            selectedPlace = list[index];
-            selectedPlaceKey = getPlaceKey(selectedPlace);
-            placeInput.value = selectedPlace.name;
-            selectedPlaceText.textContent = `${selectedPlace.address || selectedPlace.name} 기준으로 계산합니다.`;
-            selectedPlaceText.classList.add("is-selected");
-            renderSuggestions(list);
-          });
-        }
+    return `
+      <div class="suggestion-item ${activeClass}" data-index="${index}">
+        ${place.name}
+        <small>${place.address || ""}</small>
+      </div>
+    `;
+  }).join("");
+
+  [...suggestions.querySelectorAll(".suggestion-item")].forEach((item, index) => {
+    if (list[index]) {
+      item.addEventListener("click", () => {
+        selectedPlace = list[index];
+        selectedPlaceKey = getPlaceKey(selectedPlace);
+
+        placeInput.value = selectedPlace.name;
+        selectedPlaceText.textContent = `${selectedPlace.address || selectedPlace.name} 기준으로 계산합니다.`;
+        selectedPlaceText.classList.add("is-selected");
+
+        renderSuggestions(list);
       });
     }
+  });
+}
 
     function goToPage(pageId) {
       document.querySelectorAll(".page").forEach(page => page.classList.remove("active"));

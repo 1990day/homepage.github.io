@@ -372,27 +372,34 @@
       z-index: 2;
     }
 
-    .result-card::after {
-      content: "TESTIT PRIME CELL CARD";
-      position: absolute;
-      left: 24px;
-      top: 21px;
-      z-index: 3;
-      padding: 5px 9px;
-      background: #fff;
-      border: 1.5px solid #3a1721;
-      color: #cf3562;
-      font-size: 10px;
-      font-weight: 950;
-      letter-spacing: .02em;
-      line-height: 1;
-      box-shadow: 3px 3px 0 rgba(253,148,160,.75);
-    }
+.result-card::after {
+  content: "♥ ✦ 테스트잇 프라임 세포 성격 테스트 ✦ ♥";
+  position: absolute;
+  left: 24px;
+  right: 24px;
+  top: 21px;
+  transform: none;
+  z-index: 3;
+  padding: 9px 10px;
+  background:
+    linear-gradient(90deg, #fff7fb 0%, #ffffff 50%, #fff7fb 100%);
+  border: 2px solid #3a1721;
+  color: #cf3562;
+  font-size: 15px;
+  font-weight: 950;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  text-align: center;
+  box-shadow:
+    3px 3px 0 rgba(253,148,160,.75),
+    inset 0 0 0 2px rgba(255,216,230,.9);
+  white-space: nowrap;
+}
 
     .result-inner {
       position: relative;
       z-index: 1;
-      padding: 46px 16px 18px;
+  padding: 54px 16px 18px;
       text-align: center;
       background: rgba(255,255,255,.82);
       border: 2px solid rgba(58,23,33,.88);
@@ -569,7 +576,7 @@
       }
     }
 
-    @media (max-width: 420px) {
+    @media (max-width: 430px) {
       .wrap {
         padding: 18px 13px 20px;
       }
@@ -600,21 +607,24 @@
           0 16px 28px rgba(207,53,98,.2);
       }
 
-      .result-card::after {
-        left: 20px;
-        top: 18px;
-        font-size: 9px;
-      }
+.result-card::after {
+  left: 20px;
+  right: 20px;
+  top: 18px;
+  transform: none;
+  font-size: 13px;
+  padding: 8px 8px;
+}
+     .result-inner {
+  padding: 50px 13px 16px;
+}
 
-      .result-inner {
-        padding: 42px 13px 16px;
-      }
-
-      .main-result-image {
-        width: 320px;
-        height: auto;
-        margin-bottom: 13px;
-      }
+  .main-result-image {
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+  margin-bottom: 13px;
+}
 
       .feature-box {
         padding: 15px 12px 13px;
@@ -632,10 +642,11 @@
     }
 
     @media (max-width: 370px) {
-      .main-result-image {
-        width: 292px;
-        height: auto;
-      }
+    .main-result-image {
+  width: 100%;
+  max-width: 292px;
+  height: auto;
+}
 
       .feature-list li {
         font-size: 12.2px;
@@ -738,113 +749,113 @@
       love: {
         name: "사랑세포",
         file: "img383_사랑세포.png",
-        features: ["설렘에 바로 반응함", "다정한 말에 약함", "연락 하나도 크게 느낌", "좋아하면 티가 남", "애정 확인이 중요함", "내 편에 쉽게 녹음", "마음 주면 오래 감", "사랑받을 때 반짝임"]
+        features: ["인생의 1순위는 사랑", "다정한 말에 약함", "좋아하면 티가 많이 남", "설렘에 하루가 좌우됨", "애정 확인이 중요함", "사랑받을 때 살아남", "마음 주면 오래 감", "내 사람에게 헌신적"]
       },
       friendship: {
         name: "우정세포",
         file: "img383_우정세포.png",
-        features: ["친구 시간이 큰 충전", "단톡방 확인 빠름", "같이 웃어야 살아남", "의리 없는 태도 싫음", "내 사람 오래 챙김", "관계 온도에 민감함", "좋은 일은 같이 나눔", "편한 사람이 힘이 됨"]
+        features: ["친구가 인생의 전부", "의리에 죽고 의리에 삼", "친구랑 노는 게 1순위", "친구 일에 발 벗고 나섬", "친구 행복이 나의 행복", "관계 온도에 민감함", "좋은 건 같이 나눔", "혼자보다 같이가 더 좋음"]
       },
       pride: {
         name: "자존심세포",
         file: "img383_자존심세포.png",
-        features: ["무시당하면 바로 식음", "먼저 굽히기 어려움", "지는 느낌을 싫어함", "기준이 꽤 단단함", "선 넘으면 조용히 닫음", "나답게 버티는 힘", "티 안 내도 오래 기억함", "존중받을 때 풀림"]
+        features: ["자존심이 인생의 중심", "먼저 굽히는 일 없음", "지는 느낌을 싫어함", "기준이 꽤 단단함", "선 넘으면 칼같이 손절", "무시당하면 절대 못 참음", "내 가치는 내가 지킴", "존중받아야 마음이 풀림"]
       },
       sleep: {
         name: "쿨쿨세포",
         file: "img383_쿨쿨세포.png",
-        features: ["잠 부족하면 꺼짐", "침대가 안전지대", "쉬어야 다정해짐", "피곤하면 말수 줄음", "컨디션이 기분 좌우", "푹 자면 다시 살아남", "낮잠에도 진심임", "휴식이 최고의 보상"]
+        features: ["잠이 인생 1순위", "침대가 안전지대", "잠 못 자면 하루 망함", "피곤하면 말수 줄음", "컨디션이 기분 좌우", "푹 자야 인성 좋아짐", "누워있을 때 가장 행복", "늦잠이 최고의 보상임"]
       },
       food: {
         name: "출출세포",
         file: "img383_출출세포.png",
-        features: ["먹으면 기분 회복", "배고프면 예민함", "메뉴 고를 때 진심", "간식에도 행복함", "맛집 사진에 약함", "맛있는 하루 중요함", "음식으로 위로받음", "한입에 마음 풀림"]
+        features: ["먹는 게 인생 1순위", "배고프면 극도로 예민", "메뉴 고를 때 진심", "먹기 위해 살아감", "맛집 탐방에 진심임", "맛없는 거 먹으면 짜증 남", "스트레스는 음식으로 풂", "좋아하는 음식에 행복해짐"]
       },
       passion: {
         name: "열정세포",
         file: "img383_열정세포.png",
-        features: ["꽂히면 바로 움직임", "성취감에 살아남", "목표 생기면 빨라짐", "작은 성공도 크게 느낌", "불붙으면 강하게 감", "성장 느낌이 중요함", "해내면 기분 좋아짐", "몰입할 때 빛남"]
+        features: ["목표 달성이 인생 1순위", "열정 없으면 시체임", "한 번 꽂히면 끝장을 봄", "가만히 있는 걸 못 견딤", "성취감이 가장 큰 원동력", "성장해야 살아있음을 느낌", "무언가에 몰입할 때 행복", "해냈을 때의 쾌감 최고"]
       },
       dopamine: {
         name: "도파민세포",
         file: "img383_도파민세포.png",
-        features: ["재밌어야 시작됨", "새 자극에 약함", "심심하면 바로 식음", "웃긴 콘텐츠 못 지나침", "흥미 생기면 몰입함", "작은 재미로 회복함", "반복되면 지루함", "즐거운 일에 빠름"]
-      },
+       features: ["재미가 인생 1순위", "도파민 없으면 시체임", "지루한 건 절대 못 견딤", "새롭고 짜릿한 자극 최고", "노잼이면 바로 식어버림", "흥미로운 일엔 미친 실행력", "항상 꿀잼 콘텐츠에 절여짐", "도파민 터질 때 제일 행복"]
+    },
       emotion: {
         name: "감성세포",
         file: "img383_감성세포.png",
-        features: ["분위기에 바로 반응", "말투 변화 잘 느낌", "괜찮은 척 잘함", "여운이 오래 남음", "예쁜 장면에 약함", "감성 충전이 필요함", "작은 말에도 흔들림", "따뜻한 순간을 기억함"]
+        features: ["감성이 인생 1순위", "분위기에 죽고 분위기에 삼", "괜찮은 척 잘함", "여운이 유독 길고 깊게 남음", "메마른 로봇 같은 삶 극혐", "노래 하나에 기분이 바뀜", "작은 말에도 잘 흔들림", "따뜻한 공감과 위로가 최고"]
       },
-      logic: {
-        name: "이성세포",
-        file: "img383_이성세포.png",
-        features: ["상황 파악이 먼저", "기준 있어야 편함", "근거 없는 말 싫음", "감정 소모 줄이고 싶음", "정리되면 바로 움직임", "현실 판단에 강함", "차분히 답을 찾음", "복잡한 걸 정리함"]
-      }
+     logic: {
+      name: "이성세포",
+      file: "img383_이성세포.png",
+      features: ["논리와 팩트가 인생 1순위", "불필요한 감정 소모 극혐", "무조건 객관적 상황 파악부터", "근거 없는 소리 안 통함", "냉철하고 차분한 판단", "확실한 기준과 명분 필수", "복잡하게 엉킨 상황 정리", "효율적인 게 최고"]
+    }
     };
 
     const baseQuestions = [
-      { group: "relation", type: "normal", question: "연락창을 열었을 때 가장 먼저 신경 쓰이는 건?", answers: [
-        { text: "좋아하는 사람에게 답장이 왔는지 본다", cell: "love" },
-        { text: "친구 단톡방에 무슨 얘기가 쌓였는지 본다", cell: "friendship" },
-        { text: "내가 먼저 보낸 연락이 더 신경 쓰인다", cell: "pride" }
-      ]},
-      { group: "relation", type: "normal", question: "하루가 별로였을 때 제일 위로되는 순간은?", answers: [
-        { text: "누군가 다정하게 내 편을 들어줄 때", cell: "love" },
-        { text: "친구들이랑 아무 말이나 하며 웃을 때", cell: "friendship" },
-        { text: "내가 틀리지 않았다는 확신이 들 때", cell: "pride" }
-      ]},
-      { group: "relation", type: "normal", question: "사람 사이에서 내가 가장 크게 반응하는 건?", answers: [
-        { text: "나를 특별하게 대해주는 느낌", cell: "love" },
-        { text: "같이 있을 때 편하고 재밌는 분위기", cell: "friendship" },
-        { text: "나를 가볍게 보지 않는 태도", cell: "pride" }
-      ]},
-      { group: "life", type: "normal", question: "완전히 비어 있는 쉬는 날, 제일 먼저 끌리는 건?", answers: [
-        { text: "알람 끄고 더 자기", cell: "sleep" },
-        { text: "먹고 싶던 음식 먹으러 가기", cell: "food" },
-        { text: "미뤄둔 일 하나라도 끝내기", cell: "passion" }
-      ]},
-      { group: "life", type: "normal", question: "몸도 마음도 축 처질 때 나는 보통?", answers: [
-        { text: "일단 누워서 회복한다", cell: "sleep" },
-        { text: "뭐라도 먹어야 살아난다", cell: "food" },
-        { text: "작은 목표라도 잡아 움직인다", cell: "passion" }
-      ]},
-      { group: "life", type: "normal", question: "하루 끝에 만족감이 제일 크게 드는 순간은?", answers: [
+    { group: "relation", type: "normal", question: "늦은 밤<br>갑자기 울리는 카톡 알림에 나는?", answers: [
+{ text: "혹시 나한테 호감 있는 사람인가? 싶어서 바로 본다", cell: "love" },
+  { text: "또 친구들이 쓸데없는 짤 보냈겠지ㅋㅋ", cell: "friendship" },
+  { text: "이 시간에 연락을? 예의 없네", cell: "pride" }
+]},
+  { group: "relation", type: "normal", question: "누군가와 가까워질 때<br>가장 중요하게 생각하는 건?", answers: [
+  { text: "나를 좋아해주고 표현해주는 마음", cell: "love" },
+  { text: "같이 있으면 재밌고 편한 분위기", cell: "friendship" },
+  { text: "아무리 친해도 지켜야 할 선", cell: "pride" }
+]},
+    { group: "relation", type: "normal", question: "사람 관계에서 제일 예민해지는 순간은?", answers: [
+  { text: "좋아하는 사람이 나한테 애매하게 굴 때", cell: "love" },
+  { text: "친구들 사이에서 나만 소외된 느낌이 들 때", cell: "friendship" },
+  { text: "누가 나를 가볍게 보는 듯한 태도를 보일 때", cell: "pride" }
+]},
+{ group: "life", type: "normal", question: "드디어 찾아온 주말!<br>내가 가장 원하는 것은?", answers: [
+  { text: "일단 늦게까지 누워 있기. 침대 밖은 위험하다", cell: "sleep" },
+  { text: "오늘 뭐 먹지? 배달 앱부터 켠다", cell: "food" },
+  { text: "밀린 일 싹 처리하고 알차게 보내고 싶다", cell: "passion" }
+]},
+{ group: "life", type: "normal", question: "스트레스가 극에 달했을 때<br>나를 구원해 줄 응급처치법은?", answers: [
+  { text: "아무 생각 없이 기절하듯 푹 자기", cell: "sleep" },
+  { text: "맵고 달고 짠 거 시켜서 제대로 먹기", cell: "food" },
+  { text: "운동이든 일이든 어디 하나 미친 듯이 몰입하기", cell: "passion" }
+]},
+      { group: "life", type: "normal", question: "하루 끝에 만족감이<br>제일 크게 드는 순간은?", answers: [
         { text: "푹 쉬어서 체력이 돌아왔을 때", cell: "sleep" },
-        { text: "맛있는 걸 제대로 먹었을 때", cell: "food" },
-        { text: "오늘 할 일을 해냈을 때", cell: "passion" }
+        { text: "진짜 먹고 싶었던 걸 만족스럽게 먹었을 때", cell: "food" },
+        { text: "오늘 해야 할 일을 다 끝냈을 때", cell: "passion" }
       ]},
       { group: "inner", type: "normal", question: "새벽에 잠이 안 올 때 나는 주로?", answers: [
-        { text: "재밌는 영상이나 글을 계속 본다", cell: "dopamine" },
-        { text: "감성적인 생각에 빠진다", cell: "emotion" },
-        { text: "현실적인 걱정과 계획을 정리한다", cell: "logic" }
+        { text: "도파민 터지는 예능이나 쇼츠", cell: "dopamine" },
+        { text: "이 새벽에 듣기 좋은 플레이리스트", cell: "emotion" },
+        { text: "몰랐던 사실을 알려준다고? 팩트와 정보 전달 영상", cell: "logic" }
       ]},
-      { group: "inner", type: "normal", question: "갑자기 기분이 가라앉았을 때 가장 필요한 건?", answers: [
-        { text: "분위기를 바꿔줄 재밌는 자극", cell: "dopamine" },
-        { text: "감성을 채워줄 음악이나 장면", cell: "emotion" },
-        { text: "상황을 객관적으로 정리할 기준", cell: "logic" }
-      ]},
-      { group: "inner", type: "normal", question: "선택해야 할 일이 생기면 내 머릿속은?", answers: [
-        { text: "일단 더 끌리고 재밌어 보이는 쪽", cell: "dopamine" },
-        { text: "내 감성이 어느 쪽에 끌리는지 본다", cell: "emotion" },
-        { text: "손해와 가능성을 따져본다", cell: "logic" }
+  { group: "inner", type: "normal", question: "기분이 갑자기 처질 때 나는?", answers: [
+  { text: "웃긴 거나 재밌는 거부터 찾는다", cell: "dopamine" },
+  { text: "그냥 그 기분에 한동안 잠긴다", cell: "emotion" },
+  { text: "왜 그런지 이유부터 생각한다", cell: "logic" }
+]},
+    { group: "inner", type: "normal", question: "중요한 결정을 내려야 할 때<br>나를 이끄는 가장 강력한 기준은?", answers: [
+      { text: "이게 제일 재밌어 보이잖아! 일단 고!", cell: "dopamine" },
+  { text: "내 마음이 끌리는 쪽으로 가야 후회가 없다", cell: "emotion" },
+  { text: "장단점 다 따져봤을 때 이게 제일 합리적이다", cell: "logic" }
       ]}
     ];
 
     const tieQuestions = {
-      relation: { group: "relation", type: "tie", question: "마음이 복잡할 때 결국 제일 먼저 떠오르는 건?", answers: [
-        { text: "나를 좋아해 주는 사람의 존재", cell: "love" },
-        { text: "내 편처럼 편하게 웃을 수 있는 사람들", cell: "friendship" },
-        { text: "내가 무너지지 않았다는 자존감", cell: "pride" }
-      ]},
-      life: { group: "life", type: "tie", question: "지금 당장 컨디션을 되살릴 수 있다면?", answers: [
-        { text: "아무 방해 없이 푹 자고 싶다", cell: "sleep" },
-        { text: "먹고 싶던 걸 제대로 먹고 싶다", cell: "food" },
-        { text: "하나라도 해내서 다시 불붙고 싶다", cell: "passion" }
-      ]},
-      inner: { group: "inner", type: "tie", question: "머릿속이 복잡할 때 가장 나를 끌어당기는 건?", answers: [
-        { text: "생각을 끊어줄 재밌는 것", cell: "dopamine" },
-        { text: "감성을 채워줄 음악과 분위기", cell: "emotion" },
-        { text: "상황을 정리해서 답을 찾는 것", cell: "logic" }
+   relation: { group: "relation", type: "tie", question: "내가 사람한테 가장 원하는 건?", answers: [
+  { text: "사랑받고 있다는 확신", cell: "love" },
+  { text: "편하게 오래 갈 수 있는 관계", cell: "friendship" },
+  { text: "나를 함부로 대하지 않는 태도", cell: "pride" }
+]},
+      life: { group: "life", type: "tie", question: "지금 내 삶의 질을 수직 상승시켜 줄<br>딱 한 가지를 고른다면?", answers: [
+    { text: "피로가 싹 풀리는 완벽하고 깊은 수면", cell: "sleep" },
+    { text: "입맛을 확 돋우는 미슐랭급 인생 맛집", cell: "food" },
+    { text: "내 심장을 뛰게 만드는 새로운 목표와 성취", cell: "passion" }
+  ]},
+    inner: { group: "inner", type: "tie", question: "내 머릿속 평화를 위해<br>가장 필요한 영양소는?", answers: [
+    { text: "지루함을 박살 내 줄 짜릿한 재미", cell: "dopamine" },
+    { text: "메마른 마음을 촉촉하게 적셔줄 감수성", cell: "emotion" },
+    { text: "엉킨 생각을 깔끔하게 풀어줄 명쾌한 해답", cell: "logic" }
       ]}
     };
 
@@ -907,7 +918,7 @@
       const q = questions[current];
 
       document.getElementById("qCount").innerText = (current + 1) + " / " + getDisplayTotal();
-      document.getElementById("questionTitle").innerText = q.question;
+ document.getElementById("questionTitle").innerHTML = q.question;
       updateHeartProgress();
 
       const answerBox = document.getElementById("answerBox");
@@ -975,43 +986,39 @@
       return entries[0][0];
     }
 
-    function addFinalQuestion() {
-      finalAdded = true;
+  function addFinalQuestion() {
+  finalAdded = true;
 
-      const finalists = [
-        getGroupWinner("relation"),
-        getGroupWinner("life"),
-        getGroupWinner("inner")
-      ];
+  const finalists = [
+    getGroupWinner("relation"),
+    getGroupWinner("life"),
+    getGroupWinner("inner")
+  ];
 
-      questions.push({
-        group: "final",
-        type: "final",
-        question: "결국 내 하루를 가장 강하게 움직이는 힘은?",
-        answers: finalists.map(function(cell) {
-          return {
-            text: getFinalAnswerText(cell),
-            cell: cell
-          };
-        })
-      });
-    }
+  const finalTextMap = {
+    love: "다정하게 주고받는 애정과 설렘",
+    friendship: "내 사람들과 웃고 떠드는 편안한 시간",
+    pride: "굽히지 않고 지켜낸 나만의 자존심",
+    sleep: "방해 없이 기절하듯 푹 자는 시간",
+    food: "맛있는 걸 먹었을 때 밀려오는 행복",
+    passion: "무언가를 해냈을 때의 뜨거운 성취감",
+    dopamine: "지루할 틈 없는 짜릿한 재미와 자극",
+    emotion: "마음을 촉촉하게 채워주는 감성",
+    logic: "복잡한 상황이 깔끔하게 정리되는 순간"
+  };
 
-    function getFinalAnswerText(cell) {
-      const textMap = {
-        love: "다정한 연락이나 설레는 순간",
-        friendship: "친구들이랑 웃고 떠드는 시간",
-        pride: "내가 나답게 지켜낸 느낌",
-        sleep: "아무 방해 없이 푹 쉬는 시간",
-        food: "맛있는 음식으로 채우는 행복",
-        passion: "뭔가 해냈다는 확실한 성취감",
-        dopamine: "재밌는 콘텐츠나 새로운 자극",
-        emotion: "감성을 채워주는 분위기",
-        logic: "복잡한 상황이 딱 정리되는 느낌"
+  questions.push({
+    group: "final",
+    type: "final",
+    question: "지금 나를 가장<br>행복하게 만들어주는 것은?",
+    answers: finalists.map(function(cell) {
+      return {
+        text: finalTextMap[cell],
+        cell: cell
       };
-
-      return textMap[cell];
-    }
+    })
+  });
+}
 
     function showResult() {
       document.getElementById("questionScreen").classList.add("hidden");

@@ -656,12 +656,14 @@
         min-height: 72px;
       }
 
-      .result-card {
-        padding: 9px;
-        box-shadow:
-          5px 5px 0 #fd94a0,
-          0 16px 28px rgba(207,53,98,.2);
-      }
+  .result-card {
+  padding: 11px;
+  background: #ffb8cb;
+  border: 2px solid #3a1721;
+  box-shadow:
+    7px 7px 0 #fd94a0,
+    0 18px 34px rgba(207,53,98,.22);
+}
 
 .result-card::after {
   left: 20px;
@@ -1110,7 +1112,7 @@
       const target = document.getElementById("captureArea");
 
       html2canvas(target, {
-        backgroundColor: null,
+      backgroundColor: "#ffb8cb",
         scale: 2,
         useCORS: true
       }).then(function(canvas) {

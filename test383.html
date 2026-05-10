@@ -403,14 +403,14 @@
         0 18px 34px rgba(207,53,98,.22);
     }
 
-    .result-card::before {
-      content: "";
-      position: absolute;
-      inset: 9px;
-      border: 1.5px dashed rgba(58,23,33,.38);
-      pointer-events: none;
-      z-index: 2;
-    }
+   .result-card::before {
+  content: "";
+  position: absolute;
+  inset: 9px;
+  border: 1.5px dashed #8c4d5b;
+  pointer-events: none;
+  z-index: 2;
+}
 
 .result-card::after {
   content: "♥ ✦ 테스트잇 프라임 세포 성격 테스트 ✦ ♥";
@@ -435,16 +435,15 @@
     inset 0 0 0 2px rgba(255,216,230,.9);
   white-space: nowrap;
 }
-
-    .result-inner {
-      position: relative;
-      z-index: 1;
+.result-inner {
+  position: relative;
+  z-index: 1;
   padding: 54px 16px 18px;
-      text-align: center;
-      background: rgba(255,255,255,.82);
-      border: 2px solid rgba(58,23,33,.88);
-      box-shadow: inset 0 0 0 5px rgba(255,216,230,.9);
-    }
+  text-align: center;
+  background: #fff3f8;
+  border: 2px solid rgba(58,23,33,.88);
+  box-shadow: inset 0 0 0 5px #ffd8e6;
+}
 
     .main-result-image {
       width: 330px;
@@ -656,9 +655,10 @@
         min-height: 72px;
       }
 
-  .result-card {
+.result-card {
   padding: 11px;
   background: #ffb8cb;
+  background-image: none;
   border: 2px solid #3a1721;
   box-shadow:
     7px 7px 0 #fd94a0,
@@ -1108,20 +1108,44 @@
       document.getElementById("startScreen").classList.remove("hidden");
     }
 
-    function saveResultImage() {
-      const target = document.getElementById("captureArea");
+ function saveResultImage() {
+  const target = document.getElementById("captureArea");
 
-      html2canvas(target, {
-      backgroundColor: "#ffb8cb",
-        scale: 2,
-        useCORS: true
-      }).then(function(canvas) {
-        const image = canvas.toDataURL("image/png");
-        document.getElementById("savedImage").src = image;
-        document.getElementById("saveModal").classList.add("show");
-      });
+  html2canvas(target, {
+    backgroundColor: null,
+    scale: 2,
+    useCORS: true,
+    onclone: function(doc) {
+      const style = doc.createElement("style");
+      style.innerHTML = `
+        #captureArea {
+          background: #ffb8cb !important;
+          background-image: none !important;
+        }
+
+        #captureArea .result-inner {
+          background: #fff3f8 !important;
+          background-image: none !important;
+        }
+
+        #captureArea::after {
+          background: #fff7fb !important;
+          background-image: none !important;
+        }
+
+        #captureArea .feature-list li {
+          background: #fff7fb !important;
+          background-image: none !important;
+        }
+      `;
+      doc.head.appendChild(style);
     }
-
+  }).then(function(canvas) {
+    const image = canvas.toDataURL("image/png");
+    document.getElementById("savedImage").src = image;
+    document.getElementById("saveModal").classList.add("show");
+  });
+}
     function closeSaveModal() {
       document.getElementById("saveModal").classList.remove("show");
     }

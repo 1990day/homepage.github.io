@@ -119,18 +119,14 @@
       background: rgba(255,255,255,.9);
       line-height: 1;
     }
-
-    .wrap {
-      width: 100%;
-      max-width: 500px;
-      min-height: calc(100vh - 43px);
-      margin: 0 auto;
-      padding: 18px 16px 20px;
-      display: flex;
-      align-items: flex-start;
-      justify-content: center;
-    }
-
+.wrap {
+  width: 100%;
+  max-width: 500px;
+  min-height: calc(100vh - 43px);
+  margin: 0 auto;
+  padding: 18px 16px 20px;
+  display: block;
+}
     .screen {
       width: 100%;
     }
@@ -581,14 +577,13 @@
       font-weight: 900;
     }
 
-    .ad-container {
-      margin-top: 30px;
-      margin-bottom: 20px;
-      display: flex;
-      justify-content: center;
-      width: 100%;
-    }
-
+ .ad-container {
+  margin-top: 16px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
     .hidden {
       display: none;
     }
@@ -779,23 +774,25 @@
         <button class="action-btn light" type="button" onclick="shareTest()">테스트 공유하기</button>
       </div>
     </section>
+        <div class="ad-container" id="ad-container-page1">
+      <article class="coupang_ad mt-3">
+        <script src="https://ads-partners.coupang.com/g.js"></script>
+        <script>
+          new PartnersCoupang.G({
+            "id": 798186,
+            "template": "carousel",
+            "trackingCode": "AF4391881",
+            "width": "350",
+            "height": "140",
+            "tsource": ""
+          });
+        </script>
+      </article>
+    </div>
   </main>
 
-  <div class="ad-container" id="ad-container-page1">
-    <article class="coupang_ad mt-3">
-      <script src="https://ads-partners.coupang.com/g.js"></script>
-      <script>
-        new PartnersCoupang.G({
-          "id": 798186,
-          "template": "carousel",
-          "trackingCode": "AF4391881",
-          "width": "350",
-          "height": "140",
-          "tsource": ""
-        });
-      </script>
-    </article>
-  </div>
+
+
 
   <div class="save-modal" id="saveModal">
     <div class="save-box">

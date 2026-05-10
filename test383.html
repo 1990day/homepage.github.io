@@ -136,14 +136,58 @@
     }
 
     .main-visual {
+      position: relative;
       width: 100%;
       max-width: 430px;
       margin: 0 auto;
+      padding: 12px;
+      background:
+        linear-gradient(90deg, rgba(255,255,255,.75) 1px, transparent 1px),
+        linear-gradient(rgba(255,255,255,.75) 1px, transparent 1px),
+        linear-gradient(180deg, #ffb8cb 0%, #fff2f7 46%, #ffdce8 100%);
+      background-size: 18px 18px, 18px 18px, 100% 100%;
+      border: 2px solid #3a1721;
+      box-shadow:
+        7px 7px 0 #fd94a0,
+        0 16px 30px rgba(207,53,98,.18);
+    }
+
+    .main-visual::before {
+      content: "";
+      position: absolute;
+      inset: 8px;
+      border: 1.5px dashed rgba(58,23,33,.35);
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .main-visual::after {
+      content: "♥ 테스트잇 프라임 세포 성격 테스트 ♥";
+      position: absolute;
+      left: 50%;
+      top: 18px;
+      transform: translateX(-50%);
+      z-index: 3;
+      padding: 7px 13px;
+      background: #fff;
+      border: 2px solid #3a1721;
+      color: #cf3562;
+      font-size: 12px;
+      font-weight: 950;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      box-shadow: 3px 3px 0 rgba(253,148,160,.75);
+      white-space: nowrap;
     }
 
     .main-visual img {
+      position: relative;
+      z-index: 1;
       width: 100%;
       display: block;
+      background: rgba(255,255,255,.72);
+      border: 2px solid rgba(58,23,33,.86);
+      box-shadow: inset 0 0 0 5px rgba(255,216,230,.9);
     }
 
     .outside-action {
@@ -289,21 +333,21 @@
       }
     }
 
-    .heart-step {
-      position: relative;
-      z-index: 1;
-      color: #ffd1de;
-      font-size: 17px;
-      line-height: 1;
-      text-align: center;
-      transform: scale(.88);
-    }
+.heart-step {
+  position: relative;
+  z-index: 1;
+  color: rgba(236,79,123,.18);
+  font-size: 17px;
+  line-height: 1;
+  text-align: center;
+  transform: none;
+}
 
-    .heart-step.active {
-      color: var(--red);
-      transform: scale(1.15);
-      text-shadow: 0 0 8px rgba(236,79,123,.25);
-    }
+.heart-step.active {
+  color: var(--red);
+  transform: none;
+  text-shadow: 0 0 8px rgba(236,79,123,.25);
+}
 
     .question {
       min-height: 76px;
@@ -579,6 +623,23 @@
     @media (max-width: 430px) {
       .wrap {
         padding: 18px 13px 20px;
+      }
+
+      .main-visual {
+        padding: 9px;
+        box-shadow:
+          5px 5px 0 #fd94a0,
+          0 14px 24px rgba(207,53,98,.17);
+      }
+
+      .main-visual::before {
+        inset: 7px;
+      }
+
+      .main-visual::after {
+        top: 14px;
+        font-size: 11px;
+        padding: 6px 11px;
       }
 
       .qa-card {
@@ -1067,16 +1128,18 @@
     }
 
     function shareTest() {
+      const testUrl = "https://test-it.co.kr/test383";
+
       const shareData = {
         title: "테스트잇 프라임 세포 성격 테스트",
         text: "테스트잇 프라임 세포 성격 테스트",
-        url: location.href
+        url: testUrl
       };
 
       if (navigator.share) {
         navigator.share(shareData);
       } else {
-        navigator.clipboard.writeText(location.href).then(function() {
+        navigator.clipboard.writeText(testUrl).then(function() {
           alert("테스트 링크가 복사되었습니다.");
         });
       }

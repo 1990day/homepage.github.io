@@ -2,7 +2,6 @@
 <html lang="ko">
 <head>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5522499110435321" crossorigin="anonymous"></script>
-  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -50,7 +49,14 @@
       letter-spacing: -0.6px;
       text-shadow: 1px 1px 0 #fff;
       box-shadow: 0 4px 0 rgba(99, 87, 152, 0.28);
-        text-decoration: none;
+      text-decoration: none;
+    }
+
+    .logo:visited,
+    .logo:hover,
+    .logo:active {
+      text-decoration: none;
+      color: #5c528d;
     }
 
     .main-nav {
@@ -255,7 +261,6 @@
       box-shadow: 0 2px 0 rgba(91,78,145,0.32);
     }
 
-    .btn.save,
     .btn.other,
     .btn.secondary {
       background: #dad1f8;
@@ -277,7 +282,7 @@
       background: transparent;
       border: 0;
       box-shadow: none;
-      padding: 0 0 0;
+      padding: 0;
     }
 
     .result-name-wrap {
@@ -423,62 +428,6 @@
       gap: 11px;
     }
 
-    .save-modal {
-      position: fixed;
-      inset: 0;
-      z-index: 9999;
-      background: rgba(40, 34, 78, 0.58);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 18px;
-    }
-
-    .save-modal.show { display: flex; }
-
-    .save-modal-inner {
-      width: min(430px, 100%);
-      max-height: 92vh;
-      overflow: auto;
-      background: #f8f4ff;
-      border: 2px solid #635991;
-      border-radius: 22px;
-      padding: 14px;
-      text-align: center;
-      box-shadow: 0 18px 40px rgba(0,0,0,0.24);
-    }
-
-    .save-modal-title {
-      margin: 4px 0 8px;
-      font-size: 17px;
-      line-height: 1.45;
-      font-weight: 950;
-      color: #5b4c95;
-    }
-
-    .save-preview-img {
-      display: block;
-      width: 100%;
-      max-height: 68vh;
-      object-fit: contain;
-      border-radius: 16px;
-      border: 2px solid #635991;
-      background: #fff;
-    }
-
-    .save-close {
-      margin-top: 12px;
-      width: 100%;
-      border: 2px solid #635991;
-      border-radius: 999px;
-      background: #dad1f8;
-      color: #5b4c95;
-      font-size: 15px;
-      font-weight: 950;
-      padding: 12px;
-      cursor: pointer;
-    }
-
     .hidden { display: none; }
 
     .ad-container {
@@ -553,15 +502,15 @@
 </head>
 
 <body>
-<header class="page-header">
-  <a class="logo" href="https://test-it.co.kr/">테스트잇</a>
-  <nav class="main-nav">
-    <a href="https://test-it.co.kr/test.html">성격</a>
-    <a href="https://test-it.co.kr/face.html">얼굴</a>
-    <a href="https://test-it.co.kr/etc.html">그외</a>
-    <a href="https://test-it.co.kr/saju.html">사주</a>
-  </nav>
-</header>
+  <header class="page-header">
+    <a class="logo" href="https://test-it.co.kr/">테스트잇</a>
+    <nav class="main-nav">
+      <a href="https://test-it.co.kr/test.html">성격</a>
+      <a href="https://test-it.co.kr/face.html">얼굴</a>
+      <a href="https://test-it.co.kr/etc.html">그외</a>
+      <a href="https://test-it.co.kr/saju.html">사주</a>
+    </nav>
+  </header>
 
   <main class="wrap">
     <section id="startPage">
@@ -571,8 +520,8 @@
 
     <section id="testArea" class="hidden">
       <div class="phone-shell">
-        <div class="phone-screen" id="saveCapture">
-          <div class="screen-top" id="screenTop">테스트잇 사상체질 성격 테스트</div>
+        <div class="phone-screen">
+          <div class="screen-top" id="screenTop">테스트잇</div>
 
           <section id="questionPage" class="hidden">
             <div class="progress-box">
@@ -605,7 +554,7 @@
                 <div class="section-label">체질 비율</div>
                 <div class="ratio-box" id="bars"></div>
 
-                <div class="doctor-note" data-html2canvas-ignore="true">
+                <div class="doctor-note">
                   <p class="doctor-note-text">
                     이 테스트는 성격 기반의 콘텐츠입니다.<br>
                     실제 체질 판단이나 상담은 전문가의 진단이 필요합니다.
@@ -614,8 +563,7 @@
               </div>
             </div>
 
-            <div class="result-buttons" data-html2canvas-ignore="true">
-              <button class="btn save" onclick="saveResultImage()">결과 이미지 저장하기</button>
+            <div class="result-buttons">
               <button class="btn" onclick="restartTest()">다시 해보기</button>
               <button class="btn other" onclick="goOtherTest()">다른 테스트 해보기</button>
               <button class="btn secondary" onclick="shareTest()">테스트 공유하기</button>
@@ -641,14 +589,6 @@
       </article>
     </div>
   </main>
-
-  <div class="save-modal" id="saveModal">
-    <div class="save-modal-inner">
-      <p class="save-modal-title">이미지를 꾹 눌러 저장해주세요</p>
-      <img id="savePreview" class="save-preview-img" alt="결과 이미지">
-      <button class="save-close" onclick="closeSaveModal()">닫기</button>
-    </div>
-  </div>
 
   <script>
     const questions = [
@@ -989,50 +929,25 @@
       document.getElementById("startPage").classList.remove("hidden");
     }
 
-  function goOtherTest() {
-  location.href = "https://test-it.co.kr/";
-}
-
-    function saveResultImage() {
-      const target = document.getElementById("saveCapture");
-
-      html2canvas(target, {
-        scale: 3,
-        backgroundColor: null,
-        useCORS: true,
-        scrollX: 0,
-        scrollY: 0,
-        windowWidth: document.documentElement.clientWidth,
-        windowHeight: document.documentElement.clientHeight,
-        ignoreElements: function(element) {
-          return element.classList && element.classList.contains("result-buttons");
-        }
-      }).then((canvas) => {
-        const image = canvas.toDataURL("image/png");
-        document.getElementById("savePreview").src = image;
-        document.getElementById("saveModal").classList.add("show");
-      });
+    function goOtherTest() {
+      location.href = "https://test-it.co.kr/";
     }
 
-    function closeSaveModal() {
-      document.getElementById("saveModal").classList.remove("show");
+    function shareTest() {
+      const shareUrl = "https://test-it.co.kr/test384";
+      const text = "테스트잇 사상체질 성격 테스트";
+
+      if (navigator.share) {
+        navigator.share({
+          title: "테스트잇 사상체질 성격 테스트",
+          text: text,
+          url: shareUrl
+        });
+      } else {
+        navigator.clipboard.writeText(shareUrl);
+        alert("테스트 링크가 복사되었습니다.");
+      }
     }
-
-function shareTest() {
-  const shareUrl = "https://test-it.co.kr/test384";
-  const text = "테스트잇 사상체질 성격 테스트";
-
-  if (navigator.share) {
-    navigator.share({
-      title: "테스트잇 사상체질 성격 테스트",
-      text: text,
-      url: shareUrl
-    });
-  } else {
-    navigator.clipboard.writeText(shareUrl);
-    alert("테스트 링크가 복사되었습니다.");
-  }
-}
   </script>
 </body>
 </html>

@@ -1,0 +1,1457 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5522499110435321" crossorigin="anonymous"></script>
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>테스트잇 사상체질 성격 테스트</title>
+  <meta name="description" content="테스트잇 사상체질 성격 테스트" />
+  <meta name="keywords" content="테스트잇,성격테스트,사상체질성격테스트,사상체질테스트,테스트잇사상체질성격테스트,테스트잇사주,테스트잇프사상체질,테스트잇연애,연애테스트,연애mbti,연애성격테스트, 심리테스트, mbti테스트">
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="테스트잇 사상체질 성격 테스트" />
+  <meta property="og:description" content="테스트잇 사상체질 성격 테스트" />
+  <meta property="og:url" content="https://test-it.co.kr/test384" />
+  <link rel="icon" type="image/png" href="favicon.png">
+
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Pretendard", "Noto Sans KR", Arial, sans-serif;
+      background: #f7f3ef;
+      color: #252636;
+    }
+
+    .page-header {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 16px 16px 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 14px;
+      background: #fffefb;
+      border: 1px solid #eaded8;
+      box-shadow: 0 4px 0 #ead7cf;
+      font-size: 18px;
+      font-weight: 950;
+      color: #c98995;
+      letter-spacing: -0.6px;
+    }
+
+    .logo:before {
+      content: "✓";
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      margin-right: 7px;
+      background: #fff0f4;
+      border: 1px solid #ffc7d2;
+      color: #ff8fa5;
+      font-size: 14px;
+      font-weight: 950;
+    }
+
+    .main-nav {
+      display: flex;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .main-nav a {
+      color: #6d6265;
+      text-decoration: none;
+      background: #fffefb;
+      border: 1px solid #eaded8;
+      padding: 7px 9px;
+      box-shadow: 0 3px 0 #eee1dc;
+    }
+
+    .wrap {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 24px 14px 28px;
+    }
+
+    .checkup-paper {
+      position: relative;
+      background: #e7d2c8;
+      border: 1px solid #d4b9ad;
+      border-radius: 0;
+      padding: 24px;
+      box-shadow: 0 18px 36px rgba(100, 79, 72, 0.16);
+    }
+
+    .checkup-paper:before {
+      content: "";
+      position: absolute;
+      inset: 12px;
+      border: 2px dashed rgba(142, 105, 95, 0.28);
+      border-radius: 0;
+      pointer-events: none;
+    }
+
+    .tabs {
+      position: absolute;
+      right: -22px;
+      top: 72px;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .tab {
+      width: 38px;
+      height: 64px;
+      border-radius: 0 10px 10px 0;
+      border: 1px solid rgba(120, 104, 100, 0.16);
+      box-shadow: 2px 3px 8px rgba(80, 66, 66, 0.08);
+    }
+
+    .tab:nth-child(1) { background: #ffe1ec; }
+    .tab:nth-child(2) { background: #f3ddff; }
+    .tab:nth-child(3) { background: #ffe2d7; }
+    .tab:nth-child(4) { background: #fff4c9; }
+    .tab:nth-child(5) { background: #dff6e7; }
+
+    .paper-head {
+      position: relative;
+      z-index: 2;
+      background: #fffefb;
+      border: 1px solid #eaded8;
+      border-bottom: 0;
+      padding: 18px 16px 14px;
+      text-align: center;
+      border-radius: 0;
+      overflow: hidden;
+    }
+
+    .paper-head:before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(#f7edf0 1px, transparent 1px),
+        linear-gradient(90deg, #f7edf0 1px, transparent 1px);
+      background-size: 18px 18px;
+      opacity: 0.42;
+      pointer-events: none;
+    }
+
+    .checkup-paper.is-testing .paper-head,
+    .checkup-paper.is-result .paper-head {
+      display: none;
+    }
+
+    .paper-head .label {
+      display: none;
+    }
+
+    .paper-head h1 {
+      position: relative;
+      margin: 0;
+      font-size: 30px;
+      font-weight: 950;
+      letter-spacing: -1.3px;
+      color: #2d2e40;
+    }
+
+    .paper-head p {
+      display: none;
+    }
+
+    .paper-body {
+      position: relative;
+      z-index: 2;
+      padding: 16px 16px 20px;
+      background: #fffefb;
+      border-left: 1px solid #eaded8;
+      border-right: 1px solid #eaded8;
+      border-bottom: 1px solid #eaded8;
+      border-radius: 0;
+    }
+
+    .paper-body:before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(#f3edf3 1px, transparent 1px),
+        linear-gradient(90deg, #f3edf3 1px, transparent 1px);
+      background-size: 18px 18px;
+      opacity: 0.34;
+      pointer-events: none;
+      border-radius: 0;
+    }
+
+    .paper-body > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .checkup-paper.is-testing .paper-body,
+    .checkup-paper.is-result .paper-body {
+      border-top: 1px solid #eaded8;
+      border-radius: 0;
+      padding-top: 16px;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border: 1px solid #e0d8d1;
+      margin-bottom: 18px;
+      background: #fff;
+      border-radius: 0;
+      overflow: hidden;
+    }
+
+    .info-cell {
+      padding: 13px 14px;
+      border-right: 1px solid #e0d8d1;
+      border-bottom: 1px solid #e0d8d1;
+      font-size: 14px;
+      font-weight: 850;
+      color: #5a4c50;
+      background: #fff;
+    }
+
+    .info-cell:nth-child(2n) { border-right: 0; }
+    .info-cell:nth-child(1) { background: #fff3f5; }
+    .info-cell:nth-child(2) { background: #f4f0ff; }
+    .info-cell:nth-child(3) { background: #eef8f4; border-bottom: 0; }
+    .info-cell:nth-child(4) { background: #fff8dd; border-bottom: 0; }
+
+    .info-cell span {
+      color: #c98995;
+      font-weight: 950;
+      margin-right: 8px;
+    }
+
+    .start-box {
+      border: 1px solid #e0d8d1;
+      border-radius: 0;
+      padding: 28px 16px;
+      background: rgba(255, 250, 242, 0.95);
+      text-align: center;
+      box-shadow: 0 8px 16px rgba(124, 98, 91, 0.08);
+    }
+
+    .start-icon {
+      width: 82px;
+      height: 82px;
+      margin: 0 auto 16px;
+      border-radius: 0;
+      background: #f4f0ff;
+      border: 2px solid #c8b9e8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 42px;
+      font-weight: 950;
+      color: #8c78bd;
+    }
+
+    .desc {
+      font-size: 15px;
+      line-height: 1.7;
+      text-align: center;
+      font-weight: 800;
+      color: #6c5d61;
+      margin: 0 auto 20px;
+      max-width: 480px;
+    }
+
+    .progress-box {
+      margin-bottom: 18px;
+      border: 1px solid #e0d8d1;
+      border-radius: 0;
+      padding: 14px;
+      background: rgba(255, 250, 242, 0.95);
+    }
+
+    .progress-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      font-size: 14px;
+      font-weight: 950;
+      color: #c98995;
+    }
+
+    .progress-line {
+      height: 13px;
+      background: #f2ece6;
+      border-radius: 999px;
+      overflow: hidden;
+      border: 1px solid #ded2ca;
+    }
+
+    .progress-fill {
+      width: 0%;
+      height: 100%;
+      background: #c98995;
+      border-radius: 999px;
+      transition: width 0.25s ease;
+    }
+
+    .question-card {
+      border: 1px solid #e0d8d1;
+      border-radius: 0;
+      padding: 22px 16px 18px;
+      background: rgba(255,255,255,0.96);
+      box-shadow: 0 8px 16px rgba(124, 98, 91, 0.08);
+    }
+
+    .q-title {
+      font-size: 23px;
+      line-height: 1.45;
+      font-weight: 950;
+      text-align: center;
+      margin: 6px 0 22px;
+      color: #2d2e40;
+      letter-spacing: -0.6px;
+    }
+
+    .option {
+      width: 100%;
+      text-align: left;
+      background: #fff;
+      border: 1px solid #e0d8d1;
+      border-radius: 0;
+      padding: 14px;
+      margin: 10px 0;
+      font-size: 15px;
+      font-weight: 850;
+      line-height: 1.45;
+      color: #4b3f42;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 4px 0 #ece4de;
+    }
+
+    .option:hover {
+      background: #fff3f5;
+      border-color: #d9a1ac;
+      transform: translateY(-1px);
+    }
+
+    .option-num {
+      width: 32px;
+      height: 32px;
+      border-radius: 0;
+      background: #c98995;
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 950;
+      flex: 0 0 32px;
+      font-size: 14px;
+    }
+
+    .btn {
+      width: 100%;
+      max-width: 620px;
+      display: block;
+      margin: 0 auto;
+      border-radius: 0;
+      background: #fff8dd;
+      color: #876124;
+      border: 1px solid #e8c46a;
+      font-size: 18px;
+      font-weight: 950;
+      padding: 16px 14px;
+      cursor: pointer;
+      box-shadow: 0 4px 0 #e8d59d;
+    }
+
+    .btn:active {
+      transform: translateY(3px);
+      box-shadow: 0 2px 0 #e8d59d;
+    }
+
+    .btn.save {
+      background: #fff0f4;
+      border-color: #ffb9c8;
+      color: #e96f8a;
+      box-shadow: 0 4px 0 #ffd0da;
+    }
+
+    .btn.other {
+      background: #f3edff;
+      border-color: #cebdf2;
+      color: #7d5bc3;
+      box-shadow: 0 4px 0 #ddd1f6;
+    }
+
+    .btn.secondary {
+      background: #e9f8f3;
+      border-color: #9dd5c7;
+      color: #237267;
+      box-shadow: 0 4px 0 #b9ddd5;
+    }
+
+    .result-capture {
+      max-width: 620px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.9);
+      border: 1px solid #f6cbd3;
+      box-shadow: 0 8px 18px rgba(108, 86, 80, 0.08);
+      overflow: hidden;
+    }
+
+    .result-title-box {
+      position: relative;
+      padding: 16px 14px 10px;
+      text-align: center;
+      background: rgba(255,255,255,0.88);
+      border-bottom: 1px solid #f6d7dd;
+      overflow: hidden;
+    }
+
+    .result-title-box:before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(#f6e8ec 1px, transparent 1px),
+        linear-gradient(90deg, #f6e8ec 1px, transparent 1px);
+      background-size: 18px 18px;
+      opacity: 0.45;
+      pointer-events: none;
+    }
+
+    .result-main-title {
+      position: relative;
+      display: flex;
+      width: 100%;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      margin: 0;
+      padding: 9px 12px;
+      background: #fffefb;
+      border: 1px solid #eaded8;
+      box-shadow: 0 3px 0 #f0ddd7;
+      color: #2d2e40;
+      font-size: 19px;
+      line-height: 1.15;
+      font-weight: 950;
+      letter-spacing: -0.9px;
+    }
+    
+    .result-main-title:before {
+      content: "✓";
+      color: #ff8fa5;
+      background: #fff0f4;
+      border: 1px solid #ffc7d2;
+      width: 22px;
+      height: 22px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      flex: 0 0 22px;
+    }
+
+    .result-main-title:after {
+      content: "✦";
+      color: #8fd9d0;
+      font-size: 16px;
+      line-height: 1;
+    }
+
+    .result-document {
+      position: relative;
+      background: rgba(255,255,255,0.9);
+      border-radius: 0;
+      padding: 14px 22px 24px;
+      text-align: center;
+      max-width: 620px;
+      margin: 0 auto;
+      overflow: hidden;
+      box-shadow: none;
+    }
+
+    .result-document:before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(#f6e8ec 1px, transparent 1px),
+        linear-gradient(90deg, #f6e8ec 1px, transparent 1px);
+      background-size: 18px 18px;
+      opacity: 0.45;
+      pointer-events: none;
+    }
+
+    .result-document:after {
+      display: none;
+    }
+
+    .result-document > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .result-table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+
+    .result-table tr { display: block; }
+
+    .result-table th,
+    .result-table td {
+      display: block;
+      width: 100%;
+      border: 0;
+      padding: 0;
+      word-break: keep-all;
+      background: transparent;
+    }
+
+    .result-table tr:first-child th {
+      display: none;
+    }
+
+    .result-table tr:nth-child(2) th {
+      margin: 22px auto 10px;
+      font-size: 19px;
+      line-height: 1;
+      color: #4f9c91;
+      background: #e4f6f1;
+      border: 1px solid #a9dcd1;
+      border-radius: 999px;
+      padding: 10px 40px;
+      display: inline-block;
+      font-weight: 950;
+    }
+
+    .result-table tr:nth-child(3) th {
+      margin: 22px auto 12px;
+      font-size: 19px;
+      line-height: 1;
+      color: #8a72d0;
+      background: #f2ecff;
+      border: 1px solid #d3c5f5;
+      border-radius: 999px;
+      padding: 10px 40px;
+      display: inline-block;
+      font-weight: 950;
+    }
+
+    .result-name-wrap {
+      position: relative;
+      display: inline-block;
+      margin: 10px auto 0;
+      padding: 12px 32px 14px;
+    }
+
+    .result-name-wrap:before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 145px;
+      height: 75px;
+      border: solid #ff3b3b;
+      border-width: 3px 5px 2px 4px;
+      border-radius: 80% 90% 85% 75% / 85% 75% 90% 80%;
+      transform: translate(-50%, -50%) rotate(-4deg);
+      pointer-events: none;
+      opacity: 0.85;
+    }
+
+    .result-name {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      color: #8f78d9;
+      font-size: 43px;
+      line-height: 1;
+      font-weight: 950;
+      letter-spacing: -1.6px;
+      text-align: center;
+      text-shadow: 0 2px 0 #ded4ff;
+    }
+
+    .result-one {
+      display: block;
+      margin: 8px auto 0;
+      color: #2d2e40;
+      font-size: 16px;
+      line-height: 1.35;
+      font-weight: 950;
+      background: transparent;
+      border: 0;
+      border-radius: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    .check-list {
+      display: block;
+      border: 1px solid #f5d1d6;
+      background: rgba(255,255,255,0.78);
+      border-radius: 0;
+      padding: 22px 30px;
+      text-align: left;
+    }
+
+    .check-item {
+      position: relative;
+      padding: 10px 8px 10px 38px;
+      font-size: 18px;
+      line-height: 1.25;
+      font-weight: 850;
+      color: #252636;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      border-bottom: 1px dashed #eaded8;
+    }
+
+    .check-item:last-child { border-bottom: 0; }
+
+    .check-item:before {
+      content: "✓";
+      position: absolute;
+      left: 6px;
+      top: 9px;
+      font-size: 22px;
+      font-weight: 950;
+    }
+
+    .check-item:nth-child(5n+1):before { color: #ffb3c6; }
+    .check-item:nth-child(5n+2):before { color: #a9def9; }
+    .check-item:nth-child(5n+3):before { color: #e4c1f9; }
+    .check-item:nth-child(5n+4):before { color: #a8e6cf; }
+    .check-item:nth-child(5n):before { color: #fce38a; }
+
+    .ratio-box {
+      border: 1px solid #d8c9f1;
+      background: rgba(250,247,255,0.82);
+      border-radius: 0;
+      padding: 20px;
+    }
+
+    .bar-row {
+      margin: 8px 0;
+      background: #fff;
+      border: 1px solid #eadfd9;
+      border-radius: 0;
+      padding: 9px 12px;
+    }
+
+    .bar-info {
+      display: grid;
+      grid-template-columns: 84px 1fr 46px;
+      align-items: center;
+      gap: 12px;
+      font-size: 16px;
+      font-weight: 950;
+      color: #252636;
+    }
+
+    .bar-info span:first-child { text-align: left; }
+    .bar-info span:last-child { text-align: right; }
+
+    .bar-bg {
+      height: 14px;
+      background: #f4eeeb;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      width: 0%;
+      border-radius: 999px;
+      transition: width 0.7s ease;
+    }
+
+    .doctor-note {
+      background: #eaf8ff;
+      border: 1px solid #bee4f6;
+      border-radius: 0;
+      padding: 16px 18px;
+      margin-top: 22px;
+    }
+
+    .doctor-note-text {
+      margin: 0;
+      color: #3b5b6e;
+      font-size: 15px;
+      line-height: 1.6;
+      font-weight: 850;
+      text-align: center;
+    }
+
+    .result-buttons {
+      max-width: 620px;
+      margin: 18px auto 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .save-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(37, 38, 54, 0.56);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+    }
+
+    .save-modal.show {
+      display: flex;
+    }
+
+    .save-modal-inner {
+      width: min(430px, 100%);
+      max-height: 92vh;
+      overflow: auto;
+      background: #fffefb;
+      border-radius: 0;
+      padding: 14px;
+      text-align: center;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.24);
+    }
+
+    .save-modal-title {
+      margin: 4px 0 8px;
+      font-size: 17px;
+      line-height: 1.45;
+      font-weight: 950;
+      color: #2d2e40;
+    }
+
+    .save-modal-desc {
+      margin: 0 0 12px;
+      font-size: 13px;
+      line-height: 1.5;
+      font-weight: 850;
+      color: #7b6c70;
+    }
+
+    .save-preview-img {
+      display: block;
+      width: 100%;
+      max-height: 68vh;
+      object-fit: contain;
+      border-radius: 0;
+      border: 1px solid #eaded8;
+      background: #fff;
+    }
+
+    .save-close {
+      margin-top: 12px;
+      width: 100%;
+      border: 0;
+      border-radius: 0;
+      background: #2d2e40;
+      color: #fff;
+      font-size: 15px;
+      font-weight: 950;
+      padding: 12px;
+      cursor: pointer;
+    }
+
+    .hidden { display: none; }
+
+    .ad-container {
+      text-align: center;
+      padding: 16px 0;
+    }
+
+    @media (max-width: 760px) {
+      .page-header {
+        padding: 12px 12px 6px;
+      }
+
+      .logo {
+        font-size: 16px;
+        padding: 7px 10px;
+      }
+
+      .logo:before {
+        width: 19px;
+        height: 19px;
+        font-size: 12px;
+        margin-right: 5px;
+      }
+
+      .main-nav {
+        gap: 5px;
+        font-size: 12px;
+      }
+
+      .main-nav a {
+        padding: 6px 7px;
+      }
+
+      .wrap { padding: 22px 14px 22px 8px; }
+
+      .checkup-paper {
+        border-radius: 0;
+        padding: 14px 8px 14px;
+      }
+
+      .checkup-paper:before {
+        inset: 8px;
+        border-radius: 0;
+      }
+
+      .tabs {
+        right: -10px;
+        top: 44px;
+      }
+
+      .tab {
+        width: 22px;
+        height: 52px;
+        border-radius: 0 8px 8px 0;
+      }
+
+      .paper-head {
+        padding: 14px 10px 11px;
+      }
+
+      .paper-head h1 { font-size: 24px; }
+
+      .paper-body {
+        padding: 12px 12px 16px;
+      }
+
+      .info-grid { grid-template-columns: 1fr; }
+      .info-cell { border-right: 0; }
+      .info-cell:nth-child(3) { border-bottom: 1px solid #e0d8d1; }
+
+      .q-title { font-size: 21px; }
+
+      .option {
+        font-size: 14px;
+        padding: 12px;
+      }
+
+      .result-title-box {
+        padding: 13px 8px 8px;
+      }
+
+      .result-main-title {
+        font-size: 15px;
+        padding: 8px 8px;
+        gap: 5px;
+        letter-spacing: -0.8px;
+      }
+
+      .result-main-title:before {
+        width: 18px;
+        height: 18px;
+        flex-basis: 18px;
+        font-size: 12px;
+      }
+
+      .result-main-title:after {
+        font-size: 13px;
+      }
+
+      .result-document {
+        padding: 12px 10px 17px;
+        max-width: 100%;
+      }
+
+      .result-name-wrap {
+        margin-top: 6px;
+        padding: 10px 24px 12px;
+      }
+
+      .result-name-wrap:before {
+        width: 115px;
+        height: 60px;
+        border-width: 2px 4px 2px 3px;
+      }
+
+      .result-name {
+        font-size: 34px;
+      }
+
+      .result-one {
+        font-size: 13px;
+        padding: 0;
+        margin-top: 7px;
+      }
+
+      .result-table tr:nth-child(2) th,
+      .result-table tr:nth-child(3) th {
+        font-size: 16px;
+        padding: 9px 32px;
+      }
+
+      .check-list { padding: 14px 12px; }
+
+      .check-item {
+        font-size: 13.2px;
+        letter-spacing: -0.35px;
+        padding: 9px 6px 9px 27px;
+      }
+
+      .check-item:before {
+        font-size: 19px;
+        top: 8px;
+      }
+
+      .ratio-box { padding: 13px; }
+
+      .bar-info {
+        grid-template-columns: 55px 1fr 34px;
+        gap: 7px;
+        font-size: 12px;
+      }
+
+      .bar-bg { height: 12px; }
+
+      .doctor-note {
+        padding: 12px 14px;
+        margin-top: 18px;
+      }
+
+      .doctor-note-text { font-size: 11.5px; }
+
+      .result-buttons {
+        margin-top: 16px;
+        gap: 10px;
+      }
+
+      .btn {
+        padding: 14px 10px;
+        font-size: 15px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="page-header">
+    <div class="logo">테스트잇</div>
+    <nav class="main-nav">
+      <a href="#">성격</a>
+      <a href="#">얼굴</a>
+      <a href="#">그외</a>
+      <a href="#">사주</a>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <section id="startPage">
+      <img src="img_main384.png" alt="사상체질 성격 테스트 메인" style="width: 100%; display: block; margin: 0 auto 20px;">
+      <button class="btn" onclick="startTest()">테스트 시작하기</button>
+    </section>
+
+    <section class="checkup-paper hidden" id="checkupPaper">
+      <div class="tabs">
+        <div class="tab"></div>
+        <div class="tab"></div>
+        <div class="tab"></div>
+        <div class="tab"></div>
+        <div class="tab"></div>
+      </div>
+
+      <div class="paper-body">
+        <section id="questionPage" class="hidden">
+          <div class="progress-box">
+            <div class="progress-top">
+              <span id="stepText">Q1 / 12</span>
+              <span id="percentText">0%</span>
+            </div>
+            <div class="progress-line">
+              <div class="progress-fill" id="progressFill"></div>
+            </div>
+          </div>
+
+          <div class="question-card">
+            <h2 class="q-title" id="questionTitle"></h2>
+            <div id="optionBox"></div>
+          </div>
+        </section>
+
+        <section id="resultPage" class="hidden">
+          <div class="result-capture" id="resultCapture">
+            <div class="result-title-box">
+              <h2 class="result-main-title">테스트잇 사상체질 성격 테스트</h2>
+            </div>
+
+            <div class="result-document">
+              <table class="result-table">
+                <tr>
+                  <th>검진 결과</th>
+                  <td>
+                    <div class="result-name-wrap">
+                      <h3 class="result-name" id="resultName"></h3>
+                    </div>
+                    <p class="result-one" id="resultOne"></p>
+                  </td>
+                </tr>
+                <tr>
+                  <th>성격 특징</th>
+                  <td>
+                    <div class="check-list" id="featureList"></div>
+                  </td>
+                </tr>
+                <tr>
+                  <th>체질 비율</th>
+                  <td>
+                    <div class="ratio-box" id="bars"></div>
+                  </td>
+                </tr>
+              </table>
+
+              <div class="doctor-note" data-html2canvas-ignore>
+                <p class="doctor-note-text">
+                  이 테스트는 성격 기반의 콘텐츠입니다.<br>실제 체질 판단이나 상담은 전문가의 진단이 필요합니다.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="result-buttons">
+            <button class="btn save" onclick="saveResultImage()">결과 이미지 저장하기</button>
+            <button class="btn" onclick="restartTest()">다시 해보기</button>
+            <button class="btn other" onclick="goOtherTest()">다른 테스트 해보기</button>
+            <button class="btn secondary" onclick="shareTest()">테스트 공유하기</button>
+          </div>
+        </section>
+      </div>
+    </section>
+    
+    <div class="ad-container" id="ad-container-page1">
+      <article class="coupang_ad mt-3">
+        <script src="https://ads-partners.coupang.com/g.js"></script>
+        <script>
+          new PartnersCoupang.G({
+            "id": 798186,
+            "template": "carousel",
+            "trackingCode": "AF4391881",
+            "width": "350",
+            "height": "140",
+            "tsource": ""
+          });
+        </script>
+      </article>
+    </div>
+  </main>
+
+  <div class="save-modal" id="saveModal">
+    <div class="save-modal-inner">
+      <p class="save-modal-title">이미지를 꾹 눌러 저장해주세요</p>
+      <p class="save-modal-desc">작은 화면에서도 보이도록 축소해서 표시됩니다.</p>
+      <img id="savePreview" class="save-preview-img" alt="결과 이미지">
+      <button class="save-close" onclick="closeSaveModal()">닫기</button>
+    </div>
+  </div>
+
+  <script>
+    const questions = [
+      {
+        q: "새로운 일을 시작할 때 나는?",
+        a: [
+          { text: "일단 크게 방향을 잡고 밀어붙인다", score: { taeyang: 3, soyang: 1 } },
+          { text: "가능한지 현실적으로 따져보고 천천히 시작한다", score: { taeeum: 3, soeum: 1 } },
+          { text: "재미있어 보이면 빠르게 해본다", score: { soyang: 3, taeyang: 1 } },
+          { text: "실수하지 않게 준비를 충분히 한다", score: { soeum: 3, taeeum: 1 } }
+        ]
+      },
+      {
+        q: "친구들이 나를 설명한다면 가장 가까운 말은?",
+        a: [
+          { text: "자존감 있고 자기 주장이 뚜렷함", score: { taeyang: 3 } },
+          { text: "든든하고 오래 볼수록 편함", score: { taeeum: 3 } },
+          { text: "밝고 반응이 빠르고 분위기를 잘 띄움", score: { soyang: 3 } },
+          { text: "섬세하고 조심스럽고 생각이 많음", score: { soeum: 3 } }
+        ]
+      },
+      {
+        q: "화가 날 때 나는?",
+        a: [
+          { text: "참기보다 바로 표현해야 풀린다", score: { taeyang: 2, soyang: 2 } },
+          { text: "티는 안 내도 속으로 오래 남는다", score: { soeum: 3, taeeum: 1 } },
+          { text: "웬만하면 참고 넘기지만 선 넘으면 크게 터진다", score: { taeeum: 3 } },
+          { text: "순간적으로 확 올라왔다가 금방 식는다", score: { soyang: 3 } }
+        ]
+      },
+      {
+        q: "계획이 갑자기 바뀌면?",
+        a: [
+          { text: "내 판단이 맞으면 바뀌어도 밀고 간다", score: { taeyang: 3 } },
+          { text: "크게 문제 없으면 상황에 맞춘다", score: { taeeum: 3 } },
+          { text: "오히려 새로워서 괜찮을 때도 많다", score: { soyang: 3 } },
+          { text: "머릿속이 복잡해져서 다시 정리해야 한다", score: { soeum: 3 } }
+        ]
+      },
+      {
+        q: "사람들과 있을 때 나는?",
+        a: [
+          { text: "내 생각을 분명하게 말하는 편이다", score: { taeyang: 3 } },
+          { text: "크게 나서지 않아도 중심을 잡는 편이다", score: { taeeum: 3 } },
+          { text: "대화 흐름을 빠르게 타고 반응을 잘한다", score: { soyang: 3 } },
+          { text: "상대 기분과 분위기를 세심하게 살핀다", score: { soeum: 3 } }
+        ]
+      },
+      {
+        q: "내가 가장 싫어하는 상황은?",
+        a: [
+          { text: "내가 틀렸다는 식으로 억누르는 상황", score: { taeyang: 3 } },
+          { text: "안정적으로 가던 일이 갑자기 흔들리는 상황", score: { taeeum: 3 } },
+          { text: "답답하게 기다리기만 해야 하는 상황", score: { soyang: 3 } },
+          { text: "준비 안 된 상태로 앞에 나서야 하는 상황", score: { soeum: 3 } }
+        ]
+      },
+      {
+        q: "돈이나 일에 대한 내 태도는?",
+        a: [
+          { text: "크게 될 수 있다면 과감한 선택도 가능하다", score: { taeyang: 3 } },
+          { text: "꾸준히 모으고 안정적으로 키우는 게 좋다", score: { taeeum: 3 } },
+          { text: "쓸 땐 쓰고 벌 땐 빠르게 벌고 싶다", score: { soyang: 3 } },
+          { text: "위험한 선택은 피하고 꼼꼼히 따져본다", score: { soeum: 3 } }
+        ]
+      },
+      {
+        q: "내가 컨디션이 안 좋을 때 보이는 모습은?",
+        a: [
+          { text: "예민해지고 말이 직선적으로 나간다", score: { taeyang: 2, soyang: 1 } },
+          { text: "몸이 무겁고 움직이기 싫어진다", score: { taeeum: 3 } },
+          { text: "가만히 있으면 더 답답해서 뭔가 해야 한다", score: { soyang: 3 } },
+          { text: "걱정이 많아지고 혼자 쉬고 싶어진다", score: { soeum: 3 } }
+        ]
+      },
+      {
+        q: "칭찬을 들었을 때 나는?",
+        a: [
+          { text: "인정받은 느낌이라 더 잘하고 싶어진다", score: { taeyang: 3 } },
+          { text: "겉으론 덤덤해도 속으로 오래 기분 좋다", score: { taeeum: 3 } },
+          { text: "바로 에너지 올라가고 표정에 티가 난다", score: { soyang: 3 } },
+          { text: "좋지만 괜히 민망해서 조용히 넘긴다", score: { soeum: 3 } }
+        ]
+      },
+      {
+        q: "연애나 인간관계에서 나는?",
+        a: [
+          { text: "존중받지 못하면 마음이 빠르게 식는다", score: { taeyang: 3 } },
+          { text: "오래 쌓인 신뢰와 편안함을 중요하게 본다", score: { taeeum: 3 } },
+          { text: "표현과 반응이 있어야 관계가 살아난다", score: { soyang: 3 } },
+          { text: "작은 말투와 배려에 마음이 크게 움직인다", score: { soeum: 3 } }
+        ]
+      },
+      {
+        q: "문제가 생겼을 때 가장 먼저 하는 생각은?",
+        a: [
+          { text: "누가 주도해서 빨리 결론 내야 한다", score: { taeyang: 3 } },
+          { text: "일단 크게 흔들리지 말고 버텨야 한다", score: { taeeum: 3 } },
+          { text: "지금 바로 움직이면 해결될 것 같다", score: { soyang: 3 } },
+          { text: "원인부터 차근차근 확인해야 안심된다", score: { soeum: 3 } }
+        ]
+      },
+      {
+        q: "내 삶에서 가장 중요한 감각은?",
+        a: [
+          { text: "내 뜻대로 살아간다는 확신", score: { taeyang: 3 } },
+          { text: "흔들리지 않는 안정감과 지속성", score: { taeeum: 3 } },
+          { text: "활기, 재미, 빠른 변화와 생동감", score: { soyang: 3 } },
+          { text: "안전함, 섬세함, 마음의 평온함", score: { soeum: 3 } }
+        ]
+      }
+    ];
+
+    const tieBreakTexts = {
+      taeyang: "내 기준대로 확실하게 밀고 가는 쪽",
+      taeeum: "천천히 가도 안정적으로 오래 버티는 쪽",
+      soyang: "빠르게 반응하고 일단 움직이는 쪽",
+      soeum: "신중하게 살피고 안전하게 정리하는 쪽"
+    };
+
+    const resultColors = {
+      taeyang: "#ff8fa5",
+      taeeum: "#ffd36b",
+      soyang: "#8fd9d0",
+      soeum: "#9fcff0"
+    };
+
+    const results = {
+      taeyang: {
+        name: "태양인",
+        one: "주도권과 기준이 강한 추진형 체질",
+        features: [
+          "자기 기준이 뚜렷하고 쉽게 흔들리지 않음",
+          "답답한 상황보다 빠른 결정을 선호함",
+          "큰 방향을 먼저 보고 과감하게 움직임",
+          "자존심과 독립심이 강하게 드러나는 편",
+          "남에게 끌려가기보다 직접 이끌고 싶어함",
+          "불합리한 분위기를 오래 참기 어려움",
+          "목표가 생기면 에너지를 크게 몰아씀",
+          "말이 직선적이라 강하게 보일 때가 있음",
+          "인정받을수록 더 크게 성장하는 타입",
+          "막히는 흐름보다 시원한 전개를 좋아함"
+        ]
+      },
+      taeeum: {
+        name: "태음인",
+        one: "묵직하고 오래 버티는 안정형 체질",
+        features: [
+          "쉽게 흔들리지 않고 중심을 오래 지킴",
+          "빠른 변화보다 안정적인 흐름을 선호함",
+          "한번 마음먹은 일은 꾸준히 이어가는 편",
+          "신뢰가 쌓인 관계를 가장 편하게 느낌",
+          "겉으로는 덤덤해도 속은 깊고 오래 감",
+          "현실적인 판단과 생활 감각이 좋은 편",
+          "무리한 모험보다 안전한 선택을 좋아함",
+          "익숙한 환경에서 실력이 더 잘 드러남",
+          "참는 힘이 크지만 쌓이면 크게 터질 수 있음",
+          "느리더라도 단단하게 결과를 만드는 타입"
+        ]
+      },
+      soyang: {
+        name: "소양인",
+        one: "빠르게 반응하고 움직이는 활력형 체질",
+        features: [
+          "반응 속도가 빠르고 분위기를 잘 읽음",
+          "새로운 자극과 재미에 에너지가 올라감",
+          "가만히 기다리는 상황을 답답하게 느낌",
+          "생각보다 행동이 먼저 나오는 경우가 많음",
+          "표현이 빠르고 감정이 얼굴에 잘 드러남",
+          "사람들과 어울릴 때 활력이 더 살아남",
+          "재미있어 보이면 일단 해보고 판단함",
+          "기분 전환이 빠르고 회복력도 좋은 편",
+          "답답한 절차보다 빠른 해결을 선호함",
+          "순간 집중력과 추진력이 강하게 올라옴"
+        ]
+      },
+      soeum: {
+        name: "소음인",
+        one: "섬세하게 살피고 정리하는 신중형 체질",
+        features: [
+          "작은 변화도 예민하게 알아차리는 편",
+          "준비가 되어야 마음이 편하게 움직임",
+          "사람의 말투와 분위기에 영향을 잘 받음",
+          "혼자 정리하고 회복하는 시간이 꼭 필요함",
+          "실수를 줄이기 위해 차근차근 확인함",
+          "낯선 상황에서는 조심스럽게 적응하는 편",
+          "겉으로 크게 티내지 않아도 생각이 많음",
+          "안정감 있는 관계와 환경을 중요하게 봄",
+          "무리한 선택보다 안전한 방향을 선호함",
+          "섬세한 배려와 꼼꼼함이 강점으로 드러남"
+        ]
+      }
+    };
+
+    let current = 0;
+    let scores = {
+      taeyang: 0,
+      taeeum: 0,
+      soyang: 0,
+      soeum: 0
+    };
+
+    function startTest() {
+      current = 0;
+      scores = {
+        taeyang: 0,
+        taeeum: 0,
+        soyang: 0,
+        soeum: 0
+      };
+
+      document.getElementById("checkupPaper").classList.remove("hidden");
+      document.getElementById("checkupPaper").classList.add("is-testing");
+      document.getElementById("checkupPaper").classList.remove("is-result");
+      document.getElementById("startPage").classList.add("hidden");
+      document.getElementById("resultPage").classList.add("hidden");
+      document.getElementById("questionPage").classList.remove("hidden");
+      renderQuestion();
+    }
+
+    function renderQuestion() {
+      const item = questions[current];
+      const progress = Math.round((current / questions.length) * 100);
+
+      document.getElementById("stepText").innerText = "Q" + (current + 1) + " / " + questions.length;
+      document.getElementById("percentText").innerText = progress + "%";
+      document.getElementById("progressFill").style.width = progress + "%";
+      document.getElementById("questionTitle").innerText = item.q;
+
+      const optionBox = document.getElementById("optionBox");
+      optionBox.innerHTML = "";
+
+      item.a.forEach((option, index) => {
+        const button = document.createElement("button");
+        button.className = "option";
+        button.innerHTML = `<span>${option.text}</span>`;
+        button.onclick = () => selectAnswer(option.score);
+        optionBox.appendChild(button);
+      });
+    }
+
+    function selectAnswer(score) {
+      Object.keys(score).forEach((key) => {
+        scores[key] += score[key];
+      });
+
+      current++;
+
+      if (current >= questions.length) {
+        checkTieBeforeResult();
+      } else {
+        renderQuestion();
+      }
+    }
+
+    function checkTieBeforeResult() {
+      const maxScore = Math.max(...Object.values(scores));
+      const topKeys = Object.keys(scores).filter((key) => scores[key] === maxScore);
+
+      if (topKeys.length >= 2) {
+        renderTieQuestion(topKeys);
+      } else {
+        showResult();
+      }
+    }
+
+  function renderTieQuestion(topKeys) {
+      document.getElementById("stepText").innerText = "FINAL";
+      document.getElementById("percentText").innerText = "100%";
+      document.getElementById("progressFill").style.width = "100%";
+      document.getElementById("questionTitle").innerText = "마지막으로 하나만 더 고른다면?";
+
+      const optionBox = document.getElementById("optionBox");
+      optionBox.innerHTML = "";
+
+      topKeys.forEach((key, index) => {
+        const button = document.createElement("button");
+        button.className = "option";
+        button.innerHTML = `<span>${tieBreakTexts[key]}</span>`;
+        button.onclick = () => {
+          scores[key] += 2;
+          showResult();
+        };
+        optionBox.appendChild(button);
+      });
+    }
+
+    function showResult() {
+      const total = Object.values(scores).reduce((sum, value) => sum + value, 0);
+      const sorted = Object.keys(scores).sort((a, b) => scores[b] - scores[a]);
+      const topKey = sorted[0];
+      const topResult = results[topKey];
+
+      document.getElementById("checkupPaper").classList.remove("is-testing");
+      document.getElementById("checkupPaper").classList.add("is-result");
+      document.getElementById("questionPage").classList.add("hidden");
+      document.getElementById("resultPage").classList.remove("hidden");
+
+      document.getElementById("resultName").innerText = topResult.name;
+      document.getElementById("resultOne").innerText = topResult.one;
+
+      const featureList = document.getElementById("featureList");
+      featureList.innerHTML = "";
+
+      topResult.features.forEach((feature) => {
+        const item = document.createElement("div");
+        item.className = "check-item";
+        item.innerText = feature;
+        featureList.appendChild(item);
+      });
+
+      const bars = document.getElementById("bars");
+      bars.innerHTML = "";
+
+      sorted.forEach((key) => {
+        const percent = total === 0 ? 0 : Math.round((scores[key] / total) * 100);
+
+        const row = document.createElement("div");
+        row.className = "bar-row";
+
+        row.innerHTML = `
+          <div class="bar-info">
+            <span>${results[key].name}</span>
+            <div class="bar-bg">
+              <div class="bar-fill" style="width: ${percent}%; background: ${resultColors[key]};"></div>
+            </div>
+            <span>${percent}%</span>
+          </div>
+        `;
+
+        bars.appendChild(row);
+      });
+    }
+
+    function restartTest() {
+      document.getElementById("checkupPaper").classList.add("hidden");
+      document.getElementById("checkupPaper").classList.remove("is-testing");
+      document.getElementById("checkupPaper").classList.remove("is-result");
+      document.getElementById("resultPage").classList.add("hidden");
+      document.getElementById("questionPage").classList.add("hidden");
+      document.getElementById("startPage").classList.remove("hidden");
+    }
+
+    function goOtherTest() {
+      location.href = "/";
+    }
+
+    function saveResultImage() {
+      const target = document.getElementById("resultCapture");
+
+      html2canvas(target, {
+        scale: 2,
+        backgroundColor: "#fffefb",
+        useCORS: true
+      }).then((canvas) => {
+        const image = canvas.toDataURL("image/png");
+        document.getElementById("savePreview").src = image;
+        document.getElementById("saveModal").classList.add("show");
+      });
+    }
+
+    function closeSaveModal() {
+      document.getElementById("saveModal").classList.remove("show");
+    }
+
+    function shareTest() {
+      const text = "테스트잇 사상체질 성격 테스트";
+
+      if (navigator.share) {
+        navigator.share({
+          title: "테스트잇 사상체질 성격 테스트",
+          text: text,
+          url: location.href
+        });
+      } else {
+        navigator.clipboard.writeText(location.href);
+        alert("테스트 링크가 복사되었습니다.");
+      }
+    }
+  </script>
+</body>
+</html>

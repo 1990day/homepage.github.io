@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>사상체질 테스트</title>
+  
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
+  <style>
+    @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Pretendard", "Noto Sans KR", Arial, sans-serif;
+      background: #f5ece9; 
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding: 10px 30px 30px 10px;
+    }
+
+    .page-header {
+      width: 100%;
+      max-width: 860px;
+      padding: 10px 10px 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 5px;
+    }
+
+    .logo {
+      font-size: 21px;
+      font-weight: 950;
+      color: #c98995;
+      letter-spacing: -0.4px;
+    }
+
+    .main-nav {
+      display: flex;
+      gap: 12px;
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .main-nav a {
+      color: #6d6265;
+      text-decoration: none;
+    }
+
+    .diary-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 460px;
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 10px 10px 30px rgba(163, 140, 133, 0.2), inset -5px 0 15px rgba(0,0,0,0.02);
+      border: 1px solid #eae0dc;
+      padding: 20px 16px 20px 16px; /* 전체 패딩 축소 */
+      z-index: 1;
+    }
+
+    /* 우측 책갈피 (5개) */
+    .tabs-right {
+      position: absolute;
+      right: -18px;
+      top: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      z-index: 0;
+    }
+    .tab {
+      width: 18px;
+      height: 38px;
+      border-radius: 0 8px 8px 0;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+      cursor: default;
+    }
+    .tab-pink { background: #fbe6eb; }
+    .tab-yellow { background: #fdf2cd; }
+    .tab-mint { background: #e3f5ec; }
+    .tab-blue { background: #e5f1fb; }
+    .tab-purple { background: #eee7fa; }
+
+    /* 상단 미니 탭 */
+    .tabs-top {
+      position: absolute;
+      top: -15px;
+      right: 30px;
+      display: flex;
+      gap: 5px;
+    }
+    .tab-top {
+      padding: 3px 10px;
+      font-size: 9px;
+      font-weight: 800;
+      border-radius: 5px 5px 0 0;
+      box-shadow: 0 -2px 4px rgba(0,0,0,0.03);
+    }
+    .tab-top.active { background: #e3f5ec; color: #5aa68e; padding-bottom: 5px;}
+    .tab-top.normal { background: #eee7fa; color: #8977cd; }
+
+    /* 헤더 영역 (여백 대폭 축소) */
+    .test-header {
+      text-align: center;
+      margin-bottom: 14px;
+      position: relative;
+    }
+    .badge-report {
+      display: inline-block;
+      background: #e3f5ec;
+      color: #5aa68e;
+      font-size: 10px;
+      font-weight: 800;
+      padding: 4px 14px;
+      border-radius: 20px;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+    .test-header h1 {
+      margin: 0;
+      font-size: 26px;
+      font-weight: 900;
+      color: #2c2829;
+      letter-spacing: -1px;
+    }
+    .test-header p {
+      margin: 4px 0 0;
+      font-size: 13px;
+      color: #666;
+      font-weight: 600;
+    }
+
+    .section-card {
+      background: #fff;
+      border-radius: 18px;
+      padding: 20px 14px 18px;
+      margin-bottom: 14px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .progress-box {
+      margin-bottom: 16px;
+    }
+    .progress-top {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      font-weight: 800;
+      color: #8977cd;
+      margin-bottom: 6px;
+    }
+    .progress-line {
+      height: 8px;
+      background: #eee7fa;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: #8977cd;
+      border-radius: 10px;
+      transition: width 0.3s ease;
+    }
+
+    .q-title {
+      font-size: 19px;
+      font-weight: 800;
+      text-align: center;
+      color: #2c2829;
+      margin: 8px 0 20px;
+      line-height: 1.4;
+      word-break: keep-all;
+    }
+    .option {
+      width: 100%;
+      background: #fff;
+      border: 1px solid #e4dcd9;
+      border-radius: 14px;
+      padding: 13px;
+      margin-bottom: 10px;
+      font-size: 14.5px;
+      font-weight: 700;
+      color: #4b3f42;
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.2s;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+      display: flex;
+      align-items: center;
+    }
+    .option:hover {
+      background: #fdfaf9;
+      border-color: #d1c4e9;
+      transform: translateY(-1px);
+    }
+    .option-num {
+      color: #8977cd;
+      font-weight: 900;
+      margin-right: 10px;
+      font-size: 15px;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 15px;
+      border: none;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: transform 0.1s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+    .btn:active { transform: scale(0.98); }
+    .btn-start {
+      background: #eee7fa;
+      color: #7b65c2;
+      margin-top: 10px;
+    }
+
+    /* 결과 섹션 공통 여백 축소 */
+    .result-section {
+      background: #fff;
+      border-radius: 16px;
+      padding: 20px 14px 16px;
+      margin-bottom: 14px;
+      position: relative;
+    }
+    .section-badge {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 12px;
+      font-weight: 900;
+      padding: 5px 16px;
+      border-radius: 20px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    }
+    .badge-purple { background: #e6deff; color: #8977cd; }
+    .badge-mint { background: #d5f2e8; color: #5aa68e; }
+    
+    .box-result {
+      border: 2px solid #f2ecfb;
+      text-align: center;
+    }
+    .result-name {
+      margin: 6px 0 10px;
+      font-size: 40px;
+      font-weight: 900;
+      color: #8977cd;
+      letter-spacing: -2px;
+    }
+    .result-one {
+      display: inline-block;
+      background: #fdf6d9;
+      color: #6a6042;
+      border: 1px solid #f2e29e;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 13.5px;
+      font-weight: 800;
+      margin: 0;
+    }
+
+    .box-features {
+      border: 2px solid #ebf7f3;
+    }
+    .check-item {
+      position: relative;
+      padding: 9px 10px 9px 28px;
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #444;
+      border-bottom: 1px dashed #e4dcd9;
+      line-height: 1.35;
+      word-break: keep-all;
+    }
+    .check-item:last-child {
+      border-bottom: none;
+    }
+    .check-item:before {
+      content: "✓";
+      position: absolute;
+      left: 6px;
+      top: 9px;
+      color: #8cc3b0;
+      font-weight: 900;
+      font-size: 13px;
+    }
+
+    .box-ratio {
+      border: 2px solid #f2ecfb;
+      background: #faf8ff;
+      padding: 24px 14px 16px;
+    }
+    .bar-row {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+      border-bottom: 1px dashed #eae0dc;
+      padding-bottom: 10px;
+    }
+    .bar-row:last-child { margin-bottom: 0; border-bottom: none; padding-bottom: 0; }
+    .bar-label {
+      flex: 0 0 50px;
+      font-size: 12.5px;
+      font-weight: 800;
+      color: #555;
+    }
+    .bar-bg {
+      flex: 1;
+      height: 10px;
+      background: #f0eaea;
+      border-radius: 10px;
+      margin: 0 10px;
+      overflow: hidden;
+    }
+    .bar-fill {
+      height: 100%;
+      border-radius: 10px;
+      width: 0%;
+      transition: width 0.8s ease-out;
+    }
+    .bar-percent {
+      flex: 0 0 35px;
+      text-align: right;
+      font-size: 12.5px;
+      font-weight: 900;
+      color: #444;
+    }
+
+    .doctor-note {
+      background: #eef7fa;
+      border-radius: 12px;
+      padding: 10px 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 0;
+    }
+    .doctor-note-icon {
+      font-size: 20px;
+    }
+    .doctor-note-text {
+      margin: 0;
+      font-size: 11px;
+      line-height: 1.4;
+      color: #5c7b8a;
+      font-weight: 700;
+    }
+
+    .bottom-action-buttons {
+      width: 100%;
+      max-width: 480px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 16px;
+      padding: 0 10px;
+    }
+    .btn-save { background: #8cc3b0; color: #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+    .btn-restart { background: #fff; border: 1px solid #eae0dc; color: #6a6042; }
+    .btn-other { background: #fdf5d6; color: #9a8047; }
+    .btn-share { background: #2c2829; color: #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.08); }
+
+    .modal-overlay {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      padding: 20px;
+    }
+    .modal-content {
+      background: #fff;
+      padding: 24px 20px;
+      border-radius: 20px;
+      text-align: center;
+      width: 100%;
+      max-width: 320px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+    .modal-content p {
+      font-size: 15px;
+      font-weight: 800;
+      color: #2c2829;
+      margin: 0 0 15px;
+      word-break: keep-all;
+    }
+    .modal-content img {
+      width: 60%; 
+      height: auto;
+      max-height: 60vh;
+      object-fit: contain;
+      border-radius: 12px;
+      border: 1px solid #eae0dc;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      margin: 0 auto 15px;
+      display: block;
+    }
+    .btn-close {
+      background: #f0eaea;
+      color: #555;
+      padding: 12px;
+    }
+
+    .hidden { display: none !important; }
+
+    @media (max-width: 480px) {
+      body { padding: 10px 20px 20px 10px; }
+      .page-header { padding: 5px 10px; }
+      .logo { font-size: 19px; }
+      .main-nav { gap: 9px; font-size: 13px; }
+      .diary-wrapper { padding: 20px 14px 20px 14px; }
+      .tabs-right { right: -16px; top: 30px; }
+      .tab { width: 16px; height: 35px; }
+      .test-header h1 { font-size: 24px; }
+      .result-name { font-size: 36px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="page-header">
+    <div class="logo">TEST IT</div>
+    <nav class="main-nav">
+      <a href="#">성격</a>
+      <a href="#">얼굴</a>
+      <a href="#">그외</a>
+      <a href="#">사주</a>
+    </nav>
+  </header>
+
+  <main class="diary-wrapper" id="diaryWrapper">
+    <div class="tabs-right">
+      <div class="tab tab-pink"></div>
+      <div class="tab tab-yellow"></div>
+      <div class="tab tab-mint"></div>
+      <div class="tab tab-blue"></div>
+      <div class="tab tab-purple"></div>
+    </div>
+
+    <div id="tabsTop" class="tabs-top">
+      <div class="tab-top active">RESULT</div>
+      <div class="tab-top normal">REPORT</div>
+    </div>
+
+    <header id="mainHeader" class="test-header">
+      <div class="badge-report">SASANG CHECKUP REPORT</div>
+      <h1>사상체질 테스트</h1>
+      <p>성격 반응으로 확인하는 나의 체질</p>
+    </header>
+
+    <section id="startPage" class="section-card box-result">
+      <h3 style="color:#8977cd; margin-top:5px; margin-bottom:10px;">나의 진짜 체질은?</h3>
+      <p style="font-size:13.5px; font-weight:700; color:#666; line-height:1.5; word-break:keep-all;">
+        평소 성격과 반응을 바탕으로 태양인, 태음인, 소양인, 소음인 중 어떤 성향에 가까운지 확인해보세요.
+      </p>
+      <button class="btn btn-start" onclick="startTest()">테스트 시작하기</button>
+    </section>
+
+    <section id="questionPage" class="hidden">
+      <div class="progress-box">
+        <div class="progress-top">
+          <span id="stepText">Q1 / 12</span>
+          <span id="percentText">0%</span>
+        </div>
+        <div class="progress-line">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+      </div>
+
+      <div class="q-title" id="questionTitle"></div>
+      <div id="optionBox"></div>
+    </section>
+
+    <section id="resultPage" class="hidden">
+      <div class="result-section box-result">
+        <div class="section-badge badge-purple">검진 결과</div>
+        <div style="font-size:13px; font-weight:800; color:#555; margin-top:8px;">나의 체질은</div>
+        <h3 class="result-name" id="resultName"></h3>
+        <p class="result-one" id="resultOne"></p>
+      </div>
+
+      <div class="result-section box-features">
+        <div class="section-badge badge-mint">성격 특징</div>
+        <div id="featureList" style="margin-top:6px;"></div>
+      </div>
+
+      <div class="result-section box-ratio">
+        <div class="section-badge badge-purple">비율 체크</div>
+        <div id="bars"></div>
+      </div>
+
+      <div class="doctor-note">
+        <div class="doctor-note-icon">💡</div>
+        <p class="doctor-note-text">
+          이 테스트는 성격 기반의 재미용 콘텐츠입니다.<br>
+          실제 체질 판단이나 건강 상담은 전문가의 진단이 필요합니다.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <div id="bottomButtons" class="bottom-action-buttons hidden">
+    <button class="btn btn-save" onclick="saveResultImage()">결과 이미지 저장하기</button>
+    <button class="btn btn-restart" onclick="restartTest()">다시 해보기</button>
+    <button class="btn btn-other" onclick="location.href='#'">다른 테스트 해보기</button>
+    <button class="btn btn-share" onclick="shareTest()">테스트 공유하기</button>
+  </div>
+
+  <div id="captureModal" class="modal-overlay hidden">
+    <div class="modal-content">
+      <p>이미지를 꾹 눌러서 저장해주세요!</p>
+      <img id="capturedImage" src="" alt="결과 이미지">
+      <button class="btn btn-close" onclick="closeModal()">닫기</button>
+    </div>
+  </div>
+
+  <script>
+    const questions = [
+      { q: "새로운 일을 시작할 때 나는?", a: [{ text: "일단 크게 방향을 잡고 밀어붙인다", score: { taeyang: 3, soyang: 1 } }, { text: "가능한지 현실적으로 따져보고 천천히 시작한다", score: { taeeum: 3, soeum: 1 } }, { text: "재미있어 보이면 빠르게 해본다", score: { soyang: 3, taeyang: 1 } }, { text: "실수하지 않게 준비를 충분히 한다", score: { soeum: 3, taeeum: 1 } }] },
+      { q: "친구들이 나를 설명한다면 가장 가까운 말은?", a: [{ text: "자존감 있고 자기 주장이 뚜렷함", score: { taeyang: 3 } }, { text: "든든하고 오래 볼수록 편함", score: { taeeum: 3 } }, { text: "밝고 반응이 빠르고 분위기를 잘 띄움", score: { soyang: 3 } }, { text: "섬세하고 조심스럽고 생각이 많음", score: { soeum: 3 } }] },
+      { q: "화가 날 때 나는?", a: [{ text: "참기보다 바로 표현해야 풀린다", score: { taeyang: 2, soyang: 2 } }, { text: "티는 안 내도 속으로 오래 남는다", score: { soeum: 3, taeeum: 1 } }, { text: "웬만하면 참고 넘기지만 선 넘으면 크게 터진다", score: { taeeum: 3 } }, { text: "순간적으로 확 올라왔다가 금방 식는다", score: { soyang: 3 } }] },
+      { q: "계획이 갑자기 바뀌면?", a: [{ text: "내 판단이 맞으면 바뀌어도 밀고 간다", score: { taeyang: 3 } }, { text: "크게 문제 없으면 상황에 맞춘다", score: { taeeum: 3 } }, { text: "오히려 새로워서 괜찮을 때도 많다", score: { soyang: 3 } }, { text: "머릿속이 복잡해져서 다시 정리해야 한다", score: { soeum: 3 } }] },
+      { q: "사람들과 있을 때 나는?", a: [{ text: "내 생각을 분명하게 말하는 편이다", score: { taeyang: 3 } }, { text: "크게 나서지 않아도 중심을 잡는 편이다", score: { taeeum: 3 } }, { text: "대화 흐름을 빠르게 타고 반응을 잘한다", score: { soyang: 3 } }, { text: "상대 기분과 분위기를 세심하게 살핀다", score: { soeum: 3 } }] },
+      { q: "내가 가장 싫어하는 상황은?", a: [{ text: "내가 틀렸다는 식으로 억누르는 상황", score: { taeyang: 3 } }, { text: "안정적으로 가던 일이 갑자기 흔들리는 상황", score: { taeeum: 3 } }, { text: "답답하게 기다리기만 해야 하는 상황", score: { soyang: 3 } }, { text: "준비 안 된 상태로 앞에 나서야 하는 상황", score: { soeum: 3 } }] },
+      { q: "돈이나 일에 대한 내 태도는?", a: [{ text: "크게 될 수 있다면 과감한 선택도 가능하다", score: { taeyang: 3 } }, { text: "꾸준히 모으고 안정적으로 키우는 게 좋다", score: { taeeum: 3 } }, { text: "쓸 땐 쓰고 벌 땐 빠르게 벌고 싶다", score: { soyang: 3 } }, { text: "위험한 선택은 피하고 꼼꼼히 따져본다", score: { soeum: 3 } }] },
+      { q: "내가 컨디션이 안 좋을 때 보이는 모습은?", a: [{ text: "예민해지고 말이 직선적으로 나간다", score: { taeyang: 2, soyang: 1 } }, { text: "몸이 무겁고 움직이기 싫어진다", score: { taeeum: 3 } }, { text: "가만히 있으면 더 답답해서 뭔가 해야 연다", score: { soyang: 3 } }, { text: "걱정이 많아지고 혼자 쉬고 싶어진다", score: { soeum: 3 } }] },
+      { q: "칭찬을 들었을 때 나는?", a: [{ text: "인정받은 느낌이라 더 잘하고 싶어진다", score: { taeyang: 3 } }, { text: "겉으론 덤덤해도 속으로 오래 기분 좋다", score: { taeeum: 3 } }, { text: "바로 에너지 올라가고 표정에 티가 난다", score: { soyang: 3 } }, { text: "좋지만 괜히 민망해서 조용히 넘긴다", score: { soeum: 3 } }] },
+      { q: "연애나 인간관계에서 나는?", a: [{ text: "존중받지 못하면 마음이 빠르게 식는다", score: { taeyang: 3 } }, { text: "오래 쌓인 신뢰와 편안함을 중요하게 본다", score: { taeeum: 3 } }, { text: "표현과 반응이 있어야 관계가 살아난다", score: { soyang: 3 } }, { text: "작은 말투와 배려에 마음이 크게 움직인다", score: { soeum: 3 } }] },
+      { q: "문제가 생겼을 때 가장 먼저 하는 생각은?", a: [{ text: "누가 주도해서 빨리 결론 내야 한다", score: { taeyang: 3 } }, { text: "일단 크게 흔들리지 말고 버텨야 한다", score: { taeeum: 3 } }, { text: "지금 바로 움직이면 해결될 것 같다", score: { soyang: 3 } }, { text: "원인부터 차근차근 확인해야 안심된다", score: { soeum: 3 } }] },
+      { q: "내 삶에서 가장 중요한 감각은?", a: [{ text: "내 뜻대로 살아간다는 확신", score: { taeyang: 3 } }, { text: "흔들리지 않는 안정감과 지속성", score: { taeeum: 3 } }, { text: "활기, 재미, 빠른 변화와 생동감", score: { soyang: 3 } }, { text: "안전함, 섬세함, 마음의 평온함", score: { soeum: 3 } }] }
+    ];
+
+    const tieBreakTexts = {
+      taeyang: "내 기준대로 확실하게 밀고 가는 쪽",
+      taeeum: "천천히 가도 안정적으로 오래 버티는 쪽",
+      soyang: "빠르게 반응하고 일단 움직이는 쪽",
+      soeum: "신중하게 살피고 안전하게 정리하는 쪽"
+    };
+
+    const resultColors = {
+      taeeum: "#f4d377", 
+      soyang: "#95d8c8", 
+      taeyang: "#f5a2b8", 
+      soeum: "#92c2f4"   
+    };
+
+    const results = {
+      taeyang: {
+        name: "태양인",
+        one: "주도권과 기준이 강한 추진형 체질",
+        features: [
+          "자기 기준이 뚜렷하고 쉽게 흔들리지 않음",
+          "답답한 상황보다 빠른 결정을 선호함",
+          "큰 방향을 먼저 보고 과감하게 움직임",
+          "자존심과 독립심이 강하게 드러나는 편",
+          "남에게 끌려가기보다 직접 이끌고 싶어함",
+          "불합리한 분위기를 오래 참기 어려움",
+          "목표가 생기면 에너지를 크게 몰아씀",
+          "말이 직선적이라 강하게 보일 때가 있음",
+          "인정받을수록 더 크게 성장하는 타입",
+          "막히는 흐름보다 시원한 전개를 좋아함"
+        ]
+      },
+      taeeum: {
+        name: "태음인",
+        one: "묵직하고 오래 버티는 안정형 체질",
+        features: [
+          "쉽게 흔들리지 않고 중심을 오래 지킴",
+          "빠른 변화보다 안정적인 흐름을 선호함",
+          "한번 마음먹은 일은 꾸준히 이어가는 편",
+          "신뢰가 쌓인 관계를 가장 편하게 느낌",
+          "겉으로는 덤덤해도 속은 깊고 오래 감",
+          "현실적인 판단과 생활 감각이 좋은 편",
+          "무리한 모험보다 안전한 선택을 좋아함",
+          "익숙한 환경에서 실력이 더 잘 드러남",
+          "참는 힘이 크지만 쌓이면 크게 터질 수 있음",
+          "느리더라도 단단하게 결과를 만드는 타입"
+        ]
+      },
+      soyang: {
+        name: "소양인",
+        one: "빠르게 반응하고 움직이는 활력형 체질",
+        features: [
+          "반응 속도가 빠르고 분위기를 잘 읽음",
+          "새로운 자극과 재미에 에너지가 올라감",
+          "가만히 기다리는 상황을 답답하게 느낌",
+          "생각보다 행동이 먼저 나오는 경우가 많음",
+          "표현이 빠르고 감정이 얼굴에 잘 드러남",
+          "사람들과 어울릴 때 활력이 더 살아남",
+          "재미있어 보이면 일단 해보고 판단함",
+          "기분 전환이 빠르고 회복력도 좋은 편",
+          "답답한 절차보다 빠른 해결을 선호함",
+          "순간 집중력과 추진력이 강하게 올라옴"
+        ]
+      },
+      soeum: {
+        name: "소음인",
+        one: "섬세하게 살피고 정리하는 신중형 체질",
+        features: [
+          "작은 변화도 예민하게 알아차리는 편",
+          "준비가 되어야 마음이 편하게 움직임",
+          "사람의 말투와 분위기에 영향을 잘 받음",
+          "혼자 정리하고 회복하는 시간이 꼭 필요함",
+          "실수를 줄이기 위해 차근차근 확인함",
+          "낯선 상황에서는 조심스럽게 적응하는 편",
+          "겉으로 크게 티내지 않아도 생각이 많음",
+          "안정감 있는 관계와 환경을 중요하게 봄",
+          "무리한 선택보다 안전한 방향을 선호함",
+          "섬세한 배려와 꼼꼼함이 강점으로 드러남"
+        ]
+      }
+    };
+
+    let current = 0;
+    let scores = { taeyang: 0, taeeum: 0, soyang: 0, soeum: 0 };
+
+    function startTest() {
+      current = 0;
+      scores = { taeyang: 0, taeeum: 0, soyang: 0, soeum: 0 };
+      
+      document.getElementById("mainHeader").classList.add("hidden");
+      document.getElementById("tabsTop").classList.add("hidden");
+      document.getElementById("startPage").classList.add("hidden");
+      document.getElementById("resultPage").classList.add("hidden");
+      document.getElementById("questionPage").classList.remove("hidden");
+      
+      renderQuestion();
+    }
+
+    function renderQuestion() {
+      const item = questions[current];
+      const progress = Math.round((current / questions.length) * 100);
+
+      document.getElementById("stepText").innerText = "Q" + (current + 1) + " / " + questions.length;
+      document.getElementById("percentText").innerText = progress + "%";
+      document.getElementById("progressFill").style.width = progress + "%";
+      document.getElementById("questionTitle").innerText = item.q;
+
+      const optionBox = document.getElementById("optionBox");
+      optionBox.innerHTML = "";
+
+      item.a.forEach((option, index) => {
+        const button = document.createElement("button");
+        button.className = "option";
+        button.innerHTML = `<span class="option-num">${index + 1}</span><span>${option.text}</span>`;
+        button.onclick = () => selectAnswer(option.score);
+        optionBox.appendChild(button);
+      });
+    }
+
+    function selectAnswer(score) {
+      Object.keys(score).forEach((key) => {
+        scores[key] += score[key];
+      });
+
+      current++;
+
+      if (current >= questions.length) {
+        checkTieBeforeResult();
+      } else {
+        renderQuestion();
+      }
+    }
+
+    function checkTieBeforeResult() {
+      const maxScore = Math.max(...Object.values(scores));
+      const topKeys = Object.keys(scores).filter((key) => scores[key] === maxScore);
+
+      if (topKeys.length >= 2) {
+        renderTieQuestion(topKeys);
+      } else {
+        showResult();
+      }
+    }
+
+    function renderTieQuestion(topKeys) {
+      document.getElementById("stepText").innerText = "FINAL";
+      document.getElementById("percentText").innerText = "100%";
+      document.getElementById("progressFill").style.width = "100%";
+      document.getElementById("questionTitle").innerText = "마지막으로 하나만 더 고른다면?";
+
+      const optionBox = document.getElementById("optionBox");
+      optionBox.innerHTML = "";
+
+      topKeys.forEach((key, index) => {
+        const button = document.createElement("button");
+        button.className = "option";
+        button.innerHTML = `<span class="option-num">${index + 1}</span><span>${tieBreakTexts[key]}</span>`;
+        button.onclick = () => {
+          scores[key] += 2;
+          showResult();
+        };
+        optionBox.appendChild(button);
+      });
+    }
+
+    function showResult() {
+      const total = Object.values(scores).reduce((sum, value) => sum + value, 0);
+      const sorted = Object.keys(scores).sort((a, b) => scores[b] - scores[a]);
+      const topKey = sorted[0];
+      const topResult = results[topKey];
+
+      document.getElementById("questionPage").classList.add("hidden");
+      
+      document.getElementById("mainHeader").classList.remove("hidden");
+      document.getElementById("tabsTop").classList.remove("hidden");
+      
+      document.getElementById("resultPage").classList.remove("hidden");
+      document.getElementById("bottomButtons").classList.remove("hidden");
+
+      document.getElementById("resultName").innerText = topResult.name;
+      document.getElementById("resultOne").innerText = topResult.one;
+
+      const featureList = document.getElementById("featureList");
+      featureList.innerHTML = "";
+
+      topResult.features.forEach((feature) => {
+        const item = document.createElement("div");
+        item.className = "check-item";
+        item.innerText = feature;
+        featureList.appendChild(item);
+      });
+
+      const bars = document.getElementById("bars");
+      bars.innerHTML = "";
+
+      sorted.forEach((key) => {
+        const percent = total === 0 ? 0 : Math.round((scores[key] / total) * 100);
+        const row = document.createElement("div");
+        row.className = "bar-row";
+        row.innerHTML = `
+          <div class="bar-label">${results[key].name}</div>
+          <div class="bar-bg">
+            <div class="bar-fill" style="width: ${percent}%; background: ${resultColors[key]};"></div>
+          </div>
+          <div class="bar-percent">${percent}%</div>
+        `;
+        bars.appendChild(row);
+      });
+    }
+
+    function restartTest() {
+      document.getElementById("resultPage").classList.add("hidden");
+      document.getElementById("questionPage").classList.add("hidden");
+      document.getElementById("bottomButtons").classList.add("hidden");
+      
+      document.getElementById("mainHeader").classList.remove("hidden");
+      document.getElementById("tabsTop").classList.remove("hidden");
+      document.getElementById("startPage").classList.remove("hidden");
+    }
+
+    function shareTest() {
+      const text = "내 성격으로 보는 사상체질 테스트 해보기";
+      if (navigator.share) {
+        navigator.share({
+          title: "사상체질 테스트",
+          text: text,
+          url: location.href
+        });
+      } else {
+        navigator.clipboard.writeText(location.href);
+        alert("테스트 링크가 복사되었습니다.");
+      }
+    }
+
+    function saveResultImage() {
+      const target = document.getElementById("diaryWrapper");
+      
+      html2canvas(target, { scale: 2 }).then(canvas => {
+        const imgData = canvas.toDataURL("image/png");
+        document.getElementById("capturedImage").src = imgData;
+        document.getElementById("captureModal").classList.remove("hidden");
+      });
+    }
+
+    function closeModal() {
+      document.getElementById("captureModal").classList.add("hidden");
+    }
+  </script>
+</body>
+</html>

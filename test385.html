@@ -9,96 +9,303 @@
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
 
 *{box-sizing:border-box}
-html,body{margin:0;padding:0;font-family:"Pretendard",sans-serif;background:#f3f4f6;color:#111}
+html,body{margin:0;padding:0;font-family:"Pretendard",sans-serif;background:#0f0f0f;color:#f4f4f4}
 a{text-decoration:none;color:inherit}
 button{font-family:inherit;border:0;cursor:pointer}
 
-.page-header{background:#fff;border-bottom:1px solid #111}
+.page-header{background:#111;border-bottom:1px solid #333}
 .wrapper{max-width:520px;margin:0 auto;padding:0 16px}
 .header-inner{height:56px;display:flex;align-items:center;justify-content:space-between}
 .logo img{height:28px;display:block}
-.main-nav{display:flex;gap:13px;font-size:13px;font-weight:800;color:#222}
+.main-nav{display:flex;gap:13px;font-size:13px;font-weight:700;color:#f5f5f5}
 
 #app-container{width:100%;max-width:430px;margin:0 auto;padding:14px 12px 36px}
 .screen{display:none}
 .screen.active{display:block}
 
-.app-card{background:#fff;border:1.5px solid #111;padding:18px;box-shadow:none}
-#capture-area{background:#fff}
+.app-card{
+  background:#171717;
+  border:1.5px solid #4a4a4a;
+  padding:18px;
+  box-shadow:none;
+}
 
-.signal-bar{width:188px;height:58px;margin:0 auto 18px;background:#191919;border:1.5px solid #111;display:flex;align-items:center;justify-content:center;gap:12px}
-.light{width:34px;height:34px;border-radius:50%;border:2px solid #000;background:#555;box-shadow:inset 0 3px 8px rgba(0,0,0,.35)}
+#capture-area{background:#171717}
+
+.signal-bar{
+  width:188px;
+  height:58px;
+  margin:0 auto 18px;
+  background:#0b0b0b;
+  border:1.5px solid #777;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+}
+
+.light{
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  border:2px solid #000;
+  background:#555;
+  box-shadow:inset 0 3px 8px rgba(0,0,0,.35);
+}
+
 .red-on{background:#ff2b2b!important;background-color:#ff2b2b!important}
 .yellow-on{background:#ffd12f!important;background-color:#ffd12f!important}
 .green-on{background:#18c95a!important;background-color:#18c95a!important}
 
-.title{text-align:center;font-size:36px;line-height:1.08;letter-spacing:-1.8px;font-weight:950;margin:0 0 14px}
-.title .red-word{color:#ff2b2b}
-.title .green-word{color:#13ad4d}
+.title{
+  text-align:center;
+  font-size:36px;
+  line-height:1.08;
+  letter-spacing:-1.4px;
+  font-weight:800;
+  margin:0 0 14px;
+  color:#fff;
+}
 
-.desc{text-align:center;font-size:16px;line-height:1.5;font-weight:800;color:#333;margin:0 0 22px}
-.green-text{color:#13ad4d;font-weight:950}
-.red-text{color:#ff2b2b;font-weight:950}
+.title .red-word{color:#ff3b3b}
+.title .green-word{color:#2ee067}
 
-.start-info{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
-.info-card{border:1.5px solid #111;padding:13px 11px;min-height:94px;color:#fff}
-.info-card.green{background:#13b552}
-.info-card.red{background:#ff2b2b}
-.info-card b{display:block;font-size:22px;font-weight:950;margin-bottom:8px}
-.info-card span{font-size:13px;line-height:1.35;font-weight:850;word-break:keep-all}
+.desc{
+  text-align:center;
+  font-size:16px;
+  line-height:1.5;
+  font-weight:700;
+  color:#eeeeee;
+  margin:0 0 22px;
+}
 
-.btn{width:100%;min-height:52px;padding:14px 16px;border:1.5px solid #111;background:#fff;color:#111;font-size:16px;font-weight:950;box-shadow:none;margin-bottom:10px}
-.btn.start{background:#ffd12f}
-.btn.green{background:#13b552;color:#fff}
-.btn.red{background:#ff2b2b;color:#fff}
+.green-text{color:#2ee067;font-weight:800}
+.red-text{color:#ff4a4a;font-weight:800}
 
-.progress-wrap{margin-bottom:16px;border:1.5px solid #111;background:#fff;padding:12px}
-.progress-top{display:flex;justify-content:space-between;font-size:13px;font-weight:950;margin-bottom:8px}
-.progress{height:14px;background:#e9e9e9;overflow:hidden;border:1px solid #111}
-.progress-fill{height:100%;width:0;background:linear-gradient(90deg,#18c95a 0%,#ffd12f 50%,#ff2b2b 100%);transition:.2s}
+.start-info{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-bottom:16px;
+}
 
-.q-card{background:#fff;border:1.5px solid #111;box-shadow:none;padding:18px}
-.q-num{display:inline-flex;align-items:center;height:32px;padding:0 12px;background:#111;color:#fff;font-size:14px;font-weight:950;margin-bottom:14px}
-.q-text{font-size:23px;line-height:1.35;letter-spacing:-.8px;font-weight:950;margin:0 0 20px;word-break:keep-all}
+.info-card{
+  border:1.5px solid #666;
+  padding:13px 11px;
+  min-height:94px;
+  color:#fff;
+}
 
-.answer-btn{text-align:left;font-size:16px;line-height:1.45;font-weight:850;background:#fff}
-.answer-btn.green-answer{background:#e2ffe9;border-color:#13b552}
-.answer-btn.red-answer{background:#ffe2e2;border-color:#ff2b2b}
+.info-card.green{background:#12aa4c}
+.info-card.red{background:#f82f2f}
+.info-card b{display:block;font-size:22px;font-weight:800;margin-bottom:8px}
+.info-card span{font-size:13px;line-height:1.35;font-weight:700;word-break:keep-all}
+
+.btn{
+  width:100%;
+  min-height:52px;
+  padding:14px 16px;
+  border:1.5px solid #666;
+  background:#1d1d1d;
+  color:#fff;
+  font-size:16px;
+  font-weight:800;
+  box-shadow:none;
+  margin-bottom:10px;
+}
+
+.btn.start{background:#ffd12f;color:#111;border-color:#ffd12f}
+.btn.green{background:#13b552;color:#fff;border-color:#13b552}
+.btn.red{background:#ff2b2b;color:#fff;border-color:#ff2b2b}
+
+.progress-wrap{
+  margin-bottom:16px;
+  border:1.5px solid #5c5c5c;
+  background:#202020;
+  padding:12px;
+}
+
+.progress-top{
+  display:flex;
+  justify-content:space-between;
+  font-size:13px;
+  font-weight:700;
+  margin-bottom:8px;
+  color:#f5f5f5;
+}
+
+.progress{
+  height:15px;
+  background:#080808;
+  overflow:hidden;
+  border:1px solid #555;
+}
+
+.progress-fill{
+  height:100%;
+  width:0;
+  background:linear-gradient(90deg,#18c95a 0%,#ffd12f 50%,#ff2b2b 100%);
+  transition:.2s;
+}
+
+.q-card{
+  background:#f7f7f7;
+  border:2px solid #ffffff;
+  box-shadow:none;
+  padding:18px;
+  color:#111;
+}
+
+.q-num{
+  display:inline-flex;
+  align-items:center;
+  height:34px;
+  padding:0 13px;
+  background:#111;
+  color:#fff;
+  font-size:14px;
+  font-weight:800;
+  margin-bottom:14px;
+}
+
+.q-text{
+  font-size:22px;
+  line-height:1.4;
+  letter-spacing:-.6px;
+  font-weight:800;
+  margin:0 0 20px;
+  word-break:keep-all;
+  color:#111;
+}
+
+.answer-btn{
+  text-align:left;
+  font-size:16px;
+  line-height:1.45;
+  font-weight:700;
+  color:#111;
+  min-height:66px;
+  background:#fff;
+}
+
+.answer-btn.green-answer{
+  background:#eaffef;
+  border:2px solid #13b552;
+}
+
+.answer-btn.red-answer{
+  background:#ffecec;
+  border:2px solid #ff2b2b;
+}
+
+.answer-btn:active{transform:scale(.99)}
 
 .result-top{text-align:center;margin-bottom:16px}
-.result-label{font-size:12px;font-weight:850;color:#555;margin-bottom:6px}
-.result-name{font-size:30px;line-height:1.12;font-weight:950;letter-spacing:-1.2px;margin-bottom:7px;color:#111}
-.result-sub{font-size:14px;line-height:1.4;font-weight:800;color:#444;word-break:keep-all}
+.result-label{font-size:12px;font-weight:700;color:#e1e1e1;margin-bottom:6px}
+.result-name{font-size:30px;line-height:1.12;font-weight:800;letter-spacing:-1px;margin-bottom:7px;color:#fff}
+.result-sub{font-size:14px;line-height:1.45;font-weight:650;color:#f0f0f0;word-break:keep-all}
 
 .result-wrapper{display:grid;grid-template-columns:1fr;gap:12px}
-.result-section{border:1.5px solid #111;background:#fff}
-.sec-header{height:42px;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:950;color:#fff;letter-spacing:.2px}
+
+.result-section{
+  border:1.5px solid #777;
+  background:#171717;
+}
+
+.sec-header{
+  height:42px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:18px;
+  font-weight:800;
+  color:#fff;
+  letter-spacing:.2px;
+}
+
 .green-sec .sec-header{background:#13b552}
 .red-sec .sec-header{background:#ff2b2b}
 
-.traits-list{display:grid;grid-template-columns:1fr 1fr;gap:8px 10px;padding:12px 11px}
-.trait-item{display:flex;align-items:flex-start;font-size:13px;line-height:1.28;font-weight:850;letter-spacing:-.6px;word-break:keep-all}
-.trait-item:before{content:"";width:7px;height:7px;margin:5px 6px 0 0;flex:0 0 auto}
+.traits-list{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px 10px;
+  padding:12px 11px;
+}
+
+.trait-item{
+  display:flex;
+  align-items:flex-start;
+  font-size:13px;
+  line-height:1.32;
+  font-weight:650;
+  letter-spacing:-.45px;
+  word-break:keep-all;
+  color:#f4f4f4;
+}
+
+.trait-item:before{
+  content:"";
+  width:7px;
+  height:7px;
+  margin:6px 6px 0 0;
+  flex:0 0 auto;
+}
+
 .green-sec .trait-item:before{background:#13b552}
 .red-sec .trait-item:before{background:#ff2b2b}
 
-.control-btns{display:none;flex-direction:column;gap:10px;margin-top:20px}
+.control-btns{
+  display:none;
+  flex-direction:column;
+  gap:10px;
+  margin-top:20px;
+}
+
 .control-btns .btn{margin-bottom:0}
 
-#modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.86);z-index:1000;align-items:center;justify-content:center;flex-direction:column;padding:18px}
-.modal-txt{color:#fff;font-size:15px;line-height:1.45;font-weight:900;text-align:center;margin-bottom:14px}
+#modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.86);
+  z-index:1000;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  padding:18px;
+}
+
+.modal-txt{
+  color:#fff;
+  font-size:15px;
+  line-height:1.45;
+  font-weight:800;
+  text-align:center;
+  margin-bottom:14px;
+}
+
 #modal-img{width:86%;max-width:320px;border:2px solid #fff}
-.close-btn{margin-top:16px;background:#ffd12f;color:#111;border:2px solid #111;padding:13px 34px;font-weight:950}
+
+.close-btn{
+  margin-top:16px;
+  background:#ffd12f;
+  color:#111;
+  border:2px solid #111;
+  padding:13px 34px;
+  font-weight:800;
+}
 
 @media(max-width:390px){
   #app-container{padding:14px 10px 32px}
   .app-card{padding:15px}
   .title{font-size:31px}
-  .q-text{font-size:21px}
+  .q-text{font-size:20px}
+  .answer-btn{font-size:15px}
   .result-name{font-size:26px}
   .result-sub{font-size:13px}
   .traits-list{gap:7px 7px;padding:10px 8px}
-  .trait-item{font-size:11.7px;letter-spacing:-.85px}
+  .trait-item{font-size:11.8px;letter-spacing:-.65px;font-weight:650}
   .sec-header{height:39px;font-size:16px}
   .main-nav{gap:9px;font-size:12px}
 }
@@ -216,21 +423,21 @@ button{font-family:inherit;border:0;cursor:pointer}
 
 <script>
 const qData=[
-  {type:"EI",q:"카페에서 친구를 기다리는데 옆자리 사람이 계속 웃긴 얘기를 한다면?",a:"나도 모르게 듣다가 타이밍 맞으면 한마디 끼고 싶어진다",b:"재밌어도 그냥 조용히 듣고 내 세계에 머문다"},
-  {type:"EI",q:"단체 채팅방에 갑자기 대화가 폭발했을 때 나는?",a:"흐름 놓치기 전에 바로 끼어들어서 같이 떠든다",b:"일단 몰아서 읽고 꼭 필요한 말만 남긴다"},
-  {type:"EI",q:"하루 종일 아무도 안 만나고 집에만 있으면 나는?",a:"편하긴 한데 어느 순간 사람 소리가 그리워진다",b:"드디어 에너지가 다시 차는 느낌이라 안정된다"},
+  {type:"EI",q:"친구랑 둘이 놀다가 갑자기 친구의 친구들이 합류한다고 하면?",a:"사람 많아지면 더 재밌을 것 같아서 바로 분위기를 맞춘다",b:"갑자기 낯선 사람이 늘면 에너지를 다시 계산하게 된다"},
+  {type:"EI",q:"회사나 학교에서 쉬는 시간이 생겼을 때 나는?",a:"근처 사람에게 말을 걸거나 가벼운 농담을 던진다",b:"혼자 폰을 보거나 조용히 숨 돌리는 시간이 더 편하다"},
+  {type:"EI",q:"하루 종일 사람들을 많이 만난 날 밤에 나는?",a:"피곤해도 오늘 있었던 얘기를 누군가에게 또 하고 싶다",b:"말을 너무 많이 해서 이제 아무 소리도 듣고 싶지 않다"},
 
-  {type:"SN",q:"새로 산 물건의 설명서를 열었을 때 나는?",a:"버튼 위치랑 사용 순서를 먼저 확인한다",b:"이걸로 뭘 더 할 수 있을지부터 떠오른다"},
-  {type:"SN",q:"친구가 어제 이상한 꿈을 꿨다고 말하면 나는?",a:"꿈에 누가 나왔고 무슨 일이 있었는지 묻는다",b:"그 꿈이 지금 마음 상태랑 연결되는지 생각한다"},
-  {type:"SN",q:"길을 걷다 오래된 간판을 봤을 때 나는?",a:"가게 이름, 색감, 위치 같은 게 먼저 눈에 들어온다",b:"저 가게가 버텨온 시간과 사연이 궁금해진다"},
+  {type:"SN",q:"처음 가는 동네에서 맛집을 고를 때 나는?",a:"리뷰 수, 메뉴 사진, 가격, 위치를 보고 고른다",b:"간판 분위기나 이름에서 끌리는 곳이 더 궁금해진다"},
+  {type:"SN",q:"친구가 이 옷 어때? 라고 물어봤을 때 나는?",a:"색, 핏, 계절감처럼 실제로 보이는 부분을 말한다",b:"그 옷이 주는 이미지나 분위기를 먼저 말한다"},
+  {type:"SN",q:"새로운 일을 시작하기 전에 머릿속에 먼저 뜨는 건?",a:"준비물, 순서, 시간, 지금 해야 하는 단계",b:"이걸 하면 앞으로 어떤 가능성이 생길지"},
 
-  {type:"TF",q:"친구가 억울한 일을 당했다고 길게 말할 때 나는?",a:"어디서부터 꼬였는지 정리해서 말해주고 싶다",b:"일단 네가 얼마나 답답했을지부터 말해주고 싶다"},
-  {type:"TF",q:"팀원이 실수했는데 이미 많이 풀이 죽어 있다면 나는?",a:"다음에 같은 실수 안 나게 방법을 같이 잡는다",b:"먼저 괜찮다고 해주고 마음부터 진정시킨다"},
-  {type:"TF",q:"내가 사과를 받아야 할 상황이라면 더 중요한 건?",a:"상대가 뭘 잘못했는지 정확히 아는 것",b:"상대가 진심으로 미안해하는 게 느껴지는 것"},
+  {type:"TF",q:"친구가 같은 실수를 반복해서 힘들어할 때 나는?",a:"왜 반복되는지 패턴을 찾아서 현실적인 방법을 말한다",b:"또 힘들었겠다 싶어서 마음부터 먼저 달래준다"},
+  {type:"TF",q:"내가 상대에게 서운한 일이 생겼을 때 더 필요한 건?",a:"상대가 상황을 정확히 이해하고 고칠 점을 아는 것",b:"상대가 내 마음을 진심으로 알아주는 것"},
+  {type:"TF",q:"팀 과제에서 의견이 갈릴 때 나는?",a:"누구 말이 더 논리적이고 효율적인지 따져본다",b:"누가 소외되거나 상처받지 않게 흐름을 조절한다"},
 
-  {type:"JP",q:"갑자기 오늘 저녁 일정이 비었다면 나는?",a:"빈 시간에 할 일을 바로 정해서 하루를 다시 맞춘다",b:"오히려 좋아하면서 그때 끌리는 걸 한다"},
-  {type:"JP",q:"핸드폰 메모장에 할 일이 쌓였을 때 나는?",a:"우선순위대로 정리하고 체크하면서 지운다",b:"눈에 밟히는 것부터 하나씩 처리한다"},
-  {type:"JP",q:"친구들과 놀러 가기로 했는데 장소가 아직 안 정해졌다면?",a:"계속 애매한 게 싫어서 후보를 추려 정하자고 한다",b:"만나는 날 분위기 보고 정해도 된다고 생각한다"}
+  {type:"JP",q:"약속 장소가 정해졌는데 세부 일정이 비어 있으면?",a:"만나는 시간부터 동선까지 어느 정도 정리해두고 싶다",b:"만나서 그때 끌리는 대로 움직여도 괜찮다"},
+  {type:"JP",q:"할 일이 여러 개 쌓였을 때 나는?",a:"먼저 순서를 정하고 하나씩 끝내야 마음이 놓인다",b:"지금 눈에 들어오는 것부터 처리하면서 흐름을 탄다"},
+  {type:"JP",q:"갑자기 계획이 틀어졌을 때 나는?",a:"바뀐 상황에 맞춰 새 계획을 빨리 다시 세운다",b:"어차피 바뀐 김에 더 재밌는 방향을 찾아본다"}
 ];
 
 const rData={
@@ -357,7 +564,7 @@ function saveImage(){
   setTimeout(()=>{
     html2canvas(target,{
       scale:2,
-      backgroundColor:"#fff",
+      backgroundColor:"#171717",
       useCORS:true,
       foreignObjectRendering:false,
       logging:false

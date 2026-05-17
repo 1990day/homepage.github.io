@@ -9,53 +9,53 @@
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
 
 *{box-sizing:border-box}
-html,body{margin:0;padding:0;font-family:"Pretendard",sans-serif;background:#0f0f0f;color:#f4f4f4}
+html,body{margin:0;padding:0;font-family:"Pretendard",sans-serif;background:#f6f6f6;color:#111}
 a{text-decoration:none;color:inherit}
 button{font-family:inherit;border:0;cursor:pointer}
 
-.page-header{background:#111;border-bottom:1px solid #333}
+.page-header{background:#fff;border-bottom:1px solid #ddd}
 .wrapper{max-width:520px;margin:0 auto;padding:0 16px}
 .header-inner{height:56px;display:flex;align-items:center;justify-content:space-between}
 .logo img{height:28px;display:block}
-.main-nav{display:flex;gap:13px;font-size:13px;font-weight:700;color:#f5f5f5}
+.main-nav{display:flex;gap:13px;font-size:13px;font-weight:700;color:#111}
 
 #app-container{width:100%;max-width:430px;margin:0 auto;padding:14px 12px 36px}
 .screen{display:none}
 .screen.active{display:block}
 
-.app-card{background:#171717;border:1.5px solid #4a4a4a;padding:18px;box-shadow:none}
-#capture-area{background:#171717}
+.app-card{background:#fff;border:1.5px solid #111;padding:18px;box-shadow:none}
+#capture-area{background:#fff}
 
-.signal-bar{width:188px;height:58px;margin:0 auto 18px;background:#0b0b0b;border:1.5px solid #777;display:flex;align-items:center;justify-content:center;gap:12px}
-.light{width:34px;height:34px;border-radius:50%;border:2px solid #000;background:#555;box-shadow:inset 0 3px 8px rgba(0,0,0,.35)}
-.red-on{background:#ff2b2b!important;background-color:#ff2b2b!important}
+.signal-bar{width:188px;height:58px;margin:0 auto 18px;background:#111;border:1.5px solid #111;display:flex;align-items:center;justify-content:center;gap:12px}
+.light{width:34px;height:34px;border-radius:50%;border:2px solid #000;background:#555}
+.red-on{background:#d94a4a!important;background-color:#d94a4a!important}
 .yellow-on{background:#ffd12f!important;background-color:#ffd12f!important}
-.green-on{background:#18c95a!important;background-color:#18c95a!important}
+.green-on{background:#28d866!important;background-color:#28d866!important}
 
-.title{text-align:center;font-size:36px;line-height:1.08;letter-spacing:-1.4px;font-weight:800;margin:0 0 14px;color:#fff}
-.title .red-word{color:#ff3b3b}
-.title .green-word{color:#2ee067}
+.title{text-align:center;font-size:36px;line-height:1.08;letter-spacing:-1.4px;font-weight:850;margin:0 0 14px;color:#111}
+.title .red-word{color:#d94a4a}
+.title .green-word{color:#18b854}
 
-.desc{text-align:center;font-size:16px;line-height:1.5;font-weight:700;color:#eeeeee;margin:0 0 22px}
-.green-text{color:#2ee067;font-weight:800}
-.red-text{color:#ff4a4a;font-weight:800}
+.desc{text-align:center;font-size:16px;line-height:1.5;font-weight:750;color:#222;margin:0 0 22px}
+.green-text{color:#18b854;font-weight:850}
+.red-text{color:#d94a4a;font-weight:850}
 
 .start-info{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
-.info-card{border:1.5px solid #666;padding:13px 11px;min-height:94px;color:#fff}
-.info-card.green{background:#12aa4c}
-.info-card.red{background:#f82f2f}
-.info-card b{display:block;font-size:22px;font-weight:800;margin-bottom:8px}
-.info-card span{font-size:13px;line-height:1.35;font-weight:700;word-break:keep-all}
+.info-card{border:1.5px solid #111;padding:13px 11px;min-height:94px;color:#111}
+.info-card.green{background:#28d866}
+.info-card.red{background:#d94a4a;color:#fff}
+.info-card b{display:block;font-size:22px;font-weight:850;margin-bottom:8px}
+.info-card span{font-size:13px;line-height:1.35;font-weight:750;word-break:keep-all}
 
-.btn{width:100%;min-height:52px;padding:14px 16px;border:1.5px solid #666;background:#1d1d1d;color:#fff;font-size:16px;font-weight:800;box-shadow:none;margin-bottom:10px}
-.btn.start{background:#ffd12f;color:#111;border-color:#ffd12f}
-.btn.green{background:#13b552;color:#fff;border-color:#13b552}
-.btn.red{background:#ff2b2b;color:#fff;border-color:#ff2b2b}
+.btn{width:100%;min-height:52px;padding:14px 16px;border:1.5px solid #111;background:#fff;color:#111;font-size:16px;font-weight:850;box-shadow:none;margin-bottom:10px}
+.btn.start{background:#ffd12f;color:#111;border-color:#111}
+.btn.green{background:#28d866;color:#111;border-color:#111}
+.btn.red{background:#d94a4a;color:#fff;border-color:#111}
 
 .question-progress{
   margin-bottom:16px;
-  border:1.5px solid #5c5c5c;
-  background:#101010;
+  border:1.5px solid #111;
+  background:#fff;
   padding:13px;
 }
 
@@ -64,30 +64,17 @@ button{font-family:inherit;border:0;cursor:pointer}
   justify-content:space-between;
   align-items:center;
   font-size:13px;
-  font-weight:800;
+  font-weight:850;
   margin-bottom:11px;
-  color:#f5f5f5;
+  color:#111;
 }
 
-.signal-progress{
-  display:grid;
-  grid-template-columns:repeat(12,1fr);
-  gap:5px;
-}
-
-.signal-dot{
-  height:15px;
-  border:1px solid #444;
-  background:#292929;
-}
-
-.signal-dot.done.green{background:#18c95a}
+.signal-progress{display:grid;grid-template-columns:repeat(12,1fr);gap:5px}
+.signal-dot{height:15px;border:1px solid #111;background:#ececec}
+.signal-dot.done.green{background:#28d866}
 .signal-dot.done.yellow{background:#ffd12f}
-.signal-dot.done.red{background:#ff2b2b}
-.signal-dot.now{
-  animation:blinkSignal .7s infinite alternate;
-  border-color:#fff;
-}
+.signal-dot.done.red{background:#d94a4a}
+.signal-dot.now{animation:blinkSignal .7s infinite alternate;border-color:#111}
 
 @keyframes blinkSignal{
   from{opacity:.35}
@@ -95,11 +82,11 @@ button{font-family:inherit;border:0;cursor:pointer}
 }
 
 .q-card{
-  background:#111;
-  border:1.5px solid #666;
+  background:#fff3b8;
+  border:2px solid #111;
   box-shadow:none;
   padding:18px;
-  color:#fff;
+  color:#111;
 }
 
 .q-num{
@@ -107,8 +94,8 @@ button{font-family:inherit;border:0;cursor:pointer}
   align-items:center;
   height:34px;
   padding:0 13px;
-  background:#ffd12f;
-  color:#111;
+  background:#111;
+  color:#ffd12f;
   font-size:14px;
   font-weight:850;
   margin-bottom:14px;
@@ -118,10 +105,10 @@ button{font-family:inherit;border:0;cursor:pointer}
   font-size:22px;
   line-height:1.4;
   letter-spacing:-.6px;
-  font-weight:800;
+  font-weight:850;
   margin:0 0 20px;
   word-break:keep-all;
-  color:#fff;
+  color:#111;
 }
 
 .answer-btn{
@@ -131,26 +118,18 @@ button{font-family:inherit;border:0;cursor:pointer}
   font-weight:750;
   color:#111;
   min-height:66px;
-  border:0;
+  background:#fffbe2;
+  border:1.5px solid #111;
 }
 
-.answer-btn.green-answer{
-  background:#2ee067;
-  border:1.5px solid #2ee067;
-}
-
-.answer-btn.red-answer{
-  background:#ff4a4a;
-  border:1.5px solid #ff4a4a;
-}
-
+.answer-btn:hover{background:#fff6c8}
 .answer-btn:active{transform:scale(.99)}
 
 .result-top{
   text-align:center;
   margin-bottom:16px;
-  border:1.5px solid #777;
-  background:#101010;
+  border:1.5px solid #111;
+  background:#fff;
   padding:14px 12px;
 }
 
@@ -173,24 +152,25 @@ button{font-family:inherit;border:0;cursor:pointer}
   font-weight:850;
   letter-spacing:-1px;
   margin-bottom:8px;
-  color:#fff;
+  color:#111;
 }
 
 .result-sub{
   display:inline-block;
   font-size:14px;
   line-height:1.45;
-  font-weight:700;
+  font-weight:750;
   color:#111;
   word-break:keep-all;
-  background:#fff;
+  background:#f1f1f1;
   padding:8px 10px;
+  border:1px solid #111;
 }
 
 .result-wrapper{display:grid;grid-template-columns:1fr;gap:12px}
 .result-section{border:1.5px solid #111}
-.result-section.green-sec{background:#2ee067}
-.result-section.red-sec{background:#ff3b3b}
+.result-section.green-sec{background:#28d866}
+.result-section.red-sec{background:#d94a4a}
 
 .sec-header{
   height:42px;
@@ -199,13 +179,12 @@ button{font-family:inherit;border:0;cursor:pointer}
   justify-content:center;
   font-size:18px;
   font-weight:900;
-  color:#111;
   letter-spacing:.2px;
   border-bottom:1.5px solid rgba(0,0,0,.35);
 }
 
-.green-sec .sec-header{background:#2ee067}
-.red-sec .sec-header{background:#ff3b3b}
+.green-sec .sec-header{background:#28d866;color:#111}
+.red-sec .sec-header{background:#d94a4a;color:#111}
 
 .traits-list{display:grid;grid-template-columns:1fr 1fr;gap:8px 10px;padding:12px 11px}
 
@@ -217,8 +196,10 @@ button{font-family:inherit;border:0;cursor:pointer}
   font-weight:750;
   letter-spacing:-.45px;
   word-break:keep-all;
-  color:#111;
 }
+
+.green-sec .trait-item{color:#111}
+.red-sec .trait-item{color:#111}
 
 .trait-item:before{
   content:"";
@@ -226,8 +207,10 @@ button{font-family:inherit;border:0;cursor:pointer}
   height:7px;
   margin:6px 6px 0 0;
   flex:0 0 auto;
-  background:#111;
 }
+
+.green-sec .trait-item:before{background:#111}
+.red-sec .trait-item:before{background:#111}
 
 .control-btns{display:none;flex-direction:column;gap:10px;margin-top:20px}
 .control-btns .btn{margin-bottom:0}
@@ -316,8 +299,8 @@ button{font-family:inherit;border:0;cursor:pointer}
       <div class="q-card">
         <div class="q-num" id="q-label">Q1</div>
         <div id="q-text" class="q-text">질문</div>
-        <button class="btn answer-btn green-answer" id="btn-a" onclick="selectAns(1)">답변 A</button>
-        <button class="btn answer-btn red-answer" id="btn-b" onclick="selectAns(2)">답변 B</button>
+        <button class="btn answer-btn" id="btn-a" onclick="selectAns(1)">답변 A</button>
+        <button class="btn answer-btn" id="btn-b" onclick="selectAns(2)">답변 B</button>
       </div>
     </div>
 
@@ -486,7 +469,7 @@ function paintLightsForCapture(){
     original.push({el:light,style:light.getAttribute("style")});
 
     if(light.classList.contains("red-on")){
-      light.setAttribute("style","background:#ff2b2b!important;background-color:#ff2b2b!important;box-shadow:none!important;border:2px solid #000!important;");
+      light.setAttribute("style","background:#d94a4a!important;background-color:#d94a4a!important;box-shadow:none!important;border:2px solid #000!important;");
     }
 
     if(light.classList.contains("yellow-on")){
@@ -494,7 +477,7 @@ function paintLightsForCapture(){
     }
 
     if(light.classList.contains("green-on")){
-      light.setAttribute("style","background:#18c95a!important;background-color:#18c95a!important;box-shadow:none!important;border:2px solid #000!important;");
+      light.setAttribute("style","background:#28d866!important;background-color:#28d866!important;box-shadow:none!important;border:2px solid #000!important;");
     }
   });
 
@@ -518,7 +501,7 @@ function saveImage(){
   setTimeout(()=>{
     html2canvas(target,{
       scale:2,
-      backgroundColor:"#171717",
+      backgroundColor:"#fff",
       useCORS:true,
       foreignObjectRendering:false,
       logging:false

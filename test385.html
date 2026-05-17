@@ -23,137 +23,83 @@ button{font-family:inherit;border:0;cursor:pointer}
 .screen{display:none}
 .screen.active{display:block}
 
-.app-card{
-  background:#171717;
-  border:1.5px solid #4a4a4a;
-  padding:18px;
-  box-shadow:none;
-}
-
+.app-card{background:#171717;border:1.5px solid #4a4a4a;padding:18px;box-shadow:none}
 #capture-area{background:#171717}
 
-.signal-bar{
-  width:188px;
-  height:58px;
-  margin:0 auto 18px;
-  background:#0b0b0b;
-  border:1.5px solid #777;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:12px;
-}
-
-.light{
-  width:34px;
-  height:34px;
-  border-radius:50%;
-  border:2px solid #000;
-  background:#555;
-  box-shadow:inset 0 3px 8px rgba(0,0,0,.35);
-}
-
+.signal-bar{width:188px;height:58px;margin:0 auto 18px;background:#0b0b0b;border:1.5px solid #777;display:flex;align-items:center;justify-content:center;gap:12px}
+.light{width:34px;height:34px;border-radius:50%;border:2px solid #000;background:#555;box-shadow:inset 0 3px 8px rgba(0,0,0,.35)}
 .red-on{background:#ff2b2b!important;background-color:#ff2b2b!important}
 .yellow-on{background:#ffd12f!important;background-color:#ffd12f!important}
 .green-on{background:#18c95a!important;background-color:#18c95a!important}
 
-.title{
-  text-align:center;
-  font-size:36px;
-  line-height:1.08;
-  letter-spacing:-1.4px;
-  font-weight:800;
-  margin:0 0 14px;
-  color:#fff;
-}
-
+.title{text-align:center;font-size:36px;line-height:1.08;letter-spacing:-1.4px;font-weight:800;margin:0 0 14px;color:#fff}
 .title .red-word{color:#ff3b3b}
 .title .green-word{color:#2ee067}
 
-.desc{
-  text-align:center;
-  font-size:16px;
-  line-height:1.5;
-  font-weight:700;
-  color:#eeeeee;
-  margin:0 0 22px;
-}
-
+.desc{text-align:center;font-size:16px;line-height:1.5;font-weight:700;color:#eeeeee;margin:0 0 22px}
 .green-text{color:#2ee067;font-weight:800}
 .red-text{color:#ff4a4a;font-weight:800}
 
-.start-info{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
-  margin-bottom:16px;
-}
-
-.info-card{
-  border:1.5px solid #666;
-  padding:13px 11px;
-  min-height:94px;
-  color:#fff;
-}
-
+.start-info{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
+.info-card{border:1.5px solid #666;padding:13px 11px;min-height:94px;color:#fff}
 .info-card.green{background:#12aa4c}
 .info-card.red{background:#f82f2f}
 .info-card b{display:block;font-size:22px;font-weight:800;margin-bottom:8px}
 .info-card span{font-size:13px;line-height:1.35;font-weight:700;word-break:keep-all}
 
-.btn{
-  width:100%;
-  min-height:52px;
-  padding:14px 16px;
-  border:1.5px solid #666;
-  background:#1d1d1d;
-  color:#fff;
-  font-size:16px;
-  font-weight:800;
-  box-shadow:none;
-  margin-bottom:10px;
-}
-
+.btn{width:100%;min-height:52px;padding:14px 16px;border:1.5px solid #666;background:#1d1d1d;color:#fff;font-size:16px;font-weight:800;box-shadow:none;margin-bottom:10px}
 .btn.start{background:#ffd12f;color:#111;border-color:#ffd12f}
 .btn.green{background:#13b552;color:#fff;border-color:#13b552}
 .btn.red{background:#ff2b2b;color:#fff;border-color:#ff2b2b}
 
-.progress-wrap{
+.question-progress{
   margin-bottom:16px;
   border:1.5px solid #5c5c5c;
-  background:#202020;
-  padding:12px;
+  background:#101010;
+  padding:13px;
 }
 
 .progress-top{
   display:flex;
   justify-content:space-between;
+  align-items:center;
   font-size:13px;
-  font-weight:700;
-  margin-bottom:8px;
+  font-weight:800;
+  margin-bottom:11px;
   color:#f5f5f5;
 }
 
-.progress{
-  height:15px;
-  background:#080808;
-  overflow:hidden;
-  border:1px solid #555;
+.signal-progress{
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  gap:5px;
 }
 
-.progress-fill{
-  height:100%;
-  width:0;
-  background:linear-gradient(90deg,#18c95a 0%,#ffd12f 50%,#ff2b2b 100%);
-  transition:.2s;
+.signal-dot{
+  height:15px;
+  border:1px solid #444;
+  background:#292929;
+}
+
+.signal-dot.done.green{background:#18c95a}
+.signal-dot.done.yellow{background:#ffd12f}
+.signal-dot.done.red{background:#ff2b2b}
+.signal-dot.now{
+  animation:blinkSignal .7s infinite alternate;
+  border-color:#fff;
+}
+
+@keyframes blinkSignal{
+  from{opacity:.35}
+  to{opacity:1}
 }
 
 .q-card{
-  background:#f7f7f7;
-  border:2px solid #ffffff;
+  background:#111;
+  border:1.5px solid #666;
   box-shadow:none;
   padding:18px;
-  color:#111;
+  color:#fff;
 }
 
 .q-num{
@@ -161,10 +107,10 @@ button{font-family:inherit;border:0;cursor:pointer}
   align-items:center;
   height:34px;
   padding:0 13px;
-  background:#111;
-  color:#fff;
+  background:#ffd12f;
+  color:#111;
   font-size:14px;
-  font-weight:800;
+  font-weight:850;
   margin-bottom:14px;
 }
 
@@ -175,42 +121,76 @@ button{font-family:inherit;border:0;cursor:pointer}
   font-weight:800;
   margin:0 0 20px;
   word-break:keep-all;
-  color:#111;
+  color:#fff;
 }
 
 .answer-btn{
   text-align:left;
   font-size:16px;
   line-height:1.45;
-  font-weight:700;
+  font-weight:750;
   color:#111;
   min-height:66px;
-  background:#fff;
+  border:0;
 }
 
 .answer-btn.green-answer{
-  background:#eaffef;
-  border:2px solid #13b552;
+  background:#2ee067;
+  border:1.5px solid #2ee067;
 }
 
 .answer-btn.red-answer{
-  background:#ffecec;
-  border:2px solid #ff2b2b;
+  background:#ff4a4a;
+  border:1.5px solid #ff4a4a;
 }
 
 .answer-btn:active{transform:scale(.99)}
 
-.result-top{text-align:center;margin-bottom:16px}
-.result-label{font-size:12px;font-weight:700;color:#e1e1e1;margin-bottom:6px}
-.result-name{font-size:30px;line-height:1.12;font-weight:800;letter-spacing:-1px;margin-bottom:7px;color:#fff}
-.result-sub{font-size:14px;line-height:1.45;font-weight:650;color:#f0f0f0;word-break:keep-all}
+.result-top{
+  text-align:center;
+  margin-bottom:16px;
+  border:1.5px solid #777;
+  background:#101010;
+  padding:14px 12px;
+}
+
+.result-label{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:28px;
+  padding:0 12px;
+  background:#ffd12f;
+  color:#111;
+  font-size:12px;
+  font-weight:850;
+  margin-bottom:9px;
+}
+
+.result-name{
+  font-size:31px;
+  line-height:1.12;
+  font-weight:850;
+  letter-spacing:-1px;
+  margin-bottom:8px;
+  color:#fff;
+}
+
+.result-sub{
+  display:inline-block;
+  font-size:14px;
+  line-height:1.45;
+  font-weight:700;
+  color:#111;
+  word-break:keep-all;
+  background:#fff;
+  padding:8px 10px;
+}
 
 .result-wrapper{display:grid;grid-template-columns:1fr;gap:12px}
-
-.result-section{
-  border:1.5px solid #777;
-  background:#171717;
-}
+.result-section{border:1.5px solid #111}
+.result-section.green-sec{background:#2ee067}
+.result-section.red-sec{background:#ff3b3b}
 
 .sec-header{
   height:42px;
@@ -218,30 +198,26 @@ button{font-family:inherit;border:0;cursor:pointer}
   align-items:center;
   justify-content:center;
   font-size:18px;
-  font-weight:800;
-  color:#fff;
+  font-weight:900;
+  color:#111;
   letter-spacing:.2px;
+  border-bottom:1.5px solid rgba(0,0,0,.35);
 }
 
-.green-sec .sec-header{background:#13b552}
-.red-sec .sec-header{background:#ff2b2b}
+.green-sec .sec-header{background:#2ee067}
+.red-sec .sec-header{background:#ff3b3b}
 
-.traits-list{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:8px 10px;
-  padding:12px 11px;
-}
+.traits-list{display:grid;grid-template-columns:1fr 1fr;gap:8px 10px;padding:12px 11px}
 
 .trait-item{
   display:flex;
   align-items:flex-start;
   font-size:13px;
   line-height:1.32;
-  font-weight:650;
+  font-weight:750;
   letter-spacing:-.45px;
   word-break:keep-all;
-  color:#f4f4f4;
+  color:#111;
 }
 
 .trait-item:before{
@@ -250,51 +226,16 @@ button{font-family:inherit;border:0;cursor:pointer}
   height:7px;
   margin:6px 6px 0 0;
   flex:0 0 auto;
+  background:#111;
 }
 
-.green-sec .trait-item:before{background:#13b552}
-.red-sec .trait-item:before{background:#ff2b2b}
-
-.control-btns{
-  display:none;
-  flex-direction:column;
-  gap:10px;
-  margin-top:20px;
-}
-
+.control-btns{display:none;flex-direction:column;gap:10px;margin-top:20px}
 .control-btns .btn{margin-bottom:0}
 
-#modal{
-  display:none;
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.86);
-  z-index:1000;
-  align-items:center;
-  justify-content:center;
-  flex-direction:column;
-  padding:18px;
-}
-
-.modal-txt{
-  color:#fff;
-  font-size:15px;
-  line-height:1.45;
-  font-weight:800;
-  text-align:center;
-  margin-bottom:14px;
-}
-
+#modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.86);z-index:1000;align-items:center;justify-content:center;flex-direction:column;padding:18px}
+.modal-txt{color:#fff;font-size:15px;line-height:1.45;font-weight:800;text-align:center;margin-bottom:14px}
 #modal-img{width:86%;max-width:320px;border:2px solid #fff}
-
-.close-btn{
-  margin-top:16px;
-  background:#ffd12f;
-  color:#111;
-  border:2px solid #111;
-  padding:13px 34px;
-  font-weight:800;
-}
+.close-btn{margin-top:16px;background:#ffd12f;color:#111;border:2px solid #111;padding:13px 34px;font-weight:800}
 
 @media(max-width:390px){
   #app-container{padding:14px 10px 32px}
@@ -302,12 +243,14 @@ button{font-family:inherit;border:0;cursor:pointer}
   .title{font-size:31px}
   .q-text{font-size:20px}
   .answer-btn{font-size:15px}
-  .result-name{font-size:26px}
+  .result-name{font-size:27px}
   .result-sub{font-size:13px}
   .traits-list{gap:7px 7px;padding:10px 8px}
-  .trait-item{font-size:11.8px;letter-spacing:-.65px;font-weight:650}
+  .trait-item{font-size:11.8px;letter-spacing:-.65px;font-weight:750}
   .sec-header{height:39px;font-size:16px}
   .main-nav{gap:9px;font-size:12px}
+  .signal-progress{gap:4px}
+  .signal-dot{height:13px}
 }
 </style>
 </head>
@@ -362,14 +305,12 @@ button{font-family:inherit;border:0;cursor:pointer}
     </div>
 
     <div id="screen-question" class="screen">
-      <div class="progress-wrap">
+      <div class="question-progress">
         <div class="progress-top">
           <span id="q-num">Q. 1 / 12</span>
           <span>REDRED TEST</span>
         </div>
-        <div class="progress">
-          <div id="progress-fill" class="progress-fill"></div>
-        </div>
+        <div id="signal-progress" class="signal-progress"></div>
       </div>
 
       <div class="q-card">
@@ -426,15 +367,12 @@ const qData=[
   {type:"EI",q:"친구랑 둘이 놀다가 갑자기 친구의 친구들이 합류한다고 하면?",a:"사람 많아지면 더 재밌을 것 같아서 바로 분위기를 맞춘다",b:"갑자기 낯선 사람이 늘면 에너지를 다시 계산하게 된다"},
   {type:"EI",q:"회사나 학교에서 쉬는 시간이 생겼을 때 나는?",a:"근처 사람에게 말을 걸거나 가벼운 농담을 던진다",b:"혼자 폰을 보거나 조용히 숨 돌리는 시간이 더 편하다"},
   {type:"EI",q:"하루 종일 사람들을 많이 만난 날 밤에 나는?",a:"피곤해도 오늘 있었던 얘기를 누군가에게 또 하고 싶다",b:"말을 너무 많이 해서 이제 아무 소리도 듣고 싶지 않다"},
-
   {type:"SN",q:"처음 가는 동네에서 맛집을 고를 때 나는?",a:"리뷰 수, 메뉴 사진, 가격, 위치를 보고 고른다",b:"간판 분위기나 이름에서 끌리는 곳이 더 궁금해진다"},
   {type:"SN",q:"친구가 이 옷 어때? 라고 물어봤을 때 나는?",a:"색, 핏, 계절감처럼 실제로 보이는 부분을 말한다",b:"그 옷이 주는 이미지나 분위기를 먼저 말한다"},
   {type:"SN",q:"새로운 일을 시작하기 전에 머릿속에 먼저 뜨는 건?",a:"준비물, 순서, 시간, 지금 해야 하는 단계",b:"이걸 하면 앞으로 어떤 가능성이 생길지"},
-
   {type:"TF",q:"친구가 같은 실수를 반복해서 힘들어할 때 나는?",a:"왜 반복되는지 패턴을 찾아서 현실적인 방법을 말한다",b:"또 힘들었겠다 싶어서 마음부터 먼저 달래준다"},
   {type:"TF",q:"내가 상대에게 서운한 일이 생겼을 때 더 필요한 건?",a:"상대가 상황을 정확히 이해하고 고칠 점을 아는 것",b:"상대가 내 마음을 진심으로 알아주는 것"},
   {type:"TF",q:"팀 과제에서 의견이 갈릴 때 나는?",a:"누구 말이 더 논리적이고 효율적인지 따져본다",b:"누가 소외되거나 상처받지 않게 흐름을 조절한다"},
-
   {type:"JP",q:"약속 장소가 정해졌는데 세부 일정이 비어 있으면?",a:"만나는 시간부터 동선까지 어느 정도 정리해두고 싶다",b:"만나서 그때 끌리는 대로 움직여도 괜찮다"},
   {type:"JP",q:"할 일이 여러 개 쌓였을 때 나는?",a:"먼저 순서를 정하고 하나씩 끝내야 마음이 놓인다",b:"지금 눈에 들어오는 것부터 처리하면서 흐름을 탄다"},
   {type:"JP",q:"갑자기 계획이 틀어졌을 때 나는?",a:"바뀐 상황에 맞춰 새 계획을 빨리 다시 세운다",b:"어차피 바뀐 김에 더 재밌는 방향을 찾아본다"}
@@ -470,6 +408,23 @@ function startTest(){
   renderQ();
 }
 
+function renderSignalProgress(){
+  const wrap=document.getElementById("signal-progress");
+  wrap.innerHTML="";
+  for(let i=0;i<12;i++){
+    const dot=document.createElement("div");
+    dot.className="signal-dot";
+    const color=i%3===0?"green":i%3===1?"yellow":"red";
+    if(i<step){
+      dot.classList.add("done",color);
+    }
+    if(i===step){
+      dot.classList.add("done",color,"now");
+    }
+    wrap.appendChild(dot);
+  }
+}
+
 function renderQ(){
   const q=qData[step];
   document.getElementById("q-num").innerText=`Q. ${step+1} / 12`;
@@ -477,7 +432,7 @@ function renderQ(){
   document.getElementById("q-text").innerText=q.q;
   document.getElementById("btn-a").innerText=q.a;
   document.getElementById("btn-b").innerText=q.b;
-  document.getElementById("progress-fill").style.width=`${(step/qData.length)*100}%`;
+  renderSignalProgress();
 }
 
 function selectAns(choice){
@@ -489,7 +444,6 @@ function selectAns(choice){
   if(step<qData.length){
     renderQ();
   }else{
-    document.getElementById("progress-fill").style.width="100%";
     showResult();
   }
 }

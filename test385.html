@@ -23,277 +23,72 @@ button{font-family:inherit;border:0;cursor:pointer}
 .screen{display:none}
 .screen.active{display:block}
 
-.app-card{
-  background:#fff;
-  border:1.5px solid #111;
-  padding:18px;
-  box-shadow:none;
-}
-
+.app-card{background:#fff;border:1.5px solid #111;padding:18px;box-shadow:none}
 #capture-area{background:#fff}
 
-.signal-bar{
-  width:188px;
-  height:58px;
-  margin:0 auto 18px;
-  background:#191919;
-  border:1.5px solid #111;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:12px;
-}
-
-.light{
-  width:34px;
-  height:34px;
-  border-radius:50%;
-  border:2px solid #000;
-  background:#555;
-  box-shadow:inset 0 3px 8px rgba(0,0,0,.35);
-}
-
+.signal-bar{width:188px;height:58px;margin:0 auto 18px;background:#191919;border:1.5px solid #111;display:flex;align-items:center;justify-content:center;gap:12px}
+.light{width:34px;height:34px;border-radius:50%;border:2px solid #000;background:#555;box-shadow:inset 0 3px 8px rgba(0,0,0,.35)}
 .red-on{background:#ff2b2b!important;background-color:#ff2b2b!important}
 .yellow-on{background:#ffd12f!important;background-color:#ffd12f!important}
 .green-on{background:#18c95a!important;background-color:#18c95a!important}
 
-.title{
-  text-align:center;
-  font-size:36px;
-  line-height:1.08;
-  letter-spacing:-1.8px;
-  font-weight:950;
-  margin:0 0 14px;
-}
-
+.title{text-align:center;font-size:36px;line-height:1.08;letter-spacing:-1.8px;font-weight:950;margin:0 0 14px}
 .title .red-word{color:#ff2b2b}
 .title .green-word{color:#13ad4d}
 
-.desc{
-  text-align:center;
-  font-size:16px;
-  line-height:1.5;
-  font-weight:800;
-  color:#333;
-  margin:0 0 22px;
-}
-
+.desc{text-align:center;font-size:16px;line-height:1.5;font-weight:800;color:#333;margin:0 0 22px}
 .green-text{color:#13ad4d;font-weight:950}
 .red-text{color:#ff2b2b;font-weight:950}
 
-.start-info{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
-  margin-bottom:16px;
-}
-
-.info-card{
-  border:1.5px solid #111;
-  padding:13px 11px;
-  min-height:94px;
-  color:#fff;
-}
-
+.start-info{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
+.info-card{border:1.5px solid #111;padding:13px 11px;min-height:94px;color:#fff}
 .info-card.green{background:#13b552}
 .info-card.red{background:#ff2b2b}
 .info-card b{display:block;font-size:22px;font-weight:950;margin-bottom:8px}
 .info-card span{font-size:13px;line-height:1.35;font-weight:850;word-break:keep-all}
 
-.btn{
-  width:100%;
-  min-height:52px;
-  padding:14px 16px;
-  border:1.5px solid #111;
-  background:#fff;
-  color:#111;
-  font-size:16px;
-  font-weight:950;
-  box-shadow:none;
-  margin-bottom:10px;
-}
-
+.btn{width:100%;min-height:52px;padding:14px 16px;border:1.5px solid #111;background:#fff;color:#111;font-size:16px;font-weight:950;box-shadow:none;margin-bottom:10px}
 .btn.start{background:#ffd12f}
 .btn.green{background:#13b552;color:#fff}
 .btn.red{background:#ff2b2b;color:#fff}
 
-.progress-wrap{
-  margin-bottom:16px;
-  border:1.5px solid #111;
-  background:#fff;
-  padding:12px;
-}
+.progress-wrap{margin-bottom:16px;border:1.5px solid #111;background:#fff;padding:12px}
+.progress-top{display:flex;justify-content:space-between;font-size:13px;font-weight:950;margin-bottom:8px}
+.progress{height:14px;background:#e9e9e9;overflow:hidden;border:1px solid #111}
+.progress-fill{height:100%;width:0;background:linear-gradient(90deg,#18c95a 0%,#ffd12f 50%,#ff2b2b 100%);transition:.2s}
 
-.progress-top{
-  display:flex;
-  justify-content:space-between;
-  font-size:13px;
-  font-weight:950;
-  margin-bottom:8px;
-}
+.q-card{background:#fff;border:1.5px solid #111;box-shadow:none;padding:18px}
+.q-num{display:inline-flex;align-items:center;height:32px;padding:0 12px;background:#111;color:#fff;font-size:14px;font-weight:950;margin-bottom:14px}
+.q-text{font-size:23px;line-height:1.35;letter-spacing:-.8px;font-weight:950;margin:0 0 20px;word-break:keep-all}
 
-.progress{
-  height:14px;
-  background:#e9e9e9;
-  overflow:hidden;
-  border:1px solid #111;
-}
-
-.progress-fill{
-  height:100%;
-  width:0;
-  background:linear-gradient(90deg,#18c95a 0%,#ffd12f 50%,#ff2b2b 100%);
-  transition:.2s;
-}
-
-.q-card{
-  background:#fff;
-  border:1.5px solid #111;
-  box-shadow:none;
-  padding:18px;
-}
-
-.q-num{
-  display:inline-flex;
-  align-items:center;
-  height:32px;
-  padding:0 12px;
-  background:#111;
-  color:#fff;
-  font-size:14px;
-  font-weight:950;
-  margin-bottom:14px;
-}
-
-.q-text{
-  font-size:23px;
-  line-height:1.35;
-  letter-spacing:-.8px;
-  font-weight:950;
-  margin:0 0 20px;
-  word-break:keep-all;
-}
-
-.answer-btn{
-  text-align:left;
-  font-size:16px;
-  line-height:1.45;
-  font-weight:850;
-  background:#fff;
-}
-
-.answer-btn.green-answer{
-  background:#e2ffe9;
-  border-color:#13b552;
-}
-
-.answer-btn.red-answer{
-  background:#ffe2e2;
-  border-color:#ff2b2b;
-}
+.answer-btn{text-align:left;font-size:16px;line-height:1.45;font-weight:850;background:#fff}
+.answer-btn.green-answer{background:#e2ffe9;border-color:#13b552}
+.answer-btn.red-answer{background:#ffe2e2;border-color:#ff2b2b}
 
 .result-top{text-align:center;margin-bottom:16px}
 .result-label{font-size:12px;font-weight:850;color:#555;margin-bottom:6px}
 .result-name{font-size:30px;line-height:1.12;font-weight:950;letter-spacing:-1.2px;margin-bottom:7px;color:#111}
 .result-sub{font-size:14px;line-height:1.4;font-weight:800;color:#444;word-break:keep-all}
 
-.result-wrapper{
-  display:grid;
-  grid-template-columns:1fr;
-  gap:12px;
-}
-
-.result-section{
-  border:1.5px solid #111;
-  background:#fff;
-}
-
-.sec-header{
-  height:42px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:18px;
-  font-weight:950;
-  color:#fff;
-  letter-spacing:.2px;
-}
-
+.result-wrapper{display:grid;grid-template-columns:1fr;gap:12px}
+.result-section{border:1.5px solid #111;background:#fff}
+.sec-header{height:42px;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:950;color:#fff;letter-spacing:.2px}
 .green-sec .sec-header{background:#13b552}
 .red-sec .sec-header{background:#ff2b2b}
 
-.traits-list{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:8px 10px;
-  padding:12px 11px;
-}
-
-.trait-item{
-  display:flex;
-  align-items:flex-start;
-  font-size:13px;
-  line-height:1.28;
-  font-weight:850;
-  letter-spacing:-.6px;
-  word-break:keep-all;
-}
-
-.trait-item:before{
-  content:"";
-  width:7px;
-  height:7px;
-  margin:5px 6px 0 0;
-  flex:0 0 auto;
-}
-
+.traits-list{display:grid;grid-template-columns:1fr 1fr;gap:8px 10px;padding:12px 11px}
+.trait-item{display:flex;align-items:flex-start;font-size:13px;line-height:1.28;font-weight:850;letter-spacing:-.6px;word-break:keep-all}
+.trait-item:before{content:"";width:7px;height:7px;margin:5px 6px 0 0;flex:0 0 auto}
 .green-sec .trait-item:before{background:#13b552}
 .red-sec .trait-item:before{background:#ff2b2b}
 
-.control-btns{
-  display:none;
-  flex-direction:column;
-  gap:10px;
-  margin-top:20px;
-}
-
+.control-btns{display:none;flex-direction:column;gap:10px;margin-top:20px}
 .control-btns .btn{margin-bottom:0}
 
-#modal{
-  display:none;
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.86);
-  z-index:1000;
-  align-items:center;
-  justify-content:center;
-  flex-direction:column;
-  padding:18px;
-}
-
-.modal-txt{
-  color:#fff;
-  font-size:15px;
-  line-height:1.45;
-  font-weight:900;
-  text-align:center;
-  margin-bottom:14px;
-}
-
-#modal-img{
-  width:86%;
-  max-width:320px;
-  border:2px solid #fff;
-}
-
-.close-btn{
-  margin-top:16px;
-  background:#ffd12f;
-  color:#111;
-  border:2px solid #111;
-  padding:13px 34px;
-  font-weight:950;
-}
+#modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.86);z-index:1000;align-items:center;justify-content:center;flex-direction:column;padding:18px}
+.modal-txt{color:#fff;font-size:15px;line-height:1.45;font-weight:900;text-align:center;margin-bottom:14px}
+#modal-img{width:86%;max-width:320px;border:2px solid #fff}
+.close-btn{margin-top:16px;background:#ffd12f;color:#111;border:2px solid #111;padding:13px 34px;font-weight:950}
 
 @media(max-width:390px){
   #app-container{padding:14px 10px 32px}
@@ -421,21 +216,21 @@ button{font-family:inherit;border:0;cursor:pointer}
 
 <script>
 const qData=[
-  {type:"EI",q:"친구가 주말에 번개 모임을 불렀다!",a:"오 완전 좋아! 당장 나갈게!",b:"아... 나 이미 누워있는데... 다음에 보자"},
-  {type:"EI",q:"사람이 많은 엘리베이터 안, 정적이 흐를 때 나는?",a:"가끔 처음 보는 사람에게도 가벼운 스몰토크를 던진다",b:"속으로 어색해하며 누가 말해주길 바란다"},
-  {type:"EI",q:"스트레스를 엄청 받았을 때 나의 해소법은?",a:"친구들 만나서 맛있는 거 먹고 신나게 수다 떨기",b:"방에 틀어박혀 혼자만의 조용한 시간 보내기"},
+  {type:"EI",q:"카페에서 친구를 기다리는데 옆자리 사람이 계속 웃긴 얘기를 한다면?",a:"나도 모르게 듣다가 타이밍 맞으면 한마디 끼고 싶어진다",b:"재밌어도 그냥 조용히 듣고 내 세계에 머문다"},
+  {type:"EI",q:"단체 채팅방에 갑자기 대화가 폭발했을 때 나는?",a:"흐름 놓치기 전에 바로 끼어들어서 같이 떠든다",b:"일단 몰아서 읽고 꼭 필요한 말만 남긴다"},
+  {type:"EI",q:"하루 종일 아무도 안 만나고 집에만 있으면 나는?",a:"편하긴 한데 어느 순간 사람 소리가 그리워진다",b:"드디어 에너지가 다시 차는 느낌이라 안정된다"},
 
-  {type:"SN",q:"사과를 보면 드는 생각은?",a:"빨갛다, 맛있겠다, 백설공주",b:"만약 사과가 파란색이면 우주 맛이 날까?"},
-  {type:"SN",q:"노래를 들을 때 내가 더 꽂히는 부분은?",a:"멜로디 분위기와 현실적으로 공감되는 가사",b:"가사 속에 숨겨진 의미와 스토리텔링"},
-  {type:"SN",q:"요리를 할 때 나의 방식은?",a:"레시피의 용량과 순서를 정확히 지킨다",b:"레시피는 참고만 하고 내 감을 믿는다"},
+  {type:"SN",q:"새로 산 물건의 설명서를 열었을 때 나는?",a:"버튼 위치랑 사용 순서를 먼저 확인한다",b:"이걸로 뭘 더 할 수 있을지부터 떠오른다"},
+  {type:"SN",q:"친구가 어제 이상한 꿈을 꿨다고 말하면 나는?",a:"꿈에 누가 나왔고 무슨 일이 있었는지 묻는다",b:"그 꿈이 지금 마음 상태랑 연결되는지 생각한다"},
+  {type:"SN",q:"길을 걷다 오래된 간판을 봤을 때 나는?",a:"가게 이름, 색감, 위치 같은 게 먼저 눈에 들어온다",b:"저 가게가 버텨온 시간과 사연이 궁금해진다"},
 
-  {type:"TF",q:"친구가 시험 망쳐서 우울하다고 한다면?",a:"무슨 과목 망쳤어? 다음엔 어떻게 공부할 거야?",b:"진짜 속상하겠다. 맛있는 거 먹으러 갈까?"},
-  {type:"TF",q:"내가 더 상처받는 말은?",a:"너 일처리 진짜 비효율적으로 한다",b:"너 진짜 배려심 없다"},
-  {type:"TF",q:"고민 상담을 해줄 때 나는?",a:"객관적으로 상황을 분석하고 해결책을 찾아준다",b:"감정적인 공감이 먼저 나가고 위로해 준다"},
+  {type:"TF",q:"친구가 억울한 일을 당했다고 길게 말할 때 나는?",a:"어디서부터 꼬였는지 정리해서 말해주고 싶다",b:"일단 네가 얼마나 답답했을지부터 말해주고 싶다"},
+  {type:"TF",q:"팀원이 실수했는데 이미 많이 풀이 죽어 있다면 나는?",a:"다음에 같은 실수 안 나게 방법을 같이 잡는다",b:"먼저 괜찮다고 해주고 마음부터 진정시킨다"},
+  {type:"TF",q:"내가 사과를 받아야 할 상황이라면 더 중요한 건?",a:"상대가 뭘 잘못했는지 정확히 아는 것",b:"상대가 진심으로 미안해하는 게 느껴지는 것"},
 
-  {type:"JP",q:"내 방 책상의 상태는 주로 어떤가?",a:"물건들이 제자리에 각 맞춰 정리되어 있다",b:"나름의 질서가 있지만 남들이 보기엔 어질러져 있다"},
-  {type:"JP",q:"여행 계획을 짤 때 나의 스타일은?",a:"시간 단위로 동선과 플랜B까지 세팅한다",b:"비행기, 숙소만 잡고 나머지는 현지에서 정한다"},
-  {type:"JP",q:"외출 준비를 할 때 나는?",a:"여유롭게 준비하도록 미리 시간을 계산해 둔다",b:"나가기 직전까지 미루다가 후다닥 준비한다"}
+  {type:"JP",q:"갑자기 오늘 저녁 일정이 비었다면 나는?",a:"빈 시간에 할 일을 바로 정해서 하루를 다시 맞춘다",b:"오히려 좋아하면서 그때 끌리는 걸 한다"},
+  {type:"JP",q:"핸드폰 메모장에 할 일이 쌓였을 때 나는?",a:"우선순위대로 정리하고 체크하면서 지운다",b:"눈에 밟히는 것부터 하나씩 처리한다"},
+  {type:"JP",q:"친구들과 놀러 가기로 했는데 장소가 아직 안 정해졌다면?",a:"계속 애매한 게 싫어서 후보를 추려 정하자고 한다",b:"만나는 날 분위기 보고 정해도 된다고 생각한다"}
 ];
 
 const rData={
@@ -527,10 +322,7 @@ function paintLightsForCapture(){
   const original=[];
 
   lights.forEach(light=>{
-    original.push({
-      el:light,
-      style:light.getAttribute("style")
-    });
+    original.push({el:light,style:light.getAttribute("style")});
 
     if(light.classList.contains("red-on")){
       light.setAttribute("style","background:#ff2b2b!important;background-color:#ff2b2b!important;box-shadow:none!important;border:2px solid #000!important;");

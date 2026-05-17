@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>테스트잇 레드레드 성격 테스트</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<style>
+  @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+  
+  body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Pretendard', sans-serif;
+    background-color: #222222;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+
+  .site-header {
+    width: 100%;
+    height: 60px;
+    background-color: #111111;
+    border-bottom: 2px solid #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: 900;
+    color: #ffcc00;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    letter-spacing: 2px;
+  }
+
+  #app-container {
+    width: 100%;
+    max-width: 800px;
+    min-height: 100vh;
+    padding: 90px 15px 40px 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    position: relative;
+  }
+
+  .traffic-box {
+    background-color: #333333;
+    width: 100%;
+    border-radius: 0; /* 네모 테두리 */
+    padding: 30px 15px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    border: 2px solid #555;
+  }
+
+  .screen {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .screen.active {
+    display: flex;
+  }
+
+  .light-group {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+  }
+
+  /* 신호등 알맹이는 원형 유지 */
+  .light {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: #555;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.5);
+  }
+  .light.red-on { background-color: #ff3b30; box-shadow: 0 0 15px #ff3b30; }
+  .light.yellow-on { background-color: #ffcc00; box-shadow: 0 0 15px #ffcc00; }
+  .light.green-on { background-color: #34c759; box-shadow: 0 0 15px #34c759; }
+
+  .title {
+    font-size: 32px;
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: 20px;
+    line-height: 1.3;
+  }
+
+  .desc {
+    text-align: center;
+    font-size: 16px;
+    color: #aaaaaa;
+    margin-bottom: 40px;
+    line-height: 1.5;
+  }
+
+  .btn {
+    width: 100%;
+    max-width: 400px;
+    background-color: #444;
+    border: 1px solid #666;
+    color: #fff;
+    padding: 18px;
+    border-radius: 0; /* 네모 테두리 */
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 12px;
+    cursor: pointer;
+    transition: 0.2s;
+    word-break: keep-all;
+  }
+  .btn:hover { background-color: #555; }
+  .btn:active { background-color: #ffcc00; color: #000; border-color: #ffcc00; }
+  .btn.start { background-color: #ffcc00; color: #000; font-size: 18px; border-color: #ffcc00; }
+  .btn.start:hover { background-color: #ffd633; }
+
+  .q-num {
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffcc00;
+    margin-bottom: 15px;
+  }
+  
+  .q-text {
+    font-size: 22px;
+    text-align: center;
+    word-break: keep-all;
+    font-weight: 700;
+    margin-bottom: 50px;
+    min-height: 80px;
+    line-height: 1.4;
+  }
+
+  .mbti-title {
+    font-size: 32px;
+    font-weight: 900;
+    margin-bottom: 25px;
+    color: #ffcc00;
+    word-break: keep-all;
+    text-align: center;
+    line-height: 1.3;
+  }
+
+  .result-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+  }
+
+  /* 네모 테두리로 영역 분리 확실하게 */
+  .result-section {
+    flex: 1;
+    border-radius: 0; /* 네모 테두리 */
+    padding: 15px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .green-sec { 
+    background-color: rgba(52, 199, 89, 0.05); 
+    border: 2px solid #34c759;
+  }
+  .red-sec { 
+    background-color: rgba(255, 59, 48, 0.05); 
+    border: 2px solid #ff3b30;
+  }
+
+  .sec-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 15px;
+    font-size: 18px;
+    font-weight: 900;
+  }
+  
+  .green-sec .sec-header { color: #34c759; }
+  .red-sec .sec-header { color: #ff3b30; }
+
+  /* 텍스트 짤림 방지 최적화 */
+  .traits-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px 6px;
+    width: 100%;
+  }
+
+  .trait-item {
+    font-size: 13px;
+    font-weight: 600;
+    color: #eeeeee;
+    display: flex;
+    align-items: center;
+    white-space: nowrap; /* 한 줄 고정 */
+    letter-spacing: -0.5px; /* 자간 축소 */
+  }
+  
+  /* 심플한 원형 불빛 포인트 */
+  .trait-item::before {
+    content: '●';
+    font-size: 10px;
+    margin-right: 6px;
+  }
+  .green-sec .trait-item::before { color: #34c759; text-shadow: 0 0 4px #34c759; }
+  .red-sec .trait-item::before { color: #ff3b30; text-shadow: 0 0 4px #ff3b30; }
+
+  @media (min-width: 600px) {
+    .result-wrapper { flex-direction: row; }
+    .traits-list { grid-template-columns: 1fr; }
+    .trait-item { font-size: 15px; letter-spacing: 0; }
+    .mbti-title { font-size: 40px; }
+  }
+
+  .control-btns {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 30px;
+  }
+  
+  @media (min-width: 600px) {
+    .control-btns { flex-direction: row; justify-content: center; flex-wrap: wrap; }
+    .control-btns .btn { width: calc(50% - 10px); margin-bottom: 0; }
+  }
+
+  #capture-area { background-color: #222222; }
+
+  #modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.9);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  #modal-img { width: 85%; max-width: 400px; border: 2px solid #555; }
+  .modal-txt { color: #fff; margin-bottom: 20px; font-weight: bold; font-size: 16px; text-align: center;}
+  .close-btn { margin-top: 20px; background: #ffcc00; color: #000; border: none; padding: 12px 30px; font-weight: bold; cursor: pointer; border-radius: 0; }
+</style>
+</head>
+<body>
+
+<div class="site-header">TEST IT</div>
+
+<div id="app-container">
+  
+  <div class="traffic-box" id="capture-area">
+    
+    <div id="screen-start" class="screen active">
+      <div class="light-group">
+        <div class="light red-on"></div>
+        <div class="light yellow-on"></div>
+        <div class="light green-on"></div>
+      </div>
+      <div class="title">테스트잇<br>레드레드 성격 테스트</div>
+      <div class="desc">
+        나에게 긍정적인 행동(GREEN)과<br>
+        멈춰야 할 행동(RED)을 알아봅니다.
+      </div>
+      <button class="btn start" onclick="startTest()">테스트 시작하기</button>
+    </div>
+
+    <div id="screen-question" class="screen">
+      <div class="light-group">
+        <div class="light red-on" id="light-1"></div>
+        <div class="light yellow-on" id="light-2"></div>
+        <div class="light green-on" id="light-3"></div>
+      </div>
+      <div id="q-num" class="q-num">Q. 1 / 12</div>
+      <div id="q-text" class="q-text">질문</div>
+      <button class="btn" id="btn-a" onclick="selectAns(1)">답변 A</button>
+      <button class="btn" id="btn-b" onclick="selectAns(2)">답변 B</button>
+    </div>
+
+    <div id="screen-result" class="screen">
+      <div class="desc" style="margin-bottom: 10px; color: #fff;">나의 신호등 성격 유형은</div>
+      <div id="mbti-nickname" class="mbti-title"></div>
+
+      <div class="result-wrapper">
+        <div class="result-section green-sec">
+          <div class="sec-header">
+            <div class="light green-on" style="width: 12px; height: 12px;"></div>
+            GREEN GREEN
+          </div>
+          <div id="green-list" class="traits-list"></div>
+        </div>
+
+        <div class="result-section red-sec">
+          <div class="sec-header">
+            <div class="light red-on" style="width: 12px; height: 12px;"></div>
+            RED RED
+          </div>
+          <div id="red-list" class="traits-list"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div id="control-area" class="control-btns" style="display: none;">
+    <button class="btn start" onclick="saveImage()">결과 이미지 저장하기</button>
+    <button class="btn" onclick="restart()">다시 해보기</button>
+    <button class="btn" onclick="alert('준비 중입니다.')">다른 테스트 해보기</button>
+    <button class="btn" onclick="share()">테스트 공유하기</button>
+  </div>
+
+</div>
+
+<div id="modal">
+  <div class="modal-txt">👇 이미지를 꾹 눌러서 저장해주세요 👇</div>
+  <img id="modal-img" src="" alt="결과 이미지">
+  <button class="close-btn" onclick="closeModal()">닫기</button>
+</div>
+
+<script>
+  const qData = [
+    { type: 'EI', q: '친구가 주말에 번개 모임을 불렀다!', a: '오 완전 좋아! 당장 나갈게!', b: '아... 나 이미 누워있는데... 다음에 보자' },
+    { type: 'EI', q: '사람이 많은 엘리베이터 안, 정적이 흐를 때 나는?', a: '속으로 어색해하며 누군가 말해주길 바란다', b: '가끔 처음 보는 사람에게도 가벼운 스몰토크를 던진다' },
+    { type: 'EI', q: '스트레스를 엄청 받았을 때 나의 해소법은?', a: '방에 틀어박혀 혼자만의 조용한 시간 보내기', b: '친구들 만나서 맛있는 거 먹고 신나게 수다 떨기' },
+    { type: 'SN', q: '사과를 보면 드는 생각은?', a: '빨갛다, 맛있겠다, 백설공주', b: '만약 사과가 파란색이면 독이 든 걸까? 우주 맛이 날까?' },
+    { type: 'SN', q: '노래를 들을 때 내가 더 꽂히는 부분은?', a: '멜로디의 분위기와 현실적으로 공감되는 가사', b: '가사 속에 숨겨진 은유적인 의미와 스토리텔링' },
+    { type: 'SN', q: '요리를 할 때 나의 방식은?', a: '레시피에 적힌 용량과 순서를 정확히 지킨다', b: '레시피는 참고만 할 뿐, 내 감을 믿고 적당히 넣는다' },
+    { type: 'TF', q: '친구가 "나 시험 망쳐서 우울해"라고 한다면?', a: '무슨 과목 망쳤어? 다음엔 어떻게 공부할 거야?', b: '진짜? 속상하겠다 ㅠㅠ 맛있는 거 먹으러 갈까?' },
+    { type: 'TF', q: '내가 더 상처받는 말은?', a: '너 일처리 진짜 비효율적으로 한다', b: '너 진짜 이기적이고 배려심 없다' },
+    { type: 'TF', q: '고민 상담을 해줄 때 나는?', a: '감정적인 공감이 먼저 나가고 위로해 준다', b: '객관적으로 상황을 분석하고 해결책을 찾아준다' },
+    { type: 'JP', q: '내 방 책상의 상태는 주로 어떤가?', a: '나름의 질서가 있지만 남들이 보기엔 어질러져 있다', b: '물건들이 제자리에 각 맞춰 깔끔하게 정리되어 있다' },
+    { type: 'JP', q: '여행 계획을 짤 때 나의 스타일은?', a: '비행기, 숙소만 잡고 나머지는 현지에서 끌리는 대로', b: '시간 단위로 동선과 맛집, 플랜B까지 완벽하게 세팅' },
+    { type: 'JP', q: '외출 준비를 할 때 나는?', a: '나가기 직전까지 미루다가 후다닥 준비해서 나간다', b: '여유롭게 준비할 수 있도록 미리 시간을 계산해 둔다' }
+  ];
+
+  // 텍스트가 잘리지 않도록 8글자 내외로 매우 짧고 직관적으로 세팅
+  const rData = {
+    ENFP: {
+      name: '스파클링 에너지',
+      g: ['먼저 친근하게 다가가기', '신나게 분위기 띄우기', '기발한 아이디어 제안', '긍정적인 말 건네기', '눈치껏 상황 맞추기', '열정적으로 시작하기', '진심으로 공감해주기', '유연하게 생각하기'],
+      r: ['감정 널뛰기 티내기', '중요한 일정 깜빡하기', '금방 흥미 잃고 포기', '남의 말에 휩쓸리기', '기분파 충동구매', '이리저리 산만하게 굴기', '작은 말에 상처받기', '선 넘어서 참견하기']
+    },
+    INFP: {
+      name: '포근한 솜이불',
+      g: ['묵묵히 이야기 들어주기', '따뜻하게 위로해주기', '창의적인 상상하기', '세심하게 배려하기', '나만의 감각 표현하기', '진정성 있게 대하기', '편견 없이 바라보기', '약한 사람 도와주기'],
+      r: ['혼자 상처받고 숨기', '과하게 남 눈치 보기', '싫어도 거절 못하기', '현실 도피하고 미루기', '혼자 우울감에 빠지기', '생각만 하고 안 움직임', '연락 끊고 잠수타기', '쓸데없는 망상하기']
+    },
+    ESTJ: {
+      name: '고장난 불도저',
+      g: ['계획대로 완벽히 끝내기', '책임감 있게 총대 메기', '효율적으로 일정 짜기', '시간 약속 칼같이 지키기', '팩트 기반으로 말하기', '추진력 있게 밀어붙이기', '객관적으로 판단하기', '정해진 규칙 지키기'],
+      r: ['내 방식만 정답이라 우기기', '융통성 1도 없이 굴기', '상대방 감정 무시하기', '꼬치꼬치 잔소리하기', '결과만 보고 평가하기', '새로운 변화 거부하기', '너무 엄격하게 잣대 대기', '팩트로 뼈 때리기']
+    },
+    ISTJ: {
+      name: 'AI 로봇',
+      g: ['맡은 일 끝까지 해내기', '꼼꼼한 디테일 챙기기', '철저하게 계획 세우기', '원칙대로 정확히 처리', '객관적으로 분석하기', '끝까지 인내하고 버티기', '과거 기억 잘 떠올리기', '신뢰감 있게 행동하기'],
+      r: ['내 고집대로만 밀고가기', '융통성 없이 꽉 막히기', '감정 표현 답답하게 하기', '남의 말에 공감 못하기', '갑작스런 변화에 짜증', '남한테 일 절대 안맡김', '속마음 꽁꽁 숨기기', '팩트로만 따지기']
+    },
+    ESFJ: {
+      name: '프로 오지랖퍼',
+      g: ['주변 사람 알뜰하게 챙김', '분위기 부드럽게 풀기', '눈치껏 센스 있게 돕기', '리액션 찰지게 해주기', '모임 즐겁게 주도하기', '맡은 일 책임감 있게', '예의 바르게 행동하기', '약속 시간 잘 지키기'],
+      r: ['남의 시선 과하게 의식', '꼰대처럼 가르치려 들기', '인정 못 받으면 삐치기', '싫은 소리 절대 못하기', '감정적으로 욱해서 말함', '남의 말에 쉽게 흔들림', '뒤에서 험담하기', '너무 피곤하게 배려하기']
+    },
+    ISFJ: {
+      name: '따뜻한 보온병',
+      g: ['묵묵히 뒤에서 챙겨주기', '사소한 것까지 기억하기', '인내심 갖고 기다려주기', '안정감 있게 행동하기', '정해진 규칙 잘 지키기', '따뜻하게 공감해주기', '책임감 있게 마무리', '섬세하게 관찰하기'],
+      r: ['혼자 속으로 끙끙 앓기', '갑작스런 변화 회피하기', '모든 걸 내 탓으로 돌림', '무리한 부탁도 다 들어줌', '너무 수동적으로 끌려감', '내 감정 꾹꾹 참기', '새로운 도전 무조건 피함', '융통성 없이 행동하기']
+    },
+    ESTP: {
+      name: '폼생폼사 행동파',
+      g: ['생각보다 먼저 행동하기', '위기 상황에 빠른 대처', '주변 상황 예리하게 파악', '분위기 유쾌하게 이끌기', '현실적으로 타협점 찾기', '유연하게 협상하기', '뒤끝 없이 쿨하게 넘기기', '자유롭게 즐기기'],
+      r: ['아무 계획 없이 저지르기', '기분 따라 충동적으로 굴기', '선 넘는 위험한 장난', '정해진 규칙 무시하기', '상대방 감정 생각 안함', '금방 싫증 내고 때려치움', '장기적인 계획 안 세우기', '필터 없이 막말하기']
+    },
+    ISTP: {
+      name: '귀차니즘 장인',
+      g: ['필요한 말만 깔끔하게', '위기에도 침착한 대처', '팩트 기반으로 판단하기', '효율적으로 빠르게 끝냄', '상황에 맞춰 유연하게 굴기', '객관적인 시선 유지하기', '관대하게 넘어가주기', '내 할 일 알아서 잘하기'],
+      r: ['내 공간 침범하면 정색', '남의 감정에 무관심하기', '귀찮은 일 계속 미루기', '틀에 갇히는 거 거부하기', '속마음 절대 안 말하기', '공감 리액션 1도 안함', '갑자기 잠수타버리기', '너무 무뚝뚝하게 굴기']
+    },
+    ESFP: {
+      name: '텐션 폭발 에너자이저',
+      g: ['분위기 신나게 띄우기', '텐션 높게 어울려 놀기', '즉흥적으로 재밌게 놀기', '편견 없이 사람 대하기', '빠르게 상황 적응하기', '현실적인 감각 발휘하기', '타고난 센스 보여주기', '쿨하게 스트레스 풀기'],
+      r: ['내일 일은 생각 안 하기', '돈 계획 없이 막 쓰기', '진지한 분위기 못 견디기', '끈기 있게 끝까지 안함', '불편한 갈등 상황 회피', '생각 없이 말실수하기', '유혹에 쉽게 넘어가기', '계획 밥 먹듯이 바꾸기']
+    },
+    ISFP: {
+      name: '누워있는 평화주의자',
+      g: ['둥글둥글하게 맞춰주기', '조용히 세심하게 챙김', '열린 마음으로 받아들임', '따뜻하고 다정하게 대함', '나만의 감각 표현하기', '갈등 없이 평화롭게 지냄', '겸손하게 행동하기', '현재를 즐기며 살기'],
+      r: ['결정 못 하고 계속 미루기', '오늘 할 일 내일로 미루기', '자존감 쉽게 뚝 떨어짐', '승부욕 없이 포기하기', '싫은 내색 안 하고 참기', '금방 체력 방전되기', '팩트 폭격에 상처받기', '복잡한 대화 무조건 피함']
+    },
+    ENTP: {
+      name: '말빨 챔피언',
+      g: ['번뜩이는 아이디어 제안', '논리적으로 의견 말하기', '편견 없이 다각도로 보기', '위기 상황 빠르게 돌파', '자신감 있게 밀어붙이기', '다방면으로 지식 쌓기', '틀에 얽매이지 않고 생각', '솔직하게 팩트 말하기'],
+      r: ['청개구리처럼 반항하기', '쓸데없이 시비 걸기', '벌려놓고 수습 안 하기', '필터 안 거치고 막말하기', '금방 지루해하고 딴짓', '디테일한 부분 다 놓치기', '내 말이 맞다고 똥고집', '남의 감정 철저히 무시']
+    },
+    INTP: {
+      name: '방구석 철학자',
+      g: ['객관적으로 상황 분석', '호기심 갖고 깊게 탐구', '논리적으로 문제 해결', '독창적으로 아이디어 냄', '편견 없이 사실만 보기', '핵심만 정확하게 파악', '독립적으로 내 일 하기', '감정에 휩쓸리지 않기'],
+      r: ['영혼 없는 리액션하기', '귀찮은 거 끝까지 미루기', '사회성 떨어지는 행동', '팩트로 뼈 때리고 상처줌', '감정적으로 공감 안 해줌', '연락 안 보고 귀찮아함', '오만해 보임', '남 무시하는 태도 보임']
+    },
+    ENTJ: {
+      name: '야망 가득 캡틴',
+      g: ['빠르고 확실한 결정', '큰 그림 그리며 전략 짜기', '목표 향해 끝까지 달림', '카리스마 있게 무리 이끎', '가장 효율적인 방법 찾기', '문제 상황 깔끔하게 해결', '강한 자신감 보여주기', '논리적으로 상황 분석'],
+      r: ['내 마음대로 다 통제하려함', '남 감정 무시하고 상처줌', '무능력한 사람 대놓고 무시', '워커홀릭처럼 일만 하기', '오만하고 건방지게 굴기', '팩트 폭격기로 기 죽이기', '인내심 없이 욱하기', '결과를 위해 과정 무시']
+    },
+    INTJ: {
+      name: '마스터마인드',
+      g: ['멀리 내다보고 계획 짜기', '전략적으로 꼼꼼하게 생각', '논리적으로 원인 분석', '독립적으로 목표 달성', '가장 효율적인 길 찾기', '남들이 못 보는 해결책 찾음', '지적으로 계속 탐구하기', '객관적으로 상황 판단'],
+      r: ['냉소적으로 비꼬며 말하기', '남의 의견 싹 무시하기', '융통성 없이 원칙만 따짐', '쓸데없이 완벽주의 부림', '건방지고 오만하게 굴기', '타인 감정에 심하게 둔감', '인간관계 자체를 귀찮아함', '내 고집 절대 안 꺾기']
+    },
+    ENFJ: {
+      name: '다정한 선도부장',
+      g: ['사람들 부드럽게 이끌기', '진심으로 소통하고 공감', '긍정적인 에너지 불어넣기', '책임감 있게 맡은 일 다함', '다른 사람 성장 도와주기', '비전 제시하며 동기부여', '다정하고 따뜻하게 챙김', '좋은 분위기 주도하기'],
+      r: ['남의 일에 너무 과몰입함', '무리한 부탁도 거절 못함', '작은 비판에도 크게 상처', '완벽주의 빠져 스트레스', '감정 소모 심하게 하기', '선 넘어서 오지랖 부리기', '내 밥그릇 못 챙기고 양보', '지나친 이상주의에 빠짐']
+    },
+    INFJ: {
+      name: '겉바속촉 예언가',
+      g: ['깊은 통찰력으로 꿰뚫어봄', '흔들리지 않는 가치관 지킴', '안 드러내며 조용히 돕기', '진심 담아 이타적으로 행동', '톡톡 튀는 영감 떠올리기', '강한 직관력으로 상황 파악', '신뢰감 주는 행동하기', '세심하게 주변 배려하기'],
+      r: ['속마음 절대 안 보여주기', '참다 참다 한 번에 손절', '혼자 생각 너무 깊게 파고듦', '완벽주의 때문에 피곤해짐', '쉽게 번아웃 와서 지침', '현실 감각 잃고 헤매기', '혼자 끙끙 앓고 속으로 삭임', '팩트에 너무 예민하게 반응']
+    }
+  };
+
+  let step = 0;
+  let score = { E:0, I:0, S:0, N:0, T:0, F:0, J:0, P:0 };
+
+  function animateLights() {
+    const l1 = document.getElementById('light-1');
+    const l2 = document.getElementById('light-2');
+    const l3 = document.getElementById('light-3');
+    
+    l1.className = 'light'; l2.className = 'light'; l3.className = 'light';
+
+    let r = Math.random();
+    if(r < 0.33) l1.classList.add('red-on');
+    else if(r < 0.66) l2.classList.add('yellow-on');
+    else l3.classList.add('green-on');
+  }
+
+  function startTest() {
+    document.getElementById('screen-start').classList.remove('active');
+    document.getElementById('screen-question').classList.add('active');
+    renderQ();
+  }
+
+  function renderQ() {
+    const q = qData[step];
+    document.getElementById('q-num').innerText = `Q. ${step + 1} / 12`;
+    document.getElementById('q-text').innerText = q.q;
+    document.getElementById('btn-a').innerText = q.a;
+    document.getElementById('btn-b').innerText = q.b;
+    animateLights();
+  }
+
+  function selectAns(choice) {
+    const type = qData[step].type;
+    if(choice === 1) score[type[0]]++;
+    else score[type[1]]++;
+
+    step++;
+    if(step < 12) renderQ();
+    else showResult();
+  }
+
+  function showResult() {
+    let mbti = "";
+    mbti += score.E > score.I ? 'E' : 'I';
+    mbti += score.S > score.N ? 'S' : 'N';
+    mbti += score.T > score.F ? 'T' : 'F';
+    mbti += score.J > score.P ? 'J' : 'P';
+
+    const data = rData[mbti];
+    
+    document.getElementById('mbti-nickname').innerText = data.name;
+    
+    let gHtml = "";
+    data.g.forEach(t => {
+      gHtml += `<div class="trait-item">${t}</div>`;
+    });
+    document.getElementById('green-list').innerHTML = gHtml;
+
+    let rHtml = "";
+    data.r.forEach(t => {
+      rHtml += `<div class="trait-item">${t}</div>`;
+    });
+    document.getElementById('red-list').innerHTML = rHtml;
+
+    document.getElementById('screen-question').classList.remove('active');
+    document.getElementById('screen-result').classList.add('active');
+    document.getElementById('control-area').style.display = 'flex';
+  }
+
+  function restart() {
+    step = 0;
+    score = { E:0, I:0, S:0, N:0, T:0, F:0, J:0, P:0 };
+    document.getElementById('control-area').style.display = 'none';
+    document.getElementById('screen-result').classList.remove('active');
+    document.getElementById('screen-start').classList.add('active');
+  }
+
+  function saveImage() {
+    const target = document.getElementById('capture-area');
+    html2canvas(target, { 
+      scale: 2,
+      backgroundColor: '#222222',
+      useCORS: true
+    }).then(canvas => {
+      document.getElementById('modal-img').src = canvas.toDataURL('image/png');
+      document.getElementById('modal').style.display = 'flex';
+    });
+  }
+
+  function closeModal() {
+    document.getElementById('modal').style.display = 'none';
+  }
+
+  function share() {
+    if (navigator.share) {
+      navigator.share({
+        title: '레드레드 성격 테스트',
+        text: '나의 긍정 신호와 주의 신호 알아보기',
+        url: window.location.href,
+      }).catch(console.error);
+    } else {
+      alert("링크를 복사해서 공유해주세요!");
+    }
+  }
+</script>
+</body>
+</html>

@@ -1,9 +1,19 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>테스트잇 레드레드 성격 테스트</title>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5522499110435321" crossorigin="anonymous"></script>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>테스트잇 레드레드 성격 테스트</title>
+  <meta name="description" content="테스트잇 레드레드 성격 테스트" />
+  <meta name="keywords" content="테스트잇,성격테스트,레드레드성격테스트,레드레드테스트,테스트잇레드레드성격테스트,테스트잇사주,심리테스트,mbti테스트">
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="테스트잇 레드레드 성격 테스트" />
+  <meta property="og:description" content="테스트잇 레드레드 성격 테스트" />
+  <meta property="og:url" content="https://test-it.co.kr/test385" />
+  <link rel="icon" type="image/png" href="favicon.png">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <style>
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
@@ -13,47 +23,121 @@ html,body{margin:0;padding:0;font-family:"Pretendard",sans-serif;background:#f6f
 a{text-decoration:none;color:inherit}
 button{font-family:inherit;border:0;cursor:pointer}
 
-.page-header{background:#fff;border-bottom:1px solid #ddd}
-.wrapper{max-width:520px;margin:0 auto;padding:0 16px}
-.header-inner{height:56px;display:flex;align-items:center;justify-content:space-between}
-.logo img{height:28px;display:block}
-.main-nav{display:flex;gap:13px;font-size:13px;font-weight:700;color:#111}
+.page-header{
+  background:#d94a4a;
+  border-bottom:2px solid #111;
+}
 
-#app-container{width:100%;max-width:430px;margin:0 auto;padding:14px 12px 36px}
+.wrapper{
+  max-width:520px;
+  margin:0 auto;
+  padding:0 16px;
+}
+
+.header-inner{
+  height:58px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.logo-text{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:34px;
+  padding:0 12px;
+  background:#ffd12f;
+  border:1.5px solid #111;
+  color:#111;
+  font-size:18px;
+  font-weight:900;
+  letter-spacing:-.6px;
+}
+
+.main-nav{
+  display:flex;
+  gap:10px;
+  font-size:13px;
+  font-weight:850;
+  color:#111;
+}
+
+.main-nav a{
+  background:#fff;
+  border:1.5px solid #111;
+  padding:7px 8px;
+}
+
+#app-container{
+  width:100%;
+  max-width:500px;
+  margin:0 auto;
+  padding:14px 0 36px;
+}
+
 .screen{display:none}
 .screen.active{display:block}
 
-.app-card{background:#fff;border:1.5px solid #111;padding:18px;box-shadow:none}
+.app-card{
+  background:#fff;
+  border:1.5px solid #111;
+  padding:0;
+  box-shadow:none;
+}
+
 #capture-area{background:#fff}
 
-.signal-bar{width:188px;height:58px;margin:0 auto 18px;background:#111;border:1.5px solid #111;display:flex;align-items:center;justify-content:center;gap:12px}
+.main-image{
+  width:100%;
+  max-width:500px;
+  display:block;
+  margin:0 auto;
+}
+
+.start-control{
+  width:100%;
+  max-width:500px;
+  margin:14px auto 0;
+  padding:0 12px;
+}
+
+.signal-bar{
+  width:188px;
+  height:58px;
+  margin:18px auto 18px;
+  background:#111;
+  border:1.5px solid #111;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+}
+
 .light{width:34px;height:34px;border-radius:50%;border:2px solid #000;background:#555}
 .red-on{background:#d94a4a!important;background-color:#d94a4a!important}
 .yellow-on{background:#ffd12f!important;background-color:#ffd12f!important}
 .green-on{background:#28d866!important;background-color:#28d866!important}
 
-.title{text-align:center;font-size:36px;line-height:1.08;letter-spacing:-1.4px;font-weight:850;margin:0 0 14px;color:#111}
-.title .red-word{color:#d94a4a}
-.title .green-word{color:#18b854}
+.btn{
+  width:100%;
+  min-height:52px;
+  padding:14px 16px;
+  border:1.5px solid #111;
+  background:#fff;
+  color:#111;
+  font-size:16px;
+  font-weight:850;
+  box-shadow:none;
+  margin-bottom:10px;
+}
 
-.desc{text-align:center;font-size:16px;line-height:1.5;font-weight:750;color:#222;margin:0 0 22px}
-.green-text{color:#18b854;font-weight:850}
-.red-text{color:#d94a4a;font-weight:850}
-
-.start-info{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
-.info-card{border:1.5px solid #111;padding:13px 11px;min-height:94px;color:#111}
-.info-card.green{background:#28d866}
-.info-card.red{background:#d94a4a;color:#fff}
-.info-card b{display:block;font-size:22px;font-weight:850;margin-bottom:8px}
-.info-card span{font-size:13px;line-height:1.35;font-weight:750;word-break:keep-all}
-
-.btn{width:100%;min-height:52px;padding:14px 16px;border:1.5px solid #111;background:#fff;color:#111;font-size:16px;font-weight:850;box-shadow:none;margin-bottom:10px}
 .btn.start{background:#ffd12f;color:#111;border-color:#111}
 .btn.green{background:#28d866;color:#111;border-color:#111}
 .btn.red{background:#d94a4a;color:#fff;border-color:#111}
 
 .question-progress{
-  margin-bottom:16px;
+  margin:18px 18px 16px;
   border:1.5px solid #111;
   background:#fff;
   padding:13px;
@@ -82,10 +166,11 @@ button{font-family:inherit;border:0;cursor:pointer}
 }
 
 .q-card{
-  background:#fff3b8;
+  background:#fff;
   border:2px solid #111;
   box-shadow:none;
   padding:18px;
+  margin:0 18px 18px;
   color:#111;
 }
 
@@ -127,7 +212,7 @@ button{font-family:inherit;border:0;cursor:pointer}
 
 .result-top{
   text-align:center;
-  margin-bottom:16px;
+  margin:0 18px 16px;
   border:1.5px solid #111;
   background:#fff;
   padding:14px 12px;
@@ -167,7 +252,13 @@ button{font-family:inherit;border:0;cursor:pointer}
   border:1px solid #111;
 }
 
-.result-wrapper{display:grid;grid-template-columns:1fr;gap:12px}
+.result-wrapper{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:12px;
+  padding:0 18px 18px;
+}
+
 .result-section{border:1.5px solid #111}
 .result-section.green-sec{background:#28d866}
 .result-section.red-sec{background:#d94a4a}
@@ -212,18 +303,65 @@ button{font-family:inherit;border:0;cursor:pointer}
 .green-sec .trait-item:before{background:#111}
 .red-sec .trait-item:before{background:#111}
 
-.control-btns{display:none;flex-direction:column;gap:10px;margin-top:20px}
+.control-btns{
+  display:none;
+  flex-direction:column;
+  gap:10px;
+  margin:14px auto 0;
+  padding:0 12px;
+  max-width:500px;
+}
+
 .control-btns .btn{margin-bottom:0}
 
-#modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.86);z-index:1000;align-items:center;justify-content:center;flex-direction:column;padding:18px}
-.modal-txt{color:#fff;font-size:15px;line-height:1.45;font-weight:800;text-align:center;margin-bottom:14px}
+.ad-container{
+  width:100%;
+  max-width:500px;
+  margin:22px auto 0;
+  padding:0 12px;
+  display:flex;
+  justify-content:center;
+}
+
+.coupang_ad{
+  width:350px;
+  max-width:100%;
+  min-height:140px;
+  display:flex;
+  justify-content:center;
+  overflow:hidden;
+}
+
+#modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.86);
+  z-index:1000;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  padding:18px;
+}
+
+.modal-txt{
+  color:#fff;
+  font-size:15px;
+  line-height:1.45;
+  font-weight:800;
+  text-align:center;
+  margin-bottom:14px;
+}
+
 #modal-img{width:86%;max-width:320px;border:2px solid #fff}
 .close-btn{margin-top:16px;background:#ffd12f;color:#111;border:2px solid #111;padding:13px 34px;font-weight:800}
 
+@media(max-width:520px){
+  #app-container{padding:14px 0 32px}
+  .app-card{border-left:0;border-right:0}
+}
+
 @media(max-width:390px){
-  #app-container{padding:14px 10px 32px}
-  .app-card{padding:15px}
-  .title{font-size:31px}
   .q-text{font-size:20px}
   .answer-btn{font-size:15px}
   .result-name{font-size:27px}
@@ -231,7 +369,9 @@ button{font-family:inherit;border:0;cursor:pointer}
   .traits-list{gap:7px 7px;padding:10px 8px}
   .trait-item{font-size:11.8px;letter-spacing:-.65px;font-weight:750}
   .sec-header{height:39px;font-size:16px}
-  .main-nav{gap:9px;font-size:12px}
+  .main-nav{gap:6px;font-size:12px}
+  .main-nav a{padding:6px 6px}
+  .logo-text{font-size:16px;padding:0 10px}
   .signal-progress{gap:4px}
   .signal-dot{height:13px}
 }
@@ -241,9 +381,7 @@ button{font-family:inherit;border:0;cursor:pointer}
 
 <header class="page-header">
   <div class="wrapper header-inner">
-    <a class="logo" href="https://test-it.co.kr/">
-      <img src="img_logo.png" alt="테스트잇">
-    </a>
+    <a class="logo-text" href="https://test-it.co.kr/">테스트잇</a>
     <nav class="main-nav">
       <a href="https://test-it.co.kr/test.html">성격</a>
       <a href="https://test-it.co.kr/face.html">얼굴</a>
@@ -256,35 +394,7 @@ button{font-family:inherit;border:0;cursor:pointer}
 <div id="app-container">
   <div class="app-card" id="capture-area">
     <div id="screen-start" class="screen active">
-      <div class="signal-bar">
-        <div class="light red-on"></div>
-        <div class="light yellow-on"></div>
-        <div class="light green-on"></div>
-      </div>
-
-      <h1 class="title">
-        테스트잇<br>
-        <span class="red-word">레드레드</span><br>
-        <span class="green-word">성격 테스트</span>
-      </h1>
-
-      <p class="desc">
-        내가 잘하는 행동은 <span class="green-text">GREEN GREEN</span><br>
-        줄이면 좋은 행동은 <span class="red-text">RED RED</span>
-      </p>
-
-      <div class="start-info">
-        <div class="info-card green">
-          <b>GREEN</b>
-          <span>네가 잘하고 계속 하면 좋은 행동</span>
-        </div>
-        <div class="info-card red">
-          <b>RED</b>
-          <span>네가 자주 하지만 하면 안 되는 행동</span>
-        </div>
-      </div>
-
-      <button class="btn start" onclick="startTest()">테스트 시작하기</button>
+      <img class="main-image" src="img_main385.png" alt="테스트잇 레드레드 성격 테스트 메인이미지">
     </div>
 
     <div id="screen-question" class="screen">
@@ -331,11 +441,31 @@ button{font-family:inherit;border:0;cursor:pointer}
     </div>
   </div>
 
+  <div id="start-control" class="start-control">
+    <button class="btn start" onclick="startTest()">테스트 시작하기</button>
+  </div>
+
   <div id="control-area" class="control-btns">
     <button class="btn green" onclick="saveImage()">결과 이미지 저장하기</button>
     <button class="btn start" onclick="restart()">다시 해보기</button>
-    <button class="btn" onclick="location.href='https://test-it.co.kr/test.html'">다른 테스트 해보기</button>
-    <button class="btn red" onclick="share()">테스트 공유하기</button>
+    <button class="btn" onclick="location.href='https://test-it.co.kr'">다른 테스트 해보기</button>
+    <button class="btn red" type="button" onclick="shareTest()">테스트 공유하기</button>
+  </div>
+
+  <div class="ad-container" id="ad-container-page1">
+    <article class="coupang_ad mt-3">
+      <script src="https://ads-partners.coupang.com/g.js"></script>
+      <script>
+        new PartnersCoupang.G({
+          "id": 798186,
+          "template": "carousel",
+          "trackingCode": "AF4391881",
+          "width": "350",
+          "height": "140",
+          "tsource": ""
+        });
+      </script>
+    </article>
   </div>
 </div>
 
@@ -347,43 +477,44 @@ button{font-family:inherit;border:0;cursor:pointer}
 
 <script>
 const qData=[
-  {type:"EI",q:"친구랑 둘이 놀다가 갑자기 친구의 친구들이 합류한다고 하면?",a:"사람 많아지면 더 재밌을 것 같아서 바로 분위기를 맞춘다",b:"갑자기 낯선 사람이 늘면 에너지를 다시 계산하게 된다"},
-  {type:"EI",q:"회사나 학교에서 쉬는 시간이 생겼을 때 나는?",a:"근처 사람에게 말을 걸거나 가벼운 농담을 던진다",b:"혼자 폰을 보거나 조용히 숨 돌리는 시간이 더 편하다"},
-  {type:"EI",q:"하루 종일 사람들을 많이 만난 날 밤에 나는?",a:"피곤해도 오늘 있었던 얘기를 누군가에게 또 하고 싶다",b:"말을 너무 많이 해서 이제 아무 소리도 듣고 싶지 않다"},
-  {type:"SN",q:"처음 가는 동네에서 맛집을 고를 때 나는?",a:"리뷰 수, 메뉴 사진, 가격, 위치를 보고 고른다",b:"간판 분위기나 이름에서 끌리는 곳이 더 궁금해진다"},
-  {type:"SN",q:"친구가 이 옷 어때? 라고 물어봤을 때 나는?",a:"색, 핏, 계절감처럼 실제로 보이는 부분을 말한다",b:"그 옷이 주는 이미지나 분위기를 먼저 말한다"},
-  {type:"SN",q:"새로운 일을 시작하기 전에 머릿속에 먼저 뜨는 건?",a:"준비물, 순서, 시간, 지금 해야 하는 단계",b:"이걸 하면 앞으로 어떤 가능성이 생길지"},
-  {type:"TF",q:"친구가 같은 실수를 반복해서 힘들어할 때 나는?",a:"왜 반복되는지 패턴을 찾아서 현실적인 방법을 말한다",b:"또 힘들었겠다 싶어서 마음부터 먼저 달래준다"},
-  {type:"TF",q:"내가 상대에게 서운한 일이 생겼을 때 더 필요한 건?",a:"상대가 상황을 정확히 이해하고 고칠 점을 아는 것",b:"상대가 내 마음을 진심으로 알아주는 것"},
-  {type:"TF",q:"팀 과제에서 의견이 갈릴 때 나는?",a:"누구 말이 더 논리적이고 효율적인지 따져본다",b:"누가 소외되거나 상처받지 않게 흐름을 조절한다"},
-  {type:"JP",q:"약속 장소가 정해졌는데 세부 일정이 비어 있으면?",a:"만나는 시간부터 동선까지 어느 정도 정리해두고 싶다",b:"만나서 그때 끌리는 대로 움직여도 괜찮다"},
-  {type:"JP",q:"할 일이 여러 개 쌓였을 때 나는?",a:"먼저 순서를 정하고 하나씩 끝내야 마음이 놓인다",b:"지금 눈에 들어오는 것부터 처리하면서 흐름을 탄다"},
-  {type:"JP",q:"갑자기 계획이 틀어졌을 때 나는?",a:"바뀐 상황에 맞춰 새 계획을 빨리 다시 세운다",b:"어차피 바뀐 김에 더 재밌는 방향을 찾아본다"}
+  {type:"EI",q:"친구랑 둘이 놀다가<br>갑자기 친구의 친구들이 합류한다고 하면?",a:"사람 많아지면 더 재밌을 것 같아서<br>바로 분위기를 맞춘다",b:"갑자기 낯선 사람이 늘면<br>집에 가고 싶다"},
+  {type:"SN",q:"무언가를 설명할 때<br>나의 대화 방식은?",a:"있었던 일이나 사실을<br>시간 순서대로 정확하게 말한다",b:"비유나 은유를 섞어서<br>내가 느낀 기분 위주로 설명한다"},
+  {type:"TF",q:"결정을 내릴 때<br>가장 중요하게 생각하는 것은?",a:"논리와 이성,<br>그리고 객관적인 사실",b:"사람들과의 관계,<br>그리고 나의 감정"},
+  {type:"JP",q:"일정을 메모하는 습관은?",a:"다이어리나 캘린더에<br>일정을 꼼꼼하게 적어둔다",b:"머릿속으로 기억하거나<br>꼭 필요할 때만 대충 적는다"},
+  {type:"EI",q:"나의 평소 대화 스타일은?",a:"여러 사람과 함께 떠드는 것이<br>즐겁다",b:"한두 명과 깊이 있는 대화를<br>나누는 게 좋다"},
+  {type:"SN",q:"옷을 고를 때<br>더 중요하게 생각하는 요소는?",a:"소재, 내구성, 착용감, 가격 등<br>실용적인 부분",b:"전체적인 핏, 디자인,<br>내가 원하는 분위기와 컨셉"},
+  {type:"TF",q:"나를 더 화나게 하는 상황은?",a:"앞뒤가 안 맞는 비논리적인 주장을<br>우길 때",b:"내 감정을 무시하고<br>함부로 말할 때"},
+  {type:"JP",q:"새로운 일을 시작할 때 나는?",a:"전체적인 계획과 마지노선을<br>세워두고 시작한다",b:"일단 부딪혀보면서<br>상황에 맞춰 대처한다"},
+  {type:"EI",q:"나의 관심사는<br>주로 어디로 향하는가?",a:"내 주변의 사람들과 외부 활동",b:"나의 내면과 개인적인 생각들"},
+  {type:"SN",q:"일상생활에서<br>더 큰 비중을 차지하는 것은?",a:"지금 당장 겪고 있는<br>현실적인 문제들",b:"아직 일어나지 않은 미래에 대한<br>상상과 걱정"},
+  {type:"TF",q:"키우던 식물이 죽었을 때 나는?",a:"물을 많이 줬나?<br>햇빛이 부족했나?",b:"미안하다<br>내가 식물 키우는 재주가 없네"},
+  {type:"JP",q:"친구가 내일 뭐 하냐고 물어볼 때 나는?",a:"내일 나의 일정과 계획을<br>쭉 브리핑한다",b:"딱히? 왜?<br>뭐 할 거 있어? 하고 반문한다"}
 ];
 
 const rData={
-  ENFP:{name:"스파클링 에너지",sub:"좋은 에너지는 크게 살리고, 산만한 흐름은 줄이면 좋은 쪽",g:["먼저 친근하게 다가가기","신나게 분위기 띄우기","기발한 아이디어 제안","긍정적인 말 건네기","눈치껏 상황 맞추기","열정적으로 시작하기","진심으로 공감해주기","유연하게 생각하기"],r:["감정 널뛰기 티내기","중요한 일정 깜빡하기","금방 흥미 잃고 포기","남의 말에 휩쓸리기","기분파 충동구매","이리저리 산만하게 굴기","작은 말에 상처받기","선 넘어서 참견하기"]},
-  INFP:{name:"포근한 솜이불",sub:"다정함은 장점이고, 혼자 꾹 참는 습관은 줄이면 좋은 쪽",g:["묵묵히 이야기 들어주기","따뜻하게 위로해주기","창의적인 상상하기","세심하게 배려하기","나만의 감각 표현하기","진정성 있게 대하기","편견 없이 바라보기","약한 사람 도와주기"],r:["혼자 상처받고 숨기","과하게 남 눈치 보기","싫어도 거절 못하기","현실 도피하고 미루기","혼자 우울감에 빠지기","생각만 하고 안 움직임","연락 끊고 잠수타기","쓸데없는 망상하기"]},
-  ESTJ:{name:"고장난 불도저",sub:"실행력은 장점이고, 너무 밀어붙이는 건 줄이면 좋은 쪽",g:["계획대로 완벽히 끝내기","책임감 있게 총대 메기","효율적으로 일정 짜기","시간 약속 칼같이 지키기","팩트 기반으로 말하기","추진력 있게 밀어붙이기","객관적으로 판단하기","정해진 규칙 지키기"],r:["내 방식만 정답이라 우기기","융통성 1도 없이 굴기","상대방 감정 무시하기","꼬치꼬치 잔소리하기","결과만 보고 평가하기","새로운 변화 거부하기","너무 엄격하게 잣대 대기","팩트로 뼈 때리기"]},
-  ISTJ:{name:"AI 로봇",sub:"정확함은 장점이고, 감정까지 계산하려는 건 줄이면 좋은 쪽",g:["맡은 일 끝까지 해내기","꼼꼼한 디테일 챙기기","철저하게 계획 세우기","원칙대로 정확히 처리","객관적으로 분석하기","끝까지 인내하고 버티기","과거 기억 잘 떠올리기","신뢰감 있게 행동하기"],r:["내 고집대로만 밀고가기","융통성 없이 꽉 막히기","감정 표현 답답하게 하기","남의 말에 공감 못하기","갑작스런 변화에 짜증","남한테 일 절대 안맡김","속마음 꽁꽁 숨기기","팩트로만 따지기"]},
-  ESFJ:{name:"프로 오지랖퍼",sub:"챙김은 장점이고, 지나친 간섭은 줄이면 좋은 쪽",g:["주변 사람 알뜰하게 챙김","분위기 부드럽게 풀기","눈치껏 센스 있게 돕기","리액션 찰지게 해주기","모임 즐겁게 주도하기","맡은 일 책임감 있게","예의 바르게 행동하기","약속 시간 잘 지키기"],r:["남의 시선 과하게 의식","꼰대처럼 가르치려 들기","인정 못 받으면 삐치기","싫은 소리 절대 못하기","감정적으로 욱해서 말함","남의 말에 쉽게 흔들림","뒤에서 험담하기","너무 피곤하게 배려하기"]},
-  ISFJ:{name:"따뜻한 보온병",sub:"섬세한 배려는 장점이고, 혼자 버티는 건 줄이면 좋은 쪽",g:["묵묵히 뒤에서 챙겨주기","사소한 것까지 기억하기","인내심 갖고 기다려주기","안정감 있게 행동하기","정해진 규칙 잘 지키기","따뜻하게 공감해주기","책임감 있게 마무리","섬세하게 관찰하기"],r:["혼자 속으로 끙끙 앓기","갑작스런 변화 회피하기","모든 걸 내 탓으로 돌림","무리한 부탁도 다 들어줌","너무 수동적으로 끌려감","내 감정 꾹꾹 참기","새로운 도전 무조건 피함","융통성 없이 행동하기"]},
-  ESTP:{name:"폼생폼사 행동파",sub:"빠른 행동은 장점이고, 위험한 충동은 줄이면 좋은 쪽",g:["생각보다 먼저 행동하기","위기 상황에 빠른 대처","주변 상황 예리하게 파악","분위기 유쾌하게 이끌기","현실적으로 타협점 찾기","유연하게 협상하기","뒤끝 없이 쿨하게 넘기기","자유롭게 즐기기"],r:["아무 계획 없이 저지르기","기분 따라 충동적으로 굴기","선 넘는 위험한 장난","정해진 규칙 무시하기","상대방 감정 생각 안함","금방 싫증 내고 때려치움","장기적인 계획 안 세우기","필터 없이 막말하기"]},
-  ISTP:{name:"귀차니즘 장인",sub:"실용적인 해결력은 장점이고, 무심한 단절은 줄이면 좋은 쪽",g:["필요한 말만 깔끔하게","위기에도 침착한 대처","팩트 기반으로 판단하기","효율적으로 빠르게 끝냄","상황에 맞춰 유연하게 굴기","객관적인 시선 유지하기","관대하게 넘어가주기","내 할 일 알아서 잘하기"],r:["내 공간 침범하면 정색","남의 감정에 무관심하기","귀찮은 일 계속 미루기","틀에 갇히는 거 거부하기","속마음 절대 안 말하기","공감 리액션 1도 안함","갑자기 잠수타버리기","너무 무뚝뚝하게 굴기"]},
-  ESFP:{name:"텐션 폭발 에너자이저",sub:"밝은 텐션은 장점이고, 즉흥 과몰입은 줄이면 좋은 쪽",g:["분위기 신나게 띄우기","텐션 높게 어울려 놀기","즉흥적으로 재밌게 놀기","편견 없이 사람 대하기","빠르게 상황 적응하기","현실적인 감각 발휘하기","타고난 센스 보여주기","쿨하게 스트레스 풀기"],r:["내일 일은 생각 안 하기","돈 계획 없이 막 쓰기","진지한 분위기 못 견디기","끈기 있게 끝까지 안함","불편한 갈등 상황 회피","생각 없이 말실수하기","유혹에 쉽게 넘어가기","계획 밥 먹듯이 바꾸기"]},
-  ISFP:{name:"누워있는 평화주의자",sub:"편안한 다정함은 장점이고, 회피는 줄이면 좋은 쪽",g:["둥글둥글하게 맞춰주기","조용히 세심하게 챙김","열린 마음으로 받아들임","따뜻하고 다정하게 대함","나만의 감각 표현하기","갈등 없이 평화롭게 지냄","겸손하게 행동하기","현재를 즐기며 살기"],r:["결정 못 하고 계속 미루기","오늘 할 일 내일로 미루기","자존감 쉽게 뚝 떨어짐","승부욕 없이 포기하기","싫은 내색 안 하고 참기","금방 체력 방전되기","팩트 폭격에 상처받기","복잡한 대화 무조건 피함"]},
-  ENTP:{name:"말빨 챔피언",sub:"재치와 논리는 장점이고, 말로 찌르는 건 줄이면 좋은 쪽",g:["번뜩이는 아이디어 제안","논리적으로 의견 말하기","편견 없이 다각도로 보기","위기 상황 빠르게 돌파","자신감 있게 밀어붙이기","다방면으로 지식 쌓기","틀에 얽매이지 않고 생각","솔직하게 팩트 말하기"],r:["청개구리처럼 반항하기","쓸데없이 시비 걸기","벌려놓고 수습 안 하기","필터 안 거치고 막말하기","금방 지루해하고 딴짓","디테일한 부분 다 놓치기","내 말이 맞다고 똥고집","남의 감정 철저히 무시"]},
-  INTP:{name:"방구석 철학자",sub:"깊은 분석은 장점이고, 현실 방치는 줄이면 좋은 쪽",g:["객관적으로 상황 분석","호기심 갖고 깊게 탐구","논리적으로 문제 해결","독창적으로 아이디어 냄","편견 없이 사실만 보기","핵심만 정확하게 파악","독립적으로 내 일 하기","감정에 휩쓸리지 않기"],r:["영혼 없는 리액션하기","귀찮은 거 끝까지 미루기","사회성 떨어지는 행동","팩트로 뼈 때리고 상처줌","감정적으로 공감 안 해줌","연락 안 보고 귀찮아함","오만해 보임","남 무시하는 태도 보임"]},
-  ENTJ:{name:"야망 가득 캡틴",sub:"추진력은 장점이고, 압박감 주는 태도는 줄이면 좋은 쪽",g:["빠르고 확실한 결정","큰 그림 그리며 전략 짜기","목표 향해 끝까지 달림","카리스마 있게 무리 이끎","가장 효율적인 방법 찾기","문제 상황 깔끔하게 해결","강한 자신감 보여주기","논리적으로 상황 분석"],r:["내 마음대로 다 통제하려함","남 감정 무시하고 상처줌","무능력한 사람 대놓고 무시","워커홀릭처럼 일만 하기","오만하고 건방지게 굴기","팩트 폭격기로 기 죽이기","인내심 없이 욱하기","결과를 위해 과정 무시"]},
-  INTJ:{name:"마스터마인드",sub:"전략적인 사고는 장점이고, 차가운 고집은 줄이면 좋은 쪽",g:["멀리 내다보고 계획 짜기","전략적으로 꼼꼼하게 생각","논리적으로 원인 분석","독립적으로 목표 달성","가장 효율적인 길 찾기","남들이 못 보는 해결책 찾음","지적으로 계속 탐구하기","객관적으로 상황 판단"],r:["냉소적으로 비꼬며 말하기","남의 의견 싹 무시하기","융통성 없이 원칙만 따짐","쓸데없이 완벽주의 부림","건방지고 오만하게 굴기","타인 감정에 심하게 둔감","인간관계 자체를 귀찮아함","내 고집 절대 안 꺾기"]},
-  ENFJ:{name:"다정한 선도부장",sub:"따뜻한 리드는 장점이고, 과한 책임감은 줄이면 좋은 쪽",g:["사람들 부드럽게 이끌기","진심으로 소통하고 공감","긍정적인 에너지 불어넣기","책임감 있게 맡은 일 다함","다른 사람 성장 도와주기","비전 제시하며 동기부여","다정하고 따뜻하게 챙김","좋은 분위기 주도하기"],r:["남의 일에 너무 과몰입함","무리한 부탁도 거절 못함","작은 비판에도 크게 상처","완벽주의 빠져 스트레스","감정 소모 심하게 하기","선 넘어서 오지랖 부리기","내 밥그릇 못 챙기고 양보","지나친 이상주의에 빠짐"]},
-  INFJ:{name:"겉바속촉 예언가",sub:"깊은 통찰은 장점이고, 혼자 닫히는 습관은 줄이면 좋은 쪽",g:["깊은 통찰력으로 꿰뚫어봄","흔들리지 않는 가치관 지킴","안 드러내며 조용히 돕기","진심 담아 이타적으로 행동","톡톡 튀는 영감 떠올리기","강한 직관력으로 상황 파악","신뢰감 주는 행동하기","세심하게 주변 배려하기"],r:["속마음 절대 안 보여주기","참다 참다 한 번에 손절","혼자 생각 너무 깊게 파고듦","완벽주의 때문에 피곤해짐","쉽게 번아웃 와서 지침","현실 감각 잃고 헤매기","혼자 끙끙 앓고 속으로 삭임","팩트에 너무 예민하게 반응"]}
+  ENFP:{name:"스파클링 에너지",sub:"좋은 에너지는 크게 살리고<br>산만한 흐름은 줄이면 좋은 쪽",g:["먼저 친근하게 다가가기","신나게 분위기 띄우기","기발한 아이디어 제안","긍정적인 말 건네기","눈치껏 상황 맞추기","열정적으로 시작하기","진심으로 공감해주기","유연하게 생각하기"],r:["감정 널뛰기 티내기","중요한 일정 깜빡하기","금방 흥미 잃고 포기","남의 말에 휩쓸리기","기분파 충동구매","이리저리 산만하게 굴기","작은 말에 상처받기","선 넘어서 참견하기"]},
+  INFP:{name:"포근한 솜이불",sub:"다정함은 장점이고<br>혼자 꾹 참는 습관은 줄이면 좋은 쪽",g:["묵묵히 이야기 들어주기","따뜻하게 위로해주기","창의적인 상상하기","세심하게 배려하기","나만의 감각 표현하기","진정성 있게 대하기","편견 없이 바라보기","약한 사람 도와주기"],r:["혼자 상처받고 숨기","과하게 남 눈치 보기","싫어도 거절 못하기","현실 도피하고 미루기","혼자 우울감에 빠지기","생각만 하고 안 움직임","연락 끊고 잠수타기","쓸데없는 망상하기"]},
+  ESTJ:{name:"고장난 불도저",sub:"실행력은 장점이고<br>너무 밀어붙이는 건 줄이면 좋은 쪽",g:["계획대로 완벽히 끝내기","책임감 있게 총대 메기","효율적으로 일정 짜기","시간 약속 칼같이 지키기","팩트 기반으로 말하기","추진력 있게 밀어붙이기","객관적으로 판단하기","정해진 규칙 지키기"],r:["내 방식만 정답이라 우기기","융통성 1도 없이 굴기","상대방 감정 무시하기","꼬치꼬치 잔소리하기","결과만 보고 평가하기","새로운 변화 거부하기","너무 엄격하게 잣대 대기","팩트로 뼈 때리기"]},
+  ISTJ:{name:"AI 로봇",sub:"정확함은 장점이고<br>감정까지 계산하려는 건 줄이면 좋은 쪽",g:["맡은 일 끝까지 해내기","꼼꼼한 디테일 챙기기","철저하게 계획 세우기","원칙대로 정확히 처리","객관적으로 분석하기","끝까지 인내하고 버티기","과거 기억 잘 떠올리기","신뢰감 있게 행동하기"],r:["내 고집대로만 밀고가기","융통성 없이 꽉 막히기","감정 표현 답답하게 하기","남의 말에 공감 못하기","갑작스런 변화에 짜증","남한테 일 절대 안맡김","속마음 꽁꽁 숨기기","팩트로만 따지기"]},
+  ESFJ:{name:"프로 오지랖퍼",sub:"챙김은 장점이고<br>지나친 간섭은 줄이면 좋은 쪽",g:["주변 사람 알뜰하게 챙김","분위기 부드럽게 풀기","눈치껏 센스 있게 돕기","리액션 찰지게 해주기","모임 즐겁게 주도하기","맡은 일 책임감 있게","예의 바르게 행동하기","약속 시간 잘 지키기"],r:["남의 시선 과하게 의식","꼰대처럼 가르치려 들기","인정 못 받으면 삐치기","싫은 소리 절대 못하기","감정적으로 욱해서 말함","남의 말에 쉽게 흔들림","뒤에서 험담하기","너무 피곤하게 배려하기"]},
+  ISFJ:{name:"따뜻한 보온병",sub:"섬세한 배려는 장점이고<br>혼자 버티는 건 줄이면 좋은 쪽",g:["묵묵히 뒤에서 챙겨주기","사소한 것까지 기억하기","인내심 갖고 기다려주기","안정감 있게 행동하기","정해진 규칙 잘 지키기","따뜻하게 공감해주기","책임감 있게 마무리","섬세하게 관찰하기"],r:["혼자 속으로 끙끙 앓기","갑작스런 변화 회피하기","모든 걸 내 탓으로 돌림","무리한 부탁도 다 들어줌","너무 수동적으로 끌려감","내 감정 꾹꾹 참기","새로운 도전 무조건 피함","융통성 없이 행동하기"]},
+  ESTP:{name:"폼생폼사 행동파",sub:"빠른 행동은 장점이고<br>위험한 충동은 줄이면 좋은 쪽",g:["생각보다 먼저 행동하기","위기 상황에 빠른 대처","주변 상황 예리하게 파악","분위기 유쾌하게 이끌기","현실적으로 타협점 찾기","유연하게 협상하기","뒤끝 없이 쿨하게 넘기기","자유롭게 즐기기"],r:["아무 계획 없이 저지르기","기분 따라 충동적으로 굴기","선 넘는 위험한 장난","정해진 규칙 무시하기","상대방 감정 생각 안함","금방 싫증 내고 때려치움","장기적인 계획 안 세우기","필터 없이 막말하기"]},
+  ISTP:{name:"귀차니즘 장인",sub:"실용적인 해결력은 장점이고<br>무심한 단절은 줄이면 좋은 쪽",g:["필요한 말만 깔끔하게","위기에도 침착한 대처","팩트 기반으로 판단하기","효율적으로 빠르게 끝냄","상황에 맞춰 유연하게 굴기","객관적인 시선 유지하기","관대하게 넘어가주기","내 할 일 알아서 잘하기"],r:["내 공간 침범하면 정색","남의 감정에 무관심하기","귀찮은 일 계속 미루기","틀에 갇히는 거 거부하기","속마음 절대 안 말하기","공감 리액션 1도 안함","갑자기 잠수타버리기","너무 무뚝뚝하게 굴기"]},
+  ESFP:{name:"텐션 폭발 에너자이저",sub:"밝은 텐션은 장점이고<br>즉흥 과몰입은 줄이면 좋은 쪽",g:["분위기 신나게 띄우기","텐션 높게 어울려 놀기","즉흥적으로 재밌게 놀기","편견 없이 사람 대하기","빠르게 상황 적응하기","현실적인 감각 발휘하기","타고난 센스 보여주기","쿨하게 스트레스 풀기"],r:["내일 일은 생각 안 하기","돈 계획 없이 막 쓰기","진지한 분위기 못 견디기","끈기 있게 끝까지 안함","불편한 갈등 상황 회피","생각 없이 말실수하기","유혹에 쉽게 넘어가기","계획 밥 먹듯이 바꾸기"]},
+  ISFP:{name:"누워있는 평화주의자",sub:"편안한 다정함은 장점이고<br>회피는 줄이면 좋은 쪽",g:["둥글둥글하게 맞춰주기","조용히 세심하게 챙김","열린 마음으로 받아들임","따뜻하고 다정하게 대함","나만의 감각 표현하기","갈등 없이 평화롭게 지냄","겸손하게 행동하기","현재를 즐기며 살기"],r:["결정 못 하고 계속 미루기","오늘 할 일 내일로 미루기","자존감 쉽게 뚝 떨어짐","승부욕 없이 포기하기","싫은 내색 안 하고 참기","금방 체력 방전되기","팩트 폭격에 상처받기","복잡한 대화 무조건 피함"]},
+  ENTP:{name:"말빨 챔피언",sub:"재치와 논리는 장점이고<br>말로 찌르는 건 줄이면 좋은 쪽",g:["번뜩이는 아이디어 제안","논리적으로 의견 말하기","편견 없이 다각도로 보기","위기 상황 빠르게 돌파","자신감 있게 밀어붙이기","다방면으로 지식 쌓기","틀에 얽매이지 않고 생각","솔직하게 팩트 말하기"],r:["청개구리처럼 반항하기","쓸데없이 시비 걸기","벌려놓고 수습 안 하기","필터 안 거치고 막말하기","금방 지루해하고 딴짓","디테일한 부분 다 놓치기","내 말이 맞다고 똥고집","남의 감정 철저히 무시"]},
+  INTP:{name:"방구석 철학자",sub:"깊은 분석은 장점이고<br>현실 방치는 줄이면 좋은 쪽",g:["객관적으로 상황 분석","호기심 갖고 깊게 탐구","논리적으로 문제 해결","독창적으로 아이디어 냄","편견 없이 사실만 보기","핵심만 정확하게 파악","독립적으로 내 일 하기","감정에 휩쓸리지 않기"],r:["영혼 없는 리액션하기","귀찮은 거 끝까지 미루기","사회성 떨어지는 행동","팩트로 뼈 때리고 상처줌","감정적으로 공감 안 해줌","연락 안 보고 귀찮아함","오만해 보임","남 무시하는 태도 보임"]},
+  ENTJ:{name:"야망 가득 캡틴",sub:"추진력은 장점이고<br>압박감 주는 태도는 줄이면 좋은 쪽",g:["빠르고 확실한 결정","큰 그림 그리며 전략 짜기","목표 향해 끝까지 달림","카리스마 있게 무리 이끎","가장 효율적인 방법 찾기","문제 상황 깔끔하게 해결","강한 자신감 보여주기","논리적으로 상황 분석"],r:["내 마음대로 다 통제하려함","남 감정 무시하고 상처줌","무능력한 사람 대놓고 무시","워커홀릭처럼 일만 하기","오만하고 건방지게 굴기","팩트 폭격기로 기 죽이기","인내심 없이 욱하기","결과를 위해 과정 무시"]},
+  INTJ:{name:"마스터마인드",sub:"전략적인 사고는 장점이고<br>차가운 고집은 줄이면 좋은 쪽",g:["멀리 내다보고 계획 짜기","전략적으로 꼼꼼하게 생각","논리적으로 원인 분석","독립적으로 목표 달성","가장 효율적인 길 찾기","남들이 못 보는 해결책 찾음","지적으로 계속 탐구하기","객관적으로 상황 판단"],r:["냉소적으로 비꼬며 말하기","남의 의견 싹 무시하기","융통성 없이 원칙만 따짐","쓸데없이 완벽주의 부림","건방지고 오만하게 굴기","타인 감정에 심하게 둔감","인간관계 자체를 귀찮아함","내 고집 절대 안 꺾기"]},
+  ENFJ:{name:"다정한 선도부장",sub:"따뜻한 리드는 장점이고<br>과한 책임감은 줄이면 좋은 쪽",g:["사람들 부드럽게 이끌기","진심으로 소통하고 공감","긍정적인 에너지 불어넣기","책임감 있게 맡은 일 다함","다른 사람 성장 도와주기","비전 제시하며 동기부여","다정하고 따뜻하게 챙김","좋은 분위기 주도하기"],r:["남의 일에 너무 과몰입함","무리한 부탁도 거절 못함","작은 비판에도 크게 상처","완벽주의 빠져 스트레스","감정 소모 심하게 하기","선 넘어서 오지랖 부리기","내 밥그릇 못 챙기고 양보","지나친 이상주의에 빠짐"]},
+  INFJ:{name:"겉바속촉 예언가",sub:"깊은 통찰은 장점이고<br>혼자 닫히는 습관은 줄이면 좋은 쪽",g:["깊은 통찰력으로 꿰뚫어봄","흔들리지 않는 가치관 지킴","안 드러내며 조용히 돕기","진심 담아 이타적으로 행동","톡톡 튀는 영감 떠올리기","강한 직관력으로 상황 파악","신뢰감 주는 행동하기","세심하게 주변 배려하기"],r:["속마음 절대 안 보여주기","참다 참다 한 번에 손절","혼자 생각 너무 깊게 파고듦","완벽주의 때문에 피곤해짐","쉽게 번아웃 와서 지침","현실 감각 잃고 헤매기","혼자 끙끙 앓고 속으로 삭임","팩트에 너무 예민하게 반응"]}
 };
 
 let step=0;
 let score={E:0,I:0,S:0,N:0,T:0,F:0,J:0,P:0};
 
 function startTest(){
+  document.getElementById("start-control").style.display="none";
   document.getElementById("control-area").style.display="none";
   document.getElementById("screen-start").classList.remove("active");
   document.getElementById("screen-result").classList.remove("active");
@@ -412,9 +543,9 @@ function renderQ(){
   const q=qData[step];
   document.getElementById("q-num").innerText=`Q. ${step+1} / 12`;
   document.getElementById("q-label").innerText=`Q${step+1}`;
-  document.getElementById("q-text").innerText=q.q;
-  document.getElementById("btn-a").innerText=q.a;
-  document.getElementById("btn-b").innerText=q.b;
+  document.getElementById("q-text").innerHTML=q.q;
+  document.getElementById("btn-a").innerHTML=q.a;
+  document.getElementById("btn-b").innerHTML=q.b;
   renderSignalProgress();
 }
 
@@ -441,7 +572,7 @@ function showResult(){
   const data=rData[mbti];
 
   document.getElementById("mbti-nickname").innerText=data.name;
-  document.getElementById("result-sub").innerText=data.sub;
+ document.getElementById("result-sub").innerHTML=data.sub;
   document.getElementById("green-list").innerHTML=data.g.map(t=>`<div class="trait-item">${t}</div>`).join("");
   document.getElementById("red-list").innerHTML=data.r.map(t=>`<div class="trait-item">${t}</div>`).join("");
 
@@ -455,6 +586,7 @@ function restart(){
   step=0;
   score={E:0,I:0,S:0,N:0,T:0,F:0,J:0,P:0};
   document.getElementById("control-area").style.display="none";
+  document.getElementById("start-control").style.display="block";
   document.getElementById("screen-result").classList.remove("active");
   document.getElementById("screen-question").classList.remove("active");
   document.getElementById("screen-start").classList.add("active");
@@ -519,16 +651,19 @@ function closeModal(){
   document.getElementById("modal").style.display="none";
 }
 
-function share(){
+function shareTest(){
+  const shareUrl = "https://test-it.co.kr/test385";
+  const text = "테스트잇 레드레드 성격 테스트";
+
   if(navigator.share){
     navigator.share({
-      title:"레드레드 성격 테스트",
-      text:"나의 긍정 신호와 주의 신호 알아보기",
-      url:window.location.href
-    }).catch(console.error);
+      title: text,
+      text: text,
+      url: shareUrl
+    });
   }else{
-    navigator.clipboard.writeText(window.location.href).then(()=>{
-      alert("테스트 링크가 복사됐어요");
+    navigator.clipboard.writeText(text + "\n" + shareUrl).then(function(){
+      alert("테스트 링크가 복사되었습니다.");
     });
   }
 }

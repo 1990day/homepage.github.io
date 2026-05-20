@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5522499110435321" crossorigin="anonymous"></script>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>테스트잇 이미지 프로필 성격 테스트</title>
+  <meta name="description" content="테스트잇 이미지 프로필 성격 테스트" />
+  <meta name="keywords" content="테스트잇,성격테스트,이미지프로필성격테스트,이미지프로필테스트,테스트잇이미지프로필성격테스트,테스트잇사주,테스트잇이미지프로필,테스트잇연애,연애테스트,연애mbti,연애성격테스트, 심리테스트, mbti테스트">
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="테스트잇 이미지 프로필 성격 테스트" />
+  <meta property="og:description" content="테스트잇 이미지 프로필 성격 테스트" />
+  <meta property="og:url" content="https://test-it.co.kr/test386" />
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Pretendard", "Apple SD Gothic Neo", sans-serif;
+      color: #4b3f67;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,0.9) 0 2px, transparent 3px),
+        radial-gradient(circle at 80% 15%, rgba(255,255,255,0.8) 0 2px, transparent 3px),
+        radial-gradient(circle at 30% 80%, rgba(255,255,255,0.8) 0 2px, transparent 3px),
+        linear-gradient(135deg, #b9e8ff 0%, #d8c5ff 42%, #ffc2e4 100%);
+      min-height: 100vh;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .wrapper {
+      width: min(540px, 100%);
+      margin: 0 auto;
+      padding: 0 18px;
+    }
+
+    .page-header {
+      width: min(540px, calc(100% - 24px));
+      margin: 14px auto 0;
+      height: 58px;
+      padding: 0 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border: 2px solid #ff8ac6;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.55);
+      box-shadow: 5px 5px 0 rgba(123, 104, 220, 0.16);
+      backdrop-filter: blur(8px);
+    }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 950;
+      letter-spacing: -0.5px;
+      color: #ff5fa8;
+      text-shadow: 1px 1px 0 #ffffff;
+    }
+
+    .main-nav {
+      display: flex;
+      gap: 10px;
+      font-size: 13px;
+      font-weight: 900;
+      color: #6b5c91;
+    }
+
+    .main-nav a {
+      padding: 6px 8px;
+      border-radius: 999px;
+      background: rgba(255, 234, 247, 0.78);
+      border: 1px solid rgba(255, 138, 198, 0.55);
+    }
+
+    .screen {
+      display: none;
+      padding-bottom: 34px;
+    }
+
+    .screen.active {
+      display: block;
+    }
+
+    .window-card {
+      position: relative;
+      width: min(500px, 100%);
+      margin: 18px auto 0;
+      padding: 50px 15px 20px;
+      border: 3px solid #ff8ac6;
+      border-radius: 30px;
+      background: rgba(255,255,255,0.82);
+      box-shadow: 8px 8px 0 rgba(123, 104, 220, 0.18);
+      overflow: hidden;
+    }
+
+    .window-bar {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 38px;
+      background: linear-gradient(180deg, #ffd3ea, #ffb8dc);
+      border-bottom: 2px solid #ff8ac6;
+    }
+
+    .window-icons {
+      position: absolute;
+      right: 14px;
+      top: 8px;
+      display: flex;
+      gap: 8px;
+    }
+
+    .window-icon {
+      width: 28px;
+      height: 20px;
+      border: 2px solid #ff6daf;
+      border-radius: 5px;
+      color: #ff4f9f;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 14px;
+      background: rgba(255,255,255,0.42);
+    }
+
+    .main-img {
+      width: 100%;
+      display: block;
+      border-radius: 22px;
+    }
+
+    .start-btn,
+    .answer-btn,
+    .action-btn {
+      width: min(500px, 100%);
+      cursor: pointer;
+      font-family: inherit;
+      font-weight: 900;
+      color: #5a416d;
+      border: 2px solid #ffb85d;
+      border-radius: 18px;
+      background: linear-gradient(180deg, #fff6c9, #ffd98d);
+      box-shadow: 0 5px 0 rgba(255, 163, 80, 0.5);
+    }
+
+    .start-btn {
+      display: block;
+      margin: 20px auto 0;
+      height: 56px;
+      font-size: 18px;
+    }
+
+    .question-card {
+      width: min(500px, 100%);
+      margin: 18px auto 0;
+      padding: 26px 18px 22px;
+      border: 3px solid #ff8ac6;
+      border-radius: 30px;
+      background: rgba(255,255,255,0.86);
+      box-shadow: 8px 8px 0 rgba(123, 104, 220, 0.16);
+    }
+
+    .progress-wrap {
+      width: 100%;
+      height: 18px;
+      border: 2px solid #ff8ac6;
+      border-radius: 99px;
+      background: #fff;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+
+    .progress {
+      width: 0;
+      height: 100%;
+      background: linear-gradient(90deg, #ffc4e5, #bff3f1, #fff1b8, #d8ccff);
+      transition: width 0.25s ease;
+    }
+
+    .q-num {
+      text-align: center;
+      font-size: 13px;
+      font-weight: 900;
+      color: #ff5fa8;
+      margin-bottom: 12px;
+    }
+
+    .question {
+      text-align: center;
+      font-size: 20px;
+      line-height: 1.45;
+      font-weight: 950;
+      color: #4b3f67;
+      word-break: keep-all;
+      margin-bottom: 20px;
+    }
+
+    .answer-list {
+      display: grid;
+      gap: 13px;
+    }
+
+    .answer-btn {
+      min-height: 62px;
+      padding: 14px 15px;
+      font-size: 15px;
+      line-height: 1.45;
+      background: linear-gradient(180deg, #ffffff, #ffeaf5);
+      border-color: #ff9ccc;
+      box-shadow: 0 5px 0 rgba(255, 140, 194, 0.45);
+      word-break: keep-all;
+    }
+
+    .result-img {
+      width: min(500px, 100%);
+      display: block;
+      margin: 18px auto 0;
+      border-radius: 0;
+    }
+
+      .ad-container {
+      margin-top: 16px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+    
+    .button-group {
+      width: min(500px, 100%);
+      display: grid;
+      gap: 12px;
+      margin: 18px auto 0;
+    }
+
+    .action-btn {
+      height: 52px;
+      font-size: 15px;
+    }
+
+    .action-btn:nth-child(1) {
+      background: linear-gradient(180deg, #ffeaf5, #ffc0dd);
+      border-color: #ff82bd;
+      box-shadow: 0 5px 0 rgba(255, 130, 189, 0.45);
+    }
+
+    .action-btn:nth-child(2) {
+      background: linear-gradient(180deg, #e9fffb, #bff3f1);
+      border-color: #70cfd0;
+      box-shadow: 0 5px 0 rgba(112, 207, 208, 0.45);
+    }
+
+    .action-btn:nth-child(3) {
+      background: linear-gradient(180deg, #fff7d1, #ffd98d);
+      border-color: #ffb85d;
+      box-shadow: 0 5px 0 rgba(255, 184, 93, 0.45);
+    }
+
+    .action-btn:nth-child(4) {
+      background: linear-gradient(180deg, #f0eaff, #d8ccff);
+      border-color: #a894ff;
+      box-shadow: 0 5px 0 rgba(168, 148, 255, 0.45);
+    }
+
+    .capture-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 99;
+      padding: 24px 18px;
+      background: rgba(72, 54, 111, 0.45);
+      align-items: center;
+      justify-content: center;
+    }
+
+    .capture-modal.active {
+      display: flex;
+    }
+
+    .capture-box {
+      width: min(360px, 100%);
+      padding: 18px;
+      border-radius: 26px;
+      border: 3px solid #ff8ac6;
+      background: #fff;
+      text-align: center;
+      box-shadow: 8px 8px 0 rgba(73, 58, 130, 0.2);
+    }
+
+    .capture-box p {
+      margin: 0 0 12px;
+      font-size: 14px;
+      font-weight: 900;
+      color: #5a416d;
+    }
+
+    .capture-box img {
+      width: 78%;
+      max-height: 62vh;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto 14px;
+    }
+
+    .close-btn {
+      width: 100%;
+      height: 46px;
+      border-radius: 16px;
+      border: 2px solid #ff8ac6;
+      background: #ffeaf5;
+      font-weight: 900;
+      color: #5a416d;
+      font-family: inherit;
+    }
+
+    @media (max-width: 380px) {
+      .page-header {
+        padding: 0 10px;
+      }
+
+      .logo-text {
+        font-size: 18px;
+      }
+
+      .main-nav {
+        gap: 6px;
+        font-size: 12px;
+      }
+
+      .main-nav a {
+        padding: 5px 6px;
+      }
+
+      .question {
+        font-size: 18px;
+      }
+
+      .answer-btn {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="page-header">
+    <a class="logo-text" href="https://test-it.co.kr/">테스트잇</a>
+    <nav class="main-nav">
+      <a href="https://test-it.co.kr/">성격</a>
+      <a href="https://test-it.co.kr/">얼굴</a>
+      <a href="https://test-it.co.kr/">그외</a>
+      <a href="https://test-it.co.kr/">사주</a>
+    </nav>
+  </header>
+
+  <main class="wrapper">
+    <section id="mainScreen" class="screen active">
+      <div class="window-card">
+        <div class="window-bar"></div>
+        <div class="window-icons">
+          <div class="window-icon">−</div>
+          <div class="window-icon">×</div>
+        </div>
+        <img class="main-img" src="img_main386.png" alt="테스트 메인 이미지">
+      </div>
+      <button class="start-btn" type="button" onclick="startTest()">테스트 시작하기</button>
+    </section>
+
+    <section id="questionScreen" class="screen">
+      <div class="question-card">
+        <div class="progress-wrap">
+          <div id="progress" class="progress"></div>
+        </div>
+        <div id="qNum" class="q-num"></div>
+        <div id="question" class="question"></div>
+        <div id="answers" class="answer-list"></div>
+      </div>
+    </section>
+
+    <section id="resultScreen" class="screen">
+      <img id="resultImage" class="result-img" src="" alt="결과 이미지">
+
+      <div class="button-group">
+        <button class="action-btn" type="button" onclick="saveResultImage()">결과 이미지 저장하기</button>
+        <button class="action-btn" type="button" onclick="restartTest()">다시 해보기</button>
+        <button class="action-btn" type="button" onclick="goOtherTest()">다른 테스트 해보기</button>
+        <button class="action-btn" type="button" onclick="shareTest()">테스트 공유하기</button>
+      </div>
+    </section>
+      <div class="ad-container" id="ad-container-page1">
+      <article class="coupang_ad mt-3">
+        <script src="https://ads-partners.coupang.com/g.js"></script>
+        <script>
+          new PartnersCoupang.G({
+            "id": 798186,
+            "template": "carousel",
+            "trackingCode": "AF4391881",
+            "width": "350",
+            "height": "140",
+            "tsource": ""
+          });
+        </script>
+      </article>
+    </div>
+  </main>
+
+  <div id="captureModal" class="capture-modal">
+    <div class="capture-box">
+      <p>이미지를 꾹 눌러 저장해주세요</p>
+      <img id="capturePreview" src="" alt="결과 저장 이미지">
+      <button class="close-btn" type="button" onclick="closeCapture()">닫기</button>
+    </div>
+  </div>
+
+  <script>
+    const questions = [
+      {
+        q: "쉬는 날 갑자기 시간이 비었다",
+        a: [
+          { text: "누군가에게 연락해서 약속부터 잡음", type: "E" },
+          { text: "혼자 편하게 보낼 계획부터 생각함", type: "I" }
+        ]
+      },
+      {
+        q: "친구가 신기한 꿈 얘기를 해준다",
+        a: [
+          { text: "신기한 꿈 꿨네 하고 끝", type: "S" },
+          { text: "무슨 의미 있는 꿈인가 찾아봄", type: "N" }
+        ]
+      },
+      {
+        q: "친구가 새 옷을 입고 와서<br>어떠냐고 묻는다",
+        a: [
+          { text: "안 어울리면 솔직히 말함", type: "T" },
+          { text: "너무 이상하지 않으면 괜찮다고 해줌", type: "F" }
+        ]
+      },
+      {
+        q: "일주일 뒤에 약속이 잡혔다",
+        a: [
+          { text: "미리 시간과 일정 생각해둠", type: "J" },
+          { text: "가까워지면 생각해도 된다고 느낌", type: "P" }
+        ]
+      },
+      {
+        q: "친구랑 헤어진 뒤 집 가는 길",
+        a: [
+          { text: "오늘 재밌었다 아직도 신나있음", type: "E" },
+          { text: "혼자 있는 시간이 반가움", type: "I" }
+        ]
+      },
+      {
+        q: "물건을 살 때 더 중요한 건?",
+        a: [
+          { text: "기능, 가격, 후기", type: "S" },
+          { text: "느낌, 취향, 끌림", type: "N" }
+        ]
+      },
+      {
+        q: "나 요즘 너무 무기력해. 퇴사할까?<br>라고 하는 친구에게",
+        a: [
+          { text: "이직할 곳은 정해놨어? 모아둔 돈은 있고?", type: "T" },
+          { text: "많이 힘들어? 회사 사람들이 괴롭혀?", type: "F" }
+        ]
+      },
+      {
+        q: "배달 메뉴를 고를 때 나는?",
+        a: [
+          { text: "빨리 정하고 주문함", type: "J" },
+          { text: "끝까지 고민하다 늦어짐", type: "P" }
+        ]
+      },
+      {
+        q: "새로운 사람과 친해질 때 나는?",
+        a: [
+          { text: "대화를 자주 하면서 금방 가까워진다", type: "E" },
+          { text: "시간을 두고 천천히 마음을 연다", type: "I" }
+        ]
+      },
+      {
+        q: "갑자기 좀비 사태가 터진다면?",
+        a: [
+          { text: "그럴 일이 없어서 몰입이 안 됨", type: "S" },
+          { text: "마트로 가야 하나? 진지하게 고민함", type: "N" }
+        ]
+      },
+      {
+        q: "결정을 내려야 할 때<br>내가 더 믿는 기준은?",
+        a: [
+          { text: "논리적으로 맞는지<br>손해는 없는지", type: "T" },
+          { text: "내 마음이 불편하지 않은지<br>후회 안 할지", type: "F" }
+        ]
+      },
+      {
+        q: "바탕화면이나 카톡 알림 숫자 상태는?",
+        a: [
+          { text: "알림 떠 있는 거 절대 못 봄<br>싹 다 읽음 처리", type: "J" },
+          { text: "카톡 999+, 메일 9999+<br>전혀 타격 없음", type: "P" }
+        ]
+      }
+    ];
+
+    let current = 0;
+
+    const score = {
+      E: 0, I: 0,
+      S: 0, N: 0,
+      T: 0, F: 0,
+      J: 0, P: 0
+    };
+
+    function showScreen(id) {
+      document.querySelectorAll(".screen").forEach(function(screen) {
+        screen.classList.remove("active");
+      });
+      document.getElementById(id).classList.add("active");
+      window.scrollTo(0, 0);
+    }
+
+    function resetTest() {
+      current = 0;
+      Object.keys(score).forEach(function(key) {
+        score[key] = 0;
+      });
+      document.getElementById("progress").style.width = "0%";
+      document.getElementById("answers").innerHTML = "";
+      document.getElementById("question").innerHTML = "";
+      document.getElementById("qNum").innerHTML = "";
+    }
+
+    function startTest() {
+      resetTest();
+      showScreen("questionScreen");
+      renderQuestion();
+    }
+
+    function renderQuestion() {
+      const item = questions[current];
+
+      document.getElementById("qNum").innerHTML = (current + 1) + " / " + questions.length;
+      document.getElementById("question").innerHTML = item.q;
+      document.getElementById("progress").style.width = (current / questions.length * 100) + "%";
+
+      const answers = document.getElementById("answers");
+      answers.innerHTML = "";
+
+      item.a.forEach(function(answer) {
+        const btn = document.createElement("button");
+        btn.className = "answer-btn";
+        btn.type = "button";
+        btn.innerHTML = answer.text;
+        btn.onclick = function() {
+          selectAnswer(answer.type);
+        };
+        answers.appendChild(btn);
+      });
+    }
+
+    function selectAnswer(type) {
+      score[type] += 1;
+      current += 1;
+
+      if (current >= questions.length) {
+        document.getElementById("progress").style.width = "100%";
+        showResult();
+      } else {
+        renderQuestion();
+      }
+    }
+
+    function showResult() {
+      const mbti =
+        (score.E >= score.I ? "e" : "i") +
+        (score.S >= score.N ? "s" : "n") +
+        (score.T >= score.F ? "t" : "f") +
+        (score.J >= score.P ? "j" : "p");
+
+      document.getElementById("resultImage").src = "img_" + mbti + "386.png";
+      showScreen("resultScreen");
+    }
+
+    function restartTest() {
+      resetTest();
+      document.getElementById("resultImage").src = "";
+      showScreen("mainScreen");
+    }
+
+    function goOtherTest() {
+      location.href = "https://test-it.co.kr/";
+    }
+
+    function shareTest() {
+      const shareUrl = "https://test-it.co.kr/test386";
+      const shareTitle = "테스트잇 이미지 프로필 성격 테스트";
+
+      if (navigator.share) {
+        navigator.share({
+          title: shareTitle,
+          text: shareTitle,
+          url: shareUrl
+        }).catch(function() {});
+      } else {
+        navigator.clipboard.writeText(shareUrl).then(function() {
+          alert("테스트 링크가 복사되었습니다.");
+        });
+      }
+    }
+
+    function saveResultImage() {
+      const target = document.getElementById("resultImage");
+
+      html2canvas(target, {
+        backgroundColor: null,
+        scale: 2,
+        useCORS: true
+      }).then(function(canvas) {
+        document.getElementById("capturePreview").src = canvas.toDataURL("image/png");
+        document.getElementById("captureModal").classList.add("active");
+      });
+    }
+
+    function closeCapture() {
+      document.getElementById("captureModal").classList.remove("active");
+    }
+  </script>
+</body>
+</html>

@@ -25,7 +25,7 @@
 
     body {
       margin: 0;
-      background: #f4f1ea;
+      background: #eadfcd;
       color: #171717;
       font-family: Arial, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
     }
@@ -82,6 +82,16 @@
       width: min(560px, 100%);
       margin: 0 auto;
       padding: 22px 18px 42px;
+    }
+
+    .main-image-box {
+      width: 100%;
+      max-width: 532px;
+      margin: 0 auto;
+      padding: 14px;
+      background: #fffdfa;
+      border: 2px solid #171717;
+      box-shadow: 7px 7px 0 rgba(0, 0, 0, 0.18);
     }
 
     .main-image {
@@ -160,14 +170,22 @@
     }
 
     .question-title {
+      min-height: 46px;
+      padding: 9px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       text-align: center;
-      font-size: 23px;
+      border: 2px solid #171717;
+      background: #fffdfa;
+      font-size: 21px;
       font-weight: 900;
       letter-spacing: -0.7px;
+      box-shadow: inset 0 -4px 0 #ffe16a;
     }
 
     .question-count {
-      padding: 8px 13px;
+      padding: 10px 13px;
       border: 2px solid #171717;
       background: #fffdfa;
       font-size: 15px;
@@ -187,6 +205,10 @@
       margin-bottom: 8px;
       font-size: 14px;
       font-weight: 900;
+    }
+
+    .progress-text span:first-child {
+      color: #555;
     }
 
     .progress-bar {
@@ -238,29 +260,41 @@
       position: relative;
       z-index: 2;
       margin: 28px 0 10px;
+      padding: 0 8px;
       font-size: 15px;
       font-weight: 800;
-      color: #222;
+      color: #555;
+      line-height: 1.45;
+      text-align: center;
     }
 
     .answer-input {
       position: relative;
       z-index: 2;
       width: 100%;
-      height: 54px;
+      height: 58px;
       padding: 0 16px;
       border: 2px solid #171717;
       border-radius: 0;
-      background: #fffdfa;
+      background: #ffe16a;
       color: #171717;
-      font-size: 21px;
-      font-weight: 800;
+      font-size: 22px;
+      font-weight: 900;
       text-align: center;
       outline: none;
+      box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.16);
+    }
+
+    .answer-input::placeholder {
+      color: #6f6127;
+      opacity: 1;
+      font-weight: 900;
     }
 
     .answer-input:focus {
-      background: #fff6c4;
+      background: #ffd94d;
+      border-color: #171717;
+      box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.18), 0 0 0 3px rgba(255, 225, 106, 0.45);
     }
 
     .result-card {
@@ -365,6 +399,11 @@
         padding: 16px 14px 36px;
       }
 
+      .main-image-box {
+        padding: 10px;
+        box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.18);
+      }
+
       .exam-paper {
         min-height: 570px;
         padding: 24px 16px 26px;
@@ -376,12 +415,21 @@
         inset: 10px;
       }
 
+      .question-head {
+        gap: 7px;
+        padding-bottom: 12px;
+      }
+
       .question-title {
-        font-size: 18px;
+        min-height: 43px;
+        padding: 8px 9px;
+        font-size: 16px;
+        letter-spacing: -0.5px;
+        box-shadow: inset 0 -4px 0 #ffe16a;
       }
 
       .question-count {
-        padding: 7px 10px;
+        padding: 9px 10px;
         font-size: 13px;
       }
 
@@ -394,8 +442,14 @@
         font-size: 21px;
       }
 
+      .answer-guide {
+        margin-top: 24px;
+        font-size: 14px;
+        text-align: center;
+      }
+
       .answer-input {
-        height: 50px;
+        height: 56px;
         font-size: 19px;
       }
 
@@ -430,7 +484,9 @@
 
   <main class="wrap">
     <section id="start-page">
-      <img class="main-image" src="img_main387.png" alt="테스트잇 영크크 유행 테스트">
+      <div class="main-image-box">
+        <img class="main-image" src="img_main387.png" alt="테스트잇 영크크 유행 테스트">
+      </div>
       <button class="start-button" type="button" onclick="showFirstQuestion()">테스트 시작하기</button>
     </section>
 
@@ -475,53 +531,53 @@
   <script>
     const questions = [
       {
-        q: "과자 먹는 것만큼 쉽다<br>식은 죽 먹기 라는 뜻의 말은?",
-        guide: "띄어쓰기 없이 4글자로 입력해주세요",
+        q: "과자 먹는 것만큼 쉽다는 뜻의<br>식은 죽 먹기와 비슷한 말은?",
+        guide: "띄어쓰기 없이 한글로 입력해주세요(4글자)",
         answers: ["이지까까"]
       },
       {
-        q: "매시간마다 친구들과 짧은 영상을 기록하는 앱은?",
-        guide: "띄어쓰기 없이 한글 3글자로 입력해주세요",
+        q: "친구들과 매시간<br>짧은 영상을 기록하는 앱은?",
+        guide: "띄어쓰기 없이 한글로 입력해주세요(3글자)",
         answers: ["셋로그"]
       },
       {
-        q: "미국에서 시작된 신조어로<br>저글링 제스처와 함께 아무 의미 없이 감탄사처럼 사용하는 말은?",
-        guide: "띄어쓰기 없이 숫자 2글자로 입력해주세요",
+        q: "미국에서 시작된 유행어로<br>저글링 동작과 함께<br>감탄사처럼 쓰는 말은?",
+        guide: "띄어쓰기 없이 숫자로 입력해주세요(2글자)",
         answers: ["67"]
       },
       {
-        q: "일이 잘 안 풀릴 때 쓰는 감탄사로<br>유명한 화가 이름이기도 한<br>이 유행어는?",
-        guide: "띄어쓰기 없이 한글 2글자로 입력해주세요",
+        q: "답답하거나<br>일이 안 풀릴 때 쓰는 말로<br>유명한 화가 이름이기도 한<br>이 유행어는?",
+        guide: "띄어쓰기 없이로 입력해주세요(2글자)",
         answers: ["샤갈"]
       },
       {
-        q: "긍정의 의미를 가진 감탄사로<br>야호! 아싸! 처럼<br>가볍게 사용하는 말은?<br>(예시:ㅇㅇ하다)",
-        guide: "띄어쓰기 없이 한글 2글자로 입력해주세요",
+        q: "야호!, 아싸!처럼<br>신나거나 긍정적인 순간에<br>가볍게 쓰는 말은?<br>(예시: ㅇㅇ하다)",
+        guide: "띄어쓰기 없이 한글로 입력해주세요(2글자)",
         answers: ["야르"]
       },
       {
-        q: "주로 영크크와 반대되는 말로 쓰며<br>요즘 감성을 따라가기 어려운 사람을<br>뜻하는 말은?",
-        guide: "띄어쓰기 없이 한글 3글자로 입력해주세요",
+        q: "영크크의 반대말로<br>요즘 감성을 따라가기<br>어려운 사람을 뜻하는 말은?",
+        guide: "띄어쓰기 없이 한글로 입력해주세요(3글자)",
         answers: ["늙크크"]
       },
       {
-        q: "아이돌 리센느 유튜브에서<br>미나미가 유행시킨 말은?",
-        guide: "띄어쓰기 없이 4글자로 입력해주세요",
+        q: "아이돌 리센느 멤버 미나미가<br>유튜브에서 유행시킨 말은?",
+        guide: "띄어쓰기 없이 한글로 입력해주세요(4글자)",
         answers: ["거제야호"]
       },
       {
-        q: "나 같은 경우에는<br>을 줄인 말은?",
-        guide: "띄어쓰기 없이 3글자로 입력해주세요",
+        q: "'나 같은 경우에는'을<br>줄여서 부르는 말은?",
+        guide: "띄어쓰기 없이 한글로 입력해주세요(3글자)",
         answers: ["나같경"]
       },
       {
-        q: "소중한 사람을 그 상태 그대로<br>오래 간직하고 싶다는<br>뜻을 가진 말은?",
-        guide: "띄어쓰기 없이 4글자로 입력해주세요",
+        q: "소중한 사람을 지금 이 모습 그대로<br>오래 간직하고 싶다는<br>뜻을 담은 말은?<br>(예시: 엄마 ㅇㅇㅇㅇ할래)",
+        guide: "띄어쓰기 없이 한글로 입력해주세요(4글자)",
         answers: ["동결건조"]
       },
       {
-        q: "화가 나서 뱅뱅 돌겠다는 뜻으로<br>주로 열받았을 때 쓰는 말은?",
-        guide: "띄어쓰기 없이 7글자로 입력해주세요",
+        q: "너무 화나서 뱅뱅 돌 것 같을 때<br>쓰는 유행어는?",
+        guide: "띄어쓰기 없이 한글로 입력해주세요(7글자)",
         answers: ["앵그리그리뱅뱅"]
       }
     ];
@@ -559,7 +615,7 @@
 
             <div class="progress-area">
               <div class="progress-text">
-                <span>문제 ${questionNum}</span>
+                <span>진행률</span>
                 <span>${Math.round((questionNum / numQuestions) * 100)}%</span>
               </div>
               <div class="progress-bar">
@@ -573,7 +629,7 @@
             </div>
 
             <p class="answer-guide">${item.guide}</p>
-            <input type="text" class="answer-input" id="answer-${questionNum}" autocomplete="off" placeholder="정답 입력">
+            <input type="text" class="answer-input" id="answer-${questionNum}" autocomplete="off" placeholder="여기에 정답 입력">
 
             <button class="submit-button" type="button" onclick="checkAnswer(${questionNum})">
               ${questionNum === numQuestions ? "제출하기" : "다음 문제"}

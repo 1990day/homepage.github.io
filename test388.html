@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5522499110435321" crossorigin="anonymous"></script>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>테스트잇 스티커 코어 성격 테스트</title>
+  <meta name="description" content="테스트잇 스티커 코어 성격 테스트" />
+  <meta name="keywords" content="테스트잇,성격테스트,스티커코어성격테스트,스티커코어테스트,테스트잇스티커코어성격테스트,테스트잇사주,테스트잇스티커코어,테스트잇연애,연애테스트,연애mbti,연애성격테스트, 심리테스트, mbti테스트">
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="테스트잇 스티커 코어 성격 테스트" />
+  <meta property="og:description" content="테스트잇 스티커 코어 성격 테스트" />
+  <meta property="og:url" content="https://test-it.co.kr/test388" />
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+
+ <style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Pretendard", "Apple SD Gothic Neo", sans-serif;
+  color: #222;
+  background: #f7f7f7;
+  min-height: 100vh;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.wrapper {
+  width: min(560px, 100%);
+  margin: 0 auto;
+  padding: 0 14px 40px;
+}
+
+.page-header {
+  width: min(560px, calc(100% - 20px));
+  margin: 16px auto;
+  height: 56px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1.4px solid #222;
+  background: #fff;
+}
+
+.logo-text {
+  font-size: 20px;
+  font-weight: 900;
+  letter-spacing: -0.5px;
+}
+
+.main-nav {
+  display: flex;
+  gap: 7px;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.main-nav a {
+  padding: 6px 9px;
+  border: 1.2px solid #222;
+  background: #fff4f8;
+  border-radius: 999px;
+}
+
+.screen {
+  display: none;
+  padding-bottom: 34px;
+}
+
+.screen.active {
+  display: block;
+}
+
+.window-card {
+  width: min(500px, 100%);
+  margin: 18px auto 0;
+  padding: 10px;
+  border: 1.4px solid #222;
+  background: #fff;
+}
+
+.window-bar,
+.window-icons {
+  display: none;
+}
+
+.main-img {
+  width: 100%;
+  display: block;
+  border: 0;
+  border-radius: 0;
+}
+
+.start-btn,
+.answer-btn,
+.action-btn {
+  width: min(500px, 100%);
+  cursor: pointer;
+  font-family: inherit;
+  color: #222;
+  border: 1.4px solid #222;
+  border-radius: 999px;
+  box-shadow: 3px 4px 0 rgba(0, 0, 0, 0.12);
+}
+
+.start-btn {
+  display: block;
+  margin: 16px auto 0;
+  height: 58px;
+  font-size: 17px;
+  font-weight: 900;
+  background: #ffd7e4;
+  text-align: center;
+}
+
+.question-card {
+  width: min(500px, 100%);
+  margin: 18px auto 0;
+  padding: 20px 16px 18px;
+  border: 1.4px solid #222;
+  background: #fff;
+}
+
+.progress-wrap {
+  width: 100%;
+  height: 10px;
+  border: 1.2px solid #222;
+  background: #fff;
+  overflow: hidden;
+  margin-bottom: 18px;
+  border-radius: 999px;
+}
+
+.progress {
+  width: 0;
+  height: 100%;
+  background: #ffd3e2;
+  transition: width 0.25s ease;
+}
+
+.q-num {
+  text-align: center;
+  font-size: 12px;
+  font-weight: 800;
+  color: #777;
+  margin-bottom: 10px;
+}
+
+.question {
+  text-align: center;
+  font-size: 18px;
+  line-height: 1.45;
+  font-weight: 900;
+  color: #222;
+  word-break: keep-all;
+  margin-bottom: 18px;
+}
+
+.answer-list {
+  display: grid;
+  gap: 11px;
+}
+
+.answer-btn {
+  min-height: 54px;
+  padding: 13px 16px;
+  font-size: 13.5px;
+  line-height: 1.45;
+  font-weight: 800;
+  background: #fff;
+  text-align: center;
+  word-break: keep-all;
+  position: relative;
+}
+
+.answer-btn:nth-child(1) {
+  background: #fff3f7;
+}
+
+.answer-btn:nth-child(2) {
+  background: #f6f6f6;
+}
+
+.answer-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 3px 6px 0 rgba(0, 0, 0, 0.14);
+}
+
+.result-img {
+  width: min(500px, 100%);
+  height: auto;
+  display: block;
+  margin: 18px auto 0;
+  border: 1.4px solid #222;
+  background: #fff;
+  object-fit: contain;
+}
+
+.ad-container {
+  margin-top: 0px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.button-group {
+  width: min(500px, 100%);
+  display: grid;
+  gap: 11px;
+  margin: 16px auto 0;
+}
+
+.action-btn {
+  height: 52px;
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.action-btn:nth-child(1) {
+  background: #ffd7e4;
+}
+
+.action-btn:nth-child(2) {
+  background: #fff1bd;
+}
+
+.action-btn:nth-child(3) {
+  background: #e0f6f8;
+}
+
+.action-btn:nth-child(4) {
+  background: #eee8ff;
+}
+
+.action-btn:hover,
+.start-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 3px 6px 0 rgba(0, 0, 0, 0.14);
+}
+
+.capture-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 99;
+  padding: 24px 18px;
+  background: rgba(0, 0, 0, 0.35);
+  align-items: center;
+  justify-content: center;
+}
+
+.capture-modal.active {
+  display: flex;
+}
+
+.capture-box {
+  width: min(360px, 100%);
+  padding: 16px;
+  border: 1.4px solid #222;
+  background: #fff;
+  text-align: center;
+}
+
+.capture-box p {
+  margin: 0 0 12px;
+  font-size: 13px;
+  font-weight: 800;
+  color: #222;
+}
+
+.capture-box img {
+  width: 100%;
+  max-height: 62vh;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto 14px;
+}
+
+.close-btn {
+  width: 100%;
+  height: 46px;
+  border-radius: 999px;
+  border: 1.4px solid #222;
+  background: #ffd3e2;
+  font-weight: 900;
+  color: #222;
+  font-family: inherit;
+}
+
+@media (max-width: 380px) {
+  .page-header {
+    padding: 0 10px;
+  }
+
+  .logo-text {
+    font-size: 18px;
+  }
+
+  .main-nav {
+    gap: 5px;
+    font-size: 11px;
+  }
+
+  .main-nav a {
+    padding: 5px 6px;
+  }
+
+  .question {
+    font-size: 17px;
+  }
+
+  .answer-btn {
+    font-size: 13px;
+  }
+}
+</style>
+</head>
+
+<body>
+  <header class="page-header">
+    <a class="logo-text" href="https://test-it.co.kr/">테스트잇</a>
+    <nav class="main-nav">
+      <a href="https://test-it.co.kr/">성격</a>
+      <a href="https://test-it.co.kr/">얼굴</a>
+      <a href="https://test-it.co.kr/">그외</a>
+      <a href="https://test-it.co.kr/">사주</a>
+    </nav>
+  </header>
+
+  <main class="wrapper">
+    <section id="mainScreen" class="screen active">
+      <div class="window-card">
+        <div class="window-bar"></div>
+        <div class="window-icons">
+          <div class="window-icon">−</div>
+          <div class="window-icon">×</div>
+        </div>
+        <img class="main-img" src="img_main388.png" alt="테스트 메인 이미지">
+      </div>
+      <button class="start-btn" type="button" onclick="startTest()">테스트 시작하기</button>
+    </section>
+
+    <section id="questionScreen" class="screen">
+      <div class="question-card">
+        <div class="progress-wrap">
+          <div id="progress" class="progress"></div>
+        </div>
+        <div id="qNum" class="q-num"></div>
+        <div id="question" class="question"></div>
+        <div id="answers" class="answer-list"></div>
+      </div>
+    </section>
+
+    <section id="resultScreen" class="screen">
+      <img id="resultImage" class="result-img" src="" alt="결과 이미지">
+
+      <div class="button-group">
+        <button class="action-btn" type="button" onclick="saveResultImage()">결과 이미지 저장하기</button>
+        <button class="action-btn" type="button" onclick="restartTest()">다시 해보기</button>
+        <button class="action-btn" type="button" onclick="goOtherTest()">다른 테스트 해보기</button>
+        <button class="action-btn" type="button" onclick="shareTest()">테스트 공유하기</button>
+      </div>
+    </section>
+      <div class="ad-container" id="ad-container-page1">
+      <article class="coupang_ad mt-3">
+        <script src="https://ads-partners.coupang.com/g.js"></script>
+        <script>
+          new PartnersCoupang.G({
+            "id": 798186,
+            "template": "carousel",
+            "trackingCode": "AF4391881",
+            "width": "350",
+            "height": "140",
+            "tsource": ""
+          });
+        </script>
+      </article>
+    </div>
+  </main>
+
+  <div id="captureModal" class="capture-modal">
+    <div class="capture-box">
+      <p>이미지를 꾹 눌러 저장해주세요</p>
+      <img id="capturePreview" src="" alt="결과 저장 이미지">
+      <button class="close-btn" type="button" onclick="closeCapture()">닫기</button>
+    </div>
+  </div>
+
+  <script>
+    const questions = [
+      {
+        q: "단골 카페 사장님이<br>늘 드시던 걸로 드릴까요?<br>하면서 아는 척할 때",
+        a: [
+          { text: "날 기억해 줘서 좋다<br>또는 아무런 신경이 쓰이지 않는다", type: "E" },
+          { text: "다음부터는 다른 카페로 갈까<br>진지하게 고민한다", type: "I" }
+        ]
+      },
+      {
+        q: "아파트 엘리베이터를 탔는데 갑자기 덜컹거린다면?",
+        a: [
+          { text: "뭐지 고장 났나?<br>관리실에 말해야겠네", type: "S" },
+          { text: "멈추거나 추락하면 어떡하지?<br>추락할 때 점프하면 살 수 있나?", type: "N" }
+        ]
+      },
+      {
+        q: "친구가 시험이나 면접을 망쳤다고 할 때",
+        a: [
+          { text: "어느 부분에서 실수했는데?<br>많이 어려웠음?", type: "T" },
+          { text: "야 고생했어 진짜<br>맛있는 거 먹고 푹 쉬어", type: "F" }
+        ]
+      },
+      {
+        q: "갑자기 3일 휴가가 생겼을 때 나는?",
+        a: [
+          { text: "뭐라도 해야 할 것 같아서<br>초조하게 계획을 짠다", type: "J" },
+          { text: "아무 계획 없이 있다가<br>갑자기 하고 싶은걸 한다", type: "P" }
+        ]
+      },
+      {
+        q: "무려 일주일 동안 집에만 있었다",
+        a: [
+          { text: "답답하고 힘들었음", type: "E" },
+          { text: "이렇게 편할 수가 없음", type: "I" }
+        ]
+      },
+      {
+        q: "나의 대화 방식이랑 더 가까운 것은?",
+        a: [
+          { text: "A 얘기하다가 마무리되면 B로 넘어가고<br>차례대로 주제가 바뀜", type: "S" },
+          { text: "A 얘기하다가 갑자기 C 얘기 나오고<br>꼬리에 꼬리를 물고 Z까지 감", type: "N" }
+        ]
+      },
+      {
+        q: "누군가를 위로해 줘야 하는 상황이 오면?",
+        a: [
+          { text: "위로의 말을 고르는 게 너무 어렵다<br>차라리 실질적인 도움을 주고 싶다", type: "T" },
+          { text: "같이 슬퍼하고 공감해 주는 건 자신 있다<br>감정 이입이 잘 되는 편이다", type: "F" }
+        ]
+      },
+      {
+        q: "내가 영수증을 처리하는 방법은?",
+        a: [
+          { text: "가계부에 적으려고 챙기거나<br>처음부터 버려달라고 말한다", type: "J" },
+          { text: "주머니나 가방에 쑤셔 넣었다가<br>나중에 한 움큼 버린다", type: "P" }
+        ]
+      },
+      {
+        q: "미용실 디자이너가 말을 걸 때 나는?",
+        a: [
+          { text: "자연스럽게 대화를 주고받는다", type: "E" },
+          { text: "속으로 제발 머리만 잘라주지 생각한다", type: "I" }
+        ]
+      },
+      {
+        q: "친구가 뜬금없이<br>나 무인도에 떨어지면 어떡하지?<br>하고 물으면?",
+        a: [
+          { text: "네가 무인도에 갈 일이 살면서 언제 있는데?", type: "S" },
+          { text: "일단 불부터 피워야지<br>그리고 사냥도 해야지", type: "N" }
+        ]
+      },
+      {
+        q: "칭찬을 들었을 때 속으로 드는 생각은?",
+        a: [
+          { text: "내가 어떤 부분을 잘했는지 근거가 있어야<br>진짜 칭찬으로 와닿는다", type: "T" },
+          { text: "나를 좋게 봐준다는 그 마음 자체로<br>충분히 기분이 좋다", type: "F" }
+        ]
+      },
+      {
+        q: "편의점에 갔을 때 나는?",
+        a: [
+          { text: "원래 사려고 했던 물건만 집어서<br>계산대로 간다", type: "J" },
+          { text: "2+1 행사 상품이나 신제품을 보면<br>나도 모르게 집어 든다", type: "P" }
+        ]
+      }
+    ];
+
+    let current = 0;
+
+    const score = {
+      E: 0, I: 0,
+      S: 0, N: 0,
+      T: 0, F: 0,
+      J: 0, P: 0
+    };
+
+    function showScreen(id) {
+      document.querySelectorAll(".screen").forEach(function(screen) {
+        screen.classList.remove("active");
+      });
+      document.getElementById(id).classList.add("active");
+      window.scrollTo(0, 0);
+    }
+
+    function resetTest() {
+      current = 0;
+      Object.keys(score).forEach(function(key) {
+        score[key] = 0;
+      });
+      document.getElementById("progress").style.width = "0%";
+      document.getElementById("answers").innerHTML = "";
+      document.getElementById("question").innerHTML = "";
+      document.getElementById("qNum").innerHTML = "";
+    }
+
+    function startTest() {
+      resetTest();
+      showScreen("questionScreen");
+      renderQuestion();
+    }
+
+    function renderQuestion() {
+      const item = questions[current];
+
+      document.getElementById("qNum").innerHTML = (current + 1) + " / " + questions.length;
+      document.getElementById("question").innerHTML = item.q;
+      document.getElementById("progress").style.width = (current / questions.length * 100) + "%";
+
+      const answers = document.getElementById("answers");
+      answers.innerHTML = "";
+
+      item.a.forEach(function(answer) {
+        const btn = document.createElement("button");
+        btn.className = "answer-btn";
+        btn.type = "button";
+        btn.innerHTML = answer.text;
+        btn.onclick = function() {
+          selectAnswer(answer.type);
+        };
+        answers.appendChild(btn);
+      });
+    }
+
+    function selectAnswer(type) {
+      score[type] += 1;
+      current += 1;
+
+      if (current >= questions.length) {
+        document.getElementById("progress").style.width = "100%";
+        showResult();
+      } else {
+        renderQuestion();
+      }
+    }
+
+    function showResult() {
+      const mbti =
+        (score.E >= score.I ? "e" : "i") +
+        (score.S >= score.N ? "s" : "n") +
+        (score.T >= score.F ? "t" : "f") +
+        (score.J >= score.P ? "j" : "p");
+
+      document.getElementById("resultImage").src = "img_" + mbti + "388.png";
+      showScreen("resultScreen");
+    }
+
+    function restartTest() {
+      resetTest();
+      document.getElementById("resultImage").src = "";
+      showScreen("mainScreen");
+    }
+
+    function goOtherTest() {
+      location.href = "https://test-it.co.kr/";
+    }
+
+    function shareTest() {
+      const shareUrl = "https://test-it.co.kr/test388";
+      const shareTitle = "테스트잇 스티커 코어 성격 테스트";
+
+      if (navigator.share) {
+        navigator.share({
+          title: shareTitle,
+          text: shareTitle,
+          url: shareUrl
+        }).catch(function() {});
+      } else {
+        navigator.clipboard.writeText(shareUrl).then(function() {
+          alert("테스트 링크가 복사되었습니다.");
+        });
+      }
+    }
+
+    function saveResultImage() {
+      const target = document.getElementById("resultImage");
+
+      html2canvas(target, {
+        backgroundColor: null,
+        scale: 2,
+        useCORS: true
+      }).then(function(canvas) {
+        document.getElementById("capturePreview").src = canvas.toDataURL("image/png");
+        document.getElementById("captureModal").classList.add("active");
+      });
+    }
+
+    function closeCapture() {
+      document.getElementById("captureModal").classList.remove("active");
+    }
+  </script>
+</body>
+</html>

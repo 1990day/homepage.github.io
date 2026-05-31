@@ -129,19 +129,49 @@
 }
 
 .title-hearts span{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:14px;
+  height:14px;
+  line-height:1;
+  font-family:Arial, Helvetica, sans-serif;
   font-size:14px;
   font-weight:900;
   filter:drop-shadow(1px 1px 1px rgba(166,175,195,.45));
 }
 
-.title-hearts span:nth-child(1){color:#ff4f6d}
-.title-hearts span:nth-child(2){color:#ffff92}
-.title-hearts span:nth-child(3){color:#ffd4fc}
-.title-hearts span:nth-child(4){color:#b3fbff}
+.title-hearts span::before{
+  content:"\2665\FE0E";
+  color:currentColor;
+  -webkit-text-fill-color:currentColor;
+  font-family:Arial, Helvetica, sans-serif;
+}
 
-.loading-title{
-  flex-direction:column;
-  gap:7px;
+.title-hearts span:nth-child(1){color:#ff4f6d}
+.title-hearts span:nth-child(2){color:#ffd84f}
+.title-hearts span:nth-child(3){color:#ff8caf}
+.title-hearts span:nth-child(4){color:#ff9b45}
+
+.loading-hearts span{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:22px;
+  height:22px;
+  font-family:Arial, Helvetica, sans-serif;
+  font-size:22px;
+  font-weight:900;
+  line-height:1;
+  filter:drop-shadow(2px 2px 2px rgba(166,175,195,.45));
+  animation:loadingBounce 1s infinite ease-in-out;
+}
+
+.loading-hearts span::before{
+  content:"\2665\FE0E";
+  color:currentColor;
+  -webkit-text-fill-color:currentColor;
+  font-family:Arial, Helvetica, sans-serif;
 }
     .ad-container{margin-top:24px;text-align:center}
 
@@ -278,12 +308,12 @@
       <div class="phone-page">
         <div class="phone-screen">
 <h2 class="top-title result-title">
-  <span class="title-hearts">
-    <span>♥</span>
-    <span>♥</span>
-    <span>♥</span>
-    <span>♥</span>
-  </span>
+<span class="title-hearts">
+  <span aria-hidden="true"></span>
+  <span aria-hidden="true"></span>
+  <span aria-hidden="true"></span>
+  <span aria-hidden="true"></span>
+</span>
   <span>테스트잇 사주 첫인상 성격 테스트</span>
 </h2>
 
@@ -346,11 +376,11 @@
     <div class="phone-screen">
       <div class="result-widget loading-widget">
         <div class="title-box loading-title">로딩중</div>
-        <div class="loading-hearts">
-          <span>♥</span>
-          <span>♥</span>
-          <span>♥</span>
-        </div>
+    <div class="loading-hearts">
+  <span aria-hidden="true"></span>
+  <span aria-hidden="true"></span>
+  <span aria-hidden="true"></span>
+</div>
       </div>
     </div>
   </div>
@@ -361,10 +391,10 @@
     <div class="phone-screen">
    <h2 class="top-title result-title">
   <span class="title-hearts">
-    <span>♥</span>
-    <span>♥</span>
-    <span>♥</span>
-    <span>♥</span>
+     <span aria-hidden="true"></span>
+  <span aria-hidden="true"></span>
+  <span aria-hidden="true"></span>
+  <span aria-hidden="true"></span>
   </span>
   <span>테스트잇 사주 첫인상 성격 테스트</span>
 </h2>

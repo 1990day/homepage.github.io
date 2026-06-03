@@ -528,7 +528,7 @@ a{text-decoration:none;color:inherit}
 
 .birth-selects{
   display:grid;
-  grid-template-columns:1fr 1fr 1fr;
+  grid-template-columns:1fr 1fr;
   gap:7px;
 }
 
@@ -935,7 +935,26 @@ button{cursor:pointer}
   display:flex;
   justify-content:center;
 }
+#captureArea,
+#captureArea *{
+  -webkit-font-smoothing:none;
+  font-smooth:never;
+  text-rendering:geometricPrecision;
+}
 
+#captureArea{
+  color:#111;
+}
+
+.result-title,
+.mini-tab,
+.char-bubble,
+.bgm-player-box,
+.profile-post-head,
+.trait-item,
+.reply-row{
+  font-weight:700;
+}
 @media(max-width:430px){
   .page-header{
     width:calc(100% - 18px);
@@ -1041,7 +1060,6 @@ button{cursor:pointer}
         <div class="input-group">
           <label>생년월일</label>
           <div class="birth-selects">
-            <select id="birthYear"></select>
             <select id="birthMonth"></select>
             <select id="birthDay"></select>
           </div>
@@ -1177,18 +1195,18 @@ const screens={
 };
 
 const questions=[
-  {q:"친구가 갑자기 오늘 저녁에 만나자고 하면 나는?",a:[{text:"오랜만이면 바로 나갈 준비부터 한다",type:"E"},{text:"좋긴 한데 오늘 에너지를 먼저 확인한다",type:"I"}]},
-  {q:"새로운 모임에 가게 됐을 때 나는?",a:[{text:"분위기 보고 먼저 말 걸 타이밍을 찾는다",type:"E"},{text:"누가 먼저 말 걸어주면 자연스럽게 푼다",type:"I"}]},
-  {q:"기분이 좋아졌을 때 제일 먼저 하는 행동은?",a:[{text:"친구한테 바로 말하거나 같이 즐기고 싶다",type:"E"},{text:"혼자 조용히 곱씹으면서 오래 즐긴다",type:"I"}]},
-  {q:"새 옷을 샀을 때 내가 더 신경 쓰는 쪽은?",a:[{text:"핏, 재질, 색감처럼 실제로 보이는 느낌",type:"S"},{text:"이 옷 입고 생길 분위기와 이미지",type:"N"}]},
-  {q:"친구가 여행 계획을 말해주면 나는?",a:[{text:"숙소, 동선, 비용이 괜찮은지 먼저 본다",type:"S"},{text:"그 여행이 어떤 기억으로 남을지 상상한다",type:"N"}]},
-  {q:"영화를 보고 난 뒤 더 많이 남는 것은?",a:[{text:"장면, 대사, 배우 표정처럼 구체적인 부분",type:"S"},{text:"영화가 말하려던 의미와 여운",type:"N"}]},
-  {q:"친구가 힘든 일을 털어놓을 때 나는?",a:[{text:"해결할 수 있는 방법부터 같이 찾아본다",type:"T"},{text:"일단 마음이 얼마나 힘들었을지 받아준다",type:"F"}]},
-  {q:"의견이 갈리는 상황에서 나는?",a:[{text:"감정보다 기준과 이유가 맞는지 본다",type:"T"},{text:"상대가 상처받지 않게 말하는 게 중요하다",type:"F"}]},
-  {q:"누가 내 결정을 반대하면 나는?",a:[{text:"왜 반대하는지 논리적으로 따져본다",type:"T"},{text:"내 마음을 몰라주는 것 같아 먼저 서운하다",type:"F"}]},
-  {q:"하루를 시작할 때 나는?",a:[{text:"오늘 할 일을 대충이라도 정리해야 편하다",type:"J"},{text:"일단 시작하고 상황에 맞춰 움직이는 편이다",type:"P"}]},
-  {q:"약속 장소에 가기 전 나는?",a:[{text:"시간, 교통, 준비물을 미리 확인한다",type:"J"},{text:"늦지만 않으면 된다고 생각하고 움직인다",type:"P"}]},
-  {q:"해야 할 일이 쌓였을 때 나는?",a:[{text:"순서를 정해서 하나씩 지워나간다",type:"J"},{text:"그때 제일 꽂히는 일부터 처리한다",type:"P"}]}
+  {q:"미니홈피를 처음 만들었다!",a:[{text:"여러 사람들과 친구를 맺고 싶다",type:"E"},{text:"소수의 사람들이랑만 친구 맺고 싶다",type:"I"}]},
+  {q:"갑자기 내 홈피에 방문자가 폭발했다면?",a:[{text:"대박! 캡처해서 동네방네 자랑",type:"E"},{text:"헉 무서워.. 당장 비공개로 돌림",type:"I"}]},
+  {q:"모르는 사람의 친구 신청에<br>내 반응은?",a:[{text:"오예 새 친구! 바로 수락",type:"E"},{text:"누구지? 무시하거나 거절",type:"I"}]},
+  {q:"프로필 소개 글을 작성할 때 나는?",a:[{text:"현재 취미나 관심사를 적는다",type:"S"},{text:"나를 표현할 수 있는 문장을 적는다",type:"N"}]},
+  {q:"미니홈피 다이어리에 글을 쓴다면?",a:[{text:"오늘 있었던 일을 적는다",type:"S"},{text:"오늘 떠오른 생각을 적는다",type:"N"}]},
+  {q:"친구가 프로필 사진을<br>검은색으로 바꿨다!",a:[{text:"그냥 사진을 바꿨나 보다",type:"S"},{text:"무슨 심경 변화가 있나 생각한다",type:"N"}]},
+  {q:"내 방명록에 악플이 달렸다",a:[{text:"논리적으로 반박하고 싶다",type:"T"},{text:"기분이 먼저 상한다",type:"F"}]},
+  {q:"친구가<br>자기 홈피를 평가해달라고 했다",a:[{text:"부족한 점도 솔직하게 말한다",type:"T"},{text:"상처받지 않게 좋은 말만 한다",type:"F"}]},
+  {q:"내 홈피의 글이 인기글이 됐다",a:[{text:"어떤 점이 먹혔는지 궁금하다",type:"T"},{text:"사람들이 좋아해줘서 기쁘다",type:"F"}]},
+  {q:"미니홈피에 새로운 기능이 추가됐다!",a:[{text:"사용법부터 읽어본다",type:"J"},{text:"눌러보면서 익힌다",type:"P"}]},
+  {q:"미니홈피를 운영하는 스타일은?",a:[{text:"관리형 운영자",type:"J"},{text:"자유형 운영자",type:"P"}]},
+  {q:"사진첩에 여행 사진을 올릴 때 나는?",a:[{text:"날짜와 장소별로<br>순서대로 정리해서 올린다",type:"J"},{text:"귀찮아서 미루다가<br>삘 받을 때 와르르 올린다",type:"P"}]}
 ];
 
 const resultData={
@@ -1254,16 +1272,13 @@ let userName="";
 let userBirth={year:"",month:"",day:""};
 
 function initBirthSelects(){
-  const y=document.getElementById("birthYear");
   const m=document.getElementById("birthMonth");
   const d=document.getElementById("birthDay");
   const now=new Date().getFullYear();
 
-  y.innerHTML="<option value=\"\">년도</option>";
   m.innerHTML="<option value=\"\">월</option>";
   d.innerHTML="<option value=\"\">일</option>";
 
-  for(let i=now;i>=1940;i--) y.innerHTML+=`<option value="${i}">${i}년</option>`;
   for(let i=1;i<=12;i++) m.innerHTML+=`<option value="${i}">${i}월</option>`;
   for(let i=1;i<=31;i++) d.innerHTML+=`<option value="${i}">${i}일</option>`;
 }
@@ -1280,7 +1295,6 @@ function goInfo(){
 
 function startQuiz(){
   const name=document.getElementById("userName").value.trim();
-  const year=document.getElementById("birthYear").value;
   const month=document.getElementById("birthMonth").value;
   const day=document.getElementById("birthDay").value;
 
@@ -1289,13 +1303,13 @@ function startQuiz(){
     return;
   }
 
-  if(!year||!month||!day){
-    alert("생년월일을 모두 선택해주세요.");
+  if(!month||!day){
+    alert("생일을 선택해주세요.");
     return;
   }
 
   userName=name;
-  userBirth={year,month,day};
+  userBirth={month,day};
   currentQuestion=0;
   scores={E:0,I:0,S:0,N:0,T:0,F:0,J:0,P:0};
 
@@ -1310,7 +1324,7 @@ function renderQuestion(){
   document.getElementById("questionCount").textContent=`QUESTION ${currentQuestion+1} / ${questions.length}`;
   document.getElementById("percentText").textContent=`${percent}%`;
   document.getElementById("progressFill").style.width=`${percent}%`;
-  document.getElementById("questionTitle").textContent=question.q;
+ document.getElementById("questionTitle").innerHTML=question.q;
 
   const answerList=document.getElementById("answerList");
   answerList.innerHTML="";
@@ -1318,7 +1332,7 @@ function renderQuestion(){
   question.a.forEach(answer=>{
     const btn=document.createElement("button");
     btn.className="answer-btn";
-    btn.textContent=answer.text;
+    btn.innerHTML=answer.text;
     btn.onclick=()=>selectAnswer(answer.type);
     answerList.appendChild(btn);
   });

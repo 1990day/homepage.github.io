@@ -6,7 +6,6 @@
 <title>테스트잇 미니홈피 프로필 성격 테스트</title>
 <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/neodgm/neodgm-webfont@latest/neodgm/style.css">
-
 <style>
 *{box-sizing:border-box}
 
@@ -58,9 +57,7 @@ a{text-decoration:none;color:inherit}
   white-space:nowrap;
 }
 
-.logo img{
-  display:none;
-}
+.logo img{display:none}
 
 .main-nav{
   display:flex;
@@ -142,26 +139,7 @@ a{text-decoration:none;color:inherit}
 }
 
 .side-tabs{
-  position:absolute;
-  right:-43px;
-  top:18px;
-  width:43px;
-  z-index:5;
-}
-
-.side-tabs div{
-  height:31px;
-  border:1px solid #777;
-  border-left:none;
-  background:#fff;
-  display:grid;
-  place-items:center;
-  font-size:10px;
-  font-weight:400;
-}
-
-.side-tabs div:nth-child(2){
-  background:var(--tab,#c7b8ff);
+  display:none !important;
 }
 
 .homepage-head{
@@ -228,8 +206,7 @@ a{text-decoration:none;color:inherit}
 .room-back{
   position:absolute;
   inset:0;
-  background:
-    linear-gradient(90deg,var(--wall1,#ffa6cf) 0 50%,var(--wall2,#ffb4da) 50% 100%);
+  background:linear-gradient(90deg,var(--wall1,#ffa6cf) 0 50%,var(--wall2,#ffb4da) 50% 100%);
 }
 
 .room-floor{
@@ -472,8 +449,8 @@ a{text-decoration:none;color:inherit}
 
 .friend-bar{
   margin-top:10px;
-  border:1px solid #6aa9a1;
-  background:var(--bar,#9bece2);
+  border:1px solid #ffdb25;
+  background:#feffbe;
   border-radius:999px;
   padding:8px 13px;
   font-size:14px;
@@ -615,7 +592,7 @@ a{text-decoration:none;color:inherit}
   border-radius:3px;
 }
 
-button{font-family:inherit;cursor:pointer}
+button{cursor:pointer}
 
 .btn-stack{
   display:grid;
@@ -659,7 +636,138 @@ button{font-family:inherit;cursor:pointer}
 .result-miniroom-wrap{margin:8px 0}
 
 .result-miniroom{
-  height:250px;
+  height:220px;
+  border:2px solid #333;
+  position:relative;
+  margin-bottom:10px;
+  display:flex;
+  flex-direction:column;
+  border-radius:4px;
+  overflow:hidden;
+  background:var(--theme-bg,#ffccde);
+}
+
+.room-walls{
+  flex:6;
+  display:flex;
+  width:100%;
+}
+
+.wall-left{
+  flex:1;
+  background:var(--theme-wall-l,#ffdae6);
+  border-right:1px solid rgba(0,0,0,.1);
+  position:relative;
+}
+
+.wall-right{
+  flex:1;
+  background:var(--theme-wall-r,#ffe6f0);
+  position:relative;
+}
+
+.result-room-floor{
+  flex:4;
+  background:var(--theme-floor,#ffd1e1);
+  border-top:1px solid rgba(0,0,0,.1);
+  position:relative;
+  background-image:radial-gradient(rgba(255,255,255,.4) 1px,transparent 1px);
+  background-size:15px 15px;
+}
+
+.room-prop-1{
+  position:absolute;
+  bottom:10px;
+  right:20px;
+  font-size:40px;
+  z-index:1;
+  filter:drop-shadow(2px 2px 0 rgba(0,0,0,.1));
+}
+
+.room-prop-2{
+  position:absolute;
+  bottom:20px;
+  left:20px;
+  font-size:35px;
+  z-index:1;
+  filter:drop-shadow(2px 2px 0 rgba(0,0,0,.1));
+}
+
+.room-chars{
+  position:absolute;
+  bottom:10px;
+  width:100%;
+  display:flex;
+  justify-content:space-around;
+  padding:0 30px;
+  z-index:3;
+}
+
+.char-box{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  position:relative;
+}
+
+.char-emoji{
+  font-size:55px;
+  filter:drop-shadow(2px 2px 0 rgba(0,0,0,.2));
+}
+
+.char-bubble{
+  background:#fff;
+  border:2px solid #333;
+  padding:8px 12px;
+  font-size:13px;
+  border-radius:8px;
+  position:absolute;
+  bottom:65px;
+  text-align:center;
+  white-space:pre-wrap;
+  min-width:110px;
+  line-height:1.35;
+  word-break:keep-all;
+  box-shadow:2px 2px 0 rgba(0,0,0,.1);
+}
+
+.char-bubble:after{
+  content:"";
+  position:absolute;
+  bottom:-7px;
+  left:50%;
+  transform:translateX(-50%);
+  border-width:7px 7px 0;
+  border-style:solid;
+  border-color:#333 transparent transparent transparent;
+}
+
+.bgm-player-box{
+  margin-top:10px;
+  width:100%;
+  background:#fff;
+  border:2px solid #ccc;
+  border-radius:3px;
+  padding:6px 10px;
+  font-size:12px;
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+
+.bgm-icon{
+  white-space:nowrap;
+}
+
+.bgm-song{
+  background:#f0f0f0;
+  border:1px solid #aaa;
+  padding:4px 8px;
+  flex:1;
+  text-align:left;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
 }
 
 .result-profile{
@@ -712,6 +820,14 @@ button{font-family:inherit;cursor:pointer}
     repeating-linear-gradient(180deg,#fff 0 35px,#f8f8f8 35px 36px);
 }
 
+.main-room-image{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  display:block;
+  background:#fff;
+}
+
 .trait-item{
   min-height:35px;
   border-bottom:1px dotted #aaa;
@@ -757,9 +873,7 @@ button{font-family:inherit;cursor:pointer}
   font-weight:400;
 }
 
-.reply-name{
-  color:#3c7f95;
-}
+.reply-name{color:#3c7f95}
 
 .reply-box{
   height:26px;
@@ -829,9 +943,7 @@ button{font-family:inherit;cursor:pointer}
     gap:5px;
   }
 
-  .logo{
-    font-size:16px;
-  }
+  .logo{font-size:16px}
 
   .main-nav{
     display:flex;
@@ -839,13 +951,8 @@ button{font-family:inherit;cursor:pointer}
     font-size:10px;
   }
 
-  .main-nav a{
-    padding:3px 4px;
-  }
-
+  .main-nav a{padding:3px 4px}
   .win-title{font-size:15px}
-  .side-tabs{right:-36px;width:36px}
-  .side-tabs div{height:30px;font-size:10px}
   .miniroom{height:280px}
   .window-art{left:17px;width:82px;height:60px}
   .sofa-art{left:13px;width:82px;height:58px}
@@ -856,7 +963,10 @@ button{font-family:inherit;cursor:pointer}
   .speech.left{left:66px;top:87px}
   .speech.right{right:25px;top:82px}
   .result-title{font-size:16px}
-  .result-miniroom{height:238px}
+  .result-miniroom{height:210px}
+  .char-bubble{font-size:11px;padding:6px 8px;min-width:90px;bottom:58px}
+  .char-emoji{font-size:43px}
+  .room-chars{padding:0 18px}
   .trait-item{font-size:12px;min-height:34px}
 }
 </style>
@@ -864,9 +974,7 @@ button{font-family:inherit;cursor:pointer}
 
 <body>
 <header class="page-header wrapper">
-  <a href="https://test-it.co.kr/" class="logo">
-    <span>테스트잇</span>
-  </a>
+  <a href="https://test-it.co.kr/" class="logo"><span>테스트잇</span></a>
   <nav class="main-nav">
     <a href="https://test-it.co.kr/">성격</a>
     <a href="https://test-it.co.kr/">얼굴</a>
@@ -876,21 +984,18 @@ button{font-family:inherit;cursor:pointer}
 </header>
 
 <main class="wrapper">
-
 <section id="startScreen" class="screen active">
   <div class="cy-window">
     <div class="win-top">
       <div class="win-title">미니홈피 룸</div>
-      <div class="win-btns"><span>×</span><span>♡</span><span>↵</span></div>
+   <div class="win-btns"><span>_</span><span>□</span><span>x</span></div>
     </div>
 
     <div class="homepage">
-      <div class="side-tabs"><div>홈</div><div>프로필</div><div>방명록</div></div>
-
       <div class="homepage-head">
         <div>
           <div class="homepage-title">나의 미니홈피 프로필</div>
-          <div class="today-box">TODAY <b>082</b> | TOTAL 956862</div>
+          <div class="today-box">TODAY <b>390</b> | TOTAL 1004</div>
         </div>
         <div class="today-box">성격 프로필 열람중</div>
       </div>
@@ -899,32 +1004,19 @@ button{font-family:inherit;cursor:pointer}
         <div class="mini-tab">Miniroom</div>
       </div>
 
-      <div class="miniroom">
-        <div class="room-back"></div>
-        <div class="room-floor"></div>
-        <div class="room-corner"></div>
-        <div class="room-left-line"></div>
-        <div class="room-right-line"></div>
-        <div class="wall-stripe"></div>
-        <div class="window-art"></div>
-        <div class="sofa-art"></div>
-        <div class="poster-art"></div>
-        <div class="acc-art"></div>
-        <div class="balloon-art"></div>
-        <div class="sign-art">TODAY</div>
-        <div class="speech left">나의 성격<br>프로필 열람중</div>
-        <div class="speech right">방명록<br>남겨줘</div>
-        <div class="avatar left"><div class="head"><div class="hair"></div><div class="face"></div></div><div class="body-art"></div></div>
-        <div class="avatar right"><div class="head"><div class="hair"></div><div class="face"></div></div><div class="body-art"></div></div>
-      </div>
+     <div class="miniroom">
+  <img src="img_main390.png" alt="메인 이미지" class="main-room-image">
+</div>
 
       <div class="friend-bar">What friends say... ↙</div>
       <div class="friend-list">
         <div class="friend-row"><div>미니홈피 주인장 성격 보러 왔습니다</div></div>
-        <div class="friend-row"><div>닉네임이랑 생일 넣고 프로필 만들기</div></div>
+        <div class="friend-row"><div>같이 성격 프로필 만들자!</div></div>
       </div>
 
-      <div class="btn-stack"><button class="main-btn" onclick="goInfo()">테스트 시작하기</button></div>
+      <div class="btn-stack">
+        <button class="main-btn" onclick="goInfo()">테스트 시작하기</button>
+      </div>
     </div>
   </div>
 </section>
@@ -935,15 +1027,17 @@ button{font-family:inherit;cursor:pointer}
       <div class="win-title">프로필 작성</div>
       <div class="win-btns"><span>×</span><span>♡</span><span>↵</span></div>
     </div>
+
     <div class="homepage">
-      <div class="side-tabs"><div>홈</div><div>프로필</div><div>방명록</div></div>
       <div class="form-card">
         <h1 class="form-title">미니홈피 주인장 정보</h1>
-        <p class="form-desc">닉네임과 생년월일을 입력하면 결과에 이름과 별자리가 들어갑니다.</p>
+      
+
         <div class="input-group">
           <label for="userName">닉네임 또는 이름</label>
-          <input id="userName" type="text" maxlength="12" placeholder="예: 다혜">
+          <input id="userName" type="text" maxlength="12" placeholder="예: 강아지">
         </div>
+
         <div class="input-group">
           <label>생년월일</label>
           <div class="birth-selects">
@@ -952,7 +1046,10 @@ button{font-family:inherit;cursor:pointer}
             <select id="birthDay"></select>
           </div>
         </div>
-        <div class="btn-stack"><button class="main-btn" onclick="startQuiz()">다음으로</button></div>
+
+        <div class="btn-stack">
+          <button class="main-btn" onclick="startQuiz()">다음으로</button>
+        </div>
       </div>
     </div>
   </div>
@@ -964,11 +1061,18 @@ button{font-family:inherit;cursor:pointer}
       <div class="win-title">성격 질문</div>
       <div class="win-btns"><span>×</span><span>♡</span><span>↵</span></div>
     </div>
+
     <div class="homepage">
       <div class="progress-box">
-        <div class="progress-info"><span id="questionCount">QUESTION 1 / 12</span><span id="percentText">0%</span></div>
-        <div class="progress-track"><div id="progressFill" class="progress-fill"></div></div>
+        <div class="progress-info">
+          <span id="questionCount">QUESTION 1 / 12</span>
+          <span id="percentText">0%</span>
+        </div>
+        <div class="progress-track">
+          <div id="progressFill" class="progress-fill"></div>
+        </div>
       </div>
+
       <div class="question-card">
         <div id="questionTitle" class="q-title"></div>
         <div id="answerList" class="answer-list"></div>
@@ -987,23 +1091,33 @@ button{font-family:inherit;cursor:pointer}
         <div id="resultZodiacTab" class="mini-tab zodiac-tab">물병자리</div>
       </div>
 
-      <div id="resultMiniroom" class="result-miniroom miniroom">
-        <div class="room-back"></div>
-        <div class="room-floor"></div>
-        <div class="room-corner"></div>
-        <div class="room-left-line"></div>
-        <div class="room-right-line"></div>
-        <div class="wall-stripe"></div>
-        <div class="window-art"></div>
-        <div class="sofa-art"></div>
-        <div class="poster-art"></div>
-        <div class="acc-art"></div>
-        <div class="balloon-art"></div>
-        <div id="resultSign" class="sign-art">TODAY</div>
-        <div id="roomSpeech1" class="speech left"></div>
-        <div id="roomSpeech2" class="speech right"></div>
-        <div class="avatar left"><div class="head"><div class="hair"></div><div class="face"></div></div><div class="body-art"></div></div>
-        <div class="avatar right"><div class="head"><div class="hair"></div><div class="face"></div></div><div class="body-art"></div></div>
+      <div id="resultMiniroom" class="result-miniroom">
+        <div class="room-walls">
+          <div class="wall-left">
+            <div class="room-prop-2" id="roomProp2"></div>
+          </div>
+          <div class="wall-right">
+            <div class="room-prop-1" id="roomProp1"></div>
+          </div>
+        </div>
+
+        <div class="result-room-floor">
+          <div class="room-chars">
+            <div class="char-box">
+              <div class="char-bubble" id="roomSpeech1"></div>
+              <div class="char-emoji" id="roomSprite1"></div>
+            </div>
+            <div class="char-box">
+              <div class="char-bubble" id="roomSpeech2"></div>
+              <div class="char-emoji" id="roomSprite2"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bgm-player-box">
+        <span class="bgm-icon">🎵 BGM ▶ ||</span>
+        <span class="bgm-song" id="resultBgm"></span>
       </div>
     </div>
 
@@ -1055,40 +1169,83 @@ button{font-family:inherit;cursor:pointer}
 </main>
 
 <script>
-const screens={start:document.getElementById("startScreen"),info:document.getElementById("infoScreen"),quiz:document.getElementById("quizScreen"),result:document.getElementById("resultScreen")};
+const screens={
+  start:document.getElementById("startScreen"),
+  info:document.getElementById("infoScreen"),
+  quiz:document.getElementById("quizScreen"),
+  result:document.getElementById("resultScreen")
+};
 
 const questions=[
-{q:"친구가 갑자기 오늘 저녁에 만나자고 하면 나는?",a:[{text:"오랜만이면 바로 나갈 준비부터 한다",type:"E"},{text:"좋긴 한데 오늘 에너지를 먼저 확인한다",type:"I"}]},
-{q:"새로운 모임에 가게 됐을 때 나는?",a:[{text:"분위기 보고 먼저 말 걸 타이밍을 찾는다",type:"E"},{text:"누가 먼저 말 걸어주면 자연스럽게 푼다",type:"I"}]},
-{q:"기분이 좋아졌을 때 제일 먼저 하는 행동은?",a:[{text:"친구한테 바로 말하거나 같이 즐기고 싶다",type:"E"},{text:"혼자 조용히 곱씹으면서 오래 즐긴다",type:"I"}]},
-{q:"새 옷을 샀을 때 내가 더 신경 쓰는 쪽은?",a:[{text:"핏, 재질, 색감처럼 실제로 보이는 느낌",type:"S"},{text:"이 옷 입고 생길 분위기와 이미지",type:"N"}]},
-{q:"친구가 여행 계획을 말해주면 나는?",a:[{text:"숙소, 동선, 비용이 괜찮은지 먼저 본다",type:"S"},{text:"그 여행이 어떤 기억으로 남을지 상상한다",type:"N"}]},
-{q:"영화를 보고 난 뒤 더 많이 남는 것은?",a:[{text:"장면, 대사, 배우 표정처럼 구체적인 부분",type:"S"},{text:"영화가 말하려던 의미와 여운",type:"N"}]},
-{q:"친구가 힘든 일을 털어놓을 때 나는?",a:[{text:"해결할 수 있는 방법부터 같이 찾아본다",type:"T"},{text:"일단 마음이 얼마나 힘들었을지 받아준다",type:"F"}]},
-{q:"의견이 갈리는 상황에서 나는?",a:[{text:"감정보다 기준과 이유가 맞는지 본다",type:"T"},{text:"상대가 상처받지 않게 말하는 게 중요하다",type:"F"}]},
-{q:"누가 내 결정을 반대하면 나는?",a:[{text:"왜 반대하는지 논리적으로 따져본다",type:"T"},{text:"내 마음을 몰라주는 것 같아 먼저 서운하다",type:"F"}]},
-{q:"하루를 시작할 때 나는?",a:[{text:"오늘 할 일을 대충이라도 정리해야 편하다",type:"J"},{text:"일단 시작하고 상황에 맞춰 움직이는 편이다",type:"P"}]},
-{q:"약속 장소에 가기 전 나는?",a:[{text:"시간, 교통, 준비물을 미리 확인한다",type:"J"},{text:"늦지만 않으면 된다고 생각하고 움직인다",type:"P"}]},
-{q:"해야 할 일이 쌓였을 때 나는?",a:[{text:"순서를 정해서 하나씩 지워나간다",type:"J"},{text:"그때 제일 꽂히는 일부터 처리한다",type:"P"}]}
+  {q:"친구가 갑자기 오늘 저녁에 만나자고 하면 나는?",a:[{text:"오랜만이면 바로 나갈 준비부터 한다",type:"E"},{text:"좋긴 한데 오늘 에너지를 먼저 확인한다",type:"I"}]},
+  {q:"새로운 모임에 가게 됐을 때 나는?",a:[{text:"분위기 보고 먼저 말 걸 타이밍을 찾는다",type:"E"},{text:"누가 먼저 말 걸어주면 자연스럽게 푼다",type:"I"}]},
+  {q:"기분이 좋아졌을 때 제일 먼저 하는 행동은?",a:[{text:"친구한테 바로 말하거나 같이 즐기고 싶다",type:"E"},{text:"혼자 조용히 곱씹으면서 오래 즐긴다",type:"I"}]},
+  {q:"새 옷을 샀을 때 내가 더 신경 쓰는 쪽은?",a:[{text:"핏, 재질, 색감처럼 실제로 보이는 느낌",type:"S"},{text:"이 옷 입고 생길 분위기와 이미지",type:"N"}]},
+  {q:"친구가 여행 계획을 말해주면 나는?",a:[{text:"숙소, 동선, 비용이 괜찮은지 먼저 본다",type:"S"},{text:"그 여행이 어떤 기억으로 남을지 상상한다",type:"N"}]},
+  {q:"영화를 보고 난 뒤 더 많이 남는 것은?",a:[{text:"장면, 대사, 배우 표정처럼 구체적인 부분",type:"S"},{text:"영화가 말하려던 의미와 여운",type:"N"}]},
+  {q:"친구가 힘든 일을 털어놓을 때 나는?",a:[{text:"해결할 수 있는 방법부터 같이 찾아본다",type:"T"},{text:"일단 마음이 얼마나 힘들었을지 받아준다",type:"F"}]},
+  {q:"의견이 갈리는 상황에서 나는?",a:[{text:"감정보다 기준과 이유가 맞는지 본다",type:"T"},{text:"상대가 상처받지 않게 말하는 게 중요하다",type:"F"}]},
+  {q:"누가 내 결정을 반대하면 나는?",a:[{text:"왜 반대하는지 논리적으로 따져본다",type:"T"},{text:"내 마음을 몰라주는 것 같아 먼저 서운하다",type:"F"}]},
+  {q:"하루를 시작할 때 나는?",a:[{text:"오늘 할 일을 대충이라도 정리해야 편하다",type:"J"},{text:"일단 시작하고 상황에 맞춰 움직이는 편이다",type:"P"}]},
+  {q:"약속 장소에 가기 전 나는?",a:[{text:"시간, 교통, 준비물을 미리 확인한다",type:"J"},{text:"늦지만 않으면 된다고 생각하고 움직인다",type:"P"}]},
+  {q:"해야 할 일이 쌓였을 때 나는?",a:[{text:"순서를 정해서 하나씩 지워나간다",type:"J"},{text:"그때 제일 꽂히는 일부터 처리한다",type:"P"}]}
 ];
 
 const resultData={
-ENFJ:{theme:["#fff3c7","#ffa4cf","#ffb7db","#ffd9e8","#7ee4dd","#c7b8ff","#fff","#9bece2","#c7b8ff","#ff91c8","#8adfff","#82e2d5","#b7f8ce","#edf8ff"],speech:["매일 매일을 행복하게", "같이 있으면 마음 놓임"],traits:["사람 마음을 엄청 잘 읽음","분위기 어색하면 먼저 풀어줌","상대가 괜찮은 척해도 바로 알아챔","좋은 말도 잘하고 챙김도 자연스러움","정 많아서 마음을 오래 쓰는 편임","다 같이 잘 지내는 그림을 좋아함","속상해도 분위기 먼저 챙김","방명록 답글도 정성 들이는 편임"]},
-ENFP:{theme:["#fff1d9","#ffc3dc","#ffd3a8","#ffe4ef","#ffe18f","#ffb7df","#fff","#ffd98a","#ff8fc8","#ff9ad5","#78e8ff","#ffcf88","#fff19c","#fff7f7"],speech:["오늘도 반짝이는 중", "갑자기 신나버림"],traits:["밝은데 속마음은 생각보다 깊음","재밌는 일 생기면 눈빛부터 반짝거림","갑자기 꽂히면 바로 움직임","사람 좋아하고 표현도 솔직함","혼자 있어도 머릿속은 시끌시끌함","기분 좋으면 방 전체를 바꾸고 싶어함","가벼워 보여도 좋아하는 사람은 오래 기억함","새로운 일 앞에서 설렘이 먼저 옴"]},
-ENTJ:{theme:["#f0efff","#d7d9ff","#edf3ff","#e8eaff","#d8f4ff","#c4b8ff","#fff","#d8f4ff","#7d6dff","#c1b8ff","#6ac7ff","#d6f4ff","#e4e1ff","#eef3ff"],speech:["계획 정리 완료", "바로 실행"],traits:["판단이 빠르고 추진력이 강함","대충 넘어가는 걸 별로 안 좋아함","목표 생기면 바로 계획부터 세움","자기 기준이 확실해서 쉽게 흔들리지 않음","차가워 보여도 책임감은 강함","필요한 말은 바로 하는 편임","해야 할 일을 보면 손부터 움직임","결과가 보이는 일에 강하게 몰입함"]},
-ENTP:{theme:["#fff5cf","#ffe89c","#d7f6ff","#fff0c4","#c7fbff","#ffd08f","#fff","#ffe9a8","#ff9ecf","#7ae8ff","#ff9d62","#fff19c","#b7f8ce","#fff"],speech:["말풍선 토론중", "심심한 건 싫음"],traits:["장난기 많고 말 센스가 좋음","뻔한 얘기보다 새로운 얘기에 반응함","한마디로 분위기를 바꿈","궁금하면 파고들어야 직성이 풀림","가벼워 보여도 핵심을 잘 봄","토론을 생각놀이처럼 함","갑자기 판을 바꾸는 아이디어가 나옴","규칙을 보면 이유부터 궁금해함"]},
-ESFJ:{theme:["#fff0f5","#ffb8d6","#fff1c8","#ffe4ef","#b7f8ce","#ffd0e6","#fff","#ffe6f2","#ff8ebc","#ffc3db","#8adcd6","#b7f8ce","#fff6a1","#fff"],speech:["방명록 답글중", "챙김 기본값"],traits:["친절하고 생활력까지 좋은 편임","누가 뭘 좋아하는지 잘 기억함","사람 사이 분위기를 그냥 지나치지 못함","챙김이 자연스러워 주변이 편해짐","정이 많고 예의를 중요하게 생각함","사소한 기념일도 챙기는 쪽임","어색한 자리에서도 말을 잘 이어줌","좋아하는 사람에게 필요한 걸 먼저 알아차림"]},
-ESFP:{theme:["#fff6d8","#ffb6d8","#fff0a8","#ffdce9","#ffb7df","#ff9fd2","#fff","#ffe289","#ff7ec4","#b7f8ce","#ffb96b","#6edcff","#ffdc74","#fff"],speech:["지금이 제일 중요", "기분 반짝"],traits:["들어오자마자 분위기를 살림","같이 있으면 기분이 좋아짐","좋은 순간을 놓치지 않고 즐김","감각이 좋아서 꾸미는 것도 잘함","복잡한 고민보다 즐겁게 움직이는 편임","좋은 곳을 보면 바로 공유하고 싶어함","표정과 리액션이 솔직함","기분 좋은 에너지가 주변에 잘 번짐"]},
-ESTJ:{theme:["#edf8ff","#dcecff","#f8fbff","#edf8ff","#c7fbff","#d6e4ff","#fff","#e4f3ff","#5eb6e8","#f6ff9f","#8cc8ff","#71d6b2","#dcecff","#f8fbff"],speech:["정리 완료", "약속 체크"],traits:["깔끔하고 야무진 편임","해야 할 일은 끝내려는 편임","기준이 확실해서 애매한 걸 싫어함","말은 현실적인데 그래서 믿음이 감","책임감이 강해서 맡은 건 끝까지 챙김","약속 시간과 예의를 중요하게 생각함","정리 안 된 상황을 보면 바로 정리하고 싶어함","가까운 사람은 은근히 잘 챙김"]},
-ESTP:{theme:["#eafff8","#b7f8ce","#fff5d2","#eafff8","#c7fbff","#ffcf88","#fff","#d9fff8","#00c7a6","#ffb25d","#6edcff","#ff8ec9","#b7f8ce","#fff"],speech:["일단 해봄", "현장에서 강함"],traits:["가만히 있기보다 일단 움직임","순발력이 좋아 갑작스러운 상황에 강함","말이 짧아도 존재감은 확실함","재밌어 보이면 바로 해보고 싶어함","쿨해 보여도 사람을 잘 봄","현장에서 감 잡는 능력이 좋음","복잡한 말보다 바로 해보는 게 편함","위기에서도 생각보다 침착함"]},
-INFJ:{theme:["#f4efff","#e9ddff","#f7f2ff","#ece7ff","#c7fbff","#d8c7ff","#fff","#eee7ff","#8f72ff","#fff3b0","#a795ff","#79dff2","#e9ddff","#fff"],speech:["조용히 관찰중", "마음 읽는 중"],traits:["사람 마음을 깊게 보는 편임","말보다 분위기와 눈치를 먼저 읽음","진짜 마음이 통하는 관계를 좋아함","다정하지만 자기 기준은 단단함","혼자 생각하는 시간이 필요함","말투 변화도 은근히 빨리 알아챔","속마음을 아무에게나 쉽게 열지 않음","조용히 곁에 있어주는 방식으로 마음을 표현함"]},
-INFP:{theme:["#fff2f7","#ffe1ef","#fff6fb","#ffdff0","#ffb7df","#f6ff9f","#fff","#ffeaf4","#ff83bd","#f6ff9f","#ffc7e2","#7edcff","#ffb7df","#fff"],speech:["감성 저장중", "혼자 상상중"],traits:["순하지만 마음속 세계가 확실함","작은 말이나 장면도 오래 기억함","편한 사람 앞에서는 엉뚱한 모습이 나옴","진심 없는 말에는 빨리 지침","좋아하는 마음을 조용히 오래 간직함","혼자만의 취향 폴더가 두꺼움","상처받아도 속으로 먼저 정리함","예쁜 말과 따뜻한 분위기에 마음이 잘 움직임"]},
-INTJ:{theme:["#eef0ff","#dfe4ff","#f8f9ff","#e5eaff","#c8d0ff","#f6ff9f","#fff","#e6eaff","#6879e8","#f6ff9f","#9ba8ff","#6edcff","#dfe4ff","#f8fbff"],speech:["머릿속 정리중", "계획 보관함"],traits:["조용하지만 머릿속 정리는 끝난 타입임","할 때는 제대로 하는 편임","목표가 생기면 오래 보고 밀고 감","혼자 집중하는 시간이 있어야 편함","기준이 높아서 쉽게 만족하지 않음","말수는 적어도 한마디가 정확함","감정보다 흐름과 구조를 먼저 봄","관심 없는 일에는 에너지를 오래 쓰지 않음"]},
-INTP:{theme:["#f2fbff","#d8f4ff","#f8fdff","#e9f8ff","#c7fbff","#d8c7ff","#fff","#e2f7ff","#5fc5ff","#f6ff9f","#a88cff","#78e8ff","#d8f4ff","#fff"],speech:["생각 탭 열림", "왜 궁금함"],traits:["조용해 보여도 머릿속은 바쁘게 돌아감","궁금한 게 생기면 끝까지 파고듦","혼자 있는 시간이 편한 타입임","감정보다 이유와 구조가 먼저 궁금함","엉뚱한 질문에서 날카로운 답을 찾음","관심 있는 얘기 나오면 말이 많아짐","당연하다는 말도 그냥 넘기기 어려워함","자기만의 기준으로 세상을 해석함"]},
-ISFJ:{theme:["#f5fff6","#dfffe7","#fffdf0","#effff4","#b7f8ce","#fff3b0","#fff","#e7fff0","#58d89a","#c7fbff","#f6ff9f","#ffb7df","#dfffe7","#fff"],speech:["조용히 챙김", "기억 저장"],traits:["차분하고 세심한 편임","사람의 취향이나 습관을 잘 기억함","티 안 나게 챙겨줘서 나중에 고마워짐","익숙하고 안정적인 관계에서 편함","한번 마음을 주면 오래 감","작은 약속도 가볍게 넘기지 않음","말보다 행동으로 마음을 보여줌","편안한 분위기를 만들어주는 힘이 있음"]},
-ISFP:{theme:["#fff7ef","#ffe0c2","#fff2e9","#ffd8b0","#ffcf88","#b7f8ce","#fff","#ffefe0","#ff9b58","#ffb7df","#79ead0","#6edcff","#ffe0c2","#fff"],speech:["취향 보관중", "조용한 매력"],traits:["조용하고 순하지만 취향은 확실함","말보다 분위기로 마음이 드러남","강요받는 걸 싫어하고 자연스러운 걸 좋아함","편한 사람 앞에서는 장난기가 나옴","좋은 느낌과 예쁜 것에 민감함","싫은 건 조용히 멀어지는 편임","자기만의 속도로 마음을 엶","잔잔하지만 한번 좋아하면 오래 좋아함"]},
-ISTJ:{theme:["#f3f6ff","#e3ebff","#f8fbff","#edf3ff","#d6e4ff","#f6ff9f","#fff","#e6eeff","#6f9fe8","#f6ff9f","#9bbcff","#7ed9ae","#e3ebff","#fff"],speech:["기록 저장 완료", "차분히 확인"],traits:["성실하고 믿음이 가는 타입임","약속이나 책임을 가볍게 보지 않음","즉흥적 변화보다 안정적인 흐름을 좋아함","말보다 행동으로 신뢰를 쌓음","천천히 가도 정확하게 마무리함","작은 실수도 그냥 넘기지 않고 확인함","익숙한 방식 안에서 실력이 잘 나옴","무덤덤해도 속으로는 꽤 많이 챙김"]},
-ISTP:{theme:["#eefaf8","#d9fff8","#f4fffd","#e5fffa","#b7f8ce","#c7fbff","#fff","#e6fffb","#55d1b6","#f6ff9f","#6edcff","#9be5dc","#d9fff8","#fff"],speech:["핵심만 보기", "혼자 충전"],traits:["쿨하고 실전 감각이 좋은 편임","길게 설명하기보다 직접 해보는 타입임","복잡한 감정싸움은 피하고 싶어함","혼자만의 자유가 있어야 편함","귀찮아 보여도 막상 하면 잘해냄","필요한 말만 해도 핵심은 전달함","위기 상황에서 의외로 침착함","관심 있는 건 말없이 오래 파고듦"]}
+  ENFJ:{traits:["사람 마음을 엄청 잘 읽음","분위기 어색하면 먼저 풀어줌","상대가 괜찮은 척해도 바로 알아챔","좋은 말도 잘하고 챙김도 자연스러움","정 많아서 마음을 오래 쓰는 편임","다 같이 잘 지내는 그림을 좋아함","속상해도 분위기 먼저 챙김","방명록 답글도 정성 들이는 편임"]},
+  ENFP:{traits:["밝은데 속마음은 생각보다 깊음","재밌는 일 생기면 눈빛부터 반짝거림","갑자기 꽂히면 바로 움직임","사람 좋아하고 표현도 솔직함","혼자 있어도 머릿속은 시끌시끌함","기분 좋으면 방 전체를 바꾸고 싶어함","가벼워 보여도 좋아하는 사람은 오래 기억함","새로운 일 앞에서 설렘이 먼저 옴"]},
+  ENTJ:{traits:["해야 할 일이 보이면 바로 정리함","말이 빠르고 판단도 빠른 편임","애매하게 끄는 상황을 답답해함","책임지는 자리에 자연스럽게 서게 됨","성과가 보이는 일을 좋아함","좋아하는 사람에게도 현실 조언을 잘함","느슨한 분위기보다 확실한 진행을 선호함","자기 기준이 뚜렷하고 추진력이 강함"]},
+  ENTP:{traits:["아이디어가 많고 말의 속도가 빠름","재밌는 판이면 에너지가 확 살아남","당연한 것도 한번 비틀어봄","토론을 싸움보다 놀이처럼 느끼는 편임","새로운 자극이 없으면 쉽게 지루해함","분위기 띄우는 센스가 있음","순간적인 재치로 상황을 넘김","자유로운 방식에서 실력이 잘 나옴"]},
+  ESFJ:{traits:["사람 챙기는 일이 자연스럽게 몸에 배어 있음","분위기 어색하면 먼저 말을 꺼냄","주변 반응을 빠르게 살피는 편임","기념일이나 약속을 잘 기억함","고마움과 서운함을 둘 다 크게 느낌","다 같이 편한 분위기를 좋아함","칭찬을 아끼지 않고 표현도 잘함","관계가 틀어지는 상황을 많이 신경 씀"]},
+  ESFP:{traits:["있는 자리의 분위기를 밝게 만듦","즉흥적인 재미에 강함","표정과 리액션이 솔직하게 드러남","예쁘고 신나는 것에 바로 반응함","사람들과 같이 웃는 시간을 좋아함","복잡한 생각보다 현재의 즐거움을 봄","호감 표현이 자연스럽고 귀여운 편임","지루한 흐름을 오래 견디기 어려워함"]},
+  ESTJ:{traits:["해야 할 일을 미루지 않고 처리함","기준과 약속을 중요하게 생각함","말이 직설적이어도 책임감이 강함","흐름이 느슨해지면 바로 잡고 싶어함","계획과 결과가 분명한 걸 좋아함","주변 사람을 현실적으로 챙김","일머리가 좋고 정리 능력이 뛰어남","애매한 말보다 분명한 답을 선호함"]},
+  ESTP:{traits:["상황 판단이 빠르고 행동도 빠름","새로운 자극에 강하게 끌림","복잡하게 고민하기보다 직접 부딪힘","사람들과 금방 친해지는 편임","위기 상황에서도 의외로 침착함","지루한 규칙을 오래 견디기 힘들어함","말보다 행동으로 분위기를 바꿈","순간 집중력이 좋고 현실 감각이 뛰어남"]},
+  INFJ:{traits:["사람의 말 뒤에 있는 마음을 잘 봄","조용하지만 기준이 아주 뚜렷함","깊은 대화를 좋아하고 가벼운 관계는 지침","혼자만의 시간이 있어야 회복됨","상대의 분위기 변화를 빠르게 알아챔","겉으로는 다정해도 선은 분명함","의미 있는 일에 오래 마음을 씀","생각이 깊어서 스스로 피곤할 때가 있음"]},
+  INFP:{traits:["감정과 상상력이 풍부한 편임","좋아하는 것에는 오래 몰입함","자기만의 세계가 확실함","말로 다 못해도 속으로 많이 느낌","의미 없는 관계보다 진심 있는 관계를 원함","작은 말에도 오래 여운이 남음","취향과 가치관이 분명함","평화롭고 부드러운 분위기에서 편안해짐"]},
+  INTJ:{traits:["전체 구조를 먼저 보는 편임","목표가 생기면 조용히 밀고 감","혼자 집중하는 시간이 있어야 편함","기준이 높아서 쉽게 만족하지 않음","말수는 적어도 한마디가 정확함","감정보다 흐름과 구조를 먼저 봄","관심 없는 일에는 에너지를 오래 쓰지 않음","자기만의 방식으로 결과를 만들어냄"]},
+  INTP:{traits:["조용해 보여도 머릿속은 바쁘게 돌아감","궁금한 게 생기면 끝까지 파고듦","혼자 있는 시간이 편한 타입임","감정보다 이유와 구조가 먼저 궁금함","엉뚱한 질문에서 날카로운 답을 찾음","관심 있는 얘기 나오면 말이 많아짐","당연하다는 말도 그냥 넘기기 어려워함","자기만의 기준으로 세상을 해석함"]},
+  ISFJ:{traits:["차분하고 세심한 편임","사람의 취향이나 습관을 잘 기억함","티 안 나게 챙겨줘서 나중에 고마워짐","익숙하고 안정적인 관계에서 편함","한번 마음을 주면 오래 감","작은 약속도 가볍게 넘기지 않음","말보다 행동으로 마음을 보여줌","편안한 분위기를 만들어주는 힘이 있음"]},
+  ISFP:{traits:["조용하고 순하지만 취향은 확실함","말보다 분위기로 마음이 드러남","강요받는 걸 싫어하고 자연스러운 걸 좋아함","편한 사람 앞에서는 장난기가 나옴","좋은 느낌과 예쁜 것에 민감함","싫은 건 조용히 멀어지는 편임","자기만의 속도로 마음을 엶","잔잔하지만 한번 좋아하면 오래 좋아함"]},
+  ISTJ:{traits:["성실하고 믿음이 가는 타입임","약속이나 책임을 가볍게 보지 않음","즉흥적 변화보다 안정적인 흐름을 좋아함","말보다 행동으로 신뢰를 쌓음","천천히 가도 정확하게 마무리함","작은 실수도 그냥 넘기지 않고 확인함","익숙한 방식 안에서 실력이 잘 나옴","무덤덤해도 속으로는 꽤 많이 챙김"]},
+  ISTP:{traits:["쿨하고 실전 감각이 좋은 편임","길게 설명하기보다 직접 해보는 타입임","복잡한 감정싸움은 피하고 싶어함","혼자만의 자유가 있어야 편함","귀찮아 보여도 막상 하면 잘해냄","필요한 말만 해도 핵심은 전달함","위기 상황에서 의외로 침착함","관심 있는 건 말없이 오래 파고듦"]}
+};
+
+const miniroomData={
+  ISTJ:{sprite:"🦊",speech:"원칙과 약속은\n무조건 칼같이!",sprite2:"🐻",speech2:"오늘도 완벽한\n하루였어",bgm:"SG워너비 - Timeless"},
+  ISFJ:{sprite:"🐹",speech:"서로 배려하며\n친하게 지내자",sprite2:"🐰",speech2:"다정함이\n세상을 구해",bgm:"허밍어반스테레오 - Hawaiian Couple"},
+  INFJ:{sprite:"🔮",speech:"생각의 동굴 속에서\n답을 찾는 중..",sprite2:"🦉",speech2:"너의 내면을\n응원할게",bgm:"넬 - 기억을 걷는 시간"},
+  INTJ:{sprite:"🦅",speech:"비효율은 사절\n체계적으로 진행해",sprite2:"🐈",speech2:"계획대로\n진행되고 있어",bgm:"에픽하이 - One"},
+  ISTP:{sprite:"🐱",speech:"최소한의 에너지로\n최대의 효율을!",sprite2:"🦥",speech2:"귀찮지만\n일단 해볼게",bgm:"프리스타일 - Y"},
+  ISFP:{sprite:"🎨",speech:"인생은 자유롭고\n느긋하게 사는 거야",sprite2:"🦌",speech2:"평화로운 게\n제일 좋아",bgm:"박효신 - 눈의 꽃"},
+  INFP:{sprite:"🧚",speech:"몽상가라 불려도\n나만의 꿈이 있어",sprite2:"🦄",speech2:"꿈꾸는 대로\n이루어질 거야",bgm:"키네틱 플로우 - 몽환의 숲"},
+  INTP:{sprite:"🧠",speech:"철저한 데이터와\n근거를 가져와줘",sprite2:"🐢",speech2:"음.. 논리적으로\n말이 되네",bgm:"아웃사이더 - 외톨이"},
+  ESTP:{sprite:"🏄",speech:"고민할 시간에 움직여!\n바로 실행하자구",sprite2:"🐆",speech2:"지루한 건\n딱 질색이야!",bgm:"버즈 - 나에게로 떠나는 여행"},
+  ESFP:{sprite:"🕺",speech:"지루한 일상은 스톱!\n인생은 파티야",sprite2:"🦩",speech2:"다 같이\n신나게 놀자!",bgm:"거북이 - 빙고"},
+  ENFP:{sprite:"🐶",speech:"우와! 대박 사건!\n이거 너무 재밌겠다",sprite2:"🐬",speech2:"새로운 친구다!\n반가워!",bgm:"럼블피쉬 - 으라차차"},
+  ENTP:{sprite:"🗣️",speech:"색다른 발상 어때?\n토론은 언제나 환영!",sprite2:"🦜",speech2:"그건 내 말이\n맞다니까?",bgm:"MC몽 - 서커스"},
+  ESTJ:{sprite:"🐯",speech:"계획은 확실하게,\n추진은 과감하게!",sprite2:"🐺",speech2:"정해진 규칙을\n잘 따르도록",bgm:"동방신기 - 주문(MIROTIC)"},
+  ESFJ:{sprite:"🐼",speech:"오늘 모임 주인공은\n우리 모두야! 화이팅!",sprite2:"🐧",speech2:"모두 함께\n행복하자!",bgm:"소녀시대 - 다시 만난 세계"},
+  ENFJ:{sprite:"🦢",speech:"너의 찬란한 미래를\n언제나 응원해",sprite2:"🐕",speech2:"우리는 대단한\n사람들이야!",bgm:"god - 촛불하나"},
+  ENTJ:{sprite:"👑",speech:"장벽은 극복하라고\n존재하는 거야. 가자!",sprite2:"🐅",speech2:"나만 믿고\n따라와!",bgm:"2NE1 - 내가 제일 잘 나가"}
+};
+
+const mbtiThemes={
+  ISTJ:{bg:"#c2d6d6",table:"#a3c2c2",wall_l:"#d1e0e0",wall_r:"#e0ebeb",floor:"#b8c9c9",label:"#5c8a8a",prop1:"📚",prop2:"🗄️"},
+  ISFJ:{bg:"#cce0ff",table:"#99c2ff",wall_l:"#d9e6ff",wall_r:"#e6f0ff",floor:"#b3d1ff",label:"#6699ff",prop1:"🪴",prop2:"🧸"},
+  INFJ:{bg:"#e6ccff",table:"#cc99ff",wall_l:"#ecd9ff",wall_r:"#f2e6ff",floor:"#dfbfff",label:"#9933ff",prop1:"🔮",prop2:"📖"},
+  INTJ:{bg:"#d9d9d9",table:"#bfbfbf",wall_l:"#e6e6e6",wall_r:"#f2f2f2",floor:"#cccccc",label:"#737373",prop1:"💻",prop2:"☕"},
+  ISTP:{bg:"#d1e0e0",table:"#b3cccc",wall_l:"#e0ebeb",wall_r:"#ebf0f0",floor:"#c2d6d6",label:"#7a9999",prop1:"🎮",prop2:"🛹"},
+  ISFP:{bg:"#ffffcc",table:"#ffff99",wall_l:"#ffffd9",wall_r:"#ffffe6",floor:"#e6e6b3",label:"#cccc00",prop1:"🎨",prop2:"🎸"},
+  INFP:{bg:"#ffccde",table:"#ffb3d1",wall_l:"#ffdae6",wall_r:"#ffe6f0",floor:"#ffb3c6",label:"#ff6699",prop1:"🌙",prop2:"🎧"},
+  INTP:{bg:"#cce6ff",table:"#99ccff",wall_l:"#d9f0ff",wall_r:"#e6f2ff",floor:"#b3d9ff",label:"#4d94ff",prop1:"🔬",prop2:"🧩"},
+  ESTP:{bg:"#ffd9b3",table:"#ffc68c",wall_l:"#ffe6cc",wall_r:"#ffecd9",floor:"#ffcc99",label:"#ff8c1a",prop1:"🏀",prop2:"😎"},
+  ESFP:{bg:"#ffeb99",table:"#ffd633",wall_l:"#fff0b3",wall_r:"#fff5cc",floor:"#ffcc00",label:"#e6b800",prop1:"🎤",prop2:"🎉"},
+  ENFP:{bg:"#ccffcc",table:"#99ff99",wall_l:"#d9ffd9",wall_r:"#e6ffe6",floor:"#99e699",label:"#33cc33",prop1:"🌈",prop2:"🎈"},
+  ENTP:{bg:"#ffb3b3",table:"#ff8080",wall_l:"#ffcccc",wall_r:"#ffd9d9",floor:"#ff9999",label:"#ff4d4d",prop1:"💡",prop2:"🔥"},
+  ESTJ:{bg:"#e6ccb3",table:"#cca37a",wall_l:"#ecd9c6",wall_r:"#f2e6d9",floor:"#d9b38c",label:"#996633",prop1:"📈",prop2:"💼"},
+  ESFJ:{bg:"#ffe6cc",table:"#ffcc99",wall_l:"#fff0d9",wall_r:"#fff2e6",floor:"#ffbf80",label:"#ff9933",prop1:"🍰",prop2:"🎁"},
+  ENFJ:{bg:"#ffcce6",table:"#ff99cc",wall_l:"#ffd9ec",wall_r:"#ffe6f2",floor:"#ffb3d9",label:"#ff4d94",prop1:"💖",prop2:"🌻"},
+  ENTJ:{bg:"#d9e6cc",table:"#bfd999",wall_l:"#e6f0d9",wall_r:"#ecf2e6",floor:"#c6d9b3",label:"#86b34d",prop1:"🏆",prop2:"🚀"}
 };
 
 let currentQuestion=0;
@@ -1101,9 +1258,11 @@ function initBirthSelects(){
   const m=document.getElementById("birthMonth");
   const d=document.getElementById("birthDay");
   const now=new Date().getFullYear();
+
   y.innerHTML="<option value=\"\">년도</option>";
   m.innerHTML="<option value=\"\">월</option>";
   d.innerHTML="<option value=\"\">일</option>";
+
   for(let i=now;i>=1940;i--) y.innerHTML+=`<option value="${i}">${i}년</option>`;
   for(let i=1;i<=12;i++) m.innerHTML+=`<option value="${i}">${i}월</option>`;
   for(let i=1;i<=31;i++) d.innerHTML+=`<option value="${i}">${i}일</option>`;
@@ -1115,19 +1274,31 @@ function showScreen(name){
   window.scrollTo({top:0,behavior:"smooth"});
 }
 
-function goInfo(){showScreen("info")}
+function goInfo(){
+  showScreen("info");
+}
 
 function startQuiz(){
   const name=document.getElementById("userName").value.trim();
   const year=document.getElementById("birthYear").value;
   const month=document.getElementById("birthMonth").value;
   const day=document.getElementById("birthDay").value;
-  if(!name){alert("닉네임이나 이름을 입력해주세요.");return}
-  if(!year||!month||!day){alert("생년월일을 모두 선택해주세요.");return}
+
+  if(!name){
+    alert("닉네임이나 이름을 입력해주세요.");
+    return;
+  }
+
+  if(!year||!month||!day){
+    alert("생년월일을 모두 선택해주세요.");
+    return;
+  }
+
   userName=name;
   userBirth={year,month,day};
   currentQuestion=0;
   scores={E:0,I:0,S:0,N:0,T:0,F:0,J:0,P:0};
+
   showScreen("quiz");
   renderQuestion();
 }
@@ -1135,12 +1306,15 @@ function startQuiz(){
 function renderQuestion(){
   const question=questions[currentQuestion];
   const percent=Math.round((currentQuestion/questions.length)*100);
+
   document.getElementById("questionCount").textContent=`QUESTION ${currentQuestion+1} / ${questions.length}`;
   document.getElementById("percentText").textContent=`${percent}%`;
   document.getElementById("progressFill").style.width=`${percent}%`;
   document.getElementById("questionTitle").textContent=question.q;
+
   const answerList=document.getElementById("answerList");
   answerList.innerHTML="";
+
   question.a.forEach(answer=>{
     const btn=document.createElement("button");
     btn.className="answer-btn";
@@ -1153,6 +1327,7 @@ function renderQuestion(){
 function selectAnswer(type){
   scores[type]++;
   currentQuestion++;
+
   if(currentQuestion>=questions.length){
     document.getElementById("progressFill").style.width="100%";
     document.getElementById("percentText").textContent="100%";
@@ -1174,60 +1349,67 @@ function getMbti(){
 function getZodiac(month,day){
   month=Number(month);
   day=Number(day);
+
+  if((month===1&&day>=20)||(month===2&&day<=18))return"물병자리";
+  if((month===2&&day>=19)||(month===3&&day<=20))return"물고기자리";
   if((month===3&&day>=21)||(month===4&&day<=19))return"양자리";
   if((month===4&&day>=20)||(month===5&&day<=20))return"황소자리";
-  if((month===5&&day>=21)||(month===6&&day<=21))return"쌍둥이자리";
-  if((month===6&&day>=22)||(month===7&&day<=22))return"게자리";
+  if((month===5&&day>=21)||(month===6&&day<=20))return"쌍둥이자리";
+  if((month===6&&day>=21)||(month===7&&day<=22))return"게자리";
   if((month===7&&day>=23)||(month===8&&day<=22))return"사자자리";
-  if((month===8&&day>=23)||(month===9&&day<=23))return"처녀자리";
-  if((month===9&&day>=24)||(month===10&&day<=22))return"천칭자리";
-  if((month===10&&day>=23)||(month===11&&day<=22))return"전갈자리";
-  if((month===11&&day>=23)||(month===12&&day<=24))return"사수자리";
-  if((month===12&&day>=25)||(month===1&&day<=19))return"염소자리";
-  if((month===1&&day>=20)||(month===2&&day<=18))return"물병자리";
-  return"물고기자리";
+  if((month===8&&day>=23)||(month===9&&day<=22))return"처녀자리";
+  if((month===9&&day>=23)||(month===10&&day<=22))return"천칭자리";
+  if((month===10&&day>=23)||(month===11&&day<=21))return"전갈자리";
+  if((month===11&&day>=22)||(month===12&&day<=21))return"궁수자리";
+  return"염소자리";
 }
 
-function applyTheme(data){
+function applyTheme(mbti){
   const area=document.getElementById("captureArea");
-  const theme=data.theme;
-  area.style.setProperty("--page",theme[0]);
-  area.style.setProperty("--wall1",theme[1]);
-  area.style.setProperty("--wall2",theme[2]);
-  area.style.setProperty("--floor",theme[3]);
-  area.style.setProperty("--sofa",theme[4]);
-  area.style.setProperty("--pillow",theme[5]);
-  area.style.setProperty("--traitBg",theme[6]);
-  area.style.setProperty("--bar",theme[7]);
-  area.style.setProperty("--sign",theme[8]);
-  area.style.setProperty("--acc",theme[9]);
-  area.style.setProperty("--stripe",theme[10]);
-  area.style.setProperty("--posterDot",theme[11]);
-  area.style.setProperty("--posterBg",theme[12]);
-  area.style.setProperty("--cloth",theme[13]);
-  area.style.setProperty("--tab",theme[5]);
-  area.style.setProperty("--btn",theme[5]);
-  area.style.setProperty("--line",theme[8]);
+  const theme=mbtiThemes[mbti];
+
+  area.style.setProperty("--page",theme.bg);
+  area.style.setProperty("--theme-bg",theme.bg);
+  area.style.setProperty("--theme-table",theme.table);
+  area.style.setProperty("--theme-wall-l",theme.wall_l);
+  area.style.setProperty("--theme-wall-r",theme.wall_r);
+  area.style.setProperty("--theme-floor",theme.floor);
+  area.style.setProperty("--theme-label",theme.label);
+  area.style.setProperty("--bar",theme.table);
+  area.style.setProperty("--sign",theme.label);
+  area.style.setProperty("--tab",theme.table);
+  area.style.setProperty("--btn",theme.table);
 }
 
 function showResult(){
   const mbti=getMbti();
   const zodiac=getZodiac(userBirth.month,userBirth.day);
   const data=resultData[mbti];
-  applyTheme(data);
+  const mini=miniroomData[mbti];
+  const theme=mbtiThemes[mbti];
+
+  applyTheme(mbti);
+
   document.getElementById("resultMiniroomName").textContent=`${userName}의 Miniroom`;
   document.getElementById("resultZodiacTab").textContent=zodiac;
-  document.getElementById("roomSpeech1").innerHTML=data.speech[0];
-  document.getElementById("roomSpeech2").innerHTML=data.speech[1];
+  document.getElementById("roomSpeech1").textContent=mini.speech;
+  document.getElementById("roomSpeech2").textContent=mini.speech2;
+  document.getElementById("roomSprite1").textContent=mini.sprite;
+  document.getElementById("roomSprite2").textContent=mini.sprite2;
+  document.getElementById("roomProp1").textContent=theme.prop1;
+  document.getElementById("roomProp2").textContent=theme.prop2;
+  document.getElementById("resultBgm").textContent=mini.bgm;
 
   const traitList=document.getElementById("traitList");
   traitList.innerHTML="";
+
   data.traits.forEach(text=>{
     const item=document.createElement("div");
     item.className="trait-item";
     item.textContent=text;
     traitList.appendChild(item);
   });
+
   showScreen("result");
 }
 
@@ -1240,7 +1422,13 @@ function resetTest(){
 
 function saveResultImage(){
   const target=document.getElementById("captureArea");
-  html2canvas(target,{backgroundColor:null,scale:2,useCORS:true,allowTaint:true}).then(canvas=>{
+
+  html2canvas(target,{
+    backgroundColor:null,
+    scale:2,
+    useCORS:true,
+    allowTaint:true
+  }).then(canvas=>{
     document.getElementById("previewImage").src=canvas.toDataURL("image/png");
     document.getElementById("previewModal").classList.add("active");
   });
@@ -1251,15 +1439,22 @@ function closePreview(){
 }
 
 let sharing=false;
+
 async function shareTest(){
   const shareUrl="https://test-it.co.kr/";
   const shareTitle="테스트잇 미니홈피 프로필 성격 테스트";
   const shareText="내 미니홈피 프로필 성격은 뭘까?";
+
   if(sharing)return;
   sharing=true;
+
   try{
     if(navigator.share){
-      await navigator.share({title:shareTitle,text:shareText,url:shareUrl});
+      await navigator.share({
+        title:shareTitle,
+        text:shareText,
+        url:shareUrl
+      });
     }else if(navigator.clipboard){
       await navigator.clipboard.writeText(shareUrl);
       alert("테스트 링크가 복사되었습니다.");
@@ -1273,7 +1468,9 @@ async function shareTest(){
       alert("테스트 링크가 복사되었습니다.");
     }
   }catch(error){
-    if(error.name!=="AbortError")alert("공유를 다시 시도해주세요.");
+    if(error.name!=="AbortError"){
+      alert("공유를 다시 시도해주세요.");
+    }
   }finally{
     setTimeout(()=>{sharing=false},800);
   }

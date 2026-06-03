@@ -11,8 +11,6 @@
         --cy-bg-outer: #b0c4de;
         --cy-frame-grey: #e0e0e0;
         --cy-border: #808080;
-        --cy-tab-active: #17a2b8;
-        --cy-tab-inactive: #f0f0f0;
         --text-color: #333;
         
         --theme-bg: #ffccde;
@@ -35,9 +33,52 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding: 40px 20px;
+        padding: 20px;
         min-height: 100vh;
         color: var(--text-color);
+    }
+
+    /* 상단바 스타일 */
+    .page-header {
+        width: min(560px, calc(100% - 2px));
+        margin: 0 auto 20px;
+        height: 56px;
+        padding: 0 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border: 1.4px solid #222;
+        background: #fff;
+        border-radius: 4px; /* 살짝 둥글게 처리하여 미니홈피 창과 어울리게 조절 */
+    }
+
+    .logo-text {
+        font-size: 20px;
+        font-weight: 900;
+        letter-spacing: -0.5px;
+        text-decoration: none;
+        color: #222;
+    }
+
+    .main-nav {
+        display: flex;
+        gap: 7px;
+        font-size: 12px;
+        font-weight: 800;
+    }
+
+    .main-nav a {
+        padding: 6px 9px;
+        border: 1.2px solid #222;
+        background: #fff4f8;
+        border-radius: 999px;
+        text-decoration: none;
+        color: #222;
+        transition: background 0.2s;
+    }
+
+    .main-nav a:hover {
+        background: #ffe0eb;
     }
 
     .app-wrapper {
@@ -100,34 +141,6 @@
         height: auto;
         position: relative;
         padding: 15px;
-    }
-
-    .cy-tabs {
-        width: 38px;
-        display: flex;
-        flex-direction: column;
-        gap: 5px;
-        margin-top: 35px;
-        margin-left: -2px;
-        z-index: 1;
-    }
-    .cy-tab {
-        background-color: var(--cy-tab-inactive);
-        border: 2px solid var(--cy-border);
-        border-left: none;
-        padding: 12px 2px;
-        writing-mode: vertical-rl;
-        text-orientation: upright;
-        font-size: 13px;
-        text-align: center;
-        border-radius: 0 6px 6px 0;
-        letter-spacing: 2px;
-        cursor: default;
-        transition: background-color 0.3s;
-    }
-    .cy-tab.active {
-        background-color: var(--cy-tab-active);
-        color: white;
     }
 
     .screen {
@@ -296,21 +309,26 @@
 
     .bgm-player-box {
         margin-top: 15px;
-        align-self: flex-end;
+        width: 100%;
         background-color: white;
         border: 2px solid #ccc;
         border-radius: 3px;
-        padding: 4px 8px;
+        padding: 6px 10px;
         font-size: 12px;
         display: flex;
         gap: 10px;
         align-items: center;
         box-shadow: 1px 1px 0 rgba(0,0,0,0.1);
     }
+    .bgm-icon {
+        white-space: nowrap;
+    }
     .bgm-song {
         background: #f0f0f0;
         border: 1px solid #aaa;
-        padding: 2px 6px;
+        padding: 4px 8px;
+        flex: 1;
+        text-align: left;
     }
 
     #out-of-frame-buttons {
@@ -336,6 +354,11 @@
 
     @media screen and (max-width: 500px) {
         body { padding: 15px 5px; font-size: 14px; }
+        .page-header { padding: 0 10px; height: 50px; margin-bottom: 15px; }
+        .logo-text { font-size: 18px; }
+        .main-nav { gap: 4px; font-size: 11px; }
+        .main-nav a { padding: 5px 7px; }
+
         .app-wrapper { gap: 10px; }
         
         #cyworld-content { padding: 4px; border-radius: 4px; }
@@ -358,21 +381,29 @@
         .traits-list { padding: 0; }
         .traits-list li { font-size: 13px; line-height: 1.35; padding: 12px 2px; }
         
-        .bgm-player-box { font-size: 11px; gap: 5px; padding: 4px 6px; }
-        .bgm-song { padding: 1px 4px; }
-
-        .cy-tabs { display: none; }
+        .bgm-player-box { font-size: 11px; gap: 5px; padding: 6px 8px; }
+        .bgm-song { padding: 3px 6px; }
     }
 </style>
 </head>
 <body>
+
+<header class="page-header">
+    <a class="logo-text" href="https://test-it.co.kr/">테스트잇</a>
+    <nav class="main-nav">
+        <a href="https://test-it.co.kr/test.html">성격</a>
+        <a href="https://test-it.co.kr/face.html">얼굴</a>
+        <a href="https://test-it.co.kr/etc.html">그외</a>
+        <a href="https://test-it.co.kr/saju.html">사주</a>
+    </nav>
+</header>
 
 <div class="app-wrapper">
     
     <div id="minihompy-layout">
         <div id="cyworld-content">
             <div class="cy-title-bar">
-                <span>미니홈피.exe</span>
+                <span>테스트잇.exe</span>
                 <div class="cy-controls">
                     <div class="cy-btn-small">_</div>
                     <div class="cy-btn-small">□</div>
@@ -387,7 +418,7 @@
                         <div class="today-is">TODAY IS.. 맑음 ☀️</div>
                         <div class="screen-title">테스트잇 미니홈피<br>프로필 성격 테스트</div>
                         <div style="font-size: 60px; margin-bottom: 50px;">👾</div>
-                        <button class="action-btn" onclick="nextScreen('screen-start', 'screen-input', 'tab-profile')">테스트 시작하기</button>
+                        <button class="action-btn" onclick="nextScreen('screen-start', 'screen-input')">테스트 시작하기</button>
                     </div>
 
                     <div id="screen-input" class="screen content-padding">
@@ -426,7 +457,7 @@
                             <div class="result-header">테스트잇 미니홈피 프로필 성격 테스트</div>
                             
                             <div class="result-miniroom">
-                                <div class="miniroom-label">Miniroom 🏠</div>
+                                <div class="miniroom-label">Miniroom</div>
                                 <div class="room-walls">
                                     <div class="wall-left"><div class="room-prop-2" id="room-prop-2"></div></div>
                                     <div class="wall-right"><div class="room-prop-1" id="room-prop-1"></div></div>
@@ -465,12 +496,6 @@
                 </div>
             </div>
         </div> 
-
-        <div class="cy-tabs" id="cy-tabs-menu">
-            <div class="cy-tab active" id="tab-home">홈</div>
-            <div class="cy-tab" id="tab-profile">프로필</div>
-            <div class="cy-tab" id="tab-guestbook">방명록</div>
-        </div>
     </div>
     
     <div id="out-of-frame-buttons">
@@ -519,26 +544,9 @@
         return "염소자리";
     }
 
-    function nextScreen(hideId, showId, activeTabId) {
+    function nextScreen(hideId, showId) {
         document.getElementById(hideId).classList.remove('active');
         document.getElementById(showId).classList.add('active');
-        
-        const tabsMenu = document.getElementById('cy-tabs-menu');
-        if (showId === 'screen-result') {
-            tabsMenu.style.display = 'none';
-        } else {
-            tabsMenu.style.display = 'flex';
-        }
-        
-        const tabs = document.querySelectorAll('.cy-tab');
-        tabs.forEach(tab => tab.classList.remove('active'));
-        
-        if (activeTabId) {
-            const targetTab = document.getElementById(activeTabId);
-            if (targetTab) {
-                targetTab.classList.add('active');
-            }
-        }
         window.scrollTo(0, 0); 
     }
 
@@ -557,23 +565,23 @@
         { type: 'JP', q: '내 방의 정리 정돈 상태는?', a: '항상 물건이 제자리에 깔끔하게 정리되어 있다.', b: '남들이 보기엔 지저분하지만 나름의 규칙이 있다.' }
     ];
 
-    const resultData = {
-        'ISTJ': { sprite: "🦊", speech: "원칙과 약속은\n무조건 칼같이!", sprite2: "🐻", speech2: "오늘도 완벽한\n하루였어", bgm: "조용한 피아노곡", traits: ["지정된 원칙과 시간 규칙을 완벽하게 엄수함", "겉은 차분하고 단단해 보이나 속정 깊은 타입", "번개 약속보다 계획적인 만남을 훨씬 선호함", "매사 성실하고 거짓 없는 직설 화법을 구사함", "내 사물 배치가 섞이는 것을 극도로 답답해함", "묵묵하지만 빈틈없이 할 일을 처리해내는 인물"] },
-        'ISFJ': { sprite: "🐹", speech: "서로 배려하며\n친하게 지내자", sprite2: "🐰", speech2: "다정함이\n세상을 구해", bgm: "프리스타일 - Y", traits: ["누구에게나 모나지 않고 유연하게 공감해줌", "추억이나 세부 사항을 엄청 오랫동안 기억함", "부탁을 거절하지 못해 혼자 총대 메는 스타일", "뒤에서 소리 없이 조력하는 역할을 자처함", "갈등 구도가 생기면 심적 피로감을 크게 느낍니다", "주변을 포근하게 챙겨주는 일등 살림꾼 리더"] },
-        'INFJ': { sprite: "🔮", speech: "생각의 동굴 속에서\n답을 찾는 중..", sprite2: "🦉", speech2: "너의 내면을\n응원할게", bgm: "에픽하이 - 우산", traits: ["사람들의 보이지 않는 본심을 매섭게 캐치함", "진정성 가득한 깊고 좁은 대인관계를 유지함", "주기적으로 나만의 에너지를 모을 동굴이 필요함", "타인에게 상냥하지만 가치관의 선은 명확함", "스스로에게 엄격하고 이상적인 목표를 갈구함", "생각이 꼬리를 물어 고독감을 자초하기도 함"] },
-        'INTJ': { sprite: "🦅", speech: "비효율은 사절\n체계적으로 진행해", sprite2: "🐈", speech2: "계획대로\n진행되고 있어", bgm: "SG워너비 - Timeless", traits: ["관심 분야가 잡히면 끝장을 보는 학구파 리더", "남들 시선 개의치 않고 개성대로 마이웨이", "불필요한 감정 소모나 늘어지는 논쟁을 극혐함", "논리성과 인과관계가 확실한 조언을 건넴", "한번 인정한 내 사람에겐 한없이 끈끈함", "복잡한 환경을 직관적으로 구조화하는 전략가"] },
-        'ISTP': { sprite: "🐱", speech: "최소한의 에너지로\n최대의 효율을!", sprite2: "🦥", speech2: "귀찮지만\n일단 해볼게", bgm: "버즈 - 겁쟁이", traits: ["귀찮아하다가도 긴박한 순간 위기 대처 만렙", "다방면의 손재주와 분석적 두각을 드러냄", "개인 영역 침해나 잔소리를 극도로 멀리함", "최소 효율로 최강의 가성비를 뽑아내는 천재", "무뚝뚝해 보이나 가끔 엉뚱한 리액션 발산", "틀에 박힌 수직 구조를 제일 답답해하는 편"] },
-        'ISFP': { sprite: "🎨", speech: "인생은 자유롭고\n느긋하게 사는 거야", sprite2: "🦌", speech2: "평화로운 게\n제일 좋아", bgm: "비스트 - 비가 오는 날엔", traits: ["타인과 다투지 않고 조용히 의견을 지지해 줌", "미적 감각이 훌륭하여 매력적인 분위기를 좋아함", "강제 의무 규율보다 자율성이 보장될 때 날아오름", "거절을 아껴두며 웬만한 상황은 유연하게 포용함", "집에서 누리는 고요하고 아늑한 휴식이 힐링 요소", "순수하고 다정한 매력으로 호감을 주는 스타일"] },
-        'INFP': { sprite: "🧚", speech: "몽상가라 불려도\n나만의 꿈이 있어", sprite2: "🦄", speech2: "꿈꾸는 대로\n이루어질 거야", bgm: "아이유 - 너랑 나", traits: ["풍부한 상상력으로 영화나 활자에 깊게 과몰입", "나만의 신념 체계는 죽어도 포기하지 못함", "마음이 동하면 초인적인 창의력을 뿜어냄", "내면의 고요한 평화를 방해받기 싫어함", "친구들의 남모를 속사정을 품어주는 상담소", "가끔은 엄청난 귀차니즘으로 번개탄처럼 타오름"] },
+   const resultData = {
+        'ISTJ': { sprite: "🦊", speech: "원칙과 약속은\n무조건 칼같이!", sprite2: "🐻", speech2: "오늘도 완벽한\n하루였어", bgm: "SG워너비 - Timeless", traits: ["지정된 원칙과 시간 규칙을 완벽하게 엄수함", "겉은 차분하고 단단해 보이나 속정 깊은 타입", "번개 약속보다 계획적인 만남을 훨씬 선호함", "매사 성실하고 거짓 없는 직설 화법을 구사함", "내 사물 배치가 섞이는 것을 극도로 답답해함", "묵묵하지만 빈틈없이 할 일을 처리해내는 인물"] },
+        'ISFJ': { sprite: "🐹", speech: "서로 배려하며\n친하게 지내자", sprite2: "🐰", speech2: "다정함이\n세상을 구해", bgm: "허밍어반스테레오 - Hawaiian Couple", traits: ["누구에게나 모나지 않고 유연하게 공감해줌", "추억이나 세부 사항을 엄청 오랫동안 기억함", "부탁을 거절하지 못해 혼자 총대 메는 스타일", "뒤에서 소리 없이 조력하는 역할을 자처함", "갈등 구도가 생기면 심적 피로감을 크게 느낌", "주변을 포근하게 챙겨주는 일등 살림꾼 리더"] },
+        'INFJ': { sprite: "🔮", speech: "생각의 동굴 속에서\n답을 찾는 중..", sprite2: "🦉", speech2: "너의 내면을\n응원할게", bgm: "넬 - 기억을 걷는 시간", traits: ["사람들의 보이지 않는 본심을 매섭게 캐치함", "진정성 가득한 깊고 좁은 대인관계를 유지함", "주기적으로 나만의 에너지를 모을 동굴이 필요함", "타인에게 상냥하지만 가치관의 선은 명확함", "스스로에게 엄격하고 이상적인 목표를 갈구함", "생각이 꼬리를 물어 고독감을 자초하기도 함"] },
+        'INTJ': { sprite: "🦅", speech: "비효율은 사절\n체계적으로 진행해", sprite2: "🐈", speech2: "계획대로\n진행되고 있어", bgm: "에픽하이 - One", traits: ["관심 분야가 잡히면 끝장을 보는 학구파 리더", "남들 시선 개의치 않고 개성대로 마이웨이", "불필요한 감정 소모나 늘어지는 논쟁을 극혐함", "논리성과 인과관계가 확실한 조언을 건넴", "한번 인정한 내 사람에겐 한없이 끈끈함", "복잡한 환경을 직관적으로 구조화하는 전략가"] },
+        'ISTP': { sprite: "🐱", speech: "최소한의 에너지로\n최대의 효율을!", sprite2: "🦥", speech2: "귀찮지만\n일단 해볼게", bgm: "프리스타일 - Y", traits: ["귀찮아하다가도 긴박한 순간 위기 대처 만렙", "다방면의 손재주와 분석적 두각을 드러냄", "개인 영역 침해나 잔소리를 극도로 멀리함", "최소 효율로 최강의 가성비를 뽑아내는 천재", "무뚝뚝해 보이나 가끔 엉뚱한 리액션 발산", "틀에 박힌 수직 구조를 제일 답답해하는 편"] },
+        'ISFP': { sprite: "🎨", speech: "인생은 자유롭고\n느긋하게 사는 거야", sprite2: "🦌", speech2: "평화로운 게\n제일 좋아", bgm: "박효신 - 눈의 꽃", traits: ["타인과 다투지 않고 조용히 의견을 지지해 줌", "미적 감각이 훌륭하여 매력적인 분위기를 좋아함", "강제 의무 규율보다 자율성이 보장될 때 날아오름", "거절을 아껴두며 웬만한 상황은 유연하게 포용함", "집에서 누리는 고요하고 아늑한 휴식이 힐링 요소", "순수하고 다정한 매력으로 호감을 주는 스타일"] },
+        'INFP': { sprite: "🧚", speech: "몽상가라 불려도\n나만의 꿈이 있어", sprite2: "🦄", speech2: "꿈꾸는 대로\n이루어질 거야", bgm: "키네틱 플로우 - 몽환의 숲", traits: ["풍부한 상상력으로 영화나 활자에 깊게 과몰입", "나만의 신념 체계는 죽어도 포기하지 못함", "마음이 동하면 초인적인 창의력을 뿜어냄", "내면의 고요한 평화를 방해받기 싫어함", "친구들의 남모를 속사정을 품어주는 상담소", "가끔은 엄청난 귀차니즘으로 번개탄처럼 타오름"] },
         'INTP': { sprite: "🧠", speech: "철저한 데이터와\n근거를 가져와줘", sprite2: "🐢", speech2: "음.. 논리적으로\n말이 되네", bgm: "아웃사이더 - 외톨이", traits: ["지적 탐구심이 강해 엉뚱한 백과사전 지식 가득", "리액션이 무디지만 영혼을 긁어모은 대답임", "분석적 오류나 모순을 찾아내어 비판하기 장인", "틀에 박힌 가이드라인을 가장 지루해함", "독립성이 확고해 혼자 사색하는 시간을 사랑함", "감정 과잉 소통보단 이성적인 토론을 원함"] },
-        'ESTP': { sprite: "🏄", speech: "고민할 시간에 움직여!\n바로 실행하자구", sprite2: "🐆", speech2: "지루한 건\n딱 질색이야!", bgm: "빅뱅 - 붉은 노을", traits: ["어떤 환경에 던져져도 살아남는 생존력 마스터", "사람 기분을 단숨에 알아보는 타짜급 눈치 소유", "앞뒤 재지 않고 즉각 돌진하는 행동력 대장", "길고 지루한 설명 극혐, 심플한 팩트 전달 파", "모임에서 사람들과 즉각 베프가 되는 친화력", "스릴 있고 자극적인 스포츠나 도전을 즐김"] },
-        'ESFP': { sprite: "🕺", speech: "지루한 일상은 스톱!\n인생은 파티야", sprite2: "🦩", speech2: "다 같이\n신나게 놀자!", bgm: "티아라 - Roly-Poly", traits: ["유쾌한 리액션으로 모임의 활력소 역할을 전담함", "사람들과 상호작용할 때 최고의 효율과 행복을 얻음", "즉흥적인 제안이나 역동적인 이벤트를 대단히 즐김", "낙천적 성향이 강해 힘든 일도 금방 극복하는 편", "스타일이나 패션 등 트렌디한 감각에 관심 많음", "다정하고 호탕하여 주변에 늘 인기가 넘침"] },
-        'ENFP': { sprite: "🐶", speech: "우와! 대박 사건!\n이거 너무 재밌겠다", sprite2: "🐬", speech2: "새로운 친구다!\n반가워!", bgm: "원더걸스 - Tell Me", traits: ["풍부한 표정과 리액션으로 분위기를 화사하게 만듦", "창의적 상상력과 가능성을 믿고 용기 있게 돌진함", "타인을 칭찬하고 격려하는 긍정 마인드가 우수함", "새로운 시도를 두려워하지 않는 개척자 성향", "마음속에 깊고 솔직한 나만의 감성 영역이 있음", "사람들을 연결하고 즐거움을 전파하는 에너지원"] },
-        'ENTP': { sprite: "🗣️", speech: "색다른 발상 어때?\n토론은 언제나 환영!", sprite2: "🦜", speech2: "그건 내 말이\n맞다니까?", bgm: "블락비 - 난리나", traits: ["틀에 박힌 고정적 관념에 재치 있게 반문을 던짐", "임기응변 능력이 타의 추종을 불허할 만큼 민첩함", "설득력 있는 화법과 지적 밀당을 유쾌하게 즐김", "아이디어가 샘솟는 기획 영역에서 진가를 발휘함", "자신에 대한 자부심과 자존감이 대단히 건강함", "지루하고 똑같은 무한 반복 루틴을 제일 싫어함"] },
-        'ESTJ': { sprite: "🐯", speech: "계획은 확실하게,\n추진은 과감하게!", sprite2: "🐺", speech2: "정해진 규칙을\n잘 따르도록", bgm: "동방신기 - 주문", traits: ["상황을 명확하게 구조화하고 실행하는 리더 재질", "책임감과 신뢰를 베이스로 약속을 반드시 사수함", "직설적이면서 군더더기 없는 화법으로 깔끔히 소통", "시간의 가치와 효율적인 결과 도출을 매우 중시함", "어려운 과업도 뚝심 있게 정면 돌파해 나감", "정리된 가이드라인 안에서 안정감을 공급함"] },
-        'ESFJ': { sprite: "🐼", speech: "오늘 모임 주인공은\n우리 모두야! 화이팅!", sprite2: "🐧", speech2: "모두 함께\n행복하자!", bgm: "소녀시대 - Gee", traits: ["타인의 경조사와 컨디션을 아주 다정하게 챙김", "집단의 결속과 행복을 위해 기꺼이 솔선수범함", "친근하고 사교적인 화법으로 긴장감을 해소해 줌", "칭찬과 조언을 유연하게 결합하여 신뢰를 형성함", "사소한 배려로 조직에 큰 긍정의 나비효과를 만듦", "사람 중심의 조화로운 생태계를 만드는 데 진심임"] },
-        'ENFJ': { sprite: "🦢", speech: "너의 찬란한 미래를\n언제나 응원해", sprite2: "🐕", speech2: "우리는 대단한\n사람들이야!", bgm: "투애니원 - I Don't Care", traits: ["타인의 성장 잠재력을 알아보고 올바르게 이끌어줌", "마음을 움직이는 수려하고 따뜻한 소통 능력이 강점", "정의롭고 이타적인 목표에 누구보다 앞장서서 헌신", "풍부한 공감대로 상대방의 감정선을 정교하게 읽어냄", "선한 영향력을 세상에 전파하려는 열정이 가득함", "부드러우면서도 강력한 포용적 카리스마 소유자"] },
-        'ENTJ': { sprite: "👑", speech: "장벽은 극복하라고\n존재하는 거야. 가자!", sprite2: "🐅", speech2: "나만 믿고\n따라와!", bgm: "브라운아이드걸스 - Abracadabra", traits: ["거시적인 안목과 과감한 추진력으로 목표를 쟁취함", "어려운 환경일수록 승부욕이 자극되어 승리를 이끌어냄", "문제를 피하지 않고 즉각 해결책을 찾아 실행에 옮김", "체계적이고 전략적인 마인드로 비전을 구체화함", "자기 관리에 엄격하며 동료들과 시너지를 추구함", "강력한 집중력으로 팀을 정상으로 견인하는 지휘관"] }
+        'ESTP': { sprite: "🏄", speech: "고민할 시간에 움직여!\n바로 실행하자구", sprite2: "🐆", speech2: "지루한 건\n딱 질색이야!", bgm: "버즈 - 나에게로 떠나는 여행", traits: ["어떤 환경에 던져져도 살아남는 생존력 마스터", "사람 기분을 단숨에 알아보는 타짜급 눈치 소유", "앞뒤 재지 않고 즉각 돌진하는 행동력 대장", "길고 지루한 설명 극혐, 심플한 팩트 전달 파", "모임에서 사람들과 즉각 베프가 되는 친화력", "스릴 있고 자극적인 스포츠나 도전을 즐김"] },
+        'ESFP': { sprite: "🕺", speech: "지루한 일상은 스톱!\n인생은 파티야", sprite2: "🦩", speech2: "다 같이\n신나게 놀자!", bgm: "거북이 - 빙고", traits: ["유쾌한 리액션으로 모임의 활력소 역할을 전담함", "사람들과 상호작용할 때 최고의 효율과 행복을 얻음", "즉흥적인 제안이나 역동적인 이벤트를 대단히 즐김", "낙천적 성향이 강해 힘든 일도 금방 극복하는 편", "스타일이나 패션 등 트렌디한 감각에 관심 많음", "다정하고 호탕하여 주변에 늘 인기가 넘침"] },
+        'ENFP': { sprite: "🐶", speech: "우와! 대박 사건!\n이거 너무 재밌겠다", sprite2: "🐬", speech2: "새로운 친구다!\n반가워!", bgm: "럼블피쉬 - 으라차차", traits: ["풍부한 표정과 리액션으로 분위기를 화사하게 만듦", "창의적 상상력과 가능성을 믿고 용기 있게 돌진함", "타인을 칭찬하고 격려하는 긍정 마인드가 우수함", "새로운 시도를 두려워하지 않는 개척자 성향", "마음속에 깊고 솔직한 나만의 감성 영역이 있음", "사람들을 연결하고 즐거움을 전파하는 에너지원"] },
+        'ENTP': { sprite: "🗣️", speech: "색다른 발상 어때?\n토론은 언제나 환영!", sprite2: "🦜", speech2: "그건 내 말이\n맞다니까?", bgm: "MC몽 - 서커스", traits: ["틀에 박힌 고정적 관념에 재치 있게 반문을 던짐", "임기응변 능력이 타의 추종을 불허할 만큼 민첩함", "설득력 있는 화법과 지적 밀당을 유쾌하게 즐김", "아이디어가 샘솟는 기획 영역에서 진가를 발휘함", "자신에 대한 자부심과 자존감이 대단히 건강함", "지루하고 똑같은 무한 반복 루틴을 제일 싫어함"] },
+        'ESTJ': { sprite: "🐯", speech: "계획은 확실하게,\n추진은 과감하게!", sprite2: "🐺", speech2: "정해진 규칙을\n잘 따르도록", bgm: "동방신기 - 주문(MIROTIC)", traits: ["상황을 명확하게 구조화하고 실행하는 리더 재질", "책임감과 신뢰를 베이스로 약속을 반드시 사수함", "직설적이면서 군더더기 없는 화법으로 깔끔히 소통", "시간의 가치와 효율적인 결과 도출을 매우 중시함", "어려운 과업도 뚝심 있게 정면 돌파해 나감", "정리된 가이드라인 안에서 안정감을 공급함"] },
+        'ESFJ': { sprite: "🐼", speech: "오늘 모임 주인공은\n우리 모두야! 화이팅!", sprite2: "🐧", speech2: "모두 함께\n행복하자!", bgm: "소녀시대 - 다시 만난 세계", traits: ["타인의 경조사와 컨디션을 아주 다정하게 챙김", "집단의 결속과 행복을 위해 기꺼이 솔선수범함", "친근하고 사교적인 화법으로 긴장감을 해소해 줌", "칭찬과 조언을 유연하게 결합하여 신뢰를 형성함", "사소한 배려로 조직에 큰 긍정의 나비효과를 만듦", "사람 중심의 조화로운 생태계를 만드는 데 진심임"] },
+        'ENFJ': { sprite: "🦢", speech: "너의 찬란한 미래를\n언제나 응원해", sprite2: "🐕", speech2: "우리는 대단한\n사람들이야!", bgm: "god - 촛불하나", traits: ["타인의 성장 잠재력을 알아보고 올바르게 이끌어줌", "마음을 움직이는 수려하고 따뜻한 소통 능력이 강점", "정의롭고 이타적인 목표에 누구보다 앞장서서 헌신", "풍부한 공감대로 상대방의 감정선을 정교하게 읽어냄", "선한 영향력을 세상에 전파하려는 열정이 가득함", "부드러우면서도 강력한 포용적 카리스마 소유자"] },
+        'ENTJ': { sprite: "👑", speech: "장벽은 극복하라고\n존재하는 거야. 가자!", sprite2: "🐅", speech2: "나만 믿고\n따라와!", bgm: "2NE1 - 내가 제일 잘 나가", traits: ["거시적인 안목과 과감한 추진력으로 목표를 쟁취함", "어려운 환경일수록 승부욕이 자극되어 승리를 이끌어냄", "문제를 피하지 않고 즉각 해결책을 찾아 실행에 옮김", "체계적이고 전략적인 마인드로 비전을 구체화함", "자기 관리에 엄격하며 동료들과 시너지를 추구함", "강력한 집중력으로 팀을 정상으로 견인하는 지휘관"] }
     };
 
     const mbtiThemes = {
@@ -615,7 +623,7 @@
         currentQ = 0;
         scores = { E:0, I:0, S:0, N:0, T:0, F:0, J:0, P:0 };
 
-        nextScreen('screen-input', 'screen-test', null);
+        nextScreen('screen-input', 'screen-test');
         showQuestion();
     }
 
@@ -669,8 +677,6 @@
         resultThemeElement.style.setProperty('--theme-floor', theme.floor);
         resultThemeElement.style.setProperty('--theme-label', theme.label);
 
-        document.documentElement.style.setProperty('--cy-tab-active', theme.label);
-
         document.getElementById('res-name').innerText = userName;
         document.getElementById('res-zodiac').innerText = zodiacStr;
         
@@ -693,7 +699,7 @@
             traitUl.appendChild(li);
         });
 
-        nextScreen('screen-test', 'screen-result', null);
+        nextScreen('screen-test', 'screen-result');
         document.getElementById('out-of-frame-buttons').style.display = 'flex';
     }
 

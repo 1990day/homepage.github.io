@@ -49,7 +49,7 @@
         justify-content: space-between;
         border: 1.4px solid #222;
         background: #fff;
-        border-radius: 4px; /* 살짝 둥글게 처리하여 미니홈피 창과 어울리게 조절 */
+        border-radius: 4px;
     }
 
     .logo-text {
@@ -172,7 +172,28 @@
     }
     .action-btn:hover { background-color: #f0f0f0; border: 2px solid #555; }
 
-    .today-is { align-self: flex-start; font-size: 14px; margin-bottom: 30px; color: #555; }
+    /* TODAY IS 스타일 변경 */
+    .today-is {
+        align-self: flex-start;
+        background-color: #fff;
+        border: 1px solid #aaa;
+        padding: 5px 10px;
+        font-size: 13px;
+        margin-bottom: 30px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        border-radius: 3px;
+        box-shadow: 1px 1px 0 rgba(0,0,0,0.1);
+    }
+    .today-label {
+        color: #ff6600;
+        font-weight: bold;
+    }
+    .today-status {
+        color: #333;
+    }
+
     .screen-title { font-size: 26px; margin-bottom: 40px; line-height: 1.5; color: #2ea6c4; text-align: center; }
     
     #screen-input .screen-title { color: #17a2b8; font-weight: bold; font-size: 24px; }
@@ -365,6 +386,7 @@
         .cy-title-bar { padding: 4px 8px; font-size: 12px; }
         .cy-main-window { padding: 8px 4px; min-height: 400px; }
         
+        .today-is { font-size: 11px; padding: 4px 8px; margin-bottom: 20px; gap: 4px; }
         .screen-title { font-size: 20px; margin-bottom: 25px; }
         .q-text { font-size: 18px; margin-bottom: 30px; }
         
@@ -415,14 +437,20 @@
                 <div class="cy-main-window">
                     
                     <div id="screen-start" class="screen content-padding active">
-                        <div class="today-is">TODAY IS.. 맑음 ☀️</div>
+                        <div class="today-is">
+                            <span class="today-label">TODAY IS..</span>
+                            <span class="today-status">맑음 ☀️</span>
+                        </div>
                         <div class="screen-title">테스트잇 미니홈피<br>프로필 성격 테스트</div>
                         <div style="font-size: 60px; margin-bottom: 50px;">👾</div>
                         <button class="action-btn" onclick="nextScreen('screen-start', 'screen-input')">테스트 시작하기</button>
                     </div>
 
                     <div id="screen-input" class="screen content-padding">
-                        <div class="today-is">TODAY IS.. 두근두근 💗</div>
+                        <div class="today-is">
+                            <span class="today-label">TODAY IS..</span>
+                            <span class="today-status">두근두근 💗</span>
+                        </div>
                         <div class="screen-title" id="input-title">프로필 정보 입력</div>
                         
                         <div class="input-wrapper">
@@ -443,7 +471,10 @@
                     </div>
 
                     <div id="screen-test" class="screen content-padding">
-                        <div class="today-is">TODAY IS.. 집중 🧐</div>
+                        <div class="today-is">
+                            <span class="today-label">TODAY IS..</span>
+                            <span class="today-status">집중 🧐</span>
+                        </div>
                         <div class="progress-box">
                             <div class="progress-fill" id="progress-bar"></div>
                         </div>
@@ -553,7 +584,7 @@
     const questions = [
         { type: 'EI', q: '주말에 약속이 취소되었다. 나의 반응은?', a: '아쉬워하며 다른 친구에게 연락해본다.', b: '속으로 기뻐하며 넷플릭스를 켠다.' },
         { type: 'EI', q: '새로운 사람을 만나는 자리에서 나는?', a: '먼저 다가가서 인사를 건네며 분위기를 주도한다.', b: '누군가 말 걸어주기를 기다리며 관찰한다.' },
-        { type: 'EI', q: '스트레스를 푸는 나만의 방법은?', a: '사람들과 시끌벅적하게 수다를 떤다.', b: '혼자 방에서 조용히 취미 생활을 한다.' },
+        { type: 'EI', q: '스트레스를 푸는 나만의 방법은?', a: '사람들과 시끌벅적하게 수다를 떤다.', b: '혼자 방에서 조용히 취미 생활을 일구며 힐링한다.' },
         { type: 'SN', q: '멍 때릴 때 주로 하는 생각은?', a: '오늘 저녁 뭐 먹지? 내일 뭐 입지?', b: '내가 만약 투명인간이 된다면 어떨까?' },
         { type: 'SN', q: '노래를 들을 때 내가 더 꽂히는 부분은?', a: '신나는 멜로디와 착착 감기는 비트!', b: '가사의 깊은 의미와 전달하는 메세지' },
         { type: 'SN', q: '요리를 할 때 나의 주방 스타일은?', a: '레시피에 적힌 계량스푼과 정량을 엄수한다.', b: '내 감을 믿고 눈대중으로 재료를 넣는다.' },
@@ -565,7 +596,7 @@
         { type: 'JP', q: '내 방의 정리 정돈 상태는?', a: '항상 물건이 제자리에 깔끔하게 정리되어 있다.', b: '남들이 보기엔 지저분하지만 나름의 규칙이 있다.' }
     ];
 
-   const resultData = {
+    const resultData = {
         'ISTJ': { sprite: "🦊", speech: "원칙과 약속은\n무조건 칼같이!", sprite2: "🐻", speech2: "오늘도 완벽한\n하루였어", bgm: "SG워너비 - Timeless", traits: ["지정된 원칙과 시간 규칙을 완벽하게 엄수함", "겉은 차분하고 단단해 보이나 속정 깊은 타입", "번개 약속보다 계획적인 만남을 훨씬 선호함", "매사 성실하고 거짓 없는 직설 화법을 구사함", "내 사물 배치가 섞이는 것을 극도로 답답해함", "묵묵하지만 빈틈없이 할 일을 처리해내는 인물"] },
         'ISFJ': { sprite: "🐹", speech: "서로 배려하며\n친하게 지내자", sprite2: "🐰", speech2: "다정함이\n세상을 구해", bgm: "허밍어반스테레오 - Hawaiian Couple", traits: ["누구에게나 모나지 않고 유연하게 공감해줌", "추억이나 세부 사항을 엄청 오랫동안 기억함", "부탁을 거절하지 못해 혼자 총대 메는 스타일", "뒤에서 소리 없이 조력하는 역할을 자처함", "갈등 구도가 생기면 심적 피로감을 크게 느낌", "주변을 포근하게 챙겨주는 일등 살림꾼 리더"] },
         'INFJ': { sprite: "🔮", speech: "생각의 동굴 속에서\n답을 찾는 중..", sprite2: "🦉", speech2: "너의 내면을\n응원할게", bgm: "넬 - 기억을 걷는 시간", traits: ["사람들의 보이지 않는 본심을 매섭게 캐치함", "진정성 가득한 깊고 좁은 대인관계를 유지함", "주기적으로 나만의 에너지를 모을 동굴이 필요함", "타인에게 상냥하지만 가치관의 선은 명확함", "스스로에게 엄격하고 이상적인 목표를 갈구함", "생각이 꼬리를 물어 고독감을 자초하기도 함"] },
@@ -576,7 +607,7 @@
         'INTP': { sprite: "🧠", speech: "철저한 데이터와\n근거를 가져와줘", sprite2: "🐢", speech2: "음.. 논리적으로\n말이 되네", bgm: "아웃사이더 - 외톨이", traits: ["지적 탐구심이 강해 엉뚱한 백과사전 지식 가득", "리액션이 무디지만 영혼을 긁어모은 대답임", "분석적 오류나 모순을 찾아내어 비판하기 장인", "틀에 박힌 가이드라인을 가장 지루해함", "독립성이 확고해 혼자 사색하는 시간을 사랑함", "감정 과잉 소통보단 이성적인 토론을 원함"] },
         'ESTP': { sprite: "🏄", speech: "고민할 시간에 움직여!\n바로 실행하자구", sprite2: "🐆", speech2: "지루한 건\n딱 질색이야!", bgm: "버즈 - 나에게로 떠나는 여행", traits: ["어떤 환경에 던져져도 살아남는 생존력 마스터", "사람 기분을 단숨에 알아보는 타짜급 눈치 소유", "앞뒤 재지 않고 즉각 돌진하는 행동력 대장", "길고 지루한 설명 극혐, 심플한 팩트 전달 파", "모임에서 사람들과 즉각 베프가 되는 친화력", "스릴 있고 자극적인 스포츠나 도전을 즐김"] },
         'ESFP': { sprite: "🕺", speech: "지루한 일상은 스톱!\n인생은 파티야", sprite2: "🦩", speech2: "다 같이\n신나게 놀자!", bgm: "거북이 - 빙고", traits: ["유쾌한 리액션으로 모임의 활력소 역할을 전담함", "사람들과 상호작용할 때 최고의 효율과 행복을 얻음", "즉흥적인 제안이나 역동적인 이벤트를 대단히 즐김", "낙천적 성향이 강해 힘든 일도 금방 극복하는 편", "스타일이나 패션 등 트렌디한 감각에 관심 많음", "다정하고 호탕하여 주변에 늘 인기가 넘침"] },
-        'ENFP': { sprite: "🐶", speech: "우와! 대박 사건!\n이거 너무 재밌겠다", sprite2: "🐬", speech2: "새로운 친구다!\n반가워!", bgm: "럼블피쉬 - 으라차차", traits: ["풍부한 표정과 리액션으로 분위기를 화사하게 만듦", "창의적 상상력과 가능성을 믿고 용기 있게 돌진함", "타인을 칭찬하고 격려하는 긍정 마인드가 우수함", "새로운 시도를 두려워하지 않는 개척자 성향", "마음속에 깊고 솔직한 나만의 감성 영역이 있음", "사람들을 연결하고 즐거움을 전파하는 에너지원"] },
+        'ENFP': { sprite: "🐶", speech: "우와! 대박!\n이거 너무 재밌겠다", sprite2: "🐬", speech2: "새로운 친구다!\n반가워!", bgm: "럼블피쉬 - 으라차차", traits: ["풍부한 표정과 리액션으로 분위기를 화사하게 만듦", "창의적 상상력과 가능성을 믿고 용기 있게 돌진함", "타인을 칭찬하고 격려하는 긍정 마인드가 우수함", "새로운 시도를 두려워하지 않는 개척자 성향", "마음속에 깊고 솔직한 나만의 감성 영역이 있음", "사람들을 연결하고 즐거움을 전파하는 에너지원"] },
         'ENTP': { sprite: "🗣️", speech: "색다른 발상 어때?\n토론은 언제나 환영!", sprite2: "🦜", speech2: "그건 내 말이\n맞다니까?", bgm: "MC몽 - 서커스", traits: ["틀에 박힌 고정적 관념에 재치 있게 반문을 던짐", "임기응변 능력이 타의 추종을 불허할 만큼 민첩함", "설득력 있는 화법과 지적 밀당을 유쾌하게 즐김", "아이디어가 샘솟는 기획 영역에서 진가를 발휘함", "자신에 대한 자부심과 자존감이 대단히 건강함", "지루하고 똑같은 무한 반복 루틴을 제일 싫어함"] },
         'ESTJ': { sprite: "🐯", speech: "계획은 확실하게,\n추진은 과감하게!", sprite2: "🐺", speech2: "정해진 규칙을\n잘 따르도록", bgm: "동방신기 - 주문(MIROTIC)", traits: ["상황을 명확하게 구조화하고 실행하는 리더 재질", "책임감과 신뢰를 베이스로 약속을 반드시 사수함", "직설적이면서 군더더기 없는 화법으로 깔끔히 소통", "시간의 가치와 효율적인 결과 도출을 매우 중시함", "어려운 과업도 뚝심 있게 정면 돌파해 나감", "정리된 가이드라인 안에서 안정감을 공급함"] },
         'ESFJ': { sprite: "🐼", speech: "오늘 모임 주인공은\n우리 모두야! 화이팅!", sprite2: "🐧", speech2: "모두 함께\n행복하자!", bgm: "소녀시대 - 다시 만난 세계", traits: ["타인의 경조사와 컨디션을 아주 다정하게 챙김", "집단의 결속과 행복을 위해 기꺼이 솔선수범함", "친근하고 사교적인 화법으로 긴장감을 해소해 줌", "칭찬과 조언을 유연하게 결합하여 신뢰를 형성함", "사소한 배려로 조직에 큰 긍정의 나비효과를 만듦", "사람 중심의 조화로운 생태계를 만드는 데 진심임"] },

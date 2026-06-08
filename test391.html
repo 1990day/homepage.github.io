@@ -963,16 +963,16 @@
     }
 
     window.startTest = function() {
-        const userName = document.getElementById('userName').value.trim();
+       const userName = document.getElementById('userName').value.trim() || "이름없음";
         const y = parseInt(document.getElementById('userYear').value);
         const m = parseInt(document.getElementById('userMonth').value);
         const d = parseInt(document.getElementById('userDay').value);
         const timeIndex = parseInt(document.getElementById('userTime').value);
 
-        if (!userName || !y || !m || !d || Number.isNaN(timeIndex)) {
-            alert("입력 정보를 다 채워주세요!");
-            return;
-        }
+      if (!y || !m || !d || Number.isNaN(timeIndex)) {
+    alert("생년월일시를 다 채워주세요!");
+    return;
+}
 
         let saju;
 

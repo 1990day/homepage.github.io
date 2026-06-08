@@ -528,6 +528,67 @@
             padding: 10px 4px;
         } 
     }
+
+    /* 로딩화면 */
+
+#screen-loading{
+    justify-content:center;
+    align-items:center;
+    min-height:500px;
+    background:#dedede;
+}
+
+.loading-wrap{
+    text-align:center;
+}
+
+.loading-title{
+    font-size:22px;
+    color:#0034a6;
+    margin-bottom:20px;
+    line-height:1.6;
+}
+
+.loading-seasons{
+    font-size:70px;
+    display:flex;
+    justify-content:center;
+    gap:12px;
+}
+
+.loading-seasons span{
+    animation: seasonMove 2s infinite;
+}
+
+.loading-seasons span:nth-child(2){
+    animation-delay:.4s;
+}
+
+.loading-seasons span:nth-child(3){
+    animation-delay:.8s;
+}
+
+.loading-seasons span:nth-child(4){
+    animation-delay:1.2s;
+}
+
+.loading-text{
+    margin-top:20px;
+    font-size:16px;
+    line-height:1.8;
+}
+
+@keyframes seasonMove{
+    0%,100%{
+        transform:translateY(0);
+        opacity:.4;
+    }
+    50%{
+        transform:translateY(-12px);
+        opacity:1;
+    }
+}
+
 </style>
 </head>
 <body>
@@ -567,11 +628,31 @@
                 <select id="userTime"></select>
             </div>
         </div>
-        
-        <button class="action-btn" style="margin-top: 10px;" onclick="startTest()">결과 확인하기</button>
+  
+              <button class="action-btn" style="margin-top: 10px;" onclick="startTest()">결과 확인하기</button>
+    </div>
+
+    <div id="screen-loading" class="screen">
+        <div class="loading-wrap">
+            <div class="loading-title">
+                사계절 속에 숨겨진<br>
+                당신의 사주를 분석중...
+            </div>
+
+            <div class="loading-seasons">
+                <span>🌸</span>
+                <span>🌞</span>
+                <span>🍁</span>
+                <span>❄️</span>
+            </div>
+
+    
+            </div>
+        </div>
     </div>
 
     <div id="screen-result" class="screen" style="padding: 10px;">
+
         <div class="result-theme-bg" id="result-theme">
             <div class="result-header">테스트잇 사계절 사주 성격 테스트</div>
             
@@ -956,8 +1037,14 @@ seasonCell.className = "info-cell " + seasonKey + "-season";
             traitUl.appendChild(li);
         });
 
-        nextScreen('screen-input', 'screen-result');
-        document.getElementById('out-of-frame-buttons').style.display = 'flex';
+    document.getElementById('out-of-frame-buttons').style.display = 'none';
+
+nextScreen('screen-input', 'screen-loading');
+
+setTimeout(() => {
+    nextScreen('screen-loading', 'screen-result');
+    document.getElementById('out-of-frame-buttons').style.display = 'flex';
+}, 3000);
     }
 
     window.saveResultImage = function() {

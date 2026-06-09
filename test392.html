@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>테스트잇 플레이리스트 성격 테스트</title>
+<link href="https://cdn.jsdelivr.net/gh/neodgm/neodgm-webfont@latest/neodgm/style.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<style>
+:root {
+    --text-color: #332f38;
+    --border-color: #332f38;
+    --theme-bg: #ff4fa3;
+    --theme-table: #ffe400;
+    --theme-accent: #00d9ff;
+    --theme-cover: #fff;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: "NeoDunggeunmo", sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #f7f1ff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    min-height: 100vh;
+    color: var(--text-color);
+}
+
+.page-header {
+    width: min(650px, calc(100% - 2px));
+    margin: 0 auto 15px;
+    height: 56px;
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 2px solid var(--border-color);
+    background: #fffef8;
+    border-radius: 10px;
+    box-shadow: 4px 4px 0 rgba(190, 170, 255, 0.65);
+}
+
+.logo-text {
+    font-size: 20px;
+    font-weight: 900;
+    text-decoration: none;
+    color: #332f38;
+}
+
+.main-nav {
+    display: flex;
+    gap: 5px;
+}
+
+.main-nav a {
+    padding: 6px 8px;
+    border: 1.5px solid var(--border-color);
+    background: #f2ebff;
+    border-radius: 6px;
+    text-decoration: none;
+    color: #332f38;
+    font-size: 12px;
+}
+
+.app-wrapper {
+    width: 100%;
+    max-width: 650px;
+    background: #fffdf8;
+    border: 2px solid var(--border-color);
+    border-radius: 16px;
+    box-shadow: 6px 6px 0 rgba(190, 170, 255, 0.6);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.screen {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    padding: 28px 12px;
+    align-items: center;
+}
+
+.screen.active {
+    display: flex;
+}
+
+.screen-title {
+    font-size: 28px;
+    margin-bottom: 24px;
+    line-height: 1.4;
+    color: #6b54ff;
+    text-align: center;
+    font-weight: bold;
+    text-shadow: 2px 2px 0 #fff4b8;
+}
+
+.music-main {
+    width: 100%;
+    max-width: 430px;
+    background: #fffdf8;
+    border: 2px solid var(--border-color);
+    border-radius: 18px;
+    padding: 18px;
+    box-shadow: 5px 5px 0 rgba(255, 202, 232, 0.9);
+    margin-bottom: 24px;
+}
+
+.album-cover {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background: #d9ccff;
+    border: 2px solid var(--border-color);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    overflow: hidden;
+}
+
+.album-disc {
+    width: 190px;
+    height: 190px;
+    border: 2px solid var(--border-color);
+    border-radius: 50%;
+    background: repeating-radial-gradient(circle, #332f38 0 9px, #fffdf8 10px 18px, #c7f4ff 19px 25px, #ffd5e8 26px 32px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.album-hole {
+    width: 54px;
+    height: 54px;
+    background: #fffdf8;
+    border: 2px solid var(--border-color);
+    border-radius: 50%;
+}
+
+.track-info {
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    background: #fff7fc;
+    padding: 14px;
+    margin-bottom: 14px;
+}
+
+.track-title {
+    font-size: 20px;
+    color: #332f38;
+    line-height: 1.4;
+    margin-bottom: 6px;
+    text-align: center;
+}
+
+.track-sub {
+    font-size: 14px;
+    color: #6b54ff;
+    text-align: center;
+    line-height: 1.4;
+}
+
+.player-bar {
+    width: 100%;
+    height: 12px;
+    border: 2px solid var(--border-color);
+    border-radius: 999px;
+    background: #fff;
+    overflow: hidden;
+    margin-bottom: 14px;
+}
+
+.player-fill {
+    width: 62%;
+    height: 100%;
+    background: #ff8fc4;
+}
+
+.player-controls {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+.control-dot {
+    width: 42px;
+    height: 34px;
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    background: #fff4b8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+}
+
+.action-btn {
+    background-color: #6b54ff;
+    color: #fff;
+    border: 2px solid #332f38;
+    padding: 16px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    max-width: 400px;
+    border-radius: 10px;
+    box-shadow: 3px 3px 0 #cfc4ff;
+}
+
+.progress-wrap {
+    width: 100%;
+    max-width: 520px;
+    margin-bottom: 16px;
+}
+
+.progress-text {
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 8px;
+    color: #6b54ff;
+}
+
+.progress-line {
+    width: 100%;
+    height: 12px;
+    border: 2px solid var(--border-color);
+    border-radius: 999px;
+    background: #fffdf8;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0;
+    background: #ff8fc4;
+    transition: width 0.25s ease;
+}
+
+.question-card {
+    width: 100%;
+    max-width: 520px;
+    border: 2px solid var(--border-color);
+    border-radius: 16px;
+    background: #fffdf8;
+    padding: 22px 14px;
+    box-shadow: 5px 5px 0 rgba(190, 170, 255, 0.55);
+}
+
+.question-title {
+    font-size: 21px;
+    line-height: 1.45;
+    text-align: center;
+    word-break: keep-all;
+    margin-bottom: 20px;
+}
+
+.answer-btn {
+    width: 100%;
+    border: 2px solid var(--border-color);
+    background: #f5efff;
+    color: #332f38;
+    border-radius: 12px;
+    padding: 15px 12px;
+    font-size: 16px;
+    line-height: 1.45;
+    margin-bottom: 10px;
+    cursor: pointer;
+    word-break: keep-all;
+    box-shadow: 3px 3px 0 rgba(255, 210, 229, 0.85);
+}
+
+.result-theme-bg {
+    background: var(--theme-bg);
+    width: 100%;
+    padding: 15px 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.result-header {
+    position: relative;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 1.35;
+    padding: 13px 12px 12px;
+    border: 2px solid var(--border-color);
+    background: #fffdf8;
+    color: #332f38;
+    border-radius: 8px;
+    margin: 4px 6px 16px;
+    box-shadow: 4px 4px 0 var(--theme-accent);
+}
+
+.result-header::before {
+    content: "TESTIT";
+    position: absolute;
+    top: -11px;
+    left: 14px;
+    padding: 2px 8px;
+    background: var(--theme-table);
+    border: 2px solid var(--border-color);
+    border-radius: 999px;
+    font-size: 10px;
+    color: #332f38;
+}
+
+.result-header::after {
+    content: "♪";
+    position: absolute;
+    top: -10px;
+    right: 14px;
+    font-size: 20px;
+    color: var(--theme-accent);
+    text-shadow: 2px 2px 0 #fff4b8;
+}
+
+.result-player {
+    border: 2px solid var(--border-color);
+    background: #fffdf8;
+    border-radius: 14px;
+    padding: 14px;
+    margin-bottom: 15px;
+    box-shadow: 4px 4px 0 var(--theme-accent);
+}
+
+.result-player-top {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    margin-bottom: 14px;
+}
+
+.result-cover {
+    width: 96px;
+    height: 96px;
+    border: 2px solid var(--border-color);
+    background: var(--theme-cover);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 42px;
+    color: #332f38;
+    box-shadow: 3px 3px 0 rgba(51, 47, 56, 0.22);
+}
+
+.cover-round { border-radius: 50%; }
+.cover-square { border-radius: 8px; }
+.cover-soft { border-radius: 24px; }
+.cover-arch { border-radius: 50% 50% 12px 12px; }
+.cover-ticket { border-radius: 4px 20px 4px 20px; }
+.cover-wave { border-radius: 28px 8px 28px 8px; }
+
+.result-song {
+    flex: 1;
+    min-width: 0;
+}
+
+.result-song-title {
+    font-size: 28px;
+    line-height: 1.25;
+    color: #332f38;
+    word-break: keep-all;
+}
+
+.result-control-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.time-text {
+    font-size: 12px;
+    color: #332f38;
+}
+
+.mini-progress {
+    flex: 1;
+    height: 10px;
+    border: 2px solid var(--border-color);
+    border-radius: 999px;
+    overflow: hidden;
+    background: #fff;
+}
+
+.mini-progress-fill {
+    width: 72%;
+    height: 100%;
+    background: var(--theme-accent);
+}
+
+.profile-info-box {
+    background-color: #fffdf8;
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 4px 4px 0 rgba(255, 210, 229, 0.55);
+}
+
+.traits-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.traits-list li {
+    text-align: center;
+    padding: 14px 5px;
+    border-bottom: 1px dashed #f0aaca;
+    font-size: 15px;
+    line-height: 1.4;
+    word-break: keep-all;
+    white-space: normal;
+}
+
+.traits-list li:last-child {
+    border-bottom: none;
+}
+
+.match-box {
+    border: 2px solid var(--border-color);
+    background: #fff7fc;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 15px;
+    display: grid;
+    gap: 7px;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.match-row {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+    word-break: keep-all;
+}
+
+.match-label {
+    flex: 0 0 auto;
+    background: var(--theme-table);
+    border: 1.5px solid var(--border-color);
+    border-radius: 999px;
+    padding: 2px 8px;
+    font-size: 12px;
+}
+
+#out-of-frame-buttons {
+    display: none;
+    width: 100%;
+    max-width: 650px;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.btn-save {
+    background-color: #6b54ff;
+    color: white;
+    border: 2px solid #332f38;
+    padding: 16px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 3px 3px 0 #cfc4ff;
+}
+
+.btn-sub {
+    background-color: #fffdf8;
+    border: 2px solid #332f38;
+    padding: 14px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 10px;
+    font-weight: bold;
+    box-shadow: 3px 3px 0 rgba(189, 244, 231, 0.75);
+}
+
+#save-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0,0,0,0.85);
+    z-index: 999;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#save-modal.active {
+    display: flex;
+}
+
+#saved-image {
+    max-width: 95%;
+    max-height: 80vh;
+    border: 2px solid white;
+    border-radius: 8px;
+}
+
+.modal-text {
+    color: white;
+    font-size: 18px;
+    margin-bottom: 15px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.close-modal-btn {
+    background: #6b54ff;
+    color: white;
+    border: 2px solid #fff;
+    padding: 10px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+@media screen and (max-width: 600px) {
+    .page-header { padding: 0 10px; }
+    .logo-text { font-size: 18px; }
+    .main-nav a { font-size: 11px; padding: 6px 5px; }
+    .screen-title { font-size: 22px; }
+    .album-disc { width: 155px; height: 155px; }
+    .track-title { font-size: 18px; }
+    .question-title { font-size: 18px; }
+    .answer-btn { font-size: 15px; }
+    .result-header { font-size: 17px; padding: 13px 8px 11px; margin: 4px 2px 15px; }
+    .result-cover { width: 80px; height: 80px; font-size: 34px; }
+    .result-song-title { font-size: 24px; }
+    .match-box { font-size: 13px; }
+    .traits-list li { font-size: 14px; padding: 12px 2px; }
+}
+</style>
+</head>
+<body>
+
+<header class="page-header">
+    <a class="logo-text" href="https://test-it.co.kr/">테스트잇</a>
+    <nav class="main-nav">
+        <a href="https://test-it.co.kr/test.html">성격</a>
+        <a href="https://test-it.co.kr/face.html">얼굴</a>
+        <a href="https://test-it.co.kr/etc.html">그외</a>
+        <a href="https://test-it.co.kr/saju.html">사주</a>
+    </nav>
+</header>
+
+<div class="app-wrapper" id="capture-area">
+    <div id="screen-start" class="screen active">
+        <div class="screen-title">테스트잇<br>플레이리스트 성격 테스트</div>
+
+        <div class="music-main">
+            <div class="album-cover">
+                <div class="album-disc">
+                    <div class="album-hole"></div>
+                </div>
+            </div>
+            <div class="track-info">
+                <div class="track-title">내 성격을 닮은 플레이리스트</div>
+                <div class="track-sub">내 성격은 어떤 장르일까?</div>
+            </div>
+            <div class="player-bar">
+                <div class="player-fill"></div>
+            </div>
+            <div class="player-controls">
+                <div class="control-dot">◀</div>
+                <div class="control-dot">▶</div>
+                <div class="control-dot">■</div>
+            </div>
+        </div>
+
+        <button class="action-btn" onclick="startQuestions()">테스트 시작하기</button>
+    </div>
+
+    <div id="screen-question" class="screen">
+        <div class="progress-wrap">
+            <div class="progress-text" id="progress-text">TRACK 01 / 12</div>
+            <div class="progress-line">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-title" id="question-title"></div>
+            <button class="answer-btn" id="answer-a" onclick="selectAnswer(0)"></button>
+            <button class="answer-btn" id="answer-b" onclick="selectAnswer(1)"></button>
+        </div>
+    </div>
+
+    <div id="screen-result" class="screen" style="padding: 10px;">
+        <div class="result-theme-bg" id="result-theme">
+            <div class="result-header">테스트잇 플레이리스트 성격 테스트</div>
+
+            <div class="result-player">
+                <div class="result-player-top">
+                    <div class="result-cover" id="result-cover"><span id="result-icon">♪</span></div>
+                    <div class="result-song">
+                        <div class="result-song-title" id="result-title"></div>
+                    </div>
+                </div>
+
+                <div class="result-control-row">
+                    <span class="time-text">01:07</span>
+                    <div class="mini-progress">
+                        <div class="mini-progress-fill"></div>
+                    </div>
+                    <span class="time-text">03:25</span>
+                </div>
+            </div>
+
+            <div class="profile-info-box">
+                <ul class="traits-list" id="traits-list"></ul>
+
+                <div class="match-box">
+                    <div class="match-row">
+                        <div class="match-label">잘 맞는 플리</div>
+                        <div id="good-match"></div>
+                    </div>
+                    <div class="match-row">
+                        <div class="match-label">안 맞는 플리</div>
+                        <div id="bad-match"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="out-of-frame-buttons">
+    <button class="btn-save" onclick="saveResultImage()">결과 이미지 저장하기</button>
+    <button class="btn-sub" onclick="location.reload()">다시 해보기</button>
+    <button class="btn-sub" onclick="location.href='https://test-it.co.kr/'">다른 테스트 해보기</button>
+    <button class="btn-sub" onclick="shareTest()">테스트 공유하기</button>
+</div>
+
+<div id="save-modal">
+    <div class="modal-text">아래 이미지를 꾹 눌러서<br>내 폰에 저장해 보세요!</div>
+    <img id="saved-image" src="" alt="결과 이미지">
+    <button class="close-modal-btn" onclick="closeModal()">닫기</button>
+</div>
+
+<script>
+const questions = [
+    {
+        q: "처음 보는 사람들이 많은 자리에 갔다.<br>나는 보통?",
+        a: [
+            { text: "분위기를 보다가 먼저 말을 걸어본다", type: "E" },
+            { text: "익숙해질 때까지 조용히 상황을 살핀다", type: "I" }
+        ]
+    },
+    {
+        q: "주말 약속이 갑자기 취소됐다.<br>나의 반응은?",
+        a: [
+            { text: "아쉬워서 다른 사람에게 연락해본다", type: "E" },
+            { text: "오히려 좋다 싶어서 혼자 쉬는 시간을 즐긴다", type: "I" }
+        ]
+    },
+    {
+        q: "기분 좋은 일이 생겼을 때 나는?",
+        a: [
+            { text: "누군가에게 바로 말하고 같이 좋아하고 싶다", type: "E" },
+            { text: "혼자 곱씹으면서 조용히 기분 좋아진다", type: "I" }
+        ]
+    },
+    {
+        q: "새로운 일을 시작할 때 더 먼저 보는 건?",
+        a: [
+            { text: "지금 당장 필요한 준비물과 구체적인 방법", type: "S" },
+            { text: "이 일이 앞으로 어떻게 이어질지 큰 가능성", type: "N" }
+        ]
+    },
+    {
+        q: "친구가 겪은 일을 들을 때 나는?",
+        a: [
+            { text: "실제로 무슨 일이 있었는지 순서대로 이해한다", type: "S" },
+            { text: "그 상황이 어떤 의미였을지 먼저 떠올린다", type: "N" }
+        ]
+    },
+    {
+        q: "새로운 장소에 갔을 때 기억에 남는 건?",
+        a: [
+            { text: "인테리어, 위치, 음식처럼 눈에 보이는 요소", type: "S" },
+            { text: "그곳에서 느껴진 분위기와 떠오른 생각", type: "N" }
+        ]
+    },
+    {
+        q: "친구가 고민을 털어놨다.<br>나는 보통?",
+        a: [
+            { text: "상황을 정리하고 해결 방법을 같이 생각한다", type: "T" },
+            { text: "친구가 얼마나 힘들었을지 먼저 공감한다", type: "F" }
+        ]
+    },
+    {
+        q: "의견이 안 맞는 상황에서 나는?",
+        a: [
+            { text: "감정보다 기준과 이유를 따져보려 한다", type: "T" },
+            { text: "말투와 분위기가 상하지 않게 신경 쓴다", type: "F" }
+        ]
+    },
+    {
+        q: "누군가 내 선택을 이해하지 못할 때 나는?",
+        a: [
+            { text: "내가 왜 그렇게 판단했는지 설명한다", type: "T" },
+            { text: "내 마음을 몰라주는 것 같아 서운해진다", type: "F" }
+        ]
+    },
+    {
+        q: "하루 일정이 생겼을 때 나는?",
+        a: [
+            { text: "대략적인 순서와 시간을 미리 정해둔다", type: "J" },
+            { text: "그때그때 상황에 맞춰 움직이는 게 편하다", type: "P" }
+        ]
+    },
+    {
+        q: "마감이 있는 일을 맡았을 때 나는?",
+        a: [
+            { text: "미리 나눠서 해두는 편이 마음 편하다", type: "J" },
+            { text: "마감이 가까워져야 집중력이 확 올라온다", type: "P" }
+        ]
+    },
+    {
+        q: "예상과 다른 일이 생겼을 때 나는?",
+        a: [
+            { text: "계획이 틀어져서 다시 정리해야 마음이 놓인다", type: "J" },
+            { text: "오히려 새로운 흐름이라 재밌을 때도 있다", type: "P" }
+        ]
+    }
+];
+
+const results = {
+    ISTJ: {
+        title: "클래식",
+        icon: "♬",
+        coverClass: "cover-square",
+        good: "재즈, 발라드",
+        bad: "EDM, 펑크",
+        colors: { bg: "#23395d", table: "#ffd166", accent: "#ff006e", cover: "#f8f7ff" },
+        traits: ["기준이 분명해서 쉽게 흔들리지 않음", "맡은 일은 끝까지 책임지고 해내는 편", "말보다 행동으로 신뢰를 쌓는 타입", "갑작스러운 변화보다 예측 가능한 흐름을 선호함", "감정에 휩쓸리기보다 현실적인 판단을 먼저 함", "정리되지 않은 상황을 오래 두기 힘들어함", "가까운 사람에게는 꾸준하고 성실하게 마음을 씀", "조용하지만 믿고 맡길 수 있는 안정감이 있음"]
+    },
+    ISFJ: {
+        title: "발라드",
+        icon: "♡",
+        coverClass: "cover-soft",
+        good: "어쿠스틱, 포크",
+        bad: "힙합, 락",
+        colors: { bg: "#ff7a90", table: "#fff275", accent: "#7bdff2", cover: "#fff0f3" },
+        traits: ["상대가 필요로 하는 걸 말없이 챙기는 편", "익숙하고 안정적인 관계에서 마음이 편해짐", "작은 말과 행동도 오래 기억함", "갈등이 생기면 분위기가 상하지 않게 조심함", "책임감이 강해 쉽게 손을 놓지 않음", "혼자만의 시간으로 에너지를 회복함", "겉으로 티를 많이 내지 않아도 마음이 깊음", "따뜻하고 조용한 배려가 자연스럽게 묻어남"]
+    },
+    INFJ: {
+        title: "재즈",
+        icon: "◇",
+        coverClass: "cover-arch",
+        good: "인디, 클래식",
+        bad: "댄스, EDM",
+        colors: { bg: "#3a0ca3", table: "#ffbe0b", accent: "#fb5607", cover: "#c77dff" },
+        traits: ["사람의 말보다 숨은 분위기를 잘 읽음", "가벼운 관계보다 깊은 연결을 중요하게 여김", "혼자 생각을 정리하는 시간이 꼭 필요함", "겉으로 차분해 보여도 내면의 감정이 깊음", "상대의 가능성과 상처를 민감하게 알아차림", "의미 없는 대화가 길어지면 쉽게 지침", "자기만의 신념과 기준이 또렷함", "조용하지만 오래 남는 존재감을 가짐"]
+    },
+    INTJ: {
+        title: "신스팝",
+        icon: "▲",
+        coverClass: "cover-square",
+        good: "일렉트로닉, 클래식",
+        bad: "트로트, 댄스",
+        colors: { bg: "#03045e", table: "#00f5d4", accent: "#f72585", cover: "#90dbf4" },
+        traits: ["목표가 생기면 필요한 단계를 빠르게 계산함", "감정보다 구조와 효율을 먼저 보는 편", "아무거나 쉽게 좋아하지 않고 기준이 높음", "혼자 집중할 수 있는 환경에서 능력이 잘 나옴", "불필요한 감정 소모를 크게 싫어함", "겉으로 차가워 보여도 자기 사람은 오래 챙김", "큰 그림을 보고 장기적으로 움직이는 타입", "독립적이고 자기 확신이 강함"]
+    },
+    ISTP: {
+        title: "락",
+        icon: "■",
+        coverClass: "cover-ticket",
+        good: "힙합, 펑크",
+        bad: "발라드, 오케스트라",
+        colors: { bg: "#111111", table: "#ffea00", accent: "#ff003c", cover: "#d9d9d9" },
+        traits: ["복잡한 설명보다 직접 해보는 게 빠름", "좋고 싫음이 분명하지만 굳이 크게 표현하지 않음", "혼자 자유롭게 움직일 때 가장 편함", "갑작스러운 문제에도 침착하게 대응하는 편", "감정적인 압박이나 간섭을 싫어함", "필요한 순간에 집중력이 확 올라옴", "관심 없는 일에는 에너지를 거의 쓰지 않음", "무심한 듯 현실 감각이 뛰어난 타입"]
+    },
+    ISFP: {
+        title: "어쿠스틱",
+        icon: "♪",
+        coverClass: "cover-wave",
+        good: "발라드, 인디",
+        bad: "EDM, 힙합",
+        colors: { bg: "#80ed99", table: "#ffcad4", accent: "#ff5d8f", cover: "#fdffb6" },
+        traits: ["지금 느끼는 감정과 분위기에 솔직함", "강요받는 순간 마음이 멀어지는 편", "편안하고 자연스러운 관계를 좋아함", "말보다 행동과 분위기로 마음을 표현함", "작은 장면에서도 감동을 잘 느낌", "취향이 은근히 확실하고 감각이 좋음", "갈등은 싫지만 선을 넘으면 조용히 멀어짐", "부드럽지만 자기 세계가 분명함"]
+    },
+    INFP: {
+        title: "인디",
+        icon: "☆",
+        coverClass: "cover-round",
+        good: "재즈, 어쿠스틱",
+        bad: "댄스, 트로트",
+        colors: { bg: "#ffafcc", table: "#bde0fe", accent: "#8338ec", cover: "#ffc8dd" },
+        traits: ["상황을 있는 그대로보다 감정의 흐름으로 받아들임", "사소한 말에도 의미를 오래 두는 편", "겉으로는 조용해도 속으로는 반응이 큼", "진심 없는 말과 분위기에 쉽게 지침", "자기만의 가치관과 취향을 중요하게 여김", "좋아하는 것에는 깊게 몰입함", "마음이 움직여야 행동도 따라오는 편", "섬세하고 상상력이 풍부한 타입"]
+    },
+    INTP: {
+        title: "일렉트로닉",
+        icon: "◎",
+        coverClass: "cover-arch",
+        good: "신스팝, 재즈",
+        bad: "발라드, 포크",
+        colors: { bg: "#00bbf9", table: "#fee440", accent: "#9b5de5", cover: "#00f5d4" },
+        traits: ["궁금한 게 생기면 혼자 끝까지 파고드는 편", "정해진 방식보다 스스로 이해하는 걸 선호함", "감정 표현은 적어도 머릿속 생각은 많음", "관심 있는 분야와 없는 분야의 온도 차가 큼", "억지 공감보다 솔직한 대화가 편함", "혼자 있는 시간이 부족하면 쉽게 지침", "남들이 놓친 부분을 독특하게 발견함", "조용하지만 생각의 결이 뚜렷한 타입"]
+    },
+    ESTP: {
+        title: "힙합",
+        icon: "▶",
+        coverClass: "cover-ticket",
+        good: "락, EDM",
+        bad: "클래식, 발라드",
+        colors: { bg: "#ffbe0b", table: "#3a86ff", accent: "#ff006e", cover: "#fb5607" },
+        traits: ["생각만 하기보다 일단 움직여보는 편", "새로운 상황에서도 적응이 빠름", "답답하고 늘어지는 분위기를 오래 못 견딤", "사람들과 있을 때 에너지가 더 살아남", "솔직하고 시원한 반응이 매력임", "위기 상황에서도 겁먹기보다 해결책을 찾음", "재미없는 규칙보다 현실적인 결과를 중요하게 봄", "순간의 흐름을 잘 타는 타입"]
+    },
+    ESFP: {
+        title: "댄스",
+        icon: "●",
+        coverClass: "cover-round",
+        good: "EDM, 힙합",
+        bad: "클래식, 재즈",
+        colors: { bg: "#ff006e", table: "#ffee32", accent: "#00f5d4", cover: "#ff85df" },
+        traits: ["분위기를 밝게 만드는 힘이 있음", "좋은 일이 생기면 사람들과 나누고 싶어함", "감정 표현이 솔직하고 반응이 풍부함", "지루한 상황보다 생동감 있는 흐름을 좋아함", "사람들과 함께할 때 매력이 잘 살아남", "순간의 기분과 즐거움을 소중하게 여김", "센스 있고 친근한 인상을 줌", "힘든 날에도 다시 웃게 만드는 타입"]
+    },
+    ENFP: {
+        title: "시티팝",
+        icon: "✦",
+        coverClass: "cover-wave",
+        good: "댄스, 인디",
+        bad: "클래식, 오케스트라",
+        colors: { bg: "#00f5d4", table: "#ff70a6", accent: "#ff9770", cover: "#70d6ff" },
+        traits: ["새로운 사람과 상황에서 금방 흥미를 느낌", "생각이 꼬리에 꼬리를 물고 확장되는 편", "좋아하는 게 생기면 바로 표현하고 싶어함", "반복되는 일상보다 변화 있는 흐름을 선호함", "사람의 가능성과 분위기를 잘 캐치함", "즉흥적이지만 진심은 꽤 깊음", "흥미가 생기면 몰입력이 확 올라감", "밝고 자유로운 에너지가 강한 타입"]
+    },
+    ENTP: {
+        title: "펑크",
+        icon: "◆",
+        coverClass: "cover-ticket",
+        good: "힙합, 일렉트로닉",
+        bad: "발라드, 클래식",
+        colors: { bg: "#fb5607", table: "#00f5d4", accent: "#3a0ca3", cover: "#ffbe0b" },
+        traits: ["평범하고 예상 가능한 흐름을 쉽게 지루해함", "대화 중에도 아이디어가 계속 튀어나옴", "새로운 관점이나 논쟁을 재밌어함", "틀에 박힌 방식보다 실험적인 방식을 좋아함", "순발력과 말센스가 좋은 편", "가볍게 보여도 머릿속은 빠르게 돌아감", "지루한 분위기를 바꾸는 능력이 있음", "호기심이 강하고 유연하게 움직이는 타입"]
+    },
+    ESTJ: {
+        title: "오케스트라",
+        icon: "▦",
+        coverClass: "cover-square",
+        good: "클래식, 신스팝",
+        bad: "인디, 어쿠스틱",
+        colors: { bg: "#8d5524", table: "#ffdd00", accent: "#c1121f", cover: "#e6ccb2" },
+        traits: ["해야 할 일과 기준이 분명함", "애매한 상황보다 확실한 결정을 선호함", "사람들 사이에서 자연스럽게 방향을 잡음", "감정보다 현실적인 판단을 먼저 함", "책임감이 강하고 약속을 중요하게 여김", "비효율적인 상황을 오래 참기 어려움", "일을 맡으면 결과까지 깔끔하게 보려 함", "단단하고 추진력 있는 에너지가 있음"]
+    },
+    ESFJ: {
+        title: "트로트",
+        icon: "♥",
+        coverClass: "cover-soft",
+        good: "발라드, 댄스",
+        bad: "일렉트로닉, 펑크",
+        colors: { bg: "#ff595e", table: "#ffca3a", accent: "#1982c4", cover: "#f9c74f" },
+        traits: ["함께 있는 사람들의 기분을 잘 살핌", "상대가 편해지는 분위기를 만들려고 함", "관계에서 예의와 배려를 중요하게 여김", "주변 사람이 좋아하면 본인도 기분이 좋아짐", "어색한 분위기를 먼저 풀어주려는 편", "작은 약속과 기념일도 잘 챙김", "사람 취향을 기억하고 맞춰주는 능력이 좋음", "친근하고 안정적인 매력이 강함"]
+    },
+    ENFJ: {
+        title: "팝",
+        icon: "✧",
+        coverClass: "cover-arch",
+        good: "발라드, 시티팝",
+        bad: "락, 일렉트로닉",
+        colors: { bg: "#9b5de5", table: "#fee440", accent: "#00bbf9", cover: "#f15bb5" },
+        traits: ["상대에게 필요한 말과 분위기를 잘 찾아냄", "사람의 장점과 가능성을 잘 발견함", "분위기를 따뜻하게 이끄는 힘이 있음", "감정 표현이 풍부하고 진심을 중요하게 여김", "관계에서 책임감과 배려가 강함", "누군가 힘들어하면 그냥 지나치지 못함", "혼자보다 함께 성장하는 흐름을 좋아함", "밝지만 깊은 마음을 가진 타입"]
+    },
+    ENTJ: {
+        title: "EDM",
+        icon: "★",
+        coverClass: "cover-wave",
+        good: "힙합, 오케스트라",
+        bad: "어쿠스틱, 발라드",
+        colors: { bg: "#7209b7", table: "#4cc9f0", accent: "#f72585", cover: "#b5179e" },
+        traits: ["전체 흐름을 보고 빠르게 방향을 잡음", "목표가 생기면 바로 실행 계획을 세움", "답답한 상황에서는 주도권을 잡는 편", "성과와 성장에 대한 욕심이 있음", "감정보다 해결과 실행을 먼저 생각함", "카리스마 있고 존재감이 강한 타입", "비효율적인 관계와 상황을 오래 참지 않음", "자기 확신이 강하고 추진력이 좋음"]
+    }
+};
+
+let currentQuestion = 0;
+let scores = { E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0 };
+
+function nextScreen(hideId, showId) {
+    document.getElementById(hideId).classList.remove("active");
+    document.getElementById(showId).classList.add("active");
+    window.scrollTo(0, 0);
+}
+
+function startQuestions() {
+    currentQuestion = 0;
+    scores = { E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0 };
+    document.getElementById("out-of-frame-buttons").style.display = "none";
+    nextScreen("screen-start", "screen-question");
+    showQuestion();
+}
+
+function showQuestion() {
+    const question = questions[currentQuestion];
+    document.getElementById("question-title").innerHTML = question.q;
+    document.getElementById("answer-a").innerText = question.a[0].text;
+    document.getElementById("answer-b").innerText = question.a[1].text;
+    document.getElementById("progress-text").innerText = "TRACK " + String(currentQuestion + 1).padStart(2, "0") + " / 12";
+    document.getElementById("progress-fill").style.width = ((currentQuestion) / questions.length * 100) + "%";
+}
+
+function selectAnswer(answerIndex) {
+    const selectedType = questions[currentQuestion].a[answerIndex].type;
+    scores[selectedType]++;
+    currentQuestion++;
+
+    if (currentQuestion < questions.length) {
+        showQuestion();
+    } else {
+        document.getElementById("progress-fill").style.width = "100%";
+        showResult();
+    }
+}
+
+function getResultKey() {
+    const first = scores.E >= scores.I ? "E" : "I";
+    const second = scores.S >= scores.N ? "S" : "N";
+    const third = scores.T >= scores.F ? "T" : "F";
+    const fourth = scores.J >= scores.P ? "J" : "P";
+    return first + second + third + fourth;
+}
+
+function showResult() {
+    const resultKey = getResultKey();
+    const result = results[resultKey];
+    const themeBox = document.getElementById("result-theme");
+    const cover = document.getElementById("result-cover");
+
+    themeBox.style.setProperty("--theme-bg", result.colors.bg);
+    themeBox.style.setProperty("--theme-table", result.colors.table);
+    themeBox.style.setProperty("--theme-accent", result.colors.accent);
+    themeBox.style.setProperty("--theme-cover", result.colors.cover);
+
+    cover.className = "result-cover " + result.coverClass;
+    document.getElementById("result-icon").innerText = result.icon;
+    document.getElementById("result-title").innerText = result.title;
+    document.getElementById("good-match").innerText = result.good;
+    document.getElementById("bad-match").innerText = result.bad;
+
+    const traitUl = document.getElementById("traits-list");
+    traitUl.innerHTML = "";
+
+    result.traits.forEach(function(trait) {
+        const li = document.createElement("li");
+        li.innerText = trait;
+        traitUl.appendChild(li);
+    });
+
+    nextScreen("screen-question", "screen-result");
+    document.getElementById("out-of-frame-buttons").style.display = "flex";
+}
+
+function saveResultImage() {
+    const captureArea = document.getElementById("capture-area");
+    const saveBtn = document.querySelector(".btn-save");
+    saveBtn.innerText = "이미지 생성 중...";
+
+    html2canvas(captureArea, {
+        scale: 2,
+        backgroundColor: "#f7f1ff"
+    }).then(function(canvas) {
+        document.getElementById("saved-image").src = canvas.toDataURL("image/png");
+        document.getElementById("save-modal").classList.add("active");
+        saveBtn.innerText = "결과 이미지 저장하기";
+    });
+}
+
+function closeModal() {
+    document.getElementById("save-modal").classList.remove("active");
+}
+
+function shareTest() {
+    if (navigator.share) {
+        navigator.share({
+            title: "테스트잇 플레이리스트 성격 테스트",
+            url: window.location.href
+        }).catch(function(error) {
+            console.log(error);
+        });
+    } else {
+        alert("주소를 복사하여 공유해보세요!\n" + window.location.href);
+    }
+}
+</script>
+
+</body>
+</html>

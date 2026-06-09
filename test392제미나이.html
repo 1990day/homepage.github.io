@@ -38,7 +38,7 @@
 
     .page-header {
         width: min(650px, calc(100% - 2px));
-        margin: 0 auto 15px;
+        margin: 0 auto 8px;
         height: 56px;
         padding: 0 15px;
         display: flex;
@@ -72,6 +72,21 @@
         font-size: 12px;
     }
 
+    .main-start {
+        width: 100%;
+        max-width: 650px;
+        margin: 0 auto 8px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .main-image {
+        width: 100%;
+        max-width: 500px;
+        display: block;
+        margin: 0 auto;
+    }
+
     .app-wrapper {
         width: 100%;
         max-width: 650px;
@@ -79,9 +94,13 @@
         border: 2px solid var(--border-color);
         border-radius: 16px;
         box-shadow: 6px 6px 0 rgba(200, 190, 255, 0.6);
-        display: flex;
+        display: none;
         flex-direction: column;
         overflow: hidden;
+    }
+
+    .app-wrapper.active {
+        display: flex;
     }
 
     .screen {
@@ -135,32 +154,32 @@
         box-shadow: 5px 5px 0 rgba(190, 170, 255, 0.55);
     }
 
-   .question-text {
-    font-size: 18px;
-    font-weight: normal;
-    text-align: center;
-    margin-bottom: 20px;
-    min-height: auto;
-    word-break: keep-all;
-    line-height: 1.5;
-}
+    .question-text {
+        font-size: 18px;
+        font-weight: normal;
+        text-align: center;
+        margin-bottom: 20px;
+        min-height: auto;
+        word-break: keep-all;
+        line-height: 1.5;
+    }
 
-   .answer-btn {
-    background-color: #f5efff;
-    color: #3f3642;
-    border: 2px solid var(--border-color);
-    padding: 14px 12px;
-    font-size: 14px;
-    font-weight: normal;
-    cursor: pointer;
-    width: 100%;
-    margin-bottom: 10px;
-    border-radius: 12px;
-    box-shadow: 3px 3px 0 rgba(255, 210, 229, 0.85);
-    line-height: 1.5;
-    word-break: keep-all;
-    transition: all 0.1s;
-}
+    .answer-btn {
+        background-color: #f5efff;
+        color: #3f3642;
+        border: 2px solid var(--border-color);
+        padding: 14px 12px;
+        font-size: 14px;
+        font-weight: normal;
+        cursor: pointer;
+        width: 100%;
+        margin-bottom: 10px;
+        border-radius: 12px;
+        box-shadow: 3px 3px 0 rgba(255, 210, 229, 0.85);
+        line-height: 1.5;
+        word-break: keep-all;
+        transition: all 0.1s;
+    }
 
     .answer-btn:active {
         transform: translate(2px, 2px);
@@ -168,7 +187,7 @@
     }
 
     .action-btn {
-        background-color: #8f8f8f;
+        background-color: #d6d6d6;
         color: #000000;
         border: 2px solid var(--border-color);
         padding: 16px 20px;
@@ -178,21 +197,13 @@
         width: 100%;
         max-width: 400px;
         border-radius: 10px;
-        box-shadow: 3px 3px 0 #c2b0ff;
-    }
-
-    .main-image {
-        width: 100%;
-        max-width: 500px;
-        display: block;
-        margin: 0 auto;
-        border-radius: 12px;
+        box-shadow: 3px 3px 0 #b9a7ff;
     }
 
     #start-button-wrap {
         width: 100%;
         max-width: 650px;
-        margin-top: 15px;
+        margin-top: 6px;
         display: flex;
         justify-content: center;
     }
@@ -404,8 +415,8 @@
     }
 
     .btn-save {
-        background-color: #9f9f9f;
-        color: rgb(0, 0, 0);
+        background-color: #d6d6d6;
+        color: #000000;
         border: 2px solid #3f3642;
         padding: 16px;
         font-size: 18px;
@@ -413,7 +424,7 @@
         cursor: pointer;
         width: 100%;
         border-radius: 10px;
-        box-shadow: 3px 3px 0 #c2b0ff;
+        box-shadow: 3px 3px 0 #b9a7ff;
     }
 
     .btn-sub {
@@ -493,11 +504,11 @@
     </nav>
 </header>
 
-<div class="app-wrapper" id="capture-area">
-    <div id="screen-start" class="screen active">
-        <img src="img_main392임시.png" alt="테스트잇 플레이리스트 성격 테스트" class="main-image">
-    </div>
+<div class="main-start" id="main-start">
+    <img src="img_main392임시.png" alt="테스트잇 플레이리스트 성격 테스트" class="main-image">
+</div>
 
+<div class="app-wrapper" id="capture-area">
     <div id="screen-question" class="screen">
         <div class="progress-container">
             <div class="progress-text" id="progress-text">TRACK 01 / 12</div>
@@ -565,7 +576,18 @@
     <img id="saved-image" src="" alt="결과 이미지">
     <button class="close-modal-btn" onclick="closeModal()">닫기</button>
 </div>
-
+<div class="ad-box">
+  <script src="https://ads-partners.coupang.com/g.js"></script>
+  <script>
+    new PartnersCoupang.G({
+      id:798186,
+      template:"carousel",
+      trackingCode:"AF4391881",
+      width:"350",
+      height:"140"
+    });
+  </script>
+</div>
 <script>
     const questions = [
         { q: "처음 보는 사람들이 많은 자리에 갔다<br>나는 보통?", a1: "익숙해질 때까지 조용히 상황을 살핀다", t1: "I", a2: "분위기를 보다가 먼저 말을 걸어본다", t2: "E" },
@@ -613,8 +635,10 @@
     function startTest() {
         currentQ = 0;
         scores = { E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0 };
+        document.getElementById('main-start').style.display = 'none';
         document.getElementById('start-button-wrap').style.display = 'none';
-        nextScreen('screen-start', 'screen-question');
+        document.getElementById('capture-area').classList.add('active');
+        document.getElementById('screen-question').classList.add('active');
         showQuestion();
     }
 

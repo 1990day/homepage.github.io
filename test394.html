@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5522499110435321" crossorigin="anonymous"></script>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>테스트잇 여름 아이템 성격 테스트</title>
+  <meta name="description" content="테스트잇 여름 아이템 성격 테스트" />
+  <meta name="keywords" content="테스트잇,성격테스트,여름아이템성격테스트,여름아이템테스트,테스트잇여름아이템성격테스트,테스트잇사주,테스트잇여름아이템,테스트잇연애,연애테스트,연애mbti,연애성격테스트, 심리테스트, mbti테스트">
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="테스트잇 여름 아이템 성격 테스트" />
+  <meta property="og:description" content="테스트잇 여름 아이템 성격 테스트" />
+  <meta property="og:url" content="https://test-it.co.kr/test394" />
+  <link rel="icon" type="image/png" href="favicon.png">
+<link href="https://cdn.jsdelivr.net/gh/neodgm/neodgm-webfont@latest/neodgm/style.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<style>
+    :root {
+        --bg-sky: #dff8ff;
+        --bg-sand: #fff2bf;
+        --white: #ffffff;
+        --text: #000000;
+        --blue: #1b8fbd;
+        --deep-blue: #12637f;
+        --sky: #8be4ff;
+        --light-sky: #bdefff;
+        --yellow: #fff27a;
+        --coral: #ff8f87;
+        --mint: #bdf7dd;
+        --shadow: rgba(18, 99, 127, 0.38);
+    }
+
+    * {
+        box-sizing: border-box;
+        font-family: 'NeoDunggeunmo', sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        min-height: 100vh;
+        padding: 10px;
+        color: var(--text);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background:
+            radial-gradient(circle at 14% 12%, rgba(255, 242, 122, 0.95) 0 55px, transparent 56px),
+            radial-gradient(circle at 84% 16%, rgba(255,255,255,0.8) 0 34px, transparent 35px),
+            linear-gradient(180deg, #c9f5ff 0%, #eaffff 48%, #fff1bd 100%);
+        overflow-x: hidden;
+    }
+
+    body::before {
+        content: "";
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 120px;
+        background:
+            repeating-linear-gradient(
+                -45deg,
+                rgba(255,255,255,0.45) 0 12px,
+                rgba(255,255,255,0.12) 12px 24px
+            ),
+            linear-gradient(180deg, rgba(139,228,255,0.45), rgba(255,242,122,0.45));
+        z-index: -1;
+        pointer-events: none;
+    }
+
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    .page-header {
+        width: min(650px, calc(100% - 2px));
+        height: 56px;
+        margin: 0 auto 14px;
+        padding: 0 14px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border: 2px solid var(--deep-blue);
+        background: var(--white);
+        box-shadow: 4px 4px 0 var(--sky);
+    }
+
+    .logo-text {
+        font-size: 20px;
+        font-weight: 900;
+        color: #000000;
+        white-space: nowrap;
+    }
+
+    .main-nav {
+        display: flex;
+        gap: 5px;
+        flex-shrink: 0;
+    }
+
+    .main-nav a {
+        padding: 6px 8px;
+        border: 2px solid var(--deep-blue);
+        background: #fff8d9;
+        color: #000000;
+        font-size: 14px;
+        white-space: nowrap;
+        box-shadow: 2px 2px 0 rgba(255, 143, 135, 0.55);
+    }
+
+    .app-wrapper {
+        width: 100%;
+        max-width: 650px;
+        background: var(--white);
+        border: 2px solid var(--deep-blue);
+        box-shadow: 6px 6px 0 var(--shadow);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+    }
+
+    .screen {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .screen.active {
+        display: flex;
+    }
+
+    #screen-start {
+        padding: 0;
+        background: transparent;
+    }
+
+    .main-image {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    #start-button-wrap {
+        width: 100%;
+        max-width: 650px;
+        margin-top: 14px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #screen-quiz {
+        padding: 24px 12px 28px;
+        background:
+            radial-gradient(circle at 12% 12%, rgba(255, 242, 122, 0.55) 0 28px, transparent 29px),
+            radial-gradient(circle at 88% 10%, rgba(189, 247, 221, 0.75) 0 34px, transparent 35px),
+            linear-gradient(180deg, #ffffff 0%, #e9fbff 48%, #fff8d9 100%);
+    }
+
+    .quiz-title {
+        width: 100%;
+        max-width: 420px;
+        margin-bottom: 18px;
+        padding: 10px 8px;
+        border: 2px solid var(--deep-blue);
+        background: var(--yellow);
+        color: #000000;
+        text-align: center;
+        font-size: 17px;
+        line-height: 1.35;
+        box-shadow: 3px 3px 0 var(--sky);
+    }
+
+    .progress-container {
+        width: 100%;
+        max-width: 420px;
+        height: 22px;
+        margin-bottom: 28px;
+        background: var(--white);
+        border: 2px solid var(--deep-blue);
+        overflow: hidden;
+        box-shadow: 3px 3px 0 rgba(255, 242, 122, 0.9);
+    }
+
+    .progress-bar {
+        width: 0%;
+        height: 100%;
+        background:
+            repeating-linear-gradient(
+                45deg,
+                #1b8fbd 0 10px,
+                #8be4ff 10px 20px
+            );
+        transition: width 0.2s ease;
+    }
+
+    .question-box {
+        width: 100%;
+        max-width: 420px;
+        min-height: 96px;
+        margin-bottom: 26px;
+        padding: 18px 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid var(--deep-blue);
+        background: #fffef5;
+        color: var(--text);
+        text-align: center;
+        font-size: 18px;
+        line-height: 1.55;
+        word-break: keep-all;
+        box-shadow: 4px 4px 0 rgba(255, 143, 135, 0.5);
+    }
+
+    .action-btn {
+        width: 100%;
+        max-width: 420px;
+        padding: 16px 18px;
+        border: 2px solid var(--deep-blue);
+        background: var(--coral);
+        color: #000000;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+        box-shadow: 4px 4px 0 var(--yellow);
+    }
+
+    .start-btn {
+        background: var(--light-sky);
+        color: #000000;
+        box-shadow: 4px 4px 0 var(--yellow);
+    }
+
+    .action-btn:active,
+    .btn-save:active,
+    .btn-sub:active {
+        transform: translate(2px, 2px);
+        box-shadow: 2px 2px 0 var(--yellow);
+    }
+
+    .choice-btn {
+        margin-bottom: 12px;
+        background: var(--white);
+        color: var(--text);
+        font-size: 15px;
+        font-weight: normal;
+        line-height: 1.45;
+        text-align: center;
+        box-shadow: 4px 4px 0 rgba(139, 228, 255, 0.75);
+        word-break: keep-all;
+    }
+
+    .choice-btn:hover {
+        background: #e9fbff;
+    }
+
+    #screen-result {
+        padding: 10px;
+        background:
+            linear-gradient(180deg, rgba(139, 228, 255, 0.55), rgba(255, 242, 122, 0.45)),
+            var(--white);
+    }
+
+    .result-image-frame {
+        width: 100%;
+        padding: 0;
+        background: var(--white);
+    }
+
+    .result-image {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    #out-of-frame-buttons {
+        display: none;
+        width: 100%;
+        max-width: 650px;
+        margin-top: 14px;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .btn-save,
+    .btn-sub {
+        width: 100%;
+        border: 2px solid var(--deep-blue);
+        cursor: pointer;
+        font-weight: bold;
+        color: var(--text);
+    }
+
+    .btn-save {
+        padding: 16px;
+        background: var(--yellow);
+        font-size: 18px;
+        box-shadow: 4px 4px 0 var(--sky);
+    }
+
+    .btn-sub {
+        padding: 14px;
+        background: var(--white);
+        font-size: 16px;
+        box-shadow: 4px 4px 0 rgba(139, 228, 255, 0.75);
+    }
+
+    #save-modal {
+        display: none;
+        position: fixed;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        padding: 18px;
+        background-color: rgba(0, 0, 0, 0.82);
+        z-index: 999;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    #save-modal.active {
+        display: flex;
+    }
+
+    #saved-image {
+        max-width: 95%;
+        max-height: 78vh;
+        border: 2px solid #ffffff;
+        background: #ffffff;
+    }
+
+    .modal-text {
+        color: #000000;
+        font-size: 18px;
+        margin-bottom: 15px;
+        text-align: center;
+        font-weight: bold;
+        line-height: 1.45;
+        background: #ffffff;
+        border: 2px solid #000000;
+        padding: 10px 14px;
+    }
+
+    .close-modal-btn {
+        margin-top: 15px;
+        background: var(--light-sky);
+        color: #000000;
+        border: 2px solid #000000;
+        padding: 11px 26px;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 15px;
+    }
+
+    @media screen and (max-width: 600px) {
+        body {
+            padding: 8px;
+        }
+
+        .page-header {
+            height: 52px;
+            padding: 0 9px;
+        }
+
+        .logo-text {
+            font-size: 18px;
+        }
+
+        .main-nav {
+            gap: 3px;
+        }
+
+        .main-nav a {
+            padding: 5px 5px;
+            font-size: 13px;
+        }
+
+        #screen-quiz {
+            padding: 20px 9px 24px;
+        }
+
+        .quiz-title {
+            font-size: 15px;
+            margin-bottom: 16px;
+        }
+
+        .question-box {
+            min-height: 90px;
+            padding: 15px 11px;
+            font-size: 16px;
+            margin-bottom: 24px;
+        }
+
+        .action-btn {
+            font-size: 16px;
+            padding: 15px 14px;
+        }
+
+        .choice-btn {
+            font-size: 14px;
+        }
+
+        #screen-result {
+            padding: 8px;
+        }
+    }
+</style>
+</head>
+<body>
+
+<header class="page-header">
+    <a class="logo-text" href="https://test-it.co.kr/">테스트잇</a>
+    <nav class="main-nav">
+        <a href="https://test-it.co.kr/test.html">성격</a>
+        <a href="https://test-it.co.kr/face.html">얼굴</a>
+        <a href="https://test-it.co.kr/etc.html">그외</a>
+        <a href="https://test-it.co.kr/saju.html">사주</a>
+    </nav>
+</header>
+
+<div class="app-wrapper" id="capture-area">
+    <!-- 시작 화면 -->
+    <div id="screen-start" class="screen active">
+        <img class="main-image" src="img_main394.png" alt="테스트잇 여름 아이템 성격 테스트 메인 이미지">
+    </div>
+
+    <!-- 퀴즈 화면 -->
+    <div id="screen-quiz" class="screen">
+        <div class="quiz-title">테스트잇 여름 아이템 성격 테스트</div>
+        <div class="progress-container">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
+        <div class="question-box" id="question-text">질문 내용이 들어갑니다.</div>
+        <button class="action-btn choice-btn" id="btn-a" onclick="submitAnswer('A')">선택지 A</button>
+        <button class="action-btn choice-btn" id="btn-b" onclick="submitAnswer('B')">선택지 B</button>
+    </div>
+
+    <!-- 결과 화면 -->
+    <div id="screen-result" class="screen">
+        <div class="result-image-frame">
+            <img class="result-image" id="result-image" src="" alt="테스트잇 여름 아이템 성격 테스트 결과 이미지">
+        </div>
+    </div>
+</div>
+
+<div id="start-button-wrap">
+    <button class="action-btn start-btn" onclick="startTest()">테스트 시작하기</button>
+</div>
+
+<div id="out-of-frame-buttons">
+    <button class="btn-save" onclick="saveResultImage()">결과 이미지 저장하기</button>
+    <button class="btn-sub" onclick="location.reload()">다시 해보기</button>
+    <button class="btn-sub" onclick="location.href='https://test-it.co.kr/'">다른 테스트 해보기</button>
+    <button class="btn-sub" onclick="shareTest()">테스트 공유하기</button>
+</div>
+
+<div id="save-modal">
+    <div class="modal-text">아래 이미지를 꾹 눌러서<br>내 폰에 저장해 보세요!</div>
+    <img id="saved-image" src="" alt="결과 이미지">
+    <button class="close-modal-btn" onclick="closeModal()">닫기</button>
+</div>
+<div class="ad-box">
+  <script src="https://ads-partners.coupang.com/g.js"></script>
+  <script>
+    new PartnersCoupang.G({
+      id:798186,
+      template:"carousel",
+      trackingCode:"AF4391881",
+      width:"350",
+      height:"140"
+    });
+  </script>
+</div>
+
+<script>
+    const TEST_TITLE = '테스트잇 여름 아이템 성격 테스트';
+    const SHARE_URL = 'https://test-it.co.kr/test394';
+
+    const questions = [
+        {
+            type: "EI",
+            q: "드디어 기다리던 여름휴가!<br>내가 가장 먼저 하는 생각은?",
+            a: "친구들이랑 어디로 놀러 갈까?<br>끝내주게 놀고싶어!",
+            b: "집에서 에어컨 빵빵하게 틀고<br>밀린 드라마나 보고싶다"
+        },
+        {
+            type: "SN",
+            q: "여름 옷을 고를 때<br>가장 중요하게 생각하는 건?",
+            a: "시원한 소재인지, 편한지<br>자주 입을 수 있는지",
+            b: "이 옷을 입었을 때<br>내가 추구한 느낌이 날 지"
+        },
+        {
+            type: "TF",
+            q: "여름 축제에서<br>친구가 꼭 먹고 싶다던 간식 줄이 엄청 길다",
+            a: "기다릴 가치가 있는지 보고<br>다른 걸 하자고 한다",
+            b: "같이 기다리는 시간도<br>추억이라고 생각한다"
+        },
+        {
+            type: "JP",
+            q: "워터파크에 가는 날 나는?",
+            a: "입장 시간, 준비물,<br>놀이기구 순서를 생각해둔다",
+            b: "들어가서 사람 적은 곳부터<br>가면 된다고 생각한다"
+        },
+        {
+            type: "EI",
+            q: "이번 여름휴가는 호캉스다!<br>호텔에서 내가 가장 놀고 싶은 곳은?",
+            a: "사람들과 어울려 놀 수 있는<br>수영장이나 라운지 바",
+            b: "푹신한 침대가 있는<br>나만의 쾌적한 객실"
+        },
+        {
+            type: "SN",
+            q: "워터파크에서 무서운 슬라이드를 타기 위해<br>줄 서 있을 때 내 머릿속은?",
+            a: "줄 진짜 길다.. 언제 줄어들지?<br>재밌겠다 또는 무섭겠다",
+            b: "타다가 중간에 멈추면 어떡하지?<br>튜브가 뒤집어지는 건 아니겠지?"
+        },
+        {
+            type: "TF",
+            q: "바닷가에서 놀다가<br>실수로 선글라스를 바다에 빠뜨렸다",
+            a: "아깝지만 어쩔 수 없지<br>새로 하나 사야겠다",
+            b: "아 좀 조심할걸...<br>속상한 기분이 오래간다"
+        },
+        {
+            type: "JP",
+            q: "여름 세일 기간에 쇼핑할 때 나는?",
+            a: "필요한 품목을 정해두고<br>할인율을 비교해서 산다",
+            b: "마음에 드는 게 보이면<br>바로 사는 편이다"
+        },
+        {
+            type: "EI",
+            q: "폭염주의보가 뜬 주말<br>더 끌리는 건?",
+            a: "친구랑 시원한 카페나<br>실내 쇼핑몰로 놀러가기",
+            b: "집에서 에어컨 틀고<br>혼자 아무것도 안 하기"
+        },
+        {
+            type: "SN",
+            q: "휴가지 소품샵에서<br>귀여운 여름 아이템을 발견했다!",
+            a: "예뻐도 쓸모없어 보이면 사지 않는다",
+            b: "볼 때마다 오늘이 떠오를 것 같으면 산다"
+        },
+        {
+            type: "TF",
+            q: "여름 여행 중 돈을 예상보다 많이 썼다",
+            a: "남은 예산을 다시 계산해서 조절한다",
+            b: "그래도 즐거웠으면 괜찮다고 생각한다"
+        },
+        {
+            type: "JP",
+            q: "여름휴가를 갈 때<br>내가 더 선호하는 쪽은?",
+            a: "큰 흐름이 정해져 있어서<br>헤매지 않는 여행",
+            b: "계획 없이 움직이다가<br>예상 밖의 재미를 만나는 여행"
+        }
+    ];
+
+    let currentIdx = 0;
+    let scores = {
+        E: 0, I: 0,
+        S: 0, N: 0,
+        T: 0, F: 0,
+        J: 0, P: 0
+    };
+
+    function startTest() {
+        document.getElementById('start-button-wrap').style.display = 'none';
+        nextScreen('screen-start', 'screen-quiz');
+    }
+
+    function nextScreen(hideId, showId) {
+        document.getElementById(hideId).classList.remove('active');
+        document.getElementById(showId).classList.add('active');
+        window.scrollTo(0, 0);
+
+        if (showId === 'screen-quiz') {
+            showQuestion();
+        }
+    }
+
+    function showQuestion() {
+        if (currentIdx >= questions.length) {
+            calculateResult();
+            return;
+        }
+
+        const percent = (currentIdx / questions.length) * 100;
+        document.getElementById('progress-bar').style.width = percent + '%';
+
+        const qData = questions[currentIdx];
+        document.getElementById('question-text').innerHTML = qData.q;
+        document.getElementById('btn-a').innerHTML = qData.a;
+        document.getElementById('btn-b').innerHTML = qData.b;
+    }
+
+    function submitAnswer(choice) {
+        const qData = questions[currentIdx];
+        const dim = qData.type;
+
+        if (choice === 'A') {
+            scores[dim[0]]++;
+        } else {
+            scores[dim[1]]++;
+        }
+
+        currentIdx++;
+        showQuestion();
+    }
+
+    function calculateResult() {
+        document.getElementById('progress-bar').style.width = '100%';
+
+        let mbti = "";
+        mbti += (scores.E >= scores.I) ? "E" : "I";
+        mbti += (scores.S >= scores.N) ? "S" : "N";
+        mbti += (scores.T >= scores.F) ? "T" : "F";
+        mbti += (scores.J >= scores.P) ? "J" : "P";
+
+        displayResult(mbti);
+    }
+
+    function displayResult(mbti) {
+        const resultImage = document.getElementById('result-image');
+
+        resultImage.src = 'img_' + mbti.toLowerCase() + '394.png';
+        resultImage.alt = TEST_TITLE + ' ' + mbti + ' 결과 이미지';
+
+        document.getElementById('screen-quiz').classList.remove('active');
+        document.getElementById('screen-result').classList.add('active');
+        document.getElementById('out-of-frame-buttons').style.display = 'flex';
+
+        window.scrollTo(0, 0);
+    }
+
+    function saveResultImage() {
+        const captureArea = document.getElementById('capture-area');
+        const resultImage = document.getElementById('result-image');
+
+        const capture = () => {
+            html2canvas(captureArea, {
+                useCORS: true,
+                allowTaint: true,
+                scale: 2,
+                backgroundColor: '#dff8ff'
+            }).then(canvas => {
+                document.getElementById('saved-image').src = canvas.toDataURL('image/png');
+                document.getElementById('save-modal').classList.add('active');
+            });
+        };
+
+        if (resultImage && resultImage.src && !resultImage.complete) {
+            resultImage.onload = capture;
+            resultImage.onerror = capture;
+        } else {
+            capture();
+        }
+    }
+
+    function closeModal() {
+        document.getElementById('save-modal').classList.remove('active');
+    }
+
+    function shareTest() {
+        if (navigator.share) {
+            navigator.share({
+                title: TEST_TITLE,
+                url: SHARE_URL
+            }).catch(() => {});
+        } else if (navigator.clipboard) {
+            navigator.clipboard.writeText(SHARE_URL).then(() => {
+                alert('테스트 링크 주소가 복사되었습니다.');
+            }).catch(() => {
+                copyShareUrlFallback();
+            });
+        } else {
+            copyShareUrlFallback();
+        }
+    }
+
+    function copyShareUrlFallback() {
+        const textarea = document.createElement('textarea');
+        textarea.value = SHARE_URL;
+        textarea.setAttribute('readonly', '');
+        textarea.style.position = 'fixed';
+        textarea.style.top = '-9999px';
+        document.body.appendChild(textarea);
+        textarea.select();
+
+        try {
+            document.execCommand('copy');
+            alert('테스트 링크 주소가 복사되었습니다.');
+        } catch (e) {
+            alert(SHARE_URL);
+        }
+
+        document.body.removeChild(textarea);
+    }
+</script>
+</body>
+</html>

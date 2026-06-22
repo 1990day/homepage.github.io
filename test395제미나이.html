@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <title>테스트잇 숨은 성격 찾기 테스트</title>
+  <meta name="description" content="착한 척, 쿨한 척 뒤에 숨은 내 진짜 본성을 찾아보자">
+  <meta property="og:title" content="테스트잇 숨은 성격 찾기 테스트">
+  <meta property="og:description" content="나도 몰랐던 내 안의 진짜 흑막 성격은?">
+  <meta property="og:url" content="https://test-it.co.kr/test395">
+  <meta property="og:type" content="website">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html-to-image/1.11.11/html-to-image.min.js"></script>
+
+  <style>
+    /* 픽셀 폰트 적용 */
+    @font-face {
+      font-family: 'NeoDunggeunmo';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.3/NeoDunggeunmo.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0; padding: 0;
+      background: #ffffff; /* 순백색 바탕 */
+      color: #111111;
+      /* 전체 기본 폰트는 가독성 좋은 고딕 계열 사용 */
+      font-family: "Malgun Gothic", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    button {
+      border-radius: 0; cursor: pointer;
+      appearance: none; -webkit-appearance: none;
+      transition: background-color 0.15s ease;
+    }
+
+    /* 픽셀 폰트가 필요한 곳에만 적용하는 클래스 */
+    .pixel-text {
+      font-family: 'NeoDunggeunmo', sans-serif;
+      font-weight: normal;
+      letter-spacing: 0.5px;
+    }
+
+    .wrap {
+      width: 100%; min-height: 100vh;
+      display: flex; flex-direction: column;
+    }
+
+    /* 헤더 */
+    header {
+      width: 100%; height: 52px;
+      border-bottom: 1px solid #111111;
+      background: #ffffff;
+      display: flex; justify-content: center; align-items: center;
+      position: sticky; top: 0; z-index: 30;
+    }
+    .header-inner {
+      width: 100%; max-width: 520px; padding: 0 14px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .logo { font-size: 18px; font-family: 'NeoDunggeunmo', sans-serif; letter-spacing: -0.5px; color: #111; }
+    .nav { display: flex; gap: 12px; font-size: 14px; font-family: 'NeoDunggeunmo', sans-serif; white-space: nowrap; }
+
+    main {
+      width: 100%; max-width: 520px;
+      margin: 0 auto; padding: 24px 14px 40px;
+      flex: 1;
+    }
+
+    .screen { display: none; }
+    .screen.active { display: block; animation: fadeIn 0.2s ease-out; }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    /* 얇은 선 메인 프레임 */
+    .frame {
+      width: 100%; border: 1px solid #111111;
+      background: #ffffff; padding: 14px;
+    }
+
+    /* 메인 화면 */
+    .hero-box {
+      border: 1px solid #111111; background: #ffffff;
+      padding: 16px; display: flex; flex-direction: column; gap: 16px;
+    }
+    .hero-top {
+      border: 1px solid #111111; padding: 20px 10px; text-align: center;
+      background: #ffffff;
+    }
+    .hero-top .mini-label {
+      display: inline-block; padding: 4px 10px;
+      border: 1px solid #111111; background: #ffffff; color: #111111;
+      font-size: 13px; margin-bottom: 14px;
+    }
+    .hero-title { 
+      margin: 0 0 10px 0; font-size: 32px; line-height: 1.3; word-break: keep-all; 
+      color: #111111;
+    }
+    .hero-sub { 
+      margin: 15px 0 0; font-size: 14px; line-height: 1.6; word-break: keep-all; font-weight: bold;
+      background: #ffffff; border-top: 1px dashed #111111; padding-top: 15px;
+    }
+
+    .hero-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .hero-card {
+      aspect-ratio: 1 / 1.18; border: 1px solid #111111;
+      padding: 8px 6px; display: flex; flex-direction: column; justify-content: space-between; background: #ffffff;
+    }
+    .hero-card-top { font-size: 13px; line-height: 1; text-align: center; }
+    .hero-card-icon { flex: 1; display: flex; justify-content: center; align-items: center; padding: 6px 0; }
+    /* 아이콘 두께 얇게 1.5로 통일 */
+    .hero-card-icon svg { width: 40px; height: 40px; stroke: #111111; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+    .hero-card-bottom {
+      text-align: center; font-size: 12px; line-height: 1.2; word-break: keep-all; font-weight: bold;
+      min-height: 28px; display: flex; align-items: center; justify-content: center;
+    }
+
+    /* 메인화면 가운데 카드 (하얀색 복구) */
+    .hero-card.center { background: #ffffff; color: #111111; }
+    .hero-card.center .hero-card-icon svg { stroke: #111111; }
+
+    .start-btn {
+      width: 100%; min-height: 54px; border: 1px solid #111111;
+      background: #ffffff; color: #111111; font-size: 16px;
+    }
+    .start-btn:hover { background: #f4f4f4; } 
+
+    /* 질문 화면 */
+    .question-card {
+      border: 1px solid #111111; background: #ffffff;
+      padding: 14px; display: flex; flex-direction: column;
+    }
+    .question-head {
+      border: 1px solid #111111; padding: 10px 10px 12px; margin-bottom: 14px;
+      background: #ffffff; color: #111111;
+    }
+    .question-head-top {
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 15px; margin-bottom: 10px;
+    }
+    .progress-cells { display: grid; grid-template-columns: repeat(12, 1fr); gap: 4px; }
+    .progress-cell { height: 14px; border: 1px solid #111111; background: #ffffff; }
+    .progress-cell.done { background: #111111; }
+
+    .q-mark {
+      width: fit-content; margin: 0 auto 12px; padding: 6px 14px;
+      border: 1px solid #111111; background: #ffffff; color: #111111; font-size: 15px;
+    }
+
+    .question-text {
+      margin: 0 0 16px; min-height: 100px;
+      border: 1px solid #111111; padding: 18px 12px;
+      font-size: 20px; line-height: 1.4; text-align: center;
+      display: flex; justify-content: center; align-items: center;
+      letter-spacing: -0.5px; word-break: keep-all; font-weight: bold;
+    }
+
+    .answers {
+      display: flex; flex-direction: column; gap: 10px; margin-top: auto; 
+    }
+
+    .answer-btn {
+      width: 100%; min-height: 70px; border: 1px solid #111111;
+      background: #ffffff; color: #111111; padding: 12px;
+      font-size: 15px; line-height: 1.35; font-family: "Malgun Gothic", sans-serif;
+      text-align: center; word-break: keep-all; font-weight: bold;
+    }
+    .answer-btn:hover { background: #f4f4f4; }
+
+    /* 결과 화면 */
+    .capture-card {
+      width: 100%; max-width: 420px; margin: 0 auto;
+      border: 1px solid #111111; background: #ffffff; padding: 14px;
+    }
+
+    .capture-top-title {
+      border: 1px solid #111111; background: #ffffff; color: #111111; 
+      padding: 6px 8px; text-align: center; font-size: 13px; margin-bottom: 12px;
+    }
+
+    .result-main {
+      border: 1px solid #111111; padding: 24px 10px; text-align: center; margin-bottom: 12px;
+      background: #ffffff;
+    }
+
+    .result-type { display: none; }
+
+    .result-title {
+      margin: 0; font-size: 26px; line-height: 1.3;
+      letter-spacing: -1px; word-break: keep-all;
+      color: #111111; background: #ffffff; display: inline-block; padding: 0 10px;
+    }
+
+    .result-sub {
+      margin: 14px 0 0; font-size: 14px; line-height: 1.45; word-break: keep-all; font-weight: bold;
+      background: #ffffff; border-top: 1px dashed #111111; padding-top: 15px; display: block;
+    }
+
+    .two-line {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px;
+    }
+
+    .small-box {
+      border: 1px solid #111111; background: #ffffff; padding: 12px 8px;
+      text-align: center; min-height: 86px; display: flex; flex-direction: column; justify-content: center;
+    }
+
+    .small-box b {
+      display: inline-block; font-size: 13px; margin: 0 auto 8px;
+      padding: 3px 8px; border: 1px solid #111111; background: #ffffff; color: #111111;
+    }
+    
+    /* 겉과 속 텍스트 (가독성 좋은 고딕 폰트) */
+    .small-box span {
+      font-size: 13px; line-height: 1.35; word-break: keep-all; font-weight: bold;
+    }
+
+    .card-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
+    }
+
+    .result-mini-card {
+      min-height: 130px; border: 1px solid #111111; padding: 8px;
+      background: #ffffff; display: flex; flex-direction: column;
+    }
+
+    /* 결과화면 가운데 핵심 카드 (하얀색 복구) */
+    .result-mini-card.center {
+      background: #ffffff; color: #111111; 
+    }
+    .result-mini-card.center .mini-icon svg { stroke: #111111; }
+
+    .mini-top {
+      font-size: 12px; line-height: 1; text-align: center;
+      min-height: 16px; display: flex; align-items: center; justify-content: center;
+    }
+
+    .mini-icon {
+      flex: 1; display: flex; align-items: center; justify-content: center; padding: 8px 0;
+    }
+    .mini-icon svg {
+      width: 40px; height: 40px; stroke: currentColor; fill: none;
+      stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round;
+    }
+
+    /* 하단 9개 카드 텍스트 (가독성 좋은 고딕 폰트) */
+    .mini-text {
+      min-height: 38px; display: flex; align-items: center; justify-content: center;
+      text-align: center; font-size: 12px; line-height: 1.3; word-break: keep-all; font-weight: bold;
+    }
+
+    /* 맨 아래 참고 문구 (가독성 좋은 고딕 폰트) */
+    .bottom-note {
+      margin-top: 10px; border: 1px solid #111111; padding: 14px 10px;
+      text-align: center; font-size: 13px; line-height: 1.45; word-break: keep-all; font-weight: bold;
+      background: #ffffff;
+    }
+
+    .button-area {
+      width: 100%; max-width: 420px; margin: 14px auto 0;
+      display: flex; flex-direction: column; gap: 8px;
+    }
+
+    .result-btn {
+      width: 100%; min-height: 52px; border: 1px solid #111111;
+      background: #ffffff; color: #111111; font-size: 15px;
+    }
+    .result-btn:hover { background: #f4f4f4; }
+    
+    .save-modal {
+      position: fixed; inset: 0; background: rgba(0, 0, 0, 0.85);
+      display: none; justify-content: center; align-items: center; z-index: 100; padding: 18px;
+    }
+    .save-modal.active { display: flex; }
+    .save-box {
+      width: 100%; max-width: 330px; border: 1px solid #111111; background: #ffffff;
+      padding: 20px; text-align: center;
+    }
+    .save-box h3 { margin: 0 0 10px; font-size: 20px; line-height: 1.3; }
+    .save-box p { margin: 0 0 18px; font-size: 14px; line-height: 1.45; word-break: keep-all; }
+    .save-preview { display: block; width: 100%; max-width: 230px; margin: 0 auto 18px; border: 1px solid #111111; background: #ffffff; }
+    .close-btn { width: 100%; height: 48px; border: 1px solid #111111; background: #ffffff; color: #111111; font-size: 15px; }
+    .close-btn:hover { background: #f4f4f4; }
+
+    @media (max-width: 420px) {
+      main { padding: 16px 10px 34px; }
+      .header-inner { padding: 0 10px; }
+      .hero-box { padding: 12px; }
+      .hero-title { font-size: 28px; }
+      .question-text { min-height: 90px; font-size: 18px; }
+      .answer-btn { font-size: 14px; min-height: 64px; }
+      .result-title { font-size: 24px; }
+      .result-mini-card { min-height: 120px; }
+      .mini-text { font-size: 11px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <div class="header-inner">
+        <a href="https://test-it.co.kr/" class="logo">테스트잇</a>
+        <nav class="nav">
+          <a href="https://test-it.co.kr/">성격</a>
+          <a href="https://test-it.co.kr/">얼굴</a>
+          <a href="https://test-it.co.kr/">그외</a>
+          <a href="https://test-it.co.kr/">사주</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="screen active" id="mainScreen">
+        <div class="frame">
+          <div class="hero-box">
+            <div class="hero-top">
+              <div class="mini-label pixel-text">HIDDEN PERSONALITY</div>
+              <h1 class="hero-title pixel-text">숨은 성격<br>찾기 테스트</h1>
+              <p class="hero-sub">
+                착한 척, 쿨한 척은 이제 그만!<br>
+                내 안에 조용히 숨겨져 있던<br>
+                진짜 본성을 카드로 스캔해보자
+              </p>
+            </div>
+
+            <div class="hero-grid" id="heroGrid"></div>
+
+            <button type="button" class="start-btn pixel-text" onclick="startTest()">테스트 시작하기</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen" id="questionScreen">
+        <div class="question-card">
+          <div class="question-head">
+            <div class="question-head-top">
+              <span class="pixel-text">QUESTION</span>
+              <span class="pixel-text" id="countText">1 / 12</span>
+            </div>
+            <div class="progress-cells" id="progressCells"></div>
+          </div>
+
+          <div class="q-mark pixel-text" id="qNum">Q1</div>
+          <p class="question-text" id="questionText"></p>
+
+          <div class="answers" id="answerArea"></div>
+        </div>
+      </section>
+
+      <section class="screen" id="resultScreen">
+        <div class="result-wrap">
+          <div class="capture-card" id="captureArea">
+            <div class="capture-top-title pixel-text">테스트잇 숨은 성격 찾기 테스트</div>
+
+            <div class="result-main">
+              <div class="result-type" id="resultType"></div>
+              <h2 class="result-title pixel-text" id="resultTitle"></h2>
+              <p class="result-sub" id="resultSub"></p>
+            </div>
+
+            <div class="two-line">
+              <div class="small-box">
+                <b class="pixel-text">겉으로는</b>
+                <span id="lookText"></span>
+              </div>
+              <div class="small-box">
+                <b class="pixel-text">속으로는</b>
+                <span id="hiddenText"></span>
+              </div>
+            </div>
+
+            <div class="card-grid" id="resultGrid"></div>
+
+            <div class="bottom-note" id="bottomNote"></div>
+          </div>
+
+          <div class="button-area">
+            <button type="button" class="result-btn pixel-text" onclick="saveResultImage()">결과 이미지 저장하기</button>
+            <button type="button" class="result-btn pixel-text" onclick="restartTest()">다시 해보기</button>
+            <button type="button" class="result-btn pixel-text" onclick="location.href='https://test-it.co.kr/'">다른 테스트 해보기</button>
+            <button type="button" class="result-btn pixel-text" onclick="shareTest()">테스트 공유하기</button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="save-modal" id="saveModal">
+    <div class="save-box">
+      <h3 class="pixel-text">이미지가 만들어졌어요</h3>
+      <p>아래 결과 이미지를 꾹 눌러<br>이미지 저장을 눌러주세요.</p>
+      <img class="save-preview" id="savePreview" alt="결과 이미지">
+      <button type="button" class="close-btn pixel-text" onclick="closeSaveModal()">닫기</button>
+    </div>
+  </div>
+
+  <script>
+    const testUrl = "https://test-it.co.kr/test395";
+
+    const questions = [
+      {
+        q: "친한 친구가 자기 지인들을 데려와서 같이 놀자고 한다.<br>나의 진짜 속마음은?",
+        a: [
+          { text: "오 새로운 사람들! 텐션 올려서 재밌게 놀아야지", type: "E" },
+          { text: "아... (기 빨린다) 조용히 웃으며 맞장구만 친다", type: "I" }
+        ]
+      },
+      {
+        q: "이번 주 내내 퇴근 후 약속이 꽉 차 있다.<br>달력을 본 나의 기분은?",
+        a: [
+          { text: "바쁘게 사는 나, 제법 멋져. 아드레날린 뿜뿜", type: "E" },
+          { text: "언제 쉬지...? 보기만 해도 벌써부터 피곤하다", type: "I" }
+        ]
+      },
+      {
+        q: "내가 더 선호하는 인간관계 대화 방식은?",
+        a: [
+          { text: "여럿이서 주제가 휙휙 바뀌며 티키타카 되는 단톡방", type: "E" },
+          { text: "마음 맞는 사람과 하나의 주제로 깊게 얘기하는 1:1 대화", type: "I" }
+        ]
+      },
+      {
+        q: "길을 걷다 독특하게 생긴 건물을 발견했다.<br>이때 내 머릿속에 드는 생각은?",
+        a: [
+          { text: "'저기 뭐 하는 곳이지? 카페인가?' 용도를 검색해 본다", type: "S" },
+          { text: "'저기 안엔 대체 어떤 비밀 공간이 있을까?' 상상해 본다", type: "N" }
+        ]
+      },
+      {
+        q: "친구가 '나 어제 꿈에서 좀비한테 쫓겼어!'라고 한다면?",
+        a: [
+          { text: "헐 그래서 어떻게 도망쳤어? 결국 잡혔어?", type: "S" },
+          { text: "대박 나도 예전에 비슷한 꿈 꿨는데!! (상상력 발동)", type: "N" }
+        ]
+      },
+      {
+        q: "집에서 간단하게 요리를 할 때 나의 태도는?",
+        a: [
+          { text: "'물 500ml, 3분 30초' 레시피의 정확한 계량이 필수다", type: "S" },
+          { text: "'대충 이 정도 넣으면 맛있겠지?' 나의 감을 100% 믿는다", type: "N" }
+        ]
+      },
+      {
+        q: "친구가 '나 요즘 너무 우울해서 파마했어'라고 한다면?",
+        a: [
+          { text: "무슨 색으로 했어? 너랑 잘 어울려? (사실 확인)", type: "T" },
+          { text: "왜 우울했어 ㅠㅠ 무슨 일 있었어? (감정 공감)", type: "F" }
+        ]
+      },
+      {
+        q: "둘 중 들었을 때 내가 더 깊게 상처받는 말은?",
+        a: [
+          { text: "넌 진짜 주변 생각 안 하고 이기적인 것 같아", type: "T" },
+          { text: "넌 진짜 융통성 없고 일 더럽게 못하는구나", type: "F" }
+        ]
+      },
+      {
+        q: "화가 잔뜩 난 친구가 억울한 일을 하소연할 때 나는?",
+        a: [
+          { text: "왜 그런 일이 일어났는지 인과관계를 객관적으로 파악한다", type: "T" },
+          { text: "누가 잘잘못을 떠나 일단 친구 편을 들며 같이 분노해 준다", type: "F" }
+        ]
+      },
+      {
+        q: "내일 아침 일찍 여행을 떠나야 한다.<br>나의 짐 싸기 스타일은?",
+        a: [
+          { text: "며칠 전부터 필요한 물품 리스트 적어서 캐리어 꽉 채워둠", type: "J" },
+          { text: "으악 내일 입을 옷만 대충 쑤셔 넣고 잠들기 바쁨", type: "P" }
+        ]
+      },
+      {
+        q: "주말에 친구들과 영화를 보러 가기로 했다.",
+        a: [
+          { text: "몇 시 영화, 무슨 밥, 어느 카페 갈지 미리 싹 정해둬야 맘이 편함", type: "J" },
+          { text: "일단 영화관 근처에서 만나서 그날 땡기는 거 먹기로 함", type: "P" }
+        ]
+      },
+      {
+        q: "핸드폰 배터리가 15% 남았다는 알림이 떴다.",
+        a: [
+          { text: "당장 충전기를 꽂거나 불안해서 보조배터리를 다급하게 찾는다", type: "J" },
+          { text: "아직 15%나 남았네? 핸드폰 꺼지기 직전에 여유롭게 꽂는다", type: "P" }
+        ]
+      }
+    ];
+
+    const results = {
+      ENFJ: {
+        title: "통제광 마에스트로",
+        sub: "다정함 뒤에 숨겨진 철저한 인간관계 생태계 지휘자",
+        outer: "모두를 품는 따뜻한 천사",
+        inner: "관계의 주도권은 내가 쥠",
+        happy: "내 사람들과의 완벽한 조화",
+        angry: "웃음기 싹 빼고 조목조목 따짐",
+        relation: "선 넘으면 가차없이 아웃",
+        solo: "지친 인간관계 셧다운 모드",
+        core: "다 계획이 있는 평화주의자",
+        sensitive: "무례함, 눈치 없는 행동",
+        strength: "사람을 내 편으로 만들기",
+        stress: "상황이 통제를 벗어날 때",
+        twist: "생각보다 엄청 차갑고 냉정함",
+        note: "겉으론 웃으며 다 맞춰주지만 속으론 모든 상황을 자신이 원하는 방향으로 조율하고 있습니다. 기준선을 넘으면 조용히, 하지만 확실하게 정리합니다."
+      },
+      ENFP: {
+        title: "스위치 꺼진 방관자",
+        sub: "텐션은 우주 돌파인데 혼자 있을 땐 한없이 허무해하는 소심파",
+        outer: "인간 비타민, 리액션 봇",
+        inner: "집 가면 스위치 끄고 방전",
+        happy: "내 드립에 다들 빵 터졌을 때",
+        angry: "갑자기 말수 줄고 영혼 없어짐",
+        relation: "깊은 속마음은 안 보여줌",
+        solo: "잡생각 폭주, 이유 없는 우울",
+        core: "상처 잘 받는 겉바속촉",
+        sensitive: "자유 억압, 지나친 간섭",
+        strength: "숨막히는 분위기 전환",
+        stress: "반복되고 지루한 일상",
+        twist: "의외의 철벽과 낯가림",
+        note: "사람들을 즐겁게 해주는 걸 좋아하지만 에너지가 바닥나면 누구보다 차가워집니다. 상처받기 싫어서 은근히 사람들과 거리를 두는 방어기제가 있습니다."
+      },
+      ENTJ: {
+        title: "허술한 정복자",
+        sub: "피도 눈물도 없는 폭군 같지만 내 사람의 칭찬엔 사족을 못 씀",
+        outer: "일벌레, 피도 눈물도 없음",
+        inner: "인정과 칭찬에 목마른 아이",
+        happy: "계획대로 완벽하게 성공했을 때",
+        angry: "무능함을 팩트로 짓밟아버림",
+        relation: "능력치 기준으로 사람 판단",
+        solo: "의외로 한없이 뒹굴거림",
+        core: "효율과 성과에 미친 사람",
+        sensitive: "변명, 시간 낭비, 무능함",
+        strength: "압도적인 실행력",
+        stress: "타인의 비효율을 참아야 할 때",
+        twist: "내 바운더리에겐 한없이 호구",
+        note: "일할 땐 감정 따위 배제하는 알파고 같지만 인간관계에선 은근 상처도 잘 받습니다. 팩폭을 날리면서도 속으론 상대방이 잘 되길 진심으로 바랍니다."
+      },
+      ENTP: {
+        title: "소심한 어그로꾼",
+        sub: "논리로 뼈 때리지만 남이 날 싫어할까 봐 새벽에 이불킥함",
+        outer: "거침없는 마이웨이 논쟁러",
+        inner: "나 미워할까 봐 은근 쫄아있음",
+        happy: "논쟁에서 내 말이 맞다고 인정받을 때",
+        angry: "비꼬는 말투로 끝까지 물고 늘어짐",
+        relation: "나랑 티키타카 되는 사람 픽",
+        solo: "오늘 했던 말 곱씹으며 후회",
+        core: "말싸움 안 지는 청개구리",
+        sensitive: "강요, 꼰대질, 논리적 오류",
+        strength: "틀을 깨는 통찰력",
+        stress: "답답하고 꽉 막힌 룰",
+        twist: "상처받고 엄청 쿨한 척함",
+        note: "남들 다 예스할 때 노를 외치며 어그로 끄는 걸 즐기지만, 진짜 밉상으로 찍히는 건 싫어합니다. 겉으론 센 척해도 속으론 남 시선 엄청 신경 씁니다."
+      },
+      ESFJ: {
+        title: "철저한 인간관계 장부",
+        sub: "오지랖 넓은 마당발이지만 속으론 내가 준 만큼 받을 계산 끝냄",
+        outer: "사교계의 다정한 마당발",
+        inner: "서운함 마일리지 적립 중",
+        happy: "내 덕분에 분위기 훈훈해질 때",
+        angry: "친절함 거두고 완전 남처럼 대함",
+        relation: "기브앤테이크가 확실해야 함",
+        solo: "에너지 방전, 절대적 휴식",
+        core: "받은 만큼 돌려주는 계산기",
+        sensitive: "예의 없음, 이기적인 태도",
+        strength: "디테일한 사람 관리",
+        stress: "내 호의를 당연하게 여길 때",
+        twist: "웃으면서 팩트 폭격 잘함",
+        note: "다 퍼주는 것 같지만 머릿속엔 '내가 이만큼 했으니 너도 이만큼 해야지'라는 회계 장부가 있습니다. 균형이 무너지면 가차 없이 정을 떼버립니다."
+      },
+      ESFP: {
+        title: "눈치 빠른 생존러",
+        sub: "뇌 맑은 파티피플 같지만 이 방의 기싸움을 1초 만에 파악함",
+        outer: "생각 없이 사는 욜로족",
+        inner: "미래 걱정에 잠 못 이룸",
+        happy: "내가 주인공이 되어 주목받을 때",
+        angry: "표정 관리 안 하고 대놓고 무시함",
+        relation: "재밌고 편한 사람이 최고",
+        solo: "갑자기 찾아오는 공허함",
+        core: "분위기 파악 1초 컷",
+        sensitive: "갑분싸, 진지하고 무거운 분위기",
+        strength: "엄청난 현장 적응력",
+        stress: "가만히 앉아 버텨야 하는 상황",
+        twist: "속으론 철저하게 선을 긋고 있음",
+        note: "가벼워 보여도 사람들의 미세한 감정 변화와 텐션을 기가 막히게 캐치합니다. 상처받아도 웃어넘기지만 속으로는 상대에게 이미 거대한 벽을 쳤습니다."
+      },
+      ESTJ: {
+        title: "츤데레 규칙충",
+        sub: "찔러도 피 안 나올 꼰대 같지만 내 사람에겐 간 쓸개 다 빼줌",
+        outer: "피곤한 잔소리 머신",
+        inner: "의외로 눈물 많고 정 많음",
+        happy: "쓸데없는 일 없이 딱딱 맞아떨어질 때",
+        angry: "목소리 커지고 폭풍 팩폭 시전함",
+        relation: "책임감 있는 사람만 곁에 둠",
+        solo: "밀린 일 완벽하게 클리어",
+        core: "속은 은근 여린 츤데레",
+        sensitive: "핑계, 게으름, 불확실성",
+        strength: "체계적인 문제 해결",
+        stress: "내 계획이 남 때문에 틀어질 때",
+        twist: "은근히 칭찬과 애정에 약함",
+        note: "엄격하고 무뚝뚝한 규칙주의자 같지만 내 울타리 안에 들어온 사람에겐 한없이 무르고 약해집니다. 화내는 이유도 사실 상대방이 잘 되길 바라서입니다."
+      },
+      ESTP: {
+        title: "본능적인 계산기",
+        sub: "오늘만 사는 생각 없는 직진러 같지만 머릿속은 이미 견적 다 나옴",
+        outer: "거침없는 직진 행동파",
+        inner: "득실 따지는 차가운 분석가",
+        happy: "복잡한 생각 없이 신나게 놀 때",
+        angry: "짜증 내면서 그냥 자리를 피함",
+        relation: "얽매이지 않는 쿨한 관계",
+        solo: "극강의 귀차니즘 발동",
+        core: "절대 손해 안 보는 실용주의",
+        sensitive: "긴 설명, 답답한 훈수",
+        strength: "미친 위기 대처와 순발력",
+        stress: "통제받고 가만히 있어야 할 때",
+        twist: "관심 분야엔 변태 같은 완벽주의",
+        note: "무심하고 쿨해 보이지만 주변 상황과 사람을 소름 돋게 잘 파악합니다. 남 일에 관심 없는 척하면서도 계산기 두들기는 속도가 엄청나게 빠릅니다."
+      },
+      INFJ: {
+        title: "싸늘한 외계인",
+        sub: "고개 끄덕이는 따뜻한 상담가지만 속으론 지구인을 분석하고 있음",
+        outer: "다정하고 조용한 보살",
+        inner: "속으로 인간들 혐오하는 중",
+        happy: "나를 온전히 이해해 주는 사람 만났을 때",
+        angry: "보이지 않는 벽 치고 철저히 차단",
+        relation: "내 바운더리 안에서만 다정함",
+        solo: "생각의 심해로 끝없는 잠수",
+        core: "속마음 꿰뚫어 보는 스캐너",
+        sensitive: "가식, 도덕성 결여, 이기주의",
+        strength: "사람의 숨은 의도 파악하기",
+        stress: "인간관계의 끊임없는 소음",
+        twist: "손절할 땐 뒤도 안 돌아봄",
+        note: "모두에게 다정하지만 진짜 속마음은 아무에게도 안 보여줍니다. 참는 게 아니라 '손절 마일리지'를 적립 중이며, 선을 넘으면 가차 없이 차단합니다."
+      },
+      INFP: {
+        title: "방구석 폭군",
+        sub: "남 눈치 보는 순둥이 같지만 자기만의 세계에선 절대왕정 독재자",
+        outer: "순둥순둥 유순한 양",
+        inner: "나만의 똥고집 100%",
+        happy: "내 취향을 저격하는 무언가를 발견할 때",
+        angry: "속으로 오만가지 욕하며 잠수탐",
+        relation: "영혼의 단짝을 맹렬히 갈구",
+        solo: "망상 폭발, 과몰입 1위",
+        core: "절대 안 굽히는 나만의 똥고집",
+        sensitive: "취향 무시, 뼈 때리는 팩폭",
+        strength: "남다른 공감과 상상력",
+        stress: "현실의 팍팍한 의무감",
+        twist: "속으론 남들 은근히 무시함",
+        note: "상처받기 싫어 맞춰주는 척하지만 내 신념이나 취향을 건드리면 불같이 분노합니다. 은근히 타인에 대한 기준이 높고 속으로 차가운 팩폭도 잘합니다."
+      },
+      INTJ: {
+        title: "허당미 넘치는 로봇",
+        sub: "완벽을 추구하는 지능형 빌런 같지만 일상생활 나사 하나 빠짐",
+        outer: "차가운 인간 알파고",
+        inner: "귀여운 거 좋아하는 뚝딱이",
+        happy: "복잡한 문제의 완벽한 해결책을 찾았을 때",
+        angry: "벌레 보듯 쳐다보며 투명인간 취급",
+        relation: "지적인 교류가 아주 중요함",
+        solo: "지식 탐구나 취미 풀가동",
+        core: "남한테 기대 안 하는 마이웨이",
+        sensitive: "논리 부족, 감정적 징징거림",
+        strength: "큰 그림을 그리는 통찰력",
+        stress: "무식한데 신념 가진 사람 볼 때",
+        twist: "동물이나 내 사람에겐 무장해제",
+        note: "모든 걸 이성적으로 판단하는 기계 같지만 관심 분야나 동물을 보면 아이처럼 좋아합니다. 감정 표현이 서툴고 뚝딱거릴 뿐 속으론 엄청 따뜻합니다."
+      },
+      INTP: {
+        title: "고장난 애착인형",
+        sub: "감정 없는 팩폭 기계 같지만 속으론 관심과 칭찬을 갈구함",
+        outer: "영혼 없는 리액션 자판기",
+        inner: "관심받고 싶은 숨은 관종",
+        happy: "아무도 간섭 안 하고 혼자 내버려 둘 때",
+        angry: "이유를 논리적으로 따져가며 반박함",
+        relation: "편안한 침묵이 가능한 사이",
+        solo: "유튜브 알고리즘 무한 탐험",
+        core: "귀찮음 심한 게으른 천재",
+        sensitive: "감정적 호소, 강압적 지시",
+        strength: "객관적이고 예리한 분석력",
+        stress: "무의미한 친목 도모",
+        twist: "의외로 칭찬에 약하고 상처 잘 받음",
+        note: "인간관계에 무심하고 혼자 노는 걸 최고로 좋아하지만, 내 덕질을 알아주고 칭찬해주면 속으로 미친 듯이 기뻐합니다. 의외로 속이 무척 여립니다."
+      },
+      ISFJ: {
+        title: "불만 가득한 성인군자",
+        sub: "다 맞춰주는 예스맨이지만 속으론 '이건 아닌데' 하며 쌍욕 시전 중",
+        outer: "성실하고 친절한 호구",
+        inner: "속으로 100번 불평하는 반항아",
+        happy: "내 사람들과의 평화롭고 안정적인 일상",
+        angry: "겉으론 웃지만 속으로 평생 손절함",
+        relation: "익숙하고 검증된 관계만 유지",
+        solo: "남 눈치 안 보는 지금이 최고",
+        core: "책임감으로 꾹 참는 보살",
+        sensitive: "무례함, 은혜 모르는 태도",
+        strength: "디테일을 놓치지 않는 배려",
+        stress: "원치 않는 변화와 쏟아지는 주목",
+        twist: "참고 참다 터지면 제일 무서움",
+        note: "갈등이 싫어서 겉으론 네네 하고 넘어가지만, 속으로는 상황의 부당함을 층층이 쌓아두고 있습니다. 겉과 속의 텐션 차이가 가장 심한 유형입니다."
+      },
+      ISFP: {
+        title: "나른한 이기주의자",
+        sub: "갈등 없는 평화주의자 같지만 내 구역 침범하면 미련 없이 손절함",
+        outer: "착하고 갈등 없는 사람",
+        inner: "귀찮음, 내 자유가 최우선",
+        happy: "아무 일정 없이 푹신한 침대에 누워있을 때",
+        angry: "대화 자체를 포기하고 입 꾹 닫음",
+        relation: "선 넘지 않는 적당한 거리 유지",
+        solo: "침대와 한 몸으로 물아일체",
+        core: "건들지만 않으면 한없이 순둥이",
+        sensitive: "사생활 침해, 억지스러운 강요",
+        strength: "뛰어난 유연함과 눈치",
+        stress: "억지로 나서야 하거나 통제받을 때",
+        twist: "갈등 생기면 해결 안 하고 걍 회피함",
+        note: "착하고 순해 보이지만 내 시간과 에너지를 뺏는 귀찮은 일에는 철저히 선을 긋습니다. 나를 피곤하게 만드는 관계는 아주 쉽게 놔버리는 차가운 면이 있습니다."
+      },
+      ISTJ: {
+        title: "유리멘탈 선비",
+        sub: "흔들림 없는 원칙주의자 같지만 3년 전 실수 떠올리며 괴로워함",
+        outer: "바늘 찔러도 피 안 나오는 로봇",
+        inner: "속으론 온갖 최악의 상황 걱정",
+        happy: "오늘 할 일을 완벽하게 다 끝냈을 때",
+        angry: "칼같이 선 긋고 차갑게 대답함",
+        relation: "예의와 선을 지키는 깔끔한 사이",
+        solo: "루틴대로 움직이며 안정감 찾기",
+        core: "돌다리도 백 번 두드리는 완벽주의",
+        sensitive: "약속 파기, 규칙 위반, 비효율",
+        strength: "어떻게든 끝까지 해내는 책임감",
+        stress: "예고 없이 튀어나오는 돌발 상황",
+        twist: "친해지면 의외의 팩폭 개그 시전함",
+        note: "알파고처럼 일 처리를 완벽하게 해내지만 속으로는 누군가 날 안 좋게 볼까 봐 전전긍긍합니다. 겉으론 태연한 척해도 작은 지적에 엄청난 내상을 입습니다."
+      },
+      ISTP: {
+        title: "무심한 집착광",
+        sub: "만사가 다 귀찮은 무생물 같지만 하나 꽂히면 식음 전폐하고 끝장 봄",
+        outer: "만사 귀찮은 무뚝뚝한 돌멩이",
+        inner: "관심 분야엔 엄청난 광기 발동",
+        happy: "꽂힌 관심사에 미친 듯이 몰입할 때",
+        angry: "'어쩌라고' 마인드로 아예 무시함",
+        relation: "용건만 간단히, 간섭 절대 노",
+        solo: "내가 좋아하는 것에 에너지 몰빵",
+        core: "최소 노력으로 최대 효율 뽑기",
+        sensitive: "쓸데없는 참견, 감정적인 강요",
+        strength: "감정에 휩쓸리지 않는 문제 해결력",
+        stress: "구구절절 긴 설명 들어야 할 때",
+        twist: "자기 사람에겐 속으로 꽤 다정함",
+        note: "숨 쉬는 것도 귀찮아 보이지만 한번 흥미가 생기면 무서운 집중력과 집요함을 보입니다. 인간관계도 좁고 깊어서 의외로 내 사람에겐 꽤 따뜻합니다."
+      }
+    };
+
+    const heroPreviewCards = [
+      { label: "행복 버튼", icon: "smile", text: "기분 좋아짐" },
+      { label: "화났을 때", icon: "zap", text: "보이는 행동" },
+      { label: "관계", icon: "users", text: "관계 스타일" },
+      { label: "혼자모드", icon: "home", text: "혼자 있을 때" },
+      { label: "핵심", icon: "star", text: "핵심 팩폭", center: true },
+      { label: "예민포인트", icon: "alert", text: "극혐 포인트" },
+      { label: "잘하는점", icon: "target", text: "진짜 무기" },
+      { label: "스트레스", icon: "battery", text: "방전 포인트" },
+      { label: "반전", icon: "switch", text: "반전 매력" }
+    ];
+
+    const resultCardMeta = [
+      { key: "happy", label: "행복 버튼", icon: "smile" },
+      { key: "angry", label: "화났을 때", icon: "zap" },
+      { key: "relation", label: "관계", icon: "users" },
+      { key: "solo", label: "혼자모드", icon: "home" },
+      { key: "core", label: "핵심", icon: "star", center: true },
+      { key: "sensitive", label: "예민포인트", icon: "alert" },
+      { key: "strength", label: "잘하는점", icon: "target" },
+      { key: "stress", label: "스트레스", icon: "battery" },
+      { key: "twist", label: "반전", icon: "switch" }
+    ];
+
+    let currentQuestion = 0;
+    let score = {
+      E: 0, I: 0,
+      S: 0, N: 0,
+      T: 0, F: 0,
+      J: 0, P: 0
+    };
+
+    function getIconSvg(type) {
+      const icons = {
+        smile: `
+          <svg viewBox="0 0 64 64" aria-hidden="true">
+            <circle cx="32" cy="32" r="24"></circle>
+            <path d="M20 40c4 6 12 8 24 0"></path>
+            <circle cx="22" cy="24" r="3" fill="currentColor" stroke="none"></circle>
+            <circle cx="42" cy="24" r="3" fill="currentColor" stroke="none"></circle>
+          </svg>
+        `,
+        zap: `
+          <svg viewBox="0 0 64 64" aria-hidden="true">
+            <path d="M36 10L16 38h16l-4 16 20-28H32z"></path>
+          </svg>
+        `,
+        users: `
+          <svg viewBox="0 0 64 64" aria-hidden="true">
+            <circle cx="24" cy="24" r="8"></circle>
+            <circle cx="42" cy="26" r="6"></circle>
+            <path d="M12 48c2-7 8-11 15-11s13 4 15 11"></path>
+            <path d="M36 47c1.5-5 5.5-8 10-8 3 0 6 1 8 3"></path>
+          </svg>
+        `,
+        home: `
+          <svg viewBox="0 0 64 64" aria-hidden="true">
+            <path d="M10 30l22-18 22 18"></path>
+            <path d="M16 28v24h32V28"></path>
+            <path d="M28 52V38h8v14"></path>
+          </svg>
+        `,
+        star: `
+          <svg viewBox="0 0 64 64" aria-hidden="true">
+            <path d="M32 10l6 14 16 2-12 10 4 16-14-8-14 8 4-16-12-10 16-2z"></path>
+          </svg>
+        `,
+        alert: `
+          <svg viewBox="0 0 64 64" aria-hidden="true">
+            <path d="M32 10l22 40H10z"></path>
+            <path d="M32 24v12"></path>
+            <circle cx="32" cy="43" r="1.8" fill="currentColor" stroke="none"></circle>
+          </svg>
+        `,
+        target: `
+          <svg viewBox="0 0 64 64" aria-hidden="true">
+            <circle cx="32" cy="32" r="18"></circle>
+            <circle cx="32" cy="32" r="10"></circle>
+            <circle cx="32" cy="32" r="3" fill="currentColor" stroke="none"></circle>
+          </svg>
+        `,
+        battery: `
+          <svg viewBox="0 0 64 64" aria-hidden="true">
+            <rect x="10" y="22" width="40" height="20"></rect>
+            <path d="M50 28h4v8h-4"></path>
+            <path d="M18 26v12"></path>
+          </svg>
+        `,
+        switch: `
+          <svg viewBox="0 0 64 64" aria-hidden="true">
+            <path d="M12 22h30"></path>
+            <path d="M34 14l8 8-8 8"></path>
+            <path d="M52 42H22"></path>
+            <path d="M30 34l-8 8 8 8"></path>
+          </svg>
+        `
+      };
+
+      return icons[type] || icons.star;
+    }
+
+    function renderHeroGrid() {
+      const heroGrid = document.getElementById("heroGrid");
+      heroGrid.innerHTML = "";
+
+      heroPreviewCards.forEach(card => {
+        const div = document.createElement("div");
+        div.className = card.center ? "hero-card center" : "hero-card";
+        div.innerHTML = `
+          <div class="hero-card-top pixel-text">${card.label}</div>
+          <div class="hero-card-icon">${getIconSvg(card.icon)}</div>
+          <div class="hero-card-bottom">${card.text}</div>
+        `;
+        heroGrid.appendChild(div);
+      });
+    }
+
+    function showScreen(screenId) {
+      document.querySelectorAll(".screen").forEach(screen => {
+        screen.classList.remove("active");
+      });
+      document.getElementById(screenId).classList.add("active");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function renderProgress() {
+      const wrap = document.getElementById("progressCells");
+      wrap.innerHTML = "";
+
+      for (let i = 0; i < questions.length; i++) {
+        const cell = document.createElement("div");
+        cell.className = i < currentQuestion ? "progress-cell done" : "progress-cell";
+        wrap.appendChild(cell);
+      }
+    }
+
+    function startTest() {
+      currentQuestion = 0;
+      score = {
+        E: 0, I: 0,
+        S: 0, N: 0,
+        T: 0, F: 0,
+        J: 0, P: 0
+      };
+      showScreen("questionScreen");
+      renderQuestion();
+    }
+
+    function renderQuestion() {
+      const q = questions[currentQuestion];
+
+      document.getElementById("countText").textContent = `${currentQuestion + 1} / ${questions.length}`;
+      document.getElementById("qNum").textContent = `Q${currentQuestion + 1}`;
+      document.getElementById("questionText").innerHTML = q.q;
+      renderProgress();
+
+      const answerArea = document.getElementById("answerArea");
+      answerArea.innerHTML = "";
+
+      q.a.forEach(answer => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "answer-btn";
+        btn.innerHTML = answer.text;
+        btn.onclick = () => selectAnswer(answer.type);
+        answerArea.appendChild(btn);
+      });
+    }
+
+    function selectAnswer(type) {
+      score[type] += 1;
+      currentQuestion += 1;
+
+      if (currentQuestion >= questions.length) {
+        setTimeout(showResult, 120);
+      } else {
+        renderQuestion();
+      }
+    }
+
+    function getMbti() {
+      const ei = score.E >= score.I ? "E" : "I";
+      const sn = score.S >= score.N ? "S" : "N";
+      const tf = score.T >= score.F ? "T" : "F";
+      const jp = score.J >= score.P ? "J" : "P";
+      return ei + sn + tf + jp;
+    }
+
+    function renderResultCards(result) {
+      const resultGrid = document.getElementById("resultGrid");
+      resultGrid.innerHTML = "";
+
+      resultCardMeta.forEach(meta => {
+        const card = document.createElement("div");
+        card.className = meta.center ? "result-mini-card center" : "result-mini-card";
+        card.innerHTML = `
+          <div class="mini-top pixel-text">${meta.label}</div>
+          <div class="mini-icon">${getIconSvg(meta.icon)}</div>
+          <div class="mini-text">${result[meta.key]}</div>
+        `;
+        resultGrid.appendChild(card);
+      });
+    }
+
+    function showResult() {
+      const mbti = getMbti();
+      const result = results[mbti];
+
+      document.getElementById("resultTitle").textContent = result.title;
+      document.getElementById("resultSub").innerHTML = result.sub;
+      document.getElementById("lookText").textContent = result.outer;
+      document.getElementById("hiddenText").textContent = result.inner;
+      document.getElementById("bottomNote").innerHTML = result.note;
+
+      renderResultCards(result);
+      showScreen("resultScreen");
+    }
+
+    function restartTest() {
+      startTest();
+    }
+
+    function shareTest() {
+      const shareData = {
+        title: "테스트잇 숨은 성격 찾기 테스트",
+        text: "나도 몰랐던 내 안의 진짜 흑막 성격은?",
+        url: testUrl
+      };
+
+      if (navigator.share) {
+        navigator.share(shareData).catch(() => {});
+      } else if (navigator.clipboard) {
+        navigator.clipboard.writeText(testUrl).then(() => {
+          alert("테스트 주소가 복사됐어요!");
+        }).catch(() => {
+          prompt("아래 주소를 복사해주세요.", testUrl);
+        });
+      } else {
+        prompt("아래 주소를 복사해주세요.", testUrl);
+      }
+    }
+
+    function saveResultImage() {
+      const captureArea = document.getElementById("captureArea");
+
+      document.fonts.ready.then(() => {
+        return htmlToImage.toPng(captureArea, {
+          pixelRatio: 2,
+          cacheBust: true,
+          backgroundColor: "#ffffff"
+        });
+      }).then(dataUrl => {
+        document.getElementById("savePreview").src = dataUrl;
+        document.getElementById("saveModal").classList.add("active");
+      }).catch(() => {
+        alert("이미지 저장 준비 중 오류가 났어요. 다시 한 번 눌러주세요.");
+      });
+    }
+
+    function closeSaveModal() {
+      document.getElementById("saveModal").classList.remove("active");
+    }
+
+    renderHeroGrid();
+    renderProgress();
+  </script>
+</body>
+</html>

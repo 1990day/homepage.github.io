@@ -14,8 +14,9 @@
   <meta property="og:description" content="테스트잇 사계절 사주 성격 테스트" />
   <meta property="og:url" content="https://test-it.co.kr/test391" />
   <link rel="icon" type="image/png" href="favicon.png">
-<link href="https://cdn.jsdelivr.net/gh/neodgm/neodgm-webfont@latest/neodgm/style.css" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/gh/neodgm/neodgm-webfont@latest/neodgm/style.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
 <style>
     :root {
         --bg-outer: #d8d8d8;
@@ -88,6 +89,10 @@
         display: flex;
         flex-direction: column;
         overflow: hidden;
+    }
+
+    .app-wrapper.result-mode {
+        max-width: 520px;
     }
 
     .screen {
@@ -178,10 +183,16 @@
         box-shadow: inset 2px 2px 0 rgba(255,255,255,0.45), inset -2px -2px 0 rgba(0,0,0,0.35), 1px 1px 0 #999;
     }
 
+    #screen-result {
+        padding: 10px;
+        background: #dedede;
+    }
+
     .result-theme-bg {
         background: #dedede !important;
         width: 100%;
-        padding: 14px;
+        max-width: 500px;
+        padding: 12px;
         display: flex;
         flex-direction: column;
         border: 2px solid #555;
@@ -191,7 +202,7 @@
     .result-header {
         position: relative;
         text-align: left;
-        font-size: 15px;
+        font-size: 14px;
         font-weight: bold;
         line-height: 1;
         padding: 6px 72px 6px 9px;
@@ -199,7 +210,7 @@
         background: #0034a6;
         color: #fff;
         border-radius: 0;
-        margin: 0 0 12px;
+        margin: 0 0 10px;
         box-shadow: none;
     }
 
@@ -208,31 +219,31 @@
         display: none;
     }
 
-.result-header::after {
-    content: "−  □  ×";
-    position: absolute;
-    top: 4px;
-    right: 7px;
-    width: 44px;
-    height: 16px;
-    line-height: 13px;
-    text-align: center;
-    font-size: 11px;
-    letter-spacing: 1px;
-    color: #111;
-    background: #dcdcdc;
-    border: 1.5px solid #333;
-    padding: 0;
-    text-shadow: none;
-    box-shadow: inset 1px 1px 0 #fff;
-    white-space: nowrap;
-}
+    .result-header::after {
+        content: "−  □  ×";
+        position: absolute;
+        top: 4px;
+        right: 7px;
+        width: 44px;
+        height: 16px;
+        line-height: 13px;
+        text-align: center;
+        font-size: 11px;
+        letter-spacing: 1px;
+        color: #111;
+        background: #dcdcdc;
+        border: 1.5px solid #333;
+        padding: 0;
+        text-shadow: none;
+        box-shadow: inset 1px 1px 0 #fff;
+        white-space: nowrap;
+    }
 
     .result-landscape {
-        height: 170px;
+        height: 145px;
         border: 2px solid #555;
         position: relative;
-        margin-bottom: 12px;
+        margin-bottom: 10px;
         display: flex;
         flex-direction: column;
         border-radius: 0;
@@ -268,38 +279,39 @@
     }
 
     #res-name {
-    background: #ffd6e8;
-}
+        background: #ffd6e8;
+    }
 
-#res-season.spring-season {
-    background: #c9ef8f;
-}
+    #res-season.spring-season {
+        background: #c9ef8f;
+    }
 
-#res-season.summer-season {
-    background: #aee8ff;
-}
+    #res-season.summer-season {
+        background: #aee8ff;
+    }
 
-#res-season.autumn-season {
-    background: #f6b56b;
-}
+    #res-season.autumn-season {
+        background: #f6b56b;
+    }
 
-#res-season.winter-season {
-    background: #ffffff;
-}
+    #res-season.winter-season {
+        background: #ffffff;
+    }
+
     .prop {
         position: absolute;
         z-index: 2;
         filter: drop-shadow(2px 2px 0px rgba(255, 255, 255, 0.55));
     }
 
-    .prop-1 { top: 10px; left: 15px; font-size: 50px; }
-    .prop-2 { top: 10px; right: 20px; font-size: 40px; }
-    .prop-3 { bottom: 5px; left: 10px; font-size: 35px; }
-    .prop-4 { bottom: 10px; right: 15px; font-size: 40px; }
+    .prop-1 { top: 8px; left: 15px; font-size: 42px; }
+    .prop-2 { top: 8px; right: 20px; font-size: 34px; }
+    .prop-3 { bottom: 4px; left: 10px; font-size: 30px; }
+    .prop-4 { bottom: 8px; right: 15px; font-size: 34px; }
 
     .landscape-chars {
         position: absolute;
-        bottom: 10px;
+        bottom: 8px;
         width: 100%;
         display: flex;
         justify-content: center;
@@ -307,21 +319,21 @@
     }
 
     .char-emoji {
-        font-size: 60px;
+        font-size: 52px;
         filter: drop-shadow(2px 2px 0px rgba(0,0,0,0.18));
     }
 
     .char-bubble {
         background: #f3f3f3;
         border: 2px solid #555;
-        padding: 6px 12px;
-        font-size: 14px;
+        padding: 5px 10px;
+        font-size: 13px;
         border-radius: 0;
         position: absolute;
-        bottom: 70px;
+        bottom: 58px;
         text-align: center;
         white-space: pre-wrap;
-        min-width: 120px;
+        min-width: 110px;
         font-weight: bold;
         box-shadow: 2px 2px 0 #aaa;
     }
@@ -330,7 +342,7 @@
         background: #e5e5e5;
         border: 2px solid #555;
         border-radius: 0;
-        padding: 12px;
+        padding: 10px;
         display: flex;
         flex-direction: column;
         box-shadow: inset 2px 2px 0 #fff, inset -2px -2px 0 #aaa;
@@ -341,16 +353,16 @@
         background: #dcdcdc !important;
         border: 2px solid #555;
         border-radius: 0;
-        margin-bottom: 12px;
+        margin-bottom: 10px;
         overflow: hidden;
         box-shadow: inset 1px 1px 0 #fff;
     }
 
     .info-cell {
         flex: 1;
-        padding: 11px;
+        padding: 10px;
         text-align: center;
-        font-size: 15px;
+        font-size: 14px;
         font-weight: bold;
         color: #111;
     }
@@ -370,10 +382,10 @@
         background: #f3f3f3;
         border: 2px solid #777;
         box-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 #bbb;
-        margin-bottom: 7px;
-        padding: 11px 6px;
-        font-size: 15px;
-        line-height: 1.35;
+        margin-bottom: 6px;
+        padding: 9px 5px;
+        font-size: 14px;
+        line-height: 1.3;
         text-align: center;
         word-break: keep-all;
         white-space: normal;
@@ -387,7 +399,7 @@
     #out-of-frame-buttons {
         display: none; 
         width: 100%;
-        max-width: 650px;
+        max-width: 500px;
         flex-direction: column;
         align-items: center;
         gap: 10px;
@@ -440,6 +452,7 @@
         max-width: 95%;
         max-height: 80vh;
         border: 2px solid white;
+        background: #dedede;
     }
 
     .modal-text {
@@ -457,6 +470,71 @@
         padding: 10px 25px;
         cursor: pointer;
         font-weight: bold;
+    }
+
+    .ad-box {
+        width: 350px;
+        max-width: 100%;
+        margin: 18px auto 0;
+        text-align: center;
+    }
+
+    #screen-loading {
+        justify-content: center;
+        align-items: center;
+        min-height: 500px;
+        background: #dedede;
+    }
+
+    .loading-wrap {
+        text-align: center;
+    }
+
+    .loading-title {
+        font-size: 22px;
+        color: #0034a6;
+        margin-bottom: 20px;
+        line-height: 1.6;
+    }
+
+    .loading-seasons {
+        font-size: 70px;
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .loading-seasons span {
+        animation: seasonMove 2s infinite;
+    }
+
+    .loading-seasons span:nth-child(2) {
+        animation-delay: .4s;
+    }
+
+    .loading-seasons span:nth-child(3) {
+        animation-delay: .8s;
+    }
+
+    .loading-seasons span:nth-child(4) {
+        animation-delay: 1.2s;
+    }
+
+    .loading-text {
+        margin-top: 20px;
+        font-size: 16px;
+        line-height: 1.8;
+    }
+
+    @keyframes seasonMove {
+        0%,100% {
+            transform: translateY(0);
+            opacity: .4;
+        }
+        50% {
+            transform: translateY(-12px);
+            opacity: 1;
+        }
     }
 
     @media screen and (max-width: 600px) {
@@ -479,6 +557,10 @@
             padding: 3px 5px;
         }
 
+        .app-wrapper.result-mode {
+            max-width: 650px;
+        }
+
         .screen {
             padding: 24px 10px;
         }
@@ -489,6 +571,15 @@
 
         .screen-title {
             font-size: 22px;
+        }
+
+        #screen-result {
+            padding: 10px;
+        }
+
+        .result-theme-bg {
+            max-width: 100%;
+            padding: 12px;
         }
 
         .result-header {
@@ -527,70 +618,14 @@
             font-size: 14px;
             padding: 10px 4px;
         } 
+
+        #out-of-frame-buttons {
+            max-width: 650px;
+        }
     }
-
-    /* 로딩화면 */
-
-#screen-loading{
-    justify-content:center;
-    align-items:center;
-    min-height:500px;
-    background:#dedede;
-}
-
-.loading-wrap{
-    text-align:center;
-}
-
-.loading-title{
-    font-size:22px;
-    color:#0034a6;
-    margin-bottom:20px;
-    line-height:1.6;
-}
-
-.loading-seasons{
-    font-size:70px;
-    display:flex;
-    justify-content:center;
-    gap:12px;
-}
-
-.loading-seasons span{
-    animation: seasonMove 2s infinite;
-}
-
-.loading-seasons span:nth-child(2){
-    animation-delay:.4s;
-}
-
-.loading-seasons span:nth-child(3){
-    animation-delay:.8s;
-}
-
-.loading-seasons span:nth-child(4){
-    animation-delay:1.2s;
-}
-
-.loading-text{
-    margin-top:20px;
-    font-size:16px;
-    line-height:1.8;
-}
-
-@keyframes seasonMove{
-    0%,100%{
-        transform:translateY(0);
-        opacity:.4;
-    }
-    50%{
-        transform:translateY(-12px);
-        opacity:1;
-    }
-}
-
 </style>
 </head>
+
 <body>
 
 <header class="page-header">
@@ -629,7 +664,7 @@
             </div>
         </div>
   
-              <button class="action-btn" style="margin-top: 10px;" onclick="startTest()">결과 확인하기</button>
+        <button class="action-btn" style="margin-top: 10px;" onclick="startTest()">결과 확인하기</button>
     </div>
 
     <div id="screen-loading" class="screen">
@@ -645,14 +680,10 @@
                 <span>🍁</span>
                 <span>❄️</span>
             </div>
-
-    
-            </div>
         </div>
     </div>
 
-    <div id="screen-result" class="screen" style="padding: 10px;">
-
+    <div id="screen-result" class="screen">
         <div class="result-theme-bg" id="result-theme">
             <div class="result-header">테스트잇 사계절 사주 성격 테스트</div>
             
@@ -697,18 +728,20 @@
     <img id="saved-image" src="" alt="결과 이미지">
     <button class="close-modal-btn" onclick="closeModal()">닫기</button>
 </div>
+
 <div class="ad-box">
   <script src="https://ads-partners.coupang.com/g.js"></script>
   <script>
     new PartnersCoupang.G({
-      id:798186,
-      template:"carousel",
-      trackingCode:"AF4391881",
-      width:"350",
-      height:"140"
+      id: 798186,
+      template: "carousel",
+      trackingCode: "AF4391881",
+      width: "350",
+      height: "140"
     });
   </script>
 </div>
+
 <script type="module">
     import { calculateSaju, calculateSajuSimple } from "https://esm.sh/@fullstackfamily/manseryeok@1.0.8";
 
@@ -727,16 +760,26 @@
         
         yearSelect.options.add(new Option("년도", ""));
         for(let i = 2026; i >= 1950; i--) yearSelect.options.add(new Option(i + "년", i));
+
         monthSelect.options.add(new Option("월", ""));
-        daySelect.options.add(new Option("일", ""));
         for(let i = 1; i <= 12; i++) monthSelect.options.add(new Option(i + "월", i));
+
+        daySelect.options.add(new Option("일", ""));
         for(let i = 1; i <= 31; i++) daySelect.options.add(new Option(i + "일", i));
+
         timesList.forEach((t, i) => timeSelect.options.add(new Option(t, i)));
     };
 
     window.nextScreen = function(hideId, showId) {
         document.getElementById(hideId).classList.remove('active');
         document.getElementById(showId).classList.add('active');
+
+        if (showId === 'screen-result') {
+            document.getElementById('capture-area').classList.add('result-mode');
+        } else {
+            document.getElementById('capture-area').classList.remove('result-mode');
+        }
+
         window.scrollTo(0, 0); 
     };
 
@@ -798,7 +841,7 @@
         "신해": ["직관력과 예술 감각이 뛰어남", "지적이고 완벽주의 성향이 있음", "눈치가 빠르고 섬세한 편", "말과 글로 설득하는 능력이 좋음", "머리는 좋지만 스트레스도 많은 편", "자존심이 강해 굽히기 싫어함", "혼자만의 시간이 꼭 필요한 편", "재물과 명예를 함께 얻기 쉬움"],
         "임자": ["지혜롭고 스케일이 큰 편", "속마음을 쉽게 드러내지 않음", "자유를 중요하게 여기고 얽매임을 싫어함", "승부욕과 끈기가 강한 편", "고집과 자기 주관이 뚜렷함", "위기일수록 더 강해지는 편", "감정 기복이 다소 있는 편", "통찰력이 뛰어나 본질을 잘 봄"],
         "계축": ["인내심이 강하고 끈기가 좋음", "조용하지만 승부욕이 강한 편", "직관력이 좋아 사람을 잘 파악함", "묵묵히 버텨 결국 성과를 냄", "고집이 강하지만 신념도 확고함", "평소엔 온화하지만 화나면 무서움", "가족과 인연을 소중히 여김", "비밀을 잘 지켜 신뢰를 얻음"],
-         "갑인": ["강한 추진력과 도전 정신을 지님", "독립심이 강하고 주도적인 성향", "목표가 생기면 끝까지 밀고 나감", "정의감이 강해 불의를 싫어함", "리더 역할을 자연스럽게 맡는 편", "승부욕이 강하고 경쟁을 즐김", "생각보다 의리가 깊은 편", "새로운 시작을 두려워하지 않음"],
+        "갑인": ["강한 추진력과 도전 정신을 지님", "독립심이 강하고 주도적인 성향", "목표가 생기면 끝까지 밀고 나감", "정의감이 강해 불의를 싫어함", "리더 역할을 자연스럽게 맡는 편", "승부욕이 강하고 경쟁을 즐김", "생각보다 의리가 깊은 편", "새로운 시작을 두려워하지 않음"],
         "을묘": ["부드럽고 친화력이 좋은 성격", "눈치가 빠르고 상황 판단이 좋음", "감수성과 예술 감각이 풍부함", "사람들과 조화를 이루는 능력이 좋음", "배려심이 깊고 정이 많은 편", "은근한 끈기와 생활력이 강함", "말보다 행동으로 보여주는 스타일", "평화를 중요하게 생각하는 편"],
         "병진": ["밝고 당당한 에너지를 지님", "스케일이 크고 포부가 큰 편", "자신감이 넘치고 존재감이 강함", "어려운 상황에서도 쉽게 포기하지 않음", "리더십과 추진력이 뛰어난 편", "명예와 자존심을 중요하게 여김", "사람들을 이끄는 힘이 강함", "큰 목표를 향해 꾸준히 나아감"],
         "정사": ["눈치가 빠르고 센스가 뛰어남", "표현력이 좋고 매력이 강한 편", "직관력이 뛰어나 상황 파악이 빠름", "재능이 많고 관심사도 다양한 편", "사람의 마음을 잘 읽는 편", "미적 감각이 뛰어난 성향", "예민하지만 적응력도 좋은 편", "배움이 빠르고 습득력이 좋음"],
@@ -811,67 +854,104 @@
     };
 
     const iljuSpeech = {
-        "갑자": "완벽한 게\n제일 좋아", "을축": "인내는 쓰고\n열매는 달다", "병인": "일단 나부터\n직진하고 본다", "정묘": "아름다운 게\n최고야 진짜",
-        "무진": "내가 다\n책임진다", "기사": "눈치껏\n센스있게!", "경오": "불의는\n절대 못 참지", "신미": "대충하는 건\n용납 못해",
-        "임신": "자유롭게\n어디든 날아갈래", "계유": "시원하게\n팩트만 말해줄게", "갑술": "내가 보스야\n나만 믿어", "을해": "모두 둥글게\n살자구",
-        "병자": "어딜 가나\n내가 주인공", "정축": "차곡차곡\n알뜰히 모으는 재미", "무인": "크게 놀고\n아주 크게 얻자", "기묘": "실속부터 챙기는 게\n우선이지",
-        "경진": "한번 딱 물면\n절대 안 놓는다", "신사": "깔끔함과 세련됨이\n생명이야", "임오": "재밌는 게\n제일 좋아", "계미": "위기일수록\n오히려 강해져",
-        "갑신": "변화는 나의\n새로운 원동력", "을유": "잡초 같은\n질긴 생명력!", "병술": "화끈하게\n확 도와줄게", "정해": "평화가\n가장 중요해",
-        "무자": "안전한 게\n언제나 최고지", "기축": "우직하게\n끝까지 밀고 간다", "경인": "시원하게\n질러보자", "신묘": "예리하게\n팩트 파악 완료",
-        "임진": "내 스케일은\n크게크게", "계사": "완벽하게\n상황 파악 완료!", "갑오": "열정 넘치게\n살아보자", "을미": "어디서든 끈질기게\n잘 살아남아",
-        "병신": "내 눈앞 기회는\n놓치지 않지", "정유": "완벽주의의\n끝판왕", "무술": "의리와 굳건한 신용이\n전부야", "기해": "평화롭게\n내 실속 챙기기",
-        "경자": "내게 의리 빼면\n시체지", "신축": "끝까지 무섭게\n파고든다", "임인": "배우는 게\n제일 재밌어", "계묘": "사랑받는 게\n내 특기야",
-        "갑진": "진정한 보스의\n품격을 보여주지", "을사": "어딜 가나\n화려한 시선 집중", "병오": "내가 바로\n가장 뜨거운 태양이다", "정미": "조용히\n강한 타입",
-        "무신": "크게크게 판 벌려\n가보자구", "기유": "나에게 실수 따윈\n없지", "경술": "아주 강직하게\n밀고 나가", "신해": "미세한 디테일이\n생명이야",
-        "임자": "내 속은 아무도\n절대 모르지", "계축": "무조건 끝까지\n악으로 버틴다",     "갑인": "내 방식대로\n거침없이 직진!",
-    "을묘": "부드럽게\n잘 살아남지",
-    "병진": "크게 품고\n크게 나아가",
-    "정사": "센스 있게\n상황 파악 완료",
-    "무오": "크게 벌이고\n정면 돌파",
-    "기미": "조용해도\n끝까지 버틴다",
-    "경신": "기회는\n바로 잡아야지",
-    "신유": "대충은\n절대 못 하지",
-    "임술": "넓게 보고\n묵직하게 간다",
-    "계해": "물 흐르듯\n유연하게"
-};
+        "갑자": "완벽한 게\n제일 좋아",
+        "을축": "인내는 쓰고\n열매는 달다",
+        "병인": "일단 나부터\n직진하고 본다",
+        "정묘": "아름다운 게\n최고야 진짜",
+        "무진": "내가 다\n책임진다",
+        "기사": "눈치껏\n센스있게!",
+        "경오": "불의는\n절대 못 참지",
+        "신미": "대충하는 건\n용납 못해",
+        "임신": "자유롭게\n어디든 날아갈래",
+        "계유": "시원하게\n팩트만 말해줄게",
+        "갑술": "내가 보스야\n나만 믿어",
+        "을해": "모두 둥글게\n살자구",
+        "병자": "어딜 가나\n내가 주인공",
+        "정축": "차곡차곡\n알뜰히 모으는 재미",
+        "무인": "크게 놀고\n아주 크게 얻자",
+        "기묘": "실속부터 챙기는 게\n우선이지",
+        "경진": "한번 딱 물면\n절대 안 놓는다",
+        "신사": "깔끔함과 세련됨이\n생명이야",
+        "임오": "재밌는 게\n제일 좋아",
+        "계미": "위기일수록\n오히려 강해져",
+        "갑신": "변화는 나의\n새로운 원동력",
+        "을유": "잡초 같은\n질긴 생명력!",
+        "병술": "화끈하게\n확 도와줄게",
+        "정해": "평화가\n가장 중요해",
+        "무자": "안전한 게\n언제나 최고지",
+        "기축": "우직하게\n끝까지 밀고 간다",
+        "경인": "시원하게\n질러보자",
+        "신묘": "예리하게\n팩트 파악 완료",
+        "임진": "내 스케일은\n크게크게",
+        "계사": "완벽하게\n상황 파악 완료!",
+        "갑오": "열정 넘치게\n살아보자",
+        "을미": "어디서든 끈질기게\n잘 살아남아",
+        "병신": "내 눈앞 기회는\n놓치지 않지",
+        "정유": "완벽주의의\n끝판왕",
+        "무술": "의리와 굳건한 신용이\n전부야",
+        "기해": "평화롭게\n내 실속 챙기기",
+        "경자": "내게 의리 빼면\n시체지",
+        "신축": "끝까지 무섭게\n파고든다",
+        "임인": "배우는 게\n제일 재밌어",
+        "계묘": "사랑받는 게\n내 특기야",
+        "갑진": "진정한 보스의\n품격을 보여주지",
+        "을사": "어딜 가나\n화려한 시선 집중",
+        "병오": "내가 바로\n가장 뜨거운 태양이다",
+        "정미": "조용히\n강한 타입",
+        "무신": "크게크게 판 벌려\n가보자구",
+        "기유": "나에게 실수 따윈\n없지",
+        "경술": "아주 강직하게\n밀고 나가",
+        "신해": "미세한 디테일이\n생명이야",
+        "임자": "내 속은 아무도\n절대 모르지",
+        "계축": "무조건 끝까지\n악으로 버틴다",
+        "갑인": "내 방식대로\n거침없이 직진!",
+        "을묘": "부드럽게\n잘 살아남지",
+        "병진": "크게 품고\n크게 나아가",
+        "정사": "센스 있게\n상황 파악 완료",
+        "무오": "크게 벌이고\n정면 돌파",
+        "기미": "조용해도\n끝까지 버틴다",
+        "경신": "기회는\n바로 잡아야지",
+        "신유": "대충은\n절대 못 하지",
+        "임술": "넓게 보고\n묵직하게 간다",
+        "계해": "물 흐르듯\n유연하게"
+    };
      
-  
     const elementMap = {
         "갑": "목", "을": "목", "병": "화", "정": "화", "무": "토", "기": "토", "경": "금", "신": "금", "임": "수", "계": "수",
         "자": "수", "축": "토", "인": "목", "묘": "목", "진": "토", "사": "화", "오": "화", "미": "토", "유": "금", "술": "토", "해": "수"
     };
 
- const elementText = {
-    "목": "목 기운이 강해<br>성장력과 추진력이 돋보임",
-    "화": "화 기운이 강해<br>표현력과 열정이 두드러짐",
-    "토": "토 기운이 강해<br>안정감과 책임감이 강한 편",
-    "금": "금 기운이 강해<br>결단력과 기준이 뚜렷함",
-    "수": "수 기운이 강해<br>지혜와 유연함이 돋보임",
+    const elementText = {
+        "목": "목 기운이 강해<br>성장력과 추진력이 돋보임",
+        "화": "화 기운이 강해<br>표현력과 열정이 두드러짐",
+        "토": "토 기운이 강해<br>안정감과 책임감이 강한 편",
+        "금": "금 기운이 강해<br>결단력과 기준이 뚜렷함",
+        "수": "수 기운이 강해<br>지혜와 유연함이 돋보임",
 
-    "목화": "목과 화 기운이 강해<br>성장력과 표현력이 함께 살아남",
-    "목토": "목과 토 기운이 강해<br>추진력과 현실감이 함께 있음",
-    "목금": "목과 금 기운이 강해<br>성장 욕구와 결단력이 공존함",
-    "목수": "목과 수 기운이 강해<br>감각과 성장력이 함께 발달함",
-    "화토": "화와 토 기운이 강해<br>열정과 현실감이 함께 강함",
-    "화금": "화와 금 기운이 강해<br>표현력과 결단력이 뚜렷함",
-    "화수": "화와 수 기운이 강해<br>감정의 온도와 지혜가 함께 있음",
-    "토금": "토와 금 기운이 강해<br>책임감과 판단력이 돋보임",
-    "토수": "토와 수 기운이 강해<br>신중함과 유연함이 함께 있음",
-    "금수": "금과 수 기운이 강해<br>판단력과 지혜가 잘 살아남",
+        "목화": "목과 화 기운이 강해<br>성장력과 표현력이 함께 살아남",
+        "목토": "목과 토 기운이 강해<br>추진력과 현실감이 함께 있음",
+        "목금": "목과 금 기운이 강해<br>성장 욕구와 결단력이 공존함",
+        "목수": "목과 수 기운이 강해<br>감각과 성장력이 함께 발달함",
+        "화토": "화와 토 기운이 강해<br>열정과 현실감이 함께 강함",
+        "화금": "화와 금 기운이 강해<br>표현력과 결단력이 뚜렷함",
+        "화수": "화와 수 기운이 강해<br>감정의 온도와 지혜가 함께 있음",
+        "토금": "토와 금 기운이 강해<br>책임감과 판단력이 돋보임",
+        "토수": "토와 수 기운이 강해<br>신중함과 유연함이 함께 있음",
+        "금수": "금과 수 기운이 강해<br>판단력과 지혜가 잘 살아남",
 
-    "목화토": "목·화·토 기운이 강해<br>추진력과 현실감이 함께 있음",
-    "목화금": "목·화·금 기운이 강해<br>표현력과 결단력이 살아남",
-    "목화수": "목·화·수 기운이 강해<br>감각과 표현력이 풍부함",
-    "목토금": "목·토·금 기운이 강해<br>성장력과 기준이 뚜렷함",
-    "목토수": "목·토·수 기운이 강해<br>신중함과 적응력이 함께 있음",
-    "목금수": "목·금·수 기운이 강해<br>감각과 판단력이 발달함",
-    "화토금": "화·토·금 기운이 강해<br>현실감과 결단력이 강함",
-    "화토수": "화·토·수 기운이 강해<br>열정 속에 신중함이 있음",
-    "화금수": "화·금·수 기운이 강해<br>표현력과 판단력이 공존함",
-    "토금수": "토·금·수 기운이 강해<br>안정감과 지혜가 돋보임",
+        "목화토": "목·화·토 기운이 강해<br>추진력과 현실감이 함께 있음",
+        "목화금": "목·화·금 기운이 강해<br>표현력과 결단력이 살아남",
+        "목화수": "목·화·수 기운이 강해<br>감각과 표현력이 풍부함",
+        "목토금": "목·토·금 기운이 강해<br>성장력과 기준이 뚜렷함",
+        "목토수": "목·토·수 기운이 강해<br>신중함과 적응력이 함께 있음",
+        "목금수": "목·금·수 기운이 강해<br>감각과 판단력이 발달함",
+        "화토금": "화·토·금 기운이 강해<br>현실감과 결단력이 강함",
+        "화토수": "화·토·수 기운이 강해<br>열정 속에 신중함이 있음",
+        "화금수": "화·금·수 기운이 강해<br>표현력과 판단력이 공존함",
+        "토금수": "토·금·수 기운이 강해<br>안정감과 지혜가 돋보임",
 
-    "균형": "오행이 고르게 있어<br>상황에 따라 유연하게 반응함"
-};
+        "균형": "오행이 고르게 있어<br>상황에 따라 유연하게 반응함"
+    };
 
     const monthBranchSeason = {
         "인": ["spring", "봄"],
@@ -963,16 +1043,16 @@
     }
 
     window.startTest = function() {
-       const userName = document.getElementById('userName').value.trim() || "이름없음";
+        const userName = document.getElementById('userName').value.trim() || "이름없음";
         const y = parseInt(document.getElementById('userYear').value);
         const m = parseInt(document.getElementById('userMonth').value);
         const d = parseInt(document.getElementById('userDay').value);
         const timeIndex = parseInt(document.getElementById('userTime').value);
 
-      if (!y || !m || !d || Number.isNaN(timeIndex)) {
-    alert("생년월일시를 다 채워주세요!");
-    return;
-}
+        if (!y || !m || !d || Number.isNaN(timeIndex)) {
+            alert("생년월일시를 다 채워주세요!");
+            return;
+        }
 
         let saju;
 
@@ -1005,6 +1085,7 @@
         const theme = seasonThemes[seasonKey];
         const traits = [...(iljuTraits[ilju] || ["매력 넘치는 성격임"])];
         if (elementLine) traits.push(elementLine);
+
         const bubbleSpeech = iljuSpeech[ilju] || "나의 성격 분석";
 
         const resultThemeElement = document.getElementById('result-theme');
@@ -1016,9 +1097,11 @@
         document.getElementById('land-ground').style.backgroundColor = theme.groundColor;
 
         document.getElementById('res-name').innerText = userName;
-   const seasonCell = document.getElementById('res-season');
-seasonCell.innerText = seasonName + " 사주";
-seasonCell.className = "info-cell " + seasonKey + "-season";
+
+        const seasonCell = document.getElementById('res-season');
+        seasonCell.innerText = seasonName + " 사주";
+        seasonCell.className = "info-cell " + seasonKey + "-season";
+
         document.getElementById('season-label-box').innerText = theme.labelText;
         
         document.getElementById('prop-1').innerText = theme.props[0];
@@ -1031,30 +1114,46 @@ seasonCell.className = "info-cell " + seasonKey + "-season";
 
         const traitUl = document.getElementById('traits-list');
         traitUl.innerHTML = "";
+
         traits.forEach(trait => {
             const li = document.createElement('li');
-         li.innerHTML = trait;
+            li.innerHTML = trait;
             traitUl.appendChild(li);
         });
 
-    document.getElementById('out-of-frame-buttons').style.display = 'none';
+        document.getElementById('out-of-frame-buttons').style.display = 'none';
 
-nextScreen('screen-input', 'screen-loading');
+        nextScreen('screen-input', 'screen-loading');
 
-setTimeout(() => {
-    nextScreen('screen-loading', 'screen-result');
-    document.getElementById('out-of-frame-buttons').style.display = 'flex';
-}, 3000);
+        setTimeout(() => {
+            nextScreen('screen-loading', 'screen-result');
+            document.getElementById('out-of-frame-buttons').style.display = 'flex';
+        }, 3000);
     }
 
     window.saveResultImage = function() {
-        const captureArea = document.getElementById('capture-area');
+        const captureTarget = document.getElementById('result-theme');
         const saveBtn = document.querySelector('.btn-save');
+
         saveBtn.innerText = "이미지 생성 중...";
-        html2canvas(captureArea, { scale: 2 }).then(canvas => {
+        saveBtn.disabled = true;
+
+        html2canvas(captureTarget, {
+            scale: 2,
+            backgroundColor: '#dedede',
+            useCORS: true,
+            allowTaint: true,
+            scrollX: 0,
+            scrollY: 0
+        }).then(canvas => {
             document.getElementById('saved-image').src = canvas.toDataURL('image/png');
             document.getElementById('save-modal').classList.add('active');
+        }).catch(error => {
+            alert("이미지 저장 화면을 만드는 중 오류가 발생했어요. 다시 시도해주세요.");
+            console.error(error);
+        }).finally(() => {
             saveBtn.innerText = "결과 이미지 저장하기";
+            saveBtn.disabled = false;
         });
     };
 
@@ -1062,18 +1161,18 @@ setTimeout(() => {
         document.getElementById('save-modal').classList.remove('active');
     };
 
-window.shareTest = function() {
-    const shareUrl = "https://test-it.co.kr/test391";
+    window.shareTest = function() {
+        const shareUrl = "https://test-it.co.kr/test391";
 
-    if (navigator.share) {
-        navigator.share({
-            title: '테스트잇 사계절 사주 성격 테스트',
-            url: shareUrl
-        }).catch(console.error);
-    } else {
-        alert('주소를 복사하여 공유해보세요!\n' + shareUrl);
-    }
-};
+        if (navigator.share) {
+            navigator.share({
+                title: '테스트잇 사계절 사주 성격 테스트',
+                url: shareUrl
+            }).catch(console.error);
+        } else {
+            alert('주소를 복사하여 공유해보세요!\n' + shareUrl);
+        }
+    };
 </script>
 
 </body>

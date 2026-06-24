@@ -360,6 +360,12 @@
       border: 1px solid var(--black);
       background: var(--white);
       padding: 14px;
+      min-width: 0;
+    }
+
+    .capture-card.capture-ready {
+      width: 420px !important;
+      max-width: 420px !important;
     }
 
     .capture-top-title {
@@ -412,7 +418,7 @@
 
     .two-line {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
       gap: 10px;
       margin-bottom: 10px;
     }
@@ -426,6 +432,7 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
+      min-width: 0;
     }
 
     .small-box:first-child {
@@ -445,6 +452,9 @@
       background: var(--white);
       color: var(--black);
       font-weight: 900;
+      white-space: nowrap;
+      word-break: keep-all;
+      min-width: 72px;
     }
 
     .small-box span {
@@ -708,7 +718,7 @@
       }
 
       .save-box {
-        max-width: 300px;
+        max-width: 330px;
         padding: 14px;
       }
 
@@ -722,7 +732,7 @@
       }
 
       .save-preview-wrap {
-        max-width: 185px;
+        max-width: 230px;
         margin-bottom: 12px;
       }
 
@@ -1039,7 +1049,7 @@
       },
       ESFP: {
         title: "눈치 빠른 카멜레온",
-        sub: "뇌 맑은 파티피플 같지만 이 방의 기싸움을 1초 만에 파악함",
+        sub: "미치광이 파티피플 같지만 이 방의 기싸움을 1초 만에 파악함",
         outer: "현재를 즐기는 자유로운 영혼",
         inner: "미래 걱정에 잠 못 이룸",
         happy: "내가 주인공이 되어 주목받을 때",
@@ -1478,10 +1488,20 @@
 
     function saveResultImage() {
       const captureArea = document.getElementById("captureArea");
-      const width = Math.ceil(captureArea.scrollWidth);
-      const height = Math.ceil(captureArea.scrollHeight);
+      const captureWidth = 420;
 
       document.fonts.ready.then(() => {
+        captureArea.classList.add("capture-ready");
+
+        return new Promise(resolve => {
+          requestAnimationFrame(() => {
+            requestAnimationFrame(resolve);
+          });
+        });
+      }).then(() => {
+        const width = captureWidth;
+        const height = Math.ceil(captureArea.scrollHeight);
+
         return htmlToImage.toPng(captureArea, {
           pixelRatio: 2,
           cacheBust: true,
@@ -1491,6 +1511,8 @@
           canvasWidth: width * 2,
           canvasHeight: height * 2,
           style: {
+            width: width + "px",
+            maxWidth: width + "px",
             margin: "0",
             transform: "none"
           }
@@ -1500,6 +1522,8 @@
         document.getElementById("saveModal").classList.add("active");
       }).catch(() => {
         alert("이미지 저장 준비 중 오류가 났어요. 다시 한 번 눌러주세요.");
+      }).finally(() => {
+        captureArea.classList.remove("capture-ready");
       });
     }
 

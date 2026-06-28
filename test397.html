@@ -11,11 +11,11 @@
   <meta name="keywords" content="테스트잇,성격테스트,과일탱성격테스트,과일탱,과일성격테스트,테스트잇과일탱성격테스트,mbti테스트,심리테스트">
   <meta property="og:type" content="website" />
   <meta property="og:title" content="테스트잇 과일탱 성격 테스트" />
-  <meta property="og:description" content="테스트잇 과일탱 성격 테스트" />
+  <meta property="og:description" content="내 성격은 어떤 과일탱일까? 상큼하게 알아보는 과일탱 성격 테스트" />
   <meta property="og:url" content="https://test-it.co.kr/test397" />
   <link rel="icon" type="image/png" href="favicon.png">
   <link href="https://cdn.jsdelivr.net/gh/neodgm/neodgm-webfont@latest/neodgm/style.css" rel="stylesheet">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html-to-image/1.11.11/html-to-image.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
   <style>
     :root {
@@ -488,6 +488,13 @@
     .capture-card.capture-ready {
       width: 420px !important;
       max-width: 420px !important;
+    }
+
+    .capture-card.capture-ready .pixel-text,
+    .capture-card.capture-ready .result-title,
+    .capture-card.capture-ready .capture-title-text {
+      font-family: "NeoDunggeunmo", "Malgun Gothic", "맑은 고딕", sans-serif !important;
+      font-weight: 400 !important;
     }
 
     .capture-top-title {
@@ -1476,6 +1483,21 @@
       score = { E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0 };
     }
 
+    async function waitForCaptureFonts() {
+      if (!document.fonts) return;
+
+      try {
+        const resultTitle = document.getElementById("resultTitle");
+        const fruitName = resultTitle ? resultTitle.textContent || "석류탱" : "석류탱";
+
+        await Promise.all([
+          document.fonts.load('22px "NeoDunggeunmo"', "테스트잇 과일탱 성격 테스트"),
+          document.fonts.load('29px "NeoDunggeunmo"', fruitName),
+          document.fonts.ready
+        ]);
+      } catch (e) {}
+    }
+
     function fitAllTitles() {
       document.querySelectorAll(".title-fit-area, .capture-title-fit-area").forEach(area => {
         const inner = area.querySelector(".fit-inner");
@@ -1654,7 +1676,7 @@
     function shareTest() {
       const shareData = {
         title: "테스트잇 과일탱 성격 테스트",
-        text: "테스트잇 과일탱 성격 테스트",
+        text: "내 성격은 어떤 과일탱일까?",
         url: testUrl
       };
 
@@ -1671,47 +1693,49 @@
       }
     }
 
-    function saveResultImage() {
+    async function saveResultImage() {
       const captureArea = document.getElementById("captureArea");
 
-      if (!window.htmlToImage) {
+      if (!window.html2canvas) {
         alert("이미지 저장 기능을 불러오는 중이에요. 잠시 후 다시 눌러주세요.");
         return;
       }
 
-      captureArea.classList.add("capture-ready");
-      fitAllTitles();
+      try {
+        captureArea.classList.add("capture-ready");
 
-      const ready = document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve();
+        await waitForCaptureFonts();
+        fitAllTitles();
 
-      ready.then(() => {
-        const width = 420;
-        const height = Math.ceil(captureArea.scrollHeight);
-
-        return htmlToImage.toPng(captureArea, {
-          pixelRatio: 2,
-          cacheBust: true,
-          backgroundColor: "#fffdf8",
-          width: width,
-          height: height,
-          canvasWidth: width * 2,
-          canvasHeight: height * 2,
-          style: {
-            width: width + "px",
-            maxWidth: width + "px",
-            margin: "0",
-            transform: "none"
-          }
+        await new Promise(resolve => {
+          requestAnimationFrame(() => {
+            requestAnimationFrame(resolve);
+          });
         });
-      }).then(dataUrl => {
+
+        const canvas = await html2canvas(captureArea, {
+          backgroundColor: "#fffdf8",
+          scale: 2,
+          useCORS: true,
+          allowTaint: true,
+          logging: false,
+          width: captureArea.offsetWidth,
+          height: captureArea.scrollHeight,
+          windowWidth: captureArea.offsetWidth,
+          windowHeight: captureArea.scrollHeight,
+          scrollX: 0,
+          scrollY: 0
+        });
+
+        const dataUrl = canvas.toDataURL("image/png");
         document.getElementById("savePreview").src = dataUrl;
         document.getElementById("saveModal").classList.add("active");
-      }).catch(() => {
+      } catch (e) {
         alert("이미지 저장 준비 중 오류가 났어요. 다시 한 번 눌러주세요.");
-      }).finally(() => {
+      } finally {
         captureArea.classList.remove("capture-ready");
         requestAnimationFrame(fitAllTitles);
-      });
+      }
     }
 
     function closeSaveModal() {
@@ -1726,8 +1750,7 @@
       renderFruitBoard();
       renderProgress();
 
-      const ready = document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve();
-      ready.then(() => {
+      waitForCaptureFonts().then(() => {
         fitAllTitles();
       });
     });

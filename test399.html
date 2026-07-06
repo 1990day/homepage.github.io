@@ -1,0 +1,1608 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5522499110435321" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>테스트잇 TF 종합 평가 테스트</title>
+  <meta name="description" content="테스트잇 TF 종합 평가 테스트">
+  <meta name="keywords" content="테스트잇,tf종합평가테스트,tf테스트,테스트잇tf종합평가테스트,사주테스트">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="테스트잇 TF 종합 평가 테스트">
+  <meta property="og:description" content="테스트잇 TF 종합 평가 테스트">
+  <meta property="og:url" content="https://test-it.co.kr/test399">
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+
+  <style>
+    :root {
+      --black: #111;
+      --paper: #fdfbf3;
+      --line: #111;
+      --red: #e60000;
+      --blue: #005eff;
+      --soft: #eee8d8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #e7e0d4;
+      color: var(--black);
+      font-family: "Times New Roman", "Batang", "바탕", "Nanum Myeongjo", serif;
+    }
+
+    button,
+    input {
+      font-family: inherit;
+    }
+
+    button {
+      cursor: pointer;
+      border: 0;
+      background: none;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .site-header {
+      width: 100%;
+      height: 56px;
+      background: #fff;
+      border-bottom: 1px solid #111;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif;
+    }
+
+    .header-inner {
+      max-width: 540px;
+      height: 56px;
+      margin: 0 auto;
+      padding: 0 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 20px;
+      font-weight: 900;
+      letter-spacing: -1px;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 16px;
+      font-weight: 900;
+      letter-spacing: -0.6px;
+    }
+
+    .nav a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 36px;
+    }
+
+    .wrap {
+      max-width: 540px;
+      margin: 0 auto;
+      padding: 16px 10px 42px;
+    }
+
+    .screen {
+      display: none;
+    }
+
+    .screen.active {
+      display: block;
+    }
+
+    .exam-paper {
+      background:
+        radial-gradient(circle, rgba(0,0,0,0.032) 0 0.8px, transparent 1px),
+        var(--paper);
+      background-size: 12px 12px;
+      border: 2px solid var(--line);
+      padding: 18px 14px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+      min-height: 640px;
+    }
+
+    .exam-inner {
+      border: 1.5px solid var(--line);
+      min-height: 590px;
+      padding: 18px 14px;
+      position: relative;
+    }
+
+    .paper-top {
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-start;
+      font-size: 12px;
+      line-height: 1.35;
+      font-weight: 700;
+      margin-bottom: 28px;
+    }
+
+    .paper-date {
+      text-align: right;
+    }
+
+    .main-image-box {
+      width: 100%;
+      background: #fff;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+      overflow: hidden;
+    }
+
+    .main-image {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      background: #fff;
+    }
+
+    .btn {
+      width: 100%;
+      height: 54px;
+      border: 2px solid var(--line);
+      background: #111;
+      color: #fff;
+      font-size: 17px;
+      font-weight: 900;
+      margin-top: 13px;
+      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      line-height: 1;
+    }
+
+    .btn.white {
+      background: #fff;
+      color: #111;
+      border: 1.5px solid var(--line);
+      height: 50px;
+      margin-top: 9px;
+    }
+
+    .name-paper {
+      min-height: 0;
+      padding-bottom: 14px;
+    }
+
+    .name-inner {
+      min-height: 0;
+      padding-bottom: 24px;
+    }
+
+    .name-title {
+      margin: 44px 0 24px;
+      text-align: center;
+      font-size: 38px;
+      line-height: 1.18;
+      font-weight: 900;
+      letter-spacing: -2px;
+    }
+
+    .name-wrap {
+      width: 86%;
+      margin: 0 auto;
+    }
+
+    .name-label {
+      display: block;
+      text-align: center;
+      font-size: 21px;
+      font-weight: 900;
+      margin-bottom: 10px;
+    }
+
+    .name-input {
+      width: 100%;
+      height: 52px;
+      border: 1.5px solid var(--line);
+      background: rgba(255,255,255,0.55);
+      text-align: center;
+      font-size: 23px;
+      font-weight: 900;
+      outline: none;
+    }
+
+    .name-input::placeholder {
+      color: #aaa;
+    }
+
+    .guide-box {
+      width: 90%;
+      margin: 24px auto 0;
+      border: 1.5px solid var(--line);
+      background: rgba(255,255,255,0.35);
+      padding: 13px;
+      font-size: 16px;
+      line-height: 1.58;
+      font-weight: 700;
+      word-break: keep-all;
+    }
+
+    .progress-box {
+      background: var(--paper);
+      border: 1.5px solid var(--line);
+      padding: 10px;
+      margin-bottom: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.14);
+      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif;
+    }
+
+    .progress-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 8px;
+      margin-bottom: 8px;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .progress-track {
+      width: 100%;
+      height: 9px;
+      border: 1px solid var(--line);
+      background: #fff;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      width: 0;
+      height: 100%;
+      background: #111;
+      transition: width 0.2s ease;
+    }
+
+    .omr {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 3px;
+      margin-top: 8px;
+    }
+
+    .omr span {
+      height: 18px;
+      border: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+      font-weight: 900;
+      background: #fff;
+    }
+
+    .omr span.done {
+      background: #111;
+      color: #fff;
+    }
+
+    .omr span.now {
+      background: #ddd;
+    }
+
+    .question-paper {
+      min-height: 0;
+      padding-bottom: 12px;
+    }
+
+    .question-inner {
+      min-height: 0;
+      padding-bottom: 12px;
+    }
+
+    .question-head {
+      text-align: center;
+      border-bottom: 1.5px solid var(--line);
+      padding-bottom: 14px;
+      margin-bottom: 22px;
+    }
+
+    .question-small-title {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+
+    .question-subject {
+      font-size: 36px;
+      line-height: 1.08;
+      font-weight: 900;
+      letter-spacing: -2px;
+    }
+
+    .question-info {
+      width: 82%;
+      margin: 18px auto 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .student-field {
+      display: grid;
+      grid-template-columns: 49px 1fr;
+      height: 34px;
+      border: 1.5px solid var(--line);
+      background: rgba(255,255,255,0.5);
+    }
+
+    .student-field span {
+      border-right: 1.5px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .student-field b {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .question-text-box {
+      border: 2px solid var(--line);
+      background: rgba(255,255,255,0.72);
+      padding: 15px 13px;
+      margin-bottom: 16px;
+    }
+
+    .question-text {
+      margin: 0;
+      font-size: 22px;
+      line-height: 1.42;
+      font-weight: 900;
+      letter-spacing: -0.9px;
+      word-break: keep-all;
+    }
+
+    .q-number {
+      display: inline-block;
+      font-size: 29px;
+      font-weight: 900;
+      margin-right: 6px;
+    }
+
+    .choice-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .choice-btn {
+      width: 100%;
+      min-height: 72px;
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      align-items: stretch;
+      text-align: left;
+      color: #111;
+      background: #fff;
+      border: 2px solid var(--line);
+      box-shadow: 3px 3px 0 rgba(0,0,0,0.16);
+      overflow: hidden;
+    }
+
+    .choice-no {
+      border-right: 2px solid var(--line);
+      background: #eee8d8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      line-height: 1;
+      font-weight: 900;
+    }
+
+    .choice-text {
+      display: flex;
+      align-items: center;
+      padding: 11px 12px;
+      font-size: 18px;
+      line-height: 1.34;
+      font-weight: 900;
+      letter-spacing: -0.65px;
+      word-break: keep-all;
+    }
+
+    .choice-btn:hover,
+    .choice-btn:active {
+      background: #fff4c7;
+    }
+
+    .question-note {
+      border-top: 1px solid var(--line);
+      margin-top: 18px;
+      padding-top: 10px;
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      font-size: 12px;
+      color: #555;
+      font-weight: 800;
+      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif;
+    }
+
+    .ad-wrap {
+      width: 100%;
+      margin: 18px auto 0;
+      padding: 0;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .ad-wrap iframe,
+    .ad-wrap div,
+    .ad-wrap ins {
+      max-width: 100%;
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+
+    .loading-paper {
+      min-height: 520px;
+    }
+
+    .loading-inner {
+      min-height: 470px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 24px 14px;
+    }
+
+    .loading-box {
+      width: 88%;
+      border: 2px solid var(--line);
+      background: rgba(255,255,255,0.55);
+      padding: 34px 18px;
+      position: relative;
+    }
+
+    .loading-box::before,
+    .loading-box::after {
+      content: "";
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      height: 1.5px;
+      background: var(--line);
+    }
+
+    .loading-box::before {
+      top: 18px;
+    }
+
+    .loading-box::after {
+      bottom: 18px;
+    }
+
+    .loading-title {
+      font-size: 34px;
+      line-height: 1.2;
+      font-weight: 900;
+      letter-spacing: -2px;
+      margin-bottom: 18px;
+    }
+
+    .loading-desc {
+      font-size: 16px;
+      line-height: 1.55;
+      font-weight: 800;
+      margin-bottom: 22px;
+    }
+
+    .loading-stamp {
+      width: 82px;
+      height: 82px;
+      border: 5px solid var(--red);
+      border-radius: 50%;
+      color: var(--red);
+      margin: 0 auto 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 19px;
+      line-height: 1.08;
+      font-weight: 900;
+      transform: rotate(-9deg);
+      opacity: 0.9;
+      animation: stampPop 1.1s ease-in-out infinite;
+    }
+
+    .loading-dots {
+      display: flex;
+      justify-content: center;
+      gap: 9px;
+    }
+
+    .loading-dots span {
+      width: 10px;
+      height: 10px;
+      border: 1.5px solid var(--line);
+      border-radius: 50%;
+      background: #fff;
+      animation: dotFill 1.2s ease-in-out infinite;
+    }
+
+    .loading-dots span:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .loading-dots span:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+
+    @keyframes stampPop {
+      0%, 100% {
+        transform: rotate(-9deg) scale(1);
+      }
+
+      50% {
+        transform: rotate(-9deg) scale(1.06);
+      }
+    }
+
+    @keyframes dotFill {
+      0%, 100% {
+        background: #fff;
+      }
+
+      50% {
+        background: #111;
+      }
+    }
+
+    .result-capture {
+      width: 100%;
+      max-width: 420px;
+      margin: 0 auto;
+      background:
+        radial-gradient(circle, rgba(0,0,0,0.035) 0 0.8px, transparent 1px),
+        var(--paper);
+      background-size: 12px 12px;
+      border: 2px solid var(--line);
+      padding: 12px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+    }
+
+    .result-inner {
+      border: 1.5px solid var(--line);
+      padding: 17px 12px 20px;
+      position: relative;
+      min-height: 520px;
+    }
+
+    .stamp-mini {
+      position: absolute;
+      right: 6px;
+      top: 6px;
+      width: 34px;
+      height: 34px;
+      border: 2.5px solid var(--red);
+      border-radius: 50%;
+      color: var(--red);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 7px;
+      line-height: 1.05;
+      font-weight: 900;
+      transform: rotate(-8deg);
+      opacity: 0.88;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .result-title {
+      text-align: center;
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.25;
+      font-weight: 900;
+      letter-spacing: -0.8px;
+      padding: 0 42px;
+    }
+
+    .result-title strong {
+      display: block;
+      margin-top: 5px;
+      font-size: 24px;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+    }
+
+    .result-student {
+      width: 88%;
+      margin: 20px auto 18px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .score-title {
+      text-align: center;
+      margin: 0 0 12px;
+      font-size: 18px;
+      font-weight: 900;
+    }
+
+    .result-grid {
+      width: 92%;
+      margin: 0 auto 18px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border: 1.5px solid var(--line);
+      background: rgba(255,255,255,0.25);
+    }
+
+    .result-cell {
+      min-height: 92px;
+      border-right: 1.5px solid var(--line);
+      border-bottom: 1.5px solid var(--line);
+      padding: 12px 8px 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .result-cell:nth-child(2),
+    .result-cell:nth-child(4) {
+      border-right: 0;
+    }
+
+    .result-cell:nth-child(3),
+    .result-cell:nth-child(4) {
+      border-bottom: 0;
+    }
+
+    .result-area {
+      font-size: 16px;
+      font-weight: 900;
+      letter-spacing: -0.7px;
+      margin-bottom: 12px;
+    }
+
+    .marked-letter {
+      position: relative;
+      font-size: 33px;
+      line-height: 1;
+      font-weight: 900;
+      color: #111;
+      min-width: 54px;
+      text-align: center;
+    }
+
+    .marked-letter::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 56px;
+      height: 38px;
+      border: 4px solid var(--red);
+      border-radius: 50%;
+      transform: translate(-50%, -50%) rotate(-12deg);
+      opacity: 0.92;
+      pointer-events: none;
+    }
+
+    .marked-letter::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 48px;
+      height: 42px;
+      border: 2px solid rgba(230,0,0,0.58);
+      border-radius: 50%;
+      transform: translate(-50%, -50%) rotate(9deg);
+      pointer-events: none;
+    }
+
+    .total-box {
+      width: 92%;
+      margin: 0 auto 18px;
+      border: 1.5px solid var(--line);
+      background: rgba(255,255,255,0.35);
+      padding: 14px 12px 15px;
+      text-align: center;
+    }
+
+    .total-label {
+      font-size: 17px;
+      font-weight: 900;
+      margin-bottom: 13px;
+    }
+
+    .total-letter {
+      position: relative;
+      display: inline-block;
+      min-width: 90px;
+      font-size: 40px;
+      line-height: 1;
+      font-weight: 900;
+      color: #111;
+    }
+
+    .total-letter::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 94px;
+      height: 50px;
+      border: 5px solid var(--red);
+      border-radius: 50%;
+      transform: translate(-50%, -50%) rotate(-10deg);
+      opacity: 0.92;
+      pointer-events: none;
+    }
+
+    .comment-title {
+      text-align: center;
+      margin: 0 0 10px;
+      font-size: 18px;
+      font-weight: 900;
+    }
+
+    .comment-text {
+      width: 94%;
+      margin: 0 auto;
+      text-align: center;
+      font-size: 14px;
+      line-height: 1.65;
+      font-weight: 900;
+      word-break: keep-all;
+    }
+
+    .comment-text .red {
+      color: var(--red);
+    }
+
+    .comment-text .blue {
+      color: var(--blue);
+    }
+
+    .result-buttons {
+      display: grid;
+      gap: 0;
+      margin-top: 14px;
+    }
+
+    .save-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: rgba(0,0,0,0.72);
+      padding: 22px 14px;
+      align-items: center;
+      justify-content: center;
+      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif;
+    }
+
+    .save-modal.active {
+      display: flex;
+    }
+
+    .save-modal-box {
+      width: 100%;
+      max-width: 420px;
+      background: #fff;
+      border: 2px solid #111;
+      padding: 14px;
+      text-align: center;
+    }
+
+    .save-modal-title {
+      font-size: 17px;
+      line-height: 1.45;
+      font-weight: 900;
+      margin: 0 0 10px;
+    }
+
+    .save-modal-desc {
+      font-size: 13px;
+      line-height: 1.5;
+      font-weight: 700;
+      color: #444;
+      margin: 0 0 12px;
+    }
+
+    .save-preview {
+      width: auto;
+      max-width: 100%;
+      max-height: 70vh;
+      object-fit: contain;
+      border: 1.5px solid #111;
+      background: #fdfbf3;
+      display: block;
+      margin: 0 auto 12px;
+    }
+
+    .modal-close {
+      width: 100%;
+      height: 46px;
+      border: 1.5px solid #111;
+      background: #111;
+      color: #fff;
+      font-size: 15px;
+      font-weight: 900;
+    }
+
+    @media (max-width: 420px) {
+      .wrap {
+        padding: 12px 7px 34px;
+      }
+
+      .header-inner {
+        padding: 0 12px;
+      }
+
+      .logo {
+        font-size: 20px;
+      }
+
+      .nav {
+        gap: 10px;
+        font-size: 15px;
+      }
+
+      .exam-paper {
+        padding: 13px 9px;
+        min-height: 610px;
+      }
+
+      .exam-inner {
+        padding: 14px 9px;
+        min-height: 565px;
+      }
+
+      .name-paper {
+        min-height: 0;
+        padding-bottom: 12px;
+      }
+
+      .name-inner {
+        min-height: 0;
+        padding-bottom: 20px;
+      }
+
+      .name-title {
+        margin-top: 38px;
+        font-size: 32px;
+      }
+
+      .main-image-box {
+        box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+      }
+
+      .question-paper {
+        min-height: 0;
+        padding-bottom: 10px;
+      }
+
+      .question-inner {
+        min-height: 0;
+        padding-bottom: 11px;
+      }
+
+      .question-subject {
+        font-size: 30px;
+      }
+
+      .question-info {
+        width: 96%;
+        gap: 7px;
+      }
+
+      .student-field {
+        grid-template-columns: 45px 1fr;
+      }
+
+      .student-field span,
+      .student-field b {
+        font-size: 13px;
+      }
+
+      .question-text {
+        font-size: 19px;
+        line-height: 1.43;
+      }
+
+      .q-number {
+        font-size: 27px;
+      }
+
+      .choice-btn {
+        min-height: 68px;
+        grid-template-columns: 42px 1fr;
+      }
+
+      .choice-no {
+        font-size: 21px;
+      }
+
+      .choice-text {
+        font-size: 16px;
+        line-height: 1.33;
+        padding: 10px 10px;
+      }
+
+      .question-note {
+        margin-top: 16px;
+      }
+
+      .loading-paper {
+        min-height: 500px;
+      }
+
+      .loading-inner {
+        min-height: 450px;
+      }
+
+      .loading-box {
+        width: 94%;
+        padding: 32px 14px;
+      }
+
+      .loading-title {
+        font-size: 30px;
+      }
+
+      .result-capture {
+        max-width: 390px;
+        padding: 10px;
+      }
+
+      .result-inner {
+        min-height: 500px;
+      }
+
+      .result-title {
+        font-size: 14px;
+        padding: 0 40px;
+      }
+
+      .result-title strong {
+        font-size: 22px;
+        letter-spacing: -1.4px;
+      }
+
+      .stamp-mini {
+        width: 32px;
+        height: 32px;
+        font-size: 7px;
+        top: 5px;
+        right: 5px;
+        border-width: 2.5px;
+      }
+
+      .result-student {
+        width: 88%;
+      }
+
+      .result-grid,
+      .total-box {
+        width: 96%;
+      }
+
+      .result-cell {
+        min-height: 88px;
+      }
+
+      .result-area {
+        font-size: 15px;
+      }
+
+      .marked-letter {
+        font-size: 31px;
+      }
+
+      .marked-letter::after {
+        width: 52px;
+        height: 36px;
+      }
+
+      .total-letter {
+        font-size: 37px;
+        min-width: 84px;
+      }
+
+      .total-letter::after {
+        width: 86px;
+        height: 46px;
+      }
+
+      .comment-text {
+        width: 98%;
+        font-size: 13px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="https://test-it.co.kr/" class="logo">테스트잇</a>
+      <nav class="nav">
+        <a href="https://test-it.co.kr/">성격</a>
+        <a href="https://test-it.co.kr/">얼굴</a>
+        <a href="https://test-it.co.kr/">그외</a>
+        <a href="https://test-it.co.kr/">사주</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section id="mainScreen" class="screen active">
+      <div class="main-image-box">
+        <img class="main-image" src="img_main399.png" alt="테스트잇 TF 종합 평가 테스트">
+      </div>
+
+      <button class="btn" onclick="goName()">테스트 시작하기</button>
+    </section>
+
+    <section id="nameScreen" class="screen">
+      <div class="exam-paper name-paper">
+        <div class="exam-inner name-inner">
+          <div class="paper-top">
+            <div class="paper-date">
+              응시자 정보 작성란<br>
+              테스트잇 TF 종합 평가
+            </div>
+          </div>
+
+          <h2 class="name-title">
+            응시자<br>
+            닉네임 작성
+          </h2>
+
+          <div class="name-wrap">
+            <label class="name-label" for="nicknameInput">성명</label>
+            <input
+              id="nicknameInput"
+              class="name-input"
+              type="text"
+              maxlength="12"
+              placeholder="여기에 입력해주세요"
+              autocomplete="off"
+            >
+          </div>
+
+          <div class="guide-box">
+            ○ 총 12문항입니다.<br>
+            ○ 사회생활, 친구, 연인, 가족 영역별로 3문항씩 출제됩니다.<br>
+            ○ 각 문항에서 더 가까운 쪽 하나를 고르십시오.
+          </div>
+        </div>
+
+        <button class="btn" onclick="startTest()">시험 응시하기</button>
+        <button class="btn white" onclick="goMain()">처음으로</button>
+      </div>
+    </section>
+
+    <section id="questionScreen" class="screen">
+      <div class="progress-box">
+        <div class="progress-top">
+          <span>테스트잇 TF 종합 평가 테스트</span>
+          <span id="progressText">1 / 12</span>
+        </div>
+        <div class="progress-track">
+          <div id="progressFill" class="progress-fill"></div>
+        </div>
+        <div id="omr" class="omr"></div>
+      </div>
+
+      <div class="exam-paper question-paper">
+        <div class="exam-inner question-inner">
+          <div class="question-head">
+            <div class="question-small-title">2026학년도 테스트잇 모의고사</div>
+            <div id="questionSubject" class="question-subject">사회생활 영역</div>
+
+            <div class="question-info">
+              <div class="student-field">
+                <span>성명</span>
+                <b id="questionName">응시자</b>
+              </div>
+              <div class="student-field">
+                <span>문항</span>
+                <b id="questionCount">1 / 12</b>
+              </div>
+            </div>
+          </div>
+
+          <div class="question-text-box">
+            <p id="questionText" class="question-text"></p>
+          </div>
+
+          <div id="choiceList" class="choice-list"></div>
+
+          <div class="question-note">
+            <span>※ 선택하면 다음 문항으로 넘어갑니다.</span>
+            <span>정답 없음</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="loadingScreen" class="screen">
+      <div class="exam-paper loading-paper">
+        <div class="exam-inner loading-inner">
+          <div class="loading-box">
+            <div class="loading-stamp">채점<br>중</div>
+            <div class="loading-title">답안 채점 중</div>
+            <div class="loading-desc">
+              선택한 답안을 기준으로<br>
+              영역별 T/F 성향을 채점하고 있습니다.
+            </div>
+            <div class="loading-dots">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="resultScreen" class="screen">
+      <div id="resultCapture" class="result-capture">
+        <div class="result-inner">
+          <div class="stamp-mini">채점<br>완료</div>
+
+          <h2 class="result-title">
+            2026학년도 테스트잇 모의고사
+            <strong>TF 종합 평가 채점지</strong>
+          </h2>
+
+          <div class="result-student">
+            <div class="student-field">
+              <span>성명</span>
+              <b id="resultName">응시자</b>
+            </div>
+            <div class="student-field">
+              <span>번호</span>
+              <b>399-TF</b>
+            </div>
+          </div>
+
+          <h3 class="score-title">영역별 채점 결과</h3>
+
+          <div id="resultGrid" class="result-grid"></div>
+
+          <div class="total-box">
+            <div class="total-label">최종 종합 결과</div>
+            <div id="totalLetter" class="total-letter">T</div>
+          </div>
+
+          <h3 class="comment-title">결과 해설</h3>
+          <p id="resultComment" class="comment-text"></p>
+        </div>
+      </div>
+
+      <div class="result-buttons">
+        <button class="btn" onclick="saveResultImage()">결과 이미지 저장하기</button>
+        <button class="btn white" onclick="restartTest()">다시 해보기</button>
+        <a class="btn white" href="https://test-it.co.kr/">다른 테스트 해보기</a>
+        <button class="btn white" onclick="shareTest()">테스트 공유하기</button>
+      </div>
+    </section>
+
+    <div class="ad-wrap">
+      <script src="https://ads-partners.coupang.com/g.js"></script>
+      <script>
+        new PartnersCoupang.G({
+          id: 798186,
+          template: "carousel",
+          trackingCode: "AF4391881",
+          width: "350",
+          height: "140"
+        });
+      </script>
+    </div>
+  </main>
+
+  <div id="saveModal" class="save-modal">
+    <div class="save-modal-box">
+      <p class="save-modal-title">결과 이미지가 만들어졌어요</p>
+      <p class="save-modal-desc">아래 이미지를 꾹 눌러 저장해주세요.</p>
+      <img id="savePreview" class="save-preview" alt="결과 이미지 미리보기">
+      <button class="modal-close" onclick="closeSaveModal()">닫기</button>
+    </div>
+  </div>
+
+  <script>
+    const TEST_TITLE = '테스트잇 TF 종합 평가 테스트';
+    const TEST_URL = 'https://test-it.co.kr/test399';
+
+    const categoryInfo = {
+      work: { name: '사회생활', subject: '사회생활 영역' },
+      friend: { name: '친구', subject: '친구 영역' },
+      lover: { name: '연인', subject: '연인 영역' },
+      family: { name: '가족', subject: '가족 영역' }
+    };
+
+    const questions = [
+      {
+        category: 'work',
+        title: '새로운 사람과 같이 일하게 됐다.<br>내가 더 편하게 느끼는 사람은?',
+        options: [
+          { type: 'F', text: '조금 서툴러도 말이 잘 통하고<br>분위기를 편하게 만드는 사람' },
+          { type: 'T', text: '말수는 적어도 맡은 일을<br>정확하게 끝내는 사람' }
+        ]
+      },
+      {
+        category: 'work',
+        title: '내가 맡은 일이 좋은 결과를 냈다.<br>들었을 때 더 기분 좋은 칭찬은?',
+        options: [
+          { type: 'F', text: '너랑 팀하면 사람들이 다 좋아하더라.<br>분위기도 좋아지고!' },
+          { type: 'T', text: '너 일 처리 진짜 깔끔하더라!<br>결과물도 완성도 높고 완벽했어' }
+        ]
+      },
+      {
+        category: 'work',
+        title: '회의에서 내 의견이 바로 반려됐다.<br>내 반응은?',
+        options: [
+          { type: 'T', text: '왜 안 되는지 기준을 듣고<br>보완할 부분을 찾는다' },
+          { type: 'F', text: '너무 단칼에 잘린 것 같아<br>말 꺼내기가 조심스러워진다' }
+        ]
+      },
+
+      {
+        category: 'friend',
+        title: '친구가 “네가 알아서 해”라고 했다.<br>내 해석은?',
+        options: [
+          { type: 'T', text: '내가 정해도 된다는 뜻으로 받아들인다' },
+          { type: 'F', text: '말투가 왜 저런지 기분이 신경 쓰인다' }
+        ]
+      },
+      {
+        category: 'friend',
+        title: '친구에게 뭘 부탁했는데<br>“음.. 생각해 볼게”라는 답이 왔다.<br>내 해석은?',
+        options: [
+          { type: 'F', text: '거절의 의미네' },
+          { type: 'T', text: '진짜 생각해본다는 뜻이네' }
+        ]
+      },
+      {
+        category: 'friend',
+        title: '친구가 약속 메뉴 정할 때<br>“난 다 좋아! 너 먹고 싶은 거 고르자"<br>라고 할 때 내 속마음은?',
+        options: [
+          { type: 'T', text: '오 좋아! 내가 평소에 가고 싶었던 맛집 링크 바로 보낸다' },
+          { type: 'F', text: '진짜 다 좋은 걸까?<br>고르기 귀찮아서 떠넘기는 건가..' }
+        ]
+      },
+
+      {
+        category: 'lover',
+        title: '연인이 답장을 오래 안 한다.<br>내가 먼저 떠올리는 생각은?',
+        options: [
+          { type: 'T', text: '바쁘거나 못 볼 상황이겠지 생각한다' },
+          { type: 'F', text: '혹시 내가 뭐 잘못 보냈나 싶어서 마지막 대화를 다시 본다' }
+        ]
+      },
+      {
+        category: 'lover',
+        title: '연인이 내가 준 선물을 받고<br>“고마워”라고만 했을 때 내 반응은?',
+        options: [
+          { type: 'T', text: '고맙다고 했으니 괜찮다고 생각한다' },
+          { type: 'F', text: '반응이 짧아서 마음에 좀 걸린다' }
+        ]
+      },
+      {
+        category: 'lover',
+        title: '연인에게 오늘 서운했던 점을<br>조곤조곤 얘기했더니 갑자기 운다.',
+        options: [
+          { type: 'T', text: '서운한 건 난데, 눈물로 상황을 넘기려는 것 같아 당황스럽다' },
+          { type: 'F', text: '우는 모습을 보니 마음이 약해지고<br>괜히 미안해진다' }
+        ]
+      },
+
+      {
+        category: 'family',
+        title: '엄마가 “아이고, 요즘 온몸이 쑤시고 안 아픈 데가 없네”라고 하실 때 내 첫마디는?',
+        options: [
+          { type: 'T', text: '병원은 가봤어? 약이라도 좀 먹어봐' },
+          { type: 'F', text: '요즘 너무 무리해서 그런 거 아니야?<br>좀 쉬어ㅠㅠ' }
+        ]
+      },
+      {
+        category: 'family',
+        title: '집에서 발가락을 세게 찧어서 아파하는데, 가족이 “조심 좀 하지!”라고 할 때 내 생각은?',
+        options: [
+          { type: 'T', text: '내가 부주의했네. 조심하라는 뜻이겠지' },
+          { type: 'F', text: '아파 죽겠는데 조심 안 한 사람 취급하네' }
+        ]
+      },
+      {
+        category: 'family',
+        title: '부모님이 홈쇼핑 보다가 잘 안 쓸 것 같은 물건을 비싸게 사셨다. 내 반응은?',
+        options: [
+          { type: 'T', text: '이거 진짜 쓸 거야?<br>아니면 환불하는 게 낫지 않아?' },
+          { type: 'F', text: '갖고 싶으셨나 보네..<br>그래도 다음엔 사기 전에 같이 보자' }
+        ]
+      }
+    ];
+
+    let currentIndex = 0;
+    let answers = [];
+    let nickname = '';
+
+    const mainScreen = document.getElementById('mainScreen');
+    const nameScreen = document.getElementById('nameScreen');
+    const questionScreen = document.getElementById('questionScreen');
+    const loadingScreen = document.getElementById('loadingScreen');
+    const resultScreen = document.getElementById('resultScreen');
+
+    function formatText(text) {
+      return String(text).replace(/\n/g, '<br>');
+    }
+
+    function showScreen(screen) {
+      [mainScreen, nameScreen, questionScreen, loadingScreen, resultScreen].forEach(item => {
+        item.classList.remove('active');
+      });
+
+      screen.classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function goMain() {
+      showScreen(mainScreen);
+    }
+
+    function goName() {
+      showScreen(nameScreen);
+      setTimeout(() => {
+        document.getElementById('nicknameInput').focus();
+      }, 100);
+    }
+
+    function startTest() {
+      const input = document.getElementById('nicknameInput');
+      nickname = input.value.trim();
+
+      if (!nickname) {
+        alert('응시자 닉네임을 적어주세요.');
+        input.focus();
+        return;
+      }
+
+      currentIndex = 0;
+      answers = [];
+      renderQuestion();
+      showScreen(questionScreen);
+    }
+
+    function renderQuestion() {
+      const q = questions[currentIndex];
+      const qNo = currentIndex + 1;
+      const percent = Math.round((qNo / questions.length) * 100);
+      const category = categoryInfo[q.category];
+
+      document.getElementById('progressText').textContent = `${qNo} / ${questions.length}`;
+      document.getElementById('progressFill').style.width = `${percent}%`;
+      document.getElementById('questionSubject').textContent = category.subject;
+      document.getElementById('questionName').textContent = nickname;
+      document.getElementById('questionCount').textContent = `${qNo} / ${questions.length}`;
+
+      document.getElementById('questionText').innerHTML = `
+        <span class="q-number">${qNo}.</span>
+        ${formatText(q.title)}
+      `;
+
+      document.getElementById('omr').innerHTML = questions.map((_, index) => {
+        let cls = '';
+        if (index < currentIndex) cls = 'done';
+        if (index === currentIndex) cls = 'now';
+        return `<span class="${cls}">${index + 1}</span>`;
+      }).join('');
+
+      document.getElementById('choiceList').innerHTML = q.options.map((option, index) => {
+        const no = index === 0 ? '①' : '②';
+        return `
+          <button class="choice-btn" onclick="selectAnswer(${index})">
+            <span class="choice-no">${no}</span>
+            <span class="choice-text">${formatText(option.text)}</span>
+          </button>
+        `;
+      }).join('');
+    }
+
+    function selectAnswer(index) {
+      const q = questions[currentIndex];
+      const selected = q.options[index];
+
+      answers[currentIndex] = {
+        category: q.category,
+        type: selected.type
+      };
+
+      if (currentIndex < questions.length - 1) {
+        currentIndex++;
+        renderQuestion();
+      } else {
+        showLoading();
+      }
+    }
+
+    function showLoading() {
+      showScreen(loadingScreen);
+
+      setTimeout(() => {
+        renderResult();
+      }, 3000);
+    }
+
+    function getScores() {
+      const scores = {
+        work: { T: 0, F: 0 },
+        friend: { T: 0, F: 0 },
+        lover: { T: 0, F: 0 },
+        family: { T: 0, F: 0 }
+      };
+
+      let totalT = 0;
+      let totalF = 0;
+
+      answers.forEach(answer => {
+        scores[answer.category][answer.type]++;
+
+        if (answer.type === 'T') totalT++;
+        if (answer.type === 'F') totalF++;
+      });
+
+      return { scores, totalT, totalF };
+    }
+
+    function getAreaType(score) {
+      return score.T > score.F ? 'T' : 'F';
+    }
+
+    function getFinalType(totalT, totalF) {
+      if (totalT > totalF) return 'T';
+      if (totalF > totalT) return 'F';
+      return 'TF';
+    }
+
+    function renderResult() {
+      const { scores, totalT, totalF } = getScores();
+      const order = ['work', 'friend', 'lover', 'family'];
+      const areaTypes = {};
+      const finalType = getFinalType(totalT, totalF);
+      const diff = Math.abs(totalT - totalF);
+
+      order.forEach(key => {
+        areaTypes[key] = getAreaType(scores[key]);
+      });
+
+      document.getElementById('resultName').textContent = nickname;
+
+      document.getElementById('resultGrid').innerHTML = order.map(key => {
+        return `
+          <div class="result-cell">
+            <div class="result-area">${categoryInfo[key].name} 영역</div>
+            <div class="marked-letter">${areaTypes[key]}</div>
+          </div>
+        `;
+      }).join('');
+
+      document.getElementById('totalLetter').textContent = finalType;
+
+      let comment = '';
+
+      if (finalType === 'T') {
+        comment = `
+          ${nickname}님은 최종적으로 <span class="blue">T 성향</span>으로 채점되었습니다.<br>
+          ${diff <= 2
+            ? '전체적으로는 T에 가깝지만, 상황에 따라 감정적인 반응도 함께 보입니다.'
+            : '전체적으로는 T 성향이 뚜렷하게 나타났습니다.'}
+        `;
+      } else if (finalType === 'F') {
+        comment = `
+          ${nickname}님은 최종적으로 <span class="red">F 성향</span>으로 채점되었습니다.<br>
+          ${diff <= 2
+            ? '전체적으로는 F에 가깝지만, 상황에 따라 현실적으로 판단하는 면도 함께 보입니다.'
+            : '전체적으로는 F 성향이 뚜렷하게 나타났습니다.'}
+        `;
+      } else {
+        comment = `
+          ${nickname}님은 최종적으로 <span class="blue">T</span><span class="red">F</span> 반반형으로 채점되었습니다.<br>
+          상황에 따라 현실적인 판단과 감정적인 반응이 함께 나타납니다.
+        `;
+      }
+
+      document.getElementById('resultComment').innerHTML = comment;
+      showScreen(resultScreen);
+    }
+
+    function restartTest() {
+      currentIndex = 0;
+      answers = [];
+      nickname = '';
+      document.getElementById('nicknameInput').value = '';
+      showScreen(mainScreen);
+    }
+
+    async function saveResultImage() {
+      const target = document.getElementById('resultCapture');
+
+      try {
+        const canvas = await html2canvas(target, {
+          scale: 2,
+          useCORS: true,
+          backgroundColor: '#fdfbf3',
+          scrollX: 0,
+          scrollY: -window.scrollY
+        });
+
+        const imageUrl = canvas.toDataURL('image/png');
+        document.getElementById('savePreview').src = imageUrl;
+        document.getElementById('saveModal').classList.add('active');
+      } catch (e) {
+        alert('이미지 저장 중 오류가 발생했어요. 다시 시도해주세요.');
+      }
+    }
+
+    function closeSaveModal() {
+      document.getElementById('saveModal').classList.remove('active');
+    }
+
+    async function shareTest() {
+      const shareData = {
+        title: TEST_TITLE,
+        text: '테스트잇 TF 종합 평가 테스트',
+        url: TEST_URL
+      };
+
+      try {
+        if (navigator.share) {
+          await navigator.share(shareData);
+        } else {
+          await navigator.clipboard.writeText(TEST_URL);
+          alert('테스트 링크가 복사됐어요!');
+        }
+      } catch (e) {
+        console.log(e);
+      }
+    }
+  </script>
+</body>
+</html>

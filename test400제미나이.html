@@ -5,25 +5,26 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>테스트잇 TF 종합 평가 테스트</title>
-  <meta name="description" content="테스트잇 TF 종합 평가 테스트">
-  <meta name="keywords" content="테스트잇,tf종합평가테스트,tf테스트,테스트잇tf종합평가테스트,사주테스트">
+  <title>테스트잇 관계 유형 성격 테스트</title>
+  <meta name="description" content="테스트잇 관계 유형 성격 테스트">
+  <meta name="keywords" content="테스트잇,관계유형테스트,애착유형테스트,테스트잇관계유형,심리테스트">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="테스트잇 TF 종합 평가 테스트">
-  <meta property="og:description" content="테스트잇 TF 종합 평가 테스트">
-  <meta property="og:url" content="https://test-it.co.kr/test399">
+  <meta property="og:title" content="테스트잇 관계 유형 성격 테스트">
+  <meta property="og:description" content="테스트잇 관계 유형 성격 테스트">
+  <meta property="og:url" content="https://test-it.co.kr/test400">
   <link rel="icon" type="image/png" href="favicon.png">
 
   <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 
   <style>
     :root {
-      --black: #111;
-      --paper: #fdfbf3;
-      --line: #111;
-      --red: #e60000;
-      --blue: #005eff;
-      --soft: #eee8d8;
+      /* 연핑크 테마 컬러 */
+      --black: #2b1b1f; /* 텍스트용 진한 브라운/핑크블랙 */
+      --paper: #fff5f7; /* 연핑크 종이 배경 */
+      --line: #3a2a2d; /* 선 색상 */
+      --red: #d6304a; /* 도장용 레드 */
+      --blue: #2259b5; /* 강조용 블루 */
+      --soft: #ffe3e8; /* 번호판 등 부드러운 핑크 */
     }
 
     * {
@@ -32,7 +33,7 @@
 
     body {
       margin: 0;
-      background: #e7e0d4;
+      background: #f4d8de; /* 바깥 배경 연한 인디핑크 */
       color: var(--black);
       font-family: "Times New Roman", "Batang", "바탕", "Nanum Myeongjo", serif;
     }
@@ -57,7 +58,7 @@
       width: 100%;
       height: 56px;
       background: #fff;
-      border-bottom: 1px solid #111;
+      border-bottom: 1px solid var(--line);
       position: sticky;
       top: 0;
       z-index: 10;
@@ -112,12 +113,12 @@
 
     .exam-paper {
       background:
-        radial-gradient(circle, rgba(0,0,0,0.032) 0 0.8px, transparent 1px),
+        radial-gradient(circle, rgba(0,0,0,0.02) 0 0.8px, transparent 1px),
         var(--paper);
       background-size: 12px 12px;
       border: 2px solid var(--line);
       padding: 18px 14px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.1);
       min-height: 640px;
     }
 
@@ -145,8 +146,9 @@
     .main-image-box {
       width: 100%;
       background: #fff;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
       overflow: hidden;
+      border: 2px solid var(--line);
     }
 
     .main-image {
@@ -162,7 +164,7 @@
       width: 100%;
       height: 54px;
       border: 2px solid var(--line);
-      background: #111;
+      background: var(--line);
       color: #fff;
       font-size: 17px;
       font-weight: 900;
@@ -176,8 +178,8 @@
     }
 
     .btn.white {
-      background: #fff;
-      color: #111;
+      background: var(--paper);
+      color: var(--line);
       border: 1.5px solid var(--line);
       height: 50px;
       margin-top: 9px;
@@ -219,22 +221,23 @@
       width: 100%;
       height: 52px;
       border: 1.5px solid var(--line);
-      background: rgba(255,255,255,0.55);
+      background: rgba(255,255,255,0.7);
       text-align: center;
       font-size: 23px;
       font-weight: 900;
       outline: none;
+      color: var(--black);
     }
 
     .name-input::placeholder {
-      color: #aaa;
+      color: #b0a0a3;
     }
 
     .guide-box {
       width: 90%;
       margin: 24px auto 0;
       border: 1.5px solid var(--line);
-      background: rgba(255,255,255,0.35);
+      background: rgba(255,255,255,0.45);
       padding: 13px;
       font-size: 16px;
       line-height: 1.58;
@@ -247,7 +250,7 @@
       border: 1.5px solid var(--line);
       padding: 10px;
       margin-bottom: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.14);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
       font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif;
     }
 
@@ -273,7 +276,7 @@
     .progress-fill {
       width: 0;
       height: 100%;
-      background: #111;
+      background: var(--line);
       transition: width 0.2s ease;
     }
 
@@ -296,12 +299,12 @@
     }
 
     .omr span.done {
-      background: #111;
+      background: var(--line);
       color: #fff;
     }
 
     .omr span.now {
-      background: #ddd;
+      background: #ffc2cc; /* 현재 진행 번호 연핑크 강조 */
     }
 
     .question-paper {
@@ -398,25 +401,25 @@
 
     .choice-btn {
       width: 100%;
-      min-height: 72px;
+      min-height: 64px;
       display: grid;
       grid-template-columns: 48px 1fr;
       align-items: stretch;
       text-align: left;
-      color: #111;
+      color: var(--black);
       background: #fff;
       border: 2px solid var(--line);
-      box-shadow: 3px 3px 0 rgba(0,0,0,0.16);
+      box-shadow: 3px 3px 0 rgba(58,42,45,0.16);
       overflow: hidden;
     }
 
     .choice-no {
       border-right: 2px solid var(--line);
-      background: #eee8d8;
+      background: var(--soft);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 24px;
+      font-size: 22px;
       line-height: 1;
       font-weight: 900;
     }
@@ -425,7 +428,7 @@
       display: flex;
       align-items: center;
       padding: 11px 12px;
-      font-size: 18px;
+      font-size: 16px;
       line-height: 1.34;
       font-weight: 900;
       letter-spacing: -0.65px;
@@ -434,7 +437,7 @@
 
     .choice-btn:hover,
     .choice-btn:active {
-      background: #fff4c7;
+      background: #fff0f3;
     }
 
     .question-note {
@@ -459,14 +462,6 @@
       align-items: center;
       justify-content: center;
       overflow: hidden;
-    }
-
-    .ad-wrap iframe,
-    .ad-wrap div,
-    .ad-wrap ins {
-      max-width: 100%;
-      margin-left: auto !important;
-      margin-right: auto !important;
     }
 
     .loading-paper {
@@ -568,7 +563,6 @@
       0%, 100% {
         transform: rotate(-9deg) scale(1);
       }
-
       50% {
         transform: rotate(-9deg) scale(1.06);
       }
@@ -578,9 +572,8 @@
       0%, 100% {
         background: #fff;
       }
-
       50% {
-        background: #111;
+        background: var(--line);
       }
     }
 
@@ -589,12 +582,12 @@
       max-width: 420px;
       margin: 0 auto;
       background:
-        radial-gradient(circle, rgba(0,0,0,0.035) 0 0.8px, transparent 1px),
+        radial-gradient(circle, rgba(0,0,0,0.02) 0 0.8px, transparent 1px),
         var(--paper);
       background-size: 12px 12px;
       border: 2px solid var(--line);
       padding: 12px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.12);
     }
 
     .result-inner {
@@ -665,7 +658,7 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       border: 1.5px solid var(--line);
-      background: rgba(255,255,255,0.25);
+      background: rgba(255,255,255,0.4);
     }
 
     .result-cell {
@@ -699,10 +692,10 @@
 
     .marked-letter {
       position: relative;
-      font-size: 33px;
+      font-size: 22px;
       line-height: 1;
       font-weight: 900;
-      color: #111;
+      color: var(--black);
       min-width: 54px;
       text-align: center;
     }
@@ -712,7 +705,7 @@
       position: absolute;
       left: 50%;
       top: 50%;
-      width: 56px;
+      width: 64px;
       height: 38px;
       border: 4px solid var(--red);
       border-radius: 50%;
@@ -721,24 +714,11 @@
       pointer-events: none;
     }
 
-    .marked-letter::before {
-      content: "";
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      width: 48px;
-      height: 42px;
-      border: 2px solid rgba(230,0,0,0.58);
-      border-radius: 50%;
-      transform: translate(-50%, -50%) rotate(9deg);
-      pointer-events: none;
-    }
-
     .total-box {
       width: 92%;
       margin: 0 auto 18px;
       border: 1.5px solid var(--line);
-      background: rgba(255,255,255,0.35);
+      background: rgba(255,255,255,0.5);
       padding: 14px 12px 15px;
       text-align: center;
     }
@@ -753,10 +733,10 @@
       position: relative;
       display: inline-block;
       min-width: 90px;
-      font-size: 40px;
+      font-size: 28px;
       line-height: 1;
       font-weight: 900;
-      color: #111;
+      color: var(--black);
     }
 
     .total-letter::after {
@@ -764,7 +744,7 @@
       position: absolute;
       left: 50%;
       top: 50%;
-      width: 94px;
+      width: 110px;
       height: 50px;
       border: 5px solid var(--red);
       border-radius: 50%;
@@ -790,14 +770,6 @@
       word-break: keep-all;
     }
 
-    .comment-text .red {
-      color: var(--red);
-    }
-
-    .comment-text .blue {
-      color: var(--blue);
-    }
-
     .result-buttons {
       display: grid;
       gap: 0;
@@ -809,7 +781,7 @@
       position: fixed;
       inset: 0;
       z-index: 100;
-      background: rgba(0,0,0,0.72);
+      background: rgba(43,27,31,0.8);
       padding: 22px 14px;
       align-items: center;
       justify-content: center;
@@ -823,8 +795,8 @@
     .save-modal-box {
       width: 100%;
       max-width: 420px;
-      background: #fff;
-      border: 2px solid #111;
+      background: var(--paper);
+      border: 2px solid var(--line);
       padding: 14px;
       text-align: center;
     }
@@ -840,7 +812,7 @@
       font-size: 13px;
       line-height: 1.5;
       font-weight: 700;
-      color: #444;
+      color: #555;
       margin: 0 0 12px;
     }
 
@@ -849,8 +821,8 @@
       max-width: 100%;
       max-height: 70vh;
       object-fit: contain;
-      border: 1.5px solid #111;
-      background: #fdfbf3;
+      border: 1.5px solid var(--line);
+      background: #fff;
       display: block;
       margin: 0 auto 12px;
     }
@@ -858,8 +830,8 @@
     .modal-close {
       width: 100%;
       height: 46px;
-      border: 1.5px solid #111;
-      background: #111;
+      border: 1.5px solid var(--line);
+      background: var(--line);
       color: #fff;
       font-size: 15px;
       font-weight: 900;
@@ -869,189 +841,66 @@
       .wrap {
         padding: 12px 7px 34px;
       }
-
-      .header-inner {
-        padding: 0 12px;
-      }
-
-      .logo {
-        font-size: 20px;
-      }
-
-      .nav {
-        gap: 10px;
-        font-size: 15px;
-      }
-
       .exam-paper {
         padding: 13px 9px;
-        min-height: 610px;
       }
-
       .exam-inner {
         padding: 14px 9px;
-        min-height: 565px;
       }
-
-      .name-paper {
-        min-height: 0;
-        padding-bottom: 12px;
-      }
-
-      .name-inner {
-        min-height: 0;
-        padding-bottom: 20px;
-      }
-
       .name-title {
         margin-top: 38px;
         font-size: 32px;
       }
-
-      .main-image-box {
-        box-shadow: 0 6px 18px rgba(0,0,0,0.18);
-      }
-
-      .question-paper {
-        min-height: 0;
-        padding-bottom: 10px;
-      }
-
-      .question-inner {
-        min-height: 0;
-        padding-bottom: 11px;
-      }
-
       .question-subject {
         font-size: 30px;
       }
-
       .question-info {
         width: 96%;
         gap: 7px;
       }
-
       .student-field {
         grid-template-columns: 45px 1fr;
       }
-
       .student-field span,
       .student-field b {
         font-size: 13px;
       }
-
       .question-text {
-        font-size: 19px;
+        font-size: 18px;
         line-height: 1.43;
       }
-
       .q-number {
         font-size: 27px;
       }
-
       .choice-btn {
-        min-height: 68px;
+        min-height: 60px;
         grid-template-columns: 42px 1fr;
       }
-
       .choice-no {
-        font-size: 21px;
+        font-size: 18px;
       }
-
       .choice-text {
-        font-size: 16px;
+        font-size: 14px;
         line-height: 1.33;
         padding: 10px 10px;
       }
-
-      .question-note {
-        margin-top: 16px;
-      }
-
-      .loading-paper {
-        min-height: 500px;
-      }
-
-      .loading-inner {
-        min-height: 450px;
-      }
-
-      .loading-box {
-        width: 94%;
-        padding: 32px 14px;
-      }
-
-      .loading-title {
-        font-size: 30px;
-      }
-
-      .result-capture {
-        max-width: 390px;
-        padding: 10px;
-      }
-
-      .result-inner {
-        min-height: 500px;
-      }
-
-      .result-title {
-        font-size: 14px;
-        padding: 0 40px;
-      }
-
       .result-title strong {
         font-size: 22px;
-        letter-spacing: -1.4px;
       }
-
-      .stamp-mini {
-        width: 32px;
-        height: 32px;
-        font-size: 7px;
-        top: 5px;
-        right: 5px;
-        border-width: 2.5px;
-      }
-
-      .result-student {
-        width: 88%;
-      }
-
-      .result-grid,
-      .total-box {
-        width: 96%;
-      }
-
-      .result-cell {
-        min-height: 88px;
-      }
-
-      .result-area {
-        font-size: 15px;
-      }
-
       .marked-letter {
-        font-size: 31px;
+        font-size: 18px;
       }
-
       .marked-letter::after {
-        width: 52px;
+        width: 58px;
         height: 36px;
       }
-
       .total-letter {
-        font-size: 37px;
+        font-size: 24px;
         min-width: 84px;
       }
-
       .total-letter::after {
-        width: 86px;
+        width: 96px;
         height: 46px;
-      }
-
-      .comment-text {
-        width: 98%;
-        font-size: 13px;
       }
     }
   </style>
@@ -1062,10 +911,10 @@
     <div class="header-inner">
       <a href="https://test-it.co.kr/" class="logo">테스트잇</a>
       <nav class="nav">
-        <a href="https://test-it.co.kr/test.html">성격</a>
-          <a href="https://test-it.co.kr/face.html">얼굴</a>
-          <a href="https://test-it.co.kr/etc.html">그외</a>
-          <a href="https://test-it.co.kr/saju.html">사주</a>
+        <a href="https://test-it.co.kr/">성격</a>
+        <a href="https://test-it.co.kr/">얼굴</a>
+        <a href="https://test-it.co.kr/">그외</a>
+        <a href="https://test-it.co.kr/">사주</a>
       </nav>
     </div>
   </header>
@@ -1073,7 +922,7 @@
   <main class="wrap">
     <section id="mainScreen" class="screen active">
       <div class="main-image-box">
-        <img class="main-image" src="img_main399.png" alt="테스트잇 TF 종합 평가 테스트">
+        <img class="main-image" src="img_main400.png" alt="테스트잇 관계 유형 성격 테스트" onerror="this.src='https://via.placeholder.com/540x540.png?text=Main+Image+test400'">
       </div>
 
       <button class="btn" onclick="goName()">테스트 시작하기</button>
@@ -1085,7 +934,7 @@
           <div class="paper-top">
             <div class="paper-date">
               응시자 정보 작성란<br>
-              테스트잇 TF 종합 평가
+              테스트잇 관계 유형 평가
             </div>
           </div>
 
@@ -1107,9 +956,9 @@
           </div>
 
           <div class="guide-box">
-            ○ 총 12문항입니다.<br>
-            ○ 사회생활, 친구, 연인, 가족 영역별로 3문항씩 출제됩니다.<br>
-            ○ 각 문항에서 더 가까운 쪽 하나를 고르십시오.
+            ○ 기본 총 12문항입니다.<br>
+            ○ 사회생활, 친구, 연인, 가족 영역별로 출제됩니다.<br>
+            ○ 각 문항에서 4개의 보기 중 하나를 고르십시오.
           </div>
         </div>
 
@@ -1121,7 +970,7 @@
     <section id="questionScreen" class="screen">
       <div class="progress-box">
         <div class="progress-top">
-          <span>테스트잇 TF 종합 평가 테스트</span>
+          <span>테스트잇 관계 유형 성격 테스트</span>
           <span id="progressText">1 / 12</span>
         </div>
         <div class="progress-track">
@@ -1170,7 +1019,7 @@
             <div class="loading-title">답안 채점 중</div>
             <div class="loading-desc">
               선택한 답안을 기준으로<br>
-              영역별 T/F 성향을 채점하고 있습니다.
+              영역별 애착 유형을 채점하고 있습니다.
             </div>
             <div class="loading-dots">
               <span></span>
@@ -1189,7 +1038,7 @@
 
           <h2 class="result-title">
             2026학년도 테스트잇 모의고사
-            <strong>TF 종합 평가 채점지</strong>
+            <strong>관계 유형 종합 평가 채점지</strong>
           </h2>
 
           <div class="result-student">
@@ -1199,7 +1048,7 @@
             </div>
             <div class="student-field">
               <span>번호</span>
-              <b>399-TF</b>
+              <b>400-REL</b>
             </div>
           </div>
 
@@ -1208,8 +1057,8 @@
           <div id="resultGrid" class="result-grid"></div>
 
           <div class="total-box">
-            <div class="total-label">최종 종합 결과</div>
-            <div id="totalLetter" class="total-letter">T</div>
+            <div class="total-label">최종 종합 유형</div>
+            <div id="totalLetter" class="total-letter">안정형</div>
           </div>
 
           <h3 class="comment-title">결과 해설</h3>
@@ -1249,8 +1098,8 @@
   </div>
 
   <script>
-    const TEST_TITLE = '테스트잇 TF 종합 평가 테스트';
-    const TEST_URL = 'https://test-it.co.kr/test399';
+    const TEST_TITLE = '테스트잇 관계 유형 성격 테스트';
+    const TEST_URL = 'https://test-it.co.kr/test400';
 
     const categoryInfo = {
       work: { name: '사회생활', subject: '사회생활 영역' },
@@ -1259,117 +1108,195 @@
       family: { name: '가족', subject: '가족 영역' }
     };
 
-    const questions = [
-      {
-        category: 'work',
-        title: '새로운 사람과 같이 일하게 됐다.<br>내가 더 편하게 느끼는 사람은?',
-        options: [
-          { type: 'F', text: '조금 서툴러도 말이 잘 통하고<br>분위기를 편하게 만드는 사람' },
-          { type: 'T', text: '말수는 적어도 맡은 일을<br>정확하게 끝내는 사람' }
-        ]
-      },
-      {
-        category: 'work',
-        title: '내가 맡은 일이 좋은 결과를 냈다.<br>들었을 때 더 기분 좋은 칭찬은?',
-        options: [
-          { type: 'F', text: '너랑 팀하면 사람들이 다 좋아하더라.<br>분위기도 좋아지고!' },
-          { type: 'T', text: '너 일 처리 진짜 깔끔하더라!<br>결과물도 완성도 높고 완벽했어' }
-        ]
-      },
-      {
-        category: 'work',
-        title: '회의에서 내 의견이 바로 반려됐다.<br>내 반응은?',
-        options: [
-          { type: 'T', text: '왜 안 되는지 기준을 듣고<br>보완할 부분을 찾는다' },
-          { type: 'F', text: '너무 단칼에 잘린 것 같아<br>말 꺼내기가 조심스러워진다' }
-        ]
-      },
+    const typeNames = {
+      S: '안정형',
+      AX: '불안형',
+      AV: '회피형',
+      FA: '불안회피형'
+    };
 
-      {
-        category: 'friend',
-        title: '친구가 “네가 알아서 해”라고 했다.<br>내 해석은?',
-        options: [
-          { type: 'T', text: '내가 정해도 된다는 뜻으로 받아들인다' },
-          { type: 'F', text: '말투가 왜 저런지 기분이 신경 쓰인다' }
-        ]
-      },
-      {
-        category: 'friend',
-        title: '친구에게 뭘 부탁했는데<br>“음.. 생각해 볼게”라는 답이 왔다.<br>내 해석은?',
-        options: [
-          { type: 'F', text: '거절의 의미네' },
-          { type: 'T', text: '진짜 생각해본다는 뜻이네' }
-        ]
-      },
-      {
-        category: 'friend',
-        title: '친구가 약속 메뉴 정할 때<br>“난 다 좋아! 너 먹고 싶은 거 고르자"<br>라고 할 때 내 속마음은?',
-        options: [
-          { type: 'T', text: '오 좋아! 내가 평소에 가고 싶었던 맛집 링크 바로 보낸다' },
-          { type: 'F', text: '진짜 다 좋은 걸까?<br>고르기 귀찮아서 떠넘기는 건가..' }
-        ]
-      },
+    const orderKeys = ['work', 'friend', 'lover', 'family'];
 
-      {
-        category: 'lover',
-        title: '연인이 답장을 오래 안 한다.<br>내가 먼저 떠올리는 생각은?',
-        options: [
-          { type: 'T', text: '바쁘거나 못 볼 상황이겠지 생각한다' },
-          { type: 'F', text: '혹시 내가 뭐 잘못 보냈나 싶어서 마지막 대화를 다시 본다' }
-        ]
-      },
-      {
-        category: 'lover',
-        title: '연인이 내가 준 선물을 받고<br>“고마워”라고만 했을 때 내 반응은?',
-        options: [
-          { type: 'T', text: '고맙다고 했으니 괜찮다고 생각한다' },
-          { type: 'F', text: '반응이 짧아서 마음에 좀 걸린다' }
-        ]
-      },
-      {
-        category: 'lover',
-        title: '연인에게 오늘 서운했던 점을<br>조곤조곤 얘기했더니 갑자기 운다.',
-        options: [
-          { type: 'T', text: '서운한 건 난데, 눈물로 상황을 넘기려는 것 같아 당황스럽다' },
-          { type: 'F', text: '우는 모습을 보니 마음이 약해지고<br>괜히 미안해진다' }
-        ]
-      },
+    const baseQuestions = {
+      work: [
+        {
+          title: "직장에서 큰 실수를 했을 때 내 반응은?",
+          options: [
+            { type: 'S', text: "실수를 인정하고 빠르게 해결책을 찾는다." },
+            { type: 'AX', text: "내 평판이 바닥칠까 봐 하루 종일 전전긍긍한다." },
+            { type: 'AV', text: "일단 상황을 피하거나 남 탓할 구실을 찾는다." },
+            { type: 'FA', text: "너무 괴로워서 그냥 퇴사하고 싶어 연락을 끊고 싶다." }
+          ]
+        },
+        {
+          title: "직장 동료가 갑자기 나에게 차갑게 대하는 것 같다.",
+          options: [
+            { type: 'S', text: "별일 아닐 거라 생각하고 넘기거나 직접 물어본다." },
+            { type: 'AX', text: "내가 뭘 잘못했는지 계속 곱씹으며 불안해한다." },
+            { type: 'AV', text: "나도 똑같이 거리를 두고 차갑게 대한다." },
+            { type: 'FA', text: "상처받기 싫어 먼저 선을 긋지만 속으론 눈치를 본다." }
+          ]
+        },
+        {
+          title: "프로젝트 중 의견 충돌이 생겼을 때 나는?",
+          options: [
+            { type: 'S', text: "솔직하게 대화로 의견 차이를 좁혀간다." },
+            { type: 'AX', text: "내 의견이 거절당할까 봐 갈등 자체를 두려워한다." },
+            { type: 'AV', text: "피곤한 상황이 싫어 그냥 상대방 마음대로 하게 둔다." },
+            { type: 'FA', text: "화를 내거나 극단적인 반응을 보이고 자리를 피한다." }
+          ]
+        }
+      ],
+      friend: [
+        {
+          title: "친구가 당일 약속을 갑자기 취소했다.",
+          options: [
+            { type: 'S', text: "아쉽지만 다음에 보자고 하고 내 시간을 보낸다." },
+            { type: 'AX', text: "나랑 만나기 싫어진 건지 의심되고 서운하다." },
+            { type: 'AV', text: "차라리 혼자 쉬는 게 편해서 오히려 다행이라 생각한다." },
+            { type: 'FA', text: "서운하지만 티 내기 싫어 알았다고 하고 거리를 둔다." }
+          ]
+        },
+        {
+          title: "단톡방에서 내 말에 아무도 대답이 없을 때",
+          options: [
+            { type: 'S', text: "다들 바쁜가 보다 하고 크게 신경 쓰지 않는다." },
+            { type: 'AX', text: "내가 말실수를 했나 싶어 메시지를 지울지 고민한다." },
+            { type: 'AV', text: "귀찮게 얽히는 게 싫어 나도 당분간 말을 안 한다." },
+            { type: 'FA', text: "무시당한 것 같아 화가 나고 방을 나가고 싶어진다." }
+          ]
+        },
+        {
+          title: "친구가 나보다 다른 사람과 더 친하게 지내는 것 같을 때",
+          options: [
+            { type: 'S', text: "그럴 수 있다고 생각하고 내 우정에는 변함이 없다." },
+            { type: 'AX', text: "나를 떠날까 봐 불안하고 질투심이 심하게 난다." },
+            { type: 'AV', text: "별로 신경 안 쓴다. 원래 인간관계는 변하는 거니까." },
+            { type: 'FA', text: "배신감이 들면서도 내가 부족해서 그렇다고 자책한다." }
+          ]
+        }
+      ],
+      lover: [
+        {
+          title: "연인과 연락이 평소보다 잘 안 될 때",
+          options: [
+            { type: 'S', text: "무슨 일이 있나 보다 하고 내 할 일을 하며 기다린다." },
+            { type: 'AX', text: "마음이 식었는지, 다른 사람이 생겼는지 불안해 미친다." },
+            { type: 'AV', text: "나도 연락 안 하고 내 시간을 즐긴다." },
+            { type: 'FA', text: "불안하면서도 상처받기 싫어 오히려 더 차갑게 대한다." }
+          ]
+        },
+        {
+          title: "연인이 혼자만의 시간이 필요한 것 같다고 한다면?",
+          options: [
+            { type: 'S', text: "이유를 묻고 서로의 시간을 존중해 준다." },
+            { type: 'AX', text: "헤어지자는 뜻으로 받아들이고 절대 안 된다고 매달린다." },
+            { type: 'AV', text: "알았다고 하고 이참에 마음을 정리할 준비를 한다." },
+            { type: 'FA', text: "패닉이 오지만 쿨한 척 알았다고 하고 마음을 닫는다." }
+          ]
+        },
+        {
+          title: "연인에게 사랑받고 있다고 느끼는 순간은?",
+          options: [
+            { type: 'S', text: "서로 믿고 의지하며 편안한 안정감을 느낄 때" },
+            { type: 'AX', text: "상대가 끊임없이 애정 표현과 확신을 줄 때" },
+            { type: 'AV', text: "내 사생활과 독립성을 완벽히 존중해 줄 때" },
+            { type: 'FA', text: "상대가 나를 절대 떠나지 않을 거라는 증거를 볼 때" }
+          ]
+        }
+      ],
+      family: [
+        {
+          title: "부모님이 내 선택을 심하게 반대하신다면?",
+          options: [
+            { type: 'S', text: "내 생각을 차분히 설명하고 설득하려 노력한다." },
+            { type: 'AX', text: "부모님의 인정을 받지 못했다는 사실에 크게 좌절한다." },
+            { type: 'AV', text: "잔소리가 듣기 싫어 무시하고 내 마음대로 한다." },
+            { type: 'FA', text: "원망스러우면서도 결국 눈치를 보며 스트레스 받는다." }
+          ]
+        },
+        {
+          title: "가족 모임에서 불편한 질문을 받을 때",
+          options: [
+            { type: 'S', text: "웃으며 적당히 넘기거나 솔직한 내 상황을 말한다." },
+            { type: 'AX', text: "다른 가족들과 비교당하는 것 같아 심하게 스트레스 받는다." },
+            { type: 'AV', text: "대답을 피하고 빨리 그 자리를 벗어나거나 안 간다." },
+            { type: 'FA', text: "겉으로는 웃지만 속으로는 깊은 상처를 받고 분노한다." }
+          ]
+        },
+        {
+          title: "가족에게 힘든 일을 털어놓았는데 반응이 시큰둥할 때",
+          options: [
+            { type: 'S', text: "각자 피곤한 사정이 있으니 그럴 수 있다고 이해한다." },
+            { type: 'AX', text: "가족조차 내 편이 아니라는 생각에 서운해서 운다." },
+            { type: 'AV', text: "역시 남에게 기대는 건 무의미하다며 입을 닫는다." },
+            { type: 'FA', text: "위로받고 싶었으면서 차가운 반응에 오히려 화를 낸다." }
+          ]
+        }
+      ]
+    };
 
-      {
-        category: 'family',
-        title: '엄마가 “아이고, 요즘 온몸이 쑤시고 안 아픈 데가 없네”라고 하실 때 내 첫마디는?',
+    const tieBreakerQuestions = {
+      work: {
+        title: "업무 피드백을 받을 때 가장 거슬리는 것은?",
         options: [
-          { type: 'T', text: '병원은 가봤어? 약이라도 좀 먹어봐' },
-          { type: 'F', text: '요즘 너무 무리해서 그런 거 아니야?<br>좀 쉬어ㅠㅠ' }
+          { type: 'S', text: "피드백 자체보다 해결 방법이 명확하지 않을 때" },
+          { type: 'AX', text: "나를 개인적으로 무시하는 듯한 말투일 때" },
+          { type: 'AV', text: "내 방식에 너무 깊이 간섭하고 개입하려 할 때" },
+          { type: 'FA', text: "피드백을 듣는 순간 내가 무가치하게 느껴질 때" }
         ]
       },
-      {
-        category: 'family',
-        title: '집에서 발가락을 세게 찧어서 아파하는데, 가족이 “조심 좀 하지!”라고 할 때 내 생각은?',
+      friend: {
+        title: "친구와 크게 다투고 난 뒤 나는?",
         options: [
-          { type: 'T', text: '내가 부주의했네. 조심하라는 뜻이겠지' },
-          { type: 'F', text: '아파 죽겠는데 조심 안 한 사람 취급하네' }
+          { type: 'S', text: "시간이 좀 지난 뒤 먼저 연락해 대화로 푼다." },
+          { type: 'AX', text: "친구가 나를 손절할까 봐 먼저 미안하다고 매달린다." },
+          { type: 'AV', text: "연락 올 때까지 절대 먼저 연락 안 하고 방치한다." },
+          { type: 'FA', text: "화해하고 싶으면서도 거절당할까 봐 다가가지 못한다." }
         ]
       },
-      {
-        category: 'family',
-        title: '부모님이 홈쇼핑 보다가 잘 안 쓸 것 같은 물건을 비싸게 사셨다. 내 반응은?',
+      lover: {
+        title: "연인과 깊고 진지한 대화를 나눠야 할 때?",
         options: [
-          { type: 'T', text: '이거 진짜 쓸 거야?<br>아니면 환불하는 게 낫지 않아?' },
-          { type: 'F', text: '갖고 싶으셨나 보네..<br>그래도 다음엔 사기 전에 같이 보자' }
+          { type: 'S', text: "내 감정을 솔직하고 편안하게 전달한다." },
+          { type: 'AX', text: "감정을 과하게 쏟아내거나 상대의 마음을 계속 확인한다." },
+          { type: 'AV', text: "진지한 대화 자체가 부담스러워 회피하거나 주제를 돌린다." },
+          { type: 'FA', text: "말하고 싶지만 상처받을까 봐 숨기고 방어적으로 군다." }
+        ]
+      },
+      family: {
+        title: "가족이라는 존재에 대해 내가 느끼는 감정은?",
+        options: [
+          { type: 'S', text: "든든한 울타리이자 서로를 지지하는 관계" },
+          { type: 'AX', text: "항상 나를 걱정해주고 챙겨주기를 바라는 애착의 대상" },
+          { type: 'AV', text: "가끔은 너무 가깝고 간섭이 심해 벗어나고 싶은 존재" },
+          { type: 'FA', text: "애증의 대상, 사랑하지만 상처도 많이 주고받는 관계" }
         ]
       }
-    ];
+    };
 
-    let currentIndex = 0;
-    let answers = [];
     let nickname = '';
+    let catIndex = 0;
+    let qIndexInCat = 0;
+    let totalBaseCount = 0; // OMR 표시용 (최대 12)
+    
+    let scores = {
+      work: { S: 0, AX: 0, AV: 0, FA: 0 },
+      friend: { S: 0, AX: 0, AV: 0, FA: 0 },
+      lover: { S: 0, AX: 0, AV: 0, FA: 0 },
+      family: { S: 0, AX: 0, AV: 0, FA: 0 }
+    };
+
+    let isTieBreakerState = false;
+    let currentTiedTypes = [];
 
     const mainScreen = document.getElementById('mainScreen');
     const nameScreen = document.getElementById('nameScreen');
     const questionScreen = document.getElementById('questionScreen');
     const loadingScreen = document.getElementById('loadingScreen');
     const resultScreen = document.getElementById('resultScreen');
+
+    const numberIcons = ['①', '②', '③', '④'];
 
     function formatText(text) {
       return String(text).replace(/\n/g, '<br>');
@@ -1379,7 +1306,6 @@
       [mainScreen, nameScreen, questionScreen, loadingScreen, resultScreen].forEach(item => {
         item.classList.remove('active');
       });
-
       screen.classList.add('active');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
@@ -1405,148 +1331,180 @@
         return;
       }
 
-      currentIndex = 0;
-      answers = [];
+      catIndex = 0;
+      qIndexInCat = 0;
+      totalBaseCount = 0;
+      isTieBreakerState = false;
+      
+      scores = {
+        work: { S: 0, AX: 0, AV: 0, FA: 0 },
+        friend: { S: 0, AX: 0, AV: 0, FA: 0 },
+        lover: { S: 0, AX: 0, AV: 0, FA: 0 },
+        family: { S: 0, AX: 0, AV: 0, FA: 0 }
+      };
+
       renderQuestion();
       showScreen(questionScreen);
     }
 
     function renderQuestion() {
-      const q = questions[currentIndex];
-      const qNo = currentIndex + 1;
-      const percent = Math.round((qNo / questions.length) * 100);
-      const category = categoryInfo[q.category];
-
-      document.getElementById('progressText').textContent = `${qNo} / ${questions.length}`;
-      document.getElementById('progressFill').style.width = `${percent}%`;
+      const catKey = orderKeys[catIndex];
+      const category = categoryInfo[catKey];
+      
       document.getElementById('questionSubject').textContent = category.subject;
       document.getElementById('questionName').textContent = nickname;
-      document.getElementById('questionCount').textContent = `${qNo} / ${questions.length}`;
 
-      document.getElementById('questionText').innerHTML = `
-        <span class="q-number">${qNo}.</span>
-        ${formatText(q.title)}
-      `;
+      let titleHtml = '';
+      let optionsHtml = '';
 
-      document.getElementById('omr').innerHTML = questions.map((_, index) => {
+      if (isTieBreakerState) {
+        // 동점자 추가 질문 모드 (사용자가 모르게 페이크 처리)
+        const displayNum = totalBaseCount; // 진행률 멈춤
+        const percent = Math.round((displayNum / 12) * 100);
+
+        document.getElementById('progressText').textContent = `${displayNum} / 12`;
+        document.getElementById('questionCount').textContent = `${displayNum} / 12`;
+        document.getElementById('progressFill').style.width = `${percent}%`;
+        
+        const tbData = tieBreakerQuestions[catKey];
+        // 추가 문항 표시 없이 자연스럽게 질문 이어가기 (Q. 로 통일)
+        titleHtml = `<span class="q-number">Q.</span>${formatText(tbData.title)}`;
+        
+        const filteredOptions = tbData.options.filter(opt => currentTiedTypes.includes(opt.type));
+        
+        optionsHtml = filteredOptions.map((option, index) => {
+          return `
+            <button class="choice-btn" onclick="selectAnswer('${option.type}')">
+              <span class="choice-no">${numberIcons[index]}</span>
+              <span class="choice-text">${formatText(option.text)}</span>
+            </button>
+          `;
+        }).join('');
+      } else {
+        // 기본 문항 모드
+        const qData = baseQuestions[catKey][qIndexInCat];
+        const displayNum = totalBaseCount + 1;
+        const percent = Math.round((displayNum / 12) * 100);
+        
+        document.getElementById('progressText').textContent = `${displayNum} / 12`;
+        document.getElementById('questionCount').textContent = `${displayNum} / 12`;
+        document.getElementById('progressFill').style.width = `${percent}%`;
+
+        titleHtml = `<span class="q-number">${displayNum}.</span>${formatText(qData.title)}`;
+        
+        optionsHtml = qData.options.map((option, index) => {
+          return `
+            <button class="choice-btn" onclick="selectAnswer('${option.type}')">
+              <span class="choice-no">${numberIcons[index]}</span>
+              <span class="choice-text">${formatText(option.text)}</span>
+            </button>
+          `;
+        }).join('');
+      }
+
+      document.getElementById('questionText').innerHTML = titleHtml;
+      document.getElementById('choiceList').innerHTML = optionsHtml;
+
+      // OMR 업데이트 (추가 질문 시에는 OMR 칸이 그대로 머물러 있음)
+      let omrHtml = '';
+      for(let i = 0; i < 12; i++) {
         let cls = '';
-        if (index < currentIndex) cls = 'done';
-        if (index === currentIndex) cls = 'now';
-        return `<span class="${cls}">${index + 1}</span>`;
-      }).join('');
-
-      document.getElementById('choiceList').innerHTML = q.options.map((option, index) => {
-        const no = index === 0 ? '①' : '②';
-        return `
-          <button class="choice-btn" onclick="selectAnswer(${index})">
-            <span class="choice-no">${no}</span>
-            <span class="choice-text">${formatText(option.text)}</span>
-          </button>
-        `;
-      }).join('');
+        if (i < totalBaseCount) cls = 'done';
+        if (i === totalBaseCount && !isTieBreakerState) cls = 'now'; // 추가질문일 땐 불이 꺼진 상태로 대기
+        omrHtml += `<span class="${cls}">${i + 1}</span>`;
+      }
+      document.getElementById('omr').innerHTML = omrHtml;
     }
 
-    function selectAnswer(index) {
-      const q = questions[currentIndex];
-      const selected = q.options[index];
+    function selectAnswer(selectedType) {
+      const catKey = orderKeys[catIndex];
 
-      answers[currentIndex] = {
-        category: q.category,
-        type: selected.type
-      };
-
-      if (currentIndex < questions.length - 1) {
-        currentIndex++;
-        renderQuestion();
+      if (isTieBreakerState) {
+        scores[catKey][selectedType]++;
+        isTieBreakerState = false;
+        moveToNextCategory();
       } else {
+        scores[catKey][selectedType]++;
+        qIndexInCat++;
+        totalBaseCount++;
+
+        if (qIndexInCat >= 3) {
+          const catScores = scores[catKey];
+          const maxVal = Math.max(...Object.values(catScores));
+          const maxTypes = Object.keys(catScores).filter(k => catScores[k] === maxVal);
+
+          if (maxTypes.length > 1) {
+            isTieBreakerState = true;
+            currentTiedTypes = maxTypes;
+            renderQuestion();
+          } else {
+            moveToNextCategory();
+          }
+        } else {
+          renderQuestion();
+        }
+      }
+    }
+
+    function moveToNextCategory() {
+      catIndex++;
+      qIndexInCat = 0;
+      if (catIndex >= orderKeys.length) {
         showLoading();
+      } else {
+        renderQuestion();
       }
     }
 
     function showLoading() {
       showScreen(loadingScreen);
-
       setTimeout(() => {
         renderResult();
       }, 3000);
     }
 
-    function getScores() {
-      const scores = {
-        work: { T: 0, F: 0 },
-        friend: { T: 0, F: 0 },
-        lover: { T: 0, F: 0 },
-        family: { T: 0, F: 0 }
-      };
-
-      let totalT = 0;
-      let totalF = 0;
-
-      answers.forEach(answer => {
-        scores[answer.category][answer.type]++;
-
-        if (answer.type === 'T') totalT++;
-        if (answer.type === 'F') totalF++;
-      });
-
-      return { scores, totalT, totalF };
-    }
-
-    function getAreaType(score) {
-      return score.T > score.F ? 'T' : 'F';
-    }
-
-    function getFinalType(totalT, totalF) {
-      if (totalT > totalF) return 'T';
-      if (totalF > totalT) return 'F';
-      return 'TF';
-    }
-
     function renderResult() {
-      const { scores, totalT, totalF } = getScores();
-      const order = ['work', 'friend', 'lover', 'family'];
-      const areaTypes = {};
-      const finalType = getFinalType(totalT, totalF);
-      const diff = Math.abs(totalT - totalF);
-
-      order.forEach(key => {
-        areaTypes[key] = getAreaType(scores[key]);
-      });
-
       document.getElementById('resultName').textContent = nickname;
 
-      document.getElementById('resultGrid').innerHTML = order.map(key => {
-        return `
+      let finalTypes = {};
+      let totalCounts = { S: 0, AX: 0, AV: 0, FA: 0 };
+
+      let gridHtml = '';
+      orderKeys.forEach(key => {
+        let maxVal = Math.max(...Object.values(scores[key]));
+        let dominantType = Object.keys(scores[key]).find(k => scores[key][k] === maxVal);
+        finalTypes[key] = dominantType;
+
+        for(let t in scores[key]) {
+          totalCounts[t] += scores[key][t];
+        }
+
+        gridHtml += `
           <div class="result-cell">
             <div class="result-area">${categoryInfo[key].name} 영역</div>
-            <div class="marked-letter">${areaTypes[key]}</div>
+            <div class="marked-letter">${typeNames[dominantType]}</div>
           </div>
         `;
-      }).join('');
+      });
 
-      document.getElementById('totalLetter').textContent = finalType;
+      document.getElementById('resultGrid').innerHTML = gridHtml;
 
-      let comment = '';
+      let overallMax = Math.max(...Object.values(totalCounts));
+      let overallType = Object.keys(totalCounts).find(k => totalCounts[k] === overallMax);
+      let overallTypeName = typeNames[overallType];
 
-      if (finalType === 'T') {
-        comment = `
-          ${nickname}님은 최종적으로 <span class="blue">T 성향</span>으로 채점되었습니다.<br>
-          ${diff <= 2
-            ? '전체적으로는 T에 가깝지만, 상황에 따라 감정적인 반응도 함께 보입니다.'
-            : '전체적으로는 T 성향이 뚜렷하게 나타났습니다.'}
-        `;
-      } else if (finalType === 'F') {
-        comment = `
-          ${nickname}님은 최종적으로 <span class="red">F 성향</span>으로 채점되었습니다.<br>
-          ${diff <= 2
-            ? '전체적으로는 F에 가깝지만, 상황에 따라 현실적으로 판단하는 면도 함께 보입니다.'
-            : '전체적으로는 F 성향이 뚜렷하게 나타났습니다.'}
-        `;
-      } else {
-        comment = `
-          ${nickname}님은 최종적으로 <span class="blue">T</span><span class="red">F</span> 반반형으로 채점되었습니다.<br>
-          상황에 따라 현실적인 판단과 감정적인 반응이 함께 나타납니다.
-        `;
+      document.getElementById('totalLetter').textContent = overallTypeName;
+
+      let comment = `${nickname}님은 종합 평가 결과 <span class="blue">${overallTypeName}</span> 성향이 가장 높게 나타났습니다.<br><br>`;
+      
+      if(overallType === 'S') {
+        comment += `비교적 자신과 타인을 긍정적으로 바라보며, 관계에서 오는 스트레스를 건강하게 해소할 줄 압니다. 사람들과 신뢰를 잘 쌓고 유지하는 편입니다.`;
+      } else if(overallType === 'AX') {
+        comment += `관계에 대한 몰입도가 높고 상대방의 사랑과 인정을 중요하게 생각합니다. 사소한 행동에도 예민하게 반응하며 버림받을까 걱정하기도 합니다. 스스로에게 더 큰 확신을 가지면 좋습니다.`;
+      } else if(overallType === 'AV') {
+        comment += `독립성이 강하고 누군가에게 깊이 의존하는 것을 불편해하는 경향이 있습니다. 상처받기 전에 먼저 선을 긋거나 감정을 숨기는 편입니다. 가끔은 용기 내어 속마음을 표현해보세요.`;
+      } else if(overallType === 'FA') {
+        comment += `사람과 가까워지고 싶은 마음과, 상처받을까 봐 밀어내고 싶은 마음이 공존합니다. 친밀해지면 불안해지고 멀어지면 외로워하는 양가감정을 자주 느낄 수 있습니다. 천천히 믿음을 연습해보세요.`;
       }
 
       document.getElementById('resultComment').innerHTML = comment;
@@ -1554,25 +1512,23 @@
     }
 
     function restartTest() {
-      currentIndex = 0;
-      answers = [];
-      nickname = '';
+      catIndex = 0;
+      qIndexInCat = 0;
+      totalBaseCount = 0;
       document.getElementById('nicknameInput').value = '';
       showScreen(mainScreen);
     }
 
     async function saveResultImage() {
       const target = document.getElementById('resultCapture');
-
       try {
         const canvas = await html2canvas(target, {
           scale: 2,
           useCORS: true,
-          backgroundColor: '#fdfbf3',
+          backgroundColor: '#fff5f7',
           scrollX: 0,
           scrollY: -window.scrollY
         });
-
         const imageUrl = canvas.toDataURL('image/png');
         document.getElementById('savePreview').src = imageUrl;
         document.getElementById('saveModal').classList.add('active');
@@ -1588,7 +1544,7 @@
     async function shareTest() {
       const shareData = {
         title: TEST_TITLE,
-        text: '테스트잇 TF 종합 평가 테스트',
+        text: '테스트잇 관계 유형 성격 테스트',
         url: TEST_URL
       };
 

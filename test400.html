@@ -1523,18 +1523,41 @@
     function renderResult() {
       document.getElementById('resultName').textContent = nickname;
 
-      let finalTypes = {};
-      let totalCounts = { S: 0, AX: 0, AV: 0, FA: 0 };
+           let finalTypes = {};
+
+      // 실제로 선택한 모든 답의 개수
+      let totalCounts = {
+        S: 0,
+        AX: 0,
+        AV: 0,
+        FA: 0
+      };
+
+      // 영역별 최종 유형이 나온 횟수
+      let areaCounts = {
+        S: 0,
+        AX: 0,
+        AV: 0,
+        FA: 0
+      };
 
       let gridHtml = '';
+
       orderKeys.forEach(key => {
-        let maxVal = Math.max(...Object.values(scores[key]));
-        let dominantType = Object.keys(scores[key]).find(k => scores[key][k] === maxVal);
+        const maxVal = Math.max(...Object.values(scores[key]));
+        const dominantType = Object.keys(scores[key]).find(
+          type => scores[key][type] === maxVal
+        );
+
         finalTypes[key] = dominantType;
 
-        for (let t in scores[key]) {
-          totalCounts[t] += scores[key][t];
-        }
+        // 해당 영역의 최종 유형에 1표 추가
+        areaCounts[dominantType]++;
+
+        // 영역별 모든 선택 답변 수도 따로 합산
+        Object.keys(scores[key]).forEach(type => {
+          totalCounts[type] += scores[key][type];
+        });
 
         gridHtml += `
           <div class="result-cell">
@@ -1546,9 +1569,34 @@
 
       document.getElementById('resultGrid').innerHTML = gridHtml;
 
-      let overallMax = Math.max(...Object.values(totalCounts));
-      let overallType = Object.keys(totalCounts).find(k => totalCounts[k] === overallMax);
-      let overallTypeName = typeNames[overallType];
+      // 1차 계산: 영역별 최종 유형의 개수로 결정
+      const areaMax = Math.max(...Object.values(areaCounts));
+
+      const tiedAreaTypes = Object.keys(areaCounts).filter(
+        type => areaCounts[type] === areaMax
+      );
+
+      let overallType;
+
+      if (tiedAreaTypes.length === 1) {
+        // 영역별 결과에서 단독 1위인 경우
+        overallType = tiedAreaTypes[0];
+      } else {
+        // 영역별 결과가 동점인 경우에만
+        // 실제 선택한 전체 답변 수를 비교
+        const answerMax = Math.max(
+          ...tiedAreaTypes.map(type => totalCounts[type])
+        );
+
+        const tiedAnswerTypes = tiedAreaTypes.filter(
+          type => totalCounts[type] === answerMax
+        );
+
+        // 전체 답변 수까지 같을 경우 기존 유형 순서로 결정
+        overallType = tiedAnswerTypes[0];
+      }
+
+      const overallTypeName = typeNames[overallType];
 
       document.getElementById('totalLetter').textContent = overallTypeName;
 

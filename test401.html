@@ -2183,16 +2183,48 @@
       }, 60);
     }
 
-    function finishTest(resultKey) {
-      currentResultKey = resultKey;
+   async function prepareResultFont() {
+  if (!document.fonts) return;
 
-      showScreen("loading");
+  try {
+    await document.fonts.load(
+      '400 48px "NeoDunggeunmo"',
+      "도파민형 안정형 친화형 독립형 주도형 진지형 예민형 현실형"
+    );
 
-      window.setTimeout(() => {
-        renderResult(currentResultKey);
-        showScreen("result");
-      }, LOADING_TIME);
-    }
+    await document.fonts.ready;
+  } catch (error) {
+    console.warn("결과 픽셀폰트 로딩 오류", error);
+  }
+}
+
+function finishTest(resultKey) {
+  currentResultKey = resultKey;
+
+  showScreen("loading");
+
+  window.setTimeout(async () => {
+    renderResult(currentResultKey);
+
+    await prepareResultFont();
+
+    resultType.style.setProperty(
+      "font-family",
+      '"NeoDunggeunmo", monospace',
+      "important"
+    );
+
+    resultType.style.setProperty(
+      "font-weight",
+      "400",
+      "important"
+    );
+
+    await waitForTwoFrames();
+
+    showScreen("result");
+  }, LOADING_TIME);
+}
 
     function renderResult(resultKey) {
       const resultData =

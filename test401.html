@@ -89,6 +89,20 @@
       text-decoration: none;
     }
 
+    .pixel-font-preload {
+      position: fixed;
+      top: -9999px;
+      left: -9999px;
+      z-index: -9999;
+      display: block;
+      opacity: 0;
+      pointer-events: none;
+      font-family: "NeoDunggeunmo", monospace;
+      font-size: 48px;
+      font-weight: 400;
+      white-space: nowrap;
+    }
+
     .site-header {
       position: sticky;
       top: 0;
@@ -381,15 +395,15 @@
       font-weight: 950;
     }
 
-.question-text {
-  min-height: 72px;
-  margin: 18px 0 14px;
-  font-size: clamp(21px, 5.5vw, 28px);
-  line-height: 1.5;
-  letter-spacing: -1px;
-  font-weight: 900;
-  text-align: center;
-}
+    .question-text {
+      min-height: 72px;
+      margin: 18px 0 14px;
+      text-align: center;
+      font-size: clamp(21px, 5.5vw, 28px);
+      line-height: 1.5;
+      letter-spacing: -1px;
+      font-weight: 900;
+    }
 
     .answers {
       display: grid;
@@ -597,13 +611,13 @@
       margin: 0;
       padding: 2px 0 0;
       text-align: center;
+      color: var(--text);
       font-family:
         "Times New Roman",
         "Batang",
         "바탕",
         "Nanum Myeongjo",
         serif;
-      color: var(--text);
     }
 
     .result-title-small {
@@ -663,11 +677,11 @@
       align-items: center;
       justify-content: center;
       overflow: hidden;
-      font-size: 13px;
-      font-weight: 700;
       text-align: center;
       white-space: nowrap;
       text-overflow: ellipsis;
+      font-size: 13px;
+      font-weight: 700;
     }
 
     .result-name-box {
@@ -691,10 +705,16 @@
     .result-type {
       margin: 0;
       color: var(--text);
-      font-family: "NeoDunggeunmo", sans-serif;
+      font-family: "NeoDunggeunmo", monospace !important;
       font-size: clamp(38px, 10vw, 48px);
       line-height: 1.05;
-      font-weight: normal;
+      font-weight: 400 !important;
+      font-style: normal;
+      font-synthesis: none;
+      font-kerning: none;
+      letter-spacing: 0;
+      -webkit-font-smoothing: none;
+      text-rendering: geometricPrecision;
     }
 
     .grading-stamp {
@@ -834,19 +854,19 @@
       width: 100%;
       margin: 18px auto 0;
       padding: 0;
-      text-align: center;
       display: flex;
       align-items: center;
       justify-content: center;
       overflow: hidden;
+      text-align: center;
     }
 
     .ad-wrap iframe,
     .ad-wrap div,
     .ad-wrap ins {
       max-width: 100%;
-      margin-left: auto !important;
       margin-right: auto !important;
+      margin-left: auto !important;
     }
 
     .save-modal {
@@ -869,8 +889,8 @@
       max-width: 320px;
       max-height: 90vh;
       padding: 20px 16px;
-      text-align: center;
       overflow: auto;
+      text-align: center;
       background: var(--paper);
       border: 2px solid var(--line);
     }
@@ -996,8 +1016,8 @@
       }
 
       .student-field {
-        grid-template-columns: 48px 1fr;
         min-height: 36px;
+        grid-template-columns: 48px 1fr;
       }
 
       .student-field span,
@@ -1037,6 +1057,10 @@
 </head>
 
 <body>
+  <div class="pixel-font-preload" aria-hidden="true">
+    도파민형 안정형 친화형 독립형 주도형 진지형 예민형 현실형
+  </div>
+
   <header class="site-header">
     <div class="header-inner">
       <a class="brand" href="https://test-it.co.kr/">테스트잇</a>
@@ -1936,7 +1960,6 @@
       }
 
       nickname = enteredNickname;
-
       currentQuestionIndex = 0;
       scores = createEmptyScores();
       currentResultKey = "dopamine";
@@ -2022,10 +2045,7 @@
       if (answerLocked) return;
 
       answerLocked = true;
-
-      lockAnswerButtons(
-        selectedButton
-      );
+      lockAnswerButtons(selectedButton);
 
       scores[selectedOption.type] += 1;
 
@@ -2159,10 +2179,7 @@
       if (answerLocked) return;
 
       answerLocked = true;
-
-      lockAnswerButtons(
-        selectedButton
-      );
+      lockAnswerButtons(selectedButton);
 
       window.setTimeout(() => {
         finishTest(selectedType);
@@ -2175,10 +2192,7 @@
       showScreen("loading");
 
       window.setTimeout(() => {
-        renderResult(
-          currentResultKey
-        );
-
+        renderResult(currentResultKey);
         showScreen("result");
       }, LOADING_TIME);
     }
@@ -2192,7 +2206,6 @@
           "결과 데이터를 찾을 수 없습니다.",
           resultKey
         );
-
         return;
       }
 
@@ -2225,9 +2238,7 @@
     }
 
     function showToast(message) {
-      window.clearTimeout(
-        toastTimer
-      );
+      window.clearTimeout(toastTimer);
 
       toast.textContent = message;
       toast.classList.add("show");
@@ -2240,17 +2251,49 @@
         }, 2100);
     }
 
-    async function waitForFonts() {
-      if (!document.fonts) return;
+    function waitForTwoFrames() {
+      return new Promise((resolve) => {
+        window.requestAnimationFrame(() => {
+          window.requestAnimationFrame(resolve);
+        });
+      });
+    }
 
-      try {
-        await document.fonts.ready;
-      } catch (error) {
-        console.warn(
-          "폰트 로딩 오류",
-          error
-        );
+    async function waitForCaptureFonts() {
+      resultType.style.setProperty(
+        "font-family",
+        '"NeoDunggeunmo", monospace',
+        "important"
+      );
+
+      resultType.style.setProperty(
+        "font-weight",
+        "400",
+        "important"
+      );
+
+      if (document.fonts) {
+        try {
+          await Promise.all([
+            document.fonts.load(
+              '400 48px "NeoDunggeunmo"',
+              resultType.textContent || "도파민형"
+            ),
+            document.fonts.load(
+              '400 48px "NeoDunggeunmo"',
+              "도파민형 안정형 친화형 독립형 주도형 진지형 예민형 현실형"
+            ),
+            document.fonts.ready
+          ]);
+        } catch (error) {
+          console.warn(
+            "픽셀폰트 로딩 대기 오류",
+            error
+          );
+        }
       }
+
+      await waitForTwoFrames();
     }
 
     async function saveResultImage() {
@@ -2261,7 +2304,6 @@
         showToast(
           "이미지 저장 기능을 불러오지 못했어요."
         );
-
         return;
       }
 
@@ -2270,7 +2312,7 @@
         "이미지 만드는 중...";
 
       try {
-        await waitForFonts();
+        await waitForCaptureFonts();
 
         const canvas =
           await html2canvas(
@@ -2280,8 +2322,7 @@
                 "#f5f2eb",
 
               scale: Math.min(
-                window.devicePixelRatio ||
-                  2,
+                window.devicePixelRatio || 2,
                 3
               ),
 
@@ -2289,13 +2330,57 @@
               allowTaint: false,
               logging: false,
               scrollX: 0,
-              scrollY:
-                -window.scrollY,
+              scrollY: -window.scrollY,
 
               windowWidth:
-                document
-                  .documentElement
-                  .clientWidth
+                document.documentElement.clientWidth,
+
+              onclone: (
+                clonedDocument
+              ) => {
+                const clonedResultType =
+                  clonedDocument.getElementById(
+                    "resultType"
+                  );
+
+                if (clonedResultType) {
+                  clonedResultType.style.setProperty(
+                    "font-family",
+                    '"NeoDunggeunmo", monospace',
+                    "important"
+                  );
+
+                  clonedResultType.style.setProperty(
+                    "font-weight",
+                    "400",
+                    "important"
+                  );
+
+                  clonedResultType.style.setProperty(
+                    "font-style",
+                    "normal",
+                    "important"
+                  );
+
+                  clonedResultType.style.setProperty(
+                    "font-synthesis",
+                    "none",
+                    "important"
+                  );
+
+                  clonedResultType.style.setProperty(
+                    "font-kerning",
+                    "none",
+                    "important"
+                  );
+
+                  clonedResultType.style.setProperty(
+                    "letter-spacing",
+                    "0px",
+                    "important"
+                  );
+                }
+              }
             }
           );
 
@@ -2321,9 +2406,7 @@
           "이미지를 저장하지 못했어요."
         );
       } finally {
-        saveButton.disabled =
-          false;
-
+        saveButton.disabled = false;
         saveButton.textContent =
           "결과 이미지 저장하기";
       }
@@ -2346,7 +2429,6 @@
           await navigator.share(
             shareData
           );
-
           return;
         }
 
@@ -2364,7 +2446,6 @@
           showToast(
             "공유 문구와 링크를 복사했어요."
           );
-
           return;
         }
 

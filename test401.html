@@ -21,14 +21,11 @@
     href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
   >
 
-  <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/gh/neodunggeunmo/neodunggeunmo/neodunggeunmo.css"
-  >
-
   <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 
   <style>
+    @import url('https://cdn.jsdelivr.net/gh/neodunggeunmo/neodunggeunmo/neodunggeunmo.css');
+
     :root {
       --background: #dfdcd1;
       --paper: #f5f2eb;
@@ -90,15 +87,15 @@
     }
 
     .pixel-font-preload {
-      position: fixed;
-      top: -9999px;
-      left: -9999px;
+      position: absolute;
+      top: 0;
+      left: 0;
       z-index: -9999;
       display: block;
-      opacity: 0;
+      color: transparent;
       pointer-events: none;
       font-family: "NeoDunggeunmo", monospace;
-      font-size: 48px;
+      font-size: 1px;
       font-weight: 400;
       white-space: nowrap;
     }
@@ -1630,7 +1627,7 @@
           },
           {
             text:
-              "발생할 수 있는 문제까지<br>미리 깊게 생각하고 계획을 세움",
+              "발생할 수 있는 문제까지<br>미리 깊게 생각하고 계획 세움",
             type: "serious"
           }
         ]
@@ -2262,7 +2259,7 @@
     async function waitForCaptureFonts() {
       resultType.style.setProperty(
         "font-family",
-        '"NeoDunggeunmo", monospace',
+        "NeoDunggeunmo, monospace",
         "important"
       );
 
@@ -2346,7 +2343,7 @@
                 if (clonedResultType) {
                   clonedResultType.style.setProperty(
                     "font-family",
-                    '"NeoDunggeunmo", monospace',
+                    "NeoDunggeunmo, monospace",
                     "important"
                   );
 

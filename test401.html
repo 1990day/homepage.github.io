@@ -1,56 +1,29 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5522499110435321" crossorigin="anonymous"></script>
   <meta charset="UTF-8">
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
-  >
-  <meta name="theme-color" content="#f5f2eb">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>테스트잇 인간 유형 종합 평가 테스트</title>
+  <meta name="description" content="테스트잇 인간 유형 종합 평가 테스트">
+  <meta name="keywords" content="테스트잇,인간유형테스트,테스트잇인간유형테스트,테스트잇인간유형,심리테스트">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="테스트잇 인간 유형 종합 평가 테스트">
+  <meta property="og:description" content="테스트잇 인간 유형 종합 평가 테스트">
+  <meta property="og:url" content="https://test-it.co.kr/test401">
+  <meta property="og:image" content="https://test-it.co.kr/img_main401.png">
+  <link rel="icon" type="image/png" href="favicon.png">
 
-  <meta
-    name="description"
-    content="테스트잇 인간 유형 종합 평가 테스트"
-  >
-
-  <meta
-    property="og:title"
-    content="테스트잇 인간 유형 종합 평가 테스트"
-  >
-
-  <meta
-    property="og:description"
-    content="나는 어떤 인간 유형일까?"
-  >
-
-  <meta
-    property="og:url"
-    content="https://test-it.co.kr/test401"
-  >
-
-  <link
-    rel="canonical"
-    href="https://test-it.co.kr/test401"
-  >
-
-  <link
-    rel="preconnect"
-    href="https://cdn.jsdelivr.net"
-    crossorigin
-  >
-
-  <!-- 기본 폰트 -->
   <link
     rel="stylesheet"
     href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
   >
 
-  <!-- 결과 이름용 픽셀 폰트 -->
   <link
-    href="https://cdn.jsdelivr.net/gh/neodunggeunmo/neodunggeunmo/neodunggeunmo.css"
     rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/neodunggeunmo/neodunggeunmo/neodunggeunmo.css"
   >
 
   <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
@@ -63,10 +36,10 @@
       --text: #1a1a1a;
       --sub-text: #555555;
       --line: #222222;
-      --light-line: #b3ad9d;
       --red: #d33c46;
       --red-light: #fbecec;
-      --highlight: #fff2aa;
+      --green: #2f8351;
+      --green-dark: #24693f;
       --max-width: 560px;
     }
 
@@ -101,6 +74,7 @@
     }
 
     button,
+    input,
     a {
       font: inherit;
       -webkit-tap-highlight-color: transparent;
@@ -208,82 +182,11 @@
       box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.08);
     }
 
-    .main-paper {
-      min-height: 595px;
-      padding: 30px 24px 34px 32px;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .exam-cover-wrapper {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .csat-top {
-      border-top: 2px solid var(--line);
-      border-bottom: 2px solid var(--line);
-      padding: 10px 0;
-      text-align: center;
-      font-size: 13.5px;
-      font-weight: 900;
-      margin-bottom: 60px;
-    }
-
-    .csat-middle {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-bottom: 60px;
-    }
-
-    .csat-subject {
-      border: 2px solid var(--line);
-      border-radius: 50px;
-      padding: 8px 20px;
-      font-size: 15px;
-      font-weight: 900;
-      margin-bottom: 30px;
-    }
-
-    .csat-main-title {
-      font-size: clamp(36px, 9vw, 48px);
-      font-weight: 950;
-      text-align: center;
-      line-height: 1.35;
-      letter-spacing: -2px;
-      margin: 0;
-    }
-
-    .csat-student-box {
-      border: 2px solid var(--line);
-      padding: 28px 20px;
-      background: rgba(255, 255, 255, 0.6);
-      margin-top: auto;
-      margin-bottom: 40px;
-    }
-
-    .csat-input-row {
-      display: flex;
-      align-items: flex-end;
-      margin-bottom: 24px;
-    }
-
-    .csat-input-row:last-child {
-      margin-bottom: 0;
-    }
-
-    .csat-input-row .label {
-      font-size: 16px;
-      font-weight: 900;
-      width: 76px;
-    }
-
-    .csat-input-row .line {
-      flex: 1;
-      border-bottom: 2px solid var(--line);
-      height: 20px;
+    .main-image {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0 auto 18px;
     }
 
     .primary-button,
@@ -296,7 +199,10 @@
       color: var(--text);
       font-size: 16px;
       font-weight: 900;
-      transition: background 0.08s ease, color 0.08s ease;
+      transition:
+        background 0.08s ease,
+        border-color 0.08s ease,
+        color 0.08s ease;
     }
 
     .primary-button {
@@ -305,12 +211,101 @@
     }
 
     .primary-button:hover {
-      background: var(--red);
-      border-color: var(--red);
+      color: #ffffff;
+      background: var(--green);
+      border-color: var(--green);
+    }
+
+    .primary-button:active {
+      background: var(--green-dark);
+      border-color: var(--green-dark);
     }
 
     .action-button:hover {
       background: var(--paper-dark);
+    }
+
+    .name-paper {
+      min-height: 525px;
+      padding: 26px 24px 30px 32px;
+    }
+
+    .name-paper-top {
+      padding: 10px 0;
+      border-top: 2px solid var(--line);
+      border-bottom: 2px solid var(--line);
+      text-align: right;
+      font-size: 12px;
+      line-height: 1.5;
+      font-weight: 850;
+    }
+
+    .name-title {
+      margin: 68px 0 38px;
+      text-align: center;
+      font-family:
+        "Times New Roman",
+        "Batang",
+        "바탕",
+        "Nanum Myeongjo",
+        serif;
+      font-size: clamp(34px, 9vw, 44px);
+      line-height: 1.22;
+      letter-spacing: -2px;
+      font-weight: 700;
+    }
+
+    .name-input-wrap {
+      width: min(88%, 390px);
+      margin: 0 auto;
+    }
+
+    .name-label {
+      display: block;
+      margin-bottom: 10px;
+      text-align: center;
+      font-size: 18px;
+      font-weight: 950;
+    }
+
+    .name-input {
+      width: 100%;
+      height: 56px;
+      padding: 0 14px;
+      border: 2px solid var(--line);
+      border-radius: 0;
+      outline: none;
+      background: rgba(255, 255, 255, 0.72);
+      color: var(--text);
+      text-align: center;
+      font-size: 21px;
+      font-weight: 900;
+    }
+
+    .name-input:focus {
+      border-color: var(--red);
+      box-shadow: inset 0 0 0 1px var(--red);
+    }
+
+    .name-input::placeholder {
+      color: #99958c;
+    }
+
+    .name-guide {
+      width: min(92%, 430px);
+      margin: 31px auto 0;
+      padding: 15px 16px;
+      border: 2px solid var(--line);
+      background: rgba(255, 255, 255, 0.52);
+      font-size: 14px;
+      line-height: 1.75;
+      font-weight: 750;
+    }
+
+    .name-button-stack {
+      display: grid;
+      gap: 10px;
+      margin-top: 16px;
     }
 
     .question-paper {
@@ -375,6 +370,10 @@
       background: var(--paper-dark);
     }
 
+    .question-info-value {
+      background: rgba(255, 255, 255, 0.55);
+    }
+
     .question-number {
       margin-top: 27px;
       color: var(--red);
@@ -382,14 +381,15 @@
       font-weight: 950;
     }
 
-    .question-text {
-      min-height: 98px;
-      margin: 10px 0 25px;
-      font-size: clamp(21px, 5.5vw, 28px);
-      line-height: 1.5;
-      letter-spacing: -1px;
-      font-weight: 900;
-    }
+.question-text {
+  min-height: 72px;
+  margin: 18px 0 14px;
+  font-size: clamp(21px, 5.5vw, 28px);
+  line-height: 1.5;
+  letter-spacing: -1px;
+  font-weight: 900;
+  text-align: center;
+}
 
     .answers {
       display: grid;
@@ -468,8 +468,14 @@
 
     .loading-title {
       margin: 0 0 10px;
+      font-family:
+        "Times New Roman",
+        "Batang",
+        "바탕",
+        "Nanum Myeongjo",
+        serif;
       font-size: 28px;
-      font-weight: 950;
+      font-weight: 700;
       letter-spacing: -1px;
     }
 
@@ -509,8 +515,13 @@
       left: 0;
       width: 100%;
       color: var(--red);
+      font-family:
+        "Times New Roman",
+        "Batang",
+        "바탕",
+        serif;
       font-size: 24px;
-      font-weight: 950;
+      font-weight: 700;
       transform: rotate(-8deg);
     }
 
@@ -558,30 +569,9 @@
       margin: 0 auto;
     }
 
-    
-    .ad-wrap {
-      width: 100%;
-      margin: 18px auto 0;
-      padding: 0;
-      text-align: center;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-
-    .ad-wrap iframe,
-    .ad-wrap div,
-    .ad-wrap ins {
-      max-width: 100%;
-      margin-left: auto !important;
-      margin-right: auto !important;
-    }
-
-    
     .result-card {
       position: relative;
-      padding: 28px 24px 28px 34px;
+      padding: 22px 24px 28px 34px;
       background:
         linear-gradient(
           90deg,
@@ -603,47 +593,81 @@
       overflow: hidden;
     }
 
-    .result-exam-title {
-      margin-bottom: 14px;
-      padding: 0 0 13px;
-      border-bottom: 2px solid var(--line);
+    .result-title-block {
+      margin: 0;
+      padding: 2px 0 0;
       text-align: center;
+      font-family:
+        "Times New Roman",
+        "Batang",
+        "바탕",
+        "Nanum Myeongjo",
+        serif;
+      color: var(--text);
     }
 
-    .result-exam-title strong {
+    .result-title-small {
       display: block;
-      font-size: 19px;
-      line-height: 1.35;
-      font-weight: 950;
-      letter-spacing: -0.7px;
+      margin-bottom: 6px;
+      font-size: 15px;
+      line-height: 1.25;
+      font-weight: 700;
+      letter-spacing: -0.4px;
     }
 
-    .result-info-table {
+    .result-title-main {
+      display: block;
+      font-size: clamp(20px, 5.4vw, 26px);
+      line-height: 1.25;
+      font-weight: 700;
+      letter-spacing: -1.3px;
+      white-space: nowrap;
+    }
+
+    .result-student {
+      width: 88%;
+      margin: 22px auto 20px;
       display: grid;
-      grid-template-columns: 78px 1fr 78px 1fr;
-      margin-bottom: 17px;
-      border-top: 2px solid var(--line);
-      border-left: 2px solid var(--line);
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
     }
 
-    .result-info-table div {
-      min-height: 36px;
-      padding: 8px;
+    .student-field {
+      min-height: 38px;
+      display: grid;
+      grid-template-columns: 58px 1fr;
+      border: 2px solid var(--line);
+      background: rgba(255, 255, 255, 0.58);
+      font-family:
+        "Times New Roman",
+        "Batang",
+        "바탕",
+        "Nanum Myeongjo",
+        serif;
+    }
+
+    .student-field span {
       display: flex;
       align-items: center;
       justify-content: center;
       border-right: 2px solid var(--line);
-      border-bottom: 2px solid var(--line);
-      font-size: 12px;
-      font-weight: 800;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1px;
     }
 
-    .result-info-label {
-      background: var(--paper-dark);
-    }
-
-    .result-info-value {
-      background: rgba(255, 255, 255, 0.6);
+    .student-field b {
+      min-width: 0;
+      padding: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      font-size: 13px;
+      font-weight: 700;
+      text-align: center;
+      white-space: nowrap;
+      text-overflow: ellipsis;
     }
 
     .result-name-box {
@@ -686,9 +710,14 @@
       border: 3px solid var(--red);
       border-radius: 50%;
       text-align: center;
+      font-family:
+        "Times New Roman",
+        "Batang",
+        "바탕",
+        serif;
       font-size: 11px;
       line-height: 1.15;
-      font-weight: 950;
+      font-weight: 700;
       transform: rotate(-9deg);
     }
 
@@ -734,7 +763,6 @@
     }
 
     .trait-cell {
-      position: relative;
       min-height: 80px;
       padding: 10px 6px;
       display: flex;
@@ -765,9 +793,14 @@
       border-top: 2px dashed var(--line);
       color: var(--sub-text);
       text-align: center;
+      font-family:
+        "Times New Roman",
+        "Batang",
+        "바탕",
+        serif;
       font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 0.3px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
     }
 
     .action-stack {
@@ -795,6 +828,25 @@
       display: flex;
       align-items: center;
       justify-content: center;
+    }
+
+    .ad-wrap {
+      width: 100%;
+      margin: 18px auto 0;
+      padding: 0;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .ad-wrap iframe,
+    .ad-wrap div,
+    .ad-wrap ins {
+      max-width: 100%;
+      margin-left: auto !important;
+      margin-right: auto !important;
     }
 
     .save-modal {
@@ -827,7 +879,6 @@
       margin: 0 0 8px;
       font-size: 18px;
       font-weight: 950;
-      word-break: keep-all;
     }
 
     .save-modal-description {
@@ -836,7 +887,6 @@
       font-size: 13px;
       line-height: 1.5;
       font-weight: 700;
-      word-break: keep-all;
     }
 
     .save-preview {
@@ -874,7 +924,9 @@
       transform: translate(-50%, 18px);
       opacity: 0;
       pointer-events: none;
-      transition: opacity 0.18s ease, transform 0.18s ease;
+      transition:
+        opacity 0.18s ease,
+        transform 0.18s ease;
     }
 
     .toast.show {
@@ -901,12 +953,23 @@
         padding: 23px 11px 42px;
       }
 
-      .main-paper {
-        padding: 24px 20px 30px 24px;
+      .name-paper {
+        padding: 22px 16px 26px 28px;
       }
 
-      .csat-main-title {
-        font-size: 38px;
+      .name-title {
+        margin: 55px 0 34px;
+        font-size: 34px;
+      }
+
+      .name-input-wrap {
+        width: 94%;
+      }
+
+      .name-guide {
+        width: 96%;
+        padding: 13px;
+        font-size: 13px;
       }
 
       .question-paper {
@@ -914,17 +977,42 @@
       }
 
       .result-card {
-        padding: 24px 18px 24px 30px;
+        padding: 20px 16px 24px 28px;
+      }
+
+      .result-title-small {
+        font-size: 14px;
+      }
+
+      .result-title-main {
+        font-size: 20px;
+        letter-spacing: -1.4px;
+      }
+
+      .result-student {
+        width: 94%;
+        gap: 7px;
+        margin: 19px auto 17px;
+      }
+
+      .student-field {
+        grid-template-columns: 48px 1fr;
+        min-height: 36px;
+      }
+
+      .student-field span,
+      .student-field b {
+        font-size: 12px;
+      }
+
+      .student-field span {
+        letter-spacing: 0;
       }
 
       .trait-cell {
         min-height: 72px;
         padding: 8px 5px;
         font-size: 12px;
-      }
-
-      .result-info-table {
-        grid-template-columns: 62px 1fr 62px 1fr;
       }
 
       .result-name-box {
@@ -954,46 +1042,83 @@
       <a class="brand" href="https://test-it.co.kr/">테스트잇</a>
 
       <nav class="header-nav">
-        <a href="https://test-it.co.kr/">성격</a>
-        <a href="https://test-it.co.kr/">얼굴</a>
-        <a href="https://test-it.co.kr/">그외</a>
-        <a href="https://test-it.co.kr/">사주</a>
+        <a href="https://test-it.co.kr/test.html">성격</a>
+        <a href="https://test-it.co.kr/face.html">얼굴</a>
+        <a href="https://test-it.co.kr/etc.html">그외</a>
+        <a href="https://test-it.co.kr/saju.html">사주</a>
       </nav>
     </div>
   </header>
 
   <main class="app">
     <section id="mainScreen" class="screen active">
-      <div class="paper main-paper">
-        <div class="exam-cover-wrapper">
-          <div class="csat-top">
-            <span>2026학년도 테스트잇 모의평가 문제지</span>
-          </div>
+      <img
+        class="main-image"
+        src="img_main401.png"
+        alt="테스트잇 인간 유형 종합 평가 테스트"
+      >
 
-          <div class="csat-middle">
-            <div class="csat-subject">제 1 교시</div>
+      <button
+        id="startButton"
+        class="primary-button"
+        type="button"
+      >
+        테스트 시작하기
+      </button>
+    </section>
 
-            <h1 class="csat-main-title">
-              테스트잇<br>
-              인간 유형 종합 평가 테스트
-            </h1>
-          </div>
-
-          <div class="csat-student-box">
-            <div class="csat-input-row">
-              <span class="label">성 명</span>
-              <span class="line"></span>
-            </div>
-
-            <div class="csat-input-row">
-              <span class="label">수험번호</span>
-              <span class="line"></span>
-            </div>
-          </div>
+    <section id="nameScreen" class="screen">
+      <div class="paper name-paper">
+        <div class="name-paper-top">
+          응시자 정보 작성란<br>
+          테스트잇 인간 유형 평가
         </div>
 
-        <button id="startButton" class="primary-button" type="button">
-          시험 시작하기
+        <h2 class="name-title">
+          응시자<br>
+          닉네임 작성
+        </h2>
+
+        <div class="name-input-wrap">
+          <label
+            class="name-label"
+            for="nicknameInput"
+          >
+            성명
+          </label>
+
+          <input
+            id="nicknameInput"
+            class="name-input"
+            type="text"
+            maxlength="12"
+            placeholder="닉네임을 입력해주세요"
+            autocomplete="off"
+          >
+        </div>
+
+        <div class="name-guide">
+          ○ 기본 문항은 총 12문항입니다.<br>
+          ○ 각 문항에서 나에게 가까운 답변을 선택합니다.<br>
+          ○ 최고 점수가 동점일 경우 최종 판정 문항이 출제됩니다.
+        </div>
+      </div>
+
+      <div class="name-button-stack">
+        <button
+          id="nameStartButton"
+          class="primary-button"
+          type="button"
+        >
+          시험 응시하기
+        </button>
+
+        <button
+          id="nameBackButton"
+          class="action-button"
+          type="button"
+        >
+          처음으로
         </button>
       </div>
     </section>
@@ -1002,25 +1127,71 @@
       <div class="paper question-paper">
         <div class="question-top">
           <div class="progress-info">
-            <span class="progress-title">인간 유형 평가 진행 중</span>
-            <span id="progressCount" class="progress-count">1 / 12</span>
+            <span class="progress-title">
+              인간 유형 평가 진행 중
+            </span>
+
+            <span
+              id="progressCount"
+              class="progress-count"
+            >
+              1 / 12
+            </span>
           </div>
 
           <div class="progress-bar">
-            <div id="progressFill" class="progress-fill"></div>
+            <div
+              id="progressFill"
+              class="progress-fill"
+            ></div>
           </div>
         </div>
 
         <div class="question-info-table">
-          <div class="question-info-label">평가 항목</div>
-          <div id="sectionName">대화 성향</div>
+          <div class="question-info-label">
+            평가 항목
+          </div>
+
+          <div
+            id="sectionName"
+            class="question-info-value"
+          >
+            에너지 성향
+          </div>
+
+          <div class="question-info-label">
+            성명
+          </div>
+
+          <div
+            id="questionNickname"
+            class="question-info-value"
+          >
+            응시자
+          </div>
         </div>
 
-        <div id="questionNumber" class="question-number">문항 01</div>
-        <h2 id="questionText" class="question-text"></h2>
-        <div id="answerContainer" class="answers"></div>
+        <div
+          id="questionNumber"
+          class="question-number"
+        >
+          문항 01
+        </div>
 
-        <p id="questionNote" class="question-note">
+        <h2
+          id="questionText"
+          class="question-text"
+        ></h2>
+
+        <div
+          id="answerContainer"
+          class="answers"
+        ></div>
+
+        <p
+          id="questionNote"
+          class="question-note"
+        >
           두 답변 중 나에게 더 가까운 것을 선택해 주세요.
         </p>
       </div>
@@ -1029,49 +1200,94 @@
     <section id="loadingScreen" class="screen">
       <div class="paper loading-paper">
         <div class="loading-content">
-          <h2 class="loading-title">답안지 채점 중</h2>
+          <h2 class="loading-title">
+            답안지 채점 중
+          </h2>
 
           <p class="loading-description">
             가장 강하게 나타난 인간 유형을 확인하고 있어요.
           </p>
 
           <div class="grading-box"></div>
-          <div class="loading-bar"><span></span></div>
+
+          <div class="loading-bar">
+            <span></span>
+          </div>
         </div>
       </div>
     </section>
 
     <section id="resultScreen" class="screen">
       <div class="result-wrap">
-        <div id="resultCard" class="result-card">
-          <div class="result-exam-title">
-            <strong>테스트잇 인간 유형 종합 평가 결과표</strong>
-          </div>
+        <div
+          id="resultCard"
+          class="result-card"
+        >
+          <h2 class="result-title-block">
+            <span class="result-title-small">
+              2026학년도 테스트잇 모의고사
+            </span>
 
-          <div class="result-info-table">
-            <div class="result-info-label">문항 수</div>
-            <div id="resultQuestionCount" class="result-info-value">12문항</div>
-            <div class="result-info-label">채점</div>
-            <div class="result-info-value">완료</div>
+            <strong class="result-title-main">
+              인간 유형 종합 평가 채점지
+            </strong>
+          </h2>
+
+          <div class="result-student">
+            <div class="student-field">
+              <span>성명</span>
+              <b id="resultNickname">응시자</b>
+            </div>
+
+            <div class="student-field">
+              <span>번호</span>
+              <b>401-HUM</b>
+            </div>
           </div>
 
           <div class="result-name-box">
-            <span class="result-name-label">최종 인간 유형</span>
-            <h2 id="resultType" class="result-type">재미형</h2>
-            <div class="grading-stamp">유형<br>판정</div>
+            <span class="result-name-label">
+              최종 인간 유형
+            </span>
+
+            <h2
+              id="resultType"
+              class="result-type"
+            >
+              도파민형
+            </h2>
+
+            <div class="grading-stamp">
+              유형<br>
+              판정
+            </div>
           </div>
 
           <div class="result-summary-box">
-            <h3 class="result-summary-title">종합 평가</h3>
-            <p id="resultSummary" class="result-summary"></p>
+            <h3 class="result-summary-title">
+              종합 평가
+            </h3>
+
+            <p
+              id="resultSummary"
+              class="result-summary"
+            ></p>
           </div>
 
           <div class="result-section">
-            <h3 class="result-section-title">세부 성격 특징</h3>
-            <div id="resultTraits" class="trait-bingo"></div>
+            <h3 class="result-section-title">
+              세부 성격 특징
+            </h3>
+
+            <div
+              id="resultTraits"
+              class="trait-bingo"
+            ></div>
           </div>
 
-          <div class="result-bottom">TEST-IT.CO.KR / TEST401</div>
+          <div class="result-bottom">
+            TEST-IT.CO.KR / TEST401
+          </div>
         </div>
 
         <div class="action-stack">
@@ -1108,23 +1324,35 @@
         </div>
       </div>
     </section>
-     <div class="ad-wrap">
+
+    <div class="ad-wrap">
       <script src="https://ads-partners.coupang.com/g.js"></script>
+
       <script>
-        new PartnersCoupang.G({
-          id: 798186,
-          template: "carousel",
-          trackingCode: "AF4391881",
-          width: "350",
-          height: "140"
-        });
+        if (
+          window.PartnersCoupang &&
+          window.PartnersCoupang.G
+        ) {
+          new window.PartnersCoupang.G({
+            id: 798186,
+            template: "carousel",
+            trackingCode: "AF4391881",
+            width: "350",
+            height: "140"
+          });
+        }
       </script>
     </div>
   </main>
 
-  <div id="saveModal" class="save-modal">
+  <div
+    id="saveModal"
+    class="save-modal"
+  >
     <div class="save-modal-card">
-      <h2 class="save-modal-title">이미지 꾹 눌러 저장하기</h2>
+      <h2 class="save-modal-title">
+        이미지 꾹 눌러 저장하기
+      </h2>
 
       <p class="save-modal-description">
         아래 이미지를 꾹 누르거나 우클릭하여<br>
@@ -1147,412 +1375,518 @@
     </div>
   </div>
 
-  <div id="toast" class="toast"></div>
+  <div
+    id="toast"
+    class="toast"
+  ></div>
 
   <script>
     "use strict";
 
-    const TEST_TITLE = "테스트잇 인간 유형 종합 평가 테스트";
-    const TEST_URL = "https://test-it.co.kr/test401";
+    const TEST_TITLE =
+      "테스트잇 인간 유형 종합 평가 테스트";
+
+    const TEST_URL =
+      "https://test-it.co.kr/test401";
+
     const TOTAL_QUESTIONS = 12;
+    const LOADING_TIME = 3000;
 
     document.title = TEST_TITLE;
 
     const screens = {
       main: document.getElementById("mainScreen"),
+      name: document.getElementById("nameScreen"),
       question: document.getElementById("questionScreen"),
       loading: document.getElementById("loadingScreen"),
       result: document.getElementById("resultScreen")
     };
 
-    const startButton = document.getElementById("startButton");
-    const retryButton = document.getElementById("retryButton");
-    const saveButton = document.getElementById("saveButton");
-    const shareButton = document.getElementById("shareButton");
-    const progressCount = document.getElementById("progressCount");
-    const progressFill = document.getElementById("progressFill");
-    const sectionName = document.getElementById("sectionName");
-    const questionNumber = document.getElementById("questionNumber");
-    const questionText = document.getElementById("questionText");
-    const answerContainer = document.getElementById("answerContainer");
-    const questionNote = document.getElementById("questionNote");
-    const resultCard = document.getElementById("resultCard");
-    const resultQuestionCount = document.getElementById("resultQuestionCount");
-    const resultType = document.getElementById("resultType");
-    const resultSummary = document.getElementById("resultSummary");
-    const resultTraits = document.getElementById("resultTraits");
-    const saveModal = document.getElementById("saveModal");
-    const savePreview = document.getElementById("savePreview");
-    const modalCloseButton = document.getElementById("modalCloseButton");
-    const toast = document.getElementById("toast");
+    const startButton =
+      document.getElementById("startButton");
+
+    const nameStartButton =
+      document.getElementById("nameStartButton");
+
+    const nameBackButton =
+      document.getElementById("nameBackButton");
+
+    const nicknameInput =
+      document.getElementById("nicknameInput");
+
+    const retryButton =
+      document.getElementById("retryButton");
+
+    const saveButton =
+      document.getElementById("saveButton");
+
+    const shareButton =
+      document.getElementById("shareButton");
+
+    const progressCount =
+      document.getElementById("progressCount");
+
+    const progressFill =
+      document.getElementById("progressFill");
+
+    const sectionName =
+      document.getElementById("sectionName");
+
+    const questionNickname =
+      document.getElementById("questionNickname");
+
+    const questionNumber =
+      document.getElementById("questionNumber");
+
+    const questionText =
+      document.getElementById("questionText");
+
+    const answerContainer =
+      document.getElementById("answerContainer");
+
+    const questionNote =
+      document.getElementById("questionNote");
+
+    const resultCard =
+      document.getElementById("resultCard");
+
+    const resultNickname =
+      document.getElementById("resultNickname");
+
+    const resultType =
+      document.getElementById("resultType");
+
+    const resultSummary =
+      document.getElementById("resultSummary");
+
+    const resultTraits =
+      document.getElementById("resultTraits");
+
+    const saveModal =
+      document.getElementById("saveModal");
+
+    const savePreview =
+      document.getElementById("savePreview");
+
+    const modalCloseButton =
+      document.getElementById("modalCloseButton");
+
+    const toast =
+      document.getElementById("toast");
 
     const questions = [
       {
-        section: "대화 성향",
-        text: "친구들과 모여서 대화할 때<br>내가 더 좋아하는 주제는?",
-        weight: 3,
+        section: "에너지 성향",
+        text:
+          "쉬는 날 하루를 보낼 때<br>내가 더 좋아하는 방식은?",
         options: [
           {
-            text: "\"아 어제 그거 봄? 개웃김 진짜\"<br>가볍게 웃고 떠들 수 있는 썰",
-            type: "fun"
+            text:
+              "가만히 있으면 답답해서<br>뭐라도 재미있는 자극을 찾음",
+            type: "dopamine"
           },
           {
-            text: "\"근데 요즘 내 생각은 좀 그래\"<br>가치관이나 고민 같은 깊은 이야기",
-            type: "serious"
-          }
-        ]
-      },
-      {
-        section: "대화 성향",
-        text: "평소 영상을 시청할 때<br>나의 선호도는?",
-        weight: 2,
-        options: [
-          {
-            text: "깊게 생각할 필요 없는<br>짧고 유쾌한 예능이나 쇼츠",
-            type: "fun"
-          },
-          {
-            text: "몰랐던 지식을 알려주는<br>유익한 다큐나 정보성 영상",
-            type: "serious"
-          }
-        ]
-      },
-      {
-        section: "대화 성향",
-        text: "새로운 사람들과 모인 자리에서<br>나의 모습은?",
-        weight: 1,
-        options: [
-          {
-            text: "어색한 분위기를 참지 못하고<br>먼저 나서서 대화를 주도함",
-            type: "fun"
-          },
-          {
-            text: "먼저 말을 꺼내기보다<br>대화의 흐름을 신중하게 들음",
-            type: "serious"
-          }
-        ]
-      },
-      {
-        section: "멘탈 성향",
-        text: "누군가 나에게 가벼운 농담이나<br>장난을 쳤을 때?",
-        weight: 3,
-        options: [
-          {
-            text: "'혹시 나한테 불만이 있나?'<br>속으로 의미를 계속 곱씹음",
-            type: "sensitive"
-          },
-          {
-            text: "크게 의미를 두지 않고<br>뒤돌아서면 바로 잊어버림",
-            type: "easygoing"
-          }
-        ]
-      },
-      {
-        section: "멘탈 성향",
-        text: "내 공간에 작은 소음이 들리거나<br>주변이 어질러져 있다면?",
-        weight: 2,
-        options: [
-          {
-            text: "집중력이 깨지고 신경이 쓰여<br>다른 일을 제대로 할 수 없음",
-            type: "sensitive"
-          },
-          {
-            text: "크게 거슬리지 않아<br>별 생각 없이 하던 일을 계속함",
-            type: "easygoing"
-          }
-        ]
-      },
-      {
-        section: "멘탈 성향",
-        text: "평소와 달리 친구의 톡 답장이<br>유난히 짧고 건조하게 왔을 때?",
-        weight: 1,
-        options: [
-          {
-            text: "'내가 아까 뭐 실수한 거 있나?'<br>대화 내용을 다시 쭉 올려서 읽어봄",
-            type: "sensitive"
-          },
-          {
-            text: "'오늘 하루 엄청 바쁜가 보네~'<br>별생각 없이 내 할 일을 계속함",
-            type: "easygoing"
+            text:
+              "익숙하고 편안한 공간에서<br>조용하고 평화롭게 쉬는 게 최고임",
+            type: "stable"
           }
         ]
       },
       {
         section: "에너지 성향",
-        text: "쉬는 날 아무런 일정이 없이<br>집에만 있어야 한다면?",
-        weight: 3,
+        text:
+          "평소에 영상을 볼 때<br>나의 선호도는?",
         options: [
           {
-            text: "몸이 답답하고 지루해서<br>재미있는 콘텐츠라도 몰아봄",
+            text:
+              "전개가 빠르고 흥미진진한<br>새로운 영상을 찾아봄",
             type: "dopamine"
           },
           {
-            text: "방해받지 않는 고요한 시간이<br>평화롭고 만족스러움",
-            type: "calm"
+            text:
+              "마음이 편안해지거나<br>자주 보던 익숙한 영상을 틀어둠",
+            type: "stable"
           }
         ]
       },
       {
         section: "에너지 성향",
-        text: "식당에서 처음 보는<br>파격적인 신메뉴를 발견했다면?",
-        weight: 2,
+        text:
+          "식당에 갔을 때<br>나의 메뉴 선택은?",
         options: [
           {
-            text: "무슨 맛일지 너무 궁금해서<br>고민 없이 바로 도전해 봄",
+            text:
+              "호기심이 생겨서 처음 보는<br>신기한 메뉴에 도전해 봄",
             type: "dopamine"
           },
           {
-            text: "실패하고 싶지 않아서<br>평소에 자주 먹던 메뉴를 고름",
-            type: "calm"
-          }
-        ]
-      },
-      {
-        section: "에너지 성향",
-        text: "새로운 관심사가 생겼을 때<br>나의 접근 방식은?",
-        weight: 1,
-        options: [
-          {
-            text: "초반에 완전히 빠져들어 몰두하고<br>흥미가 떨어지면 금방 바꿈",
-            type: "dopamine"
-          },
-          {
-            text: "조급해하지 않고 천천히<br>오랫동안 꾸준하게 즐김",
-            type: "calm"
+            text:
+              "실패하기 싫어서 원래 자주 먹던<br>검증된 맛을 선택함",
+            type: "stable"
           }
         ]
       },
       {
         section: "관계 성향",
-        text: "갑자기 혼자 밥을 먹거나<br>영화를 보게 되었을 때?",
-        weight: 3,
+        text:
+          "혼자 가려고 했던 곳에<br>친구가 같이 가자고 한다면?",
         options: [
           {
-            text: "혼자 무언가를 하는 건 심심해서<br>어떻게든 같이 갈 사람을 찾음",
+            text:
+              "혼자 가는 것보다 함께 가는 게 좋아<br>바로 약속을 잡음",
             type: "friendly"
           },
           {
-            text: "다른 사람과 맞출 필요 없이<br>마음대로 할 수 있어서 편함",
-            type: "myway"
+            text:
+              "원래 혼자 보내려던 시간이라<br>계획대로 혼자 가고 싶음",
+            type: "independent"
           }
         ]
       },
       {
         section: "관계 성향",
-        text: "여러 명과 함께하는 모임에서<br>나의 주된 역할은?",
-        weight: 2,
+        text:
+          "여러 사람이 모인 자리에서<br>나의 모습은?",
         options: [
           {
-            text: "대화가 끊기지 않도록 호응하며<br>분위기가 가라앉지 않게 신경 씀",
+            text:
+              "대화가 끊기지 않게 반응을 해주며<br>분위기를 편안하게 만듦",
             type: "friendly"
           },
           {
-            text: "불필요한 에너지를 쓰지 않고<br>조용히 내 페이스를 유지함",
-            type: "myway"
+            text:
+              "꼭 필요한 말이 아니면 듣기만 하고<br>나만의 페이스를 유지함",
+            type: "independent"
           }
         ]
       },
       {
         section: "관계 성향",
-        text: "다수가 A를 선택하는 상황에서<br>나는 B가 더 마음에 든다면?",
-        weight: 1,
+        text:
+          "다 같이 무언가를 결정해야 할 때<br>나의 의견은?",
         options: [
           {
-            text: "전체적인 분위기를 망치고 싶지 않아<br>다수의 의견에 자연스럽게 맞춤",
+            text:
+              "분위기를 깨기 싫어서<br>다른 사람들의 의견에 잘 맞춰줌",
             type: "friendly"
           },
           {
-            text: "다른 사람들의 시선과 상관없이<br>나의 확고한 취향을 선택함",
-            type: "myway"
+            text:
+              "남들이 어떻게 생각하든 상관없이<br>내가 원하는 바를 확실히 말함",
+            type: "independent"
+          }
+        ]
+      },
+      {
+        section: "행동 성향",
+        text:
+          "팀이나 그룹에서 일을 할 때<br>나의 역할은?",
+        options: [
+          {
+            text:
+              "상황이 답답하게 흘러가는 걸 못 참고<br>내가 먼저 나서서 일을 진행함",
+            type: "proactive"
+          },
+          {
+            text:
+              "전체적인 상황을 꼼꼼하게 살피며<br>신중하게 내 역할을 다함",
+            type: "serious"
+          }
+        ]
+      },
+      {
+        section: "행동 성향",
+        text:
+          "새로운 프로젝트나 목표가<br>주어졌을 때?",
+        options: [
+          {
+            text:
+              "고민할 시간에 일단 부딪혀보고<br>직접 행동하면서 방법을 찾아감",
+            type: "proactive"
+          },
+          {
+            text:
+              "발생할 수 있는 문제까지<br>미리 깊게 생각하고 계획을 세움",
+            type: "serious"
+          }
+        ]
+      },
+      {
+        section: "행동 성향",
+        text:
+          "친구들과 여행을 가기로 했을 때<br>나의 모습은?",
+        options: [
+          {
+            text:
+              "적극적으로 의견을 던지며<br>결정이 빨리 나도록 흐름을 주도함",
+            type: "proactive"
+          },
+          {
+            text:
+              "가벼운 결정은 피하고<br>친구들이 놓친 세세한 정보를 찾아봄",
+            type: "serious"
+          }
+        ]
+      },
+      {
+        section: "대처 성향",
+        text:
+          "친구가 힘든 일로<br>고민을 이야기할 때 나는?",
+        options: [
+          {
+            text:
+              "친구의 힘든 마음에 깊게 이입해서<br>감정적으로 진심을 다해 공감해 줌",
+            type: "sensitive"
+          },
+          {
+            text:
+              "상황을 객관적으로 먼저 파악하고<br>현실적인 해결책이 무엇일지 고민함",
+            type: "realistic"
+          }
+        ]
+      },
+      {
+        section: "대처 성향",
+        text:
+          "누군가 나에게 지적을 하거나<br>아쉬운 소리를 했을 때?",
+        options: [
+          {
+            text:
+              "그 상황과 말이 머릿속을 맴돌아서<br>내가 뭘 잘못했는지 계속 곱씹음",
+            type: "sensitive"
+          },
+          {
+            text:
+              "고쳐야 할 점만 딱 기억하고<br>감정적으로는 크게 담아두지 않음",
+            type: "realistic"
+          }
+        ]
+      },
+      {
+        section: "대처 성향",
+        text:
+          "주변 사람의 표정이나 말투가<br>평소와 살짝 다를 때?",
+        options: [
+          {
+            text:
+              "그 미세한 변화를 바로 눈치채고<br>나 때문에 그런 건지 신경이 쓰임",
+            type: "sensitive"
+          },
+          {
+            text:
+              "오늘 하루가 좀 피곤한가 보다 하고<br>나의 감정과는 분리해서 생각함",
+            type: "realistic"
           }
         ]
       }
     ];
 
-  const tieBreakerOptions = {
-  fun: "지루하거나 어색한 분위기가 생기면<br>농담이나 재미있는 말로 분위기를 바꾸는 편",
-  serious: "가벼운 말보다 생각과 의미가 담긴<br>깊은 대화를 더 좋아하는 편",
-  sensitive: "작은 말투나 분위기 변화도<br>빠르게 알아차리고 오래 생각하는 편",
-  easygoing: "웬만한 일은 크게 의미 두지 않고<br>편하게 넘기는 편",
-  dopamine: "새롭고 재미있는 것이 생기면<br>바로 빠져들고 도전하는 편",
-  calm: "익숙하고 조용한 환경에서<br>내 속도대로 머무는 편",
-  friendly: "혼자 시간을 보내기보다<br>누군가와 함께하고 교류하는 것을 더 좋아하는 편",
-  myway: "주변 반응보다 내 기준과 취향을<br>우선하며 움직이는 편"
-};
+    const tieBreakerOptions = {
+      dopamine:
+        "익숙한 만족보다<br>새로운 자극과 경험을 먼저 선택하는 편",
+
+      stable:
+        "새로운 선택보다<br>이미 만족했던 익숙한 것을 선택하는 편",
+
+      friendly:
+        "무엇을 하느냐보다<br>누군가와 함께하는 것이 더 중요한 편",
+
+      independent:
+        "주변의 반응보다<br>내 시간과 선택을 지키는 것이 더 중요한 편",
+
+      proactive:
+        "방향이 정해지지 않으면<br>내가 직접 결정하고 진행하는 편",
+
+      serious:
+        "빠르게 시작하기보다<br>이유와 의미를 충분히 생각하는 편",
+
+      sensitive:
+        "작은 말투나 분위기 변화도<br>빠르게 느끼고 오래 신경 쓰는 편",
+
+      realistic:
+        "감정적인 반응보다<br>실제로 필요한 해결 방법을 먼저 찾는 편"
+    };
 
     const results = {
-      fun: {
-        name: "재미형",
-        summary: "어색한 공기를 몹시 불편해하는 분위기 메이커! 정적이 흐르기 전에 가벼운 농담으로 주변 사람들을 무장해제 시키는 유쾌한 매력의 소유자입니다.",
-        traits: [
-          "어색한 분위기 극혐",
-          "자연스러운 대화 주도",
-          "웃음 장벽이 낮음",
-          "타인을 웃길 때 쾌감",
-          "유행에 매우 민감함",
-          "반응이 즉각적임",
-          "무거운 공기 환기",
-          "티키타카를 즐김",
-          "지루함을 견디지 못함",
-          "빠른 두뇌 회전",
-          "어려운 상황도 긍정",
-          "주변에 늘 사람이 많음"
-        ]
-      },
-
-      serious: {
-        name: "진지형",
-        summary: "생각이 깊고 가벼운 대화보다는 그 안에서 의미를 찾는 타입! 표면적인 스몰토크보다 가치관이 통하는 깊이 있는 대화에서 진정한 편안함을 느낍니다.",
-        traits: [
-          "의미 없는 대화 지침",
-          "말 한마디도 신중하게",
-          "하나를 깊게 파고듦",
-          "가치관의 일치 중요",
-          "객관적인 사실 확인",
-          "혼자만의 사색 필수",
-          "기복 없이 평온함",
-          "가벼운 장난을 어려워함",
-          "한 우물을 파는 성격",
-          "생각 정리가 취미",
-          "긴 글에 거부감 없음",
-          "대충 얼버무리지 않음"
-        ]
-      },
-
-      sensitive: {
-        name: "예민형",
-        summary: "타인은 쉽게 놓치는 미세한 변화까지 짚어내는 섬세함의 끝판왕! 뛰어난 공감 능력 덕분에 다정하지만, 그만큼 에너지가 빠르게 소진되는 타입입니다.",
-        traits: [
-          "분위기 파악이 매우 빠름",
-          "말투 변화에 깊은 고민",
-          "오감이 예민하게 열려있음",
-          "타인의 감정에 잘 동화됨",
-          "놓치기 쉬운 디테일 발견",
-          "상처가 오래가는 편",
-          "미묘한 기분 변화 캐치",
-          "상황을 살피는 신중함",
-          "작은 소음에도 민감함",
-          "직감이 잘 맞는 편",
-          "생각이 꼬리를 묾",
-          "내면이 섬세하고 여림"
-        ]
-      },
-
-      easygoing: {
-        name: "무던형",
-        summary: "웬만한 일에는 타격조차 받지 않는 평온함 그 자체! 복잡하게 꼬아서 생각하지 않고 있는 그대로 수용하여, 주변 사람들에게 편안한 안정감을 줍니다.",
-        traits: [
-          "자주 하는 말: 그럴 수 있지",
-          "지나간 일은 빨리 잊음",
-          "물 흐르듯이 순응함",
-          "웬만한 상황에 긍정적",
-          "감정 기복이 거의 없음",
-          "쉽게 화를 내지 않음",
-          "환경이 바뀌어도 잘 잠",
-          "복잡한 생각은 질색",
-          "사실을 있는 그대로 수용",
-          "타인의 시선에 둔감함",
-          "스트레스를 잘 안 받음",
-          "둥글둥글한 성격"
-        ]
-      },
-
       dopamine: {
         name: "도파민형",
-        summary: "단조로운 일상을 견디지 못하고 새로운 자극을 쫓는 모험가! 호기심이 생기면 앞뒤 가리지 않고 몰두하며, 텐션이 오를 때는 누구보다 활동적입니다.",
+        summary:
+          "지루한 것을 참지 못하고 항상 새롭고 재미있는 자극을 찾는 타입입니다. 호기심이 생기면 주저 없이 행동으로 옮기며, 평범한 일상에도 활력을 불어넣는 에너지가 넘칩니다.",
         traits: [
-          "흥미로운 영상을 찾아봄",
-          "화제의 장소는 꼭 방문함",
-          "꽂히면 밤을 새움",
-          "급격하게 오르는 텐션",
-          "가만히 있는 것을 힘들어함",
-          "새로운 도전을 즐김",
-          "가끔 충동적인 행동",
-          "강렬하고 새로운 경험 선호",
-          "다양한 트렌드를 섭렵",
-          "궁금한 것은 못 참음",
-          "흥미가 빠르게 식기도 함",
-          "단조로움은 절대 거부"
+          "지루한 일상 답답함",
+          "새로운 것에 호기심",
+          "생각보다 행동이 먼저",
+          "변화를 즐기는 편",
+          "하나에 꽂히면 깊게 팜",
+          "금방 흥미가 식기도 함",
+          "충동적인 선택 종종 함",
+          "반복되는 상황에 약함",
+          "자극적인 경험 선호",
+          "트렌드에 관심 많음",
+          "새로운 콘텐츠를 잘 찾음",
+          "에너지가 갑자기 터짐"
         ]
       },
 
-      calm: {
-        name: "잔잔형",
-        summary: "번잡한 외부 활동보다는 고요하고 익숙한 환경에서 행복을 느끼는 타입! 혼자만의 시간을 가지며 방해받지 않는 나만의 루틴을 지킬 때 에너지가 충전됩니다.",
+      stable: {
+        name: "안정형",
+        summary:
+          "예측할 수 없는 큰 변화보다는 편안하고 익숙한 환경에서 마음의 평화를 얻는 타입입니다. 자신의 페이스를 묵묵히 유지하며 안정적인 일상을 중요하게 생각합니다.",
         traits: [
-          "외출보다는 집에서 휴식",
-          "잔잔하고 편안한 취향",
-          "익숙한 것을 가장 선호",
-          "사람 많은 곳에서 방전됨",
-          "생각을 비우는 시간 필수",
-          "차분하고 안정적인 분위기",
-          "조용한 환경에서 힐링",
-          "정해진 생활 루틴 중시",
-          "갑작스러운 일정 변화 싫어함",
-          "소박하고 일상적인 행복",
-          "자극적인 요소는 회피",
-          "혼자만의 공간을 사랑함"
+          "익숙한 환경이 제일 편함",
+          "갑작스러운 변화 싫어함",
+          "나만의 생활 루틴 지킴",
+          "검증된 선택을 선호함",
+          "무리한 도전을 피함",
+          "편안한 취향을 반복함",
+          "실패 가능성을 줄이려 함",
+          "평화로운 일상을 추구함",
+          "차분하게 상황을 지켜봄",
+          "꾸준히 이어가는 편",
+          "예상 가능한 흐름 선호",
+          "급격한 자극을 피함"
         ]
       },
 
       friendly: {
         name: "친화형",
-        summary: "어느 모임에서나 부드럽게 스며드는 뛰어난 사교성의 소유자! 혼자 있을 때보다 다른 사람들과 마음을 나누고 교류할 때 삶의 에너지가 샘솟습니다.",
+        summary:
+          "주변 사람들과 부드럽게 어울리며 관계를 통해 만족감을 얻는 타입입니다. 혼자 하는 것보다 누군가와 함께 경험하고 대화를 나눌 때 더욱 즐거움을 느낍니다.",
         traits: [
-          "혼자 있는 시간은 외로움",
-          "사람들과의 만남이 에너지원",
-          "처음 보는 사람과도 잘 지냄",
-          "모임 참석을 매우 좋아함",
-          "강아지 같은 친화력",
-          "뼛속까지 외향적인 성향",
-          "대화 시 풍부한 리액션",
-          "다 같이 어울리는 것 선호",
-          "타인의 부탁을 거절하기 어려움",
-          "주변 사람들을 세심하게 챙김",
-          "자주 연락을 주고받음",
-          "갈등을 피하는 평화주의자"
+          "사람 만나는 것 좋아함",
+          "함께하면 더 즐거움",
+          "낯선 사람과도 잘 지냄",
+          "풍부한 대화 리액션",
+          "주변 사람을 잘 챙김",
+          "모임에 참여하는 편",
+          "갈등을 불편해함",
+          "거절하는 것을 어려워함",
+          "연락을 자주 하는 편",
+          "남의 이야기를 잘 들어줌",
+          "소외된 사람을 챙김",
+          "관계의 연결감 중시"
         ]
       },
 
-      myway: {
-        name: "마이웨이형",
-        summary: "타인의 시선이나 기준에 흔들리지 않고 묵묵히 내 길을 걷는 독립적인 성향! 다수의 의견에 맞추기보다는 나의 확고한 주관과 취향을 가장 중요하게 여깁니다.",
+      independent: {
+        name: "독립형",
+        summary:
+          "타인의 시선이나 기준보다 자신의 선택과 시간을 중요하게 생각하는 타입입니다. 혼자서도 시간을 잘 보내며, 원하는 방식대로 스스로 결정하고 움직입니다.",
         traits: [
-          "나만의 기준과 방식으로 삶",
-          "혼자 하는 활동에 능숙함",
-          "대중성보다 내 개성이 우선",
-          "타인의 시선에 위축되지 않음",
-          "관계없는 일에는 철저히 무관심",
-          "스스로 정한 선이 확고함",
-          "관계를 맺고 끊는 것이 명확함",
-          "혼자서도 시간을 잘 활용함",
-          "원치 않는 감정 표현 안 함",
-          "나의 개인 시간을 가장 중시",
-          "문제를 스스로 해결하려 함",
-          "호불호가 분명하게 나뉨"
+          "나만의 기준이 확고함",
+          "혼자 하는 활동이 편함",
+          "남의 시선에 덜 흔들림",
+          "타인의 간섭을 싫어함",
+          "무리에 꼭 맞추지 않음",
+          "혼자서도 외롭지 않음",
+          "내 일은 내가 알아서 함",
+          "관계의 선이 분명함",
+          "개인 시간이 매우 중요함",
+          "억지로 친해지려 하지 않음",
+          "유행보다 내 취향 우선",
+          "내 방식대로 움직임"
+        ]
+      },
+
+      proactive: {
+        name: "주도형",
+        summary:
+          "답답한 상황을 지켜보기보다 직접 나서서 흐름을 이끄는 타입입니다. 방향이 정해지지 않았을 때 빠르게 결론을 내리고 일을 진행시키는 추진력이 강합니다.",
+        traits: [
+          "답답한 상황 못 참음",
+          "총대 메는 경우가 많음",
+          "빠른 결단력과 실행력",
+          "목표 지향적인 성격",
+          "방향을 먼저 정하는 편",
+          "자기 의견을 확실히 말함",
+          "앞장서서 일 처리함",
+          "리더십이 있다는 평",
+          "주저하지 않고 행동함",
+          "시간 끄는 것을 싫어함",
+          "문제 해결에 적극적",
+          "시원시원한 추진력"
+        ]
+      },
+
+      serious: {
+        name: "진지형",
+        summary:
+          "가볍게 넘기기보다 충분히 생각하고 의미를 찾는 타입입니다. 어떤 일이든 이유와 배경을 이해하려 하며, 깊이 있는 대화와 신중한 선택을 중요하게 생각합니다.",
+        traits: [
+          "행동하기 전 깊게 생각함",
+          "스몰토크보다 깊은 대화",
+          "말 한마디도 신중하게",
+          "이유와 배경을 궁금해함",
+          "관심 분야를 깊게 파고듦",
+          "의미 없는 시간 낭비 싫어함",
+          "가벼운 결론을 피함",
+          "여러 가능성을 생각함",
+          "차분하게 판단하는 편",
+          "원리와 목적을 중요시함",
+          "남의 말을 귀담아들음",
+          "사색하는 시간이 필요함"
+        ]
+      },
+
+      sensitive: {
+        name: "예민형",
+        summary:
+          "다른 사람들은 무심코 지나치는 작은 변화도 섬세하게 느끼는 타입입니다. 말투와 표정, 분위기의 미세한 차이를 빠르게 알아차리며 감정적인 영향을 오래 받기도 합니다.",
+        traits: [
+          "분위기 파악이 매우 빠름",
+          "타인 감정에 잘 동화됨",
+          "말투 하나도 신경 씀",
+          "눈치가 빠른 편",
+          "상처를 오래 기억함",
+          "작은 환경 변화에 반응함",
+          "미묘한 태도를 잘 느낌",
+          "생각과 걱정이 많은 편",
+          "디테일을 놓치지 않음",
+          "상대의 의도를 곱씹음",
+          "다정하고 세심한 성격",
+          "외부 자극에 금방 지침"
+        ]
+      },
+
+      realistic: {
+        name: "현실형",
+        summary:
+          "감정에 오래 머무르기보다 객관적인 사실과 실제 해결 방법을 중시하는 타입입니다. 상황에서 필요한 핵심을 빠르게 판단하고 효율적인 방법을 찾는 능력이 뛰어납니다.",
+        traits: [
+          "객관적인 사실 중시",
+          "실제 상황부터 확인함",
+          "지나간 일에 미련 적음",
+          "현실적인 해결책 제시",
+          "실용성을 중요하게 따짐",
+          "솔직하고 명확한 화법",
+          "감정과 문제를 분리함",
+          "필요한 핵심을 잘 찾음",
+          "효율적으로 일 처리함",
+          "뜬구름 잡는 소리 싫어함",
+          "타인의 감정에 덜 흔들림",
+          "가격과 활용도를 따짐"
         ]
       }
     };
 
+    let nickname = "";
     let currentQuestionIndex = 0;
     let scores = createEmptyScores();
-    let answerHistory = [];
-    let currentResultKey = "fun";
+    let currentResultKey = "dopamine";
     let toastTimer = null;
     let answerLocked = false;
     let tieBreakerTypes = [];
-    let usedTieBreaker = false;
 
     function createEmptyScores() {
       return {
-        fun: 0,
+        dopamine: 0,
+        stable: 0,
+        friendly: 0,
+        independent: 0,
+        proactive: 0,
         serious: 0,
         sensitive: 0,
-        easygoing: 0,
-        dopamine: 0,
-        calm: 0,
-        friendly: 0,
-        myway: 0
+        realistic: 0
       };
     }
 
@@ -1562,117 +1896,173 @@
       });
 
       screens[screenName].classList.add("active");
+
       window.scrollTo({
         top: 0,
         behavior: "auto"
       });
     }
 
-    function startTest() {
+    function openNameScreen() {
+      showScreen("name");
+
+      window.setTimeout(() => {
+        nicknameInput.focus();
+      }, 100);
+    }
+
+    function returnToMain() {
       document.title = TEST_TITLE;
+
+      nickname = "";
+      nicknameInput.value = "";
       currentQuestionIndex = 0;
       scores = createEmptyScores();
-      answerHistory = [];
+      currentResultKey = "dopamine";
       answerLocked = false;
       tieBreakerTypes = [];
-      usedTieBreaker = false;
+
+      showScreen("main");
+    }
+
+    function startTest() {
+      const enteredNickname =
+        nicknameInput.value.trim();
+
+      if (!enteredNickname) {
+        window.alert("응시자 닉네임을 입력해주세요.");
+        nicknameInput.focus();
+        return;
+      }
+
+      nickname = enteredNickname;
+
+      currentQuestionIndex = 0;
+      scores = createEmptyScores();
+      currentResultKey = "dopamine";
+      answerLocked = false;
+      tieBreakerTypes = [];
+
+      questionNickname.textContent = nickname;
 
       showScreen("question");
       renderQuestion();
     }
 
-    function returnToMain() {
-      document.title = TEST_TITLE;
-      currentQuestionIndex = 0;
-      scores = createEmptyScores();
-      answerHistory = [];
-      answerLocked = false;
-      tieBreakerTypes = [];
-      usedTieBreaker = false;
-
-      showScreen("main");
-    }
-
     function renderQuestion() {
       answerLocked = false;
 
-      const question = questions[currentQuestionIndex];
-      const questionDisplayNumber = String(
+      const question =
+        questions[currentQuestionIndex];
+
+      const displayNumber = String(
         currentQuestionIndex + 1
       ).padStart(2, "0");
 
       const progressPercent =
-        ((currentQuestionIndex + 1) / TOTAL_QUESTIONS) * 100;
+        ((currentQuestionIndex + 1) /
+          TOTAL_QUESTIONS) *
+        100;
 
       progressCount.textContent =
         `${currentQuestionIndex + 1} / ${TOTAL_QUESTIONS}`;
 
-      progressFill.style.width = `${progressPercent}%`;
-      sectionName.textContent = question.section;
-      questionNumber.textContent = `문항 ${questionDisplayNumber}`;
-      questionText.innerHTML = question.text;
+      progressFill.style.width =
+        `${progressPercent}%`;
+
+      sectionName.textContent =
+        question.section;
+
+      questionNickname.textContent =
+        nickname;
+
+      questionNumber.textContent =
+        `문항 ${displayNumber}`;
+
+      questionText.innerHTML =
+        question.text;
 
       questionNote.textContent =
         "두 답변 중 나에게 더 가까운 것을 선택해 주세요.";
 
       answerContainer.innerHTML = "";
 
-      question.options.forEach((option, optionIndex) => {
-        const button = document.createElement("button");
+      question.options.forEach(
+        (option, optionIndex) => {
+          const button =
+            document.createElement("button");
 
-        button.type = "button";
-        button.className = "answer-button";
-        button.dataset.number = String(optionIndex + 1);
-        button.innerHTML = option.text;
+          button.type = "button";
+          button.className = "answer-button";
+          button.dataset.number =
+            String(optionIndex + 1);
+          button.innerHTML = option.text;
 
-        button.addEventListener("click", () => {
-          selectAnswer(button, option, question.weight);
-        });
+          button.addEventListener(
+            "click",
+            () => {
+              selectAnswer(
+                button,
+                option
+              );
+            }
+          );
 
-        answerContainer.appendChild(button);
-      });
+          answerContainer.appendChild(
+            button
+          );
+        }
+      );
     }
 
     function selectAnswer(
       selectedButton,
-      selectedOption,
-      questionWeight
+      selectedOption
     ) {
       if (answerLocked) return;
 
       answerLocked = true;
-      lockAnswerButtons(selectedButton);
+
+      lockAnswerButtons(
+        selectedButton
+      );
 
       scores[selectedOption.type] += 1;
-
-      answerHistory.push({
-        type: selectedOption.type,
-        weight: questionWeight,
-        questionIndex: currentQuestionIndex
-      });
 
       window.setTimeout(() => {
         currentQuestionIndex += 1;
 
-        if (currentQuestionIndex < TOTAL_QUESTIONS) {
+        if (
+          currentQuestionIndex <
+          TOTAL_QUESTIONS
+        ) {
           renderQuestion();
-        } else {
-          resolveResultOrShowTieBreaker();
+          return;
         }
+
+        resolveResultOrShowTieBreaker();
       }, 60);
     }
 
-    function lockAnswerButtons(selectedButton) {
-      const answerButtons = [
-        ...answerContainer.querySelectorAll("button")
+    function lockAnswerButtons(
+      selectedButton
+    ) {
+      const buttons = [
+        ...answerContainer.querySelectorAll(
+          ".answer-button"
+        )
       ];
 
-      answerButtons.forEach((button) => {
+      buttons.forEach((button) => {
         button.disabled = true;
-        button.classList.remove("selected");
+        button.classList.remove(
+          "selected"
+        );
       });
 
-      selectedButton.classList.add("selected");
+      selectedButton.classList.add(
+        "selected"
+      );
     }
 
     function getTopScoringTypes() {
@@ -1680,13 +2070,15 @@
         ...Object.values(scores)
       );
 
-      return Object.keys(scores).filter((type) => {
-        return scores[type] === highestScore;
-      });
+      return Object.keys(scores).filter(
+        (type) =>
+          scores[type] === highestScore
+      );
     }
 
     function resolveResultOrShowTieBreaker() {
-      const topTypes = getTopScoringTypes();
+      const topTypes =
+        getTopScoringTypes();
 
       if (topTypes.length === 1) {
         finishTest(topTypes[0]);
@@ -1694,24 +2086,31 @@
       }
 
       tieBreakerTypes = topTypes;
-      usedTieBreaker = true;
-
       renderTieBreakerQuestion();
     }
 
     function renderTieBreakerQuestion() {
       answerLocked = false;
 
-      const finalQuestionNumber = TOTAL_QUESTIONS + 1;
+      const tieQuestionNumber =
+        TOTAL_QUESTIONS + 1;
 
       progressCount.textContent =
-        `${finalQuestionNumber} / ${finalQuestionNumber}`;
+        `${tieQuestionNumber} / ${tieQuestionNumber}`;
 
-      progressFill.style.width = "100%";
-      sectionName.textContent = "최종 유형 판정";
+      progressFill.style.width =
+        "100%";
+
+      sectionName.textContent =
+        "최종 유형 판정";
+
+      questionNickname.textContent =
+        nickname;
 
       questionNumber.textContent =
-        `문항 ${String(finalQuestionNumber).padStart(2, "0")}`;
+        `문항 ${String(
+          tieQuestionNumber
+        ).padStart(2, "0")}`;
 
       questionText.innerHTML =
         "다음 중 평소의 나를<br>가장 잘 설명하는 모습은?";
@@ -1721,20 +2120,34 @@
 
       answerContainer.innerHTML = "";
 
-      tieBreakerTypes.forEach((type, optionIndex) => {
-        const button = document.createElement("button");
+      tieBreakerTypes.forEach(
+        (type, optionIndex) => {
+          const button =
+            document.createElement("button");
 
-        button.type = "button";
-        button.className = "answer-button";
-        button.dataset.number = String(optionIndex + 1);
-        button.innerHTML = tieBreakerOptions[type];
+          button.type = "button";
+          button.className =
+            "answer-button";
+          button.dataset.number =
+            String(optionIndex + 1);
+          button.innerHTML =
+            tieBreakerOptions[type];
 
-        button.addEventListener("click", () => {
-          selectTieBreakerAnswer(button, type);
-        });
+          button.addEventListener(
+            "click",
+            () => {
+              selectTieBreakerAnswer(
+                button,
+                type
+              );
+            }
+          );
 
-        answerContainer.appendChild(button);
-      });
+          answerContainer.appendChild(
+            button
+          );
+        }
+      );
 
       showScreen("question");
     }
@@ -1746,14 +2159,10 @@
       if (answerLocked) return;
 
       answerLocked = true;
-      lockAnswerButtons(selectedButton);
 
-      answerHistory.push({
-        type: selectedType,
-        weight: 0,
-        questionIndex: TOTAL_QUESTIONS,
-        tieBreaker: true
-      });
+      lockAnswerButtons(
+        selectedButton
+      );
 
       window.setTimeout(() => {
         finishTest(selectedType);
@@ -1766,42 +2175,69 @@
       showScreen("loading");
 
       window.setTimeout(() => {
-        renderResult(currentResultKey);
+        renderResult(
+          currentResultKey
+        );
+
         showScreen("result");
-      }, 2200);
+      }, LOADING_TIME);
     }
 
     function renderResult(resultKey) {
-      const resultData = results[resultKey];
+      const resultData =
+        results[resultKey];
 
-      document.title = TEST_TITLE;
+      if (!resultData) {
+        console.error(
+          "결과 데이터를 찾을 수 없습니다.",
+          resultKey
+        );
 
-      resultQuestionCount.textContent =
-        `${TOTAL_QUESTIONS + (usedTieBreaker ? 1 : 0)}문항`;
+        return;
+      }
 
-      resultType.textContent = resultData.name;
-      resultSummary.textContent = resultData.summary;
+      resultNickname.textContent =
+        nickname;
+
+      resultType.textContent =
+        resultData.name;
+
+      resultSummary.textContent =
+        `${nickname}님은 ${resultData.summary}`;
+
       resultTraits.innerHTML = "";
 
-      resultData.traits.forEach((trait) => {
-        const traitCell = document.createElement("div");
+      resultData.traits.forEach(
+        (trait) => {
+          const cell =
+            document.createElement("div");
 
-        traitCell.className = "trait-cell";
-        traitCell.textContent = trait;
+          cell.className =
+            "trait-cell";
 
-        resultTraits.appendChild(traitCell);
-      });
+          cell.textContent = trait;
+
+          resultTraits.appendChild(
+            cell
+          );
+        }
+      );
     }
 
     function showToast(message) {
-      window.clearTimeout(toastTimer);
+      window.clearTimeout(
+        toastTimer
+      );
 
       toast.textContent = message;
       toast.classList.add("show");
 
-      toastTimer = window.setTimeout(() => {
-        toast.classList.remove("show");
-      }, 2100);
+      toastTimer =
+        window.setTimeout(() => {
+          toast.classList.remove(
+            "show"
+          );
+        }, 2100);
     }
 
     async function waitForFonts() {
@@ -1810,59 +2246,107 @@
       try {
         await document.fonts.ready;
       } catch (error) {
-        console.warn("폰트 로딩 에러", error);
+        console.warn(
+          "폰트 로딩 오류",
+          error
+        );
       }
     }
 
     async function saveResultImage() {
-      if (typeof html2canvas !== "function") {
-        showToast("이미지 저장 기능을 불러오지 못했어요.");
+      if (
+        typeof html2canvas !==
+        "function"
+      ) {
+        showToast(
+          "이미지 저장 기능을 불러오지 못했어요."
+        );
+
         return;
       }
 
       saveButton.disabled = true;
-      saveButton.textContent = "이미지 만드는 중...";
+      saveButton.textContent =
+        "이미지 만드는 중...";
 
       try {
         await waitForFonts();
 
-        const canvas = await html2canvas(resultCard, {
-          backgroundColor: "#f5f2eb",
-          scale: Math.min(window.devicePixelRatio || 2, 3),
-          useCORS: true,
-          allowTaint: false,
-          logging: false,
-          scrollX: 0,
-          scrollY: -window.scrollY,
-          windowWidth: document.documentElement.clientWidth
-        });
+        const canvas =
+          await html2canvas(
+            resultCard,
+            {
+              backgroundColor:
+                "#f5f2eb",
 
-        const imageData = canvas.toDataURL("image/png", 1);
+              scale: Math.min(
+                window.devicePixelRatio ||
+                  2,
+                3
+              ),
 
-        savePreview.src = imageData;
-        saveModal.classList.add("open");
-        document.body.style.overflow = "hidden";
+              useCORS: true,
+              allowTaint: false,
+              logging: false,
+              scrollX: 0,
+              scrollY:
+                -window.scrollY,
+
+              windowWidth:
+                document
+                  .documentElement
+                  .clientWidth
+            }
+          );
+
+        const imageData =
+          canvas.toDataURL(
+            "image/png",
+            1
+          );
+
+        savePreview.src =
+          imageData;
+
+        saveModal.classList.add(
+          "open"
+        );
+
+        document.body.style.overflow =
+          "hidden";
       } catch (error) {
         console.error(error);
-        showToast("이미지를 저장하지 못했어요.");
+
+        showToast(
+          "이미지를 저장하지 못했어요."
+        );
       } finally {
-        saveButton.disabled = false;
-        saveButton.textContent = "결과 이미지 저장하기";
+        saveButton.disabled =
+          false;
+
+        saveButton.textContent =
+          "결과 이미지 저장하기";
       }
     }
 
     async function shareTest() {
-      const resultData = results[currentResultKey];
+      const resultData =
+        results[currentResultKey];
 
       const shareData = {
         title: TEST_TITLE,
-        text: `나는 ${resultData.name}! 내 인간 유형도 확인해 봐.`,
+        text:
+          `${nickname}님의 인간 유형은 ${resultData.name}! ` +
+          "내 인간 유형도 확인해 봐.",
         url: TEST_URL
       };
 
       try {
         if (navigator.share) {
-          await navigator.share(shareData);
+          await navigator.share(
+            shareData
+          );
+
           return;
         }
 
@@ -1873,41 +2357,80 @@
           navigator.clipboard &&
           window.isSecureContext
         ) {
-          await navigator.clipboard.writeText(shareText);
-          showToast("공유 문구와 링크를 복사했어요.");
+          await navigator.clipboard.writeText(
+            shareText
+          );
+
+          showToast(
+            "공유 문구와 링크를 복사했어요."
+          );
+
           return;
         }
 
-        const textarea = document.createElement("textarea");
+        const textarea =
+          document.createElement(
+            "textarea"
+          );
 
-        textarea.value = shareText;
-        textarea.style.position = "fixed";
-        textarea.style.opacity = "0";
+        textarea.value =
+          shareText;
 
-        document.body.appendChild(textarea);
+        textarea.style.position =
+          "fixed";
+
+        textarea.style.opacity =
+          "0";
+
+        document.body.appendChild(
+          textarea
+        );
+
         textarea.select();
-        document.execCommand("copy");
+
+        document.execCommand(
+          "copy"
+        );
+
         textarea.remove();
 
-        showToast("공유 문구와 링크를 복사했어요.");
+        showToast(
+          "공유 문구와 링크를 복사했어요."
+        );
       } catch (error) {
         if (
           error &&
           error.name !== "AbortError"
         ) {
-          showToast("공유하지 못했어요.");
+          showToast(
+            "공유하지 못했어요."
+          );
         }
       }
     }
 
     function closeSaveModal() {
-      saveModal.classList.remove("open");
-      document.body.style.overflow = "";
+      saveModal.classList.remove(
+        "open"
+      );
+
+      document.body.style.overflow =
+        "";
     }
 
     startButton.addEventListener(
       "click",
+      openNameScreen
+    );
+
+    nameStartButton.addEventListener(
+      "click",
       startTest
+    );
+
+    nameBackButton.addEventListener(
+      "click",
+      returnToMain
     );
 
     retryButton.addEventListener(
@@ -1930,20 +2453,39 @@
       closeSaveModal
     );
 
-    saveModal.addEventListener("click", (event) => {
-      if (event.target === saveModal) {
-        closeSaveModal();
+    nicknameInput.addEventListener(
+      "keydown",
+      (event) => {
+        if (event.key === "Enter") {
+          startTest();
+        }
       }
-    });
+    );
 
-    document.addEventListener("keydown", (event) => {
-      if (
-        event.key === "Escape" &&
-        saveModal.classList.contains("open")
-      ) {
-        closeSaveModal();
+    saveModal.addEventListener(
+      "click",
+      (event) => {
+        if (
+          event.target === saveModal
+        ) {
+          closeSaveModal();
+        }
       }
-    });
+    );
+
+    document.addEventListener(
+      "keydown",
+      (event) => {
+        if (
+          event.key === "Escape" &&
+          saveModal.classList.contains(
+            "open"
+          )
+        ) {
+          closeSaveModal();
+        }
+      }
+    );
   </script>
 </body>
 </html>

@@ -2,6 +2,7 @@
 <html lang="ko">
 <head>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5522499110435321" crossorigin="anonymous"></script>
+
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,12 +10,15 @@
   <title>테스트잇 러브어택 연애 성격 테스트</title>
   <meta name="description" content="테스트잇 러브어택 연애 성격 테스트">
   <meta name="keywords" content="테스트잇,러브어택테스트,테스트잇러브어택연애테스트,테스트잇러브어택,심리테스트">
+
   <meta property="og:type" content="website">
   <meta property="og:title" content="테스트잇 러브어택 연애 성격 테스트">
   <meta property="og:description" content="테스트잇 러브어택 연애 성격 테스트">
   <meta property="og:url" content="https://test-it.co.kr/test402">
   <meta property="og:image" content="https://test-it.co.kr/img_main402.png">
+
   <link rel="icon" type="image/png" href="favicon.png">
+
   <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 
   <style>
@@ -475,6 +479,192 @@
       background: rgba(255, 243, 247, 0.95);
     }
 
+    .loading-page {
+      min-height: 520px;
+      padding-top: 24px;
+      padding-bottom: 24px;
+    }
+
+    .loading-screen {
+      position: relative;
+      min-height: 470px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .loading-heart-stage {
+      position: relative;
+      width: 190px;
+      height: 160px;
+      margin-bottom: 12px;
+    }
+
+    .loading-main-heart {
+      position: absolute;
+      top: 35px;
+      left: 50%;
+      width: 102px;
+      height: 82px;
+      margin-left: -51px;
+      animation: loadingHeartFloat 1.5s ease-in-out infinite;
+    }
+
+    .loading-main-heart svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+    }
+
+    .floating-heart {
+      position: absolute;
+      bottom: 16px;
+      color: var(--pink);
+      font-family: Arial, sans-serif;
+      line-height: 1;
+      opacity: 0;
+      animation: floatingHeartRise 2.1s ease-in-out infinite;
+    }
+
+    .floating-heart.h1 {
+      left: 18px;
+      font-size: 19px;
+      animation-delay: 0s;
+    }
+
+    .floating-heart.h2 {
+      left: 51px;
+      font-size: 13px;
+      animation-delay: 0.45s;
+    }
+
+    .floating-heart.h3 {
+      right: 46px;
+      font-size: 16px;
+      animation-delay: 0.8s;
+    }
+
+    .floating-heart.h4 {
+      right: 15px;
+      font-size: 21px;
+      animation-delay: 1.15s;
+    }
+
+    .loading-title {
+      margin: 0 0 8px;
+      color: #45333a;
+      font-size: 25px;
+      line-height: 1.45;
+      letter-spacing: -0.6px;
+      text-align: center;
+    }
+
+    .loading-description {
+      margin: 0 0 21px;
+      color: var(--ink-soft);
+      font-size: 15px;
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    .loading-progress-track {
+      width: min(100%, 330px);
+      height: 12px;
+      overflow: hidden;
+      border: 1px solid #a47d89;
+      background: rgba(255, 251, 252, 0.72);
+    }
+
+    .loading-progress-fill {
+      width: 0;
+      height: 100%;
+      background: var(--pink);
+    }
+
+    .loading-page.is-loading .loading-progress-fill {
+      animation: loadingProgress 3s linear forwards;
+    }
+
+    .loading-dots {
+      min-height: 25px;
+      margin-top: 11px;
+      color: var(--pink-dark);
+      font-size: 18px;
+      letter-spacing: 4px;
+    }
+
+    .loading-dots span {
+      display: inline-block;
+      animation: loadingDot 1.2s ease-in-out infinite;
+    }
+
+    .loading-dots span:nth-child(2) {
+      animation-delay: 0.18s;
+    }
+
+    .loading-dots span:nth-child(3) {
+      animation-delay: 0.36s;
+    }
+
+    @keyframes loadingHeartFloat {
+      0%,
+      100% {
+        transform: translateY(0) rotate(-2deg);
+      }
+
+      50% {
+        transform: translateY(-10px) rotate(2deg);
+      }
+    }
+
+    @keyframes floatingHeartRise {
+      0% {
+        opacity: 0;
+        transform: translateY(15px) scale(0.75) rotate(-8deg);
+      }
+
+      22% {
+        opacity: 0.78;
+      }
+
+      75% {
+        opacity: 0.58;
+      }
+
+      100% {
+        opacity: 0;
+        transform: translateY(-100px) scale(1.08) rotate(9deg);
+      }
+    }
+
+    @keyframes loadingProgress {
+      from {
+        width: 0;
+      }
+
+      to {
+        width: 100%;
+      }
+    }
+
+    @keyframes loadingDot {
+      0%,
+      60%,
+      100% {
+        opacity: 0.28;
+        transform: translateY(0);
+      }
+
+      30% {
+        opacity: 1;
+        transform: translateY(-4px);
+      }
+    }
+
     .result-page {
       min-height: 0;
       padding-top: 20px;
@@ -683,6 +873,7 @@
     .result-buttons .secondary-button {
       width: 100%;
       max-width: none;
+      font-size: 16px;
     }
 
     .ad-wrap {
@@ -717,9 +908,9 @@
 
     .save-modal-box {
       width: 100%;
-      max-width: 420px;
+      max-width: 370px;
       max-height: 92vh;
-      padding: 16px;
+      padding: 13px;
       overflow-y: auto;
       border: 1px solid #a87d8a;
       background: var(--paper-light);
@@ -727,45 +918,51 @@
     }
 
     .save-modal-title {
-      margin: 0 0 7px;
-      font-size: 24px;
-      line-height: 1.5;
+      margin: 0 0 4px;
+      font-size: 18px;
+      line-height: 1.4;
       text-align: center;
     }
 
     .save-modal-description {
-      margin: 0 0 13px;
+      margin: 0 0 9px;
       color: var(--ink-soft);
-      font-size: 16px;
-      line-height: 1.65;
+      font-size: 13px;
+      line-height: 1.5;
       text-align: center;
     }
 
     .save-image-wrap {
-      width: 100%;
-      margin-bottom: 13px;
-      padding: 6px;
+      width: 90%;
+      margin: 0 auto 10px;
+      padding: 4px;
       overflow: hidden;
       border: 1px solid #a77f8b;
       background: #fffafb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .save-image-wrap img {
       display: block;
-      width: 100%;
+      width: auto;
+      max-width: 100%;
+      max-height: 52vh;
       height: auto;
+      object-fit: contain;
       -webkit-touch-callout: default;
       user-select: auto;
     }
 
     .modal-close-button {
       width: 100%;
-      min-height: 48px;
+      min-height: 44px;
       border: 1px solid var(--pink-dark);
       border-radius: 0;
       background: var(--pink);
       color: #fffafb;
-      font-size: 18px;
+      font-size: 16px;
       cursor: pointer;
     }
 
@@ -867,6 +1064,40 @@
         left: 14px;
       }
 
+      .loading-page {
+        min-height: 470px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+      }
+
+      .loading-screen {
+        min-height: 428px;
+      }
+
+      .loading-heart-stage {
+        width: 168px;
+        height: 142px;
+      }
+
+      .loading-main-heart {
+        top: 32px;
+        width: 88px;
+        height: 71px;
+        margin-left: -44px;
+      }
+
+      .loading-title {
+        font-size: 22px;
+      }
+
+      .loading-description {
+        font-size: 14px;
+      }
+
+      .loading-progress-track {
+        width: min(100%, 290px);
+      }
+
       .result-heart-wrap {
         width: 60px;
         height: 47px;
@@ -922,9 +1153,41 @@
         font-size: 16px;
       }
 
+      .result-buttons .primary-button,
+      .result-buttons .secondary-button {
+        font-size: 15px;
+      }
+
       .ad-wrap {
         margin-top: 24px;
         margin-bottom: 38px;
+      }
+
+      .save-modal-box {
+        width: 92%;
+        max-width: 340px;
+        padding: 11px;
+      }
+
+      .save-modal-title {
+        font-size: 17px;
+      }
+
+      .save-modal-description {
+        font-size: 12px;
+      }
+
+      .save-image-wrap {
+        width: 88%;
+      }
+
+      .save-image-wrap img {
+        max-height: 50vh;
+      }
+
+      .modal-close-button {
+        min-height: 42px;
+        font-size: 15px;
       }
     }
 
@@ -1000,7 +1263,7 @@
         class="main-cover-image"
         src="img_main402.png"
         alt="테스트잇 러브어택 연애 테스트"
-      />
+      >
     </section>
 
     <div id="mainAction" class="outside-main-action">
@@ -1022,13 +1285,13 @@
                  C119 29,135 24,150 31
                  C167 39,170 61,160 80
                  C149 101,118 125,105 137"
-            />
+            ></path>
 
-            <path class="arrow-line" d="M22 105 L183 38" />
-            <path class="arrow-line" d="M22 105 L37 90" />
-            <path class="arrow-line" d="M22 105 L44 110" />
-            <path class="arrow-line" d="M183 38 L171 57" />
-            <path class="arrow-line" d="M183 38 L162 36" />
+            <path class="arrow-line" d="M22 105 L183 38"></path>
+            <path class="arrow-line" d="M22 105 L37 90"></path>
+            <path class="arrow-line" d="M22 105 L44 110"></path>
+            <path class="arrow-line" d="M183 38 L171 57"></path>
+            <path class="arrow-line" d="M183 38 L162 36"></path>
           </svg>
         </div>
 
@@ -1049,7 +1312,7 @@
               maxlength="12"
               autocomplete="off"
               placeholder="닉네임 입력"
-            />
+            >
           </div>
         </div>
       </div>
@@ -1091,6 +1354,52 @@
       </div>
     </section>
 
+    <section id="loadingPage" class="paper loading-page hidden" aria-live="polite">
+      <div class="paper-content loading-screen">
+        <div class="loading-heart-stage" aria-hidden="true">
+          <span class="floating-heart h1">♥</span>
+          <span class="floating-heart h2">♥</span>
+          <span class="floating-heart h3">♥</span>
+          <span class="floating-heart h4">♥</span>
+
+          <div class="loading-main-heart">
+            <svg viewBox="0 0 210 165">
+              <path
+                class="heart-line"
+                d="M105 137
+                   C92 125,61 101,50 80
+                   C40 61,43 39,60 31
+                   C75 24,91 29,105 47
+                   C119 29,135 24,150 31
+                   C167 39,170 61,160 80
+                   C149 101,118 125,105 137"
+              ></path>
+
+              <path class="arrow-line" d="M22 105 L183 38"></path>
+              <path class="arrow-line" d="M22 105 L37 90"></path>
+              <path class="arrow-line" d="M22 105 L44 110"></path>
+              <path class="arrow-line" d="M183 38 L171 57"></path>
+              <path class="arrow-line" d="M183 38 L162 36"></path>
+            </svg>
+          </div>
+        </div>
+
+        <h2 class="loading-title">연애 성향 채점 중...</h2>
+
+        <p class="loading-description">
+          답안지를 확인하고 결과를 정리하고 있어요
+        </p>
+
+        <div class="loading-progress-track" aria-hidden="true">
+          <div class="loading-progress-fill"></div>
+        </div>
+
+        <div class="loading-dots" aria-hidden="true">
+          <span>♥</span><span>♥</span><span>♥</span>
+        </div>
+      </div>
+    </section>
+
     <section id="resultPage" class="paper result-page hidden">
       <div id="resultCaptureArea" class="paper-content result-capture">
         <div class="result-top">
@@ -1105,13 +1414,13 @@
                    C119 29,135 24,150 31
                    C167 39,170 61,160 80
                    C149 101,118 125,105 137"
-              />
+              ></path>
 
-              <path class="arrow-line" d="M22 105 L183 38" />
-              <path class="arrow-line" d="M22 105 L37 90" />
-              <path class="arrow-line" d="M22 105 L44 110" />
-              <path class="arrow-line" d="M183 38 L171 57" />
-              <path class="arrow-line" d="M183 38 L162 36" />
+              <path class="arrow-line" d="M22 105 L183 38"></path>
+              <path class="arrow-line" d="M22 105 L37 90"></path>
+              <path class="arrow-line" d="M22 105 L44 110"></path>
+              <path class="arrow-line" d="M183 38 L171 57"></path>
+              <path class="arrow-line" d="M183 38 L162 36"></path>
             </svg>
           </div>
 
@@ -1159,7 +1468,7 @@
                        C137 9,168 22,171 43
                        C174 66,143 80,92 81
                        C43 82,8 70,10 47"
-                  />
+                  ></path>
 
                   <path
                     class="score-pencil-line second"
@@ -1168,7 +1477,7 @@
                        C136 10,165 23,168 44
                        C170 64,140 77,90 78
                        C44 79,12 68,14 49"
-                  />
+                  ></path>
 
                   <path
                     class="score-pencil-line light"
@@ -1177,7 +1486,7 @@
                        C133 10,163 22,170 41
                        C173 61,145 78,96 80
                        C48 82,15 69,12 44"
-                  />
+                  ></path>
                 </svg>
               </div>
             </div>
@@ -1203,7 +1512,7 @@
                        C137 9,168 22,171 43
                        C174 66,143 80,92 81
                        C43 82,8 70,10 47"
-                  />
+                  ></path>
 
                   <path
                     class="score-pencil-line second"
@@ -1212,7 +1521,7 @@
                        C136 10,165 23,168 44
                        C170 64,140 77,90 78
                        C44 79,12 68,14 49"
-                  />
+                  ></path>
 
                   <path
                     class="score-pencil-line light"
@@ -1221,7 +1530,7 @@
                        C133 10,163 22,170 41
                        C173 61,145 78,96 80
                        C48 82,15 69,12 44"
-                  />
+                  ></path>
                 </svg>
               </div>
             </div>
@@ -1492,6 +1801,7 @@
     const infoAction = document.getElementById("infoAction");
 
     const questionPage = document.getElementById("questionPage");
+    const loadingPage = document.getElementById("loadingPage");
     const resultPage = document.getElementById("resultPage");
 
     const mainStartButton = document.getElementById("mainStartButton");
@@ -1526,6 +1836,7 @@
     let nickname = "";
     let currentQuestionIndex = 0;
     let isAnswering = false;
+    let resultLoadingTimer = null;
 
     let scores = {
       stable: 0,
@@ -1542,6 +1853,8 @@
       infoAction.classList.add("hidden");
 
       questionPage.classList.add("hidden");
+      loadingPage.classList.add("hidden");
+      loadingPage.classList.remove("is-loading");
       resultPage.classList.add("hidden");
 
       targetPage.classList.remove("hidden");
@@ -1652,8 +1965,27 @@
       }
 
       window.setTimeout(function () {
-        showResult();
+        showResultLoading();
       }, 120);
+    }
+
+    function showResultLoading() {
+      if (resultLoadingTimer) {
+        window.clearTimeout(resultLoadingTimer);
+      }
+
+      showPage(loadingPage);
+
+      window.requestAnimationFrame(function () {
+        window.requestAnimationFrame(function () {
+          loadingPage.classList.add("is-loading");
+        });
+      });
+
+      resultLoadingTimer = window.setTimeout(function () {
+        resultLoadingTimer = null;
+        showResult();
+      }, 3000);
     }
 
     function getResultKey() {
@@ -1688,6 +2020,11 @@
     }
 
     function resetTest() {
+      if (resultLoadingTimer) {
+        window.clearTimeout(resultLoadingTimer);
+        resultLoadingTimer = null;
+      }
+
       nickname = "";
       currentQuestionIndex = 0;
       isAnswering = false;
@@ -1769,8 +2106,7 @@
     async function shareTest() {
       const shareData = {
         title: TEST_TITLE,
-        text:
-          "테스트잇 러브어택 연애 성격 테스트",
+        text: "테스트잇 러브어택 연애 성격 테스트",
         url: TEST_URL
       };
 

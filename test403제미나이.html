@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>테스트잇 농작물 친구들 성격 테스트</title>
+  <meta name="description" content="나는 밭에서 어떤 농작물일까? 테스트잇 농작물 성격 테스트">
+  <meta name="keywords" content="테스트잇,농작물성격테스트,성격테스트">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="테스트잇 농작물 성격 테스트">
+  <meta property="og:description" content="나는 밭에서 어떤 농작물일까?">
+  <meta property="og:url" content="https://test-it.co.kr/">
+
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+
+  <style>
+    @font-face {
+      font-family: 'Umdot';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2601-4@1.1/Umdot12.woff2') format('woff2');
+      font-weight: normal;
+      font-display: swap;
+    }
+
+    :root {
+      --sky: #f4f9f1;
+      --cream: #fffcf8;
+      --paper: #ffffff;
+      --green: #689f4b;
+      --green-dark: #4a7532;
+      --green-light: #cde2bd;
+      --grass: #8ebf6a;
+      --grass-light: #b9d89e;
+      --soil: #aa8469;
+      --soil-dark: #825f46;
+      --soil-light: #c9a489;
+      --yellow: #fcd977;
+      --text: #41483b;
+      --sub-text: #7f8a75;
+      --line: #8ebf6a; 
+      --lime-bg: #eafa8c;
+      --white: #ffffff;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      border-width: 1px !important;
+      font-family: 'Umdot', sans-serif !important;
+      font-weight: normal !important;
+      text-shadow: none !important;
+      box-shadow: none !important; 
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+    }
+
+    body {
+      color: var(--text);
+      background: var(--sky);
+      overflow-x: hidden;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    button {
+      font-family: inherit;
+    }
+
+    .site-header {
+      width: 100%;
+      height: 56px;
+      background: var(--paper);
+      border-bottom: 1px dotted var(--line);
+      position: relative;
+      z-index: 50;
+    }
+
+    .header-inner {
+      width: min(100%, 620px);
+      height: 100%;
+      margin: 0 auto;
+      padding: 0 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      color: var(--green-dark);
+      text-decoration: none;
+      font-size: 20px;
+      letter-spacing: -1px;
+    }
+
+    .header-menu {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+    }
+
+    .header-menu a {
+      color: var(--sub-text);
+      text-decoration: none;
+      font-size: 14px;
+      white-space: nowrap;
+    }
+
+    .page {
+      position: relative;
+      min-height: calc(100vh - 56px);
+      padding: 28px 16px 70px;
+      overflow: hidden;
+    }
+
+    .background-field {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 145px;
+      background: var(--soil-light);
+      border-top: 1px dotted var(--soil);
+      z-index: -3;
+    }
+
+    .cloud {
+      position: fixed;
+      width: 80px;
+      height: 28px;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px dotted var(--line);
+      border-radius: 20px;
+      z-index: -3;
+    }
+
+    .cloud::before,
+    .cloud::after {
+      content: "";
+      position: absolute;
+      background: inherit;
+      border: inherit;
+      border-bottom: 0;
+      border-radius: 50%;
+    }
+
+    .cloud::before {
+      width: 31px;
+      height: 31px;
+      left: 11px;
+      bottom: 13px;
+    }
+
+    .cloud::after {
+      width: 39px;
+      height: 39px;
+      right: 8px;
+      bottom: 12px;
+    }
+
+    .cloud-one {
+      top: 100px;
+      left: 7%;
+    }
+
+    .cloud-two {
+      top: 165px;
+      right: 7%;
+      transform: scale(0.72);
+    }
+
+    .sun {
+      position: fixed;
+      top: 88px;
+      right: 13%;
+      width: 58px;
+      height: 58px;
+      background: var(--yellow);
+      border: 1px dotted #e1be54;
+      border-radius: 50%;
+      z-index: -4;
+    }
+
+    .screen {
+      display: none;
+      width: min(100%, 520px);
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .screen.active {
+      display: block;
+      animation: screenIn 0.35s ease;
+    }
+
+    @keyframes screenIn {
+      from {
+        opacity: 0;
+        transform: translateY(9px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .start-card {
+      background: var(--paper);
+      border: 1px dotted var(--line);
+      padding: 24px 20px 25px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      border-radius: 4px;
+    }
+
+    .start-title {
+      margin: 15px 0;
+      color: var(--green-dark);
+      font-size: 24px;
+      line-height: 1.35;
+      letter-spacing: -1px;
+      word-break: keep-all;
+    }
+
+    .start-title strong {
+      display: block;
+      margin-top: 5px;
+      color: var(--text);
+      font-size: 32px;
+      line-height: 1.25;
+    }
+
+    .start-description {
+      margin: 14px 0 20px;
+      color: var(--sub-text);
+      font-size: 15px;
+      line-height: 1.65;
+      word-break: keep-all;
+    }
+
+    .farm-scene {
+      height: 180px;
+      margin: 10px 0 22px;
+      background: var(--sky);
+      border: 1px dotted var(--line);
+      position: relative;
+      overflow: hidden;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      color: var(--sub-text);
+    }
+
+    .start-button,
+    .answer-button,
+    .result-button {
+      width: 100%;
+      border: 1px dotted var(--line);
+      color: var(--text);
+      cursor: pointer;
+      transition: transform 0.15s ease, background 0.15s ease;
+      border-radius: 4px;
+    }
+
+    .start-button {
+      min-height: 55px;
+      background: var(--green);
+      color: var(--white);
+      font-size: 17px;
+    }
+
+    .start-guide {
+      margin: 16px 0 0;
+      color: var(--sub-text);
+      font-size: 12px;
+    }
+
+    .progress-panel {
+      background: var(--paper);
+      border: 1px dotted var(--line);
+      padding: 15px;
+      border-radius: 4px;
+    }
+
+    .progress-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    .progress-label, .progress-count {
+      color: var(--green-dark);
+      font-size: 13px;
+    }
+
+    .progress-track {
+      height: 12px;
+      background: var(--sky);
+      border: 1px dotted var(--line);
+      position: relative;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      width: 8.33%;
+      height: 100%;
+      background: var(--green-light);
+      transition: width 0.35s ease;
+    }
+
+    .question-card {
+      margin-top: 15px;
+      background: var(--paper);
+      border: 1px dotted var(--line);
+      padding: 24px 18px 30px;
+      position: relative;
+      border-radius: 4px;
+    }
+
+    .question-number {
+      display: inline-block;
+      margin: 0 0 15px;
+      padding: 6px 12px;
+      background: var(--sky);
+      border: 1px dotted var(--line);
+      color: var(--green-dark);
+      font-size: 13px;
+      border-radius: 4px;
+    }
+
+    .question-text {
+      min-height: 80px;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text);
+      font-size: 20px;
+      line-height: 1.5;
+      text-align: center;
+      word-break: keep-all;
+    }
+
+    .answer-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .answer-button {
+      min-height: 65px;
+      padding: 14px 15px;
+      background: var(--cream);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.5;
+      word-break: keep-all;
+    }
+
+    .answer-button:hover {
+      background: var(--sky);
+    }
+
+    .start-button:active,
+    .answer-button:active,
+    .result-button:active {
+      transform: scale(0.98);
+    }
+
+    .loading-card {
+      min-height: 400px;
+      background: var(--paper);
+      border: 1px dotted var(--line);
+      padding: 60px 20px;
+      text-align: center;
+      border-radius: 4px;
+    }
+
+    .loading-title {
+      margin: 0;
+      color: var(--green-dark);
+      font-size: 22px;
+      line-height: 1.5;
+    }
+
+    .loading-description {
+      margin: 15px 0 30px;
+      color: var(--sub-text);
+      font-size: 14px;
+    }
+
+    .loading-farm {
+      font-size: 60px;
+      animation: loadingFloat 1.5s ease-in-out infinite;
+    }
+
+    @keyframes loadingFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .result-capture {
+      width: 100%;
+      background: var(--paper);
+      border: 1px dotted var(--line);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .result-header-text {
+      text-align: center;
+      font-size: 22px;
+      color: var(--text);
+      background-color: var(--lime-bg); 
+      padding: 18px 15px;
+      border-bottom: 1px dotted var(--line);
+    }
+
+    .result-inner {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .result-top-section {
+      display: flex;
+      gap: 15px;
+      padding: 15px;
+      border: 1px dotted var(--line);
+    }
+
+    .result-img-box {
+      width: 130px;
+      height: 130px;
+      border: 1px dotted var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      padding: 10px;
+    }
+
+    .result-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .result-desc-box {
+      flex-grow: 1;
+      border: 1px dotted var(--line);
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .desc-row {
+      display: flex;
+      gap: 10px;
+      font-size: 16px;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .desc-label {
+      white-space: nowrap;
+    }
+
+    .desc-value {
+      word-break: keep-all;
+    }
+
+    .result-grid-4x4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    .trait-item {
+      aspect-ratio: 1 / 1;
+      border: 1px dotted var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 8px;
+      font-size: 14.5px;
+      word-break: keep-all;
+      background: transparent;
+      color: var(--text);
+      line-height: 1.45;
+    }
+
+    .result-bottom-section {
+      display: flex;
+      gap: 15px;
+    }
+
+    .match-box {
+      flex: 1;
+      border: 1px dotted var(--line);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .match-title {
+      background-color: var(--lime-bg);
+      border-bottom: 1px dotted var(--line);
+      text-align: center;
+      padding: 12px;
+      font-size: 16px;
+    }
+
+    .match-content {
+      text-align: center;
+      padding: 20px 10px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .match-img-box {
+      width: 80px; 
+      height: 80px;
+    }
+
+    .match-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .match-name {
+      font-size: 16px;
+      color: var(--text);
+    }
+
+    .result-buttons {
+      display: grid;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .result-button {
+      min-height: 50px;
+      background: var(--paper);
+      font-size: 15px;
+    }
+
+    .result-button.primary {
+      background: var(--green);
+      color: var(--white);
+    }
+
+    .save-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.6);
+      align-items: center;
+      justify-content: center;
+    }
+
+    .save-modal.active { display: flex; }
+
+    .save-modal-panel {
+      width: 100%;
+      max-width: 400px;
+      background: var(--paper);
+      padding: 20px;
+      border-radius: 8px;
+      position: relative;
+    }
+
+    .save-image-area img {
+      width: 100%;
+      border: 1px dotted var(--line);
+      border-radius: 4px;
+    }
+
+    @media (max-width: 390px) {
+      .result-img-box {
+        width: 100px;
+        height: 100px;
+      }
+      .desc-row {
+        font-size: 14px;
+      }
+      .trait-item {
+        font-size: 12px;
+        padding: 4px;
+      }
+      .match-img-box {
+        width: 60px;
+        height: 60px;
+      }
+      .match-name {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="https://test-it.co.kr/" class="logo">테스트잇</a>
+      <nav class="header-menu">
+        <a href="https://test-it.co.kr/">성격</a>
+        <a href="https://test-it.co.kr/">얼굴</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page">
+    <div class="cloud cloud-one"></div>
+    <div class="cloud cloud-two"></div>
+    <div class="sun"></div>
+    <div class="background-field"></div>
+
+    <section id="startScreen" class="screen active">
+      <div class="start-card">
+        <h1 class="start-title">
+          밭에서 자란 내 성격은?
+          <strong>농작물 친구들 테스트</strong>
+        </h1>
+        <p class="start-description">
+          가볍고 재미있는 타입일까,<br>
+          조용하고 진지한 타입일까?
+        </p>
+
+        <div class="farm-scene">
+          농작물들이 무럭무럭 자라는 중 🌱
+        </div>
+
+        <button type="button" class="start-button" onclick="startTest()">
+          내 농작물 확인하러 가기
+        </button>
+        <p class="start-guide">총 12질문 · 가장 쉬운 말로 만들었어요</p>
+      </div>
+    </section>
+
+    <section id="questionScreen" class="screen">
+      <div class="progress-panel">
+        <div class="progress-top">
+          <span class="progress-label">질문에 답하는 중</span>
+          <span id="progressCount" class="progress-count">1 / 12</span>
+        </div>
+        <div class="progress-track">
+          <div id="progressFill" class="progress-fill"></div>
+        </div>
+      </div>
+
+      <div class="question-card">
+        <div id="questionNumber" class="question-number">문항 01</div>
+        <h2 id="questionText" class="question-text"></h2>
+        <div id="answerList" class="answer-list"></div>
+      </div>
+    </section>
+
+    <section id="loadingScreen" class="screen">
+      <div class="loading-card">
+        <div class="loading-farm">🌱</div>
+        <h2 class="loading-title">나와 닮은 농작물을<br>찾고 있어요</h2>
+        <p class="loading-description">잠시만 기다려 주세요...</p>
+      </div>
+    </section>
+
+    <section id="resultScreen" class="screen">
+      <div id="resultCapture" class="result-capture">
+        <div class="result-header-text">테스트잇 농작물 친구들 성격 테스트</div>
+        
+        <div class="result-inner">
+          <div class="result-top-section">
+            <div class="result-img-box" id="resultCropIcon"></div>
+            <div class="result-desc-box">
+              <div class="desc-row">
+                <div class="desc-label">결과 :</div>
+                <div class="desc-value" id="resultName"></div>
+              </div>
+              <div class="desc-row">
+                <div class="desc-label">특징 :</div>
+                <div class="desc-value" id="resultSubtitle"></div>
+              </div>
+            </div>
+          </div>
+          
+          <div id="traitList" class="result-grid-4x4"></div>
+
+          <div class="result-bottom-section">
+            <div class="match-box">
+              <div class="match-title">잘 맞는 농작물</div>
+              <div class="match-content" id="goodMatch"></div>
+            </div>
+            <div class="match-box">
+              <div class="match-title">안 맞는 농작물</div>
+              <div class="match-content" id="differentMatch"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="result-buttons">
+        <button type="button" class="result-button primary" onclick="openSaveModal()">결과 이미지 저장하기</button>
+        <button type="button" class="result-button" onclick="restartTest()">다시 해보기</button>
+      </div>
+    </section>
+  </main>
+
+  <div id="saveModal" class="save-modal" onclick="handleModalBackground(event)">
+    <div class="save-modal-panel">
+      <h2 style="margin:0 0 15px; font-size:18px; text-align:center; color:#4a7532;">결과 이미지 저장</h2>
+      <div id="saveImageArea" class="save-image-area">이미지를 만드는 중입니다...</div>
+      <button type="button" class="result-button" style="margin-top:15px;" onclick="closeSaveModal()">닫기</button>
+    </div>
+  </div>
+
+  <script>
+    const questions = [
+      {
+        question: "쉬는 날 나는 보통?",
+        answers: [
+          { text: "사람들을 만나서 신나게 논다", score: "E" },
+          { text: "집에서 혼자 조용히 쉰다", score: "I" }
+        ]
+      },
+      {
+        question: "길을 가다 예쁜 꽃을 보면?",
+        answers: [
+          { text: "와 예쁘다! 무슨 꽃이지? 관찰한다", score: "S" },
+          { text: "이 꽃을 보니까 옛날 생각이 난다", score: "N" }
+        ]
+      },
+      {
+        question: "친구가 '나 우울해서 화분 샀어'라고 하면?",
+        answers: [
+          { text: "어떤 화분 샀어? 예쁜 거 샀어?", score: "T" },
+          { text: "왜 우울해? 무슨 일 있었어?", score: "F" }
+        ]
+      },
+      {
+        question: "무언가 새로운 일을 시작할 때 나는?",
+        answers: [
+          { text: "진지하게 하나씩 알아보고 차분하게 시작한다", score: "J" },
+          { text: "일단 가벼운 마음으로 부딪혀보고 재미를 찾는다", score: "P" }
+        ]
+      },
+      {
+        question: "모임에 나갔을 때 나는?",
+        answers: [
+          { text: "먼저 다가가서 친근하게 말을 건다", score: "E" },
+          { text: "누가 말을 걸어줄 때까지 조용히 기다린다", score: "I" }
+        ]
+      },
+      {
+        question: "멍 때릴 때 내 머릿속은?",
+        answers: [
+          { text: "진짜 아무 생각도 안 하고 가만히 있는다", score: "S" },
+          { text: "이런저런 말도 안 되는 상상들이 이어진다", score: "N" }
+        ]
+      },
+      {
+        question: "친구가 고민을 이야기할 때 나는?",
+        answers: [
+          { text: "어떻게 해결하면 좋을지 방법을 같이 찾는다", score: "T" },
+          { text: "많이 힘들었겠다며 마음을 먼저 위로해준다", score: "F" }
+        ]
+      },
+      {
+        question: "재미있는 영상을 발견했을 때 나는?",
+        answers: [
+          { text: "하던 일을 끝내고 나중에 차분하게 본다", score: "J" },
+          { text: "새로운 재미를 참지 못하고 바로 본다", score: "P" }
+        ]
+      },
+      {
+        question: "기분이 우울할 때 푸는 방법은?",
+        answers: [
+          { text: "친구들과 밖에서 수다 떨며 털어낸다", score: "E" },
+          { text: "혼자 맛있는 거 먹으며 푹 잔다", score: "I" }
+        ]
+      },
+      {
+        question: "요리할 때 나는 주로?",
+        answers: [
+          { text: "레시피에 적힌 방법 그대로 따라 한다", score: "S" },
+          { text: "내 입맛대로 이것저것 새로운 걸 넣어본다", score: "N" }
+        ]
+      },
+      {
+        question: "게임을 하다 졌을 때 내 반응은?",
+        answers: [
+          { text: "왜 졌는지 이유를 찾고 다음을 생각한다", score: "T" },
+          { text: "져서 너무 아쉽고 기분이 속상하다", score: "F" }
+        ]
+      },
+      {
+        question: "평소 내 생활 모습에 가까운 것은?",
+        answers: [
+          { text: "주어진 일을 묵묵하게 해내는 진지한 모습이다", score: "J" },
+          { text: "재미있는 자극을 쫓으며 가볍게 즐기는 모습이다", score: "P" }
+        ]
+      }
+    ];
+
+    const results = {
+      ISTJ: { 
+        img: "img_istj403.png", name: "감자", 
+        subtitle: "과장 없이 솔직하고 아주 담백한 사람<br>어려운 일도 흔들림 없이 해내는 단단함<br>시간이 지날수록 진가가 드러나는 든든한 타입", 
+        traits: ["계획 틀어지면 엄청 예민함", "규칙 지키는 게 가장 편함", "약속 시간은 무조건 칼같이", "갑작스런 일정 변경 극혐", "시작한 일은 무조건 끝을 봄", "항상 진지하고 차분한 편", "감정보다 객관적 사실 중시", "원칙 지키는 게 가장 중요", "주변 정리정돈의 달인", "선 넘는 장난 안 받아줌", "어른들에게 깍듯하고 예의 바름", "거짓말이나 가벼운 빈말 못 함", "디자인보다 실용적인 물건 선호", "사소한 일정도 다 기억하는 편", "맡은 일에 책임감이 엄청 강함", "혼자 조용히 쉬어야 에너지 충전"], good: "ISFJ", different: "ENTP" },
+      ISFJ: { 
+        img: "img_isfj403.png", name: "고구마", 
+        subtitle: "눈에 띄게 나서기보다 뒤에서 도와주는 사람<br>작은 변화도 금방 알아채는 섬세한 관찰력<br>갈등 없이 모두가 평화롭기를 바라는 타입", 
+        traits: ["남의 말에 은근 상처 잘 받음", "부탁을 단호하게 거절 못 함", "성격이 아주 둥글둥글함", "익숙하고 편안한 장소가 최고", "말투가 항상 다정다감함", "사소한 취향도 다 기억해 줌", "내 의견보다 남에게 잘 맞춰줌", "큰 소리 내며 싸우는 거 극혐", "화가 나도 겉으론 꾹 참음", "남의 고민 진심으로 잘 들어줌", "거창한 것보다 일상의 소소한 행복", "평소엔 참다가 터지면 무서움", "불규칙보단 규칙적인 생활이 편해", "다 맞춰줘도 은근히 똥고집 있음", "기본적인 예의를 아주 중요시함", "친한 사람 앞에선 텐션 완전 폭발"], good: "ISTJ", different: "ESTP" },
+      INFJ: { 
+        img: "img_infj403.png", name: "배추", 
+        subtitle: "겉으로는 평온해 보여도 속은 복잡한 사람<br>눈빛만 봐도 상대방의 기분을 눈치채는 센스<br>평소엔 부드럽지만 선을 넘으면 냉정해지는 타입", 
+        traits: ["나만의 아주 확고한 기준", "행동 속에 숨겨진 의미 찾음", "내 진짜 속마음 잘 안 드러냄", "스스로 피곤하게 만드는 완벽주의", "가벼운 수다보다 깊고 진지한 대화", "사람 만난 후엔 혼자만의 시간 필수", "넓은 인맥보다 좁고 깊은 인간관계", "목적 없는 가벼운 만남 싫어함", "한 번 마음 정하면 절대 고집 안 꺾음", "무슨 일이든 머릿속으로 시뮬레이션", "남에게 아주 작은 피해 주기도 극혐", "한 번 상처받으면 아주 오래감", "모두가 잘 사는 이상적 세상을 꿈꿈", "가끔 생각지 못한 기발한 아이디어", "여럿이 모이는 것보다 소수 모임", "말보다는 글로 마음 표현하는 게 편함"], good: "INFP", different: "ENTJ" },
+      INTJ: { 
+        img: "img_intj403.png", name: "양파", 
+        subtitle: "전체적인 흐름을 읽고 큰 그림을 그리는 사람<br>아무리 어려운 문제도 포기 않고 분석하는 끈기<br>남들 시선에 흔들리지 않고 내 갈 길을 가는 타입", 
+        traits: ["항상 진짜 이유가 궁금함", "계획을 아주 철저히 세움", "감정보다 이성으로 판단", "시간 낭비하는 비효율 상황 질색", "목표를 향해 거침없이 직진", "여럿이 하기보다 혼자 일하는 게 편함", "의미 없는 스몰토크 엄청 어색해함", "어려운 일 처리도 아주 똑부러짐", "화려한 포장보다 본질이 더 중요", "스스로에게 아주 엄격한 완벽주의", "나이 불문 배울 점 있는 사람 좋아해", "겉은 차갑고 무뚝뚝해도 속은 따뜻함", "새로운 지식 배우는 과정을 진심 즐김", "남에게 절대 안 기대는 강한 독립심", "여러 가지보다 내 관심 분야만 깊게 팜", "돌려 말 안 하고 사실 위주 직설적으로"], good: "INTP", different: "ESFP" },
+      ISTP: { 
+        img: "img_istp403.png", name: "무", 
+        subtitle: "억지로 꾸미지 않고 있는 그대로 솔직한 사람<br>어떤 위기 상황이 와도 당황하지 않는 침착함<br>평소엔 누워있다가도 꽂히면 무섭게 빠져드는 타입", 
+        traits: ["기본적으로 만사가 귀찮음", "내 일에 이래라저래라 간섭 극혐", "크게 다퉈도 뒤끝 없이 쿨함", "무심한 척하면서 은근히 다 챙겨줌", "빙빙 돌려 말하면 의미 몰라 피곤해함", "위기 상황이 와도 침착하게 대처", "감정에 안 휩쓸리고 아주 현실적임", "긴 말보다 직접 행동으로 보여줌", "복잡한 기계나 전자기기 잘 다룸", "집에서 혼자서도 아주 재미있게 놂", "미리 계획 세우기보단 즉흥적으로", "물건 살 때 가성비와 실용성 엄청 따짐", "의미 없는 연락 억지로 이어가기 싫음", "전혀 관심 없는 일은 아예 철저히 무시", "똑같은 틀에 박힌 반복 일상 답답해함", "얼굴에 표정 변화가 거의 없는 편"], good: "ESTP", different: "INFJ" },
+      ISFP: { 
+        img: "img_isfp403.png", name: "상추", 
+        subtitle: "흐르는 물처럼 어떤 환경에도 자연스럽게 녹아드는 사람<br>마음속에 예쁜 것들을 천천히 담아두는 따뜻한 여유<br>누군가에게 억지로 맞추기보다 내 속도가 중요한 타입", 
+        traits: ["침대에 가만히 누워있는 게 최고", "사람들과 둥글둥글하게 잘 지냄", "남들보다 감수성이 아주 풍부한 편", "다 맞춰줘도 속으론 안 꺾는 고집", "억지로 강요받고 통제당하는 거 극혐", "먼 미래의 대비보다 지금 당장의 여유", "나서긴 부끄러워도 시선 받는 건 즐김", "분위기 흐릴까 봐 평소에 눈치 많이 봄", "작은 칭찬 하나에 하루 종일 기분 좋음", "슬픈 이야기 들으면 눈물이 나고 여림", "부탁받으면 단호하게 거절을 잘 못 함", "시끌벅적한 모임보다 내 방구석 최고", "누가 뭐래도 내 마음 이끄는 대로 감", "규칙적인 빡빡한 단체 생활 답답해함", "예쁘고 감각적인 것을 단번에 알아봄", "싸우고 따지기 피곤해서 그냥 먼저 져줌"], good: "ESFP", different: "ESTJ" },
+      INFP: { 
+        img: "img_infp403.png", name: "완두콩", 
+        subtitle: "다른 사람의 아픔에 깊이 공감하고 위로해 주는 사람<br>현실의 조건보다 나만의 신념이 훨씬 중요한 낭만주의자<br>눈에 보이지 않는 인생의 진정한 의미를 소중히 여기는 타입", 
+        traits: ["감수성이 무척 풍부하고 예민함", "좋아하는 일이나 사람에겐 언제나 진심", "남들은 잘 모르는 나만의 뚜렷한 세계", "하기 싫은 일은 끝까지 미뤘다 벼락치기", "사소한 일상에도 특별한 의미를 부여함", "감동적인 영화를 보면 엉엉 소리 내어 움", "따뜻한 칭찬 한마디가 세상을 사는 원동력", "사람들 사이에서 큰 소리 나는 거 무서워함", "진짜 속마음 털어놓는 친구는 아주 극소수", "힘든 사람에게 다정하고 진심 어린 공감", "순해 보여도 내 신념엔 엄청난 고집불통", "꼬리에 꼬리를 무는 현실성 없는 상상", "우울한 감정이 오면 그걸 묘하게 즐김", "빡빡한 규칙이나 딱딱한 틀에 갇히면 답답", "한 번 꽂히면 시간 가는 줄 모르고 파고듦", "가끔 이유 없이 모든 연락 끄고 동굴로 숨음"], good: "INFJ", different: "ESTJ" },
+      INTP: { 
+        img: "img_intp403.png", name: "콩", 
+        subtitle: "뻔한 정답 대신 나만의 해답을 기어코 찾아내는 사람<br>이해가 되지 않으면 절대 그냥 넘어가지 않는 깐깐함<br>머릿속에 떠오른 아이디어들을 이리저리 맞춰보는 타입", 
+        traits: ["당연한 일도 항상 왜 그런지 이유가 궁금함", "어설픈 감정 위로보다 정확한 사실 관계", "남들이 날 어떻게 보든 남 시선 신경 안 씀", "대화할 때 멍해서 영혼 없단 소리 들음", "사람 많은 곳 가면 멍 때리며 충전", "억울하면 화내기보다 논리적으로 따짐", "비난이 아니라 상황을 인과관계로 분석 중", "크게 쓸모없는 잡다한 지식이 엄청 많음", "내 진짜 감정을 살갑게 표현하는 게 서툼", "똑같이 반복되는 단순 업무 끔찍해함", "무엇보다 내 노력 아끼는 효율성이 최고", "남들이 다 맞다 하면 왠지 반대로 하고 싶음", "말도 안 되는 공상과학 상상하며 혼자 웃음", "내 인생 챙기기 바빠 남의 인생엔 노관심", "일은 완벽주의지만 내 방 청소는 절대 안 함", "마감 직전 기적 같은 초인적인 집중력 발휘"], good: "INTJ", different: "ESFJ" },
+      ESTP: { 
+        img: "img_estp403.png", name: "고추", 
+        subtitle: "책상에 앉아 고민하기보다 온몸으로 부딪혀 배우는 사람<br>어떤 돌발 상황이 와도 유연하게 넘어가 버리는 적응력<br>과거에 얽매이지 않고 지금 당장의 즐거움에 충실한 타입", 
+        traits: ["고민하기보다 일단 내 몸부터 밖으로 움직임", "가만히 한 자리에 앉아있는 지루한 시간 못 참아", "크게 싸우고 화해하면 뒤끝 없이 싹 다 잊어버림", "사람들 사이의 미묘한 분위기 변화 가장 먼저 눈치챔", "처음 보는 사람과도 금방 친해져 무리의 중심이 됨", "징징거리는 위로보단 있는 그대로 사실 직설적 조언", "내일 걱정하기보다 오늘 친구들과 신나게 노는 게 중요", "사람들을 설득할 때 말이 막히지 않고 청산유수로 잘함", "정해진 매뉴얼이나 규칙에 얽매이고 통제받는 거 싫어함", "사소한 게임을 하더라도 은근 승부욕 엄청 강해 분해함", "완벽한 계획보다 닥치는 대로 부딪히는 여행이 좋아", "남들이 꺼리는 새롭고 낯선 경험도 전혀 두려워하지 않음", "안전하고 뻔한 일상보다 스릴 넘치고 짜릿함을 즐기는 편", "물건을 직접 고치거나 기계를 뚝딱 조작하는 데 소질 있음", "생각나는 말이 있으면 필터링 거치지 않고 직설적으로 뱉음", "한 가지 일에 집중하기보다 새롭고 재밌는 자극 계속 찾음"], good: "ISTP", different: "ISFJ" },
+      ESFP: { 
+        img: "img_esfp403.png", name: "수박", 
+        subtitle: "우울한 분위기도 한순간에 밝게 바꾸는 사람<br>누구에게나 편견 없이 다가가는 따뜻한 마음씨<br>거창한 미래보다 내일의 나들이가 더 설레는 타입", 
+        traits: ["항상 텐션이 높음", "이야기할 때 리액션이 큼", "처음 봐도 금방 친해짐", "주목받는 걸 아주 좋아해", "서프라이즈 파티 대환영", "가만있어도 흥이 넘쳐", "혼자보다 여럿이 좋아", "남 이야기에 완전 공감", "성격이 단순하고 쿨함", "계획은 언제든 바뀔 수 있어", "정이 많아서 상처도 받음", "지치지 않는 체력", "예쁘고 화려한 걸 좋아함", "갈등이 생기면 일단 회피", "말할 때 제스처가 아주 큼", "충동적인 소비를 자주 함"], good: "ISFP", different: "INTJ" },
+      ENFP: { 
+        img: "img_enfp403.png", name: "옥수수", 
+        subtitle: "어른이 되어서도 아이 같은 순수함과 호기심을 간직한 사람<br>틀에 갇히지 않은 생각으로 사람들을 놀라게 하는 재주<br>누군가의 가능성을 믿고 아낌없이 응원해 주는 타입", 
+        traits: ["새로운 것에 금방 호기심 생김", "어디로 튈지 모르는 톡톡 튀는 매력", "아무하고나 스스럼없이 금방 친해짐", "쓸데없는 호기심이 아주 많음", "시작은 잘하는데 뒷심이 부족해 금방 질림", "머릿속에 기발한 아이디어가 화수분처럼 넘침", "사람 만나는 걸 엄청나게 좋아함", "계획에 없는 즉흥적인 외출 완전 환영", "언제나 활기차고 긍정적인 에너지가 넘침", "생각보다 텐션의 감정 기복이 아주 심한 편", "마냥 가벼워 보여도 은근히 혼자 생각 많음", "대화할 때 리액션이 아주 찰지고 맛깔남", "복잡한 생각보다 일단 즐겁고 봐야 직성 풀림", "성격이 아주 엉뚱하고 발랄해서 분위기 메이커", "사소한 칭찬에도 기분 좋아 하루 종일 방방 뜀", "감수성이 엄청 풍부해서 눈물이 무척 많음"], good: "ENTP", different: "ISTJ" },
+      ENTP: { 
+        img: "img_entp403.png", name: "토마토", 
+        subtitle: "안 해본 일에 두려움 없이 과감하게 부딪혀보는 사람<br>뜨거운 논쟁 속에서 오히려 에너지를 얻고 살아나는 체력<br>번뜩이는 재치로 위기를 기회로 바꿔버리는 유쾌한 타입", 
+        traits: ["말싸움해서 웬만해선 절대 지지 않음", "좋고 싫음의 호불호가 아주 확실함", "남들과 완전히 다른 독특하고 신박한 생각", "당연한 규칙에 은근 태클 걸기 아주 좋아함", "남 시선 안 보고 내 생각 당당하게 말함", "간섭 안 받고 내 마음대로 사는 게 최고", "빙빙 안 돌리고 팩트로 매콤한 돌직구 날림", "똑같은 일 영혼 없이 반복하는 거 1초도 못 견딤", "머릿속에 기발한 아이디어가 넘침", "크게 다투고 싸워도 자고 나면 뒤끝 전혀 없음", "고민하기 전에 일단 크게 확 저지르고 수습함", "근거 없는 자신감이 남들도 빠져드는 매력", "겉은 완벽해 보이지만 친해지면 은근히 허당", "발등에 불 떨어져야 하는 벼락치기 달인", "내 행동을 내 입맛대로 통제하려는 꼰대 극혐함", "한 우물 파기보다 다방면에 얇고 넓은 잡지식 뽐냄"], good: "ENFP", different: "ISTJ" },
+      ESTJ: { 
+        img: "img_estj403.png", name: "당근", 
+        subtitle: "규칙과 약속을 이 세상에서 가장 중요하게 여기는 사람<br>어수선한 상황을 단번에 깔끔하게 정리하는 결단력<br>공적인 일과 사적인 감정을 명확하게 구분할 줄 아는 타입", 
+        traits: ["계획한 대로 딱딱 맞아야 함", "어딜 가나 자연스럽게 리더", "돌려 말 안 하고 사실만 말함", "해결책 없이 징징거림 싫어함", "좋고 싫은 게 아주 명확함", "시간이나 돈 낭비 딱 질색", "쉬는 날도 계획으로 꽉 찬 하루", "약속 시간 늦는 사람 이해 불가", "내 사람들은 든든하게 챙김", "답답하게 일하는 꼴 못 참음", "모든 상황을 통제하고 싶음", "경쟁심 강해서 지는 거 싫어함", "어른들께 깍듯하고 싹싹함", "미리미리 준비해야 마음 편해", "게으르게 사는 사람 이해 못 함", "한 번 내 편이면 끝까지 의리"], good: "ENTJ", different: "ISFP" },
+      ESFJ: { 
+        img: "img_esfj403.png", name: "호박", 
+        subtitle: "바라는 것 없이 누군가에게 베푸는 기쁨을 알고 있는 사람<br>어색하고 숨 막히는 분위기도 편안하게 이끌어가는 센스<br>사소한 취향이나 기념일도 잊지 않고 축하해 주는 다정한 타입", 
+        traits: ["대화할 때 영혼 가득 폭풍 리액션", "얼굴 붉히며 큰 소리로 싸우는 거 무조건 피함", "친구들 모임이나 회식 자리엔 무조건 참석", "눈치가 엄청 빨라서 주변 사람 분위기 파악 갑", "사소한 칭찬 한마디에도 하루 종일 기분 날아감", "남의 억울하거나 슬픈 이야기에 진심으로 200% 공감", "텅 빈 집에 혼자 우두커니 있으면 아주 깊은 외로움", "사람들과 하하호호 어울려 놀아야 배터리 충전됨", "지인들의 사소한 취향이나 생일 잊지 않고 다 챙김", "인정이 바다같이 많아서 단호한 거절을 죽어도 못 함", "한 번 내 편이라 믿으면 치명적 실수도 감싸고 덮어줌", "아주 낯선 환경에 떨어져도 특유의 친화력으로 찰떡 적응", "윗사람 깍듯하게 모시며 은근히 보수적인 꼰대 기질", "완벽하게 짠 내 계획이 갑자기 틀어지는 걸 엄청 스트레스 받아함", "주변 지인들에게 일어나는 크고 작은 소식 무조건 다 알아야 함", "친한 친구와 갈등 생기면 끙끙 앓다 결국 내가 먼저 연락하고 사과함"], good: "ENFJ", different: "INTP" },
+      ENFJ: { 
+        img: "img_enfj403.png", name: "벼", 
+        subtitle: "사람들의 장점을 찾아내 빛나게 도와주는 헌신적인 사람<br>눈앞의 이익보다 다 함께 커가는 성장을 꿈꾸는 이상주의자<br>다정한 말 한마디로 꽁꽁 얼어붙은 분위기를 녹여버리는 타입", 
+        traits: ["남이 잘되는 걸 진심으로 기뻐함", "사람 속마음을 귀신같이 맞힘", "차가운 말투에 상처를 잘 받음", "친구들 사이에서 갈등을 잘 조율함", "다른 사람 행동에 의미부여를 꽤 함", "웬만하면 긍정적으로 생각함", "즉흥적으로 보여도 나름 계획이 있음", "지인이 힘들 때 나서서 도와줌", "정이 많아서 쉽게 연을 못 끊음", "미래에 대한 원대한 꿈을 꿈", "감수성이 풍부해서 과몰입을 잘함", "나를 미워할까 봐 늘 걱정함", "화가 나도 부드럽게 말함", "한 명 한 명 진심으로 대함", "사람들을 이끄는 걸 좋아함", "사소한 노력도 크게 칭찬해 줌"], good: "ESFJ", different: "ISTP" },
+      ENTJ: { 
+        img: "img_entj403.png", name: "참외", 
+        subtitle: "감정에 휩쓸리지 않고 차가운 이성으로 상황을 판단하는 사람<br>남들이 포기할 때 새로운 돌파구를 만들어내는 불도저 같은 기획력<br>빈틈없는 자기 관리로 성장에 절대로 한계선을 긋지 않는 야망 가득한 타입", 
+        traits: ["고민 길게 안 하고 최종 결정 쾅 내림", "결론 없이 시간 끄는 비효율 회의 극혐", "일 처리 답답하게 하는 꼴을 못 봄", "사소한 내기도 무조건 내가 이겨야 함", "꽂힌 아이디어는 불도저처럼 밀어붙임", "재난 상황에도 멘붕 없이 팩트로 판단", "목표를 세우면 분 단위로 계획표 세움", "이왕 할 거면 아주 거대한 목표를 세움", "노력 없이 징징대는 사람 곁에 안 둠", "영혼 없는 공감보다 확실하고 차가운 해결책", "굵직한 일 여러 개 동시 진행하는 거 좋아함", "오류 발견하면 분위기 망쳐도 무조건 고침", "내가 맡은 임무는 변명 없이 끝까지 책임짐", "황금 휴일 쉴 때도 자기 계발하는 워커홀릭", "남의 실수엔 쿨해도 내 실수엔 아주 가혹함", "남들이 내 욕을 하든 말든 쿨하게 무시함"], good: "ESTJ", different: "INFP" }
+    };
+
+    let currentQuestion = 0;
+    const scores = { E:0, I:0, S:0, N:0, T:0, F:0, J:0, P:0 };
+
+    function showScreen(screen) {
+      document.querySelectorAll('.screen').forEach(el => el.classList.remove('active'));
+      screen.classList.add('active');
+      window.scrollTo(0, 0);
+    }
+
+    function startTest() {
+      currentQuestion = 0;
+      Object.keys(scores).forEach(k => scores[k] = 0);
+      showScreen(document.getElementById('questionScreen'));
+      renderQuestion();
+    }
+
+    function renderQuestion() {
+      const q = questions[currentQuestion];
+      document.getElementById('questionNumber').textContent = `문항 ${String(currentQuestion + 1).padStart(2, '0')}`;
+      document.getElementById('questionText').textContent = q.question;
+      document.getElementById('progressCount').textContent = `${currentQuestion + 1} / 12`;
+      document.getElementById('progressFill').style.width = `${((currentQuestion + 1) / 12) * 100}%`;
+
+      const list = document.getElementById('answerList');
+      list.innerHTML = "";
+      q.answers.forEach(a => {
+        const btn = document.createElement("button");
+        btn.className = "answer-button";
+        btn.textContent = a.text;
+        btn.onclick = () => {
+          scores[a.score]++;
+          currentQuestion++;
+          if(currentQuestion < 12) renderQuestion();
+          else calculateResult();
+        };
+        list.appendChild(btn);
+      });
+    }
+
+    function calculateResult() {
+      showScreen(document.getElementById('loadingScreen'));
+      const type = (scores.E > scores.I ? "E" : "I") + 
+                   (scores.S > scores.N ? "S" : "N") + 
+                   (scores.T > scores.F ? "T" : "F") + 
+                   (scores.J > scores.P ? "J" : "P");
+
+      setTimeout(() => {
+        const res = results[type];
+        
+        document.getElementById('resultCropIcon').innerHTML = `<img src="${res.img}" alt="${res.name}">`;
+        document.getElementById('resultName').textContent = res.name;
+        document.getElementById('resultSubtitle').innerHTML = res.subtitle;
+        
+        const traits = document.getElementById('traitList');
+        traits.innerHTML = "";
+        res.traits.forEach(t => {
+          const div = document.createElement("div");
+          div.className = "trait-item";
+          div.textContent = t;
+          traits.appendChild(div);
+        });
+
+        const goodMatch = results[res.good];
+        const diffMatch = results[res.different];
+
+        document.getElementById('goodMatch').innerHTML = `
+          <div class="match-img-box"><img src="${goodMatch.img}" alt="${goodMatch.name}"></div>
+          <div class="match-name">${goodMatch.name}</div>
+        `;
+        
+        document.getElementById('differentMatch').innerHTML = `
+          <div class="match-img-box"><img src="${diffMatch.img}" alt="${diffMatch.name}"></div>
+          <div class="match-name">${diffMatch.name}</div>
+        `;
+
+        showScreen(document.getElementById('resultScreen'));
+      }, 2000);
+    }
+
+    function restartTest() { startTest(); }
+
+    async function openSaveModal() {
+      const modal = document.getElementById('saveModal');
+      const area = document.getElementById('saveImageArea');
+      modal.classList.add('active');
+      area.innerHTML = "이미지를 캡처하고 있습니다...";
+      try {
+        const canvas = await html2canvas(document.getElementById('resultCapture'), { scale: 2 });
+        const img = new Image();
+        img.src = canvas.toDataURL("image/png");
+        area.innerHTML = "";
+        area.appendChild(img);
+      } catch(e) {
+        area.innerHTML = "오류가 발생했습니다.";
+      }
+    }
+
+    function closeSaveModal() {
+      document.getElementById('saveModal').classList.remove('active');
+    }
+
+    function handleModalBackground(e) {
+      if(e.target.id === 'saveModal') closeSaveModal();
+    }
+  </script>
+</body>
+</html>

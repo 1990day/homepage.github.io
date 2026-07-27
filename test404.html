@@ -1,0 +1,2941 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5522499110435321" crossorigin="anonymous"></script>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>테스트잇 공격력 종합 평가 테스트</title>
+  <meta name="description" content="테스트잇 공격력 종합 평가 테스트">
+  <meta name="keywords" content="테스트잇,공격력테스트,공격성테스트,성격테스트,심리테스트">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="테스트잇 공격력 종합 평가 테스트">
+  <meta property="og:description" content="테스트잇 공격력 종합 평가 테스트">
+  <meta property="og:url" content="https://test-it.co.kr/test404">
+  <meta property="og:image" content="https://test-it.co.kr/img_main404.png">
+
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+
+  <style>
+    :root {
+      --black: #243b37;
+      --paper: #f2fffb;
+      --line: #355e57;
+
+      --mint-dark: #3f887b;
+      --mint-soft: #d8f3ec;
+      --mint-light: #ebfaf6;
+
+      --bg: #cce8e1;
+
+      /* 채점 동그라미와 도장은 빨간색 유지 */
+      --red: #d6303a;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--black);
+
+      font-family:
+        "Times New Roman",
+        "Batang",
+        "바탕",
+        "Nanum Myeongjo",
+        serif;
+    }
+
+    button,
+    input {
+      font-family: inherit;
+    }
+
+    button {
+      cursor: pointer;
+      border: 0;
+      background: none;
+      padding: 0;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+
+    /* =========================
+       헤더
+    ========================= */
+
+    .site-header {
+      width: 100%;
+      height: 56px;
+
+      background: #fff;
+
+      border-bottom: 1px solid var(--line);
+
+      position: sticky;
+      top: 0;
+      z-index: 10;
+
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Apple SD Gothic Neo",
+        "Pretendard",
+        "Noto Sans KR",
+        sans-serif;
+    }
+
+    .header-inner {
+      max-width: 540px;
+      height: 56px;
+
+      margin: 0 auto;
+      padding: 0 14px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 20px;
+      font-weight: 900;
+      letter-spacing: -1px;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+
+      gap: 14px;
+
+      font-size: 16px;
+      font-weight: 900;
+
+      letter-spacing: -0.6px;
+    }
+
+    .nav a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      min-height: 36px;
+    }
+
+
+    /* =========================
+       공통
+    ========================= */
+
+    .wrap {
+      width: 100%;
+      max-width: 540px;
+
+      margin: 0 auto;
+      padding: 16px 10px 42px;
+    }
+
+    .screen {
+      display: none;
+    }
+
+    .screen.active {
+      display: block;
+    }
+
+    .exam-paper {
+      background:
+        radial-gradient(
+          circle,
+          rgba(48,108,96,0.025) 0 0.8px,
+          transparent 1px
+        ),
+        linear-gradient(
+          180deg,
+          rgba(255,255,255,0.35),
+          rgba(207,242,233,0.34)
+        ),
+        var(--paper);
+
+      background-size:
+        12px 12px,
+        100% 100%,
+        100% 100%;
+
+      border: 2px solid var(--line);
+
+      padding: 18px 14px;
+
+      box-shadow:
+        0 6px 18px rgba(42,92,82,0.11);
+    }
+
+    .exam-inner {
+      border: 1.5px solid var(--line);
+
+      padding: 18px 14px;
+
+      position: relative;
+    }
+
+
+    /* =========================
+       메인
+    ========================= */
+
+    .main-image-box {
+      width: 100%;
+
+      background: #fff;
+
+      border: 2px solid var(--line);
+
+      box-shadow:
+        0 8px 24px rgba(42,92,82,0.11);
+
+      overflow: hidden;
+    }
+
+    .main-image {
+      display: block;
+
+      width: 100%;
+      height: auto;
+
+      aspect-ratio: 1 / 1;
+
+      object-fit: cover;
+
+      background: #fff;
+    }
+
+
+    /* =========================
+       공통 버튼
+    ========================= */
+
+    .btn {
+      width: 100%;
+      height: 54px;
+
+      margin-top: 13px;
+
+      border: 2px solid var(--line);
+
+      background: var(--mint-dark);
+      color: #fff;
+
+      font-size: 17px;
+      font-weight: 900;
+
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Apple SD Gothic Neo",
+        "Pretendard",
+        "Noto Sans KR",
+        sans-serif;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      text-align: center;
+
+      line-height: 1;
+    }
+
+    .btn.white {
+      height: 50px;
+
+      margin-top: 9px;
+
+      background: var(--paper);
+      color: var(--line);
+
+      border: 1.5px solid var(--line);
+    }
+
+
+    /* =========================
+       닉네임
+    ========================= */
+
+    .name-paper {
+      padding-bottom: 14px;
+    }
+
+    .name-inner {
+      min-height: 450px;
+
+      padding-bottom: 24px;
+    }
+
+    .paper-top {
+      display: flex;
+      justify-content: flex-end;
+
+      margin-bottom: 28px;
+
+      font-size: 12px;
+      line-height: 1.35;
+      font-weight: 700;
+    }
+
+    .paper-date {
+      text-align: right;
+    }
+
+    .name-title {
+      margin: 44px 0 24px;
+
+      text-align: center;
+
+      font-size: 38px;
+      line-height: 1.18;
+      font-weight: 900;
+
+      letter-spacing: -2px;
+    }
+
+    .name-wrap {
+      width: 86%;
+
+      margin: 0 auto;
+    }
+
+    .name-label {
+      display: block;
+
+      margin-bottom: 10px;
+
+      text-align: center;
+
+      font-size: 21px;
+      font-weight: 900;
+    }
+
+    .name-input {
+      width: 100%;
+      height: 52px;
+
+      border: 1.5px solid var(--line);
+
+      background:
+        rgba(255,255,255,0.72);
+
+      color: var(--black);
+
+      outline: none;
+
+      text-align: center;
+
+      font-size: 23px;
+      font-weight: 900;
+    }
+
+    .name-input::placeholder {
+      color: #88aaa2;
+    }
+
+    .guide-box {
+      width: 90%;
+
+      margin: 24px auto 0;
+      padding: 13px;
+
+      border: 1.5px solid var(--line);
+
+      background:
+        rgba(255,255,255,0.48);
+
+      font-size: 16px;
+      line-height: 1.58;
+      font-weight: 700;
+
+      word-break: keep-all;
+    }
+
+
+    /* =========================
+       진행 상태
+    ========================= */
+
+    .progress-box {
+      background:
+        radial-gradient(
+          circle,
+          rgba(48,108,96,0.025) 0 0.8px,
+          transparent 1px
+        ),
+        var(--paper);
+
+      background-size:
+        12px 12px;
+
+      border: 1.5px solid var(--line);
+
+      padding: 10px;
+
+      margin-bottom: 10px;
+
+      box-shadow:
+        0 4px 12px rgba(42,92,82,0.10);
+
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Apple SD Gothic Neo",
+        "Pretendard",
+        "Noto Sans KR",
+        sans-serif;
+    }
+
+    .progress-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      border-bottom: 1px solid var(--line);
+
+      padding-bottom: 8px;
+      margin-bottom: 8px;
+
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .progress-track {
+      width: 100%;
+      height: 9px;
+
+      border: 1px solid var(--line);
+
+      background: #fff;
+
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      width: 0;
+      height: 100%;
+
+      background: var(--mint-dark);
+
+      transition: width 0.2s ease;
+    }
+
+
+    /* =========================
+       OMR
+    ========================= */
+
+    .omr {
+      display: grid;
+
+      grid-template-columns:
+        repeat(12, 1fr);
+
+      gap: 3px;
+
+      margin-top: 8px;
+    }
+
+    .omr span {
+      height: 18px;
+
+      border: 1px solid var(--line);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background: #fff;
+
+      font-size: 9px;
+      font-weight: 900;
+    }
+
+    .omr span.done {
+      background: var(--mint-dark);
+
+      color: #fff;
+    }
+
+    .omr span.now {
+      background: #bce8dd;
+    }
+
+
+    /* =========================
+       질문
+    ========================= */
+
+    .question-paper {
+      padding-bottom: 12px;
+    }
+
+    .question-inner {
+      min-height: 415px;
+
+      padding-bottom: 12px;
+    }
+
+    .question-head {
+      text-align: center;
+
+      border-bottom:
+        1.5px solid var(--line);
+
+      padding-bottom: 14px;
+      margin-bottom: 22px;
+    }
+
+    .question-small-title {
+      margin-bottom: 5px;
+
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .question-subject {
+      font-size: 36px;
+      line-height: 1.08;
+      font-weight: 900;
+
+      letter-spacing: -2px;
+    }
+
+    .question-info {
+      width: 82%;
+
+      margin: 18px auto 0;
+
+      display: grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap: 12px;
+    }
+
+    .student-field {
+      display: grid;
+
+      grid-template-columns:
+        49px 1fr;
+
+      height: 34px;
+
+      border: 1.5px solid var(--line);
+
+      background:
+        rgba(255,255,255,0.52);
+    }
+
+    .student-field span {
+      border-right:
+        1.5px solid var(--line);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .student-field b {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      font-size: 14px;
+      font-weight: 700;
+
+      overflow: hidden;
+
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    .question-text-box {
+      border: 2px solid var(--line);
+
+      background:
+        rgba(255,255,255,0.74);
+
+      padding: 15px 13px;
+
+      margin-bottom: 16px;
+    }
+
+    .question-text {
+      margin: 0;
+
+      font-size: 21px;
+      line-height: 1.45;
+      font-weight: 900;
+
+      letter-spacing: -0.9px;
+
+      word-break: keep-all;
+    }
+
+    .q-number {
+      display: inline-block;
+
+      margin-right: 6px;
+
+      font-size: 28px;
+      font-weight: 900;
+    }
+
+
+    /* =========================
+       보기
+    ========================= */
+
+    .choice-list {
+      display: grid;
+
+      gap: 10px;
+
+      margin-top: 14px;
+    }
+
+    .choice-btn {
+      appearance: none;
+      -webkit-appearance: none;
+
+      width: 100%;
+      min-height: 58px;
+
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+
+      grid-template-columns:
+        46px minmax(0, 1fr);
+
+      align-items: stretch;
+
+      text-align: left;
+
+      color: var(--black);
+
+      background: #fff;
+
+      border: 2px solid var(--line);
+
+      box-shadow:
+        3px 3px 0 rgba(53,94,87,0.15);
+
+      overflow: hidden;
+    }
+
+    .choice-no {
+      width: 100%;
+      min-height: 56px;
+      height: 100%;
+
+      margin: 0;
+      padding: 0;
+
+      border-right:
+        2px solid var(--line);
+
+      background: var(--mint-soft);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      align-self: stretch;
+
+      font-size: 20px;
+      line-height: 1;
+      font-weight: 900;
+    }
+
+    .choice-text {
+      width: 100%;
+      min-height: 56px;
+      height: 100%;
+
+      margin: 0;
+
+      display: flex;
+      align-items: center;
+
+      align-self: stretch;
+
+      padding: 10px 12px;
+
+      font-size: 16px;
+      line-height: 1.35;
+      font-weight: 900;
+
+      letter-spacing: -0.65px;
+
+      word-break: keep-all;
+    }
+
+    .choice-btn:hover,
+    .choice-btn:active {
+      background: var(--mint-light);
+    }
+
+    .question-note {
+      border-top:
+        1px solid var(--line);
+
+      margin-top: 18px;
+      padding-top: 10px;
+
+      display: flex;
+      justify-content: space-between;
+
+      gap: 8px;
+
+      font-size: 12px;
+      color: #555;
+      font-weight: 800;
+
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Apple SD Gothic Neo",
+        "Pretendard",
+        "Noto Sans KR",
+        sans-serif;
+    }
+
+
+    /* =========================
+       결과
+    ========================= */
+
+    .result-capture {
+      width: 100%;
+      max-width: 420px;
+
+      margin: 0 auto;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(48,108,96,0.025) 0 0.8px,
+          transparent 1px
+        ),
+        linear-gradient(
+          180deg,
+          rgba(255,255,255,0.35),
+          rgba(207,242,233,0.34)
+        ),
+        var(--paper);
+
+      background-size:
+        12px 12px,
+        100% 100%,
+        100% 100%;
+
+      border: 2px solid var(--line);
+
+      padding: 12px;
+
+      box-shadow:
+        0 6px 18px rgba(42,92,82,0.13);
+    }
+
+    .result-inner {
+      border: 1.5px solid var(--line);
+
+      padding: 17px 12px 20px;
+
+      position: relative;
+    }
+
+
+    /* 빨간 채점 도장 */
+
+    .stamp-mini {
+      position: absolute;
+
+      right: 6px;
+      top: 6px;
+
+      width: 34px;
+      height: 34px;
+
+      border:
+        2.5px solid var(--red);
+
+      border-radius: 50%;
+
+      color: var(--red);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      text-align: center;
+
+      font-size: 7px;
+      line-height: 1.05;
+      font-weight: 900;
+
+      transform: rotate(-8deg);
+
+      opacity: 0.9;
+
+      z-index: 2;
+    }
+
+    .result-title {
+      text-align: center;
+
+      margin: 0;
+
+      padding: 0 42px;
+
+      font-size: 15px;
+      line-height: 1.25;
+      font-weight: 900;
+
+      letter-spacing: -0.8px;
+    }
+
+    .result-title strong {
+      display: block;
+
+      margin-top: 5px;
+
+      font-size: 20px;
+      line-height: 1.1;
+
+      letter-spacing: -1.8px;
+
+      white-space: nowrap;
+    }
+
+    .result-student {
+      width: 88%;
+
+      margin: 20px auto 18px;
+
+      display: grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap: 10px;
+    }
+
+    .score-title {
+      text-align: center;
+
+      margin: 0 0 12px;
+
+      font-size: 18px;
+      font-weight: 900;
+    }
+
+
+    /* =========================
+       영역별 공격력
+    ========================= */
+
+    .result-grid {
+      width: 92%;
+
+      margin: 0 auto 18px;
+
+      display: grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      border:
+        1.5px solid var(--line);
+
+      background:
+        rgba(255,255,255,0.42);
+    }
+
+    .result-cell {
+      min-height: 98px;
+
+      border-right:
+        1.5px solid var(--line);
+
+      border-bottom:
+        1.5px solid var(--line);
+
+      padding: 12px 8px 10px;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .result-cell:nth-child(2),
+    .result-cell:nth-child(4) {
+      border-right: 0;
+    }
+
+    .result-cell:nth-child(3),
+    .result-cell:nth-child(4) {
+      border-bottom: 0;
+    }
+
+    .result-area {
+      margin-bottom: 13px;
+
+      font-size: 15px;
+      font-weight: 900;
+    }
+
+    .marked-letter {
+      position: relative;
+
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      min-width: 86px;
+      height: 26px;
+
+      font-size: 17px;
+      font-weight: 900;
+
+      white-space: nowrap;
+    }
+
+
+    /* 결과 점수 동그라미는 빨간색 */
+
+    .marked-letter::before {
+      content: "";
+
+      position: absolute;
+
+      left: 50%;
+      top: 50%;
+
+      width: 88px;
+      height: 40px;
+
+      border:
+        4px solid var(--red);
+
+      border-radius: 50%;
+
+      transform:
+        translate(-50%, -50%)
+        rotate(-12deg);
+
+      opacity: 0.93;
+
+      pointer-events: none;
+    }
+
+
+    /* =========================
+       최종 공격력
+    ========================= */
+
+    .total-box {
+      width: 92%;
+
+      margin: 0 auto 18px;
+
+      padding: 14px 12px 17px;
+
+      border:
+        1.5px solid var(--line);
+
+      background:
+        rgba(255,255,255,0.5);
+
+      text-align: center;
+    }
+
+    .total-label {
+      margin-bottom: 14px;
+
+      font-size: 17px;
+      font-weight: 900;
+    }
+
+    .total-letter {
+      position: relative;
+
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      min-width: 124px;
+      height: 32px;
+
+      font-size: 24px;
+      font-weight: 900;
+
+      white-space: nowrap;
+    }
+
+
+    /* 최종 점수 동그라미도 빨간색 */
+
+    .total-letter::before {
+      content: "";
+
+      position: absolute;
+
+      left: 50%;
+      top: 50%;
+
+      width: 132px;
+      height: 52px;
+
+      border:
+        5px solid var(--red);
+
+      border-radius: 50%;
+
+      transform:
+        translate(-50%, -50%)
+        rotate(-10deg);
+
+      opacity: 0.93;
+
+      pointer-events: none;
+    }
+
+    .total-type {
+      margin-top: 17px;
+
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .total-type strong {
+      color: var(--mint-dark);
+    }
+
+    .comment-title {
+      text-align: center;
+
+      margin: 0 0 10px;
+
+      font-size: 18px;
+      font-weight: 900;
+    }
+
+    .comment-text {
+      width: 94%;
+
+      margin: 0 auto;
+
+      text-align: center;
+
+      font-size: 14px;
+      line-height: 1.65;
+      font-weight: 900;
+
+      word-break: keep-all;
+    }
+
+    .red {
+      color: var(--red);
+    }
+
+    .result-buttons {
+      display: grid;
+
+      margin-top: 14px;
+    }
+
+
+    /* =========================
+       광고
+    ========================= */
+
+    .ad-wrap {
+      width: 100%;
+
+      margin: 18px auto 0;
+
+      text-align: center;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      overflow: hidden;
+    }
+
+    .ad-wrap iframe,
+    .ad-wrap div,
+    .ad-wrap ins {
+      max-width: 100%;
+
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+
+
+    /* =========================
+       저장 팝업
+    ========================= */
+
+    .save-modal {
+      display: none;
+
+      position: fixed;
+      inset: 0;
+
+      z-index: 100;
+
+      background:
+        rgba(31,59,54,0.82);
+
+      padding: 22px 14px;
+
+      align-items: center;
+      justify-content: center;
+
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Apple SD Gothic Neo",
+        "Pretendard",
+        "Noto Sans KR",
+        sans-serif;
+    }
+
+    .save-modal.active {
+      display: flex;
+    }
+
+    .save-modal-box {
+      width: 100%;
+      max-width: 420px;
+
+      background: var(--paper);
+
+      border: 2px solid var(--line);
+
+      padding: 14px;
+
+      text-align: center;
+    }
+
+    .save-modal-title {
+      margin: 0 0 10px;
+
+      font-size: 17px;
+      font-weight: 900;
+    }
+
+    .save-modal-desc {
+      margin: 0 0 12px;
+
+      font-size: 13px;
+      font-weight: 700;
+
+      color: #555;
+    }
+
+   .save-preview {
+  width: auto;
+  max-width: 85%;
+  max-height: 58vh;
+
+  object-fit: contain;
+
+  border: 1.5px solid var(--line);
+  background: var(--paper);
+
+  display: block;
+  margin: 0 auto 12px;
+}
+
+    .modal-close {
+      width: 100%;
+      height: 46px;
+
+      border:
+        1.5px solid var(--line);
+
+      background: var(--mint-dark);
+      color: #fff;
+
+      font-size: 15px;
+      font-weight: 900;
+    }
+
+
+    /* =========================
+       모바일
+    ========================= */
+
+    @media (max-width: 420px) {
+
+      .wrap {
+        padding: 12px 7px 34px;
+      }
+
+      .exam-paper {
+        padding: 13px 9px;
+      }
+
+      .exam-inner {
+        padding: 14px 9px;
+      }
+
+      .name-title {
+        margin-top: 38px;
+
+        font-size: 32px;
+      }
+
+      .question-subject {
+        font-size: 30px;
+      }
+
+      .question-info {
+        width: 96%;
+
+        gap: 7px;
+      }
+
+      .student-field {
+        grid-template-columns:
+          45px 1fr;
+      }
+
+      .student-field span,
+      .student-field b {
+        font-size: 13px;
+      }
+
+      .question-text {
+        font-size: 18px;
+      }
+
+      .q-number {
+        font-size: 26px;
+      }
+
+      .choice-btn {
+        min-height: 56px;
+
+        grid-template-columns:
+          42px minmax(0, 1fr);
+      }
+
+      .choice-no {
+        min-height: 54px;
+
+        font-size: 18px;
+      }
+
+      .choice-text {
+        min-height: 54px;
+
+        padding: 9px 10px;
+
+        font-size: 14px;
+        line-height: 1.32;
+      }
+
+      .result-title strong {
+        font-size: 18px;
+      }
+
+      .marked-letter {
+        font-size: 15px;
+      }
+
+      .marked-letter::before {
+        width: 82px;
+        height: 38px;
+
+        border-width: 3.5px;
+      }
+
+      .total-letter {
+        font-size: 22px;
+      }
+    }
+  </style>
+</head>
+
+
+<body>
+
+
+<header class="site-header">
+
+  <div class="header-inner">
+
+    <a
+      href="https://test-it.co.kr/"
+      class="logo"
+    >
+      테스트잇
+    </a>
+
+
+    <nav class="nav">
+
+      <a href="https://test-it.co.kr/test.html">
+        성격
+      </a>
+
+      <a href="https://test-it.co.kr/face.html">
+        얼굴
+      </a>
+
+      <a href="https://test-it.co.kr/etc.html">
+        그외
+      </a>
+
+      <a href="https://test-it.co.kr/saju.html">
+        사주
+      </a>
+
+    </nav>
+
+  </div>
+
+</header>
+
+
+
+<main class="wrap">
+
+
+  <!-- =========================
+       메인
+  ========================= -->
+
+  <section
+    id="mainScreen"
+    class="screen active"
+  >
+
+    <div class="main-image-box">
+
+      <img
+        class="main-image"
+        src="img_main404.png"
+        alt="테스트잇 공격력 종합 평가 테스트"
+      >
+
+    </div>
+
+
+    <button
+      class="btn"
+      onclick="goName()"
+    >
+      테스트 시작하기
+    </button>
+
+  </section>
+
+
+
+  <!-- =========================
+       정보 입력
+  ========================= -->
+
+  <section
+    id="nameScreen"
+    class="screen"
+  >
+
+    <div class="exam-paper name-paper">
+
+
+      <div class="exam-inner name-inner">
+
+        <div class="paper-top">
+
+          <div class="paper-date">
+            응시자 정보 작성란<br>
+            테스트잇 공격성 평가
+          </div>
+
+        </div>
+
+
+        <h2 class="name-title">
+          응시자<br>
+          닉네임 작성
+        </h2>
+
+
+        <div class="name-wrap">
+
+          <label
+            class="name-label"
+            for="nicknameInput"
+          >
+            성명
+          </label>
+
+
+          <input
+            id="nicknameInput"
+            class="name-input"
+            type="text"
+            maxlength="12"
+            placeholder="여기에 입력해주세요"
+            autocomplete="off"
+          >
+
+        </div>
+
+
+        <div class="guide-box">
+          ○ 기본 총 12문항입니다.<br>
+          ○ 사회생활, 친구, 연인, 가족 영역별로 출제됩니다.<br>
+          ○ 실제 내 모습과 가까운 답을 고르십시오.
+        </div>
+
+      </div>
+
+
+      <button
+        class="btn"
+        onclick="startTest()"
+      >
+        시험 응시하기
+      </button>
+
+
+      <button
+        class="btn white"
+        onclick="goMain()"
+      >
+        처음으로
+      </button>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =========================
+       질문
+  ========================= -->
+
+  <section
+    id="questionScreen"
+    class="screen"
+  >
+
+    <div class="progress-box">
+
+      <div class="progress-top">
+
+        <span>
+          테스트잇 공격력 종합 평가 테스트
+        </span>
+
+        <span id="progressText">
+          1 / 12
+        </span>
+
+      </div>
+
+
+      <div class="progress-track">
+
+        <div
+          id="progressFill"
+          class="progress-fill"
+        ></div>
+
+      </div>
+
+
+      <div
+        id="omr"
+        class="omr"
+      ></div>
+
+    </div>
+
+
+    <div class="exam-paper question-paper">
+
+
+      <div class="exam-inner question-inner">
+
+
+        <div class="question-head">
+
+
+          <div class="question-small-title">
+            2026학년도 테스트잇 모의고사
+          </div>
+
+
+          <div
+            id="questionSubject"
+            class="question-subject"
+          >
+            사회생활 영역
+          </div>
+
+
+          <div class="question-info">
+
+
+            <div class="student-field">
+
+              <span>
+                성명
+              </span>
+
+              <b id="questionName">
+                응시자
+              </b>
+
+            </div>
+
+
+            <div class="student-field">
+
+              <span>
+                문항
+              </span>
+
+              <b id="questionCount">
+                1 / 12
+              </b>
+
+            </div>
+
+
+          </div>
+
+
+        </div>
+
+
+        <div class="question-text-box">
+
+          <p
+            id="questionText"
+            class="question-text"
+          ></p>
+
+        </div>
+
+
+        <div
+          id="choiceList"
+          class="choice-list"
+        ></div>
+
+
+        <div class="question-note">
+
+          <span>
+            ※ 선택하면 다음 문항으로 넘어갑니다.
+          </span>
+
+          <span>
+            정답 없음
+          </span>
+
+        </div>
+
+
+      </div>
+
+
+    </div>
+
+
+  </section>
+
+
+
+  <!-- =========================
+       결과
+  ========================= -->
+
+  <section
+    id="resultScreen"
+    class="screen"
+  >
+
+    <div
+      id="resultCapture"
+      class="result-capture"
+    >
+
+      <div class="result-inner">
+
+
+        <div class="stamp-mini">
+          채점<br>
+          완료
+        </div>
+
+
+        <h2 class="result-title">
+
+          2026학년도 테스트잇 모의고사
+
+          <strong>
+            공격성 종합 평가 채점지
+          </strong>
+
+        </h2>
+
+
+        <div class="result-student">
+
+
+          <div class="student-field">
+
+            <span>
+              성명
+            </span>
+
+            <b id="resultName">
+              응시자
+            </b>
+
+          </div>
+
+
+          <div class="student-field">
+
+            <span>
+              번호
+            </span>
+
+            <b>
+              404-ATK
+            </b>
+
+          </div>
+
+
+        </div>
+
+
+        <h3 class="score-title">
+          영역별 공격력
+        </h3>
+
+
+        <div
+          id="resultGrid"
+          class="result-grid"
+        ></div>
+
+
+        <div class="total-box">
+
+
+          <div class="total-label">
+            최종 공격력
+          </div>
+
+
+          <div
+            id="totalScore"
+            class="total-letter"
+          >
+            50점
+          </div>
+
+
+          <div class="total-type">
+
+            공격성 등급
+
+            <strong id="totalType"></strong>
+
+          </div>
+
+
+        </div>
+
+
+        <h3 class="comment-title">
+          결과 해설
+        </h3>
+
+
+        <p
+          id="resultComment"
+          class="comment-text"
+        ></p>
+
+
+      </div>
+
+
+    </div>
+
+
+    <div class="result-buttons">
+
+
+      <button
+        class="btn"
+        onclick="saveResultImage()"
+      >
+        결과 이미지 저장하기
+      </button>
+
+
+      <button
+        class="btn white"
+        onclick="restartTest()"
+      >
+        다시 해보기
+      </button>
+
+
+      <a
+        class="btn white"
+        href="https://test-it.co.kr/"
+      >
+        다른 테스트 해보기
+      </a>
+
+
+      <button
+        class="btn white"
+        onclick="shareTest()"
+      >
+        테스트 공유하기
+      </button>
+
+
+    </div>
+
+
+  </section>
+
+
+
+  <!-- =========================
+       광고
+  ========================= -->
+
+  <div class="ad-wrap">
+
+    <script src="https://ads-partners.coupang.com/g.js"></script>
+
+    <script>
+      new PartnersCoupang.G({
+        id: 798186,
+        template: "carousel",
+        trackingCode: "AF4391881",
+        width: "350",
+        height: "140"
+      });
+    </script>
+
+  </div>
+
+
+</main>
+
+
+
+<!-- =========================
+     저장 팝업
+========================= -->
+
+<div
+  id="saveModal"
+  class="save-modal"
+>
+
+  <div class="save-modal-box">
+
+
+    <p class="save-modal-title">
+      결과 이미지가 만들어졌어요
+    </p>
+
+
+    <p class="save-modal-desc">
+      아래 이미지를 꾹 눌러 저장해주세요.
+    </p>
+
+
+    <img
+      id="savePreview"
+      class="save-preview"
+      alt="결과 이미지 미리보기"
+    >
+
+
+    <button
+      class="modal-close"
+      onclick="closeSaveModal()"
+    >
+      닫기
+    </button>
+
+
+  </div>
+
+</div>
+
+
+
+<script>
+
+  const TEST_TITLE =
+    `테스트잇 공격력 종합 평가 테스트`;
+
+  const TEST_URL =
+    `https://test-it.co.kr/test404`;
+
+
+  /* =========================
+     영역
+  ========================= */
+
+  const categoryInfo = {
+
+    work: {
+      name: `사회생활`,
+      subject: `사회생활 영역`
+    },
+
+    friend: {
+      name: `친구`,
+      subject: `친구 영역`
+    },
+
+    lover: {
+      name: `연인`,
+      subject: `연인 영역`
+    },
+
+    family: {
+      name: `가족`,
+      subject: `가족 영역`
+    }
+
+  };
+
+
+  const orderKeys = [
+    `work`,
+    `friend`,
+    `lover`,
+    `family`
+  ];
+
+
+
+  /* =========================
+     공격성 질문
+  ========================= */
+
+  const questions = {
+
+
+    /* =========================
+       사회생활
+    ========================= */
+
+    work: [
+
+      {
+        title:
+          `내가 주차하려고 기다리던 자리에<br>다른 차가 갑자기 먼저 들어간다`,
+
+        options: [
+
+          {
+            score: 0,
+            text:
+              `열받지만 다른 자리를 찾는다`
+          },
+
+          {
+            score: 1,
+            text:
+              `창문을 내리고 따지거나<br>빵 하고 경적을 울린다`
+          }
+
+        ]
+      },
+
+
+      {
+        title:
+          `인기 많은 식당에 갔는데<br>내 주문만 누락돼서 한참을 기다리게 됐다`,
+
+        options: [
+
+          {
+            score: 1,
+            text:
+              `짜증 난 티를 확실하게 내며 항의한다`
+          },
+
+          {
+            score: 0,
+            text:
+              `따져도 바뀔 게 없어서 그냥 참는다`
+          }
+
+        ]
+      },
+
+
+      {
+        title:
+          `모르는 사람이 어깨를 치고 가놓고<br>오히려 나를 째려본다`,
+
+        options: [
+
+          {
+            score: 0,
+            text:
+              `엮이기 싫어서 그냥 지나간다`
+          },
+
+          {
+            score: 1,
+            text:
+              `뭘 보냐고 한소리 한다`
+          }
+
+        ]
+      }
+
+    ],
+
+
+
+    /* =========================
+       친구
+    ========================= */
+
+    friend: [
+
+      {
+        title:
+          `말다툼하던 친구가<br>내 외모를 비꼬기 시작한다`,
+
+        options: [
+
+          {
+            score: 0,
+            text:
+              `그런 말은 하지 말라고 하고<br>대화를 끝낸다`
+          },
+
+          {
+            score: 1,
+            text:
+              `나도 친구 외모를 바로 맹공격한다`
+          }
+
+        ]
+      },
+
+
+      {
+        title:
+          `친구한테 고민 상담을 하는데<br>건성으로 대답하며 폰만 본다면?`,
+
+        options: [
+
+          {
+            score: 1,
+            text:
+              `지금 뭐 하냐며<br>그 자리에서 화를 낸다`
+          },
+
+          {
+            score: 0,
+            text:
+              `더 이상 고민 이야기를<br>꺼내지 않는다`
+          }
+
+        ]
+      },
+
+
+      {
+        title:
+          `남들이 내 욕한 걸<br>친구가 굳이 전해준다면?`,
+
+        options: [
+
+          {
+            score: 0,
+            text:
+              `기분 나쁘지만 그냥 넘긴다`
+          },
+
+          {
+            score: 1,
+            text:
+              `그런 말 전하는 네가<br>더 나쁘다고 말한다`
+          }
+
+        ]
+      }
+
+    ],
+
+
+
+    /* =========================
+       연인
+    ========================= */
+
+    lover: [
+
+      {
+        title:
+          `연인이 기념일 당일 아침에 피곤하다며 약속 시간을 미루자고 하면?`,
+
+        options: [
+
+          {
+            score: 1,
+            text:
+              `기념일이 장난이냐며<br>배려 없다고 불같이 화낸다`
+          },
+
+          {
+            score: 0,
+            text:
+              `서운하지만 알겠다고 하고<br>혼자 속앓이한다`
+          }
+
+        ]
+      },
+
+
+      {
+        title:
+          `연인이 내 친구들 처음 만나는 자리에 안 씻고 꾀죄죄하게 나왔다면?`,
+
+        options: [
+
+          {
+            score: 0,
+            text:
+              `창피하지만 오늘 컨디션 안 좋다고<br>좋게 포장해 준다`
+          },
+
+          {
+            score: 1,
+            text:
+              `예의가 없냐며 당장 집에 가서<br>씻고 오라고 쫓아낸다`
+          }
+
+        ]
+      },
+
+
+      {
+        title:
+          `데이트 중 연인이<br>전 애인과 나를 비교한다면?`,
+
+        options: [
+
+          {
+            score: 1,
+            text:
+              `그럼 걔한테 가라며<br>뒤도 안 돌아보고 집에 간다`
+          },
+
+          {
+            score: 0,
+            text:
+              `싸우기 싫어서<br>기분 나쁜 티만 낸다`
+          }
+
+        ]
+      }
+
+    ],
+
+
+
+    /* =========================
+       가족
+    ========================= */
+
+    family: [
+
+      {
+        title:
+          `명절에 만난 친척이 내 취업이나 결혼 문제로 계속 잔소리를 한다면?`,
+
+        options: [
+
+          {
+            score: 0,
+            text:
+              `듣기 싫어도 어른이니까<br>대충 네네 하고 자리를 피한다`
+          },
+
+          {
+            score: 1,
+            text:
+              `알아서 잘 할 테니 그만하시라고<br>정색하며 맞받아친다`
+          }
+
+        ]
+      },
+
+
+      {
+        title:
+          `가족과 말다툼 중 상대가<br>계속 비꼬는 말투로 자극한다`,
+
+        options: [
+
+          {
+            score: 1,
+            text:
+              `나도 말투가 거칠어지면서<br>더 세게 받아친다`
+          },
+
+          {
+            score: 0,
+            text:
+              `더 싸우기 싫어서<br>대화를 멈춘다`
+          }
+
+        ]
+      },
+
+
+      {
+        title:
+          `자고 있는데 가족이 계속 깨우며<br>짜증 나게 한다`,
+
+        options: [
+
+          {
+            score: 0,
+            text:
+              `더 잘 거니까 깨우지 말라고 하고<br>잔다`
+          },
+
+          {
+            score: 1,
+            text:
+              `짜증을 내며 왜 깨우냐고<br>난동을 부린다`
+          }
+
+        ]
+      }
+
+    ]
+
+  };
+
+
+
+  /* =========================
+     결과 데이터
+  ========================= */
+
+  const resultData = [
+
+    {
+      min: 0,
+      max: 20,
+
+      type:
+        `솜방망이 공격력`,
+
+      comment:
+        `상대가 먼저 자극해도 똑같이 되갚는 경우가 드문 편입니다. 화가 나도 싸움을 키우기보다 멈추거나 자리를 피하는 쪽에 가깝습니다.`
+    },
+
+
+    {
+      min: 21,
+      max: 40,
+
+      type:
+        `순한맛 공격력`,
+
+      comment:
+        `화가 나도 바로 상대를 공격하는 편은 아닙니다. 필요한 말은 하지만 보복하거나 일부러 싸움을 키우는 경우는 적은 편입니다.`
+    },
+
+
+    {
+      min: 41,
+      max: 60,
+
+      type:
+        `은근 매운맛`,
+
+      comment:
+        `평소에는 무난하지만 상대가 먼저 강하게 나오면 반격하는 편입니다. 참을 때와 맞받아칠 때의 차이가 비교적 뚜렷합니다.`
+    },
+
+
+    {
+      min: 61,
+      max: 80,
+
+      type:
+        `매운맛 공격력`,
+
+      comment:
+        `상대가 먼저 선을 넘으면 그냥 넘기기 어려운 편입니다. 화가 나면 말이 세지거나 받은 만큼 돌려주려는 모습이 자주 나타납니다.`
+    },
+
+
+    {
+      min: 81,
+      max: 100,
+
+      type:
+        `최종 보스 공격력`,
+
+      comment:
+        `자극을 받았을 때 바로 맞받아치는 편입니다. 상대가 공격적으로 나오면 나도 수위를 높이고 쉽게 물러서지 않는 성향이 강하게 나타납니다.`
+    }
+
+  ];
+
+
+
+  /* =========================
+     상태값
+  ========================= */
+
+  let nickname = ``;
+
+  let categoryIndex = 0;
+
+  let questionIndex = 0;
+
+  let answeredCount = 0;
+
+
+  let scores = {
+    work: 0,
+    friend: 0,
+    lover: 0,
+    family: 0
+  };
+
+
+  const totalQuestionCount = 12;
+
+
+  const mainScreen =
+    document.getElementById(`mainScreen`);
+
+  const nameScreen =
+    document.getElementById(`nameScreen`);
+
+  const questionScreen =
+    document.getElementById(`questionScreen`);
+
+  const resultScreen =
+    document.getElementById(`resultScreen`);
+
+
+  const numberIcons = [
+    `①`,
+    `②`
+  ];
+
+
+
+  /* =========================
+     화면 전환
+  ========================= */
+
+  function showScreen(screen) {
+
+    [
+      mainScreen,
+      nameScreen,
+      questionScreen,
+      resultScreen
+    ].forEach(function(item) {
+
+      item.classList.remove(`active`);
+
+    });
+
+
+    screen.classList.add(`active`);
+
+
+    window.scrollTo({
+      top: 0,
+      behavior: `smooth`
+    });
+
+  }
+
+
+  function goMain() {
+
+    showScreen(mainScreen);
+
+  }
+
+
+  function goName() {
+
+    showScreen(nameScreen);
+
+
+    setTimeout(function() {
+
+      document
+        .getElementById(`nicknameInput`)
+        .focus();
+
+    }, 100);
+
+  }
+
+
+
+  /* =========================
+     시작
+  ========================= */
+
+  function startTest() {
+
+    const input =
+      document.getElementById(`nicknameInput`);
+
+
+    nickname =
+      input.value.trim();
+
+
+    if (!nickname) {
+
+      alert(
+        `응시자 닉네임을 적어주세요.`
+      );
+
+      input.focus();
+
+      return;
+
+    }
+
+
+    categoryIndex = 0;
+
+    questionIndex = 0;
+
+    answeredCount = 0;
+
+
+    scores = {
+      work: 0,
+      friend: 0,
+      lover: 0,
+      family: 0
+    };
+
+
+    renderQuestion();
+
+    showScreen(questionScreen);
+
+  }
+
+
+
+  /* =========================
+     질문 출력
+  ========================= */
+
+  function renderQuestion() {
+
+    const categoryKey =
+      orderKeys[categoryIndex];
+
+
+    const category =
+      categoryInfo[categoryKey];
+
+
+    const question =
+      questions[categoryKey][questionIndex];
+
+
+    const displayNumber =
+      answeredCount + 1;
+
+
+    const percent =
+      Math.round(
+        (displayNumber / totalQuestionCount) * 100
+      );
+
+
+    document
+      .getElementById(`questionSubject`)
+      .textContent =
+        category.subject;
+
+
+    document
+      .getElementById(`questionName`)
+      .textContent =
+        nickname;
+
+
+    document
+      .getElementById(`progressText`)
+      .textContent =
+        `${displayNumber} / ${totalQuestionCount}`;
+
+
+    document
+      .getElementById(`questionCount`)
+      .textContent =
+        `${displayNumber} / ${totalQuestionCount}`;
+
+
+    document
+      .getElementById(`progressFill`)
+      .style.width =
+        `${percent}%`;
+
+
+    /*
+      question.title에 들어간 <br>이
+      실제 줄바꿈으로 표시되도록 innerHTML 사용
+    */
+
+    document
+      .getElementById(`questionText`)
+      .innerHTML =
+        `<span class="q-number">${displayNumber}.</span>${question.title}`;
+
+
+    /*
+      option.text의 <br>도
+      실제 줄바꿈으로 표시
+    */
+
+    const optionsHtml =
+      question.options.map(
+        function(option, index) {
+
+          return `
+            <button
+              type="button"
+              class="choice-btn"
+              onclick="selectAnswer(${option.score})"
+            >
+
+              <span class="choice-no">
+                ${numberIcons[index]}
+              </span>
+
+              <span class="choice-text">
+                ${option.text}
+              </span>
+
+            </button>
+          `;
+
+        }
+      ).join(``);
+
+
+    document
+      .getElementById(`choiceList`)
+      .innerHTML =
+        optionsHtml;
+
+
+    renderOMR();
+
+  }
+
+
+
+  /* =========================
+     OMR
+  ========================= */
+
+  function renderOMR() {
+
+    let html = ``;
+
+
+    for (
+      let i = 0;
+      i < totalQuestionCount;
+      i++
+    ) {
+
+      let className = ``;
+
+
+      if (i < answeredCount) {
+
+        className = `done`;
+
+      }
+
+      else if (i === answeredCount) {
+
+        className = `now`;
+
+      }
+
+
+      html += `
+        <span class="${className}">
+          ${i + 1}
+        </span>
+      `;
+
+    }
+
+
+    document
+      .getElementById(`omr`)
+      .innerHTML =
+        html;
+
+  }
+
+
+
+  /* =========================
+     답변
+  ========================= */
+
+  function selectAnswer(score) {
+
+    const categoryKey =
+      orderKeys[categoryIndex];
+
+
+    scores[categoryKey] +=
+      Number(score);
+
+
+    answeredCount++;
+
+    questionIndex++;
+
+
+    if (questionIndex >= 3) {
+
+      categoryIndex++;
+
+      questionIndex = 0;
+
+    }
+
+
+    if (
+      answeredCount >= totalQuestionCount
+    ) {
+
+      renderResult();
+
+      return;
+
+    }
+
+
+    renderQuestion();
+
+  }
+
+
+
+  /* =========================
+     점수 계산
+  ========================= */
+
+function getAreaScore(categoryKey) {
+
+  const scoreTable = [
+    0,
+    40,
+    70,
+    100
+  ];
+
+  return scoreTable[
+    scores[categoryKey]
+  ];
+
+}
+
+
+function getOverallScore() {
+
+  const total =
+    getAreaScore(`work`) +
+    getAreaScore(`friend`) +
+    getAreaScore(`lover`) +
+    getAreaScore(`family`);
+
+  return Math.round(total / 4);
+
+}
+
+
+  function findResult(score) {
+
+    return resultData.find(
+      function(result) {
+
+        return (
+          score >= result.min &&
+          score <= result.max
+        );
+
+      }
+    );
+
+  }
+
+
+
+  /* =========================
+     결과 출력
+  ========================= */
+
+  function renderResult() {
+
+    const overallScore =
+      getOverallScore();
+
+
+    const result =
+      findResult(overallScore);
+
+
+    document
+      .getElementById(`resultName`)
+      .textContent =
+        nickname;
+
+
+    let gridHtml = ``;
+
+
+    orderKeys.forEach(
+      function(key) {
+
+        const areaScore =
+          getAreaScore(key);
+
+
+        gridHtml += `
+          <div class="result-cell">
+
+            <div class="result-area">
+              ${categoryInfo[key].name} 공격력
+            </div>
+
+            <div class="marked-letter">
+              ${areaScore}점
+            </div>
+
+          </div>
+        `;
+
+      }
+    );
+
+
+    document
+      .getElementById(`resultGrid`)
+      .innerHTML =
+        gridHtml;
+
+
+    document
+      .getElementById(`totalScore`)
+      .textContent =
+        `${overallScore}점`;
+
+
+    document
+      .getElementById(`totalType`)
+      .textContent =
+        result.type;
+
+
+    document
+      .getElementById(`resultComment`)
+      .innerHTML =
+        `${nickname}님의 전체 공격력은 <span class="red">${overallScore}점</span>입니다.<br><br>${result.comment}`;
+
+
+    showScreen(resultScreen);
+
+  }
+
+
+
+  /* =========================
+     다시 하기
+  ========================= */
+
+  function restartTest() {
+
+    nickname = ``;
+
+    categoryIndex = 0;
+
+    questionIndex = 0;
+
+    answeredCount = 0;
+
+
+    scores = {
+      work: 0,
+      friend: 0,
+      lover: 0,
+      family: 0
+    };
+
+
+    document
+      .getElementById(`nicknameInput`)
+      .value =
+        ``;
+
+
+    document
+      .getElementById(`progressFill`)
+      .style.width =
+        `0%`;
+
+
+    showScreen(mainScreen);
+
+  }
+
+
+
+  /* =========================
+     결과 이미지 저장
+  ========================= */
+
+  async function saveResultImage() {
+
+    const target =
+      document.getElementById(
+        `resultCapture`
+      );
+
+
+    try {
+
+      const canvas =
+        await html2canvas(
+          target,
+          {
+
+            scale: 2,
+
+            useCORS: true,
+
+            backgroundColor:
+              `#f2fffb`,
+
+            scrollX: 0,
+
+            scrollY:
+              -window.scrollY,
+
+            onclone:
+              function(clonedDoc) {
+
+                const clonedTarget =
+                  clonedDoc.getElementById(
+                    `resultCapture`
+                  );
+
+
+                clonedDoc
+                  .querySelectorAll(`img`)
+                  .forEach(
+                    function(img) {
+
+                      if (
+                        !clonedTarget ||
+                        !clonedTarget.contains(img)
+                      ) {
+
+                        img.removeAttribute(`src`);
+                        img.removeAttribute(`srcset`);
+                        img.removeAttribute(`onerror`);
+
+                      }
+
+                    }
+                  );
+
+              }
+
+          }
+        );
+
+
+      const imageUrl =
+        canvas.toDataURL(
+          `image/png`
+        );
+
+
+      document
+        .getElementById(`savePreview`)
+        .src =
+          imageUrl;
+
+
+      document
+        .getElementById(`saveModal`)
+        .classList
+        .add(`active`);
+
+    }
+
+    catch (error) {
+
+      console.error(
+        `결과 이미지 저장 오류`,
+        error
+      );
+
+
+      alert(
+        `이미지 저장 중 오류가 발생했어요. 다시 시도해주세요.`
+      );
+
+    }
+
+  }
+
+
+  function closeSaveModal() {
+
+    document
+      .getElementById(`saveModal`)
+      .classList
+      .remove(`active`);
+
+  }
+
+
+
+  /* =========================
+     공유
+  ========================= */
+
+  async function shareTest() {
+
+    const shareData = {
+
+      title:
+        TEST_TITLE,
+
+      text:
+        `테스트잇 공격력 종합 평가 테스트`,
+
+      url:
+        TEST_URL
+
+    };
+
+
+    try {
+
+      if (navigator.share) {
+
+        await navigator.share(
+          shareData
+        );
+
+      }
+
+      else {
+
+        await navigator
+          .clipboard
+          .writeText(
+            TEST_URL
+          );
+
+
+        alert(
+          `테스트 링크가 복사됐어요!`
+        );
+
+      }
+
+    }
+
+    catch (error) {
+
+      console.log(error);
+
+    }
+
+  }
+
+</script>
+
+
+</body>
+</html>

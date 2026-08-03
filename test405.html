@@ -1,0 +1,1963 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5522499110435321" crossorigin="anonymous"></script>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>테스트잇 8월의 크리스마스 성격 테스트</title>
+  <meta name="description" content="테스트잇 8월의 크리스마스 성격 테스트">
+  <meta name="keywords" content="테스트잇,8월의크리스마스,크리스마스성격테스트,MBTI테스트">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="테스트잇 8월의 크리스마스 성격 테스트">
+  <meta property="og:description" content="테스트잇 8월의 크리스마스 성격 테스트">
+  <meta property="og:url" content="https://test-it.co.kr/test405">
+  <meta property="og:image" content="https://test-it.co.kr/img_main405.png">
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  <style>
+    @font-face {
+      font-family: 'Umdot';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2601-4@1.1/Umdot12.woff2') format('woff2');
+      font-weight: normal;
+      font-display: swap;
+    }
+
+    :root {
+      --christmas-red: #ef4f53;
+      --dark-red: #bd3036;
+      --christmas-green: #28744a;
+      --dark-green: #194f33;
+      --cream: #fffaf0;
+      --yellow: #ffd96a;
+      --line: #202020;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+    }
+
+    body {
+      background: #f5f5f5;
+      color: #171717;
+      font-family: 'Umdot', 'Malgun Gothic', sans-serif;
+      word-break: keep-all;
+    }
+
+    button {
+      font: inherit;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .site-header {
+      width: 100%;
+      background: #ffffff;
+      border-bottom: 1px solid #d8d8d8;
+    }
+
+    .header-inner {
+      width: min(100%, 760px);
+      height: 58px;
+      margin: 0 auto;
+      padding: 0 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .logo {
+      color: #111111;
+      text-decoration: none;
+      font-size: 22px;
+      white-space: nowrap;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 17px;
+    }
+
+    .nav a {
+      color: #333333;
+      text-decoration: none;
+      font-size: 15px;
+      white-space: nowrap;
+    }
+
+    .page-wrap {
+      width: min(100%, 620px);
+      margin: 0 auto;
+      padding: 25px 13px 48px;
+    }
+
+    .screen {
+      display: none;
+      width: 100%;
+    }
+
+    .screen.active {
+      display: block;
+    }
+
+    /* 시작 화면 */
+
+    .main-image {
+      display: block;
+      width: 100%;
+      height: auto;
+      background: #ffffff;
+    }
+
+    .start-button-wrap {
+      width: 100%;
+      margin-top: 15px;
+    }
+
+    .primary-button {
+      width: 100%;
+      min-height: 57px;
+      padding: 14px 12px;
+      cursor: pointer;
+      background: var(--christmas-red);
+      color: #ffffff;
+      border: 3px solid var(--dark-red);
+      font-size: 21px;
+      line-height: 1.2;
+    }
+
+    .primary-button:active,
+    .answer-button:active,
+    .action-button:active {
+      transform: translateY(1px);
+    }
+
+    /* 질문 화면 */
+
+    .question-page {
+      position: relative;
+      overflow: hidden;
+      background: var(--cream);
+      border: 3px solid var(--dark-green);
+    }
+
+    .garland {
+      position: relative;
+      width: 100%;
+      height: 49px;
+      overflow: hidden;
+      background: var(--christmas-green);
+      border-bottom: 3px solid var(--dark-green);
+    }
+
+    .garland-leaf {
+      position: absolute;
+      bottom: -3px;
+      width: 45px;
+      height: 35px;
+      background: #34875a;
+      clip-path: polygon(
+        50% 0,
+        62% 33%,
+        91% 18%,
+        75% 48%,
+        100% 57%,
+        68% 67%,
+        72% 100%,
+        50% 76%,
+        28% 100%,
+        32% 67%,
+        0 57%,
+        25% 48%,
+        9% 18%,
+        38% 33%
+      );
+    }
+
+    .garland-leaf:nth-child(1) {
+      left: -8px;
+    }
+
+    .garland-leaf:nth-child(2) {
+      left: 7%;
+    }
+
+    .garland-leaf:nth-child(3) {
+      left: 18%;
+    }
+
+    .garland-leaf:nth-child(4) {
+      left: 29%;
+    }
+
+    .garland-leaf:nth-child(5) {
+      left: 40%;
+    }
+
+    .garland-leaf:nth-child(6) {
+      left: 51%;
+    }
+
+    .garland-leaf:nth-child(7) {
+      left: 62%;
+    }
+
+    .garland-leaf:nth-child(8) {
+      left: 73%;
+    }
+
+    .garland-leaf:nth-child(9) {
+      left: 84%;
+    }
+
+    .garland-leaf:nth-child(10) {
+      right: -9px;
+    }
+
+    .garland-ball {
+      position: absolute;
+      z-index: 2;
+      bottom: 8px;
+      width: 11px;
+      height: 11px;
+      background: var(--christmas-red);
+      border: 1px solid #783038;
+      border-radius: 50%;
+    }
+
+    .garland-ball.yellow {
+      background: var(--yellow);
+      border-color: #9d7825;
+    }
+
+    .garland-ball.one {
+      left: 10%;
+    }
+
+    .garland-ball.two {
+      left: 28%;
+    }
+
+    .garland-ball.three {
+      left: 48%;
+    }
+
+    .garland-ball.four {
+      left: 67%;
+    }
+
+    .garland-ball.five {
+      left: 87%;
+    }
+
+    .question-inner {
+      position: relative;
+      min-height: 560px;
+      padding: 20px 20px 25px;
+      background-color: var(--cream);
+      background-image:
+        radial-gradient(
+          circle,
+          rgba(239, 79, 83, 0.12) 0 2px,
+          transparent 2.5px
+        ),
+        radial-gradient(
+          circle,
+          rgba(40, 116, 74, 0.11) 0 2px,
+          transparent 2.5px
+        );
+      background-position:
+        6px 6px,
+        28px 27px;
+      background-size:
+        44px 44px,
+        49px 49px;
+    }
+
+    .question-top-label {
+      position: relative;
+      z-index: 1;
+      width: fit-content;
+      margin: 0 auto 14px;
+      padding: 7px 14px;
+      background: var(--christmas-red);
+      color: #ffffff;
+      border: 2px solid var(--dark-red);
+      font-size: 14px;
+      line-height: 1;
+    }
+
+    .progress-row {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      gap: 11px;
+    }
+
+    .progress-decoration {
+      position: relative;
+      flex: 1;
+      height: 28px;
+    }
+
+    .progress-line {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 11px;
+      height: 5px;
+      background: var(--dark-green);
+      border: 1px solid #143c28;
+    }
+
+    .progress-track {
+      position: absolute;
+      left: 5px;
+      right: 5px;
+      top: 8px;
+      height: 11px;
+      overflow: hidden;
+      background: #ffffff;
+      border: 1px solid var(--line);
+    }
+
+    .progress-bar {
+      width: 0;
+      height: 100%;
+      background:
+        repeating-linear-gradient(
+          135deg,
+          var(--christmas-red) 0 10px,
+          var(--christmas-red) 10px 18px,
+          var(--christmas-green) 18px 28px,
+          var(--christmas-green) 28px 36px
+        );
+      transition: width 0.22s ease;
+    }
+
+    .progress-bulb {
+      position: absolute;
+      z-index: 2;
+      top: 2px;
+      width: 13px;
+      height: 16px;
+      background: var(--yellow);
+      border: 2px solid #8d6920;
+      border-radius: 50% 50% 45% 45%;
+    }
+
+    .progress-bulb::before {
+      content: "";
+      position: absolute;
+      left: 3px;
+      top: -5px;
+      width: 4px;
+      height: 6px;
+      background: #333333;
+    }
+
+    .progress-bulb.one {
+      left: 0;
+    }
+
+    .progress-bulb.two {
+      left: 24%;
+      background: var(--christmas-red);
+      border-color: #8f262a;
+    }
+
+    .progress-bulb.three {
+      left: 49%;
+    }
+
+    .progress-bulb.four {
+      left: 74%;
+      background: var(--christmas-red);
+      border-color: #8f262a;
+    }
+
+    .progress-bulb.five {
+      right: 0;
+    }
+
+    .question-count {
+      min-width: 54px;
+      padding: 7px 5px;
+      background: #ffffff;
+      border: 2px solid var(--christmas-green);
+      text-align: center;
+      font-size: 14px;
+      line-height: 1;
+    }
+
+    .question-card {
+      position: relative;
+      z-index: 1;
+      margin-top: 21px;
+      padding: 27px 18px 24px;
+      background: #ffffff;
+      border: 3px solid var(--christmas-red);
+    }
+
+    .question-card::before {
+      content: "";
+      position: absolute;
+      inset: 7px;
+      pointer-events: none;
+      border: 1px dashed #dbb691;
+    }
+
+    .question-card::after {
+      content: "";
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      width: 86px;
+      height: 22px;
+      transform: translateX(-50%);
+      background:
+        repeating-linear-gradient(
+          135deg,
+          var(--christmas-red) 0 11px,
+          var(--christmas-red) 11px 18px,
+          #ffffff 18px 29px,
+          #ffffff 29px 36px
+        );
+      border: 2px solid var(--dark-red);
+    }
+
+    .question-number-label {
+      position: relative;
+      z-index: 1;
+      margin-top: 4px;
+      color: var(--christmas-green);
+      text-align: center;
+      font-size: 15px;
+      line-height: 1.2;
+    }
+
+    .question-text {
+      position: relative;
+      z-index: 1;
+      min-height: 126px;
+      margin-top: 8px;
+      padding: 12px 5px 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 20px;
+      line-height: 1.55;
+    }
+
+    .question-mini-deco {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 9px;
+      margin-top: 7px;
+    }
+
+    .question-mini-deco span {
+      display: block;
+      width: 8px;
+      height: 8px;
+      background: var(--christmas-red);
+      border: 1px solid var(--dark-red);
+      transform: rotate(45deg);
+    }
+
+    .question-mini-deco span:nth-child(2) {
+      width: 34px;
+      height: 3px;
+      background: var(--christmas-green);
+      border: 0;
+      transform: none;
+    }
+
+    .answer-list {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 12px;
+      margin-top: 17px;
+    }
+
+    .answer-button {
+      position: relative;
+      width: 100%;
+      min-height: 76px;
+      padding: 15px 48px 14px 52px;
+      cursor: pointer;
+      background: #ffffff;
+      color: #171717;
+      border: 2px solid var(--line);
+      text-align: left;
+      font-size: 17px;
+      line-height: 1.45;
+    }
+
+    .answer-button::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 30px;
+      background:
+        repeating-linear-gradient(
+          135deg,
+          var(--christmas-red) 0 10px,
+          var(--christmas-red) 10px 17px,
+          #ffffff 17px 27px,
+          #ffffff 27px 34px
+        );
+      border-right: 2px solid var(--line);
+    }
+
+    .answer-button::after {
+      content: "";
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      width: 14px;
+      height: 14px;
+      background: var(--yellow);
+      border: 2px solid #8e6a18;
+      transform: translateY(-50%) rotate(45deg);
+    }
+
+    .answer-button:hover {
+      background: #fff5ee;
+      border-color: var(--christmas-red);
+    }
+
+    /* 로딩 화면 */
+
+    .loading-page {
+      position: relative;
+      min-height: 560px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 38px 20px;
+      background:
+        radial-gradient(
+          circle at 20% 18%,
+          rgba(255, 255, 255, 0.95) 0 3px,
+          transparent 3.5px
+        ),
+        radial-gradient(
+          circle at 74% 15%,
+          rgba(255, 255, 255, 0.9) 0 2px,
+          transparent 2.5px
+        ),
+        radial-gradient(
+          circle at 86% 42%,
+          rgba(255, 255, 255, 0.9) 0 3px,
+          transparent 3.5px
+        ),
+        radial-gradient(
+          circle at 12% 70%,
+          rgba(255, 255, 255, 0.85) 0 2px,
+          transparent 2.5px
+        ),
+        linear-gradient(180deg, #20563a 0%, #153f2b 100%);
+      border: 3px solid var(--dark-green);
+    }
+
+    .loading-page::before,
+    .loading-page::after {
+      content: "";
+      position: absolute;
+      left: -10%;
+      width: 120%;
+      height: 92px;
+      background: #ffffff;
+      border-radius: 50%;
+      opacity: 0.96;
+    }
+
+    .loading-page::before {
+      bottom: -55px;
+      transform: rotate(3deg);
+    }
+
+    .loading-page::after {
+      bottom: -72px;
+      transform: rotate(-4deg);
+      opacity: 0.72;
+    }
+
+    .loading-light-line {
+      position: absolute;
+      top: 22px;
+      left: 7%;
+      right: 7%;
+      height: 36px;
+      border-top: 3px solid #163222;
+      border-radius: 50%;
+    }
+
+    .loading-bulb {
+      position: absolute;
+      top: -2px;
+      width: 14px;
+      height: 19px;
+      border: 2px solid rgba(68, 46, 13, 0.72);
+      border-radius: 50% 50% 45% 45%;
+      animation: bulbBlink 1.2s infinite alternate;
+    }
+
+    .loading-bulb::before {
+      content: "";
+      position: absolute;
+      top: -7px;
+      left: 3px;
+      width: 5px;
+      height: 7px;
+      background: #2a2a2a;
+    }
+
+    .loading-bulb:nth-child(1) {
+      left: 3%;
+      background: #ff6468;
+    }
+
+    .loading-bulb:nth-child(2) {
+      left: 23%;
+      background: #ffd85d;
+      animation-delay: 0.2s;
+    }
+
+    .loading-bulb:nth-child(3) {
+      left: 47%;
+      background: #ff6468;
+      animation-delay: 0.4s;
+    }
+
+    .loading-bulb:nth-child(4) {
+      left: 70%;
+      background: #ffd85d;
+      animation-delay: 0.6s;
+    }
+
+    .loading-bulb:nth-child(5) {
+      right: 3%;
+      background: #ff6468;
+      animation-delay: 0.8s;
+    }
+
+    .loading-content {
+      position: relative;
+      z-index: 2;
+      width: min(100%, 390px);
+      padding: 35px 22px 28px;
+      background: #fffaf0;
+      border: 3px solid #c23b40;
+      text-align: center;
+    }
+
+    .loading-content::before {
+      content: "";
+      position: absolute;
+      inset: 8px;
+      pointer-events: none;
+      border: 1px dashed #d7aa73;
+    }
+
+    .loading-tree {
+      position: relative;
+      width: 136px;
+      height: 155px;
+      margin: 0 auto 18px;
+      animation: treeBounce 1.45s ease-in-out infinite;
+    }
+
+    .loading-star {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      z-index: 5;
+      color: #ffd75b;
+      font-family: Arial, sans-serif;
+      font-size: 34px;
+      line-height: 1;
+      text-shadow: 1px 1px 0 #8c681d;
+      transform: translateX(-50%);
+    }
+
+    .tree-layer {
+      position: absolute;
+      left: 50%;
+      width: 0;
+      height: 0;
+      transform: translateX(-50%);
+      border-left-style: solid;
+      border-right-style: solid;
+      border-bottom-style: solid;
+      border-left-color: transparent;
+      border-right-color: transparent;
+      border-bottom-color: #28744a;
+    }
+
+    .tree-layer.one {
+      top: 28px;
+      border-left-width: 38px;
+      border-right-width: 38px;
+      border-bottom-width: 55px;
+    }
+
+    .tree-layer.two {
+      top: 55px;
+      border-left-width: 53px;
+      border-right-width: 53px;
+      border-bottom-width: 70px;
+      border-bottom-color: #236943;
+    }
+
+    .tree-layer.three {
+      top: 84px;
+      border-left-width: 66px;
+      border-right-width: 66px;
+      border-bottom-width: 72px;
+      border-bottom-color: #1c5c39;
+    }
+
+    .tree-trunk {
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      width: 20px;
+      height: 28px;
+      background: #6a3f27;
+      border: 2px solid #452719;
+      transform: translateX(-50%);
+    }
+
+    .tree-ornament {
+      position: absolute;
+      z-index: 4;
+      width: 12px;
+      height: 12px;
+      border: 1px solid rgba(90, 42, 24, 0.7);
+      border-radius: 50%;
+      animation: ornamentGlow 1.1s infinite alternate;
+    }
+
+    .tree-ornament.red {
+      background: #f15a5f;
+    }
+
+    .tree-ornament.yellow {
+      background: #ffd75b;
+    }
+
+    .tree-ornament.o1 {
+      top: 64px;
+      left: 47px;
+    }
+
+    .tree-ornament.o2 {
+      top: 78px;
+      right: 39px;
+      animation-delay: 0.25s;
+    }
+
+    .tree-ornament.o3 {
+      top: 106px;
+      left: 33px;
+      animation-delay: 0.5s;
+    }
+
+    .tree-ornament.o4 {
+      top: 116px;
+      right: 29px;
+      animation-delay: 0.75s;
+    }
+
+    .loading-title {
+      position: relative;
+      z-index: 1;
+      color: #b72e34;
+      font-size: 23px;
+      line-height: 1.45;
+    }
+
+    .loading-sub {
+      position: relative;
+      z-index: 1;
+      margin-top: 9px;
+      color: #454545;
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    .loading-dots {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 17px;
+    }
+
+    .loading-dots span {
+      width: 9px;
+      height: 9px;
+      background: var(--christmas-red);
+      border: 1px solid var(--dark-red);
+      transform: rotate(45deg);
+      animation: loadingDot 0.9s infinite ease-in-out;
+    }
+
+    .loading-dots span:nth-child(2) {
+      background: var(--yellow);
+      border-color: #9a7621;
+      animation-delay: 0.15s;
+    }
+
+    .loading-dots span:nth-child(3) {
+      background: var(--christmas-green);
+      border-color: var(--dark-green);
+      animation-delay: 0.3s;
+    }
+
+    .loading-snow {
+      position: absolute;
+      z-index: 1;
+      top: -30px;
+      color: rgba(255, 255, 255, 0.92);
+      font-family: Arial, sans-serif;
+      animation: snowFall linear infinite;
+    }
+
+    .loading-snow.s1 {
+      left: 8%;
+      font-size: 18px;
+      animation-duration: 3.5s;
+    }
+
+    .loading-snow.s2 {
+      left: 24%;
+      font-size: 13px;
+      animation-duration: 4.2s;
+      animation-delay: 0.6s;
+    }
+
+    .loading-snow.s3 {
+      left: 43%;
+      font-size: 20px;
+      animation-duration: 3.8s;
+      animation-delay: 1.1s;
+    }
+
+    .loading-snow.s4 {
+      left: 66%;
+      font-size: 14px;
+      animation-duration: 4.5s;
+      animation-delay: 0.2s;
+    }
+
+    .loading-snow.s5 {
+      left: 83%;
+      font-size: 19px;
+      animation-duration: 3.7s;
+      animation-delay: 1.4s;
+    }
+
+    @keyframes bulbBlink {
+      from {
+        opacity: 0.45;
+        box-shadow: none;
+      }
+
+      to {
+        opacity: 1;
+        box-shadow: 0 0 12px rgba(255, 221, 103, 0.9);
+      }
+    }
+
+    @keyframes treeBounce {
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-6px);
+      }
+    }
+
+    @keyframes ornamentGlow {
+      from {
+        filter: brightness(0.8);
+      }
+
+      to {
+        filter: brightness(1.25);
+      }
+    }
+
+    @keyframes loadingDot {
+      0%,
+      100% {
+        transform: translateY(0) rotate(45deg);
+      }
+
+      50% {
+        transform: translateY(-7px) rotate(45deg);
+      }
+    }
+
+    @keyframes snowFall {
+      0% {
+        transform: translateY(-30px) rotate(0deg);
+        opacity: 0;
+      }
+
+      15% {
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(620px) rotate(240deg);
+        opacity: 0.2;
+      }
+    }
+
+    /* 결과 화면 */
+
+    .result-image {
+      display: block;
+      width: 100%;
+      height: auto;
+      background: #ffffff;
+    }
+
+    .action-buttons {
+      display: grid;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .action-button {
+      width: 100%;
+      min-height: 51px;
+      padding: 12px 10px;
+      cursor: pointer;
+      background: #ffffff;
+      color: #171717;
+      border: 2px solid var(--line);
+      font-size: 17px;
+    }
+
+    .action-button.main {
+      background: var(--christmas-red);
+      color: #ffffff;
+      border-color: var(--dark-red);
+    }
+
+    /* 저장 팝업 */
+
+    .save-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      background: rgba(0, 0, 0, 0.72);
+    }
+
+    .save-modal.open {
+      display: flex;
+    }
+
+    .save-modal-box {
+      width: min(100%, 430px);
+      max-height: 92vh;
+      padding: 14px;
+      overflow: auto;
+      background: #ffffff;
+      border: 2px solid #111111;
+    }
+
+    .save-modal-title {
+      margin: 0 0 6px;
+      text-align: center;
+      font-size: 18px;
+    }
+
+    .save-modal-guide {
+      margin: 0 0 11px;
+      text-align: center;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .saved-image {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 1px solid #d7d7d7;
+    }
+
+    .modal-close {
+      width: 100%;
+      min-height: 45px;
+      margin-top: 11px;
+      cursor: pointer;
+      background: #222222;
+      color: #ffffff;
+      border: 0;
+      font-size: 16px;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 28px;
+      z-index: 1200;
+      max-width: calc(100vw - 32px);
+      padding: 11px 15px;
+      pointer-events: none;
+      background: #222222;
+      color: #ffffff;
+      font-size: 14px;
+      line-height: 1.4;
+      opacity: 0;
+      transform: translate(-50%, 12px);
+      transition: 0.2s ease;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+
+    /* 광고 */
+
+    .ad-wrap {
+      width: 100%;
+      margin: 18px auto 0;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .ad-wrap iframe,
+    .ad-wrap div,
+    .ad-wrap ins {
+      max-width: 100%;
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+
+    @media (max-width: 520px) {
+      .header-inner {
+        height: 55px;
+        padding: 0 12px;
+      }
+
+      .logo {
+        font-size: 19px;
+      }
+
+      .nav {
+        gap: 12px;
+      }
+
+      .nav a {
+        font-size: 14px;
+      }
+
+      .page-wrap {
+        padding: 18px 9px 38px;
+      }
+
+      .primary-button {
+        min-height: 54px;
+        font-size: 19px;
+      }
+
+      .garland {
+        height: 44px;
+      }
+
+      .garland-leaf {
+        width: 39px;
+        height: 31px;
+      }
+
+      .question-inner {
+        min-height: 530px;
+        padding: 17px 14px 21px;
+      }
+
+      .question-top-label {
+        margin-bottom: 12px;
+        font-size: 13px;
+      }
+
+      .question-card {
+        margin-top: 19px;
+        padding: 25px 12px 20px;
+      }
+
+      .question-text {
+        min-height: 112px;
+        padding: 9px 2px 2px;
+        font-size: 18px;
+      }
+
+      .answer-button {
+        min-height: 71px;
+        padding: 14px 42px 13px 46px;
+        font-size: 15px;
+      }
+
+      .answer-button::before {
+        width: 26px;
+      }
+
+      .answer-button::after {
+        right: 13px;
+        width: 12px;
+        height: 12px;
+      }
+
+      .loading-page {
+        min-height: 530px;
+        padding: 32px 14px;
+      }
+
+      .loading-content {
+        padding: 30px 16px 25px;
+      }
+
+      .loading-tree {
+        width: 126px;
+        height: 146px;
+        margin-bottom: 15px;
+      }
+
+      .loading-title {
+        font-size: 20px;
+      }
+
+      .loading-sub {
+        font-size: 14px;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .nav {
+        gap: 9px;
+      }
+
+      .nav a {
+        font-size: 13px;
+      }
+
+      .question-inner {
+        padding-left: 11px;
+        padding-right: 11px;
+      }
+
+      .question-count {
+        min-width: 49px;
+        font-size: 13px;
+      }
+
+      .question-card {
+        padding-left: 9px;
+        padding-right: 9px;
+      }
+
+      .question-text {
+        font-size: 17px;
+      }
+
+      .answer-button {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="logo" href="https://test-it.co.kr/">
+        테스트잇
+      </a>
+
+      <nav class="nav" aria-label="주요 메뉴">
+        <a href="https://test-it.co.kr/test.html">
+          성격
+        </a>
+
+        <a href="https://test-it.co.kr/face.html">
+          얼굴
+        </a>
+
+        <a href="https://test-it.co.kr/etc.html">
+          그외
+        </a>
+
+        <a href="https://test-it.co.kr/saju.html">
+          사주
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-wrap">
+    <!-- 시작 화면 -->
+    <section id="startScreen" class="screen active">
+      <img
+        class="main-image"
+        src="img_main405.png"
+        alt="테스트잇 8월의 크리스마스 성격 테스트"
+      >
+
+      <div class="start-button-wrap">
+        <button id="startButton" class="primary-button" type="button">
+          테스트 시작하기
+        </button>
+      </div>
+    </section>
+
+    <!-- 질문 화면 -->
+    <section id="questionScreen" class="screen">
+      <div class="question-page">
+        <div class="garland" aria-hidden="true">
+          <span class="garland-leaf"></span>
+          <span class="garland-leaf"></span>
+          <span class="garland-leaf"></span>
+          <span class="garland-leaf"></span>
+          <span class="garland-leaf"></span>
+          <span class="garland-leaf"></span>
+          <span class="garland-leaf"></span>
+          <span class="garland-leaf"></span>
+          <span class="garland-leaf"></span>
+          <span class="garland-leaf"></span>
+
+          <span class="garland-ball one"></span>
+          <span class="garland-ball yellow two"></span>
+          <span class="garland-ball three"></span>
+          <span class="garland-ball yellow four"></span>
+          <span class="garland-ball five"></span>
+        </div>
+
+        <div class="question-inner">
+          <div class="question-top-label">
+            테스트잇 8월의 크리스마스 성격 테스트
+          </div>
+
+          <div class="progress-row">
+            <div class="progress-decoration">
+              <div class="progress-line"></div>
+
+              <div class="progress-track" aria-label="진행률">
+                <div id="progressBar" class="progress-bar"></div>
+              </div>
+
+              <span class="progress-bulb one"></span>
+              <span class="progress-bulb two"></span>
+              <span class="progress-bulb three"></span>
+              <span class="progress-bulb four"></span>
+              <span class="progress-bulb five"></span>
+            </div>
+
+            <div id="questionCount" class="question-count">
+              1 / 12
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div
+              id="questionNumberLabel"
+              class="question-number-label"
+            >
+              크리스마스 질문 01
+            </div>
+
+            <div id="questionText" class="question-text"></div>
+
+            <div class="question-mini-deco" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+
+          <div id="answerList" class="answer-list"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 로딩 화면 -->
+    <section id="loadingScreen" class="screen">
+      <div class="loading-page">
+        <div class="loading-light-line" aria-hidden="true">
+          <span class="loading-bulb"></span>
+          <span class="loading-bulb"></span>
+          <span class="loading-bulb"></span>
+          <span class="loading-bulb"></span>
+          <span class="loading-bulb"></span>
+        </div>
+
+        <span class="loading-snow s1" aria-hidden="true">✦</span>
+        <span class="loading-snow s2" aria-hidden="true">✦</span>
+        <span class="loading-snow s3" aria-hidden="true">✦</span>
+        <span class="loading-snow s4" aria-hidden="true">✦</span>
+        <span class="loading-snow s5" aria-hidden="true">✦</span>
+
+        <div class="loading-content">
+          <div class="loading-tree" aria-hidden="true">
+            <span class="loading-star">★</span>
+
+            <span class="tree-layer one"></span>
+            <span class="tree-layer two"></span>
+            <span class="tree-layer three"></span>
+            <span class="tree-trunk"></span>
+
+            <span class="tree-ornament red o1"></span>
+            <span class="tree-ornament yellow o2"></span>
+            <span class="tree-ornament yellow o3"></span>
+            <span class="tree-ornament red o4"></span>
+          </div>
+
+          <div class="loading-title">
+            크리스마스 선물 포장 중...
+          </div>
+
+          <div class="loading-sub">
+            나와 닮은 아이템을 찾고 있어요
+          </div>
+
+          <div class="loading-dots" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 결과 화면 -->
+    <section id="resultScreen" class="screen">
+      <img
+        id="resultImage"
+        class="result-image"
+        src=""
+        alt="8월의 크리스마스 성격 테스트 결과"
+      >
+
+      <div class="action-buttons">
+        <button
+          id="saveButton"
+          class="action-button main"
+          type="button"
+        >
+          결과 이미지 저장하기
+        </button>
+
+        <button
+          id="retryButton"
+          class="action-button"
+          type="button"
+        >
+          다시 해보기
+        </button>
+
+        <button
+          id="otherButton"
+          class="action-button"
+          type="button"
+        >
+          다른 테스트 해보기
+        </button>
+
+        <button
+          id="shareButton"
+          class="action-button"
+          type="button"
+        >
+          테스트 공유하기
+        </button>
+      </div>
+    </section>
+
+    <div class="ad-wrap">
+      <script src="https://ads-partners.coupang.com/g.js"></script>
+
+      <script>
+        new PartnersCoupang.G({
+          id: 798186,
+          template: "carousel",
+          trackingCode: "AF4391881",
+          width: "350",
+          height: "140"
+        });
+      </script>
+    </div>
+  </main>
+
+  <!-- 저장 팝업 -->
+  <div
+    id="saveModal"
+    class="save-modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="saveModalTitle"
+  >
+    <div class="save-modal-box">
+      <h2 id="saveModalTitle" class="save-modal-title">
+        결과 이미지 저장하기
+      </h2>
+
+      <p class="save-modal-guide">
+        아래 이미지를 꾹 누르거나 우클릭해서 저장해 주세요.
+      </p>
+
+      <img
+        id="savedImage"
+        class="saved-image"
+        src=""
+        alt="저장용 결과 이미지"
+      >
+
+      <button id="modalClose" class="modal-close" type="button">
+        닫기
+      </button>
+    </div>
+  </div>
+
+  <div id="toast" class="toast"></div>
+
+  <script>
+    const TEST_URL = 'https://test-it.co.kr/test405';
+    const TEST_TITLE = '테스트잇 8월의 크리스마스 성격 테스트';
+    const TOTAL_QUESTIONS = 12;
+    const LOADING_TIME = 3000;
+
+    const questions = [
+      {
+        text: '친구가 크리스마스 파티를 열자고 한다<br>내가 원하는 규모는?',
+        answers: [
+          {
+            text: '친구의 친구까지 다 부르자! 크게 놀자!',
+            letter: 'E'
+          },
+          {
+            text: '딱 우리 친한 무리끼리만 조용히 놀자',
+            letter: 'I'
+          }
+        ]
+      },
+      {
+        text: '파티를 위한 장을 보러 마트에 갔을 때 나는?',
+        answers: [
+          {
+            text: '메모장 켜서 필요한 리스트만<br>딱 사 온다',
+            letter: 'J'
+          },
+          {
+            text: '돌아다니다 맛있어 보이는 걸 담는다',
+            letter: 'P'
+          }
+        ]
+      },
+      {
+        text: '파티 장소에 도착해보니<br>바닥에 인공 눈이 뿌려져 있다',
+        answers: [
+          {
+            text: '옷이나 신발에 묻으면 끈적거릴 텐데',
+            letter: 'S'
+          },
+          {
+            text: '여름에 눈이 온 것 같아서 너무 좋다',
+            letter: 'N'
+          }
+        ]
+      },
+      {
+        text: '크리스마스 파티 테이블을<br>세팅해야 한다',
+        answers: [
+          {
+            text: '사람들이 음식을 먹기 쉽게<br>효율적으로 배치',
+            letter: 'S'
+          },
+          {
+            text: '예쁜 냅킨이나 조명을 써서<br>분위기가 예뻐 보이게 꾸밈',
+            letter: 'N'
+          }
+        ]
+      },
+      {
+        text: '파티 시작 한 시간 전인데<br>아직 준비할 일이 남아 있다',
+        answers: [
+          {
+            text: '남은 일을 순서대로 정리해서<br>하나씩 끝낸다',
+            letter: 'J'
+          },
+          {
+            text: '눈에 보이는 것부터<br>그때그때 처리한다',
+            letter: 'P'
+          }
+        ]
+      },
+      {
+        text: '파티용품을 사 온 친구가<br>이거 사느라 3군데나 돌아다녔어<br>라고 한다',
+        answers: [
+          {
+            text: '왜? 이거 구하기 힘든 거야?',
+            letter: 'T'
+          },
+          {
+            text: '헐...이 날씨에? 더웠겠다 고생했네',
+            letter: 'F'
+          }
+        ]
+      },
+      {
+        text: '친구가 만들어 온 파티 음식의<br>간이 맞지 않는다',
+        answers: [
+          {
+            text: '부족한 맛을 분석하고<br>뭘 더 넣자고 조언한다',
+            letter: 'T'
+          },
+          {
+            text: '더운데 고생했으니 그냥 맛있게 먹는다',
+            letter: 'F'
+          }
+        ]
+      },
+      {
+        text: '파티 중에 다같이<br>크리스마스 영화를 보기로 했다',
+        answers: [
+          {
+            text: '다 같이 크게 웃고 떠들며<br>시끌벅적하게 본다',
+            letter: 'E'
+          },
+          {
+            text: '영화 내용에 집중하며 조용히 감상한다',
+            letter: 'I'
+          }
+        ]
+      },
+      {
+        text: '다같이 보드게임을 하던 중<br>친구가 실수로 룰을 어겼다',
+        answers: [
+          {
+            text: '게임의 공정성을 위해<br>정확히 짚고 넘어간다',
+            letter: 'T'
+          },
+          {
+            text: '분위기를 위해 가벼운 실수라면<br>그냥 넘어간다',
+            letter: 'F'
+          }
+        ]
+      },
+      {
+        text: '파티가 끝나고<br>집으로 돌아가는 버스 안에서 나는?',
+        answers: [
+          {
+            text: '도착 예정 시간 확인한 후<br>눈 감고 피곤한 몸을 쉰다',
+            letter: 'S'
+          },
+          {
+            text: '파티 때 있었던 재밌는 장면들을<br>머릿속으로 다시 돌려본다',
+            letter: 'N'
+          }
+        ]
+      },
+      {
+        text: '집에 돌아와<br>가장 편한 자세로 누웠는데<br>할 일이 떠올랐다',
+        answers: [
+          {
+            text: '미루지 않고 바로 처리하러 일어난다',
+            letter: 'J'
+          },
+          {
+            text: '조금만 더 쉬었다 하지 뭐<br>하며 미룬다',
+            letter: 'P'
+          }
+        ]
+      },
+      {
+        text: '친구가<br>내년에도 크리스마스 파티를<br>같이 기획하자고 한다면?',
+        answers: [
+          {
+            text: '좋아! 여러 사람을 모아서<br>아이디어를 짜보자',
+            letter: 'E'
+          },
+          {
+            text: '굳이? 남이 만든 파티에<br>잠깐 가는 게 낫다',
+            letter: 'I'
+          }
+        ]
+      }
+    ];
+
+    const resultNames = {
+      ENFJ: '트리',
+      INFJ: '방울',
+      ENFP: '모자',
+      INFP: '촛불',
+      ENTJ: '양말',
+      INTJ: '루돌프',
+      ENTP: '선물',
+      INTP: '눈사람',
+      ESFJ: '지팡이',
+      ISFJ: '장갑',
+      ESFP: '쿠키',
+      ISFP: '핫초코',
+      ESTJ: '종',
+      ISTJ: '썰매',
+      ESTP: '리스',
+      ISTP: '산타'
+    };
+
+    const startScreen =
+      document.getElementById('startScreen');
+
+    const questionScreen =
+      document.getElementById('questionScreen');
+
+    const loadingScreen =
+      document.getElementById('loadingScreen');
+
+    const resultScreen =
+      document.getElementById('resultScreen');
+
+    const progressBar =
+      document.getElementById('progressBar');
+
+    const questionCount =
+      document.getElementById('questionCount');
+
+    const questionNumberLabel =
+      document.getElementById('questionNumberLabel');
+
+    const questionText =
+      document.getElementById('questionText');
+
+    const answerList =
+      document.getElementById('answerList');
+
+    const resultImage =
+      document.getElementById('resultImage');
+
+    const saveModal =
+      document.getElementById('saveModal');
+
+    const savedImage =
+      document.getElementById('savedImage');
+
+    const toast =
+      document.getElementById('toast');
+
+    let currentQuestion = 0;
+    let currentResultType = '';
+    let isAnswering = false;
+    let loadingTimer = null;
+    let toastTimer = null;
+    let scores = createEmptyScores();
+
+    function createEmptyScores() {
+      return {
+        E: 0,
+        I: 0,
+        S: 0,
+        N: 0,
+        T: 0,
+        F: 0,
+        J: 0,
+        P: 0
+      };
+    }
+
+    function showScreen(screen) {
+      [
+        startScreen,
+        questionScreen,
+        loadingScreen,
+        resultScreen
+      ].forEach((item) => {
+        item.classList.remove('active');
+      });
+
+      screen.classList.add('active');
+
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+
+    function startTest() {
+      clearTimeout(loadingTimer);
+
+      currentQuestion = 0;
+      currentResultType = '';
+      scores = createEmptyScores();
+      isAnswering = false;
+
+      resultImage.src = '';
+      savedImage.src = '';
+
+      showScreen(questionScreen);
+      renderQuestion();
+    }
+
+    function renderQuestion() {
+      const question = questions[currentQuestion];
+      const currentNumber = currentQuestion + 1;
+      const progress =
+        (currentQuestion / TOTAL_QUESTIONS) * 100;
+
+      progressBar.style.width = `${progress}%`;
+      questionCount.textContent =
+        `${currentNumber} / ${TOTAL_QUESTIONS}`;
+
+      questionNumberLabel.textContent =
+        `질문 ${String(currentNumber).padStart(2, '0')}`;
+
+      questionText.innerHTML = question.text;
+      answerList.innerHTML = '';
+
+      question.answers.forEach((answer) => {
+        const button = document.createElement('button');
+
+        button.type = 'button';
+        button.className = 'answer-button';
+        button.innerHTML = answer.text;
+
+        button.addEventListener('click', () => {
+          selectAnswer(answer.letter);
+        });
+
+        answerList.appendChild(button);
+      });
+    }
+
+    function selectAnswer(letter) {
+      if (isAnswering) {
+        return;
+      }
+
+      isAnswering = true;
+      scores[letter] += 1;
+      currentQuestion += 1;
+
+      if (currentQuestion < TOTAL_QUESTIONS) {
+        setTimeout(() => {
+          isAnswering = false;
+          renderQuestion();
+        }, 150);
+
+        return;
+      }
+
+      progressBar.style.width = '100%';
+      currentResultType = calculateType();
+      isAnswering = false;
+
+      showLoadingScreen();
+    }
+
+    function showLoadingScreen() {
+      clearTimeout(loadingTimer);
+
+      const preloadImage = new Image();
+
+      preloadImage.src =
+        getResultImagePath(currentResultType);
+
+      showScreen(loadingScreen);
+
+      loadingTimer = setTimeout(() => {
+        showResult();
+      }, LOADING_TIME);
+    }
+
+    function calculateType() {
+      const first =
+        scores.E > scores.I ? 'E' : 'I';
+
+      const second =
+        scores.S > scores.N ? 'S' : 'N';
+
+      const third =
+        scores.T > scores.F ? 'T' : 'F';
+
+      const fourth =
+        scores.J > scores.P ? 'J' : 'P';
+
+      return first + second + third + fourth;
+    }
+
+    function getResultImagePath(type) {
+      return `img_${type.toLowerCase()}405.png`;
+    }
+
+    function showResult() {
+      if (!currentResultType) {
+        currentResultType = calculateType();
+      }
+
+      resultImage.src =
+        getResultImagePath(currentResultType);
+
+      resultImage.alt =
+        `${resultNames[currentResultType]} 결과 이미지`;
+
+      showScreen(resultScreen);
+    }
+
+    function restartTest() {
+      clearTimeout(loadingTimer);
+
+      currentQuestion = 0;
+      currentResultType = '';
+      scores = createEmptyScores();
+      isAnswering = false;
+
+      resultImage.src = '';
+      savedImage.src = '';
+
+      showScreen(startScreen);
+    }
+
+    function openSaveModal() {
+      if (!resultImage.src) {
+        return;
+      }
+
+      savedImage.src = resultImage.src;
+      savedImage.alt = resultImage.alt;
+
+      saveModal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeSaveModal() {
+      saveModal.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    async function shareTest() {
+      const shareText =
+        `${TEST_TITLE}\n${TEST_URL}`;
+
+      try {
+        if (navigator.share) {
+          await navigator.share({
+            text: shareText
+          });
+
+          return;
+        }
+
+        await navigator.clipboard.writeText(shareText);
+        showToast('테스트 링크가 복사됐어요.');
+      } catch (error) {
+        if (error && error.name === 'AbortError') {
+          return;
+        }
+
+        const textarea =
+          document.createElement('textarea');
+
+        textarea.value = shareText;
+        textarea.style.position = 'fixed';
+        textarea.style.opacity = '0';
+
+        document.body.appendChild(textarea);
+
+        textarea.focus();
+        textarea.select();
+
+        document.execCommand('copy');
+        textarea.remove();
+
+        showToast('테스트 링크가 복사됐어요.');
+      }
+    }
+
+    function showToast(message) {
+      clearTimeout(toastTimer);
+
+      toast.textContent = message;
+      toast.classList.add('show');
+
+      toastTimer = setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2200);
+    }
+
+    document
+      .getElementById('startButton')
+      .addEventListener('click', startTest);
+
+    document
+      .getElementById('saveButton')
+      .addEventListener('click', openSaveModal);
+
+    document
+      .getElementById('retryButton')
+      .addEventListener('click', restartTest);
+
+    document
+      .getElementById('otherButton')
+      .addEventListener('click', () => {
+        window.location.href =
+          'https://test-it.co.kr/';
+      });
+
+    document
+      .getElementById('shareButton')
+      .addEventListener('click', shareTest);
+
+    document
+      .getElementById('modalClose')
+      .addEventListener('click', closeSaveModal);
+
+    saveModal.addEventListener('click', (event) => {
+      if (event.target === saveModal) {
+        closeSaveModal();
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (
+        event.key === 'Escape' &&
+        saveModal.classList.contains('open')
+      ) {
+        closeSaveModal();
+      }
+    });
+  </script>
+</body>
+</html>

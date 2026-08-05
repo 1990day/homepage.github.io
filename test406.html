@@ -1,0 +1,3321 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5522499110435321" crossorigin="anonymous"></script>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>테스트잇 성격 능력치 종합 평가 테스트</title>
+  <meta name="description" content="테스트잇 성격 능력치 종합 평가 테스트">
+  <meta name="keywords" content="테스트잇,성격능력치종합평가테스트,성격능력치테스트,MBTI테스트">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="테스트잇 성격 능력치 종합 평가 테스트">
+  <meta property="og:description" content="테스트잇 성격 능력치 종합 평가 테스트">
+  <meta property="og:url" content="https://test-it.co.kr/test406">
+  <meta property="og:image" content="https://test-it.co.kr/img_main406.png">
+  <link rel="icon" type="image/png" href="favicon.png">
+
+
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
+  <style>
+    @font-face {
+      font-family: 'Umdot';
+      src:
+        url('https://cdn.jsdelivr.net/gh/projectnoonnu/2601-4@1.1/Umdot12.woff2')
+        format('woff2');
+      font-weight: normal;
+      font-display: swap;
+    }
+
+    :root {
+      --ink: #211f1a;
+      --yellow: #ffe23f;
+      --yellow-deep: #f2ca13;
+      --paper: #efe1ca;
+      --paper-light: #fffaf0;
+      --background: #f8f3e8;
+      --white: #ffffff;
+      --red: #cf3c30;
+      --gray: #756d60;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      min-height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      background:
+        linear-gradient(
+          to bottom,
+          rgba(33, 31, 26, 0.025) 1px,
+          transparent 1px
+        ),
+        var(--background);
+      background-size: 100% 28px;
+      color: var(--ink);
+      font-family: 'Umdot', sans-serif;
+      word-break: keep-all;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    button,
+    input {
+      font-family: inherit;
+    }
+
+    button {
+      color: inherit;
+      cursor: pointer;
+    }
+
+    button:disabled {
+      cursor: default;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* 상단바 */
+
+    .top-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      width: 100%;
+      border-bottom: 1px solid var(--ink);
+      background: var(--paper-light);
+    }
+
+    .top-header-inner {
+      width: 100%;
+      max-width: 560px;
+      min-height: 62px;
+      margin: 0 auto;
+      padding: 0 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand-logo {
+      flex-shrink: 0;
+      font-size: 22px;
+      line-height: 1;
+    }
+
+    .top-nav {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .top-nav a {
+      min-width: 46px;
+      padding: 8px 6px;
+      border: 0;
+      background: transparent;
+      font-size: 16px;
+      line-height: 1;
+      text-align: center;
+    }
+
+    .top-nav a:hover {
+      color: #9b7c00;
+    }
+
+    .top-nav a.active {
+      border: 0;
+      background: transparent;
+      color: inherit;
+    }
+
+    /* 공통 */
+
+    .app-container {
+      width: 100%;
+      max-width: 560px;
+      min-height: calc(100vh - 62px);
+      margin: 0 auto;
+      padding: 22px 11px 55px;
+    }
+
+    .screen {
+      display: none;
+      width: 100%;
+    }
+
+    .screen.active {
+      display: block;
+      animation: screenAppear 0.18s ease-out;
+    }
+
+    @keyframes screenAppear {
+      from {
+        opacity: 0;
+        transform: translateY(5px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .paper-panel {
+      position: relative;
+      width: 100%;
+      border: 1px solid var(--ink);
+      background: var(--paper);
+    }
+
+    .paper-panel::before,
+    .paper-panel::after {
+      position: absolute;
+      z-index: 2;
+      width: 14px;
+      height: 14px;
+      content: '';
+      pointer-events: none;
+    }
+
+    .paper-panel::before {
+      top: 7px;
+      left: 7px;
+      border-top: 2px solid var(--yellow-deep);
+      border-left: 2px solid var(--yellow-deep);
+    }
+
+    .paper-panel::after {
+      right: 7px;
+      bottom: 7px;
+      border-right: 2px solid var(--yellow-deep);
+      border-bottom: 2px solid var(--yellow-deep);
+    }
+
+    .section-heading {
+      min-height: 58px;
+      padding: 15px 20px;
+      border-bottom: 1px solid var(--ink);
+      background: var(--paper-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: clamp(15px, 4vw, 19px);
+      line-height: 1.45;
+      text-align: center;
+    }
+
+    .main-button {
+      width: 100%;
+      min-height: 57px;
+      margin-top: 14px;
+      padding: 13px 15px;
+      border: 1px solid var(--ink);
+      border-radius: 0;
+      background: var(--yellow);
+      color: var(--ink);
+      font-size: 18px;
+      line-height: 1.4;
+    }
+
+    .main-button:hover {
+      background: var(--yellow-deep);
+    }
+
+    .main-button:active {
+      transform: translateY(1px);
+    }
+
+    /* 시작 화면 */
+
+    .start-content {
+      padding: 36px 20px 32px;
+      text-align: center;
+    }
+
+    .report-label {
+      display: inline-flex;
+      min-height: 33px;
+      margin-bottom: 20px;
+      padding: 7px 14px;
+      border: 1px solid var(--ink);
+      background: var(--yellow);
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+    }
+
+    .start-title {
+      position: relative;
+      margin: 0;
+      padding-bottom: 19px;
+      font-size: clamp(28px, 8vw, 43px);
+      line-height: 1.42;
+      font-weight: normal;
+    }
+
+    .start-title::after {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 62px;
+      height: 5px;
+      background: var(--yellow-deep);
+      content: '';
+      transform: translateX(-50%);
+    }
+
+    .start-description {
+      margin: 20px 0 0;
+      font-size: 14px;
+      line-height: 1.85;
+    }
+
+    .preview-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      margin-top: 29px;
+      border-top: 1px solid var(--ink);
+      border-left: 1px solid var(--ink);
+      background: var(--yellow);
+    }
+
+    .preview-cell {
+      min-width: 0;
+      min-height: 65px;
+      padding: 9px 3px;
+      border-right: 1px solid var(--ink);
+      border-bottom: 1px solid var(--ink);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: clamp(11px, 3.2vw, 14px);
+      line-height: 1.35;
+      text-align: center;
+    }
+
+    .start-meta {
+      margin: 18px 0 0;
+      color: var(--gray);
+      font-size: 11px;
+      line-height: 1.5;
+    }
+
+    /* 정보 입력 화면 */
+
+   /* 정보 입력 화면 */
+
+.info-content {
+  padding: 24px 22px 22px;
+}
+
+.info-form-card {
+  padding: 17px;
+  border: 1px solid var(--ink);
+  background: var(--paper-light);
+}
+
+.input-label {
+  display: block;
+  margin-bottom: 11px;
+  font-size: 13px;
+  text-align: center;
+}
+
+.nickname-input {
+  width: 100%;
+  height: 57px;
+  padding: 0 13px;
+  border: 1px solid var(--ink);
+  border-radius: 0;
+  outline: none;
+  background: var(--white);
+  color: var(--ink);
+  font-size: 17px;
+  text-align: center;
+}
+
+.nickname-input:focus {
+  outline: 3px solid var(--yellow);
+  outline-offset: -4px;
+}
+
+.nickname-input::placeholder {
+  color: #948b7e;
+}
+
+.input-message {
+  min-height: 19px;
+  margin: 8px 0 0;
+  color: var(--red);
+  font-size: 11px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.info-notice {
+  margin: 15px 0 0;
+  padding: 11px 9px;
+  border-top: 1px dashed var(--ink);
+  border-bottom: 1px dashed var(--ink);
+  font-size: 11px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+
+    /* 질문 화면 */
+
+    .question-status {
+      width: 100%;
+      margin-bottom: 13px;
+      border: 1px solid var(--ink);
+      background: var(--paper);
+    }
+
+    .question-status-top {
+      min-height: 46px;
+      padding: 9px 13px;
+      border-bottom: 1px solid var(--ink);
+      background: var(--paper-light);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .status-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .status-mark {
+      width: 9px;
+      height: 9px;
+      border: 1px solid var(--ink);
+      background: var(--yellow);
+    }
+
+    .status-title {
+      font-size: 12px;
+      line-height: 1;
+    }
+
+    .status-number {
+      min-width: 60px;
+      padding: 7px 8px;
+      border: 1px solid var(--ink);
+      background: var(--yellow);
+      font-size: 12px;
+      line-height: 1;
+      text-align: center;
+    }
+
+    .progress-wrap {
+      padding: 12px 13px 13px;
+    }
+
+    .progress-track {
+      position: relative;
+      width: 100%;
+      height: 15px;
+      border: 1px solid var(--ink);
+      background:
+        repeating-linear-gradient(
+          to right,
+          transparent 0,
+          transparent calc(8.333% - 1px),
+          rgba(33, 31, 26, 0.22) calc(8.333% - 1px),
+          rgba(33, 31, 26, 0.22) 8.333%
+        ),
+        var(--paper-light);
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      width: 0;
+      height: 100%;
+      background: var(--yellow);
+      transition: width 0.22s ease;
+    }
+
+    .question-sheet {
+      position: relative;
+      width: 100%;
+      border: 1px solid var(--ink);
+      background: var(--paper);
+    }
+
+    .question-sheet::before,
+    .question-sheet::after {
+      position: absolute;
+      z-index: 2;
+      width: 15px;
+      height: 15px;
+      content: '';
+      pointer-events: none;
+    }
+
+    .question-sheet::before {
+      top: 8px;
+      right: 8px;
+      border-top: 2px solid var(--yellow-deep);
+      border-right: 2px solid var(--yellow-deep);
+    }
+
+    .question-sheet::after {
+      bottom: 8px;
+      left: 8px;
+      border-bottom: 2px solid var(--yellow-deep);
+      border-left: 2px solid var(--yellow-deep);
+    }
+
+    .question-head {
+      min-height: 57px;
+      border-bottom: 1px solid var(--ink);
+      background: var(--paper-light);
+      display: grid;
+      grid-template-columns: 92px 1fr;
+      align-items: stretch;
+    }
+
+    .question-number-box {
+      border-right: 1px solid var(--ink);
+      background: var(--yellow);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .question-number-small {
+      margin-bottom: 4px;
+      font-size: 10px;
+      line-height: 1;
+    }
+
+    .question-number {
+      font-size: 18px;
+      line-height: 1;
+    }
+
+    .question-guide {
+      padding: 11px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      color: var(--gray);
+      font-size: 11px;
+      line-height: 1.4;
+      text-align: right;
+    }
+
+    .question-main {
+      min-height: 205px;
+      padding: 27px 24px 29px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .question-content {
+      width: 100%;
+      max-width: 430px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .question-label {
+      display: inline-block;
+      margin-bottom: 17px;
+      padding: 6px 13px;
+      border: 1px solid var(--ink);
+      background: var(--yellow);
+      font-size: 11px;
+      line-height: 1;
+    }
+
+    .question-text {
+      position: relative;
+      margin: 0;
+      padding-bottom: 18px;
+      font-size: clamp(15px, 3.9vw, 19px);
+      line-height: 1.75;
+      font-weight: normal;
+      text-align: center;
+    }
+
+    .question-text::after {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 48px;
+      height: 4px;
+      background: var(--yellow-deep);
+      content: '';
+      transform: translateX(-50%);
+    }
+
+    .answer-guide {
+      margin: 13px 0 9px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--gray);
+      font-size: 11px;
+      line-height: 1.4;
+    }
+
+    .answer-guide::before,
+    .answer-guide::after {
+      height: 1px;
+      background: rgba(33, 31, 26, 0.35);
+      content: '';
+      flex: 1;
+    }
+
+    .answer-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+
+    .answer-button {
+      width: 100%;
+      min-height: 66px;
+      padding: 0;
+      border: 1px solid var(--ink);
+      border-radius: 0;
+      background: var(--paper-light);
+      display: grid;
+      grid-template-columns: 52px minmax(0, 1fr) 40px;
+      align-items: stretch;
+      color: var(--ink);
+      text-align: left;
+      transition:
+        background 0.15s ease,
+        transform 0.08s ease;
+    }
+
+    .answer-button:hover {
+      background: #fff3a6;
+    }
+
+    .answer-button:hover .answer-check {
+      background: var(--yellow);
+    }
+
+    .answer-button:active {
+      transform: translateY(1px);
+    }
+
+    .answer-button:disabled {
+      opacity: 0.72;
+    }
+
+    .answer-number {
+      border-right: 1px solid var(--ink);
+      background: var(--yellow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 17px;
+    }
+
+    .answer-copy {
+      min-width: 0;
+      padding: 11px 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: clamp(12px, 3.3vw, 15px);
+      line-height: 1.55;
+      text-align: center;
+    }
+
+    .answer-check-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .answer-check {
+      width: 15px;
+      height: 15px;
+      border: 1px solid var(--ink);
+      background: var(--white);
+    }
+
+    /* 결과 화면 */
+
+    .result-card {
+      width: 100%;
+      border: 1px solid var(--ink);
+      background: var(--paper);
+      overflow: hidden;
+    }
+
+    .result-title-area {
+      width: 100%;
+      min-height: 52px;
+      padding: 9px 8px;
+      border-bottom: 1px solid var(--ink);
+      background: var(--yellow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .result-test-title {
+      width: 100%;
+      color: var(--ink);
+      font-size: 17px;
+      line-height: 1.25;
+      letter-spacing: -0.075em;
+      white-space: nowrap;
+      text-align: center;
+    }
+
+    .result-user-row {
+      min-height: 44px;
+      padding: 8px 10px;
+      border-bottom: 1px solid var(--ink);
+      background: var(--paper-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: clamp(15px, 4vw, 19px);
+      line-height: 1.3;
+      text-align: center;
+    }
+
+    .result-user-text {
+      display: inline-block;
+      padding: 0;
+    }
+
+    .result-user-name {
+      font-size: 1.08em;
+    }
+
+    .ability-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      width: 100%;
+      background: var(--yellow);
+    }
+
+    .ability-cell {
+      min-width: 0;
+      min-height: 176px;
+      padding: 9px 7px 11px;
+      border-right: 1px solid var(--ink);
+      border-bottom: 1px solid var(--ink);
+      background: var(--yellow);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .ability-cell:nth-child(3n) {
+      border-right: 0;
+    }
+
+    .ability-cell:nth-child(n + 7) {
+      border-bottom: 0;
+    }
+
+    .ability-label {
+      width: 91%;
+      min-height: 40px;
+      padding: 6px 3px;
+      border: 1px solid var(--ink);
+      background: var(--paper);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: clamp(10px, 3vw, 14px);
+      line-height: 1.25;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .ability-label.long-label {
+      width: 96%;
+      font-size: clamp(8px, 2.7vw, 12px);
+    }
+
+    .ability-result {
+      width: 100%;
+      flex: 1;
+      padding: 11px 1px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .ability-description {
+      font-size: clamp(10px, 2.85vw, 13px);
+      line-height: 1.6;
+    }
+
+    .ability-description.main-description {
+      font-size: clamp(10px, 2.95vw, 14px);
+      line-height: 1.62;
+    }
+
+    .ability-score {
+      margin-top: 6px;
+      font-size: clamp(15px, 3.8vw, 19px);
+      line-height: 1;
+    }
+
+    .ability-bar {
+      width: 82%;
+      height: 8px;
+      margin-top: 9px;
+      border: 1px solid var(--ink);
+      background: var(--paper-light);
+      overflow: hidden;
+    }
+
+    .ability-bar-fill {
+      height: 100%;
+      background: var(--ink);
+    }
+
+    .result-footer {
+      min-height: 35px;
+      padding: 9px 10px;
+      border-top: 1px solid var(--ink);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--gray);
+      font-size: 8px;
+      line-height: 1.3;
+    }
+
+    .result-button-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 9px;
+      margin-top: 14px;
+    }
+
+    .result-button {
+      width: 100%;
+      min-height: 51px;
+      padding: 11px;
+      border: 1px solid var(--ink);
+      border-radius: 0;
+      background: var(--paper-light);
+      font-size: 15px;
+    }
+
+    .result-button.primary {
+      background: var(--yellow);
+    }
+
+    .result-button:hover {
+      background: var(--yellow-deep);
+    }
+
+    .result-button:active {
+      transform: translateY(1px);
+    }
+
+    /* 쿠팡 광고 */
+
+    .ad-wrap {
+      width: 100%;
+      min-height: 140px;
+      margin: 24px auto 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .ad-wrap iframe {
+      display: block;
+      max-width: 100%;
+      margin: 0 auto;
+    }
+/* 메인 이미지 */
+
+.main-image-wrap {
+  width: 100%;
+  border: 1px solid var(--ink);
+  background: var(--white);
+  overflow: hidden;
+}
+
+.main-image {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+    /* 결과 로딩 화면 */
+
+    .loading-panel {
+      width: 100%;
+      border: 1px solid var(--ink);
+      background: var(--paper);
+      overflow: hidden;
+    }
+
+    .loading-heading {
+      min-height: 56px;
+      padding: 13px 15px;
+      border-bottom: 1px solid var(--ink);
+      background: var(--paper-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      line-height: 1.35;
+      text-align: center;
+    }
+
+    .loading-content {
+      min-height: 360px;
+      padding: 36px 24px 31px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .loading-grid {
+      width: 190px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--ink);
+      border-left: 1px solid var(--ink);
+      background: var(--paper-light);
+    }
+
+    .loading-grid-cell {
+      aspect-ratio: 1 / 1;
+      border-right: 1px solid var(--ink);
+      border-bottom: 1px solid var(--ink);
+      background: var(--paper-light);
+      animation: loadingCell 1.35s infinite steps(1, end);
+    }
+
+    .loading-grid-cell:nth-child(1) {
+      animation-delay: 0s;
+    }
+
+    .loading-grid-cell:nth-child(2) {
+      animation-delay: 0.15s;
+    }
+
+    .loading-grid-cell:nth-child(3) {
+      animation-delay: 0.3s;
+    }
+
+    .loading-grid-cell:nth-child(4) {
+      animation-delay: 0.45s;
+    }
+
+    .loading-grid-cell:nth-child(5) {
+      animation-delay: 0.6s;
+    }
+
+    .loading-grid-cell:nth-child(6) {
+      animation-delay: 0.75s;
+    }
+
+    .loading-grid-cell:nth-child(7) {
+      animation-delay: 0.9s;
+    }
+
+    .loading-grid-cell:nth-child(8) {
+      animation-delay: 1.05s;
+    }
+
+    .loading-grid-cell:nth-child(9) {
+      animation-delay: 1.2s;
+    }
+
+    @keyframes loadingCell {
+      0%,
+      18% {
+        background: var(--yellow);
+      }
+
+      19%,
+      100% {
+        background: var(--paper-light);
+      }
+    }
+
+    .loading-title {
+      margin: 25px 0 0;
+      font-size: 22px;
+      line-height: 1.45;
+      font-weight: normal;
+    }
+
+    .loading-description {
+      margin: 11px 0 0;
+      color: var(--gray);
+      font-size: 12px;
+      line-height: 1.75;
+    }
+
+    .loading-bar {
+      width: 190px;
+      height: 12px;
+      margin-top: 22px;
+      border: 1px solid var(--ink);
+      background: var(--paper-light);
+      overflow: hidden;
+    }
+
+    .loading-bar-fill {
+      width: 0;
+      height: 100%;
+      background: var(--yellow);
+      animation: loadingBar 3s linear forwards;
+    }
+
+    @keyframes loadingBar {
+      from {
+        width: 0;
+      }
+
+      to {
+        width: 100%;
+      }
+    }
+
+    /* 저장 팝업 */
+
+    .save-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 17px;
+      background: rgba(0, 0, 0, 0.72);
+    }
+
+    .save-modal.active {
+      display: flex;
+    }
+
+    .save-modal-box {
+      width: 100%;
+      max-width: 430px;
+      max-height: 92vh;
+      padding: 15px;
+      border: 1px solid var(--ink);
+      background: var(--paper-light);
+      overflow-y: auto;
+      text-align: center;
+    }
+
+    .save-modal-title {
+      margin: 0;
+      font-size: 16px;
+      line-height: 1.5;
+      font-weight: normal;
+    }
+
+    .save-modal-description {
+      margin: 7px 0 12px;
+      font-size: 11px;
+      line-height: 1.6;
+    }
+
+    .save-preview-image {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 1px solid var(--ink);
+      user-select: auto;
+      -webkit-touch-callout: default;
+    }
+
+    .modal-close-button {
+      width: 100%;
+      min-height: 46px;
+      margin-top: 11px;
+      border: 1px solid var(--ink);
+      border-radius: 0;
+      background: var(--yellow);
+      font-size: 14px;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 25px;
+      z-index: 2000;
+      max-width: calc(100% - 30px);
+      padding: 10px 14px;
+      border: 1px solid var(--ink);
+      background: var(--ink);
+      color: var(--white);
+      font-size: 11px;
+      line-height: 1.5;
+      text-align: center;
+      transform: translateX(-50%);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+    }
+
+    .toast.show {
+      opacity: 1;
+    }
+
+    @media (max-width: 480px) {
+      .top-header-inner {
+        min-height: 57px;
+        padding: 0 10px;
+      }
+
+      .brand-logo {
+        font-size: 20px;
+      }
+
+      .top-nav {
+        gap: 2px;
+      }
+
+      .top-nav a {
+        min-width: 40px;
+        padding: 8px 4px;
+        font-size: 14px;
+      }
+
+      .app-container {
+        min-height: calc(100vh - 57px);
+        padding: 15px 8px 42px;
+      }
+
+      .start-content {
+        padding: 31px 14px 28px;
+      }
+
+      .preview-cell {
+        min-height: 59px;
+      }
+
+        .info-content {
+    padding: 20px 15px 19px;}
+
+      .question-head {
+        grid-template-columns: 82px 1fr;
+      }
+
+      .question-guide {
+        padding: 10px 12px;
+      }
+
+      .question-main {
+        min-height: 195px;
+        padding: 24px 17px 27px;
+      }
+
+      .question-text {
+        font-size: clamp(14px, 3.7vw, 17px);
+      }
+
+      .answer-button {
+        min-height: 63px;
+        grid-template-columns: 47px minmax(0, 1fr) 35px;
+      }
+
+      .answer-copy {
+        padding: 10px 7px;
+        font-size: clamp(12px, 3.2vw, 14px);
+      }
+
+      .loading-heading {
+        min-height: 52px;
+        font-size: 17px;
+      }
+
+      .loading-content {
+        min-height: 330px;
+        padding: 31px 17px 27px;
+      }
+
+      .loading-grid,
+      .loading-bar {
+        width: 172px;
+      }
+
+      .loading-title {
+        margin-top: 22px;
+        font-size: 20px;
+      }
+
+      .result-title-area {
+        min-height: 50px;
+        padding: 8px 3px;
+      }
+
+      .result-test-title {
+        font-size: min(17.5px, 4.85vw);
+        letter-spacing: -0.09em;
+      }
+
+      .result-user-row {
+        min-height: 42px;
+        padding: 7px 8px;
+        font-size: clamp(15px, 4.3vw, 18px);
+      }
+
+      .ability-cell {
+        min-height: 168px;
+        padding: 8px 4px 10px;
+      }
+
+      .ability-label {
+        width: 94%;
+        min-height: 38px;
+        padding: 5px 2px;
+      }
+
+      .ability-label.long-label {
+        width: 98%;
+      }
+
+      .ability-result {
+        padding-top: 9px;
+      }
+
+      .ability-score {
+        margin-top: 5px;
+      }
+
+      .ability-bar {
+        margin-top: 7px;
+      }
+    }
+
+    @media (max-width: 355px) {
+      .brand-logo {
+        font-size: 18px;
+      }
+
+      .top-nav a {
+        min-width: 36px;
+        font-size: 13px;
+      }
+
+      .question-head {
+        grid-template-columns: 73px 1fr;
+      }
+
+      .question-guide {
+        font-size: 10px;
+      }
+
+      .answer-button {
+        grid-template-columns: 43px minmax(0, 1fr) 30px;
+      }
+
+      .answer-check {
+        width: 13px;
+        height: 13px;
+      }
+
+      .result-title-area {
+        min-height: 48px;
+        padding-right: 2px;
+        padding-left: 2px;
+      }
+
+      .result-test-title {
+        font-size: min(16.5px, 4.85vw);
+        letter-spacing: -0.095em;
+      }
+
+      .ability-cell {
+        min-height: 162px;
+        padding-right: 3px;
+        padding-left: 3px;
+      }
+
+      .ability-label {
+        font-size: 9px;
+      }
+
+      .ability-label.long-label {
+        font-size: 7.5px;
+      }
+
+      .ability-description,
+      .ability-description.main-description {
+        font-size: 9px;
+      }
+
+      .ability-score {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="top-header">
+    <div class="top-header-inner">
+      <a
+        class="brand-logo"
+        href="https://test-it.co.kr/"
+      >
+        테스트잇
+      </a>
+
+      <nav class="top-nav">
+        <a
+          class="active"
+          href="https://test-it.co.kr/test.html"
+        >
+          성격
+        </a>
+
+        <a href="https://test-it.co.kr/face.html">
+          얼굴
+        </a>
+
+        <a href="https://test-it.co.kr/etc.html">
+          그외
+        </a>
+
+        <a href="https://test-it.co.kr/saju.html">
+          사주
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="app-container">
+   <!-- 시작 화면 -->
+<section
+  id="startScreen"
+  class="screen active"
+>
+  <div class="main-image-wrap">
+    <img
+      class="main-image"
+      src="img_main406.png"
+      alt="테스트잇 성격 능력치 종합 평가 테스트"
+    >
+  </div>
+
+  <button
+    id="startButton"
+    type="button"
+    class="main-button"
+  >
+    테스트 시작하기
+  </button>
+</section>
+
+   <!-- 정보 입력 화면 -->
+<section
+  id="infoScreen"
+  class="screen"
+>
+  <div class="paper-panel">
+    <div class="section-heading">
+      정보 입력
+    </div>
+
+    <div class="info-content">
+      <div class="info-form-card">
+        <label
+          class="input-label"
+          for="nicknameInput"
+        >
+          이름 또는 닉네임
+        </label>
+
+        <input
+          id="nicknameInput"
+          class="nickname-input"
+          type="text"
+          maxlength="10"
+          autocomplete="off"
+          placeholder="닉네임을 입력해주세요"
+        >
+
+        <p
+          id="inputMessage"
+          class="input-message"
+        ></p>
+      </div>
+
+      <div class="info-notice">
+        입력한 닉네임은 결과표에만 표시됩니다.
+      </div>
+    </div>
+  </div>
+
+  <button
+    id="infoNextButton"
+    type="button"
+    class="main-button"
+  >
+    질문 시작하기
+  </button>
+</section>
+
+    <!-- 질문 화면 -->
+    <section
+      id="questionScreen"
+      class="screen"
+    >
+      <div class="question-status">
+        <div class="question-status-top">
+          <div class="status-title-wrap">
+            <span class="status-mark"></span>
+
+            <span class="status-title">
+              성격 능력치 분석 중
+            </span>
+          </div>
+
+          <span
+            id="progressNumber"
+            class="status-number"
+          >
+            1 / 12
+          </span>
+        </div>
+
+        <div class="progress-wrap">
+          <div
+            class="progress-track"
+            role="progressbar"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-valuenow="0"
+          >
+            <div
+              id="progressFill"
+              class="progress-fill"
+            ></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="question-sheet">
+        <div class="question-head">
+          <div class="question-number-box">
+            <span class="question-number-small">
+              문항
+            </span>
+
+            <span
+              id="questionNumber"
+              class="question-number"
+            >
+              01
+            </span>
+          </div>
+
+          <div class="question-guide">
+            나와 더 가까운 답을 골라주세요
+          </div>
+        </div>
+
+        <div class="question-main">
+          <div class="question-content">
+            <div class="question-label">
+              질문
+            </div>
+
+            <h2
+              id="questionText"
+              class="question-text"
+            ></h2>
+          </div>
+        </div>
+      </div>
+
+      <div class="answer-guide">
+        하나만 선택
+      </div>
+
+      <div
+        id="answerList"
+        class="answer-list"
+      ></div>
+    </section>
+
+    <!-- 결과 로딩 화면 -->
+    <section
+      id="loadingScreen"
+      class="screen"
+      aria-live="polite"
+    >
+      <div class="loading-panel">
+        <div class="loading-heading">
+          결과 분석 중
+        </div>
+
+        <div class="loading-content">
+          <div
+            class="loading-grid"
+            aria-hidden="true"
+          >
+            <span class="loading-grid-cell"></span>
+            <span class="loading-grid-cell"></span>
+            <span class="loading-grid-cell"></span>
+            <span class="loading-grid-cell"></span>
+            <span class="loading-grid-cell"></span>
+            <span class="loading-grid-cell"></span>
+            <span class="loading-grid-cell"></span>
+            <span class="loading-grid-cell"></span>
+            <span class="loading-grid-cell"></span>
+          </div>
+
+          <h2 class="loading-title">
+            성격 능력치를 정리하고 있어요
+          </h2>
+
+          <p class="loading-description">
+            답변을 바탕으로 9가지 결과를<br>
+            하나씩 확인하고 있습니다.
+          </p>
+
+          <div
+            class="loading-bar"
+            aria-hidden="true"
+          >
+            <div class="loading-bar-fill"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 결과 화면 -->
+    <section
+      id="resultScreen"
+      class="screen"
+    >
+      <div
+        id="resultCard"
+        class="result-card"
+      >
+        <div class="result-title-area">
+          <div class="result-test-title">
+            테스트잇 성격 능력치 종합 평가 테스트
+          </div>
+        </div>
+
+        <div class="result-user-row">
+          <span class="result-user-text">
+            <span
+              id="resultNickname"
+              class="result-user-name"
+            ></span>님의 결과
+          </span>
+        </div>
+
+        <div
+          id="abilityGrid"
+          class="ability-grid"
+        ></div>
+
+        <div class="result-footer">
+          <span>TEST-IT PERSONALITY REPORT</span>
+          <span>NO.406</span>
+        </div>
+      </div>
+
+      <div class="result-button-list">
+        <button
+          id="saveResultButton"
+          type="button"
+          class="result-button primary"
+        >
+          결과 이미지 저장하기
+        </button>
+
+        <button
+          id="restartButton"
+          type="button"
+          class="result-button"
+        >
+          다시 해보기
+        </button>
+
+        <button
+          id="otherTestButton"
+          type="button"
+          class="result-button"
+        >
+          다른 테스트 해보기
+        </button>
+
+        <button
+          id="shareButton"
+          type="button"
+          class="result-button"
+        >
+          테스트 공유하기
+        </button>
+      </div>
+    </section>
+
+    <div class="ad-wrap">
+      <script src="https://ads-partners.coupang.com/g.js"></script>
+
+      <script>
+        new PartnersCoupang.G({
+          id: 798186,
+          template: "carousel",
+          trackingCode: "AF4391881",
+          width: "350",
+          height: "140"
+        });
+      </script>
+    </div>
+  </main>
+
+  <!-- 결과 저장 팝업 -->
+  <div
+    id="saveModal"
+    class="save-modal"
+  >
+    <div class="save-modal-box">
+      <h2 class="save-modal-title">
+        결과 이미지 저장하기
+      </h2>
+
+      <p class="save-modal-description">
+        아래 이미지를 꾹 누르거나<br>
+        우클릭해서 저장해주세요.
+      </p>
+
+      <img
+        id="savePreviewImage"
+        class="save-preview-image"
+        alt="성격 능력치 종합 평가 결과 이미지"
+      >
+
+      <button
+        id="modalCloseButton"
+        type="button"
+        class="modal-close-button"
+      >
+        닫기
+      </button>
+    </div>
+  </div>
+
+  <div
+    id="toast"
+    class="toast"
+  ></div>
+
+  <script>
+    const TEST_TITLE =
+      '테스트잇 성격 능력치 종합 평가 테스트';
+
+    const TEST_URL =
+      'https://test-it.co.kr/test406';
+
+    const screens =
+      document.querySelectorAll('.screen');
+
+    const startButton =
+      document.getElementById('startButton');
+
+    const infoNextButton =
+      document.getElementById('infoNextButton');
+
+    const nicknameInput =
+      document.getElementById('nicknameInput');
+
+    const inputMessage =
+      document.getElementById('inputMessage');
+
+    const progressNumber =
+      document.getElementById('progressNumber');
+
+    const progressFill =
+      document.getElementById('progressFill');
+
+    const questionNumber =
+      document.getElementById('questionNumber');
+
+    const questionText =
+      document.getElementById('questionText');
+
+    const answerList =
+      document.getElementById('answerList');
+
+    const resultNickname =
+      document.getElementById('resultNickname');
+
+    const abilityGrid =
+      document.getElementById('abilityGrid');
+
+    const saveResultButton =
+      document.getElementById('saveResultButton');
+
+    const restartButton =
+      document.getElementById('restartButton');
+
+    const otherTestButton =
+      document.getElementById('otherTestButton');
+
+    const shareButton =
+      document.getElementById('shareButton');
+
+    const saveModal =
+      document.getElementById('saveModal');
+
+    const savePreviewImage =
+      document.getElementById('savePreviewImage');
+
+    const modalCloseButton =
+      document.getElementById('modalCloseButton');
+
+    const toast =
+      document.getElementById('toast');
+
+    let nickname = '';
+    let currentQuestionIndex = 0;
+    let answerLocked = false;
+    let toastTimer = null;
+    let resultLoadingTimer = null;
+
+    let scores = {
+      E: 0,
+      I: 0,
+      S: 0,
+      N: 0,
+      T: 0,
+      F: 0,
+      J: 0,
+      P: 0
+    };
+
+    const questions = [
+      {
+        text:
+          '아무 일정이 없는 주말,<br>내가 더 끌리는 것은?',
+        answers: [
+          {
+            text:
+              '친구를 만나거나 밖에 나가 시간을 보낸다',
+            letter: 'E'
+          },
+          {
+            text:
+              '집에서 혼자 조용히 쉬며 시간을 보낸다',
+            letter: 'I'
+          }
+        ]
+      },
+      {
+        text:
+          '친구가 계속 약속시간에<br>늦을 때 나는?',
+        answers: [
+          {
+            text:
+              '약속을 지키는 게 기본 아니야?<br>라고 원칙부터 따지기',
+            letter: 'T'
+          },
+          {
+            text:
+              '기다리는 사람 생각은 안 해?<br>화난 내 마음을 알려주기',
+            letter: 'F'
+          }
+        ]
+      },
+      {
+        text:
+          '맛집을 줄 서서 기다릴 때<br>내 머릿속은?',
+        answers: [
+          {
+            text:
+              '언제쯤 들어가려나,<br>회전율이 어떻게 되지?',
+            letter: 'S'
+          },
+          {
+            text:
+              '이렇게까지 기다려서 먹을<br>가치가 있을까?',
+            letter: 'N'
+          }
+        ]
+      },
+      {
+        text:
+          '하루를 시작할 때<br>더 편한 방식은?',
+        answers: [
+          {
+            text:
+              '오늘 할 일을<br>어느 정도 정리해둔다',
+            letter: 'J'
+          },
+          {
+            text:
+              '상황과 기분에 맞춰<br>자유롭게 움직인다',
+            letter: 'P'
+          }
+        ]
+      },
+      {
+        text:
+          '처음 가는 모임에서<br>나의 모습은?',
+        answers: [
+          {
+            text:
+              '먼저 말을 걸며 자연스럽게 대화한다',
+            letter: 'E'
+          },
+          {
+            text:
+              '분위기를 살피다가 편한 사람과 이야기한다',
+            letter: 'I'
+          }
+        ]
+      },
+      {
+        text:
+          '책을 고를 때<br>나는 주로?',
+        answers: [
+          {
+            text:
+              '베스트셀러 순위와 목차,<br>실용적인 정보를 확인한다',
+            letter: 'S'
+          },
+          {
+            text:
+              '제목의 느낌과 표지,<br>첫 문장의 감성에 꽂혀서 산다',
+            letter: 'N'
+          }
+        ]
+      },
+      {
+        text:
+          '마감이 있는 일을 맡으면<br>나는 보통?',
+        answers: [
+          {
+            text:
+              '미리 시작해<br>여유 있게 끝내려 한다',
+            letter: 'J'
+          },
+          {
+            text:
+              '마감이 가까워지면<br>집중해서 끝낸다',
+            letter: 'P'
+          }
+        ]
+      },
+      {
+        text:
+          '내가 보낸 카톡을 친구가<br>하루 종일 읽지 않을 때',
+        answers: [
+          {
+            text:
+              '바쁜가 보네 하고<br>크게 신경 쓰지 않는다',
+            letter: 'T'
+          },
+          {
+            text:
+              '내가 뭐 잘못 말했나?<br>대화를 다시 읽어본다',
+            letter: 'F'
+          }
+        ]
+      },
+      {
+        text:
+          '여행 짐을 쌀 때<br>나는?',
+        answers: [
+          {
+            text:
+              '필요한 물건만<br>딱 챙긴다',
+            letter: 'S'
+          },
+          {
+            text:
+              '만약의 상황에 대비해<br>이것저것 챙긴다',
+            letter: 'N'
+          }
+        ]
+      },
+      {
+        text:
+          '기분 좋은 일이 생겼을 때<br>나는 보통?',
+        answers: [
+          {
+            text:
+              '누군가에게 바로 말하고 함께 즐긴다',
+            letter: 'E'
+          },
+          {
+            text:
+              '혼자 충분히 느낀 뒤 나중에 말한다',
+            letter: 'I'
+          }
+        ]
+      },
+      {
+        text:
+          '내가 열심히 한 요리를 먹고<br>가족이 맛없다고 할 때',
+        answers: [
+          {
+            text:
+              '레시피대로 했는데 뭐가 문제지?<br>원인을 분석한다',
+            letter: 'T'
+          },
+          {
+            text:
+              '열심히 만들었는데 너무하네<br>서운함을 느낀다',
+            letter: 'F'
+          }
+        ]
+      },
+      {
+        text:
+          '갑자기 약속이나 계획이<br>바뀌었다는 연락을 받으면?',
+        answers: [
+          {
+            text:
+              '당황스럽고 다시 정리할<br>시간이 필요하다',
+            letter: 'J'
+          },
+          {
+            text:
+              '바뀐 상황에 맞춰<br>자연스럽게 움직인다',
+            letter: 'P'
+          }
+        ]
+      }
+    ];
+
+    /*
+      MBTI는 내부 계산에만 사용됩니다.
+      결과 화면과 저장 이미지에는 표시하지 않습니다.
+    */
+
+    const profiles = {
+      ENFJ: {
+        personality:
+          '사람을 잘 챙기고<br>분위기를 이끄는 편',
+
+        love:
+          '표현이 많고<br>상대를 잘 챙기는 연애',
+
+        control: {
+          score: 72,
+          text:
+            '주도하는 편이지만<br>강하게 통제하진 않음'
+        },
+
+        sensitivity: {
+          score: 70,
+          text:
+            '사람들의 반응에<br>꽤 예민한 편'
+        },
+
+        aggression: {
+          score: 35,
+          text:
+            '공격적인 편은<br>아님'
+        },
+
+        kindness: {
+          score: 94,
+          text:
+            '누구에게나<br>매우 다정한 편'
+        },
+
+        mental: {
+          score: 73,
+          text:
+            '멘탈이 꽤<br>단단한 편'
+        },
+
+        empathy: {
+          score: 96,
+          text:
+            '상대 감정을<br>매우 잘 이해하는 편'
+        },
+
+        battery: {
+          score: 88,
+          text:
+            '사람들과 있으면<br>기운이 많이 나는 편'
+        }
+      },
+
+      INFJ: {
+        personality:
+          '조용히 관찰하고<br>깊게 생각하는 편',
+
+        love:
+          '천천히 마음을 열고<br>깊게 이어가는 연애',
+
+        control: {
+          score: 63,
+          text:
+            '겉으로 티는 안 내도<br>원하는 방식이 있는 편'
+        },
+
+        sensitivity: {
+          score: 92,
+          text:
+            '말과 표정에<br>많이 예민한 편'
+        },
+
+        aggression: {
+          score: 24,
+          text:
+            '화를 잘 내지<br>않는 편'
+        },
+
+        kindness: {
+          score: 87,
+          text:
+            '말수는 적어도<br>꽤 다정한 편'
+        },
+
+        mental: {
+          score: 65,
+          text:
+            '상처는 잘 받지만<br>멘탈은 보통인 편'
+        },
+
+        empathy: {
+          score: 97,
+          text:
+            '상대 마음을<br>깊게 이해하는 편'
+        },
+
+        battery: {
+          score: 30,
+          text:
+            '사람을 만나면 쉽게 지쳐<br>혼자 쉬어야 하는 편'
+        }
+      },
+
+      ENFP: {
+        personality:
+          '호기심이 많고<br>새로운 것을 좋아하는 편',
+
+        love:
+          '설렘을 중요하게 생각하고<br>표현을 많이 하는 연애',
+
+        control: {
+          score: 28,
+          text:
+            '상대를 거의<br>통제하지 않는 편'
+        },
+
+        sensitivity: {
+          score: 76,
+          text:
+            '상대 반응이 달라지면<br>쉽게 예민해지는 편'
+        },
+
+        aggression: {
+          score: 41,
+          text:
+            '화나면<br>할 말은 하는 편'
+        },
+
+        kindness: {
+          score: 90,
+          text:
+            '표현이 많고<br>매우 다정한 편'
+        },
+
+        mental: {
+          score: 59,
+          text:
+            '흔들려도 금방 괜찮아지는<br>보통 멘탈'
+        },
+
+        empathy: {
+          score: 91,
+          text:
+            '상대 감정에<br>쉽게 공감하는 편'
+        },
+
+        battery: {
+          score: 94,
+          text:
+            '새로운 사람을 만나면<br>기운이 크게 나는 편'
+        }
+      },
+
+      INFP: {
+        personality:
+          '감정과 생각이 깊고<br>자기 마음을 중요하게 보는 편',
+
+        love:
+          '한 사람을 좋아하면<br>오래 깊게 좋아하는 연애',
+
+        control: {
+          score: 20,
+          text:
+            '상대를 자유롭게<br>두는 편'
+        },
+
+        sensitivity: {
+          score: 97,
+          text:
+            '말과 분위기를 모두 신경 쓰는<br>매우 예민한 편'
+        },
+
+        aggression: {
+          score: 16,
+          text:
+            '거의 공격적이지<br>않은 편'
+        },
+
+        kindness: {
+          score: 93,
+          text:
+            '마음이 깊고<br>아주 다정한 편'
+        },
+
+        mental: {
+          score: 46,
+          text:
+            '유리멘탈에<br>가까운 편'
+        },
+
+        empathy: {
+          score: 98,
+          text:
+            '남의 감정을 내 일처럼<br>느끼는 편'
+        },
+
+        battery: {
+          score: 26,
+          text:
+            '혼자 있어야<br>기운이 채워지는 편'
+        }
+      },
+
+      ENTJ: {
+        personality:
+          '목표를 정하면<br>빠르게 밀고 가는 편',
+
+        love:
+          '마음을 분명히 말하고<br>관계를 이끄는 연애',
+
+        control: {
+          score: 97,
+          text:
+            '상황을 내 방식대로<br>이끄는 편'
+        },
+
+        sensitivity: {
+          score: 29,
+          text:
+            '웬만한 일에는<br>신경 쓰지 않는 편'
+        },
+
+        aggression: {
+          score: 89,
+          text:
+            '매우 공격적인<br>편'
+        },
+
+        kindness: {
+          score: 43,
+          text:
+            '다정함은<br>낮은 편'
+        },
+
+        mental: {
+          score: 96,
+          text:
+            '강철멘탈에<br>가까운 편'
+        },
+
+        empathy: {
+          score: 40,
+          text:
+            '공감보다 해결책을<br>먼저 말하는 편'
+        },
+
+        battery: {
+          score: 85,
+          text:
+            '여럿이 함께 움직일 때<br>기운이 나는 편'
+        }
+      },
+
+      INTJ: {
+        personality:
+          '큰 흐름을 먼저 보고<br>계획을 세우는 편',
+
+        love:
+          '신중하게 시작하고<br>오래 이어가려는 연애',
+
+        control: {
+          score: 88,
+          text:
+            '계획대로 움직이려는<br>성향이 강한 편'
+        },
+
+        sensitivity: {
+          score: 49,
+          text:
+            '평소엔 무던하지만<br>예상 밖의 변화엔 예민한 편'
+        },
+
+        aggression: {
+          score: 62,
+          text:
+            '필요할 때<br>강하게 말하는 편'
+        },
+
+        kindness: {
+          score: 38,
+          text:
+            '가까운 사람에게만<br>다정한 편'
+        },
+
+        mental: {
+          score: 93,
+          text:
+            '멘탈이 매우<br>단단한 편'
+        },
+
+        empathy: {
+          score: 42,
+          text:
+            '감정보다 문제를<br>먼저 보는 편'
+        },
+
+        battery: {
+          score: 22,
+          text:
+            '사람을 오래 만나면<br>지치는 편'
+        }
+      },
+
+      ENTP: {
+        personality:
+          '아이디어가 많고<br>새로운 시도를 즐기는 편',
+
+        love:
+          '대화가 잘 통하고<br>재미있는 연애',
+
+        control: {
+          score: 44,
+          text:
+            '상황에 따라<br>주도권을 잡는 편'
+        },
+
+        sensitivity: {
+          score: 38,
+          text:
+            '대체로 무던하지만<br>답답한 상황엔 예민한 편'
+        },
+
+        aggression: {
+          score: 78,
+          text:
+            '말로 세게<br>받아치는 편'
+        },
+
+        kindness: {
+          score: 57,
+          text:
+            '친해지면<br>꽤 다정한 편'
+        },
+
+        mental: {
+          score: 84,
+          text:
+            '쉽게 흔들리지 않는<br>강한 멘탈'
+        },
+
+        empathy: {
+          score: 54,
+          text:
+            '공감도 하고 해결책도<br>함께 말하는 편'
+        },
+
+        battery: {
+          score: 90,
+          text:
+            '대화를 많이 할수록<br>기운이 나는 편'
+        }
+      },
+
+      INTP: {
+        personality:
+          '혼자 생각하고<br>원리를 파고드는 편',
+
+        love:
+          '서로의 시간을 존중하며<br>편하게 만나는 연애',
+
+        control: {
+          score: 36,
+          text:
+            '서로 간섭하지 않는 걸<br>좋아하는 편'
+        },
+
+        sensitivity: {
+          score: 57,
+          text:
+            '겉으로는 무던해도<br>속으로 신경을 많이 쓰는 편'
+        },
+
+        aggression: {
+          score: 46,
+          text:
+            '공격력은<br>보통인 편'
+        },
+
+        kindness: {
+          score: 47,
+          text:
+            '다정함은 보통보다<br>낮은 편'
+        },
+
+        mental: {
+          score: 77,
+          text:
+            '멘탈이 보통보다<br>강한 편'
+        },
+
+        empathy: {
+          score: 50,
+          text:
+            '공감력은<br>보통인 편'
+        },
+
+        battery: {
+          score: 17,
+          text:
+            '사람을 만나면<br>금방 지치는 편'
+        }
+      },
+
+      ESFJ: {
+        personality:
+          '주변 사람을 살피고<br>분위기를 맞추는 편',
+
+        love:
+          '상대를 세심하게 챙기고<br>자주 표현하는 연애',
+
+        control: {
+          score: 76,
+          text:
+            '주변을 챙기면서<br>자연스럽게 이끄는 편'
+        },
+
+        sensitivity: {
+          score: 74,
+          text:
+            '주변 사람들의 반응을<br>많이 신경 쓰는 편'
+        },
+
+        aggression: {
+          score: 33,
+          text:
+            '화를 내기보다<br>좋게 말하는 편'
+        },
+
+        kindness: {
+          score: 97,
+          text:
+            '주변 사람에게<br>가장 다정한 편'
+        },
+
+        mental: {
+          score: 69,
+          text:
+            '힘들어도 잘 버티는<br>단단한 멘탈'
+        },
+
+        empathy: {
+          score: 94,
+          text:
+            '상대 기분에<br>매우 잘 공감하는 편'
+        },
+
+        battery: {
+          score: 87,
+          text:
+            '사람들과 어울릴수록<br>기운이 나는 편'
+        }
+      },
+
+      ISFJ: {
+        personality:
+          '조용히 맡은 일을 하고<br>사람을 챙기는 편',
+
+        love:
+          '신뢰와 안정감을<br>중요하게 생각하는 연애',
+
+        control: {
+          score: 68,
+          text:
+            '정해둔 계획대로<br>맞추려는 편'
+        },
+
+        sensitivity: {
+          score: 84,
+          text:
+            '말투나 행동이 달라지면<br>바로 신경 쓰는 편'
+        },
+
+        aggression: {
+          score: 21,
+          text:
+            '웬만하면 참고<br>넘어가는 편'
+        },
+
+        kindness: {
+          score: 96,
+          text:
+            '조용히 잘 챙겨주는<br>다정한 편'
+        },
+
+        mental: {
+          score: 75,
+          text:
+            '천천히 버티는<br>단단한 멘탈'
+        },
+
+        empathy: {
+          score: 90,
+          text:
+            '상대 입장을<br>먼저 생각하는 편'
+        },
+
+        battery: {
+          score: 32,
+          text:
+            '친한 사람과 있을 때만<br>편한 편'
+        }
+      },
+
+      ESFP: {
+        personality:
+          '지금 이 순간을 즐기고<br>분위기를 밝게 만드는 편',
+
+        love:
+          '좋아하면 바로 표현하고<br>함께 즐기는 연애',
+
+        control: {
+          score: 23,
+          text:
+            '간섭하지 않고<br>편하게 두는 편'
+        },
+
+        sensitivity: {
+          score: 66,
+          text:
+            '분위기가 바뀌면<br>금방 예민해지는 편'
+        },
+
+        aggression: {
+          score: 52,
+          text:
+            '화가 나면<br>바로 말하는 편'
+        },
+
+        kindness: {
+          score: 86,
+          text:
+            '표현도 많고<br>꽤 다정한 편'
+        },
+
+        mental: {
+          score: 63,
+          text:
+            '속상해도 금방 풀리는<br>보통 멘탈'
+        },
+
+        empathy: {
+          score: 84,
+          text:
+            '상대 기분을 잘 알아차리고<br>공감하는 편'
+        },
+
+        battery: {
+          score: 97,
+          text:
+            '사람을 많이 만나도<br>잘 지치지 않는 편'
+        }
+      },
+
+      ISFP: {
+        personality:
+          '부드럽고 조용하며<br>자기 감각을 따르는 편',
+
+        love:
+          '편안하게 마음을 나누며<br>천천히 가까워지는 연애',
+
+        control: {
+          score: 18,
+          text:
+            '상대 선택을 거의<br>건드리지 않는 편'
+        },
+
+        sensitivity: {
+          score: 89,
+          text:
+            '말투와 분위기에<br>많이 예민한 편'
+        },
+
+        aggression: {
+          score: 19,
+          text:
+            '다투기보다<br>거리를 두는 편'
+        },
+
+        kindness: {
+          score: 92,
+          text:
+            '부드럽고<br>다정한 편'
+        },
+
+        mental: {
+          score: 56,
+          text:
+            '멘탈은 보통보다<br>조금 약한 편'
+        },
+
+        empathy: {
+          score: 93,
+          text:
+            '상대 감정을 부드럽게<br>받아주는 편'
+        },
+
+        battery: {
+          score: 25,
+          text:
+            '조용히 혼자 쉬어야<br>기운이 차는 편'
+        }
+      },
+
+      ESTJ: {
+        personality:
+          '기준이 분명하고<br>실행이 빠른 편',
+
+        love:
+          '책임감을 갖고<br>관계를 분명히 하는 연애',
+
+        control: {
+          score: 98,
+          text:
+            '통제하려는 성향이<br>매우 강한 편'
+        },
+
+        sensitivity: {
+          score: 24,
+          text:
+            '대부분의 일에<br>무던한 편'
+        },
+
+        aggression: {
+          score: 91,
+          text:
+            '할 말은 바로<br>세게 하는 편'
+        },
+
+        kindness: {
+          score: 45,
+          text:
+            '다정한 편은<br>아님'
+        },
+
+        mental: {
+          score: 97,
+          text:
+            '거의 흔들리지 않는<br>강철멘탈'
+        },
+
+        empathy: {
+          score: 37,
+          text:
+            '공감은 낮고 현실적인 말을 먼저 하는 편'
+        },
+
+        battery: {
+          score: 83,
+          text:
+            '여럿이 함께할 때<br>기운이 올라가는 편'
+        }
+      },
+
+      ISTJ: {
+        personality:
+          '약속과 순서를 지키고<br>꾸준히 움직이는 편',
+
+        love:
+          '말보다 행동으로<br>신뢰를 쌓는 연애',
+
+        control: {
+          score: 90,
+          text:
+            '규칙과 계획을 지키게<br>하려는 편'
+        },
+
+        sensitivity: {
+          score: 43,
+          text:
+            '평소엔 무던하지만<br>약속이 바뀌면 예민한 편'
+        },
+
+        aggression: {
+          score: 55,
+          text:
+            '참다가 화나면<br>단호한 편'
+        },
+
+        kindness: {
+          score: 53,
+          text:
+            '표현은 적지만<br>다정한 편'
+        },
+
+        mental: {
+          score: 95,
+          text:
+            '아주 단단한<br>멘탈'
+        },
+
+        empathy: {
+          score: 45,
+          text:
+            '공감보다 상황 정리를<br>먼저 하는 편'
+        },
+
+        battery: {
+          score: 21,
+          text:
+            '혼자 쉬는 시간이<br>꼭 필요한 편'
+        }
+      },
+
+      ESTP: {
+        personality:
+          '상황 판단이 빠르고<br>바로 행동하는 편',
+
+        love:
+          '마음을 숨기지 않고<br>빠르게 표현하는 연애',
+
+        control: {
+          score: 57,
+          text:
+            '필요한 순간엔<br>바로 주도하는 편'
+        },
+
+        sensitivity: {
+          score: 20,
+          text:
+            '거의 예민하지<br>않은 편'
+        },
+
+        aggression: {
+          score: 87,
+          text:
+            '화가 나면<br>강하게 나가는 편'
+        },
+
+        kindness: {
+          score: 59,
+          text:
+            '생각보다<br>다정한 편'
+        },
+
+        mental: {
+          score: 91,
+          text:
+            '겁이 적고 멘탈이<br>매우 강한 편'
+        },
+
+        empathy: {
+          score: 47,
+          text:
+            '공감은 보통보다<br>조금 낮은 편'
+        },
+
+        battery: {
+          score: 96,
+          text:
+            '사람들과 움직일수록<br>더 활발해지는 편'
+        }
+      },
+
+      ISTP: {
+        personality:
+          '필요한 일을 빠르게 보고<br>차분히 해결하는 편',
+
+        love:
+          '서로 간섭하지 않고<br>편안하게 만나는 연애',
+
+        control: {
+          score: 45,
+          text:
+            '필요한 부분만 정하고<br>나머지는 맡기는 편'
+        },
+
+        sensitivity: {
+          score: 34,
+          text:
+            '대체로 무던하지만<br>같은 일이 반복되면 예민한 편'
+        },
+
+        aggression: {
+          score: 69,
+          text:
+            '선을 넘으면 바로<br>단호해지는 편'
+        },
+
+        kindness: {
+          score: 49,
+          text:
+            '가까운 사람에게만<br>조금 다정한 편'
+        },
+
+        mental: {
+          score: 89,
+          text:
+            '침착하고 멘탈이<br>강한 편'
+        },
+
+        empathy: {
+          score: 44,
+          text:
+            '공감보다 해결 방법을<br>먼저 찾는 편'
+        },
+
+        battery: {
+          score: 15,
+          text:
+            '혼자 있을 때 가장 편하고<br>기운이 차는 편'
+        }
+      }
+    };
+
+    function showScreen(screenId) {
+      screens.forEach((screen) => {
+        screen.classList.remove('active');
+      });
+
+      const target =
+        document.getElementById(screenId);
+
+      if (target) {
+        target.classList.add('active');
+      }
+
+      window.scrollTo({
+        top: 0,
+        behavior: 'auto'
+      });
+    }
+
+    function resetScores() {
+      scores = {
+        E: 0,
+        I: 0,
+        S: 0,
+        N: 0,
+        T: 0,
+        F: 0,
+        J: 0,
+        P: 0
+      };
+    }
+
+    function beginQuestions() {
+      const inputValue =
+        nicknameInput.value.trim();
+
+      if (!inputValue) {
+        inputMessage.textContent =
+          '이름이나 닉네임을 입력해주세요.';
+
+        nicknameInput.focus();
+        return;
+      }
+
+      nickname = inputValue;
+      currentQuestionIndex = 0;
+      answerLocked = false;
+      inputMessage.textContent = '';
+
+      resetScores();
+      showScreen('questionScreen');
+      renderQuestion();
+    }
+
+    function renderQuestion() {
+      const question =
+        questions[currentQuestionIndex];
+
+      const current =
+        currentQuestionIndex + 1;
+
+      const progress =
+        Math.round(
+          (current / questions.length) * 100
+        );
+
+      progressNumber.textContent =
+        `${current} / ${questions.length}`;
+
+      questionNumber.textContent =
+        String(current).padStart(2, '0');
+
+      progressFill.style.width =
+        `${progress}%`;
+
+      progressFill.parentElement.setAttribute(
+        'aria-valuenow',
+        String(progress)
+      );
+
+      questionText.innerHTML =
+        question.text;
+
+      answerList.innerHTML = '';
+      answerLocked = false;
+
+      question.answers.forEach((answer, index) => {
+        const button =
+          document.createElement('button');
+
+        const number =
+          document.createElement('span');
+
+        const copy =
+          document.createElement('span');
+
+        const checkWrap =
+          document.createElement('span');
+
+        const check =
+          document.createElement('span');
+
+        button.type = 'button';
+        button.className = 'answer-button';
+
+        number.className = 'answer-number';
+        number.textContent = String(index + 1);
+
+        copy.className = 'answer-copy';
+        copy.innerHTML = answer.text;
+
+        checkWrap.className = 'answer-check-wrap';
+        check.className = 'answer-check';
+
+        checkWrap.appendChild(check);
+
+        button.appendChild(number);
+        button.appendChild(copy);
+        button.appendChild(checkWrap);
+
+        button.addEventListener('click', () => {
+          selectAnswer(answer.letter);
+        });
+
+        answerList.appendChild(button);
+      });
+    }
+
+    function selectAnswer(letter) {
+      if (answerLocked) {
+        return;
+      }
+
+      if (
+        !Object.prototype.hasOwnProperty.call(
+          scores,
+          letter
+        )
+      ) {
+        return;
+      }
+
+      answerLocked = true;
+
+      const buttons =
+        answerList.querySelectorAll('.answer-button');
+
+      buttons.forEach((button) => {
+        button.disabled = true;
+      });
+
+      scores[letter] += 1;
+      currentQuestionIndex += 1;
+
+      setTimeout(() => {
+        if (
+          currentQuestionIndex <
+          questions.length
+        ) {
+          renderQuestion();
+
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+
+          return;
+        }
+
+        showLoadingScreen();
+      }, 160);
+    }
+
+    function showLoadingScreen() {
+      clearTimeout(resultLoadingTimer);
+
+      showScreen('loadingScreen');
+
+      resultLoadingTimer = setTimeout(() => {
+        resultLoadingTimer = null;
+        showResult();
+      }, 3000);
+    }
+
+    function calculateInternalType() {
+      const first =
+        scores.E > scores.I ? 'E' : 'I';
+
+      const second =
+        scores.S > scores.N ? 'S' : 'N';
+
+      const third =
+        scores.T > scores.F ? 'T' : 'F';
+
+      const fourth =
+        scores.J > scores.P ? 'J' : 'P';
+
+      return first + second + third + fourth;
+    }
+
+    function createTextAbilityCell(
+      label,
+      description
+    ) {
+      const cell =
+        document.createElement('div');
+
+      const labelClass =
+        label === '사회적배터리'
+          ? 'ability-label long-label'
+          : 'ability-label';
+
+      cell.className = 'ability-cell';
+
+      cell.innerHTML = `
+        <div class="${labelClass}">
+          ${label}
+        </div>
+
+        <div class="ability-result">
+          <div class="ability-description main-description">
+            ${description}
+          </div>
+        </div>
+      `;
+
+      return cell;
+    }
+
+    function createScoreAbilityCell(
+      label,
+      resultData
+    ) {
+      const cell =
+        document.createElement('div');
+
+      const labelClass =
+        label === '사회적배터리'
+          ? 'ability-label long-label'
+          : 'ability-label';
+
+      cell.className = 'ability-cell';
+
+      cell.innerHTML = `
+        <div class="${labelClass}">
+          ${label}
+        </div>
+
+        <div class="ability-result">
+          <div class="ability-description">
+            ${resultData.text}
+          </div>
+
+          <div class="ability-score">
+            ${resultData.score}점
+          </div>
+
+          <div
+            class="ability-bar"
+            aria-hidden="true"
+          >
+            <div
+              class="ability-bar-fill"
+              style="width: ${resultData.score}%"
+            ></div>
+          </div>
+        </div>
+      `;
+
+      return cell;
+    }
+
+    function buildResultGrid(profile) {
+      abilityGrid.innerHTML = '';
+
+      abilityGrid.appendChild(
+        createTextAbilityCell(
+          '성격',
+          profile.personality
+        )
+      );
+
+      abilityGrid.appendChild(
+        createScoreAbilityCell(
+          '통제성향',
+          profile.control
+        )
+      );
+
+      abilityGrid.appendChild(
+        createTextAbilityCell(
+          '연애스타일',
+          profile.love
+        )
+      );
+
+      abilityGrid.appendChild(
+        createScoreAbilityCell(
+          '예민미',
+          profile.sensitivity
+        )
+      );
+
+      abilityGrid.appendChild(
+        createScoreAbilityCell(
+          '공격력',
+          profile.aggression
+        )
+      );
+
+      abilityGrid.appendChild(
+        createScoreAbilityCell(
+          '다정함',
+          profile.kindness
+        )
+      );
+
+      abilityGrid.appendChild(
+        createScoreAbilityCell(
+          '멘탈',
+          profile.mental
+        )
+      );
+
+      abilityGrid.appendChild(
+        createScoreAbilityCell(
+          '공감력',
+          profile.empathy
+        )
+      );
+
+      abilityGrid.appendChild(
+        createScoreAbilityCell(
+          '사회적배터리',
+          profile.battery
+        )
+      );
+    }
+
+    function showResult() {
+      const internalType =
+        calculateInternalType();
+
+      const profile =
+        profiles[internalType];
+
+      if (!profile) {
+        showToast(
+          '결과를 불러오지 못했습니다.'
+        );
+
+        return;
+      }
+
+      resultNickname.textContent =
+        nickname;
+
+      buildResultGrid(profile);
+      showScreen('resultScreen');
+    }
+
+    async function createResultImage() {
+      const resultCard =
+        document.getElementById('resultCard');
+
+      const originalText =
+        saveResultButton.textContent;
+
+      saveResultButton.disabled = true;
+      saveResultButton.textContent =
+        '이미지 만드는 중...';
+
+      try {
+        if (
+          document.fonts &&
+          document.fonts.ready
+        ) {
+          await document.fonts.ready;
+        }
+
+        const canvas =
+          await html2canvas(resultCard, {
+            backgroundColor: '#efe1ca',
+            scale: 2,
+            useCORS: true,
+            allowTaint: false,
+            logging: false,
+            scrollX: 0,
+            scrollY: -window.scrollY
+          });
+
+        savePreviewImage.src =
+          canvas.toDataURL('image/png', 1);
+
+        saveModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      } catch (error) {
+        console.error(error);
+
+        showToast(
+          '이미지를 만들지 못했습니다. 다시 시도해주세요.'
+        );
+      } finally {
+        saveResultButton.disabled = false;
+        saveResultButton.textContent =
+          originalText;
+      }
+    }
+
+    function closeSaveModal() {
+      saveModal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function restartTest() {
+      clearTimeout(resultLoadingTimer);
+      resultLoadingTimer = null;
+
+      nickname = '';
+      currentQuestionIndex = 0;
+      answerLocked = false;
+
+      nicknameInput.value = '';
+      inputMessage.textContent = '';
+      abilityGrid.innerHTML = '';
+
+      resetScores();
+      showScreen('startScreen');
+    }
+
+    async function shareTest() {
+      const shareText =
+        `${TEST_TITLE}\n${TEST_URL}`;
+
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            text: shareText
+          });
+
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') {
+            return;
+          }
+        }
+      }
+
+      try {
+        await copyText(shareText);
+
+        showToast(
+          '테스트 제목과 주소가 복사되었습니다.'
+        );
+      } catch (error) {
+        console.error(error);
+
+        showToast(
+          '주소를 복사하지 못했습니다.'
+        );
+      }
+    }
+
+    async function copyText(text) {
+      if (
+        navigator.clipboard &&
+        window.isSecureContext
+      ) {
+        await navigator.clipboard.writeText(text);
+        return;
+      }
+
+      const textarea =
+        document.createElement('textarea');
+
+      textarea.value = text;
+      textarea.setAttribute('readonly', '');
+      textarea.style.position = 'fixed';
+      textarea.style.opacity = '0';
+      textarea.style.pointerEvents = 'none';
+
+      document.body.appendChild(textarea);
+      textarea.select();
+
+      const copied =
+        document.execCommand('copy');
+
+      textarea.remove();
+
+      if (!copied) {
+        throw new Error('복사 실패');
+      }
+    }
+
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add('show');
+
+      clearTimeout(toastTimer);
+
+      toastTimer = setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2200);
+    }
+
+    startButton.addEventListener(
+      'click',
+      () => {
+        showScreen('infoScreen');
+
+        setTimeout(() => {
+          nicknameInput.focus();
+        }, 100);
+      }
+    );
+
+    infoNextButton.addEventListener(
+      'click',
+      beginQuestions
+    );
+
+    nicknameInput.addEventListener(
+      'input',
+      () => {
+        if (nicknameInput.value.trim()) {
+          inputMessage.textContent = '';
+        }
+      }
+    );
+
+    nicknameInput.addEventListener(
+      'keydown',
+      (event) => {
+        if (event.key === 'Enter') {
+          beginQuestions();
+        }
+      }
+    );
+
+    saveResultButton.addEventListener(
+      'click',
+      createResultImage
+    );
+
+    restartButton.addEventListener(
+      'click',
+      restartTest
+    );
+
+    otherTestButton.addEventListener(
+      'click',
+      () => {
+        window.location.href =
+          'https://test-it.co.kr/';
+      }
+    );
+
+    shareButton.addEventListener(
+      'click',
+      shareTest
+    );
+
+    modalCloseButton.addEventListener(
+      'click',
+      closeSaveModal
+    );
+
+    saveModal.addEventListener(
+      'click',
+      (event) => {
+        if (event.target === saveModal) {
+          closeSaveModal();
+        }
+      }
+    );
+
+    document.addEventListener(
+      'keydown',
+      (event) => {
+        if (
+          event.key === 'Escape' &&
+          saveModal.classList.contains('active')
+        ) {
+          closeSaveModal();
+        }
+      }
+    );
+  </script>
+</body>
+</html>

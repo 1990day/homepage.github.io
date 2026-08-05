@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>테스트잇 성격 능력치 종합 평가 테스트 (test406)</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
+
+        * {
+            box-sizing: border-box;
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        body {
+            background-color: #d9d4c5; /* 배경을 약간 어둡게 하여 테스트지가 돋보이게 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        #app {
+            background-color: #EAE0CC; /* 전체 테마 컬러 통일 */
+            width: 100%;
+            max-width: 500px;
+            min-height: 100vh;
+            border: 2px solid black;
+            position: relative;
+        }
+        
+        /* 공통 스타일 */
+        .screen {
+            display: none;
+            padding: 30px;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+        .screen.active {
+            display: flex;
+        }
+        h1 {
+            font-size: 26px;
+            color: #333;
+            word-break: keep-all;
+            margin-bottom: 30px;
+            line-height: 1.4;
+            font-weight: 900;
+        }
+        .btn {
+            background-color: #F4D32B;
+            color: #333;
+            border: 2px solid black;
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 0; /* 각진 레트로 스타일 */
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+            box-shadow: 4px 4px 0px black;
+            transition: all 0.1s;
+        }
+        .btn:active {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px black;
+        }
+
+        /* 시작 & 정보 입력 화면 특화 */
+        .title-box {
+            background-color: white;
+            border: 2px solid black;
+            padding: 40px 20px;
+            width: 100%;
+            margin-bottom: 20px;
+            box-shadow: 4px 4px 0px black;
+        }
+        #nickname-input {
+            width: 100%;
+            padding: 18px;
+            font-size: 18px;
+            font-weight: bold;
+            border: 2px solid black;
+            background-color: white;
+            margin-bottom: 10px;
+            text-align: center;
+            box-shadow: 4px 4px 0px black;
+        }
+        #nickname-input:focus {
+            outline: none;
+            background-color: #fdfdfd;
+        }
+
+        /* 질문 화면 특화 */
+        .progress-container {
+            width: 100%;
+            background-color: white;
+            height: 14px;
+            border: 2px solid black;
+            margin-bottom: 40px;
+            position: absolute;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            max-width: 440px;
+        }
+        .progress-bar {
+            height: 100%;
+            background-color: #F4D32B;
+            width: 0%;
+            transition: width 0.3s;
+            border-right: 2px solid black;
+        }
+        .question-text {
+            font-size: 22px;
+            font-weight: 900;
+            margin-bottom: 40px;
+            margin-top: 50px;
+            word-break: keep-all;
+            background-color: white;
+            border: 2px solid black;
+            padding: 30px 20px;
+            width: 100%;
+            box-shadow: 4px 4px 0px black;
+        }
+        .answer-btn {
+            background-color: white;
+            color: #333;
+            border: 2px solid black;
+            padding: 20px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            margin-bottom: 15px;
+            box-shadow: 4px 4px 0px black;
+            transition: all 0.1s;
+            word-break: keep-all;
+        }
+        .answer-btn:active {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px black;
+            background-color: #F4D32B;
+        }
+
+        /* 결과 화면 특화 */
+        .result-container {
+            border: 2px solid black;
+            width: 100%;
+            background-color: #EAE0CC;
+        }
+        .result-header-1 {
+            padding: 20px 15px;
+            border-bottom: 2px solid black;
+            font-size: 18px;
+            font-weight: 500;
+            text-align: center;
+            color: #333;
+        }
+        .result-header-2 {
+            padding: 25px;
+            border-bottom: 2px solid black;
+            font-size: 22px;
+            font-weight: 900;
+            text-align: center;
+            color: #333;
+        }
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            background-color: #F4D32B;
+        }
+        .grid-cell {
+            border: 1px solid black; /* 그리드 내부는 1px로 깔끔하게 */
+            padding: 15px 5px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 180px; 
+            margin-top: -1px; 
+            margin-left: -1px;
+            margin-bottom: -1px;
+            margin-right: -1px;
+        }
+        .cell-label {
+            background-color: #EAE0CC;
+            border: 1px solid black;
+            padding: 8px 5px;
+            font-size: 13px;
+            font-weight: 900;
+            width: 90%;
+            text-align: center;
+            margin-bottom: 12px;
+            color: #333;
+        }
+        .cell-value {
+            font-size: 13px;
+            line-height: 1.4;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+            word-break: keep-all;
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+        }
+        .stat-score {
+            font-size: 17px;
+            font-weight: 900;
+            margin-top: 5px;
+            margin-bottom: 4px;
+        }
+        .stat-bar-container {
+            width: 80%;
+            height: 10px;
+            background-color: white;
+            border: 1px solid black;
+            margin-bottom: 5px;
+        }
+        .stat-bar-fill {
+            height: 100%;
+            background-color: #222;
+        }
+        .result-footer {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 15px;
+            border-top: 2px solid black;
+            font-size: 11px;
+            color: #333;
+            font-weight: 900;
+            background-color: #EAE0CC;
+        }
+    </style>
+</head>
+<body>
+
+<div id="app">
+    <!-- 시작 화면 -->
+    <div id="start-screen" class="screen active">
+        <div class="title-box">
+            <h1>테스트잇<br>성격 능력치<br>종합 평가 테스트</h1>
+        </div>
+        <button class="btn" onclick="nextScreen('info-screen')">테스트 시작하기</button>
+    </div>
+
+    <!-- 정보 입력 화면 -->
+    <div id="info-screen" class="screen">
+        <h1 style="margin-bottom: 40px;">당신의 이름을<br>알려주세요</h1>
+        <input type="text" id="nickname-input" placeholder="닉네임 입력" maxlength="10">
+        <button class="btn" onclick="startTest()">결과 확인하기</button>
+    </div>
+
+    <!-- 질문 화면 -->
+    <div id="qna-screen" class="screen">
+        <div class="progress-container">
+            <div id="progress-bar" class="progress-bar"></div>
+        </div>
+        <div id="question-text" class="question-text">질문이 여기에 표시됩니다.</div>
+        <button class="answer-btn" id="answer-A" onclick="selectAnswer('A')">답변 A</button>
+        <button class="answer-btn" id="answer-B" onclick="selectAnswer('B')">답변 B</button>
+    </div>
+
+    <!-- 결과 화면 -->
+    <div id="result-screen" class="screen" style="padding: 10px;">
+        <div class="result-container">
+            <div class="result-header-1">테스트잇 성격 능력치 종합 평가 테스트</div>
+            <div class="result-header-2"><span id="result-nickname">OOO</span>님의 결과</div>
+            <div class="result-grid">
+                <!-- 1행 -->
+                <div class="grid-cell" id="cell-personality"></div>
+                <div class="grid-cell" id="cell-control"></div>
+                <div class="grid-cell" id="cell-romance"></div>
+                <!-- 2행 -->
+                <div class="grid-cell" id="cell-sensitivity"></div>
+                <div class="grid-cell" id="cell-attack"></div>
+                <div class="grid-cell" id="cell-sweet"></div>
+                <!-- 3행 -->
+                <div class="grid-cell" id="cell-mental"></div>
+                <div class="grid-cell" id="cell-empathy"></div>
+                <div class="grid-cell" id="cell-battery"></div>
+            </div>
+            <div class="result-footer">
+                <span>TEST-IT PERSONALITY REPORT</span>
+                <span>NO.406</span>
+            </div>
+        </div>
+        <button class="btn" style="margin-top: 30px;" onclick="location.reload()">다시하기</button>
+    </div>
+</div>
+
+<script>
+    let currentStep = 0;
+    let nickname = "";
+    let scores = { E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0 };
+
+    const questions = [
+        { q: "주말에 약속이 없다면 나는?", a: "친구들에게 먼저 연락해서 약속을 잡는다.", b: "침대와 한 몸이 되어 집에서 푹 쉰다.", type: "EI" },
+        { q: "처음 가는 모임에 참석했을 때 나는?", a: "먼저 다가가서 말을 걸고 분위기를 주도한다.", b: "누가 말을 걸어줄 때까지 조용히 기다린다.", type: "EI" },
+        { q: "스트레스를 받을 때 푸는 방법은?", a: "사람들을 만나서 수다를 떨며 푼다.", b: "혼자만의 시간을 가지며 생각 정리를 한다.", type: "EI" },
+        { q: "사과를 보면 드는 생각은?", a: "빨갛다, 맛있다, 아삭하다.", b: "백설공주, 뉴턴, 아이폰 로고.", type: "SN" },
+        { q: "요리를 할 때 나는?", a: "레시피에 적힌 정량과 순서를 정확히 지킨다.", b: "내 감과 창의력을 믿고 자유롭게 요리한다.", type: "SN" },
+        { q: "노래를 들을 때 더 중요하게 생각하는 것은?", a: "귀에 꽂히는 멜로디와 리듬.", b: "가사의 의미와 곡이 담고 있는 스토리.", type: "SN" },
+        { q: "친구가 '나 우울해서 화분 샀어'라고 한다면?", a: "무슨 화분 샀어? 어디서 샀어?", b: "무슨 일 있어? 왜 우울해 ㅠㅠ", type: "TF" },
+        { q: "팀 프로젝트 중 팀원이 실수를 했다면?", a: "실수한 원인을 분석하고 해결책을 제시한다.", b: "많이 당황했겠다며 먼저 위로해준다.", type: "TF" },
+        { q: "나를 더 기분 좋게 하는 칭찬은?", a: "'너 진짜 일 처리 깔끔하고 똑똑하다.'", b: "'너랑 있으면 너무 편하고 따뜻해.'", type: "TF" },
+        { q: "여행을 떠나기 전 나는?", a: "시간별로 일정표를 완벽하게 짜놓는다.", b: "대략적인 목적지만 정하고 발길 닿는 대로 간다.", type: "JP" },
+        { q: "일을 시작할 때 나는?", a: "미리 계획을 세우고 차근차근 진행한다.", b: "마감일이 다가올 때 엄청난 집중력으로 해치운다.", type: "JP" },
+        { q: "내 책상의 상태는?", a: "항상 물건들이 제자리에 깔끔하게 정리되어 있다.", b: "어수선해 보이지만 나름의 규칙이 존재한다.", type: "JP" }
+    ];
+
+    function nextScreen(screenId) {
+        document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+        document.getElementById(screenId).classList.add('active');
+    }
+
+    function startTest() {
+        const input = document.getElementById('nickname-input').value.trim();
+        if(input === "") {
+            alert("닉네임을 입력해주세요!");
+            return;
+        }
+        nickname = input;
+        nextScreen('qna-screen');
+        showQuestion();
+    }
+
+    function showQuestion() {
+        if(currentStep >= questions.length) {
+            calculateResult();
+            return;
+        }
+        const qData = questions[currentStep];
+        document.getElementById('question-text').innerText = qData.q;
+        
+        const btnA = document.getElementById('answer-A');
+        const btnB = document.getElementById('answer-B');
+        btnA.innerText = qData.a;
+        btnB.innerText = qData.b;
+        
+        btnA.onclick = () => selectAnswer(qData.type.charAt(0));
+        btnB.onclick = () => selectAnswer(qData.type.charAt(1));
+
+        document.getElementById('progress-bar').style.width = (((currentStep) / questions.length) * 100) + '%';
+    }
+
+    function selectAnswer(typeLetter) {
+        scores[typeLetter]++;
+        currentStep++;
+        showQuestion();
+    }
+
+    function calculateResult() {
+        const E_I = scores.E >= scores.I ? 'E' : 'I';
+        const S_N = scores.S >= scores.N ? 'S' : 'N';
+        const T_F = scores.T >= scores.F ? 'T' : 'F';
+        const J_P = scores.J >= scores.P ? 'J' : 'P';
+        const finalMBTI = E_I + S_N + T_F + J_P;
+        generateResultUI(finalMBTI);
+    }
+
+    function renderCell(id, label, text, score) {
+        let html = `<div class="cell-label">${label}</div>
+                    <div class="cell-value" style="${score === null ? 'display:flex; align-items:center; height:100%;' : ''}"><div>${text}</div></div>`;
+        if (score !== null) {
+            html += `<div class="stat-score">${score}점</div>
+                     <div class="stat-bar-container"><div class="stat-bar-fill" style="width: ${score}%;"></div></div>`;
+        }
+        document.getElementById(id).innerHTML = html;
+    }
+
+    // 16가지 MBTI 유형별 완벽하게 독립된 결과 데이터베이스
+    const mbtiData = {
+        ISTJ: {
+            p: "기준이 분명하고<br>실행력이 강한<br>원칙주의형", 
+            c: { t: "완벽한 통제형", s: 95 }, r: "책임감 있게<br>관계를<br>이끌어가는 연애",
+            sen: { t: "대체로 무던함", s: 20 }, atk: { t: "팩트 폭력기", s: 85 }, swt: { t: "은근한 다정함", s: 40 },
+            mtl: { t: "강철 멘탈", s: 90 }, emp: { t: "해결책 탐색형", s: 30 }, bat: { t: "혼자만의 휴식", s: 20 }
+        },
+        ISFJ: {
+            p: "따뜻하고 세심하게<br>소중한 사람을 지키는<br>헌신형",
+            c: { t: "안정 추구형", s: 80 }, r: "서로에게 스며드는<br>안정적이고<br>다정한 연애",
+            sen: { t: "섬세한 감수성", s: 75 }, atk: { t: "방어기제 발동", s: 30 }, swt: { t: "다정함의 표본", s: 95 },
+            mtl: { t: "외부 자극에 취약", s: 40 }, emp: { t: "깊은 공감형", s: 90 }, bat: { t: "소수 정예 충전", s: 35 }
+        },
+        INFJ: {
+            p: "통찰력이 뛰어나고<br>조용하지만 강한<br>신념형",
+            c: { t: "내면 통제형", s: 85 }, r: "정신적 교감이<br>무엇보다 중요한<br>운명적인 연애",
+            sen: { t: "초정밀 레이더", s: 90 }, atk: { t: "속으로 심판함", s: 50 }, swt: { t: "따뜻한 배려심", s: 85 },
+            mtl: { t: "겉바속촉 멘탈", s: 55 }, emp: { t: "감정 동기화", s: 95 }, bat: { t: "급속 방전형", s: 25 }
+        },
+        INTJ: {
+            p: "독립적이고 목표를<br>향해 직진하는<br>전략가형",
+            c: { t: "계획의 설계자", s: 90 }, r: "서로의 발전을<br>응원하고 돕는<br>성장형 연애",
+            sen: { t: "타격감 제로", s: 25 }, atk: { t: "논리적 팩트살인", s: 95 }, swt: { t: "선택적 다정함", s: 35 },
+            mtl: { t: "흔들림 없는 멘탈", s: 85 }, emp: { t: "원인 분석형", s: 20 }, bat: { t: "독고다이 스타일", s: 15 }
+        },
+        ISTP: {
+            p: "과묵하지만 뛰어난<br>관찰력을 가진<br>마이웨이형",
+            c: { t: "유연한 대처형", s: 30 }, r: "각자의 시간을<br>존중해 주는<br>자유로운 연애",
+            sen: { t: "극강의 무신경", s: 15 }, atk: { t: "귀찮아서 참음", s: 35 }, swt: { t: "무심한 츤데레", s: 50 },
+            mtl: { t: "다이아몬드 멘탈", s: 95 }, emp: { t: "영혼 없는 리액션", s: 15 }, bat: { t: "집 밖은 위험해", s: 25 }
+        },
+        ISFP: {
+            p: "온화하고 다정하며<br>현재를 한껏 즐기는<br>평화주의형",
+            c: { t: "물 흐르듯 살자", s: 20 }, r: "작은 이벤트에도<br>크게 감동하는<br>낭만적인 연애",
+            sen: { t: "풍부한 감수성", s: 80 }, atk: { t: "갈등 회피형", s: 10 }, swt: { t: "인간 순둥이", s: 85 },
+            mtl: { t: "상처를 잘 받음", s: 35 }, emp: { t: "조용한 끄덕임", s: 85 }, bat: { t: "이불 밖은 피곤", s: 30 }
+        },
+        INFP: {
+            p: "낭만적이고 확고한<br>가치관을 가진<br>이상주의형",
+            c: { t: "즉흥의 연속", s: 15 }, r: "마치 영화 속<br>주인공이 된 듯한<br>동화 같은 연애",
+            sen: { t: "눈물샘 폭발", s: 95 }, atk: { t: "마음속 상처만", s: 15 }, swt: { t: "다정다감의 끝", s: 90 },
+            mtl: { t: "쿠쿠다스 멘탈", s: 20 }, emp: { t: "과몰입 공감형", s: 98 }, bat: { t: "사람 만나면 방전", s: 20 }
+        },
+        INTP: {
+            p: "호기심이 많고<br>논리적인 사고를 하는<br>아이디어형",
+            c: { t: "규칙이 싫어", s: 25 }, r: "편안한 대화가<br>끊이지 않는<br>친구 같은 연애",
+            sen: { t: "둔감 보스", s: 15 }, atk: { t: "숨 막히는 팩트", s: 80 }, swt: { t: "로봇 같은 다정함", s: 30 },
+            mtl: { t: "남 눈치 안 봄", s: 80 }, emp: { t: "물음표 살인마", s: 20 }, bat: { t: "혼자가 제일 좋아", s: 10 }
+        },
+        ESTP: {
+            p: "뛰어난 적응력으로<br>스릴을 즐기는<br>행동파형",
+            c: { t: "임기응변의 달인", s: 40 }, r: "지루할 틈 없이<br>활동적이고<br>화끈한 연애",
+            sen: { t: "눈치는 빠름", s: 65 }, atk: { t: "강력한 매운맛", s: 85 }, swt: { t: "장난기 섞인 다정", s: 60 },
+            mtl: { t: "회복 탄력성 갑", s: 90 }, emp: { t: "해결 중심형", s: 40 }, bat: { t: "인간 에너자이저", s: 85 }
+        },
+        ESFP: {
+            p: "분위기를 주도하며<br>에너지가 넘치는<br>분위기 메이커형",
+            c: { t: "현재를 즐기는 편", s: 20 }, r: "매일매일이<br>새롭고 짜릿한<br>불꽃 같은 연애",
+            sen: { t: "분위기를 잘 탐", s: 80 }, atk: { t: "순한맛 평화주의", s: 20 }, swt: { t: "애교와 다정함", s: 90 },
+            mtl: { t: "초긍정 멘탈", s: 75 }, emp: { t: "리액션 최고봉", s: 85 }, bat: { t: "만날수록 충전", s: 95 }
+        },
+        ENFP: {
+            p: "열정적이고 새로운<br>경험을 추구하는<br>인간 스파크형",
+            c: { t: "자유로운 영혼", s: 15 }, r: "좋아하는 마음을<br>숨기지 않는<br>불도저 직진 연애",
+            sen: { t: "눈치 백단", s: 85 }, atk: { t: "화낼 줄 모름", s: 25 }, swt: { t: "걸어 다니는 햇살", s: 95 },
+            mtl: { t: "은근히 상처받음", s: 45 }, emp: { t: "폭풍 공감형", s: 90 }, bat: { t: "사람이 곧 에너지", s: 90 }
+        },
+        ENTP: {
+            p: "두뇌 회전이 빠르고<br>토론을 즐기는<br>발명가형",
+            c: { t: "유연한 사고방식", s: 30 }, r: "서로 자극을 주며<br>티키타카가 잘 맞는<br>밀당의 고수 연애",
+            sen: { t: "눈치 안 보고 삼", s: 20 }, atk: { t: "논리적 폭력", s: 90 }, swt: { t: "장난이 곧 애정", s: 50 },
+            mtl: { t: "무한 마이웨이", s: 85 }, emp: { t: "반박부터 하는 편", s: 25 }, bat: { t: "논쟁할 때 충전", s: 80 }
+        },
+        ESTJ: {
+            p: "효율을 중시하고<br>리더십이 뛰어난<br>사업가형",
+            c: { t: "확실한 통제형", s: 95 }, r: "미래를 함께<br>계획해 나가는<br>현실적인 연애",
+            sen: { t: "감정선이 무던함", s: 25 }, atk: { t: "초강력 팩트폭격", s: 95 }, swt: { t: "책임감 있는 다정", s: 45 },
+            mtl: { t: "무쇠 멘탈", s: 95 }, emp: { t: "해결책부터 제시", s: 25 }, bat: { t: "사회생활 만렙", s: 85 }
+        },
+        ESFJ: {
+            p: "사교적이고 친절해<br>타인을 잘 챙기는<br>친선도모형",
+            c: { t: "계획적인 준비형", s: 85 }, r: "상대방을 위해<br>최선을 다하는<br>헌신적인 연애",
+            sen: { t: "분위기 파악 고수", s: 90 }, atk: { t: "잔소리 폭격기", s: 60 }, swt: { t: "세심하게 챙겨줌", s: 95 },
+            mtl: { t: "인간관계에 취약", s: 45 }, emp: { t: "폭풍 리액션형", s: 90 }, bat: { t: "무한 배터리형", s: 90 }
+        },
+        ENFJ: {
+            p: "긍정적인 에너지를<br>주변에 전파하는<br>언변능숙형",
+            c: { t: "부드러운 통제형", s: 80 }, r: "상대의 장점을<br>끊임없이 칭찬하는<br>로맨티스트 연애",
+            sen: { t: "타인의 감정에 예민", s: 85 }, atk: { t: "부드러운 팩트", s: 40 }, swt: { t: "스윗함의 의인화", s: 95 },
+            mtl: { t: "회복 탄력성이 좋음", s: 70 }, emp: { t: "과몰입 공감형", s: 95 }, bat: { t: "만남이 곧 충전", s: 85 }
+        },
+        ENTJ: {
+            p: "단호하고 효율적인<br>결정을 내리는<br>통솔자형",
+            c: { t: "강력한 주도형", s: 95 }, r: "주도권을 가지고<br>이끌어가는<br>카리스마 연애",
+            sen: { t: "감정 낭비 안 함", s: 30 }, atk: { t: "논리적 팩트살인", s: 95 }, swt: { t: "목표 지향적 다정", s: 40 },
+            mtl: { t: "절대 안 무너짐", s: 90 }, emp: { t: "원인 분석 후 조언", s: 20 }, bat: { t: "워커홀릭형 충전", s: 85 }
+        }
+    };
+
+    function generateResultUI(mbti) {
+        document.getElementById('result-nickname').innerText = nickname;
+
+        const res = mbtiData[mbti];
+        
+        // 데이터가 혹시 누락되었을 경우를 대비한 안전 장치
+        if(!res) { alert('오류가 발생했습니다.'); return; }
+
+        renderCell('cell-personality', '성격', res.p, null);
+        renderCell('cell-control', '통제성향', res.c.t, res.c.s);
+        renderCell('cell-romance', '연애스타일', res.r, null);
+        
+        renderCell('cell-sensitivity', '예민미', res.sen.t, res.sen.s);
+        renderCell('cell-attack', '공격력', res.atk.t, res.atk.s);
+        renderCell('cell-sweet', '다정함', res.swt.t, res.swt.s);
+        
+        renderCell('cell-mental', '멘탈', res.mtl.t, res.mtl.s);
+        renderCell('cell-empathy', '공감력', res.emp.t, res.emp.s);
+        renderCell('cell-battery', '사회적배터리', res.bat.t, res.bat.s);
+
+        nextScreen('result-screen');
+    }
+</script>
+
+</body>
+</html>

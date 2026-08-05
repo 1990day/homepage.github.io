@@ -2890,11 +2890,7 @@
         ) {
           renderQuestion();
 
-          window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-          });
-
+          /* 질문이 바뀔 때 현재 스크롤 위치를 유지합니다. */
           return;
         }
 

@@ -1,0 +1,1572 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5522499110435321" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>테스트잇 통제광 종합 평가 테스트</title>
+  <meta name="description" content="테스트잇 통제광 종합 평가 테스트">
+  <meta name="keywords" content="테스트잇,통제광테스트,컨트롤프릭테스트,통제성향테스트,성격테스트,심리테스트">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="테스트잇 통제광 종합 평가 테스트">
+  <meta property="og:description" content="테스트잇 통제광 종합 평가 테스트">
+  <meta property="og:url" content="https://test-it.co.kr/test407">
+  <meta property="og:image" content="https://test-it.co.kr/img_main407.png">
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+
+  <style>
+    :root {
+      --black: #302a3d;
+      --paper: #faf7ff;
+      --line: #514763;
+      --red: #d6304a;
+      --blue: #6f50b5;
+      --soft: #eee6fb;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #e8def4;
+      color: var(--black);
+      font-family: "Times New Roman", "Batang", "바탕", "Nanum Myeongjo", serif;
+    }
+
+    button,
+    input {
+      font-family: inherit;
+    }
+
+    button {
+      cursor: pointer;
+      border: 0;
+      background: none;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .site-header {
+      width: 100%;
+      height: 56px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif;
+    }
+
+    .header-inner {
+      max-width: 540px;
+      height: 56px;
+      margin: 0 auto;
+      padding: 0 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 20px;
+      font-weight: 900;
+      letter-spacing: -1px;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 16px;
+      font-weight: 900;
+      letter-spacing: -0.6px;
+    }
+
+    .nav a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 36px;
+    }
+
+    .wrap {
+      max-width: 540px;
+      margin: 0 auto;
+      padding: 16px 10px 42px;
+    }
+
+    .screen {
+      display: none;
+    }
+
+    .screen.active {
+      display: block;
+    }
+
+    .exam-paper {
+      background:
+        radial-gradient(circle, rgba(0,0,0,0.02) 0 0.8px, transparent 1px),
+        linear-gradient(180deg, rgba(255,255,255,0.34), rgba(238,230,251,0.52)),
+        var(--paper);
+      background-size: 12px 12px, 100% 100%, 100% 100%;
+      border: 2px solid var(--line);
+      padding: 18px 14px;
+      box-shadow: 0 6px 18px rgba(48,42,61,0.12);
+      min-height: 640px;
+    }
+
+    .exam-inner {
+      border: 1.5px solid var(--line);
+      min-height: 590px;
+      padding: 18px 14px;
+      position: relative;
+    }
+
+    .paper-top {
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-start;
+      font-size: 12px;
+      line-height: 1.35;
+      font-weight: 700;
+      margin-bottom: 28px;
+    }
+
+    .paper-date {
+      text-align: right;
+    }
+
+    .main-image-box {
+      width: 100%;
+      background: #fff;
+      box-shadow: 0 8px 24px rgba(48,42,61,0.12);
+      overflow: hidden;
+      border: 2px solid var(--line);
+    }
+
+    .main-image {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      background: #fff;
+    }
+
+    .btn {
+      width: 100%;
+      height: 54px;
+      border: 2px solid var(--line);
+      background: var(--line);
+      color: #fff;
+      font-size: 17px;
+      font-weight: 900;
+      margin-top: 13px;
+      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      line-height: 1;
+    }
+
+    .btn.white {
+      background: var(--paper);
+      color: var(--line);
+      border: 1.5px solid var(--line);
+      height: 50px;
+      margin-top: 9px;
+    }
+
+    .name-paper {
+      min-height: 0;
+      padding-bottom: 14px;
+    }
+
+    .name-inner {
+      min-height: 0;
+      padding-bottom: 24px;
+    }
+
+    .name-title {
+      margin: 44px 0 24px;
+      text-align: center;
+      font-size: 38px;
+      line-height: 1.18;
+      font-weight: 900;
+      letter-spacing: -2px;
+    }
+
+    .name-wrap {
+      width: 86%;
+      margin: 0 auto;
+    }
+
+    .name-label {
+      display: block;
+      text-align: center;
+      font-size: 21px;
+      font-weight: 900;
+      margin-bottom: 10px;
+    }
+
+    .name-input {
+      width: 100%;
+      height: 52px;
+      border: 1.5px solid var(--line);
+      background: rgba(255,255,255,0.72);
+      text-align: center;
+      font-size: 23px;
+      font-weight: 900;
+      outline: none;
+      color: var(--black);
+    }
+
+    .name-input::placeholder {
+      color: #a69caf;
+    }
+
+    .guide-box {
+      width: 90%;
+      margin: 24px auto 0;
+      border: 1.5px solid var(--line);
+      background: rgba(255,255,255,0.48);
+      padding: 13px;
+      font-size: 16px;
+      line-height: 1.58;
+      font-weight: 700;
+      word-break: keep-all;
+    }
+
+    .progress-box {
+      background:
+        radial-gradient(circle, rgba(0,0,0,0.02) 0 0.8px, transparent 1px),
+        var(--paper);
+      background-size: 12px 12px;
+      border: 1.5px solid var(--line);
+      padding: 10px;
+      margin-bottom: 10px;
+      box-shadow: 0 4px 12px rgba(48,42,61,0.1);
+      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif;
+    }
+
+    .progress-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 8px;
+      margin-bottom: 8px;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .progress-track {
+      width: 100%;
+      height: 9px;
+      border: 1px solid var(--line);
+      background: #fff;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      width: 0;
+      height: 100%;
+      background: var(--line);
+      transition: width 0.2s ease;
+    }
+
+    .omr {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 3px;
+      margin-top: 8px;
+    }
+
+    .omr span {
+      height: 18px;
+      border: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+      font-weight: 900;
+      background: #fff;
+    }
+
+    .omr span.done {
+      background: var(--line);
+      color: #fff;
+    }
+
+    .omr span.now {
+      background: #d9c7f3;
+    }
+
+    .question-paper {
+      min-height: 0;
+      padding-bottom: 12px;
+    }
+
+    .question-inner {
+      min-height: 0;
+      padding-bottom: 12px;
+    }
+
+    .question-head {
+      text-align: center;
+      border-bottom: 1.5px solid var(--line);
+      padding-bottom: 14px;
+      margin-bottom: 22px;
+    }
+
+    .question-small-title {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+
+    .question-subject {
+      font-size: 36px;
+      line-height: 1.08;
+      font-weight: 900;
+      letter-spacing: -2px;
+    }
+
+    .question-info {
+      width: 82%;
+      margin: 18px auto 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .student-field {
+      display: grid;
+      grid-template-columns: 49px 1fr;
+      height: 34px;
+      border: 1.5px solid var(--line);
+      background: rgba(255,255,255,0.52);
+    }
+
+    .student-field span {
+      border-right: 1.5px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .student-field b {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .question-text-box {
+      border: 2px solid var(--line);
+      background: rgba(255,255,255,0.74);
+      padding: 15px 13px;
+      margin-bottom: 16px;
+    }
+
+    .question-text {
+      margin: 0;
+      font-size: 22px;
+      line-height: 1.42;
+      font-weight: 900;
+      letter-spacing: -0.9px;
+      word-break: keep-all;
+    }
+
+    .q-number {
+      display: inline-block;
+      font-size: 29px;
+      font-weight: 900;
+      margin-right: 6px;
+    }
+
+    .choice-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .choice-btn {
+      width: 100%;
+      min-height: 64px;
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      align-items: stretch;
+      text-align: left;
+      color: var(--black);
+      background: #fff;
+      border: 2px solid var(--line);
+      box-shadow: 3px 3px 0 rgba(81,71,99,0.16);
+      overflow: hidden;
+    }
+
+    .choice-no {
+      border-right: 2px solid var(--line);
+      background: var(--soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      line-height: 1;
+      font-weight: 900;
+    }
+
+    .choice-text {
+      display: flex;
+      align-items: center;
+      padding: 11px 12px;
+      font-size: 16px;
+      line-height: 1.34;
+      font-weight: 900;
+      letter-spacing: -0.65px;
+      word-break: keep-all;
+    }
+
+    .choice-btn:hover,
+    .choice-btn:active {
+      background: #f4effb;
+    }
+
+    .question-note {
+      border-top: 1px solid var(--line);
+      margin-top: 18px;
+      padding-top: 10px;
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      font-size: 12px;
+      color: #555;
+      font-weight: 800;
+      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif;
+    }
+
+    .ad-wrap {
+      width: 100%;
+      margin: 18px auto 0;
+      padding: 0;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .ad-wrap iframe,
+    .ad-wrap div,
+    .ad-wrap ins {
+      max-width: 100%;
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+
+
+    .loading-paper {
+      min-height: 520px;
+    }
+
+    .loading-inner {
+      min-height: 470px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 24px 14px;
+    }
+
+    .loading-box {
+      width: 88%;
+      border: 2px solid var(--line);
+      background: rgba(255,255,255,0.58);
+      padding: 34px 18px;
+      position: relative;
+    }
+
+    .loading-box::before,
+    .loading-box::after {
+      content: "";
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      height: 1.5px;
+      background: var(--line);
+    }
+
+    .loading-box::before {
+      top: 18px;
+    }
+
+    .loading-box::after {
+      bottom: 18px;
+    }
+
+    .loading-title {
+      font-size: 34px;
+      line-height: 1.2;
+      font-weight: 900;
+      letter-spacing: -2px;
+      margin-bottom: 18px;
+    }
+
+    .loading-desc {
+      font-size: 16px;
+      line-height: 1.55;
+      font-weight: 800;
+      margin-bottom: 22px;
+    }
+
+    .loading-stamp {
+      width: 82px;
+      height: 82px;
+      border: 5px solid var(--red);
+      border-radius: 50%;
+      color: var(--red);
+      margin: 0 auto 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 19px;
+      line-height: 1.08;
+      font-weight: 900;
+      transform: rotate(-9deg);
+      opacity: 0.9;
+      animation: stampPop 1.1s ease-in-out infinite;
+    }
+
+    .loading-dots {
+      display: flex;
+      justify-content: center;
+      gap: 9px;
+    }
+
+    .loading-dots span {
+      width: 10px;
+      height: 10px;
+      border: 1.5px solid var(--line);
+      border-radius: 50%;
+      background: #fff;
+      animation: dotFill 1.2s ease-in-out infinite;
+    }
+
+    .loading-dots span:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .loading-dots span:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+
+    @keyframes stampPop {
+      0%, 100% {
+        transform: rotate(-9deg) scale(1);
+      }
+
+      50% {
+        transform: rotate(-9deg) scale(1.06);
+      }
+    }
+
+    @keyframes dotFill {
+      0%, 100% {
+        background: #fff;
+      }
+
+      50% {
+        background: var(--line);
+      }
+    }
+
+    .result-capture {
+      width: 100%;
+      max-width: 420px;
+      margin: 0 auto;
+      background:
+        radial-gradient(circle, rgba(0,0,0,0.02) 0 0.8px, transparent 1px),
+        linear-gradient(180deg, rgba(255,255,255,0.34), rgba(238,230,251,0.52)),
+        var(--paper);
+      background-size: 12px 12px, 100% 100%, 100% 100%;
+      border: 2px solid var(--line);
+      padding: 12px;
+      box-shadow: 0 6px 18px rgba(48,42,61,0.14);
+    }
+
+    .result-inner {
+      border: 1.5px solid var(--line);
+      padding: 17px 12px 20px;
+      position: relative;
+      min-height: 520px;
+    }
+
+    .stamp-mini {
+      position: absolute;
+      right: 6px;
+      top: 6px;
+      width: 34px;
+      height: 34px;
+      border: 2.5px solid var(--red);
+      border-radius: 50%;
+      color: var(--red);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 7px;
+      line-height: 1.05;
+      font-weight: 900;
+      transform: rotate(-8deg);
+      opacity: 0.88;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .result-title {
+      text-align: center;
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.25;
+      font-weight: 900;
+      letter-spacing: -0.8px;
+      padding: 0 42px;
+    }
+
+  .result-title strong {
+  display: block;
+  margin-top: 5px;
+  font-size: 20px;
+  line-height: 1.1;
+  letter-spacing: -1.8px;
+  white-space: nowrap;
+}
+
+    .result-student {
+      width: 88%;
+      margin: 20px auto 18px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .score-title {
+      text-align: center;
+      margin: 0 0 12px;
+      font-size: 18px;
+      font-weight: 900;
+    }
+
+    .result-grid {
+      width: 92%;
+      margin: 0 auto 18px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border: 1.5px solid var(--line);
+      background: rgba(255,255,255,0.42);
+    }
+
+    .result-cell {
+      min-height: 92px;
+      border-right: 1.5px solid var(--line);
+      border-bottom: 1.5px solid var(--line);
+      padding: 12px 8px 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .result-cell:nth-child(2),
+    .result-cell:nth-child(4) {
+      border-right: 0;
+    }
+
+    .result-cell:nth-child(3),
+    .result-cell:nth-child(4) {
+      border-bottom: 0;
+    }
+
+    .result-area {
+      font-size: 16px;
+      font-weight: 900;
+      letter-spacing: -0.7px;
+      margin-bottom: 12px;
+    }
+
+    .marked-letter {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      line-height: 1;
+      font-weight: 900;
+      color: var(--black);
+      min-width: 86px;
+      height: 26px;
+      text-align: center;
+      letter-spacing: -0.7px;
+      white-space: nowrap;
+    }
+
+    .marked-letter::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 58px;
+      height: 28px;
+      border: 3px solid var(--red);
+      border-radius: 50%;
+      transform: translate(-50%, -50%) rotate(-10deg);
+      opacity: 0.92;
+      pointer-events: none;
+    }
+
+    .total-box {
+      width: 92%;
+      margin: 0 auto 18px;
+      border: 1.5px solid var(--line);
+      background: rgba(255,255,255,0.5);
+      padding: 14px 12px 15px;
+      text-align: center;
+    }
+
+    .total-label {
+      font-size: 17px;
+      font-weight: 900;
+      margin-bottom: 13px;
+    }
+
+    .total-letter {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 124px;
+      height: 32px;
+      font-size: 21px;
+      line-height: 1;
+      font-weight: 900;
+      color: var(--black);
+      letter-spacing: -0.8px;
+      white-space: nowrap;
+    }
+
+    .total-letter::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 82px;
+      height: 36px;
+      border: 4px solid var(--red);
+      border-radius: 50%;
+      transform: translate(-50%, -50%) rotate(-9deg);
+      opacity: 0.92;
+      pointer-events: none;
+    }
+
+    .blue {
+      color: var(--blue);
+    }
+
+    .comment-title {
+      text-align: center;
+      margin: 0 0 10px;
+      font-size: 18px;
+      font-weight: 900;
+    }
+
+    .comment-text {
+      width: 94%;
+      margin: 0 auto;
+      text-align: center;
+      font-size: 14px;
+      line-height: 1.65;
+      font-weight: 900;
+      word-break: keep-all;
+    }
+
+    .result-buttons {
+      display: grid;
+      gap: 0;
+      margin-top: 14px;
+    }
+
+    .save-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: rgba(48,42,61,0.8);
+      padding: 22px 14px;
+      align-items: center;
+      justify-content: center;
+      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif;
+    }
+
+    .save-modal.active {
+      display: flex;
+    }
+
+    .save-modal-box {
+      width: 100%;
+      max-width: 420px;
+      background: var(--paper);
+      border: 2px solid var(--line);
+      padding: 14px;
+      text-align: center;
+    }
+
+    .save-modal-title {
+      font-size: 17px;
+      line-height: 1.45;
+      font-weight: 900;
+      margin: 0 0 10px;
+    }
+
+    .save-modal-desc {
+      font-size: 13px;
+      line-height: 1.5;
+      font-weight: 700;
+      color: #555;
+      margin: 0 0 12px;
+    }
+
+    .save-preview {
+      width: auto;
+      max-width: 86%;
+      max-height: 58vh;
+      object-fit: contain;
+      border: 1.5px solid var(--line);
+      background: var(--paper);
+      display: block;
+      margin: 0 auto 12px;
+    }
+
+    .modal-close {
+      width: 100%;
+      height: 46px;
+      border: 1.5px solid var(--line);
+      background: var(--line);
+      color: #fff;
+      font-size: 15px;
+      font-weight: 900;
+    }
+
+    @media (max-width: 420px) {
+      .wrap {
+        padding: 12px 7px 34px;
+      }
+
+      .exam-paper {
+        padding: 13px 9px;
+      }
+
+      .exam-inner {
+        padding: 14px 9px;
+      }
+
+      .name-title {
+        margin-top: 38px;
+        font-size: 32px;
+      }
+
+      .question-subject {
+        font-size: 30px;
+      }
+
+      .question-info {
+        width: 96%;
+        gap: 7px;
+      }
+
+      .student-field {
+        grid-template-columns: 45px 1fr;
+      }
+
+      .student-field span,
+      .student-field b {
+        font-size: 13px;
+      }
+
+      .question-text {
+        font-size: 18px;
+        line-height: 1.43;
+      }
+
+      .q-number {
+        font-size: 27px;
+      }
+
+      .choice-btn {
+        min-height: 60px;
+        grid-template-columns: 42px 1fr;
+      }
+
+      .choice-no {
+        font-size: 18px;
+      }
+
+      .choice-text {
+        font-size: 14px;
+        line-height: 1.33;
+        padding: 10px 10px;
+      }
+
+      .result-title strong {
+          font-size: 19px;
+    letter-spacing: -1.8px;
+    white-space: nowrap;
+      }
+
+      .marked-letter {
+        font-size: 13px;
+        min-width: 80px;
+        height: 24px;
+        letter-spacing: -0.9px;
+      }
+
+      .marked-letter::before {
+        width: 56px;
+        height: 27px;
+        border-width: 3px;
+      }
+
+      .total-letter {
+        font-size: 20px;
+        min-width: 116px;
+        height: 30px;
+        letter-spacing: -0.9px;
+      }
+
+      .total-letter::before {
+        width: 78px;
+        height: 34px;
+        border-width: 3.5px;
+      }
+    }
+
+    .result-level {
+      margin-top: 8px;
+      font-size: 11px;
+      line-height: 1.25;
+      font-weight: 900;
+      color: #6d6378;
+      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif;
+      text-align: center;
+      word-break: keep-all;
+    }
+
+    .total-grade {
+      margin-top: 14px;
+      font-size: 14px;
+      line-height: 1.3;
+      font-weight: 900;
+      color: var(--blue);
+      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="https://test-it.co.kr/" class="logo">테스트잇</a>
+      <nav class="nav">
+        <a href="https://test-it.co.kr/test.html">성격</a>
+          <a href="https://test-it.co.kr/face.html">얼굴</a>
+          <a href="https://test-it.co.kr/etc.html">그외</a>
+          <a href="https://test-it.co.kr/saju.html">사주</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section id="mainScreen" class="screen active">
+      <div class="main-image-box">
+        <img class="main-image" src="img_main407.png" alt="테스트잇 통제광 종합 평가 테스트">
+      </div>
+
+      <button class="btn" onclick="goName()">테스트 시작하기</button>
+    </section>
+
+    <section id="nameScreen" class="screen">
+      <div class="exam-paper name-paper">
+        <div class="exam-inner name-inner">
+          <div class="paper-top">
+            <div class="paper-date">
+              응시자 정보 작성란<br>
+              테스트잇 통제광 종합 평가
+            </div>
+          </div>
+
+          <h2 class="name-title">
+            응시자<br>
+            닉네임 작성
+          </h2>
+
+          <div class="name-wrap">
+            <label class="name-label" for="nicknameInput">성명</label>
+            <input
+              id="nicknameInput"
+              class="name-input"
+              type="text"
+              maxlength="12"
+              placeholder="여기에 입력해주세요"
+              autocomplete="off"
+            >
+          </div>
+
+          <div class="guide-box">
+            ○ 기본 총 12문항입니다.<br>
+            ○ 일·학업, 연애, 친구, 가족 영역별로 출제됩니다.<br>
+            ○ 각 문항에서 3개의 보기 중 하나를 고르십시오.
+          </div>
+        </div>
+
+        <button class="btn" onclick="startTest()">시험 응시하기</button>
+        <button class="btn white" onclick="goMain()">처음으로</button>
+      </div>
+    </section>
+
+    <section id="questionScreen" class="screen">
+      <div class="progress-box">
+        <div class="progress-top">
+          <span>테스트잇 통제광 종합 평가 테스트</span>
+          <span id="progressText">1 / 12</span>
+        </div>
+        <div class="progress-track">
+          <div id="progressFill" class="progress-fill"></div>
+        </div>
+        <div id="omr" class="omr"></div>
+      </div>
+
+      <div class="exam-paper question-paper">
+        <div class="exam-inner question-inner">
+          <div class="question-head">
+            <div class="question-small-title">2026학년도 테스트잇 모의고사</div>
+            <div id="questionSubject" class="question-subject">일·학업 영역</div>
+
+            <div class="question-info">
+              <div class="student-field">
+                <span>성명</span>
+                <b id="questionName">응시자</b>
+              </div>
+              <div class="student-field">
+                <span>문항</span>
+                <b id="questionCount">1 / 12</b>
+              </div>
+            </div>
+          </div>
+
+          <div class="question-text-box">
+            <p id="questionText" class="question-text"></p>
+          </div>
+
+          <div id="choiceList" class="choice-list"></div>
+
+          <div class="question-note">
+            <span>※ 선택하면 다음 문항으로 넘어갑니다.</span>
+            <span>정답 없음</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="loadingScreen" class="screen">
+      <div class="exam-paper loading-paper">
+        <div class="exam-inner loading-inner">
+          <div class="loading-box">
+            <div class="loading-stamp">채점<br>중</div>
+            <div class="loading-title">답안 채점 중</div>
+            <div class="loading-desc">
+              선택한 답안을 기준으로<br>
+              영역별 통제 성향을 채점하고 있습니다.
+            </div>
+            <div class="loading-dots">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="resultScreen" class="screen">
+      <div id="resultCapture" class="result-capture">
+        <div class="result-inner">
+          <div class="stamp-mini">채점<br>완료</div>
+
+          <h2 class="result-title">
+            2026학년도 테스트잇 모의고사
+            <strong>통제광 종합 평가 채점지</strong>
+          </h2>
+
+          <div class="result-student">
+            <div class="student-field">
+              <span>성명</span>
+              <b id="resultName">응시자</b>
+            </div>
+            <div class="student-field">
+              <span>번호</span>
+              <b>407-CTRL</b>
+            </div>
+          </div>
+
+          <h3 class="score-title">영역별 채점 결과</h3>
+
+          <div id="resultGrid" class="result-grid"></div>
+
+          <div class="total-box">
+            <div class="total-label">최종 통제력</div>
+            <div id="totalLetter" class="total-letter">0점</div>
+            <div id="totalGrade" class="total-grade">통제 거의 없음</div>
+          </div>
+
+          <h3 class="comment-title">결과 해설</h3>
+          <p id="resultComment" class="comment-text"></p>
+        </div>
+      </div>
+
+      <div class="result-buttons">
+        <button class="btn" onclick="saveResultImage()">결과 이미지 저장하기</button>
+        <button class="btn white" onclick="restartTest()">다시 해보기</button>
+        <a class="btn white" href="https://test-it.co.kr/">다른 테스트 해보기</a>
+        <button class="btn white" onclick="shareTest()">테스트 공유하기</button>
+      </div>
+    </section>
+
+    <div class="ad-wrap">
+      <script src="https://ads-partners.coupang.com/g.js"></script>
+      <script>
+        new PartnersCoupang.G({
+          id: 798186,
+          template: "carousel",
+          trackingCode: "AF4391881",
+          width: "350",
+          height: "140"
+        });
+      </script>
+    </div>
+  </main>
+
+  <div id="saveModal" class="save-modal">
+    <div class="save-modal-box">
+      <p class="save-modal-title">결과 이미지가 만들어졌어요</p>
+      <p class="save-modal-desc">아래 이미지를 꾹 눌러 저장해주세요.</p>
+      <img id="savePreview" class="save-preview" alt="결과 이미지 미리보기">
+      <button class="modal-close" onclick="closeSaveModal()">닫기</button>
+    </div>
+  </div>
+
+
+  <script>
+    const TEST_TITLE = '테스트잇 통제광 종합 평가 테스트';
+    const TEST_URL = 'https://test-it.co.kr/test407';
+
+    const categoryInfo = {
+      work: { name: '일·학업', subject: '일·학업 영역' },
+      lover: { name: '연애', subject: '연애 영역' },
+      friend: { name: '친구', subject: '친구 영역' },
+      family: { name: '가족', subject: '가족 영역' }
+    };
+
+    const orderKeys = ['work', 'lover', 'friend', 'family'];
+
+    const questions = {
+      work: [
+        {
+          title: '팀 과제나 업무를 할 때\n어떻게 진행하는 게 편한가?',
+          options: [
+           { score: 2, text: '내가 순서랑 역할을 정해주는 것' },
+            { score: 1, text: '큰 틀만 같이 잡고 알아서 하는 것' },
+            { score: 0, text: '그냥 누가 시키는 대로 하는 것' }
+          ]
+        },
+        {
+          title: '같이 일하는 사람이\n비효율적으로 일을 하고 있다면?',
+          options: [
+            { score: 2, text: '답답한 마음에 내가 직접 한다' },
+            { score: 1, text: '이렇게 해보는 건 어떤지 슬쩍 말한다' },
+            { score: 0, text: '어찌 됐든 끝나기만 하면 돼서 내버려둔다' }
+          ]
+        },
+        {
+              title: '팀원이 자기 파트 진행 상황을\n공유 안 하고 있을 때 나는?',
+          options: [
+        { score: 2, text: "어디까지 했냐고 주기적으로 체크하고 독촉함" },
+            { score: 1, text: "중간 점검 날짜에 한 번 물어봄" },
+            { score: 0, text: "마감날 제출하면 그만이지 하고 둠" }
+          ]
+        }
+      ],
+
+      lover: [
+        {
+    title: '애인이 친구들이랑 논다며\n나갔을 때 내 머릿속은?',
+          options: [
+            { score: 2, text: '누구랑 어디서 뭘 하는지 다 알아야 직성 풀림' },
+            { score: 1, text: '누구 만나는지 장소 정도만 알면 충분함' },
+            { score: 0, text: '잘 놀겠거니 하고 연락 올 때까지 내 할 일 함' }
+          ]
+        },
+        {
+           title: '애인이 나랑 상의 없이\n혼자 큰 결정을 해버렸다',
+          options: [
+            { score: 2, text: '나한테 허락 안 받은 게 화나서 따진다' },
+            { score: 1, text: '서운하니까 다음엔 꼭 미리 말해달라고 한다' },
+            { score: 0, text: '자기 일이니까 자기가 알아서 하는 거지 싶다' }
+          ]
+        },
+        {
+    title: "애인의 식습관이나 생활 패턴이\n너무 별로일 때 나는?",
+          options: [
+            { score: 2, text: "건강과 미래를 위해 내가 시키는 대로 바꾸게 함" },
+            { score: 1, text: "좋은 습관 들이자고 옆에서 같이 유도함" },
+            { score: 0, text: "성인인데 알아서 하겠지 하고 냅둠" }
+          ]
+        }
+      ],
+
+      friend: [
+        {
+          title: '친구들과 여행 계획을 짜는데\n의견이 다 다르다면?',
+          options: [
+            { score: 2, text: '내가 일정과 동선을 정하고 싶다' },
+            { score: 0, text: '친구들이 정한 대로 따라간다' },
+            { score: 1, text: '내 의견은 말하되 같이 정한다' }
+          ]
+        },
+        {
+      title: "친구가 큰돈을 쓰려고 하는데\n내가 보기엔 너무 아까울 때?",
+  options: [
+    { score: 2, text: "사지 말라고 계속 말려서 포기하게 함" },
+    { score: 1, text: "정말 필요한지 한 번 더 물어봄" },
+    { score: 0, text: "자기 돈이니 친구 선택에 맡김" }
+          ]
+        },
+        {
+        title: '식당에서 메뉴 고르는데\n내 취향이랑 친구들 의견이 다를 때?',
+          options: [
+            { score: 2, text: '내 메뉴가 찐이라고 끝까지 설득해서 바꿈' },
+            { score: 1, text: '내 취향 한번 어필해 보고 다수결 따름' },
+            { score: 0, text: '아무거나 다 잘 먹어서 상관없음' }
+          ]
+        }
+      ],
+
+      family: [
+        {
+    title: "가족이 집안일을 해뒀는데\n내 기준에 안 차게 해놨을 때 나는?",
+          options: [
+            { score: 2, text: "마음에 안 들어서 내가 전부 다 다시 함" },
+            { score: 1, text: "다음엔 이렇게 해달라고 알려줌" },
+            { score: 0, text: "해주기만 한 것도 어디냐며 냅둠" }
+          ]
+        },
+        {
+      title: "가족이랑 밥을 먹는데\n가족의 식사예절이 거슬릴 때 나는?",
+          options: [
+            { score: 2, text: "쩝쩝대지 마라 등등 하나하나 지적함" },
+            { score: 1, text: "심할 때만 한번 조심하라고 함" },
+            { score: 0, text: "밥만 잘 먹으면 신경 안 씀" }
+          ]
+        },
+        {
+     title: "가족 외식이나 배달 음식\n메뉴 고를 때 내 모습은?",
+          options: [
+            { score: 2, text: "무조건 내가 정한 메뉴로 시키게 유도함" },
+            { score: 1, text: "각자 먹고 싶은 거 하나씩 골라서 맞춤" },
+            { score: 0, text: "가족들이 시키는 거 아무거나 먹음" }
+          ]
+        }
+      ]
+    };
+
+    let nickname = '';
+    let catIndex = 0;
+    let qIndexInCat = 0;
+    let totalAnswered = 0;
+
+    let scores = {
+      work: 0,
+      lover: 0,
+      friend: 0,
+      family: 0
+    };
+
+    const mainScreen = document.getElementById('mainScreen');
+    const nameScreen = document.getElementById('nameScreen');
+    const questionScreen = document.getElementById('questionScreen');
+    const loadingScreen = document.getElementById('loadingScreen');
+    const resultScreen = document.getElementById('resultScreen');
+
+    const numberIcons = ['①', '②', '③'];
+
+    function formatText(text) {
+      return String(text).replace(/\n/g, '<br>');
+    }
+
+    function showScreen(screen) {
+      [mainScreen, nameScreen, questionScreen, loadingScreen, resultScreen].forEach(item => {
+        item.classList.remove('active');
+      });
+      screen.classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function goMain() {
+      showScreen(mainScreen);
+    }
+
+    function goName() {
+      showScreen(nameScreen);
+      setTimeout(() => {
+        document.getElementById('nicknameInput').focus();
+      }, 100);
+    }
+
+    function startTest() {
+      const input = document.getElementById('nicknameInput');
+      nickname = input.value.trim();
+
+      if (!nickname) {
+        alert('응시자 닉네임을 적어주세요.');
+        input.focus();
+        return;
+      }
+
+      catIndex = 0;
+      qIndexInCat = 0;
+      totalAnswered = 0;
+      scores = { work: 0, lover: 0, friend: 0, family: 0 };
+
+      renderQuestion();
+      showScreen(questionScreen);
+    }
+
+    function renderQuestion() {
+      const catKey = orderKeys[catIndex];
+      const category = categoryInfo[catKey];
+      const qData = questions[catKey][qIndexInCat];
+      const displayNum = totalAnswered + 1;
+      const percent = Math.round((totalAnswered / 12) * 100);
+
+      document.getElementById('questionSubject').textContent = category.subject;
+      document.getElementById('questionName').textContent = nickname;
+      document.getElementById('progressText').textContent = `${displayNum} / 12`;
+      document.getElementById('questionCount').textContent = `${displayNum} / 12`;
+      document.getElementById('progressFill').style.width = `${percent}%`;
+      document.getElementById('questionText').innerHTML = `<span class="q-number">${displayNum}.</span>${formatText(qData.title)}`;
+
+      document.getElementById('choiceList').innerHTML = qData.options.map((option, index) => `
+        <button class="choice-btn" onclick="selectAnswer(${option.score})">
+          <span class="choice-no">${numberIcons[index]}</span>
+          <span class="choice-text">${formatText(option.text)}</span>
+        </button>
+      `).join('');
+
+      let omrHtml = '';
+      for (let i = 0; i < 12; i++) {
+        let cls = '';
+        if (i < totalAnswered) cls = 'done';
+        if (i === totalAnswered) cls = 'now';
+        omrHtml += `<span class="${cls}">${i + 1}</span>`;
+      }
+      document.getElementById('omr').innerHTML = omrHtml;
+    }
+
+    function selectAnswer(score) {
+      const catKey = orderKeys[catIndex];
+      scores[catKey] += Number(score);
+      qIndexInCat++;
+      totalAnswered++;
+
+      if (totalAnswered >= 12) {
+        showLoading();
+        return;
+      }
+
+      if (qIndexInCat >= 3) {
+        catIndex++;
+        qIndexInCat = 0;
+        renderQuestion();
+      } else {
+        renderQuestion();
+      }
+    }
+
+    function showLoading() {
+      document.getElementById('progressFill').style.width = '100%';
+      showScreen(loadingScreen);
+      setTimeout(() => {
+        renderResult();
+      }, 3000);
+    }
+
+    function scoreToPercent(rawScore) {
+      return Math.round((rawScore / 6) * 100);
+    }
+
+    function getLevel(score) {
+      if (score <= 24) return '통제 거의 없음';
+      if (score <= 49) return '통제 낮은 편';
+      if (score <= 74) return '통제 높은 편';
+      return '통제광';
+    }
+
+    function getOverallGrade(score) {
+      if (score <= 24) return '자유로운 편';
+      if (score <= 49) return '필요할 때만 통제';
+      if (score <= 74) return '통제 강한 편';
+      return '통제광';
+    }
+
+    function getComment(score) {
+      if (score <= 24) {
+        return '상황이나 사람을 내 뜻대로 움직이게 하려는 성향이 낮은 편입니다. 계획이 달라지거나 상대가 다른 선택을 해도 비교적 자연스럽게 받아들이는 편입니다.';
+      }
+      if (score <= 49) {
+        return '평소에는 상대의 방식과 선택을 존중하지만, 중요하다고 느끼는 상황에서는 어느 정도 주도권을 잡으려는 편입니다. 통제가 꼭 필요할 때와 그냥 맡겨도 될 때를 비교적 잘 구분합니다.';
+      }
+      if (score <= 74) {
+        return '내가 상황을 파악하고 방향을 정해야 마음이 놓이는 편입니다. 계획이 틀어지거나 상대가 예상과 다르게 움직이면 답답함을 느끼기 쉽고, 가까운 관계일수록 간섭이 늘어날 수 있습니다.';
+      }
+      return '내가 직접 확인하고 정리하고 결정해야 마음이 놓이는 성향이 매우 강합니다. 사람이나 상황이 예상대로 움직이지 않으면 스트레스를 크게 받을 수 있고, 나도 모르게 상대의 선택까지 관리하려 들 수 있습니다.';
+    }
+
+    function renderResult() {
+      document.getElementById('resultName').textContent = nickname;
+
+      const percentages = {};
+      let totalRaw = 0;
+      let gridHtml = '';
+
+      orderKeys.forEach(key => {
+        const score = scoreToPercent(scores[key]);
+        percentages[key] = score;
+        totalRaw += scores[key];
+
+        gridHtml += `
+          <div class="result-cell">
+            <div class="result-area">${categoryInfo[key].name} 통제력</div>
+            <div class="marked-letter">${score}점</div>
+            <div class="result-level">${getLevel(score)}</div>
+          </div>
+        `;
+      });
+
+      document.getElementById('resultGrid').innerHTML = gridHtml;
+
+      const overallScore = Math.round((totalRaw / 24) * 100);
+      const overallGrade = getOverallGrade(overallScore);
+
+      document.getElementById('totalLetter').textContent = `${overallScore}점`;
+      document.getElementById('totalGrade').textContent = `통제광 등급 · ${overallGrade}`;
+
+      const highestScore = Math.max(...orderKeys.map(key => percentages[key]));
+      const highestKeys = orderKeys.filter(key => percentages[key] === highestScore);
+      const highestNames = highestKeys.map(key => categoryInfo[key].name);
+
+      let comment = `${nickname}님의 최종 통제력은 <span class="blue">${overallScore}점</span>입니다.<br>`;
+
+      if (highestKeys.length === 1) {
+        comment += `가장 통제 성향이 높게 나타난 영역은 <span class="blue">${highestNames[0]}</span>입니다.<br><br>`;
+      } else if (highestKeys.length === orderKeys.length) {
+        comment += `<span class="blue">모든 영역이 같은 점수</span>로 나타났습니다.<br><br>`;
+      } else {
+        comment += `통제 성향이 가장 높은 영역은 <span class="blue">${highestNames.join(' · ')}</span>으로 <span class="blue">공동 1위</span>입니다.<br><br>`;
+      }
+
+      comment += getComment(overallScore);
+
+      document.getElementById('resultComment').innerHTML = comment;
+      showScreen(resultScreen);
+    }
+
+    function restartTest() {
+      catIndex = 0;
+      qIndexInCat = 0;
+      totalAnswered = 0;
+      scores = { work: 0, lover: 0, friend: 0, family: 0 };
+      document.getElementById('nicknameInput').value = '';
+      showScreen(mainScreen);
+    }
+
+    async function saveResultImage() {
+      const target = document.getElementById('resultCapture');
+
+      try {
+        const canvas = await html2canvas(target, {
+          scale: 2,
+          useCORS: true,
+          backgroundColor: '#faf7ff',
+          scrollX: 0,
+          scrollY: -window.scrollY,
+          ignoreElements: function(element) {
+            return element.classList && element.classList.contains('ad-wrap');
+          },
+          onclone: function(clonedDoc) {
+            const clonedTarget = clonedDoc.getElementById('resultCapture');
+
+            clonedDoc.querySelectorAll('img').forEach(function(img) {
+              if (!clonedTarget || !clonedTarget.contains(img)) {
+                img.removeAttribute('src');
+                img.removeAttribute('srcset');
+                img.removeAttribute('onerror');
+              }
+            });
+          }
+        });
+
+        const imageUrl = canvas.toDataURL('image/png');
+        document.getElementById('savePreview').src = imageUrl;
+        document.getElementById('saveModal').classList.add('active');
+      } catch (e) {
+        console.error('결과 이미지 저장 오류:', e);
+        alert('이미지 저장 중 오류가 발생했어요. 다시 시도해주세요.');
+      }
+    }
+
+    function closeSaveModal() {
+      document.getElementById('saveModal').classList.remove('active');
+    }
+
+    async function shareTest() {
+      const shareData = {
+        title: TEST_TITLE,
+        url: TEST_URL
+      };
+
+      try {
+        if (navigator.share) {
+          await navigator.share(shareData);
+        } else {
+          await navigator.clipboard.writeText(`${TEST_TITLE}\n${TEST_URL}`);
+          alert('테스트 제목과 링크가 복사됐어요!');
+        }
+      } catch (e) {
+        console.log(e);
+      }
+    }
+  </script>
+</body>
+</html>

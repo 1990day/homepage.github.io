@@ -79,13 +79,13 @@
     .nav a {
       color: #7e8e90;
       text-decoration: none;
-      font-size: 12px;
+      font-size: 14px;
       font-weight: 600;
     }
 
     .nav a.active {
-      color: #4aa9df;
-      font-weight: 800;
+      color: #7e8e90;
+      font-weight: 600;
     }
 
     .container {
@@ -133,14 +133,14 @@
 
     .sign-small {
       margin: 0 0 6px;
-      font-size: 20px;
+      font-size: 17px;
       font-weight: 800;
       letter-spacing: -1px;
     }
 
     .sign-title {
       margin: 0;
-      font-size: 45px;
+      font-size: 39px;
       line-height: 1.16;
       font-weight: 900;
       letter-spacing: -2px;
@@ -311,7 +311,7 @@
       min-width: 24px;
       height: 24px;
       padding: 0 6px;
-      background: #ffd65c;
+      background: #ef6f6c;
       color: #ffffff;
       display: flex;
       align-items: center;
@@ -332,7 +332,7 @@
     .progress-fill {
       width: 0%;
       height: 100%;
-      background: #ffd65c;
+      background: #6fcf78;
       transition: width .2s ease;
     }
 
@@ -618,7 +618,7 @@
       }
 
       .nav a {
-        font-size: 11px;
+        font-size: 13px;
       }
 
       .poster-panel,
@@ -635,7 +635,7 @@
       }
 
       .sign-title {
-        font-size: 35px;
+        font-size: 31px;
       }
 
       .main-items {
@@ -785,12 +785,10 @@
       border-radius: 10px;
       color: #4f6266;
       text-align: center;
-       font-size: 13px;
-  line-height: 1.45;
-  font-weight: normal;
-  color: #35484d;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: none;
+      font-size: 12px;
+      line-height: 1.4;
+      font-weight: 700;
+      word-break: keep-all;
     }
 
     .friend-row {
@@ -815,18 +813,35 @@
 
     .friend-label {
       margin: 0 0 10px;
-     color: #53696e;
-  font-size: 12px;
+      color: #70858b;
+      font-size: 12px;
       font-weight: 800;
     }
 
+    
     .friend-name {
-      color: #263f45;
-  font-size: 18px;
-  font-weight: normal;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      align-items: center;
+      justify-content: center;
+      color: #3f5d64;
+      font-size: 17px;
       line-height: 1.35;
+      font-weight: 900;
       letter-spacing: -.5px;
       word-break: keep-all;
+    }
+
+    .friend-item-line {
+      display: block;
+    }
+
+    @media (max-width: 520px) {
+      .friend-name {
+        font-size: 15px;
+        gap: 4px;
+      }
     }
 
     @media (max-width: 520px) {
@@ -863,11 +878,11 @@
 
       .result-prefix {
         margin-bottom: 7px;
-        font-size: 10px;
+        font-size: 13px;
       }
 
       .result-name {
-        font-size: 25px;
+        font-size: 28px;
       }
 
       .bingo-grid {
@@ -878,7 +893,7 @@
       .bingo-cell,
       .bingo-cell:nth-child(2n),
       .bingo-cell:nth-child(3n) {
-        min-height: 68px;
+        min-height: 84px;
         padding: 7px 5px;
         font-size: 11px;
         line-height: 1.35;
@@ -963,6 +978,236 @@
       font: inherit;
     }
 
+  
+    /* 요청사항 최종 조정 */
+    .nav a {
+      font-size: 14px;
+    }
+
+    .nav a.active {
+      color: #7e8e90;
+      font-weight: 600;
+    }
+
+    .progress-badge {
+      background: #ef6f6c;
+    }
+
+    .progress-fill {
+      background: #6fcf78;
+    }
+
+    .result-board .result-prefix {
+      font-size: 13px;
+    }
+
+    .result-board .result-name {
+      font-size: 28px;
+    }
+
+    .result-board .bingo-cell,
+    .result-board .bingo-cell:nth-child(2n),
+    .result-board .bingo-cell:nth-child(3n) {
+      min-height: 84px;
+    }
+
+    @media (max-width: 520px) {
+      .nav a {
+        font-size: 13px;
+      }
+
+      .result-board .result-prefix {
+        font-size: 11px;
+      }
+
+      .result-board .result-name {
+        font-size: 23px;
+      }
+
+      .result-board .bingo-cell,
+      .result-board .bingo-cell:nth-child(2n),
+      .result-board .bingo-cell:nth-child(3n) {
+        min-height: 76px;
+      }
+    }
+
+  
+    .main-items {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .main-item {
+      min-height: 92px;
+      padding: 8px 6px 19px;
+      background: #fff9d9;
+      overflow: hidden;
+    }
+
+    .main-item-image {
+      display: block;
+      width: 72px;
+      height: 72px;
+      object-fit: contain;
+    }
+
+    .main-item-label {
+      bottom: 4px;
+      font-size: 9px;
+    }
+
+    @media (max-width: 520px) {
+      .main-items {
+        gap: 7px;
+      }
+
+      .main-item {
+        min-height: 76px;
+        padding: 6px 4px 17px;
+      }
+
+      .main-item-image {
+        width: 58px;
+        height: 58px;
+      }
+
+      .main-item-label {
+        font-size: 8px;
+      }
+    }
+
+    .question-body {
+      padding-top: 16px;
+      padding-bottom: 16px;
+    }
+
+    .question-text-wrap {
+      min-height: 102px;
+      padding: 0 2px 10px;
+    }
+
+    @media (max-width: 520px) {
+      .question-body {
+        padding-top: 13px;
+        padding-bottom: 14px;
+      }
+
+      .question-text-wrap {
+        min-height: 88px;
+        padding-bottom: 8px;
+      }
+    }
+
+    .save-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      background: rgba(35, 52, 58, .42);
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+    }
+
+    .save-modal.show {
+      display: flex;
+    }
+
+    .save-modal-box {
+      width: min(86vw, 320px);
+      max-height: 88vh;
+      overflow-y: auto;
+      background: #ffffff;
+      border: 1px solid #b9d5df;
+      border-radius: 12px;
+      padding: 13px;
+      text-align: center;
+    }
+
+    .save-modal-title {
+      margin: 0 0 10px;
+      color: #405d64;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .save-preview-image {
+      display: block;
+      width: auto;
+      max-width: 250px;
+      max-height: 68vh;
+      height: auto;
+      margin: 0 auto;
+    }
+
+    .save-modal-close {
+      width: 100%;
+      min-height: 40px;
+      margin-top: 11px;
+      background: #5eabeb;
+      color: #ffffff;
+      border: 0;
+      border-radius: 8px;
+      font-size: 12px;
+    }
+
+    @media (max-width: 520px) {
+      .save-modal-box {
+        width: min(88vw, 290px);
+        padding: 11px;
+      }
+
+      .save-preview-image {
+        max-width: 220px;
+        max-height: 66vh;
+      }
+    }
+
+  
+    .ad-section {
+      width: 100%;
+      margin-top: 18px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .ad-box {
+      width: 100%;
+      max-width: 350px;
+      min-height: 140px;
+      background: transparent;
+      text-align: center;
+    }
+
+  
+    .result-capture-wrap {
+      width: 100%;
+      padding: 10px;
+      background: #fff7c9;
+    }
+
+    @media (max-width: 520px) {
+      .result-capture-wrap {
+        padding: 9px;
+      }
+    }
+
+  
+    .result-capture-wrap {
+      width: calc(100% + 20px) !important;
+      margin-left: -10px !important;
+      padding: 10px !important;
+      background: #fff7c9 !important;
+    }
+
+    @media (max-width: 520px) {
+      .result-capture-wrap {
+        width: calc(100% + 18px) !important;
+        margin-left: -9px !important;
+        padding: 9px !important;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -1006,26 +1251,74 @@
           </div>
 
           <div class="main-items">
-            <div class="main-item">🧢<div class="main-item-label">샤워캡</div></div>
-            <div class="main-item">🫧<div class="main-item-label">샤워볼</div></div>
-            <div class="main-item">🧺<div class="main-item-label">바구니</div></div>
-            <div class="main-item tile">샤워기<br>타일</div>
+            <div class="main-item">
+              <img src="img_istp408.png" alt="샤워타올" class="main-item-image">
+              <div class="main-item-label">샤워타올</div>
+            </div>
+            <div class="main-item">
+              <img src="img_esfp408.png" alt="계란" class="main-item-image">
+              <div class="main-item-label">계란</div>
+            </div>
+            <div class="main-item">
+              <img src="img_entp408.png" alt="비누" class="main-item-image">
+              <div class="main-item-label">비누</div>
+            </div>
+            <div class="main-item">
+              <img src="img_enfj408.png" alt="샤워캡" class="main-item-image">
+              <div class="main-item-label">샤워캡</div>
+            </div>
 
-            <div class="main-item">🪮<div class="main-item-label">빗</div></div>
-            <div class="main-item">🧽<div class="main-item-label">때수건</div></div>
-            <div class="main-item">🧼<div class="main-item-label">비누</div></div>
-            <div class="main-item">🧴<div class="main-item-label">샴푸</div></div>
+            <div class="main-item">
+              <img src="img_isfp408.png" alt="방석" class="main-item-image">
+              <div class="main-item-label">방석</div>
+            </div>
+            <div class="main-item">
+              <img src="img_esfj408.png" alt="샴푸" class="main-item-image">
+              <div class="main-item-label">샴푸</div>
+            </div>
+            <div class="main-item">
+              <img src="img_istj408.png" alt="거울" class="main-item-image">
+              <div class="main-item-label">거울</div>
+            </div>
+            <div class="main-item">
+              <img src="img_enfp408.png" alt="바구니" class="main-item-image">
+              <div class="main-item-label">바구니</div>
+            </div>
 
-            <div class="main-item">🪥<div class="main-item-label">칫솔</div></div>
-            <div class="main-item">🪞<div class="main-item-label">거울</div></div>
-            <div class="main-item">🥚<div class="main-item-label">계란</div></div>
-            <div class="main-item">🧖<div class="main-item-label">샤워타올</div></div>
+            <div class="main-item">
+              <img src="img_intj408.png" alt="양머리" class="main-item-image">
+              <div class="main-item-label">양머리</div>
+            </div>
+            <div class="main-item">
+              <img src="img_intp408.png" alt="치약" class="main-item-image">
+              <div class="main-item-label">치약</div>
+            </div>
+            <div class="main-item">
+              <img src="img_estp408.png" alt="마스크팩" class="main-item-image">
+              <div class="main-item-label">마스크팩</div>
+            </div>
+            <div class="main-item">
+              <img src="img_infp408.png" alt="빗" class="main-item-image">
+              <div class="main-item-label">빗</div>
+            </div>
+
+            <div class="main-item">
+              <img src="img_isfj408.png" alt="칫솔" class="main-item-image">
+              <div class="main-item-label">칫솔</div>
+            </div>
+            <div class="main-item">
+              <img src="img_estj408.png" alt="식혜" class="main-item-image">
+              <div class="main-item-label">식혜</div>
+            </div>
+            <div class="main-item">
+              <img src="img_infj408.png" alt="샤워볼" class="main-item-image">
+              <div class="main-item-label">샤워볼</div>
+            </div>
+            <div class="main-item">
+              <img src="img_entj408.png" alt="때수건" class="main-item-image">
+              <div class="main-item-label">때수건</div>
+            </div>
           </div>
-
-          <p class="main-desc">
-            목욕탕에 있는 아이템 중<br>
-            내 성격을 가장 닮은 것은 무엇일까?
-          </p>
 
         </div>
       </div>
@@ -1036,7 +1329,6 @@
         </button>
       </div>
     </section>
-
 
     <!-- 질문 -->
     <section id="questionScreen" class="screen">
@@ -1072,9 +1364,7 @@
 
           <div class="answers" id="answers"></div>
 
-          <div class="question-footer">
-            TEST-IT · BATH ITEM PERSONALITY TEST · 408
-          </div>
+          
         </div>
 
       </div>
@@ -1084,7 +1374,8 @@
     <!-- 결과 -->
     <section id="resultScreen" class="screen">
       <div class="result-panel">
-        <div class="result-card result-board" id="resultCard">
+        <div class="result-capture-wrap" id="resultCapture">
+          <div class="result-card result-board" id="resultCard">
 
           <div class="result-board-title">
             테스트잇 목욕탕 아이템 성격 테스트
@@ -1117,6 +1408,7 @@
           </div>
 
         </div>
+        </div>
 
         <div class="result-buttons">
           <button type="button" class="result-btn save-btn" id="saveBtn">
@@ -1140,7 +1432,34 @@
       </div>
     </section>
 
+
+    <section class="ad-section">
+      <div class="ad-box">
+        <script src="https://ads-partners.coupang.com/g.js"></script>
+        <script>
+          new PartnersCoupang.G({
+            "id": 798186,
+            "template": "carousel",
+            "trackingCode": "AF1884524",
+            "width": "350",
+            "height": "140"
+          });
+        </script>
+      </div>
+    </section>
+
   </main>
+
+
+  <div class="save-modal" id="saveModal" aria-hidden="true">
+    <div class="save-modal-box">
+      <p class="save-modal-title">
+        이미지를 꾹 눌러 저장해주세요.
+      </p>
+      <img id="savePreviewImage" class="save-preview-image" src="" alt="결과 저장 이미지">
+      <button type="button" class="save-modal-close" id="saveModalClose">닫기</button>
+    </div>
+  </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
@@ -1333,22 +1652,22 @@
 
 
     const friendMatch = {
-      ENFJ: { good: '빗', bad: '샤워타올' },
-      INFJ: { good: '바구니', bad: '마스크팩' },
-      ENFP: { good: '샤워볼', bad: '거울' },
-      INFP: { good: '샤워캡', bad: '식혜' },
-      ENTJ: { good: '치약', bad: '방석' },
-      INTJ: { good: '비누', bad: '계란' },
-      ENTP: { good: '양머리', bad: '칫솔' },
-      INTP: { good: '때수건', bad: '샴푸' },
-      ESFJ: { good: '방석', bad: '치약' },
-      ISFJ: { good: '계란', bad: '비누' },
-      ESFP: { good: '칫솔', bad: '양머리' },
-      ISFP: { good: '샴푸', bad: '때수건' },
-      ESTJ: { good: '샤워타올', bad: '빗' },
-      ISTJ: { good: '마스크팩', bad: '바구니' },
-      ESTP: { good: '거울', bad: '샤워볼' },
-      ISTP: { good: '식혜', bad: '샤워캡' }
+      ENFJ: { good1: '샤워타올', good2: '치약', bad1: '거울', bad2: '식혜' },
+      ENFP: { good1: '거울', good2: '칫솔', bad1: '샤워타올', bad2: '마스크팩' },
+      ENTJ: { good1: '방석', good2: '빗', bad1: '칫솔', bad2: '샴푸' },
+      ENTP: { good1: '칫솔', good2: '거울', bad1: '방석', bad2: '계란' },
+      ESFJ: { good1: '치약', good2: '샤워타올', bad1: '양머리', bad2: '때수건' },
+      ESFP: { good1: '양머리', good2: '샤워볼', bad1: '치약', bad2: '비누' },
+      ESTJ: { good1: '빗', good2: '방석', bad1: '샤워볼', bad2: '샤워캡' },
+      ESTP: { good1: '샤워볼', good2: '양머리', bad1: '빗', bad2: '바구니' },
+      INFJ: { good1: '마스크팩', good2: '계란', bad1: '식혜', bad2: '거울' },
+      INFP: { good1: '식혜', good2: '때수건', bad1: '마스크팩', bad2: '샤워타올' },
+      INTJ: { good1: '계란', good2: '마스크팩', bad1: '샴푸', bad2: '칫솔' },
+      INTP: { good1: '샴푸', good2: '샤워캡', bad1: '계란', bad2: '방석' },
+      ISFJ: { good1: '비누', good2: '바구니', bad1: '때수건', bad2: '양머리' },
+      ISFP: { good1: '때수건', good2: '식혜', bad1: '비누', bad2: '치약' },
+      ISTJ: { good1: '바구니', good2: '비누', bad1: '샤워캡', bad2: '샤워볼' },
+      ISTP: { good1: '샤워캡', good2: '샴푸', bad1: '바구니', bad2: '빗' }
     };
 
     let currentIndex = 0;
@@ -1372,8 +1691,12 @@
     const resultIcon = document.getElementById('resultIcon');
     const resultImage = document.getElementById('resultImage');
     const resultCard = document.getElementById('resultCard');
+    const resultCapture = document.getElementById('resultCapture');
     const saveGuide = document.getElementById('saveGuide');
     const saveBtn = document.getElementById('saveBtn');
+    const saveModal = document.getElementById('saveModal');
+    const savePreviewImage = document.getElementById('savePreviewImage');
+    const saveModalClose = document.getElementById('saveModalClose');
 
     function showScreen(target) {
       mainScreen.classList.remove('active');
@@ -1442,8 +1765,8 @@
       const result = results[mbti];
 
       resultName.textContent = result.item;
-      goodFriend.textContent = friendMatch[mbti].good;
-      badFriend.textContent = friendMatch[mbti].bad;
+      goodFriend.innerHTML = '<span class="friend-item-line">' + friendMatch[mbti].good1 + '</span><span class="friend-item-line">' + friendMatch[mbti].good2 + '</span>';
+      badFriend.innerHTML = '<span class="friend-item-line">' + friendMatch[mbti].bad1 + '</span><span class="friend-item-line">' + friendMatch[mbti].bad2 + '</span>';
       resultIcon.textContent = result.icon;
       resultTraits.innerHTML = '';
 
@@ -1501,40 +1824,36 @@
       }
     }
 
-    saveBtn.addEventListener('click', async function() {
-      saveGuide.style.display = 'block';
+    saveModalClose.addEventListener('click', function() {
+      saveModal.classList.remove('show');
+      saveModal.setAttribute('aria-hidden', 'true');
+    });
 
+    saveModal.addEventListener('click', function(event) {
+      if (event.target === saveModal) {
+        saveModal.classList.remove('show');
+        saveModal.setAttribute('aria-hidden', 'true');
+      }
+    });
+
+    saveBtn.addEventListener('click', async function() {
       if (typeof html2canvas === 'undefined') {
         alert('이미지 저장 기능을 불러오지 못했습니다.');
         return;
       }
 
       try {
-        const canvas = await html2canvas(resultCard, {
+        const canvas = await html2canvas(resultCapture, {
           scale: 2,
           useCORS: true,
-          backgroundColor: '#ffffff'
+          backgroundColor: '#fff7c9'
         });
 
         const dataUrl = canvas.toDataURL('image/png');
-        const newWindow = window.open('', '_blank');
 
-        if (newWindow) {
-          newWindow.document.body.style.margin = '0';
-          newWindow.document.body.style.padding = '20px';
-          newWindow.document.body.style.background = '#f4f8f7';
-          newWindow.document.body.style.textAlign = 'center';
-          newWindow.document.body.innerHTML =
-            '<p style="font-size:13px; color:#607676; line-height:1.6;">이미지를 꾹 눌러 저장해주세요.</p>' +
-            '<img src="' + dataUrl + '" style="width:100%; max-width:440px; height:auto;">';
-        } else {
-          const link = document.createElement('a');
-          link.href = dataUrl;
-          link.download = 'testit_test408_result.png';
-          document.body.appendChild(link);
-          link.click();
-          document.body.removeChild(link);
-        }
+        savePreviewImage.src = dataUrl;
+        saveModal.classList.add('show');
+        saveModal.setAttribute('aria-hidden', 'false');
       } catch (error) {
         console.error(error);
         alert('이미지 저장 중 오류가 발생했습니다.');

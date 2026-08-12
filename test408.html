@@ -1,0 +1,1545 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>테스트잇 목욕탕 아이템 성격 테스트</title>
+  <meta name="description" content="나를 닮은 목욕탕 아이템은 무엇일까? 테스트잇 목욕탕 아이템 성격 테스트">
+  <meta property="og:title" content="테스트잇 목욕탕 아이템 성격 테스트">
+  <meta property="og:description" content="나를 닮은 목욕탕 아이템은 무엇일까?">
+  <meta property="og:url" content="https://test-it.co.kr/test408">
+
+  <style>
+
+    @font-face {
+      font-family: 'Galmuri14';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2506-1@1.0/Galmuri14.woff2') format('woff2');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+    }
+
+    body {
+      background: #8fd3f4;
+      color: #395458;
+      font-family: 'Galmuri14', sans-serif;
+    }
+
+    button, input {
+      font-family: inherit;
+    }
+
+    button {
+      cursor: pointer;
+      border: 0;
+      border-radius: 0;
+    }
+
+    .site-header {
+      width: 100%;
+      background: #ffffff;
+      border-bottom: 1px solid #e6efef;
+    }
+
+    .header-inner {
+      width: min(100%, 620px);
+      height: 56px;
+      margin: 0 auto;
+      padding: 0 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      color: #2e4b4f;
+      text-decoration: none;
+      font-size: 21px;
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+
+    .nav {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .nav a {
+      color: #7e8e90;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .nav a.active {
+      color: #4aa9df;
+      font-weight: 800;
+    }
+
+    .container {
+      width: min(100%, 580px);
+      margin: 0 auto;
+      padding: 20px 16px 42px;
+    }
+
+    .screen {
+      display: none;
+    }
+
+    .screen.active {
+      display: block;
+    }
+
+    .poster-panel,
+    .question-panel,
+    .result-panel {
+      width: 100%;
+      background: #fff4b8;
+      border: 1px solid #d8edf7;
+      padding: 18px;
+    }
+
+    .poster-inner,
+    .question-body,
+    .result-card {
+      background: #ffffff;
+      border: 1px solid #e5eef2;
+      padding: 20px 18px 22px;
+    }
+
+    /* 메인 */
+
+    .main-sign {
+      width: 100%;
+      background: #4aa9df;
+      color: #ffffff;
+      border-radius: 28px;
+      padding: 18px 18px 22px;
+      text-align: center;
+      position: relative;
+    }
+
+    .sign-small {
+      margin: 0 0 6px;
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+
+    .sign-title {
+      margin: 0;
+      font-size: 45px;
+      line-height: 1.16;
+      font-weight: 900;
+      letter-spacing: -2px;
+      word-break: keep-all;
+    }
+
+    .sign-bubble {
+      position: absolute;
+      color: #cbeefe;
+      font-weight: 900;
+    }
+
+    .bubble-1 {
+      left: 16px;
+      bottom: 16px;
+      font-size: 30px;
+    }
+
+    .bubble-2 {
+      right: 18px;
+      bottom: 18px;
+      font-size: 24px;
+    }
+
+    .curtain-row {
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      gap: 2px;
+      margin-top: 18px;
+      align-items: stretch;
+    }
+
+    .curtain-piece {
+      height: 76px;
+      background: linear-gradient(to bottom, #ffd966 0%, #ffe58e 100%);
+      border-top: 6px solid #f2bf3f;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      color: #ffffff;
+      font-size: 20px;
+      font-weight: 900;
+      overflow: hidden;
+    }
+
+    .curtain-piece::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -18px;
+      height: 36px;
+      border-radius: 0 0 50% 50%;
+      background: linear-gradient(to bottom, #ffe58e 0%, #ffd966 100%);
+    }
+
+    .main-items {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    .main-item {
+      background: #fff9d9;
+      min-height: 104px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+      position: relative;
+    }
+
+    .main-item.tile {
+      background:
+        linear-gradient(#d7ebf7 1px, transparent 1px),
+        linear-gradient(90deg, #d7ebf7 1px, transparent 1px);
+      background-size: 20px 20px;
+      background-color: #e9f5fb;
+      padding: 10px;
+      font-size: 17px;
+      color: #5e7883;
+      text-align: center;
+      line-height: 1.5;
+      font-weight: 700;
+    }
+
+    .main-item-label {
+      position: absolute;
+      bottom: 4px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      color: #82908d;
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    .main-desc {
+      margin: 18px 0 0;
+      text-align: center;
+      color: #768887;
+      font-size: 13px;
+      line-height: 1.7;
+      font-weight: 600;
+    }
+
+    .start-wrap {
+      margin-top: 16px;
+    }
+
+    .start-btn {
+      width: 100%;
+      min-height: 58px;
+      background: #4aa9df;
+      color: #ffffff;
+      font-size: 17px;
+      font-weight: 800;
+    }
+
+    .start-btn:active {
+      background: #3498d1;
+    }
+
+    /* 질문 */
+
+    .question-header {
+      background: #fff7c9;
+      border: 1px solid #f0df94;
+      padding: 16px 15px 18px;
+    }
+
+    .question-sign {
+      background: #4aa9df;
+      color: #ffffff;
+      padding: 12px 14px 14px;
+      text-align: center;
+      border-radius: 24px;
+    }
+
+    .question-sign-title {
+      margin: 0;
+      font-size: 16px;
+      line-height: 1.2;
+      font-weight: 700;
+      letter-spacing: 0;
+      white-space: nowrap;
+    }
+
+    .progress-top {
+      margin-top: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #678280;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .progress-text-left {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .progress-badge {
+      min-width: 24px;
+      height: 24px;
+      padding: 0 6px;
+      background: #ffd65c;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .progress-wrap {
+      position: relative;
+      width: 100%;
+      height: 16px;
+      background: #fff6cf;
+      overflow: hidden;
+      margin-top: 10px;
+    }
+
+    .progress-fill {
+      width: 0%;
+      height: 100%;
+      background: #ffd65c;
+      transition: width .2s ease;
+    }
+
+    .progress-cuts {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      pointer-events: none;
+    }
+
+    .progress-cuts span {
+      border-right: 2px solid #fffdf7;
+    }
+
+    .progress-cuts span:last-child {
+      border-right: 0;
+    }
+
+    .question-text-wrap {
+      min-height: 144px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 2px 18px;
+    }
+
+    .question-text {
+      margin: 0;
+      text-align: center;
+      color: #3e5a5d;
+      font-size: 20px;
+      line-height: 1.56;
+      font-weight: 800;
+      letter-spacing: -.8px;
+      word-break: keep-all;
+    }
+
+    .answers {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .answer-btn {
+      width: 100%;
+      min-height: 66px;
+      padding: 13px 12px;
+      background: #f2faff;
+      border: 1px solid #cfe9f7;
+      color: #486366;
+      font-size: 14px;
+      line-height: 1.45;
+      font-weight: 700;
+    }
+
+    .answer-btn:active {
+      background: #e7f6ff;
+    }
+
+    .question-footer {
+      margin-top: 18px;
+      text-align: center;
+      color: #9aa7a7;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    /* 결과 */
+
+    .result-sign {
+      background: #4aa9df;
+      border-radius: 28px;
+      padding: 16px 16px 18px;
+      text-align: center;
+      color: #ffffff;
+    }
+
+    .result-sign-small {
+      margin: 0 0 6px;
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: -.6px;
+    }
+
+    .result-sign-title {
+      margin: 0;
+      font-size: 34px;
+      line-height: 1.2;
+      font-weight: 900;
+      letter-spacing: -1.5px;
+      word-break: keep-all;
+    }
+
+    .result-curtain {
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      gap: 2px;
+      margin-top: 16px;
+    }
+
+    .result-curtain div {
+      height: 46px;
+      background: linear-gradient(to bottom, #ffd966 0%, #ffe58e 100%);
+      border-top: 5px solid #f2bf3f;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-size: 15px;
+      font-weight: 900;
+      overflow: hidden;
+    }
+
+    .result-curtain div::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -14px;
+      height: 26px;
+      border-radius: 0 0 50% 50%;
+      background: linear-gradient(to bottom, #ffe58e 0%, #ffd966 100%);
+    }
+
+    .result-name-box {
+      margin-top: 18px;
+      text-align: center;
+    }
+
+    .result-prefix {
+      margin: 0 0 8px;
+      color: #7c8b8a;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .result-name {
+      margin: 0;
+      color: #35565b;
+      font-size: 34px;
+      line-height: 1.2;
+      font-weight: 900;
+      letter-spacing: -1.4px;
+    }
+
+    .result-visual-wrap {
+      margin-top: 18px;
+      background:
+        linear-gradient(#d7ebf7 1px, transparent 1px),
+        linear-gradient(90deg, #d7ebf7 1px, transparent 1px);
+      background-size: 22px 22px;
+      background-color: #e9f5fb;
+      min-height: 170px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .result-icon {
+      font-size: 84px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .result-image {
+      width: 160px;
+      max-height: 160px;
+      object-fit: contain;
+      position: relative;
+      z-index: 3;
+    }
+
+    .result-image.hidden {
+      display: none;
+    }
+
+    .traits-title {
+      margin: 20px 0 12px;
+      text-align: center;
+      color: #64817f;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .bingo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .bingo-cell {
+      min-height: 52px;
+      padding: 8px 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f2faff;
+      border: 1px solid #cfe9f7;
+      color: #51696c;
+      text-align: center;
+      font-size: 12px;
+      line-height: 1.3;
+      font-weight: 700;
+      word-break: keep-all;
+    }
+
+    .bingo-cell:nth-child(2n) {
+      background: #fff7cf;
+      border-color: #f3df8d;
+    }
+
+    .bingo-cell:nth-child(3n) {
+      background: #ffffff;
+      border-color: #d7ebf7;
+    }
+
+    .result-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      margin-top: 16px;
+    }
+
+    .result-btn {
+      width: 100%;
+      min-height: 52px;
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .save-btn {
+      background: #4aa9df;
+      color: #ffffff;
+    }
+
+    .retry-btn {
+      background: #e8f7ff;
+      color: #47666f;
+    }
+
+    .other-btn {
+      background: #f3a7b8;
+      color: #ffffff;
+    }
+
+    .share-btn {
+      background: #ffd65c;
+      color: #52656a;
+    }
+
+    .save-guide {
+      display: none;
+      margin-top: 12px;
+      background: #fff8d7;
+      border: 1px solid #f0df94;
+      padding: 12px 10px;
+      text-align: center;
+      color: #748685;
+      font-size: 12px;
+      line-height: 1.55;
+    }
+
+    @media (max-width: 520px) {
+      .container {
+        padding: 15px 12px 36px;
+      }
+
+      .header-inner {
+        height: 54px;
+        padding: 0 12px;
+      }
+
+      .logo {
+        font-size: 19px;
+      }
+
+      .nav {
+        gap: 8px;
+      }
+
+      .nav a {
+        font-size: 11px;
+      }
+
+      .poster-panel,
+      .question-panel,
+      .result-panel {
+        padding: 12px;
+      }
+
+      .poster-inner,
+      .question-body,
+      .result-card {
+        padding-left: 12px;
+        padding-right: 12px;
+      }
+
+      .sign-title {
+        font-size: 35px;
+      }
+
+      .main-items {
+        gap: 10px;
+      }
+
+      .main-item {
+        min-height: 88px;
+        font-size: 40px;
+      }
+
+      .question-text {
+        font-size: 18px;
+      }
+
+      .answer-btn {
+        font-size: 14px;
+      }
+
+      .result-sign-title {
+        font-size: 28px;
+      }
+
+      .result-name {
+        font-size: 30px;
+      }
+
+      .result-icon {
+        font-size: 76px;
+      }
+
+      .bingo-grid {
+        gap: 7px;
+      }
+
+      .bingo-cell {
+        min-height: 46px;
+        font-size: 11px;
+      }
+    }
+
+    /* =========================
+       결과창 레이아웃 전용 수정
+       메인/질문 화면은 기존 디자인 유지
+    ========================= */
+
+    .result-board {
+      background: #ccecf7;
+      border: 0;
+      padding: 14px;
+    }
+
+    .result-board-title {
+      width: 100%;
+      min-height: 66px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 14px;
+      background: #5eabeb;
+      border: 1px solid #7aa9be;
+      border-radius: 11px;
+      color: #ffffff;
+      text-align: center;
+      font-size: 18px;
+      line-height: 1.3;
+      font-weight: 800;
+      letter-spacing: -.4px;
+    }
+
+    .result-top-row {
+      display: grid;
+      grid-template-columns: .85fr 1.3fr;
+      gap: 9px;
+      margin-top: 10px;
+    }
+
+    .result-top-box {
+      min-height: 150px;
+      background: #ffffff;
+      border: 1px solid #8eabb8;
+      border-radius: 11px;
+      padding: 12px;
+    }
+
+    .result-image-box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .result-name-area {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .result-prefix {
+      margin: 0 0 9px;
+      color: #74888e;
+      font-size: 12px;
+      line-height: 1.4;
+      font-weight: 700;
+    }
+
+    .result-name {
+      margin: 0;
+      color: #3c5b62;
+      font-size: 31px;
+      line-height: 1.2;
+      font-weight: 900;
+      letter-spacing: -1.2px;
+      word-break: keep-all;
+    }
+
+    .result-icon {
+      font-size: 76px;
+      line-height: 1;
+    }
+
+    .result-image {
+      width: 132px;
+      max-height: 132px;
+      object-fit: contain;
+    }
+
+    .bingo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .bingo-cell,
+    .bingo-cell:nth-child(2n),
+    .bingo-cell:nth-child(3n) {
+      min-height: 76px;
+      padding: 9px 7px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff58a;
+      border: 1px solid #a5a56d;
+      border-radius: 10px;
+      color: #4f6266;
+      text-align: center;
+       font-size: 13px;
+  line-height: 1.45;
+  font-weight: normal;
+  color: #35484d;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: none;
+    }
+
+    .friend-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 9px;
+      margin-top: 10px;
+    }
+
+    .friend-box {
+      min-height: 118px;
+      padding: 13px 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: #ffffff;
+      border: 1px solid #8eabb8;
+      border-radius: 11px;
+      text-align: center;
+    }
+
+    .friend-label {
+      margin: 0 0 10px;
+     color: #53696e;
+  font-size: 12px;
+      font-weight: 800;
+    }
+
+    .friend-name {
+      color: #263f45;
+  font-size: 18px;
+  font-weight: normal;
+      line-height: 1.35;
+      letter-spacing: -.5px;
+      word-break: keep-all;
+    }
+
+    @media (max-width: 520px) {
+      .result-board {
+        padding: 10px;
+      }
+
+      .result-board-title {
+        min-height: 56px;
+        padding: 10px 8px;
+        font-size: 15px;
+        white-space: nowrap;
+      }
+
+      .result-top-row {
+        grid-template-columns: .8fr 1.2fr;
+        gap: 7px;
+        margin-top: 8px;
+      }
+
+      .result-top-box {
+        min-height: 128px;
+        padding: 9px;
+      }
+
+      .result-icon {
+        font-size: 62px;
+      }
+
+      .result-image {
+        width: 105px;
+        max-height: 105px;
+      }
+
+      .result-prefix {
+        margin-bottom: 7px;
+        font-size: 10px;
+      }
+
+      .result-name {
+        font-size: 25px;
+      }
+
+      .bingo-grid {
+        gap: 7px;
+        margin-top: 8px;
+      }
+
+      .bingo-cell,
+      .bingo-cell:nth-child(2n),
+      .bingo-cell:nth-child(3n) {
+        min-height: 68px;
+        padding: 7px 5px;
+        font-size: 11px;
+        line-height: 1.35;
+      }
+
+      .friend-row {
+        gap: 7px;
+        margin-top: 8px;
+      }
+
+      .friend-box {
+        min-height: 100px;
+        padding: 10px 7px;
+      }
+
+      .friend-label {
+        margin-bottom: 7px;
+        font-size: 11px;
+      }
+
+      .friend-name {
+        font-size: 16px;
+      }
+    }
+
+
+    body,
+    button,
+    input,
+    textarea,
+    select,
+    a,
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    div,
+    span {
+      font-family: 'Galmuri14', sans-serif;
+    }
+
+
+    @media (max-width: 520px) {
+      .question-sign-title {
+        font-size: 13px;
+        white-space: nowrap;
+      }
+    }
+
+  
+    html,
+    body,
+    button,
+    input,
+    textarea,
+    select,
+    a,
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    div,
+    span {
+      font-family: 'Galmuri14', sans-serif !important;
+      font-synthesis: none;
+      text-shadow: none;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: geometricPrecision;
+    }
+
+    button,
+    input,
+    textarea,
+    select {
+      font: inherit;
+    }
+
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/" class="logo">테스트잇</a>
+
+      <nav class="nav">
+        <a href="/category/personality" class="active">성격</a>
+        <a href="/category/face">얼굴</a>
+        <a href="/category/etc">그외</a>
+        <a href="/saju">사주</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- 메인 -->
+    <section id="mainScreen" class="screen active">
+      <div class="poster-panel">
+        <div class="poster-inner">
+
+          <div class="main-sign">
+            <div class="sign-bubble bubble-1">◌</div>
+            <div class="sign-bubble bubble-2">◌</div>
+            <p class="sign-small">테스트잇</p>
+            <h1 class="sign-title">목욕탕 아이템<br>성격 테스트</h1>
+          </div>
+
+          <div class="curtain-row">
+            <div class="curtain-piece">♨</div>
+            <div class="curtain-piece">✿</div>
+            <div class="curtain-piece">♨</div>
+            <div class="curtain-piece">✿</div>
+            <div class="curtain-piece">♨</div>
+            <div class="curtain-piece">✿</div>
+            <div class="curtain-piece">♨</div>
+            <div class="curtain-piece">✿</div>
+          </div>
+
+          <div class="main-items">
+            <div class="main-item">🧢<div class="main-item-label">샤워캡</div></div>
+            <div class="main-item">🫧<div class="main-item-label">샤워볼</div></div>
+            <div class="main-item">🧺<div class="main-item-label">바구니</div></div>
+            <div class="main-item tile">샤워기<br>타일</div>
+
+            <div class="main-item">🪮<div class="main-item-label">빗</div></div>
+            <div class="main-item">🧽<div class="main-item-label">때수건</div></div>
+            <div class="main-item">🧼<div class="main-item-label">비누</div></div>
+            <div class="main-item">🧴<div class="main-item-label">샴푸</div></div>
+
+            <div class="main-item">🪥<div class="main-item-label">칫솔</div></div>
+            <div class="main-item">🪞<div class="main-item-label">거울</div></div>
+            <div class="main-item">🥚<div class="main-item-label">계란</div></div>
+            <div class="main-item">🧖<div class="main-item-label">샤워타올</div></div>
+          </div>
+
+          <p class="main-desc">
+            목욕탕에 있는 아이템 중<br>
+            내 성격을 가장 닮은 것은 무엇일까?
+          </p>
+
+        </div>
+      </div>
+
+      <div class="start-wrap">
+        <button type="button" class="start-btn" onclick="startTest()">
+          테스트 시작하기
+        </button>
+      </div>
+    </section>
+
+
+    <!-- 질문 -->
+    <section id="questionScreen" class="screen">
+      <div class="question-panel">
+
+        <div class="question-header">
+          <div class="question-sign">
+            <h2 class="question-sign-title">테스트잇 목욕탕 아이템 성격 테스트</h2>
+          </div>
+
+          <div class="progress-top">
+            <div class="progress-text-left">
+              <div class="progress-badge">♨</div>
+              목욕탕 탐색 중
+            </div>
+            <div><span id="currentQuestion">1</span> / 12</div>
+          </div>
+
+          <div class="progress-wrap">
+            <div class="progress-fill" id="progressFill"></div>
+            <div class="progress-cuts">
+              <span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="question-body">
+          <div class="question-text-wrap">
+            <p class="question-text" id="questionText"></p>
+          </div>
+
+          <div class="answers" id="answers"></div>
+
+          <div class="question-footer">
+            TEST-IT · BATH ITEM PERSONALITY TEST · 408
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- 결과 -->
+    <section id="resultScreen" class="screen">
+      <div class="result-panel">
+        <div class="result-card result-board" id="resultCard">
+
+          <div class="result-board-title">
+            테스트잇 목욕탕 아이템 성격 테스트
+          </div>
+
+          <div class="result-top-row">
+            <div class="result-top-box result-image-box">
+              <div class="result-icon" id="resultIcon"></div>
+              <img src="" alt="" id="resultImage" class="result-image hidden">
+            </div>
+
+            <div class="result-top-box result-name-area">
+              <p class="result-prefix">나를 닮은 목욕탕 아이템</p>
+              <h3 class="result-name" id="resultName"></h3>
+            </div>
+          </div>
+
+          <div class="bingo-grid" id="resultTraits"></div>
+
+          <div class="friend-row">
+            <div class="friend-box">
+              <p class="friend-label">잘 맞는 친구</p>
+              <div class="friend-name" id="goodFriend"></div>
+            </div>
+
+            <div class="friend-box">
+              <p class="friend-label">안 맞는 친구</p>
+              <div class="friend-name" id="badFriend"></div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="result-buttons">
+          <button type="button" class="result-btn save-btn" id="saveBtn">
+            결과 이미지 저장하기
+          </button>
+          <button type="button" class="result-btn retry-btn" onclick="goMain()">
+            다시 해보기
+          </button>
+          <button type="button" class="result-btn other-btn" onclick="goOtherTest()">
+            다른 테스트 해보기
+          </button>
+          <button type="button" class="result-btn share-btn" onclick="shareTest()">
+            테스트 공유하기
+          </button>
+        </div>
+
+        <div class="save-guide" id="saveGuide">
+          이미지를 꾹 눌러 저장해주세요.
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+  <script>
+    const questions = [
+      {
+        text: '친구들과 목욕탕에 갔는데<br>사람이 꽤 많다',
+        answers: [
+          { text: '북적북적한 분위기도 재밌을 것 같다', letter: 'E' },
+          { text: '조용한 시간대에 오는 게 더 좋다', letter: 'I' }
+        ]
+      },
+      {
+        text: '목욕을 마치고<br>휴게공간에 들어갔다',
+        answers: [
+          { text: '계속 이야기하며 시간을 보낸다', letter: 'E' },
+          { text: '각자 조용히 쉬는 게 더 좋다', letter: 'I' }
+        ]
+      },
+      {
+        text: '친구가 다른 사람도 같이 가자고 한다',
+        answers: [
+          { text: '사람이 늘어나도 재밌을 것 같다', letter: 'E' },
+          { text: '원래 친한 사람끼리 가는 게 편하다', letter: 'I' }
+        ]
+      },
+      {
+        text: '처음 가보는 목욕탕에 도착했다',
+        answers: [
+          { text: '탕 종류와 시설부터 하나씩 확인한다', letter: 'S' },
+          { text: '전체적인 분위기를 먼저 느껴본다', letter: 'N' }
+        ]
+      },
+      {
+        text: '새로 생긴 사우나가 좋다고 들었다',
+        answers: [
+          { text: '시설과 가격이 어떤지 궁금하다', letter: 'S' },
+          { text: '어떤 분위기일지 상상해본다', letter: 'N' }
+        ]
+      },
+      {
+        text: '처음 보는 비누 향을 발견했다',
+        answers: [
+          { text: '무슨 향인지 직접 맡아본다', letter: 'S' },
+          { text: '이 향과 어울리는 장면이 떠오른다', letter: 'N' }
+        ]
+      },
+      {
+        text: '친구가 뜨거운 탕에서 바로 나왔다',
+        answers: [
+          { text: '얼마나 뜨거웠는지부터 묻는다', letter: 'T' },
+          { text: '괜찮은지 먼저 챙긴다', letter: 'F' }
+        ]
+      },
+      {
+        text: '친구가 물건을 잃어버렸다',
+        answers: [
+          { text: '마지막으로 본 곳부터 찾는다', letter: 'T' },
+          { text: '속상했겠다며 먼저 달랜다', letter: 'F' }
+        ]
+      },
+      {
+        text: '같이 온 친구가 기분이 안 좋아 보인다',
+        answers: [
+          { text: '무슨 일인지 상황부터 물어본다', letter: 'T' },
+          { text: '굳이 말하지 않아도 챙겨준다', letter: 'F' }
+        ]
+      },
+      {
+        text: '목욕탕에 가기로 한 날<br>준비하는 방식은?',
+        answers: [
+          { text: '필요한 물건을 미리 챙겨둔다', letter: 'J' },
+          { text: '나가기 전에 그때그때 챙긴다', letter: 'P' }
+        ]
+      },
+      {
+        text: '목욕탕에 도착하고 나서<br>움직이는 순서는?',
+        answers: [
+          { text: '씻기, 탕, 사우나 순서를 정해둔다', letter: 'J' },
+          { text: '그때 끌리는 곳부터 간다', letter: 'P' }
+        ]
+      },
+      {
+        text: '목욕을 마쳤는데 찜질방도 가자고 한다',
+        answers: [
+          { text: '원래 생각한 일정이 있어서 고민된다', letter: 'J' },
+          { text: '좋지 하고 바로 따라간다', letter: 'P' }
+        ]
+      }
+    ];
+
+    const results = {
+      ENFJ: {
+        item: '샤워캡',
+        icon: '🧢',
+        image: 'img_enfj408.png',
+        traits: ['사람을 먼저 챙기는 편', '분위기를 잘 맞춰줌', '표현이 따뜻한 편', '주변 눈치를 빨리 봄', '먼저 나서는 일이 많음', '사람들과 잘 어울림', '맡은 일은 끝까지 함', '약속을 중요하게 생각함', '상대 반응을 잘 살핌', '도움 주는 걸 좋아함', '할 말은 부드럽게 함', '정이 많은 편임']
+      },
+      INFJ: {
+        item: '샤워볼',
+        icon: '🫧',
+        image: 'img_infj408.png',
+        traits: ['말수는 적은 편임', '사람을 오래 지켜봄', '생각을 깊게 하는 편', '주변 분위기를 잘 읽음', '혼자 생각할 시간이 필요함', '쉽게 속마음을 안 보임', '조용히 챙겨주는 편', '작은 변화도 잘 알아챔', '친해지면 정이 깊음', '혼자 정리하고 움직임', '신중하게 결정하는 편', '자기 기준이 확실함']
+      },
+      ENFP: {
+        item: '바구니',
+        icon: '🧺',
+        image: 'img_enfp408.png',
+        traits: ['처음 보는 것도 잘 즐김', '사람에게 먼저 다가감', '반응이 크고 솔직함', '재밌는 일을 좋아함', '하고 싶은 게 많은 편', '새로운 걸 금방 시작함', '분위기를 잘 띄우는 편', '감정 표현이 빠른 편', '생각이 자주 바뀌기도 함', '계획보다 기분을 따름', '사람과 금방 친해짐', '호기심이 많은 편임']
+      },
+      INFP: {
+        item: '빗',
+        icon: '🪮',
+        image: 'img_infp408.png',
+        traits: ['말수는 많지 않은 편', '자기 취향이 확실함', '혼자 있는 시간도 좋아함', '감정에 영향을 많이 받음', '좋고 싫음이 분명한 편', '마음에 오래 담아두는 편', '상상을 자주 하는 편', '친한 사람에게 정이 많음', '싫은 건 억지로 안 함', '자기 속도로 움직이는 편', '겉보다 속생각이 많음', '편한 사람 앞에서 잘 웃음']
+      },
+      ENTJ: {
+        item: '때수건',
+        icon: '🧽',
+        image: 'img_entj408.png',
+        traits: ['결정을 빠르게 내리는 편', '답답한 상황을 싫어함', '먼저 방향을 정하는 편', '목표가 생기면 바로 움직임', '효율을 중요하게 생각함', '할 말은 바로 하는 편', '일을 미루는 걸 싫어함', '주도권을 잡는 일이 많음', '문제가 생기면 해결부터 함', '계획을 세우고 밀고 나감', '결과를 중요하게 보는 편', '맡은 일은 끝까지 해냄']
+      },
+      INTJ: {
+        item: '양머리',
+        icon: '🐑',
+        image: 'img_intj408.png',
+        traits: ['혼자 판단하는 걸 편해함', '계획을 미리 세우는 편', '쓸데없는 일은 잘 안 함', '말보다 생각이 먼저임', '사람을 오래 관찰하는 편', '혼자 집중할 때 편함', '자기 기준이 높은 편', '감정보다 판단이 빠름', '일의 순서를 따지는 편', '쉽게 마음을 바꾸지 않음', '모르는 건 직접 찾아봄', '필요한 말만 하는 편']
+      },
+      ENTP: {
+        item: '비누',
+        icon: '🧼',
+        image: 'img_entp408.png',
+        traits: ['말로 분위기를 잘 바꿈', '새로운 생각이 많은 편', '뻔한 방식은 금방 지루함', '궁금한 건 바로 물어봄', '상황에 맞게 잘 움직임', '재밌는 대화를 좋아함', '생각이 자주 튀는 편', '새로운 걸 시도해보는 편', '규칙에 너무 묶이기 싫어함', '장난치는 걸 좋아하는 편', '문제가 생기면 방법을 바꿈', '흥미가 생기면 바로 파고듦']
+      },
+      INTP: {
+        item: '치약',
+        icon: '🪥',
+        image: 'img_intp408.png',
+        traits: ['혼자 생각하는 시간이 많음', '궁금한 건 끝까지 찾아봄', '감정보다 이유를 따지는 편', '간섭받는 걸 싫어함', '관심 있는 것에 오래 집중함', '말하기 전에 먼저 생각함', '혼자서 해결하려는 편', '쓸데없는 대화는 줄이는 편', '새로운 정보 찾는 걸 좋아함', '자기 방식이 확실한 편', '감정 표현은 적은 편', '필요한 일만 깔끔하게 함']
+      },
+      ESFJ: {
+        item: '샴푸',
+        icon: '🧴',
+        image: 'img_esfj408.png',
+        traits: ['사람을 잘 챙기는 편', '주변 반응을 잘 살핌', '약속을 잘 지키는 편', '먼저 인사하고 다가감', '사람들과 잘 어울림', '도움 줄 일을 잘 찾음', '상대 기분을 빨리 알아챔', '필요한 걸 잘 기억함', '분위기를 맞추는 편', '표현이 친근한 편', '맡은 일은 성실하게 함', '사람 사이 예의를 중요하게 봄']
+      },
+      ISFJ: {
+        item: '칫솔',
+        icon: '🪥',
+        image: 'img_isfj408.png',
+        traits: ['조용히 챙겨주는 편', '맡은 일은 꾸준히 함', '약속을 잘 지키는 편', '익숙한 방식이 편함', '작은 것도 꼼꼼히 확인함', '상대가 불편한지 잘 살핌', '말보다 행동으로 챙김', '갑작스러운 변화는 부담됨', '참고 넘어가는 일이 많음', '친한 사람에게 정이 많음', '준비를 미리 해두는 편', '실수하지 않으려 신경 씀']
+      },
+      ESFP: {
+        item: '계란',
+        icon: '🥚',
+        image: 'img_esfp408.png',
+        traits: ['재밌는 일을 좋아하는 편', '사람과 금방 친해짐', '반응이 크고 솔직한 편', '그때그때 즐기는 편', '생각보다 행동이 빠름', '분위기를 잘 띄우는 편', '답답한 상황을 싫어함', '표정에 기분이 잘 드러남', '새로운 경험을 잘 즐김', '계획이 바뀌어도 잘 따라감', '친한 사람에게 정이 많음', '하고 싶은 건 바로 하는 편']
+      },
+      ISFP: {
+        item: '방석',
+        icon: '🟩',
+        image: 'img_isfp408.png',
+        traits: ['조용한 분위기를 좋아함', '자기 취향이 확실한 편', '간섭받는 걸 싫어함', '혼자 쉬는 시간이 필요함', '말보다 행동으로 표현함', '편한 사람 앞에서는 잘 웃음', '싫은 건 억지로 안 하는 편', '감정에 영향을 받는 편', '갑자기 재촉받는 걸 싫어함', '자기 방식대로 움직임', '작은 불편도 잘 느끼는 편', '친한 사람에게는 잘 챙김']
+      },
+      ESTJ: {
+        item: '식혜',
+        icon: '🥤',
+        image: 'img_estj408.png',
+        traits: ['일처리를 빠르게 하는 편', '정해둔 순서를 잘 지킴', '약속 시간을 중요하게 봄', '해야 할 일은 바로 처리함', '기준이 분명한 편', '할 말은 확실하게 하는 편', '맡은 일은 끝까지 함', '정리된 상태를 좋아함', '문제가 생기면 바로 고침', '현실적으로 판단하는 편', '계획이 틀어지면 신경 쓰임', '사람들을 이끄는 일이 많음']
+      },
+      ISTJ: {
+        item: '거울',
+        icon: '🪞',
+        image: 'img_istj408.png',
+        traits: ['차분하게 움직이는 편', '작은 것도 꼼꼼히 확인함', '계획대로 하는 게 편함', '약속을 잘 지키는 편', '맡은 일은 끝까지 함', '갑작스러운 변화는 부담됨', '익숙한 방식이 편한 편', '말보다 행동으로 보여줌', '실수를 줄이려고 확인함', '신중하게 결정하는 편', '정리된 상태를 좋아함', '꾸준히 하는 힘이 있음']
+      },
+      ESTP: {
+        item: '마스크팩',
+        icon: '🎭',
+        image: 'img_estp408.png',
+        traits: ['생각보다 행동이 빠른 편', '새로운 걸 바로 해보는 편', '상황 대처가 빠른 편', '재밌는 일을 좋아함', '복잡하게 고민하지 않는 편', '사람과 금방 친해짐', '계획이 바뀌어도 잘 적응함', '눈앞의 문제부터 해결함', '할 말은 바로 하는 편', '가만히 있는 걸 답답해함', '경험해보고 판단하는 편', '새로운 환경에 잘 적응함']
+      },
+      ISTP: {
+        item: '샤워타올',
+        icon: '🧖',
+        image: 'img_istp408.png',
+        traits: ['혼자서도 잘 움직이는 편', '간섭받는 걸 싫어함', '필요한 말만 하는 편', '문제가 생기면 직접 해결함', '감정에 휩쓸리지 않는 편', '쓸모 있는 걸 중요하게 봄', '상황을 보고 바로 판단함', '계획이 바뀌어도 잘 맞춤', '혼자 집중할 때 편함', '불필요한 일은 줄이는 편', '말보다 행동이 빠른 편', '자유롭게 움직이는 걸 좋아함']
+      }
+    };
+
+
+    const friendMatch = {
+      ENFJ: { good: '빗', bad: '샤워타올' },
+      INFJ: { good: '바구니', bad: '마스크팩' },
+      ENFP: { good: '샤워볼', bad: '거울' },
+      INFP: { good: '샤워캡', bad: '식혜' },
+      ENTJ: { good: '치약', bad: '방석' },
+      INTJ: { good: '비누', bad: '계란' },
+      ENTP: { good: '양머리', bad: '칫솔' },
+      INTP: { good: '때수건', bad: '샴푸' },
+      ESFJ: { good: '방석', bad: '치약' },
+      ISFJ: { good: '계란', bad: '비누' },
+      ESFP: { good: '칫솔', bad: '양머리' },
+      ISFP: { good: '샴푸', bad: '때수건' },
+      ESTJ: { good: '샤워타올', bad: '빗' },
+      ISTJ: { good: '마스크팩', bad: '바구니' },
+      ESTP: { good: '거울', bad: '샤워볼' },
+      ISTP: { good: '식혜', bad: '샤워캡' }
+    };
+
+    let currentIndex = 0;
+    let score = {
+      E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0
+    };
+
+    const mainScreen = document.getElementById('mainScreen');
+    const questionScreen = document.getElementById('questionScreen');
+    const resultScreen = document.getElementById('resultScreen');
+
+    const currentQuestionEl = document.getElementById('currentQuestion');
+    const progressFill = document.getElementById('progressFill');
+    const questionText = document.getElementById('questionText');
+    const answersWrap = document.getElementById('answers');
+
+    const resultName = document.getElementById('resultName');
+    const goodFriend = document.getElementById('goodFriend');
+    const badFriend = document.getElementById('badFriend');
+    const resultTraits = document.getElementById('resultTraits');
+    const resultIcon = document.getElementById('resultIcon');
+    const resultImage = document.getElementById('resultImage');
+    const resultCard = document.getElementById('resultCard');
+    const saveGuide = document.getElementById('saveGuide');
+    const saveBtn = document.getElementById('saveBtn');
+
+    function showScreen(target) {
+      mainScreen.classList.remove('active');
+      questionScreen.classList.remove('active');
+      resultScreen.classList.remove('active');
+      target.classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+
+    function resetScore() {
+      currentIndex = 0;
+      score = {
+        E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0
+      };
+    }
+
+    function startTest() {
+      resetScore();
+      showScreen(questionScreen);
+      renderQuestion();
+    }
+
+    function renderQuestion() {
+      const question = questions[currentIndex];
+
+      currentQuestionEl.textContent = currentIndex + 1;
+      progressFill.style.width = (((currentIndex + 1) / questions.length) * 100) + '%';
+      questionText.innerHTML = question.text;
+
+      answersWrap.innerHTML = '';
+
+      question.answers.forEach(function(answer) {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'answer-btn';
+        button.innerHTML = answer.text;
+        button.onclick = function() {
+          selectAnswer(answer.letter);
+        };
+        answersWrap.appendChild(button);
+      });
+    }
+
+    function selectAnswer(letter) {
+      score[letter] += 1;
+      currentIndex += 1;
+
+      if (currentIndex < questions.length) {
+        renderQuestion();
+      } else {
+        calculateResult();
+      }
+    }
+
+    function calculateResult() {
+      const mbti =
+        (score.E >= score.I ? 'E' : 'I') +
+        (score.S >= score.N ? 'S' : 'N') +
+        (score.T >= score.F ? 'T' : 'F') +
+        (score.J >= score.P ? 'J' : 'P');
+
+      showResult(mbti);
+    }
+
+    function showResult(mbti) {
+      const result = results[mbti];
+
+      resultName.textContent = result.item;
+      goodFriend.textContent = friendMatch[mbti].good;
+      badFriend.textContent = friendMatch[mbti].bad;
+      resultIcon.textContent = result.icon;
+      resultTraits.innerHTML = '';
+
+      result.traits.forEach(function(text) {
+        const cell = document.createElement('div');
+        cell.className = 'bingo-cell';
+        cell.textContent = text;
+        resultTraits.appendChild(cell);
+      });
+
+      resultImage.classList.add('hidden');
+      resultIcon.style.display = 'block';
+
+      resultImage.onload = function() {
+        resultImage.classList.remove('hidden');
+        resultIcon.style.display = 'none';
+      };
+
+      resultImage.onerror = function() {
+        resultImage.classList.add('hidden');
+        resultIcon.style.display = 'block';
+      };
+
+      resultImage.src = result.image;
+      showScreen(resultScreen);
+    }
+
+    function goMain() {
+      showScreen(mainScreen);
+    }
+
+    function goOtherTest() {
+      window.location.href = '/';
+    }
+
+    async function shareTest() {
+      const text = '테스트잇 목욕탕 아이템 성격 테스트\nhttps://test-it.co.kr/test408';
+
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: '테스트잇 목욕탕 아이템 성격 테스트',
+            text: text
+          });
+        } catch (error) {
+          console.log(error);
+        }
+      } else {
+        try {
+          await navigator.clipboard.writeText(text);
+          alert('테스트 주소가 복사되었습니다.');
+        } catch (error) {
+          alert(text);
+        }
+      }
+    }
+
+    saveBtn.addEventListener('click', async function() {
+      saveGuide.style.display = 'block';
+
+      if (typeof html2canvas === 'undefined') {
+        alert('이미지 저장 기능을 불러오지 못했습니다.');
+        return;
+      }
+
+      try {
+        const canvas = await html2canvas(resultCard, {
+          scale: 2,
+          useCORS: true,
+          backgroundColor: '#ffffff'
+        });
+
+        const dataUrl = canvas.toDataURL('image/png');
+        const newWindow = window.open('', '_blank');
+
+        if (newWindow) {
+          newWindow.document.body.style.margin = '0';
+          newWindow.document.body.style.padding = '20px';
+          newWindow.document.body.style.background = '#f4f8f7';
+          newWindow.document.body.style.textAlign = 'center';
+          newWindow.document.body.innerHTML =
+            '<p style="font-size:13px; color:#607676; line-height:1.6;">이미지를 꾹 눌러 저장해주세요.</p>' +
+            '<img src="' + dataUrl + '" style="width:100%; max-width:440px; height:auto;">';
+        } else {
+          const link = document.createElement('a');
+          link.href = dataUrl;
+          link.download = 'testit_test408_result.png';
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        }
+      } catch (error) {
+        console.error(error);
+        alert('이미지 저장 중 오류가 발생했습니다.');
+      }
+    });
+  </script>
+</body>
+</html>

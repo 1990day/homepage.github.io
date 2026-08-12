@@ -1215,6 +1215,256 @@
       }
     }
 
+  
+
+    /* 결과 글자 크기 살짝 축소 */
+    .result-board .result-name {
+      font-size: 25px !important;
+    }
+
+    .result-board .friend-name {
+      font-size: 15px !important;
+    }
+
+    @media (max-width: 520px) {
+      .result-board .result-name {
+        font-size: 21px !important;
+      }
+
+      .result-board .friend-name {
+        font-size: 14px !important;
+      }
+    }
+
+    /* 3초 로딩 화면 */
+    .loading-panel {
+      width: 100%;
+      background: #fff4b8;
+      border: 1px solid #d8edf7;
+      padding: 18px;
+    }
+
+    .loading-card {
+      min-height: 390px;
+      background: #ffffff;
+      border: 1px solid #e5eef2;
+      padding: 24px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .loading-sign {
+      width: 100%;
+      max-width: 390px;
+      padding: 15px 14px;
+      background: #4aa9df;
+      border-radius: 24px;
+      color: #ffffff;
+      font-size: 16px;
+      line-height: 1.4;
+      font-weight: 700;
+    }
+
+        .loading-water-scene {
+      width: 220px;
+      height: 130px;
+      margin-top: 28px;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(to bottom, #d9f2ff 0%, #c4eafc 100%);
+      border-radius: 20px 20px 14px 14px;
+    }
+
+    .loading-water {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 88px;
+      background: linear-gradient(to bottom, #90d8fa 0%, #67c1f0 100%);
+      overflow: hidden;
+    }
+
+    .loading-wave {
+      position: absolute;
+      top: -10px;
+      width: 125px;
+      height: 20px;
+      background: #bde9ff;
+      border-radius: 50%;
+      opacity: .95;
+    }
+
+    .loading-wave.wave1 {
+      left: -6px;
+    }
+
+    .loading-wave.wave2 {
+      right: -8px;
+      top: -7px;
+      width: 145px;
+      background: #d6f3ff;
+    }
+
+    .loading-bubble {
+      position: absolute;
+      bottom: 8px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .72);
+      animation: bubbleUp 2s ease-in infinite;
+    }
+
+    .loading-bubble::after {
+      content: '';
+      position: absolute;
+      inset: 18% 18% auto auto;
+      width: 30%;
+      height: 30%;
+      border-radius: 50%;
+      background: rgba(255,255,255,.55);
+    }
+
+    .loading-bubble.b1 {
+      left: 26px;
+      width: 12px;
+      height: 12px;
+      animation-delay: .1s;
+    }
+
+    .loading-bubble.b2 {
+      left: 54px;
+      width: 18px;
+      height: 18px;
+      animation-delay: .55s;
+    }
+
+    .loading-bubble.b3 {
+      left: 92px;
+      width: 10px;
+      height: 10px;
+      animation-delay: .25s;
+    }
+
+    .loading-bubble.b4 {
+      left: 118px;
+      width: 15px;
+      height: 15px;
+      animation-delay: .9s;
+    }
+
+    .loading-bubble.b5 {
+      left: 152px;
+      width: 11px;
+      height: 11px;
+      animation-delay: .35s;
+    }
+
+    .loading-bubble.b6 {
+      left: 182px;
+      width: 19px;
+      height: 19px;
+      animation-delay: 1.15s;
+    }
+
+    @keyframes bubbleUp {
+      0% {
+        transform: translateY(0) scale(.8);
+        opacity: 0;
+      }
+      15% {
+        opacity: .95;
+      }
+      100% {
+        transform: translateY(-68px) scale(1.08);
+        opacity: 0;
+      }
+    }
+
+    .loading-text {
+      margin: 23px 0 0;
+      color: #587174;
+      font-size: 15px;
+      line-height: 1.5;
+      font-weight: 700;
+    }
+
+    .loading-subtext {
+      margin: 8px 0 0;
+      color: #7e9397;
+      font-size: 11px;
+      line-height: 1.5;
+    }
+
+    .loading-progress {
+      width: min(100%, 300px);
+      height: 14px;
+      margin-top: 24px;
+      background: #fff6cf;
+      overflow: hidden;
+    }
+
+    .loading-fill {
+      width: 0;
+      height: 100%;
+      background: #6fcf78;
+    }
+
+    .loading-fill.run {
+      animation: loadingFill 3s linear forwards;
+    }
+
+    @keyframes loadingFill {
+      from { width: 0%; }
+      to { width: 100%; }
+    }
+
+    @media (max-width: 520px) {
+      .loading-panel {
+        padding: 12px;
+      }
+
+      .loading-card {
+        min-height: 340px;
+        padding: 20px 14px;
+      }
+
+      .loading-sign {
+        font-size: 14px;
+      }
+
+      .loading-water-scene {
+        width: 190px;
+        height: 118px;
+        margin-top: 24px;
+      }
+
+      .loading-water {
+        height: 80px;
+      }
+
+      .loading-wave.wave1 {
+        width: 108px;
+      }
+
+      .loading-wave.wave2 {
+        width: 124px;
+      }
+
+      .loading-bubble.b1 { left: 20px; }
+      .loading-bubble.b2 { left: 45px; }
+      .loading-bubble.b3 { left: 78px; }
+      .loading-bubble.b4 { left: 102px; }
+      .loading-bubble.b5 { left: 132px; }
+      .loading-bubble.b6 { left: 160px; }
+
+      .loading-text {
+        font-size: 14px;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -1377,6 +1627,37 @@
       </div>
     </section>
 
+
+
+    <!-- 로딩 -->
+    <section id="loadingScreen" class="screen">
+      <div class="loading-panel">
+        <div class="loading-card">
+          <div class="loading-sign">테스트잇 목욕탕 아이템 성격 테스트</div>
+
+          <div class="loading-water-scene">
+            <div class="loading-water">
+              <span class="loading-wave wave1"></span>
+              <span class="loading-wave wave2"></span>
+
+              <span class="loading-bubble b1"></span>
+              <span class="loading-bubble b2"></span>
+              <span class="loading-bubble b3"></span>
+              <span class="loading-bubble b4"></span>
+              <span class="loading-bubble b5"></span>
+              <span class="loading-bubble b6"></span>
+            </div>
+          </div>
+
+          <p class="loading-text">결과 찾는 중...</p>
+          <p class="loading-subtext">목욕탕 아이템 고르는 중 ♨</p>
+
+          <div class="loading-progress">
+            <div class="loading-fill" id="loadingFill"></div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- 결과 -->
     <section id="resultScreen" class="screen">
@@ -1679,12 +1960,14 @@
 
     const mainScreen = document.getElementById('mainScreen');
     const questionScreen = document.getElementById('questionScreen');
+    const loadingScreen = document.getElementById('loadingScreen');
     const resultScreen = document.getElementById('resultScreen');
 
     const currentQuestionEl = document.getElementById('currentQuestion');
     const progressFill = document.getElementById('progressFill');
     const questionText = document.getElementById('questionText');
     const answersWrap = document.getElementById('answers');
+    const loadingFill = document.getElementById('loadingFill');
 
     const resultName = document.getElementById('resultName');
     const goodFriend = document.getElementById('goodFriend');
@@ -1703,6 +1986,7 @@
     function showScreen(target) {
       mainScreen.classList.remove('active');
       questionScreen.classList.remove('active');
+      loadingScreen.classList.remove('active');
       resultScreen.classList.remove('active');
       target.classList.add('active');
       window.scrollTo({ top: 0, behavior: 'auto' });
@@ -1760,7 +2044,15 @@
         (score.T >= score.F ? 'T' : 'F') +
         (score.J >= score.P ? 'J' : 'P');
 
-      showResult(mbti);
+      showScreen(loadingScreen);
+
+      loadingFill.classList.remove('run');
+      void loadingFill.offsetWidth;
+      loadingFill.classList.add('run');
+
+      setTimeout(function() {
+        showResult(mbti);
+      }, 3000);
     }
 
     function showResult(mbti) {

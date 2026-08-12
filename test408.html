@@ -1983,13 +1983,22 @@
     const savePreviewImage = document.getElementById('savePreviewImage');
     const saveModalClose = document.getElementById('saveModalClose');
 
-    function showScreen(target) {
+    function showScreen(target, keepScroll = false) {
+      const currentScrollY = window.scrollY;
+
       mainScreen.classList.remove('active');
       questionScreen.classList.remove('active');
       loadingScreen.classList.remove('active');
       resultScreen.classList.remove('active');
       target.classList.add('active');
-      window.scrollTo({ top: 0, behavior: 'auto' });
+
+      if (keepScroll) {
+        requestAnimationFrame(function() {
+          window.scrollTo({ top: currentScrollY, behavior: 'auto' });
+        });
+      } else {
+        window.scrollTo({ top: 0, behavior: 'auto' });
+      }
     }
 
     function resetScore() {
@@ -2044,7 +2053,7 @@
         (score.T >= score.F ? 'T' : 'F') +
         (score.J >= score.P ? 'J' : 'P');
 
-      showScreen(loadingScreen);
+      showScreen(loadingScreen, true);
 
       loadingFill.classList.remove('run');
       void loadingFill.offsetWidth;

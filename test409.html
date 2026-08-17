@@ -1394,6 +1394,240 @@
       }
     }
 
+
+    /* =========================
+       RESULT LOADING
+    ========================= */
+
+    .loading-card {
+      position: relative;
+      min-height: 420px;
+      padding: 62px 20px 52px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border: 2px solid var(--line);
+      background: #fff;
+      text-align: center;
+    }
+
+    .loading-card::before,
+    .loading-card::after {
+      content: '';
+      position: absolute;
+      top: 14px;
+      width: 6px;
+      height: 6px;
+      background: var(--red);
+      box-shadow:
+        8px 0 0 var(--yellow),
+        16px 0 0 var(--blue),
+        0 8px 0 var(--blue),
+        8px 8px 0 var(--red);
+    }
+
+    .loading-card::before {
+      left: 14px;
+    }
+
+    .loading-card::after {
+      right: 30px;
+      transform: scaleX(-1);
+    }
+
+    .loading-clown {
+      position: relative;
+      width: 104px;
+      height: 112px;
+      margin-bottom: 27px;
+      image-rendering: pixelated;
+      animation: clownBounce .65s steps(2, end) infinite;
+    }
+
+    .loading-hat {
+      position: absolute;
+      left: 29px;
+      top: 0;
+      width: 46px;
+      height: 29px;
+      background: var(--blue);
+      border: 3px solid var(--line);
+    }
+
+    .loading-hat::before {
+      content: '';
+      position: absolute;
+      left: 12px;
+      top: -18px;
+      width: 18px;
+      height: 18px;
+      background: var(--red);
+      border: 3px solid var(--line);
+    }
+
+    .loading-hat::after {
+      content: '';
+      position: absolute;
+      right: -9px;
+      top: -11px;
+      width: 8px;
+      height: 8px;
+      background: var(--yellow);
+      border: 2px solid var(--line);
+    }
+
+    .loading-face {
+      position: absolute;
+      left: 18px;
+      top: 30px;
+      width: 68px;
+      height: 68px;
+      background: #fff;
+      border: 3px solid var(--line);
+    }
+
+    .loading-eye {
+      position: absolute;
+      top: 22px;
+      width: 7px;
+      height: 7px;
+      background: var(--line);
+    }
+
+    .loading-eye.left {
+      left: 15px;
+    }
+
+    .loading-eye.right {
+      right: 15px;
+    }
+
+    .loading-nose {
+      position: absolute;
+      left: 50%;
+      top: 29px;
+      width: 13px;
+      height: 13px;
+      transform: translateX(-50%);
+      background: var(--red);
+      border: 2px solid var(--line);
+    }
+
+    .loading-mouth {
+      position: absolute;
+      left: 50%;
+      bottom: 11px;
+      width: 27px;
+      height: 7px;
+      transform: translateX(-50%);
+      border-left: 3px solid var(--line);
+      border-right: 3px solid var(--line);
+      border-bottom: 3px solid var(--line);
+    }
+
+    .loading-bow {
+      position: absolute;
+      left: 25px;
+      bottom: 0;
+      width: 20px;
+      height: 15px;
+      background: var(--yellow);
+      border: 3px solid var(--line);
+      box-shadow: 31px 0 0 var(--yellow);
+    }
+
+    .loading-bow::after {
+      content: '';
+      position: absolute;
+      left: 20px;
+      top: 2px;
+      width: 11px;
+      height: 11px;
+      background: var(--red);
+      border: 2px solid var(--line);
+    }
+
+    .loading-title {
+      margin: 0;
+      font-size: 19px;
+      line-height: 1.5;
+      font-weight: normal;
+      letter-spacing: 1px;
+      color: var(--ink);
+    }
+
+    .loading-sub {
+      margin-top: 11px;
+      font-size: 12px;
+      line-height: 1.5;
+      color: #777066;
+    }
+
+    .loading-pixels {
+      margin-top: 24px;
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+    }
+
+    .loading-pixels span {
+      width: 8px;
+      height: 8px;
+      background: var(--red);
+      animation: pixelLoading .9s steps(2, end) infinite;
+    }
+
+    .loading-pixels span:nth-child(2) {
+      background: var(--yellow);
+      animation-delay: .15s;
+    }
+
+    .loading-pixels span:nth-child(3) {
+      background: var(--blue);
+      animation-delay: .3s;
+    }
+
+    @keyframes clownBounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-6px);
+      }
+    }
+
+    @keyframes pixelLoading {
+      0%, 30% {
+        opacity: .25;
+        transform: translateY(0);
+      }
+      31%, 65% {
+        opacity: 1;
+        transform: translateY(-5px);
+      }
+      66%, 100% {
+        opacity: .25;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 520px) {
+      .loading-card {
+        min-height: 360px;
+        padding: 48px 16px 42px;
+      }
+
+      .loading-clown {
+        margin-bottom: 23px;
+      }
+
+      .loading-title {
+        font-size: 17px;
+      }
+    }
+
   </style>
 </head>
 
@@ -1444,6 +1678,32 @@
           <div id="answers" class="answer-list"></div>
         </div>
 
+      </div>
+    </section>
+
+
+    <!-- 결과 로딩 화면 -->
+    <section id="loadingScreen" class="screen">
+      <div class="loading-card">
+        <div class="loading-clown" aria-hidden="true">
+          <div class="loading-hat"></div>
+          <div class="loading-face">
+            <span class="loading-eye left"></span>
+            <span class="loading-eye right"></span>
+            <span class="loading-nose"></span>
+            <span class="loading-mouth"></span>
+          </div>
+          <div class="loading-bow"></div>
+        </div>
+
+        <div class="loading-title">나랑 닮은 삐에로 찾는 중...</div>
+        <div class="loading-sub">잠시만 기다려 주세요</div>
+
+        <div class="loading-pixels" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
       </div>
     </section>
 
@@ -1797,6 +2057,7 @@
     const startScreen = document.getElementById('startScreen');
     const quizScreen = document.getElementById('quizScreen');
     const resultScreen = document.getElementById('resultScreen');
+    const loadingScreen = document.getElementById('loadingScreen');
 
     const startBtn = document.getElementById('startBtn');
     const progressBar = document.getElementById('progressBar');
@@ -1830,7 +2091,7 @@
     };
 
     function showOnly(target) {
-      [startScreen, quizScreen, resultScreen].forEach(el => el.classList.remove('active'));
+      [startScreen, quizScreen, loadingScreen, resultScreen].forEach(el => el.classList.remove('active'));
       target.classList.add('active');
     }
 
@@ -1886,7 +2147,16 @@
       }
 
       progressBar.style.width = '100%';
-      showResult();
+      showResultLoading();
+    }
+
+    function showResultLoading() {
+      showOnly(loadingScreen);
+      window.scrollTo({ top: 0, behavior: 'auto' });
+
+      setTimeout(() => {
+        showResult();
+      }, 3000);
     }
 
     function getResultCode() {

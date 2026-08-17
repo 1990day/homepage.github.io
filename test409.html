@@ -1,0 +1,1979 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#fff8df" />
+
+  <title>테스트잇 삐에로 성격 테스트</title>
+  <meta name="description" content="나와 닮은 삐에로는 누구일까? 테스트잇 삐에로 성격 테스트" />
+  <meta property="og:title" content="테스트잇 삐에로 성격 테스트" />
+  <meta property="og:description" content="나와 닮은 삐에로는 누구일까?" />
+  <meta property="og:url" content="https://test-it.co.kr/test409" />
+  <meta property="og:type" content="website" />
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+  <style>
+    @import url('https://cdn.jsdelivr.net/npm/galmuri@latest/dist/galmuri.css');
+
+    @font-face {
+      font-family: 'Galmuri11';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2506-1@1.0/Galmuri11-Bold.woff2') format('woff2');
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    :root {
+      --cream: #fff8df;
+      --paper: #fffdf6;
+      --red: #e84b43;
+      --red-dark: #bd342f;
+      --blue: #467fc5;
+      --blue-soft: #eaf2ff;
+      --yellow: #f3d45b;
+      --yellow-soft: #fff0a8;
+      --pink: #f7c8c1;
+      --ink: #272522;
+      --muted: #736d63;
+      --line: #2d2a26;
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+    }
+
+    body {
+      font-family: 'Galmuri11', monospace;
+      -webkit-font-smoothing: none;
+      text-rendering: optimizeSpeed;
+      font-synthesis: none;
+      background:
+        radial-gradient(circle at 12px 12px, rgba(232,75,67,.07) 0 2px, transparent 2.5px) 0 0 / 24px 24px,
+        var(--cream);
+      color: var(--ink);
+    }
+
+    button {
+      font: inherit;
+      font-family: 'Galmuri11', monospace;
+    }
+
+    .site-header {
+      width: 100%;
+      background: rgba(255,255,255,.96);
+      border-bottom: 1px solid #e8e0cf;
+    }
+
+    .site-header-inner {
+      width: min(100%, 760px);
+      height: 58px;
+      margin: 0 auto;
+      padding: 0 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      color: #222;
+      text-decoration: none;
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -1.2px;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 16px;
+      font-weight: normal;
+    }
+
+    .nav a,
+    .nav a.active {
+      color: #3f3b36;
+      text-decoration: none;
+    }
+
+    .page {
+      width: min(100%, 560px);
+      margin: 0 auto;
+      padding: 20px 14px 56px;
+    }
+
+    .screen {
+      display: none;
+    }
+
+    .screen.active {
+      display: block;
+    }
+
+    /* =========================
+       START
+    ========================= */
+
+    .start-card {
+      position: relative;
+      overflow: hidden;
+      background: var(--paper);
+      border: 2px solid var(--line);
+    }
+
+    .circus-awning {
+      height: 54px;
+      display: flex;
+      border-bottom: 2px solid var(--line);
+      background: #fff;
+    }
+
+    .circus-awning span {
+      flex: 1;
+      position: relative;
+    }
+
+    .circus-awning span:nth-child(odd) {
+      background: var(--red);
+    }
+
+    .circus-awning span:nth-child(even) {
+      background: #fff4c4;
+    }
+
+    .circus-awning span::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: -13px;
+      width: 24px;
+      height: 24px;
+      transform: translateX(-50%);
+      border-radius: 50%;
+      background: inherit;
+      border-bottom: 2px solid var(--line);
+    }
+
+    .start-stage {
+      position: relative;
+      padding: 48px 28px 36px;
+      min-height: 520px;
+      text-align: center;
+    }
+
+    .start-stage::before,
+    .start-stage::after {
+      content: "";
+      position: absolute;
+      width: 96px;
+      height: 170px;
+      top: 120px;
+      background:
+        repeating-linear-gradient(
+          135deg,
+          transparent 0 12px,
+          rgba(70,127,197,.12) 12px 24px
+        );
+      pointer-events: none;
+    }
+
+    .start-stage::before {
+      left: -38px;
+      transform: rotate(-8deg);
+    }
+
+    .start-stage::after {
+      right: -38px;
+      transform: rotate(8deg);
+    }
+
+    .ticket-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 13px 7px;
+      background: var(--blue);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .5px;
+      transform: rotate(-1.5deg);
+    }
+
+    .ticket-label::before,
+    .ticket-label::after {
+      content: "✦";
+      color: var(--yellow);
+      font-size: 10px;
+    }
+
+    .start-title {
+      margin: 26px 0 0;
+      font-size: clamp(35px, 9vw, 50px);
+      line-height: 1.04;
+      font-weight: 700;
+      letter-spacing: -3px;
+    }
+
+    .start-title .accent {
+      color: var(--red);
+    }
+
+    .start-title .blue {
+      color: var(--blue);
+    }
+
+    .clown-emblem {
+      position: relative;
+      width: 188px;
+      height: 188px;
+      margin: 34px auto 25px;
+    }
+
+    .clown-emblem::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background:
+        conic-gradient(
+          var(--yellow) 0 12.5%,
+          #fff 12.5% 25%,
+          var(--blue) 25% 37.5%,
+          #fff 37.5% 50%,
+          var(--pink) 50% 62.5%,
+          #fff 62.5% 75%,
+          var(--yellow) 75% 87.5%,
+          #fff 87.5% 100%
+        );
+      border: 2px solid var(--line);
+    }
+
+    .clown-face {
+      position: absolute;
+      inset: 22px;
+      border-radius: 50%;
+      border: 2px solid var(--line);
+      background: #fffef9;
+    }
+
+    .clown-hat {
+      position: absolute;
+      left: 50%;
+      top: 8px;
+      width: 92px;
+      height: 54px;
+      transform: translateX(-50%);
+      z-index: 3;
+    }
+
+    .clown-hat::before {
+      content: "";
+      position: absolute;
+      left: 15px;
+      top: 0;
+      width: 62px;
+      height: 42px;
+      background: var(--red);
+      border: 2px solid var(--line);
+      clip-path: polygon(50% 0, 100% 100%, 0 100%);
+    }
+
+    .clown-hat::after {
+      content: "";
+      position: absolute;
+      left: 4px;
+      bottom: 0;
+      width: 84px;
+      height: 14px;
+      background: var(--blue);
+      border: 2px solid var(--line);
+    }
+
+    .eye {
+      position: absolute;
+      top: 64px;
+      width: 12px;
+      height: 15px;
+      border-radius: 50%;
+      background: var(--ink);
+    }
+
+    .eye.left { left: 41px; }
+    .eye.right { right: 41px; }
+
+    .nose {
+      position: absolute;
+      top: 79px;
+      left: 50%;
+      width: 30px;
+      height: 30px;
+      transform: translateX(-50%);
+      border-radius: 50%;
+      border: 2px solid var(--line);
+      background: var(--red);
+    }
+
+    .cheek {
+      position: absolute;
+      top: 96px;
+      width: 24px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--pink);
+    }
+
+    .cheek.left { left: 25px; }
+    .cheek.right { right: 25px; }
+
+    .mouth {
+      position: absolute;
+      left: 50%;
+      top: 111px;
+      width: 55px;
+      height: 25px;
+      transform: translateX(-50%);
+      border-bottom: 3px solid var(--ink);
+      border-radius: 0 0 50% 50%;
+    }
+
+    .start-copy {
+      margin: 0 auto;
+      max-width: 330px;
+      font-size: 15px;
+      line-height: 1.7;
+      font-weight: 700;
+      color: #625c53;
+      word-break: keep-all;
+    }
+
+    .star-line {
+      margin: 26px auto 0;
+      width: 72%;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--red);
+      font-size: 11px;
+    }
+
+    .star-line::before,
+    .star-line::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: #bdb4a5;
+    }
+
+    .start-btn,
+    .action-btn {
+      width: 100%;
+      border: 2px solid var(--line);
+      border-radius: 0;
+      cursor: pointer;
+      font-weight: 700;
+      transition: transform .08s ease, filter .15s ease;
+    }
+
+    .start-btn:active,
+    .action-btn:active,
+    .answer-btn:active {
+      transform: translateY(1px);
+    }
+
+    .start-btn {
+      margin-top: 14px;
+      padding: 17px 14px;
+      background: var(--red);
+      color: #fff;
+      font-size: 17px;
+    }
+
+    .start-btn:hover,
+    .action-btn:hover {
+      filter: brightness(.98);
+    }
+
+    /* =========================
+       QUIZ
+    ========================= */
+
+    .quiz-wrap {
+      overflow: hidden;
+      background: var(--paper);
+      border: 2px solid var(--line);
+    }
+
+    .quiz-head {
+      position: relative;
+      padding: 22px 22px 19px;
+      background: #fff3be;
+      border-bottom: 1px solid #d7caa4;
+    }
+
+    .quiz-head::before {
+      content: '';
+      display: block;
+      margin-bottom: 12px;
+      color: var(--red);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-align: center;
+    }
+
+    .progress-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .progress-track {
+      flex: 1;
+      height: 10px;
+      background: #fff;
+      border: 1px solid var(--line);
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      width: 0;
+      height: 100%;
+      background:
+        repeating-linear-gradient(
+          90deg,
+          var(--red) 0 18px,
+          var(--red) 18px 36px,
+          var(--blue) 36px 54px,
+          var(--blue) 54px 72px,
+          var(--yellow) 72px 90px,
+          var(--yellow) 90px 108px
+        );
+      transition: width .25s ease;
+    }
+
+    .progress-count {
+      min-width: 40px;
+      text-align: right;
+      font-size: 12px;
+      font-weight: 700;
+      color: #544e45;
+    }
+
+    .quiz-body {
+      padding: 31px 22px 28px;
+    }
+
+    .question-label {
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .3px;
+    }
+
+    .question-text {
+      min-height: 118px;
+      margin: 12px 0 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: clamp(20px, 5.3vw, 25px);
+      line-height: 1.48;
+      letter-spacing: -1px;
+      font-weight: 700;
+      word-break: keep-all;
+    }
+
+    .answer-list {
+      display: grid;
+      gap: 11px;
+    }
+
+    .answer-btn {
+      position: relative;
+      width: 100%;
+      min-height: 78px;
+      padding: 16px 18px 16px 54px;
+      border: 1.5px solid #6f675c;
+      background: #fff;
+      color: var(--ink);
+      text-align: left;
+      font-size: 15px;
+      line-height: 1.48;
+      font-weight: 700;
+      cursor: pointer;
+      word-break: keep-all;
+      transition: background-color .15s ease, transform .08s ease;
+    }
+
+    .answer-btn::before {
+      content: "●";
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--red);
+      font-size: 18px;
+    }
+
+    .answer-btn:nth-child(2)::before {
+      color: var(--blue);
+    }
+
+    .answer-btn:hover {
+      background: #fff8d9;
+    }
+
+    .quiz-bottom {
+      padding: 0 22px 22px;
+      text-align: center;
+      color: #948b7c;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .3px;
+    }
+
+    /* =========================
+       CLEAN PIXEL STYLE
+    ========================= */
+
+    body {
+      background-color: #fff8e8;
+      background-image:
+        linear-gradient(rgba(232,75,67,.10) 2px, transparent 2px),
+        linear-gradient(90deg, rgba(70,127,197,.08) 2px, transparent 2px);
+      background-size: 24px 24px;
+      background-position: 7px 7px;
+    }
+
+    .start-card,
+    .quiz-wrap {
+      background: #fff;
+      border: 2px solid var(--line);
+    }
+
+    .circus-awning {
+      height: 18px;
+      display: block;
+      border-bottom: 2px solid var(--line);
+      background:
+        repeating-linear-gradient(
+          90deg,
+          var(--red) 0 22px,
+          var(--red) 22px 44px,
+          var(--yellow) 44px 66px,
+          var(--yellow) 66px 88px,
+          var(--blue) 88px 110px,
+          var(--blue) 110px 132px,
+          #fff 132px 154px,
+          #fff 154px 176px
+        );
+    }
+
+    .circus-awning span {
+      display: none;
+    }
+
+    .start-stage {
+      min-height: 490px;
+      padding: 40px 28px 32px;
+      background: #fff;
+    }
+
+    .start-stage::before,
+    .start-stage::after {
+      content: '';
+      position: absolute;
+      width: 7px;
+      height: 7px;
+      top: 20px;
+      background: var(--red);
+      transform: none;
+      box-shadow:
+        9px 0 0 var(--yellow),
+        18px 0 0 var(--blue),
+        0 9px 0 var(--blue),
+        9px 9px 0 var(--red);
+    }
+
+    .start-stage::before {
+      left: 18px;
+    }
+
+    .start-stage::after {
+      left: auto;
+      right: 36px;
+      transform: scaleX(-1);
+    }
+
+    .ticket-label {
+      padding: 7px 10px 6px;
+      border: 2px solid var(--line);
+      background: #fff1ae;
+      color: var(--ink);
+      font-size: 11px;
+      font-weight: normal;
+      letter-spacing: 0;
+      transform: none;
+    }
+
+    .ticket-label::before,
+    .ticket-label::after {
+      content: '';
+      width: 5px;
+      height: 5px;
+      background: var(--red);
+    }
+
+    .ticket-label::after {
+      background: var(--blue);
+    }
+
+    .start-title {
+      margin-top: 22px;
+      font-weight: normal;
+      letter-spacing: -2px;
+    }
+
+    .clown-emblem {
+      width: 178px;
+      height: 178px;
+      margin: 30px auto 23px;
+    }
+
+    .clown-emblem::before {
+      border-radius: 0;
+      border: 2px solid var(--line);
+      background:
+        linear-gradient(90deg, rgba(243,212,91,.42) 50%, transparent 50%) 0 0 / 16px 16px,
+        linear-gradient(rgba(70,127,197,.18) 50%, transparent 50%) 0 0 / 16px 16px,
+        #fff;
+    }
+
+    .clown-face {
+      inset: 20px;
+      border-width: 2px;
+      background: #fff;
+    }
+
+    .start-copy {
+      font-weight: normal;
+    }
+
+    .star-line {
+      margin-top: 21px;
+      color: var(--red);
+    }
+
+    .start-btn,
+    .action-btn {
+      font-weight: normal;
+      border-width: 2px;
+    }
+
+    .quiz-wrap {
+      overflow: hidden;
+    }
+
+    .quiz-head {
+      padding: 16px 19px 15px;
+      background: #fff;
+      border-bottom: 2px solid var(--line);
+    }
+
+    .quiz-head::before {
+      content: none;
+      display: none;
+    }
+
+    .progress-track {
+      height: 10px;
+      border: 2px solid var(--line);
+      background: #fff;
+    }
+
+    .progress-bar {
+      background:
+        repeating-linear-gradient(
+          90deg,
+          var(--red) 0 16px,
+          var(--red) 16px 32px,
+          var(--yellow) 32px 48px,
+          var(--yellow) 48px 64px,
+          var(--blue) 64px 80px,
+          var(--blue) 80px 96px
+        );
+    }
+
+    .progress-count,
+    .question-label {
+      font-weight: normal;
+    }
+
+    .quiz-body {
+      padding-top: 26px;
+      background: #fff;
+    }
+
+    .question-text {
+      min-height: 108px;
+      font-weight: normal;
+    }
+
+    .answer-btn {
+      min-height: 72px;
+      border: 2px solid var(--line);
+      background: #fff;
+      font-weight: normal;
+    }
+
+    .answer-btn::before {
+      content: '';
+      left: 21px;
+      width: 8px;
+      height: 8px;
+      border-radius: 0;
+      background: var(--red);
+    }
+
+    .answer-btn:nth-child(2)::before {
+      background: var(--blue);
+    }
+
+    .answer-btn:hover {
+      background: #fff5c9;
+    }
+
+    /* =========================
+       RESULT
+    ========================= */
+
+    #captureArea {
+      background: #fff;
+    }
+
+    .result-paper {
+      overflow: hidden;
+      background: #fff;
+      border: 2px solid var(--line);
+    }
+
+    .result-banner {
+      position: relative;
+      padding: 15px 16px 14px;
+      text-align: center;
+      background: #fff;
+      border-bottom: 2px solid var(--line);
+    }
+
+    .result-banner::before,
+    .result-banner::after {
+      content: '';
+      position: absolute;
+      top: 10px;
+      width: 6px;
+      height: 6px;
+      background: var(--red);
+      box-shadow:
+        8px 0 0 var(--yellow),
+        16px 0 0 var(--blue),
+        0 8px 0 var(--blue),
+        8px 8px 0 var(--red);
+    }
+
+    .result-banner::before { left: 13px; }
+    .result-banner::after { right: 29px; transform: scaleX(-1); }
+
+    .result-main-title {
+      font-size: clamp(16px, 4.2vw, 20px);
+      line-height: 1.25;
+      font-weight: normal;
+      letter-spacing: 1.8px;
+      color: var(--ink);
+    }
+
+    .result-hero {
+      display: grid;
+      grid-template-columns: 35% 65%;
+      align-items: stretch;
+      min-height: 148px;
+      border-bottom: 2px solid var(--line);
+      background: #fff;
+    }
+
+    .result-image-area {
+      position: relative;
+      min-height: 148px;
+      padding: 3px 6px 3px 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .result-image {
+      position: relative;
+      z-index: 2;
+      display: block;
+      width: 100%;
+      max-width: 138px;
+      max-height: 136px;
+      object-fit: contain;
+      object-position: center center;
+      image-rendering: pixelated;
+      image-rendering: crisp-edges;
+    }
+
+    .result-copy-area {
+      position: relative;
+      transform: none;
+      padding: 10px 12px 10px 8px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: #fff;
+    }
+
+    .result-copy-area::before,
+    .result-copy-area::after {
+      content: '';
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      opacity: .85;
+    }
+
+    .result-copy-area::before {
+      top: 12px;
+      right: 16px;
+      background: var(--blue);
+      box-shadow: -6px 0 0 var(--yellow);
+    }
+
+    .result-copy-area::after {
+      bottom: 12px;
+      right: 16px;
+      background: var(--red);
+      box-shadow: -6px 0 0 var(--blue);
+    }
+
+
+    .result-prefix {
+      margin: 0 0 7px;
+      color: #665f56;
+      font-size: clamp(11px, 2.8vw, 13px);
+      line-height: 1.35;
+      font-weight: normal;
+      letter-spacing: .5px;
+    }
+
+    .result-name {
+      margin: 0;
+      color: var(--red);
+      font-size: clamp(24px, 6.1vw, 31px);
+      line-height: 1.1;
+      font-weight: normal;
+      letter-spacing: -.6px;
+    }
+
+    .result-name.small-name {
+      font-size: clamp(21px, 5.4vw, 27px);
+    }
+
+    .bingo-section {
+      position: relative;
+      padding: 14px 14px 10px;
+      background: #fff;
+    }
+
+
+    .bingo-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-top: 1.5px solid var(--line);
+      border-left: 1.5px solid var(--line);
+      background: #fff;
+    }
+
+    .bingo-cell {
+      position: relative;
+      aspect-ratio: 1 / 1;
+      min-height: 76px;
+      padding: 7px 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      border-right: 1.5px solid var(--line);
+      border-bottom: 1.5px solid var(--line);
+      font-size: clamp(11px, 3vw, 13px);
+      line-height: 1.35;
+      font-weight: normal;
+      word-break: keep-all;
+    }
+
+    .bingo-cell:nth-child(4n+1)::after {
+      content: '';
+      position: absolute;
+      right: 5px;
+      bottom: 5px;
+      width: 3px;
+      height: 3px;
+      background: rgba(45,42,38,.32);
+    }
+
+    .bingo-cell:nth-child(8n+1),
+    .bingo-cell:nth-child(8n+4),
+    .bingo-cell:nth-child(8n+6),
+    .bingo-cell:nth-child(8n+7) {
+      background: #fff2bf;
+    }
+
+    .bingo-cell:nth-child(8n+2),
+    .bingo-cell:nth-child(8n+5) {
+      background: #eaf2ff;
+    }
+
+    .bingo-cell:nth-child(8n+3),
+    .bingo-cell:nth-child(8n) {
+      background: #ffe9e5;
+    }
+
+    .compat-section {
+      padding: 5px 14px 17px;
+      background: #fff;
+    }
+
+    .compat-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      padding-top: 10px;
+    }
+
+    .compat-card {
+      position: relative;
+      min-height: 112px;
+      border: 2px solid var(--line);
+      background: #fff;
+    }
+
+    .compat-card::after {
+      content: '';
+      position: absolute;
+      right: 5px;
+      bottom: 5px;
+      width: 4px;
+      height: 4px;
+      background: var(--blue);
+    }
+
+    .compat-card.bad::after {
+      background: var(--red);
+    }
+
+    .compat-title {
+      margin: 0;
+      padding: 10px 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 12px;
+      line-height: 1.35;
+      font-weight: normal;
+      border-bottom: 2px solid var(--line);
+      background: #eef4ff;
+    }
+
+    .compat-card.bad .compat-title {
+      background: #fff0eb;
+    }
+
+    .compat-title::before {
+      content: none;
+      display: none;
+    }
+
+    .compat-list {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      min-height: 72px;
+      padding: 10px 8px;
+      text-align: center;
+    }
+
+    .compat-chip {
+      position: relative;
+      padding-left: 10px;
+      font-size: 14px;
+      line-height: 1.35;
+      font-weight: normal;
+      word-break: keep-all;
+      color: var(--ink);
+    }
+
+    .compat-chip::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: .48em;
+      width: 5px;
+      height: 5px;
+      background: var(--yellow);
+    }
+
+    .compat-card.bad .compat-chip::before {
+      background: var(--red);
+    }
+
+    .actions {
+      margin-top: 14px;
+      display: grid;
+      gap: 9px;
+    }
+
+    .action-btn {
+      padding: 15px 12px;
+      background: #fff;
+      color: var(--ink);
+      font-size: 14px;
+    }
+
+    .action-btn.save {
+      background: var(--red);
+      color: #fff;
+    }
+
+    .action-btn.retry {
+      background: var(--yellow);
+    }
+
+    .action-btn.share {
+      background: var(--blue);
+      color: #fff;
+    }
+
+    .action-btn.other {
+      background: #fff;
+    }
+
+    .save-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: rgba(30, 27, 23, .55);
+    }
+
+    .save-modal.show {
+      display: flex;
+    }
+
+    .save-modal-box {
+      width: min(340px, 100%);
+      max-height: 88vh;
+      overflow: auto;
+      padding: 18px;
+      background: #fffdf8;
+      border: 2px solid var(--line);
+      text-align: center;
+    }
+
+    .save-modal-title {
+      margin-bottom: 6px;
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .save-modal-guide {
+      margin-bottom: 13px;
+      color: #6d665c;
+      font-size: 12px;
+      line-height: 1.5;
+      font-weight: 700;
+    }
+
+    .save-preview {
+      display: block;
+      width: 100%;
+      max-height: 58vh;
+      object-fit: contain;
+      border: 1px solid #d6cebf;
+      background: #fff;
+      -webkit-touch-callout: default;
+      user-select: auto;
+    }
+
+    .save-modal-close {
+      width: 100%;
+      margin-top: 12px;
+      padding: 12px 10px;
+      border: 1.5px solid var(--line);
+      border-radius: 0;
+      background: var(--yellow);
+      color: var(--ink);
+      font: inherit;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    @media (max-width: 520px) {
+      .site-header-inner {
+        height: 54px;
+        padding: 0 12px;
+      }
+
+      .logo {
+        font-size: 20px;
+      }
+
+      .nav {
+        gap: 13px;
+        font-size: 14px;
+      }
+
+      .page {
+        padding: 15px 10px 46px;
+      }
+
+      .circus-awning {
+        height: 48px;
+      }
+
+      .start-stage {
+        min-height: 485px;
+        padding: 42px 20px 31px;
+      }
+
+      .clown-emblem {
+        width: 168px;
+        height: 168px;
+        margin-top: 31px;
+      }
+
+      .clown-face {
+        inset: 20px;
+      }
+
+      .eye {
+        top: 58px;
+      }
+
+      .eye.left { left: 36px; }
+      .eye.right { right: 36px; }
+
+      .nose {
+        top: 71px;
+      }
+
+      .cheek {
+        top: 88px;
+      }
+
+      .mouth {
+        top: 100px;
+      }
+
+      .quiz-head {
+        padding: 15px 17px 14px;
+      }
+
+      .quiz-body {
+        padding: 28px 17px 25px;
+      }
+
+      .question-text {
+        min-height: 105px;
+      }
+
+      .answer-btn {
+        min-height: 74px;
+        padding-left: 49px;
+      }
+
+      .result-banner {
+        padding: 13px 10px 12px;
+      }
+
+      .result-hero {
+        grid-template-columns: 35% 65%;
+        min-height: 136px;
+      }
+
+      .result-image-area {
+        min-height: 136px;
+        padding: 2px 4px 2px 7px;
+      }
+
+      .result-image {
+        max-width: 116px;
+        max-height: 124px;
+      }
+
+      .result-copy-area {
+        transform: none;
+        padding: 8px 9px 8px 5px;
+      }
+
+      .result-copy-area::before {
+        top: 9px;
+        right: 10px;
+      }
+
+      .result-copy-area::after {
+        bottom: 9px;
+        right: 10px;
+      }
+
+      .bingo-section {
+        padding: 12px 8px 8px;
+      }
+
+      .compat-section {
+        padding: 3px 8px 13px;
+      }
+
+      .compat-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+        padding-top: 8px;
+      }
+
+      .compat-card {
+        min-height: 104px;
+      }
+
+      .compat-title {
+        padding: 9px 5px;
+        font-size: 11px;
+      }
+
+      .compat-list {
+        gap: 6px;
+        min-height: 66px;
+        padding: 9px 5px;
+      }
+
+      .compat-chip {
+        padding-left: 9px;
+        font-size: 12px;
+      }
+
+      .bingo-cell {
+        min-height: 68px;
+        padding: 5px 3px;
+      }
+    }
+  
+
+    @media (max-width: 520px) {
+      .start-stage {
+        min-height: 455px;
+        padding: 34px 18px 27px;
+      }
+
+      .start-title {
+        margin-top: 19px;
+      }
+
+      .clown-emblem {
+        width: 158px;
+        height: 158px;
+        margin: 25px auto 20px;
+      }
+
+      .clown-face {
+        inset: 18px;
+      }
+
+      .quiz-head {
+        padding: 14px 15px 13px;
+      }
+
+      .quiz-body {
+        padding: 24px 15px 22px;
+      }
+
+      .question-text {
+        min-height: 96px;
+      }
+
+      .answer-btn {
+        min-height: 68px;
+        padding-left: 46px;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a class="logo" href="https://test-it.co.kr/">테스트잇</a>
+      <nav class="nav">
+        <a href="https://test-it.co.kr/">성격</a>
+        <a href="https://test-it.co.kr/">얼굴</a>
+        <a href="https://test-it.co.kr/">그외</a>
+        <a href="https://test-it.co.kr/">사주</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page">
+    <!-- 시작 화면 -->
+    <section id="startScreen" class="screen active">
+      <div class="start-card">
+        <div class="circus-awning" aria-hidden="true">
+          <span></span><span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+
+        <div class="start-stage">
+          <div class="ticket-label">테스트잇 · 409</div>
+
+          <h1 class="start-title">
+            테스트잇<br>
+            <span class="accent">삐에로</span> <span class="blue">성격 테스트</span>
+          </h1>
+
+          <div class="clown-emblem" aria-hidden="true">
+            <div class="clown-face">
+              <div class="clown-hat"></div>
+              <span class="eye left"></span>
+              <span class="eye right"></span>
+              <span class="nose"></span>
+              <span class="cheek left"></span>
+              <span class="cheek right"></span>
+              <span class="mouth"></span>
+            </div>
+          </div>
+
+          <p class="start-copy">
+            서커스단에 들어간다면 나는 어떤 삐에로일까?<br>
+            12개의 질문으로 나와 닮은 삐에로를 찾아보자!
+          </p>
+
+          <div class="star-line">★</div>
+        </div>
+      </div>
+
+      <button id="startBtn" class="start-btn" type="button">테스트 시작하기</button>
+    </section>
+
+    <!-- 질문 화면 -->
+    <section id="quizScreen" class="screen">
+      <div class="quiz-wrap">
+        <div class="quiz-head">
+          <div class="progress-row">
+            <div class="progress-track">
+              <div id="progressBar" class="progress-bar"></div>
+            </div>
+            <div class="progress-count">
+              <span id="currentCount">1</span> / 12
+            </div>
+          </div>
+        </div>
+
+        <div class="quiz-body">
+          <div id="questionNumber" class="question-label">QUESTION 01</div>
+          <div id="questionText" class="question-text"></div>
+          <div id="answers" class="answer-list"></div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 결과 화면 -->
+    <section id="resultScreen" class="screen">
+      <div id="captureArea">
+        <div class="result-paper">
+          <div class="result-banner">
+            <div class="result-main-title">테스트잇 삐에로 성격 테스트</div>
+          </div>
+
+          <div class="result-hero">
+            <div class="result-image-area">
+              <img id="resultImage" class="result-image" alt="삐에로 결과 캐릭터">
+            </div>
+
+            <div class="result-copy-area">
+              <div class="result-prefix">나랑 닮은 삐에로는</div>
+              <div id="resultName" class="result-name">풍선삐</div>
+            </div>
+          </div>
+
+          <div class="bingo-section">
+            <div id="bingoGrid" class="bingo-grid"></div>
+          </div>
+
+          <div class="compat-section">
+            <div class="compat-grid">
+              <div class="compat-card good">
+                <div class="compat-title">잘 맞는 삐에로</div>
+                <div id="goodMatchList" class="compat-list"></div>
+              </div>
+              <div class="compat-card bad">
+                <div class="compat-title">안 맞는 삐에로</div>
+                <div id="badMatchList" class="compat-list"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button id="saveBtn" class="action-btn save" type="button">결과 이미지 저장하기</button>
+        <button id="retryBtn" class="action-btn retry" type="button">다시 해보기</button>
+        <button id="otherBtn" class="action-btn other" type="button">다른 테스트 해보기</button>
+        <button id="shareBtn" class="action-btn share" type="button">테스트 공유하기</button>
+      </div>
+
+    </section>
+  </main>
+
+  <div id="saveModal" class="save-modal" aria-hidden="true">
+    <div class="save-modal-box">
+      <div class="save-modal-title">결과 이미지가 만들어졌어요</div>
+      <div class="save-modal-guide">아래 이미지를 꾹 누르거나 우클릭해서 저장해 주세요.</div>
+      <img id="savePreview" class="save-preview" alt="삐에로 성격 테스트 결과 이미지">
+      <button id="saveModalClose" class="save-modal-close" type="button">닫기</button>
+    </div>
+  </div>
+
+  <script>
+    const TEST_URL = 'https://test-it.co.kr/test409';
+    const SHARE_TITLE = '테스트잇 삐에로 성격 테스트';
+
+    const questions = [
+      {
+        text: '처음 보는 사람들이 가득한<br>서커스단 대기실에 들어갔다',
+        answers: [
+          { text: '먼저 인사하며 자연스럽게 말을 건다', letter: 'E' },
+          { text: '분위기를 살피다가 편한 사람부터 대화한다', letter: 'I' }
+        ]
+      },
+      {
+        text: '새로운 삐에로 공연을<br>하나 만들어야 한다면?',
+        answers: [
+          { text: '전에 본 적 없는 독특한 아이디어부터 떠올린다', letter: 'N' },
+          { text: '실제로 무대에서 잘 통할 장면부터 생각한다', letter: 'S' }
+        ]
+      },
+      {
+        text: '동료가 공연을 망치고<br>속상해하고 있다면?',
+        answers: [
+          { text: '어디서 꼬였는지 같이 정리해본다', letter: 'T' },
+          { text: '많이 속상했겠다며 먼저 기분을 풀어준다', letter: 'F' }
+        ]
+      },
+      {
+        text: '내일 중요한 공연이 있다<br>오늘 저녁 나는?',
+        answers: [
+          { text: '준비물과 순서를 미리 점검해둔다', letter: 'J' },
+          { text: '큰 틀만 보고 내일 상황에 맞춰 움직인다', letter: 'P' }
+        ]
+      },
+      {
+        text: '공연이 끝나고 다 같이<br>뒤풀이를 하자고 한다',
+        answers: [
+          { text: '공연 끝난 기세 그대로 같이 신나게 논다', letter: 'E' },
+          { text: '즐거워도 오래 있으면 금방 지쳐 먼저 쉰다', letter: 'I' }
+        ]
+      },
+      {
+        text: '무대 소품 창고에서<br>처음 보는 상자를 발견했다',
+        answers: [
+          { text: '안에 뭐가 들었을지 상상부터 해본다', letter: 'N' },
+          { text: '라벨이나 사용법부터 확인해본다', letter: 'S' }
+        ]
+      },
+      {
+        text: '내 공연에 대해 친구가<br>솔직한 평가를 부탁한다면?',
+        answers: [
+          { text: '좋았던 점과 아쉬운 점을 정확히 말한다', letter: 'T' },
+          { text: '기분 상하지 않게 표현을 골라 말한다', letter: 'F' }
+        ]
+      },
+      {
+        text: '공연 당일 갑자기<br>순서가 크게 바뀌었다',
+        answers: [
+          { text: '바뀐 순서를 다시 정리해야 마음이 놓인다', letter: 'J' },
+          { text: '그때그때 맞춰가며 하면 된다고 생각한다', letter: 'P' }
+        ]
+      },
+      {
+        text: '단체 사진을 찍는데<br>모두 어색하게 서 있다',
+        answers: [
+          { text: '먼저 포즈를 잡거나 분위기를 띄운다', letter: 'E' },
+          { text: '누가 분위기를 풀어주면 그때 자연스럽게 맞춘다', letter: 'I' }
+        ]
+      },
+      {
+        text: '새 의상을 고를 때<br>더 끌리는 쪽은?',
+        answers: [
+          { text: '평소엔 안 입을 법한 독특한 디자인', letter: 'N' },
+          { text: '내가 입었을 때 잘 어울릴 게 확실한 디자인', letter: 'S' }
+        ]
+      },
+      {
+        text: '같이 준비하던 동료가<br>내 실수 때문에 화가 났다',
+        answers: [
+          { text: '무엇이 잘못됐는지 확인하고 해결부터 한다', letter: 'T' },
+          { text: '상대가 왜 화났는지 듣고 감정을 먼저 풀어준다', letter: 'F' }
+        ]
+      },
+      {
+        text: '일주일 뒤 자유 공연이 잡혔다<br>준비 방식은?',
+        answers: [
+          { text: '연습할 날과 준비할 것을 미리 나눠둔다', letter: 'J' },
+          { text: '생각날 때 준비하면서 점점 완성해간다', letter: 'P' }
+        ]
+      }
+    ];
+
+    const results = {
+      ENFJ: {
+        name: '풍선삐',
+        desc: '사람들 사이의 분위기를 빠르게 읽고 자연스럽게 모두를 한쪽으로 모으는 편.',
+        bingo: [
+          '사람 챙기는 편', '분위기 파악 빠름', '먼저 말 거는 편', '리액션 좋은 편',
+          '책임감 큰 편', '친한 사람 잘 챙김', '단체에서 존재감 있음', '칭찬에 진심임',
+          '갈등 오래 못 봄', '표현이 따뜻함', '할 땐 확실히 함', '주변 반응 신경 씀',
+          '사람 장점 잘 봄', '약속 중요하게 봄', '분위기 살리는 편', '마음 쓰는 일이 많음'
+        ]
+      },
+      INFJ: {
+        name: '명상삐',
+        desc: '조용히 사람과 상황을 관찰하면서 자기만의 기준으로 깊게 생각하는 편.',
+        bingo: [
+          '혼자 생각 많음', '눈치가 빠른 편', '쉽게 안 친해짐', '속마음 깊음',
+          '사람을 오래 봄', '혼자 있는 시간 필요', '의미를 많이 찾음', '말보다 분위기 봄',
+          '생각 정리 후 말함', '고집 있는 편', '관계에 신중함', '감정 소모 싫어함',
+          '기억력 좋은 편', '사람 마음 잘 읽음', '조용히 챙겨줌', '확신 생기면 오래 감'
+        ]
+      },
+      ENFP: {
+        name: '댄스삐',
+        desc: '재밌어 보이는 일에 빠르게 반응하고 새로운 분위기를 만드는 데 강한 편.',
+        bingo: [
+          '흥미 생기면 빠름', '말하다 딴길 잘 감', '새로운 거 좋아함', '표현이 큰 편',
+          '사람 만나는 거 좋아함', '즉흥 아이디어 많음', '기분 전환 빠름', '호기심 많음',
+          '재밌으면 몰입함', '싫증도 빠른 편', '친해지는 속도 빠름', '리액션 풍부함',
+          '계획 바뀌어도 괜찮음', '감정 표현 솔직함', '분위기 타는 편', '하고 싶은 게 많음'
+        ]
+      },
+      INFP: {
+        name: '시인삐',
+        desc: '자기 취향과 감정이 분명하고 마음에 드는 것에는 오래 빠져드는 편.',
+        bingo: [
+          '취향이 확실함', '혼자 상상 많이 함', '마음에 오래 담음', '낯가림 있는 편',
+          '좋아하는 건 깊게 팜', '감정에 솔직함', '강요 받는 거 싫음', '공감 잘하는 편',
+          '혼자 충전 필요', '기분 따라 집중력 차이', '사소한 말 기억함', '내 방식 중요함',
+          '조용히 고집 있음', '편한 사람에겐 말 많음', '싫은 건 티가 남', '진심 중요하게 봄'
+        ]
+      },
+      ENTJ: {
+        name: '근육삐',
+        desc: '해야 할 일이 보이면 바로 방향을 잡고 결과가 나올 때까지 밀어붙이는 편.',
+        bingo: [
+          '결정 빠른 편', '답답한 거 싫어함', '목표 생기면 집중함', '주도권 잡는 편',
+          '시간 낭비 싫어함', '효율 중요하게 봄', '할 말은 하는 편', '경쟁심 있는 편',
+          '계획 세우는 편', '결과로 보여주려 함', '기준이 높은 편', '문제 생기면 바로 해결',
+          '감정보다 해결 먼저', '일 맡으면 책임짐', '속도감 중요함', '승부욕 큰 편'
+        ]
+      },
+      INTJ: {
+        name: '안경삐',
+        desc: '겉으로는 조용해 보여도 머릿속에서는 이미 여러 경우의 수를 계산하는 편.',
+        bingo: [
+          '혼자 판단 잘함', '쓸데없는 말 싫어함', '계획 머릿속에 있음', '관찰 많이 함',
+          '기준이 뚜렷함', '효율 따지는 편', '쉽게 안 믿음', '혼자 하는 게 편함',
+          '감정 표현 적은 편', '미리 대비하는 편', '관심 분야 깊게 팜', '생각 정리 잘함',
+          '말보다 결과 중요', '억지 친목 싫어함', '필요한 말만 함', '내 시간 중요함'
+        ]
+      },
+      ENTP: {
+        name: '농담삐',
+        desc: '새로운 생각을 던지고 반응을 보는 걸 좋아하며 뻔한 흐름을 쉽게 지루해하는 편.',
+        bingo: [
+          '말장난 좋아함', '아이디어가 많음', '호기심 강함', '뻔한 거 싫어함',
+          '토론 좋아하는 편', '순간 대처 빠름', '새로운 거 잘 건드림', '규칙에 의문 많음',
+          '생각 바뀌기도 빠름', '재미가 중요함', '말 센스 있는 편', '즉흥에 강함',
+          '시작은 빠른 편', '반복 작업 싫어함', '사람 반응 잘 봄', '지루하면 티 남'
+        ]
+      },
+      INTP: {
+        name: '무표정삐',
+        desc: '겉반응은 크지 않아도 머릿속에서는 계속 분석하고 정리하는 편.',
+        bingo: [
+          '표정 변화 적음', '혼자 생각 많이 함', '궁금하면 끝까지 봄', '논리 따지는 편',
+          '낯가림 있는 편', '말수 적을 때 많음', '관심사 편차 큼', '귀찮음 잘 느낌',
+          '혼자 있는 게 편함', '갑작스런 연락 피곤함', '생각 정리 오래 함', '감정 표현 서툼',
+          '쓸데없는 규칙 싫음', '집중하면 주변 안 보임', '관찰하는 편', '내 방식대로 함'
+        ]
+      },
+      ESFJ: {
+        name: '인사삐',
+        desc: '사람 사이의 분위기를 잘 맞추고 어색한 상황을 그냥 지나치지 못하는 편.',
+        bingo: [
+          '인사 잘하는 편', '주변 사람 잘 챙김', '반응이 빠른 편', '약속 중요하게 봄',
+          '어색함 못 참음', '기념일 잘 챙김', '단체 분위기 신경 씀', '칭찬 잘함',
+          '연락 성실한 편', '사람 취향 잘 기억함', '정 많은 편', '갈등 오래 싫어함',
+          '필요한 걸 잘 챙김', '예의 중요하게 봄', '친해지면 표현 많음', '주변 반응 신경 씀'
+        ]
+      },
+      ISFJ: {
+        name: '미소삐',
+        desc: '겉으로는 괜찮아 보여도 서운했던 일은 꽤 오래 기억하고 혼자 정리하는 편.',
+        bingo: [
+          '작은 말도 기억함', '서운해도 바로 말 못함', '챙기는 건 잘함', '낯가림 있는 편',
+          '익숙한 게 편함', '약속 잘 지킴', '눈치 많이 보는 편', '거절 어려워함',
+          '조용히 배려함', '참다가 지침', '가까운 사람 중요함', '변화에 신중함',
+          '기억력 좋은 편', '감정 쌓아두기 쉬움', '필요한 건 미리 챙김', '편한 사람에겐 솔직함'
+        ]
+      },
+      ESFP: {
+        name: '저요삐',
+        desc: '재밌는 일이 보이면 바로 참여하고 현장의 분위기를 제대로 즐기는 편.',
+        bingo: [
+          '재밌는 거 좋아함', '반응 빠른 편', '사람 만나는 거 좋아함', '표현이 솔직함',
+          '눈에 띄는 거 괜찮음', '새로운 경험 좋아함', '즉흥 약속 잘 잡음', '분위기 잘 탐',
+          '친해지는 속도 빠름', '지루한 거 싫어함', '칭찬 들으면 신남', '현재 기분 중요함',
+          '행동이 빠른 편', '리액션 큰 편', '놀 때 제대로 놂', '재미없으면 집중 안 됨'
+        ]
+      },
+      ISFP: {
+        name: '꿀잠삐',
+        desc: '내 속도와 편안함을 중요하게 생각하고 억지로 에너지를 쓰지 않는 편.',
+        bingo: [
+          '내 페이스 중요함', '혼자 쉬는 거 좋아함', '편한 옷 좋아함', '강요 싫어함',
+          '낯가림 있는 편', '싫은 소리 잘 못함', '기분 따라 움직임', '귀찮으면 미룸',
+          '취향이 분명함', '말보다 행동으로 챙김', '쉬는 시간 꼭 필요', '시끄러운 곳 오래 못 있음',
+          '감정에 솔직함', '현재 기분 중요함', '편한 사람에겐 장난 많음', '스트레스 받으면 잠부터 잠'
+        ]
+      },
+      ESTJ: {
+        name: '고함삐',
+        desc: '해야 할 일과 기준이 분명하고 답답한 상황에서는 바로 정리하고 나서는 편.',
+        bingo: [
+          '답답하면 바로 말함', '기준이 확실함', '시간 약속 중요함', '일처리 빠른 편',
+          '역할 분담 잘함', '책임감 강한 편', '계획 틀어지면 싫음', '할 일 미루기 싫어함',
+          '현실적으로 판단함', '정리 안 된 거 싫어함', '약속 어기는 거 싫음', '확실한 답 좋아함',
+          '결과 중요하게 봄', '남 일도 챙기게 됨', '솔직하게 말함', '통제 안 되면 답답함'
+        ]
+      },
+      ISTJ: {
+        name: '모범삐',
+        desc: '정해진 일을 차분하게 끝내고 약속이나 기준을 쉽게 넘기지 않는 편.',
+        bingo: [
+          '약속 잘 지킴', '순서대로 하는 편', '미리 준비함', '갑작스런 변경 싫어함',
+          '낯가림 있는 편', '책임감 강함', '정리 잘하는 편', '익숙한 방식 선호',
+          '말보다 행동으로 보여줌', '실수 줄이려 함', '시간 개념 확실함', '기준이 분명함',
+          '끝까지 마무리함', '불확실한 거 싫어함', '혼자 집중 잘함', '신뢰 중요하게 봄'
+        ]
+      },
+      ESTP: {
+        name: '권총삐',
+        desc: '상황 판단이 빠르고 생각이 끝나기 전에 이미 몸이 먼저 움직이는 편.',
+        bingo: [
+          '행동이 빠른 편', '겁이 적은 편', '눈치 빠름', '순간 대처 잘함',
+          '답답한 거 싫어함', '직접 해봐야 앎', '승부욕 있는 편', '말이 직설적일 때 있음',
+          '사람 반응 빨리 읽음', '새로운 경험 좋아함', '문제 생기면 바로 움직임', '계획보다 현장형',
+          '재미 중요하게 봄', '관심 없으면 티 남', '속도감 좋아함', '긴 설명 싫어함'
+        ]
+      },
+      ISTP: {
+        name: '건들삐',
+        desc: '크게 나서진 않아도 필요한 순간에는 빠르게 움직이고 자기 방식대로 해결하는 편.',
+        bingo: [
+          '혼자 있는 거 편함', '말수 적은 편', '간섭 싫어함', '필요할 때만 움직임',
+          '귀찮은 거 싫어함', '손으로 직접 해봄', '감정 표현 적음', '상황 판단 빠름',
+          '내 방식이 편함', '쓸데없는 말 싫음', '갑자기 잘할 때 있음', '문제 해결에 강함',
+          '계획 빡빡한 거 싫음', '관심사엔 집중함', '친해지면 장난침', '자유시간 중요함'
+        ]
+      }
+    };
+
+    const compatibilityMap = {
+      ENFJ: { good: ['건들삐', '무표정삐'], bad: ['모범삐', '고함삐'] },
+      ENFP: { good: ['모범삐', '미소삐'], bad: ['건들삐', '권총삐'] },
+      ENTJ: { good: ['꿀잠삐', '시인삐'], bad: ['미소삐', '인사삐'] },
+      ENTP: { good: ['미소삐', '모범삐'], bad: ['꿀잠삐', '저요삐'] },
+      ESFJ: { good: ['무표정삐', '건들삐'], bad: ['안경삐', '근육삐'] },
+      ESFP: { good: ['안경삐', '명상삐'], bad: ['무표정삐', '농담삐'] },
+      ESTJ: { good: ['시인삐', '꿀잠삐'], bad: ['명상삐', '풍선삐'] },
+      ESTP: { good: ['명상삐', '안경삐'], bad: ['시인삐', '댄스삐'] },
+      INFJ: { good: ['권총삐', '저요삐'], bad: ['고함삐', '모범삐'] },
+      INFP: { good: ['고함삐', '근육삐'], bad: ['권총삐', '건들삐'] },
+      INTJ: { good: ['저요삐', '권총삐'], bad: ['인사삐', '미소삐'] },
+      INTP: { good: ['인사삐', '풍선삐'], bad: ['저요삐', '꿀잠삐'] },
+      ISFJ: { good: ['농담삐', '댄스삐'], bad: ['근육삐', '안경삐'] },
+      ISFP: { good: ['근육삐', '고함삐'], bad: ['농담삐', '무표정삐'] },
+      ISTJ: { good: ['댄스삐', '농담삐'], bad: ['풍선삐', '명상삐'] },
+      ISTP: { good: ['풍선삐', '인사삐'], bad: ['댄스삐', '시인삐'] }
+    };
+
+    const startScreen = document.getElementById('startScreen');
+    const quizScreen = document.getElementById('quizScreen');
+    const resultScreen = document.getElementById('resultScreen');
+
+    const startBtn = document.getElementById('startBtn');
+    const progressBar = document.getElementById('progressBar');
+    const currentCount = document.getElementById('currentCount');
+    const questionNumber = document.getElementById('questionNumber');
+    const questionText = document.getElementById('questionText');
+    const answersWrap = document.getElementById('answers');
+
+    const resultName = document.getElementById('resultName');
+    const resultImage = document.getElementById('resultImage');
+    const bingoGrid = document.getElementById('bingoGrid');
+    const goodMatchList = document.getElementById('goodMatchList');
+    const badMatchList = document.getElementById('badMatchList');
+
+    const saveBtn = document.getElementById('saveBtn');
+    const retryBtn = document.getElementById('retryBtn');
+    const otherBtn = document.getElementById('otherBtn');
+    const shareBtn = document.getElementById('shareBtn');
+
+    const saveModal = document.getElementById('saveModal');
+    const savePreview = document.getElementById('savePreview');
+    const saveModalClose = document.getElementById('saveModalClose');
+
+    let currentQuestion = 0;
+    let latestResultCode = '';
+    let scores = {
+      E: 0, I: 0,
+      S: 0, N: 0,
+      T: 0, F: 0,
+      J: 0, P: 0
+    };
+
+    function showOnly(target) {
+      [startScreen, quizScreen, resultScreen].forEach(el => el.classList.remove('active'));
+      target.classList.add('active');
+    }
+
+    function resetTest() {
+      currentQuestion = 0;
+      latestResultCode = '';
+      scores = {
+        E: 0, I: 0,
+        S: 0, N: 0,
+        T: 0, F: 0,
+        J: 0, P: 0
+      };
+
+      saveModal.classList.remove('show');
+      saveModal.setAttribute('aria-hidden', 'true');
+      savePreview.removeAttribute('src');
+    }
+
+    function startTest() {
+      resetTest();
+      showOnly(quizScreen);
+      renderQuestion();
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+
+    function renderQuestion() {
+      const q = questions[currentQuestion];
+
+      currentCount.textContent = currentQuestion + 1;
+      questionNumber.textContent = 'QUESTION ' + String(currentQuestion + 1).padStart(2, '0');
+      questionText.innerHTML = q.text;
+      progressBar.style.width = ((currentQuestion / questions.length) * 100) + '%';
+
+      answersWrap.innerHTML = '';
+
+      q.answers.forEach(answer => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'answer-btn';
+        btn.innerHTML = answer.text;
+        btn.addEventListener('click', () => chooseAnswer(answer.letter));
+        answersWrap.appendChild(btn);
+      });
+    }
+
+    function chooseAnswer(letter) {
+      scores[letter] += 1;
+      currentQuestion += 1;
+
+      if (currentQuestion < questions.length) {
+        renderQuestion();
+        return;
+      }
+
+      progressBar.style.width = '100%';
+      showResult();
+    }
+
+    function getResultCode() {
+      return [
+        scores.E > scores.I ? 'E' : 'I',
+        scores.S > scores.N ? 'S' : 'N',
+        scores.T > scores.F ? 'T' : 'F',
+        scores.J > scores.P ? 'J' : 'P'
+      ].join('');
+    }
+
+    function showResult() {
+      latestResultCode = getResultCode();
+      const data = results[latestResultCode];
+
+      resultName.textContent = data.name;
+      resultName.classList.toggle('small-name', data.name === '꿀잠삐');
+
+      const imagePath = 'img_' + latestResultCode.toLowerCase() + '409.png';
+      resultImage.style.display = 'none';
+      resultImage.alt = data.name + ' 이미지';
+
+      resultImage.onload = () => {
+        resultImage.style.display = 'block';
+      };
+
+      resultImage.onerror = () => {
+        resultImage.style.display = 'none';
+      };
+
+      resultImage.src = imagePath;
+
+      bingoGrid.innerHTML = '';
+      data.bingo.forEach(item => {
+        const cell = document.createElement('div');
+        cell.className = 'bingo-cell';
+        cell.textContent = item;
+        bingoGrid.appendChild(cell);
+      });
+
+      const compat = compatibilityMap[latestResultCode];
+      goodMatchList.innerHTML = '';
+      badMatchList.innerHTML = '';
+
+      compat.good.forEach(name => {
+        const chip = document.createElement('div');
+        chip.className = 'compat-chip';
+        chip.textContent = name;
+        goodMatchList.appendChild(chip);
+      });
+
+      compat.bad.forEach(name => {
+        const chip = document.createElement('div');
+        chip.className = 'compat-chip';
+        chip.textContent = name;
+        badMatchList.appendChild(chip);
+      });
+
+      showOnly(resultScreen);
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+
+    async function saveResultImage() {
+      if (typeof html2canvas !== 'function') {
+        alert('이미지 저장 기능을 불러오지 못했습니다.');
+        return;
+      }
+
+      try {
+        saveBtn.disabled = true;
+        saveBtn.textContent = '이미지 만드는 중...';
+
+        const canvas = await html2canvas(document.getElementById('captureArea'), {
+          backgroundColor: '#ffffff',
+          scale: 1.45,
+          useCORS: true,
+          allowTaint: false,
+          logging: false
+        });
+
+        savePreview.src = canvas.toDataURL('image/png', 0.95);
+        saveModal.classList.add('show');
+        saveModal.setAttribute('aria-hidden', 'false');
+      } catch (error) {
+        console.error(error);
+        alert('이미지 저장 중 오류가 발생했습니다.');
+      } finally {
+        saveBtn.disabled = false;
+        saveBtn.textContent = '결과 이미지 저장하기';
+      }
+    }
+
+    function closeSaveModal() {
+      saveModal.classList.remove('show');
+      saveModal.setAttribute('aria-hidden', 'true');
+    }
+
+    async function shareTest() {
+      const text = SHARE_TITLE + '\n' + TEST_URL;
+
+      try {
+        if (navigator.share) {
+          await navigator.share({
+            title: SHARE_TITLE,
+            text: SHARE_TITLE,
+            url: TEST_URL
+          });
+          return;
+        }
+
+        await navigator.clipboard.writeText(text);
+        alert('테스트 주소가 복사되었습니다.');
+      } catch (error) {
+        if (error && error.name === 'AbortError') return;
+
+        const temp = document.createElement('textarea');
+        temp.value = text;
+        document.body.appendChild(temp);
+        temp.select();
+        document.execCommand('copy');
+        temp.remove();
+        alert('테스트 주소가 복사되었습니다.');
+      }
+    }
+
+    saveModalClose.addEventListener('click', closeSaveModal);
+
+    saveModal.addEventListener('click', (event) => {
+      if (event.target === saveModal) closeSaveModal();
+    });
+
+    startBtn.addEventListener('click', startTest);
+
+    retryBtn.addEventListener('click', () => {
+      resetTest();
+      showOnly(startScreen);
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    });
+
+    otherBtn.addEventListener('click', () => {
+      window.location.href = 'https://test-it.co.kr/';
+    });
+
+    saveBtn.addEventListener('click', saveResultImage);
+    shareBtn.addEventListener('click', shareTest);
+  </script>
+</body>
+</html>

@@ -16,8 +16,8 @@
 
   <style>
     @font-face {
-      font-family: 'DosGothic';
-      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_eight@1.0/DOSGothic.woff') format('woff');
+      font-family: 'Galmuri14';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2506-1@1.0/Galmuri14.woff2') format('woff2');
       font-weight: normal;
       font-style: normal;
       font-display: swap;
@@ -50,10 +50,13 @@
     }
 
     body {
-      font-family: 'DosGothic', monospace;
+      font-family: 'Galmuri14', monospace;
+      font-synthesis: none;
+      text-rendering: optimizeSpeed;
+      -webkit-font-smoothing: none;
       -webkit-font-smoothing: none;
       -moz-osx-font-smoothing: auto;
-      text-rendering: geometricPrecision;
+      text-rendering: optimizeSpeed;
       -webkit-font-smoothing: none;
       text-rendering: optimizeSpeed;
       background:
@@ -64,7 +67,7 @@
 
     button {
       font: inherit;
-      font-family: 'DosGothic', monospace;
+      font-family: 'Galmuri14', monospace;
     }
 
     .site-header {
@@ -1339,7 +1342,7 @@
     .logo {
       -webkit-font-smoothing: none;
       -moz-osx-font-smoothing: auto;
-      text-rendering: geometricPrecision;
+      text-rendering: optimizeSpeed;
       font-kerning: none;
     }
 
@@ -1493,10 +1496,10 @@
 
     const questions = [
       {
-        text: '처음 보는 사람들이 가득한<br>서커스단 대기실에 들어갔다',
+        text: '처음 보는 사람들이 가득한<br>서커스단 대기실에 삐에로로 들어갔다',
         answers: [
-          { text: '먼저 인사하며 자연스럽게 말을 건다', letter: 'E' },
-          { text: '분위기를 살피다가 편한 사람부터 대화한다', letter: 'I' }
+          { text: '다른 삐에로들에게 먼저 말을 건다', letter: 'E' },
+          { text: '삐에로들 노관심..그냥 조용히 있는다', letter: 'I' }
         ]
       },
       {
@@ -1507,10 +1510,10 @@
         ]
       },
       {
-        text: '동료가 공연을 망치고<br>속상해하고 있다면?',
+        text: '동료 삐에로가 공연을 망치고<br>속상해하고 있다면?',
         answers: [
-          { text: '어디서 꼬였는지 같이 정리해본다', letter: 'T' },
-          { text: '많이 속상했겠다며 먼저 기분을 풀어준다', letter: 'F' }
+          { text: '이미 망친 걸 어떡해 다음 공연 때 잘해', letter: 'T' },
+          { text: '많이 속상했겠다며 풍선을 불어준다', letter: 'F' }
         ]
       },
       {
@@ -1524,7 +1527,7 @@
         text: '공연이 끝나고 다 같이<br>뒤풀이를 하자고 한다',
         answers: [
           { text: '공연 끝난 기세 그대로 같이 신나게 논다', letter: 'E' },
-          { text: '즐거워도 오래 있으면 금방 지쳐 먼저 쉰다', letter: 'I' }
+          { text: '이미 삐에로 노릇 하느라 체력 방전이라 쉰다', letter: 'I' }
         ]
       },
       {
@@ -1535,7 +1538,7 @@
         ]
       },
       {
-        text: '내 공연에 대해 친구가<br>솔직한 평가를 부탁한다면?',
+        text: '동료 삐에로가 자기 공연에 대한 솔직한 평가를 부탁한다면?',
         answers: [
           { text: '좋았던 점과 아쉬운 점을 정확히 말한다', letter: 'T' },
           { text: '기분 상하지 않게 표현을 골라 말한다', letter: 'F' }
@@ -1563,7 +1566,7 @@
         ]
       },
       {
-        text: '같이 준비하던 동료가<br>내 실수 때문에 화가 났다',
+        text: '같이 준비하던 삐에로가<br>내 실수 때문에 화가 났다',
         answers: [
           { text: '무엇이 잘못됐는지 확인하고 해결부터 한다', letter: 'T' },
           { text: '상대가 왜 화났는지 듣고 감정을 먼저 풀어준다', letter: 'F' }

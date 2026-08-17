@@ -15,12 +15,10 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
   <style>
-    @import url('https://cdn.jsdelivr.net/npm/galmuri@latest/dist/galmuri.css');
-
     @font-face {
-      font-family: 'Galmuri11';
-      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2506-1@1.0/Galmuri11-Bold.woff2') format('woff2');
-      font-weight: 700;
+      font-family: 'DosGothic';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_eight@1.0/DOSGothic.woff') format('woff');
+      font-weight: normal;
       font-style: normal;
       font-display: swap;
     }
@@ -52,10 +50,12 @@
     }
 
     body {
-      font-family: 'Galmuri11', monospace;
+      font-family: 'DosGothic', monospace;
+      -webkit-font-smoothing: none;
+      -moz-osx-font-smoothing: auto;
+      text-rendering: geometricPrecision;
       -webkit-font-smoothing: none;
       text-rendering: optimizeSpeed;
-      font-synthesis: none;
       background:
         radial-gradient(circle at 12px 12px, rgba(232,75,67,.07) 0 2px, transparent 2.5px) 0 0 / 24px 24px,
         var(--cream);
@@ -64,7 +64,7 @@
 
     button {
       font: inherit;
-      font-family: 'Galmuri11', monospace;
+      font-family: 'DosGothic', monospace;
     }
 
     .site-header {
@@ -88,7 +88,7 @@
       text-decoration: none;
       font-size: 22px;
       font-weight: 700;
-      letter-spacing: -1.2px;
+      letter-spacing: -1px;
     }
 
     .nav {
@@ -205,7 +205,7 @@
       color: #fff;
       font-size: 12px;
       font-weight: 700;
-      letter-spacing: .5px;
+      letter-spacing: 1px;
       transform: rotate(-1.5deg);
     }
 
@@ -221,7 +221,7 @@
       font-size: clamp(35px, 9vw, 50px);
       line-height: 1.04;
       font-weight: 700;
-      letter-spacing: -3px;
+      letter-spacing: -2px;
     }
 
     .start-title .accent {
@@ -477,7 +477,7 @@
       color: var(--blue);
       font-size: 13px;
       font-weight: 700;
-      letter-spacing: .3px;
+      letter-spacing: 0;
     }
 
     .question-text {
@@ -540,7 +540,7 @@
       color: #948b7c;
       font-size: 11px;
       font-weight: 700;
-      letter-spacing: .3px;
+      letter-spacing: 0;
     }
 
     /* =========================
@@ -642,7 +642,7 @@
     .start-title {
       margin-top: 22px;
       font-weight: normal;
-      letter-spacing: -2px;
+      letter-spacing: -1px;
     }
 
     .clown-emblem {
@@ -877,7 +877,7 @@
       font-size: clamp(11px, 2.8vw, 13px);
       line-height: 1.35;
       font-weight: normal;
-      letter-spacing: .5px;
+      letter-spacing: 1px;
     }
 
     .result-name {
@@ -1324,6 +1324,30 @@
         min-height: 68px;
         padding-left: 46px;
       }
+    }
+
+  
+    .result-main-title,
+    .result-prefix,
+    .result-name,
+    .bingo-cell,
+    .compat-title,
+    .compat-list,
+    .question-text,
+    .answer-btn,
+    .nav,
+    .logo {
+      -webkit-font-smoothing: none;
+      -moz-osx-font-smoothing: auto;
+      text-rendering: geometricPrecision;
+      font-kerning: none;
+    }
+
+    .result-name,
+    .result-main-title,
+    .bingo-cell,
+    .compat-title {
+      text-shadow: none;
     }
 
   </style>
@@ -1903,7 +1927,7 @@
 
         const canvas = await html2canvas(document.getElementById('captureArea'), {
           backgroundColor: '#ffffff',
-          scale: 1.45,
+          scale: 2,
           useCORS: true,
           allowTaint: false,
           logging: false

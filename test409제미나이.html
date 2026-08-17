@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f4f4f0" />
+
+  <title>테스트잇 삐에로 성격 테스트</title>
+  <meta name="description" content="서커스단에 들어간 나는 어떤 삐에로일까?" />
+  <meta property="og:title" content="테스트잇 삐에로 성격 테스트" />
+  <meta property="og:description" content="서커스단에 들어간 나는 어떤 삐에로일까?" />
+  <meta property="og:url" content="https://test-it.co.kr/test409" />
+  <meta property="og:type" content="website" />
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+  <style>
+    @import url('https://cdn.jsdelivr.net/npm/galmuri@latest/dist/galmuri.css');
+
+    @font-face {
+      font-family: 'Galmuri11';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2506-1@1.0/Galmuri11-Bold.woff2') format('woff2');
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    :root {
+      --cream: #f4f4f0;
+      --paper: #ffffff;
+      --red: #ff3333;
+      --blue: #3333ff;
+      --yellow: #ffcc00;
+      --pink: #ff99cc;
+      --ink: #000000;
+      --line: #000000;
+      --shadow-offset: 4px;
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+    }
+
+    body {
+      font-family: 'Galmuri11', monospace;
+      -webkit-font-smoothing: none;
+      text-rendering: optimizeSpeed;
+      font-synthesis: none;
+      background-color: var(--cream);
+      background-image:
+        linear-gradient(rgba(0,0,0,.05) 2px, transparent 2px),
+        linear-gradient(90deg, rgba(0,0,0,.05) 2px, transparent 2px);
+      background-size: 24px 24px;
+      color: var(--ink);
+    }
+
+    button {
+      font: inherit;
+      font-family: 'Galmuri11', monospace;
+      outline: none;
+    }
+
+    .site-header {
+      width: 100%;
+      background: var(--paper);
+      border-bottom: 2px solid var(--line);
+    }
+
+    .site-header-inner {
+      width: min(100%, 760px);
+      height: 58px;
+      margin: 0 auto;
+      padding: 0 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -1px;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .nav a {
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .page {
+      width: min(100%, 560px);
+      margin: 0 auto;
+      padding: 24px 16px 56px;
+    }
+
+    .screen {
+      display: none;
+    }
+
+    .screen.active {
+      display: block;
+    }
+
+    /* =========================
+       PIXEL & CLOWN STYLE (START)
+    ========================= */
+
+    .start-card {
+      position: relative;
+      background: var(--paper);
+      border: 3px solid var(--line);
+      box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--line);
+      margin-bottom: 20px;
+    }
+
+    .circus-awning {
+      height: 24px;
+      display: block;
+      border-bottom: 3px solid var(--line);
+      background:
+        repeating-linear-gradient(
+          90deg,
+          var(--red) 0 24px,
+          var(--yellow) 24px 48px,
+          var(--blue) 48px 72px,
+          var(--paper) 72px 96px
+        );
+    }
+
+    .circus-awning span { display: none; }
+
+    .start-stage {
+      position: relative;
+      padding: 40px 24px;
+      text-align: center;
+    }
+
+    .ticket-label {
+      display: inline-block;
+      padding: 6px 12px;
+      background: var(--yellow);
+      border: 2px solid var(--line);
+      box-shadow: 2px 2px 0 var(--line);
+      color: var(--ink);
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .start-title {
+      margin: 0;
+      font-size: clamp(32px, 8vw, 46px);
+      line-height: 1.2;
+      font-weight: 700;
+      letter-spacing: -2px;
+    }
+
+    .start-title .accent { color: var(--red); }
+    .start-title .blue { color: var(--blue); }
+
+    .clown-emblem {
+      position: relative;
+      width: 160px;
+      height: 160px;
+      margin: 32px auto;
+      border: 3px solid var(--line);
+      background: var(--paper);
+      box-shadow: 4px 4px 0 var(--line);
+    }
+
+    .clown-face {
+      position: absolute;
+      inset: 12px;
+      border: 2px solid var(--line);
+      background:
+        conic-gradient(
+          var(--yellow) 0 25%,
+          var(--blue) 25% 50%,
+          var(--pink) 50% 75%,
+          var(--red) 75% 100%
+        );
+    }
+
+    .clown-face-inner {
+      position: absolute;
+      inset: 8px;
+      background: var(--paper);
+      border: 2px solid var(--line);
+    }
+
+    .eye {
+      position: absolute;
+      top: 30px;
+      width: 12px;
+      height: 12px;
+      background: var(--ink);
+    }
+    .eye.left { left: 24px; }
+    .eye.right { right: 24px; }
+
+    .nose {
+      position: absolute;
+      top: 50px;
+      left: 50%;
+      width: 24px;
+      height: 24px;
+      transform: translateX(-50%);
+      background: var(--red);
+      border: 2px solid var(--line);
+    }
+
+    .mouth {
+      position: absolute;
+      left: 50%;
+      top: 85px;
+      width: 40px;
+      height: 16px;
+      transform: translateX(-50%);
+      border-bottom: 4px solid var(--ink);
+      border-left: 4px solid transparent;
+      border-right: 4px solid transparent;
+    }
+
+    .start-copy {
+      margin: 0 auto;
+      max-width: 300px;
+      font-size: 15px;
+      line-height: 1.6;
+      font-weight: 700;
+      color: var(--ink);
+      word-break: keep-all;
+    }
+
+    .start-btn,
+    .action-btn,
+    .answer-btn {
+      width: 100%;
+      border: 3px solid var(--line);
+      border-radius: 0;
+      box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--line);
+      cursor: pointer;
+      font-weight: 700;
+      transition: none;
+      background: var(--paper);
+      color: var(--ink);
+    }
+
+    .start-btn:active,
+    .action-btn:active,
+    .answer-btn:active {
+      transform: translate(var(--shadow-offset), var(--shadow-offset));
+      box-shadow: 0 0 0 var(--line);
+    }
+
+    .start-btn {
+      padding: 18px 16px;
+      background: var(--red);
+      color: var(--paper);
+      font-size: 18px;
+    }
+
+    /* =========================
+       QUIZ
+    ========================= */
+
+    .quiz-wrap {
+      background: var(--paper);
+      border: 3px solid var(--line);
+      box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--line);
+    }
+
+    .quiz-head {
+      padding: 16px 20px;
+      background: var(--paper);
+      border-bottom: 3px solid var(--line);
+    }
+
+    .progress-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .progress-track {
+      flex: 1;
+      height: 16px;
+      background: var(--paper);
+      border: 2px solid var(--line);
+    }
+
+    .progress-bar {
+      width: 0;
+      height: 100%;
+      background: var(--blue);
+      transition: width 0.1s linear;
+    }
+
+    .progress-count {
+      min-width: 44px;
+      text-align: right;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .quiz-body {
+      padding: 32px 20px;
+    }
+
+    .question-label {
+      color: var(--red);
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      display: inline-block;
+      background: var(--yellow);
+      padding: 4px 8px;
+      border: 2px solid var(--line);
+    }
+
+    .question-text {
+      min-height: 100px;
+      display: flex;
+      align-items: center;
+      font-size: clamp(20px, 5vw, 24px);
+      line-height: 1.4;
+      font-weight: 700;
+      word-break: keep-all;
+      margin-bottom: 32px;
+    }
+
+    .answer-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .answer-btn {
+      padding: 20px 16px;
+      text-align: left;
+      font-size: 16px;
+      line-height: 1.4;
+      background: var(--paper);
+      position: relative;
+    }
+
+    .answer-btn:hover {
+      background: var(--yellow);
+    }
+
+    /* =========================
+       RESULT
+    ========================= */
+
+    #captureArea {
+      background: var(--paper);
+      border: 3px solid var(--line);
+    }
+
+    .result-paper {
+      background: var(--paper);
+    }
+
+    .result-banner {
+      padding: 16px;
+      text-align: center;
+      background: var(--blue);
+      color: var(--paper);
+      border-bottom: 3px solid var(--line);
+    }
+
+    .result-main-title {
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .result-hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 32px 16px;
+      border-bottom: 3px solid var(--line);
+      background: var(--cream);
+    }
+
+    .result-image-area {
+      width: 140px;
+      height: 140px;
+      background: var(--paper);
+      border: 3px solid var(--line);
+      box-shadow: 4px 4px 0 var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+
+    .result-image {
+      max-width: 120px;
+      max-height: 120px;
+      image-rendering: pixelated;
+    }
+
+    .result-copy-area {
+      text-align: center;
+    }
+
+    .result-prefix {
+      display: inline-block;
+      margin-bottom: 8px;
+      padding: 4px 10px;
+      background: var(--ink);
+      color: var(--paper);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .result-name {
+      margin: 0;
+      color: var(--red);
+      font-size: 36px;
+      line-height: 1;
+      font-weight: 700;
+      text-shadow: 2px 2px 0 var(--ink);
+    }
+
+    .bingo-section {
+      padding: 0;
+      background: var(--paper);
+    }
+
+    .bingo-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-bottom: 3px solid var(--line);
+    }
+
+    .bingo-cell {
+      aspect-ratio: 1 / 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      border-right: 2px solid var(--line);
+      border-bottom: 2px solid var(--line);
+      padding: 4px;
+      font-size: clamp(11px, 2.8vw, 13px);
+      line-height: 1.3;
+      font-weight: 700;
+      word-break: keep-all;
+    }
+    
+    /* Make right & bottom borders flush */
+    .bingo-cell:nth-child(4n) { border-right: none; }
+    .bingo-cell:nth-last-child(-n+4) { border-bottom: none; }
+
+    .bingo-cell:nth-child(odd) { background: #fffde7; }
+    .bingo-cell:nth-child(even) { background: #ffebee; }
+
+    .compat-section {
+      padding: 24px 16px;
+      background: var(--paper);
+    }
+
+    .compat-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .compat-card {
+      border: 3px solid var(--line);
+      box-shadow: 3px 3px 0 var(--line);
+      background: var(--paper);
+    }
+
+    .compat-title {
+      padding: 10px;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 700;
+      border-bottom: 2px solid var(--line);
+    }
+
+    .compat-card.good .compat-title { background: var(--blue); color: var(--paper); }
+    .compat-card.bad .compat-title { background: var(--red); color: var(--paper); }
+
+    .compat-list {
+      padding: 12px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .compat-chip {
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .actions {
+      margin-top: 24px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .action-btn {
+      padding: 16px;
+      font-size: 15px;
+    }
+
+    .action-btn.save { background: var(--red); color: var(--paper); }
+    .action-btn.retry { background: var(--yellow); }
+    .action-btn.share { background: var(--blue); color: var(--paper); }
+
+    .save-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: rgba(0, 0, 0, .8);
+    }
+    .save-modal.show { display: flex; }
+
+    .save-modal-box {
+      width: min(340px, 100%);
+      padding: 20px;
+      background: var(--paper);
+      border: 3px solid var(--line);
+      box-shadow: 6px 6px 0 var(--red);
+      text-align: center;
+    }
+
+    .save-modal-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .save-modal-guide {
+      font-size: 13px;
+      margin-bottom: 16px;
+    }
+
+    .save-preview {
+      width: 100%;
+      border: 2px solid var(--line);
+      margin-bottom: 16px;
+    }
+
+    .save-modal-close {
+      width: 100%;
+      padding: 12px;
+      border: 3px solid var(--line);
+      background: var(--yellow);
+      font-weight: 700;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a class="logo" href="https://test-it.co.kr/">테스트잇</a>
+      <nav class="nav">
+        <a href="https://test-it.co.kr/">성격</a>
+        <a href="https://test-it.co.kr/">사주</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page">
+    <!-- 시작 화면 -->
+    <section id="startScreen" class="screen active">
+      <div class="start-card">
+        <div class="circus-awning" aria-hidden="true"></div>
+
+        <div class="start-stage">
+          <div class="ticket-label">SHOW CODE: 409</div>
+
+          <h1 class="start-title">
+            <span class="accent">삐에로</span> <span class="blue">성격 진단</span>
+          </h1>
+
+          <div class="clown-emblem" aria-hidden="true">
+            <div class="clown-face">
+              <div class="clown-face-inner">
+                <span class="eye left"></span>
+                <span class="eye right"></span>
+                <span class="nose"></span>
+                <span class="mouth"></span>
+              </div>
+            </div>
+          </div>
+
+          <p class="start-copy">
+            서커스단에 입단한 당신.<br>
+            팩트폭격 질문 12개로 알아보는<br>
+            당신의 진짜 삐에로 유형.
+          </p>
+        </div>
+      </div>
+
+      <button id="startBtn" class="start-btn" type="button">무대 오르기</button>
+    </section>
+
+    <!-- 질문 화면 -->
+    <section id="quizScreen" class="screen">
+      <div class="quiz-wrap">
+        <div class="quiz-head">
+          <div class="progress-row">
+            <div class="progress-track">
+              <div id="progressBar" class="progress-bar"></div>
+            </div>
+            <div class="progress-count">
+              <span id="currentCount">1</span> / 12
+            </div>
+          </div>
+        </div>
+
+        <div class="quiz-body">
+          <div id="questionNumber" class="question-label">Q.01</div>
+          <div id="questionText" class="question-text"></div>
+          <div id="answers" class="answer-list"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 결과 화면 -->
+    <section id="resultScreen" class="screen">
+      <div id="captureArea">
+        <div class="result-paper">
+          <div class="result-banner">
+            <div class="result-main-title">삐에로 성격 진단 결과서</div>
+          </div>
+
+          <div class="result-hero">
+            <div class="result-image-area">
+              <img id="resultImage" class="result-image" alt="삐에로 결과">
+            </div>
+
+            <div class="result-copy-area">
+              <div class="result-prefix">당신의 포지션</div>
+              <div id="resultName" class="result-name">풍선삐</div>
+            </div>
+          </div>
+
+          <div class="bingo-section">
+            <div id="bingoGrid" class="bingo-grid"></div>
+          </div>
+
+          <div class="compat-section">
+            <div class="compat-grid">
+              <div class="compat-card good">
+                <div class="compat-title">합격 조합</div>
+                <div id="goodMatchList" class="compat-list"></div>
+              </div>
+              <div class="compat-card bad">
+                <div class="compat-title">파국 조합</div>
+                <div id="badMatchList" class="compat-list"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button id="saveBtn" class="action-btn save" type="button">결과 캡처하기</button>
+        <button id="retryBtn" class="action-btn retry" type="button">다시 검사하기</button>
+        <button id="otherBtn" class="action-btn" type="button">다른 테스트</button>
+        <button id="shareBtn" class="action-btn share" type="button">링크 공유하기</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- 저장 모달 -->
+  <div id="saveModal" class="save-modal" aria-hidden="true">
+    <div class="save-modal-box">
+      <div class="save-modal-title">이미지 생성 완료</div>
+      <div class="save-modal-guide">이미지를 꾹 누르거나 우클릭하여 저장하세요.</div>
+      <img id="savePreview" class="save-preview" alt="결과 이미지 미리보기">
+      <button id="saveModalClose" class="save-modal-close" type="button">닫기</button>
+    </div>
+  </div>
+
+  <script>
+    const TEST_URL = 'https://test-it.co.kr/test409';
+    const SHARE_TITLE = '테스트잇 삐에로 성격 진단';
+
+    // 단호하고 간결한 삐에로 쇼 테마 질문 & 답변
+    const questions = [
+      {
+        text: '첫 출근. 모르는 단원들이 가득한 대기실에 들어갔다.',
+        answers: [
+          { text: '먼저 다가가 통성명부터 한다.', letter: 'E' },
+          { text: '빈자리를 찾아 조용히 앉아 분위기를 살핀다.', letter: 'I' }
+        ]
+      },
+      {
+        text: '새로운 코너를 기획해야 한다.',
+        answers: [
+          { text: '아무도 안 해본 독창적이고 기발한 콘셉트.', letter: 'N' },
+          { text: '무조건 관객 반응이 보장된 확실한 콘셉트.', letter: 'S' }
+        ]
+      },
+      {
+        text: '무대에서 실수한 동료가 대기실에서 자책하고 있다.',
+        answers: [
+          { text: '어디서 꼬였는지 짚어주고 다음 대책을 찾는다.', letter: 'T' },
+          { text: '괜찮다며 멘탈부터 다독여준다.', letter: 'F' }
+        ]
+      },
+      {
+        text: '내일이 서커스단 메인 쇼다.',
+        answers: [
+          { text: '동선부터 소품 위치까지 분 단위로 점검한다.', letter: 'J' },
+          { text: '전체 흐름만 파악하고 내일 내 순발력을 믿는다.', letter: 'P' }
+        ]
+      },
+      {
+        text: '쇼가 끝났다. 회식 제안이 들어온다.',
+        answers: [
+          { text: '당연히 간다. 텐션 그대로 끝까지 달린다.', letter: 'E' },
+          { text: '에너지 방전. 핑계 대고 집으로 간다.', letter: 'I' }
+        ]
+      },
+      {
+        text: '창고 구석에서 정체불명의 낡은 소품 상자를 발견했다.',
+        answers: [
+          { text: '과거 선배들이 쓰던 물건일까? 사연부터 상상한다.', letter: 'N' },
+          { text: '겉면 라벨을 읽고 안을 열어 내용물을 확인한다.', letter: 'S' }
+        ]
+      },
+      {
+        text: '동료가 자신의 무대에 대한 솔직한 피드백을 요구한다.',
+        answers: [
+          { text: '아쉬웠던 점과 고칠 점을 팩트 위주로 짚어준다.', letter: 'T' },
+          { text: '의기소침할까 봐 장점과 칭찬 위주로 말해준다.', letter: 'F' }
+        ]
+      },
+      {
+        text: '공연 시작 10분 전, 큐시트 순서가 뒤집혔다.',
+        answers: [
+          { text: '바뀐 순서를 완벽히 숙지하고 정리해야 마음이 놓인다.', letter: 'J' },
+          { text: '일단 무대에 올라가서 상황에 맞게 쳐낸다.', letter: 'P' }
+        ]
+      },
+      {
+        text: '관객과의 포토 타임. 분위기가 묘하게 뻘쭘하다.',
+        answers: [
+          { text: '내가 먼저 나서서 웃긴 포즈를 주도한다.', letter: 'E' },
+          { text: '관객이 먼저 포즈를 취하면 거기에 자연스럽게 맞춘다.', letter: 'I' }
+        ]
+      },
+      {
+        text: '새로운 분장 도구를 사야 한다.',
+        answers: [
+          { text: '특이하고 눈에 띄는 화려한 색상.', letter: 'N' },
+          { text: '내 얼굴에 잘 맞고 평소 자주 쓰는 색상.', letter: 'S' }
+        ]
+      },
+      {
+        text: '나의 실수로 단원 전체가 곤란해졌다. 단장님이 화가 났다.',
+        answers: [
+          { text: '상황을 설명하고 즉각적인 수습 방안을 제시한다.', letter: 'T' },
+          { text: '이유 불문하고 100% 진심을 담아 사과부터 한다.', letter: 'F' }
+        ]
+      },
+      {
+        text: '일주일 뒤, 전 단원 자율 무대 평가가 있다.',
+        answers: [
+          { text: '요일별 연습량을 정해두고 체계적으로 연습한다.', letter: 'J' },
+          { text: '아이디어가 떠오를 때 삘 받아서 몰아서 연습한다.', letter: 'P' }
+        ]
+      }
+    ];
+
+    // 단호하고 성격이 딱 드러나는 팩트 위주 결과
+    const results = {
+      ENFJ: {
+        name: '오지랖삐',
+        bingo: [
+          '분위기 메이커', '오지랖 만렙', '눈치 백단', '사람 좋아함',
+          '갈등 혐오', '칭찬봇', '핵인싸', '리더십 탑재',
+          '감정 이입', '의리 우선', '말 예쁘게 함', '책임감 강함',
+          '상처 잘 받음', '계획 세움', '타인 배려', '인간관계 과몰입'
+        ]
+      },
+      INFJ: {
+        name: '명상삐',
+        bingo: [
+          '속을 모름', '인간 관찰자', '소수정예', '생각 과부하',
+          '신중함', '고집 셈', '철벽 방어', '의미 부여',
+          '선 긋기', '통찰력', '혼자만의 시간', '감정 소모 싫음',
+          '계획 틀어짐 극혐', '눈치 빠름', '완벽주의', '조용한 팩폭'
+        ]
+      },
+      ENFP: {
+        name: '텐션삐',
+        bingo: [
+          '에너지 폭발', '즉흥적', '호기심 천국', '금방 질림',
+          '인싸 호소인', '리액션 혜자', '감정 기복', '노빠꾸',
+          '새로운 거 좋아함', '규칙 극혐', '말 많음', '공감 요정',
+          '계획 무쓸모', '충동구매', '자유 영혼', '집중력 짧음'
+        ]
+      },
+      INFP: {
+        name: '마이웨이삐',
+        bingo: [
+          '유리 멘탈', '귀차니즘', '상상력 폭발', '내적 관종',
+          '개인주의', '호불호 확실', '꽂히면 파고듦', '공감 능력',
+          '혼자가 좋음', '연락 두절', '망상 장인', '강요 싫음',
+          '선택 장애', '갈등 회피', '이상주의자', '덕질 특화'
+        ]
+      },
+      ENTJ: {
+        name: '불도저삐',
+        bingo: [
+          '효율 최우선', '팩트 폭격기', '리더 체질', '답답함 극혐',
+          '목표 지향', '완벽주의', '시간 낭비 혐오', '자기애 뿜뿜',
+          '공감 불가', '징징대는 거 싫음', '계획 실행력', '승부욕',
+          '냉정함', '단호박', '논리 따짐', '남 일 간섭'
+        ]
+      },
+      INTJ: {
+        name: '안경삐',
+        bingo: [
+          '철저한 분석가', '마이웨이', '효율충', '헛소리 차단',
+          '독립적', '완벽주의', '감정 호소 극혐', '팩트 중심',
+          '계획 맹신', '무논리 혐오', '혼자가 편함', '비판적 사고',
+          '돌직구', '인간관계 좁음', '지식 탐구', '철벽남녀'
+        ]
+      },
+      ENTP: {
+        name: '깐족삐',
+        bingo: [
+          '말싸움 1티어', '논리적 깐족', '규칙 브레이커', '노빠꾸',
+          '자기합리화', '아이디어 뱅크', '팩트 폭격', '변덕 심함',
+          '지루함 혐오', '관종', '토론 매니아', '호기심 천국',
+          '실행력 부족', '눈치 안 봄', '뒷심 부족', '마이웨이'
+        ]
+      },
+      INTP: {
+        name: '무표정삐',
+        bingo: [
+          '인간 로봇', '팩트 장인', '귀찮음 맥스', '혼자 놀기 장인',
+          '멍때리기', '감정 공감 불가', '논리 중시', '개인주의',
+          '지적 호기심', '연락 안 됨', '비효율 혐오', '지식인',
+          '조용한 관종', '고집 셈', '분석 마니아', '자발적 아싸'
+        ]
+      },
+      ESFJ: {
+        name: '인맥삐',
+        bingo: [
+          '프로 참석러', '눈치 빠름', '리액션 기계', '쿠션어 장인',
+          '오지랖', '칭찬봇', '인간관계 집착', '규칙 준수',
+          '소외되는 거 싫음', '계획적', '기억력 갑', '다정다감',
+          '인정 욕구', '갈등 회피', '핵인싸', '남 시선 의식'
+        ]
+      },
+      ISFJ: {
+        name: '방어삐',
+        bingo: [
+          '안정 추구', '기억력 갑', '철벽 방어', '책임감 맥스',
+          '거절 못함', '참을성 만렙', '원칙주의', '인간관계 좁음',
+          '배려 아이콘', '속앓이', '변화 혐오', '꼼꼼함',
+          '계획 틀어짐 극혐', '눈치 많이 봄', '디테일 강박', '속마음 숨김'
+        ]
+      },
+      ESFP: {
+        name: '관종삐',
+        bingo: [
+          '무대 체질', '분위기 주도', '노빠꾸', '현재를 즐김',
+          '에너지 과잉', '오지랖', '지루함 극혐', '충동적',
+          '사람 좋아함', '단순함', '팔랑귀', '갈등 회피',
+          '즉흥적', '관종', '돈 막 씀', '심각한 거 싫음'
+        ]
+      },
+      ISFP: {
+        name: '꿀잠삐',
+        bingo: [
+          '침대와 일체화', '귀차니즘', '평화주의자', '눈치 봄',
+          '개인 시간 필수', '연락 두절', '속마음 안 함', '유연함',
+          '감정 기복', '갈등 극혐', '내버려 둬', '충동적',
+          '조용한 관종', '미루기 장인', '현실주의', '스트레스 취약'
+        ]
+      },
+      ESTJ: {
+        name: '호루라기삐',
+        bingo: [
+          '룰 브레이커 극혐', '꼰대 기질', '팩트 폭격', '단호박',
+          '일 중독', '책임감', '계획 실행', '통제광',
+          '징징대는 거 극혐', '효율 최우선', '정리정돈', '승부욕',
+          '감정 공감 불가', '리더', '시간 엄수', '돌직구'
+        ]
+      },
+      ISTJ: {
+        name: '모범삐',
+        bingo: [
+          'FM 그 자체', '원칙주의', '융통성 제로', '책임감 맥스',
+          '계획 변동 극혐', '정리벽', '기억력 갑', '신중함',
+          '돌발상황 혐오', '팩트 중심', '보수적', '효율 따짐',
+          '독립적', '빈말 안 함', '철저함', '루틴 중요'
+        ]
+      },
+      ESTP: {
+        name: '직진삐',
+        bingo: [
+          '브레이크 없음', '행동파', '스릴 즐김', '팩트 폭격',
+          '임기응변', '직설적', '관종', '노빠꾸',
+          '계획 혐오', '현실주의', '단순함', '승부욕',
+          '눈치 빠름', '뒷심 부족', '규칙 무시', '지루함 극혐'
+        ]
+      },
+      ISTP: {
+        name: '마력삐',
+        bingo: [
+          '효율충', '귀찮음', '팩트만 말함', '마이웨이',
+          '기계 잘 만짐', '임기응변', '감정 소모 극혐', '개인주의',
+          '필요할 때만 움직임', '간섭 혐오', '관찰력', '무미건조',
+          '돌발상황 대처', '영혼 없는 리액션', '조용함', '스릴 즐김'
+        ]
+      }
+    };
+
+    const compatibilityMap = {
+      ENFJ: { good: ['마력삐', '무표정삐'], bad: ['모범삐', '호루라기삐'] },
+      ENFP: { good: ['모범삐', '방어삐'], bad: ['마력삐', '직진삐'] },
+      ENTJ: { good: ['꿀잠삐', '마이웨이삐'], bad: ['방어삐', '인맥삐'] },
+      ENTP: { good: ['방어삐', '모범삐'], bad: ['꿀잠삐', '관종삐'] },
+      ESFJ: { good: ['무표정삐', '마력삐'], bad: ['안경삐', '불도저삐'] },
+      ESFP: { good: ['안경삐', '명상삐'], bad: ['무표정삐', '깐족삐'] },
+      ESTJ: { good: ['마이웨이삐', '꿀잠삐'], bad: ['명상삐', '오지랖삐'] },
+      ESTP: { good: ['명상삐', '안경삐'], bad: ['마이웨이삐', '텐션삐'] },
+      INFJ: { good: ['직진삐', '관종삐'], bad: ['호루라기삐', '모범삐'] },
+      INFP: { good: ['호루라기삐', '불도저삐'], bad: ['직진삐', '마력삐'] },
+      INTJ: { good: ['관종삐', '직진삐'], bad: ['인맥삐', '방어삐'] },
+      INTP: { good: ['인맥삐', '오지랖삐'], bad: ['관종삐', '꿀잠삐'] },
+      ISFJ: { good: ['깐족삐', '텐션삐'], bad: ['불도저삐', '안경삐'] },
+      ISFP: { good: ['불도저삐', '호루라기삐'], bad: ['깐족삐', '무표정삐'] },
+      ISTJ: { good: ['텐션삐', '깐족삐'], bad: ['오지랖삐', '명상삐'] },
+      ISTP: { good: ['오지랖삐', '인맥삐'], bad: ['텐션삐', '마이웨이삐'] }
+    };
+
+    const startScreen = document.getElementById('startScreen');
+    const quizScreen = document.getElementById('quizScreen');
+    const resultScreen = document.getElementById('resultScreen');
+
+    const startBtn = document.getElementById('startBtn');
+    const progressBar = document.getElementById('progressBar');
+    const currentCount = document.getElementById('currentCount');
+    const questionNumber = document.getElementById('questionNumber');
+    const questionText = document.getElementById('questionText');
+    const answersWrap = document.getElementById('answers');
+
+    const resultName = document.getElementById('resultName');
+    const resultImage = document.getElementById('resultImage');
+    const bingoGrid = document.getElementById('bingoGrid');
+    const goodMatchList = document.getElementById('goodMatchList');
+    const badMatchList = document.getElementById('badMatchList');
+
+    const saveBtn = document.getElementById('saveBtn');
+    const retryBtn = document.getElementById('retryBtn');
+    const otherBtn = document.getElementById('otherBtn');
+    const shareBtn = document.getElementById('shareBtn');
+
+    const saveModal = document.getElementById('saveModal');
+    const savePreview = document.getElementById('savePreview');
+    const saveModalClose = document.getElementById('saveModalClose');
+
+    let currentQuestion = 0;
+    let latestResultCode = '';
+    let scores = { E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0 };
+
+    function showOnly(target) {
+      [startScreen, quizScreen, resultScreen].forEach(el => el.classList.remove('active'));
+      target.classList.add('active');
+    }
+
+    function resetTest() {
+      currentQuestion = 0;
+      latestResultCode = '';
+      scores = { E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0 };
+      saveModal.classList.remove('show');
+      saveModal.setAttribute('aria-hidden', 'true');
+      savePreview.removeAttribute('src');
+    }
+
+    function startTest() {
+      resetTest();
+      showOnly(quizScreen);
+      renderQuestion();
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+
+    function renderQuestion() {
+      const q = questions[currentQuestion];
+      currentCount.textContent = currentQuestion + 1;
+      questionNumber.textContent = 'Q.' + String(currentQuestion + 1).padStart(2, '0');
+      questionText.innerHTML = q.text;
+      progressBar.style.width = ((currentQuestion / questions.length) * 100) + '%';
+      
+      answersWrap.innerHTML = '';
+      q.answers.forEach(answer => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'answer-btn';
+        btn.innerHTML = answer.text;
+        btn.addEventListener('click', () => chooseAnswer(answer.letter));
+        answersWrap.appendChild(btn);
+      });
+    }
+
+    function chooseAnswer(letter) {
+      scores[letter] += 1;
+      currentQuestion += 1;
+      if (currentQuestion < questions.length) {
+        renderQuestion();
+        return;
+      }
+      progressBar.style.width = '100%';
+      showResult();
+    }
+
+    function getResultCode() {
+      return [
+        scores.E > scores.I ? 'E' : 'I',
+        scores.S > scores.N ? 'S' : 'N',
+        scores.T > scores.F ? 'T' : 'F',
+        scores.J > scores.P ? 'J' : 'P'
+      ].join('');
+    }
+
+    function showResult() {
+      latestResultCode = getResultCode();
+      const data = results[latestResultCode];
+      
+      resultName.textContent = data.name;
+      const imagePath = 'img_' + latestResultCode.toLowerCase() + '409.png';
+      
+      resultImage.style.display = 'none';
+      resultImage.alt = data.name + ' 이미지';
+      resultImage.onload = () => { resultImage.style.display = 'block'; };
+      resultImage.onerror = () => { resultImage.style.display = 'none'; };
+      resultImage.src = imagePath;
+
+      bingoGrid.innerHTML = '';
+      data.bingo.forEach(item => {
+        const cell = document.createElement('div');
+        cell.className = 'bingo-cell';
+        cell.textContent = item;
+        bingoGrid.appendChild(cell);
+      });
+
+      const compat = compatibilityMap[latestResultCode];
+      goodMatchList.innerHTML = '';
+      badMatchList.innerHTML = '';
+
+      compat.good.forEach(name => {
+        const chip = document.createElement('div');
+        chip.className = 'compat-chip';
+        chip.textContent = name;
+        goodMatchList.appendChild(chip);
+      });
+
+      compat.bad.forEach(name => {
+        const chip = document.createElement('div');
+        chip.className = 'compat-chip';
+        chip.textContent = name;
+        badMatchList.appendChild(chip);
+      });
+
+      showOnly(resultScreen);
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+
+    async function saveResultImage() {
+      if (typeof html2canvas !== 'function') {
+        alert('이미지 캡처 모듈을 불러오지 못했습니다.');
+        return;
+      }
+      try {
+        saveBtn.disabled = true;
+        saveBtn.textContent = '캡처 중...';
+        const canvas = await html2canvas(document.getElementById('captureArea'), {
+          backgroundColor: '#ffffff',
+          scale: 2,
+          useCORS: true,
+          logging: false
+        });
+        savePreview.src = canvas.toDataURL('image/png', 1.0);
+        saveModal.classList.add('show');
+        saveModal.setAttribute('aria-hidden', 'false');
+      } catch (error) {
+        console.error(error);
+        alert('캡처 중 오류가 발생했습니다.');
+      } finally {
+        saveBtn.disabled = false;
+        saveBtn.textContent = '결과 캡처하기';
+      }
+    }
+
+    function closeSaveModal() {
+      saveModal.classList.remove('show');
+      saveModal.setAttribute('aria-hidden', 'true');
+    }
+
+    async function shareTest() {
+      const text = SHARE_TITLE + '\n' + TEST_URL;
+      try {
+        if (navigator.share) {
+          await navigator.share({ title: SHARE_TITLE, text: SHARE_TITLE, url: TEST_URL });
+          return;
+        }
+        await navigator.clipboard.writeText(text);
+        alert('링크가 복사되었습니다.');
+      } catch (error) {
+        const temp = document.createElement('textarea');
+        temp.value = text;
+        document.body.appendChild(temp);
+        temp.select();
+        document.execCommand('copy');
+        temp.remove();
+        alert('링크가 복사되었습니다.');
+      }
+    }
+
+    saveModalClose.addEventListener('click', closeSaveModal);
+    saveModal.addEventListener('click', (event) => {
+      if (event.target === saveModal) closeSaveModal();
+    });
+
+    startBtn.addEventListener('click', startTest);
+    retryBtn.addEventListener('click', () => {
+      resetTest();
+      showOnly(startScreen);
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    });
+    otherBtn.addEventListener('click', () => { window.location.href = 'https://test-it.co.kr/'; });
+    saveBtn.addEventListener('click', saveResultImage);
+    shareBtn.addEventListener('click', shareTest);
+  </script>
+</body>
+</html>

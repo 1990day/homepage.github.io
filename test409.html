@@ -2152,7 +2152,6 @@
 
     function showResultLoading() {
       showOnly(loadingScreen);
-      window.scrollTo({ top: 0, behavior: 'auto' });
 
       setTimeout(() => {
         showResult();
@@ -2216,7 +2215,6 @@
       });
 
       showOnly(resultScreen);
-      window.scrollTo({ top: 0, behavior: 'auto' });
     }
 
     async function saveResultImage() {

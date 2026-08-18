@@ -12,8 +12,8 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="테스트잇 결핍 종합 평가 테스트">
   <meta property="og:description" content="테스트잇 결핍 종합 평가 테스트">
-  <meta property="og:url" content="https://test-it.co.kr/test409">
-  <meta property="og:image" content="https://test-it.co.kr/img_main409.png">
+  <meta property="og:url" content="https://test-it.co.kr/test410">
+  <meta property="og:image" content="https://test-it.co.kr/img_main410.png">
   <link rel="icon" type="image/png" href="favicon.png">
 
   <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
@@ -90,7 +90,10 @@
     }
 
     .logo {
-      font-size: 20px;
+      min-height: 42px;
+      display: inline-flex;
+      align-items: center;
+      font-size: 22px;
       font-weight: 900;
       letter-spacing: -1px;
       color: #222;
@@ -100,14 +103,15 @@
       display: flex;
       align-items: center;
       gap: 13px;
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 800;
       letter-spacing: -0.4px;
       color: #555;
     }
 
     .nav a {
-      min-height: 36px;
+      min-height: 42px;
+      padding: 0 2px;
       display: inline-flex;
       align-items: center;
     }
@@ -174,6 +178,19 @@
     }
 
     /* 메인 */
+    .main-image-box {
+      width: 100%;
+      background: #fff;
+      border: 1px solid #d6d1c6;
+      overflow: hidden;
+    }
+
+    .main-image {
+      width: 100%;
+      display: block;
+      height: auto;
+    }
+
     .main-paper-poster {
       min-height: 590px;
     }
@@ -983,12 +1000,20 @@
       }
 
       .logo {
-        font-size: 19px;
+        font-size: 21px;
       }
 
       .nav {
         gap: 9px;
-        font-size: 13px;
+        font-size: 14px;
+      }
+
+      .main-image-box {
+        width: 100%;
+      }
+
+      .main-image {
+        width: 100%;
       }
 
       .main-paper-poster {
@@ -1089,7 +1114,7 @@
     <div class="header-inner">
       <a href="https://test-it.co.kr/" class="logo">테스트잇</a>
       <nav class="nav">
-        <a class="active" href="https://test-it.co.kr/test.html">성격</a>
+        <a href="https://test-it.co.kr/test.html">성격</a>
         <a href="https://test-it.co.kr/face.html">얼굴</a>
         <a href="https://test-it.co.kr/etc.html">그외</a>
         <a href="https://test-it.co.kr/saju.html">사주</a>
@@ -1100,45 +1125,8 @@
   <main class="wrap">
     <!-- 메인 -->
     <section id="mainScreen" class="screen active">
-      <div class="exam-paper main-paper-poster">
-        <div class="exam-inner">
-          <div class="main-topline">
-            <div>
-              TEST-IT<br>
-              PERSONAL ASSESSMENT
-            </div>
-            <div class="main-topline-right">
-              2026학년도<br>
-              평가번호 409
-            </div>
-          </div>
-
-          <div class="main-title-wrap">
-            <p class="main-kicker">나도 몰랐던 마음의 빈자리</p>
-            <h1 class="main-title">결핍 종합<br>평가 테스트</h1>
-            <div class="main-title-line"></div>
-            <p class="main-sub">
-              여러 상황에서 내가 유독 신경 쓰이는 지점을 골라<br>
-              지금 가장 채우고 싶은 욕구를 알아봅니다.
-            </p>
-          </div>
-
-          <p class="main-check-title">평가 항목</p>
-          <div class="main-check-grid">
-            <div class="main-check-cell"><b>애정욕구</b><span></span></div>
-            <div class="main-check-cell"><b>인정욕구</b><span></span></div>
-            <div class="main-check-cell"><b>안정욕구</b><span></span></div>
-            <div class="main-check-cell"><b>소속욕구</b><span></span></div>
-            <div class="main-check-cell"><b>성취욕구</b><span></span></div>
-            <div class="main-check-cell"><b>통제욕구</b><span></span></div>
-          </div>
-
-          <div class="main-notice">
-            ※ 총 10문항입니다.<br>
-            ※ 각 문항에서 지금의 나와 가장 가까운 답을 하나만 고르세요.<br>
-            ※ 최고점이 같을 경우 추가 문항이 자동으로 출제됩니다.
-          </div>
-        </div>
+      <div class="main-image-box">
+        <img src="img_main410.png" alt="테스트잇 결핍 종합 평가 테스트 메인 이미지" class="main-image">
       </div>
 
       <button class="btn" onclick="goName()">테스트 시작하기</button>
@@ -1261,8 +1249,7 @@
           <div class="stamp-mini">채점<br>완료</div>
 
           <h2 class="result-title">
-            2026학년도 테스트잇 마음 평가
-            <strong>결핍 종합 평가 채점지</strong>
+            <strong>테스트잇 결핍 종합 평가 채점지</strong>
           </h2>
 
           <div class="result-student">
@@ -1272,7 +1259,7 @@
             </div>
             <div class="student-field">
               <span>번호</span>
-              <b>409-NEED</b>
+              <b>410-NEED</b>
             </div>
           </div>
 
@@ -1289,8 +1276,8 @@
           <p id="resultComment" class="comment-text"></p>
 
           <div class="result-footer">
-            <span>TEST-IT PERSONAL ASSESSMENT</span>
-            <span>NO.409</span>
+            <span>테스트잇 결핍 종합 평가 테스트</span>
+            <span>NO.410</span>
           </div>
         </div>
       </div>
@@ -1328,7 +1315,7 @@
 
   <script>
     const TEST_TITLE = '테스트잇 결핍 종합 평가 테스트';
-    const TEST_URL = 'https://test-it.co.kr/test409';
+    const TEST_URL = 'https://test-it.co.kr/test410';
 
     const NEED_KEYS = ['affection', 'recognition', 'stability', 'belonging', 'achievement', 'control'];
 
@@ -1422,7 +1409,7 @@
   options: [
     { need: 'recognition', text: '내가 한 건 별로 티가 안 나는 것' },
     { need: 'stability', text: '정해진 내용이 계속 바뀌는 것' },
-    { need: 'control', text: '내 의견 없이 계속 결정되는 것' }
+    { need: 'control', text: '내 의견 없이 자기들끼리만 결정하는 것' }
   ]
 },
       {
@@ -1530,6 +1517,21 @@
       }
     }
 
+    function showScreenKeepScroll(screen) {
+      const savedScrollY = window.scrollY;
+      const keepHeight = Math.max(
+        document.documentElement.scrollHeight,
+        savedScrollY + window.innerHeight
+      );
+
+      document.body.style.minHeight = `${keepHeight}px`;
+      showScreen(screen, false);
+
+      requestAnimationFrame(() => {
+        window.scrollTo({ top: savedScrollY, behavior: 'auto' });
+      });
+    }
+
     function goMain() {
       showScreen(mainScreen);
     }
@@ -1620,7 +1622,12 @@
         tieCandidates = NEED_KEYS.filter(key => scores[key] === maxScore);
 
         if (tieCandidates.length > 1) {
+          const savedScrollY = window.scrollY;
           renderTieBreaker(tieCandidates);
+
+          requestAnimationFrame(() => {
+            window.scrollTo({ top: savedScrollY, behavior: 'auto' });
+          });
         } else {
           finalNeed = tieCandidates[0];
           showLoading();
@@ -1629,7 +1636,12 @@
         return;
       }
 
+      const savedScrollY = window.scrollY;
       renderQuestion();
+
+      requestAnimationFrame(() => {
+        window.scrollTo({ top: savedScrollY, behavior: 'auto' });
+      });
     }
 
     function renderTieBreaker(candidates) {
@@ -1666,7 +1678,7 @@
     }
 
     function showLoading() {
-      showScreen(loadingScreen);
+      showScreenKeepScroll(loadingScreen);
 
       setTimeout(() => {
         renderResult();
@@ -1715,7 +1727,7 @@
       document.getElementById('finalShort').textContent = needInfo[finalNeed].short;
       document.getElementById('resultComment').textContent = needInfo[finalNeed].comment;
 
-      showScreen(resultScreen);
+      showScreenKeepScroll(resultScreen);
     }
 
     function restartTest() {

@@ -22,6 +22,13 @@
   <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 
   <style>
+    @font-face {
+      font-family: 'Galmuri14';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2506-1@1.0/Galmuri14.woff2') format('woff2');
+      font-weight: normal;
+      font-display: swap;
+    }
+
     :root {
       --ink: #171717;
       --muted: #6f6c67;
@@ -34,7 +41,6 @@
       --blue: #acd7f5;
       --line: #222222;
       --wood: #7db68a;
-      --fire: #ed806f;
       --earth: #d8ab64;
       --metal: #989da8;
       --water: #69a5cc;
@@ -43,6 +49,7 @@
     * {
       box-sizing: border-box;
       -webkit-tap-highlight-color: transparent;
+      font-family: 'Galmuri14', sans-serif;
     }
 
     html, body {
@@ -54,7 +61,8 @@
     body {
       background: var(--bg);
       color: var(--ink);
-      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif;
+      font-family: 'Galmuri14', sans-serif;
+      letter-spacing: -.6px;
       word-break: keep-all;
       -webkit-font-smoothing: antialiased;
     }
@@ -92,20 +100,18 @@
     .nav {
       display: flex;
       align-items: center;
-      gap: 13px;
+      gap: 15px;
       color: #555;
-      font-size: 14px;
-      font-weight: 800;
+      font-size: 16px;
+      font-weight: 850;
       letter-spacing: -.4px;
     }
 
     .nav a {
-      min-height: 36px;
+      min-height: 40px;
       display: inline-flex;
       align-items: center;
     }
-
-    .nav a.active { color: var(--ink); font-weight: 900; }
 
     .wrap {
       width: min(100%, 560px);
@@ -113,7 +119,10 @@
       padding: 18px 10px 42px;
     }
 
-    .screen { display: none; }
+    .screen {
+      display: none;
+      overflow-anchor: none;
+    }
     .screen.active { display: block; }
 
     .btn {
@@ -141,10 +150,73 @@
 
     .btn:active { transform: translateY(1px); }
 
-    /* 메인 */
+    /* 메인·입력·로딩 공통 파스텔 비주얼 */
     .hero {
-      min-height: 570px;
-      padding: 24px 22px 22px;
+      width: 100%;
+      background: transparent;
+    }
+
+    .main-image {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .pastel-corners {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .pastel-corner {
+      position: absolute;
+      display: block;
+    }
+
+    .corner-yellow {
+      width: 225px;
+      height: 205px;
+      left: -70px;
+      top: -58px;
+      border-radius: 34% 66% 51% 49% / 45% 43% 57% 55%;
+      background: var(--yellow);
+      transform: rotate(8deg);
+    }
+
+    .corner-blue {
+      width: 185px;
+      height: 150px;
+      right: -73px;
+      top: 36px;
+      border-radius: 56% 44% 38% 62% / 54% 48% 52% 46%;
+      background: var(--blue);
+      transform: rotate(-8deg);
+    }
+
+    .corner-mint {
+      width: 190px;
+      height: 180px;
+      left: -73px;
+      bottom: -55px;
+      border-radius: 54% 46% 54% 46% / 42% 58% 42% 58%;
+      background: var(--mint);
+      transform: rotate(11deg);
+    }
+
+    .corner-pink {
+      width: 215px;
+      height: 175px;
+      right: -66px;
+      bottom: -49px;
+      border-radius: 55% 45% 38% 62% / 52% 40% 60% 48%;
+      background: var(--pink);
+      transform: rotate(-7deg);
+    }
+
+    /* 입력 */
+    .form-card,
+    .loading-card {
       border: 2px solid var(--ink);
       border-radius: 0;
       background: var(--paper);
@@ -152,167 +224,25 @@
       overflow: hidden;
     }
 
-    .hero-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+    .form-card { padding: 42px 20px 24px; }
+
+    .form-content {
       position: relative;
       z-index: 2;
-      font-size: 10px;
-      font-weight: 900;
-      letter-spacing: 1px;
-    }
-
-    .mini-logo {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-    }
-
-    .eyes {
-      width: 32px;
-      height: 20px;
-      position: relative;
-    }
-
-    .eyes::before,
-    .eyes::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      width: 18px;
-      height: 20px;
-      border-radius: 50%;
-      background: var(--ink);
-    }
-
-    .eyes::before { left: 0; }
-    .eyes::after { right: 0; }
-
-    .hero-copy {
-      position: relative;
-      z-index: 3;
-      width: 72%;
-      margin-top: 72px;
-    }
-
-    .hero-kicker {
-      margin: 0 0 11px;
-      font-size: 13px;
-      font-weight: 800;
-    }
-
-    .hero-title {
-      margin: 0;
-      font-size: 42px;
-      line-height: 1.13;
-      letter-spacing: -2.8px;
-      font-weight: 900;
-    }
-
-    .hero-desc {
-      margin: 18px 0 0;
-      max-width: 310px;
-      color: #4f4c47;
-      font-size: 14px;
-      line-height: 1.65;
-      font-weight: 700;
-    }
-
-    .hero-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 7px;
-      margin-top: 22px;
-    }
-
-    .hero-tags span {
-      padding: 7px 10px;
-      border: 1.5px solid var(--ink);
-      border-radius: 0;
-      background: #fff;
-      font-size: 11px;
-      font-weight: 900;
-    }
-
-    .blob {
-      position: absolute;
-      z-index: 1;
-    }
-
-    .blob-yellow {
-      right: -45px;
-      bottom: -35px;
-      width: 250px;
-      height: 225px;
-      border-radius: 46% 54% 38% 62% / 55% 36% 64% 45%;
-      background: var(--yellow);
-      transform: rotate(-12deg);
-    }
-
-    .blob-cream {
-      right: 35px;
-      top: 86px;
-      width: 155px;
-      height: 190px;
-      border-radius: 58% 42% 51% 49% / 39% 61% 39% 61%;
-      background: #f1eee8;
-      transform: rotate(17deg);
-    }
-
-    .blob-eyes {
-      position: absolute;
-      right: 84px;
-      top: 155px;
-      z-index: 2;
-      display: flex;
-      gap: 9px;
-    }
-
-    .blob-eyes span {
-      width: 13px;
-      height: 25px;
-      border-radius: 50%;
-      background: var(--ink);
-    }
-
-    .hero-palette {
-      position: absolute;
-      left: 22px;
-      bottom: 20px;
-      z-index: 3;
-      display: flex;
-      align-items: center;
-      gap: 7px;
-    }
-
-    .hero-palette span {
-      width: 20px;
-      height: 20px;
-      border: 1.5px solid var(--ink);
-      border-radius: 0;
-    }
-
-    /* 입력 */
-    .form-card,
-    .loading-card {
-      padding: 24px 20px;
-      border: 2px solid var(--ink);
-      border-radius: 0;
-      background: var(--paper);
     }
 
     .form-head {
       padding-bottom: 19px;
       margin-bottom: 22px;
       border-bottom: 1.5px solid var(--ink);
+      text-align: center;
     }
 
     .form-kicker {
-      margin: 0 0 7px;
-      font-size: 10px;
+      margin: 0 0 10px;
+      font-size: 13px;
       font-weight: 900;
-      letter-spacing: 1.2px;
+      letter-spacing: -.4px;
     }
 
     .form-title {
@@ -434,21 +364,60 @@
       overflow: hidden;
     }
 
+    .form-card .pastel-corner,
+    .loading-card .pastel-corner {
+      transform: scale(.72);
+    }
+
+    .form-card .corner-yellow,
+    .loading-card .corner-yellow { left: -92px; top: -82px; }
+
+    .form-card .corner-blue,
+    .loading-card .corner-blue { right: -88px; top: 14px; }
+
+    .form-card .corner-mint,
+    .loading-card .corner-mint { left: -91px; bottom: -74px; }
+
+    .form-card .corner-pink,
+    .loading-card .corner-pink { right: -89px; bottom: -74px; }
+
     .loading-content { position: relative; z-index: 2; }
 
-    .loading-mark {
-      width: 74px;
-      height: 74px;
+    .loading-circles {
+      width: 104px;
+      height: 68px;
       margin: 0 auto 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 2px solid var(--ink);
-      border-radius: 0;
+      position: relative;
+    }
+
+    .loading-circles span {
+      position: absolute;
+      top: 4px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+    }
+
+    .loading-circles span:first-child {
+      left: 0;
       background: var(--yellow);
-      font-size: 28px;
-      font-weight: 900;
-      transform: rotate(-5deg);
+      animation: circle-left 1.5s ease-in-out infinite;
+    }
+
+    .loading-circles span:last-child {
+      right: 0;
+      background: var(--pink);
+      animation: circle-right 1.5s ease-in-out infinite;
+    }
+
+    @keyframes circle-left {
+      0%, 100% { transform: translateX(0) scale(1); }
+      50% { transform: translateX(42px) scale(.88); }
+    }
+
+    @keyframes circle-right {
+      0%, 100% { transform: translateX(0) scale(.88); }
+      50% { transform: translateX(-42px) scale(1); }
     }
 
     .loading-title {
@@ -527,18 +496,20 @@
 
     .result-head-main::before,
     .result-head-main::after {
-      content: '';
-      flex: 0 0 24px;
-      height: 7px;
-      border: 1.5px solid var(--ink);
+      flex: 0 0 auto;
+      border: 0;
+      background: none;
+      font-size: 15px;
+      line-height: 1;
+      font-weight: 900;
     }
 
     .result-head-main::before {
-      background: var(--yellow);
+      content: '[';
     }
 
     .result-head-main::after {
-      background: var(--pink);
+      content: ']';
     }
 
     .result-doc-title {
@@ -571,55 +542,6 @@
       line-height: 1.25;
       letter-spacing: -1.4px;
       font-weight: 900;
-    }
-
-    .pillars {
-      display: grid;
-      margin-top: 15px;
-      border-top: 1.5px solid var(--ink);
-      border-left: 1.5px solid var(--ink);
-      background: #fff;
-    }
-
-    .pillars.cols-3 { grid-template-columns: repeat(3, 1fr); }
-    .pillars.cols-4 { grid-template-columns: repeat(4, 1fr); }
-
-    .pillar {
-      min-width: 0;
-      text-align: center;
-      border-right: 1.5px solid var(--ink);
-      border-bottom: 1.5px solid var(--ink);
-    }
-
-    .pillar-label {
-      display: block;
-      padding: 5px 2px;
-      border-bottom: 1px solid var(--ink);
-      font-size: 8px;
-      font-weight: 900;
-    }
-
-    .pillar:nth-child(1) .pillar-label { background: var(--yellow-soft); }
-    .pillar:nth-child(2) .pillar-label { background: var(--pink); }
-    .pillar:nth-child(3) .pillar-label { background: var(--mint); }
-    .pillar:nth-child(4) .pillar-label { background: var(--blue); }
-
-    .pillar-gz {
-      display: block;
-      padding: 8px 2px 3px;
-      font-family: "Noto Serif KR", "Batang", serif;
-      font-size: 21px;
-      letter-spacing: 1px;
-    }
-
-    .pillar-sub {
-      display: block;
-      min-height: 21px;
-      padding: 0 2px 6px;
-      color: var(--muted);
-      font-size: 7px;
-      line-height: 1.25;
-      font-weight: 800;
     }
 
     .feature-grid {
@@ -823,26 +745,18 @@
       .wrap { padding: 12px 7px 34px; }
       .header-inner { padding: 0 11px; }
       .logo { font-size: 19px; }
-      .nav { gap: 9px; font-size: 13px; }
-      .hero { min-height: 545px; padding: 21px 18px 18px; }
-      .hero-copy { width: 79%; margin-top: 65px; }
-      .hero-title { font-size: 36px; }
-      .hero-desc { font-size: 13px; }
-      .blob-yellow { width: 220px; height: 205px; }
-      .blob-cream { right: 18px; width: 138px; height: 175px; }
-      .blob-eyes { right: 61px; }
-      .form-card { padding: 21px 14px; }
+      .nav { gap: 11px; font-size: 15px; }
+      .form-card { padding: 38px 14px 21px; }
       .date-row { gap: 5px; }
       .date-row select { padding: 0 8px; }
       .result-capture { padding: 8px; }
       .result-head { min-height: 38px; padding: 6px 7px; }
       .result-head-main { gap: 6px; }
       .result-head-main::before,
-      .result-head-main::after { flex-basis: 14px; height: 6px; }
+      .result-head-main::after { font-size: 13px; }
       .result-doc-title { font-size: 14px; letter-spacing: -.9px; }
       .result-main { padding: 15px 9px 11px; }
       .result-type { font-size: 17px; }
-      .pillar-gz { font-size: 18px; }
       .feature-grid { margin: 0 9px 10px; }
       .feature { min-height: 170px; padding: 11px 9px; }
       .feature p { font-size: 11.4px; }
@@ -850,7 +764,6 @@
 
     @media (max-width: 360px) {
       .nav a:nth-child(2), .nav a:nth-child(3) { display: none; }
-      .hero-copy { width: 88%; }
       .date-row { grid-template-columns: 1fr 1fr; }
       .date-row select:first-child { grid-column: 1 / -1; }
       .feature-grid { grid-template-columns: 1fr; }
@@ -867,7 +780,7 @@
         <a href="https://test-it.co.kr/test.html">성격</a>
         <a href="https://test-it.co.kr/face.html">얼굴</a>
         <a href="https://test-it.co.kr/etc.html">그외</a>
-        <a class="active" href="https://test-it.co.kr/saju.html">사주</a>
+        <a href="https://test-it.co.kr/saju.html">사주</a>
       </nav>
     </div>
   </header>
@@ -876,31 +789,7 @@
     <!-- 메인 -->
     <section id="mainScreen" class="screen active">
       <div class="hero">
-        <div class="hero-top">
-          <div class="mini-logo"><span class="eyes"></span><span>TEST-IT SAJU</span></div>
-          <span>NO.411</span>
-        </div>
-
-        <div class="hero-copy">
-          <p class="hero-kicker">생년월일시로 알아보는</p>
-          <h1 class="hero-title">사주 성향<br>보고서 테스트</h1>
-          <p class="hero-desc">사주팔자와 오행·십성을 계산해 성격, 판단 방식, 관계 성향, 일할 때의 특징을 정리합니다.</p>
-          <div class="hero-tags">
-            <span>기본 성격</span>
-            <span>관계 성향</span>
-            <span>일하는 방식</span>
-          </div>
-        </div>
-
-        <div class="blob blob-cream"></div>
-        <div class="blob blob-yellow"></div>
-        <div class="blob-eyes"><span></span><span></span></div>
-        <div class="hero-palette" aria-hidden="true">
-          <span style="background:var(--yellow)"></span>
-          <span style="background:var(--pink)"></span>
-          <span style="background:var(--mint)"></span>
-          <span style="background:var(--blue)"></span>
-        </div>
+        <img class="main-image" src="img_main411.png" alt="테스트잇 사주 성향 보고서 테스트">
       </div>
       <button class="btn" type="button" onclick="goInput()">테스트 시작하기</button>
     </section>
@@ -908,13 +797,20 @@
     <!-- 정보 입력 -->
     <section id="inputScreen" class="screen">
       <div class="form-card">
-        <div class="form-head">
-          <p class="form-kicker">SAJU DATA / NO.411</p>
-          <h2 class="form-title">정보를 입력해주세요</h2>
-          <p class="form-desc">입력한 정보는 결과를 계산하는 데만 사용됩니다.</p>
+        <div class="pastel-corners" aria-hidden="true">
+          <span class="pastel-corner corner-yellow"></span>
+          <span class="pastel-corner corner-blue"></span>
+          <span class="pastel-corner corner-mint"></span>
+          <span class="pastel-corner corner-pink"></span>
         </div>
+        <div class="form-content">
+          <div class="form-head">
+            <p class="form-kicker">테스트잇</p>
+            <h2 class="form-title">정보를 입력해주세요</h2>
+            <p class="form-desc">입력한 정보는 결과 계산에만 사용됩니다.</p>
+          </div>
 
-        <form id="sajuForm" novalidate>
+          <form id="sajuForm" novalidate>
           <div class="field">
             <label for="nicknameInput">이름 또는 닉네임</label>
             <input id="nicknameInput" class="text-input" type="text" maxlength="12" autocomplete="off" placeholder="최대 12자">
@@ -953,16 +849,22 @@
           <div id="formError" class="error" role="alert"></div>
           <button class="btn" type="submit">결과 확인하기</button>
           <button class="btn white" type="button" onclick="goMain()">처음으로</button>
-        </form>
+          </form>
+        </div>
       </div>
     </section>
 
     <!-- 로딩 -->
     <section id="loadingScreen" class="screen">
       <div class="loading-card">
-        <div class="blob blob-yellow" style="opacity:.65"></div>
+        <div class="pastel-corners" aria-hidden="true">
+          <span class="pastel-corner corner-yellow"></span>
+          <span class="pastel-corner corner-blue"></span>
+          <span class="pastel-corner corner-mint"></span>
+          <span class="pastel-corner corner-pink"></span>
+        </div>
         <div class="loading-content">
-          <div class="loading-mark">命</div>
+          <div class="loading-circles" aria-hidden="true"><span></span><span></span></div>
           <h2 class="loading-title">사주 분석 중</h2>
           <p class="loading-desc">사주팔자와 오행·십성의 구성을<br>확인하고 있습니다.</p>
           <div class="loading-dots"><span></span><span></span><span></span></div>
@@ -983,13 +885,12 @@
           <div class="result-main">
             <p id="resultName" class="result-name"></p>
             <h1 id="resultType" class="result-type"></h1>
-            <div id="pillars" class="pillars"></div>
           </div>
 
           <div id="featureGrid" class="feature-grid"></div>
 
           <div class="result-footer">
-            <span>절기 기준 사주팔자·오행·십성 분석</span>
+            <span>테스트잇 사주 성향 보고서 테스트</span>
             <span>TEST-IT / NO.411</span>
           </div>
         </div>
@@ -1052,7 +953,7 @@
       '辰': { ko:'진', element:'토', hidden:['戊','乙','癸'], title:'상황 정리에 탁월한', trait:'복잡하고 엉킨 상황에서도 필요한 것만 골라 깔끔하게 정리함.' },
       '巳': { ko:'사', element:'화', hidden:['丙','戊','庚'], title:'하나에 깊게 몰두하는', trait:'관심 있는 분야가 생기면 고도의 집중력을 발휘해 끝을 봄.' },
       '午': { ko:'오', element:'화', hidden:['丁','己'], title:'감정 표현이 확실한', trait:'좋고 싫음이 표정에 다 드러나며 솔직하게 자신을 표현함.' },
-      '未': { ko:'미', element:'토', hidden:['己','丁','乙'], title:'보이지 않게 배려하는', trait:'남들이 놓치기 쉬운 사소한 부분까지 책임감 있게 챙김.' },
+      '未': { ko:'미', element:'토', hidden:['己','丁','乙'], title:'보이지 않게 배려하는', trait:'겉으로 조용해 보여도 속으로 정이 많고 익숙한 사람과 환경을 쉽게 놓지 않음.' },
       '申': { ko:'신', element:'금', hidden:['庚','壬','戊'], title:'두뇌 회전이 빠른', trait:'상황 판단이 매우 빠르고 어떤 문제든 유연하게 대처함.' },
       '酉': { ko:'유', element:'금', hidden:['辛'], title:'정확하고 예리한', trait:'대충 넘어가는 법이 없고 확실한 기준을 세워 짚고 넘어감.' },
       '戌': { ko:'술', element:'토', hidden:['戊','辛','丁'], title:'책임감이 강한', trait:'자신에게 주어진 역할을 완수하고 한 번 믿은 사람은 지킴.' },
@@ -1080,6 +981,22 @@
       '토': { color:'#d8ab64', ability:'중심을 잡고 상황을 안정시키는 힘', lack:'안정감과 현실 감각', decision:'가장 안전하고 현실적으로 무리가 없는 방향을 꼼꼼히 따짐' },
       '금': { color:'#989da8', ability:'정확한 기준을 세우고 결단하는 힘', lack:'단호한 결단력', decision:'자신의 확실한 기준에 맞지 않는 선택지는 미련 없이 제외함' },
       '수': { color:'#69a5cc', ability:'상황을 넓게 보고 정보를 수집하는 힘', lack:'상황 파악과 유연성', decision:'충분한 정보와 경우의 수를 모두 고려한 후 가장 합리적인 것을 고름' }
+    };
+
+    const ELEMENT_STRENGTH = {
+      '목':'새로운 가능성을 빨리 발견하고 익숙하지 않은 상황에서도 먼저 길을 만들어감',
+      '화':'감정과 의사를 분명히 표현하고 주변 분위기를 빠르게 움직이는 힘이 있음',
+      '토':'급한 상황에서도 중심을 잡고 사람과 생활을 안정적으로 유지함',
+      '금':'좋고 싫은 기준이 분명하며 필요 없는 것을 정리하고 결론을 내리는 힘이 좋음',
+      '수':'상황을 넓게 보고 말 뒤의 뜻과 변화를 빠르게 파악함'
+    };
+
+    const ELEMENT_CAUTION = {
+      '목':'익숙한 방식을 벗어나 새로 시작해야 할 때 망설임이 길어질 수 있음',
+      '화':'감정을 바로 표현하거나 먼저 행동해야 하는 순간에 반응이 늦어질 수 있음',
+      '토':'생활이 흔들리거나 변수가 많아지면 안정감을 찾는 데 시간이 걸릴 수 있음',
+      '금':'거절하거나 선을 분명히 그어야 할 때 결정을 미루기 쉬움',
+      '수':'정보가 부족하거나 상황을 오래 지켜봐야 할 때 불안해질 수 있음'
     };
 
     const GENERATES = { '목':'화', '화':'토', '토':'금', '금':'수', '수':'목' };
@@ -1115,7 +1032,7 @@
     const INNER_BY_GOD = {
       '비견':'타인의 의견에 겉으로는 맞춰주더라도 속으로는 자신의 기준이 가장 옳다고 생각함.',
       '겁재':'누군가 자신을 앞서가거나 비교당하면 평소보다 훨씬 강한 집중력과 오기를 발휘함.',
-      '식신':'스스로 좋아하는 일에 대해서는 타인의 평가와 상관없이 자신만의 방식대로 꾸준히 파고듦.',
+      '식신':'편안하고 예측 가능한 흐름을 좋아하며 결과를 빨리 내라고 재촉받는 것을 싫어함.',
       '상관':'문제가 있는 상황을 보면 그냥 넘기지 못하고 반드시 고치거나 올바르게 바로잡으려 함.',
       '편재':'하나의 방식에 고집하기보다는 여러 가지 가능성을 열어 두고 가장 유리한 쪽을 선택함.',
       '정재':'자신에게 손해가 발생하는 상황을 가장 싫어하며, 머릿속으로 항상 이해득실을 계산함.',
@@ -1207,19 +1124,32 @@
       }
     };
 
-    const MONTH_DECISION = {
-      '子':'생각이 완벽하게 정리될 때까지 결정을 미루고 혼자만의 고민 시간을 가짐.',
-      '丑':'가장 손실이 적고 안정적인 방법을 우선으로 찾아 느리지만 확실하게 결정함.',
-      '寅':'모든 상황을 준비하기보다는 일단 부딪혀보고 행동을 하면서 방향을 수정함.',
-      '卯':'주변의 반응이나 여러 사람의 입장을 고려하여 가장 갈등이 적은 쪽을 고름.',
-      '辰':'가장 현실적이고 효율적인 선택이 무엇인지 복잡한 조건들을 깔끔하게 정리함.',
-      '巳':'목표가 확실해지면 누구보다 빠르게 정보를 모으고 결정을 내리는 편임.',
-      '午':'좋고 싫음의 기준이 확실해서 고민을 오래 하지 않고 빠르게 방향을 정함.',
-      '未':'단점이 무엇인지 꼼꼼하게 따져보고 가장 문제가 발생하지 않을 쪽을 신중하게 고름.',
-      '申':'가장 실용적이고 빠른 해결책을 찾으며, 가능성이 없는 선택지는 미련 없이 버림.',
-      '酉':'자신의 엄격한 기준에 부합하는지 꼼꼼히 따지며, 마음에 들 때까지 타협하지 않음.',
-      '戌':'자신이 책임지고 끝까지 마무리할 수 있는 일인지 현실적인 범위를 확인하고 결정함.',
-      '亥':'하나의 정답을 정하기보다 다양한 변수와 가능성을 열어두어 결정까지 시간이 오래 걸림.'
+    const SOCIAL_BY_BRANCH = {
+      '子':'여럿이 모인 자리에서는 먼저 분위기를 살피고 편한 사람부터 천천히 대화함.',
+      '丑':'처음에는 낯을 가리지만 자주 마주치는 사람과 안정적으로 관계를 쌓아감.',
+      '寅':'새로운 모임에서도 먼저 말을 꺼내며 답답한 분위기를 빠르게 바꾸는 편임.',
+      '卯':'자리 분위기와 사람들의 반응을 빠르게 읽고 말투와 행동을 부드럽게 조절함.',
+      '辰':'여러 사람의 입장이 엇갈릴 때 현실적으로 가능한 선을 찾아 정리하는 편임.',
+      '巳':'관심 있는 사람이나 주제가 나오면 질문과 반응이 많아지고 대화 집중도가 높아짐.',
+      '午':'좋고 싫은 반응이 분명하며 친해지면 분위기를 직접 이끄는 경우가 많음.',
+      '未':'앞에 나서기보다 상대가 놓친 부분을 조용히 챙기며 신뢰를 쌓는 편임.',
+      '申':'대화 흐름과 상황 전환이 빨라 여러 유형의 사람과 비교적 쉽게 어울림.',
+      '酉':'말투와 기본 예의를 세밀하게 보며 아무에게나 쉽게 가까워지지는 않음.',
+      '戌':'모임 안에서 자기 역할을 분명히 하고 분위기가 흐트러져도 쉽게 휩쓸리지 않음.',
+      '亥':'다른 생각을 받아들이는 폭은 넓지만 사람이 많은 자리가 길어지면 혼자 쉬는 시간이 필요함.'
+    };
+
+    const SOCIAL_BY_GOD = {
+      '비견':'상대와 동등하게 의견을 주고받을 때 가장 편하며 지나친 간섭에는 선을 그음.',
+      '겁재':'사람들 사이에서 반응이 빠르고 존재감도 강하지만 비교 구도가 생기면 예민해질 수 있음.',
+      '식신':'편안하고 꾸준한 관계를 좋아하며 급하게 가까워지기보다 자연스럽게 친해짐.',
+      '상관':'이상한 점이나 앞뒤가 맞지 않는 말을 빨리 알아차리며 필요하면 바로 의견을 말함.',
+      '편재':'낯선 사람과도 대화를 잘 이어가고 다양한 관계를 넓게 유지하는 편임.',
+      '정재':'연락과 약속이 일정한 사람을 신뢰하며 말보다 꾸준한 행동을 중요하게 봄.',
+      '편관':'급하거나 복잡한 상황에서 먼저 나서지만 상대가 지시하려 들면 강하게 부딪칠 수 있음.',
+      '정관':'기본 규칙과 예의를 지키며 책임감 없는 태도를 보이는 사람과는 거리를 둠.',
+      '편인':'취향과 관심사가 맞는 소수와 깊게 대화하는 것을 좋아하며 혼자 있는 시간도 필요함.',
+      '정인':'상대 말을 충분히 듣고 생각한 뒤 답하며 안정적이고 신뢰할 수 있는 관계를 선호함.'
     };
 
     const PRESSURE_BY_FAMILY = {
@@ -1278,14 +1208,12 @@
     function showScreen(screen) {
       [mainScreen, inputScreen, loadingScreen, resultScreen].forEach(item => item.classList.remove('active'));
       screen.classList.add('active');
-      window.scrollTo({ top:0, behavior:'auto' });
     }
 
     function goMain() { showScreen(mainScreen); }
 
     function goInput() {
       showScreen(inputScreen);
-      setTimeout(() => document.getElementById('nicknameInput').focus(), 80);
     }
 
     function addOptions(select, values, formatter, placeholder) {
@@ -1501,9 +1429,11 @@
       const interaction = getInteractionResult(interactions);
       const strength = getStrength(dayStem, scores);
       const yearGod = tenGod(dayStem, pillars[0].gan);
+      const monthGod = tenGod(dayStem, pillars[1].gan);
       const dayInnerGod = tenGod(dayStem, BRANCH[dayBranch].hidden[0]);
       const sortedElements = Object.keys(scores).sort((a,b) => scores[b] - scores[a]);
       const highElement = sortedElements[0];
+      const lowElement = sortedElements[sortedElements.length - 1];
       const title = `${input.name}님의 사주 성향 분석`;
       const chartCode = pillars.map(item => toKoreanGanZhi(item.gan + item.zhi)).join(' · ');
       const solarText = `${solar.getYear()}.${String(solar.getMonth()).padStart(2,'0')}.${String(solar.getDay()).padStart(2,'0')}`;
@@ -1522,7 +1452,7 @@
         },
         {
           title:'남들이 보는 내 첫인상',
-          text:`년주 ${toKoreanGanZhi(yearGz)}의 ${yearGod}이 겉으로 드러남. ${OUTER_BY_GOD[yearGod]}`,
+          text:OUTER_BY_GOD[yearGod],
           chips:[`${toKoreanGanZhi(yearGz)} 년주`, `첫인상 ${yearGod}`, GOD[yearGod].short]
         },
         {
@@ -1531,9 +1461,9 @@
           chips:[]
         },
         {
-          title:'사람 대할 때 특징',
-          text:`일지 ${BRANCH[dayBranch].ko} 성향이 사람을 사귈 때 나타남. ${BRANCH_RELATION[dayBranch]} ${RELATION_BY_GOD[dayInnerGod]}`,
-          chips:[`일지 ${BRANCH[dayBranch].ko}`, `관계 ${dayInnerGod}`, GOD[dayInnerGod].short]
+          title:'여럿이 있을 때 특징',
+          text:`${SOCIAL_BY_BRANCH[pillars[1].zhi]} ${SOCIAL_BY_GOD[monthGod]}`,
+          chips:[`월지 ${BRANCH[pillars[1].zhi].ko}`, `사회 ${monthGod}`, GOD[monthGod].short]
         },
         {
           title:'스트레스 받을 때',
@@ -1542,8 +1472,8 @@
         },
         {
           title:'성격 장단점 요약',
-          text:`<span class="trait-line"><span class="trait-label">장점 :</span> ${PROS_CONS_BY_STEM[dayStem].pros}.</span><span class="trait-line"><span class="trait-label">단점 :</span> ${PROS_CONS_BY_STEM[dayStem].cons}.</span>`,
-          chips:[`${toKoreanGanZhi(dayGz)} 일간`, '장점·단점', STEM[dayStem].element]
+          text:`<span class="trait-line"><span class="trait-label">장점 :</span> ${ELEMENT_STRENGTH[highElement]}.</span><span class="trait-line"><span class="trait-label">단점 :</span> ${ELEMENT_CAUTION[lowElement]}.</span>`,
+          chips:[`${highElement} 강점`, `${lowElement} 보완`, '장점·단점']
         }
       ];
 
@@ -1569,16 +1499,6 @@
       };
     }
 
-    function pillarHTML(item) {
-      const god = item.label === '일주' ? '나 자신' : tenGod(lastResult.pillars[2].gan, item.gan);
-      return `
-        <div class="pillar">
-          <span class="pillar-label">${item.label}</span>
-          <strong class="pillar-gz">${toKoreanGanZhi(item.gan + item.zhi)}</strong>
-          <span class="pillar-sub">${STEM[item.gan].element}·${BRANCH[item.zhi].element}<br>${god}</span>
-        </div>`;
-    }
-
     function barsHTML(scores) {
       return `<div class="element-bars">${Object.keys(ELEMENT).map(element => `
         <div class="element-col">
@@ -1592,9 +1512,6 @@
       lastResult = data;
       document.getElementById('resultName').textContent = `${data.name}님의 사주 분석 보고서`;
       document.getElementById('resultType').innerHTML = data.title;
-      const pillars = document.getElementById('pillars');
-      pillars.className = `pillars cols-${data.pillars.length}`;
-      pillars.innerHTML = data.pillars.map(pillarHTML).join('');
       document.getElementById('featureGrid').innerHTML = data.features.map((item,index) => `
         <article class="feature${item.full ? ' full' : ''}">
           <div class="feature-top"><span class="feature-no">0${index + 1}</span><h3>${item.title}</h3></div>
@@ -1641,7 +1558,17 @@
         solar = Solar.fromYmdHms(year, month, day, hour, minute, 0);
         lunar = solar.getLunar();
       } else {
+        if (leap && typeof LunarYear !== 'undefined') {
+          const actualLeapMonth = LunarYear.fromYear(year).getLeapMonth();
+          if (actualLeapMonth !== month) {
+            const guide = actualLeapMonth ? `이 해의 윤달은 ${actualLeapMonth}월입니다.` : '이 해에는 윤달이 없습니다.';
+            throw new Error(`선택한 ${month}월은 윤달이 아닙니다. ${guide}`);
+          }
+        }
         lunar = Lunar.fromYmdHms(year, leap ? -month : month, day, hour, minute, 0);
+        if (leap && lunar.getMonth() !== -month) {
+          throw new Error('윤달 날짜를 올바르게 변환하지 못했습니다. 날짜를 다시 확인해주세요.');
+        }
         solar = lunar.getSolar();
       }
 

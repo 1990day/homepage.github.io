@@ -1,0 +1,1748 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5522499110435321" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f8f5ef">
+
+  <title>테스트잇 사주 성향 보고서 테스트</title>
+  <meta name="description" content="테스트잇 사주 성향 보고서 테스트">
+  <meta name="keywords" content="테스트잇,사주테스트,사주성격,사주성향,사주보고서,오행,십성">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="테스트잇 사주 성향 보고서 테스트">
+  <meta property="og:description" content="생년월일시로 알아보는 나의 사주 성향 보고서">
+  <meta property="og:url" content="https://test-it.co.kr/test411">
+  <meta property="og:image" content="https://test-it.co.kr/img_main411.png">
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  <!-- 만세력 계산과 결과 이미지 생성 -->
+  <script src="https://cdn.jsdelivr.net/npm/lunar-javascript@1.7.7/lunar.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+
+  <style>
+    :root {
+      --ink: #171717;
+      --muted: #6f6c67;
+      --bg: #f5f2ec;
+      --paper: #fffdf9;
+      --yellow: #ffe16f;
+      --yellow-soft: #fff3b8;
+      --pink: #ffb8c5;
+      --mint: #b7e2d2;
+      --blue: #acd7f5;
+      --line: #222222;
+      --wood: #7db68a;
+      --fire: #ed806f;
+      --earth: #d8ab64;
+      --metal: #989da8;
+      --water: #69a5cc;
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif;
+      word-break: keep-all;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button, input, select { font: inherit; color: inherit; }
+    button { cursor: pointer; }
+
+    .site-header {
+      width: 100%;
+      height: 56px;
+      background: #fff;
+      border-bottom: 1px solid #e4e0d8;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+
+    .header-inner {
+      width: min(100%, 600px);
+      height: 56px;
+      margin: 0 auto;
+      padding: 0 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 20px;
+      font-weight: 900;
+      letter-spacing: -1px;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      color: #555;
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: -.4px;
+    }
+
+    .nav a {
+      min-height: 36px;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .nav a.active { color: var(--ink); font-weight: 900; }
+
+    .wrap {
+      width: min(100%, 560px);
+      margin: 0 auto;
+      padding: 18px 10px 42px;
+    }
+
+    .screen { display: none; }
+    .screen.active { display: block; }
+
+    .btn {
+      width: 100%;
+      min-height: 54px;
+      margin-top: 10px;
+      border: 2px solid var(--ink);
+      border-radius: 0;
+      background: var(--ink);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 15px;
+      line-height: 1.25;
+      font-weight: 900;
+    }
+
+    .btn.white {
+      margin-top: 8px;
+      background: #fff;
+      color: var(--ink);
+    }
+
+    .btn:active { transform: translateY(1px); }
+
+    /* 메인 */
+    .hero {
+      min-height: 570px;
+      padding: 24px 22px 22px;
+      border: 2px solid var(--ink);
+      border-radius: 0;
+      background: var(--paper);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      z-index: 2;
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 1px;
+    }
+
+    .mini-logo {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .eyes {
+      width: 32px;
+      height: 20px;
+      position: relative;
+    }
+
+    .eyes::before,
+    .eyes::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      width: 18px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--ink);
+    }
+
+    .eyes::before { left: 0; }
+    .eyes::after { right: 0; }
+
+    .hero-copy {
+      position: relative;
+      z-index: 3;
+      width: 72%;
+      margin-top: 72px;
+    }
+
+    .hero-kicker {
+      margin: 0 0 11px;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .hero-title {
+      margin: 0;
+      font-size: 42px;
+      line-height: 1.13;
+      letter-spacing: -2.8px;
+      font-weight: 900;
+    }
+
+    .hero-desc {
+      margin: 18px 0 0;
+      max-width: 310px;
+      color: #4f4c47;
+      font-size: 14px;
+      line-height: 1.65;
+      font-weight: 700;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 22px;
+    }
+
+    .hero-tags span {
+      padding: 7px 10px;
+      border: 1.5px solid var(--ink);
+      border-radius: 0;
+      background: #fff;
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .blob {
+      position: absolute;
+      z-index: 1;
+    }
+
+    .blob-yellow {
+      right: -45px;
+      bottom: -35px;
+      width: 250px;
+      height: 225px;
+      border-radius: 46% 54% 38% 62% / 55% 36% 64% 45%;
+      background: var(--yellow);
+      transform: rotate(-12deg);
+    }
+
+    .blob-cream {
+      right: 35px;
+      top: 86px;
+      width: 155px;
+      height: 190px;
+      border-radius: 58% 42% 51% 49% / 39% 61% 39% 61%;
+      background: #f1eee8;
+      transform: rotate(17deg);
+    }
+
+    .blob-eyes {
+      position: absolute;
+      right: 84px;
+      top: 155px;
+      z-index: 2;
+      display: flex;
+      gap: 9px;
+    }
+
+    .blob-eyes span {
+      width: 13px;
+      height: 25px;
+      border-radius: 50%;
+      background: var(--ink);
+    }
+
+    .hero-palette {
+      position: absolute;
+      left: 22px;
+      bottom: 20px;
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .hero-palette span {
+      width: 20px;
+      height: 20px;
+      border: 1.5px solid var(--ink);
+      border-radius: 0;
+    }
+
+    /* 입력 */
+    .form-card,
+    .loading-card {
+      padding: 24px 20px;
+      border: 2px solid var(--ink);
+      border-radius: 0;
+      background: var(--paper);
+    }
+
+    .form-head {
+      padding-bottom: 19px;
+      margin-bottom: 22px;
+      border-bottom: 1.5px solid var(--ink);
+    }
+
+    .form-kicker {
+      margin: 0 0 7px;
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 1.2px;
+    }
+
+    .form-title {
+      margin: 0;
+      font-size: 29px;
+      line-height: 1.2;
+      letter-spacing: -1.7px;
+    }
+
+    .form-desc {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.55;
+      font-weight: 700;
+    }
+
+    .field { margin-bottom: 18px; }
+
+    .field-label,
+    .field > label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .text-input,
+    select {
+      width: 100%;
+      height: 50px;
+      padding: 0 12px;
+      border: 1.7px solid var(--ink);
+      border-radius: 0;
+      background: #fff;
+      outline: none;
+      font-size: 14px;
+      font-weight: 750;
+    }
+
+    .text-input:focus,
+    select:focus { box-shadow: 0 0 0 3px var(--yellow-soft); }
+
+    .calendar-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .radio-box input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .radio-box label {
+      min-height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1.7px solid var(--ink);
+      border-radius: 0;
+      background: #fff;
+      font-size: 13px;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    .radio-box input:checked + label { background: var(--yellow); }
+
+    .date-row {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr .8fr;
+      gap: 7px;
+    }
+
+    .leap-wrap {
+      display: none;
+      align-items: center;
+      gap: 7px;
+      margin-top: 9px;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .leap-wrap.show { display: flex; }
+
+    .time-note {
+      margin: 8px 1px 0;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.5;
+      font-weight: 700;
+    }
+
+    .error {
+      display: none;
+      margin-top: 12px;
+      padding: 11px 12px;
+      border: 1.5px solid #b94e48;
+      border-radius: 0;
+      background: #fff0ef;
+      color: #8a302a;
+      font-size: 12px;
+      line-height: 1.5;
+      font-weight: 800;
+    }
+
+    .error.show { display: block; }
+
+    /* 로딩 */
+    .loading-card {
+      min-height: 500px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .loading-content { position: relative; z-index: 2; }
+
+    .loading-mark {
+      width: 74px;
+      height: 74px;
+      margin: 0 auto 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid var(--ink);
+      border-radius: 0;
+      background: var(--yellow);
+      font-size: 28px;
+      font-weight: 900;
+      transform: rotate(-5deg);
+    }
+
+    .loading-title {
+      margin: 0 0 9px;
+      font-size: 27px;
+      letter-spacing: -1.4px;
+    }
+
+    .loading-desc {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+      font-weight: 700;
+    }
+
+    .loading-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 20px;
+    }
+
+    .loading-dots span {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--ink);
+      animation: dot 1.1s ease-in-out infinite;
+    }
+
+    .loading-dots span:nth-child(2) { animation-delay: .18s; background: var(--pink); }
+    .loading-dots span:nth-child(3) { animation-delay: .36s; background: var(--blue); }
+
+    @keyframes dot {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-7px); }
+    }
+
+    /* 결과 */
+    .result-capture {
+      width: 100%;
+      max-width: 430px;
+      margin: 0 auto;
+      padding: 10px;
+      border: 2px solid var(--ink);
+      border-radius: 0;
+      background: var(--paper);
+    }
+
+    .result-inner {
+      overflow: hidden;
+      border: 1.5px solid var(--ink);
+      border-radius: 0;
+      background: #fff;
+    }
+
+    .result-head {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 7px 10px;
+      border-bottom: 1.5px solid var(--ink);
+      background: var(--paper);
+    }
+
+    .result-head-main {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      text-align: center;
+    }
+
+    .result-head-main::before,
+    .result-head-main::after {
+      content: '';
+      flex: 0 0 24px;
+      height: 7px;
+      border: 1.5px solid var(--ink);
+    }
+
+    .result-head-main::before {
+      background: var(--yellow);
+    }
+
+    .result-head-main::after {
+      background: var(--pink);
+    }
+
+    .result-doc-title {
+      margin: 0;
+      text-align: center;
+      font-size: 16px;
+      line-height: 1.2;
+      letter-spacing: -1px;
+      font-weight: 950;
+      white-space: nowrap;
+    }
+
+    .result-main {
+      padding: 17px 12px 13px;
+      background:
+        radial-gradient(circle at 88% 15%, var(--yellow) 0 44px, transparent 45px),
+        radial-gradient(circle at 8% 82%, var(--mint) 0 34px, transparent 35px),
+        #fff;
+    }
+
+    .result-name {
+      display: none;
+    }
+
+    .result-type {
+      margin: 0 auto;
+      max-width: 330px;
+      text-align: center;
+      font-size: 18px;
+      line-height: 1.25;
+      letter-spacing: -1.4px;
+      font-weight: 900;
+    }
+
+    .pillars {
+      display: grid;
+      margin-top: 15px;
+      border-top: 1.5px solid var(--ink);
+      border-left: 1.5px solid var(--ink);
+      background: #fff;
+    }
+
+    .pillars.cols-3 { grid-template-columns: repeat(3, 1fr); }
+    .pillars.cols-4 { grid-template-columns: repeat(4, 1fr); }
+
+    .pillar {
+      min-width: 0;
+      text-align: center;
+      border-right: 1.5px solid var(--ink);
+      border-bottom: 1.5px solid var(--ink);
+    }
+
+    .pillar-label {
+      display: block;
+      padding: 5px 2px;
+      border-bottom: 1px solid var(--ink);
+      font-size: 8px;
+      font-weight: 900;
+    }
+
+    .pillar:nth-child(1) .pillar-label { background: var(--yellow-soft); }
+    .pillar:nth-child(2) .pillar-label { background: var(--pink); }
+    .pillar:nth-child(3) .pillar-label { background: var(--mint); }
+    .pillar:nth-child(4) .pillar-label { background: var(--blue); }
+
+    .pillar-gz {
+      display: block;
+      padding: 8px 2px 3px;
+      font-family: "Noto Serif KR", "Batang", serif;
+      font-size: 21px;
+      letter-spacing: 1px;
+    }
+
+    .pillar-sub {
+      display: block;
+      min-height: 21px;
+      padding: 0 2px 6px;
+      color: var(--muted);
+      font-size: 7px;
+      line-height: 1.25;
+      font-weight: 800;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-left: 1.5px solid var(--ink);
+      border-top: 1.5px solid var(--ink);
+      margin: 0 12px 13px;
+    }
+
+    .feature {
+      min-height: 174px;
+      padding: 11px 10px;
+      border-right: 1.5px solid var(--ink);
+      border-bottom: 1.5px solid var(--ink);
+    }
+
+    .feature.full { grid-column: 1 / -1; min-height: 0; }
+
+    .feature-top {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      margin-bottom: 7px;
+    }
+
+    .feature-no {
+      flex: 0 0 auto;
+      width: 23px;
+      height: 23px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1.3px solid var(--ink);
+      border-radius: 0;
+      font-size: 8px;
+      font-weight: 900;
+    }
+
+    .feature:nth-child(4n+1) .feature-no { background: var(--yellow); }
+    .feature:nth-child(4n+2) .feature-no { background: var(--pink); }
+    .feature:nth-child(4n+3) .feature-no { background: var(--mint); }
+    .feature:nth-child(4n) .feature-no { background: var(--blue); }
+
+    .feature h3 {
+      margin: 0;
+      font-size: 13px;
+      line-height: 1.3;
+    }
+
+    .feature p {
+      margin: 0;
+      color: #3f3d39;
+      font-size: 11.8px;
+      line-height: 1.62;
+      font-weight: 720;
+    }
+
+    .feature p .trait-line {
+      display: block;
+    }
+
+    .feature p .trait-line + .trait-line {
+      margin-top: 6px;
+    }
+
+    .feature p .trait-label {
+      font-weight: 950;
+      color: var(--ink);
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-top: 8px;
+    }
+
+    .chips span {
+      padding: 4px 6px;
+      border: 1px solid var(--ink);
+      border-radius: 0;
+      background: #fff;
+      font-size: 8.5px;
+      font-weight: 900;
+    }
+
+    .element-bars {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 7px;
+      margin-top: 10px;
+    }
+
+    .element-col { text-align: center; }
+    .element-col b { display: block; margin-bottom: 4px; font-size: 9px; }
+    .bar-track { height: 58px; display: flex; align-items: flex-end; background: #f1eee8; border-radius: 0; overflow: hidden; }
+    .bar-fill { width: 100%; min-height: 3px; }
+    .element-col em { display: block; margin-top: 4px; font-size: 8px; font-style: normal; font-weight: 900; }
+
+    .result-footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 9px 12px;
+      border-top: 1.5px solid var(--ink);
+      color: var(--muted);
+      font-size: 7px;
+      line-height: 1.35;
+      font-weight: 800;
+    }
+
+    .result-buttons {
+      display: grid;
+      gap: 0;
+      margin-top: 13px;
+    }
+
+    /* 광고 */
+    .ad-wrap {
+      width: 100%;
+      margin: 18px auto 0;
+      display: flex;
+      justify-content: center;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .ad-wrap iframe,
+    .ad-wrap div,
+    .ad-wrap ins {
+      max-width: 100%;
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+
+    /* 저장 팝업 */
+    .save-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      padding: 18px 12px;
+      align-items: center;
+      justify-content: center;
+      background: rgba(18,18,18,.82);
+    }
+
+    .save-modal.active { display: flex; }
+
+    .save-modal-box {
+      width: 100%;
+      max-width: 320px;
+      padding: 13px;
+      border: 2px solid var(--ink);
+      border-radius: 0;
+      background: var(--paper);
+      text-align: center;
+    }
+
+    .save-modal-title {
+      margin: 0 0 5px;
+      font-size: 16px;
+      font-weight: 900;
+    }
+
+    .save-modal-desc {
+      margin: 0 0 10px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.5;
+      font-weight: 750;
+    }
+
+    .save-preview {
+      width: 170px;
+      max-width: 58%;
+      max-height: 58vh;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto 10px;
+      border: 1.5px solid var(--ink);
+      border-radius: 0;
+      background: #fff;
+      -webkit-touch-callout: default;
+      user-select: auto;
+    }
+
+    .modal-close {
+      width: 100%;
+      height: 45px;
+      border: 2px solid var(--ink);
+      border-radius: 0;
+      background: var(--ink);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    @media (max-width: 430px) {
+      .wrap { padding: 12px 7px 34px; }
+      .header-inner { padding: 0 11px; }
+      .logo { font-size: 19px; }
+      .nav { gap: 9px; font-size: 13px; }
+      .hero { min-height: 545px; padding: 21px 18px 18px; }
+      .hero-copy { width: 79%; margin-top: 65px; }
+      .hero-title { font-size: 36px; }
+      .hero-desc { font-size: 13px; }
+      .blob-yellow { width: 220px; height: 205px; }
+      .blob-cream { right: 18px; width: 138px; height: 175px; }
+      .blob-eyes { right: 61px; }
+      .form-card { padding: 21px 14px; }
+      .date-row { gap: 5px; }
+      .date-row select { padding: 0 8px; }
+      .result-capture { padding: 8px; }
+      .result-head { min-height: 38px; padding: 6px 7px; }
+      .result-head-main { gap: 6px; }
+      .result-head-main::before,
+      .result-head-main::after { flex-basis: 14px; height: 6px; }
+      .result-doc-title { font-size: 14px; letter-spacing: -.9px; }
+      .result-main { padding: 15px 9px 11px; }
+      .result-type { font-size: 17px; }
+      .pillar-gz { font-size: 18px; }
+      .feature-grid { margin: 0 9px 10px; }
+      .feature { min-height: 170px; padding: 11px 9px; }
+      .feature p { font-size: 11.4px; }
+    }
+
+    @media (max-width: 360px) {
+      .nav a:nth-child(2), .nav a:nth-child(3) { display: none; }
+      .hero-copy { width: 88%; }
+      .date-row { grid-template-columns: 1fr 1fr; }
+      .date-row select:first-child { grid-column: 1 / -1; }
+      .feature-grid { grid-template-columns: 1fr; }
+      .feature.full { grid-column: 1; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="https://test-it.co.kr/" class="logo">테스트잇</a>
+      <nav class="nav">
+        <a href="https://test-it.co.kr/test.html">성격</a>
+        <a href="https://test-it.co.kr/face.html">얼굴</a>
+        <a href="https://test-it.co.kr/etc.html">그외</a>
+        <a class="active" href="https://test-it.co.kr/saju.html">사주</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- 메인 -->
+    <section id="mainScreen" class="screen active">
+      <div class="hero">
+        <div class="hero-top">
+          <div class="mini-logo"><span class="eyes"></span><span>TEST-IT SAJU</span></div>
+          <span>NO.411</span>
+        </div>
+
+        <div class="hero-copy">
+          <p class="hero-kicker">생년월일시로 알아보는</p>
+          <h1 class="hero-title">사주 성향<br>보고서 테스트</h1>
+          <p class="hero-desc">사주팔자와 오행·십성을 계산해 성격, 판단 방식, 관계 성향, 일할 때의 특징을 정리합니다.</p>
+          <div class="hero-tags">
+            <span>기본 성격</span>
+            <span>관계 성향</span>
+            <span>일하는 방식</span>
+          </div>
+        </div>
+
+        <div class="blob blob-cream"></div>
+        <div class="blob blob-yellow"></div>
+        <div class="blob-eyes"><span></span><span></span></div>
+        <div class="hero-palette" aria-hidden="true">
+          <span style="background:var(--yellow)"></span>
+          <span style="background:var(--pink)"></span>
+          <span style="background:var(--mint)"></span>
+          <span style="background:var(--blue)"></span>
+        </div>
+      </div>
+      <button class="btn" type="button" onclick="goInput()">테스트 시작하기</button>
+    </section>
+
+    <!-- 정보 입력 -->
+    <section id="inputScreen" class="screen">
+      <div class="form-card">
+        <div class="form-head">
+          <p class="form-kicker">SAJU DATA / NO.411</p>
+          <h2 class="form-title">정보를 입력해주세요</h2>
+          <p class="form-desc">입력한 정보는 결과를 계산하는 데만 사용됩니다.</p>
+        </div>
+
+        <form id="sajuForm" novalidate>
+          <div class="field">
+            <label for="nicknameInput">이름 또는 닉네임</label>
+            <input id="nicknameInput" class="text-input" type="text" maxlength="12" autocomplete="off" placeholder="최대 12자">
+          </div>
+
+          <div class="field">
+            <span class="field-label">생일 기준</span>
+            <div class="calendar-row">
+              <div class="radio-box">
+                <input id="solarType" name="calendarType" type="radio" value="solar" checked>
+                <label for="solarType">양력</label>
+              </div>
+              <div class="radio-box">
+                <input id="lunarType" name="calendarType" type="radio" value="lunar">
+                <label for="lunarType">음력</label>
+              </div>
+            </div>
+            <label id="leapWrap" class="leap-wrap"><input id="isLeap" type="checkbox"> 윤달</label>
+          </div>
+
+          <div class="field">
+            <span class="field-label">생년월일</span>
+            <div class="date-row">
+              <select id="birthYear" aria-label="출생 연도"></select>
+              <select id="birthMonth" aria-label="출생 월"></select>
+              <select id="birthDay" aria-label="출생 일"></select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="birthTime">태어난 시간</label>
+            <select id="birthTime"></select>
+            <p class="time-note">모르면 시간 모름을 선택하세요. 시주 관련 내용은 결과에서 제외됩니다.</p>
+          </div>
+
+          <div id="formError" class="error" role="alert"></div>
+          <button class="btn" type="submit">결과 확인하기</button>
+          <button class="btn white" type="button" onclick="goMain()">처음으로</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- 로딩 -->
+    <section id="loadingScreen" class="screen">
+      <div class="loading-card">
+        <div class="blob blob-yellow" style="opacity:.65"></div>
+        <div class="loading-content">
+          <div class="loading-mark">命</div>
+          <h2 class="loading-title">사주 분석 중</h2>
+          <p class="loading-desc">사주팔자와 오행·십성의 구성을<br>확인하고 있습니다.</p>
+          <div class="loading-dots"><span></span><span></span><span></span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 결과 -->
+    <section id="resultScreen" class="screen">
+      <div id="resultCapture" class="result-capture">
+        <div class="result-inner">
+          <div class="result-head">
+            <div class="result-head-main">
+              <h2 class="result-doc-title">테스트잇 사주 성향 보고서 테스트</h2>
+            </div>
+          </div>
+
+          <div class="result-main">
+            <p id="resultName" class="result-name"></p>
+            <h1 id="resultType" class="result-type"></h1>
+            <div id="pillars" class="pillars"></div>
+          </div>
+
+          <div id="featureGrid" class="feature-grid"></div>
+
+          <div class="result-footer">
+            <span>절기 기준 사주팔자·오행·십성 분석</span>
+            <span>TEST-IT / NO.411</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="result-buttons">
+        <button class="btn" type="button" onclick="saveResultImage()">결과 이미지 저장하기</button>
+        <button class="btn white" type="button" onclick="restartTest()">다시 해보기</button>
+        <a class="btn white" href="https://test-it.co.kr/">다른 테스트 해보기</a>
+        <button class="btn white" type="button" onclick="shareTest()">테스트 공유하기</button>
+      </div>
+    </section>
+
+    <div class="ad-wrap">
+      <script src="https://ads-partners.coupang.com/g.js"></script>
+      <script>
+        new PartnersCoupang.G({
+          id: 798186,
+          template: "carousel",
+          trackingCode: "AF4391881",
+          width: "350",
+          height: "140"
+        });
+      </script>
+    </div>
+  </main>
+
+  <!-- 작게 확인한 뒤 꾹 눌러 저장하는 팝업 -->
+  <div id="saveModal" class="save-modal" role="dialog" aria-modal="true" aria-labelledby="saveModalTitle">
+    <div class="save-modal-box">
+      <p id="saveModalTitle" class="save-modal-title">결과 이미지가 만들어졌어요</p>
+      <p class="save-modal-desc">아래 이미지를 꾹 눌러 저장해주세요.</p>
+      <img id="savePreview" class="save-preview" alt="사주 성향 보고서 결과 이미지">
+      <button class="modal-close" type="button" onclick="closeSaveModal()">닫기</button>
+    </div>
+  </div>
+
+  <script>
+    const TEST_TITLE = "테스트잇 사주 성향 보고서 테스트";
+    const TEST_URL = "https://test-it.co.kr/test411";
+
+    const STEM = {
+      '甲': { ko: '갑', element: '목', polarity: '양', title:'목표를 향해 직진하는', simple:'목표가 생기면 흔들림 없이 확실하게 밀고 나감' },
+      '乙': { ko: '을', element: '목', polarity: '음', title:'상황 대처가 유연한', simple:'상황 변화에 맞춰 빠르고 부드럽게 적응함' },
+      '丙': { ko: '병', element: '화', polarity: '양', title:'솔직하고 긍정적인', simple:'감정을 숨기지 않고 겉으로 시원하게 표현함' },
+      '丁': { ko: '정', element: '화', polarity: '음', title:'세심하게 집중하는', simple:'사소한 부분까지 잘 챙기고 한 가지에 깊게 집중함' },
+      '戊': { ko: '무', element: '토', polarity: '양', title:'신중하고 듬직한', simple:'가볍게 움직이지 않고 한 번 맡은 일은 끝까지 책임짐' },
+      '己': { ko: '기', element: '토', polarity: '음', title:'현실적이고 실속 있는', simple:'상황을 꼼꼼하게 따져보고 가장 효율적인 방법을 찾음' },
+      '庚': { ko: '경', element: '금', polarity: '양', title:'맺고 끊음이 확실한', simple:'자신의 기준에 맞지 않으면 고민 없이 단호하게 결단함' },
+      '辛': { ko: '신', element: '금', polarity: '음', title:'정확하고 꼼꼼한', simple:'기준이 높고 아주 작은 부분의 실수도 놓치지 않으려 함' },
+      '壬': { ko: '임', element: '수', polarity: '양', title:'사고가 유연하고 넓은', simple:'상황 판단이 빠르고 틀에 갇히지 않는 유연함을 지님' },
+      '癸': { ko: '계', element: '수', polarity: '음', title:'조용하게 관찰하는', simple:'나서기보다는 조용히 지켜보며 상황을 정확히 파악함' }
+    };
+
+    const BRANCH = {
+      '子': { ko:'자', element:'수', hidden:['癸'], title:'속으로 계산이 빠른', trait:'겉으로는 조용하지만 속으로는 이미 상황 파악을 다 끝냄.' },
+      '丑': { ko:'축', element:'토', hidden:['己','癸','辛'], title:'꾸준하게 나아가는', trait:'속도는 조금 느려도 묵묵하고 꾸준하게 자기 할 일을 다 함.' },
+      '寅': { ko:'인', element:'목', hidden:['甲','丙','戊'], title:'우선 행동에 옮기는', trait:'답답한 상황을 참지 못하고 먼저 부딪혀보며 해결책을 찾음.' },
+      '卯': { ko:'묘', element:'목', hidden:['乙'], title:'분위기 파악에 능한', trait:'주변 분위기를 빠르게 읽고 사람들과 부드럽게 어울림.' },
+      '辰': { ko:'진', element:'토', hidden:['戊','乙','癸'], title:'상황 정리에 탁월한', trait:'복잡하고 엉킨 상황에서도 필요한 것만 골라 깔끔하게 정리함.' },
+      '巳': { ko:'사', element:'화', hidden:['丙','戊','庚'], title:'하나에 깊게 몰두하는', trait:'관심 있는 분야가 생기면 고도의 집중력을 발휘해 끝을 봄.' },
+      '午': { ko:'오', element:'화', hidden:['丁','己'], title:'감정 표현이 확실한', trait:'좋고 싫음이 표정에 다 드러나며 솔직하게 자신을 표현함.' },
+      '未': { ko:'미', element:'토', hidden:['己','丁','乙'], title:'보이지 않게 배려하는', trait:'남들이 놓치기 쉬운 사소한 부분까지 책임감 있게 챙김.' },
+      '申': { ko:'신', element:'금', hidden:['庚','壬','戊'], title:'두뇌 회전이 빠른', trait:'상황 판단이 매우 빠르고 어떤 문제든 유연하게 대처함.' },
+      '酉': { ko:'유', element:'금', hidden:['辛'], title:'정확하고 예리한', trait:'대충 넘어가는 법이 없고 확실한 기준을 세워 짚고 넘어감.' },
+      '戌': { ko:'술', element:'토', hidden:['戊','辛','丁'], title:'책임감이 강한', trait:'자신에게 주어진 역할을 완수하고 한 번 믿은 사람은 지킴.' },
+      '亥': { ko:'해', element:'수', hidden:['壬','甲'], title:'생각이 깊고 넓은', trait:'하나의 사실에서도 여러 가지 가능성과 상상을 이끌어냄.' }
+    };
+
+    const BRANCH_RELATION = {
+      '子':'상대방을 완전히 파악할 때까지 적당히 거리를 두고 지켜봄.',
+      '丑':'처음에는 낯을 가리지만 한 번 가까워지면 관계가 매우 오래 유지됨.',
+      '寅':'마음에 드는 사람에게는 적극적으로 다가가고, 답답한 사람은 피함.',
+      '卯':'갈등을 싫어해서 상대방에게 맞춰주며 원만한 관계를 유지하려 함.',
+      '辰':'아무리 친한 사이라도 지켜야 할 선과 기본 예의를 매우 중요하게 생각함.',
+      '巳':'상대방의 의도를 빠르게 파악하고, 관심 있는 사람에게는 질문이 많아짐.',
+      '午':'호불호가 확실해서 불편하거나 싫은 사람과는 굳이 관계를 맺지 않음.',
+      '未':'자신의 배려를 당연하게 여기는 사람에게는 마음이 쉽게 닫힘.',
+      '申':'말이 잘 통하고 대화의 흐름이 빠르며 융통성 있는 사람을 선호함.',
+      '酉':'무례한 행동을 참지 못하며, 신중하게 관찰한 후 사람을 가려 사귐.',
+      '戌':'한 번 신뢰가 깨지거나 약속을 어기면 다시 가까워지기 매우 어려움.',
+      '亥':'겉으로는 타인의 의견에 잘 맞춰주지만 속으로는 혼자만의 피로감을 느낌.'
+    };
+
+    const ELEMENT = {
+      '목': { color:'#7db68a', ability:'새로운 일을 시작하고 추진하는 힘', lack:'시작하는 추진력', decision:'새로운 경험이나 앞으로 더 재밌어질 것 같은 방향을 고름' },
+      '화': { color:'#ed806f', ability:'자신을 표현하고 빠르게 행동하는 힘', lack:'감정 표현과 행동력', decision:'어떤 느낌이나 직관이 오면 주저하지 않고 바로 결정함' },
+      '토': { color:'#d8ab64', ability:'중심을 잡고 상황을 안정시키는 힘', lack:'안정감과 현실 감각', decision:'가장 안전하고 현실적으로 무리가 없는 방향을 꼼꼼히 따짐' },
+      '금': { color:'#989da8', ability:'정확한 기준을 세우고 결단하는 힘', lack:'단호한 결단력', decision:'자신의 확실한 기준에 맞지 않는 선택지는 미련 없이 제외함' },
+      '수': { color:'#69a5cc', ability:'상황을 넓게 보고 정보를 수집하는 힘', lack:'상황 파악과 유연성', decision:'충분한 정보와 경우의 수를 모두 고려한 후 가장 합리적인 것을 고름' }
+    };
+
+    const GENERATES = { '목':'화', '화':'토', '토':'금', '금':'수', '수':'목' };
+    const CONTROLS = { '목':'토', '화':'금', '토':'수', '금':'목', '수':'화' };
+    const GENERATED_BY = Object.fromEntries(Object.entries(GENERATES).map(([a,b]) => [b,a]));
+
+    const GOD = {
+      '비견': { family:'비겁', short:'독립형' },
+      '겁재': { family:'비겁', short:'경쟁형' },
+      '식신': { family:'식상', short:'꾸준형' },
+      '상관': { family:'식상', short:'개선형' },
+      '편재': { family:'재성', short:'사교형' },
+      '정재': { family:'재성', short:'관리형' },
+      '편관': { family:'관성', short:'돌파형' },
+      '정관': { family:'관성', short:'원칙형' },
+      '편인': { family:'인성', short:'직관형' },
+      '정인': { family:'인성', short:'분석형' }
+    };
+
+    const OUTER_BY_GOD = {
+      '비견':'주관이 뚜렷하고 남의 눈치를 보지 않고 독립적으로 행동하는 사람으로 보임.',
+      '겁재':'지기 싫어하는 승부욕이 보이며, 낯선 환경에서도 당당한 태도를 가짐.',
+      '식신':'느긋하고 편안한 분위기를 풍기며 다가가기 쉬운 사람이라는 인상을 줌.',
+      '상관':'상황 파악이 빠르고 자기주장이 확실하여 똑부러지는 사람으로 보임.',
+      '편재':'어디서든 적응을 잘하고 대인관계가 원만하며 사교적인 사람으로 보임.',
+      '정재':'차분하고 꼼꼼하며 주어진 상황을 허투루 넘기지 않는 실속 있는 인상을 줌.',
+      '편관':'쉽게 다가가기 힘든 카리스마가 있으며 어려운 일도 묵묵히 해낼 듯한 인상을 줌.',
+      '정관':'단정하고 예의 바르며 정해진 원칙과 선을 확실하게 지키는 사람으로 보임.',
+      '편인':'조용하지만 자신만의 뚜렷한 세계관이 있고 독특한 시각을 가진 사람으로 보임.',
+      '정인':'상대방의 이야기를 잘 들어주고 매사에 진중하고 깊이가 있는 사람으로 보임.'
+    };
+
+    const INNER_BY_GOD = {
+      '비견':'타인의 의견에 겉으로는 맞춰주더라도 속으로는 자신의 기준이 가장 옳다고 생각함.',
+      '겁재':'누군가 자신을 앞서가거나 비교당하면 평소보다 훨씬 강한 집중력과 오기를 발휘함.',
+      '식신':'스스로 좋아하는 일에 대해서는 타인의 평가와 상관없이 자신만의 방식대로 꾸준히 파고듦.',
+      '상관':'문제가 있는 상황을 보면 그냥 넘기지 못하고 반드시 고치거나 올바르게 바로잡으려 함.',
+      '편재':'하나의 방식에 고집하기보다는 여러 가지 가능성을 열어 두고 가장 유리한 쪽을 선택함.',
+      '정재':'자신에게 손해가 발생하는 상황을 가장 싫어하며, 머릿속으로 항상 이해득실을 계산함.',
+      '편관':'스트레스를 받거나 압박감이 심해지면 오히려 그것을 이겨내려는 강한 돌파력이 나옴.',
+      '정관':'실수하는 것을 극도로 싫어해서 스스로 기준을 높게 잡고 반복해서 점검하는 경향이 있음.',
+      '편인':'남들은 당연하게 넘어갈 사소한 일에도 혼자 의미를 부여하고 깊은 생각에 빠짐.',
+      '정인':'확실하게 이해하고 납득이 될 때까지 행동에 옮기지 않고 스스로 정보를 계속 분석함.'
+    };
+
+    const RELATION_BY_GOD = {
+      '비견':'서로의 생활에 지나치게 간섭하지 않고 동등하게 의견을 존중하는 관계를 선호함.',
+      '겁재':'대화의 티키타카가 잘 맞는 사람을 좋아하지만, 은연중에 주도권 싸움을 할 때가 있음.',
+      '식신':'편안하게 일상을 공유할 수 있고 함께 맛있는 것을 먹으며 쉴 수 있는 관계가 좋음.',
+      '상관':'앞뒤가 다르거나 말이 통하지 않는 사람을 보면 관계를 이어갈 흥미를 빠르게 잃음.',
+      '편재':'다양한 사람들과 두루두루 잘 어울리지만, 너무 무겁게 얽매이는 관계는 부담스러워함.',
+      '정재':'행동이 일정하고 약속을 잘 지키는 사람을 신뢰하며, 변덕이 심한 사람을 피곤해함.',
+      '편관':'자신을 통제하거나 지시하려는 사람에게 강한 거부감을 느끼며 쉽게 타협하지 않음.',
+      '정관':'기본적인 예의를 지키는 것을 가장 중요하게 생각하며, 무례한 행동을 하면 단호하게 선을 그음.',
+      '편인':'자신과 관심사나 생각이 잘 통하는 사람을 선호하며, 혼자만의 시간이 반드시 필요함.',
+      '정인':'자신의 이야기를 진지하게 들어주고 심리적인 안정감을 주는 사람에게 마음을 깊게 엶.'
+    };
+
+    const LOVE_BY_STEM = {
+      '甲':'좋아하는 마음이 생기면 관계를 분명하게 만들고 싶어함. 애매하게 밀고 당기는 상황은 오래 못 견딤.',
+      '乙':'상대 반응을 살피며 자연스럽게 가까워짐. 확신이 들기 전까지 속마음을 전부 보여주지는 않음.',
+      '丙':'호감이 생기면 표정과 연락에서 티가 잘 남. 좋아한다는 표현을 주고받아야 마음이 편함.',
+      '丁':'마음을 여는 속도는 신중하지만 작은 말과 취향을 오래 기억함. 가까워질수록 표현이 세심해짐.',
+      '戊':'연애를 가볍게 시작하지 않으며 천천히 믿음을 확인함. 사귀기 시작하면 안정적인 관계를 선호함.',
+      '己':'말보다 챙겨주는 행동으로 마음을 표현함. 상대에게 맞춰주다가 서운한 점을 늦게 말할 수 있음.',
+      '庚':'호감과 비호감이 분명하고 애매한 관계를 오래 끌지 않음. 문제가 생기면 돌려 말하기보다 바로 확인함.',
+      '辛':'말투와 태도, 기본 예의를 세밀하게 봄. 기준은 높지만 마음을 열면 상대의 작은 변화까지 잘 챙김.',
+      '壬':'대화가 잘 통하고 각자의 생활을 존중하는 연애를 좋아함. 반복되는 간섭이나 답답한 규칙에는 빨리 지침.',
+      '癸':'좋아해도 감정을 바로 드러내기보다 상대 반응을 오래 살핌. 확실한 말과 안정적인 태도가 있어야 마음을 엶.'
+    };
+
+    const LOVE_BY_GOD = {
+      '비견':'사귀는 사이여도 혼자만의 시간은 필요함. 서운할 때 먼저 매달리기보다 잠시 거리를 두는 편임.',
+      '겁재':'반응이 빠르고 티키타카가 잘 맞는 사람에게 끌림. 서로 주도권을 잡으려 하면 다툼이 잦아질 수 있음.',
+      '식신':'화려한 이벤트보다 편하게 먹고 쉬며 일상을 함께 보내는 데 만족을 느낌.',
+      '상관':'연애 중 생긴 문제를 바로 대화로 풀고 싶어함. 앞뒤가 다른 말이나 회피하는 태도에는 정이 빠르게 떨어짐.',
+      '편재':'호감 표현과 관계 진전이 빠른 편임. 늘 같은 방식이 반복되면 지루함을 느낄 수 있음.',
+      '정재':'연락과 약속이 일정한 관계에서 안정감을 느낌. 말보다 꾸준한 행동으로 애정을 확인함.',
+      '편관':'강하게 끌리는 사람에게 마음이 빠르게 움직일 수 있음. 상대가 통제하려 들면 감정이 급격히 식음.',
+      '정관':'애매한 썸보다 서로의 관계가 분명한 연애를 원함. 책임 없는 말이나 행동을 쉽게 넘기지 않음.',
+      '편인':'취향과 생각이 잘 통할 때 마음이 깊어짐. 좋아하는 사이여도 계속 붙어 있으면 피로를 느낌.',
+      '정인':'대화를 잘 들어주고 안정적으로 반응하는 사람에게 마음을 엶. 신뢰가 쌓인 뒤에는 표현이 깊어지는 편임.'
+    };
+
+    const PROS_CONS_BY_STEM = {
+      '甲': {
+        pros:'한번 목표를 정하면 중간에 포기하지 않고 끝까지 밀어붙이는 강한 추진력',
+        cons:'자신의 방식에 대한 고집이 강해 다른 의견을 잘 수용하지 못함'
+      },
+      '乙': {
+        pros:'어떤 환경에 놓여도 살아남는 뛰어난 적응력과 유연한 사고방식',
+        cons:'여러 가지 상황을 너무 많이 고려하다 보니 결단력이 부족해질 때가 있음'
+      },
+      '丙': {
+        pros:'주변 분위기를 밝고 긍정적으로 바꾸며 사람들을 이끄는 뛰어난 친화력',
+        cons:'성격이 급해 세밀한 확인 과정을 건너뛰거나 성급한 결정을 내리기도 함'
+      },
+      '丁': {
+        pros:'남들이 보지 못하는 세밀한 부분까지 찾아내며 한 가지에 몰두하는 집중력',
+        cons:'자신이 꽂힌 문제나 고민을 쉽게 떨쳐내지 못해 스스로 스트레스를 만듦'
+      },
+      '戊': {
+        pros:'어떠한 상황에서도 쉽게 흔들리지 않고 묵묵하게 자리를 지키는 듬직함',
+        cons:'변화가 필요한 시점에도 기존의 방식을 고수하려다 답답함을 줄 수 있음'
+      },
+      '己': {
+        pros:'주어진 상황에서 실속을 확실히 챙기고 일 처리를 효율적으로 해내는 능력',
+        cons:'스스로 책임져야 할 범위를 너무 넓게 잡아 혼자서 많은 짐을 떠안음'
+      },
+      '庚': {
+        pros:'아니다 싶은 것은 단호하게 끊어내고 문제의 핵심만 빠르게 해결하는 결단력',
+        cons:'너무 솔직하고 직선적으로 의견을 말해 타인에게 상처를 줄 수 있음'
+      },
+      '辛': {
+        pros:'자신만의 높은 기준을 세우고 작은 실수도 허용하지 않는 완벽주의',
+        cons:'기준에 미치지 못하는 상황에 대해 지나치게 엄격해져 주변을 긴장시킴'
+      },
+      '壬': {
+        pros:'틀에 박힌 생각을 거부하고 새로운 아이디어를 넓게 찾아내는 유연함',
+        cons:'관심사가 여러 방향으로 뻗어나가 한 가지 일을 꾸준히 맺음 짓기 어려움'
+      },
+      '癸': {
+        pros:'전면에 나서지 않으면서도 보이지 않는 위험을 미리 파악하고 대비하는 센스',
+        cons:'아직 일어나지 않은 문제까지 앞서서 걱정하며 불안감을 스스로 키움'
+      }
+    };
+
+    const MONTH_DECISION = {
+      '子':'생각이 완벽하게 정리될 때까지 결정을 미루고 혼자만의 고민 시간을 가짐.',
+      '丑':'가장 손실이 적고 안정적인 방법을 우선으로 찾아 느리지만 확실하게 결정함.',
+      '寅':'모든 상황을 준비하기보다는 일단 부딪혀보고 행동을 하면서 방향을 수정함.',
+      '卯':'주변의 반응이나 여러 사람의 입장을 고려하여 가장 갈등이 적은 쪽을 고름.',
+      '辰':'가장 현실적이고 효율적인 선택이 무엇인지 복잡한 조건들을 깔끔하게 정리함.',
+      '巳':'목표가 확실해지면 누구보다 빠르게 정보를 모으고 결정을 내리는 편임.',
+      '午':'좋고 싫음의 기준이 확실해서 고민을 오래 하지 않고 빠르게 방향을 정함.',
+      '未':'단점이 무엇인지 꼼꼼하게 따져보고 가장 문제가 발생하지 않을 쪽을 신중하게 고름.',
+      '申':'가장 실용적이고 빠른 해결책을 찾으며, 가능성이 없는 선택지는 미련 없이 버림.',
+      '酉':'자신의 엄격한 기준에 부합하는지 꼼꼼히 따지며, 마음에 들 때까지 타협하지 않음.',
+      '戌':'자신이 책임지고 끝까지 마무리할 수 있는 일인지 현실적인 범위를 확인하고 결정함.',
+      '亥':'하나의 정답을 정하기보다 다양한 변수와 가능성을 열어두어 결정까지 시간이 오래 걸림.'
+    };
+
+    const PRESSURE_BY_FAMILY = {
+      '비겁': {
+        strong:'누군가 자신을 억압하거나 지시하려 하면 반발심이 먼저 생기고 자신의 방식을 강하게 고수함.',
+        weak:'타인과 비교를 당하거나 눈치를 봐야 하는 상황에 처하면 쉽게 의욕이 떨어지고 기를 빼앗김.'
+      },
+      '식상': {
+        strong:'상황이 답답하게 흘러가면 참지 못하고 팩트와 문제점을 직설적으로 쏟아냄.',
+        weak:'자신의 의견을 말하지 못하고 속으로만 삼키다가 혼자 스트레스를 크게 받고 지침.'
+      },
+      '재성': {
+        strong:'문제가 발생하면 다른 사람에게 기대기보다 자신이 할 일을 더 늘려 직접 해결하려 함.',
+        weak:'한꺼번에 많은 책임이 몰리면 우선순위를 정하지 못해 무엇부터 해야 할지 혼란스러워함.'
+      },
+      '관성': {
+        strong:'정해진 틀이나 원칙이 깨지면 예민해지고 타인의 일까지 나서서 관리하거나 간섭하려 함.',
+        weak:'실수에 대한 불안감이 커서 계속해서 확인을 거듭하다가 스스로를 너무 피곤하게 만듦.'
+      },
+      '인성': {
+        strong:'말을 줄이고 혼자만의 생각에 빠지며, 행동으로 옮기기보다 원인을 분석하는 데 멈춤.',
+        weak:'자신의 생각에 확신이 서지 않아 계속해서 자료와 정보만 찾다가 시작 타이밍을 놓침.'
+      }
+    };
+
+    const INTERACTION_TEXT = {
+      '삼합':'어느 하나에 꽂히면 주변 상황을 돌아보지 않고 몰두하다가 스스로 에너지를 빠르게 소진할 수 있음.',
+      '합':'타인의 상황에 지나치게 맞추려다 보니 정작 자신이 챙겨야 할 것을 놓치거나 손해를 볼 때가 있음.',
+      '충':'마음속의 생각과 변동이 많으며, 갑자기 계획이나 환경이 틀어지면 큰 스트레스를 받음.',
+      '형':'일을 완벽하게 처리해야 한다는 압박감 때문에 완성된 일도 반복해서 점검하며 스스로를 피곤하게 함.',
+      '해':'타인의 미세한 표정 변화나 반응을 다 알아채서 불필요하게 신경을 많이 쓰고 상처를 받기도 함.'
+    };
+
+    const TIME_OPTIONS = [
+      { value:'unknown', label:'시간 모름', hour:null, minute:0, branch:'' },
+      { value:'ja', label:'23:30~01:29 · 자시', hour:0, minute:0, branch:'자시' },
+      { value:'chuk', label:'01:30~03:29 · 축시', hour:2, minute:0, branch:'축시' },
+      { value:'in', label:'03:30~05:29 · 인시', hour:4, minute:0, branch:'인시' },
+      { value:'myo', label:'05:30~07:29 · 묘시', hour:6, minute:0, branch:'묘시' },
+      { value:'jin', label:'07:30~09:29 · 진시', hour:8, minute:0, branch:'진시' },
+      { value:'sa', label:'09:30~11:29 · 사시', hour:10, minute:0, branch:'사시' },
+      { value:'o', label:'11:30~13:29 · 오시', hour:12, minute:0, branch:'오시' },
+      { value:'mi', label:'13:30~15:29 · 미시', hour:14, minute:0, branch:'미시' },
+      { value:'sin', label:'15:30~17:29 · 신시', hour:16, minute:0, branch:'신시' },
+      { value:'yu', label:'17:30~19:29 · 유시', hour:18, minute:0, branch:'유시' },
+      { value:'sul', label:'19:30~21:29 · 술시', hour:20, minute:0, branch:'술시' },
+      { value:'hae', label:'21:30~23:29 · 해시', hour:22, minute:0, branch:'해시' }
+    ];
+
+    const mainScreen = document.getElementById('mainScreen');
+    const inputScreen = document.getElementById('inputScreen');
+    const loadingScreen = document.getElementById('loadingScreen');
+    const resultScreen = document.getElementById('resultScreen');
+    let lastResult = null;
+
+    function showScreen(screen) {
+      [mainScreen, inputScreen, loadingScreen, resultScreen].forEach(item => item.classList.remove('active'));
+      screen.classList.add('active');
+      window.scrollTo({ top:0, behavior:'auto' });
+    }
+
+    function goMain() { showScreen(mainScreen); }
+
+    function goInput() {
+      showScreen(inputScreen);
+      setTimeout(() => document.getElementById('nicknameInput').focus(), 80);
+    }
+
+    function addOptions(select, values, formatter, placeholder) {
+      select.innerHTML = placeholder ? `<option value="">${placeholder}</option>` : '';
+      values.forEach(value => {
+        const option = document.createElement('option');
+        option.value = value;
+        option.textContent = formatter(value);
+        select.appendChild(option);
+      });
+    }
+
+    function initForm() {
+      const now = new Date();
+      const years = [];
+      for (let year = now.getFullYear(); year >= 1920; year--) years.push(year);
+      addOptions(document.getElementById('birthYear'), years, value => `${value}년`, '연도');
+      addOptions(document.getElementById('birthMonth'), Array.from({length:12}, (_,i) => i + 1), value => `${value}월`, '월');
+      document.getElementById('birthTime').innerHTML = TIME_OPTIONS.map(item => `<option value="${item.value}">${item.label}</option>`).join('');
+      updateDays();
+    }
+
+    function updateDays() {
+      const year = Number(document.getElementById('birthYear').value) || new Date().getFullYear();
+      const month = Number(document.getElementById('birthMonth').value) || 1;
+      const isLunar = document.querySelector('input[name="calendarType"]:checked').value === 'lunar';
+      const daySelect = document.getElementById('birthDay');
+      const previous = daySelect.value;
+      const max = isLunar ? 30 : new Date(year, month, 0).getDate();
+      addOptions(daySelect, Array.from({length:max}, (_,i) => i + 1), value => `${value}일`, '일');
+      if (previous && Number(previous) <= max) daySelect.value = previous;
+    }
+
+    function toKoreanGanZhi(gz) {
+      if (!gz || gz.length < 2) return '';
+      return `${STEM[gz[0]]?.ko || gz[0]}${BRANCH[gz[1]]?.ko || gz[1]}`;
+    }
+
+    function tenGod(dayStem, targetStem) {
+      const day = STEM[dayStem];
+      const target = STEM[targetStem];
+      const samePolarity = day.polarity === target.polarity;
+      if (day.element === target.element) return samePolarity ? '비견' : '겁재';
+      if (GENERATES[day.element] === target.element) return samePolarity ? '식신' : '상관';
+      if (CONTROLS[day.element] === target.element) return samePolarity ? '편재' : '정재';
+      if (CONTROLS[target.element] === day.element) return samePolarity ? '편관' : '정관';
+      if (GENERATES[target.element] === day.element) return samePolarity ? '편인' : '정인';
+      return '비견';
+    }
+
+    function getElementScores(pillars) {
+      const score = { '목':0, '화':0, '토':0, '금':0, '수':0 };
+      pillars.forEach((pillar, index) => {
+        score[STEM[pillar.gan].element] += 10;
+        const branch = BRANCH[pillar.zhi];
+        score[branch.element] += 7;
+        branch.hidden.forEach((stem, hiddenIndex) => {
+          score[STEM[stem].element] += [5,2.5,1.5][hiddenIndex] || 1;
+        });
+        if (index === 1) score[branch.element] += 12;
+      });
+      const total = Object.values(score).reduce((a,b) => a + b, 0);
+      const percent = {};
+      Object.entries(score).forEach(([key,value]) => percent[key] = Math.round(value / total * 100));
+      const highest = Object.keys(percent).sort((a,b) => percent[b] - percent[a])[0];
+      percent[highest] += 100 - Object.values(percent).reduce((a,b) => a + b, 0);
+      return percent;
+    }
+
+    function getTenGodData(pillars, dayStem) {
+      const score = { '비견':0, '겁재':0, '식신':0, '상관':0, '편재':0, '정재':0, '편관':0, '정관':0, '편인':0, '정인':0 };
+      pillars.forEach((pillar, index) => {
+        if (index !== 2) score[tenGod(dayStem, pillar.gan)] += 2;
+        BRANCH[pillar.zhi].hidden.forEach((stem, hiddenIndex) => {
+          score[tenGod(dayStem, stem)] += hiddenIndex === 0 ? 1.4 : .7;
+        });
+      });
+      const familyScore = { '비겁':0, '식상':0, '재성':0, '관성':0, '인성':0 };
+      Object.entries(score).forEach(([god,value]) => familyScore[GOD[god].family] += value);
+      const gods = Object.keys(score).sort((a,b) => score[b] - score[a]);
+      const families = Object.keys(familyScore).sort((a,b) => familyScore[b] - familyScore[a]);
+      return { score, familyScore, topGod:gods[0], secondGod:gods[1], topFamily:families[0], secondFamily:families[1] };
+    }
+
+    function includesPair(values, a, b) { return values.includes(a) && values.includes(b); }
+
+    function getInteractions(pillars) {
+      const branches = pillars.map(item => item.zhi);
+      const stems = pillars.map(item => item.gan);
+      const found = [];
+
+      [
+        { set:['申','子','辰'], name:'신자진 삼합' },
+        { set:['亥','卯','未'], name:'해묘미 삼합' },
+        { set:['寅','午','戌'], name:'인오술 삼합' },
+        { set:['巳','酉','丑'], name:'사유축 삼합' }
+      ].forEach(item => {
+        if (item.set.every(zhi => branches.includes(zhi))) found.push({type:'삼합', name:item.name});
+      });
+
+      [['子','丑'],['寅','亥'],['卯','戌'],['辰','酉'],['巳','申'],['午','未']].forEach(pair => {
+        if (includesPair(branches, ...pair)) found.push({type:'합', name:`${BRANCH[pair[0]].ko}${BRANCH[pair[1]].ko}합`});
+      });
+      [['子','午'],['丑','未'],['寅','申'],['卯','酉'],['辰','戌'],['巳','亥']].forEach(pair => {
+        if (includesPair(branches, ...pair)) found.push({type:'충', name:`${BRANCH[pair[0]].ko}${BRANCH[pair[1]].ko}충`});
+      });
+      [['子','卯'],['寅','巳'],['巳','申'],['寅','申'],['丑','戌'],['戌','未'],['丑','未']].forEach(pair => {
+        if (includesPair(branches, ...pair)) found.push({type:'형', name:`${BRANCH[pair[0]].ko}${BRANCH[pair[1]].ko}형`});
+      });
+      ['辰','午','酉','亥'].forEach(zhi => {
+        if (branches.filter(item => item === zhi).length >= 2) found.push({type:'형', name:`${BRANCH[zhi].ko}자형`});
+      });
+      [['子','未'],['丑','午'],['寅','巳'],['卯','辰'],['申','亥'],['酉','戌']].forEach(pair => {
+        if (includesPair(branches, ...pair)) found.push({type:'해', name:`${BRANCH[pair[0]].ko}${BRANCH[pair[1]].ko}해`});
+      });
+      [['甲','己'],['乙','庚'],['丙','辛'],['丁','壬'],['戊','癸']].forEach(pair => {
+        if (includesPair(stems, ...pair)) found.push({type:'합', name:`${STEM[pair[0]].ko}${STEM[pair[1]].ko}합`});
+      });
+
+      return found.filter((item,index,array) => array.findIndex(value => value.type === item.type && value.name === item.name) === index);
+    }
+
+    function getStrength(dayStem, scores) {
+      const self = STEM[dayStem].element;
+      const support = scores[self] + scores[GENERATED_BY[self]];
+      if (support >= 56) return { mode:'strong', label:'주관이 확고함' };
+      if (support >= 45) return { mode:'strong', label:'스스로의 중심이 강함' };
+      if (support >= 34) return { mode:'weak', label:'상황 변화에 민감함' };
+      return { mode:'weak', label:'스트레스에 취약함' };
+    }
+
+    function withSubjectParticle(text) {
+      const last = text.charCodeAt(text.length - 1);
+      const hasFinalConsonant = last >= 0xAC00 && last <= 0xD7A3 && (last - 0xAC00) % 28 !== 0;
+      return `${text}${hasFinalConsonant ? '이' : '가'}`;
+    }
+
+    function withTopicParticle(text) {
+      const last = text.charCodeAt(text.length - 1);
+      const hasFinalConsonant = last >= 0xAC00 && last <= 0xD7A3 && (last - 0xAC00) % 28 !== 0;
+      return `${text}${hasFinalConsonant ? '은' : '는'}`;
+    }
+
+    function getBalanceText(pillars, scores) {
+      const visibleCount = { '목':0, '화':0, '토':0, '금':0, '수':0 };
+      pillars.forEach(pillar => {
+        visibleCount[STEM[pillar.gan].element] += 1;
+        visibleCount[BRANCH[pillar.zhi].element] += 1;
+      });
+
+      const visibleMax = Math.max(...Object.values(visibleCount));
+      const visibleHigh = Object.keys(visibleCount).filter(element => visibleCount[element] === visibleMax);
+      const scoreMax = Math.max(...Object.values(scores));
+      const scoreHigh = Object.keys(scores).filter(element => scores[element] === scoreMax);
+      const scoreMin = Math.min(...Object.values(scores));
+      const scoreLow = Object.keys(scores).filter(element => scores[element] === scoreMin);
+
+      const visibleNames = visibleHigh.join('·');
+      const visibleText = visibleHigh.length === 1
+        ? `${withSubjectParticle(visibleNames)} ${visibleMax}개로 가장 많음.`
+        : `${withSubjectParticle(visibleNames)} 각각 ${visibleMax}개로 가장 많음.`;
+
+      let weightedText;
+      if (scoreHigh.length > 1) {
+        const scoreNames = scoreHigh.join('·');
+        weightedText = `태어난 달의 힘과 각 글자 안에 숨은 기운까지 더하면 ${withSubjectParticle(scoreNames)} 각각 ${scoreMax}%로 가장 강하게 계산됨.`;
+      } else if (!visibleHigh.includes(scoreHigh[0])) {
+        const high = scoreHigh[0];
+        weightedText = `하지만 ${withTopicParticle(high)} 겉으로 ${visibleCount[high]}개이며, 태어난 달의 힘과 각 글자 안에 숨은 기운이 더해져 ${scoreMax}%로 가장 강하게 계산됨.`;
+      } else {
+        const high = scoreHigh[0];
+        weightedText = `태어난 달의 힘과 각 글자 안에 숨은 기운까지 더해도 ${withSubjectParticle(high)} ${scoreMax}%로 가장 강하게 계산됨.`;
+      }
+
+      const lowNames = scoreLow.join('·');
+      const lowText = scoreLow.length === 1
+        ? `${withTopicParticle(lowNames)} ${scoreMin}%로 가장 약함.`
+        : `${withTopicParticle(lowNames)} 각각 ${scoreMin}%로 가장 약함.`;
+
+      return `겉으로 보이는 사주 글자만 세면 ${visibleText} ${weightedText} ${lowText}`;
+    }
+
+    function getInteractionResult(interactions) {
+      if (!interactions.length) {
+        return {
+          title:'무난하고 안정적인 구조',
+          text:'기운이 크게 부딪히는 일 없이 상황이 부드럽게 흘러가는 편임. 다만 익숙한 것을 바꾸는 데 시간이 다소 걸릴 수 있으며, 납득할 만한 확실한 이유가 있어야 안정적으로 변화를 받아들임.',
+          chips:['안정 추구','경험 중시','확실한 이유']
+        };
+      }
+      const primary = interactions[0];
+      return {
+        title:`${interactions.slice(0,2).map(item => item.name).join('·')} 작용`,
+        text:INTERACTION_TEXT[primary.type],
+        chips:interactions.slice(0,3).map(item => item.name)
+      };
+    }
+
+    function buildResult(input, lunar, solar, eightChar) {
+      const pillars = [
+        {label:'년주', gan:eightChar.getYearGan(), zhi:eightChar.getYearZhi()},
+        {label:'월주', gan:eightChar.getMonthGan(), zhi:eightChar.getMonthZhi()},
+        {label:'일주', gan:eightChar.getDayGan(), zhi:eightChar.getDayZhi()}
+      ];
+      if (input.timeKnown) pillars.push({label:'시주', gan:eightChar.getTimeGan(), zhi:eightChar.getTimeZhi()});
+
+      const dayStem = pillars[2].gan;
+      const dayBranch = pillars[2].zhi;
+      const dayGz = dayStem + dayBranch;
+      const scores = getElementScores(pillars);
+      const ten = getTenGodData(pillars, dayStem);
+      const interactions = getInteractions(pillars);
+      const interaction = getInteractionResult(interactions);
+      const strength = getStrength(dayStem, scores);
+      const yearGod = tenGod(dayStem, pillars[0].gan);
+      const dayInnerGod = tenGod(dayStem, BRANCH[dayBranch].hidden[0]);
+      const sortedElements = Object.keys(scores).sort((a,b) => scores[b] - scores[a]);
+      const highElement = sortedElements[0];
+      const title = `${input.name}님의 사주 성향 분석`;
+      const chartCode = pillars.map(item => toKoreanGanZhi(item.gan + item.zhi)).join(' · ');
+      const solarText = `${solar.getYear()}.${String(solar.getMonth()).padStart(2,'0')}.${String(solar.getDay()).padStart(2,'0')}`;
+      const lunarText = `${lunar.getYear()}년 ${Math.abs(lunar.getMonth())}월 ${lunar.getDay()}일${lunar.getMonth() < 0 ? ' 윤달' : ''}`;
+      const hashSource = `${pillars.map(item => item.gan + item.zhi).join('')}-${input.calendarType}-${input.timeKey}`;
+      let hash = 0;
+      for (let i = 0; i < hashSource.length; i++) hash = (hash * 31 + hashSource.charCodeAt(i)) % 1000;
+
+      const yearGz = pillars[0].gan + pillars[0].zhi;
+
+      const features = [
+        {
+          title:'찐 성격 분석',
+          text:`${STEM[dayStem].simple}. ${BRANCH[dayBranch].trait} ${INNER_BY_GOD[dayInnerGod]}`,
+          chips:[]
+        },
+        {
+          title:'남들이 보는 내 첫인상',
+          text:`년주 ${toKoreanGanZhi(yearGz)}의 ${yearGod}이 겉으로 드러남. ${OUTER_BY_GOD[yearGod]}`,
+          chips:[`${toKoreanGanZhi(yearGz)} 년주`, `첫인상 ${yearGod}`, GOD[yearGod].short]
+        },
+        {
+          title:'연애할 때 특징',
+          text:`${LOVE_BY_STEM[dayStem]} ${LOVE_BY_GOD[dayInnerGod]}`,
+          chips:[]
+        },
+        {
+          title:'사람 대할 때 특징',
+          text:`일지 ${BRANCH[dayBranch].ko} 성향이 사람을 사귈 때 나타남. ${BRANCH_RELATION[dayBranch]} ${RELATION_BY_GOD[dayInnerGod]}`,
+          chips:[`일지 ${BRANCH[dayBranch].ko}`, `관계 ${dayInnerGod}`, GOD[dayInnerGod].short]
+        },
+        {
+          title:'스트레스 받을 때',
+          text:`${PRESSURE_BY_FAMILY[ten.topFamily][strength.mode]} ${interaction.text}`,
+          chips:[strength.label, ...interaction.chips.slice(0,2)]
+        },
+        {
+          title:'성격 장단점 요약',
+          text:`<span class="trait-line"><span class="trait-label">장점 :</span> ${PROS_CONS_BY_STEM[dayStem].pros}.</span><span class="trait-line"><span class="trait-label">단점 :</span> ${PROS_CONS_BY_STEM[dayStem].cons}.</span>`,
+          chips:[`${toKoreanGanZhi(dayGz)} 일간`, '장점·단점', STEM[dayStem].element]
+        }
+      ];
+
+      features.push({
+        title:'오행 한눈에 보기',
+        text:getBalanceText(pillars, scores),
+        chips:[],
+        full:true,
+        bars:true
+      });
+
+      return {
+        ...input,
+        pillars,
+        scores,
+        ten,
+        features,
+        title,
+        chartCode,
+        solarText,
+        lunarText,
+        hash:String(hash).padStart(3,'0')
+      };
+    }
+
+    function pillarHTML(item) {
+      const god = item.label === '일주' ? '나 자신' : tenGod(lastResult.pillars[2].gan, item.gan);
+      return `
+        <div class="pillar">
+          <span class="pillar-label">${item.label}</span>
+          <strong class="pillar-gz">${toKoreanGanZhi(item.gan + item.zhi)}</strong>
+          <span class="pillar-sub">${STEM[item.gan].element}·${BRANCH[item.zhi].element}<br>${god}</span>
+        </div>`;
+    }
+
+    function barsHTML(scores) {
+      return `<div class="element-bars">${Object.keys(ELEMENT).map(element => `
+        <div class="element-col">
+          <b>${element}</b>
+          <div class="bar-track"><span class="bar-fill" style="height:${Math.max(scores[element],5)}%;background:${ELEMENT[element].color}"></span></div>
+          <em>${scores[element]}%</em>
+        </div>`).join('')}</div>`;
+    }
+
+    function renderResult(data) {
+      lastResult = data;
+      document.getElementById('resultName').textContent = `${data.name}님의 사주 분석 보고서`;
+      document.getElementById('resultType').innerHTML = data.title;
+      const pillars = document.getElementById('pillars');
+      pillars.className = `pillars cols-${data.pillars.length}`;
+      pillars.innerHTML = data.pillars.map(pillarHTML).join('');
+      document.getElementById('featureGrid').innerHTML = data.features.map((item,index) => `
+        <article class="feature${item.full ? ' full' : ''}">
+          <div class="feature-top"><span class="feature-no">0${index + 1}</span><h3>${item.title}</h3></div>
+          <p>${item.text}</p>
+          ${item.chips.length ? `<div class="chips">${item.chips.map(chip => `<span>${chip}</span>`).join('')}</div>` : ''}
+          ${item.bars ? barsHTML(data.scores) : ''}
+        </article>`).join('');
+      showScreen(resultScreen);
+    }
+
+    function parseInput() {
+      const errorBox = document.getElementById('formError');
+      errorBox.classList.remove('show');
+
+      if (typeof Solar === 'undefined' || typeof Lunar === 'undefined') {
+        throw new Error('사주 계산 기능을 불러오지 못했습니다. 인터넷 연결을 확인한 뒤 다시 시도해주세요.');
+      }
+
+      const name = document.getElementById('nicknameInput').value.trim();
+      const year = Number(document.getElementById('birthYear').value);
+      const month = Number(document.getElementById('birthMonth').value);
+      const day = Number(document.getElementById('birthDay').value);
+      const calendarType = document.querySelector('input[name="calendarType"]:checked').value;
+      const leap = calendarType === 'lunar' && document.getElementById('isLeap').checked;
+      const timeKey = document.getElementById('birthTime').value;
+      const timeOption = TIME_OPTIONS.find(item => item.value === timeKey);
+      const timeKnown = timeKey !== 'unknown';
+      const hour = timeKnown ? timeOption.hour : 12;
+      const minute = timeKnown ? timeOption.minute : 0;
+
+      if (!name) throw new Error('이름 또는 닉네임을 입력해주세요.');
+      if (!year || !month || !day) throw new Error('생년월일을 모두 선택해주세요.');
+
+      if (calendarType === 'solar') {
+        const check = new Date(year, month - 1, day);
+        if (check.getFullYear() !== year || check.getMonth() !== month - 1 || check.getDate() !== day) {
+          throw new Error('존재하지 않는 양력 날짜입니다. 날짜를 다시 확인해주세요.');
+        }
+      }
+
+      let solar;
+      let lunar;
+      if (calendarType === 'solar') {
+        solar = Solar.fromYmdHms(year, month, day, hour, minute, 0);
+        lunar = solar.getLunar();
+      } else {
+        lunar = Lunar.fromYmdHms(year, leap ? -month : month, day, hour, minute, 0);
+        solar = lunar.getSolar();
+      }
+
+      const eightChar = lunar.getEightChar();
+      if (typeof eightChar.setSect === 'function') eightChar.setSect(2);
+
+      return buildResult({
+        name,
+        calendarType,
+        leap,
+        timeKey,
+        timeKnown,
+        timeBranch:timeKnown ? timeOption.branch : '',
+        hour:timeKnown ? hour : null,
+        minute:timeKnown ? minute : null
+      }, lunar, solar, eightChar);
+    }
+
+    function restartTest() {
+      document.getElementById('sajuForm').reset();
+      document.getElementById('leapWrap').classList.remove('show');
+      document.getElementById('birthYear').value = '';
+      document.getElementById('birthMonth').value = '';
+      updateDays();
+      document.getElementById('birthTime').value = 'unknown';
+      document.getElementById('formError').classList.remove('show');
+      lastResult = null;
+      showScreen(mainScreen);
+    }
+
+    async function saveResultImage() {
+      try {
+        const canvas = await html2canvas(document.getElementById('resultCapture'), {
+          scale:2,
+          useCORS:true,
+          backgroundColor:'#fffdf9',
+          scrollX:0,
+          scrollY:-window.scrollY,
+          logging:false
+        });
+        document.getElementById('savePreview').src = canvas.toDataURL('image/png');
+        document.getElementById('saveModal').classList.add('active');
+        document.body.style.overflow = 'hidden';
+      } catch (error) {
+        console.error('결과 이미지 생성 오류:', error);
+        alert('이미지를 만들지 못했습니다. 다시 시도해주세요.');
+      }
+    }
+
+    function closeSaveModal() {
+      document.getElementById('saveModal').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    async function shareTest() {
+      const shareData = { title:TEST_TITLE, url:TEST_URL };
+      try {
+        if (navigator.share) await navigator.share(shareData);
+        else {
+          await navigator.clipboard.writeText(`${TEST_TITLE}\n${TEST_URL}`);
+          alert('테스트 제목과 링크가 복사됐어요!');
+        }
+      } catch (error) {
+        if (error.name !== 'AbortError') console.log(error);
+      }
+    }
+
+    document.getElementById('birthYear').addEventListener('change', updateDays);
+    document.getElementById('birthMonth').addEventListener('change', updateDays);
+
+    document.querySelectorAll('input[name="calendarType"]').forEach(radio => {
+      radio.addEventListener('change', () => {
+        const isLunar = document.getElementById('lunarType').checked;
+        document.getElementById('leapWrap').classList.toggle('show', isLunar);
+        if (!isLunar) document.getElementById('isLeap').checked = false;
+        updateDays();
+      });
+    });
+
+    document.getElementById('sajuForm').addEventListener('submit', event => {
+      event.preventDefault();
+      try {
+        const data = parseInput();
+        showScreen(loadingScreen);
+        setTimeout(() => renderResult(data), 3000);
+      } catch (error) {
+        let message = error && error.message ? error.message : '입력 정보를 다시 확인해주세요.';
+        if (message.includes('wrong lunar') || message.includes('only')) {
+          message = '선택한 음력 날짜 또는 윤달이 실제 달력과 맞지 않습니다. 날짜를 다시 확인해주세요.';
+        }
+        const errorBox = document.getElementById('formError');
+        errorBox.textContent = message;
+        errorBox.classList.add('show');
+      }
+    });
+
+    document.getElementById('saveModal').addEventListener('click', event => {
+      if (event.target.id === 'saveModal') closeSaveModal();
+    });
+
+    initForm();
+  </script>
+</body>
+</html>

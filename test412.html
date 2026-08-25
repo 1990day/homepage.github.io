@@ -1324,27 +1324,15 @@
         const target = document.getElementById('resultSheet');
         const canvas = await html2canvas(target, {
           backgroundColor: '#ffffff',
-          scale: Math.min(window.devicePixelRatio * 1.2, 2),
+          scale: Math.min(Math.max(window.devicePixelRatio, 2), 3),
           useCORS: true,
           logging: false,
           scrollX: 0,
           scrollY: -window.scrollY
         });
 
-        const compactCanvas = document.createElement('canvas');
-        const compactWidth = Math.min(480, canvas.width);
-        const compactRatio = compactWidth / canvas.width;
-        compactCanvas.width = Math.round(compactWidth);
-        compactCanvas.height = Math.round(canvas.height * compactRatio);
-        const compactContext = compactCanvas.getContext('2d');
-        compactContext.fillStyle = '#ffffff';
-        compactContext.fillRect(0, 0, compactCanvas.width, compactCanvas.height);
-        compactContext.imageSmoothingEnabled = true;
-        compactContext.imageSmoothingQuality = 'high';
-        compactContext.drawImage(canvas, 0, 0, compactCanvas.width, compactCanvas.height);
-
         const image = document.getElementById('savedImage');
-        image.src = compactCanvas.toDataURL('image/png');
+        image.src = canvas.toDataURL('image/png');
         document.getElementById('saveModal').classList.add('open');
         document.body.style.overflow = 'hidden';
       } catch (error) {

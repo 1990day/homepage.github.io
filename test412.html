@@ -142,13 +142,6 @@
       letter-spacing: -1px;
     }
 
-    .start-title p {
-      margin: 13px 0 0;
-      color: #444;
-      font-size: 14px;
-      line-height: 1.65;
-    }
-
     .main-drawing {
       position: relative;
       height: 310px;
@@ -328,21 +321,21 @@
     }
 
     .result-main-title {
-      min-height: 52px;
-      padding: 11px 10px;
+      min-height: 46px;
+      padding: 9px 8px;
       border: var(--line);
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
-      font-size: clamp(18px, 4.5vw, 23px);
+      font-size: clamp(16px, 3.8vw, 20px);
       line-height: 1.35;
       letter-spacing: 1.3px;
     }
 
     .result-top {
       display: grid;
-      grid-template-columns: 136px 194px 1fr;
+      grid-template-columns: 136px 1fr;
       gap: 8px;
       margin-top: 10px;
     }
@@ -355,24 +348,55 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 5px;
+      gap: 2px;
     }
 
     .type-label {
       width: 100%;
-      min-height: 42px;
+      min-height: 28px;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
-      font-size: 19px;
+      font-size: 18px;
       line-height: 1.2;
     }
 
+    .type-label-top {
+      align-items: flex-end;
+      padding-bottom: 2px;
+    }
+
+    .type-label-bottom {
+      align-items: flex-start;
+      padding-top: 2px;
+    }
+
     .result-icon {
+      --icon-accent: #d6d6d6;
       width: 92px;
       height: 92px;
       margin: 2px auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .result-icon .line-icon {
+      width: 100%;
+      height: 100%;
+    }
+
+    .result-icon .line-icon > :first-child {
+      fill: var(--icon-accent);
+    }
+
+    .result-icon[data-icon="headphones"] .line-icon > :first-child {
+      fill: none;
+    }
+
+    .result-icon[data-icon="headphones"] .line-icon > rect {
+      fill: var(--icon-accent);
     }
 
     .quick-boxes {
@@ -411,32 +435,6 @@
       line-height: 1.52;
     }
 
-    .summary-box {
-      min-height: 181px;
-      border: var(--line);
-      display: flex;
-      flex-direction: column;
-    }
-
-    .summary-label {
-      padding: 8px 10px;
-      border-bottom: var(--line);
-      background: var(--point);
-      text-align: center;
-      font-size: 14px;
-    }
-
-    .summary-text {
-      flex: 1;
-      padding: 14px 13px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      font-size: 14px;
-      line-height: 1.65;
-    }
-
     .trait-list {
       margin-top: 9px;
       border: var(--line);
@@ -445,25 +443,17 @@
     .trait-row {
       min-height: 47px;
       border-bottom: var(--line);
-      display: grid;
-      grid-template-columns: 38px 1fr;
-      align-items: stretch;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .trait-row:last-child {
       border-bottom: 0;
     }
 
-    .trait-number {
-      border-right: var(--line);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--point);
-      font-size: 13px;
-    }
-
     .trait-text {
+      width: 100%;
       padding: 9px 12px;
       display: flex;
       align-items: center;
@@ -531,12 +521,19 @@
       color: var(--ink);
     }
 
-    .save-note {
-      margin: 12px 0 0;
-      color: #555;
-      font-size: 12px;
-      line-height: 1.55;
-      text-align: center;
+    .coupang-ad {
+      width: min(100%, 350px);
+      min-height: 140px;
+      margin: 22px auto 0;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+    }
+
+    .coupang-ad-inner {
+      width: 350px;
+      height: 140px;
+      flex: 0 0 350px;
     }
 
     /* 이미지 저장 팝업 */
@@ -672,23 +669,12 @@
         font-size: 12.5px;
       }
 
-      .summary-box {
-        grid-column: 1 / -1;
-        min-height: 114px;
-      }
-
-      .summary-text {
-        padding: 11px 12px;
-        font-size: 13px;
-      }
-
       .trait-list {
         margin-top: 7px;
       }
 
       .trait-row {
         min-height: 48px;
-        grid-template-columns: 31px 1fr;
       }
 
       .trait-text {
@@ -748,7 +734,6 @@
       <div class="start-card">
         <div class="start-title">
           <h1>테스트잇<br>그냥 그런 성격 테스트</h1>
-          <p>별거 아닌 것 같지만<br>은근 정확한 내 성격 결과표</p>
         </div>
 
         <div class="main-drawing" aria-hidden="true">
@@ -769,13 +754,13 @@
             <svg class="mini-icon" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M39 68h22M42 75h16M35 57c-7-6-11-13-10-22 1-13 11-23 25-23s25 10 25 24c0 9-4 15-10 21-4 4-5 7-5 11H40c0-4-1-7-5-11Z"/><path d="m50 1 0 7M14 19l6 4M86 19l-6 4M8 48l8-1M92 48l-8-1"/>
             </svg>
-            <span>말하다 생각난 사람</span>
+            <span>말로 판 키우는 사람</span>
           </div>
           <div class="doodle-cell">
             <svg class="mini-icon" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M19 67c9-18 18-29 31-29s22 11 31 29"/><path d="M18 68h64v10H18zM28 37c0-13 9-23 22-23s22 10 22 23"/><path d="m23 35 8-7M77 35l-8-7M41 52h18"/>
             </svg>
-            <span>분위기 담당</span>
+            <span>오늘의 분위기 담당</span>
           </div>
         </div>
 
@@ -810,8 +795,9 @@
 
           <div class="result-top">
             <div class="identity-box">
-              <div id="resultName" class="type-label"></div>
+              <div id="resultNameTop" class="type-label type-label-top"></div>
               <div id="resultIcon" class="result-icon"></div>
+              <div id="resultNameBottom" class="type-label type-label-bottom"></div>
             </div>
 
             <div class="quick-boxes">
@@ -825,10 +811,6 @@
               </div>
             </div>
 
-            <div class="summary-box">
-              <div class="summary-label">한눈에 보는 성격</div>
-              <div id="resultSummary" class="summary-text"></div>
-            </div>
           </div>
 
           <div id="traitList" class="trait-list"></div>
@@ -851,9 +833,19 @@
           <button id="otherBtn" class="result-btn secondary" type="button">다른 테스트 해보기</button>
           <button id="shareBtn" class="result-btn secondary" type="button">테스트 공유하기</button>
         </div>
-        <p class="save-note">결과 이미지는 팝업에서 꾹 눌러 저장할 수 있어요.</p>
       </div>
     </section>
+
+    <div class="coupang-ad" aria-label="쿠팡 광고">
+      <div class="coupang-ad-inner">
+        <script src="https://ads-partners.coupang.com/g.js"></script>
+        <script>
+          if (window.PartnersCoupang) {
+            new PartnersCoupang.G({"id":798186,"template":"carousel","width":"350","height":"140"});
+          }
+        </script>
+      </div>
+    </div>
   </main>
 
   <div id="saveModal" class="save-modal" role="dialog" aria-modal="true" aria-label="결과 이미지 저장">
@@ -870,178 +862,216 @@
   <script>
     const TEST_URL = 'https://test-it.co.kr/test412';
 
+    const iconColors = {
+      ENTJ: '#efb7b7',
+      INTJ: '#b8c8e8',
+      ENTP: '#f1d36f',
+      INTP: '#c9b9e7',
+      ENFJ: '#efb8ce',
+      INFJ: '#b9d2c2',
+      ENFP: '#f2b77d',
+      INFP: '#f0c3a6',
+      ESTJ: '#bdc5cd',
+      ISTJ: '#b9c8d8',
+      ESFJ: '#efc4b5',
+      ISFJ: '#ced9b5',
+      ESTP: '#efca5c',
+      ISTP: '#b5d3d1',
+      ESFP: '#d6b6e6',
+      ISFP: '#b8d9c6'
+    };
+
+    const resultNameLines = {
+      ENTJ: ['결정을', '내리는 사람'],
+      INTJ: ['계획이', '다 있는 사람'],
+      ENTP: ['말로 판', '키우는 사람'],
+      INTP: ['생각하다', '새는 사람'],
+      ENFJ: ['먼저', '챙기는 사람'],
+      INFJ: ['혼자 다', '알아챈 사람'],
+      ENFP: ['일단', '신난 사람'],
+      INFP: ['현실', '도피자'],
+      ESTJ: ['기준이', '확실한 사람'],
+      ISTJ: ['체크리스트', '인간'],
+      ESFJ: ['약속을', '잡는 사람'],
+      ISFJ: ['다', '기억하는 사람'],
+      ESTP: ['재밌으면', '하는 사람'],
+      ISTP: ['해결이', '빠른 사람'],
+      ESFP: ['오늘의', '분위기 담당'],
+      ISFP: ['취향', '확실한 사람']
+    };
+
     const questions = [
       {
         text: '아는 사람 한 명 없는 모임에<br>혼자 가게 됐다',
         answers: [
-          { text: '먼저 말을 걸면서 분위기에 섞인다', letter: 'E' },
-          { text: '누가 말을 걸어올 때까지 상황을 살핀다', letter: 'I' }
+          { text: '먼저 말을 걸면서<br>분위기에 섞인다', letter: 'E' },
+          { text: '누가 말을 걸어올 때까지<br>상황을 살핀다', letter: 'I' }
         ]
       },
       {
         text: '친구가 설명 없이 사진 한 장만<br>보내왔다면?',
         answers: [
-          { text: '사진에 보이는 것부터 확인한다', letter: 'S' },
-          { text: '왜 보냈는지 숨은 뜻부터 생각한다', letter: 'N' }
+          { text: '사진에 보이는 것부터<br>확인한다', letter: 'S' },
+          { text: '왜 보냈는지 숨은 뜻부터<br>생각한다', letter: 'N' }
         ]
       },
       {
         text: '친구가 같은 실수 때문에<br>또 속상해하고 있다',
         answers: [
-          { text: '이번에는 어떻게 바꿀지 방법부터 말한다', letter: 'T' },
-          { text: '또 힘들었겠다며 기분부터 받아준다', letter: 'F' }
+          { text: '이번에는 어떻게 바꿀지<br>방법부터 말한다', letter: 'T' },
+          { text: '또 힘들었겠다며<br>기분부터 받아준다', letter: 'F' }
         ]
       },
       {
         text: '주말에 갑자기 하루가<br>통째로 비었다',
         answers: [
-          { text: '뭘 할지 정해야 마음이 편하다', letter: 'J' },
-          { text: '그날 기분에 따라 움직이는 게 좋다', letter: 'P' }
+          { text: '뭘 할지 정해야<br>마음이 편하다', letter: 'J' },
+          { text: '그날 기분에 따라<br>움직이는 게 좋다', letter: 'P' }
         ]
       },
       {
         text: '여럿이 대화하는데<br>잠깐 정적이 흘렀다',
         answers: [
-          { text: '어색해서 바로 새로운 말을 꺼낸다', letter: 'E' },
-          { text: '굳이 채우지 않고 가만히 있는다', letter: 'I' }
+          { text: '어색해서 바로<br>새로운 말을 꺼낸다', letter: 'E' },
+          { text: '굳이 채우지 않고<br>가만히 있는다', letter: 'I' }
         ]
       },
       {
         text: '처음 가는 동네에서<br>식당을 찾는 방법은?',
         answers: [
-          { text: '후기와 메뉴를 보고 무난한 곳을 고른다', letter: 'S' },
-          { text: '분위기가 끌리는 낯선 곳에 들어가 본다', letter: 'N' }
+          { text: '후기와 메뉴를 보고<br>무난한 곳을 고른다', letter: 'S' },
+          { text: '분위기가 끌리는<br>낯선 곳에 들어가 본다', letter: 'N' }
         ]
       },
       {
         text: '내가 만든 것을 보여줬는데<br>반응이 애매하다',
         answers: [
-          { text: '어느 부분이 별로였는지 정확히 묻는다', letter: 'T' },
-          { text: '내가 너무 기대했나 싶어 살짝 신경 쓰인다', letter: 'F' }
+          { text: '어느 부분이 별로였는지<br>정확히 묻는다', letter: 'T' },
+          { text: '내가 너무 기대했나 싶어<br>살짝 신경 쓰인다', letter: 'F' }
         ]
       },
       {
         text: '여행을 떠나기 전날 밤<br>내 모습은?',
         answers: [
-          { text: '필요한 것을 확인하고 짐을 마무리한다', letter: 'J' },
-          { text: '일단 자고 빠진 건 내일 생각한다', letter: 'P' }
+          { text: '필요한 것을 확인하고<br>짐을 마무리한다', letter: 'J' },
+          { text: '일단 자고 빠진 건<br>내일 생각한다', letter: 'P' }
         ]
       },
       {
         text: '재미있는 일이 생기면<br>가장 먼저 하는 행동은?',
         answers: [
-          { text: '누군가에게 바로 말하며 같이 신나 한다', letter: 'E' },
-          { text: '혼자 충분히 즐긴 뒤 가까운 사람에게 말한다', letter: 'I' }
+          { text: '누군가에게 바로 말하며<br>같이 신나 한다', letter: 'E' },
+          { text: '혼자 충분히 즐긴 뒤<br>가까운 사람에게 말한다', letter: 'I' }
         ]
       },
       {
         text: '새로운 일을 배울 때<br>더 편한 설명은?',
         answers: [
-          { text: '순서대로 따라 할 수 있는 구체적인 설명', letter: 'S' },
-          { text: '전체 원리와 방향을 먼저 알려주는 설명', letter: 'N' }
+          { text: '순서대로 따라 할 수 있는<br>구체적인 설명', letter: 'S' },
+          { text: '전체 원리와 방향을<br>먼저 알려주는 설명', letter: 'N' }
         ]
       },
       {
         text: '친구와 의견이 완전히<br>갈렸을 때 나는?',
         answers: [
-          { text: '누구 말이 더 타당한지 따져본다', letter: 'T' },
-          { text: '서로 기분 상하지 않게 말하는 게 중요하다', letter: 'F' }
+          { text: '누구 말이 더 타당한지<br>따져본다', letter: 'T' },
+          { text: '서로 기분 상하지 않게<br>말하는 게 중요하다', letter: 'F' }
         ]
       },
       {
         text: '해야 할 일이 여러 개<br>한꺼번에 생겼다',
         answers: [
-          { text: '순서부터 정하고 하나씩 처리한다', letter: 'J' },
-          { text: '손에 잡히는 것부터 번갈아 처리한다', letter: 'P' }
+          { text: '순서부터 정하고<br>하나씩 처리한다', letter: 'J' },
+          { text: '손에 잡히는 것부터<br>번갈아 처리한다', letter: 'P' }
         ]
       }
     ];
 
     const results = {
       ENTJ: {
-        name: '일단 지휘하는 사람', icon: 'crown',
-        first: '말이 단호하고 무슨 일이든 빠르게 정할 것 같음',
-        real: '답답한 상황을 못 참고 어느새 직접 정리하고 있음',
-        summary: '목표가 생기면 방법과 순서를 빠르게 잡음. 책임지는 걸 피하지 않고, 애매하게 시간 끄는 상황을 가장 답답해함.',
+        name: '결정을 내리는 사람', icon: 'crown',
+        first: '말이 단호하고<br>결정도 빠를 것 같음',
+        real: '답답한 상황이면<br>먼저 정리하고 있음',
+        summary: '판단이 빠르고 대화의 주도권을 자연스럽게 잡는 편임. 답답하게 돌려 말하기보다 솔직하게 말하며, 가까운 사이일수록 챙김과 간섭이 함께 늘어남.',
         traits: [
-          '할 일이 보이면 누가 시키기 전에 먼저 방향을 정함',
+          '여럿이 우물쭈물하면 답답해서 먼저 결론을 내리는 편임',
           '의견을 돌려 말하기보다 핵심부터 바로 말하는 편임',
-          '결정이 느린 사람을 기다리다 결국 직접 처리함',
-          '욕심이 생긴 일에는 기준을 높게 잡고 끝까지 밀어붙임',
+          '약속이나 결정을 계속 미루는 사람을 기다리기 힘들어함',
+          '친해질수록 장난과 잔소리가 함께 많아지는 편임',
           '친한 사람에게도 해결책부터 말해 공감이 짧아질 때가 있음',
-          '시간을 낭비하거나 같은 실수를 반복하는 걸 싫어함',
-          '경쟁할 대상이 생기면 평소보다 집중력이 더 올라감',
-          '겉으로는 강해 보여도 결과가 안 좋으면 혼자 오래 복기함'
-        ], good: ['INTP 생각하다 딴길 샌 사람', 'ENFP 일단 신난 사람'], bad: ['ISFP 취향 확실한 사람', 'ISFJ 조용한 기억력왕']
+          '같은 얘기와 변명이 반복되면 표정부터 굳어짐',
+          '승부욕이 자극되면 평소보다 훨씬 적극적으로 변함',
+          '겉으로는 강해 보여도 자존심 상한 일은 혼자 오래 복기함'
+        ], good: ['ISFP 취향 확실한 사람', 'INFP 현실도피자'], bad: ['ISFJ 다 기억하는 사람', 'ESFJ 약속을 잡는 사람']
       },
       INTJ: {
         name: '계획이 다 있는 사람', icon: 'chess',
-        first: '조용하고 빈틈없이 자기 할 일을 할 것 같음',
-        real: '말하지 않았을 뿐 머릿속에서는 이미 세 단계 앞까지 감',
-        summary: '혼자 생각을 정리한 뒤 가장 효율적인 방법을 고름. 쓸데없는 과정은 줄이고, 실력과 결과로 판단하는 편임.',
+        first: '조용하고 쉽게 빈틈을<br>보이지 않을 것 같음',
+        real: '말하지 않았을 뿐<br>몇 단계 앞까지 생각함',
+        summary: '혼자 충분히 생각한 뒤 자기 기준에 맞는 선택을 함. 사람을 쉽게 판단하지는 않지만 한번 파악한 특징과 행동은 오래 기억하는 편임.',
         traits: [
-          '시작하기 전에 전체 구조와 문제될 부분부터 살펴봄',
+          '낯선 자리에서는 먼저 나서기보다 사람과 분위기를 살펴봄',
           '사람이 많을수록 말수는 줄지만 관찰은 더 꼼꼼해짐',
-          '계획 없이 그때그때 바뀌는 상황에서 피로를 크게 느낌',
+          '갑작스럽게 약속이나 상황이 계속 바뀌면 피로를 크게 느낌',
           '관심 없는 일에는 무심하지만 좋아하는 분야는 깊게 파고듦',
-          '근거 없는 자신감보다 준비된 실력을 더 믿는 편임',
-          '혼자 해결할 수 있는 일은 굳이 도움을 요청하지 않음',
+          '말보다 행동이 꾸준하고 앞뒤가 같은 사람을 더 믿는 편임',
+          '혼자 정리할 수 있는 고민은 굳이 다른 사람에게 말하지 않음',
           '마음에 없는 반응을 잘 못해서 차갑다는 말을 듣기도 함',
           '한번 세운 기준은 이유가 생기기 전까지 쉽게 바꾸지 않음'
-        ], good: ['ENTP 말로 판 키우는 사람', 'ENFP 일단 신난 사람'], bad: ['ESFJ 단체사진 챙기는 사람', 'ISFJ 조용한 기억력왕']
+        ], good: ['ESFP 오늘의 분위기 담당', 'ESTP 재밌으면 하는 사람'], bad: ['ESFJ 약속을 잡는 사람', 'ISFJ 다 기억하는 사람']
       },
       ENTP: {
         name: '말로 판 키우는 사람', icon: 'bulb',
-        first: '말이 많고 어떤 주제든 재밌게 이어갈 것 같음',
-        real: '정답보다 새로운 가능성을 찾는 데 더 신나 있음',
+        first: '말이 많고 어떤 주제든<br>재밌게 이어갈 것 같음',
+        real: '정답보다 새로운 가능성을<br>찾는 데 더 신나 있음',
         summary: '궁금한 것이 생기면 직접 건드려 보고 반응을 살핌. 익숙한 방식보다 색다른 방법에 끌리고, 대화 중에 생각이 계속 늘어남.',
         traits: [
           '한 가지 얘기에서 새로운 주제를 계속 만들어냄',
           '규칙을 보면 지키기 전에 왜 그래야 하는지부터 궁금해함',
-          '재미있는 일은 빠르게 시작하지만 마무리는 흥미에 따라 달라짐',
+          '한 가지에 빠졌다가 더 재밌는 걸 발견하면 관심이 바로 옮겨감',
           '의견이 달라도 감정싸움보다 토론으로 받아들이는 편임',
           '사람의 말에서 모순을 발견하면 그냥 지나치기 어려움',
-          '반복적인 일은 미루지만 급한 상황에서는 순발력이 좋아짐',
+          '예상 못 한 질문이나 돌발 상황에서 유독 순발력이 좋아짐',
           '새 아이디어를 떠올릴 때 말이 평소보다 더 빨라짐',
           '자유롭게 맡기면 잘하지만 세세한 통제를 받으면 의욕이 떨어짐'
-        ], good: ['INFJ 혼자 다 알아챈 사람', 'INTJ 계획이 다 있는 사람'], bad: ['ISFJ 조용한 기억력왕', 'ESFJ 단체사진 챙기는 사람']
+        ], good: ['ISFJ 다 기억하는 사람', 'ISTJ 체크리스트 인간'], bad: ['ISFP 취향 확실한 사람', 'ESFP 오늘의 분위기 담당']
       },
       INTP: {
-        name: '생각하다 딴길 샌 사람', icon: 'maze',
-        first: '말수가 적고 혼자 있는 걸 가장 편해할 것 같음',
-        real: '머릿속에서는 계속 분석하다 예상 못 한 곳까지 가 있음',
+        name: '생각하다 새는 사람', icon: 'maze',
+        first: '말수가 적고<br>혼자 있길 좋아할 것 같음',
+        real: '조용한 동안에도<br>생각은 계속 다른 길로 샘',
         summary: '납득이 될 때까지 원리와 이유를 파고듦. 관심 분야에는 집중력이 높지만 의미 없다고 느끼는 일에는 움직임이 매우 느려짐.',
         traits: [
           '궁금한 문제가 생기면 답보다 원리를 알아야 직성이 풀림',
           '대화 중에도 혼자 생각을 정리하느라 반응이 늦을 때가 있음',
-          '일을 미루다가 마감이 가까워지면 갑자기 집중력이 올라감',
+          '생각이 많아 시작은 늦지만 한번 꽂히면 오래 집중함',
           '감정 설명은 서툴러도 상대가 한 말은 오래 생각해봄',
           '관심 없는 유행에는 놀랄 만큼 반응이 없는 편임',
           '정해진 방식보다 더 간단한 방법이 없는지 먼저 찾아봄',
           '혼자 보내는 시간이 부족하면 말수와 체력이 같이 줄어듦',
           '틀렸다고 납득하면 고집보다 빠르게 생각을 수정함'
-        ], good: ['ENTJ 일단 지휘하는 사람', 'ESTJ 기준이 확실한 사람'], bad: ['ESFP 오늘의 분위기 담당', 'ISFP 취향 확실한 사람']
+        ], good: ['ESFJ 약속을 잡는 사람', 'ENFJ 먼저 챙기는 사람'], bad: ['ESFP 오늘의 분위기 담당', 'ISFP 취향 확실한 사람']
       },
       ENFJ: {
-        name: '단체방 관리자', icon: 'clipboard',
-        first: '누구에게나 다정하고 분위기를 잘 맞출 것 같음',
-        real: '사람들을 챙기다가 진행까지 맡고 있는 경우가 많음',
+        name: '먼저 챙기는 사람', icon: 'clipboard',
+        first: '누구에게나 다정하고<br>분위기도 잘 맞출 것 같음',
+        real: '사람들을 챙기다<br>진행까지 맡고 있음',
         summary: '사람들의 반응을 빠르게 읽고 모두가 편한 방향을 찾음. 관계를 중요하게 보지만, 필요할 때는 앞에 나서서 정리하는 힘도 있음.',
         traits: [
           '여럿이 있으면 말이 없는 사람이 누구인지 먼저 알아챔',
           '약속을 잡을 때 각자 가능한 시간과 취향을 함께 챙김',
           '상대의 장점을 발견하면 말로 확실하게 알려주는 편임',
           '관계가 어색해지면 모른 척하기보다 풀 방법을 찾음',
-          '부탁받은 일은 기대에 맞추려고 필요 이상으로 애쓰기도 함',
+          '부탁을 거절하고 나서도 상대가 서운할까 다시 신경 씀',
           '분위기를 해치는 말을 들으면 웃어넘겨도 속으로는 기억함',
           '함께하는 목표가 생기면 사람들을 자연스럽게 움직이게 함',
           '혼자 쉬는 중에도 주변 사람의 일을 계속 신경 쓰는 편임'
-        ], good: ['INFP 현실도피자', 'ISFP 취향 확실한 사람'], bad: ['ISTP 고장 보면 손부터 가는 사람', 'ESTP 재밌으면 바로 하는 사람']
+        ], good: ['ISTP 해결이 빠른 사람', 'INTP 생각하다 새는 사람'], bad: ['ISTJ 체크리스트 인간', 'ESTJ 기준이 확실한 사람']
       },
       INFJ: {
         name: '혼자 다 알아챈 사람', icon: 'eye',
-        first: '차분하고 다른 사람 얘기를 잘 들어줄 것 같음',
-        real: '말투와 표정까지 보고 이미 상황을 거의 파악해둠',
+        first: '차분하고 남의 얘기를<br>잘 들어줄 것 같음',
+        real: '말투와 표정까지 보고<br>상황을 거의 파악해둠',
         summary: '겉으로 드러난 말보다 그 안의 의도와 분위기를 함께 봄. 사람에게 진심을 쓰지만 혼자 정리할 시간이 꼭 필요함.',
         traits: [
           '상대가 괜찮다고 해도 평소와 다른 점을 금방 알아차림',
@@ -1052,12 +1082,12 @@
           '혼자 있을 때 지나간 대화와 행동을 자주 다시 떠올림',
           '갈등이 생기면 참다가 기준을 넘는 순간 단호하게 멀어짐',
           '많은 관계보다 편하게 속얘기할 수 있는 몇 명을 더 중요하게 봄'
-        ], good: ['ENTP 말로 판 키우는 사람', 'ENFP 일단 신난 사람'], bad: ['ESTP 재밌으면 바로 하는 사람', 'ISTJ 체크리스트 인간']
+        ], good: ['ESTP 재밌으면 하는 사람', 'ESFP 오늘의 분위기 담당'], bad: ['ESTJ 기준이 확실한 사람', 'ISTJ 체크리스트 인간']
       },
       ENFP: {
         name: '일단 신난 사람', icon: 'confetti',
-        first: '밝고 낯선 사람과도 금방 친해질 것 같음',
-        real: '신나게 벌인 뒤 혼자 조용히 방전되는 날도 많음',
+        first: '밝고 낯선 사람과도<br>금방 친해질 것 같음',
+        real: '신나게 놀고 온 뒤에는<br>혼자 조용히 방전됨',
         summary: '새로운 사람과 가능성에 빠르게 끌림. 흥미가 생기면 에너지가 크게 올라가고, 답답한 규칙보다 자유로운 선택을 좋아함.',
         traits: [
           '재미있어 보이는 제안에는 일단 해보자는 말이 먼저 나옴',
@@ -1066,14 +1096,14 @@
           '반복되는 일상에 지루함을 느끼면 갑자기 새 계획을 세움',
           '사람의 장점과 가능성을 잘 보고 응원도 크게 해줌',
           '싫은 티를 바로 못 내다가 혼자 거리를 두기도 함',
-          '마감이 멀면 느긋하지만 급해지면 놀랄 만큼 빠르게 해냄',
+          '계획은 자주 바뀌어도 지금 가장 끌리는 건 빠르게 시작함',
           '자유롭게 의견을 낼 수 있는 환경에서 능력이 가장 잘 나옴'
-        ], good: ['INTJ 계획이 다 있는 사람', 'INFJ 혼자 다 알아챈 사람'], bad: ['ISTJ 체크리스트 인간', 'ESTJ 기준이 확실한 사람']
+        ], good: ['ISTJ 체크리스트 인간', 'ISFJ 다 기억하는 사람'], bad: ['ISTP 해결이 빠른 사람', 'ESTP 재밌으면 하는 사람']
       },
       INFP: {
         name: '현실도피자', icon: 'pizza',
-        first: '조용하고 무슨 생각을 하는지 잘 안 보일 것 같음',
-        real: '가만히 있는 동안 머릿속으로 여러 상황을 다녀오고 있음',
+        first: '조용하고 속마음이<br>잘 안 보일 것 같음',
+        real: '가만히 있는 동안에도<br>생각은 여러 곳을 다녀옴',
         summary: '자기 기준과 취향이 분명하고 억지로 맞추는 것을 힘들어함. 감정은 깊게 느끼지만 편한 사람 앞이 아니면 쉽게 꺼내지 않음.',
         traits: [
           '혼자 상상하다 실제로 없었던 대화까지 완성할 때가 있음',
@@ -1084,44 +1114,44 @@
           '친하지 않은 자리에서는 조용하지만 편한 사람 앞에서는 말이 많음',
           '결과만큼 내가 납득할 수 있는 방식과 이유를 중요하게 봄',
           '현실이 복잡할수록 좋아하는 것에 빠져 잠시 머리를 식힘'
-        ], good: ['ENFJ 단체방 관리자', 'ENTJ 일단 지휘하는 사람'], bad: ['ESTJ 기준이 확실한 사람', 'ISTJ 체크리스트 인간']
+        ], good: ['ESTJ 기준이 확실한 사람', 'ENTJ 결정을 내리는 사람'], bad: ['ESTP 재밌으면 하는 사람', 'ISTP 해결이 빠른 사람']
       },
       ESTJ: {
         name: '기준이 확실한 사람', icon: 'ruler',
-        first: '야무지고 맡은 일을 제대로 끝낼 것 같음',
-        real: '일이 엉켜 있으면 참지 못하고 순서부터 다시 잡음',
-        summary: '해야 할 일과 책임의 범위가 분명할수록 편해함. 말보다 행동과 결과를 믿고, 정한 약속은 서로 지켜야 한다고 생각함.',
+        first: '야무지고 자기 기준이<br>확실해 보임',
+        real: '답답한 상황이면<br>문제부터 먼저 짚고 있음',
+        summary: '좋고 싫은 기준이 분명하고 애매한 태도를 답답해함. 약속과 예의를 중요하게 여기며, 가까운 사람에게는 현실적인 조언과 잔소리가 함께 늘어남.',
         traits: [
-          '여러 일이 겹치면 중요도와 마감부터 빠르게 나눔',
+          '여러 선택지 앞에서도 장단점을 빠르게 나눠 판단함',
           '약속 시간과 정해진 규칙을 가볍게 여기는 태도를 싫어함',
-          '문제가 생기면 감정보다 지금 할 수 있는 일을 먼저 찾음',
-          '맡은 일은 중간에 흐지부지 두지 않고 결과를 만들어냄',
+          '문제가 생기면 감정을 달래기보다 해결 방법부터 이야기함',
+          '할 말을 계속 참기보다 솔직하고 분명하게 말하는 편임',
           '애매한 대답보다 된다 안 된다를 확실히 듣는 게 편함',
           '가까운 사이일수록 현실적인 조언과 잔소리가 늘어남',
-          '계획이 틀어져도 새 방법을 정하면 빠르게 다시 움직임',
-          '열심히 하지 않는 사람 몫까지 떠맡게 되면 화가 크게 남'
-        ], good: ['ISTP 고장 보면 손부터 가는 사람', 'INTP 생각하다 딴길 샌 사람'], bad: ['INFP 현실도피자', 'ENFP 일단 신난 사람']
+          '예상과 달라져도 새 방향이 정해지면 금방 안정을 찾음',
+          '무책임하거나 자꾸 말을 바꾸는 사람에게 빠르게 정이 떨어짐'
+        ], good: ['INFP 현실도피자', 'ISFP 취향 확실한 사람'], bad: ['INFJ 혼자 다 알아챈 사람', 'ENFJ 먼저 챙기는 사람']
       },
       ISTJ: {
         name: '체크리스트 인간', icon: 'checklist',
-        first: '차분하고 약속을 잘 지키는 사람처럼 보임',
-        real: '이미 확인한 것도 빠진 게 없는지 한 번 더 확인함',
-        summary: '익숙하고 검증된 방식으로 정확하게 처리하는 편임. 책임감이 강하고, 말없이 꾸준히 해낸 결과로 신뢰를 얻음.',
+        first: '차분하고 약속을<br>잘 지킬 것 같음',
+        real: '이미 확인한 것도<br>빠진 게 없나 다시 살핌',
+        summary: '익숙하고 편안한 관계를 오래 유지하는 것을 좋아함. 약속과 사소한 말을 잘 기억하며, 큰 표현보다 꾸준한 행동으로 마음을 보여주는 편임.',
         traits: [
-          '해야 할 일은 머릿속이나 메모로 순서를 정리해두는 편임',
+          '약속이나 중요한 내용은 머릿속이나 메모로 정리해두는 편임',
           '갑자기 바뀌는 약속보다 미리 정해진 일정을 더 편해함',
-          '처음에는 느려 보여도 익숙해지면 실수 없이 꾸준히 해냄',
+          '처음에는 무뚝뚝해 보여도 친해지면 장난과 말이 늘어남',
           '말로 크게 약속하기보다 실제 행동으로 보여주려고 함',
           '물건을 둔 위치나 누가 했던 말을 생각보다 잘 기억함',
-          '근거 없이 일을 바꾸자는 제안에는 쉽게 동의하지 않음',
-          '혼자 책임을 다해놓고도 생색내지 않는 경우가 많음',
+          '사람을 오래 지켜본 뒤 믿음이 생겨야 마음을 편하게 엶',
+          '주변을 조용히 챙겨놓고도 굳이 생색내지 않는 편임',
           '쌓인 불만을 바로 말하지 않아 갑자기 단호해 보일 때가 있음'
-        ], good: ['ESFP 오늘의 분위기 담당', 'ESTP 재밌으면 바로 하는 사람'], bad: ['ENFP 일단 신난 사람', 'INFJ 혼자 다 알아챈 사람']
+        ], good: ['ENFP 일단 신난 사람', 'ENTP 말로 판 키우는 사람'], bad: ['ENFJ 먼저 챙기는 사람', 'INFJ 혼자 다 알아챈 사람']
       },
       ESFJ: {
-        name: '단체사진 챙기는 사람', icon: 'camera',
-        first: '먼저 인사하고 사람들을 잘 챙길 것 같음',
-        real: '누가 빠졌는지 누가 불편한지까지 계속 확인하고 있음',
+        name: '약속을 잡는 사람', icon: 'camera',
+        first: '먼저 인사하고 사람들을<br>잘 챙길 것 같음',
+        real: '누가 빠졌는지 살피고<br>불편한 사람도 확인함',
         summary: '사람들과 편안한 관계를 만들고 유지하는 데 능함. 표현과 반응이 분명하며, 함께 정한 약속과 기본 예의를 중요하게 봄.',
         traits: [
           '모임이 생기면 장소와 시간뿐 아니라 사람들 반응도 챙김',
@@ -1132,28 +1162,28 @@
           '부탁을 거절한 뒤에도 상대가 서운할까 한 번 더 생각함',
           '친한 사람의 중요한 일정이나 기념일을 잘 챙기는 편임',
           '노력한 만큼 반응이 돌아오지 않으면 혼자 서운함이 쌓임'
-        ], good: ['ISFP 취향 확실한 사람', 'ISTP 고장 보면 손부터 가는 사람'], bad: ['INTP 생각하다 딴길 샌 사람', 'ENTP 말로 판 키우는 사람']
+        ], good: ['INTP 생각하다 새는 사람', 'ISTP 해결이 빠른 사람'], bad: ['INTJ 계획이 다 있는 사람', 'ENTJ 결정을 내리는 사람']
       },
       ISFJ: {
-        name: '조용한 기억력왕', icon: 'notebook',
-        first: '말수가 적고 부탁을 잘 들어줄 것 같음',
-        real: '사소한 말도 기억했다가 필요한 순간에 조용히 챙겨줌',
-        summary: '앞에 나서기보다 필요한 부분을 미리 살피고 채우는 편임. 익숙한 관계를 소중히 여기며 맡은 일은 끝까지 책임짐.',
+        name: '다 기억하는 사람', icon: 'notebook',
+        first: '말수가 적고 부탁을<br>잘 들어줄 것 같음',
+        real: '사소한 말도 기억했다가<br>조용히 필요한 걸 챙겨줌',
+        summary: '앞에 나서기보다 주변 사람에게 필요한 것을 미리 살피는 편임. 익숙한 관계를 소중히 여기며, 한번 가까워진 사람은 오래 챙김.',
         traits: [
           '누가 무엇을 좋아하는지 기억했다가 자연스럽게 챙겨줌',
           '처음 가는 곳에서는 분위기와 사람들을 충분히 살핀 뒤 움직임',
           '싫어도 바로 거절하지 못해 일을 더 맡게 되는 경우가 있음',
           '자기 방식이 있어도 주변이 불편할까 봐 먼저 양보하기도 함',
-          '정해진 일을 꼼꼼하게 해내 주변에서 자주 의지하게 됨',
+          '사소한 부탁도 잊지 않고 챙겨 주변에서 자주 의지하게 됨',
           '갑작스러운 변화가 반복되면 겉으로 티 안 내도 많이 지침',
           '고마웠던 일과 서운했던 일을 둘 다 오래 기억하는 편임',
           '편한 사람 앞에서는 의외로 장난도 많고 말도 길어짐'
-        ], good: ['ESFP 오늘의 분위기 담당', 'ESTP 재밌으면 바로 하는 사람'], bad: ['ENTP 말로 판 키우는 사람', 'ENTJ 일단 지휘하는 사람']
+        ], good: ['ENTP 말로 판 키우는 사람', 'ENFP 일단 신난 사람'], bad: ['ENTJ 결정을 내리는 사람', 'INTJ 계획이 다 있는 사람']
       },
       ESTP: {
-        name: '재밌으면 바로 하는 사람', icon: 'lightning',
-        first: '겁이 없고 어디서든 금방 적응할 것 같음',
-        real: '일단 해본 뒤 문제는 생기면 해결하면 된다고 생각함',
+        name: '재밌으면 하는 사람', icon: 'lightning',
+        first: '겁이 없고 어디서든<br>금방 적응할 것 같음',
+        real: '일단 해본 뒤<br>문제는 생기면 해결함',
         summary: '눈앞의 상황을 빠르게 파악하고 바로 움직임. 길게 고민하기보다 직접 경험하며 답을 찾고, 재미와 속도를 중요하게 봄.',
         traits: [
           '새로운 제안을 들으면 걱정보다 재밌겠다는 생각이 먼저 듦',
@@ -1161,15 +1191,15 @@
           '설명이 길어지면 일단 직접 해보는 쪽을 선택하는 편임',
           '사람들과 장난치고 반응을 주고받을 때 에너지가 올라감',
           '지금 해결할 수 없는 걱정을 오래 붙잡고 있지 않음',
-          '반복되거나 움직임 없는 일에서는 집중력이 빠르게 떨어짐',
+          '반복되는 일상이나 가만히만 있는 상황을 오래 못 견딤',
           '솔직한 말투 때문에 의도보다 세게 전달될 때가 있음',
           '마음먹은 일은 빠르지만 흥미가 사라지면 미련도 적은 편임'
-        ], good: ['ISFJ 조용한 기억력왕', 'ISTJ 체크리스트 인간'], bad: ['INFJ 혼자 다 알아챈 사람', 'ENFJ 단체방 관리자']
+        ], good: ['INFJ 혼자 다 알아챈 사람', 'INTJ 계획이 다 있는 사람'], bad: ['INFP 현실도피자', 'ENFP 일단 신난 사람']
       },
       ISTP: {
-        name: '고장 보면 손부터 가는 사람', icon: 'wrench',
-        first: '무심하고 웬만한 일에는 반응이 없을 것 같음',
-        real: '말은 짧아도 문제를 발견하면 가장 현실적으로 해결함',
+        name: '해결이 빠른 사람', icon: 'wrench',
+        first: '무심하고 웬만한 일엔<br>반응이 없을 것 같음',
+        real: '말은 짧아도<br>문제가 생기면 바로 해결함',
         summary: '상황을 차분히 보고 필요한 행동만 골라서 함. 간섭받는 것을 싫어하고, 각자 할 일을 알아서 하는 관계를 편해함.',
         traits: [
           '문제가 생기면 설명을 길게 듣기보다 직접 상태부터 확인함',
@@ -1180,12 +1210,12 @@
           '말로 위로하는 건 어색해도 실제로 필요한 일은 해줌',
           '쓸데없이 복잡한 규칙과 형식적인 절차를 특히 답답해함',
           '관심 없는 일에는 느긋하지만 위기 상황에서는 판단이 빨라짐'
-        ], good: ['ESTJ 기준이 확실한 사람', 'ESFJ 단체사진 챙기는 사람'], bad: ['ENFJ 단체방 관리자', 'INFP 현실도피자']
+        ], good: ['ENFJ 먼저 챙기는 사람', 'ESFJ 약속을 잡는 사람'], bad: ['ENFP 일단 신난 사람', 'INFP 현실도피자']
       },
       ESFP: {
         name: '오늘의 분위기 담당', icon: 'disco',
-        first: '밝고 어디서든 사람들과 잘 어울릴 것 같음',
-        real: '좋고 싫은 감정이 표정에 바로 보여 숨기기가 어려움',
+        first: '밝고 어디서든 사람들과<br>잘 어울릴 것 같음',
+        real: '좋고 싫은 감정이<br>표정에 바로 드러남',
         summary: '지금 즐길 수 있는 것을 놓치지 않고 사람들과 나누는 편임. 분위기를 빠르게 읽고, 말보다 직접 경험하는 것을 좋아함.',
         traits: [
           '재미있는 일이 생기면 혼자보다 사람들과 같이 즐기고 싶어함',
@@ -1194,14 +1224,14 @@
           '기분이 상해도 오래 끌기보다 다른 즐거운 일을 찾아 움직임',
           '복잡한 계획보다 당장 할 수 있는 선택을 더 편하게 느낌',
           '주변 사람이 어색해하면 먼저 말을 걸어 분위기를 바꿈',
-          '지루한 일을 오래 참아야 할 때 집중력이 눈에 띄게 줄어듦',
+          '지루한 상황을 오래 참아야 할 때 표정과 집중력이 같이 흐려짐',
           '좋아하는 사람과 싫어하는 사람에게 보이는 반응 차이가 큼'
-        ], good: ['ISTJ 체크리스트 인간', 'ISFJ 조용한 기억력왕'], bad: ['INTP 생각하다 딴길 샌 사람', 'INTJ 계획이 다 있는 사람']
+        ], good: ['INTJ 계획이 다 있는 사람', 'INFJ 혼자 다 알아챈 사람'], bad: ['INTP 생각하다 새는 사람', 'ENTP 말로 판 키우는 사람']
       },
       ISFP: {
         name: '취향 확실한 사람', icon: 'headphones',
-        first: '조용하고 웬만하면 다른 사람에게 맞춰줄 것 같음',
-        real: '겉으로 말하지 않아도 좋아하는 것과 싫은 것이 아주 분명함',
+        first: '조용하고 웬만하면<br>상대에게 맞춰줄 것 같음',
+        real: '겉으로 말하지 않아도<br>좋고 싫음이 아주 분명함',
         summary: '자기 속도와 방식대로 움직일 때 가장 편해함. 남에게 강요하지 않지만 본인도 간섭받기 싫어하고, 말보다 행동으로 마음을 보임.',
         traits: [
           '물건이나 장소를 고를 때 남의 평가보다 자기 취향을 따름',
@@ -1211,8 +1241,8 @@
           '재촉하지 않고 기다려주는 사람에게 마음을 더 쉽게 엶',
           '싫은 소리를 참다가 한계가 오면 설명 없이 거리를 두기도 함',
           '관심 있는 분야는 남들이 몰라도 혼자 꾸준히 즐기는 편임',
-          '경쟁해서 이기기보다 내가 만족할 수 있는 결과를 중요하게 봄'
-        ], good: ['ESFJ 단체사진 챙기는 사람', 'ENFJ 단체방 관리자'], bad: ['ENTJ 일단 지휘하는 사람', 'INTP 생각하다 딴길 샌 사람']
+          '남과 비교해서 이기기보다 내가 만족하는 선택을 더 중요하게 봄'
+        ], good: ['ENTJ 결정을 내리는 사람', 'ESTJ 기준이 확실한 사람'], bad: ['ENTP 말로 판 키우는 사람', 'INTP 생각하다 새는 사람']
       }
     };
 
@@ -1281,7 +1311,7 @@
         const button = document.createElement('button');
         button.type = 'button';
         button.className = 'answer-btn';
-        button.textContent = answer.text;
+        button.innerHTML = answer.text;
         button.addEventListener('click', () => selectAnswer(answer.letter, button));
         answerList.appendChild(button);
       });
@@ -1326,15 +1356,18 @@
       state.resultType = getResultType();
       const result = results[state.resultType];
 
-      document.getElementById('resultName').textContent = result.name;
-      document.getElementById('resultIcon').innerHTML = iconSvgs[result.icon];
-      document.getElementById('firstImpression').textContent = result.first;
-      document.getElementById('realSelf').textContent = result.real;
-      document.getElementById('resultSummary').textContent = result.summary;
+      const nameLines = resultNameLines[state.resultType];
+      document.getElementById('resultNameTop').textContent = nameLines[0];
+      document.getElementById('resultNameBottom').textContent = nameLines[1];
+      const resultIcon = document.getElementById('resultIcon');
+      resultIcon.innerHTML = iconSvgs[result.icon];
+      resultIcon.dataset.icon = result.icon;
+      resultIcon.style.setProperty('--icon-accent', iconColors[state.resultType]);
+      document.getElementById('firstImpression').innerHTML = result.first;
+      document.getElementById('realSelf').innerHTML = result.real;
 
-      document.getElementById('traitList').innerHTML = result.traits.map((trait, index) => `
+      document.getElementById('traitList').innerHTML = result.traits.map(trait => `
         <div class="trait-row">
-          <div class="trait-number">${String(index + 1).padStart(2, '0')}</div>
           <div class="trait-text">${trait}</div>
         </div>
       `).join('');

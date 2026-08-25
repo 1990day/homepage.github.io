@@ -1,0 +1,1426 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#ffffff">
+  <title>테스트잇 그냥 그런 성격 테스트</title>
+  <meta name="description" content="평소 내 성격을 16가지 유형으로 알아보는 테스트">
+  <meta property="og:title" content="테스트잇 그냥 그런 성격 테스트">
+  <meta property="og:description" content="나는 그냥 어떤 성격일까?">
+  <meta property="og:url" content="https://test-it.co.kr/test412">
+  <link rel="canonical" href="https://test-it.co.kr/test412">
+
+  <style>
+    @font-face {
+      font-family: 'Galmuri14';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2506-1@1.0/Galmuri14.woff2') format('woff2');
+      font-weight: normal;
+      font-display: swap;
+    }
+
+    :root {
+      --ink: #151515;
+      --paper: #ffffff;
+      --soft: #f5f5f3;
+      --line: 1px solid var(--ink);
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      background: #fff;
+      color: var(--ink);
+      -webkit-text-size-adjust: 100%;
+      text-rendering: geometricPrecision;
+      -webkit-font-smoothing: none;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      background: #fff;
+      color: var(--ink);
+      font-family: 'Galmuri14', 'Malgun Gothic', sans-serif;
+      letter-spacing: -0.25px;
+      word-break: keep-all;
+      text-align: center;
+      font-weight: 400;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    button {
+      color: inherit;
+    }
+
+    .site-header {
+      width: 100%;
+      border-bottom: var(--line);
+      background: #fff;
+    }
+
+    .header-inner {
+      width: min(100%, 660px);
+      min-height: 58px;
+      margin: 0 auto;
+      padding: 0 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .logo {
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 22px;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      font-size: 14px;
+      white-space: nowrap;
+    }
+
+    .nav a {
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .page-shell {
+      width: min(100%, 620px);
+      margin: 0 auto;
+      padding: 26px 14px 70px;
+    }
+
+    .screen {
+      display: none;
+    }
+
+    .screen.active {
+      display: block;
+    }
+
+    .paper-box {
+      border: var(--line);
+      background: var(--paper);
+    }
+
+    /* 시작 화면 */
+    .start-card {
+      width: min(100%, 520px);
+      margin: 10px auto 0;
+      border: var(--line);
+      background: #fff;
+    }
+
+    .start-title {
+      padding: 25px 16px 22px;
+      border-bottom: var(--line);
+      text-align: center;
+    }
+
+    .start-title h1 {
+      margin: 0;
+      font-size: clamp(24px, 6vw, 34px);
+      font-weight: normal;
+      line-height: 1.48;
+      letter-spacing: -1px;
+    }
+
+    .start-title p {
+      margin: 13px 0 0;
+      color: #444;
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    .main-drawing {
+      position: relative;
+      height: 310px;
+      margin: 12px;
+      overflow: hidden;
+      border: var(--line);
+      background:
+        linear-gradient(to right, transparent calc(50% - .5px), var(--ink) calc(50% - .5px), var(--ink) calc(50% + .5px), transparent calc(50% + .5px)),
+        linear-gradient(to bottom, transparent calc(50% - .5px), var(--ink) calc(50% - .5px), var(--ink) calc(50% + .5px), transparent calc(50% + .5px));
+    }
+
+    .doodle-cell {
+      position: absolute;
+      width: 50%;
+      height: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      font-size: 14px;
+      text-align: center;
+    }
+
+    .doodle-cell:nth-child(1) { left: 0; top: 0; }
+    .doodle-cell:nth-child(2) { right: 0; top: 0; }
+    .doodle-cell:nth-child(3) { left: 0; bottom: 0; }
+    .doodle-cell:nth-child(4) { right: 0; bottom: 0; }
+
+    .mini-icon {
+      width: 76px;
+      height: 76px;
+    }
+
+    .line-icon,
+    .mini-icon {
+      display: block;
+      color: var(--ink);
+    }
+
+    .line-icon *:not(text),
+    .mini-icon *:not(text) {
+      vector-effect: non-scaling-stroke;
+      shape-rendering: geometricPrecision;
+    }
+
+    .start-action {
+      padding: 0 12px 14px;
+    }
+
+    .primary-btn,
+    .result-btn {
+      width: 100%;
+      min-height: 54px;
+      border: 1px solid var(--ink);
+      border-radius: 0;
+      background: var(--ink);
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .primary-btn:active,
+    .result-btn:active {
+      transform: translateY(1px);
+    }
+
+    /* 질문 화면 */
+    .question-wrap {
+      width: min(100%, 540px);
+      margin: 5px auto 0;
+    }
+
+    .progress-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 9px;
+      font-size: 13px;
+    }
+
+    .progress-track {
+      width: 100%;
+      height: 8px;
+      border: var(--line);
+      background: #fff;
+    }
+
+    .progress-bar {
+      width: 0;
+      height: 100%;
+      background: var(--ink);
+      transition: width .22s ease;
+    }
+
+    .question-card {
+      min-height: 402px;
+      margin-top: 18px;
+      border: var(--line);
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .question-number {
+      padding: 12px 14px;
+      border-bottom: var(--line);
+      font-size: 13px;
+    }
+
+    .question-text {
+      min-height: 152px;
+      padding: 35px 22px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: clamp(19px, 5.2vw, 24px);
+      line-height: 1.62;
+    }
+
+    .answer-list {
+      margin-top: auto;
+      border-top: var(--line);
+    }
+
+    .answer-btn {
+      width: 100%;
+      min-height: 76px;
+      padding: 16px 18px;
+      border: 0;
+      border-bottom: var(--line);
+      border-radius: 0;
+      background: #fff;
+      color: var(--ink);
+      text-align: center;
+      font-size: 16px;
+      line-height: 1.5;
+      cursor: pointer;
+    }
+
+    .answer-btn:last-child {
+      border-bottom: 0;
+    }
+
+    @media (hover: hover) {
+      .answer-btn:hover {
+        background: var(--soft);
+      }
+      .nav a:hover {
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+    }
+
+    .answer-btn:disabled {
+      cursor: default;
+    }
+
+    .answer-btn.selected {
+      background: var(--ink);
+      color: #fff;
+    }
+
+    /* 결과 화면 */
+    .result-area {
+      width: min(100%, 592px);
+      margin: 0 auto;
+    }
+
+    .result-sheet {
+      width: 100%;
+      padding: 12px;
+      border: var(--line);
+      background: #fff;
+    }
+
+    .result-main-title {
+      min-height: 57px;
+      padding: 13px 10px;
+      border: var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: clamp(20px, 5.2vw, 27px);
+      line-height: 1.35;
+      letter-spacing: -0.7px;
+    }
+
+    .result-top {
+      display: grid;
+      grid-template-columns: 136px 194px 1fr;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .identity-box {
+      min-height: 181px;
+      padding: 8px 6px 7px;
+      border: var(--line);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+    }
+
+    .type-label {
+      width: 100%;
+      min-height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 18px;
+      line-height: 1.2;
+    }
+
+    .result-icon {
+      width: 92px;
+      height: 92px;
+      margin: 2px auto;
+    }
+
+    .quick-boxes {
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+      gap: 6px;
+    }
+
+    .quick-box {
+      border: var(--line);
+      display: grid;
+      grid-template-columns: 62px 1fr;
+      align-items: stretch;
+      min-height: 87px;
+    }
+
+    .box-label {
+      padding: 8px 6px;
+      border-right: var(--line);
+      background: #f7f7f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .box-value {
+      padding: 8px 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 13px;
+      line-height: 1.52;
+    }
+
+    .summary-box {
+      min-height: 181px;
+      border: var(--line);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .summary-label {
+      padding: 8px 10px;
+      border-bottom: var(--line);
+      background: #f7f7f5;
+      text-align: center;
+      font-size: 13px;
+    }
+
+    .summary-text {
+      flex: 1;
+      padding: 14px 13px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 13px;
+      line-height: 1.65;
+    }
+
+    .trait-list {
+      margin-top: 9px;
+      border: var(--line);
+    }
+
+    .trait-row {
+      min-height: 47px;
+      border-bottom: var(--line);
+      display: grid;
+      grid-template-columns: 38px 1fr;
+      align-items: stretch;
+    }
+
+    .trait-row:last-child {
+      border-bottom: 0;
+    }
+
+    .trait-number {
+      border-right: var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f7f7f5;
+      font-size: 12px;
+    }
+
+    .trait-text {
+      padding: 9px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .match-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 9px;
+    }
+
+    .match-box {
+      min-height: 104px;
+      border: var(--line);
+    }
+
+    .match-title {
+      padding: 8px 10px;
+      border-bottom: var(--line);
+      background: #f7f7f5;
+      text-align: center;
+      font-size: 13px;
+    }
+
+    .match-types {
+      min-height: 62px;
+      padding: 10px 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-align: center;
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .match-chip + .match-chip::before {
+      content: '·';
+      margin-right: 8px;
+    }
+
+    .result-actions {
+      width: min(100%, 520px);
+      margin: 22px auto 0;
+      display: grid;
+      gap: 9px;
+    }
+
+    .result-btn.secondary {
+      background: #fff;
+      color: var(--ink);
+    }
+
+    .save-note {
+      margin: 12px 0 0;
+      color: #555;
+      font-size: 12px;
+      line-height: 1.55;
+      text-align: center;
+    }
+
+    /* 이미지 저장 팝업 */
+    .save-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      background: rgba(0,0,0,.72);
+    }
+
+    .save-modal.open {
+      display: flex;
+    }
+
+    .modal-card {
+      width: min(100%, 420px);
+      max-height: 92vh;
+      overflow: auto;
+      padding: 12px;
+      border: 1px solid #fff;
+      background: #fff;
+    }
+
+    .modal-guide {
+      margin: 0 0 10px;
+      text-align: center;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .saved-image {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: var(--line);
+      -webkit-touch-callout: default;
+    }
+
+    .modal-close {
+      width: 100%;
+      min-height: 44px;
+      margin-top: 10px;
+      border: var(--line);
+      border-radius: 0;
+      background: #fff;
+      cursor: pointer;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 24px;
+      z-index: 10000;
+      min-width: 210px;
+      max-width: calc(100% - 32px);
+      padding: 12px 15px;
+      border: var(--line);
+      background: #fff;
+      text-align: center;
+      font-size: 13px;
+      transform: translate(-50%, 20px);
+      opacity: 0;
+      pointer-events: none;
+      transition: .2s ease;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+
+    @media (max-width: 560px) {
+      .page-shell {
+        padding: 20px 10px 58px;
+      }
+
+      .header-inner {
+        min-height: 54px;
+        padding: 0 11px;
+      }
+
+      .logo {
+        font-size: 20px;
+      }
+
+      .nav {
+        gap: 9px;
+        font-size: 12px;
+      }
+
+      .result-sheet {
+        padding: 7px;
+      }
+
+      .result-top {
+        grid-template-columns: 105px 1fr;
+        gap: 6px;
+        margin-top: 7px;
+      }
+
+      .identity-box {
+        min-height: 180px;
+      }
+
+      .type-label {
+        font-size: 15px;
+      }
+
+      .result-icon {
+        width: 79px;
+        height: 79px;
+      }
+
+      .quick-boxes {
+        gap: 5px;
+      }
+
+      .quick-box {
+        grid-template-columns: 54px 1fr;
+      }
+
+      .box-label,
+      .box-value {
+        font-size: 11px;
+      }
+
+      .summary-box {
+        grid-column: 1 / -1;
+        min-height: 114px;
+      }
+
+      .summary-text {
+        padding: 11px 12px;
+        font-size: 12px;
+      }
+
+      .trait-list {
+        margin-top: 7px;
+      }
+
+      .trait-row {
+        min-height: 48px;
+        grid-template-columns: 31px 1fr;
+      }
+
+      .trait-text {
+        padding: 8px 9px;
+        font-size: 11.5px;
+        line-height: 1.5;
+      }
+
+      .match-grid {
+        gap: 6px;
+        margin-top: 7px;
+      }
+
+      .match-title,
+      .match-types {
+        font-size: 11.5px;
+      }
+
+      .match-types {
+        padding: 9px 5px;
+        gap: 4px;
+      }
+
+      .match-chip + .match-chip::before {
+        margin-right: 4px;
+      }
+    }
+
+    @media (max-width: 370px) {
+      .nav {
+        gap: 7px;
+        font-size: 11px;
+      }
+
+      .logo {
+        font-size: 18px;
+      }
+
+      .trait-text {
+        font-size: 11px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="logo" href="https://test-it.co.kr/">테스트잇</a>
+      <nav class="nav" aria-label="주요 메뉴">
+        <a href="https://test-it.co.kr/test.html">성격</a>
+        <a href="https://test-it.co.kr/face.html">얼굴</a>
+        <a href="https://test-it.co.kr/etc.html">그외</a>
+        <a href="https://test-it.co.kr/saju.html">사주</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-shell">
+    <section id="startScreen" class="screen active" aria-label="테스트 시작 화면">
+      <div class="start-card">
+        <div class="start-title">
+          <h1>테스트잇<br>그냥 그런 성격 테스트</h1>
+          <p>별거 아닌 것 같지만<br>은근 정확한 내 성격 결과표</p>
+        </div>
+
+        <div class="main-drawing" aria-hidden="true">
+          <div class="doodle-cell">
+            <svg class="mini-icon" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 70 79 30l9 51Z"/><path d="M28 61c7 3 12 9 13 17M48 49c8 2 15 8 18 16"/>
+              <circle cx="53" cy="62" r="5"/><circle cx="70" cy="48" r="4"/><path d="M18 71c-5 12 7 18 15 8 7 11 18 5 18-2"/>
+            </svg>
+            <span>낭만적인 사색가</span>
+          </div>
+          <div class="doodle-cell">
+            <svg class="mini-icon" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M24 78h52M30 71h40l-4-35H34Z"/><path d="m35 36 5-15 10 13 10-13 5 15"/><circle cx="50" cy="52" r="7"/>
+            </svg>
+            <span>독립적인 전략가</span>
+          </div>
+          <div class="doodle-cell">
+            <svg class="mini-icon" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M39 68h22M42 75h16M35 57c-7-6-11-13-10-22 1-13 11-23 25-23s25 10 25 24c0 9-4 15-10 21-4 4-5 7-5 11H40c0-4-1-7-5-11Z"/><path d="m50 1 0 7M14 19l6 4M86 19l-6 4M8 48l8-1M92 48l-8-1"/>
+            </svg>
+            <span>호기심 많은 탐구자</span>
+          </div>
+          <div class="doodle-cell">
+            <svg class="mini-icon" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M19 67c9-18 18-29 31-29s22 11 31 29"/><path d="M18 68h64v10H18zM28 37c0-13 9-23 22-23s22 10 22 23"/><path d="m23 35 8-7M77 35l-8-7M41 52h18"/>
+            </svg>
+            <span>유쾌한 분위기 메이커</span>
+          </div>
+        </div>
+
+        <div class="start-action">
+          <button id="startBtn" class="primary-btn" type="button">테스트 시작하기</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="questionScreen" class="screen" aria-label="성격 질문">
+      <div class="question-wrap">
+        <div class="progress-head">
+          <span>그냥 그런 성격 테스트</span>
+          <span id="progressCount">1 / 12</span>
+        </div>
+        <div class="progress-track" aria-hidden="true">
+          <div id="progressBar" class="progress-bar"></div>
+        </div>
+
+        <div class="question-card">
+          <div id="questionNumber" class="question-number">질문 01</div>
+          <div id="questionText" class="question-text"></div>
+          <div id="answerList" class="answer-list"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="resultScreen" class="screen" aria-label="테스트 결과">
+      <div class="result-area">
+        <div id="resultSheet" class="result-sheet">
+          <div class="result-main-title">테스트잇 그냥 그런 성격 테스트</div>
+
+          <div class="result-top">
+            <div class="identity-box">
+              <div id="resultName" class="type-label"></div>
+              <div id="resultIcon" class="result-icon"></div>
+            </div>
+
+            <div class="quick-boxes">
+              <div class="quick-box">
+                <div class="box-label">첫인상</div>
+                <div id="firstImpression" class="box-value"></div>
+              </div>
+              <div class="quick-box">
+                <div class="box-label">실제 모습</div>
+                <div id="realSelf" class="box-value"></div>
+              </div>
+            </div>
+
+            <div class="summary-box">
+              <div class="summary-label">한눈에 보는 성격</div>
+              <div id="resultSummary" class="summary-text"></div>
+            </div>
+          </div>
+
+          <div id="traitList" class="trait-list"></div>
+
+          <div class="match-grid">
+            <div class="match-box">
+              <div class="match-title">시너지가 좋은 유형</div>
+              <div id="goodMatch" class="match-types"></div>
+            </div>
+            <div class="match-box">
+              <div class="match-title">서로 맞춰가야 할 유형</div>
+              <div id="badMatch" class="match-types"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="result-actions">
+          <button id="saveBtn" class="result-btn" type="button">결과 이미지 저장하기</button>
+          <button id="retryBtn" class="result-btn secondary" type="button">다시 해보기</button>
+          <button id="otherBtn" class="result-btn secondary" type="button">다른 테스트 해보기</button>
+          <button id="shareBtn" class="result-btn secondary" type="button">테스트 공유하기</button>
+        </div>
+        <p class="save-note">결과 이미지는 팝업에서 꾹 눌러 저장할 수 있어요.</p>
+      </div>
+    </section>
+  </main>
+
+  <div id="saveModal" class="save-modal" role="dialog" aria-modal="true" aria-label="결과 이미지 저장">
+    <div class="modal-card">
+      <p class="modal-guide">아래 이미지를 꾹 눌러 저장해 주세요.</p>
+      <img id="savedImage" class="saved-image" alt="그냥 그런 성격 테스트 결과 이미지">
+      <button id="modalClose" class="modal-close" type="button">닫기</button>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script>
+    const TEST_URL = 'https://test-it.co.kr/test412';
+
+    const questions = [
+      {
+        text: '주말에 에너지를 채우는 방법은?',
+        answers: [
+          { text: '사람들을 만나고 밖에서 활동하며 에너지를 얻는다', letter: 'E' },
+          { text: '혼자만의 시간을 보내며 조용히 에너지를 채운다', letter: 'I' }
+        ]
+      },
+      {
+        text: '새로운 것을 배울 때 더 편한 방식은?',
+        answers: [
+          { text: '있는 그대로의 사실과 구체적인 예시를 본다', letter: 'S' },
+          { text: '전체적인 흐름과 그 이면에 숨은 의미를 찾는다', letter: 'N' }
+        ]
+      },
+      {
+        text: '친구가 고민을 털어놓을 때 나의 반응은?',
+        answers: [
+          { text: '원인을 찾고 실질적인 해결책을 제시한다', letter: 'T' },
+          { text: '친구의 감정에 공감하고 우선적으로 위로한다', letter: 'F' }
+        ]
+      },
+      {
+        text: '여행이나 일정을 계획할 때 선호하는 방식은?',
+        answers: [
+          { text: '날짜와 시간별로 세부적인 계획을 미리 세운다', letter: 'J' },
+          { text: '큰 틀만 정해두고 상황에 맞춰 유연하게 움직인다', letter: 'P' }
+        ]
+      },
+      {
+        text: '여러 사람이 모인 자리에서 나는 주로?',
+        answers: [
+          { text: '먼저 대화를 이끌고 적극적으로 참여한다', letter: 'E' },
+          { text: '주로 듣는 편이며 필요할 때만 의견을 낸다', letter: 'I' }
+        ]
+      },
+      {
+        text: '평소 생각이나 상상을 할 때 나는?',
+        answers: [
+          { text: '현실에서 일어날 수 있는 실용적인 생각을 주로 한다', letter: 'S' },
+          { text: '아직 일어나지 않은 일이나 새로운 가능성을 자주 상상한다', letter: 'N' }
+        ]
+      },
+      {
+        text: '결정을 내려야 할 때 더 중요하게 생각하는 기준은?',
+        answers: [
+          { text: '객관적인 사실과 논리적 타당성', letter: 'T' },
+          { text: '나와 주변 사람들의 감정과 관계', letter: 'F' }
+        ]
+      },
+      {
+        text: '일을 처리할 때 나의 방식은?',
+        answers: [
+          { text: '미리 정해둔 순서에 따라 체계적으로 진행한다', letter: 'J' },
+          { text: '그때그때 상황에 맞춰 유동적으로 처리한다', letter: 'P' }
+        ]
+      },
+      {
+        text: '새로운 사람을 만났을 때 나의 태도는?',
+        answers: [
+          { text: '금방 친해지고 먼저 다가가는 편이다', letter: 'E' },
+          { text: '친해지는 데 시간이 걸리며 조심스럽게 다가간다', letter: 'I' }
+        ]
+      },
+      {
+        text: '대화를 나눌 때 더 흥미를 느끼는 주제는?',
+        answers: [
+          { text: '일상적이고 현실에서 직접 겪은 이야기', letter: 'S' },
+          { text: '아이디어나 미래에 대한 추상적인 이야기', letter: 'N' }
+        ]
+      },
+      {
+        text: '누군가에게 조언이나 피드백을 줄 때 나는?',
+        answers: [
+          { text: '문제점을 정확히 짚어 사실 위주로 말한다', letter: 'T' },
+          { text: '상대방이 상처받지 않도록 부드럽게 돌려 말한다', letter: 'F' }
+        ]
+      },
+      {
+        text: '내 주변 공간(방, 책상 등)의 상태는 주로?',
+        answers: [
+          { text: '물건들의 자리가 정해져 있고 정돈되어 있다', letter: 'J' },
+          { text: '조금 어수선해도 내가 찾기 편한 상태로 둔다', letter: 'P' }
+        ]
+      }
+    ];
+
+    const results = {
+      ENTJ: {
+        name: '확고한 결정권자', icon: 'crown',
+        first: '자신감이 넘치고 상황을 주도하는 사람',
+        real: '효율을 중요하게 생각하며 답답한 것을 참지 못함',
+        summary: '목표가 뚜렷하고 결단력이 있습니다. 일상이나 관계에서도 불필요한 감정 소모보다는 명확하고 효율적인 해결책을 선호합니다.',
+        traits: [
+          '결정이 빠르고 한번 정한 것은 끝까지 밀어붙임',
+          '빙빙 돌려 말하는 것보다 핵심만 명확히 말하는 것을 선호함',
+          '계획이 틀어지면 곧바로 새로운 대안을 빠르게 찾음',
+          '타인에게 의지하기보다 스스로 문제를 해결하려고 함',
+          '감정적인 위로보다는 실질적인 도움을 주려고 노력함',
+          '자기 주관이 뚜렷하고 남의 눈치를 잘 보지 않음',
+          '시간 낭비와 비효율적인 상황을 매우 싫어함',
+          '호기심이 많고 새로운 도전을 두려워하지 않음'
+        ], good: ['INTP 조용한 분석가', 'ENFP 자유로운 영혼'], bad: ['ISFP 온화한 자유주의자', 'ISFJ 묵묵한 조력자']
+      },
+      INTJ: {
+        name: '독립적인 전략가', icon: 'chess',
+        first: '조용하고 이성적이며 생각이 깊어 보이는 사람',
+        real: '머릿속으로 항상 상황을 분석하고 계획을 세우고 있음',
+        summary: '겉보기엔 무심해 보이지만 머릿속은 복잡한 생각으로 가득합니다. 독립심이 강하고, 객관적인 논리를 바탕으로 세상을 바라봅니다.',
+        traits: [
+          '혼자만의 시간을 매우 중요하게 생각함',
+          '관심 있는 분야는 끝까지 파고드는 강한 집중력이 있음',
+          '남의 말에 쉽게 휩쓸리지 않고 스스로 판단함',
+          '감정 표현이 적어 무뚝뚝하거나 차갑다는 오해를 받기도 함',
+          '대인관계가 넓진 않지만 한 번 친해지면 깊은 관계를 맺음',
+          '의미 없는 수다보다는 깊이 있는 대화를 선호함',
+          '비효율적인 규칙이나 관습을 맹목적으로 따르지 않음',
+          '문제 발생 시 당황하기보다 원인을 분석하고 차분하게 대응함'
+        ], good: ['ENTP 호기심 많은 탐구자', 'ENFP 자유로운 영혼'], bad: ['ESFJ 세심한 배려가', 'ISFJ 묵묵한 조력자']
+      },
+      ENTP: {
+        name: '호기심 많은 탐구자', icon: 'bulb',
+        first: '유쾌하고 말이 많으며 아이디어가 넘치는 사람',
+        real: '반복되는 것을 싫어하고 늘 새로운 자극을 찾고 있음',
+        summary: '틀에 박힌 것을 거부하고 다양한 가능성을 열어둡니다. 생각의 전환이 빠르고, 다른 사람과 의견을 나누며 새로운 시각을 찾는 것을 즐깁니다.',
+        traits: [
+          '새로운 관심사가 생기면 빠르게 빠져들지만 금방 흥미를 잃기도 함',
+          '논리적인 토론과 생각 나누는 것을 하나의 놀이처럼 즐김',
+          '규칙에 얽매이는 것을 답답해하고 자유를 추구함',
+          '예상치 못한 돌발 상황에서도 순발력 있게 잘 대처함',
+          '다른 사람의 의견에서 앞뒤가 안 맞는 부분을 기가 막히게 찾아냄',
+          '말투가 직설적일 때가 있지만 뒤끝은 없는 편임',
+          '꼼꼼하게 마무리하는 것보다 일을 벌이는 것에 재능이 있음',
+          '평범하고 일상적인 대화보다는 독특한 주제에 끌림'
+        ], good: ['INFJ 통찰력 있는 관찰자', 'INTJ 독립적인 전략가'], bad: ['ISFJ 묵묵한 조력자', 'ESFJ 세심한 배려가']
+      },
+      INTP: {
+        name: '조용한 분석가', icon: 'maze',
+        first: '말이 없고 혼자 있는 것을 편안해하는 사람',
+        real: '머릿속에서 다양한 원리와 논리를 끊임없이 조립하고 있음',
+        summary: '사물의 원리와 이치에 관심이 많고, 감정보다는 논리를 중시합니다. 대인관계에 에너지를 쓰기보다는 자신의 지적 호기심을 채우는 데 집중합니다.',
+        traits: [
+          '이해가 되지 않으면 대충 넘어가지 않고 원인을 꼭 찾음',
+          '평소엔 조용하지만 관심 있는 주제가 나오면 말이 굉장히 많아짐',
+          '형식적인 인간관계나 영혼 없는 잡담에 큰 피로를 느낌',
+          '아무 방해 없이 혼자 생각할 수 있는 조용한 시간을 선호함',
+          '타인의 감정에 깊게 공감하는 리액션이 서툴러 보일 수 있음',
+          '문제를 주관적인 감정보다 비판적이고 객관적인 시각으로 바라봄',
+          '정해진 틀이나 남이 나에게 이래라저래라 강요하는 것을 싫어함',
+          '완벽하게 정보를 모으고 이해하기 전까지 섣불리 결정을 내리지 않음'
+        ], good: ['ENTJ 확고한 결정권자', 'ESTJ 철저한 원칙주의자'], bad: ['ESFP 유쾌한 분위기 메이커', 'ISFP 온화한 자유주의자']
+      },
+      ENFJ: {
+        name: '다정한 중재자', icon: 'clipboard',
+        first: '친절하고 사람들을 잘 이끄는 다정다감한 사람',
+        real: '주변 사람들의 감정과 분위기를 끊임없이 살피고 있음',
+        summary: '사람들과의 관계를 중요하게 생각하며, 갈등을 피하고 조화로운 분위기를 만드는 데 탁월합니다. 타인의 성장을 돕고 배려하는 성격입니다.',
+        traits: [
+          '눈치가 빨라서 주변 사람들의 기분 변화나 묘한 분위기를 잘 알아챔',
+          '내 일보다 다른 사람의 고민을 더 진지하게 들어주고 같이 걱정함',
+          '여럿이 모인 자리에서 소외되거나 불편해하는 사람이 없도록 챙김',
+          '타인의 긍정적인 평가와 칭찬에 큰 에너지를 얻고 기뻐함',
+          '갈등이 생기면 논쟁에서 이기기보다 원만하게 타협하려고 함',
+          '사람에 대한 애정이 깊은 만큼 사람에게서 상처도 잘 받음',
+          '나만의 시간도 필요하지만 결국 사람들과 함께할 때 즐거움을 느낌',
+          '무례하거나 남을 배려하지 않는 이기적인 행동을 견디기 힘들어함'
+        ], good: ['INFP 낭만적인 사색가', 'ISFP 온화한 자유주의자'], bad: ['ISTP 객관적인 관찰자', 'ESTP 현실적인 행동가']
+      },
+      INFJ: {
+        name: '통찰력 있는 관찰자', icon: 'eye',
+        first: '차분하고 신중하며 남의 말을 잘 들어주는 사람',
+        real: '겉으로 드러나지 않는 사람들의 진짜 속마음을 읽고 있음',
+        summary: '눈에 보이지 않는 의미와 타인의 감정을 깊게 파악합니다. 소수의 사람과 깊은 관계를 맺으며, 자신의 신념과 가치관을 조용히 지켜나갑니다.',
+        traits: [
+          '평소에 생각이 매우 많고 뚜렷한 자기만의 내면 세계가 있음',
+          '사람들의 평범한 행동이나 말투에서 숨겨진 진짜 의도를 잘 찾아냄',
+          '겉으로는 모두에게 다정해 보이지만 속으로는 어느 정도 선을 긋고 있음',
+          '얕고 넓은 관계보다 정말 마음이 맞는 소수와의 깊은 관계를 선호함',
+          '스스로 정해둔 도덕적 기준이 높고 자기 자신에게 엄격한 편임',
+          '상대방이 상처받을까 봐 정말 하고 싶은 말도 속으로 꾹 삼킴',
+          '의미 없는 시간 낭비나 영양가 없는 피상적인 대화를 싫어함',
+          '한 번 신뢰가 완전히 깨지면 뒤돌아보지 않고 예고 없이 관계를 단절함'
+        ], good: ['ENTP 호기심 많은 탐구자', 'ENFP 자유로운 영혼'], bad: ['ESTP 현실적인 행동가', 'ISTJ 꼼꼼한 계획가']
+      },
+      ENFP: {
+        name: '자유로운 영혼', icon: 'confetti',
+        first: '에너지 넘치고 긍정적이며 친화력이 좋은 사람',
+        real: '감정 기복이 있고 혼자 있을 땐 급격히 조용해지기도 함',
+        summary: '사람과 새로운 경험을 좋아하며, 호기심이 많아 늘 새로운 것에 끌립니다. 규칙이나 통제보다는 자유롭고 즉흥적인 삶을 추구합니다.',
+        traits: [
+          '기분이 얼굴에 그대로 드러나고 리액션이 풍부함',
+          '처음 보는 사람과도 금방 공통점을 찾아내며 쉽게 친해짐',
+          '하고 싶은 일이 너무 많아서 일단 이것저것 다 시도해보는 편임',
+          '매일 똑같이 반복되는 일상이나 빡빡한 규칙에 금방 답답함을 느낌',
+          '주변 사람들의 장점을 잘 찾아내고 진심으로 칭찬과 응원을 해줌',
+          '어떤 일에 꽂히면 무섭게 집중했다가도 금방 흥미가 식어버림',
+          '밝아 보이지만 은근히 남의 눈치를 많이 보고 상처도 잘 받음',
+          '완벽하게 짜인 계획보다는 그날그날 기분에 따라 행동하는 것을 좋아함'
+        ], good: ['INTJ 독립적인 전략가', 'INFJ 통찰력 있는 관찰자'], bad: ['ISTJ 꼼꼼한 계획가', 'ESTJ 철저한 원칙주의자']
+      },
+      INFP: {
+        name: '낭만적인 사색가', icon: 'pizza',
+        first: '수줍음이 많고 온화하며 다소 조용한 사람',
+        real: '마음속에는 뚜렷한 자기만의 신념과 이상이 굳건하게 자리 잡고 있음',
+        summary: '자신만의 뚜렷한 가치관을 가지고 있으며, 개인의 감정과 의미를 중요하게 생각합니다. 타인을 잘 이해하고 수용하지만, 마음을 열기까지 시간이 걸립니다.',
+        traits: [
+          '다수를 위해 소수가 당연하게 희생해야 하는 상황을 매우 불편해함',
+          '에너지가 방전되면 오롯이 혼자만의 시간과 공간을 가져야 회복됨',
+          '불편한 마음을 겉으로 잘 표현하지 않고 웬만하면 갈등 상황을 피하려 함',
+          '평소엔 남에게 잘 맞춰주지만 자신의 핵심 가치관을 건드리면 매우 단호해짐',
+          '책, 음악, 영화 등 감수성을 자극하고 여운을 주는 것에 관심이 많음',
+          '다른 사람의 슬픔이나 아픔에 깊이 공감하고 진심으로 위로해 줌',
+          '생각이 많고 완벽주의 성향이 있어서 막상 무언가를 시작하기 전까지 오래 걸림',
+          '누군가에게 심하게 통제받거나 억지로 행동을 강요당하는 것을 매우 싫어함'
+        ], good: ['ENFJ 다정한 중재자', 'ENTJ 확고한 결정권자'], bad: ['ESTJ 철저한 원칙주의자', 'ISTJ 꼼꼼한 계획가']
+      },
+      ESTJ: {
+        name: '철저한 원칙주의자', icon: 'ruler',
+        first: '똑부러지고 책임감이 강하며 빈틈없어 보이는 사람',
+        real: '어떤 순서로 일을 처리할지 머릿속으로 끊임없이 시뮬레이션함',
+        summary: '현실적이고 논리적이며, 정해진 규칙과 계획을 따르는 것을 편안해합니다. 분명한 목표를 세우고 일상에서도 체계적으로 움직이는 편입니다.',
+        traits: [
+          '해야 할 일이 생기면 리스트를 만들어 순서대로 지워나가야 직성이 풀림',
+          '이리저리 애매하고 둘러대는 것보다 명확한 사실과 결론을 짚어주는 걸 좋아함',
+          '기본적인 약속 시간이나 정해진 규칙을 가볍게 여기는 사람을 이해하지 못함',
+          '누군가 고민을 말하면 감정적인 위로보다는 당장 해결할 수 있는 방법을 찾아줌',
+          '내 공간이나 주변 환경을 깔끔하게 치우고 정리정돈된 상태로 유지하려 함',
+          '돌발 상황이 발생하면 스트레스는 받지만 금방 제일 현실적인 대처법을 찾아냄',
+          '자신의 가치관이 뚜렷하고 할 말은 굳이 숨기지 않고 솔직하게 표현함',
+          '책임감이 강해서 한 번 내게 주어진 일은 어떤 방식을 써서든 끝까지 해냄'
+        ], good: ['ISTP 객관적인 관찰자', 'INTP 조용한 분석가'], bad: ['INFP 낭만적인 사색가', 'ENFP 자유로운 영혼']
+      },
+      ISTJ: {
+        name: '꼼꼼한 계획가', icon: 'checklist',
+        first: '과묵하고 진중하며 약속을 철저히 지키는 사람',
+        real: '한 번 맡은 일은 실수가 없도록 오차 없이 꼼꼼하게 마무리하려고 함',
+        summary: '변화보다는 안정과 예측 가능한 일상을 선호합니다. 객관적인 사실을 바탕으로 신중하게 행동하며, 묵묵히 자신의 역할을 다하는 성격입니다.',
+        traits: [
+          '갑작스럽게 일정이 바뀌거나 아무 약속 없이 불쑥 만나는 것을 좋아하지 않음',
+          '물건의 위치나 정보 등을 자신만의 기준으로 깔끔하고 체계적으로 정리해둠',
+          '새롭고 모험적인 방식보다는 과거의 경험이나 확실하게 검증된 방식을 선택함',
+          '가벼운 농담이나 쓸데없는 말장난보다는 사실 위주의 진지한 대화를 더 선호함',
+          '책임감이 매우 강하고 다른 사람에게 조금이라도 피해를 주는 것을 극도로 꺼림',
+          '감정을 겉으로 풍부하게 표현하지 않아 처음엔 무뚝뚝하거나 차가워 보일 수 있음',
+          '어떤 일이든 시작하면 놓치는 부분이 없는지 꼼꼼하게 확인해서 실수를 최소화함',
+          '표현이 서툴 뿐 친해진 내 사람들에게는 은근히 다정하고 뒤에서 챙겨주는 편임'
+        ], good: ['ESFP 유쾌한 분위기 메이커', 'ESTP 현실적인 행동가'], bad: ['ENFP 자유로운 영혼', 'INFJ 통찰력 있는 관찰자']
+      },
+      ESFJ: {
+        name: '세심한 배려가', icon: 'camera',
+        first: '사교적이고 친절하며 눈치가 빨라 센스 있는 사람',
+        real: '주변 사람들이 조금이라도 불편하지 않은지 계속 신경 쓰고 챙기고 있음',
+        summary: '일상적인 관계와 소속감을 중요하게 생각하며, 다른 사람을 돕고 챙겨주는 것에 기쁨을 느낍니다. 주변 사람들에게 다정하고 든든한 조력자입니다.',
+        traits: [
+          '모임에 어색해하거나 겉도는 사람이 없도록 자연스럽게 말을 걸고 챙겨줌',
+          '주변 사람들의 생일, 좋아하는 음식, 지나가듯 한 사소한 말들을 아주 잘 기억함',
+          '내가 베푼 호의에 대해 진심으로 고마워하고 인정해 줄 때 큰 보람과 행복을 느낌',
+          '부탁을 받으면 거절을 잘 못해서 가끔은 내 체력이나 시간을 무리하게 쓸 때가 있음',
+          '새로운 사람을 만나는 자리를 꽤 좋아하고, 공감대를 잘 형성하며 대화를 이끌어감',
+          '누군가와 언성을 높이거나 갈등 상황이 생기면 며칠 동안 계속 신경 쓰이고 스트레스받음',
+          '미리 약속을 잡고 계획을 세워 안정적이고 평화롭게 움직이는 것을 편안하게 생각함',
+          '기본적으로 다른 사람에게 예의 바르고 다정하게 대하는 것을 당연한 매너라고 생각함'
+        ], good: ['ISFP 온화한 자유주의자', 'ISTP 객관적인 관찰자'], bad: ['INTP 조용한 분석가', 'ENTP 호기심 많은 탐구자']
+      },
+      ISFJ: {
+        name: '묵묵한 조력자', icon: 'notebook',
+        first: '차분하고 다정하며 언제나 남을 먼저 배려하는 사람',
+        real: '눈앞의 상황을 세심하게 관찰하고 튀지 않게 필요한 것을 조용히 챙김',
+        summary: '겉으로 나서기보다는 뒤에서 묵묵히 다른 사람을 돕고 챙기는 것을 편안해합니다. 기억력이 좋고 세심하며, 익숙하고 안정적인 일상을 추구합니다.',
+        traits: [
+          '무언가를 결정할 때 내 주장을 굳이 강하게 내세우기보다 상대방의 의견에 잘 맞춰줌',
+          '상대방의 표정 변화나 사소한 특징을 귀신같이 눈치채고 머릿속에 잘 저장해둠',
+          '주목받고 나서는 자리는 부담스러워하지만, 뒤에서 내가 맡은 역할은 기가 막히게 해냄',
+          '예의와 기본 선을 중요하게 생각해서, 남에게 함부로 대하는 사람을 속으로 아주 싫어함',
+          '남에게 불편한 소리를 잘 못해서 답답한 일이 생겨도 혼자 꾹 참고 속앓이를 할 때가 많음',
+          '매일 보던 익숙한 사람과 편안한 장소를 좋아하고 낯선 환경에 던져지면 금방 피곤해짐',
+          '누가 칭찬을 해주면 기분은 날아갈 것 같지만 겉으로는 어떻게 반응해야 할지 몰라 몹시 뚝딱댐',
+          '주변 사람의 고민을 내 일처럼 공감해주고 실질적으로 도와줄 수 있는 방법을 조용히 고민함'
+        ], good: ['ESFP 유쾌한 분위기 메이커', 'ESTP 현실적인 행동가'], bad: ['ENTP 호기심 많은 탐구자', 'ENTJ 확고한 결정권자']
+      },
+      ESTP: {
+        name: '현실적인 행동가', icon: 'lightning',
+        first: '활동적이고 직설적이며 상황 파악이 굉장히 빠른 사람',
+        real: '복잡한 생각은 뒤로 하고 일단 부딪혀서 시원하게 해결책을 찾는 중임',
+        summary: '복잡한 이론이나 먼 미래보다는 지금 당장 눈앞의 현실과 즐거움에 집중합니다. 적응력이 뛰어나고 행동이 앞서는 시원시원한 성격입니다.',
+        traits: [
+          '돌발 상황이나 사고가 터져도 당황하기보다 \'어떻게든 되겠지\'라며 빠르게 해결책을 찾음',
+          '설명서나 책을 읽으며 생각만 하기보다는 직접 몸으로 부딪혀서 경험해보는 것을 선호함',
+          '말투가 꾸밈없이 직설적이고 솔직해서 가끔 의도치 않게 주변에 팩트폭력(?)을 날리곤 함',
+          '가만히 앉아있는 지루한 일상이나 이것저것 따지는 지나치게 엄격한 규칙을 몹시 견디기 힘들어함',
+          '주변 상황이 어떻게 돌아가는지, 사람들의 기분이 어떤지 아주 빠르고 예리하게 눈치챔',
+          '장황하고 길게 서론부터 설명하는 것을 듣기 싫어하고 결론과 핵심만 빠르게 알고 싶어함',
+          '지나간 과거나 아직 안 온 미래에 얽매이기보다는 현재 닥친 상황을 가장 재미있게 즐기려 함',
+          '성격이 쿨하고 뒤끝이 없어서 갈등이 생겨도 풀리고 나면 언제 그랬냐는 듯 싹 잊어버림'
+        ], good: ['ISFJ 묵묵한 조력자', 'ISTJ 꼼꼼한 계획가'], bad: ['INFJ 통찰력 있는 관찰자', 'ENFJ 다정한 중재자']
+      },
+      ISTP: {
+        name: '객관적인 관찰자', icon: 'wrench',
+        first: '과묵하고 무심해 보이며 누구에게도 구속받지 않는 사람',
+        real: '주변 상황을 관찰하며 가장 에너지 소모가 적고 효율적인 방법을 찾는 중임',
+        summary: '감정에 치우치지 않고 상황을 객관적으로 분석하며, 필요한 말과 행동만 간결하게 하는 편입니다. 타인의 간섭을 싫어하고 자신만의 영역을 중요하게 생각합니다.',
+        traits: [
+          '평소엔 만사 귀찮아 보이고 무심하지만 위기 상황이 닥치면 누구보다 빠르고 이성적으로 대처함',
+          '친구가 힘든 일을 털어놓을 때 과하게 공감해주거나 따뜻한 말로 위로하는 것을 매우 어색해함',
+          '굳이 내가 나서서 필요하지 않은 말이나 행동을 덧붙이며 아까운 내 에너지를 낭비하지 않음',
+          '프라이버시가 매우 중요해서 선 넘는 질문을 하거나 내 일상에 이래라저래라 간섭하는 것을 극혐함',
+          '미리 꽉 짜인 계획보다는 그때그때 주어진 상황에 맞춰 융통성 있고 효율적으로 움직이는 게 편함',
+          '손재주가 좋아서 기계나 물건을 뚝딱뚝딱 잘 고치거나 어떤 상황을 논리적으로 분석하는 것에 소질이 있음',
+          '굳이 매일 연락하고 자주 만나지 않아도 서로 마음만 맞으면 친한 관계가 유지될 수 있다고 생각함',
+          '이해할 수 없는 무의미한 규칙이나 비효율적인 꼰대 문화를 억지로 따라야 할 때 가장 큰 스트레스를 받음'
+        ], good: ['ESTJ 철저한 원칙주의자', 'ESFJ 세심한 배려가'], bad: ['ENFJ 다정한 중재자', 'INFP 낭만적인 사색가']
+      },
+      ESFP: {
+        name: '유쾌한 분위기 메이커', icon: 'disco',
+        first: '언제나 밝고 에너지가 넘치며 사람들과 스스럼없이 잘 어울리는 사람',
+        real: '지금 당장 즐겁고 재미있는 일을 찾아 끊임없이 안테나를 팽팽하게 세움',
+        summary: '사람들과 어울려 즐거운 시간을 보내는 것을 가장 좋아합니다. 감정에 솔직하고 주변 분위기를 밝게 만드는 특유의 매력을 가진 성격입니다.',
+        traits: [
+          '어디를 가든 분위기를 띄우고 중심이 되는 것을 즐기며 사람들의 관심과 리액션을 좋아함',
+          '머리 아픈 미래에 대한 복잡한 고민이나 걱정보다는 지금 당장 맛있고 재밌는 것이 우선임',
+          '속에 있는 감정을 잘 숨기지 못하고 지금 기분이 좋은지 나쁜지 얼굴 표정에 그대로 다 드러남',
+          '미리부터 꼼꼼하게 계획을 세워서 얽매이는 것보다 상황에 맞춰 즉흥적으로 움직이는 것에 강함',
+          '분위기가 지나치게 진지하고 무거워지면 답답해서 견디지 못하고 어떻게든 농담으로 환기시키려 함',
+          '다른 사람의 기분에 잘 공감해주고 친구가 우울해하면 곁에서 텐션을 높여 잘 달래주는 편임',
+          '매일 다를 것 없이 반복되는 일상이나 가만히 앉아있는 것에 금방 지루함을 느끼고 새로운 것을 찾음',
+          '복잡하고 빙빙 도는 추상적인 개념보다는 오늘 뭐 했고 뭐 먹었는지 같은 구체적이고 현실적인 이야기가 좋음'
+        ], good: ['ISTJ 꼼꼼한 계획가', 'ISFJ 묵묵한 조력자'], bad: ['INTP 조용한 분석가', 'INTJ 독립적인 전략가']
+      },
+      ISFP: {
+        name: '온화한 자유주의자', icon: 'headphones',
+        first: '조용하고 순둥순둥하며 남에게 크게 모난 데 없이 잘 맞춰주는 사람',
+        real: '겉으로 유별나게 내세우진 않지만 속으로는 자기만의 뚜렷하고 확고한 취향이 있음',
+        summary: '평화롭고 여유로운 일상을 추구하며, 다른 사람과 갈등을 빚는 것을 싫어합니다. 자신만의 공간과 속도를 존중받는 것을 매우 중요하게 생각합니다.',
+        traits: [
+          '내 의견을 고집하기보다 상대방에게 잘 맞춰주는 편이라 주변에서 둥글둥글하다는 소리를 자주 들음',
+          '누군가 내 삶의 방식을 통제하려 하거나 강제로 무언가를 밀어붙이며 시키는 것을 속으로 매우 싫어함',
+          '경쟁이 심하거나 숨 막히게 삭막한 환경보다는 물 흐르듯 편안하고 평화로운 분위기를 가장 선호함',
+          '나만의 뚜렷한 미적 감각이나 취향이 있어서 남들 모르게 조용히 좋아하는 것들을 파고들며 즐김',
+          '스케줄대로 빡빡하게 움직이는 것보다 그때그때 마음이 끌리는 대로 여유롭게 행동하는 것을 좋아함',
+          '평소엔 낯을 가려도 진짜 친하고 편한 사람 앞에서는 의외로 똘끼도 보여주고 감정도 솔직하게 다 털어놓음',
+          '남의 일에 이래라저래라 크게 간섭하지 않고 \'그럴 수도 있지\'라며 타인의 삶의 방식을 잘 존중해 줌',
+          '은근히 감수성이 예민해서 상처를 잘 받지만, 겉으로 내색하면 분위기가 어색해질까 봐 꾹 숨길 때가 많음'
+        ], good: ['ESFJ 세심한 배려가', 'ENFJ 다정한 중재자'], bad: ['ENTJ 확고한 결정권자', 'INTP 조용한 분석가']
+      }
+    };
+
+    const iconSvgs = {
+      pizza: `<svg class="line-icon" viewBox="0 0 110 110" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 75 89 28l8 58Z"/><path d="M27 67c8 4 13 10 14 19M50 53c9 3 17 10 20 19"/><circle cx="55" cy="70" r="6"/><circle cx="76" cy="49" r="5"/><path d="M15 76c-7 14 7 23 18 10 8 13 22 8 21-2"/><path d="M88 29c6-5 13 1 9 8"/></svg>`,
+      crown: `<svg class="line-icon" viewBox="0 0 110 110" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 79h70M25 71h60l-6-43-24 27-24-27Z"/><circle cx="55" cy="66" r="4"/><path d="M22 86h66"/></svg>`,
+      chess: `<svg class="line-icon" viewBox="0 0 110 110" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M31 86h52M35 78h44l-8-15c-4-7-6-14-5-22l8-12c-15 0-27 7-34 20l12 4c-3 12-8 19-17 25Z"/><circle cx="59" cy="37" r="2"/><path d="M39 49h15"/></svg>`,
+      bulb: `<svg class="line-icon" viewBox="0 0 110 110" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M43 78h24M46 86h18M39 66c-8-7-13-16-12-27 1-16 13-28 29-28s28 13 28 29c0 11-5 19-13 27-4 4-5 7-5 11H44c0-5-1-8-5-12Z"/><path d="M55 1v7M15 18l7 5M95 18l-7 5M8 49l10-1M102 49l-10-1"/></svg>`,
+      maze: `<svg class="line-icon" viewBox="0 0 110 110" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M25 21h60v68H25z"/><path d="M25 37h16V27h18v19h15V33h11M25 59h26V49M39 59v15h18V62h16v27M25 82h18M57 74h9M85 54H73"/><circle cx="31" cy="30" r="2" fill="currentColor"/><path d="M78 84l7 5-7 5"/></svg>`,
+      clipboard: `<svg class="line-icon" viewBox="0 0 110 110" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="25" y="19" width="60" height="76"/><path d="M43 19v-7h24v7M38 36h34M38 49h34M38 62h18"/><path d="M63 77c4-8 14-5 14 2 0 6-7 10-14 16-7-6-14-10-14-16 0-7 10-10 14-2Z"/></svg>`,
+      eye: `<svg class="line-icon" viewBox="0 0 110 110" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 56s17-27 45-27 45 27 45 27-17 27-45 27S10 56 10 56Z"/><circle cx="55" cy="56" r="14"/><circle cx="55" cy="56" r="5" fill="currentColor"/><path d="M55 13v8M20 23l7 8M90 23l-7 8"/></svg>`,
+      confetti: `<svg class="line-icon" viewBox="0 0 110 110" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m20 91 20-49 29 29Z"/><path d="M27 73c11 0 22 5 28 13M32 59c10 0 18 3 28 12M72 18l-3 12M91 35l-12 4M52 12l5 11M85 61l10 6"/><circle cx="84" cy="16" r="4"/><path d="m45 31 7-9 8 8M89 83l-5-9-8 7"/></svg>`,
+      ruler: `<svg class="line-icon" viewBox="0 0 110 110" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m17 72 56-56 21 21-56 56Z"/><path d="m63 26 10 10M52 37l7 7M41 48l10 10M30 59l7 7M19 70l10 10"/></svg>`,
+      checklist: `<svg class="line-icon" viewBox="0 0 110 110" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="22" y="12" width="67" height="86"/><path d="m33 34 5 5 9-11M54 34h23M33 58l5 5 9-11M54 58h23M33 82l5 5 9-11M54 82h23"/></svg>`,
+      camera: `<svg class="line-icon" viewBox="0 0 110 110" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 38h24l6-11h27l6 11h23v52H12Z"/><circle cx="55" cy="64" r="18"/><circle cx="55" cy="64" r="8"/><path d="M20 48h10M82 49h7"/></svg>`,
+      notebook: `<svg class="line-icon" viewBox="0 0 110 110" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M29 12h61v86H29zM20 12h9v86h-9zM17 25h17M17 43h17M17 61h17M17 79h17M43 32h32M43 48h32M43 64h24M43 80h29"/></svg>`,
+      lightning: `<svg class="line-icon" viewBox="0 0 110 110" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M64 9 24 63h27l-6 38 41-58H61Z"/><path d="M16 27l12 8M91 75l10 7M13 82l12-6M87 19l-11 9"/></svg>`,
+      wrench: `<svg class="line-icon" viewBox="0 0 110 110" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M68 15c-12-4-25 3-28 15-2 7 0 14 4 19L15 78c-6 6-6 15 0 21s15 6 21 0l29-29c6 4 13 6 20 4 12-3 19-16 15-28L82 64 67 49l18-18c-5-8-11-13-17-16Z"/><circle cx="25" cy="89" r="5"/></svg>`,
+      disco: `<svg class="line-icon" viewBox="0 0 110 110" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="55" cy="58" r="30"/><path d="M25 58h60M31 41h48M31 75h48M55 28v60M40 32c7 18 7 36 0 52M70 32c-7 18-7 36 0 52M55 8v12M20 20l9 9M90 20l-9 9M8 58h10M102 58H92"/></svg>`,
+      headphones: `<svg class="line-icon" viewBox="0 0 110 110" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 59V48c0-22 16-39 38-39s38 17 38 39v11"/><rect x="12" y="55" width="18" height="37" rx="2"/><rect x="80" y="55" width="18" height="37" rx="2"/><path d="M30 64h7v20h-7M80 64h-7v20h7"/></svg>`
+    };
+
+    const screens = {
+      start: document.getElementById('startScreen'),
+      question: document.getElementById('questionScreen'),
+      result: document.getElementById('resultScreen')
+    };
+
+    const state = {
+      current: 0,
+      scores: { E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0 },
+      locked: false,
+      resultType: ''
+    };
+
+    function showScreen(name, moveTop = true) {
+      Object.values(screens).forEach(screen => screen.classList.remove('active'));
+      screens[name].classList.add('active');
+      if (moveTop) window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+
+    function resetTest() {
+      state.current = 0;
+      state.scores = { E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0 };
+      state.locked = false;
+      state.resultType = '';
+    }
+
+    function startTest() {
+      resetTest();
+      showScreen('question');
+      renderQuestion();
+    }
+
+    function renderQuestion() {
+      const question = questions[state.current];
+      const displayNumber = String(state.current + 1).padStart(2, '0');
+      document.getElementById('questionNumber').textContent = `질문 ${displayNumber}`;
+      document.getElementById('questionText').innerHTML = question.text;
+      document.getElementById('progressCount').textContent = `${state.current + 1} / ${questions.length}`;
+      document.getElementById('progressBar').style.width = `${((state.current + 1) / questions.length) * 100}%`;
+
+      const answerList = document.getElementById('answerList');
+      answerList.innerHTML = '';
+      question.answers.forEach(answer => {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'answer-btn';
+        button.textContent = answer.text;
+        button.addEventListener('click', () => selectAnswer(answer.letter, button));
+        answerList.appendChild(button);
+      });
+    }
+
+    function selectAnswer(letter, selectedButton) {
+      if (state.locked) return;
+      state.locked = true;
+      state.scores[letter] += 1;
+
+      document.querySelectorAll('.answer-btn').forEach(button => button.disabled = true);
+      selectedButton.classList.add('selected');
+
+      window.setTimeout(() => {
+        state.current += 1;
+        state.locked = false;
+
+        if (state.current < questions.length) {
+          renderQuestion();
+        } else {
+          showResult();
+        }
+      }, 170);
+    }
+
+    function getResultType() {
+      const first = state.scores.E >= state.scores.I ? 'E' : 'I';
+      const second = state.scores.S >= state.scores.N ? 'S' : 'N';
+      const third = state.scores.T >= state.scores.F ? 'T' : 'F';
+      const fourth = state.scores.J >= state.scores.P ? 'J' : 'P';
+      return first + second + third + fourth;
+    }
+
+    function makeMatchHtml(items) {
+      return items.map(item => {
+        const nameOnly = item.replace(/^[A-Z]{4}\s*/, '');
+        return `<span class="match-chip">${nameOnly}</span>`;
+      }).join('');
+    }
+
+    function showResult() {
+      state.resultType = getResultType();
+      const result = results[state.resultType];
+
+      document.getElementById('resultName').textContent = result.name;
+      document.getElementById('resultIcon').innerHTML = iconSvgs[result.icon];
+      document.getElementById('firstImpression').textContent = result.first;
+      document.getElementById('realSelf').textContent = result.real;
+      document.getElementById('resultSummary').textContent = result.summary;
+
+      document.getElementById('traitList').innerHTML = result.traits.map((trait, index) => `
+        <div class="trait-row">
+          <div class="trait-number">${String(index + 1).padStart(2, '0')}</div>
+          <div class="trait-text">${trait}</div>
+        </div>
+      `).join('');
+
+      document.getElementById('goodMatch').innerHTML = makeMatchHtml(result.good);
+      document.getElementById('badMatch').innerHTML = makeMatchHtml(result.bad);
+
+      showScreen('result');
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      window.clearTimeout(showToast.timer);
+      showToast.timer = window.setTimeout(() => toast.classList.remove('show'), 1900);
+    }
+
+    async function saveResultImage() {
+      const saveButton = document.getElementById('saveBtn');
+      const originalText = saveButton.textContent;
+      saveButton.disabled = true;
+      saveButton.textContent = '이미지 만드는 중...';
+
+      try {
+        if (document.fonts && document.fonts.ready) await document.fonts.ready;
+
+        const target = document.getElementById('resultSheet');
+        const canvas = await html2canvas(target, {
+          backgroundColor: '#ffffff',
+          scale: Math.min(window.devicePixelRatio * 1.5, 3),
+          useCORS: true,
+          logging: false,
+          scrollX: 0,
+          scrollY: -window.scrollY
+        });
+
+        const image = document.getElementById('savedImage');
+        image.src = canvas.toDataURL('image/png');
+        document.getElementById('saveModal').classList.add('open');
+        document.body.style.overflow = 'hidden';
+      } catch (error) {
+        showToast('이미지를 만들지 못했어요. 다시 시도해 주세요.');
+      } finally {
+        saveButton.disabled = false;
+        saveButton.textContent = originalText;
+      }
+    }
+
+    function closeModal() {
+      document.getElementById('saveModal').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    async function shareTest() {
+      const shareData = {
+        title: '테스트잇 그냥 그런 성격 테스트',
+        text: '테스트잇 그냥 그런 성격 테스트',
+        url: TEST_URL
+      };
+
+      if (navigator.share) {
+        try {
+          await navigator.share(shareData);
+          return;
+        } catch (error) {
+          if (error && error.name === 'AbortError') return;
+        }
+      }
+
+      try {
+        await navigator.clipboard.writeText(`테스트잇 그냥 그런 성격 테스트\n${TEST_URL}`);
+        showToast('테스트 주소를 복사했어요.');
+      } catch (error) {
+        const temporary = document.createElement('textarea');
+        temporary.value = `테스트잇 그냥 그런 성격 테스트\n${TEST_URL}`;
+        temporary.style.position = 'fixed';
+        temporary.style.opacity = '0';
+        document.body.appendChild(temporary);
+        temporary.select();
+        document.execCommand('copy');
+        temporary.remove();
+        showToast('테스트 주소를 복사했어요.');
+      }
+    }
+
+    document.getElementById('startBtn').addEventListener('click', startTest);
+    document.getElementById('retryBtn').addEventListener('click', () => {
+      resetTest();
+      showScreen('start');
+    });
+    document.getElementById('otherBtn').addEventListener('click', () => {
+      window.location.href = 'https://test-it.co.kr/';
+    });
+    document.getElementById('saveBtn').addEventListener('click', saveResultImage);
+    document.getElementById('shareBtn').addEventListener('click', shareTest);
+    document.getElementById('modalClose').addEventListener('click', closeModal);
+    document.getElementById('saveModal').addEventListener('click', event => {
+      if (event.target.id === 'saveModal') closeModal();
+    });
+  </script>
+</body>
+</html>

@@ -1,15 +1,22 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5522499110435321" crossorigin="anonymous"></script>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <meta name="theme-color" content="#ffffff">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f8f5ef">
+
   <title>테스트잇 그냥 그런 성격 테스트</title>
-  <meta name="description" content="평소 내 성격을 16가지 유형으로 알아보는 테스트">
+  <meta name="description" content="테스트잇 그냥 그런 성격 테스트">
+  <meta name="keywords" content="테스트잇,성격테스트,그냥그런성격테스트,그냥성격테스트,그냥그런성격테스트mbti,사주테스트,mbti테스트">
+  <meta property="og:type" content="website">
   <meta property="og:title" content="테스트잇 그냥 그런 성격 테스트">
-  <meta property="og:description" content="나는 그냥 어떤 성격일까?">
+  <meta property="og:description" content="테스트잇 그냥 그런 성격 테스트">
   <meta property="og:url" content="https://test-it.co.kr/test412">
-  <link rel="canonical" href="https://test-it.co.kr/test412">
+  <meta property="og:image" content="https://test-it.co.kr/img_main412.png">
+  <link rel="icon" type="image/png" href="favicon.png">
+
 
   <style>
     @font-face {
@@ -20,7 +27,7 @@
     }
 
     :root {
-      --ink: #080808;
+      --ink: #111111;
       --paper: #ffffff;
       --soft: #eeeeee;
       --point: #d6d6d6;
@@ -51,7 +58,7 @@
       letter-spacing: -0.25px;
       word-break: keep-all;
       text-align: center;
-      font-weight: 600;
+      font-weight: 500;
     }
 
     button,
@@ -83,7 +90,7 @@
     .logo {
       color: var(--ink);
       text-decoration: none;
-      font-size: 22px;
+      font-size: 18px;
       line-height: 1;
       white-space: nowrap;
     }
@@ -92,7 +99,7 @@
       display: flex;
       align-items: center;
       gap: 13px;
-      font-size: 14px;
+      font-size: 15px;
       white-space: nowrap;
     }
 
@@ -102,7 +109,7 @@
     }
 
     .page-shell {
-      width: min(100%, 620px);
+      width: min(100%, 660px);
       margin: 0 auto;
       padding: 26px 14px 70px;
     }
@@ -121,75 +128,26 @@
     }
 
     /* 시작 화면 */
-    .start-card {
-      width: min(100%, 520px);
+    .main-image {
+      display: block;
+      width: min(100%, 600px);
+      height: auto;
       margin: 10px auto 0;
-      border: var(--line);
-      background: #fff;
     }
 
-    .start-title {
-      padding: 25px 16px 22px;
-      border-bottom: var(--line);
-      text-align: center;
-    }
-
-    .start-title h1 {
-      margin: 0;
-      font-size: clamp(24px, 6vw, 34px);
-      font-weight: normal;
-      line-height: 1.48;
-      letter-spacing: -1px;
-    }
-
-    .main-drawing {
-      position: relative;
-      height: 310px;
-      margin: 12px;
-      overflow: hidden;
-      border: var(--line);
-      background:
-        linear-gradient(to right, transparent calc(50% - .5px), var(--ink) calc(50% - .5px), var(--ink) calc(50% + .5px), transparent calc(50% + .5px)),
-        linear-gradient(to bottom, transparent calc(50% - .5px), var(--ink) calc(50% - .5px), var(--ink) calc(50% + .5px), transparent calc(50% + .5px));
-    }
-
-    .doodle-cell {
-      position: absolute;
-      width: 50%;
-      height: 50%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 9px;
-      font-size: 14px;
-      text-align: center;
-    }
-
-    .doodle-cell:nth-child(1) { left: 0; top: 0; }
-    .doodle-cell:nth-child(2) { right: 0; top: 0; }
-    .doodle-cell:nth-child(3) { left: 0; bottom: 0; }
-    .doodle-cell:nth-child(4) { right: 0; bottom: 0; }
-
-    .mini-icon {
-      width: 76px;
-      height: 76px;
-    }
-
-    .line-icon,
-    .mini-icon {
+    .line-icon {
       display: block;
       color: var(--ink);
     }
 
-    .line-icon *:not(text),
-    .mini-icon *:not(text) {
+    .line-icon *:not(text) {
       vector-effect: non-scaling-stroke;
       shape-rendering: geometricPrecision;
     }
 
     .start-action {
-      padding: 0 12px 14px;
+      width: min(100%, 600px);
+      margin: 12px auto 0;
     }
 
     .primary-btn,
@@ -623,12 +581,12 @@
       }
 
       .logo {
-        font-size: 20px;
+        font-size: 17px;
       }
 
       .nav {
         gap: 9px;
-        font-size: 12px;
+        font-size: 15px;
       }
 
       .result-sheet {
@@ -703,11 +661,11 @@
     @media (max-width: 370px) {
       .nav {
         gap: 7px;
-        font-size: 11px;
+        font-size: 14px;
       }
 
       .logo {
-        font-size: 18px;
+        font-size: 16px;
       }
 
       .trait-text {
@@ -732,42 +690,10 @@
 
   <main class="page-shell">
     <section id="startScreen" class="screen active" aria-label="테스트 시작 화면">
-      <div class="start-card">
-        <div class="start-title">
-          <h1>테스트잇<br>그냥 그런 성격 테스트</h1>
-        </div>
+      <img class="main-image" src="img_main412.png" alt="테스트잇 그냥 그런 성격 테스트">
 
-        <div class="main-drawing" aria-hidden="true">
-          <div class="doodle-cell">
-            <svg class="mini-icon" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M12 70 79 30l9 51Z"/><path d="M28 61c7 3 12 9 13 17M48 49c8 2 15 8 18 16"/>
-              <circle cx="53" cy="62" r="5"/><circle cx="70" cy="48" r="4"/><path d="M18 71c-5 12 7 18 15 8 7 11 18 5 18-2"/>
-            </svg>
-            <span>현실도피자</span>
-          </div>
-          <div class="doodle-cell">
-            <svg class="mini-icon" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M24 78h52M30 71h40l-4-35H34Z"/><path d="m35 36 5-15 10 13 10-13 5 15"/><circle cx="50" cy="52" r="7"/>
-            </svg>
-            <span>계획이 다 있는 사람</span>
-          </div>
-          <div class="doodle-cell">
-            <svg class="mini-icon" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M39 68h22M42 75h16M35 57c-7-6-11-13-10-22 1-13 11-23 25-23s25 10 25 24c0 9-4 15-10 21-4 4-5 7-5 11H40c0-4-1-7-5-11Z"/><path d="m50 1 0 7M14 19l6 4M86 19l-6 4M8 48l8-1M92 48l-8-1"/>
-            </svg>
-            <span>말로 판 키우는 사람</span>
-          </div>
-          <div class="doodle-cell">
-            <svg class="mini-icon" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M19 67c9-18 18-29 31-29s22 11 31 29"/><path d="M18 68h64v10H18zM28 37c0-13 9-23 22-23s22 10 22 23"/><path d="m23 35 8-7M77 35l-8-7M41 52h18"/>
-            </svg>
-            <span>오늘의 분위기 담당</span>
-          </div>
-        </div>
-
-        <div class="start-action">
-          <button id="startBtn" class="primary-btn" type="button">테스트 시작하기</button>
-        </div>
+      <div class="start-action">
+        <button id="startBtn" class="primary-btn" type="button">테스트 시작하기</button>
       </div>
     </section>
 
@@ -1279,10 +1205,9 @@
       resultType: ''
     };
 
-    function showScreen(name, moveTop = true) {
+    function showScreen(name) {
       Object.values(screens).forEach(screen => screen.classList.remove('active'));
       screens[name].classList.add('active');
-      if (moveTop) window.scrollTo({ top: 0, behavior: 'auto' });
     }
 
     function resetTest() {

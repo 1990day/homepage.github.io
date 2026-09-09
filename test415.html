@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5522499110435321" crossorigin="anonymous"></script>
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="나와 가장 닮은 가을 아이템을 알아보는 테스트잇 가을 아이템 성격 테스트">
-  <meta property="og:title" content="테스트잇 가을 아이템 성격 테스트">
-  <meta property="og:description" content="나와 가장 닮은 가을 아이템은 무엇일까?">
-  <meta property="og:image" content="https://test-it.co.kr/img_main415.png">
+
   <title>테스트잇 가을 아이템 성격 테스트</title>
+  <meta name="description" content="테스트잇 가을 아이템 성격 테스트">
+  <meta name="keywords" content="테스트잇,가을아이템성격테스트,가을성격테스트,성격테스트,심리테스트,애정욕구,인정욕구,안정욕구,소속욕구,성취욕구,통제욕구">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="테스트잇 가을 아이템 성격 테스트">
+  <meta property="og:description" content="테스트잇 가을 아이템 성격 테스트">
+  <meta property="og:url" content="https://test-it.co.kr/test415">
+  <meta property="og:image" content="https://test-it.co.kr/img_main415.png">
+  <link rel="icon" type="image/png" href="favicon.png">
 
   <link rel="preconnect" href="https://cdn.jsdelivr.net">
   <link href="https://cdn.jsdelivr.net/gh/quiple/galmuri@latest/dist/galmuri.css" rel="stylesheet">
@@ -1196,29 +1203,25 @@
       }
     }
 
-    async function shareTest() {
-      const resultName = currentResultType ? results[currentResultType].name : "";
-      const shareData = {
-        title: "테스트잇 가을 아이템 성격 테스트",
-        text: resultName
-          ? `나의 가을 아이템은 ${resultName}! 나와 닮은 가을 아이템을 확인해봐!`
-          : "나와 가장 닮은 가을 아이템을 확인해봐!",
-        url: TEST_URL
-      };
+   async function shareTest() {
+  const shareText = `테스트잇 가을 아이템 성격 테스트
+${TEST_URL}`;
 
-      try {
-        if (navigator.share) {
-          await navigator.share(shareData);
-        } else {
-          await navigator.clipboard.writeText(TEST_URL);
-          showToast("테스트 주소를 복사했어요.");
-        }
-      } catch (error) {
-        if (error.name !== "AbortError") {
-          fallbackCopy(TEST_URL);
-        }
-      }
+  try {
+    if (navigator.share) {
+      await navigator.share({
+        text: shareText
+      });
+    } else {
+      await navigator.clipboard.writeText(shareText);
+      showToast("테스트 주소를 복사했어요.");
     }
+  } catch (error) {
+    if (error.name !== "AbortError") {
+      fallbackCopy(shareText);
+    }
+  }
+}
 
     function fallbackCopy(text) {
       const textarea = document.createElement("textarea");

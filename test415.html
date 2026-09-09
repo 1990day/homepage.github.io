@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="나와 가장 닮은 가을 아이템을 알아보는 테스트잇 가을 아이템 성격 테스트">
+  <meta property="og:title" content="테스트잇 가을 아이템 성격 테스트">
+  <meta property="og:description" content="나와 가장 닮은 가을 아이템은 무엇일까?">
+  <meta property="og:image" content="https://test-it.co.kr/img_main415.png">
+  <title>테스트잇 가을 아이템 성격 테스트</title>
+
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link href="https://cdn.jsdelivr.net/gh/quiple/galmuri@latest/dist/galmuri.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://ads-partners.coupang.com/g.js"></script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #f8f3e8;
+      color: #3e2b20;
+      font-family: "Galmuri14", "Galmuri11", sans-serif;
+      letter-spacing: -0.4px;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: geometricPrecision;
+    }
+
+    button, input {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .site-header {
+      width: 100%;
+      height: 58px;
+      background: #fffdf8;
+      border-bottom: 1px solid #cbbba5;
+    }
+
+    .header-inner {
+      width: min(100%, 600px);
+      height: 100%;
+      margin: 0 auto;
+      padding: 0 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      color: #4b3326;
+      font-size: 17px;
+      font-weight: 700;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+    }
+
+    .nav a {
+      color: #594438;
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .app {
+      width: min(100%, 560px);
+      min-height: calc(100vh - 58px);
+      margin: 0 auto;
+      padding: 22px 14px 50px;
+    }
+
+    .screen {
+      display: none;
+    }
+
+    .screen.active {
+      display: block;
+    }
+
+    .main-card {
+      width: 100%;
+      padding: 0;
+      background: transparent;
+      border: 0;
+    }
+
+    .main-image {
+      display: block;
+      width: 100%;
+      height: auto;
+      background: transparent;
+    }
+
+    .primary-btn,
+    .action-btn {
+      width: 100%;
+      min-height: 52px;
+      border: 1px solid #6f4b34;
+      border-radius: 0;
+      font-weight: 700;
+    }
+
+    .primary-btn {
+      margin-top: 14px;
+      background: #6f4b34;
+      color: #fffdf8;
+      font-size: 16px;
+    }
+
+    .primary-btn:active,
+    .action-btn:active,
+    .answer-btn:active {
+      transform: translateY(1px);
+    }
+
+    .ad-area {
+      width: 350px;
+      max-width: 100%;
+      min-height: 140px;
+      margin: 22px auto 0;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .coupang-ad {
+      width: 350px;
+      max-width: 100%;
+      min-height: 140px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+
+    .question-wrap {
+      padding-top: 5px;
+    }
+
+    .progress-info {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      color: #765d4c;
+      font-size: 12px;
+    }
+
+    .progress-track {
+      width: 100%;
+      height: 9px;
+      margin-bottom: 38px;
+      background: #e5d7c3;
+      border: 1px solid #aa9078;
+    }
+
+    .progress-bar {
+      width: 0;
+      height: 100%;
+      background: #b45d3d;
+      transition: width 0.2s ease;
+    }
+
+    .question-number {
+      margin-bottom: 12px;
+      color: #b45d3d;
+      font-size: 14px;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .question-text {
+      min-height: 76px;
+      margin: 0 0 25px;
+      font-size: 19px;
+      line-height: 1.65;
+      text-align: center;
+      word-break: keep-all;
+    }
+
+    .answers {
+      display: grid;
+      gap: 12px;
+    }
+
+    .answer-btn {
+      width: 100%;
+      min-height: 74px;
+      padding: 16px 18px;
+      background: #fffdf8;
+      color: #3e2b20;
+      border: 1px solid #8c6e58;
+      border-radius: 0;
+      font-size: 14px;
+      line-height: 1.55;
+      text-align: center;
+      word-break: keep-all;
+    }
+
+    .answer-btn.selected {
+      background: #ead7ba;
+      border-color: #6f4b34;
+    }
+
+    .loading-box {
+      padding-top: 150px;
+      text-align: center;
+    }
+
+    .leaf-loader {
+      position: relative;
+      width: 58px;
+      height: 58px;
+      margin: 0 auto 26px;
+      animation: spin 1.5s linear infinite;
+    }
+
+    .leaf-loader span {
+      position: absolute;
+      width: 25px;
+      height: 16px;
+      background: #bc6a42;
+      border: 1px solid #704833;
+      border-radius: 85% 12% 85% 12%;
+    }
+
+    .leaf-loader span:nth-child(1) {
+      top: 3px;
+      left: 17px;
+      transform: rotate(45deg);
+    }
+
+    .leaf-loader span:nth-child(2) {
+      top: 27px;
+      left: 3px;
+      background: #d49c45;
+      transform: rotate(145deg);
+    }
+
+    .leaf-loader span:nth-child(3) {
+      top: 30px;
+      right: 2px;
+      background: #8c7c45;
+      transform: rotate(245deg);
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .loading-title {
+      margin: 0 0 10px;
+      font-size: 18px;
+    }
+
+    .loading-text {
+      margin: 0;
+      color: #765d4c;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .capture-card {
+      position: relative;
+      width: 100%;
+      padding: 0 20px 20px;
+      background: #fffdf8;
+      border: 2px solid #5b2c20;
+    }
+
+    .test-title-box {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: calc(100% + 40px);
+      min-height: 60px;
+      margin: 0 -20px 22px;
+      padding: 10px 32px;
+      color: #4c3428;
+      background: #f1e4cf;
+      border-bottom: 2px solid #5b2c20;
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.5;
+      text-align: center;
+      letter-spacing: 1.2px;
+    }
+
+    .test-title-box::before,
+    .test-title-box::after {
+      position: absolute;
+      top: 50%;
+      width: auto;
+      height: auto;
+      background: transparent;
+      border: 0;
+      font-size: 12px;
+      line-height: 1;
+      transform: translateY(-50%);
+    }
+
+    .test-title-box::before {
+      content: "🍁";
+      left: 15px;
+    }
+
+    .test-title-box::after {
+      content: "🍂";
+      right: 15px;
+    }
+
+    .result-label {
+      position: relative;
+      z-index: 1;
+      margin: 0 0 8px;
+      color: #8b6a52;
+      font-size: 12px;
+      text-align: center;
+    }
+
+    .result-name {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      color: #542f20;
+      font-size: 25px;
+      line-height: 1.35;
+      text-align: center;
+    }
+
+    .result-image-wrap {
+      position: relative;
+      z-index: 1;
+      width: 46%;
+      max-width: 190px;
+      margin: 16px auto 21px;
+      aspect-ratio: 1 / 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      border: 0;
+      overflow: visible;
+    }
+
+    .result-image {
+      position: relative;
+      z-index: 2;
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .result-summary {
+      position: relative;
+      z-index: 1;
+      margin: 0 0 18px;
+      padding: 13px 12px;
+      background: #f1e4cf;
+      color: #523a2c;
+      border: 2px solid #d0b18d;
+      font-size: 13px;
+      line-height: 1.7;
+      text-align: center;
+      word-break: keep-all;
+    }
+
+    .section-title {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 19px 0 11px;
+      padding: 0;
+      color: #6a3f2c;
+      background: transparent;
+      border: 0;
+      font-size: 14px;
+      letter-spacing: 0.7px;
+    }
+
+    .section-title::before,
+    .section-title::after {
+      content: "";
+      width: auto;
+      height: 2px;
+      flex: 1;
+      background: #bd855d;
+      border: 0;
+    }
+
+    .trait-list {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      padding: 0;
+      background: transparent;
+      border: 0;
+      list-style: none;
+    }
+
+    .trait-list li {
+      position: relative;
+      margin: 0 0 8px;
+      padding: 0 2px 0 17px;
+      color: #463229;
+      border-bottom: 0;
+      font-size: 13px;
+      line-height: 1.65;
+      word-break: keep-all;
+    }
+
+    .trait-list li::before {
+      content: "";
+      position: absolute;
+      top: 8px;
+      left: 3px;
+      width: 5px;
+      height: 5px;
+      background: #d9572d;
+      border: 1px solid #6b2c20;
+    }
+
+    .match-box {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      border: 2px solid #6b3426;
+      overflow: hidden;
+    }
+
+    .match-item {
+      min-width: 0;
+      padding: 13px 8px;
+      background: #e9ecd0;
+      text-align: center;
+    }
+
+    .match-item:nth-child(2) {
+      background: #f7dfcf;
+    }
+
+    .match-item + .match-item {
+      border-left: 2px solid #6b3426;
+    }
+
+    .match-item span {
+      display: block;
+      margin-bottom: 6px;
+      color: #8b6a52;
+      font-size: 10px;
+    }
+
+    .match-item strong {
+      font-size: 13px;
+    }
+
+    .capture-footer {
+      position: relative;
+      z-index: 1;
+      margin-top: 20px;
+      padding-top: 10px;
+      color: #957965;
+      border-top: 2px solid #d5ad83;
+      font-size: 9px;
+      text-align: center;
+      letter-spacing: 1.2px;
+    }
+
+    .actions {
+      display: grid;
+      gap: 9px;
+      margin-top: 14px;
+    }
+
+    .action-btn {
+      background: #fffdf8;
+      color: #533827;
+      font-size: 14px;
+    }
+
+    .action-btn.save {
+      background: #6f4b34;
+      color: #fffdf8;
+    }
+
+    .save-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      background: rgba(35, 25, 19, 0.7);
+    }
+
+    .save-modal.open {
+      display: flex;
+    }
+
+    .save-modal-box {
+      width: min(100%, 370px);
+      max-height: 92vh;
+      padding: 14px;
+      background: #fffdf8;
+      border: 1px solid #51392b;
+      overflow-y: auto;
+    }
+
+    .save-guide {
+      margin: 2px 0 11px;
+      font-size: 12px;
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    .saved-preview {
+      display: block;
+      width: min(100%, 300px);
+      height: auto;
+      margin: 0 auto;
+      border: 1px solid #b9a38b;
+    }
+
+    .modal-close {
+      width: 100%;
+      height: 46px;
+      margin-top: 10px;
+      background: #6f4b34;
+      color: #fff;
+      border: 0;
+      border-radius: 0;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 24px;
+      z-index: 10000;
+      display: none;
+      padding: 11px 15px;
+      background: #3e2b20;
+      color: #fff;
+      font-size: 12px;
+      transform: translateX(-50%);
+      white-space: nowrap;
+    }
+
+    .toast.show {
+      display: block;
+    }
+
+    @media (max-width: 420px) {
+      .nav { gap: 9px; }
+      .nav a { font-size: 14px; }
+      .app { padding-left: 12px; padding-right: 12px; }
+      .capture-card { padding: 0 15px 18px; }
+      .test-title-box {
+        width: calc(100% + 30px);
+        margin-right: -15px;
+        margin-left: -15px;
+      }
+      .result-name { font-size: 23px; }
+      .result-image-wrap { width: 48%; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="logo" href="https://test-it.co.kr/">테스트잇</a>
+      <nav class="nav" aria-label="주요 메뉴">
+        <a href="https://test-it.co.kr/category/personality">성격</a>
+        <a href="https://test-it.co.kr/category/face">얼굴</a>
+        <a href="https://test-it.co.kr/category/etc">그외</a>
+        <a href="https://test-it.co.kr/category/saju">사주</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="app">
+    <section id="mainScreen" class="screen active">
+      <div class="main-card">
+        <img class="main-image" src="img_main415.png" alt="테스트잇 가을 아이템 성격 테스트 메인 이미지">
+      </div>
+      <button id="startBtn" class="primary-btn" type="button">테스트 시작하기</button>
+
+      <div class="ad-area">
+        <article class="coupang-ad">
+          <script>
+            new PartnersCoupang.G({"id":798186,"template":"carousel","trackingCode":"AF4391881","width":"350","height":"140","tsource":""});
+          </script>
+        </article>
+      </div>
+    </section>
+
+    <section id="questionScreen" class="screen">
+      <div class="question-wrap">
+        <div class="progress-info">
+          <span>가을 아이템을 찾는 중</span>
+          <span id="progressText">1 / 12</span>
+        </div>
+        <div class="progress-track" aria-hidden="true">
+          <div id="progressBar" class="progress-bar"></div>
+        </div>
+        <div id="questionNumber" class="question-number">Q1</div>
+        <h2 id="questionText" class="question-text"></h2>
+        <div id="answers" class="answers"></div>
+      </div>
+
+      <div class="ad-area">
+        <article class="coupang-ad">
+          <script>
+            new PartnersCoupang.G({"id":798186,"template":"carousel","trackingCode":"AF4391881","width":"350","height":"140","tsource":""});
+          </script>
+        </article>
+      </div>
+    </section>
+
+    <section id="loadingScreen" class="screen">
+      <div class="loading-box">
+        <div class="leaf-loader" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </div>
+        <h2 class="loading-title">가을 아이템을 찾고 있어요</h2>
+        <p class="loading-text">선택한 답변을 하나씩 살펴보는 중입니다.</p>
+      </div>
+
+      <div class="ad-area">
+        <article class="coupang-ad">
+          <script>
+            new PartnersCoupang.G({"id":798186,"template":"carousel","trackingCode":"AF4391881","width":"350","height":"140","tsource":""});
+          </script>
+        </article>
+      </div>
+    </section>
+
+    <section id="resultScreen" class="screen">
+      <div id="captureCard" class="capture-card">
+        <div class="test-title-box">테스트잇 가을 아이템 성격 테스트</div>
+        <p class="result-label">나와 가장 닮은 가을 아이템은</p>
+        <h1 id="resultName" class="result-name"></h1>
+
+        <div class="result-image-wrap">
+          <img id="resultImage" class="result-image" src="" alt="">
+        </div>
+
+        <p id="resultSummary" class="result-summary"></p>
+
+        <h3 class="section-title">성격 특징</h3>
+        <ul id="traitList" class="trait-list"></ul>
+
+        <h3 class="section-title">가을 아이템 궁합</h3>
+        <div class="match-box">
+          <div class="match-item">
+            <span>같이 있으면 편한</span>
+            <strong id="goodMatch"></strong>
+          </div>
+          <div class="match-item">
+            <span>서로 다른 매력이 있는</span>
+            <strong id="differentMatch"></strong>
+          </div>
+        </div>
+
+        <div class="capture-footer">테스트잇 가을 아이템 성격 테스트 / TEST415</div>
+      </div>
+
+      <div class="actions">
+        <button id="saveBtn" class="action-btn save" type="button">결과 이미지 저장하기</button>
+        <button id="retryBtn" class="action-btn" type="button">다시 해보기</button>
+        <button id="otherBtn" class="action-btn" type="button">다른 테스트 해보기</button>
+        <button id="shareBtn" class="action-btn" type="button">테스트 공유하기</button>
+      </div>
+
+      <div class="ad-area">
+        <article class="coupang-ad">
+          <script>
+            new PartnersCoupang.G({"id":798186,"template":"carousel","trackingCode":"AF4391881","width":"350","height":"140","tsource":""});
+          </script>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <div id="saveModal" class="save-modal" role="dialog" aria-modal="true" aria-label="결과 이미지 저장">
+    <div class="save-modal-box">
+      <p class="save-guide">아래 이미지를 꾹 눌러 저장해주세요.</p>
+      <img id="savedPreview" class="saved-preview" src="" alt="저장할 결과 이미지">
+      <button id="modalClose" class="modal-close" type="button">닫기</button>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" role="status"></div>
+
+  <script>
+    const TEST_URL = "https://test-it.co.kr/test415";
+
+    const questions = [
+      {
+        text: "가을맞이 원데이 클래스를 신청한다면?",
+        answers: [
+          { text: "여러 사람과 함께하는 단체 수업을 선택", value: "E" },
+          { text: "인원이 적고 조용하게 진행되는 수업을 선택", value: "I" }
+        ]
+      },
+      {
+        text: "단풍 구경을 갈 장소를 고를 때<br>내 선택 기준은?",
+        answers: [
+          { text: "거리와 교통편, 실제 방문 후기", value: "S" },
+          { text: "사진을 보고 가장 마음이 끌리는 장소", value: "N" }
+        ]
+      },
+      {
+        text: "친구가 정성 들여 싼<br>가을 피크닉 도시락을 먹었을 때",
+        answers: [
+          { text: "간이 딱 맞다, 재료가 신선하다 등<br>구체적인 맛과 퀄리티를 칭찬함", value: "T" },
+          { text: "일찍 일어나서 준비하느라 힘들었겠다며<br>친구의 노고와 정성을 칭찬함", value: "F" }
+        ]
+      },
+      {
+        text: "이번 주말 일정이 통째로 비어있을 때 나는?",
+        answers: [
+          { text: "밀린 집안일, 장보기, 운동 등<br>주말 동안 할 일의 순서를 머릿속에 정해둠", value: "J" },
+          { text: "알람 없이 푹 자고 일어나서<br>그 순간 하고 싶은 것을 함", value: "P" }
+        ]
+      },
+      {
+        text: "사람이 많은 가을 축제에 가면<br>나는 주로",
+        answers: [
+          { text: "여러 곳을 돌아다니며 북적이는 분위기를 즐김", value: "E" },
+          { text: "보고 싶었던 곳만 둘러보고 한적한 곳으로 감", value: "I" }
+        ]
+      },
+      {
+        text: "은행이 많이 떨어진 가로수 길을 지나갈 때<br>가장 먼저 드는 생각은",
+        answers: [
+          { text: "아 절대 안 밟게 발밑 잘 보고 걸어야지", value: "S" },
+          { text: "냄새 안 나는 나무도 많은데<br>왜 하필 은행나무를 가로수로 심었을까?", value: "N" }
+        ]
+      },
+      {
+        text: "가을 여행 코스를 짜다가<br>일행과 의견이 부딪혔을 때 나는?",
+        answers: [
+          { text: "각 코스의 장단점, 비용을 비교하여<br>더 효율적인 쪽을 선택함", value: "T" },
+          { text: "그냥 적당히 양보하거나 절충안을 찾음", value: "F" }
+        ]
+      },
+      {
+        text: "가을맞이 대규모 세일(블랙프라이데이 등)<br>기간을 맞이할 때",
+        answers: [
+          { text: "미리 필요한 물건 리스트를 작성하고<br>할인율을 비교해 계획적으로 구매함", value: "J" },
+          { text: "구경하다가 갑자기 꽂히는 아이템이나<br>할인 폭이 큰 상품을 충동구매함", value: "P" }
+        ]
+      },
+      {
+        text: "친구들과 하루 종일 놀고<br>집에 돌아온 뒤에는",
+        answers: [
+          { text: "재미있었던 기분이 남아 또 약속을 잡고 싶음", value: "E" },
+          { text: "즐거웠지만 당분간 혼자 쉬는 시간이 필요함", value: "I" }
+        ]
+      },
+      {
+        text: "가을에 놀러 갈 옷을 고를 때<br>내 기준은?",
+        answers: [
+          { text: "오늘 온도에 맞는 실용성, 두께, 핏", value: "S" },
+          { text: "오늘 내가 보여주고 싶은 이미지나 느낌", value: "N" }
+        ]
+      },
+      {
+        text: "유명한 붕어빵 트럭에서 줄을 서 있는데<br>누군가 새치기를 할 때",
+        answers: [
+          { text: "새치기 사실을 명확히 지적하거나<br>사장님께 순서가 틀렸음을 알림", value: "T" },
+          { text: "불쾌하지만 일행과의 좋은 기분을<br>망치고 싶지 않아 참거나 눈치만 줌", value: "F" }
+        ]
+      },
+      {
+        text: "가을 파티 메뉴를 고를 때 나는?",
+        answers: [
+          { text: "지체되는 것을 싫어해 빨리 하나로 결론을 냄", value: "J" },
+          { text: "다 좋아 보여서 쉽게 결정을 못 내림", value: "P" }
+        ]
+      }
+    ];
+
+    const results = {
+      ENFJ: {
+        name: "도토리",
+        summary: "주변 분위기를 빠르게 파악하고<br>사람들을 자연스럽게 챙기는 편",
+        traits: [
+          "사람들의 분위기와 감정 변화를 빠르게 알아차림",
+          "함께하는 사람이 편하도록 먼저 움직이는 편",
+          "좋아하는 사람의 가능성을 발견하고 응원해줌",
+          "뭔가를 맡으면 기대에 맞게 끝까지 해내려고 함",
+          "혼자 참고 넘어가다가 뒤늦게 지칠 때가 있음",
+          "여럿이 함께할 때 자연스럽게 방향을 정리해주는 편",
+          "사이가 어색해지면 먼저 대화를 시도해 풀려고 함",
+          "도움이 되었다는 말을 들을 때 큰 보람을 느낌"
+        ],
+        good: "솔방울",
+        different: "핑크뮬리"
+      },
+      INFJ: {
+        name: "군고구마",
+        summary: "생각과 감정이 깊고<br>믿을 수 있는 관계를 중요하게 여김",
+        traits: [
+          "도덕적 기준이 높고 어긋나는 걸 불편해함",
+          "겉으로는 차분하지만 속으로는 생각과 감정이 많음",
+          "친한 사람에겐 한없이 다정하나 선 넘으면 칼같이 끊음",
+          "자신이 중요하게 생각하는 기준과 의미가 분명함",
+          "혼자 정리할 시간이 부족하면 쉽게 피로해짐",
+          "말하기 전에 상대가 어떻게 받아들일지 오래 생각함",
+          "남에게 민폐 끼치는 걸 세상에서 제일 싫어함",
+          "자신의 가치관과 크게 어긋나면 조용히 거리를 둠"
+        ],
+        good: "허수아비",
+        different: "홍시"
+      },
+      ENFP: {
+        name: "은행잎",
+        summary: "새로운 가능성을 잘 발견하고<br>관심이 생기면 적극적으로 움직임",
+        traits: [
+          "새로운 사람과 새로운 일에 금방 흥미를 느낌",
+          "틀에 맞추기보다 자신에게 맞는 방식을 찾으려고 함",
+          "감정 표현이 솔직하고 좋아하는 것이 분명함",
+          "충동적으로 결정하고 후회하는 일이 잦음",
+          "재미가 줄어들면 집중력도 함께 떨어질 수 있음",
+          "한 가지 이야기에서도 여러 아이디어를 빠르게 떠올림",
+          "다른 사람의 감정에 쉽게 공감하고 함께 반응함",
+          "계획이 바뀌어도 새로운 재미를 찾으며 잘 적응함"
+        ],
+        good: "도토리",
+        different: "무화과"
+      },
+      INFP: {
+        name: "허수아비",
+        summary: "자기만의 가치관이 뚜렷하고<br>감정을 깊게 받아들이는 편",
+        traits: [
+          "마음에 없는 말과 행동을 오래 유지하기 어려워함",
+          "나만의 확고한 감성과 취향이 존재함",
+          "다수보다 소수와 깊은 대화 나누는 걸 좋아함",
+          "편한 사람에게는 엉뚱하고 장난스러운 모습도 보여줌",
+          "갈등 피하려고 속으로 삭히다가 혼자 스트레스받음",
+          "혼자 조용히 보내는 시간에 감정과 생각을 정리함",
+          "겉으로 화려한 것보다 진심이 느껴지는 것을 좋아함",
+          "상처받은 말이나 장면을 오랫동안 기억하기도 함"
+        ],
+        good: "군고구마",
+        different: "억새"
+      },
+      ENTJ: {
+        name: "밤송이",
+        summary: "목표를 정하면 빠르게 계획하고<br>결과를 만들 때까지 밀어붙임",
+        traits: [
+          "목표가 생기면 필요한 과정과 순서를 빠르게 정함",
+          "문제를 피하지 않고 해결하는 쪽을 선택함",
+           "돌려 말하는 법 없이 사실만 직설적으로 말함",
+          "시간 낭비, 감정 낭비를 세상에서 제일 아까워함",
+           "모든 상황이 내 통제하에 있어야 마음이 편함",
+          "여럿이 머뭇거리면 자연스럽게 결정을 내리는 편",
+        "의견이 안 맞으면 끝까지 논리적으로 설득하려 함",
+          "냉정해 보여도 친한 사람들은 잘 챙김"
+        ],
+        good: "단풍잎",
+        different: "코스모스"
+      },
+      INTJ: {
+        name: "잠자리",
+        summary: "전체 흐름을 먼저 파악하고<br>장기적인 방향을 계획하는 편",
+        traits: [
+         "혼자 있는 시간이 전혀 외롭지 않고 제일 평온함",
+          "모든 현상에 대해 항상 왜? 라는 의문을 품음",
+          "영혼 없는 리액션이나 마음에 없는 소리를 못 함",
+          "남에게 관심 없고 남도 나한테 관심 없길 바람",
+          "대화할 때 논리가 안 맞으면 조용히 무시함",
+          "감정 기복이 크지 않고 늘 평온한 상태를 유지함",
+          "비효율적인 행동을 하는 사람을 이해하지 못함",
+          "관심 분야는 전문가 수준으로 깊게 파고듦"
+        ],
+        good: "밤송이",
+        different: "코스모스"
+      },
+      ENTP: {
+        name: "단풍잎",
+        summary: "새로운 방법을 찾는 데 익숙하고<br>대화하며 생각을 확장하는 편",
+        traits: [
+           "하지 말라고 하면 청개구리처럼 더 하고 싶어 함",
+          "대화하면서 생각을 넓히고 다른 관점을 발견함",
+      "임기응변이 뛰어나서 어떤 상황이든 잘 빠져나감",
+          "궁금한 것이 생기면 직접 확인해야 마음이 놓임",
+          "반복적이고 답이 정해진 일에는 흥미를 잃기 쉬움",
+          "의견이 달라도 흥미로운 대화라면 즐겁게 이어감",
+          "갑작스러운 변화에도 당황하기보다 방법부터 찾아냄",
+          "남 눈치 안 보고 내 소신대로 쿨하게 행동함"
+        ],
+        good: "밤송이",
+        different: "보름달"
+      },
+      INTP: {
+        name: "군밤",
+        summary: "궁금한 것은 원리부터 파악하고<br>혼자 깊게 생각하는 시간을 즐김",
+        traits: [
+          "이해되지 않는 것은 원리부터 차근차근 따져봄",
+          "혼자 생각을 정리하고 관심사를 파고드는 것을 좋아함",
+          "남한테 피해 안 주고 나도 피해받기 싫음",
+          "감정에 휩쓸리기보다 한발 떨어져 상황을 바라봄",
+          "생각이 길어져 시작이나 마무리가 늦어질 때가 있음",
+      "연락 텀이 아주 길고 확인을 귀찮아함",
+          "나만의 세계가 뚜렷해서 남들 시선을 신경 안 씀",
+           "비논리적인 억지 부리는 사람을 제일 한심하게 여김"
+        ],
+        good: "잠자리",
+        different: "솔방울"
+      },
+      ESFJ: {
+        name: "솔방울",
+        summary: "주변 사람을 세심하게 챙기고<br>관계를 꾸준히 유지하려고 함",
+        traits: [
+             "리액션이 커서 상대방 기분을 아주 잘 맞춰줌",
+          "함께하는 자리에서 소외되는 사람이 없도록 살핌",
+          "약속과 예의를 중요하게 생각하고 맡은 일에 성실함",
+             "속상한 일 있어도 분위기 망칠까 봐 혼자 웃고 넘김",
+          "상대의 반응이 차갑거나 평소와 다르면 신경을 많이 씀",
+          "말뿐인 위로보다 실제로 필요한 도움을 챙겨주는 편",
+         "모임에서 어색한 침묵이 흐르는 걸 잘 못 견딤",
+           "내가 챙겨준 만큼 상대도 나를 챙겨주길 은근히 바람"
+        ],
+        good: "도토리",
+        different: "군밤"
+      },
+      ISFJ: {
+        name: "보름달",
+        summary: "맡은 일을 꼼꼼하게 처리하고<br>가까운 사람에게 꾸준히 신경 씀",
+        traits: [
+          "눈에 띄지 않는 부분까지 꼼꼼하게 챙기는 편",
+          "한번 맺은 관계를 쉽게 놓지 않고 오래 지켜나감",
+          "익숙하고 안정적인 환경에서 실력을 잘 발휘함",
+       "주목받는 건 싫지만 인정받는 건 좋아함",
+          "배려심이 깊어 남에게 싫은 소리를 잘 못 함",
+          "참고 참다가 한 번 터지면 뒤도 안 돌아보고 끊음",
+          "과거의 사소한 대화나 상황을 잘 기억함",
+           "변화보다는 안정적이고 평화로운 일상을 추구함"
+        ],
+        good: "솔방울",
+        different: "단풍잎"
+      },
+      ESFP: {
+        name: "코스모스",
+        summary: "현재 상황을 빠르게 즐기고<br>감정과 반응을 솔직하게 표현함",
+        traits: [
+          "사람들과 함께할 때 에너지가 살아나고 표현이 풍부함",
+          "복잡하게 생각하기보다 지금 즐길 수 있는 것을 찾음",
+          "주변의 변화에 빠르게 반응하고 분위기를 잘 맞춤",
+          "좋아하는 사람에게 애정과 관심을 아끼지 않음",
+            "계획 세우는 건 귀찮고 매사 즉흥적으로 움직임",
+          "생각만 하기보다 직접 해보면서 답을 찾는 편",
+          "표정과 말투에 기분이 비교적 솔직하게 드러남",
+          "지나치게 엄격한 규칙이나 통제를 불편해함"
+        ],
+        good: "홍시",
+        different: "잠자리"
+      },
+      ISFP: {
+        name: "다람쥐",
+        summary: "자신의 취향과 속도를 중요하게 여기고<br>편안한 관계를 선호함",
+        traits: [
+             "미루고 미루다 발등에 불이 떨어져야 겨우 움직임",
+          "집에 한 번 들어가면 밖으로 나오려 하질 않음",
+        "갈등 생기는 게 피곤해서 그냥 져주는 게 편함",
+            "착해 보이지만 속으로는 절대 안 굽히는 고집이 있음",
+          "갈등이 길어지면 맞서기보다 잠시 거리를 둘 수 있음",
+          "옷이나 공간처럼 취향을 드러낼 수 있는 것에 관심이 많음",
+       "누가 내게 강요하거나 이래라저래라 하는 걸 혐오함",
+          "내 속마음을 남에게 구구절절 설명하기 귀찮아함"
+        ],
+        good: "보름달",
+        different: "밤송이"
+      },
+      ESTJ: {
+        name: "억새",
+        summary: "일의 순서와 기준을 분명히 정하고<br>결정한 것은 바로 실행하는 편",
+        traits: [
+         "애매한 걸 싫어하고 호불호가 아주 확실함",
+          "핑계 대고 행동이 느린 사람을 보면 화가 치밀어 오름",
+          "약속과 책임을 중요하게 생각하며 시간 관리가 확실함",
+          "비효율적인 과정이 보이면 바로 고치려고 함",
+          "답답한 상황에서는 말투가 단호해질 수 있음",
+               "남이 답답하게 구는 걸 못 봐서 차라리 내가 다 해버림",
+          "모든 게 계획대로 척척 맞아떨어질 때 쾌감을 느낌",
+          "할 일이 남아 있으면 쉬는 시간을 뒤로 미루기도 함"
+        ],
+        good: "무화과",
+        different: "허수아비"
+      },
+      ISTJ: {
+        name: "무화과",
+        summary: "익숙한 기준과 계획을 중요하게 여기고<br>맡은 일을 정확하게 마무리함",
+        traits: [
+            "예상치 못한 돌발 상황이 생기면 극도로 스트레스받음",
+          "번개 모임이나 즉흥적인 약속 생기는 걸 제일 싫어함",
+          "나서는 건 싫어하지만 내 몫은 조용히 다 챙김",
+          "한 번 산 물건은 닳아 없어질 때까지 오래 씀",
+          "낯선 사람과 억지로 대화 이어가는 게 너무 피곤함",
+          "표현은 서툴러도 행동으로 묵묵히 챙겨주는 편임",
+          "남의 사생활에 관심 없고 선 넘는 질문을 극도로 꺼림",
+          "평범하고 안정적인 일상 루틴이 유지될 때 가장 평온함"
+        ],
+        good: "억새",
+        different: "은행잎"
+      },
+      ESTP: {
+        name: "홍시",
+        summary: "상황 판단이 빠르고<br>문제가 생기면 바로 행동으로 해결함",
+        traits: [
+             "머리 아프게 고민할 시간에 일단 몸으로 부딪힘",
+          "눈치가 빠르고 분위기 파악을 기가 막히게 함",
+          "돌려 말하는 걸 싫어하고 직설적으로 팩트만 꽂음",
+          "가만히 있는 걸 못 참고 스릴 넘치는 경험을 즐김",
+          "과거에 연연하지 않고 지금 당장 재밌는 게 중요함",
+          "지는 걸 싫어해서 경쟁이 붙으면 승부욕이 폭발함",
+          "복잡하고 긴 설명을 듣고 있으면 하품부터 나옴",
+          "뒤끝이 전혀 없고 크게 화내도 다음 날이면 쿨하게 잊음"
+        ],
+        good: "코스모스",
+        different: "군고구마"
+      },
+      ISTP: {
+        name: "핑크뮬리",
+        summary: "필요한 핵심을 빠르게 파악하고<br>간단하고 현실적인 방법을 선호함",
+        traits: [
+               "연락하는 걸 귀찮아하고 혼자 있는 시간을 제일 사랑함",
+          "무슨 일이 생겨도 그럴 수 있지 하며 덤덤하게 넘김",
+          "감정 낭비를 싫어해서 우울할 틈 없이 바로 잊으려 함",
+          "내 바운더리 밖의 사람에게는 전혀 관심이 없음",
+          "누가 내 영역을 침범하거나 간섭하는 걸 극도로 싫어함",
+          "예상 밖의 상황에서도 침착하게 핵심을 파악하는 편",
+"말이 짧고 팩트만 전달해서 가끔 차갑다는 소리를 들음",
+          "꽂히면 끝장을 보지만 식으면 미련 없이 던져버림"
+        ],
+        good: "무화과",
+        different: "도토리"
+      }
+    };
+
+    const screens = {
+      main: document.getElementById("mainScreen"),
+      question: document.getElementById("questionScreen"),
+      loading: document.getElementById("loadingScreen"),
+      result: document.getElementById("resultScreen")
+    };
+
+    const scores = { E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0 };
+    let currentQuestion = 0;
+    let answerLocked = false;
+    let currentResultType = "";
+
+    function showScreen(name) {
+      Object.values(screens).forEach(screen => screen.classList.remove("active"));
+      screens[name].classList.add("active");
+    }
+
+    function startTest() {
+      currentQuestion = 0;
+      answerLocked = false;
+      currentResultType = "";
+      Object.keys(scores).forEach(key => scores[key] = 0);
+      showScreen("question");
+      renderQuestion();
+    }
+
+    function renderQuestion() {
+      const question = questions[currentQuestion];
+      const number = currentQuestion + 1;
+
+      document.getElementById("progressText").textContent = `${number} / ${questions.length}`;
+      document.getElementById("progressBar").style.width = `${(number / questions.length) * 100}%`;
+      document.getElementById("questionNumber").textContent = `Q${number}`;
+      document.getElementById("questionText").innerHTML = question.text;
+
+      const answers = document.getElementById("answers");
+      answers.innerHTML = "";
+
+      question.answers.forEach(answer => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "answer-btn";
+        button.innerHTML = answer.text;
+        button.addEventListener("click", () => selectAnswer(answer.value, button));
+        answers.appendChild(button);
+      });
+    }
+
+    function selectAnswer(value, button) {
+      if (answerLocked) return;
+      answerLocked = true;
+      button.classList.add("selected");
+      scores[value] += 1;
+
+      setTimeout(() => {
+        currentQuestion += 1;
+
+        if (currentQuestion < questions.length) {
+          answerLocked = false;
+          renderQuestion();
+        } else {
+          showLoading();
+        }
+      }, 180);
+    }
+
+    function showLoading() {
+      showScreen("loading");
+      setTimeout(showResult, 3000);
+    }
+
+    function calculateType() {
+      return [
+        scores.E > scores.I ? "E" : "I",
+        scores.S > scores.N ? "S" : "N",
+        scores.T > scores.F ? "T" : "F",
+        scores.J > scores.P ? "J" : "P"
+      ].join("");
+    }
+
+    function showResult() {
+      currentResultType = calculateType();
+      const result = results[currentResultType];
+
+      document.getElementById("resultName").textContent = result.name;
+      document.getElementById("resultSummary").innerHTML = result.summary;
+      document.getElementById("goodMatch").textContent = result.good;
+      document.getElementById("differentMatch").textContent = result.different;
+
+      const resultImage = document.getElementById("resultImage");
+      resultImage.style.display = "block";
+      resultImage.src = `img_${currentResultType.toLowerCase()}415.png`;
+      resultImage.alt = `${result.name} 결과 이미지`;
+      resultImage.onerror = function () {
+        this.style.display = "none";
+      };
+
+      const traitList = document.getElementById("traitList");
+      traitList.innerHTML = "";
+      result.traits.forEach(trait => {
+        const li = document.createElement("li");
+        li.textContent = trait;
+        traitList.appendChild(li);
+      });
+
+      showScreen("result");
+    }
+
+    async function saveResult() {
+      const saveBtn = document.getElementById("saveBtn");
+      const originalText = saveBtn.textContent;
+      saveBtn.disabled = true;
+      saveBtn.textContent = "이미지 만드는 중...";
+
+      try {
+        const canvas = await html2canvas(document.getElementById("captureCard"), {
+          scale: 3,
+          useCORS: true,
+          backgroundColor: "#fffdf8",
+          logging: false
+        });
+
+        const imageUrl = canvas.toDataURL("image/png", 1);
+        document.getElementById("savedPreview").src = imageUrl;
+        document.getElementById("saveModal").classList.add("open");
+      } catch (error) {
+        showToast("이미지를 만들지 못했어요. 다시 시도해주세요.");
+      } finally {
+        saveBtn.disabled = false;
+        saveBtn.textContent = originalText;
+      }
+    }
+
+    async function shareTest() {
+      const resultName = currentResultType ? results[currentResultType].name : "";
+      const shareData = {
+        title: "테스트잇 가을 아이템 성격 테스트",
+        text: resultName
+          ? `나의 가을 아이템은 ${resultName}! 나와 닮은 가을 아이템을 확인해봐!`
+          : "나와 가장 닮은 가을 아이템을 확인해봐!",
+        url: TEST_URL
+      };
+
+      try {
+        if (navigator.share) {
+          await navigator.share(shareData);
+        } else {
+          await navigator.clipboard.writeText(TEST_URL);
+          showToast("테스트 주소를 복사했어요.");
+        }
+      } catch (error) {
+        if (error.name !== "AbortError") {
+          fallbackCopy(TEST_URL);
+        }
+      }
+    }
+
+    function fallbackCopy(text) {
+      const textarea = document.createElement("textarea");
+      textarea.value = text;
+      textarea.style.position = "fixed";
+      textarea.style.opacity = "0";
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand("copy");
+      textarea.remove();
+      showToast("테스트 주소를 복사했어요.");
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById("toast");
+      toast.textContent = message;
+      toast.classList.add("show");
+      setTimeout(() => toast.classList.remove("show"), 1800);
+    }
+
+    document.getElementById("startBtn").addEventListener("click", startTest);
+    document.getElementById("retryBtn").addEventListener("click", () => showScreen("main"));
+    document.getElementById("otherBtn").addEventListener("click", () => {
+      location.href = "https://test-it.co.kr/";
+    });
+    document.getElementById("shareBtn").addEventListener("click", shareTest);
+    document.getElementById("saveBtn").addEventListener("click", saveResult);
+    document.getElementById("modalClose").addEventListener("click", () => {
+      document.getElementById("saveModal").classList.remove("open");
+    });
+    document.getElementById("saveModal").addEventListener("click", event => {
+      if (event.target.id === "saveModal") {
+        event.currentTarget.classList.remove("open");
+      }
+    });
+  </script>
+</body>
+</html>

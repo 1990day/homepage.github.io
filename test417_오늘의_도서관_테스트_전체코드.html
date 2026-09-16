@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>테스트잇 오늘의 도서관 테스트</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link href="https://cdn.jsdelivr.net/gh/quiple/galmuri@latest/dist/galmuri.css" rel="stylesheet">
+  <style>
+    *{box-sizing:border-box}
+    body{margin:0;background:#f4ede1;color:#17130f;font-family:Galmuri14,Arial,sans-serif}
+    button{font:inherit;color:#17130f;cursor:pointer}
+    .header{height:58px;background:#fffdf8;border-bottom:1px solid #8e7359;display:flex;align-items:center;justify-content:space-between;padding:0 22px}
+    .logo{font-size:18px;font-weight:700}
+    .nav{display:flex;gap:18px;font-size:14px}
+    .wrap{width:min(600px,100%);margin:0 auto;padding:24px 18px 50px}
+    .screen{display:none}.screen.active{display:block}
+    .paper{background:#fffdf8;border:2px solid #4f3d2e;padding:28px 22px}
+    .main-visual{height:330px;background:#d8e4cc;border:2px solid #4f3d2e;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+    .shelf{position:absolute;left:22px;right:22px;height:10px;background:#73543b;border:2px solid #4f3d2e}
+    .shelf.one{top:115px}.shelf.two{top:238px}
+    .books{position:absolute;left:35px;right:35px;top:36px;height:82px;display:flex;align-items:flex-end;justify-content:center;gap:6px}
+    .books.bottom{top:158px}
+    .book{width:30px;border:1px solid #4f3d2e;border-bottom:0}
+    .b1{height:66px;background:#f4a7b9}.b2{height:73px;background:#f4d57a}.b3{height:58px;background:#8db9aa}.b4{height:79px;background:#889cc5}.b5{height:64px;background:#d9a078}.b6{height:75px;background:#c9a5cf}.b7{height:61px;background:#e7b875}
+    .librarian{position:absolute;bottom:18px;right:58px;width:82px;height:82px;background:#fff8e9;border:2px solid #4f3d2e;border-radius:50% 50% 45% 45%}
+    .librarian:before,.librarian:after{content:"";position:absolute;top:-15px;width:29px;height:32px;background:#fff8e9;border:2px solid #4f3d2e;transform:rotate(45deg);z-index:-1}
+    .librarian:before{left:5px}.librarian:after{right:5px}
+    .face{margin-top:31px;text-align:center;font-family:Arial;font-size:23px}
+    h1{font-size:25px;line-height:1.5;text-align:center;margin:25px 0 10px;letter-spacing:-1px}
+    .sub{text-align:center;font-size:14px;line-height:1.8;color:#5d4b3d;margin:0 0 22px}
+    .primary,.secondary{width:100%;min-height:54px;border:2px solid #4f3d2e;border-radius:0;margin-top:12px}
+    .primary{background:#e995aa;font-weight:700}.secondary{background:#fffdf8}
+    .notice{text-align:center;font-size:11px;color:#7a6758;line-height:1.6;margin-top:13px}
+    .progress-area{margin-bottom:18px}.progress-text{font-size:13px;margin-bottom:8px;text-align:right}.progress{height:10px;border:1px solid #4f3d2e;background:#fffdf8}.progress-fill{height:100%;background:#92af83;width:0;transition:width .2s}
+    .question-card{background:#fffdf8;border:2px solid #4f3d2e;padding:27px 19px}
+    .question-no{font-size:12px;color:#947560;margin-bottom:12px}.question{font-size:19px;line-height:1.65;margin-bottom:20px;min-height:62px}
+    .answer{width:100%;background:#f8f2e8;border:1px solid #806650;border-radius:0;padding:15px 12px;margin:6px 0;line-height:1.55;text-align:left}
+    .answer:hover{background:#efd9df}.answer:active{background:#e9c4cf}
+    .result-head{text-align:center;border-bottom:1px dashed #806650;padding-bottom:20px;margin-bottom:20px}
+    .stamp{display:inline-block;border:2px solid #b84f69;color:#b84f69;padding:7px 11px;transform:rotate(-3deg);font-size:13px;margin-bottom:12px}
+    .result-head h2{font-size:23px;line-height:1.5;margin:7px 0}.result-head p{font-size:13px;line-height:1.7;color:#695546;margin:6px 0}
+    .best{background:#f7e6ea;border:2px solid #4f3d2e;padding:21px 17px;margin-bottom:17px}
+    .label{font-size:12px;color:#9b4960;margin-bottom:9px}.best-title{font-size:22px;line-height:1.45;margin-bottom:6px}.author{font-size:13px;color:#6a5748;margin-bottom:15px}
+    .reason{font-size:14px;line-height:1.8;border-top:1px dashed #9b806b;padding-top:13px}
+    .chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:13px}.chip{font-size:11px;background:#fffdf8;border:1px solid #8d725d;padding:5px 7px}
+    .more-title{text-align:center;font-size:16px;margin:25px 0 12px}
+    .recommend-list{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+    .recommend{background:#fffdf8;border:1px solid #705945;padding:13px 11px;min-height:117px}
+    .recommend .num{font-size:11px;color:#a34e66;margin-bottom:8px}.recommend .title{font-size:14px;line-height:1.5;margin-bottom:6px}.recommend .writer{font-size:11px;color:#6d5949;line-height:1.5}
+    .receipt{margin-top:20px;background:#fffdf8;border:1px dashed #705945;padding:16px;font-size:12px;line-height:1.8}
+    .ad{height:140px;border:1px dashed #ad9987;margin-top:22px;display:flex;align-items:center;justify-content:center;color:#a08b79;font-size:12px;background:#fffdf8}
+    .toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%);background:#33271e;color:white;padding:11px 16px;font-size:12px;display:none;z-index:20}
+    @media(max-width:600px){.header{padding:0 14px}.nav{gap:11px;font-size:12px}.wrap{padding:18px 14px 40px}.paper{padding:23px 17px}.main-visual{height:300px}h1{font-size:22px}.question{font-size:17px}.recommend-list{grid-template-columns:1fr 1fr}}
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="logo">테스트잇</div>
+    <nav class="nav"><span>성격</span><span>얼굴</span><span>그외</span><span>사주</span></nav>
+  </header>
+
+  <main class="wrap">
+    <section id="mainScreen" class="screen active">
+      <div class="main-visual">
+        <div class="books"><i class="book b1"></i><i class="book b3"></i><i class="book b6"></i><i class="book b2"></i><i class="book b5"></i><i class="book b4"></i><i class="book b7"></i><i class="book b1"></i><i class="book b3"></i></div>
+        <div class="shelf one"></div>
+        <div class="books bottom"><i class="book b4"></i><i class="book b7"></i><i class="book b2"></i><i class="book b6"></i><i class="book b3"></i><i class="book b5"></i><i class="book b1"></i></div>
+        <div class="shelf two"></div>
+        <div class="librarian"><div class="face">• ᴗ •</div></div>
+      </div>
+      <div class="paper">
+        <h1>테스트잇<br>오늘의 도서관 테스트</h1>
+        <p class="sub">지금 내 취향과 기분을 알려주면<br>사서가 오늘 읽을 책을 골라드려요.</p>
+      </div>
+      <button class="primary" onclick="startTest()">도서관 입장하기</button>
+      <p class="notice">12개의 질문을 통해 등록된 도서 80권 중<br>잘 맞는 책 5권을 추천합니다.</p>
+      <div class="ad">광고 영역</div>
+    </section>
+
+    <section id="questionScreen" class="screen">
+      <div class="progress-area"><div id="progressText" class="progress-text">1 / 12</div><div class="progress"><div id="progressFill" class="progress-fill"></div></div></div>
+      <div class="question-card">
+        <div id="questionNo" class="question-no">LIBRARY QUESTION 01</div>
+        <div id="questionText" class="question"></div>
+        <div id="answers"></div>
+      </div>
+      <div class="ad">광고 영역</div>
+    </section>
+
+    <section id="resultScreen" class="screen">
+      <div class="paper">
+        <div class="result-head"><div class="stamp">오늘의 대출 승인</div><h2 id="resultType"></h2><p id="resultDesc"></p></div>
+        <div id="bestBook" class="best"></div>
+        <div class="more-title">같은 책장에서 함께 발견한 책</div>
+        <div id="recommendList" class="recommend-list"></div>
+        <div id="receipt" class="receipt"></div>
+      </div>
+      <button class="primary" onclick="recommendAgain()">같은 취향으로 다른 책 찾기</button>
+      <button class="secondary" onclick="restartTest()">다시 해보기</button>
+      <button class="secondary" onclick="shareTest()">테스트 공유하기</button>
+      <div class="ad">광고 영역</div>
+    </section>
+  </main>
+  <div id="toast" class="toast"></div>
+
+  <script>
+    const questions=[
+      {q:'오늘 도서관에 온 가장 큰 이유는?',a:[
+        {t:'복잡한 생각을 잠시 잊고 싶어서',w:{purpose:'fun',mood:'warm'}},{t:'마음을 정리하고 위로받고 싶어서',w:{purpose:'comfort',mood:'warm'}},{t:'새로운 지식과 관점을 얻고 싶어서',w:{purpose:'knowledge',depth:'deep'}},{t:'생활을 바꿀 실용적인 답을 찾고 싶어서',w:{purpose:'growth',depth:'easy'}}]},
+      {q:'지금 가장 끌리는 책장은?',a:[
+        {t:'소설과 이야기',w:{group:'fiction'}},{t:'에세이와 시',w:{group:'emotion'}},{t:'인문·역사·과학',w:{group:'knowledge'}},{t:'심리·자기계발·경제',w:{group:'practical'}}]},
+      {q:'이야기가 시작된다면 어느 쪽이 좋아?',a:[
+        {t:'첫 장부터 사건이 벌어지는 이야기',w:{pace:'fast',mood:'tense'}},{t:'평범한 일상에 조금씩 스며드는 이야기',w:{pace:'slow',mood:'warm'}},{t:'현실에는 없는 세계로 들어가는 이야기',w:{genre:'sf',mood:'wonder'}},{t:'인물의 마음을 깊게 따라가는 이야기',w:{depth:'deep',mood:'thoughtful'}}]},
+      {q:'책을 읽을 때 원하는 문장은?',a:[
+        {t:'짧고 바로 이해되는 문장',w:{depth:'easy',length:'short'}},{t:'감정이 섬세하게 느껴지는 문장',w:{mood:'emotional',group:'emotion'}},{t:'읽고 나서 오래 생각하게 되는 문장',w:{depth:'deep',mood:'thoughtful'}},{t:'정보가 명확하게 정리된 문장',w:{purpose:'knowledge',group:'practical'}}]},
+      {q:'오늘 감당할 수 있는 책의 무게는?',a:[
+        {t:'가볍고 편안한 책',w:{depth:'easy',mood:'warm'}},{t:'조금 진지해도 괜찮은 책',w:{depth:'medium',mood:'thoughtful'}},{t:'어렵더라도 깊이 파고드는 책',w:{depth:'deep',length:'long'}},{t:'긴장감만 있다면 무거워도 괜찮음',w:{mood:'tense',pace:'fast'}}]},
+      {q:'책 한 권에 쓸 수 있는 시간은?',a:[
+        {t:'한두 번에 빠르게 읽고 싶음',w:{length:'short',pace:'fast'}},{t:'며칠 동안 부담 없이 읽고 싶음',w:{length:'medium',depth:'easy'}},{t:'시간을 두고 천천히 읽고 싶음',w:{length:'long',pace:'slow'}},{t:'재미있다면 분량은 상관없음',w:{purpose:'fun',pace:'fast'}}]},
+      {q:'더 끌리는 배경은?',a:[
+        {t:'지금 내가 사는 현실과 가까운 곳',w:{setting:'real',origin:'kr'}},{t:'낯선 나라와 다른 시대',w:{setting:'world',origin:'foreign'}},{t:'미래·우주·상상 속 세계',w:{setting:'imaginary',genre:'sf'}},{t:'배경보다 사람의 마음이 중요함',w:{mood:'emotional',depth:'deep'}}]},
+      {q:'책을 덮은 뒤 남았으면 하는 것은?',a:[
+        {t:'기분 좋은 여운',w:{mood:'warm',purpose:'comfort'}},{t:'충격적인 반전과 몰입감',w:{mood:'tense',genre:'mystery'}},{t:'세상을 보는 새로운 관점',w:{purpose:'knowledge',depth:'deep'}},{t:'당장 해볼 수 있는 변화',w:{purpose:'growth',group:'practical'}}]},
+      {q:'책을 고를 때 어느 쪽에 더 가까워?',a:[
+        {t:'많은 사람이 읽은 유명한 책이 좋음',w:{fame:'classic'}},{t:'요즘 자주 보이는 책이 궁금함',w:{fame:'popular'}},{t:'잘 알려지지 않은 책도 괜찮음',w:{fame:'hidden'}},{t:'유명세보다 내 취향이 중요함',w:{fame:'any'}}]},
+      {q:'주인공에게 바라는 모습은?',a:[
+        {t:'문제를 해결하며 앞으로 나아감',w:{pace:'fast',purpose:'growth'}},{t:'상처를 안고도 일상을 살아감',w:{mood:'emotional',purpose:'comfort'}},{t:'익숙한 세상에 계속 질문함',w:{mood:'thoughtful',depth:'deep'}},{t:'예상할 수 없는 선택을 함',w:{mood:'tense',purpose:'fun'}}]},
+      {q:'지금 피하고 싶은 책은?',a:[
+        {t:'너무 우울하고 무거운 책',w:{avoid:'heavy',mood:'warm'}},{t:'설명만 길고 사건이 없는 책',w:{avoid:'slow',pace:'fast'}},{t:'가볍게 끝나서 남는 것이 없는 책',w:{avoid:'light',depth:'deep'}},{t:'훈계하듯 답을 정해주는 책',w:{avoid:'advice',group:'fiction'}}]},
+      {q:'사서에게 마지막으로 부탁한다면?',a:[
+        {t:'시간 가는 줄 모를 책을 찾아주세요',w:{purpose:'fun',pace:'fast'}},{t:'지금의 나를 다독여줄 책을 찾아주세요',w:{purpose:'comfort',mood:'warm'}},{t:'생각의 범위를 넓혀줄 책을 찾아주세요',w:{purpose:'knowledge',depth:'deep'}},{t:'내일을 조금 바꿔줄 책을 찾아주세요',w:{purpose:'growth',group:'practical'}}]}
+    ];
+
+    // 80권의 기본 추천 데이터. 필요할 때 같은 형식으로 계속 추가할 수 있습니다.
+    const books=[
+      B('불편한 편의점','김호연','novel','warm','easy','medium','slow','comfort','kr','popular'),
+      B('아몬드','손원평','novel','emotional','easy','medium','fast','comfort','kr','popular'),
+      B('달러구트 꿈 백화점','이미예','fantasy','warm','easy','medium','fast','fun','kr','popular'),
+      B('메리골드 마음 세탁소','윤정은','novel','warm','easy','medium','slow','comfort','kr','popular'),
+      B('모순','양귀자','novel','thoughtful','medium','medium','slow','comfort','kr','classic'),
+      B('칵테일, 러브, 좀비','조예은','novel','tense','easy','short','fast','fun','kr','popular'),
+      B('구의 증명','최진영','novel','emotional','medium','short','slow','comfort','kr','popular'),
+      B('파과','구병모','novel','tense','medium','medium','fast','fun','kr','popular'),
+
+      B('데미안','헤르만 헤세','classic','thoughtful','medium','medium','slow','knowledge','foreign','classic'),
+      B('인간 실격','다자이 오사무','classic','heavy','medium','short','slow','thoughtful','foreign','classic'),
+      B('이방인','알베르 카뮈','classic','thoughtful','medium','short','slow','knowledge','foreign','classic'),
+      B('노인과 바다','어니스트 헤밍웨이','classic','thoughtful','easy','short','slow','comfort','foreign','classic'),
+      B('변신','프란츠 카프카','classic','heavy','medium','short','fast','thoughtful','foreign','classic'),
+      B('위대한 개츠비','F. 스콧 피츠제럴드','classic','emotional','medium','medium','slow','thoughtful','foreign','classic'),
+      B('동물농장','조지 오웰','classic','thoughtful','easy','short','fast','knowledge','foreign','classic'),
+      B('참을 수 없는 존재의 가벼움','밀란 쿤데라','classic','thoughtful','deep','long','slow','knowledge','foreign','classic'),
+
+      B('그리고 아무도 없었다','애거사 크리스티','mystery','tense','easy','medium','fast','fun','foreign','classic'),
+      B('용의자 X의 헌신','히가시노 게이고','mystery','tense','easy','medium','fast','fun','foreign','popular'),
+      B('백야행','히가시노 게이고','mystery','heavy','medium','long','fast','fun','foreign','popular'),
+      B('13.67','찬호께이','mystery','tense','medium','long','fast','fun','foreign','hidden'),
+      B('살인자의 기억법','김영하','mystery','tense','easy','short','fast','fun','kr','popular'),
+      B('고백','미나토 가나에','mystery','heavy','easy','medium','fast','fun','foreign','popular'),
+      B('셜록 홈즈의 모험','아서 코난 도일','mystery','tense','easy','medium','fast','fun','foreign','classic'),
+      B('나미야 잡화점의 기적','히가시노 게이고','mystery','warm','easy','medium','fast','comfort','foreign','popular'),
+
+      B('우리가 빛의 속도로 갈 수 없다면','김초엽','sf','thoughtful','medium','medium','slow','knowledge','kr','popular'),
+      B('지구 끝의 온실','김초엽','sf','warm','medium','medium','fast','fun','kr','popular'),
+      B('천 개의 파랑','천선란','sf','emotional','easy','medium','fast','comfort','kr','popular'),
+      B('프로젝트 헤일메리','앤디 위어','sf','wonder','medium','long','fast','fun','foreign','popular'),
+      B('듄','프랭크 허버트','sf','wonder','deep','long','slow','fun','foreign','classic'),
+      B('삼체','류츠신','sf','wonder','deep','long','fast','knowledge','foreign','popular'),
+      B('멋진 신세계','올더스 헉슬리','sf','thoughtful','medium','medium','fast','knowledge','foreign','classic'),
+      B('1984','조지 오웰','sf','heavy','medium','medium','fast','knowledge','foreign','classic'),
+
+      B('나는 나로 살기로 했다','김수현','essay','warm','easy','medium','slow','comfort','kr','popular'),
+      B('보통의 언어들','김이나','essay','emotional','easy','medium','slow','comfort','kr','popular'),
+      B('여행의 이유','김영하','essay','thoughtful','easy','short','slow','knowledge','kr','popular'),
+      B('애쓰지 않고 편안하게','김수현','essay','warm','easy','medium','slow','comfort','kr','popular'),
+      B('죽고 싶지만 떡볶이는 먹고 싶어','백세희','essay','emotional','easy','medium','slow','comfort','kr','popular'),
+      B('어른의 행복은 조용하다','태수','essay','warm','easy','medium','slow','comfort','kr','popular'),
+      B('무례한 사람에게 웃으며 대처하는 법','정문정','essay','practical','easy','medium','fast','growth','kr','popular'),
+      B('하마터면 열심히 살 뻔했다','하완','essay','warm','easy','medium','slow','comfort','kr','popular'),
+
+      B('미움받을 용기','기시미 이치로·고가 후미타케','psychology','practical','easy','medium','fast','growth','foreign','popular'),
+      B('생각에 관한 생각','대니얼 카너먼','psychology','thoughtful','deep','long','slow','knowledge','foreign','classic'),
+      B('마음의 법칙','폴커 키츠·마누엘 투쉬','psychology','practical','easy','medium','fast','knowledge','foreign','popular'),
+      B('오은영의 화해','오은영','psychology','warm','easy','medium','slow','comfort','kr','popular'),
+      B('관계의 언어','문요한','psychology','thoughtful','medium','medium','slow','growth','kr','popular'),
+      B('설득의 심리학','로버트 치알디니','psychology','practical','medium','long','fast','knowledge','foreign','classic'),
+      B('콰이어트','수전 케인','psychology','thoughtful','medium','long','slow','comfort','foreign','classic'),
+      B('감정의 발견','마크 브래킷','psychology','practical','medium','medium','slow','growth','foreign','hidden'),
+
+      B('아주 작은 습관의 힘','제임스 클리어','self','practical','easy','medium','fast','growth','foreign','popular'),
+      B('원씽','게리 켈러·제이 파파산','self','practical','easy','medium','fast','growth','foreign','popular'),
+      B('그릿','앤절라 더크워스','self','practical','medium','medium','fast','growth','foreign','popular'),
+      B('몰입','황농문','self','thoughtful','medium','medium','slow','growth','kr','classic'),
+      B('도둑맞은 집중력','요한 하리','self','thoughtful','medium','long','fast','growth','foreign','popular'),
+      B('딥 워크','칼 뉴포트','self','practical','medium','medium','fast','growth','foreign','classic'),
+      B('타이탄의 도구들','팀 페리스','self','practical','easy','long','fast','growth','foreign','popular'),
+      B('에센셜리즘','그렉 맥커운','self','practical','easy','medium','fast','growth','foreign','classic'),
+
+      B('사피엔스','유발 하라리','humanities','thoughtful','medium','long','fast','knowledge','foreign','popular'),
+      B('총, 균, 쇠','재레드 다이아몬드','humanities','thoughtful','deep','long','slow','knowledge','foreign','classic'),
+      B('팩트풀니스','한스 로슬링','humanities','practical','easy','medium','fast','knowledge','foreign','popular'),
+      B('거의 모든 것의 역사','빌 브라이슨','humanities','wonder','medium','long','fast','knowledge','foreign','classic'),
+      B('역사의 쓸모','최태성','humanities','warm','easy','medium','fast','knowledge','kr','popular'),
+      B('지적 대화를 위한 넓고 얕은 지식 1','채사장','humanities','practical','easy','medium','fast','knowledge','kr','popular'),
+      B('정의란 무엇인가','마이클 샌델','humanities','thoughtful','deep','long','slow','knowledge','foreign','classic'),
+      B('공정하다는 착각','마이클 샌델','humanities','thoughtful','deep','long','slow','knowledge','foreign','popular'),
+
+      B('코스모스','칼 세이건','science','wonder','deep','long','slow','knowledge','foreign','classic'),
+      B('이기적 유전자','리처드 도킨스','science','thoughtful','deep','long','slow','knowledge','foreign','classic'),
+      B('물고기는 존재하지 않는다','룰루 밀러','science','emotional','medium','medium','fast','knowledge','foreign','popular'),
+      B('떨림과 울림','김상욱','science','thoughtful','medium','medium','slow','knowledge','kr','popular'),
+      B('열두 발자국','정재승','science','practical','easy','medium','fast','knowledge','kr','popular'),
+      B('엔드 오브 타임','브라이언 그린','science','wonder','deep','long','slow','knowledge','foreign','hidden'),
+      B('찬란한 멸종','이정모','science','wonder','easy','medium','fast','knowledge','kr','popular'),
+      B('이토록 뜻밖의 뇌과학','리사 펠드먼 배럿','science','practical','medium','medium','fast','knowledge','foreign','popular'),
+
+      B('돈의 심리학','모건 하우절','economy','practical','easy','medium','fast','growth','foreign','popular'),
+      B('부의 추월차선','엠제이 드마코','economy','practical','easy','long','fast','growth','foreign','popular'),
+      B('경제학 콘서트','팀 하포드','economy','practical','easy','medium','fast','knowledge','foreign','classic'),
+      B('넛지','리처드 탈러·캐스 선스타인','economy','thoughtful','medium','long','slow','knowledge','foreign','classic'),
+      B('제로 투 원','피터 틸','economy','practical','easy','short','fast','growth','foreign','classic'),
+      B('린 스타트업','에릭 리스','economy','practical','medium','medium','fast','growth','foreign','classic'),
+      B('브랜드 설계자','러셀 브런슨','economy','practical','easy','long','fast','growth','foreign','popular'),
+      B('마케팅 설계자','러셀 브런슨','economy','practical','easy','long','fast','growth','foreign','popular')
+    ];
+
+    function B(title,author,genre,mood,depth,length,pace,purpose,origin,fame){return{title,author,genre,mood,depth,length,pace,purpose,origin,fame}}
+
+    const genreGroup={novel:'fiction',classic:'fiction',mystery:'fiction',fantasy:'fiction',sf:'fiction',essay:'emotion',poetry:'emotion',psychology:'practical',self:'practical',economy:'practical',humanities:'knowledge',science:'knowledge'};
+    const genreName={novel:'소설',classic:'고전',mystery:'추리',fantasy:'판타지',sf:'SF',essay:'에세이',psychology:'심리',self:'자기계발',humanities:'인문',science:'과학',economy:'경제'};
+    const moodName={warm:'따뜻함',emotional:'감정 중심',thoughtful:'생각할 거리',tense:'긴장감',wonder:'새로운 세계',heavy:'묵직함',practical:'실용적'};
+    const purposeName={fun:'몰입과 재미',comfort:'위로와 여운',knowledge:'지식과 관점',growth:'변화와 성장',thoughtful:'깊은 사색'};
+    const typeInfo={
+      fun:['이야기 수집가','재미와 몰입을 가장 먼저 찾는 독서 취향임'],
+      comfort:['마음 휴게실 단골','편안한 문장과 오래 남는 감정을 좋아하는 취향임'],
+      knowledge:['호기심 서가 탐험가','새로운 사실과 관점을 발견할 때 만족하는 취향임'],
+      growth:['내일을 바꾸는 독서가','읽은 내용을 생활에 적용하고 싶은 취향임']
+    };
+    let current=0,answers=[],lastRanked=[];
+
+    function startTest(){current=0;answers=[];show('questionScreen');renderQuestion()}
+    function renderQuestion(){
+      const item=questions[current];
+      document.getElementById('progressText').textContent=`${current+1} / ${questions.length}`;
+      document.getElementById('progressFill').style.width=`${(current+1)/questions.length*100}%`;
+      document.getElementById('questionNo').textContent=`LIBRARY QUESTION ${String(current+1).padStart(2,'0')}`;
+      document.getElementById('questionText').textContent=item.q;
+      const box=document.getElementById('answers');box.innerHTML='';
+      item.a.forEach(option=>{const btn=document.createElement('button');btn.className='answer';btn.textContent=option.t;btn.onclick=()=>selectAnswer(option.w);box.appendChild(btn)});
+    }
+    function selectAnswer(weight){answers.push(weight);current++;if(current<questions.length)renderQuestion();else makeResult(false)}
+    function makeResult(randomize){
+      const pref={};
+      answers.forEach(a=>Object.entries(a).forEach(([k,v])=>{if(k!=='avoid')pref[k]=(pref[k]||{}),pref[k][v]=(pref[k][v]||0)+1}));
+      lastRanked=books.map((book,index)=>({book,index,score:scoreBook(book,pref)+(randomize?Math.random()*3:0)})).sort((a,b)=>b.score-a.score);
+      const topPool=lastRanked.slice(0,randomize?18:12);
+      const picks=randomize?shuffle(topPool).slice(0,5):topPool.slice(0,5);
+      const mainPurpose=topKey(pref.purpose)||'fun';
+      showResult(picks.map(x=>x.book),mainPurpose);
+      show('resultScreen');
+    }
+    function scoreBook(book,pref){
+      let s=0;
+      const checks=[['genre',book.genre,4],['group',genreGroup[book.genre],6],['mood',book.mood,5],['depth',book.depth,4],['length',book.length,3],['pace',book.pace,4],['purpose',book.purpose,7],['origin',book.origin,2],['fame',book.fame,2]];
+      checks.forEach(([key,val,point])=>{if(pref[key]&&pref[key][val])s+=pref[key][val]*point});
+      if(pref.fame&&pref.fame.any)s+=1;
+      return s;
+    }
+    function showResult(picks,purpose){
+      const info=typeInfo[purpose]||typeInfo.fun;
+      document.getElementById('resultType').textContent=info[0];document.getElementById('resultDesc').textContent=info[1];
+      const best=picks[0];
+      document.getElementById('bestBook').innerHTML=`<div class="label">사서가 고른 오늘의 책</div><div class="best-title">${best.title}</div><div class="author">${best.author}</div><div class="reason">${reasonFor(best)}</div><div class="chips"><span class="chip">${genreName[best.genre]||best.genre}</span><span class="chip">${moodName[best.mood]||best.mood}</span><span class="chip">${purposeName[best.purpose]||best.purpose}</span></div>`;
+      document.getElementById('recommendList').innerHTML=picks.slice(1).map((b,i)=>`<div class="recommend"><div class="num">대출 후보 0${i+2}</div><div class="title">${b.title}</div><div class="writer">${b.author}<br>${genreName[b.genre]||b.genre} · ${moodName[b.mood]||b.mood}</div></div>`).join('');
+      document.getElementById('receipt').innerHTML=`대출 권수　5권<br>대표 취향　${purposeName[purpose]}<br>도서 데이터　총 ${books.length}권<br>반납 기한　마음에 오래 남을 때까지`;
+    }
+    function reasonFor(b){
+      const parts=[];
+      if(b.purpose==='fun')parts.push('빠르게 몰입할 수 있는 재미를 원한 답변과 잘 맞아요.');
+      if(b.purpose==='comfort')parts.push('지금의 마음을 편하게 다독일 책을 찾는 답변과 잘 맞아요.');
+      if(b.purpose==='knowledge')parts.push('새로운 사실과 관점을 얻고 싶은 답변과 잘 맞아요.');
+      if(b.purpose==='growth')parts.push('읽은 뒤 작은 변화를 시작하고 싶은 답변과 잘 맞아요.');
+      if(b.length==='short')parts.push('분량 부담이 적어 비교적 빠르게 읽기 좋아요.');
+      else if(b.depth==='deep')parts.push('시간을 두고 깊게 읽을수록 생각할 거리가 많은 책이에요.');
+      else if(b.pace==='fast')parts.push('전개나 구성이 빨라 흐름을 이어가기 좋은 책이에요.');
+      else parts.push('서두르지 않고 천천히 읽기 좋은 책이에요.');
+      return parts.join(' ');
+    }
+    function recommendAgain(){makeResult(true)}
+    function restartTest(){current=0;answers=[];show('mainScreen')}
+    function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active')}
+    function topKey(obj){if(!obj)return null;return Object.entries(obj).sort((a,b)=>b[1]-a[1])[0]?.[0]}
+    function shuffle(arr){return[...arr].sort(()=>Math.random()-.5)}
+    async function shareTest(){
+      const data={title:'테스트잇 오늘의 도서관 테스트',text:'지금 나에게 잘 맞는 책은 무엇일까?\n도서관 사서가 내 취향에 맞는 책을\n한 권씩 골라주는 테스트!\n오늘 대출할 책을 확인해보자📚',url:location.href};
+      try{if(navigator.share)await navigator.share(data);else{await navigator.clipboard.writeText(location.href);toast('테스트 주소를 복사했어요.')}}catch(e){}
+    }
+    function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.style.display='block';setTimeout(()=>t.style.display='none',1800)}
+  </script>
+</body>
+</html>

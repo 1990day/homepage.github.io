@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="선택을 통해 자신의 판단 기준, 방어 방식, 핵심 욕구를 확인하는 자아탐구 영역 모의고사입니다.">
+  <title>테스트잇 자아찾기 모의고사 테스트</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/galmuri@latest/dist/galmuri.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      min-height: 100vh;
+      background: #f2eee6;
+      color: #151515;
+      font-family: "Galmuri14", "Galmuri11", sans-serif;
+      word-break: keep-all;
+    }
+    button, input { font: inherit; }
+    button { color: #151515; }
+    .site-header {
+      width: 100%;
+      height: 58px;
+      background: #fff;
+      border-bottom: 1px solid #222;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .header-inner {
+      width: min(100%, 760px);
+      padding: 0 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      color: #111;
+      font-size: 18px;
+      font-weight: 700;
+      text-decoration: none;
+      letter-spacing: -1px;
+    }
+    .nav { display: flex; gap: 15px; }
+    .nav a {
+      color: #111;
+      font-size: 14px;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    main {
+      width: min(100%, 620px);
+      min-height: calc(100vh - 58px);
+      margin: 0 auto;
+      padding: 28px 16px 54px;
+    }
+    .screen { display: none; }
+    .screen.active { display: block; }
+    .paper {
+      position: relative;
+      background: #fffdf8;
+      border: 2px solid #1e1e1e;
+      padding: 30px 26px;
+    }
+    .paper::before {
+      content: "";
+      position: absolute;
+      top: 7px;
+      right: 7px;
+      bottom: 7px;
+      left: 7px;
+      border: 1px solid #aaa299;
+      pointer-events: none;
+    }
+    .paper > * { position: relative; z-index: 1; }
+    .main-image {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    .primary-btn, .action-btn {
+      width: 100%;
+      border: 1px solid #1d1d1d;
+      border-radius: 0;
+      cursor: pointer;
+      transition: background .12s, color .12s;
+    }
+    .primary-btn {
+      margin-top: 15px;
+      padding: 17px 12px;
+      background: #8b2330;
+      color: #fff;
+      font-size: 17px;
+      font-weight: 700;
+    }
+    .primary-btn:active { background: #681721; }
+    .ad-wrap {
+      width: 100%;
+      min-height: 140px;
+      margin: 24px auto 0;
+      display: flex;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .ad-wrap iframe {
+      width: 350px;
+      height: 140px;
+      border: 0;
+    }
+    .progress-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      margin-bottom: 9px;
+      font-size: 13px;
+    }
+    .progress-track {
+      width: 100%;
+      height: 10px;
+      margin-bottom: 16px;
+      border: 1px solid #222;
+      background: #fff;
+    }
+    .progress-bar {
+      width: 0;
+      height: 100%;
+      background: #8b2330;
+      transition: width .2s ease;
+    }
+    .subject-label {
+      display: inline-block;
+      margin-bottom: 14px;
+      padding: 5px 8px;
+      border: 1px solid #8b2330;
+      color: #8b2330;
+      font-size: 12px;
+    }
+    .question-box {
+      min-height: 410px;
+      background: #fffdf8;
+      border: 2px solid #222;
+      padding: 29px 24px;
+    }
+    .question-number {
+      margin: 0 0 13px;
+      color: #8b2330;
+      font-size: 14px;
+    }
+    .question-text {
+      min-height: 82px;
+      margin: 0 0 25px;
+      font-size: 19px;
+      line-height: 1.65;
+    }
+    .answer-list { display: grid; gap: 12px; }
+    .answer-btn {
+      width: 100%;
+      min-height: 83px;
+      padding: 16px 15px;
+      border: 1px solid #222;
+      border-radius: 0;
+      background: #fff;
+      text-align: left;
+      font-size: 15px;
+      line-height: 1.6;
+      cursor: pointer;
+    }
+    .answer-btn:hover { background: #eee8dc; }
+    .answer-btn:active { background: #ded4c4; }
+    .answer-btn:disabled { cursor: default; }
+    .answer-num {
+      display: inline-block;
+      margin-right: 7px;
+      color: #8b2330;
+      font-weight: 700;
+    }
+    .instruction {
+      margin: 13px 0 0;
+      text-align: center;
+      color: #555;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+    .loading-paper {
+      min-height: 330px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .stamp-loader {
+      width: 86px;
+      height: 86px;
+      border: 5px double #8b2330;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #8b2330;
+      font-size: 18px;
+      font-weight: 700;
+      transform: rotate(-7deg);
+      animation: stamp 1s infinite alternate;
+    }
+    @keyframes stamp {
+      from { transform: rotate(-7deg) scale(.93); opacity: .6; }
+      to { transform: rotate(-7deg) scale(1); opacity: 1; }
+    }
+    .loading-title { margin: 27px 0 8px; font-size: 20px; }
+    .loading-text { margin: 0; color: #555; font-size: 13px; }
+    .result-card {
+      --result-padding-x: 21px;
+      --result-padding-top: 25px;
+      background: #fffdf8;
+      border: 2px solid #aa022d;
+      padding: 25px 21px 23px;
+    }
+    .result-top {
+      padding-bottom: 20px;
+      border-bottom: 2px solid #222;
+      text-align: center;
+    }
+    .result-test-title {
+      margin: calc(var(--result-padding-top) * -1) calc(var(--result-padding-x) * -1) 18px;
+      padding: 10px 8px;
+      border: 0;
+      border-bottom: 1px solid #aa022d;
+      background: #f7e9e8;
+      color: #151515;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.55;
+      letter-spacing: 2px;
+    }
+    .result-title {
+      margin: 0;
+      font-size: clamp(25px, 6vw, 35px);
+      line-height: 1.45;
+      letter-spacing: -1px;
+    }
+    .result-summary {
+      margin: 20px 0;
+      text-align: center;
+      font-size: 15px;
+      line-height: 1.9;
+    }
+    .detail-result {
+      margin: 0 0 20px;
+      padding: 14px 13px;
+      border: 1px solid #222;
+      background: #f7f1e7;
+      text-align: center;
+    }
+    .detail-result h3 {
+      margin: 0 0 8px;
+      color: #8b2330;
+      font-size: 12px;
+    }
+    .detail-result p {
+      margin: 0;
+      font-size: 13px;
+      line-height: 1.75;
+    }
+    .axis-section {
+      padding: 19px 0;
+      border-top: 1px solid #222;
+      border-bottom: 1px solid #222;
+    }
+    .axis-title {
+      margin: 0 0 15px;
+      font-size: 14px;
+      color: #8b2330;
+    }
+    .axis-item + .axis-item { margin-top: 14px; }
+    .axis-name {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 6px;
+      font-size: 12px;
+    }
+    .axis-track {
+      height: 10px;
+      border: 1px solid #222;
+      background: #fff;
+    }
+    .axis-fill { height: 100%; background: #8b2330; }
+    .analysis-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-top: 1px solid #222;
+      border-left: 1px solid #222;
+      margin-top: 20px;
+    }
+    .analysis-cell {
+      min-height: 115px;
+      padding: 14px 12px;
+      border-right: 1px solid #222;
+      border-bottom: 1px solid #222;
+    }
+    .analysis-cell h3 {
+      margin: 0 0 8px;
+      color: #8b2330;
+      font-size: 12px;
+    }
+    .analysis-cell p {
+      margin: 0;
+      font-size: 13px;
+      line-height: 1.65;
+    }
+    .wide-section {
+      margin-top: 18px;
+      padding-top: 17px;
+      border-top: 1px solid #222;
+    }
+    .wide-section h3 {
+      margin: 0 0 9px;
+      color: #8b2330;
+      font-size: 13px;
+    }
+    .wide-section p {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.75;
+    }
+    .result-footer {
+      margin-top: 22px;
+      padding-top: 12px;
+      border-top: 2px solid #222;
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: 10px;
+    }
+    .result-footer span:last-child { text-align: right; }
+    .action-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 15px;
+    }
+    .action-btn {
+      padding: 15px 10px;
+      background: #fff;
+      font-size: 14px;
+    }
+    .action-btn.main { background: #8b2330; color: #fff; }
+    .action-btn:active { background: #ded4c4; }
+    .action-btn.main:active { background: #681721; }
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 30px;
+      z-index: 50;
+      transform: translateX(-50%);
+      max-width: calc(100% - 30px);
+      padding: 11px 16px;
+      border: 1px solid #222;
+      background: #1e1e1e;
+      color: #fff;
+      font-size: 12px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .2s;
+    }
+    .toast.show { opacity: 1; }
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 22px;
+      background: rgba(0, 0, 0, .75);
+    }
+    .modal.open { display: flex; }
+    .modal-content {
+      width: min(100%, 350px);
+      max-height: 90vh;
+      padding: 14px;
+      overflow: auto;
+      border: 2px solid #222;
+      background: #fff;
+      text-align: center;
+    }
+    .modal-title { margin: 2px 0 11px; font-size: 13px; }
+    .saved-image {
+      display: block;
+      width: 280px;
+      max-width: 100%;
+      height: auto;
+      margin: 0 auto;
+      border: 1px solid #222;
+    }
+    .modal-close {
+      width: 100%;
+      margin-top: 11px;
+      padding: 12px;
+      border: 1px solid #222;
+      border-radius: 0;
+      background: #fff;
+      cursor: pointer;
+    }
+    @media (max-width: 520px) {
+      .nav { gap: 9px; }
+      .nav a { font-size: 14px; }
+      main { padding: 20px 12px 45px; }
+      .paper { padding: 25px 18px; }
+      .result-test-title { letter-spacing: 1.4px; }
+      .question-box { min-height: 390px; padding: 25px 18px; }
+      .question-text { font-size: 17px; }
+      .answer-btn { font-size: 14px; }
+      .result-card { --result-padding-x: 16px; --result-padding-top: 23px; padding: 23px 16px; }
+      .analysis-cell { padding: 13px 10px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="logo" href="https://test-it.co.kr/">테스트잇</a>
+      <nav class="nav" aria-label="주요 메뉴">
+        <a href="https://test-it.co.kr/category/personality">성격</a>
+        <a href="https://test-it.co.kr/category/face">얼굴</a>
+        <a href="https://test-it.co.kr/category/etc">그외</a>
+        <a href="https://test-it.co.kr/category/saju">사주</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="mainScreen" class="screen active">
+      <img class="main-image" src="img_main417.png" alt="테스트잇 자아찾기 모의고사 테스트">
+      <button type="button" class="primary-btn" onclick="startTest()">테스트 시작하기</button>
+      <div class="ad-wrap">
+        <iframe src="https://ads-partners.coupang.com/widgets.html?id=798186&template=carousel&width=350&height=140" title="광고"></iframe>
+      </div>
+    </section>
+
+    <section id="questionScreen" class="screen">
+      <div class="progress-row">
+        <span id="subjectText">자아탐구 영역</span>
+        <span><b id="currentNumber">1</b> / 12</span>
+      </div>
+      <div class="progress-track"><div id="progressBar" class="progress-bar"></div></div>
+      <div class="question-box">
+        <span id="subjectLabel" class="subject-label">1교시 · 판단 기준</span>
+        <p id="questionNumber" class="question-number">문항 1</p>
+        <h2 id="questionText" class="question-text"></h2>
+        <div id="answerList" class="answer-list"></div>
+      </div>
+      <p class="instruction">본능적으로 가장 끌리는 행동을 선택하십시오.</p>
+      <div class="ad-wrap">
+        <iframe src="https://ads-partners.coupang.com/widgets.html?id=798186&template=carousel&width=350&height=140" title="광고"></iframe>
+      </div>
+    </section>
+
+    <section id="loadingScreen" class="screen">
+      <div class="paper loading-paper">
+        <div class="stamp-loader">채점</div>
+        <h2 class="loading-title">답변을 분석하고 있습니다</h2>
+      </div>
+      <div class="ad-wrap">
+        <iframe src="https://ads-partners.coupang.com/widgets.html?id=798186&template=carousel&width=350&height=140" title="광고"></iframe>
+      </div>
+    </section>
+
+    <section id="resultScreen" class="screen">
+      <div id="resultCard" class="result-card">
+        <div class="result-top">
+          <div class="result-test-title">테스트잇 자아찾기 모의고사 테스트</div>
+          <h2 id="resultTitle" class="result-title"></h2>
+        </div>
+        <p id="resultSummary" class="result-summary"></p>
+        <div class="detail-result">
+          <h3>세부 판정</h3>
+          <p id="detailAnalysis"></p>
+        </div>
+
+        <div class="axis-section">
+          <h3 class="axis-title">영역별 분석</h3>
+          <div class="axis-item">
+            <div class="axis-name"><span id="standardLabel"></span><b id="standardPercent"></b></div>
+            <div class="axis-track"><div id="standardBar" class="axis-fill"></div></div>
+          </div>
+          <div class="axis-item">
+            <div class="axis-name"><span id="defenseLabel"></span><b id="defensePercent"></b></div>
+            <div class="axis-track"><div id="defenseBar" class="axis-fill"></div></div>
+          </div>
+          <div class="axis-item">
+            <div class="axis-name"><span id="driveLabel"></span><b id="drivePercent"></b></div>
+            <div class="axis-track"><div id="driveBar" class="axis-fill"></div></div>
+          </div>
+        </div>
+
+        <div class="analysis-grid">
+          <div class="analysis-cell"><h3>핵심 욕구</h3><p id="coreNeed"></p></div>
+          <div class="analysis-cell"><h3>가장 두려운 상황</h3><p id="mainFear"></p></div>
+          <div class="analysis-cell"><h3>대립 방식</h3><p id="defenseMethod"></p></div>
+          <div class="analysis-cell"><h3>무기(강점)</h3><p id="strength"></p></div>
+        </div>
+
+        <div class="wide-section"><h3>치명적 약점</h3><p id="weakness"></p></div>
+        <div class="wide-section"><h3>인간관계</h3><p id="relationship"></p></div>
+        <div class="wide-section"><h3>라이프 스타일</h3><p id="workStyle"></p></div>
+        <div class="wide-section"><h3>경고</h3><p id="advice"></p></div>
+
+        <div class="result-footer">
+          <span>TEST-IT.CO.KR / TEST417</span>
+          <span>자아찾기 모의고사 테스트</span>
+        </div>
+      </div>
+
+      <div class="action-list" data-html2canvas-ignore="true">
+        <button type="button" class="action-btn main" onclick="makeResultImage(this)">결과 이미지 저장하기</button>
+        <button type="button" class="action-btn" onclick="restartTest()">다시 해보기</button>
+        <button type="button" class="action-btn" onclick="location.href='https://test-it.co.kr/'">다른 테스트 해보기</button>
+        <button type="button" class="action-btn" onclick="shareTest()">테스트 공유하기</button>
+      </div>
+      <div class="ad-wrap">
+        <iframe src="https://ads-partners.coupang.com/widgets.html?id=798186&template=carousel&width=350&height=140" title="광고"></iframe>
+      </div>
+    </section>
+  </main>
+
+  <div id="imageModal" class="modal" role="dialog" aria-modal="true" aria-label="결과 이미지 저장">
+    <div class="modal-content">
+      <p class="modal-title">이미지를 길게 눌러 저장해주세요.</p>
+      <img id="savedImage" class="saved-image" alt="자아찾기 모의고사 결과 이미지">
+      <button type="button" class="modal-close" onclick="closeModal()">닫기</button>
+    </div>
+  </div>
+  <div id="toast" class="toast"></div>
+
+  <script>
+    const TEST_URL = "https://test-it.co.kr/test417";
+
+    const questions = [
+      {
+        subject: "1교시 · 판단 기준", axis: "standard", weight: 2,
+        text: "내 일상과 계획이 틀어졌을 때 나를 더 화나게 하는 것은?",
+        answers: [
+          { text: "내 통제에서 벗어난 변수가 생겼다는 사실 그 자체", value: "I" },
+          { text: "남들에게 내 실패나 빈틈이 드러날지도 모른다는 불안감", value: "E" }
+        ]
+      },
+     {
+  subject: "1교시 · 판단 기준",
+  axis: "standard",
+  weight: 1,
+  text: "여러 사람과 내 의견이<br>다를 때 나는?",
+  answers: [
+    {
+      text: "반대하는 사람이 많아도<br>내 판단이 맞으면 의견을 유지함",
+      value: "I"
+    },
+    {
+      text: "내 판단이 맞아도 주변의 반응을 보며<br>의견을 조정함",
+      value: "E"
+    }
+  ]
+},
+     {
+  subject: "1교시 · 판단 기준",
+  axis: "standard",
+  weight: 1,
+  text: "어려운 목표를 이뤘을 때<br>더 만족스러운 것은?",
+  answers: [
+    {
+      text: "내가 정한 기준을<br>넘었다는 사실",
+      value: "I"
+    },
+    {
+      text: "주변 사람들이 내 성과를<br>인정해주는 것",
+      value: "E"
+    }
+  ]
+},
+      {
+        subject: "1교시 · 판단 기준", axis: "standard", weight: 1,
+        text: "새로운 사람을 만날 때 내 머릿속에 드는 생각은?",
+        answers: [
+          { text: "이 사람이 내 기준에 맞는지 철저히 평가함", value: "I" },
+          { text: "이 사람이 나를 어떻게 평가할지 먼저 의식함", value: "E" }
+        ]
+      },
+      {
+        subject: "2교시 · 권력 방식", axis: "defense", weight: 2,
+        text: "누군가 반복해서 선을 넘고 나를 짜증 나게 할 때 나의 대처는?",
+        answers: [
+          { text: "그 자리에서 정확하게 짚고 넘어가야 직성이 풀림", value: "C" },
+          { text: "상대할 가치도 없어 아무 말 없이 차단함", value: "W" }
+        ]
+      },
+      {
+        subject: "2교시 · 권력 방식", axis: "defense", weight: 1,
+        text: "누군가 내 결정에 정면으로 태클을 건다면?",
+        answers: [
+          { text: "다시는 기어오르지 못하게 논리로 완전히 박살 냄", value: "C" },
+          { text: "피곤한 상황을 엮이기 싫어 무시하고 자리를 피함", value: "W" }
+        ]
+      },
+   {
+  subject: "2교시 · 권력 방식",
+  axis: "defense",
+  weight: 1,
+  text: "여러 사람이 함께하던 일에<br>갑자기 문제가 생겼을 때 나는?",
+  answers: [
+    {
+      text: "먼저 해결 순서를 정하고<br>사람들에게 역할을 제안함",
+      value: "C"
+    },
+    {
+      text: "누군가 방향을 정할 때까지 상황을 보며<br>내 일부터 처리함",
+      value: "W"
+    }
+  ]
+},
+    {
+  subject: "2교시 · 권력 방식",
+  axis: "defense",
+  weight: 1,
+  text: "가까운 사람과 감정이<br>상했을 때 나는?",
+  answers: [
+    {
+      text: "불편했던 부분을 바로 말하고<br>해결하려 함",
+      value: "C"
+    },
+    {
+      text: "혼자 정리할 시간이 필요해<br>연락과 대화를 줄임",
+      value: "W"
+    }
+  ]
+},
+    {
+  subject: "3교시 · 목표 성향",
+  axis: "drive",
+  weight: 2,
+  text: "새로운 목표를 정할 때<br>더 가까운 방식은?",
+  answers: [
+    {
+      text: "현재 조건에서 확실히 달성할 수 있는<br>수준으로 정함",
+      value: "O"
+    },
+    {
+      text: "달성하기 어렵더라도 크게 성장할 수 있는<br>수준으로 정함",
+      value: "X"
+    }
+  ]
+},
+{
+  subject: "3교시 · 목표 성향",
+  axis: "drive",
+  weight: 1,
+  text: "원하던 목표를 이룬 뒤 나는?",
+  answers: [
+    {
+      text: "지금 만든 성과를 안정적으로<br>유지하는 데 집중함",
+      value: "O"
+    },
+    {
+      text: "현재 결과에 만족하지 않고<br>바로 다음 목표를 세움",
+      value: "X"
+    }
+  ]
+},
+{
+  subject: "3교시 · 목표 성향",
+  axis: "drive",
+  weight: 1,
+  text: "오래 준비한 계획이 예상대로<br>풀리지 않을 때 나는?",
+  answers: [
+    {
+      text: "문제가 된 부분을 고치면서<br>기존 계획을 계속 이어감",
+      value: "O"
+    },
+    {
+      text: "가능성이 낮다고 판단되면<br>새로운 방향으로 바꿈",
+      value: "X"
+    }
+  ]
+},
+{
+  subject: "3교시 · 목표 성향",
+  axis: "drive",
+  weight: 1,
+  text: "한 분야에서 어느 정도<br>실력이 쌓였을 때 나는?",
+  answers: [
+    {
+      text: "그 분야를 더 깊게 파서<br>확실한 전문성을 만듦",
+      value: "O"
+    },
+    {
+      text: "익힌 능력을 활용해<br>새로운 분야까지 넓혀봄",
+      value: "X"
+    }
+  ]
+}
+    ];
+
+    const results = {
+      ICO: {
+        name: "절대적 통제자",
+        summary: "모든 일상이 내 손아귀에 있어야 직성이 풀립니다. 변수를 혐오하며, 주변 환경과 사람들을 톱니바퀴처럼 굴립니다.",
+        need: "한 치의 오차도 없는 완벽한 내 세상의 구축",
+        fear: "통제권을 잃고 원치 않는 변수에 휘둘리는 것",
+        defense: "타인의 참견을 묵살하고 내 방식을 강행함",
+        strength: "숨 막히는 장악력과 빈틈없는 실행력",
+        weakness: "타인의 감정을 고려하지 않고 내 식대로 몰아붙임",
+        relationship: "내 룰에 따르거나, 내 눈앞에서 사라지거나 둘 중 하나입니다.",
+        work: "답답한 상황을 참지 못하고 결국 혼자 다 갈아 엎어버립니다.",
+        advice: "모든 걸 쥐고 있으려다 가장 먼저 지쳐 쓰러질 수 있습니다. 내려놓는 연습이 필요합니다."
+      },
+      IWO: {
+        name: "고립된 전략가",
+        summary: "타인에게 기대하지 않습니다. 피곤한 일에 엮이기보다 무대 뒤에서 관망하며 철저히 내 효율과 평온을 추구합니다.",
+        need: "누구에게도 간섭받지 않는 나만의 성역 유지",
+        fear: "쓸데없는 감정싸움에 내 시간이 낭비되는 것",
+        defense: "말이 안 통하면 철저히 배제하고 무시함",
+        strength: "감정에 휘둘리지 않는 냉철한 상황 판단력",
+        weakness: "자발적으로 고립을 자초함",
+        relationship: "선이 명확하며, 피곤한 사람은 가차 없이 차단합니다.",
+        work: "혼자만의 시간이 보장될 때 최고의 성과를 뽑아냅니다.",
+        advice: "벽을 너무 높게 치면 필요할 때 도움을 받을 문조차 없어집니다."
+      },
+      ECO: {
+        name: "완벽주의 독재자",
+        summary: "타인의 시선과 평가를 지나치게 의식합니다. 남들에게 완벽해 보이기 위해 스스로를 혹사시키며, 그 기준을 주변에도 강요합니다.",
+        need: "압도적인 모습을 통한 타인의 완벽한 찬사",
+        fear: "남들에게 내 무능함이나 빈틈이 드러나는 상황",
+        defense: "가혹한 기준을 들이밀며 상대를 압박함",
+        strength: "원하는 것을 얻기 위해서라면 지옥이라도 뚫고 감",
+        weakness: "남의 시선에 갇혀 속으로는 늘 불안함",
+        relationship: "내 가치를 띄워줄 수 있는 사람 위주로 곁에 둡니다.",
+        work: "결과물이 완벽하지 않으면 밤을 새워서라도 뜯어고치는 폭군입니다.",
+        advice: "타인의 박수가 멈췄을 때 견딜 수 있는 내면의 힘을 길러야 합니다."
+      },
+      EWO: {
+        name: "방어적 권위자",
+        summary: "주변의 평가를 의식하며 실패나 갈등을 피하려 합니다. 위험한 선택보다 안정적인 위치를 지키는 편입니다.",
+  need: "좋은 평판을 유지하면서 안정적인 위치를 지키는 것",
+  fear: "실패한 선택의 책임과 비난을 혼자 감당하는 상황",
+  defense: "직접 맞서기보다 상황을 지켜보며 거리를 둠",
+  strength: "분위기와 위험 요소를 빠르게 파악하고 큰 실수를 피함",
+  weakness: "평가와 실패를 지나치게 의식해 필요한 선택까지 미룰 수 있음",
+  relationship: "불편해도 바로 말하지 않고 참다가 조용히 거리를 둡니다.",
+work: "역할과 기준이 분명할수록 안정적으로 움직입니다.",
+advice: "타인의 평가보다 내 기준으로 결정하는 연습이 필요합니다."
+},
+      ICX: {
+        name: "무자비한 개척자",
+        summary: "목표를 향해 브레이크 없이 돌진하는 전차입니다. 일상이 지루해지면 다 부수고 새로운 자극과 성취를 쫓아 달려갑니다.",
+        need: "한계를 깨부수고 새로운 영역을 정복하는 쾌감",
+        fear: "어제와 똑같은 지루한 일상이 반복되는 것",
+        defense: "공격이 최선의 방어. 문제를 힘으로 밀어붙임",
+        strength: "위험 앞에서도 멈추지 않는 강한 돌파력",
+        weakness: "뒤를 돌아보지 않아 수많은 마찰을 일으킴",
+        relationship: "속도가 맞는 사람을 선호하며, 느린 상대를 답답해할 수 있습니다.",
+        work: "새로운 판을 벌이는 데 천재적이지만, 수습은 뒷전입니다.",
+        advice: "때로는 달리는 것보다 멈춰서 정비하는 것이 더 빠를 수 있습니다."
+      },
+      IWX: {
+        name: "냉혹한 설계자",
+        summary: "조용하지만 속에는 거대한 야망이 있습니다. 소란 피우는 것을 극혐하며, 뒤에서 완벽하게 칼을 갈다가 기회가 오면 판을 뒤집습니다.",
+        need: "내 설계대로 굴러가는 거대한 변화의 완성",
+        fear: "하찮은 변수들로 인해 내 큰 그림이 망가지는 것",
+        defense: "앞에 나서지 않고 뒤에서 조용히 방해물을 제거함",
+        strength: "누구도 보지 못한 판의 흐름을 꿰뚫어 봄",
+        weakness: "실행보다 계획에 집착하여 타이밍을 놓치기도 함",
+        relationship: "사람을 쉽게 믿지 않으며 거리를 두고 관찰합니다.",
+        work: "독단적이지만 결과적으로는 가장 파괴력 있는 결론을 냅니다.",
+        advice: "머릿속의 완벽한 설계도 현실의 진흙탕을 거쳐야 완성됩니다."
+      },
+      ECX: {
+        name: "과시적 정복자",
+        summary: "남들 위에 서서 박수받는 것을 최고의 도파민으로 삼습니다. 지는 것을 혐오하며 경쟁 상황에서 피가 끓어오르는 전투광입니다.",
+        need: "화려한 승리와 모두가 나를 우러러보는 위치",
+        fear: "아무도 나를 주목하지 않는 초라한 상황",
+        defense: "더 큰 결과물로 보란 듯이 상대를 짓누름",
+        strength: "스포트라이트를 받을 때 200% 폭발하는 퍼포먼스",
+        weakness: "남들에게 과시하기 위해 무리한 베팅을 남발함",
+        relationship: "항상 무리의 중심에 있어야 하며 대접받기를 원합니다.",
+        work: "경쟁과 확실한 보상만 주어지면 미친 듯이 몰입합니다.",
+        advice: "타인의 시선에만 묶여 있으면 스스로를 잃어버릴 수 있습니다."
+      },
+     EWX: {
+  name: "관망형 성취자",
+  summary: "주목받을 만한 성공을 원하지만 실패 가능성도 많이 따집니다. 상황을 지켜보다가 가능성이 보일 때 행동합니다.",
+  need: "실패 위험을 줄이면서 눈에 보이는 성과를 얻는 것",
+  fear: "성급하게 나섰다가 실패하고 평가까지 떨어지는 상황",
+  defense: "확신이 생길 때까지 판단을 미루고 상황을 지켜봄",
+  strength: "흐름과 위험을 살핀 뒤 유리한 기회를 빠르게 잡음",
+  weakness: "확실한 때를 기다리다가 시작 시점을 놓칠 수 있음",
+  relationship: "상대의 반응을 살피며 갈등이 생기면 먼저 거리를 둡니다.",
+  work: "성과 가능성이 보일 때 집중력과 행동력이 높아집니다.",
+  advice: "확신을 기다리기보다 작은 선택부터 직접 해야 합니다."
+}
+    };
+
+    let currentQuestion = 0;
+    let locked = false;
+    let currentResultKey = "";
+    let scores = {};
+
+    function resetScores() {
+      scores = { I: 0, E: 0, C: 0, W: 0, O: 0, X: 0 };
+    }
+
+    function showScreen(id) {
+      document.querySelectorAll(".screen").forEach(screen => screen.classList.remove("active"));
+      document.getElementById(id).classList.add("active");
+    }
+
+    function startTest() {
+      currentQuestion = 0;
+      currentResultKey = "";
+      locked = false;
+      resetScores();
+      showScreen("questionScreen");
+      renderQuestion();
+    }
+
+    function renderQuestion() {
+      const question = questions[currentQuestion];
+      document.getElementById("currentNumber").textContent = currentQuestion + 1;
+      document.getElementById("progressBar").style.width = `${((currentQuestion + 1) / questions.length) * 100}%`;
+      document.getElementById("subjectLabel").textContent = question.subject;
+      document.getElementById("questionNumber").textContent = `문항 ${currentQuestion + 1}`;
+      document.getElementById("questionText").innerHTML = question.text;
+
+      const answerList = document.getElementById("answerList");
+      answerList.innerHTML = "";
+      question.answers.forEach((answer, index) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "answer-btn";
+        button.innerHTML = `<span class="answer-num">${index === 0 ? "①" : "②"}</span>${answer.text}`;
+        button.addEventListener("click", () => selectAnswer(answer.value));
+        answerList.appendChild(button);
+      });
+    }
+
+    function selectAnswer(value) {
+      if (locked) return;
+      locked = true;
+      document.querySelectorAll(".answer-btn").forEach(button => button.disabled = true);
+
+      const question = questions[currentQuestion];
+      scores[value] += question.weight;
+
+      window.setTimeout(() => {
+        currentQuestion += 1;
+        locked = false;
+        if (currentQuestion < questions.length) {
+          renderQuestion();
+        } else {
+          showLoading();
+        }
+      }, 120);
+    }
+
+    function showLoading() {
+      showScreen("loadingScreen");
+      window.setTimeout(showResult, 3000);
+    }
+
+    function showResult() {
+      const standard = scores.I > scores.E ? "I" : "E";
+      const defense = scores.C > scores.W ? "C" : "W";
+      const drive = scores.O > scores.X ? "O" : "X";
+      currentResultKey = standard + defense + drive;
+      const result = results[currentResultKey];
+      const strengths = [scores[standard], scores[defense], scores[drive]];
+      const detailedResult = getDetailedResult(standard, defense, drive, strengths);
+
+      document.getElementById("resultTitle").textContent = result.name;
+      document.getElementById("resultSummary").textContent = result.summary;
+      document.getElementById("detailAnalysis").textContent = detailedResult.text;
+      document.getElementById("coreNeed").textContent = result.need;
+      document.getElementById("mainFear").textContent = result.fear;
+      document.getElementById("defenseMethod").textContent = result.defense;
+      document.getElementById("strength").textContent = result.strength;
+      document.getElementById("weakness").textContent = result.weakness;
+      document.getElementById("relationship").textContent = result.relationship;
+      document.getElementById("workStyle").textContent = result.work;
+      document.getElementById("advice").textContent = result.advice;
+
+      setAxis("standard", standard === "I" ? "절대 권력" : "외부 인정", standard === "I" ? scores.I : scores.E);
+      setAxis("defense", defense === "C" ? "정면 돌파" : "무시 배제", defense === "C" ? scores.C : scores.W);
+      setAxis("drive", drive === "O" ? "현상 유지" : "영역 확장", drive === "O" ? scores.O : scores.X);
+      showScreen("resultScreen");
+    }
+
+    function getDetailedResult(standard, defense, drive, strengths) {
+      const axisNames = ["판단 기준", "권력 방식", "목표 성향"];
+      const maxScore = Math.max(...strengths);
+      const highestAxes = strengths
+        .map((score, index) => score === maxScore ? index : -1)
+        .filter(index => index !== -1);
+
+      const tieKey = highestAxes.join("");
+      const typeNames = {
+        "0": "통제력 극대화형",
+        "1": "권력 방식 극대화형",
+        "2": "목표 달성 극대화형",
+        "01": "통제·권력 공동 지배형",
+        "02": "통제·목표 공동 지배형",
+        "12": "권력·목표 공동 지배형",
+        "012": "모든 욕구 밸런스형"
+      };
+      const strengthName = maxScore === 5 ? "절대적" : maxScore === 4 ? "확고한" : "치밀한";
+
+let scoreSentence = "";
+
+if (highestAxes.length === 3) {
+  scoreSentence = "세 영역이 같은 강도로 나타남.";
+} else if (highestAxes.length === 2) {
+  scoreSentence = `${axisNames[highestAxes[0]]}과 ${axisNames[highestAxes[1]]}이 공동으로 가장 높게 나타남.`;
+} else {
+  scoreSentence = `가장 높은 영역은 ${axisNames[highestAxes[0]]}임.`;
+}
+      const standardText = standard === "I"
+        ? "타인의 시선 따위는 무시하며 오직 자기 기준으로 세상을 통제하려 함."
+        : "타인의 평가와 인정을 삶을 움직이는 가장 큰 원동력으로 삼음.";
+      const defenseText = defense === "C"
+        ? "반대하는 자는 피하지 않고 정면으로 들이받아 박살 내는 타입임."
+        : "피곤한 상황은 굳이 상대하지 않고 내 인생에서 조용히 치워버림.";
+      const driveText = drive === "O"
+        ? "불안정한 변화를 혐오하며 내 통제하의 안전한 상태를 유지하려 함."
+        : "현상 유지에 만족하지 않고 수단 방법을 가리지 않고 영역을 넓히려 함.";
+
+      return {
+        name: `${strengthName} ${typeNames[tieKey]}`,
+        text: `${scoreSentence} ${standardText} ${defenseText} ${driveText}`
+      };
+    }
+
+    function setAxis(id, label, score) {
+      const percent = Math.round((score / 5) * 100);
+      document.getElementById(`${id}Label`).textContent = label;
+      document.getElementById(`${id}Percent`).textContent = `${percent}%`;
+      document.getElementById(`${id}Bar`).style.width = `${percent}%`;
+    }
+
+    function restartTest() {
+      closeModal();
+      currentQuestion = 0;
+      currentResultKey = "";
+      resetScores();
+      showScreen("mainScreen");
+    }
+
+    async function makeResultImage(button) {
+      const originalText = button.textContent;
+      button.disabled = true;
+      button.textContent = "이미지 만드는 중";
+      try {
+        const canvas = await html2canvas(document.getElementById("resultCard"), {
+          scale: 3,
+          backgroundColor: "#fffdf8",
+          useCORS: true,
+          logging: false
+        });
+        document.getElementById("savedImage").src = canvas.toDataURL("image/png");
+        document.getElementById("imageModal").classList.add("open");
+      } catch (error) {
+        showToast("이미지를 만들지 못했습니다. 다시 시도해주세요.");
+      } finally {
+        button.disabled = false;
+        button.textContent = originalText;
+      }
+    }
+
+    function closeModal() {
+      document.getElementById("imageModal").classList.remove("open");
+    }
+
+    async function shareTest() {
+      const resultName = currentResultKey ? results[currentResultKey].name : "";
+      const shareData = {
+        title: "테스트잇 자아찾기 모의고사 테스트",
+        text: resultName
+          ? `내 안의 권력자는 ${resultName}! 냉혹한 자아를 확인해보세요.`
+          : "가장 직관적이고 본능적인 당신의 권력 욕구를 확인해보세요.",
+        url: TEST_URL
+      };
+      try {
+        if (navigator.share) {
+          await navigator.share(shareData);
+        } else {
+          await navigator.clipboard.writeText(TEST_URL);
+          showToast("테스트 주소를 복사했습니다.");
+        }
+      } catch (error) {
+        if (error && error.name !== "AbortError") {
+          try {
+            await navigator.clipboard.writeText(TEST_URL);
+            showToast("테스트 주소를 복사했습니다.");
+          } catch (clipboardError) {
+            showToast("주소를 복사하지 못했습니다.");
+          }
+        }
+      }
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById("toast");
+      toast.textContent = message;
+      toast.classList.add("show");
+      window.setTimeout(() => toast.classList.remove("show"), 1800);
+    }
+
+    document.getElementById("imageModal").addEventListener("click", event => {
+      if (event.target.id === "imageModal") closeModal();
+    });
+  </script>
+</body>
+</html>

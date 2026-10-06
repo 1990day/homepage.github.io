@@ -1,0 +1,1957 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5522499110435321">
+    </script>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>
+      테스트잇 성격 준수 사항 테스트
+    </title>
+    <meta content="테스트잇 성격 준수 사항 테스트" name="description">
+    <meta content="website" property="og:type">
+    <meta content="테스트잇 성격 준수 사항 테스트" property="og:title">
+    <meta content="테스트잇 성격 준수 사항 테스트" property="og:description">
+    <meta content="https://test-it.co.kr/test422" property="og:url">
+    <meta content="https://test-it.co.kr/img_main422.png" property="og:image">
+    <meta content="#edf0f5" name="theme-color">
+      <link rel="icon" type="image/png" href="favicon.png">
+    <link href="https://test-it.co.kr/test422" rel="canonical">
+    <link href="https://cdn.jsdelivr.net/npm/galmuri/dist/galmuri.css" rel="stylesheet">
+    <script defer="" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js">
+    </script>
+    <style>
+      * {
+        box-sizing: border-box
+      }
+
+      body {
+        margin: 0;
+        background: #edf0f5;
+        color: #292b35;
+        font-family: 'Galmuri11', 'Galmuri14', monospace;
+        line-height: 1.65
+      }
+
+      button,
+      input,
+      a {
+        font-family: inherit
+      }
+
+      button {
+        color: inherit;
+        cursor: pointer
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none
+      }
+
+      button,
+      a {
+        -webkit-tap-highlight-color: transparent
+      }
+
+      button:focus-visible,
+      a:focus-visible {
+        outline: 2px dashed #292b35;
+        outline-offset: 4px
+      }
+
+      header {
+        max-width: 960px;
+        margin: auto;
+        padding: 20px 18px;
+        display: flex;
+        justify-content: space-between;
+        gap: 12px
+      }
+
+      header>a,
+      nav {
+        font-size: 17px
+      }
+
+      nav {
+        display: flex;
+        gap: 18px
+      }
+
+      main {
+        width: calc(100% - 28px);
+        max-width: 600px;
+        margin: 18px auto 36px
+      }
+
+      .hidden {
+        display: none !important
+      }
+
+      .file-window,
+      .result-card {
+        background: #fff;
+        border: 1px solid #292b35;
+        border-radius: 10px;
+        overflow: hidden
+      }
+
+      .window-title,
+      .card-title {
+        margin: 0;
+        font-size: clamp(12px, 3.35vw, 19px);
+        font-weight: 400;
+        padding: 14px 8px;
+        text-align: center;
+        border-bottom: 1px solid #292b35;
+        background: #dfe2f2;
+        white-space: nowrap;
+        letter-spacing: -.5px
+      }
+
+      .toolbar {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 13px;
+        background: #f7f8fc;
+        border-bottom: 1px solid #c7c9d2;
+        font-size: 11px
+      }
+
+      .nav-arrows {
+        letter-spacing: 8px;
+        padding-left: 3px;
+        white-space: nowrap
+      }
+
+      .path {
+        border: 1px solid #c7c9d2;
+        border-radius: 4px;
+        flex: 1;
+        padding: 4px 8px;
+        background: #fff;
+        white-space: nowrap;
+        overflow: hidden
+      }
+
+      .toolbar-count {
+        white-space: nowrap;
+        font-size: 10px;
+        color: #686b77
+      }
+
+      .main-sheet {
+        padding: 26px 17px 28px;
+        text-align: center
+      }
+
+      .main-brand {
+        font-size: 12px;
+        color: #686b77;
+        margin: 0 0 12px
+      }
+
+      .main-sheet h2 {
+        font-size: clamp(22px, 5.5vw, 32px);
+        font-weight: 400;
+        letter-spacing: -1px;
+        white-space: nowrap;
+        margin: 0 0 16px
+      }
+
+      .main-sheet p {
+        font-size: 14px;
+        word-break: keep-all
+      }
+
+      .folder-stack {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        margin: 26px 0
+      }
+
+      .folder-preview {
+        width: 90px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 9px;
+        font-size: 11px
+      }
+
+      .folder-preview svg {
+        width: 64px;
+        height: 51px
+      }
+
+      .main-sheet .main-meta {
+        font-size: 11px;
+        margin-top: 20px;
+        color: #686b77
+      }
+
+      .main-image {
+        display: block;
+        width: 100%;
+        height: auto
+      }
+
+      .btn {
+        display: block;
+        width: 100%;
+        border: 1px solid #292b35;
+        border-radius: 6px;
+        background: #fff;
+        padding: 14px 12px;
+        font-size: 16px;
+        line-height: 1.6;
+        text-align: center;
+        margin-top: 12px
+      }
+
+      .primary {
+        background: #dfe2f2
+      }
+
+      .start {
+        margin-top: 16px
+      }
+
+      .window-body {
+        display: flex;
+        min-height: 280px
+      }
+
+      .question-content {
+        width: 100%;
+        padding: 24px 20px
+      }
+
+      .progressrow {
+        display: flex;
+        justify-content: space-between;
+        font-size: 11px;
+        gap: 8px;
+        margin-bottom: 9px
+      }
+
+      .track {
+        height: 8px;
+        border: 1px solid #aaaebb;
+        border-radius: 3px;
+        overflow: hidden
+      }
+
+      .fill {
+        height: 100%;
+        background: #b5bade
+      }
+
+      .question-panel {
+        padding-top: 23px
+      }
+
+      .qnumber {
+        font-size: 12px;
+        color: #6b709e;
+        margin: 0 0 12px
+      }
+
+      .question {
+        font-size: 17px;
+        font-weight: 400;
+        line-height: 1.8;
+        word-break: keep-all;
+        margin: 0 0 23px;
+        min-height: 62px
+      }
+
+      .answer {
+        font-size: 15px;
+        text-align: left;
+        border-color: #b6b9c5;
+        padding: 16px 13px
+      }
+
+      .answer:hover,
+      .answer:focus-visible {
+        background: #f0f1fa
+      }
+
+      .loading {
+        background: #fff;
+        border: 1px solid #292b35;
+        border-radius: 10px;
+        text-align: center;
+        padding: 65px 18px
+      }
+
+      .loading h2 {
+        font-size: 18px;
+        font-weight: 400
+      }
+
+      .loading p {
+        font-size: 13px
+      }
+
+      .pixel-loader {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        margin-bottom: 25px
+      }
+
+      .pixel-loader span {
+        width: 12px;
+        height: 12px;
+        border: 1px solid #292b35;
+        background: #dfe2f2;
+        animation: pulse .8s steps(2, end) infinite alternate
+      }
+
+      .pixel-loader span:nth-child(2) {
+        background: #dcece5;
+        animation-delay: .2s
+      }
+
+      .pixel-loader span:nth-child(3) {
+        background: #f6ebcc;
+        animation-delay: .4s
+      }
+
+      .pixel-loader span:nth-child(4) {
+        background: #f3dfe6;
+        animation-delay: .6s
+      }
+
+      @keyframes pulse {
+        to {
+          opacity: .3
+        }
+      }
+
+      .result-card {
+        --u: 6px;
+        width: 100%;
+        max-width: 600px;
+        margin: auto
+      }
+
+      .card-title {
+        font-size: calc(var(--u)*3.6);
+        padding: calc(var(--u)*2.5) calc(var(--u)*1);
+        background: #dfe2f2
+      }
+
+      .result-toolbar {
+        font-size: calc(var(--u)*2.5);
+        padding: calc(var(--u)*2) calc(var(--u)*2.5);
+        gap: calc(var(--u)*1.5)
+      }
+
+      .result-toolbar .path {
+        padding: calc(var(--u)*.6) calc(var(--u)*1.5);
+        border-radius: 3px
+      }
+
+      .result-toolbar .toolbar-count {
+        font-size: calc(var(--u)*2.4)
+      }
+
+      .result-window-body {
+        display: flex
+      }
+
+      .result-sidebar {
+        flex-shrink: 0;
+        width: calc(var(--u)*15);
+        border-right: 1px solid #c7c9d2;
+        background: #f7f8fc;
+        padding: calc(var(--u)*3) calc(var(--u)*1.5)
+      }
+
+      .side-label {
+        font-size: calc(var(--u)*2.6);
+        margin: 0 0 calc(var(--u)*2);
+        color: #737784
+      }
+
+      .file-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: calc(var(--u)*1);
+        font-size: calc(var(--u)*2.6);
+        padding: calc(var(--u)*2) 0;
+        margin-bottom: calc(var(--u)*1.5);
+        border-radius: 4px
+      }
+
+      .file-item.active {
+        background: #e4e7f3;
+        border: 1px solid #c7cbdf
+      }
+
+      .file-glyph {
+        width: calc(var(--u)*6);
+        height: calc(var(--u)*5)
+      }
+
+      .file-glyph svg {
+        display: block;
+        width: 100%;
+        height: 100%
+      }
+
+      .result-content {
+        min-width: 0;
+        flex: 1;
+        padding: calc(var(--u)*3);
+        display: flex;
+        flex-direction: column;
+        gap: calc(var(--u)*3)
+      }
+
+      .profile-file {
+        border: 1px solid #b9bdcd;
+        border-radius: 6px;
+        overflow: hidden
+      }
+
+      .file-heading {
+        font-size: calc(var(--u)*3.1);
+        font-weight: 400;
+        padding: calc(var(--u)*1.4) calc(var(--u)*2);
+        margin: 0;
+        background: #f1f2f8;
+        border-bottom: 1px solid #c7c9d2
+      }
+
+      .profile-body {
+        padding: calc(var(--u)*2.5)
+      }
+
+      .profile-top {
+        display: flex;
+        gap: calc(var(--u)*2);
+        align-items: center;
+        margin-bottom: calc(var(--u)*2.5)
+      }
+
+      .type-stamp {
+        border: 1px solid #aaaec1;
+        background: #e9eaf5;
+        border-radius: 5px;
+        padding: calc(var(--u)*1) calc(var(--u)*2);
+        font-size: calc(var(--u)*6);
+        line-height: 1.3;
+        font-weight: 400;
+        margin: 0
+      }
+
+      .profile-caption {
+        font-size: calc(var(--u)*2.8);
+        line-height: 1.7;
+        margin: 0;
+        color: #686b77
+      }
+
+      .profile-traits {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: calc(var(--u)*1.1)
+      }
+
+      .profile-traits li {
+        font-size: calc(var(--u)*3.6);
+        line-height: 1.65;
+        word-break: keep-all;
+        letter-spacing: -.4px;
+        display: flex;
+        gap: calc(var(--u)*1.4)
+      }
+
+      .profile-traits li:before {
+        content: '·';
+        color: #686b77
+      }
+
+      .folder-group {
+        border: 1px solid #b9bdcd;
+        border-radius: 6px;
+        overflow: hidden
+      }
+
+      .folder-head {
+        display: flex;
+        align-items: center;
+        gap: calc(var(--u)*1.5);
+        margin: 0;
+        padding: calc(var(--u)*1.8) calc(var(--u)*2.2);
+        font-size: calc(var(--u)*3.6);
+        font-weight: 400;
+        line-height: 1.5;
+        background: var(--folder);
+        border-bottom: 1px solid #b9bdcd
+      }
+
+      .folder-head svg {
+        width: calc(var(--u)*5.5);
+        height: calc(var(--u)*4.5);
+        flex-shrink: 0
+      }
+
+      .folder-count {
+        margin-left: auto;
+        font-size: calc(var(--u)*2.5);
+        color: #626571;
+        white-space: nowrap
+      }
+
+      .rule-list {
+        list-style: none;
+        margin: 0;
+        padding: calc(var(--u)*2.3);
+        display: grid;
+        gap: calc(var(--u)*2.1);
+        counter-reset: rule
+      }
+
+      .rule-list li {
+        display: flex;
+        align-items: flex-start;
+        gap: calc(var(--u)*1.5);
+        font-size: calc(var(--u)*3.6);
+        line-height: 1.7;
+        word-break: keep-all;
+        letter-spacing: -.4px
+      }
+
+      .rule-list li:before {
+        content: '';
+        width: calc(var(--u)*2.7);
+        height: calc(var(--u)*2.7);
+        border: 1px solid #a0a5b5;
+        border-radius: 2px;
+        flex-shrink: 0;
+        margin-top: calc(var(--u)*1.25);
+        background: #fff
+      }
+
+      .result-footer {
+        margin: 0;
+        padding: calc(var(--u)*1.8) calc(var(--u)*2);
+        font-size: calc(var(--u)*2.5);
+        border-top: 1px solid #292b35;
+        background: #f7f8fc;
+        display: flex;
+        justify-content: space-between;
+        gap: 6px
+      }
+
+      .status {
+        min-height: 22px;
+        text-align: center;
+        font-size: 13px;
+        margin: 10px 0
+      }
+
+      .buttons {
+        margin-top: 20px
+      }
+
+      .ad {
+        margin: 30px auto 0;
+        text-align: center;
+        width: 100%;
+        overflow: hidden
+      }
+
+      .ad iframe {
+        border: 0;
+        max-width: 100%;
+        width: 350px;
+        height: 140px
+      }
+
+      .modal {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, .55);
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 16px
+      }
+
+      .modal-box {
+        max-width: 420px;
+        width: 100%;
+        max-height: 90dvh;
+        overflow: auto;
+        background: #fff;
+        border: 1px solid #292b35;
+        border-radius: 8px;
+        padding: 14px;
+        text-align: center
+      }
+
+      .modal-box p {
+        font-size: 13px;
+        margin: 4px 0 12px
+      }
+
+      .modal-box img {
+        max-height: 64dvh;
+        max-width: 100%;
+        height: auto;
+        width: auto;
+        border: 1px solid #b9bdcd;
+        display: block;
+        margin: auto
+      }
+
+      .modal-box .btn {
+        font-size: 14px
+      }
+
+      body.modal-open {
+        overflow: hidden
+      }
+
+      @media(max-width:400px) {
+        header {
+          padding: 16px 12px
+        }
+
+        header>a,
+        nav {
+          font-size: 15px
+        }
+
+        nav {
+          gap: 11px
+        }
+
+        .question-content {
+          padding: 22px 15px
+        }
+
+        .question {
+          font-size: 16px
+        }
+
+        .answer {
+          font-size: 14px
+        }
+
+        .main-sheet p {
+          font-size: 13px
+        }
+
+        .toolbar {
+          font-size: 10px
+        }
+
+        .toolbar-count {
+          font-size: 9px
+        }
+
+        .nav-arrows {
+          letter-spacing: 4px
+        }
+      }
+
+      @media(prefers-reduced-motion:reduce) {
+        * {
+          animation: none !important
+        }
+      }
+
+      .nickname-form {
+        margin-top: 18px
+      }
+
+      .nickname-form label {
+        display: block;
+        font-size: 14px;
+        margin: 0 0 8px
+      }
+
+      .nickname-form input {
+        display: block;
+        width: 100%;
+        border: 1px solid #292b35;
+        border-radius: 6px;
+        padding: 14px 12px;
+        font-size: 15px;
+        color: #292b35;
+        background: #fff;
+        outline-offset: 3px
+      }
+
+      .nickname-form input::placeholder {
+        color: #777b87;
+        font-size: 13px
+      }
+
+      .nickname-error {
+        font-size: 12px;
+        color: #a33a52;
+        min-height: 0;
+        margin: 6px 0 0
+      }
+
+      .nickname-error:empty {
+        display: none
+      }
+
+      .profile-top {
+        flex-wrap: wrap
+      }
+
+      .type-stamp {
+        font-size: calc(var(--u)*4.8);
+        max-width: 100%;
+        overflow-wrap: anywhere
+      }
+
+      .profile-caption {
+        flex-shrink: 0
+      }
+
+      .nickname-content {
+        padding: 28px 20px 30px
+      }
+
+      .nickname-content h2 {
+        font-size: 19px;
+        font-weight: 400;
+        margin: 0 0 12px
+      }
+
+      .nickname-content>p {
+        font-size: 13px;
+        word-break: keep-all;
+        margin: 0 0 24px
+      }
+
+      .nickname-content .nickname-form {
+        margin-top: 0
+      }
+
+      .profile-caption {
+        max-width: 100%;
+        word-break: keep-all
+      }
+
+      .result-footer span:first-child {
+        min-width: 0;
+        word-break: keep-all
+      }
+
+      .result-footer span:last-child {
+        white-space: nowrap
+      }
+
+      @media(min-width:768px) {
+        #resultScreen {
+          max-width: 440px;
+          margin: 0 auto
+        }
+
+        .result-card {
+          max-width: 440px
+        }
+      }
+
+      .ad-section {
+        margin: 30px auto 0;
+        width: 100%;
+        text-align: center;
+        overflow: hidden;
+      }
+
+      .ad-box {
+        width: 350px;
+        max-width: 100%;
+        min-height: 150px;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <a href="https://test-it.co.kr">
+        테스트잇
+      </a>
+      <nav aria-label="메뉴">
+        <a href="https://test-it.co.kr/test.html">
+          성격
+        </a>
+        <a href="https://test-it.co.kr/face.html">
+          얼굴
+        </a>
+        <a href="https://test-it.co.kr/etc.html">
+          그외
+        </a>
+        <a href="https://test-it.co.kr/saju.html">
+          사주
+        </a>
+      </nav>
+    </header>
+    <main>
+      <section id="mainScreen">
+        <img
+          id="mainImage"
+          class="main-image"
+          src="img_main422.png"
+          alt="테스트잇 성격 준수 사항 테스트"
+          fetchpriority="high"
+        >
+        <button class="btn primary start" id="startBtn">
+          테스트 시작하기
+        </button>
+      </section>
+      <section aria-label="닉네임 입력" class="file-window hidden" id="nicknameScreen">
+        <h1 class="window-title">
+          테스트잇 성격 준수 사항 테스트
+        </h1>
+        <div class="nickname-content">
+          <h2>
+            어떻게 불러드릴까요?
+          </h2>
+          <p>
+            결과에 표시할 닉네임을 입력해 주세요.
+          </p>
+          <form autocomplete="off" class="nickname-form" id="nicknameForm" novalidate="">
+            <label for="nicknameInput">
+              닉네임
+            </label>
+            <input aria-describedby="nicknameError" autocomplete="off" id="nicknameInput" maxlength="10" name="test422_display_name" placeholder="닉네임을 입력해 주세요 (10자 이내)" required="" type="text">
+            <p aria-live="polite" class="nickname-error" id="nicknameError">
+            </p>
+            <button class="btn primary start" id="nicknameNextBtn" type="submit">
+              다음으로
+            </button>
+          </form>
+        </div>
+      </section>
+      <section aria-label="질문" class="file-window hidden" id="questionScreen">
+        <h1 class="window-title">
+          테스트잇 성격 준수 사항 테스트
+        </h1>
+        <div class="toolbar">
+          <span aria-hidden="true" class="nav-arrows">
+            ‹ ›
+          </span>
+          <span class="path">
+            내 성격 > 준수 사항
+          </span>
+          <span class="toolbar-count">
+            폴더 3개
+          </span>
+        </div>
+        <div class="window-body">
+          <div class="question-content">
+            <div class="progressrow">
+              <span>
+                나와 더 가까운 답을 골라주세요
+              </span>
+              <span id="qCount">
+              </span>
+            </div>
+            <div aria-label="테스트 진행률" aria-valuemax="12" aria-valuemin="0" aria-valuenow="0" class="track" id="progress" role="progressbar">
+              <div class="fill" id="progressFill">
+              </div>
+            </div>
+            <div class="question-panel">
+              <p class="qnumber" id="qNumber">
+              </p>
+              <h2 class="question" id="questionText" tabindex="-1">
+              </h2>
+              <div id="answerList">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="panel loading hidden" id="loadingScreen" role="status">
+        <div aria-hidden="true" class="pixel-loader">
+          <span>
+          </span>
+          <span>
+          </span>
+          <span>
+          </span>
+          <span>
+          </span>
+        </div>
+        <h2>
+          성격 준수 사항 정리 중..
+        </h2>
+        <p>
+          잠깐만 기다려 주세요.
+        </p>
+      </section>
+      <section class="hidden" id="resultScreen">
+        <div class="result-card" id="resultCapture">
+          <h1 class="card-title">
+            테스트잇 성격 준수 사항 테스트
+          </h1>
+          <div class="toolbar result-toolbar">
+            <span aria-hidden="true" class="nav-arrows">
+              ‹ ›
+            </span>
+            <span class="path" id="resultPath">
+            </span>
+            <span class="toolbar-count">
+              폴더 3개
+            </span>
+          </div>
+          <div class="result-window-body">
+            <aside aria-label="파일 목록" class="result-sidebar">
+              <p class="side-label">
+                내 파일
+              </p>
+              <div class="file-item active">
+                <span class="file-glyph" style="color:#dfe2f2">
+                  <svg aria-hidden="true" fill="none" viewbox="0 0 26 21">
+                    <path d="M2 4V2h8l3 3h11v14H2Z" fill="currentColor" stroke="#575b6b" stroke-width="1">
+                    </path>
+                    <path d="M2 7h22" stroke="#575b6b" stroke-width="1">
+                    </path>
+                  </svg>
+                </span>
+                <span>
+                  전체
+                </span>
+              </div>
+              <div class="file-item">
+                <span class="file-glyph" style="color:#dcece5">
+                  <svg aria-hidden="true" fill="none" viewbox="0 0 26 21">
+                    <path d="M2 4V2h8l3 3h11v14H2Z" fill="currentColor" stroke="#575b6b" stroke-width="1">
+                    </path>
+                    <path d="M2 7h22" stroke="#575b6b" stroke-width="1">
+                    </path>
+                  </svg>
+                </span>
+                <span>
+                  첫인상
+                </span>
+              </div>
+              <div class="file-item">
+                <span class="file-glyph" style="color:#f6ebcc">
+                  <svg aria-hidden="true" fill="none" viewbox="0 0 26 21">
+                    <path d="M2 4V2h8l3 3h11v14H2Z" fill="currentColor" stroke="#575b6b" stroke-width="1">
+                    </path>
+                    <path d="M2 7h22" stroke="#575b6b" stroke-width="1">
+                    </path>
+                  </svg>
+                </span>
+                <span>
+                  친해짐
+                </span>
+              </div>
+              <div class="file-item">
+                <span class="file-glyph" style="color:#f3dfe6">
+                  <svg aria-hidden="true" fill="none" viewbox="0 0 26 21">
+                    <path d="M2 4V2h8l3 3h11v14H2Z" fill="currentColor" stroke="#575b6b" stroke-width="1">
+                    </path>
+                    <path d="M2 7h22" stroke="#575b6b" stroke-width="1">
+                    </path>
+                  </svg>
+                </span>
+                <span>
+                  기분
+                </span>
+              </div>
+            </aside>
+            <div class="result-content">
+              <section aria-labelledby="profileHeading" class="profile-file">
+                <h2 class="file-heading" id="profileHeading">
+                  성격 요약.txt
+                </h2>
+                <div class="profile-body">
+                  <div class="profile-top">
+                    <h3 class="type-stamp" id="resultName">
+                    </h3>
+                    <p class="profile-caption">
+                      이런 성격을
+                      <br>
+                      갖고 있어요 🙂
+                    </p>
+                  </div>
+                  <ul class="profile-traits" id="profileTraits">
+                  </ul>
+                </div>
+              </section>
+              <div id="resultFolders" style="display:contents">
+              </div>
+            </div>
+          </div>
+          <p class="result-footer">
+            <span>
+              테스트잇 성격 준수 사항 테스트
+            </span>
+            <span>
+              TEST-IT.CO.KR / TEST422
+            </span>
+          </p>
+        </div>
+        <div class="buttons">
+          <button class="btn" id="saveBtn">
+            결과 이미지 저장하기
+          </button>
+          <button class="btn" id="retryBtn">
+            다시 해보기
+          </button>
+          <a class="btn" href="https://test-it.co.kr">
+            다른 테스트 해보기
+          </a>
+          <button class="btn primary" id="shareBtn">
+            테스트 공유하기
+          </button>
+        </div>
+        <p aria-live="polite" class="status" id="status">
+        </p>
+      </section>
+      <section class="ad-section">
+        <div class="ad-box">
+          <script src="https://ads-partners.coupang.com/g.js"></script>
+          <script>
+            new PartnersCoupang.G({
+              "id": 798186,
+              "trackingCode": "AF4391881",
+              "subId": null,
+              "template": "carousel",
+              "width": "350",
+              "height": "150"
+            });
+          </script>
+        </div>
+      </section>
+    </main>
+    <div aria-label="결과 이미지 저장" aria-modal="true" class="modal hidden" id="saveModal" role="dialog">
+      <div class="modal-box">
+        <p>
+          이미지를 꾹 눌러 저장해 주세요.
+        </p>
+        <img alt="나의 성격 준수 사항 테스트 결과" id="savedImage">
+        <button class="btn" id="closeModal">
+          닫기
+        </button>
+      </div>
+    </div>
+    <script>
+      'use strict';
+      const QUESTIONS = [{
+        "q": "주말 내내 집에서 혼자 쉬고 나면 나는?",
+        "axis": "EI",
+        "options": [{
+          "text": "사람을 만나서 수다를 떨고 싶어짐",
+          "value": "E"
+        }, {
+          "text": "혼자 쉬는 시간이 더 있었으면 좋겠음",
+          "value": "I"
+        }]
+      }, {
+        "q": "만약에라는 엉뚱한 질문을 들었을 때",
+        "axis": "SN",
+        "options": [{
+          "text": "상상하는 것만으로도 이미 너무 재밌고 신남",
+          "value": "N"
+        }, {
+          "text": "그런 일이 실제로 일어날 리가 없어서 흥미 없음",
+          "value": "S"
+        }]
+      }, {
+        "q": "친구랑 의견이 달라서 다투게 될 때",
+        "axis": "TF",
+        "options": [{
+          "text": "시시비비를 정확히 가리고 논리적으로 따짐",
+          "value": "T"
+        }, {
+          "text": "서로 감정이 상하는 상황 자체가 스트레스임",
+          "value": "F"
+        }]
+      }, {
+        "q": "마트에 장을 보러 갈 때 나는?",
+        "axis": "JP",
+        "options": [{
+          "text": "둘러보다가 맛있어 보이거나 세일하는 걸 담음",
+          "value": "P"
+        }, {
+          "text": "리스트를 미리 적어서 딱 필요한 것만 사옴",
+          "value": "J"
+        }]
+      }, {
+        "q": "즐거운 일이 생겼을 때 나는?",
+        "axis": "EI",
+        "options": [{
+          "text": "누군가에게 바로 얘기하면서 신나함",
+          "value": "E"
+        }, {
+          "text": "혼자 충분히 즐긴 다음 나중에 얘기함",
+          "value": "I"
+        }]
+      }, {
+        "q": "인터넷으로 옷을 살 때 더 중요하게 보는 것은?",
+        "axis": "SN",
+        "options": [{
+          "text": "모델이 입은 핏과 전체적인 분위기",
+          "value": "N"
+        }, {
+          "text": "실제 측정 사이즈와 소재 혼용률",
+          "value": "S"
+        }]
+      }, {
+        "q": "칭찬을 들었을 때 더 기분 좋은 말은?",
+        "axis": "TF",
+        "options": [{
+          "text": "넌 뭐든 똑부러지게 잘한다",
+          "value": "T"
+        }, {
+          "text": "넌 참 따뜻하고 좋은 사람 같아",
+          "value": "F"
+        }]
+      }, {
+        "q": "일상에서 가장 스트레스받을 때",
+        "axis": "JP",
+        "options": [{
+          "text": "매일 똑같은 일상을 기계처럼 반복할 때",
+          "value": "P"
+        }, {
+          "text": "내 통제를 벗어난 돌발 상황이 생겼을 때",
+          "value": "J"
+        }]
+      }, {
+        "q": "재미있는 영화를 보고 난 직후 나는?",
+        "axis": "EI",
+        "options": [{
+          "text": "바로 누군가와 감상을 나누고 싶음",
+          "value": "E"
+        }, {
+          "text": "혼자 여운을 느끼는 시간이 좋음",
+          "value": "I"
+        }]
+      }, {
+        "q": "오늘 하루 어땠냐는 질문을 받았을 때",
+        "axis": "SN",
+        "options": [{
+          "text": "오늘 기분이 어땠고 어떤 감정이 들었는지",
+          "value": "N"
+        }, {
+          "text": "오늘 누구 만나서 밥 먹고 어떤 일을 했는지",
+          "value": "S"
+        }]
+      }, {
+        "q": "내가 실수했을 때 더 받아들이기 편한 말은?",
+        "axis": "TF",
+        "options": [{
+          "text": "뭐가 잘못됐고 어딜 고쳐야 할지 정확히 알려주는 말",
+          "value": "T"
+        }, {
+          "text": "기분 나쁘지 않게 실수를 알려주는 말",
+          "value": "F"
+        }]
+      }, {
+        "q": "헬스장이나 학원을 등록할 때",
+        "axis": "JP",
+        "options": [{
+          "text": "오늘 당장 의욕이 넘쳐서 일단 3개월 치 결제함",
+          "value": "P"
+        }, {
+          "text": "몇 달 치 일정을 고려해서 갈 수 있는 날짜를 계산함",
+          "value": "J"
+        }]
+      }];
+      const RESULTS = {
+        "ISTJ": {
+          "traits": [
+            "원리원칙과 규칙을 지키는 게 편함",
+            "책임감이 강해 맡은 일은 끝냄",
+            "익숙한 물건을 오래 쓰는 편",
+            "남의 반응 때문에 의견을 바꾸진 않음"
+          ],
+          "folders": [
+            {
+              "name": "친해지기 전 참고",
+              "rules": [
+                "예의 바르고 적당한 거리를 둠",
+                "사적인 질문을 먼저 하지 않음",
+                "신중하게 상대를 관찰하고 평가함"
+              ]
+            },
+            {
+              "name": "친해진 뒤 주의",
+              "rules": [
+                "신뢰가 생기면 끝까지 챙김",
+                "고민 상담엔 현실적인 조언을 해줌",
+                "갑작스러운 번개 모임은 당황스러움"
+              ]
+            },
+            {
+              "name": "기분 안 좋을 때 주의",
+              "rules": [
+                "혼자 조용히 생각할 시간이 필요함",
+                "억지로 대화를 시도하면 더 피곤해함",
+                "문제의 원인을 명확히 짚어줘야 함"
+              ]
+            }
+          ]
+        },
+        "ISFJ": {
+          "traits": [
+            "주변 사람을 세심하게 챙기고 배려함",
+            "안정적이고 예측 가능한 일상을 원함",
+            "갈등을 싫어해서 웬만하면 참음",
+            "기억력이 좋아 사소한 것도 다 기억함"
+          ],
+          "folders": [
+            {
+              "name": "친해지기 전 참고",
+              "rules": [
+                "다정하지만 보이지 않는 벽이 있음",
+                "먼저 다가가기보다 다가오길 기다림",
+                "리액션을 잘해주며 분위기를 맞춤"
+              ]
+            },
+            {
+              "name": "친해진 뒤 주의",
+              "rules": [
+                "익숙한 사람 앞에서는 장난이 많아짐",
+                "내가 양보하는 게 당연해지면 서운함",
+                "속마음을 털어놓기까지 꽤 오래 걸림"
+              ]
+            },
+            {
+              "name": "기분 안 좋을 때 주의",
+              "rules": [
+                "화가 나도 티를 안 내려고 노력함",
+                "속으로 삭히다가 갑자기 폭발할 수 있음",
+                "내 수고를 알아주는 말에 마음이 풀림"
+              ]
+            }
+          ]
+        },
+        "INFJ": {
+          "traits": [
+"겉보기엔 무던해 보여도 생각이 많음",
+    "무례한 사람을 보면 마음의 문을 닫음",
+    "얕은 만남보다 진심이 통하는 소수와 어울림",
+    "갈등이 생기는 상황 자체를 피하려고 노력함"
+          ],
+          "folders": [
+            {
+              "name": "친해지기 전 참고",
+              "rules": [
+"다정하지만 곁을 쉽게 내주지 않음",
+        "내 얘기보단 주로 들어주는 편임",
+        "분위기를 살피며 상대에게 맞춰줌"
+              ]
+            },
+            {
+              "name": "친해진 뒤 주의",
+              "rules": [
+"편해지면 엉뚱한 장난을 치기 시작함",
+                "평소와 다른 표정을 빠르게 알아챔",
+                "친해도 모든 사생활을 공유하진 않음"
+              ]
+            },
+            {
+              "name": "기분 안 좋을 때 주의",
+              "rules": [
+                "스트레스받으면 외부와 단절을 시도함",
+                "감정을 말로 꺼내기까지 시간이 걸림",
+                "섣부른 조언보다는 묵묵히 기다려줘야 함"
+              ]
+            }
+          ]
+        },
+        "INTJ": {
+          "traits": [
+            "효율성과 합리성을 최우선으로 생각함",
+            "지적 호기심이 많고 분석하는 걸 즐김",
+            "독립심이 강해 남에게 의존하지 않음",
+            "감정 기복이 적고 항상 차분한 편임"
+          ],
+          "folders": [
+            {
+              "name": "친해지기 전 참고",
+              "rules": [
+                "차갑고 다가가기 힘든 인상을 줌",
+                "흥미로운 주제가 나오면 질문이 구체적임",
+                "갑작스러운 사적인 연락에는 거리를 둠"
+              ]
+            },
+            {
+              "name": "친해진 뒤 주의",
+              "rules": [
+                "내 계획에 가까운 사람을 포함함",
+                "빈말은 못하지만 팩트 폭력은 잘함",
+                "지적인 대화나 토론을 나누는 걸 즐김"
+              ]
+            },
+            {
+              "name": "기분 안 좋을 때 주의",
+              "rules": [
+                "혼자 원인을 분석하고 해결책을 찾음",
+                "감정적으로 달래주려고 하면 오히려 어색해함",
+                "논리적으로 납득시켜야 기분이 풀림"
+              ]
+            }
+          ]
+        },
+        "ISTP": {
+          "traits": [
+            "관찰력이 뛰어나고 상황 파악이 빠름",
+            "효율을 중시해서 필요한 에너지만 씀",
+            "간섭받는 걸 싫어하고 마이웨이 성향임",
+            "말수가 적지만 팩트는 정확하게 짚음"
+          ],
+          "folders": [
+            {
+              "name": "친해지기 전 참고",
+              "rules": [
+                "무심해 보이고 먼저 말을 잘 안 걺",
+                "개인적인 영역을 침범당하는 걸 꺼림",
+                "리액션이 크지 않아 속을 알기 어려움"
+              ]
+            },
+            {
+              "name": "친해진 뒤 주의",
+              "rules": [
+                "친해져도 연락을 자주 하는 편은 아님",
+                "행동으로 무심하게 툭툭 챙겨주는 스타일",
+                "갑작스러운 만남에 의외로 잘 나옴"
+              ]
+            },
+            {
+              "name": "기분 안 좋을 때 주의",
+              "rules": [
+                "불편해지면 대화를 멈추고 자리를 피함",
+                "꼬치꼬치 캐물으면 짜증이 배가 됨",
+                "그냥 내버려 두면 알아서 털고 나옴"
+              ]
+            }
+          ]
+        },
+        "ISFP": {
+          "traits": [
+            "갈등을 피하고 평화로운 분위기를 지향함",
+  "누워서 조용히 쉬는 시간을 가장 좋아함",
+    "싫은 소리를 잘 못해서 속으로만 삭임",
+    "남이 내 생활에 간섭하는 것을 싫어함"
+          ],
+          "folders": [
+            {
+              "name": "친해지기 전 참고",
+              "rules": [
+                "여럿 앞에서 주목받으면 어색해함",
+"내 주장을 하기보다 상대에게 잘 맞춰줌",
+        "먼저 다가가기보다 다가와 주길 기다림"
+              ]
+            },
+            {
+              "name": "친해진 뒤 주의",
+              "rules": [
+"편해지면 은근히 고집스러운 면이 나옴",
+        "약속이 너무 많으면 에너지가 방전됨",
+        "나만의 선이 있어서 넘으면 불편해함"
+              ]
+            },
+            {
+              "name": "기분 안 좋을 때 주의",
+              "rules": [
+                "감정이 상하면 말문을 닫고 회피함",
+                "남에게 싫은 소리를 하는 걸 매우 힘들어함",
+                "윽박지르지 말고 부드럽게 물어봐 줘야 함"
+              ]
+            }
+          ]
+        },
+        "INFP": {
+          "traits": [
+            "아직 일어나지 않은 상황도 자주 상상함",
+            "남들이 좋아해도 내 마음에 안 들면 안 고름",
+            "의미 있는 물건은 오래 간직함",
+            "정해진 시간표를 따르는 건 피곤함"
+          ],
+          "folders": [
+            {
+              "name": "친해지기 전 참고",
+              "rules": [
+"낯을 가려서 먼저 다가가기 어려워함",
+                "맞장구를 쳐도 전부 동의하는 건 아님",
+                "코드가 맞는 사람인지 속으로 관찰함"
+              ]
+            },
+            {
+              "name": "친해진 뒤 주의",
+              "rules": [
+                "좋아하는 취향을 공유하며 딥토크를 즐김",
+                "같이 있어도 가끔은 말없이 생각에 잠김",
+"사소한 장난이나 말에도 상처받기 쉬움"
+              ]
+            },
+            {
+              "name": "기분 안 좋을 때 주의",
+              "rules": [
+                "상처받은 문장을 혼자 반복해서 떠올림",
+"조언보다는 따뜻하게 공감해주는 게 좋음",
+                "내가 왜 속상했는지 들어주길 원함"
+              ]
+            }
+          ]
+        },
+        "INTP": {
+          "traits": [
+"꽂힌 주제가 생기면 끝까지 파고듦",
+    "비논리적인 상황을 견디기 힘들어함",
+            "혼자 생각하고 탐구하는 시간을 사랑함",
+            "내 감정을 알아차리는 데 시간이 걸림"
+          ],
+          "folders": [
+            {
+              "name": "친해지기 전 참고",
+              "rules": [
+"무관심한 주제엔 대답이 아주 짧음",
+        "자주 멍때리며 혼자만의 생각에 빠짐",
+                "자주 못 만나도 관계가 끝났다고 생각하진 않음"
+              ]
+            },
+            {
+              "name": "친해진 뒤 주의",
+              "rules": [
+"흥미를 끄는 정보나 지식을 공유해줌",
+        "연락을 자주 까먹어도 악의는 전혀 없음",
+        "논쟁을 즐기지만 싸우려는 의도는 아님"
+              ]
+            },
+            {
+              "name": "기분 안 좋을 때 주의",
+              "rules": [
+"스트레스받으면 혼자만의 동굴로 숨음",
+        "왜 기분이 나쁜지 혼자 조용히 분석함",
+        "감정적 호소보다 논리적 대화가 통함"
+              ]
+            }
+          ]
+        },
+        "ESTP": {
+          "traits": [
+            "활동적이고 스릴 넘치는 경험을 즐김",
+            "적응력이 뛰어나고 눈치가 백단임",
+            "즉흥적이고 그때그때 끌리는 대로 행동함",
+            "손해와 이득은 현실적으로 따짐"
+          ],
+          "folders": [
+            {
+              "name": "친해지기 전 참고",
+              "rules": [
+                "누구와도 편하게 대화하며 분위기를 띄움",
+                "솔직하고 시원시원해서 매력적으로 보임",
+                "지루한 걸 못 참아서 흥미로운 걸 찾아다님"
+              ]
+            },
+            {
+              "name": "친해진 뒤 주의",
+              "rules": [
+"갑자기 불러내서 노는 번개 모임을 좋아함",
+        "함께 재미있는 걸 경험하고 활동하길 원함",
+                "친할수록 장난이 심해질 수 있음"
+              ]
+            },
+            {
+              "name": "기분 안 좋을 때 주의",
+              "rules": [
+"불만이 생기면 참지 않고 바로 털어놓음",
+        "한 번 화내고 풀리면 지난 일은 잊어버림",
+        "구구절절한 변명보다 깔끔한 사과가 통함"
+              ]
+            }
+          ]
+        },
+      "ESFP": {
+          "traits": [
+"사람들과 어울려 노는 시간을 제일 좋아함",
+    "감정이 얼굴에 그대로 다 드러나는 편임",
+    "계획을 세우기보다 즉흥적으로 움직임",
+    "주변 분위기를 즐겁게 띄우는 재주가 있음"
+          ],
+          "folders": [
+            {
+              "name": "친해지기 전 참고",
+              "rules": [
+"리액션이 크고 누구에게나 친절하게 대함",
+        "처음 보는 사람과도 금방 어색함이 풀림",
+                "관심받는 걸 좋아해서 인싸 기질이 다분함"
+              ]
+            },
+            {
+              "name": "친해진 뒤 주의",
+              "rules": [
+"좋은 곳을 발견하면 꼭 같이 가고 싶어 함",
+        "외로움을 잘 타서 연락이 끊기면 서운해함",
+        "깜짝 선물이나 이벤트를 해주는 걸 좋아함"
+              ]
+            },
+            {
+              "name": "기분 안 좋을 때 주의",
+              "rules": [
+"우울한 기분을 숨기지 못해 티가 많이 남",
+        "맛있는 걸 먹거나 밖에서 놀면 금세 풀림",
+        "혼자 두면 더 우울해하니 옆에서 챙겨야 함"
+              ]
+            }
+          ]
+        },
+        "ENFP": {
+          "traits": [
+"낯선 사람과 새로운 경험을 좋아함",
+            "남의 눈치보다 내 마음에 맞게 고르고 싶음",
+"감수성이 풍부하고 주변에 활기를 줌",
+            "좋고 싫은 반응이 말투에 잘 드러남"
+          ],
+          "folders": [
+            {
+              "name": "친해지기 전 참고",
+              "rules": [
+                "질문하다가 갑자기 다른 주제로 넘어감",
+                "먼저 다가가도 속얘기는 쉽게 안 꺼냄",
+"반응을 잘 해주며 대화를 쉽게 이어감"
+              ]
+            },
+            {
+              "name": "친해진 뒤 주의",
+              "rules": [
+                "재밌는 건 뭐든 같이하려고 함",
+"밝아 보이지만 은근히 상처를 잘 받음",
+        "끊임없이 새로운 주제로 수다를 즐김"
+              ]
+            },
+            {
+              "name": "기분 안 좋을 때 주의",
+              "rules": [
+"감정 기복이 커서 얼굴에 다 드러남",
+        "조언보다는 무조건 내 편이 되어줘야 함",
+        "내 마음을 알아주면 금세 훌훌 털어냄"
+              ]
+            }
+          ]
+        },
+        "ENTP": {
+          "traits": [
+            "새로운 환경에도 비교적 빨리 익숙해짐",
+"토론과 논쟁을 즐기며 지는 걸 싫어함",
+    "뻔한 방식보다 나만의 새로운 길을 찾음",
+    "관심 분야에 얕고 넓은 지식을 가짐"
+          ],
+          "folders": [
+            {
+              "name": "친해지기 전 참고",
+              "rules": [
+"능글맞고 재치 있는 말솜씨로 시선을 끎",
+        "반대 의견을 던지며 반응 보기를 즐김",
+        "재미없는 사람이나 주제엔 관심이 식음"
+              ]
+            },
+            {
+              "name": "친해진 뒤 주의",
+              "rules": [
+"친해지면 짓궂은 장난을 많이 치고 놀림",
+        "엉뚱한 상상을 공유하며 끝없이 토론함",
+        "가끔 팩트 폭력으로 상대방 뼈를 때림"
+              ]
+            },
+            {
+              "name": "기분 안 좋을 때 주의",
+              "rules": [
+"상대방의 논리적 허점을 집요하게 파고듦",
+        "회피하기보다 당당하게 맞서는 걸 선호함",
+        "합리적인 이유를 대면 깔끔하게 수긍함"
+              ]
+            }
+          ]
+        },
+        "ESTJ": {
+          "traits": [
+"체계적이고 리더십이 강해 상황을 주도함",
+    "뜬구름 잡는 소리보다 명확한 팩트를 선호",
+    "시간이나 돈 낭비하는 것을 극도로 혐오함",
+    "계획대로 척척 진행되어야 마음이 편안함"
+          ],
+          "folders": [
+            {
+              "name": "친해지기 전 참고",
+              "rules": [
+"예의를 철저하게 지키며 선을 그음",
+        "결론부터 말하는 명확한 화법을 선호함",
+        "능력 있고 똑부러지는 사람에게 끌림"
+              ]
+            },
+            {
+              "name": "친해진 뒤 주의",
+              "rules": [
+                "필요하다고 생각하면 먼저 조언함",
+"잔소리가 심해지지만 모두 애정 표현임",
+        "책임감 없고 약속 어기는 사람을 싫어함"
+              ]
+            },
+            {
+              "name": "기분 안 좋을 때 주의",
+              "rules": [
+"핑계나 감정 호소는 불난 집에 부채질임",
+        "잘못을 인정하고 대안을 제시해야 풀림",
+        "화가 나도 맡은 일은 확실하게 끝마침"
+              ]
+            }
+          ]
+        },
+        "ESFJ": {
+          "traits": [
+"주변 사람들의 기분과 상태를 잘 파악함",
+    "다 같이 화목하게 어울리는 것을 좋아함",
+    "남을 돕는 것에 큰 기쁨을 느끼는 편임",
+    "칭찬과 인정을 받으면 의욕이 마구 솟음"
+          ],
+          "folders": [
+            {
+              "name": "친해지기 전 참고",
+              "rules": [
+"먼저 다가가 말을 걸고 분위기를 띄움",
+        "공통점을 빨리 찾아 대화를 잘 이끌어감",
+        "남의 눈치를 은근히 보며 행동을 조심함"
+              ]
+            },
+            {
+              "name": "친해진 뒤 주의",
+              "rules": [
+"사소한 일상도 모두 공유하고 싶어함",
+        "베푼 만큼 돌아오지 않으면 속으로 서운함",
+        "지인들의 기념일을 귀신같이 알고 챙겨줌"
+              ]
+            },
+            {
+              "name": "기분 안 좋을 때 주의",
+              "rules": [
+"서운한 티를 내며 상대가 알아주길 기다림",
+        "먼저 다가가 다정하게 대해주면 금방 풀림",
+        "베푼 진심이 무시당할 때 크게 상처받음"
+              ]
+            }
+          ]
+        },
+        "ENFJ": {
+          "traits": [
+  "사람을 좋아하고 상대의 잠재력을 끌어줌",
+    "따뜻한 말로 기분 좋게 해주는 재능이 있음",
+    "세상을 긍정적으로 보며 이상을 꿈꿈",
+    "남을 챙기느라 정작 내 자신은 못 돌봄"
+          ],
+          "folders": [
+            {
+              "name": "친해지기 전 참고",
+              "rules": [
+"기본적으로 다정해서 누구에게나 친절함",
+        "편안하게 말할 수 있도록 리액션을 잘해줌",
+        "무례하거나 이기적인 사람은 조용히 손절함"
+              ]
+            },
+            {
+              "name": "친해진 뒤 주의",
+              "rules": [
+"친한 사람들의 성장과 발전을 응원함",
+        "싸우는 게 싫어서 웬만하면 둥글게 넘어감",
+        "준 사랑만큼 상대의 애정 표현을 갈구함"
+              ]
+            },
+            {
+              "name": "기분 안 좋을 때 주의",
+              "rules": [
+"직접 화내기보다 관계에 대해 깊이 고민함",
+        "배려 없는 태도가 계속되면 마음을 접음",
+        "그간의 노력을 알아주고 고마워해야 풀림"
+              ]
+            }
+          ]
+        },
+        "ENTJ": {
+          "traits": [
+"성취감이 떨어지면 쉽게 무기력함을 느낌",
+"남에게 휘둘리지 않고 내 주관대로 결정함",
+            "감정 표현은 짧고 직접적인 편",
+            "내 기준이 높아서 쉬어도 할 일을 생각함"
+          ],
+          "folders": [
+            {
+              "name": "친해지기 전 참고",
+              "rules": [
+"자신감과 카리스마가 있어 첫인상이 강렬함",
+        "가벼운 잡담보다 발전적인 대화를 선호함",
+        "핑계 대고 행동하지 않는 사람을 싫어함"
+              ]
+            },
+            {
+              "name": "친해진 뒤 주의",
+              "rules": [
+                "편한 사람 앞에서는 농담과 장난이 늘어남",
+        "위로보다 팩트 폭력과 확실한 해결책을 줌",
+        "통제하려는 성향이 강해 상대를 지치게 함"
+              ]
+            },
+            {
+              "name": "기분 안 좋을 때 주의",
+              "rules": [
+"화가 나도 이성적으로 상황을 통제하려 함",
+        "감정 호소보다는 합리적인 대안을 요구함",
+        "문제가 완벽하게 해결되어야만 화가 풀림"
+              ]
+            }
+          ]
+        }
+      };
+      const TEST_URL = 'https://test-it.co.kr/test422';
+      const TEST_TITLE = '테스트잇 성격 준수 사항 테스트';
+      const FOLDER_ICON =
+        "<svg viewBox=\"0 0 26 21\" fill=\"none\" aria-hidden=\"true\"><path d=\"M2 4V2h8l3 3h11v14H2Z\" fill=\"currentColor\" stroke=\"#575b6b\" stroke-width=\"1\"/><path d=\"M2 7h22\" stroke=\"#575b6b\" stroke-width=\"1\"/></svg>";
+      const $ = id => document.getElementById(id);
+      let answers = [],
+        current = 0,
+        busy = false,
+        resultTimer = null,
+        modalFocus = null,
+        nickname = "";
+
+      function showScreen(id) {
+        ['mainScreen', 'nicknameScreen', 'questionScreen', 'loadingScreen', 'resultScreen'].forEach(x =>
+          $(x).classList.toggle('hidden', x !== id));
+      }
+
+      function renderQuestion() {
+        const q = QUESTIONS[current];
+        $('questionText').textContent = q.q;
+        $('qCount').textContent = (current + 1) + ' / 12';
+        $('qNumber').textContent = 'Q. ' + String(current + 1).padStart(2, '0');
+        $('progressFill').style.width = (current / 12 * 100) + '%';
+        $('progress').setAttribute('aria-valuenow', String(current));
+        $('answerList').replaceChildren();
+        q.options.forEach((o, index) => {
+          const b = document.createElement('button');
+          b.className = 'btn answer';
+          b.textContent = o.text;
+          b.addEventListener('click', () => choose(index));
+          $('answerList').appendChild(b);
+        });
+        busy = false;
+        $('questionText').focus({
+          preventScroll: true
+        });
+      }
+
+      function choose(index) {
+        if (busy) return;
+        busy = true;
+        document.querySelectorAll('.answer').forEach(b => b.disabled = true);
+        answers.push(index);
+        current++;
+        if (current < QUESTIONS.length) {
+          renderQuestion();
+        } else {
+          showScreen('loadingScreen');
+          resultTimer = setTimeout(() => {
+            showScreen('resultScreen');
+            renderResult();
+            resultTimer = null;
+          }, 3000);
+        }
+      }
+
+      function calculateResult(list) {
+        if (list.length !== QUESTIONS.length) throw new Error('응답은 12개가 필요합니다.');
+        const scores = {
+          E: 0,
+          I: 0,
+          S: 0,
+          N: 0,
+          T: 0,
+          F: 0,
+          J: 0,
+          P: 0
+        };
+        list.forEach((index, i) => {
+          const option = QUESTIONS[i].options[index];
+          if (!option) throw new Error('유효하지 않은 응답');
+          scores[option.value]++;
+        });
+        return ['EI', 'SN', 'TF', 'JP'].map(axis => scores[axis[0]] > scores[axis[1]] ? axis[0] : axis[1])
+          .join('');
+      }
+
+      function fitCard() {
+        const w = $('resultCapture').getBoundingClientRect().width;
+        if (w > 0) $('resultCapture').style.setProperty('--u', (w / 100) + 'px');
+      }
+
+      function renderResult() {
+        const type = calculateResult(answers),
+          r = RESULTS[type];
+        $('resultName').textContent = nickname + '님';
+        $('resultPath').textContent = '테스트 > 성격 준수 사항';
+        $('profileTraits').replaceChildren();
+        r.traits.forEach(t => {
+          const li = document.createElement('li');
+          li.textContent = t;
+          $('profileTraits').appendChild(li);
+        });
+        $('resultFolders').replaceChildren();
+        r.folders.forEach((group, i) => {
+          const section = document.createElement('section');
+          section.className = 'folder-group';
+          section.style.setProperty('--folder', ['#dcece5', '#f6ebcc', '#f3dfe6'][i]);
+          const heading = document.createElement('h3');
+          heading.className = 'folder-head';
+          heading.id = 'folderHeading' + i;
+          section.setAttribute('aria-labelledby', heading.id);
+          heading.innerHTML = FOLDER_ICON;
+          const name = document.createElement('span');
+          name.textContent = group.name;
+          heading.appendChild(name);
+          const ul = document.createElement('ul');
+          ul.className = 'rule-list';
+          group.rules.forEach(t => {
+            const li = document.createElement('li');
+            li.textContent = t;
+            ul.appendChild(li);
+          });
+          section.append(heading, ul);
+          $('resultFolders').appendChild(section);
+        });
+        $('status').textContent = '';
+        fitCard();
+      }
+      window.addEventListener('resize', fitCard);
+      $('startBtn').addEventListener('click', () => {
+        $('nicknameError').textContent = '';
+        $('nicknameInput').removeAttribute('aria-invalid');
+        showScreen('nicknameScreen');
+      });
+      $('nicknameForm').addEventListener('submit', e => {
+        e.preventDefault();
+        const value = $('nicknameInput').value.trim();
+        if (!value) {
+          $('nicknameError').textContent = '닉네임을 입력해 주세요.';
+          $('nicknameInput').setAttribute('aria-invalid', 'true');
+          $('nicknameInput').focus({
+            preventScroll: true
+          });
+          return;
+        }
+        nickname = Array.from(value).slice(0, 10).join('');
+        $('nicknameInput').value = nickname;
+        $('nicknameError').textContent = '';
+        $('nicknameInput').removeAttribute('aria-invalid');
+        answers = [];
+        current = 0;
+        showScreen('questionScreen');
+        renderQuestion();
+      });
+      $('nicknameInput').addEventListener('input', () => {
+        $('nicknameError').textContent = '';
+        $('nicknameInput').removeAttribute('aria-invalid');
+      });
+      $('retryBtn').addEventListener('click', () => {
+        clearTimeout(resultTimer);
+        answers = [];
+        current = 0;
+        busy = false;
+        $('status').textContent = '';
+        showScreen('mainScreen');
+      });
+      $('shareBtn').addEventListener('click', async () => {
+        const data = {
+          title: TEST_TITLE,
+          text: TEST_TITLE,
+          url: TEST_URL
+        };
+        try {
+          if (navigator.share) {
+            await navigator.share(data);
+          } else if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(TEST_TITLE + '\n' + TEST_URL);
+            $('status').textContent = '테스트 주소가 복사되었어요.';
+          } else {
+            window.prompt('복사해서 공유해 주세요.', TEST_TITLE + '\n' + TEST_URL);
+          }
+        } catch (e) {
+          if (e.name !== 'AbortError') $('status').textContent = '공유하지 못했어요. 다시 시도해 주세요.';
+        }
+      });
+      $('saveBtn').addEventListener('click', async () => {
+        const btn = $('saveBtn');
+        btn.disabled = true;
+        btn.textContent = '이미지 만드는 중..';
+        try {
+          if (typeof html2canvas !== 'function') throw new Error('capture unavailable');
+          await document.fonts.ready;
+          fitCard();
+          const capture = $('resultCapture');
+          const captureWidth = capture.getBoundingClientRect().width;
+          const captureScale = 1000 / captureWidth;
+          const canvas = await html2canvas(capture, {
+            scale: captureScale,
+            backgroundColor: '#ffffff',
+            useCORS: true,
+            logging: false,
+            scrollX: window.scrollX,
+            scrollY: window.scrollY
+          });
+          const url = canvas.toDataURL('image/png');
+          $('savedImage').src = url;
+          modalFocus = document.activeElement;
+          $('saveModal').classList.remove('hidden');
+          document.body.classList.add('modal-open');
+          $('closeModal').focus({
+            preventScroll: true
+          });
+        } catch (e) {
+          $('status').textContent = '이미지를 만들지 못했어요. 잠시 후 다시 시도해 주세요.';
+        } finally {
+          btn.disabled = false;
+          btn.textContent = '결과 이미지 저장하기';
+        }
+      });
+
+      function closeModal() {
+        $('saveModal').classList.add('hidden');
+        document.body.classList.remove('modal-open');
+        if (modalFocus) modalFocus.focus({
+          preventScroll: true
+        });
+      }
+      $('closeModal').addEventListener('click', closeModal);
+      $('saveModal').addEventListener('click', e => {
+        if (e.target === $('saveModal')) closeModal();
+      });
+      document.addEventListener('keydown', e => {
+        if ($('saveModal').classList.contains('hidden')) return;
+        if (e.key === 'Escape') closeModal();
+        if (e.key === 'Tab') {
+          e.preventDefault();
+          $('closeModal').focus({
+            preventScroll: true
+          });
+        }
+      });
+
+    </script>
+  </body>
+</html>

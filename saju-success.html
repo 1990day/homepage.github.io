@@ -18,7 +18,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>테스트잇 정통 사주 리포트</title>
+    <title>[테스트 결제] 테스트잇 정통 사주 리포트</title>
     <meta name="description" content="테스트잇 정통 사주 리포트">
 <meta name="keywords" content="테스트잇,전체사주,정통사주,테스트잇사주,테스트잇전체사주,테스트잇사주,정확한사주,연애테스트,연애mbti,연애성격테스트, 심리테스트, mbti테스트">
     <meta property="og:type" content="website"> 
@@ -230,7 +230,7 @@ article{
   async function verifyAndComplete() {
     // 토스에서 돌아왔다는 사실만으로는 결제 완료가 아닙니다.
     showStatus("결제 확인 중입니다", "결제 승인 상태를 확인하고 있습니다. 잠시만 기다려 주세요.");
-    if (!paymentKey || !/^saju01_[a-f0-9]{32}$/.test(orderId || "") || amount !== 9900) {
+    if (!paymentKey || !/^testsaju01_[a-f0-9]{32}$/.test(orderId || "") || amount !== 9900) {
       showStatus("결제 정보를 확인할 수 없습니다", "결제 여부를 확인해야 합니다. 중복 결제하지 말고 문의해 주세요.");
       return;
     }
@@ -239,7 +239,7 @@ article{
         method: "POST",
         headers: { "Content-Type": "text/plain;charset=utf-8" },
         body: JSON.stringify({
-          action: "confirmPayment", paymentKey, orderId, amount
+          action: "confirmTestPayment", paymentKey, orderId, amount
         }),
         redirect: "follow"
       });
@@ -248,7 +248,7 @@ article{
       if (result.result !== "success" || result.orderId !== orderId || Number(result.amount) !== 9900) {
         throw new Error(result.message || "결제 승인 확인이 완료되지 않았습니다.");
       }
-      sessionStorage.removeItem("saju01PendingOrderId");
+      sessionStorage.removeItem("saju01TestPendingOrderId");
       showStatus("결제가 성공적으로 완료되었습니다!", "사주 신청이 완료되었습니다. 48시간 내에 이메일로 발송해 드릴게요.");
     } catch (error) {
       console.error("결제 확인 오류:", error);

@@ -206,114 +206,56 @@ article{
     </header>
 
    <div class="success-page">
-    <h1 class="success-title">결제가 성공적으로 완료되었습니다!</h1>
+    <h1 class="success-title">결제 확인 중입니다</h1>
     <p class="success-text">
-        사주 신청이 완료되었습니다. 48시간 내에 이메일로 발송해 드릴게요.
+        결제 승인 상태를 확인하고 있습니다. 잠시만 기다려 주세요.
     </p>
     <a class="success-link" href="https://test-it.co.kr/saju01">이전 페이지로 돌아가기</a>
 </div>
 <script>
-    document.addEventListener("DOMContentLoaded", async function () {
-      const successPage = document.querySelector(".success-page");
-      successPage.style.display = "none"; 
-  
-      const urlParams = new URLSearchParams(window.location.search);
-      const paymentKey = urlParams.get("paymentKey");
-      const orderId = urlParams.get("orderId");
-      const amount = urlParams.get("amount");
-  
-      if (!paymentKey || !orderId || !amount) {
-        console.error("❌ 결제 정보가 누락되었습니다.");
-        alert("⚠️ 결제 정보가 누락되었습니다. 다시 시도해 주세요.");
-        window.location.href = "https://test-it.co.kr/payment-fail1"; 
-        return;
-      }
-  
-      console.log("🚀 결제 승인 요청:", { paymentKey, orderId, amount });
-  
-      try {
-        const response = await fetch("https://api.tosspayments.com/v1/payments/confirm", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": "Basic " + btoa("live_gsk_DnyRpQWGrNL20vzK4mRb3Kwv1M9E:")
-          },
-          body: JSON.stringify({
-            paymentKey: paymentKey,
-            orderId: orderId,
-            amount: parseInt(amount)
-          })
-        });
-  
-        const result = await response.json();
-  
-        if (response.ok) {
-          console.log("✅ 결제 승인 성공:", result);
-          successPage.style.display = "block"; 
-          alert("🎉 결제가 성공적으로 완료되었습니다!");
-  
-          // localStorage에서 정보 가져오기
-          const userData = JSON.parse(localStorage.getItem("userData"));
+  const TOSS_SERVER_URL = "https://script.google.com/macros/s/AKfycbwNo04OutnyZoy6LxzCBXn0ApxfUELXrYm03NJpLABqBmCTPG1R2Nwcw_Xjs6an-oFTMA/exec";
+  const successPage = document.querySelector(".success-page");
+  const title = successPage.querySelector(".success-title");
+  const message = successPage.querySelector(".success-text");
+  const params = new URLSearchParams(window.location.search);
+  const paymentKey = params.get("paymentKey");
+  const orderId = params.get("orderId");
+  const amount = Number(params.get("amount"));
 
-          // 결제 항목에 따라 돌아가기 링크 알아서 바꿔주기
-          const returnLink = document.querySelector(".success-link");
-          if (userData && userData.paymentItem === "확답사주") {
-              returnLink.href = "https://test-it.co.kr/saju07";
-          } else {
-              returnLink.href = "https://test-it.co.kr/saju01";
-          }
+  function showStatus(heading, body) {
+    title.textContent = heading;
+    message.textContent = body;
+  }
 
-          if (userData && userData.name) {
-            sendToGoogleSheet(
-              userData.name,
-              userData.gender,
-              userData.birth,
-              userData.birthType,
-              userData.time,
-              userData.email,
-              userData.paymentItem
-            );
-            // 구글 시트 전송 후 스토리지 비우기
-            localStorage.removeItem("userData");
-          } else {
-             console.log("저장된 사용자 정보가 없습니다.");
-          }
-        } else {
-          console.error("❌ 결제 승인 실패:", result);
-          alert(`⚠️ 결제 승인 실패: ${result.message}`);
-          window.location.href = "https://test-it.co.kr/payment-fail1"; 
-        }
-      } catch (error) {
-        console.error("❌ 결제 승인 중 오류 발생:", error);
-        alert("⚠️ 결제 승인 중 오류가 발생했습니다.");
-        window.location.href = "https://test-it.co.kr/payment-fail1"; 
-      }
-    });
-  
-    function sendToGoogleSheet(userName, userGender, birthDate, birthType, birthTime, userEmail, paymentItem) {
-      console.log("📤 전송할 데이터:", userName, userGender, birthDate, birthType, birthTime, userEmail, paymentItem);
-      fetch("https://script.google.com/macros/s/AKfycbyyezrI0ed6LrbMRNE-zO2rrR_0FN8RwJ0uOiEJywgFQE7Mcp4IVXUM3xcqE1Sqn2Sj/exec", {
-        method: "POST",
-        mode: "no-cors",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          userName: userName,
-          userGender: userGender,
-          birthDate: birthDate,
-          birthType: birthType,
-          birthTime: birthTime,
-          userEmail: userEmail,
-          paymentItem: paymentItem,
-          paymentTime: new Date().toLocaleString()
-        })
-      })
-      .then(() => {
-        console.log("✅ 구글 시트에 데이터 전송 완료!");
-      })
-      .catch(error => {
-        console.error("❌ 데이터 전송 실패:", error);
-      });
+  async function verifyAndComplete() {
+    // 토스에서 돌아왔다는 사실만으로는 결제 완료가 아닙니다.
+    showStatus("결제 확인 중입니다", "결제 승인 상태를 확인하고 있습니다. 잠시만 기다려 주세요.");
+    if (!paymentKey || !/^saju01_[a-f0-9]{32}$/.test(orderId || "") || amount !== 9900) {
+      showStatus("결제 정보를 확인할 수 없습니다", "결제 여부를 확인해야 합니다. 중복 결제하지 말고 문의해 주세요.");
+      return;
     }
-  </script>
+    try {
+      const response = await fetch(TOSS_SERVER_URL, {
+        method: "POST",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify({
+          action: "confirmPayment", paymentKey, orderId, amount
+        }),
+        redirect: "follow"
+      });
+      if (!response.ok) throw new Error("결제 서버에 연결할 수 없습니다.");
+      const result = await response.json();
+      if (result.result !== "success" || result.orderId !== orderId || Number(result.amount) !== 9900) {
+        throw new Error(result.message || "결제 승인 확인이 완료되지 않았습니다.");
+      }
+      sessionStorage.removeItem("saju01PendingOrderId");
+      showStatus("결제가 성공적으로 완료되었습니다!", "사주 신청이 완료되었습니다. 48시간 내에 이메일로 발송해 드릴게요.");
+    } catch (error) {
+      console.error("결제 확인 오류:", error);
+      showStatus("결제 확인이 필요합니다", "결제가 진행되었을 수 있습니다. 중복 결제하지 말고 주문번호를 보관한 뒤 문의해 주세요. 주문번호: " + orderId);
+    }
+  }
+  verifyAndComplete();
+</script>
   
 </html>

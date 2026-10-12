@@ -12,7 +12,8 @@
      connect-src 'self' https://*;
      frame-src 'self' https://*;
      ">
-     <script src="https://nsp.pay.naver.com/sdk/js/naverpay.min.js"></script>
+
+     <script src="https://js.tosspayments.com/v2/standard"></script>
 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -82,6 +83,22 @@ article{
     display: flex;
     flex-direction: column;
 }
+ 
+#img{
+    width: 500px;
+    height: 900px;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
+
+#img_main{
+    width: 500px;
+    height: 600px;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
 
 .custom-jelly-button {
     width: 100%;
@@ -90,7 +107,7 @@ article{
     font-size: 15px !important;
     font-weight: bold;
     color: black !important;
-    background: linear-gradient(145deg, #ffcfcf, #ffcfcf); 
+    background: linear-gradient(145deg, #ffcfcf, #ffcfcf);
     border: none;
     border-radius: 17px;
     box-shadow: inset -4px -4px 10px rgba(255, 255, 255, 0.7), 
@@ -104,60 +121,101 @@ article{
     background: linear-gradient(145deg, #ffcfcf, #ffcfcf);
 }
 
-.page {
-            display: none;
-            margin: 0 auto;
-            max-width: 600px;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 15px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .active {
-            display: block;
-        }
-        input, button {
-            width: 80%;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 10px;
-            border: 1px solid #ddd;
-        }
+  .page {
+      display: none;
+      margin: 0 auto;
+      max-width: 600px;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .page.active {
+      display: block;
+    }
 
-             /* 성공 페이지 전용 스타일 */
-             .success-page {
-            text-align: center;        
-            margin: 40px auto;        
-            max-width: 600px;         
-            padding: 30px;            
-            background-color: #fff;   
-            border-radius: 15px;      
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .success-title {
-            font-size: 1.2rem;        
-            font-weight: bold;        
-            margin-bottom: 10px;      
-        }
-        .success-text {
-            font-size: 1rem;          
-            margin-bottom: 20px;      
-        }
-        .success-link {
-            display: inline-block;    
-            padding: 10px 20px;
-            background-color: #ffcfcf;
-            border-radius: 10px;
-            text-decoration: none;      
-            color: black;
-            font-weight: bold;
-            box-shadow: inset -4px -4px 10px rgba(255, 255, 255, 0.7),
-                        inset 4px 4px 10px rgba(0, 0, 0, 0.1),
-                        2px 2px 8px rgba(0, 0, 0, 0.15);
-        }
-        .success-link:hover {
-            background: #ffbdbd;       
-        }
+    .info-page {
+      text-align: center;
+    }
+
+    .info-title {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .saju-form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px; 
+      margin: 0 auto;
+      max-width: 400px; 
+    }
+
+    .form-group {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 3px; 
+    }
+
+    .label-bold {
+      font-weight: bold;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+    }
+
+    .form-group-inline {
+      display: flex;
+      flex-direction: row;
+      gap: 8px; 
+      width: 100%;
+    }
+
+    .form-group-inline select {
+      flex: 1;
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+    }
+
+    .button-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
+      width: 100%;
+      max-width: 500px;
+    }
+
+.payment-page {
+  text-align: center; 
+}
+
+.payment-page h1 {
+  font-size: 1.2rem;  
+  font-weight: bold;
+  margin-bottom: 10px; 
+}
+
+.payment-page h2 {
+  font-size: 1rem;    
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.payment-page p {
+  font-size: 0.9rem;  
+  margin-bottom: 5px;
+}
     
     .at-share-btn-elements{
         text-align: center;
@@ -166,15 +224,6 @@ article{
     margin: 0 auto;
 }
 
-.kakao_ad{
-    width: 320px;
-    margin: 0 auto;
-}
-
-.kakao_ad2{
-    width: 320px;
-    margin: 0 auto;
-}
 .coupang_ad {
     width: 320px;
     margin: 0 auto;
@@ -185,9 +234,15 @@ article{
             margin: 0 auto;
         }
     
-  
+        input, select, button {
+      width: 80%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+    }
+    
 </style>
-
 </head>
 <body class="container" style="background-color:#ffffff">
             
@@ -205,57 +260,281 @@ article{
         
     </header>
 
-   <div class="success-page">
-    <h1 class="success-title">결제 확인 중입니다</h1>
-    <p class="success-text">
-        결제 승인 상태를 확인하고 있습니다. 잠시만 기다려 주세요.
-    </p>
-    <a class="success-link" href="https://test-it.co.kr/saju01">이전 페이지로 돌아가기</a>
+  <div id="mainPage" class="page active">
+    <img src="saju_main01.png" alt="사주 예시" style="width: 100%; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+    <br><br>
+    <button class="custom-jelly-button" onclick="showPage('infoPage')">💌 정보 입력하고 결제하기</button>
 </div>
+
+  <div id="infoPage" class="page info-page">
+    <h1 class="info-title">📄 사주 정보 입력</h1>
+
+    <form id="sajuForm" class="saju-form">
+      <div class="form-group">
+        <input
+          type="text"
+          id="userName"
+          placeholder="이름 (예: 홍길동)"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="userGender" class="label-bold">성별</label>
+        <select id="userGender" required>
+          <option value="여성">여성</option>
+          <option value="남성">남성</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="birthType" class="label-bold">생년월일</label>
+        <div class="form-group-inline">
+          <select id="birthType" required>
+            <option value="양력">양력</option>
+            <option value="음력">음력</option>
+          </select>
+          <select id="birthYear" required></select>
+          <select id="birthMonth" required></select>
+          <select id="birthDay" required></select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="birthHour" class="label-bold">태어난 시간</label>
+        <select id="birthHour" required>
+          <option value="모름">모름</option>
+          <option value="자시">자시 (23:30 ~ 01:30)</option>
+          <option value="축시">축시 (01:30 ~ 03:30)</option>
+          <option value="인시">인시 (03:30 ~ 05:30)</option>
+          <option value="묘시">묘시 (05:30 ~ 07:30)</option>
+          <option value="진시">진시 (07:30 ~ 09:30)</option>
+          <option value="사시">사시 (09:30 ~ 11:30)</option>
+          <option value="오시">오시 (11:30 ~ 13:30)</option>
+          <option value="미시">미시 (13:30 ~ 15:30)</option>
+          <option value="신시">신시 (15:30 ~ 17:30)</option>
+          <option value="유시">유시 (17:30 ~ 19:30)</option>
+          <option value="술시">술시 (19:30 ~ 21:30)</option>
+          <option value="해시">해시 (21:30 ~ 23:30)</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="userEmail" class="label-bold">이메일</label>
+        <input
+          type="email"
+          id="userEmail"
+          placeholder="이메일 (예: example@email.com)"
+          required
+        />
+      </div>
+
+      <div class="button-group">
+        <button
+          type="button"
+          class="custom-jelly-button"
+          onclick="showPage('paymentPage')"
+        >
+          💰 결제하기
+        </button>
+        <button
+          type="button"
+          class="custom-jelly-button"
+          onclick="showPage('mainPage')"
+        >
+          ⬅️ 돌아가기
+        </button>
+      </div>
+    </form>
+  </div>
+
+<div id="paymentPage" class="page payment-page">
+  <h1>💳 결제 진행</h1>
+  <div id="userInfo">
+  </div>
+  
+  <div id="payment-method"></div>
+  <div id="agreement"></div>
+  
+  <button class="custom-jelly-button" onclick="startTossPay('정통사주', 9900)" id="tossPayButton">
+    결제하기 (9,900원)
+  </button>
+  <br>
+  <button class="custom-jelly-button" onclick="showPage('infoPage')">
+    ⬅️ 정보 수정
+  </button>
+</div>
+  
 <script>
-  const TOSS_SERVER_URL = "https://script.google.com/macros/s/AKfycbwNo04OutnyZoy6LxzCBXn0ApxfUELXrYm03NJpLABqBmCTPG1R2Nwcw_Xjs6an-oFTMA/exec";
-  const successPage = document.querySelector(".success-page");
-  const title = successPage.querySelector(".success-title");
-  const message = successPage.querySelector(".success-text");
-  const params = new URLSearchParams(window.location.search);
-  const paymentKey = params.get("paymentKey");
-  const orderId = params.get("orderId");
-  const amount = Number(params.get("amount"));
+let tossWidgets; 
 
-  function showStatus(heading, body) {
-    title.textContent = heading;
-    message.textContent = body;
-  }
+function populateDateSelectors() {
+    const yearSelect = document.getElementById("birthYear");
+    const monthSelect = document.getElementById("birthMonth");
+    const daySelect = document.getElementById("birthDay");
+    const currentYear = new Date().getFullYear();
 
-  async function verifyAndComplete() {
-    // 토스에서 돌아왔다는 사실만으로는 결제 완료가 아닙니다.
-    showStatus("결제 확인 중입니다", "결제 승인 상태를 확인하고 있습니다. 잠시만 기다려 주세요.");
-    if (!paymentKey || !/^testsaju01_[a-f0-9]{32}$/.test(orderId || "") || amount !== 9900) {
-      showStatus("결제 정보를 확인할 수 없습니다", "결제 여부를 확인해야 합니다. 중복 결제하지 말고 문의해 주세요.");
+    // 1995년부터 시작하도록 수정
+    for (let y = 1995; y <= currentYear; y++) {
+        const option = document.createElement("option");
+        option.value = y;
+        option.text = y;
+        yearSelect.add(option);
+    }
+
+    for (let m = 1; m <= 12; m++) {
+        const option = document.createElement("option");
+        option.value = m;
+        option.text = m;
+        monthSelect.add(option);
+    }
+
+    for (let d = 1; d <= 31; d++) {
+        const option = document.createElement("option");
+        option.value = d;
+        option.text = d;
+        daySelect.add(option);
+    }
+}
+
+function showPage(pageId) {
+  const pages = document.querySelectorAll('.page');
+  pages.forEach(page => page.classList.remove('active'));
+  document.getElementById(pageId).classList.add('active');
+  
+  if (pageId === 'paymentPage') {
+    const userName = document.getElementById("userName").value;
+    const userGender = document.getElementById("userGender").value;
+    const birthType = document.getElementById("birthType").value;
+    const birthYear = document.getElementById("birthYear").value;
+    const birthMonth = document.getElementById("birthMonth").value;
+    const birthDay = document.getElementById("birthDay").value;
+    const birthDate = `${birthYear}-${String(birthMonth).padStart(2, '0')}-${String(birthDay).padStart(2, '0')}`;
+    const birthHour = document.getElementById("birthHour").value;
+    const userEmail = document.getElementById("userEmail").value;
+    
+    if (!userName || !birthYear || !birthMonth || !birthDay || !birthHour || !userEmail) {
+      alert("모든 정보를 입력해 주세요!");
+      showPage('infoPage');
       return;
     }
-    try {
-      const response = await fetch(TOSS_SERVER_URL, {
-        method: "POST",
-        headers: { "Content-Type": "text/plain;charset=utf-8" },
-        body: JSON.stringify({
-          action: "confirmTestPayment", paymentKey, orderId, amount
-        }),
-        redirect: "follow"
-      });
-      if (!response.ok) throw new Error("결제 서버에 연결할 수 없습니다.");
-      const result = await response.json();
-      if (result.result !== "success" || result.orderId !== orderId || Number(result.amount) !== 9900) {
-        throw new Error(result.message || "결제 승인 확인이 완료되지 않았습니다.");
-      }
-      sessionStorage.removeItem("saju01TestPendingOrderId");
-      showStatus("결제가 성공적으로 완료되었습니다!", "사주 신청이 완료되었습니다. 48시간 내에 이메일로 발송해 드릴게요.");
-    } catch (error) {
-      console.error("결제 확인 오류:", error);
-      showStatus("결제 확인이 필요합니다", "결제가 진행되었을 수 있습니다. 중복 결제하지 말고 주문번호를 보관한 뒤 문의해 주세요. 주문번호: " + orderId);
+    
+    // 이메일 확인 팝업 추가
+    const emailConfirmMessage = "입력하신 이메일 주소가 맞는지 확인해 주세요.\n\n" + userEmail + "\n\n이 주소로 사주 결과가 발송됩니다.";
+    if (!confirm(emailConfirmMessage)) {
+      showPage('infoPage');
+      return;
     }
+    
+    const escapeHtml = value => String(value).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"})[c]);
+    document.getElementById("userInfo").innerHTML = `
+      <h2>입력 정보 확인</h2>
+      <p>이름: ${escapeHtml(userName)}</p>
+      <p>생년월일: ${escapeHtml(birthDate)} (${escapeHtml(birthType)})</p>
+      <p>태어난 시간: ${escapeHtml(birthHour)}</p>
+      <p>이메일: ${escapeHtml(userEmail)}</p>
+    `;
+    
+renderTossWidgets(9900).catch(err => console.error("토스 위젯 렌더링 오류:", err));
   }
-  verifyAndComplete();
-</script>
+}
+
+window.onload = function () {
+    populateDateSelectors();
+};
+
+async function renderTossWidgets(price) {
+  const tossPayments = TossPayments("test_gsk_GePWvyJnrKQ60x4xelpR3gLzN97E");
+  tossWidgets = tossPayments.widgets({ customerKey: TossPayments.ANONYMOUS });
   
+  await tossWidgets.setAmount({
+    currency: "KRW",
+    value: price,
+  });
+  
+  await Promise.all([
+    tossWidgets.renderPaymentMethods({
+      selector: "#payment-method",
+      variantKey: "DEFAULT",
+    }),
+    tossWidgets.renderAgreement({
+      selector: "#agreement",
+      variantKey: "AGREEMENT",
+    }),
+  ]);
+}
+
+// 결제 서버: 주문 생성과 승인 처리는 모두 서버에서 검증합니다.
+const TOSS_SERVER_URL = "https://script.google.com/macros/s/AKfycbwNo04OutnyZoy6LxzCBXn0ApxfUELXrYm03NJpLABqBmCTPG1R2Nwcw_Xjs6an-oFTMA/exec";
+let paymentStarting = false;
+
+async function postTossServer(data) {
+  const response = await fetch(TOSS_SERVER_URL, {
+    method: "POST",
+    headers: { "Content-Type": "text/plain;charset=utf-8" },
+    body: JSON.stringify(data),
+    redirect: "follow"
+  });
+  if (!response.ok) throw new Error("결제 서버 연결에 실패했습니다.");
+  const result = await response.json();
+  if (result.result !== "success") throw new Error(result.message || "주문을 생성하지 못했습니다.");
+  return result;
+}
+
+async function startTossPay(itemName, price) {
+  if (paymentStarting) return;
+  const userName = document.getElementById("userName").value.trim();
+  const userEmail = document.getElementById("userEmail").value.trim();
+  const birthYear = document.getElementById("birthYear").value;
+  const birthMonth = document.getElementById("birthMonth").value;
+  const birthDay = document.getElementById("birthDay").value;
+  const birthDate = `${birthYear}-${String(birthMonth).padStart(2, '0')}-${String(birthDay).padStart(2, '0')}`;
+  if (!userName || !userEmail || !tossWidgets) {
+    alert("고객 정보와 결제창을 확인해 주세요.");
+    return;
+  }
+  const button = document.getElementById("tossPayButton");
+  paymentStarting = true;
+  if (button) button.disabled = true;
+  try {
+    const order = await postTossServer({
+      action: "createTestOrder",
+      productId: "saju01",
+      user: {
+        name: userName,
+        gender: document.getElementById("userGender").value,
+        birth: birthDate,
+        birthType: document.getElementById("birthType").value,
+        time: document.getElementById("birthHour").value,
+        email: userEmail
+      }
+    });
+    if (!/^testsaju01_[a-f0-9]{32}$/.test(order.orderId) || order.amount !== 9900 || order.productName !== "정통사주") {
+      throw new Error("주문 정보가 일치하지 않습니다.");
+    }
+    // 승인 복구를 위해 주문번호만 보관합니다. 고객정보는 서버 주문 시트에 저장됩니다.
+    sessionStorage.setItem("saju01TestPendingOrderId", order.orderId);
+    await tossWidgets.requestPayment({
+      orderId: order.orderId,
+      orderName: order.productName,
+      successUrl: "https://test-it.co.kr/saju-test-success.html",
+      failUrl: "https://test-it.co.kr/payment-fail1",
+      customerName: userName,
+      customerEmail: userEmail
+    });
+  } catch (error) {
+    console.error("결제 요청 오류:", error);
+    alert(error.message || "결제 요청 중 문제가 발생했습니다.");
+  } finally {
+    paymentStarting = false;
+    if (button) button.disabled = false;
+  }
+}
+
+console.log("현재 환경:", window.location.hostname);
+document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+  });
+  </script>
+</body>
 </html>

@@ -19,7 +19,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>테스트잇 정통 사주 리포트</title>
+    <title>[테스트 결제] 테스트잇 정통 사주 리포트</title>
     <meta name="description" content="테스트잇 정통 사주 리포트">
 <meta name="keywords" content="테스트잇,전체사주,정통사주,테스트잇사주,테스트잇전체사주,테스트잇사주,정확한사주,연애테스트,연애mbti,연애성격테스트, 심리테스트, mbti테스트">
     <meta property="og:type" content="website"> 
@@ -444,7 +444,7 @@ window.onload = function () {
 };
 
 async function renderTossWidgets(price) {
-  const tossPayments = TossPayments("live_gck_6bJXmgo28e9AaeqYMave8LAnGKWx");
+  const tossPayments = TossPayments("test_gsk_GePWvyJnrKQ60x4xelpR3gLzN97E");
   tossWidgets = tossPayments.widgets({ customerKey: TossPayments.ANONYMOUS });
   
   await tossWidgets.setAmount({
@@ -498,7 +498,7 @@ async function startTossPay(itemName, price) {
   if (button) button.disabled = true;
   try {
     const order = await postTossServer({
-      action: "createOrder",
+      action: "createTestOrder",
       productId: "saju01",
       user: {
         name: userName,
@@ -509,15 +509,15 @@ async function startTossPay(itemName, price) {
         email: userEmail
       }
     });
-    if (!/^saju01_[a-f0-9]{32}$/.test(order.orderId) || order.amount !== 9900 || order.productName !== "정통사주") {
+    if (!/^testsaju01_[a-f0-9]{32}$/.test(order.orderId) || order.amount !== 9900 || order.productName !== "정통사주") {
       throw new Error("주문 정보가 일치하지 않습니다.");
     }
     // 승인 복구를 위해 주문번호만 보관합니다. 고객정보는 서버 주문 시트에 저장됩니다.
-    sessionStorage.setItem("saju01PendingOrderId", order.orderId);
+    sessionStorage.setItem("saju01TestPendingOrderId", order.orderId);
     await tossWidgets.requestPayment({
       orderId: order.orderId,
       orderName: order.productName,
-      successUrl: "https://test-it.co.kr/saju-success.html",
+      successUrl: "https://test-it.co.kr/saju-test-success.html",
       failUrl: "https://test-it.co.kr/payment-fail1",
       customerName: userName,
       customerEmail: userEmail

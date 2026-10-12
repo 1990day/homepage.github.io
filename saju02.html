@@ -435,7 +435,7 @@
     <div id="agreement"></div>
 
     <!-- Toss 결제 버튼 추가 -->
-    <button class="custom-jelly-button" onclick="startTossPay('월별사주', 4900)">
+    <button class="custom-jelly-button" onclick="startTossPay('월별사주', 4900)" id="tossPayButton">
       결제하기 (4,900원)
     </button>
     <br>
@@ -472,7 +472,8 @@
       }
     }
     
-    function showPage(pageId) {
+function escapeSajuHtml(x) { return String(x).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+        function showPage(pageId) {
       const pages = document.querySelectorAll('.page');
       pages.forEach(page => page.classList.remove('active'));
       document.getElementById(pageId).classList.add('active');
@@ -495,11 +496,11 @@
         }
         document.getElementById("userInfo").innerHTML = `
           <h2>입력 정보 확인</h2>
-          <p><strong>이름:</strong> ${userName}</p>
-          <p><strong>생년월일:</strong> ${birthDate} (${birthType})</p>
-          <p><strong>태어난 시간:</strong> ${birthHour}</p>
-          <p><strong>이메일:</strong> ${userEmail}</p>
-          <p><strong>운세 볼 월:</strong> ${fortuneMonth}월</p>
+          <p><strong>이름:</strong> ${escapeSajuHtml(userName)}</p>
+          <p><strong>생년월일:</strong> ${escapeSajuHtml(birthDate)} (${escapeSajuHtml(birthType)})</p>
+          <p><strong>태어난 시간:</strong> ${escapeSajuHtml(birthHour)}</p>
+          <p><strong>이메일:</strong> ${escapeSajuHtml(userEmail)}</p>
+          <p><strong>운세 볼 월:</strong> ${escapeSajuHtml(fortuneMonth)}월</p>
         `;
         // 결제 전 사용자 정보 sessionStorage에 저장
         const userData = {
@@ -512,7 +513,6 @@
           paymentItem: "월별사주",
           fortuneMonth: fortuneMonth
         };
-        sessionStorage.setItem("userData", JSON.stringify(userData));
         // Toss 위젯 렌더링 (사주2에서도 동일 clientKey 사용)
         renderTossWidgets(4900).catch(err => console.error("토스 위젯 렌더링 오류:", err));
       }
@@ -543,86 +543,54 @@
    
    
     
+
+    // 공통 결제 서버: 서버에서 상품/금액/주문번호를 검증합니다.
+    const TOSS_SERVER_URL = "https://script.google.com/macros/s/AKfycbwNo04OutnyZoy6LxzCBXn0ApxfUELXrYm03NJpLABqBmCTPG1R2Nwcw_Xjs6an-oFTMA/exec";
+    let paymentStarting = false;
+    const value = id => document.getElementById(id).value.trim();
+    const dateOf = suffix => `${value('birthYear'+suffix)}-${value('birthMonth'+suffix).padStart(2,'0')}-${value('birthDay'+suffix).padStart(2,'0')}`;
+
     async function startTossPay(itemName, price) {
-      console.log(`🚀 토스 결제 요청: 결제 항목 = ${itemName}`);
-      const userName = document.getElementById("userName").value;
-      const userEmail = document.getElementById("userEmail").value;
-      if (!userName || !userEmail) {
-        alert("⚠️ 모든 정보를 입력해 주세요!");
-        return;
-      }
-      if (!tossWidgets) {
-        alert("결제 위젯이 초기화되지 않았습니다. 결제 페이지를 새로고침 해주세요.");
-        return;
-      }
+      if (paymentStarting) return;
+      if (!tossWidgets) { alert('결제창이 아직 준비되지 않았습니다.'); return; }
+      const button = document.getElementById('tossPayButton');
+      paymentStarting = true;
+      if (button) button.disabled = true;
       try {
-        // 사주2의 successUrl는 saju-success2.html 사용
-        const response = await tossWidgets.requestPayment({
-          orderId: `order_${Date.now()}`,
-          orderName: itemName,
-          successUrl: "https://test-it.co.kr/saju-success2.html",
-          failUrl: "https://test-it.co.kr/payment-fail2",
-          customerName: userName,
-          customerEmail: userEmail,
+        const user = {
+        name: value('userName'), gender: value('userGender'),
+        birth: dateOf(''), birthType: value('birthType'), time: value('birthHour'),
+        email: value('userEmail'), fortuneMonth: value('fortuneMonth')
+      };
+        const response = await fetch(TOSS_SERVER_URL, {
+          method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify({ action: 'createOrder', productId: 'saju02', user }),
+          redirect: 'follow'
         });
-        console.log("✅ 결제 성공:", response);
+        if (!response.ok) throw new Error('주문 서버에 연결할 수 없습니다.');
+        const order = await response.json();
+        if (order.result !== 'success') throw new Error(order.message || '주문을 생성하지 못했습니다.');
+        if (!/^saju02_[a-f0-9]{32}$/.test(order.orderId) ||
+            Number(order.amount) !== 4900 || order.productName !== '월별사주') {
+          throw new Error('상품이나 결제금액이 일치하지 않습니다.');
+        }
+        sessionStorage.setItem('sajuPendingOrderId', order.orderId);
+        await tossWidgets.requestPayment({
+          orderId: order.orderId, orderName: order.productName,
+          successUrl: 'https://test-it.co.kr/saju-success.html',
+          failUrl: 'https://test-it.co.kr/payment-fail1',
+          customerName: user.name, customerEmail: user.email
+        });
       } catch (error) {
-        console.error("❌ 결제 실패:", error);
-        alert(`❌ 결제 실패: ${error.message}`);
+        console.error('결제 요청 오류:', error);
+        alert(error.message || '결제 요청 중 오류가 발생했습니다.');
+      } finally {
+        paymentStarting = false;
+        if (button) button.disabled = false;
       }
     }
-    
-    
-    
-        
-    function sendToGoogleSheet(userName, userGender, birthDate, birthType, birthTime, userEmail, paymentItem, fortuneMonth) {
-    console.log("📤 전송할 데이터:", userName, userGender, birthDate, birthType, birthTime, userEmail, paymentItem, fortuneMonth);
 
-    fetch("https://script.google.com/macros/s/AKfycbyaDoLDrglc5d9ycgCK0EtWEihFWakfMoiXgYDHaHOmP1JmRLdFLbR4CyFBWcIHElDi/exec", {
-        method: "POST",
-        mode: "no-cors",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-            userName: userName,
-            userGender: userGender,
-            birthDate: birthDate,
-            birthType: birthType,
-            birthTime: birthTime,
-            userEmail: userEmail,
-            paymentItem: paymentItem,
-            fortuneMonth: fortuneMonth,  // 새로 추가된 운세 볼 월 값
-            paymentTime: new Date().toLocaleString()
-        })
-    })
-    .then(() => {
-        console.log("✅ 구글 시트에 데이터 전송 완료!");
-    })
-    .catch(error => {
-        console.error("❌ 데이터 전송 실패:", error);
-    });
-}
-
-    // 결제 전 사용자 정보 저장 (최종적으로 sessionStorage에 저장)
-    const userData = {
-      name: document.getElementById("userName") ? document.getElementById("userName").value : "",
-      gender: document.getElementById("userGender") ? document.getElementById("userGender").value : "",
-      birth: document.getElementById("birthYear") && document.getElementById("birthMonth") && document.getElementById("birthDay")
-              ? `${document.getElementById("birthYear").value}-${String(document.getElementById("birthMonth").value).padStart(2, '0')}-${String(document.getElementById("birthDay").value).padStart(2, '0')}`
-              : "",
-      birthType: document.getElementById("birthType") ? document.getElementById("birthType").value : "",
-      time: document.getElementById("birthHour") ? document.getElementById("birthHour").value : "",
-      email: document.getElementById("userEmail") ? document.getElementById("userEmail").value : "",
-      paymentItem: "월별사주"
-    };
-    sessionStorage.setItem("userData", JSON.stringify(userData));
-    
-    // 성공 페이지 URL 파라미터 처리는 별도의 파일(saju-success2.html)에서 처리합니다.
-    window.onload = function () {
-      populateDateSelectors();
-    };
-    document.addEventListener('contextmenu', function(e) {
-    e.preventDefault();
-  });
+    document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
   </script>
 </body>
 </html>

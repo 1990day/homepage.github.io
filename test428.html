@@ -164,6 +164,22 @@ button::before,button::after,a.btn::before,a.btn::after{content:none!important;d
 /* 시작 화면 메인 이미지 */
 #startScreen{padding:0;background:transparent}
 #startScreen .main-cover{display:block;width:100%;height:auto;margin:0;border:0;outline:none}
+
+/* 결과 직전 3초 채점 화면 */
+.loading-screen{text-align:center;padding:34px 23px 30px;background:#fff8fc}
+.loading-label{display:inline-block;padding:4px 9px;background:#efe2f4;border:1px solid #000;font-size:9px;color:#87678f;letter-spacing:1px}
+.loading-heart{margin:24px auto 18px;width:76px;line-height:0;animation:loading-heart-pulse 1s steps(2,end) infinite}
+.loading-heart svg{display:block;width:76px;height:68px;image-rendering:pixelated}
+#loadingTitle{margin:0;font-family:'Galmuri11',sans-serif;font-size:18px;font-weight:400;color:#684d75;line-height:1.8;outline:none}
+.loading-dots{display:inline-block;animation:loading-dots-blink 1s steps(2,end) infinite}
+.loading-copy{font-size:12px;color:#94749c;line-height:1.8;margin:10px 0 22px}
+.loading-progress{width:min(100%,260px);height:16px;padding:3px;margin:auto;border:1px solid #000;background:#f6edf8}
+.loading-progress>span{display:block;height:100%;width:0;background:repeating-linear-gradient(90deg,#c6a7d8 0 10px,#f4edf8 10px 13px);animation:loading-fill 3s linear forwards}
+.loading-foot{font-size:10px;color:#a286a8;margin:13px 0 0;line-height:1.8}
+@keyframes loading-fill{from{width:0}to{width:100%}}
+@keyframes loading-heart-pulse{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+@keyframes loading-dots-blink{0%,100%{opacity:.4}50%{opacity:1}}
+@media(prefers-reduced-motion:reduce){.loading-heart,.loading-dots{animation:none}.loading-progress>span{animation:none;width:100%}}
 </style>
 </head>
 <body>
@@ -186,6 +202,14 @@ button::before,button::after,a.btn::before,a.btn::after{content:none!important;d
 <div class="answer-box"><label class="answer-label" for="answerInput">정답 입력</label><input id="answerInput" class="input" type="text" placeholder="정답을 입력해 주세요" autocomplete="off" autocapitalize="off" spellcheck="false" maxlength="200" aria-describedby="inputHint answerError"><p id="inputHint" class="hint"></p></div>
 <p id="answerError" class="error" role="status"></p>
 </form>
+</section>
+<section id="loadingScreen" class="content loading-screen" hidden aria-labelledby="loadingTitle" aria-busy="true">
+<div class="loading-label">TREND CHECK</div>
+<div class="loading-heart" aria-hidden="true"><svg viewBox="0 0 19 17" width="76" height="68" shape-rendering="crispEdges"><path fill="#d7a9c6" d="M3 1h5v2h3V1h5v2h2v7h-2v2h-2v2h-2v2H7v-2H5v-2H3v-2H1V3h2z"/><path fill="#f4c9df" d="M4 3h4v2h3V3h4v2h1v4h-2v2h-2v2h-2v1H9v-1H7v-2H5V9H3V5h1z"/><path fill="#fff8f1" d="M5 4h3v2H5z"/></svg></div>
+<h2 id="loadingTitle" tabindex="-1">트렌드 고사 채점 중<span class="loading-dots" aria-hidden="true">···</span></h2>
+<p class="loading-copy">나의 트렌드 점수는 몇 점일까?</p>
+<div class="loading-progress" role="progressbar" aria-label="성적표 준비 중, 약 3초 소요"><span></span></div>
+<p class="loading-foot">잠시 후 성적표가 나와요!</p>
 </section>
 <section id="resultScreen" class="content" hidden aria-labelledby="resultTitle">
 <div id="resultCard" class="result-card"><div class="quest-top"><span>✧</span><span id="resultTitle" tabindex="-1" role="heading" aria-level="2">테스트잇 2026 하반기 트렌드 고사 성적표</span><span>✧</span></div><div class="quest-ornament" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 34" shape-rendering="crispEdges"><path fill="#d6b5d8" d="M9 14h2v-3h2v3h3v2h-3v3h-2v-3H9zm74 0h3v-3h2v3h3v2h-3v3h-2v-3h-3z"/><path fill="#e9bbd1" d="M38 5h9v3h6V5h9v3h3v10h-3v3h-4v4h-4v4h-8v-4h-4v-4h-4v-3h-3V8h3z"/><path fill="#f8d9e5" d="M39 8h8v4h6V8h8v9h-3v3h-4v4h-8v-4h-4v-3h-3z"/><path fill="#fff8ed" d="M41 10h4v3h-4z"/><path fill="#c4d9cb" d="M23 22h3v3h3v3h-3v-3h-3zm48 0h3v3h-3v3h-3v-3h3z"/></svg></div><div class="result-head">
@@ -369,6 +393,7 @@ let userAnswers = Array(QUESTIONS.length).fill('');
 let submitted = Array(QUESTIONS.length).fill(false);
 let currentScore = 0;
 let phase = 'start';
+let resultLoadingTimer = null;
 let composing = false;
 
 function normalizeAnswer(value) {
@@ -382,13 +407,14 @@ function isCorrect(question, answer) {
   return value !== '' && question.answers.some(item => normalizeAnswer(item) !== '' && normalizeAnswer(item) === value);
 }
 function showScreen(screen) {
-  ['startScreen','quizScreen','resultScreen'].forEach(id => { $(id).hidden = id !== screen; });
+  ['startScreen','quizScreen','loadingScreen','resultScreen'].forEach(id => { $(id).hidden = id !== screen; });
   $('startControls').hidden = screen !== 'startScreen';
   $('quizControls').hidden = screen !== 'quizScreen';
   $('resultControls').hidden = screen !== 'resultScreen';
   window.scrollTo({top:0, behavior:'instant'});
 }
 function startExam() {
+  if (resultLoadingTimer !== null) { clearTimeout(resultLoadingTimer); resultLoadingTimer = null; }
   currentIndex = 0;
   userAnswers = Array(QUESTIONS.length).fill('');
   submitted = Array(QUESTIONS.length).fill(false);
@@ -441,7 +467,18 @@ function advance(skip = false) {
   userAnswers[currentIndex] = skip ? '' : value;
   submitted[currentIndex] = true;
   if (currentIndex < QUESTIONS.length - 1) { currentIndex++; renderQuestion(); }
-  else { showResult(); }
+  else { showResultLoading(); }
+}
+function showResultLoading() {
+  if (phase !== 'quiz') return;
+  phase = 'loading';
+  showScreen('loadingScreen');
+  $('statusText').textContent = '채점 중';
+  $('loadingTitle').focus({preventScroll:true});
+  resultLoadingTimer = setTimeout(() => {
+    resultLoadingTimer = null;
+    if (phase === 'loading') showResult();
+  }, 3000);
 }
 function showResult() {
   phase = 'result';

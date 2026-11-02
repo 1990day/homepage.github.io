@@ -124,6 +124,13 @@ body{background-color:#edf8f6;background-image:linear-gradient(#cbe6e533 1px,tra
 
 
 .coupang-ad{width:350px;max-width:100%;min-height:150px;margin:28px auto 0;overflow-x:auto}
+
+/* 모바일 창 제목과 결승 2위 줄바꿈 */
+.runner>div{min-width:0;flex:1}.runner strong{line-height:1.6;margin:6px 0 8px;word-break:keep-all;overflow-wrap:normal}.runner-type{font-size:16px;color:#527a72}.runner small{font-size:12px;line-height:1.8;word-break:keep-all}.runner .eyebrow{font-size:11px;color:#a48097}
+@media(max-width:540px){.window>.titlebar{height:auto;min-height:44px;padding:7px 6px;align-items:center}.titlebar .title{font-size:13px;line-height:1.65;white-space:normal;word-break:keep-all;letter-spacing:-.5px}.title-heart{font-size:22px}.runner{align-items:center;gap:14px}.runner strong{font-size:12px}.runner-type{font-size:15px}.runner small{font-size:11px;line-height:1.85}.runner img{width:120px;height:120px}}
+.save-dialog{width:calc(100% - 32px);max-width:380px;max-height:88dvh;padding:12px;border:3px solid #8ab5b0;background:#f4fffa;box-shadow:inset 2px 2px #fff,5px 5px #547c7755;color:#527a77;font-family:Galmuri11,sans-serif;overflow:auto}
+.save-dialog::backdrop{background:#36555188}.save-dialog-top{display:flex;align-items:center;justify-content:space-between;gap:10px}.save-dialog-top h2{font-size:15px;font-weight:normal;margin:0}.save-dialog-top button{border:1px solid #9dbfba;background:#d9efea;color:#4b7773;font-size:23px;line-height:1;width:28px;height:28px;padding:0}.save-guide{text-align:center;font-size:12px;line-height:1.8;margin:12px 0;color:#7b9188}.save-image-scroll{max-height:59dvh;overflow-y:auto;background:#e3f0eb;border:1px solid #c3dcd3}.save-image-scroll img{display:block;width:100%;height:auto;-webkit-touch-callout:default;-webkit-user-select:auto;user-select:auto}.save-dialog>.button{display:flex;width:100%;margin-top:12px;font-size:12px;font-weight:normal;background:#f4d8e4;border-color:#c4a7b7;color:#8d6c80}
+
 </style>
 </head>
 <body>
@@ -188,6 +195,7 @@ body{background-color:#edf8f6;background-image:linear-gradient(#cbe6e533 1px,tra
 </div>
 </main>
 <dialog id="helpDialog" class="help-dialog"><div class="titlebar"><span class="title">Help.txt</span></div><div class="help-body"><p>두 얼굴 중 더 마음에 드는 쪽을 누르면 다음 대결로 넘어가요. 살아남은 얼굴은 다음 라운드에서 다시 만나게 돼요.</p><p>32강은 전체 64명 중 무작위 32명이 참가하고, 매 라운드 대진표도 새로 섞여요. 잘못 골랐다면 ‘이전 선택’으로 되돌릴 수 있어요.</p><p>우승자는 마지막에 직접 고른 얼굴, 2위는 결승에서 맞붙은 얼굴이에요.</p><button class="button" id="helpClose">확인</button></div></dialog>
+<dialog id="saveDialog" class="save-dialog" aria-labelledby="saveDialogTitle"><div class="save-dialog-top"><h2 id="saveDialogTitle">결과 이미지 저장</h2><button type="button" id="saveDialogClose" aria-label="저장 창 닫기">×</button></div><p class="save-guide">이미지를 길게 눌러 저장해 주세요.</p><div class="save-image-scroll"><img id="savePreview" alt="저장할 얼굴 취향 테스트 결과 이미지"></div><a id="saveDownload" class="button" download>이미지 다운로드</a></dialog>
 <noscript><p style="padding:30px;text-align:center">이 테스트를 실행하려면 브라우저의 자바스크립트를 켜주세요.</p></noscript>
 <script>
 /* All 128 records use the final uploaded portraits. No external data request. */
@@ -2403,8 +2411,9 @@ function renderResult(sex, winner, runner, choices = null) {
   $('winnerNumber').textContent=`${sex==='male'?'남자':'여자'} 번호 ${number(winner.id)} · 최종 우승`;
   $('winnerStyle').textContent=winner.impression_tags.join(' · ');
   $('runnerImage').src=faceUrl(sex,runner);$('runnerImage').alt=`결승 2위 ${number(runner.id)}번 얼굴`;
-  $('runnerTitle').textContent=`마지막까지 고민했던 ${runner.face_type}`;
-  $('runnerCopy').textContent=`번호 ${number(runner.id)} · ${runner.impression_tags.slice(0,2).join(' · ')}`;
+  $('runnerTitle').replaceChildren(document.createTextNode('마지막까지 고민했던'),document.createElement('br'),Object.assign(document.createElement('span'),{className:'runner-type',textContent:runner.face_type}));
+  $('runnerCopy').replaceChildren();
+  [`번호 ${number(runner.id)}`,...runner.impression_tags.slice(0,2)].forEach((text,index)=>{if(index)$('runnerCopy').append(document.createElement('br'));$('runnerCopy').append(document.createTextNode(text));});
   $('sharedNote').hidden=!!choices;
   $('resultStatus').textContent='';
 }
@@ -2436,21 +2445,24 @@ $('shareButton').onclick=async()=>{
 };
 function canvasImage(url) {return new Promise((resolve,reject)=>{const img=new Image();if(location.protocol!=='file:')img.crossOrigin='anonymous';img.onload=()=>resolve(img);img.onerror=reject;img.src=url;});}
 function wrapText(ctx,text,x,y,maxWidth,lineHeight){let line='';for(const ch of text){if(ctx.measureText(line+ch).width>maxWidth){ctx.fillText(line,x,y);line='';y+=lineHeight;}line+=ch;}if(line)ctx.fillText(line,x,y);return y+lineHeight;}
+let savePreviewUrl=null;
+$('saveDialogClose').onclick=()=>$('saveDialog').close();
+$('saveDialog').addEventListener('click',event=>{if(event.target===$('saveDialog')){const rect=$('saveDialog').getBoundingClientRect();if(event.clientX<rect.left||event.clientX>rect.right||event.clientY<rect.top||event.clientY>rect.bottom)$('saveDialog').close();}});
 $('saveButton').onclick=async()=>{
   if(!displayedResult)return;const button=$('saveButton');button.disabled=true;$('resultStatus').textContent='결과 이미지 만드는 중…';
   try{
     const r=displayedResult,[winner,runner]=await Promise.all([canvasImage(faceUrl(r.gender,r.winner)),canvasImage(faceUrl(r.gender,r.runner))]);
     const c=document.createElement('canvas');c.width=900;c.height=1250;const x=c.getContext('2d');
     x.fillStyle='#edf8f6';x.fillRect(0,0,900,1250);x.fillStyle='#f6fffc';x.fillRect(38,38,824,1174);x.strokeStyle='#619399';x.lineWidth=4;x.strokeRect(38,38,824,1174);
-    x.fillStyle='#a8dcd8';x.fillRect(44,44,812,43);x.fillStyle='#3b737b';x.font='18px Galmuri11, sans-serif';x.fillText('♡  TESTIT — 얼굴 취향 기록',60,72);
-    x.textAlign='center';x.fillStyle='#6d6872';x.font='20px sans-serif';x.fillText('테스트잇 얼굴 취향 분석 테스트',450,139);
+    x.fillStyle='#a8dcd8';x.fillRect(44,44,812,43);x.fillStyle='#3b737b';x.font='18px Galmuri11, sans-serif';x.fillText('♥  테스트잇 얼굴 취향 분석 테스트',60,72);
+    x.textAlign='center';
     x.fillStyle='#994b6a';x.font='30px Galmuri11, sans-serif';x.fillText('내 취향은 '+r.winner.face_type,450,208);
     x.fillStyle='#fff';x.fillRect(191,244,518,518);x.drawImage(winner,200,253,500,500);
     x.fillStyle='#857781';x.font='18px monospace';x.fillText(`${r.gender==='male'?'남자':'여자'} 번호 ${number(r.winner.id)} · 최종 우승`,450,797);
     x.fillStyle='#6e5361';x.font='20px Galmuri11, sans-serif';x.fillText(r.winner.impression_tags.join(' · '),450,849);
-    x.strokeStyle='#c9c0bb';x.beginPath();x.moveTo(94,969);x.lineTo(806,969);x.stroke();x.drawImage(runner,105,988,200,200);x.textAlign='left';x.fillStyle='#8f7d88';x.font='17px monospace';x.fillText('결승 2위',335,1026);x.fillStyle='#35343b';x.font='28px Galmuri11, sans-serif';x.fillText('마지막까지 고민했던 '+r.runner.face_type,335,1067);x.fillStyle='#7a737c';x.font='18px sans-serif';x.fillText('번호 '+number(r.runner.id)+' · '+r.runner.impression_tags[0],335,1104);
+    x.strokeStyle='#c9c0bb';x.beginPath();x.moveTo(94,969);x.lineTo(806,969);x.stroke();x.drawImage(runner,105,988,200,200);x.textAlign='left';x.fillStyle='#8f7d88';x.font='17px monospace';x.fillText('결승 2위',335,1026);x.fillStyle='#35343b';x.font='28px Galmuri11, sans-serif';x.fillText('마지막까지 고민했던',335,1061);x.fillText(r.runner.face_type,335,1102);x.fillStyle='#7a737c';x.font='18px sans-serif';x.fillText('번호 '+number(r.runner.id),335,1138);x.fillText(r.runner.impression_tags.join(' · '),335,1173);
     const blob=await new Promise(resolve=>c.toBlob(resolve,'image/png'));if(!blob)throw new Error('empty canvas');
-    const url=URL.createObjectURL(blob),link=document.createElement('a');link.href=url;link.download=`test429_${r.gender}_${number(r.winner.id)}.png`;document.body.append(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),30000);$('resultStatus').textContent='결과 이미지를 저장했어요. 모바일에서는 다운로드 목록도 확인해 주세요.';
+    if(savePreviewUrl)URL.revokeObjectURL(savePreviewUrl);savePreviewUrl=URL.createObjectURL(blob);$('savePreview').src=savePreviewUrl;$('saveDownload').href=savePreviewUrl;$('saveDownload').download=`test429_${r.gender}_${number(r.winner.id)}.png`;$('saveDialog').showModal();$('savePreview').parentElement.scrollTop=0;$('resultStatus').textContent='';
   }catch(error){$('resultStatus').textContent=location.protocol==='file:'?'이 브라우저에서는 로컬 파일 저장이 제한돼요. 사이트에 업로드한 뒤 다시 저장해 주세요.':'저장하지 못했어요. 사진이 정상적으로 표시되는지 확인하고 다시 눌러주세요.';}
   finally{button.disabled=false;}
 };

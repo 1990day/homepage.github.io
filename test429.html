@@ -1,11 +1,18 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5522499110435321" crossorigin="anonymous"></script>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#a9bfd1">
-<meta name="description" content="64개의 얼굴 중 내 마음에 남는 단 한 사람. 랜덤 이상형 월드컵으로 알아보는 테스트잇 얼굴 취향 분석 테스트.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>테스트잇 얼굴 취향 분석 테스트</title>
+<meta name="description" content="테스트잇 얼굴 취향 분석 테스트">
+<meta property="og:type" content="website">
+<meta property="og:title" content="테스트잇 얼굴 취향 분석 테스트">
+<meta property="og:description" content="테스트잇 얼굴 취향 분석 테스트">
+<meta property="og:url" content="https://test-it.co.kr/test429">
+<meta property="og:image" content="https://test-it.co.kr/img_main429.png">
+<link rel="canonical" href="https://test-it.co.kr/test429">
+<link rel="icon" type="image/png" href="favicon.png">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/galmuri@2.40.3/dist/galmuri.css">
 <style>
 :root{--desktop:#a9bfd1;--paper:#f4f1eb;--gray:#dedbd3;--ink:#292b31;--navy:#243b73;--pink:#e5acbd;--line:#575953;--muted:#6c6c73}
@@ -131,6 +138,18 @@ body{background-color:#edf8f6;background-image:linear-gradient(#cbe6e533 1px,tra
 .save-dialog{width:calc(100% - 32px);max-width:380px;max-height:88dvh;padding:12px;border:3px solid #8ab5b0;background:#f4fffa;box-shadow:inset 2px 2px #fff,5px 5px #547c7755;color:#527a77;font-family:Galmuri11,sans-serif;overflow:auto}
 .save-dialog::backdrop{background:#36555188}.save-dialog-top{display:flex;align-items:center;justify-content:space-between;gap:10px}.save-dialog-top h2{font-size:15px;font-weight:normal;margin:0}.save-dialog-top button{border:1px solid #9dbfba;background:#d9efea;color:#4b7773;font-size:23px;line-height:1;width:28px;height:28px;padding:0}.save-guide{text-align:center;font-size:12px;line-height:1.8;margin:12px 0;color:#7b9188}.save-image-scroll{max-height:59dvh;overflow-y:auto;background:#e3f0eb;border:1px solid #c3dcd3}.save-image-scroll img{display:block;width:100%;height:auto;-webkit-touch-callout:default;-webkit-user-select:auto;user-select:auto}.save-dialog>.button{display:flex;width:100%;margin-top:12px;font-size:12px;font-weight:normal;background:#f4d8e4;border-color:#c4a7b7;color:#8d6c80}
 
+
+/* 중복 안내 제거, 모바일 제목 가독성 보완 */
+#imageStatus:empty{display:none}
+.window>.titlebar .title{font-size:15px;font-weight:400;color:#28535e;line-height:1.65}
+.result-screen h2{color:#365f67}.result-screen h2 .accent{color:#935d7d}
+@media(max-width:540px){.window>.titlebar .title{font-size:14px;font-weight:400;color:#28535e;letter-spacing:-.5px}.window>.titlebar{min-height:46px}.result-screen h2{font-size:21px}}
+
+
+/* 결승 2위 스타일은 한 줄, 결과 하단 여백 정리 */
+.result-screen .runner{margin-bottom:0}
+.result-screen{padding-bottom:8px}
+@media(max-width:540px){.result-screen{padding-bottom:8px}}
 </style>
 </head>
 <body>
@@ -186,7 +205,7 @@ body{background-color:#edf8f6;background-image:linear-gradient(#cbe6e533 1px,tra
 </section>
 <div id="homeActions" class="outside-actions"><button id="startButton" class="button primary">테스트 시작하기</button></div>
 <div id="roundActions" class="outside-actions" hidden><button id="roundContinue" class="button primary">다음 라운드 시작하기</button></div>
-<div id="resultActions" class="outside-actions result-actions" hidden><button id="saveButton" class="button">결과 이미지 저장</button><button id="againButton" class="button">다시 해보기</button><button id="shareButton" class="button">결과 공유하기</button><a class="button" href="https://test-it.co.kr/">다른 테스트 하러 가기</a><p class="message" id="resultStatus" role="status" aria-live="polite"></p></div>
+<div id="resultActions" class="outside-actions result-actions" hidden><button id="saveButton" class="button">결과 이미지 저장하기</button><button id="againButton" class="button">다시 해보기</button><a class="button" href="https://test-it.co.kr/">다른 테스트 해보기</a><button id="shareButton" class="button">테스트 공유하기</button><p class="message" id="resultStatus" role="status" aria-live="polite"></p></div>
 <div class="coupang-ad">
 <script src="https://ads-partners.coupang.com/g.js"></script>
 <script>
@@ -195,7 +214,7 @@ body{background-color:#edf8f6;background-image:linear-gradient(#cbe6e533 1px,tra
 </div>
 </main>
 <dialog id="helpDialog" class="help-dialog"><div class="titlebar"><span class="title">Help.txt</span></div><div class="help-body"><p>두 얼굴 중 더 마음에 드는 쪽을 누르면 다음 대결로 넘어가요. 살아남은 얼굴은 다음 라운드에서 다시 만나게 돼요.</p><p>32강은 전체 64명 중 무작위 32명이 참가하고, 매 라운드 대진표도 새로 섞여요. 잘못 골랐다면 ‘이전 선택’으로 되돌릴 수 있어요.</p><p>우승자는 마지막에 직접 고른 얼굴, 2위는 결승에서 맞붙은 얼굴이에요.</p><button class="button" id="helpClose">확인</button></div></dialog>
-<dialog id="saveDialog" class="save-dialog" aria-labelledby="saveDialogTitle"><div class="save-dialog-top"><h2 id="saveDialogTitle">결과 이미지 저장</h2><button type="button" id="saveDialogClose" aria-label="저장 창 닫기">×</button></div><p class="save-guide">이미지를 길게 눌러 저장해 주세요.</p><div class="save-image-scroll"><img id="savePreview" alt="저장할 얼굴 취향 테스트 결과 이미지"></div><a id="saveDownload" class="button" download>이미지 다운로드</a></dialog>
+<dialog id="saveDialog" class="save-dialog" aria-labelledby="saveDialogTitle"><div class="save-dialog-top"><h2 id="saveDialogTitle">결과 이미지 저장</h2><button type="button" id="saveDialogClose" aria-label="저장 창 닫기">×</button></div><p class="save-guide">이미지를 길게 눌러 저장해 주세요.</p><div class="save-image-scroll"><img id="savePreview" alt="저장할 얼굴 취향 테스트 결과 이미지"></div></dialog>
 <noscript><p style="padding:30px;text-align:center">이 테스트를 실행하려면 브라우저의 자바스크립트를 켜주세요.</p></noscript>
 <script>
 /* All 128 records use the final uploaded portraits. No external data request. */
@@ -208,14 +227,7 @@ const FACE_DATA = {
       "impression_tags": [
         "양아치상",
         "시크한상"
-      ],
-      "hair": "애쉬 블루 짧은 크롭컷",
-      "eye_shape": "가로로 길고 올라간 눈꼬리",
-      "face_shape": "좁고 각진 턱선",
-      "expression": "한쪽 입꼬리를 올린 미소",
-      "glasses": false,
-      "glasses_style": "없음",
-      "distinctive_features": "눈썹 스크래치, 귀와 입술 피어싱"
+      ]
     },
     {
       "id": 2,
@@ -224,14 +236,7 @@ const FACE_DATA = {
       "impression_tags": [
         "모범생상",
         "귀여운상"
-      ],
-      "hair": "갈색 볼륨 곱슬머리",
-      "eye_shape": "둥글고 부드러운 눈매",
-      "face_shape": "볼선이 둥근 타원형",
-      "expression": "작은 닫힌 미소",
-      "glasses": true,
-      "glasses_style": "얇은 둥근 금속테",
-      "distinctive_features": "도톰한 아랫입술"
+      ]
     },
     {
       "id": 3,
@@ -240,14 +245,7 @@ const FACE_DATA = {
       "impression_tags": [
         "아이돌상",
         "시크한상"
-      ],
-      "hair": "검정 가운데 가르마, 목덜미까지 오는 머리",
-      "eye_shape": "길고 살짝 올라간 눈매",
-      "face_shape": "길고 매끈한 타원형",
-      "expression": "무표정",
-      "glasses": false,
-      "glasses_style": "없음",
-      "distinctive_features": "곧은 콧대, 얇은 윗입술"
+      ]
     },
     {
       "id": 4,
@@ -256,14 +254,7 @@ const FACE_DATA = {
       "impression_tags": [
         "배우상",
         "상견례프리패스상"
-      ],
-      "hair": "검정 이마를 드러낸 가르마",
-      "eye_shape": "크고 또렷한 눈매",
-      "face_shape": "부드러운 긴 타원형",
-      "expression": "옅은 닫힌 미소",
-      "glasses": false,
-      "glasses_style": "없음",
-      "distinctive_features": "단정한 눈썹, 부드러운 입꼬리"
+      ]
     },
     {
       "id": 5,
@@ -272,14 +263,7 @@ const FACE_DATA = {
       "impression_tags": [
         "아이돌상",
         "귀여운상"
-      ],
-      "hair": "검정 풍성한 짧은 곱슬머리",
-      "eye_shape": "크고 동그란 눈매",
-      "face_shape": "작은 턱의 짧은 타원형",
-      "expression": "입술을 살짝 벌린 무표정",
-      "glasses": false,
-      "glasses_style": "없음",
-      "distinctive_features": "도톰한 입술"
+      ]
     },
     {
       "id": 6,
@@ -288,14 +272,7 @@ const FACE_DATA = {
       "impression_tags": [
         "모범생상",
         "부드러운상"
-      ],
-      "hair": "밝은 갈색 층 있는 앞머리",
-      "eye_shape": "가늘고 긴 눈매",
-      "face_shape": "가늘고 부드러운 턱선",
-      "expression": "입꼬리를 올린 미소",
-      "glasses": true,
-      "glasses_style": "얇은 둥근 금속테",
-      "distinctive_features": "얇은 윗입술"
+      ]
     },
     {
       "id": 7,
@@ -304,14 +281,7 @@ const FACE_DATA = {
       "impression_tags": [
         "모범생상",
         "편안한상"
-      ],
-      "hair": "검정 굵은 웨이브 가르마",
-      "eye_shape": "가늘고 부드럽게 내려가는 눈매",
-      "face_shape": "볼선이 매끈한 타원형",
-      "expression": "옅은 닫힌 미소",
-      "glasses": true,
-      "glasses_style": "호박색 두꺼운 사각테",
-      "distinctive_features": "도톰한 입술과 부드러운 입꼬리"
+      ]
     },
     {
       "id": 8,
@@ -320,14 +290,7 @@ const FACE_DATA = {
       "impression_tags": [
         "상견례프리패스상",
         "웃는상"
-      ],
-      "hair": "검정 자연스러운 가르마",
-      "eye_shape": "웃을 때 둥글게 접히는 눈매",
-      "face_shape": "볼선이 부드러운 타원형",
-      "expression": "치아가 보이는 미소",
-      "glasses": false,
-      "glasses_style": "없음",
-      "distinctive_features": "웃을 때 드러나는 볼의 보조개"
+      ]
     },
     {
       "id": 9,
@@ -336,14 +299,7 @@ const FACE_DATA = {
       "impression_tags": [
         "아이돌상",
         "시크한상"
-      ],
-      "hair": "검정 눈썹을 덮는 무거운 앞머리",
-      "eye_shape": "길고 낮게 깔린 눈매",
-      "face_shape": "볼이 매끈한 작은 타원형",
-      "expression": "무표정",
-      "glasses": false,
-      "glasses_style": "없음",
-      "distinctive_features": "도톰한 입술, 직선적인 눈썹"
+      ]
     },
     {
       "id": 10,
@@ -352,14 +308,7 @@ const FACE_DATA = {
       "impression_tags": [
         "배우상",
         "시크한상"
-      ],
-      "hair": "검정 긴 웨이브, 목덜미를 덮는 길이",
-      "eye_shape": "가늘고 길게 뻗은 눈매",
-      "face_shape": "길고 가는 턱선",
-      "expression": "무표정",
-      "glasses": false,
-      "glasses_style": "없음",
-      "distinctive_features": "높은 콧대, 도톰한 아랫입술"
+      ]
     },
     {
       "id": 11,
@@ -368,14 +317,7 @@ const FACE_DATA = {
       "impression_tags": [
         "아이돌상",
         "모범생상"
-      ],
-      "hair": "애쉬 실버 짧은 앞머리",
-      "eye_shape": "길고 또렷한 눈매",
-      "face_shape": "갸름한 타원형",
-      "expression": "입술을 살짝 벌린 무표정",
-      "glasses": true,
-      "glasses_style": "투명한 두꺼운 테",
-      "distinctive_features": "도톰한 입술"
+      ]
     },
     {
       "id": 12,
@@ -384,14 +326,7 @@ const FACE_DATA = {
       "impression_tags": [
         "배우상",
         "날카로운상"
-      ],
-      "hair": "검정 뒤로 넘긴 짧은 머리",
-      "eye_shape": "진하고 올라간 눈매",
-      "face_shape": "광대와 턱이 뚜렷한 얼굴형",
-      "expression": "무표정",
-      "glasses": false,
-      "glasses_style": "없음",
-      "distinctive_features": "진한 눈썹, 선명한 콧대"
+      ]
     },
     {
       "id": 13,
@@ -400,14 +335,7 @@ const FACE_DATA = {
       "impression_tags": [
         "양아치상",
         "시크한상"
-      ],
-      "hair": "갈색 위로 세운 짧은 머리",
-      "eye_shape": "가늘고 비스듬한 눈매",
-      "face_shape": "짧고 각이 있는 턱선",
-      "expression": "무표정",
-      "glasses": false,
-      "glasses_style": "없음",
-      "distinctive_features": "진한 눈썹, 도톰한 입술"
+      ]
     },
     {
       "id": 14,
@@ -416,14 +344,7 @@ const FACE_DATA = {
       "impression_tags": [
         "배우상",
         "시크한상"
-      ],
-      "hair": "검정 턱선까지 오는 일자 장발",
-      "eye_shape": "길고 선명한 눈매",
-      "face_shape": "긴 얼굴과 각진 턱끝",
-      "expression": "무표정",
-      "glasses": false,
-      "glasses_style": "없음",
-      "distinctive_features": "직선적인 콧대, 진한 눈썹"
+      ]
     },
     {
       "id": 15,
@@ -432,14 +353,7 @@ const FACE_DATA = {
       "impression_tags": [
         "배우상",
         "세련된상"
-      ],
-      "hair": "검정 이마를 드러낸 옆가르마",
-      "eye_shape": "길게 올라간 눈매",
-      "face_shape": "좁아지는 매끈한 턱선",
-      "expression": "무표정",
-      "glasses": false,
-      "glasses_style": "없음",
-      "distinctive_features": "도톰한 아랫입술"
+      ]
     },
     {
       "id": 16,
@@ -448,14 +362,7 @@ const FACE_DATA = {
       "impression_tags": [
         "모범생상",
         "반장상"
-      ],
-      "hair": "검정 짧은 버즈컷",
-      "eye_shape": "깊고 가로로 긴 눈매",
-      "face_shape": "넓은 이마와 각진 턱선",
-      "expression": "무표정",
-      "glasses": true,
-      "glasses_style": "검정 두꺼운 사각테",
-      "distinctive_features": "진한 직선 눈썹"
+      ]
     },
     {
       "id": 17,
@@ -464,14 +371,7 @@ const FACE_DATA = {
       "impression_tags": [
         "양아치상",
         "스포티한상"
-      ],
-      "hair": "밝은 금색 짧은 올림머리",
-      "eye_shape": "가늘고 길게 뻗은 눈매",
-      "face_shape": "넓은 광대와 각진 턱선",
-      "expression": "무표정",
-      "glasses": false,
-      "glasses_style": "없음",
-      "distinctive_features": "귀걸이, 도톰한 입술"
+      ]
     },
     {
       "id": 18,
@@ -480,14 +380,7 @@ const FACE_DATA = {
       "impression_tags": [
         "아이돌상",
         "양아치상"
-      ],
-      "hair": "검정 젖은 질감의 긴 층머리",
-      "eye_shape": "올라간 길고 날카로운 눈매",
-      "face_shape": "갸름한 긴 얼굴형",
-      "expression": "무표정",
-      "glasses": false,
-      "glasses_style": "없음",
-      "distinctive_features": "링 귀걸이, 두꺼운 눈썹"
+      ]
     },
     {
       "id": 19,
@@ -496,14 +389,7 @@ const FACE_DATA = {
       "impression_tags": [
         "모범생상",
         "편안한상"
-      ],
-      "hair": "검정 풍성한 곱슬머리",
-      "eye_shape": "부드럽게 내려가는 눈매",
-      "face_shape": "볼이 도톰한 타원형",
-      "expression": "작은 닫힌 미소",
-      "glasses": true,
-      "glasses_style": "갈색 둥근 테",
-      "distinctive_features": "도톰한 입술"
+      ]
     },
     {
       "id": 20,
@@ -512,14 +398,7 @@ const FACE_DATA = {
       "impression_tags": [
         "아이돌상",
         "몽환적인상"
-      ],
-      "hair": "붉은 갈색 긴 앞머리와 층머리",
-      "eye_shape": "눈꺼풀이 도톰한 길쭉한 눈매",
-      "face_shape": "길고 매끈한 타원형",
-      "expression": "입술을 살짝 벌린 무표정",
-      "glasses": false,
-      "glasses_style": "없음",
-      "distinctive_features": "작은 턱끝, 도톰한 입술"
+      ]
     },
     {
       "id": 21,
@@ -528,14 +407,7 @@ const FACE_DATA = {
       "impression_tags": [
         "모범생상",
         "단정한상"
-      ],
-      "hair": "검정 짧고 가지런한 크롭컷",
-      "eye_shape": "크고 둥근 눈매",
-      "face_shape": "부드러운 타원형",
-      "expression": "무표정",
-      "glasses": false,
-      "glasses_style": "없음",
-      "distinctive_features": "정돈된 눈썹, 둥근 입술선"
+      ]
     },
     {
       "id": 22,
@@ -544,14 +416,7 @@ const FACE_DATA = {
       "impression_tags": [
         "양아치상",
         "날카로운상"
-      ],
-      "hair": "금색 위로 뾰족하게 세운 머리",
-      "eye_shape": "강하게 올라간 눈매",
-      "face_shape": "각진 광대와 좁은 턱끝",
-      "expression": "무표정",
-      "glasses": false,
-      "glasses_style": "없음",
-      "distinctive_features": "굵고 올라간 눈썹"
+      ]
     },
     {
       "id": 23,
@@ -560,14 +425,7 @@ const FACE_DATA = {
       "impression_tags": [
         "모범생상",
         "상견례프리패스상"
-      ],
-      "hair": "갈색 가볍게 흐트러진 가르마",
-      "eye_shape": "길고 부드러운 눈매",
-      "face_shape": "부드러운 타원형",
-      "expression": "보조개가 보이는 닫힌 미소",
-      "glasses": true,
-      "glasses_style": "얇은 사각 금속테",
-      "distinctive_features": "볼의 보조개"
+      ]
     },
     {
       "id": 24,
@@ -576,14 +434,7 @@ const FACE_DATA = {
       "impression_tags": [
         "아이돌상",
         "상견례프리패스상"
-      ],
-      "hair": "검정 눈썹까지 오는 가벼운 앞머리",
-      "eye_shape": "크고 부드러운 눈매",
-      "face_shape": "둥근 볼선과 작은 턱끝",
-      "expression": "작은 닫힌 미소",
-      "glasses": false,
-      "glasses_style": "없음",
-      "distinctive_features": "둥근 코끝과 도톰한 아랫입술"
+      ]
     },
     {
       "id": 25,
@@ -592,14 +443,7 @@ const FACE_DATA = {
       "impression_tags": [
         "아이돌상",
         "청순한상"
-      ],
-      "hair": "검정 귀를 덮는 중간 길이 웨이브",
-      "eye_shape": "크고 아래로 부드럽게 처진 눈매",
-      "face_shape": "작고 갸름한 타원형",
-      "expression": "무표정",
-      "glasses": false,
-      "glasses_style": "없음",
-      "distinctive_features": "작은 코와 도톰한 입술"
+      ]
     },
     {
       "id": 26,
@@ -608,14 +452,7 @@ const FACE_DATA = {
       "impression_tags": [
         "반장상",
         "모범생상"
-      ],
-      "hair": "검정 위로 세운 짧은 머리",
-      "eye_shape": "차분하고 긴 눈매",
-      "face_shape": "넓고 각이 있는 턱선",
-      "expression": "무표정",
-      "glasses": true,
-      "glasses_style": "검정 두꺼운 사각테",
-      "distinctive_features": "두꺼운 눈썹, 도톰한 아랫입술"
+      ]
     },
     {
       "id": 27,
@@ -624,14 +461,7 @@ const FACE_DATA = {
       "impression_tags": [
         "상견례프리패스상",
         "귀여운상"
-      ],
-      "hair": "갈색 부드러운 짧은 곱슬 앞머리",
-      "eye_shape": "둥글고 부드러운 눈매",
-      "face_shape": "작고 둥근 턱의 타원형",
-      "expression": "보조개가 보이는 미소",
-      "glasses": false,
-      "glasses_style": "없음",
-      "distinctive_features": "깊은 양쪽 보조개"
+      ]
     },
     {
       "id": 28,
@@ -640,14 +470,7 @@ const FACE_DATA = {
       "impression_tags": [
         "배우상",
         "단정한상"
-      ],
-      "hair": "검정 단정한 옆가르마",
-      "eye_shape": "크고 길쭉한 눈매",
-      "face_shape": "길고 균형 잡힌 타원형",
-      "expression": "무표정",
-      "glasses": false,
-      "glasses_style": "없음",
-      "distinctive_features": "곧은 콧대, 뚜렷한 입술선"
+      ]
     },
     {
       "id": 29,
@@ -656,14 +479,7 @@ const FACE_DATA = {
       "impression_tags": [
         "상견례프리패스상",
         "친근한상"
-      ],
-      "hair": "검정 짧고 자연스러운 가르마",
-      "eye_shape": "웃을 때 반달로 좁아지는 눈매",
-      "face_shape": "볼선이 부드러운 타원형",
-      "expression": "입을 다문 큰 미소",
-      "glasses": false,
-      "glasses_style": "없음",
-      "distinctive_features": "볼의 보조개"
+      ]
     },
     {
       "id": 30,
@@ -672,14 +488,7 @@ const FACE_DATA = {
       "impression_tags": [
         "아이돌상",
         "양아치상"
-      ],
-      "hair": "애쉬 핑크 짧게 세운 가르마",
-      "eye_shape": "길고 살짝 올라간 눈매",
-      "face_shape": "볼이 얇고 턱선이 선명한 타원형",
-      "expression": "한쪽 입꼬리를 올린 미소",
-      "glasses": false,
-      "glasses_style": "없음",
-      "distinctive_features": "눈썹 스크래치, 양쪽 귀 피어싱"
+      ]
     },
     {
       "id": 31,
@@ -688,14 +497,7 @@ const FACE_DATA = {
       "impression_tags": [
         "아이돌상",
         "웃는상"
-      ],
-      "hair": "오렌지 갈색 짧은 가르마",
-      "eye_shape": "웃을 때 반달로 좁아지는 눈매",
-      "face_shape": "볼선이 둥근 작은 타원형",
-      "expression": "치아가 보이는 밝은 미소",
-      "glasses": false,
-      "glasses_style": "없음",
-      "distinctive_features": "도톰한 입술, 둥근 코끝"
+      ]
     },
     {
       "id": 32,
@@ -704,14 +506,7 @@ const FACE_DATA = {
       "impression_tags": [
         "모범생상",
         "단정한상"
-      ],
-      "hair": "검정 매끈한 가운데 가르마",
-      "eye_shape": "가로로 길고 차분한 눈매",
-      "face_shape": "갸름하고 긴 타원형",
-      "expression": "무표정",
-      "glasses": true,
-      "glasses_style": "검정과 투명색이 섞인 사각테",
-      "distinctive_features": "곧은 콧대, 가지런한 입술선"
+      ]
     },
     {
       "id": 33,
@@ -720,14 +515,7 @@ const FACE_DATA = {
       "impression_tags": [
         "아이돌상",
         "양아치상"
-      ],
-      "hair": "금색 뿌리가 짙은 긴 가르마",
-      "eye_shape": "가늘고 올라간 눈매",
-      "face_shape": "길고 갸름한 턱선",
-      "expression": "무표정",
-      "glasses": false,
-      "glasses_style": "없음",
-      "distinctive_features": "눈썹과 귀 피어싱"
+      ]
     },
     {
       "id": 34,
@@ -736,14 +524,7 @@ const FACE_DATA = {
       "impression_tags": [
         "스포티한상",
         "날카로운상"
-      ],
-      "hair": "검정 위로 세운 짧은 머리",
-      "eye_shape": "가로로 길고 선명한 눈매",
-      "face_shape": "넓고 각진 턱선",
-      "expression": "무표정",
-      "glasses": false,
-      "glasses_style": "없음",
-      "distinctive_features": "진한 눈썹, 굵은 콧대"
+      ]
     },
     {
       "id": 35,
@@ -752,14 +533,7 @@ const FACE_DATA = {
       "impression_tags": [
         "배우상",
         "상견례프리패스상"
-      ],
-      "hair": "짙은 갈색 부드러운 굵은 웨이브 가르마",
-      "eye_shape": "길고 부드럽게 내려가는 눈매",
-      "face_shape": "길고 매끄러운 타원형",
-      "expression": "무표정",
-      "glasses": false,
-      "glasses_style": "없음",
-      "distinctive_features": "도톰한 아랫입술과 작은 턱끝"
+      ]
     },
     {
       "id": 36,
@@ -768,14 +542,7 @@ const FACE_DATA = {
       "impression_tags": [
         "배우상",
         "날카로운상"
-      ],
-      "hair": "갈색 위로 세운 흐트러진 짧은 머리",
-      "eye_shape": "가로로 길고 깊은 눈매",
-      "face_shape": "광대와 턱선이 선명한 각진 얼굴형",
-      "expression": "무표정",
-      "glasses": false,
-      "glasses_style": "없음",
-      "distinctive_features": "굵은 눈썹과 도톰한 입술"
+      ]
     },
     {
       "id": 37,
@@ -784,14 +551,7 @@ const FACE_DATA = {
       "impression_tags": [
         "모범생상",
         "시크한상"
-      ],
-      "hair": "검정 이마를 드러낸 가르마",
-      "eye_shape": "가늘고 긴 차분한 눈매",
-      "face_shape": "좁고 긴 턱선의 타원형",
-      "expression": "무표정",
-      "glasses": true,
-      "glasses_style": "얇은 반무테 직사각 안경",
-      "distinctive_features": "길고 곧은 콧대와 작은 입술"
+      ]
     },
     {
       "id": 38,
@@ -800,14 +560,7 @@ const FACE_DATA = {
       "impression_tags": [
         "양아치상",
         "날카로운상"
-      ],
-      "hair": "짙은 갈색 짧은 버즈컷",
-      "eye_shape": "좁고 강하게 올라간 눈매",
-      "face_shape": "광대와 턱이 각진 얼굴형",
-      "expression": "미간에 힘이 들어간 무표정",
-      "glasses": false,
-      "glasses_style": "없음",
-      "distinctive_features": "진한 눈썹, 도톰한 입술"
+      ]
     },
     {
       "id": 39,
@@ -816,14 +569,7 @@ const FACE_DATA = {
       "impression_tags": [
         "모범생상",
         "반장상"
-      ],
-      "hair": "검정 짧은 옆가르마",
-      "eye_shape": "차분하고 긴 눈매",
-      "face_shape": "각진 턱과 넓은 이마",
-      "expression": "무표정",
-      "glasses": true,
-      "glasses_style": "검정 직사각 테",
-      "distinctive_features": "진한 눈썹, 넓은 콧대"
+      ]
     },
     {
       "id": 40,
@@ -832,14 +578,7 @@ const FACE_DATA = {
       "impression_tags": [
         "친근한상",
         "귀여운상"
-      ],
-      "hair": "짙은 갈색 풍성한 앞머리",
-      "eye_shape": "부드럽게 좁아지는 눈매",
-      "face_shape": "볼이 둥근 짧은 타원형",
-      "expression": "작은 닫힌 미소",
-      "glasses": false,
-      "glasses_style": "없음",
-      "distinctive_features": "동그란 코끝, 도톰한 볼"
+      ]
     },
     {
       "id": 41,
@@ -848,14 +587,7 @@ const FACE_DATA = {
       "impression_tags": [
         "모범생상",
         "웃는상"
-      ],
-      "hair": "검정과 갈색이 섞인 중간 길이 가르마",
-      "eye_shape": "크고 또렷한 눈매",
-      "face_shape": "가늘고 긴 턱선",
-      "expression": "앞니가 드러나는 미소",
-      "glasses": true,
-      "glasses_style": "투명한 큰 사각테",
-      "distinctive_features": "도톰한 아랫입술"
+      ]
     },
     {
       "id": 42,
@@ -864,14 +596,7 @@ const FACE_DATA = {
       "impression_tags": [
         "반장상",
         "상견례프리패스상"
-      ],
-      "hair": "검정 이마를 드러낸 단정한 짧은 머리",
-      "eye_shape": "길고 편안하게 접히는 눈매",
-      "face_shape": "볼이 부드러운 타원형",
-      "expression": "치아가 살짝 보이는 미소",
-      "glasses": false,
-      "glasses_style": "없음",
-      "distinctive_features": "얇은 윗입술과 올라간 입꼬리"
+      ]
     },
     {
       "id": 43,
@@ -880,14 +605,7 @@ const FACE_DATA = {
       "impression_tags": [
         "아이돌상",
         "귀여운상"
-      ],
-      "hair": "갈색 풍성한 곱슬머리",
-      "eye_shape": "크고 동그란 눈매",
-      "face_shape": "작고 부드러운 턱선",
-      "expression": "입술을 살짝 벌린 무표정",
-      "glasses": false,
-      "glasses_style": "없음",
-      "distinctive_features": "도톰한 아랫입술"
+      ]
     },
     {
       "id": 44,
@@ -896,14 +614,7 @@ const FACE_DATA = {
       "impression_tags": [
         "아이돌상",
         "부드러운상"
-      ],
-      "hair": "갈색 긴 가르마와 가벼운 층머리",
-      "eye_shape": "가늘고 긴 눈매",
-      "face_shape": "갸름한 타원형",
-      "expression": "한쪽 입꼬리가 살짝 올라간 미소",
-      "glasses": false,
-      "glasses_style": "없음",
-      "distinctive_features": "얇은 윗입술, 도톰한 아랫입술"
+      ]
     },
     {
       "id": 45,
@@ -912,14 +623,7 @@ const FACE_DATA = {
       "impression_tags": [
         "배우상",
         "시크한상"
-      ],
-      "hair": "붉은 갈색 뒤로 넘긴 머리",
-      "eye_shape": "길고 올라간 눈매",
-      "face_shape": "광대가 드러나는 긴 얼굴형",
-      "expression": "무표정",
-      "glasses": false,
-      "glasses_style": "없음",
-      "distinctive_features": "선명한 콧대, 뚜렷한 입술선"
+      ]
     },
     {
       "id": 46,
@@ -928,14 +632,7 @@ const FACE_DATA = {
       "impression_tags": [
         "모범생상",
         "부드러운상"
-      ],
-      "hair": "애쉬 갈색 부드러운 웨이브 가르마",
-      "eye_shape": "길고 순한 눈매",
-      "face_shape": "갸름한 타원형",
-      "expression": "무표정",
-      "glasses": true,
-      "glasses_style": "얇은 둥근 금속테",
-      "distinctive_features": "도톰한 입술"
+      ]
     },
     {
       "id": 47,
@@ -944,14 +641,7 @@ const FACE_DATA = {
       "impression_tags": [
         "배우상",
         "스포티한상"
-      ],
-      "hair": "검정 짧은 버즈컷",
-      "eye_shape": "가로로 길고 깊은 눈매",
-      "face_shape": "넓은 이마와 각진 턱선",
-      "expression": "무표정",
-      "glasses": false,
-      "glasses_style": "없음",
-      "distinctive_features": "진하고 곧은 눈썹, 도톰한 아랫입술"
+      ]
     },
     {
       "id": 48,
@@ -960,14 +650,7 @@ const FACE_DATA = {
       "impression_tags": [
         "아이돌상",
         "단정한상"
-      ],
-      "hair": "검정 앞머리가 가볍게 갈라진 가르마",
-      "eye_shape": "크고 부드러운 눈매",
-      "face_shape": "작고 둥근 턱의 타원형",
-      "expression": "옅은 닫힌 미소",
-      "glasses": false,
-      "glasses_style": "없음",
-      "distinctive_features": "도톰한 아랫입술"
+      ]
     },
     {
       "id": 49,
@@ -976,14 +659,7 @@ const FACE_DATA = {
       "impression_tags": [
         "모범생상",
         "상견례프리패스상"
-      ],
-      "hair": "짙은 갈색 단정한 가르마",
-      "eye_shape": "둥글고 편안한 눈매",
-      "face_shape": "볼이 부드러운 타원형",
-      "expression": "보조개가 보이는 작은 미소",
-      "glasses": true,
-      "glasses_style": "얇은 둥근 금속테",
-      "distinctive_features": "깊은 양쪽 보조개"
+      ]
     },
     {
       "id": 50,
@@ -992,14 +668,7 @@ const FACE_DATA = {
       "impression_tags": [
         "배우상",
         "시크한상"
-      ],
-      "hair": "검정 젖은 질감의 짧은 옆가르마",
-      "eye_shape": "길고 깊은 또렷한 눈매",
-      "face_shape": "광대가 드러나고 턱선이 넓은 얼굴형",
-      "expression": "무표정",
-      "glasses": false,
-      "glasses_style": "없음",
-      "distinctive_features": "짙은 눈썹, 굵은 콧대, 도톰한 입술"
+      ]
     },
     {
       "id": 51,
@@ -1008,14 +677,7 @@ const FACE_DATA = {
       "impression_tags": [
         "배우상",
         "단정한상"
-      ],
-      "hair": "검정 뒤로 넘긴 단정한 가르마",
-      "eye_shape": "길고 선명한 눈매",
-      "face_shape": "넓은 이마와 각진 턱끝",
-      "expression": "무표정",
-      "glasses": false,
-      "glasses_style": "없음",
-      "distinctive_features": "굵고 곧은 눈썹"
+      ]
     },
     {
       "id": 52,
@@ -1024,14 +686,7 @@ const FACE_DATA = {
       "impression_tags": [
         "모범생상",
         "귀여운상"
-      ],
-      "hair": "검정 짧고 자연스러운 가운데 가르마",
-      "eye_shape": "크고 둥글게 열린 눈매",
-      "face_shape": "작고 갸름한 타원형",
-      "expression": "입술을 살짝 벌린 무표정",
-      "glasses": true,
-      "glasses_style": "얇은 둥근 금속테",
-      "distinctive_features": "도톰한 입술과 둥근 코끝"
+      ]
     },
     {
       "id": 53,
@@ -1040,14 +695,7 @@ const FACE_DATA = {
       "impression_tags": [
         "아이돌상",
         "몽환적인상"
-      ],
-      "hair": "검정 목덜미를 덮는 긴 일자 층머리",
-      "eye_shape": "길고 가늘게 뻗은 눈매",
-      "face_shape": "길고 가느다란 타원형",
-      "expression": "무표정",
-      "glasses": false,
-      "glasses_style": "없음",
-      "distinctive_features": "아이라인이 강조된 눈매와 작은 턱끝"
+      ]
     },
     {
       "id": 54,
@@ -1056,14 +704,7 @@ const FACE_DATA = {
       "impression_tags": [
         "아이돌상",
         "상견례프리패스상"
-      ],
-      "hair": "갈색 부드럽게 흐르는 가르마",
-      "eye_shape": "둥글고 편안한 눈매",
-      "face_shape": "작고 부드러운 타원형",
-      "expression": "옅은 닫힌 미소",
-      "glasses": false,
-      "glasses_style": "없음",
-      "distinctive_features": "도톰한 입술"
+      ]
     },
     {
       "id": 55,
@@ -1072,14 +713,7 @@ const FACE_DATA = {
       "impression_tags": [
         "반장상",
         "안경상"
-      ],
-      "hair": "갈색 짧고 단정한 가르마",
-      "eye_shape": "가늘고 편안한 눈매",
-      "face_shape": "넓고 각진 턱선",
-      "expression": "작은 닫힌 미소",
-      "glasses": true,
-      "glasses_style": "투명한 두꺼운 사각테",
-      "distinctive_features": "넓은 콧대, 도톰한 입술"
+      ]
     },
     {
       "id": 56,
@@ -1088,14 +722,7 @@ const FACE_DATA = {
       "impression_tags": [
         "아이돌상",
         "시크한상"
-      ],
-      "hair": "붉은 갈색 짧고 흐트러진 앞머리",
-      "eye_shape": "길고 날카롭게 뻗은 눈매",
-      "face_shape": "볼이 얇고 광대가 드러나는 타원형",
-      "expression": "입술을 살짝 벌린 무표정",
-      "glasses": false,
-      "glasses_style": "없음",
-      "distinctive_features": "도톰한 입술과 곧은 콧대"
+      ]
     },
     {
       "id": 57,
@@ -1104,14 +731,7 @@ const FACE_DATA = {
       "impression_tags": [
         "상견례프리패스상",
         "귀여운상"
-      ],
-      "hair": "짙은 갈색 둥글게 말린 앞머리",
-      "eye_shape": "둥글고 살짝 처진 눈매",
-      "face_shape": "작고 둥근 턱선",
-      "expression": "보조개가 보이는 미소",
-      "glasses": false,
-      "glasses_style": "없음",
-      "distinctive_features": "양쪽 보조개"
+      ]
     },
     {
       "id": 58,
@@ -1120,14 +740,7 @@ const FACE_DATA = {
       "impression_tags": [
         "아이돌상",
         "시크한상"
-      ],
-      "hair": "검정 긴 층머리와 가르마",
-      "eye_shape": "길고 살짝 올라간 눈매",
-      "face_shape": "길고 가는 타원형",
-      "expression": "무표정",
-      "glasses": false,
-      "glasses_style": "없음",
-      "distinctive_features": "도톰한 입술"
+      ]
     },
     {
       "id": 59,
@@ -1136,14 +749,7 @@ const FACE_DATA = {
       "impression_tags": [
         "배우상",
         "세련된상"
-      ],
-      "hair": "검정 짧고 흐트러진 옆가르마",
-      "eye_shape": "가로로 길고 깊은 눈매",
-      "face_shape": "광대가 드러나는 각진 얼굴형",
-      "expression": "무표정",
-      "glasses": false,
-      "glasses_style": "없음",
-      "distinctive_features": "진한 눈썹과 두꺼운 아랫입술"
+      ]
     },
     {
       "id": 60,
@@ -1152,14 +758,7 @@ const FACE_DATA = {
       "impression_tags": [
         "아이돌상",
         "몽환적인상"
-      ],
-      "hair": "검정 긴 앞머리와 목덜미 층머리",
-      "eye_shape": "눈꺼풀이 도톰한 긴 눈매",
-      "face_shape": "갸름하고 긴 타원형",
-      "expression": "입술을 살짝 벌린 무표정",
-      "glasses": false,
-      "glasses_style": "없음",
-      "distinctive_features": "도톰한 입술과 작은 턱끝"
+      ]
     },
     {
       "id": 61,
@@ -1168,14 +767,7 @@ const FACE_DATA = {
       "impression_tags": [
         "친근한상",
         "부드러운상"
-      ],
-      "hair": "검정 풍성한 곱슬 앞머리",
-      "eye_shape": "길고 부드럽게 처진 눈매",
-      "face_shape": "둥글고 넓은 볼선",
-      "expression": "옅은 닫힌 미소",
-      "glasses": false,
-      "glasses_style": "없음",
-      "distinctive_features": "도톰한 입술"
+      ]
     },
     {
       "id": 62,
@@ -1184,14 +776,7 @@ const FACE_DATA = {
       "impression_tags": [
         "모범생상",
         "상견례프리패스상"
-      ],
-      "hair": "검정 자연스러운 가운데 가르마",
-      "eye_shape": "편안하고 둥근 눈매",
-      "face_shape": "볼이 부드러운 타원형",
-      "expression": "작은 닫힌 미소",
-      "glasses": true,
-      "glasses_style": "검정 둥근 테",
-      "distinctive_features": "웃을 때 보이는 볼의 보조개"
+      ]
     },
     {
       "id": 63,
@@ -1200,14 +785,7 @@ const FACE_DATA = {
       "impression_tags": [
         "아이돌상",
         "귀여운상"
-      ],
-      "hair": "검정 둥글고 풍성한 곱슬 앞머리",
-      "eye_shape": "크고 동그랗게 열린 눈매",
-      "face_shape": "짧고 둥근 타원형",
-      "expression": "입술을 살짝 벌린 무표정",
-      "glasses": false,
-      "glasses_style": "없음",
-      "distinctive_features": "작은 코끝과 도톰한 입술"
+      ]
     },
     {
       "id": 64,
@@ -1216,14 +794,7 @@ const FACE_DATA = {
       "impression_tags": [
         "배우상",
         "시크한상"
-      ],
-      "hair": "검정 젖은 질감의 긴 가르마",
-      "eye_shape": "깊고 날카로운 눈매",
-      "face_shape": "각진 광대와 긴 턱선",
-      "expression": "무표정",
-      "glasses": false,
-      "glasses_style": "없음",
-      "distinctive_features": "진한 눈썹과 도톰한 입술"
+      ]
     }
   ],
   "female": [
@@ -1234,14 +805,7 @@ const FACE_DATA = {
       "impression_tags": [
         "청순한상",
         "상견례프리패스상"
-      ],
-      "hair": "검정 턱선 단발, 얇은 일자 앞머리",
-      "eye_shape": "부드럽고 살짝 처진 눈매",
-      "face_shape": "볼선이 둥근 짧은 타원형",
-      "expression": "옅은 미소",
-      "glasses": false,
-      "glasses_style": "없음",
-      "mouth_features": "도톰한 아랫입술, 작은 닫힌 미소"
+      ]
     },
     {
       "id": 2,
@@ -1250,14 +814,7 @@ const FACE_DATA = {
       "impression_tags": [
         "배우상",
         "차가운상"
-      ],
-      "hair": "검정 긴 생머리, 가운데 가르마, 앞머리 없음",
-      "eye_shape": "길고 또렷하며 바깥쪽이 올라간 눈매",
-      "face_shape": "길고 갸름한 얼굴, 좁은 턱선",
-      "expression": "무표정",
-      "glasses": false,
-      "glasses_style": "없음",
-      "mouth_features": "입술을 다문 중립적인 입매"
+      ]
     },
     {
       "id": 3,
@@ -1266,14 +823,7 @@ const FACE_DATA = {
       "impression_tags": [
         "아이돌상",
         "화려한상"
-      ],
-      "hair": "적갈색 어깨 길이 웨이브, 옆으로 흐르는 앞머리",
-      "eye_shape": "눈꼬리가 살짝 올라간 또렷한 눈매",
-      "face_shape": "광대에서 턱으로 좁아지는 하트형",
-      "expression": "옅은 미소",
-      "glasses": false,
-      "glasses_style": "없음",
-      "mouth_features": "선명한 입술선과 작은 미소"
+      ]
     },
     {
       "id": 4,
@@ -1282,14 +832,7 @@ const FACE_DATA = {
       "impression_tags": [
         "모범생상",
         "단정한상"
-      ],
-      "hair": "짙은 갈색 턱선 단발, 옆 가르마, 앞머리 없음",
-      "eye_shape": "둥글고 크게 열린 눈매",
-      "face_shape": "부드러운 타원형과 둥근 턱",
-      "expression": "무표정",
-      "glasses": true,
-      "glasses_style": "가는 금속 원형테",
-      "mouth_features": "작고 단정하게 다문 입술"
+      ]
     },
     {
       "id": 5,
@@ -1298,14 +841,7 @@ const FACE_DATA = {
       "impression_tags": [
         "아이돌상",
         "귀여운상"
-      ],
-      "hair": "갈색 긴 웨이브, 얇은 일자 앞머리",
-      "eye_shape": "크고 둥글게 열린 눈매",
-      "face_shape": "짧은 하트형, 부드러운 볼선",
-      "expression": "옅은 미소",
-      "glasses": false,
-      "glasses_style": "없음",
-      "mouth_features": "짧고 도톰한 입술의 작은 미소"
+      ]
     },
     {
       "id": 6,
@@ -1314,14 +850,7 @@ const FACE_DATA = {
       "impression_tags": [
         "양아치상",
         "상견례프리빠꾸상"
-      ],
-      "hair": "핑크빛 밝은 애쉬 턱선 단발, 가운데 가르마, 앞머리 없음",
-      "eye_shape": "올라간 눈꼬리, 길게 뺀 아이라인",
-      "face_shape": "작고 날렵한 턱의 하트형",
-      "expression": "무표정",
-      "glasses": false,
-      "glasses_style": "없음",
-      "mouth_features": "도톰하고 선명한 분홍 입술"
+      ]
     },
     {
       "id": 7,
@@ -1330,14 +859,7 @@ const FACE_DATA = {
       "impression_tags": [
         "청순한상",
         "상견례프리패스상"
-      ],
-      "hair": "검정 낮은 묶음머리, 앞머리 없음, 옆 잔머리",
-      "eye_shape": "크고 편안하게 처진 눈매",
-      "face_shape": "길고 부드러운 타원형",
-      "expression": "옅은 미소",
-      "glasses": false,
-      "glasses_style": "없음",
-      "mouth_features": "자연스러운 닫힌 미소"
+      ]
     },
     {
       "id": 8,
@@ -1346,14 +868,7 @@ const FACE_DATA = {
       "impression_tags": [
         "친근한상",
         "상견례프리패스상"
-      ],
-      "hair": "갈색 어깨 길이 레이어드 웨이브, 시스루 앞머리",
-      "eye_shape": "동그랗고 부드러운 눈매",
-      "face_shape": "둥근 볼과 짧은 턱선",
-      "expression": "치아가 보이는 미소",
-      "glasses": false,
-      "glasses_style": "없음",
-      "mouth_features": "윗니가 보이는 환한 미소"
+      ]
     },
     {
       "id": 9,
@@ -1362,14 +877,7 @@ const FACE_DATA = {
       "impression_tags": [
         "시크한상",
         "상견례프리빠꾸상"
-      ],
-      "hair": "밝은 금발 긴 머리, 어두운 뿌리, 앞머리 없음",
-      "eye_shape": "눈두덩이 음영이 있고 길게 뻗은 눈매",
-      "face_shape": "갸름한 타원형과 또렷한 턱선",
-      "expression": "무표정",
-      "glasses": false,
-      "glasses_style": "없음",
-      "mouth_features": "도톰한 입술, 차분하게 다문 입매"
+      ]
     },
     {
       "id": 10,
@@ -1378,14 +886,7 @@ const FACE_DATA = {
       "impression_tags": [
         "모범생상",
         "친근한상"
-      ],
-      "hair": "검정 어깨 위 웨이브 단발, 가벼운 커튼 앞머리",
-      "eye_shape": "둥글고 편안한 눈매",
-      "face_shape": "둥근 볼의 타원형",
-      "expression": "옅은 미소",
-      "glasses": true,
-      "glasses_style": "가는 금속 둥근 사각테",
-      "mouth_features": "도톰한 아랫입술과 닫힌 미소"
+      ]
     },
     {
       "id": 11,
@@ -1394,14 +895,7 @@ const FACE_DATA = {
       "impression_tags": [
         "배우상",
         "성숙한상"
-      ],
-      "hair": "짙은 갈색 긴 굵은 웨이브, 옆 가르마, 앞머리 없음",
-      "eye_shape": "길고 또렷한 아몬드형 눈매",
-      "face_shape": "길고 가는 타원형",
-      "expression": "무표정",
-      "glasses": false,
-      "glasses_style": "없음",
-      "mouth_features": "도톰한 아랫입술, 닫힌 입매"
+      ]
     },
     {
       "id": 12,
@@ -1410,14 +904,7 @@ const FACE_DATA = {
       "impression_tags": [
         "청순한상",
         "상견례프리패스상"
-      ],
-      "hair": "갈색 긴 반묶음 머리, 양옆으로 갈라진 앞머리",
-      "eye_shape": "둥글고 부드럽게 내려오는 눈매",
-      "face_shape": "짧은 타원형, 둥근 볼선",
-      "expression": "옅은 미소",
-      "glasses": false,
-      "glasses_style": "없음",
-      "mouth_features": "입꼬리가 부드럽게 올라간 닫힌 미소"
+      ]
     },
     {
       "id": 13,
@@ -1426,14 +913,7 @@ const FACE_DATA = {
       "impression_tags": [
         "모범생상",
         "차분한상"
-      ],
-      "hair": "검정 긴 생머리, 얇은 일자 앞머리",
-      "eye_shape": "가로로 길고 차분한 눈매",
-      "face_shape": "갸름한 타원형과 짧고 둥근 턱",
-      "expression": "무표정",
-      "glasses": true,
-      "glasses_style": "가는 금속 둥근 사각테",
-      "mouth_features": "도톰한 아랫입술, 다문 입매"
+      ]
     },
     {
       "id": 14,
@@ -1442,14 +922,7 @@ const FACE_DATA = {
       "impression_tags": [
         "아이돌상",
         "밝은상"
-      ],
-      "hair": "밝은 갈색 높은 묶음머리, 시스루 앞머리",
-      "eye_shape": "크고 둥글게 열린 눈매",
-      "face_shape": "작은 하트형과 둥근 볼선",
-      "expression": "치아가 보이는 미소",
-      "glasses": false,
-      "glasses_style": "없음",
-      "mouth_features": "윗니가 드러나는 밝은 미소"
+      ]
     },
     {
       "id": 15,
@@ -1458,14 +931,7 @@ const FACE_DATA = {
       "impression_tags": [
         "배우상",
         "시크한상"
-      ],
-      "hair": "검정 짧은 숏컷, 옆으로 넘긴 머리, 앞머리 없음",
-      "eye_shape": "길고 날카롭게 뻗은 눈매",
-      "face_shape": "각진 턱선과 비교적 넓은 광대",
-      "expression": "무표정",
-      "glasses": false,
-      "glasses_style": "없음",
-      "mouth_features": "도톰하고 곧게 다문 입술"
+      ]
     },
     {
       "id": 16,
@@ -1474,14 +940,7 @@ const FACE_DATA = {
       "impression_tags": [
         "청순한상",
         "배우상"
-      ],
-      "hair": "검정 긴 자연 웨이브, 앞머리 없음, 한쪽 귀 노출",
-      "eye_shape": "크고 아래로 부드럽게 흐르는 눈매",
-      "face_shape": "긴 타원형과 좁은 둥근 턱",
-      "expression": "옅은 미소",
-      "glasses": false,
-      "glasses_style": "없음",
-      "mouth_features": "입꼬리가 살짝 올라간 작은 입술"
+      ]
     },
     {
       "id": 17,
@@ -1490,14 +949,7 @@ const FACE_DATA = {
       "impression_tags": [
         "모범생상",
         "단정한상"
-      ],
-      "hair": "검정 턱선 단발, 시스루 앞머리",
-      "eye_shape": "편안하고 살짝 처진 눈매",
-      "face_shape": "둥근 볼의 짧은 타원형",
-      "expression": "옅은 미소",
-      "glasses": true,
-      "glasses_style": "가는 금속 원형테",
-      "mouth_features": "얇게 다문 자연스러운 미소"
+      ]
     },
     {
       "id": 18,
@@ -1506,30 +958,16 @@ const FACE_DATA = {
       "impression_tags": [
         "아이돌상",
         "도도한상"
-      ],
-      "hair": "검정 긴 생머리, 일자 앞머리",
-      "eye_shape": "길고 또렷하며 바깥쪽이 올라간 눈매",
-      "face_shape": "작은 하트형과 좁은 턱선",
-      "expression": "무표정",
-      "glasses": false,
-      "glasses_style": "없음",
-      "mouth_features": "도톰한 입술을 가볍게 다문 입매"
+      ]
     },
     {
       "id": 19,
       "filename": "female_19.png",
-      "face_type": "여우상",
+      "face_type": "고양이상",
       "impression_tags": [
-        "시크한상",
-        "아이돌상"
-      ],
-      "hair": "구릿빛 적갈색 턱선 웨이브 단발, 앞머리 없음",
-      "eye_shape": "가로로 길고 바깥쪽이 올라간 눈매",
-      "face_shape": "광대가 드러나는 짧은 다이아몬드형",
-      "expression": "옅은 미소",
-      "glasses": false,
-      "glasses_style": "없음",
-      "mouth_features": "입꼬리가 살짝 올라간 도톰한 입술"
+        "배우상",
+        "시크한상"
+      ]
     },
     {
       "id": 20,
@@ -1538,14 +976,7 @@ const FACE_DATA = {
       "impression_tags": [
         "상견례프리패스상",
         "단정한상"
-      ],
-      "hair": "짙은 갈색 낮은 묶음머리, 앞머리 없음, 양옆 잔머리",
-      "eye_shape": "크고 편안한 아몬드형 눈매",
-      "face_shape": "길고 부드러운 타원형",
-      "expression": "옅은 미소",
-      "glasses": false,
-      "glasses_style": "없음",
-      "mouth_features": "닫힌 입술의 차분한 미소"
+      ]
     },
     {
       "id": 21,
@@ -1554,14 +985,7 @@ const FACE_DATA = {
       "impression_tags": [
         "아이돌상",
         "청순한상"
-      ],
-      "hair": "애쉬 갈색 긴 웨이브, 시스루 앞머리",
-      "eye_shape": "크고 둥근 눈매",
-      "face_shape": "부드러운 볼과 짧은 턱의 하트형",
-      "expression": "무표정",
-      "glasses": false,
-      "glasses_style": "없음",
-      "mouth_features": "도톰하고 작은 입술"
+      ]
     },
     {
       "id": 22,
@@ -1570,14 +994,7 @@ const FACE_DATA = {
       "impression_tags": [
         "배우상",
         "단정한상"
-      ],
-      "hair": "검정 높은 묶음머리, 이마가 드러나는 올림머리",
-      "eye_shape": "길고 완만하게 올라가는 눈매",
-      "face_shape": "광대에서 턱으로 좁아지는 타원형",
-      "expression": "옅은 미소",
-      "glasses": false,
-      "glasses_style": "없음",
-      "mouth_features": "선명한 붉은 입술과 닫힌 미소"
+      ]
     },
     {
       "id": 23,
@@ -1586,14 +1003,7 @@ const FACE_DATA = {
       "impression_tags": [
         "배우상",
         "상견례프리패스상"
-      ],
-      "hair": "검정 어깨 위 생머리 단발, 옆 가르마, 앞머리 없음",
-      "eye_shape": "둥글고 부드러운 눈매",
-      "face_shape": "넓고 부드러운 타원형",
-      "expression": "옅은 미소",
-      "glasses": false,
-      "glasses_style": "없음",
-      "mouth_features": "자연스럽게 올라간 입꼬리"
+      ]
     },
     {
       "id": 24,
@@ -1602,14 +1012,7 @@ const FACE_DATA = {
       "impression_tags": [
         "모범생상",
         "차분한상"
-      ],
-      "hair": "갈색 긴 생머리, 가운데 가르마, 앞머리 없음",
-      "eye_shape": "가로로 길고 살짝 올라간 눈매",
-      "face_shape": "긴 타원형과 좁은 턱선",
-      "expression": "무표정",
-      "glasses": true,
-      "glasses_style": "가는 금속 직사각테",
-      "mouth_features": "도톰한 아랫입술, 다문 입매"
+      ]
     },
     {
       "id": 25,
@@ -1618,14 +1021,7 @@ const FACE_DATA = {
       "impression_tags": [
         "모범생상",
         "귀여운상"
-      ],
-      "hair": "검정 낮은 묶음머리, 얇은 일자 앞머리",
-      "eye_shape": "크고 둥글게 열린 눈매",
-      "face_shape": "짧은 하트형, 작은 둥근 턱",
-      "expression": "옅은 미소",
-      "glasses": true,
-      "glasses_style": "가는 금속 원형테",
-      "mouth_features": "작고 부드럽게 다문 미소"
+      ]
     },
     {
       "id": 26,
@@ -1634,14 +1030,7 @@ const FACE_DATA = {
       "impression_tags": [
         "배우상",
         "시크한상"
-      ],
-      "hair": "갈색 뒤로 묶은 머리, 이마가 드러나는 옆 가르마",
-      "eye_shape": "또렷하고 길며 눈꼬리가 올라간 눈매",
-      "face_shape": "긴 타원형과 선명한 턱선",
-      "expression": "무표정",
-      "glasses": false,
-      "glasses_style": "없음",
-      "mouth_features": "도톰한 입술, 중립적인 입매"
+      ]
     },
     {
       "id": 27,
@@ -1650,14 +1039,7 @@ const FACE_DATA = {
       "impression_tags": [
         "모범생상",
         "차분한상"
-      ],
-      "hair": "검정 어깨 길이 레이어드 생머리, 얇은 일자 앞머리",
-      "eye_shape": "크고 둥근 눈매",
-      "face_shape": "짧고 갸름한 타원형",
-      "expression": "무표정",
-      "glasses": true,
-      "glasses_style": "가는 금속 원형테",
-      "mouth_features": "짧고 도톰한 입술"
+      ]
     },
     {
       "id": 28,
@@ -1666,14 +1048,7 @@ const FACE_DATA = {
       "impression_tags": [
         "아이돌상",
         "부드러운상"
-      ],
-      "hair": "적갈색 긴 웨이브, 커튼형 시스루 앞머리",
-      "eye_shape": "길고 살짝 올라간 아몬드형 눈매",
-      "face_shape": "광대에서 턱으로 좁아지는 하트형",
-      "expression": "옅은 미소",
-      "glasses": false,
-      "glasses_style": "없음",
-      "mouth_features": "도톰한 아랫입술과 작은 미소"
+      ]
     },
     {
       "id": 29,
@@ -1682,14 +1057,7 @@ const FACE_DATA = {
       "impression_tags": [
         "청순한상",
         "차분한상"
-      ],
-      "hair": "검정 긴 생머리, 옆 가르마, 앞머리 없음",
-      "eye_shape": "부드럽게 처진 긴 눈매",
-      "face_shape": "길고 가는 타원형",
-      "expression": "무표정",
-      "glasses": false,
-      "glasses_style": "없음",
-      "mouth_features": "도톰한 입술을 자연스럽게 다문 입매"
+      ]
     },
     {
       "id": 30,
@@ -1698,14 +1066,7 @@ const FACE_DATA = {
       "impression_tags": [
         "배우상",
         "시크한상"
-      ],
-      "hair": "검정 짧은 젖은 질감 단발, 옆 가르마, 앞머리 없음",
-      "eye_shape": "깊고 또렷하며 바깥쪽이 올라간 눈매",
-      "face_shape": "짧고 각진 다이아몬드형",
-      "expression": "무표정",
-      "glasses": false,
-      "glasses_style": "없음",
-      "mouth_features": "도톰한 입술과 중립적인 입매"
+      ]
     },
     {
       "id": 31,
@@ -1714,14 +1075,7 @@ const FACE_DATA = {
       "impression_tags": [
         "아이돌상",
         "귀여운상"
-      ],
-      "hair": "검정 양갈래로 땋아 묶은 머리, 얇은 일자 앞머리",
-      "eye_shape": "크고 둥글게 열린 눈매",
-      "face_shape": "작고 둥근 하트형",
-      "expression": "옅은 미소",
-      "glasses": false,
-      "glasses_style": "없음",
-      "mouth_features": "작고 선명한 분홍 입술의 미소"
+      ]
     },
     {
       "id": 32,
@@ -1730,14 +1084,7 @@ const FACE_DATA = {
       "impression_tags": [
         "모범생상",
         "차분한상"
-      ],
-      "hair": "검정 귀 아래 길이 단발, 옆 가르마, 앞머리 없음",
-      "eye_shape": "길고 편안하게 처진 눈매",
-      "face_shape": "길고 가는 타원형",
-      "expression": "무표정",
-      "glasses": true,
-      "glasses_style": "가는 금속 직사각테",
-      "mouth_features": "도톰한 입술을 다문 중립적인 입매"
+      ]
     },
     {
       "id": 33,
@@ -1746,14 +1093,7 @@ const FACE_DATA = {
       "impression_tags": [
         "아이돌상",
         "청순한상"
-      ],
-      "hair": "밝은 갈색 긴 생머리, 시스루 앞머리",
-      "eye_shape": "크고 둥글며 눈꼬리가 완만한 눈매",
-      "face_shape": "짧은 하트형과 작은 턱",
-      "expression": "옅은 미소",
-      "glasses": false,
-      "glasses_style": "없음",
-      "mouth_features": "작고 도톰한 입술의 미소"
+      ]
     },
     {
       "id": 34,
@@ -1762,14 +1102,7 @@ const FACE_DATA = {
       "impression_tags": [
         "시크한상",
         "아이돌상"
-      ],
-      "hair": "검정 긴 생머리, 두꺼운 일자 앞머리",
-      "eye_shape": "가로로 길고 끝이 올라간 눈매",
-      "face_shape": "광대가 드러나는 타원형과 좁은 턱",
-      "expression": "무표정",
-      "glasses": false,
-      "glasses_style": "없음",
-      "mouth_features": "도톰하고 곧게 다문 입술"
+      ]
     },
     {
       "id": 35,
@@ -1778,14 +1111,7 @@ const FACE_DATA = {
       "impression_tags": [
         "모범생상",
         "친근한상"
-      ],
-      "hair": "갈색 양갈래 땋은 머리, 앞머리 없음, 옆 잔머리",
-      "eye_shape": "둥글고 편안한 눈매",
-      "face_shape": "둥근 볼의 짧은 타원형",
-      "expression": "옅은 미소",
-      "glasses": true,
-      "glasses_style": "가는 금속 둥근 사각테",
-      "mouth_features": "입꼬리가 올라간 닫힌 미소"
+      ]
     },
     {
       "id": 36,
@@ -1794,14 +1120,7 @@ const FACE_DATA = {
       "impression_tags": [
         "배우상",
         "시크한상"
-      ],
-      "hair": "적갈색 어깨 길이 울프컷, 가벼운 커튼 앞머리",
-      "eye_shape": "길고 바깥쪽이 올라가는 눈매",
-      "face_shape": "긴 타원형, 광대와 턱선이 또렷함",
-      "expression": "무표정",
-      "glasses": false,
-      "glasses_style": "없음",
-      "mouth_features": "도톰한 입술을 다문 입매"
+      ]
     },
     {
       "id": 37,
@@ -1810,14 +1129,7 @@ const FACE_DATA = {
       "impression_tags": [
         "아이돌상",
         "화려한상"
-      ],
-      "hair": "검정 턱선 일자 단발, 두꺼운 일자 앞머리",
-      "eye_shape": "크고 둥글지만 눈꼬리는 또렷한 눈매",
-      "face_shape": "작은 하트형과 짧은 턱",
-      "expression": "무표정",
-      "glasses": false,
-      "glasses_style": "없음",
-      "mouth_features": "선명한 붉은 입술, 살짝 벌어진 중립 입매"
+      ]
     },
     {
       "id": 38,
@@ -1826,14 +1138,7 @@ const FACE_DATA = {
       "impression_tags": [
         "아이돌상",
         "차분한상"
-      ],
-      "hair": "검정 턱선 단발, 가운데 가르마, 앞머리 없음",
-      "eye_shape": "길고 살짝 올라간 아몬드형 눈매",
-      "face_shape": "갸름하고 긴 타원형",
-      "expression": "무표정",
-      "glasses": false,
-      "glasses_style": "없음",
-      "mouth_features": "도톰한 입술, 다문 입매"
+      ]
     },
     {
       "id": 39,
@@ -1842,14 +1147,7 @@ const FACE_DATA = {
       "impression_tags": [
         "아이돌상",
         "단정한상"
-      ],
-      "hair": "검정 짧은 숏컷, 가운데 가르마, 앞머리 없음",
-      "eye_shape": "크고 둥글게 열린 눈매",
-      "face_shape": "짧고 작은 하트형",
-      "expression": "무표정",
-      "glasses": false,
-      "glasses_style": "없음",
-      "mouth_features": "작고 도톰한 분홍 입술"
+      ]
     },
     {
       "id": 40,
@@ -1858,14 +1156,7 @@ const FACE_DATA = {
       "impression_tags": [
         "모범생상",
         "귀여운상"
-      ],
-      "hair": "검정 높은 묶음머리, 일자 시스루 앞머리",
-      "eye_shape": "둥글고 편안한 눈매",
-      "face_shape": "짧은 하트형과 둥근 볼선",
-      "expression": "옅은 미소",
-      "glasses": true,
-      "glasses_style": "가는 금속 원형테",
-      "mouth_features": "도톰한 아랫입술과 작은 미소"
+      ]
     },
     {
       "id": 41,
@@ -1874,14 +1165,7 @@ const FACE_DATA = {
       "impression_tags": [
         "배우상",
         "차가운상"
-      ],
-      "hair": "검정 긴 생머리, 깊은 옆 가르마, 앞머리 없음",
-      "eye_shape": "길고 끝이 올라간 선명한 눈매",
-      "face_shape": "긴 얼굴과 각이 드러나는 턱선",
-      "expression": "무표정",
-      "glasses": false,
-      "glasses_style": "없음",
-      "mouth_features": "도톰한 입술을 다문 입매"
+      ]
     },
     {
       "id": 42,
@@ -1890,14 +1174,7 @@ const FACE_DATA = {
       "impression_tags": [
         "아이돌상",
         "시크한상"
-      ],
-      "hair": "밝은 금발 짧은 헝클어진 단발, 앞머리 없음",
-      "eye_shape": "또렷하고 살짝 올라간 눈매",
-      "face_shape": "짧은 타원형과 좁은 턱",
-      "expression": "옅은 미소",
-      "glasses": false,
-      "glasses_style": "없음",
-      "mouth_features": "입꼬리가 올라간 도톰한 입술"
+      ]
     },
     {
       "id": 43,
@@ -1906,14 +1183,7 @@ const FACE_DATA = {
       "impression_tags": [
         "배우상",
         "상견례프리패스상"
-      ],
-      "hair": "짙은 갈색 긴 생머리, 앞머리 없음",
-      "eye_shape": "크고 부드럽게 내려오는 눈매",
-      "face_shape": "둥근 볼의 부드러운 타원형",
-      "expression": "옅은 미소",
-      "glasses": false,
-      "glasses_style": "없음",
-      "mouth_features": "자연스럽게 올라간 닫힌 미소"
+      ]
     },
     {
       "id": 44,
@@ -1922,14 +1192,7 @@ const FACE_DATA = {
       "impression_tags": [
         "아이돌상",
         "친근한상"
-      ],
-      "hair": "짙은 갈색 긴 웨이브, 시스루 앞머리",
-      "eye_shape": "둥글고 살짝 처진 눈매",
-      "face_shape": "둥근 볼과 짧은 턱선",
-      "expression": "옅은 미소",
-      "glasses": false,
-      "glasses_style": "없음",
-      "mouth_features": "도톰한 입술과 밝은 닫힌 미소"
+      ]
     },
     {
       "id": 45,
@@ -1938,14 +1201,7 @@ const FACE_DATA = {
       "impression_tags": [
         "모범생상",
         "차분한상"
-      ],
-      "hair": "검정 턱선 일자 단발, 시스루 앞머리",
-      "eye_shape": "크고 또렷하며 바깥쪽이 살짝 올라간 눈매",
-      "face_shape": "긴 타원형과 좁은 턱",
-      "expression": "무표정",
-      "glasses": true,
-      "glasses_style": "가는 금속 원형테",
-      "mouth_features": "도톰한 아랫입술, 중립적인 입매"
+      ]
     },
     {
       "id": 46,
@@ -1954,30 +1210,16 @@ const FACE_DATA = {
       "impression_tags": [
         "청순한상",
         "아이돌상"
-      ],
-      "hair": "갈색 옆으로 땋은 머리, 옆으로 흐르는 앞머리",
-      "eye_shape": "크고 둥글게 열린 눈매",
-      "face_shape": "짧고 둥근 하트형",
-      "expression": "무표정",
-      "glasses": false,
-      "glasses_style": "없음",
-      "mouth_features": "짧고 도톰한 입술"
+      ]
     },
     {
       "id": 47,
       "filename": "female_47.png",
-      "face_type": "여우상",
+      "face_type": "토끼상",
       "impression_tags": [
-        "배우상",
-        "시크한상"
-      ],
-      "hair": "검정 어깨 길이 레이어드 머리, 앞머리 없음",
-      "eye_shape": "길고 살짝 올라간 눈매",
-      "face_shape": "광대가 드러나고 턱으로 좁아지는 얼굴",
-      "expression": "옅은 미소",
-      "glasses": false,
-      "glasses_style": "없음",
-      "mouth_features": "도톰한 입술, 입꼬리가 살짝 올라감"
+        "모범생상",
+        "귀여운상"
+      ]
     },
     {
       "id": 48,
@@ -1986,14 +1228,7 @@ const FACE_DATA = {
       "impression_tags": [
         "아이돌상",
         "청순한상"
-      ],
-      "hair": "검정 긴 생머리, 얇은 일자 앞머리",
-      "eye_shape": "크고 둥글고 또렷한 눈매",
-      "face_shape": "작은 하트형과 좁은 턱",
-      "expression": "옅은 미소",
-      "glasses": false,
-      "glasses_style": "없음",
-      "mouth_features": "작고 선명한 분홍 입술의 미소"
+      ]
     },
     {
       "id": 49,
@@ -2002,14 +1237,7 @@ const FACE_DATA = {
       "impression_tags": [
         "상견례프리패스상",
         "단정한상"
-      ],
-      "hair": "검정 어깨 길이 생머리, 시스루 앞머리",
-      "eye_shape": "크고 부드럽게 처진 눈매",
-      "face_shape": "둥근 볼의 짧은 타원형",
-      "expression": "옅은 미소",
-      "glasses": false,
-      "glasses_style": "없음",
-      "mouth_features": "도톰하고 작게 다문 미소"
+      ]
     },
     {
       "id": 50,
@@ -2018,14 +1246,7 @@ const FACE_DATA = {
       "impression_tags": [
         "모범생상",
         "차분한상"
-      ],
-      "hair": "짙은 갈색 낮은 묶음머리, 앞머리 없음",
-      "eye_shape": "가로로 길고 편안한 눈매",
-      "face_shape": "긴 타원형과 좁은 둥근 턱",
-      "expression": "무표정",
-      "glasses": true,
-      "glasses_style": "가는 검정 직사각테",
-      "mouth_features": "도톰한 아랫입술, 다문 입매"
+      ]
     },
     {
       "id": 51,
@@ -2034,14 +1255,7 @@ const FACE_DATA = {
       "impression_tags": [
         "아이돌상",
         "밝은상"
-      ],
-      "hair": "구릿빛 주황색 어깨 위 단발, 얇은 일자 앞머리",
-      "eye_shape": "살짝 올라간 길고 또렷한 눈매",
-      "face_shape": "광대에서 턱으로 좁아지는 하트형",
-      "expression": "옅은 미소",
-      "glasses": false,
-      "glasses_style": "없음",
-      "mouth_features": "도톰한 입술과 작은 미소"
+      ]
     },
     {
       "id": 52,
@@ -2050,14 +1264,7 @@ const FACE_DATA = {
       "impression_tags": [
         "배우상",
         "시크한상"
-      ],
-      "hair": "검정 긴 굵은 웨이브, 깊은 옆 가르마, 앞머리 없음",
-      "eye_shape": "깊고 길며 바깥쪽이 올라간 눈매",
-      "face_shape": "광대와 턱선이 또렷한 긴 얼굴",
-      "expression": "무표정",
-      "glasses": false,
-      "glasses_style": "없음",
-      "mouth_features": "도톰한 입술을 다문 입매"
+      ]
     },
     {
       "id": 53,
@@ -2066,14 +1273,7 @@ const FACE_DATA = {
       "impression_tags": [
         "귀여운상",
         "친근한상"
-      ],
-      "hair": "갈색 둥근 턱선 단발, 얇은 일자 앞머리",
-      "eye_shape": "크고 둥글게 열린 눈매",
-      "face_shape": "둥근 볼과 짧은 턱",
-      "expression": "옅은 미소",
-      "glasses": false,
-      "glasses_style": "없음",
-      "mouth_features": "짧고 도톰한 입술, 닫힌 미소"
+      ]
     },
     {
       "id": 54,
@@ -2082,14 +1282,7 @@ const FACE_DATA = {
       "impression_tags": [
         "반장상",
         "안경상"
-      ],
-      "hair": "검정 짧은 숏컷, 옆으로 넘긴 앞머리",
-      "eye_shape": "길고 편안하게 처진 눈매",
-      "face_shape": "부드럽게 각진 짧은 타원형",
-      "expression": "옅은 미소",
-      "glasses": true,
-      "glasses_style": "얇은 투명 직사각테",
-      "mouth_features": "입꼬리가 올라간 닫힌 미소"
+      ]
     },
     {
       "id": 55,
@@ -2098,14 +1291,7 @@ const FACE_DATA = {
       "impression_tags": [
         "청순한상",
         "차분한상"
-      ],
-      "hair": "갈색 긴 레이어드 생머리, 가운데 가르마, 앞머리 없음",
-      "eye_shape": "크고 부드럽게 내려오는 눈매",
-      "face_shape": "길고 갸름한 타원형",
-      "expression": "무표정",
-      "glasses": false,
-      "glasses_style": "없음",
-      "mouth_features": "작고 도톰한 입술"
+      ]
     },
     {
       "id": 56,
@@ -2114,14 +1300,7 @@ const FACE_DATA = {
       "impression_tags": [
         "아이돌상",
         "장난기있는상"
-      ],
-      "hair": "검정 긴 헝클어진 웨이브, 가벼운 앞머리",
-      "eye_shape": "길고 바깥쪽이 올라간 눈매",
-      "face_shape": "광대에서 턱으로 좁아지는 하트형",
-      "expression": "옅은 미소",
-      "glasses": false,
-      "glasses_style": "없음",
-      "mouth_features": "입꼬리가 살짝 올라간 도톰한 입술"
+      ]
     },
     {
       "id": 57,
@@ -2130,14 +1309,7 @@ const FACE_DATA = {
       "impression_tags": [
         "양아치상",
         "상견례프리빠꾸상"
-      ],
-      "hair": "검정 긴 생머리, 눈썹 위 짧은 일자 앞머리",
-      "eye_shape": "길게 뺀 아이라인과 올라간 눈꼬리",
-      "face_shape": "작고 날렵한 하트형",
-      "expression": "옅은 미소",
-      "glasses": false,
-      "glasses_style": "없음",
-      "mouth_features": "선명한 붉은 입술과 작은 미소"
+      ]
     },
     {
       "id": 58,
@@ -2146,14 +1318,7 @@ const FACE_DATA = {
       "impression_tags": [
         "모범생상",
         "단정한상"
-      ],
-      "hair": "갈색 턱선 단발, 옆 가르마, 앞머리 없음",
-      "eye_shape": "편안하게 처진 둥근 눈매",
-      "face_shape": "둥근 볼의 짧은 타원형",
-      "expression": "옅은 미소",
-      "glasses": true,
-      "glasses_style": "가는 금속 원형테",
-      "mouth_features": "도톰한 아랫입술과 닫힌 미소"
+      ]
     },
     {
       "id": 59,
@@ -2162,14 +1327,7 @@ const FACE_DATA = {
       "impression_tags": [
         "아이돌상",
         "귀여운상"
-      ],
-      "hair": "검정 양갈래 땋은 머리, 시스루 앞머리",
-      "eye_shape": "크고 둥글게 열린 눈매",
-      "face_shape": "짧은 하트형과 둥근 볼선",
-      "expression": "옅은 미소",
-      "glasses": false,
-      "glasses_style": "없음",
-      "mouth_features": "작고 도톰한 입술의 미소"
+      ]
     },
     {
       "id": 60,
@@ -2178,30 +1336,16 @@ const FACE_DATA = {
       "impression_tags": [
         "배우상",
         "차분한상"
-      ],
-      "hair": "검정 낮은 올림머리, 앞머리 없음, 옆 잔머리",
-      "eye_shape": "가로로 길고 차분하게 처진 눈매",
-      "face_shape": "긴 타원형과 부드러운 턱",
-      "expression": "무표정",
-      "glasses": false,
-      "glasses_style": "없음",
-      "mouth_features": "도톰한 입술, 중립적인 입매"
+      ]
     },
     {
       "id": 61,
       "filename": "female_61.png",
-      "face_type": "여우상",
+      "face_type": "고양이상",
       "impression_tags": [
-        "시크한상",
-        "배우상"
-      ],
-      "hair": "버건디색 턱선 비대칭 단발, 앞머리 없음",
-      "eye_shape": "길고 살짝 올라간 눈매",
-      "face_shape": "광대와 턱선이 드러나는 타원형",
-      "expression": "무표정",
-      "glasses": false,
-      "glasses_style": "없음",
-      "mouth_features": "도톰한 아랫입술을 다문 입매"
+        "배우상",
+        "세련된상"
+      ]
     },
     {
       "id": 62,
@@ -2210,14 +1354,7 @@ const FACE_DATA = {
       "impression_tags": [
         "모범생상",
         "차분한상"
-      ],
-      "hair": "검정 긴 생머리, 가벼운 커튼 앞머리",
-      "eye_shape": "길고 올라간 눈꼬리",
-      "face_shape": "갸름한 타원형과 좁은 턱",
-      "expression": "무표정",
-      "glasses": true,
-      "glasses_style": "검정 둥근 사각 뿔테",
-      "mouth_features": "도톰한 입술, 다문 입매"
+      ]
     },
     {
       "id": 63,
@@ -2226,14 +1363,7 @@ const FACE_DATA = {
       "impression_tags": [
         "아이돌상",
         "단정한상"
-      ],
-      "hair": "검정 짧은 숏컷, 가운데 가르마, 앞머리 없음",
-      "eye_shape": "크고 둥글게 열린 눈매",
-      "face_shape": "작고 짧은 하트형",
-      "expression": "옅은 미소",
-      "glasses": false,
-      "glasses_style": "없음",
-      "mouth_features": "작고 도톰한 입술의 닫힌 미소"
+      ]
     },
     {
       "id": 64,
@@ -2242,14 +1372,7 @@ const FACE_DATA = {
       "impression_tags": [
         "청순한상",
         "상견례프리패스상"
-      ],
-      "hair": "검정 어깨 아래 자연 웨이브, 앞머리 없음",
-      "eye_shape": "길고 부드럽게 처진 눈매",
-      "face_shape": "긴 타원형과 둥근 좁은 턱",
-      "expression": "옅은 미소",
-      "glasses": false,
-      "glasses_style": "없음",
-      "mouth_features": "작고 도톰한 입술의 미소"
+      ]
     }
   ]
 };
@@ -2312,26 +1435,7 @@ class Tournament {
     return true;
   }
 }
-function preferenceTags(choices) {
-  const scores = new Map();
-  const tags = face => new Set([face.face_type, ...face.impression_tags]);
-  for (const choice of choices) {
-    const won = tags(choice.winner), lost = tags(choice.loser);
-    for (const tag of new Set([...won, ...lost])) {
-      if (won.has(tag) === lost.has(tag)) continue;
-      const s = scores.get(tag) || {tag, wins:0, trials:0};
-      s.trials++;
-      if (won.has(tag)) s.wins++;
-      scores.set(tag, s);
-    }
-  }
-  // Compare only matches where this trait distinguishes the two portraits.
-  // Smoothing prevents a trait shown once from dominating the result.
-  return [...scores.values()].filter(s => s.trials >= 3 && s.wins > s.trials / 2)
-    .sort((a,b) => ((b.wins+1)/(b.trials+2)) - ((a.wins+1)/(a.trials+2)) || b.trials-a.trials)
-    .slice(0, 3).map(s => s.tag);
-}
-if (typeof module !== 'undefined') module.exports = {Tournament, shuffled, preferenceTags};
+if (typeof module !== 'undefined') module.exports = {Tournament, shuffled};
 
 const $ = id => document.getElementById(id);
 const faceUrl = (gender, face) => IMAGE_BASE + gender + '/' + face.filename;
@@ -2381,7 +1485,7 @@ async function renderMatch() {
   if(results.some(r=>r.status==='rejected')){
     $('imageStatus').textContent='사진을 불러오지 못했어요. 다시 불러와 주세요.';$('retryImages').hidden=false;return;
   }
-  $('leftFace').disabled=$('rightFace').disabled=false;busy=false;$('imageStatus').textContent='마음이 가는 사진을 눌러주세요.';preloadNext();
+  $('leftFace').disabled=$('rightFace').disabled=false;busy=false;$('imageStatus').textContent='';preloadNext();
 }
 function pick(side) {
   if(busy||!game||game.winner||performance.now()-lastPickAt<250)return;
@@ -2413,7 +1517,7 @@ function renderResult(sex, winner, runner, choices = null) {
   $('runnerImage').src=faceUrl(sex,runner);$('runnerImage').alt=`결승 2위 ${number(runner.id)}번 얼굴`;
   $('runnerTitle').replaceChildren(document.createTextNode('마지막까지 고민했던'),document.createElement('br'),Object.assign(document.createElement('span'),{className:'runner-type',textContent:runner.face_type}));
   $('runnerCopy').replaceChildren();
-  [`번호 ${number(runner.id)}`,...runner.impression_tags.slice(0,2)].forEach((text,index)=>{if(index)$('runnerCopy').append(document.createElement('br'));$('runnerCopy').append(document.createTextNode(text));});
+  $('runnerCopy').append(document.createTextNode(`번호 ${number(runner.id)}`),document.createElement('br'),document.createTextNode(runner.impression_tags.slice(0,2).join(' · ')));
   $('sharedNote').hidden=!!choices;
   $('resultStatus').textContent='';
 }
@@ -2434,35 +1538,48 @@ $('helpOpen').onclick=()=>{if(typeof $('helpDialog').showModal==='function')$('h
 $('helpClose').onclick=()=>$('helpDialog').close();
 $('helpDialog').addEventListener('click',e=>{if(e.target===$('helpDialog'))$('helpDialog').close();});
 function shareUrl() {
-  const url=new URL(location.href);url.hash='';url.search='';
-  const r=displayedResult;url.searchParams.set('result',r.gender+'-'+number(r.winner.id));url.searchParams.set('second',number(r.runner.id));return url.href;
+  const url=new URL(location.href);url.hash='';url.search='';return url.href;
 }
 $('shareButton').onclick=async()=>{
   const r=displayedResult;if(!r)return;
   if(location.protocol==='file:'){$('resultStatus').textContent='사이트에 업로드한 뒤 결과 링크를 공유할 수 있어요.';return;}
-  const url=shareUrl(),text=`내 취향은 ${r.winner.face_type}! 테스트잇 얼굴 취향 분석 테스트`;
-  try{if(navigator.share)await navigator.share({title:'테스트잇 얼굴 취향 분석 테스트',text,url});else if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(url);$('resultStatus').textContent='결과 링크를 복사했어요.';}else{prompt('아래 결과 링크를 복사해 주세요.',url);}}catch(error){if(error.name!=='AbortError')$('resultStatus').textContent='공유하지 못했어요. 결과 이미지를 저장해 공유해 주세요.';}
+  const url=shareUrl(),text='테스트잇 얼굴 취향 분석 테스트',message=text+'\n'+url;
+  try{if(navigator.share)await navigator.share({title:text,text,url});else if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(message);$('resultStatus').textContent='테스트 이름과 주소를 복사했어요.';}else{prompt('테스트 이름과 주소를 복사해 주세요.',message);}}catch(error){if(error.name!=='AbortError')$('resultStatus').textContent='공유하지 못했어요. 결과 이미지를 저장해 공유해 주세요.';}
 };
-function canvasImage(url) {return new Promise((resolve,reject)=>{const img=new Image();if(location.protocol!=='file:')img.crossOrigin='anonymous';img.onload=()=>resolve(img);img.onerror=reject;img.src=url;});}
-function wrapText(ctx,text,x,y,maxWidth,lineHeight){let line='';for(const ch of text){if(ctx.measureText(line+ch).width>maxWidth){ctx.fillText(line,x,y);line='';y+=lineHeight;}line+=ch;}if(line)ctx.fillText(line,x,y);return y+lineHeight;}
+let captureLibraryPromise=null;
+function loadCaptureLibrary(){
+  if(window.html2canvas)return Promise.resolve(window.html2canvas);
+  if(!captureLibraryPromise)captureLibraryPromise=new Promise((resolve,reject)=>{
+    const script=document.createElement('script');script.src='https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js';
+    script.onload=()=>window.html2canvas?resolve(window.html2canvas):reject(new Error('capture unavailable'));
+    script.onerror=()=>{script.remove();captureLibraryPromise=null;reject(new Error('capture load failed'));};
+    document.head.append(script);
+  });
+  return captureLibraryPromise;
+}
 let savePreviewUrl=null;
 $('saveDialogClose').onclick=()=>$('saveDialog').close();
 $('saveDialog').addEventListener('click',event=>{if(event.target===$('saveDialog')){const rect=$('saveDialog').getBoundingClientRect();if(event.clientX<rect.left||event.clientX>rect.right||event.clientY<rect.top||event.clientY>rect.bottom)$('saveDialog').close();}});
 $('saveButton').onclick=async()=>{
   if(!displayedResult)return;const button=$('saveButton');button.disabled=true;$('resultStatus').textContent='결과 이미지 만드는 중…';
   try{
-    const r=displayedResult,[winner,runner]=await Promise.all([canvasImage(faceUrl(r.gender,r.winner)),canvasImage(faceUrl(r.gender,r.runner))]);
-    const c=document.createElement('canvas');c.width=900;c.height=1250;const x=c.getContext('2d');
-    x.fillStyle='#edf8f6';x.fillRect(0,0,900,1250);x.fillStyle='#f6fffc';x.fillRect(38,38,824,1174);x.strokeStyle='#619399';x.lineWidth=4;x.strokeRect(38,38,824,1174);
-    x.fillStyle='#a8dcd8';x.fillRect(44,44,812,43);x.fillStyle='#3b737b';x.font='18px Galmuri11, sans-serif';x.fillText('♥  테스트잇 얼굴 취향 분석 테스트',60,72);
-    x.textAlign='center';
-    x.fillStyle='#994b6a';x.font='30px Galmuri11, sans-serif';x.fillText('내 취향은 '+r.winner.face_type,450,208);
-    x.fillStyle='#fff';x.fillRect(191,244,518,518);x.drawImage(winner,200,253,500,500);
-    x.fillStyle='#857781';x.font='18px monospace';x.fillText(`${r.gender==='male'?'남자':'여자'} 번호 ${number(r.winner.id)} · 최종 우승`,450,797);
-    x.fillStyle='#6e5361';x.font='20px Galmuri11, sans-serif';x.fillText(r.winner.impression_tags.join(' · '),450,849);
-    x.strokeStyle='#c9c0bb';x.beginPath();x.moveTo(94,969);x.lineTo(806,969);x.stroke();x.drawImage(runner,105,988,200,200);x.textAlign='left';x.fillStyle='#8f7d88';x.font='17px monospace';x.fillText('결승 2위',335,1026);x.fillStyle='#35343b';x.font='28px Galmuri11, sans-serif';x.fillText('마지막까지 고민했던',335,1061);x.fillText(r.runner.face_type,335,1102);x.fillStyle='#7a737c';x.font='18px sans-serif';x.fillText('번호 '+number(r.runner.id),335,1138);x.fillText(r.runner.impression_tags.join(' · '),335,1173);
+    const renderCanvas=await loadCaptureLibrary();
+    if(document.fonts)await document.fonts.ready;
+    const target=document.querySelector('.window');
+    await Promise.all(Array.from(target.querySelectorAll('img')).filter(img=>img.getClientRects().length).map(async img=>{
+      if(img.decode)await img.decode();
+      if(!img.complete||!img.naturalWidth)throw new Error('portrait not ready');
+    }));
+    const captureRect=target.getBoundingClientRect();
+    const c=await renderCanvas(target,{
+      scale:2,useCORS:true,allowTaint:false,backgroundColor:null,logging:false,
+      width:Math.ceil(captureRect.width),height:Math.ceil(captureRect.height),
+      windowWidth:window.innerWidth,windowHeight:window.innerHeight,
+      scrollX:window.scrollX,scrollY:window.scrollY,
+      onclone:doc=>{doc.querySelectorAll('.coupang-ad,dialog').forEach(el=>el.remove());const clonedTarget=doc.querySelector('.window');clonedTarget.style.width=captureRect.width+'px';clonedTarget.style.maxWidth='none';}
+    });
     const blob=await new Promise(resolve=>c.toBlob(resolve,'image/png'));if(!blob)throw new Error('empty canvas');
-    if(savePreviewUrl)URL.revokeObjectURL(savePreviewUrl);savePreviewUrl=URL.createObjectURL(blob);$('savePreview').src=savePreviewUrl;$('saveDownload').href=savePreviewUrl;$('saveDownload').download=`test429_${r.gender}_${number(r.winner.id)}.png`;$('saveDialog').showModal();$('savePreview').parentElement.scrollTop=0;$('resultStatus').textContent='';
+    if(savePreviewUrl)URL.revokeObjectURL(savePreviewUrl);savePreviewUrl=URL.createObjectURL(blob);$('savePreview').src=savePreviewUrl;$('saveDialog').showModal();$('savePreview').parentElement.scrollTop=0;$('resultStatus').textContent='';
   }catch(error){$('resultStatus').textContent=location.protocol==='file:'?'이 브라우저에서는 로컬 파일 저장이 제한돼요. 사이트에 업로드한 뒤 다시 저장해 주세요.':'저장하지 못했어요. 사진이 정상적으로 표시되는지 확인하고 다시 눌러주세요.';}
   finally{button.disabled=false;}
 };

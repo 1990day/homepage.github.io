@@ -1,0 +1,2462 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#a9bfd1">
+<meta name="description" content="64개의 얼굴 중 내 마음에 남는 단 한 사람. 랜덤 이상형 월드컵으로 알아보는 테스트잇 얼굴 취향 분석 테스트.">
+<title>테스트잇 얼굴 취향 분석 테스트</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/galmuri@2.40.3/dist/galmuri.css">
+<style>
+:root{--desktop:#a9bfd1;--paper:#f4f1eb;--gray:#dedbd3;--ink:#292b31;--navy:#243b73;--pink:#e5acbd;--line:#575953;--muted:#6c6c73}
+*{box-sizing:border-box}h1[tabindex="-1"]:focus,h2[tabindex="-1"]:focus{outline:none}body{margin:0;min-height:100vh;color:var(--ink);font-family:"Malgun Gothic","Apple SD Gothic Neo",sans-serif;font-size:14px;background-color:var(--desktop);background-image:repeating-linear-gradient(0deg,#ffffff0c 0,#ffffff0c 1px,transparent 1px,transparent 3px),radial-gradient(ellipse at top,#c5d5e2,transparent 75%)}button,a,input{ -webkit-tap-highlight-color:transparent}button{color:inherit;font:inherit;cursor:pointer}button:disabled{cursor:wait;opacity:.55}button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #9b3463;outline-offset:4px}a{color:inherit}button{touch-action:manipulation}button:active:not(:disabled){transform:translateY(1px)}.bevel{border:1px solid var(--line);box-shadow:inset 1px 1px #fff,inset -1px -1px #8b8b83,2px 2px 0 #46536650;background:var(--gray)}.osbar{height:36px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;font:12px ui-monospace,monospace;letter-spacing:.04em;background:#eeeae1;border-bottom:1px solid #73756e;box-shadow:inset 0 -1px #fff}.brand{text-decoration:none;font-weight:800;font-size:14px;display:flex;align-items:center;gap:8px}.brand b{color:#a34e70}.osbar .right{color:#666}.desktop{position:relative;max-width:1080px;margin:0 auto;padding:36px 20px 80px;min-height:calc(100vh - 72px);display:flex;align-items:center;flex-direction:column;justify-content:center}.desktop-label{font:11px ui-monospace,monospace;color:#43576d;letter-spacing:.16em;margin-bottom:15px;display:flex;align-items:center;gap:9px}.led{width:7px;height:7px;background:#69998e;border:1px solid #3a6b5d;box-shadow:inset 1px 1px #c7f4d9}.window{width:min(100%,740px);padding:4px;background:var(--gray);border:1px solid #4a4c4b;box-shadow:inset 1px 1px #fff,inset -1px -1px #898a84,5px 6px 0 #485b7133}.titlebar{height:31px;background:linear-gradient(90deg,#233c76,#5172a3);color:#fff;display:flex;align-items:center;gap:8px;padding:0 7px 0 9px;font-size:12px;letter-spacing:.02em;font-weight:700}.titlebar .title{flex:1}.app-icon{color:#ffd6e2;font-size:18px;line-height:1}.window-help{height:21px;width:23px;min-width:23px;border:1px solid #192947;box-shadow:inset 1px 1px #fff,inset -1px -1px #85867e;background:var(--gray);font:bold 14px Georgia,serif;padding:0}.menubar{display:flex;gap:16px;border-bottom:1px solid #bab9b1;padding:9px 13px;font:11px ui-monospace,monospace;color:#686b6f}.menubar .active{color:#9a3f61}.path{margin:9px 11px 0;padding:6px 9px;background:#f9f8f5;box-shadow:inset 1px 1px #8c8d85,inset -1px -1px #fff;font:10px ui-monospace,monospace;overflow:hidden;white-space:nowrap;color:#727579;display:flex;gap:8px}.path span{color:#b56c86}.content{margin:10px 11px 11px;background:var(--paper);border:1px solid #b6b6ae;min-height:420px}.screen{padding:35px 32px;animation:open .18s ease-out}.screen[hidden]{display:none}.welcome{text-align:center}.eyebrow{font:11px ui-monospace,monospace;color:#8c6376;letter-spacing:.13em}.pixel-heart{width:60px;height:54px;margin:23px auto 20px;image-rendering:pixelated;filter:drop-shadow(2px 3px 0 #ba8c9c55)}h1{font-size:clamp(25px,5vw,35px);font-weight:800;letter-spacing:-1.5px;line-height:1.45;margin:0 0 16px}h1 small{display:block;font-size:14px;letter-spacing:-.3px;font-weight:500;margin-bottom:5px;color:#5c6068}.accent{color:#9e496a}.intro{font-size:13px;color:#6b6b73;line-height:1.9;margin:0 auto 24px;word-break:keep-all}.portrait-strip{display:flex;justify-content:center;gap:8px;margin:0 auto 26px}.portrait-strip img{width:65px;height:65px;object-fit:cover;filter:saturate(.85);border:3px solid #fff;outline:1px solid #bbb7ae;box-shadow:2px 2px #beb9b155}.portrait-strip img:nth-child(odd){transform:rotate(-4deg)}.portrait-strip img:nth-child(even){transform:rotate(4deg)}.button{border:1px solid #62625f;background:var(--gray);box-shadow:inset 1px 1px #fff,inset -1px -1px #92918b;padding:12px 18px;min-height:43px;font-size:13px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;gap:10px;text-decoration:none}.button.primary{background:#e4b5c3;box-shadow:inset 1px 1px #ffeaf0,inset -1px -1px #ad7e8e;min-width:210px}.button:hover:not(:disabled){filter:brightness(1.035)}.button:active{box-shadow:inset 1px 1px #888, inset -1px -1px #fff}.tiny{font:10px ui-monospace,monospace;color:#969096;margin:16px 0 0}.statusbar{display:flex;gap:4px;font:10px ui-monospace,monospace;color:#63686e;padding:0 2px 1px}.statusbar span{padding:6px 8px;box-shadow:inset 1px 1px #aaa99f,inset -1px -1px #fff}.statusbar span:first-child{flex:1}.taskbar{position:fixed;bottom:0;left:0;right:0;z-index:10;height:37px;background:var(--gray);box-shadow:inset 0 1px #fff;border-top:1px solid #81867f;display:flex;align-items:center;padding:4px 8px;gap:9px;font:11px ui-monospace,monospace}.start-label{padding:5px 9px;font-weight:bold;background:#e7e5dd;box-shadow:inset 1px 1px #fff,inset -1px -1px #888;border:1px solid #777}.task-name{max-width:190px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1;padding:5px 11px;background:#edece6;box-shadow:inset 1px 1px #999,inset -1px -1px #fff}.task-spacer{flex:1}#clock{padding:4px 9px}.setup-heading{margin:0 0 8px;font-size:22px;letter-spacing:-.7px}.subtext{font-size:12px;color:#72727a;line-height:1.8;margin:0 0 26px}fieldset{border:0;padding:0;margin:0 0 24px}legend{font-size:12px;font-weight:700;margin-bottom:11px}.options{display:grid;grid-template-columns:1fr 1fr;gap:12px}.option{position:relative;cursor:pointer}.option input{position:absolute;left:14px;top:17px;accent-color:#9d4b6d;width:15px;height:15px;margin:0;z-index:1}.option-box{display:block;min-height:87px;border:1px solid #c8c5bc;background:#f9f8f4;padding:15px 14px 14px 39px;box-shadow:inset 1px 1px #fff}.option-box strong{font-size:16px;display:block;font-weight:700}.option-box small{display:block;margin-top:7px;font-size:11px;color:#828087;line-height:1.6}.option input:checked+.option-box{border-color:#ac6682;background:#f8e9ee;box-shadow:inset 0 0 0 1px #d6a3b5}.option input:focus-visible+.option-box{outline:2px solid #9d4b6d;outline-offset:2px}.setup-actions{display:flex;gap:8px;justify-content:center;margin-top:30px}.setup-actions .primary{flex:1;max-width:300px}.match-screen{padding:22px 20px 20px}.match-header{text-align:center;margin-bottom:18px}.round-tag{display:inline-block;background:#e4b5c3;border:1px solid #bc869b;padding:5px 13px;font-size:12px;font-weight:700}.match-header h2{margin:12px 0 7px;font-size:21px;letter-spacing:-.7px}.match-header p{font-size:11px;color:#7a7780;margin:0}.match-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;position:relative}.face-button{border:1px solid #8a8b86;background:#e1ded7;padding:4px;box-shadow:inset 1px 1px #fff,inset -1px -1px #aaa;min-width:0;width:100%;display:block;text-align:left}.face-button img{display:block;width:100%;aspect-ratio:1;object-fit:cover;background:#c1c7ca}.face-caption{display:flex;align-items:center;justify-content:space-between;padding:10px 7px 7px;font:10px ui-monospace,monospace;color:#6d6d75}.face-caption strong{font:11px "Malgun Gothic",sans-serif;font-weight:bold;color:#694c5a}.face-button:hover:not(:disabled){outline:2px solid #bb7892;outline-offset:1px}.face-button.selected{outline:3px solid #ac5b7d;outline-offset:1px}.vs{position:absolute;top:42%;left:50%;transform:translate(-50%,-50%);pointer-events:none;width:30px;height:30px;border:1px solid #83837e;background:var(--paper);display:grid;place-items:center;font:bold 10px ui-monospace,monospace;box-shadow:1px 1px #fff;z-index:1}.progress-wrap{margin:21px 0 10px}.progress-label{display:flex;justify-content:space-between;font:10px ui-monospace,monospace;color:#7a7880;margin-bottom:7px}.progress-track{height:9px;padding:2px;background:#ebe8e1;box-shadow:inset 1px 1px #96968e,inset -1px -1px #fff}.progress-fill{height:5px;background:repeating-linear-gradient(90deg,#c18a9e 0,#c18a9e 9px,#e5c4d0 9px,#e5c4d0 11px);width:0;transition:width .2s}.match-bottom{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-top:14px}.text-button{border:0;background:none;padding:6px 0;color:#73707a;font-size:11px;text-decoration:underline;text-underline-offset:3px}.message{font-size:12px;text-align:center;line-height:1.7;color:#8c4664;min-height:21px;margin:10px 0}.retry{font-size:11px;border:1px solid #999;background:#eee;padding:5px 10px}.result-screen{text-align:center;padding:28px}.result-heading{font-size:12px;font-weight:500;color:#73717b;margin:0 0 14px}.result-screen h2{font-size:29px;letter-spacing:-1px;line-height:1.4;margin:9px 0 18px}.result-portrait{position:relative;margin:0 auto 19px;width:min(100%,300px);padding:6px;border:1px solid #94918a;background:#faf8f3;box-shadow:3px 4px #d5c4c8}.result-portrait img{display:block;width:100%;aspect-ratio:1;object-fit:cover}.ribbon{background:#e3b3c3;border:1px solid #b67b93;display:inline-block;font:10px ui-monospace,monospace;letter-spacing:.12em;padding:5px 12px;margin:0 auto 3px}.photo-no{font:10px ui-monospace,monospace;color:#8f8590;margin:10px 0 5px}.tags{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin:0 0 19px}.tag{background:#eae5df;border:1px solid #d2ccc3;padding:5px 8px;font-size:11px;color:#6f5e69}.result-copy{max-width:440px;margin:0 auto 23px;line-height:1.95;font-size:13px;color:#68656d;word-break:keep-all}.details{background:#f9f7f1;border:1px solid #c8c4ba;padding:18px;text-align:left;margin:0 auto 22px;max-width:500px}.details h3{margin:0 0 13px;font-size:12px;display:flex;align-items:center;gap:8px}.details h3:before{content:"";width:7px;height:7px;background:#c990a6;border:1px solid #a46f87}.details dl{margin:0;display:grid;grid-template-columns:52px 1fr;gap:9px 10px;font-size:12px;line-height:1.7}.details dt{color:#92868d}.details dd{margin:0;color:#5f5e65}.runner{display:flex;align-items:center;gap:15px;max-width:500px;margin:0 auto 23px;text-align:left;border-top:1px dashed #c3bdb5;border-bottom:1px dashed #c3bdb5;padding:16px 0}.runner img{width:76px;height:76px;object-fit:cover;border:3px solid #fff;outline:1px solid #bdb8af}.runner .eyebrow{font-size:9px}.runner strong{display:block;font-size:14px;margin:5px 0}.runner small{display:block;font-size:11px;color:#828087;line-height:1.7}.taste-box{max-width:500px;margin:0 auto 24px}.taste-box h3{font-size:12px;margin:0 0 12px}.taste-box .tags{margin-bottom:10px}.taste-box p{font-size:11px;color:#8d848b;line-height:1.8;margin:0;word-break:keep-all}.result-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;max-width:500px;margin:0 auto}.result-actions .primary{grid-column:1/-1;width:100%}.disclaimer{font-size:10px;color:#969096;line-height:1.9;margin:24px 0 0;word-break:keep-all}.footer-credit{margin:19px 0 0;color:#687c8d;font:10px ui-monospace,monospace;letter-spacing:.13em}.footer-credit a{text-underline-offset:3px}.help-dialog{width:min(90%,430px);padding:4px;border:1px solid #474a48;background:var(--gray);box-shadow:inset 1px 1px #fff,5px 6px #29374644;color:var(--ink)}.help-dialog::backdrop{background:#23344466}.help-body{padding:23px;background:var(--paper);font-size:13px;line-height:1.9}.help-body p{margin:0 0 15px}.help-body .button{display:flex;margin:20px auto 0;min-width:100px}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}.shared-note{font-size:11px;color:#887780;margin-bottom:16px}@keyframes open{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+@media(min-width:900px){.desktop:before{content:"♡\A 내 취향\A\A▧\A 얼굴 폴더";white-space:pre;position:absolute;left:5px;top:105px;text-align:center;font:12px/1.8 ui-monospace,monospace;color:#f8fbff;text-shadow:1px 1px #667c91;pointer-events:none}.desktop{padding-top:35px}}
+@media(max-width:540px){.osbar{height:32px;padding:0 12px}.osbar .right{font-size:9px}.desktop{padding:22px 10px 66px;min-height:calc(100dvh - 69px);justify-content:flex-start}.desktop-label{font-size:9px;margin-bottom:12px}.window{padding:3px;box-shadow:3px 4px #485b7133}.titlebar{height:29px;font-size:11px}.menubar{padding:8px 9px;gap:12px;font-size:10px}.path{margin:8px 6px 0;font-size:9px}.content{margin:8px 6px;min-height:0}.screen{padding:29px 19px}.welcome{padding-top:32px;padding-bottom:34px}.portrait-strip img{width:54px;height:54px}.intro{font-size:12px}.setup-heading{font-size:20px}.option-box{padding-left:33px;padding-right:8px}.option input{left:10px}.option-box strong{font-size:15px}.option-box small{font-size:10px}.options{gap:9px}.match-screen{padding:20px 10px 16px}.match-grid{gap:10px}.match-header h2{font-size:18px}.face-button{padding:3px}.face-caption{padding:9px 3px 6px;font-size:9px}.face-caption strong{font-size:10px}.vs{width:25px;height:25px;font-size:9px}.result-screen{padding:25px 17px}.result-screen h2{font-size:27px}.result-copy{font-size:12px}.details{padding:15px}.details dl{font-size:11px;grid-template-columns:46px 1fr}.runner img{width:68px;height:68px}.statusbar{font-size:9px}.task-name{max-width:160px;font-size:10px}.footer-credit{font-size:9px}.result-actions .button{padding:12px 8px;font-size:12px}.taskbar{padding-bottom:max(4px,env(safe-area-inset-bottom))}.setup-actions{gap:7px}.setup-actions .primary{min-width:0}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+/* 테스트잇 공통 구성: 공통 헤더 / 카드 / 카드 밖의 시작·결과 메뉴 */
+[hidden]{display:none!important}
+body{background:#e8f0f6;background-image:none}
+.site-header{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.87);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid #dce3e9}
+.header-inner{max-width:1000px;margin:0 auto;height:54px;padding:0 22px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.site-logo,.site-nav a{font-size:14px;font-weight:600;text-decoration:none;color:#303541;white-space:nowrap;letter-spacing:-.25px}
+.site-logo{font-weight:800}.site-nav{display:flex;gap:24px;align-items:center}.site-nav a:hover{color:#9e496a}
+.desktop{max-width:1000px;padding:36px 18px 44px;min-height:calc(100dvh - 54px);justify-content:flex-start}
+.desktop:before{display:none}.desktop-label{display:none}
+.window{width:min(100%,680px);box-shadow:inset 1px 1px #fff,inset -1px -1px #a1a5a5,3px 4px 0 #536b811b;background:#e5e5e0;border-color:#8a9199}
+.titlebar{height:32px;background:#344f78;padding-left:12px;font-weight:500;letter-spacing:0}
+.menubar{padding:8px 13px;background:#e5e5e0;border-bottom:0;color:#71747a}
+.path{display:none}.content{margin-top:0;background:#fffdf9;min-height:0;border-color:#c4c8c9}
+.welcome{padding:38px 24px 36px}.welcome h1{font-size:29px;letter-spacing:-1.1px}.welcome h1 small{font-size:13px;margin-bottom:8px}
+.pixel-heart{width:48px;height:44px;margin:22px auto}.eyebrow{letter-spacing:.02em}.tiny{font-family:inherit;font-size:11px}
+.portrait-strip{margin-bottom:23px}.portrait-strip img:nth-child(n){transform:none;box-shadow:2px 2px #d7d6d055}
+.statusbar{font-family:inherit;font-size:10px;color:#85888e}
+.outside-actions{width:min(100%,560px);margin:22px auto 0}
+.outside-actions .button{display:flex;width:100%;min-height:49px;font-size:14px;font-weight:600;border:1px solid #8f9398;background:#f7f7f5;box-shadow:inset 1px 1px #fff,inset -1px -1px #c4c6c7}
+.outside-actions .button.primary{background:#e8bdcd;border-color:#a57f8e;box-shadow:inset 1px 1px #fff1f6,inset -1px -1px #c79caa}
+.result-actions{display:flex;flex-direction:column;gap:10px;max-width:none}
+.result-actions .message{margin:0;font-size:11px;min-height:0}
+.result-screen{padding:27px 26px}.result-screen h2{font-size:21px;letter-spacing:-.6px;margin:12px 0 19px}
+.result-heading{font-size:13px;color:#555d68;margin-bottom:16px}.ribbon{background:#f0e5ea;border-color:#d9c4ce;font-family:inherit;font-size:10px;letter-spacing:0;color:#816174}
+.winner-style{font-size:13px;color:#8d6578;line-height:1.8;margin:0 auto 15px;word-break:keep-all}
+.result-copy{font-size:13px;line-height:1.9;max-width:400px;margin-bottom:24px}
+.result-portrait{width:min(100%,300px);box-shadow:2px 3px #e7e1df}
+.runner{margin-bottom:22px;padding:17px 0}.runner .eyebrow{font-family:inherit;letter-spacing:0}.runner strong{font-size:13px}
+.taste-box{border:0;padding-top:2px;margin-bottom:18px}.taste-box h3{font-size:12px;font-weight:500;color:#77717a;margin-bottom:8px}
+.taste-summary{font-size:13px;color:#876276;line-height:1.8;margin:0 0 9px}.taste-box p{font-size:12px}
+.footer-credit{font-family:inherit;font-size:10px;letter-spacing:0;margin-top:25px;color:#86909a}.footer-credit a{color:inherit}
+@media(max-width:540px){.header-inner{height:49px;padding:0 17px;gap:15px}.site-logo,.site-nav a{font-size:13px}.site-nav{gap:18px}.desktop{padding:23px 13px 32px;min-height:calc(100dvh - 49px)}.window{padding:3px}.welcome{padding:31px 16px}.welcome h1{font-size:25px}.titlebar{font-size:11px;height:30px}.content{margin:0 6px 8px}.outside-actions{margin-top:19px;width:100%}.outside-actions .button{font-size:14px;min-height:47px}.result-actions{gap:9px}.result-screen{padding:25px 17px}.result-screen h2{font-size:20px}.result-portrait{width:min(100%,280px)}.result-copy{font-size:12px}.winner-style{font-size:12px}.match-screen{padding:20px 10px 16px}.footer-credit{margin-top:24px}.menubar{font-size:10px}.portrait-strip img{width:53px;height:53px}}
+@media(max-width:350px){.site-nav{gap:12px}.header-inner{padding:0 12px}.site-logo,.site-nav a{font-size:12px}.welcome h1{font-size:22px}}
+
+
+.window{--round-color:#344f78;--round-light:#edf2f7;--round-border:#a8bbcf}
+.window[data-round="64"]{--round-color:#345f91;--round-light:#e9f1fb;--round-border:#a5bedc}
+.window[data-round="32"]{--round-color:#7252a0;--round-light:#f2ecfa;--round-border:#c6b1e0}
+.window[data-round="16"]{--round-color:#287e79;--round-light:#e5f4ef;--round-border:#a1cfc4}
+.window[data-round="8"]{--round-color:#997126;--round-light:#fbf3df;--round-border:#ddc48d}
+.window[data-round="4"]{--round-color:#b0694c;--round-light:#fbede5;--round-border:#e3b8a1}
+.window[data-round="2"]{--round-color:#aa5078;--round-light:#fbe9f0;--round-border:#dfa6bc}
+.window[data-round] .titlebar{background:var(--round-color)}
+.match-header{background:var(--round-light);border:1px solid var(--round-border);padding:17px 12px 16px;margin-bottom:20px}
+.round-tag{background:var(--round-color);border-color:var(--round-color);color:#fff;min-width:76px;font-size:16px;padding:7px 15px}
+.match-header h2{font-size:19px;margin-top:13px}.match-header p{color:var(--round-color);font-size:12px}
+.window[data-round] .progress-fill{background:var(--round-color)}
+.round-transition{text-align:center;padding:48px 22px 45px;background:var(--round-light)}
+.round-done{font-size:13px;color:var(--round-color);margin:0 0 13px}.round-transition h2{font-size:25px;font-weight:700;color:var(--round-color);margin:0 0 27px;letter-spacing:-.7px}
+.transition-symbol{display:flex;gap:17px;align-items:center;justify-content:center;margin:0 0 27px}
+.transition-symbol>span:not(.transition-arrow),.transition-symbol>strong{padding:15px 18px;background:#fff;border:1px solid var(--round-border);font-size:19px;min-width:86px}
+.transition-symbol>strong{background:var(--round-color);color:#fff;border-color:var(--round-color)}.transition-arrow{font-size:20px;color:var(--round-color)}
+.transition-copy{font-size:14px;line-height:1.9;margin:0 0 8px}.transition-note{font-size:12px;line-height:1.8;color:#83808a;margin:0}
+@media(max-width:540px){.round-transition{padding:39px 16px}.round-transition h2{font-size:23px}.match-header{padding:14px 9px}.match-header h2{font-size:17px}.round-tag{font-size:15px}.transition-symbol{gap:12px}.transition-copy{font-size:13px}}
+
+
+/* 파스텔 픽셀 창 */
+:root{--pixel-line:#619399;--pixel-mint:#c6eee9;--pixel-paper:#f6fffc;--ink:#375d65;--pink:#f2c8d9}
+body{background-color:#edf8f6;background-image:linear-gradient(#cbe6e533 1px,transparent 1px),linear-gradient(90deg,#cbe6e533 1px,transparent 1px);background-size:20px 20px}
+.desktop,.button,.text-button,.help-dialog{font-family:Galmuri11,"Malgun Gothic",sans-serif}
+.site-header{background:#ffffffd9;border-color:#d5e9e5}.site-logo,.site-nav a{color:#3c636b}
+.window{padding:7px;border:3px solid var(--pixel-line);background:#b6e4e1;box-shadow:inset 3px 3px #effffb,inset -3px -3px #91c5c5,5px 5px 0 #b9dbd466;position:relative}
+.window:before,.window:after{content:"";position:absolute;width:6px;height:6px;background:#edf8f6;z-index:2;pointer-events:none}.window:before{left:-3px;top:-3px}.window:after{right:-3px;bottom:-3px}
+.titlebar{height:42px;background:#a8dcd8;color:#3b737b;border:2px solid var(--pixel-line);box-shadow:inset 2px 2px #d9f8f3,inset -2px -2px #8ac3c1;padding:0 10px;font-size:14px;gap:10px}
+.app-icon{height:24px;width:24px;flex-shrink:0}.window-help{height:25px;width:25px;min-width:25px;font-family:Galmuri11,sans-serif;background:#d8f5ed;border:2px solid #64999c;box-shadow:inset 2px 2px #f2fff9,inset -2px -2px #a2d3d0;color:#4d8289;font-size:15px}
+.menubar{padding:10px 13px;background:#d0eeea;color:#649295;font-family:Galmuri11,sans-serif;gap:18px;border-left:2px solid var(--pixel-line);border-right:2px solid var(--pixel-line);font-size:11px}.menubar .active{color:#ae7b96}
+.content{margin:0;background:var(--pixel-paper);border:3px solid var(--pixel-line);box-shadow:inset 3px 3px #e1f5ef,inset -3px -3px #e1f5ef}
+.welcome{padding:32px 22px 30px;background:linear-gradient(180deg,#f1fffb,#fafff9)}
+.welcome h1{font-weight:normal;font-size:27px;letter-spacing:-1.4px;color:#487e88;line-height:1.65}.welcome h1 small{font-size:13px;color:#8aafad;font-weight:normal}.eyebrow{font-family:Galmuri11,sans-serif;color:#91aba8;font-size:11px}
+.intro{color:#799291;font-size:12px;line-height:2}.tiny{font-size:10px;color:#a0b8b3}.pixel-heart{width:50px;height:45px;margin:22px auto 16px;filter:drop-shadow(3px 3px #e4b6c533)}
+.portrait-strip{gap:10px}.portrait-strip img{border:3px solid #fffdf6;outline:2px solid #aac8c3;box-shadow:3px 3px #d6e9de!important;width:66px;height:66px;filter:none}
+.statusbar{font-family:Galmuri11,sans-serif;font-size:9px;margin-top:6px;color:#6a9494}.statusbar span{box-shadow:none;background:#d3ece6;border:1px solid #8ab7b3;padding:5px 7px}
+.outside-actions{margin-top:23px}.outside-actions .button{font-family:Galmuri11,sans-serif;font-weight:normal;font-size:14px;border:2px solid #98b9b7;background:#f7fffb;box-shadow:inset 2px 2px #fff,inset -2px -2px #d7e6df,3px 3px #c9ded955;color:#568285;min-height:50px}
+.outside-actions .button.primary{border:2px solid #b88da3;background:#f5d2e0;color:#966b87;box-shadow:inset 2px 2px #fff0f7,inset -2px -2px #e4b4c9,3px 3px #dabdcb44}
+.outside-actions .button:active{box-shadow:inset 2px 2px #c3d8cf}.outside-actions .button:hover{filter:brightness(1.025)}
+.result-actions .button:nth-child(1){background:#f5d2e0;border-color:#b88da3;color:#966b87}
+.result-actions .button:nth-child(2){background:#d6eee7;border-color:#93bab0;color:#5d877a}
+.result-actions .button:nth-child(3){background:#e5def4;border-color:#aaa0c3;color:#80719d}
+.result-actions .button:nth-child(4){background:#faf0d2;border-color:#c6b48b;color:#988559}
+.screen{color:#577c7e}.setup-heading{font-weight:normal;font-size:22px;color:#4c7b83}.subtext{color:#869d9c}.option-box{border:2px solid #bdd6cd;background:#fafff7;box-shadow:inset 2px 2px #fff}.option-box strong{font-weight:normal;font-size:17px;color:#70918d}.option input:checked+.option-box{border-color:#c9a2b9;background:#fff0f7;box-shadow:inset 2px 2px #fff}.option input{accent-color:#ba92aa}.option-box small{color:#96a4a0}.setup-actions .button{font-family:Galmuri11,sans-serif;font-weight:normal;background:#e1f1e8;border-color:#a6c1b5;box-shadow:inset 2px 2px #fff,inset -2px -2px #c6ddd2}.setup-actions .primary{background:#f6d8e4;border-color:#c09aac}
+.face-button{border:2px solid var(--round-border);background:var(--round-light);box-shadow:inset 2px 2px #fff,inset -2px -2px #bad5ce;padding:4px}.face-caption{font-family:Galmuri11,sans-serif;color:#8aa29e}.face-caption strong{font-family:Galmuri11,sans-serif;font-weight:normal;color:var(--round-color);font-size:11px}.vs{font-family:Galmuri11,sans-serif;background:#fffdf7;border:2px solid var(--round-border);color:var(--round-color);height:30px;width:30px}
+.match-header{border-width:2px;box-shadow:inset 2px 2px #fff}.match-header h2{font-weight:normal;font-size:18px}.round-tag{font-weight:normal;border-width:2px;box-shadow:inset 2px 2px #ffffff33,inset -2px -2px #0000000a;font-size:17px}.match-header p{font-size:11px}.progress-track{height:11px;background:#eef6ed;box-shadow:none;border:2px solid #adc8bc;padding:1px}.progress-fill{height:5px}.progress-label{font-family:Galmuri11,sans-serif;font-size:10px;color:#8da5a0}.text-button{color:#89a49c}.message{color:#a38296}.transition-symbol>span:not(.transition-arrow),.transition-symbol>strong{border-width:2px;box-shadow:inset 2px 2px #ffffff66;font-weight:normal}.round-transition h2{font-weight:normal}.transition-copy{font-size:13px}.transition-note{font-size:11px;color:#8a9f9a}
+.window[data-round="64"]{--round-color:#749fbd;--round-light:#edf7ff;--round-border:#accbdd}
+.window[data-round="32"]{--round-color:#a28dbf;--round-light:#f6effe;--round-border:#c9b9df}
+.window[data-round="16"]{--round-color:#70aa9d;--round-light:#edf9f2;--round-border:#b2d6c8}
+.window[data-round="8"]{--round-color:#b8a069;--round-light:#fcf6e7;--round-border:#e0d2ac}
+.window[data-round="4"]{--round-color:#c1957e;--round-light:#fff0e8;--round-border:#e2bfae}
+.window[data-round="2"]{--round-color:#be8ea9;--round-light:#fff0f7;--round-border:#e3bbd0}
+.window[data-round] .titlebar{color:white;border-color:var(--round-border)}
+.result-screen h2{font-size:20px;font-weight:normal;letter-spacing:-.6px;color:#5c8c90}.accent{color:#b085a2}.result-heading{color:#8fa8a2;font-size:11px}.ribbon{font-family:Galmuri11,sans-serif;background:#f9e4ed;border:2px solid #dfbfd0;color:#b08da1;font-size:10px}
+.result-portrait{padding:5px;border:2px solid #a3c3ba;background:#fafff6;box-shadow:4px 4px #d9eadd}.photo-no{font-family:Galmuri11,sans-serif;color:#9fb5ae;font-size:10px}.winner-style{font-size:12px;color:#b392a9}.result-copy{font-size:12px;color:#78938f}.runner{border-color:#b7d1c8}.runner img{outline:2px solid #bbd2c6}.runner strong{font-weight:normal;color:#72968d}.runner small{color:#9cadab}.runner .eyebrow{font-family:Galmuri11,sans-serif;color:#b39aab}.taste-box h3{color:#9aacaa}.taste-summary{color:#aa8fac}.taste-box p{color:#8ba49e;font-size:11px}.disclaimer{color:#a1b6ae;font-size:10px}.footer-credit{color:#a0b3ad}
+.help-dialog{background:#ccece3;border:3px solid #91bcb4}.help-body{background:#f8fff9}
+@media(max-width:540px){.window{padding:6px;border-width:3px}.titlebar{height:37px;font-size:11px;padding:0 8px;gap:8px}.app-icon{width:22px;height:22px}.menubar{padding:8px 11px;font-size:10px}.content{margin:0;border-width:2px}.welcome{padding:29px 13px}.welcome h1{font-size:23px;letter-spacing:-1.1px}.welcome h1 small{font-size:12px}.portrait-strip{gap:8px}.portrait-strip img{width:52px;height:52px}.outside-actions .button{font-size:14px;min-height:48px}.result-screen h2{font-size:19px}.match-header h2{font-size:16px}.match-header p{font-size:10px}.face-caption strong{font-size:10px}.face-caption{font-size:9px}.vs{width:25px;height:25px;font-size:9px}.round-transition h2{font-size:23px}.statusbar{font-size:8px}}
+
+
+/* 요청한 결과 문구 정리 및 결승 2위 제목 강조 */
+.title-heart{display:flex;align-items:center;justify-content:center;font-family:Galmuri11,sans-serif;color:#b87f9e;font-size:23px;height:25px;width:25px;line-height:1}
+.window>.titlebar{margin-bottom:7px}
+.runner strong{font-size:17px;font-weight:700;color:#486b65;line-height:1.75;word-break:keep-all}
+@media(max-width:540px){.titlebar .title{font-size:10px;white-space:nowrap;letter-spacing:-.35px}.title-heart{font-size:20px;width:20px;min-width:20px}.titlebar{gap:5px;padding:0 6px}.window-help{height:22px;width:22px;min-width:22px}.runner strong{font-size:16px;color:#486b65;line-height:1.75}}
+
+
+/* 결승 2위 사진 크기 확대 */
+.runner{gap:20px}
+.runner img{width:140px;height:140px;flex-shrink:0}
+.runner strong{font-size:13px;font-weight:normal;color:#72968d;line-height:1.8}
+@media(max-width:540px){.runner{gap:15px}.runner img{width:120px;height:120px}.runner strong{font-size:13px;font-weight:normal}}
+
+
+.coupang-ad{width:350px;max-width:100%;min-height:150px;margin:28px auto 0;overflow-x:auto}
+</style>
+</head>
+<body>
+<header class="site-header"><div class="header-inner"><a class="site-logo" href="https://test-it.co.kr/">테스트잇</a><nav class="site-nav" aria-label="주 메뉴"><a href="https://test-it.co.kr/test.html">성격</a><a href="https://test-it.co.kr/face.html">얼굴</a><a href="https://test-it.co.kr/etc.html">그외</a><a href="https://test-it.co.kr/saju.html">사주</a></nav></div></header>
+<main class="desktop">
+<div class="desktop-label"><span class="led"></span> 내 취향을 찾는 시간</div>
+<section class="window" aria-label="얼굴 취향 분석 프로그램">
+<div class="titlebar"><span class="app-icon title-heart" aria-hidden="true">♥</span><span class="title">테스트잇 얼굴 취향 분석 테스트</span><button class="window-help" id="helpOpen" aria-label="테스트 도움말">?</button></div>
+<div class="content">
+<section id="home" class="screen welcome" aria-labelledby="homeTitle">
+<div class="eyebrow">나만의 얼굴 취향 찾기</div>
+<svg class="pixel-heart" viewBox="0 0 20 18" aria-hidden="true" shape-rendering="crispEdges"><path d="M3 1h5v2h4V1h5v2h2v7h-2v2h-2v2h-2v2h-2v2H9v-2H7v-2H5v-2H3v-2H1V3h2z" fill="#945a73"/><path d="M3 3h5v2h4V3h5v2h1v4h-2v2h-2v2h-2v2H9v-2H7v-2H5V9H3z" fill="#e7adbf"/><path d="M4 4h3v2H4z" fill="#ffe8ef"/></svg>
+<h1 id="homeTitle"><small>테스트잇</small>얼굴 취향 분석 테스트</h1>
+<p class="intro">끌리는 얼굴을 고르고, 또 고르다 보면<br>내 취향이 조금 더 선명해질 거예요.</p>
+<div class="portrait-strip" aria-hidden="true" id="previewStrip"></div>
+
+<p class="tiny">64개의 얼굴, 내 취향은 한 사람</p>
+</section>
+<section id="setup" class="screen" hidden aria-labelledby="setupTitle">
+<div class="eyebrow" style="margin-bottom:12px">새로운 취향 찾기</div>
+<h2 id="setupTitle" class="setup-heading" tabindex="-1">어떤 취향을 찾아볼까요?</h2>
+<p class="subtext">참가 얼굴도 대진표도, 시작할 때마다 랜덤이에요.</p>
+<form id="setupForm">
+<fieldset><legend>01. 만나보고 싶은 얼굴</legend><div class="options">
+<label class="option"><input type="radio" name="gender" value="male" checked><span class="option-box"><strong>남자</strong><small>64가지 다른 분위기</small></span></label>
+<label class="option"><input type="radio" name="gender" value="female"><span class="option-box"><strong>여자</strong><small>64가지 다른 분위기</small></span></label>
+</div></fieldset>
+<fieldset><legend>02. 몇 강부터 시작할까요?</legend><div class="options">
+<label class="option"><input type="radio" name="size" value="64" checked><span class="option-box"><strong>64강</strong><small>모든 얼굴에서 고르기<br>총 63번 선택</small></span></label>
+<label class="option"><input type="radio" name="size" value="32"><span class="option-box"><strong>32강</strong><small>랜덤 32명에서 고르기<br>총 31번 선택</small></span></label>
+</div></fieldset>
+<div class="setup-actions"><button type="button" class="button" id="setupBack">이전</button><button type="submit" class="button primary">취향 찾으러 가기 <span aria-hidden="true">→</span></button></div>
+</form>
+</section>
+<section id="match" class="screen match-screen" hidden aria-labelledby="matchTitle">
+<header class="match-header"><span class="round-tag" id="roundBadge">64강</span><h2 id="matchTitle" tabindex="-1">더 끌리는 얼굴을 골라주세요</h2><p id="matchCount"></p></header>
+<div class="match-grid"><button class="face-button" id="leftFace" disabled><img id="leftImage" alt=""><span class="face-caption"><span id="leftNumber"></span><strong>선택하기 ♡</strong></span></button><span class="vs" aria-hidden="true">VS</span><button class="face-button" id="rightFace" disabled><img id="rightImage" alt=""><span class="face-caption"><span id="rightNumber"></span><strong>선택하기 ♡</strong></span></button></div>
+<p class="message" id="imageStatus" role="status" aria-live="polite"></p><div style="text-align:center"><button id="retryImages" class="retry" hidden>사진 다시 불러오기</button></div>
+<div class="progress-wrap"><div class="progress-label"><span>내 취향 찾는 중…</span><span id="progressText"></span></div><div id="progress" class="progress-track" role="progressbar" aria-label="전체 선택 진행률" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="progress-fill" id="progressFill"></div></div></div>
+<div class="match-bottom"><button id="undoButton" class="text-button">← 이전 선택</button><button id="restartMatch" class="text-button">처음부터</button></div>
+</section>
+<section id="roundTransition" class="screen round-transition" hidden aria-labelledby="transitionTitle"><p class="round-done" id="transitionDone"></p><h2 id="transitionTitle" tabindex="-1"></h2><div class="transition-symbol" aria-hidden="true"><span id="transitionFrom"></span><span class="transition-arrow">→</span><strong id="transitionTo"></strong></div><p class="transition-copy" id="transitionCopy"></p><p class="transition-note">다음 라운드의 대진표를 새로 섞었어요.</p></section>
+<section id="result" class="screen result-screen" hidden aria-labelledby="resultTitle">
+<div class="ribbon">내가 고른 최종 우승</div>
+<h2 id="resultTitle" tabindex="-1">내 마음에 저장된 얼굴</h2>
+<div class="result-portrait"><img id="winnerImage" alt=""><p class="photo-no" id="winnerNumber"></p></div>
+<p class="winner-style" id="winnerStyle"></p>
+<div class="runner"><img id="runnerImage" alt=""><div><div class="eyebrow">결승 2위</div><strong id="runnerTitle"></strong><small id="runnerCopy"></small></div></div>
+<p id="sharedNote" class="shared-note" hidden>공유된 결과를 보고 있어요. 내 취향도 찾아보세요.</p>
+</section>
+</div>
+<div class="statusbar"><span id="statusText">내 취향을 찾을 준비가 됐어요.</span><span>TEST429</span></div>
+</section>
+<div id="homeActions" class="outside-actions"><button id="startButton" class="button primary">테스트 시작하기</button></div>
+<div id="roundActions" class="outside-actions" hidden><button id="roundContinue" class="button primary">다음 라운드 시작하기</button></div>
+<div id="resultActions" class="outside-actions result-actions" hidden><button id="saveButton" class="button">결과 이미지 저장</button><button id="againButton" class="button">다시 해보기</button><button id="shareButton" class="button">결과 공유하기</button><a class="button" href="https://test-it.co.kr/">다른 테스트 하러 가기</a><p class="message" id="resultStatus" role="status" aria-live="polite"></p></div>
+<div class="coupang-ad">
+<script src="https://ads-partners.coupang.com/g.js"></script>
+<script>
+    new PartnersCoupang.G({"id":798186,"trackingCode":"AF4391881","subId":null,"template":"carousel","width":"350","height":"150"});
+</script>
+</div>
+</main>
+<dialog id="helpDialog" class="help-dialog"><div class="titlebar"><span class="title">Help.txt</span></div><div class="help-body"><p>두 얼굴 중 더 마음에 드는 쪽을 누르면 다음 대결로 넘어가요. 살아남은 얼굴은 다음 라운드에서 다시 만나게 돼요.</p><p>32강은 전체 64명 중 무작위 32명이 참가하고, 매 라운드 대진표도 새로 섞여요. 잘못 골랐다면 ‘이전 선택’으로 되돌릴 수 있어요.</p><p>우승자는 마지막에 직접 고른 얼굴, 2위는 결승에서 맞붙은 얼굴이에요.</p><button class="button" id="helpClose">확인</button></div></dialog>
+<noscript><p style="padding:30px;text-align:center">이 테스트를 실행하려면 브라우저의 자바스크립트를 켜주세요.</p></noscript>
+<script>
+/* All 128 records use the final uploaded portraits. No external data request. */
+const FACE_DATA = {
+  "male": [
+    {
+      "id": 1,
+      "filename": "male_01.jpg",
+      "face_type": "여우상",
+      "impression_tags": [
+        "양아치상",
+        "시크한상"
+      ],
+      "hair": "애쉬 블루 짧은 크롭컷",
+      "eye_shape": "가로로 길고 올라간 눈꼬리",
+      "face_shape": "좁고 각진 턱선",
+      "expression": "한쪽 입꼬리를 올린 미소",
+      "glasses": false,
+      "glasses_style": "없음",
+      "distinctive_features": "눈썹 스크래치, 귀와 입술 피어싱"
+    },
+    {
+      "id": 2,
+      "filename": "male_02.png",
+      "face_type": "강아지상",
+      "impression_tags": [
+        "모범생상",
+        "귀여운상"
+      ],
+      "hair": "갈색 볼륨 곱슬머리",
+      "eye_shape": "둥글고 부드러운 눈매",
+      "face_shape": "볼선이 둥근 타원형",
+      "expression": "작은 닫힌 미소",
+      "glasses": true,
+      "glasses_style": "얇은 둥근 금속테",
+      "distinctive_features": "도톰한 아랫입술"
+    },
+    {
+      "id": 3,
+      "filename": "male_03.jpg",
+      "face_type": "고양이상",
+      "impression_tags": [
+        "아이돌상",
+        "시크한상"
+      ],
+      "hair": "검정 가운데 가르마, 목덜미까지 오는 머리",
+      "eye_shape": "길고 살짝 올라간 눈매",
+      "face_shape": "길고 매끈한 타원형",
+      "expression": "무표정",
+      "glasses": false,
+      "glasses_style": "없음",
+      "distinctive_features": "곧은 콧대, 얇은 윗입술"
+    },
+    {
+      "id": 4,
+      "filename": "male_04.jpg",
+      "face_type": "사슴상",
+      "impression_tags": [
+        "배우상",
+        "상견례프리패스상"
+      ],
+      "hair": "검정 이마를 드러낸 가르마",
+      "eye_shape": "크고 또렷한 눈매",
+      "face_shape": "부드러운 긴 타원형",
+      "expression": "옅은 닫힌 미소",
+      "glasses": false,
+      "glasses_style": "없음",
+      "distinctive_features": "단정한 눈썹, 부드러운 입꼬리"
+    },
+    {
+      "id": 5,
+      "filename": "male_05.png",
+      "face_type": "토끼상",
+      "impression_tags": [
+        "아이돌상",
+        "귀여운상"
+      ],
+      "hair": "검정 풍성한 짧은 곱슬머리",
+      "eye_shape": "크고 동그란 눈매",
+      "face_shape": "작은 턱의 짧은 타원형",
+      "expression": "입술을 살짝 벌린 무표정",
+      "glasses": false,
+      "glasses_style": "없음",
+      "distinctive_features": "도톰한 입술"
+    },
+    {
+      "id": 6,
+      "filename": "male_06.png",
+      "face_type": "여우상",
+      "impression_tags": [
+        "모범생상",
+        "부드러운상"
+      ],
+      "hair": "밝은 갈색 층 있는 앞머리",
+      "eye_shape": "가늘고 긴 눈매",
+      "face_shape": "가늘고 부드러운 턱선",
+      "expression": "입꼬리를 올린 미소",
+      "glasses": true,
+      "glasses_style": "얇은 둥근 금속테",
+      "distinctive_features": "얇은 윗입술"
+    },
+    {
+      "id": 7,
+      "filename": "male_07.jpg",
+      "face_type": "강아지상",
+      "impression_tags": [
+        "모범생상",
+        "편안한상"
+      ],
+      "hair": "검정 굵은 웨이브 가르마",
+      "eye_shape": "가늘고 부드럽게 내려가는 눈매",
+      "face_shape": "볼선이 매끈한 타원형",
+      "expression": "옅은 닫힌 미소",
+      "glasses": true,
+      "glasses_style": "호박색 두꺼운 사각테",
+      "distinctive_features": "도톰한 입술과 부드러운 입꼬리"
+    },
+    {
+      "id": 8,
+      "filename": "male_08.png",
+      "face_type": "강아지상",
+      "impression_tags": [
+        "상견례프리패스상",
+        "웃는상"
+      ],
+      "hair": "검정 자연스러운 가르마",
+      "eye_shape": "웃을 때 둥글게 접히는 눈매",
+      "face_shape": "볼선이 부드러운 타원형",
+      "expression": "치아가 보이는 미소",
+      "glasses": false,
+      "glasses_style": "없음",
+      "distinctive_features": "웃을 때 드러나는 볼의 보조개"
+    },
+    {
+      "id": 9,
+      "filename": "male_09.png",
+      "face_type": "고양이상",
+      "impression_tags": [
+        "아이돌상",
+        "시크한상"
+      ],
+      "hair": "검정 눈썹을 덮는 무거운 앞머리",
+      "eye_shape": "길고 낮게 깔린 눈매",
+      "face_shape": "볼이 매끈한 작은 타원형",
+      "expression": "무표정",
+      "glasses": false,
+      "glasses_style": "없음",
+      "distinctive_features": "도톰한 입술, 직선적인 눈썹"
+    },
+    {
+      "id": 10,
+      "filename": "male_10.png",
+      "face_type": "여우상",
+      "impression_tags": [
+        "배우상",
+        "시크한상"
+      ],
+      "hair": "검정 긴 웨이브, 목덜미를 덮는 길이",
+      "eye_shape": "가늘고 길게 뻗은 눈매",
+      "face_shape": "길고 가는 턱선",
+      "expression": "무표정",
+      "glasses": false,
+      "glasses_style": "없음",
+      "distinctive_features": "높은 콧대, 도톰한 아랫입술"
+    },
+    {
+      "id": 11,
+      "filename": "male_11.png",
+      "face_type": "고양이상",
+      "impression_tags": [
+        "아이돌상",
+        "모범생상"
+      ],
+      "hair": "애쉬 실버 짧은 앞머리",
+      "eye_shape": "길고 또렷한 눈매",
+      "face_shape": "갸름한 타원형",
+      "expression": "입술을 살짝 벌린 무표정",
+      "glasses": true,
+      "glasses_style": "투명한 두꺼운 테",
+      "distinctive_features": "도톰한 입술"
+    },
+    {
+      "id": 12,
+      "filename": "male_12.png",
+      "face_type": "늑대상",
+      "impression_tags": [
+        "배우상",
+        "날카로운상"
+      ],
+      "hair": "검정 뒤로 넘긴 짧은 머리",
+      "eye_shape": "진하고 올라간 눈매",
+      "face_shape": "광대와 턱이 뚜렷한 얼굴형",
+      "expression": "무표정",
+      "glasses": false,
+      "glasses_style": "없음",
+      "distinctive_features": "진한 눈썹, 선명한 콧대"
+    },
+    {
+      "id": 13,
+      "filename": "male_13.png",
+      "face_type": "여우상",
+      "impression_tags": [
+        "양아치상",
+        "시크한상"
+      ],
+      "hair": "갈색 위로 세운 짧은 머리",
+      "eye_shape": "가늘고 비스듬한 눈매",
+      "face_shape": "짧고 각이 있는 턱선",
+      "expression": "무표정",
+      "glasses": false,
+      "glasses_style": "없음",
+      "distinctive_features": "진한 눈썹, 도톰한 입술"
+    },
+    {
+      "id": 14,
+      "filename": "male_14.png",
+      "face_type": "늑대상",
+      "impression_tags": [
+        "배우상",
+        "시크한상"
+      ],
+      "hair": "검정 턱선까지 오는 일자 장발",
+      "eye_shape": "길고 선명한 눈매",
+      "face_shape": "긴 얼굴과 각진 턱끝",
+      "expression": "무표정",
+      "glasses": false,
+      "glasses_style": "없음",
+      "distinctive_features": "직선적인 콧대, 진한 눈썹"
+    },
+    {
+      "id": 15,
+      "filename": "male_15.png",
+      "face_type": "고양이상",
+      "impression_tags": [
+        "배우상",
+        "세련된상"
+      ],
+      "hair": "검정 이마를 드러낸 옆가르마",
+      "eye_shape": "길게 올라간 눈매",
+      "face_shape": "좁아지는 매끈한 턱선",
+      "expression": "무표정",
+      "glasses": false,
+      "glasses_style": "없음",
+      "distinctive_features": "도톰한 아랫입술"
+    },
+    {
+      "id": 16,
+      "filename": "male_16.png",
+      "face_type": "늑대상",
+      "impression_tags": [
+        "모범생상",
+        "반장상"
+      ],
+      "hair": "검정 짧은 버즈컷",
+      "eye_shape": "깊고 가로로 긴 눈매",
+      "face_shape": "넓은 이마와 각진 턱선",
+      "expression": "무표정",
+      "glasses": true,
+      "glasses_style": "검정 두꺼운 사각테",
+      "distinctive_features": "진한 직선 눈썹"
+    },
+    {
+      "id": 17,
+      "filename": "male_17.png",
+      "face_type": "늑대상",
+      "impression_tags": [
+        "양아치상",
+        "스포티한상"
+      ],
+      "hair": "밝은 금색 짧은 올림머리",
+      "eye_shape": "가늘고 길게 뻗은 눈매",
+      "face_shape": "넓은 광대와 각진 턱선",
+      "expression": "무표정",
+      "glasses": false,
+      "glasses_style": "없음",
+      "distinctive_features": "귀걸이, 도톰한 입술"
+    },
+    {
+      "id": 18,
+      "filename": "male_18.png",
+      "face_type": "고양이상",
+      "impression_tags": [
+        "아이돌상",
+        "양아치상"
+      ],
+      "hair": "검정 젖은 질감의 긴 층머리",
+      "eye_shape": "올라간 길고 날카로운 눈매",
+      "face_shape": "갸름한 긴 얼굴형",
+      "expression": "무표정",
+      "glasses": false,
+      "glasses_style": "없음",
+      "distinctive_features": "링 귀걸이, 두꺼운 눈썹"
+    },
+    {
+      "id": 19,
+      "filename": "male_19.png",
+      "face_type": "강아지상",
+      "impression_tags": [
+        "모범생상",
+        "편안한상"
+      ],
+      "hair": "검정 풍성한 곱슬머리",
+      "eye_shape": "부드럽게 내려가는 눈매",
+      "face_shape": "볼이 도톰한 타원형",
+      "expression": "작은 닫힌 미소",
+      "glasses": true,
+      "glasses_style": "갈색 둥근 테",
+      "distinctive_features": "도톰한 입술"
+    },
+    {
+      "id": 20,
+      "filename": "male_20.png",
+      "face_type": "사슴상",
+      "impression_tags": [
+        "아이돌상",
+        "몽환적인상"
+      ],
+      "hair": "붉은 갈색 긴 앞머리와 층머리",
+      "eye_shape": "눈꺼풀이 도톰한 길쭉한 눈매",
+      "face_shape": "길고 매끈한 타원형",
+      "expression": "입술을 살짝 벌린 무표정",
+      "glasses": false,
+      "glasses_style": "없음",
+      "distinctive_features": "작은 턱끝, 도톰한 입술"
+    },
+    {
+      "id": 21,
+      "filename": "male_21.jpg",
+      "face_type": "강아지상",
+      "impression_tags": [
+        "모범생상",
+        "단정한상"
+      ],
+      "hair": "검정 짧고 가지런한 크롭컷",
+      "eye_shape": "크고 둥근 눈매",
+      "face_shape": "부드러운 타원형",
+      "expression": "무표정",
+      "glasses": false,
+      "glasses_style": "없음",
+      "distinctive_features": "정돈된 눈썹, 둥근 입술선"
+    },
+    {
+      "id": 22,
+      "filename": "male_22.png",
+      "face_type": "늑대상",
+      "impression_tags": [
+        "양아치상",
+        "날카로운상"
+      ],
+      "hair": "금색 위로 뾰족하게 세운 머리",
+      "eye_shape": "강하게 올라간 눈매",
+      "face_shape": "각진 광대와 좁은 턱끝",
+      "expression": "무표정",
+      "glasses": false,
+      "glasses_style": "없음",
+      "distinctive_features": "굵고 올라간 눈썹"
+    },
+    {
+      "id": 23,
+      "filename": "male_23.png",
+      "face_type": "강아지상",
+      "impression_tags": [
+        "모범생상",
+        "상견례프리패스상"
+      ],
+      "hair": "갈색 가볍게 흐트러진 가르마",
+      "eye_shape": "길고 부드러운 눈매",
+      "face_shape": "부드러운 타원형",
+      "expression": "보조개가 보이는 닫힌 미소",
+      "glasses": true,
+      "glasses_style": "얇은 사각 금속테",
+      "distinctive_features": "볼의 보조개"
+    },
+    {
+      "id": 24,
+      "filename": "male_24.jpg",
+      "face_type": "강아지상",
+      "impression_tags": [
+        "아이돌상",
+        "상견례프리패스상"
+      ],
+      "hair": "검정 눈썹까지 오는 가벼운 앞머리",
+      "eye_shape": "크고 부드러운 눈매",
+      "face_shape": "둥근 볼선과 작은 턱끝",
+      "expression": "작은 닫힌 미소",
+      "glasses": false,
+      "glasses_style": "없음",
+      "distinctive_features": "둥근 코끝과 도톰한 아랫입술"
+    },
+    {
+      "id": 25,
+      "filename": "male_25.jpg",
+      "face_type": "사슴상",
+      "impression_tags": [
+        "아이돌상",
+        "청순한상"
+      ],
+      "hair": "검정 귀를 덮는 중간 길이 웨이브",
+      "eye_shape": "크고 아래로 부드럽게 처진 눈매",
+      "face_shape": "작고 갸름한 타원형",
+      "expression": "무표정",
+      "glasses": false,
+      "glasses_style": "없음",
+      "distinctive_features": "작은 코와 도톰한 입술"
+    },
+    {
+      "id": 26,
+      "filename": "male_26.png",
+      "face_type": "곰상",
+      "impression_tags": [
+        "반장상",
+        "모범생상"
+      ],
+      "hair": "검정 위로 세운 짧은 머리",
+      "eye_shape": "차분하고 긴 눈매",
+      "face_shape": "넓고 각이 있는 턱선",
+      "expression": "무표정",
+      "glasses": true,
+      "glasses_style": "검정 두꺼운 사각테",
+      "distinctive_features": "두꺼운 눈썹, 도톰한 아랫입술"
+    },
+    {
+      "id": 27,
+      "filename": "male_27.jpg",
+      "face_type": "강아지상",
+      "impression_tags": [
+        "상견례프리패스상",
+        "귀여운상"
+      ],
+      "hair": "갈색 부드러운 짧은 곱슬 앞머리",
+      "eye_shape": "둥글고 부드러운 눈매",
+      "face_shape": "작고 둥근 턱의 타원형",
+      "expression": "보조개가 보이는 미소",
+      "glasses": false,
+      "glasses_style": "없음",
+      "distinctive_features": "깊은 양쪽 보조개"
+    },
+    {
+      "id": 28,
+      "filename": "male_28.png",
+      "face_type": "사슴상",
+      "impression_tags": [
+        "배우상",
+        "단정한상"
+      ],
+      "hair": "검정 단정한 옆가르마",
+      "eye_shape": "크고 길쭉한 눈매",
+      "face_shape": "길고 균형 잡힌 타원형",
+      "expression": "무표정",
+      "glasses": false,
+      "glasses_style": "없음",
+      "distinctive_features": "곧은 콧대, 뚜렷한 입술선"
+    },
+    {
+      "id": 29,
+      "filename": "male_29.png",
+      "face_type": "강아지상",
+      "impression_tags": [
+        "상견례프리패스상",
+        "친근한상"
+      ],
+      "hair": "검정 짧고 자연스러운 가르마",
+      "eye_shape": "웃을 때 반달로 좁아지는 눈매",
+      "face_shape": "볼선이 부드러운 타원형",
+      "expression": "입을 다문 큰 미소",
+      "glasses": false,
+      "glasses_style": "없음",
+      "distinctive_features": "볼의 보조개"
+    },
+    {
+      "id": 30,
+      "filename": "male_30.jpg",
+      "face_type": "여우상",
+      "impression_tags": [
+        "아이돌상",
+        "양아치상"
+      ],
+      "hair": "애쉬 핑크 짧게 세운 가르마",
+      "eye_shape": "길고 살짝 올라간 눈매",
+      "face_shape": "볼이 얇고 턱선이 선명한 타원형",
+      "expression": "한쪽 입꼬리를 올린 미소",
+      "glasses": false,
+      "glasses_style": "없음",
+      "distinctive_features": "눈썹 스크래치, 양쪽 귀 피어싱"
+    },
+    {
+      "id": 31,
+      "filename": "male_31.jpg",
+      "face_type": "강아지상",
+      "impression_tags": [
+        "아이돌상",
+        "웃는상"
+      ],
+      "hair": "오렌지 갈색 짧은 가르마",
+      "eye_shape": "웃을 때 반달로 좁아지는 눈매",
+      "face_shape": "볼선이 둥근 작은 타원형",
+      "expression": "치아가 보이는 밝은 미소",
+      "glasses": false,
+      "glasses_style": "없음",
+      "distinctive_features": "도톰한 입술, 둥근 코끝"
+    },
+    {
+      "id": 32,
+      "filename": "male_32.jpg",
+      "face_type": "고양이상",
+      "impression_tags": [
+        "모범생상",
+        "단정한상"
+      ],
+      "hair": "검정 매끈한 가운데 가르마",
+      "eye_shape": "가로로 길고 차분한 눈매",
+      "face_shape": "갸름하고 긴 타원형",
+      "expression": "무표정",
+      "glasses": true,
+      "glasses_style": "검정과 투명색이 섞인 사각테",
+      "distinctive_features": "곧은 콧대, 가지런한 입술선"
+    },
+    {
+      "id": 33,
+      "filename": "male_33.jpg",
+      "face_type": "고양이상",
+      "impression_tags": [
+        "아이돌상",
+        "양아치상"
+      ],
+      "hair": "금색 뿌리가 짙은 긴 가르마",
+      "eye_shape": "가늘고 올라간 눈매",
+      "face_shape": "길고 갸름한 턱선",
+      "expression": "무표정",
+      "glasses": false,
+      "glasses_style": "없음",
+      "distinctive_features": "눈썹과 귀 피어싱"
+    },
+    {
+      "id": 34,
+      "filename": "male_34.png",
+      "face_type": "늑대상",
+      "impression_tags": [
+        "스포티한상",
+        "날카로운상"
+      ],
+      "hair": "검정 위로 세운 짧은 머리",
+      "eye_shape": "가로로 길고 선명한 눈매",
+      "face_shape": "넓고 각진 턱선",
+      "expression": "무표정",
+      "glasses": false,
+      "glasses_style": "없음",
+      "distinctive_features": "진한 눈썹, 굵은 콧대"
+    },
+    {
+      "id": 35,
+      "filename": "male_35.jpg",
+      "face_type": "사슴상",
+      "impression_tags": [
+        "배우상",
+        "상견례프리패스상"
+      ],
+      "hair": "짙은 갈색 부드러운 굵은 웨이브 가르마",
+      "eye_shape": "길고 부드럽게 내려가는 눈매",
+      "face_shape": "길고 매끄러운 타원형",
+      "expression": "무표정",
+      "glasses": false,
+      "glasses_style": "없음",
+      "distinctive_features": "도톰한 아랫입술과 작은 턱끝"
+    },
+    {
+      "id": 36,
+      "filename": "male_36.jpg",
+      "face_type": "늑대상",
+      "impression_tags": [
+        "배우상",
+        "날카로운상"
+      ],
+      "hair": "갈색 위로 세운 흐트러진 짧은 머리",
+      "eye_shape": "가로로 길고 깊은 눈매",
+      "face_shape": "광대와 턱선이 선명한 각진 얼굴형",
+      "expression": "무표정",
+      "glasses": false,
+      "glasses_style": "없음",
+      "distinctive_features": "굵은 눈썹과 도톰한 입술"
+    },
+    {
+      "id": 37,
+      "filename": "male_37.jpg",
+      "face_type": "고양이상",
+      "impression_tags": [
+        "모범생상",
+        "시크한상"
+      ],
+      "hair": "검정 이마를 드러낸 가르마",
+      "eye_shape": "가늘고 긴 차분한 눈매",
+      "face_shape": "좁고 긴 턱선의 타원형",
+      "expression": "무표정",
+      "glasses": true,
+      "glasses_style": "얇은 반무테 직사각 안경",
+      "distinctive_features": "길고 곧은 콧대와 작은 입술"
+    },
+    {
+      "id": 38,
+      "filename": "male_38.png",
+      "face_type": "늑대상",
+      "impression_tags": [
+        "양아치상",
+        "날카로운상"
+      ],
+      "hair": "짙은 갈색 짧은 버즈컷",
+      "eye_shape": "좁고 강하게 올라간 눈매",
+      "face_shape": "광대와 턱이 각진 얼굴형",
+      "expression": "미간에 힘이 들어간 무표정",
+      "glasses": false,
+      "glasses_style": "없음",
+      "distinctive_features": "진한 눈썹, 도톰한 입술"
+    },
+    {
+      "id": 39,
+      "filename": "male_39.png",
+      "face_type": "곰상",
+      "impression_tags": [
+        "모범생상",
+        "반장상"
+      ],
+      "hair": "검정 짧은 옆가르마",
+      "eye_shape": "차분하고 긴 눈매",
+      "face_shape": "각진 턱과 넓은 이마",
+      "expression": "무표정",
+      "glasses": true,
+      "glasses_style": "검정 직사각 테",
+      "distinctive_features": "진한 눈썹, 넓은 콧대"
+    },
+    {
+      "id": 40,
+      "filename": "male_40.png",
+      "face_type": "강아지상",
+      "impression_tags": [
+        "친근한상",
+        "귀여운상"
+      ],
+      "hair": "짙은 갈색 풍성한 앞머리",
+      "eye_shape": "부드럽게 좁아지는 눈매",
+      "face_shape": "볼이 둥근 짧은 타원형",
+      "expression": "작은 닫힌 미소",
+      "glasses": false,
+      "glasses_style": "없음",
+      "distinctive_features": "동그란 코끝, 도톰한 볼"
+    },
+    {
+      "id": 41,
+      "filename": "male_41.png",
+      "face_type": "토끼상",
+      "impression_tags": [
+        "모범생상",
+        "웃는상"
+      ],
+      "hair": "검정과 갈색이 섞인 중간 길이 가르마",
+      "eye_shape": "크고 또렷한 눈매",
+      "face_shape": "가늘고 긴 턱선",
+      "expression": "앞니가 드러나는 미소",
+      "glasses": true,
+      "glasses_style": "투명한 큰 사각테",
+      "distinctive_features": "도톰한 아랫입술"
+    },
+    {
+      "id": 42,
+      "filename": "male_42.jpg",
+      "face_type": "강아지상",
+      "impression_tags": [
+        "반장상",
+        "상견례프리패스상"
+      ],
+      "hair": "검정 이마를 드러낸 단정한 짧은 머리",
+      "eye_shape": "길고 편안하게 접히는 눈매",
+      "face_shape": "볼이 부드러운 타원형",
+      "expression": "치아가 살짝 보이는 미소",
+      "glasses": false,
+      "glasses_style": "없음",
+      "distinctive_features": "얇은 윗입술과 올라간 입꼬리"
+    },
+    {
+      "id": 43,
+      "filename": "male_43.png",
+      "face_type": "토끼상",
+      "impression_tags": [
+        "아이돌상",
+        "귀여운상"
+      ],
+      "hair": "갈색 풍성한 곱슬머리",
+      "eye_shape": "크고 동그란 눈매",
+      "face_shape": "작고 부드러운 턱선",
+      "expression": "입술을 살짝 벌린 무표정",
+      "glasses": false,
+      "glasses_style": "없음",
+      "distinctive_features": "도톰한 아랫입술"
+    },
+    {
+      "id": 44,
+      "filename": "male_44.png",
+      "face_type": "여우상",
+      "impression_tags": [
+        "아이돌상",
+        "부드러운상"
+      ],
+      "hair": "갈색 긴 가르마와 가벼운 층머리",
+      "eye_shape": "가늘고 긴 눈매",
+      "face_shape": "갸름한 타원형",
+      "expression": "한쪽 입꼬리가 살짝 올라간 미소",
+      "glasses": false,
+      "glasses_style": "없음",
+      "distinctive_features": "얇은 윗입술, 도톰한 아랫입술"
+    },
+    {
+      "id": 45,
+      "filename": "male_45.png",
+      "face_type": "여우상",
+      "impression_tags": [
+        "배우상",
+        "시크한상"
+      ],
+      "hair": "붉은 갈색 뒤로 넘긴 머리",
+      "eye_shape": "길고 올라간 눈매",
+      "face_shape": "광대가 드러나는 긴 얼굴형",
+      "expression": "무표정",
+      "glasses": false,
+      "glasses_style": "없음",
+      "distinctive_features": "선명한 콧대, 뚜렷한 입술선"
+    },
+    {
+      "id": 46,
+      "filename": "male_46.png",
+      "face_type": "사슴상",
+      "impression_tags": [
+        "모범생상",
+        "부드러운상"
+      ],
+      "hair": "애쉬 갈색 부드러운 웨이브 가르마",
+      "eye_shape": "길고 순한 눈매",
+      "face_shape": "갸름한 타원형",
+      "expression": "무표정",
+      "glasses": true,
+      "glasses_style": "얇은 둥근 금속테",
+      "distinctive_features": "도톰한 입술"
+    },
+    {
+      "id": 47,
+      "filename": "male_47.jpg",
+      "face_type": "늑대상",
+      "impression_tags": [
+        "배우상",
+        "스포티한상"
+      ],
+      "hair": "검정 짧은 버즈컷",
+      "eye_shape": "가로로 길고 깊은 눈매",
+      "face_shape": "넓은 이마와 각진 턱선",
+      "expression": "무표정",
+      "glasses": false,
+      "glasses_style": "없음",
+      "distinctive_features": "진하고 곧은 눈썹, 도톰한 아랫입술"
+    },
+    {
+      "id": 48,
+      "filename": "male_48.png",
+      "face_type": "강아지상",
+      "impression_tags": [
+        "아이돌상",
+        "단정한상"
+      ],
+      "hair": "검정 앞머리가 가볍게 갈라진 가르마",
+      "eye_shape": "크고 부드러운 눈매",
+      "face_shape": "작고 둥근 턱의 타원형",
+      "expression": "옅은 닫힌 미소",
+      "glasses": false,
+      "glasses_style": "없음",
+      "distinctive_features": "도톰한 아랫입술"
+    },
+    {
+      "id": 49,
+      "filename": "male_49.jpg",
+      "face_type": "강아지상",
+      "impression_tags": [
+        "모범생상",
+        "상견례프리패스상"
+      ],
+      "hair": "짙은 갈색 단정한 가르마",
+      "eye_shape": "둥글고 편안한 눈매",
+      "face_shape": "볼이 부드러운 타원형",
+      "expression": "보조개가 보이는 작은 미소",
+      "glasses": true,
+      "glasses_style": "얇은 둥근 금속테",
+      "distinctive_features": "깊은 양쪽 보조개"
+    },
+    {
+      "id": 50,
+      "filename": "male_50.jpg",
+      "face_type": "늑대상",
+      "impression_tags": [
+        "배우상",
+        "시크한상"
+      ],
+      "hair": "검정 젖은 질감의 짧은 옆가르마",
+      "eye_shape": "길고 깊은 또렷한 눈매",
+      "face_shape": "광대가 드러나고 턱선이 넓은 얼굴형",
+      "expression": "무표정",
+      "glasses": false,
+      "glasses_style": "없음",
+      "distinctive_features": "짙은 눈썹, 굵은 콧대, 도톰한 입술"
+    },
+    {
+      "id": 51,
+      "filename": "male_51.jpg",
+      "face_type": "늑대상",
+      "impression_tags": [
+        "배우상",
+        "단정한상"
+      ],
+      "hair": "검정 뒤로 넘긴 단정한 가르마",
+      "eye_shape": "길고 선명한 눈매",
+      "face_shape": "넓은 이마와 각진 턱끝",
+      "expression": "무표정",
+      "glasses": false,
+      "glasses_style": "없음",
+      "distinctive_features": "굵고 곧은 눈썹"
+    },
+    {
+      "id": 52,
+      "filename": "male_52.jpg",
+      "face_type": "토끼상",
+      "impression_tags": [
+        "모범생상",
+        "귀여운상"
+      ],
+      "hair": "검정 짧고 자연스러운 가운데 가르마",
+      "eye_shape": "크고 둥글게 열린 눈매",
+      "face_shape": "작고 갸름한 타원형",
+      "expression": "입술을 살짝 벌린 무표정",
+      "glasses": true,
+      "glasses_style": "얇은 둥근 금속테",
+      "distinctive_features": "도톰한 입술과 둥근 코끝"
+    },
+    {
+      "id": 53,
+      "filename": "male_53.jpg",
+      "face_type": "고양이상",
+      "impression_tags": [
+        "아이돌상",
+        "몽환적인상"
+      ],
+      "hair": "검정 목덜미를 덮는 긴 일자 층머리",
+      "eye_shape": "길고 가늘게 뻗은 눈매",
+      "face_shape": "길고 가느다란 타원형",
+      "expression": "무표정",
+      "glasses": false,
+      "glasses_style": "없음",
+      "distinctive_features": "아이라인이 강조된 눈매와 작은 턱끝"
+    },
+    {
+      "id": 54,
+      "filename": "male_54.png",
+      "face_type": "강아지상",
+      "impression_tags": [
+        "아이돌상",
+        "상견례프리패스상"
+      ],
+      "hair": "갈색 부드럽게 흐르는 가르마",
+      "eye_shape": "둥글고 편안한 눈매",
+      "face_shape": "작고 부드러운 타원형",
+      "expression": "옅은 닫힌 미소",
+      "glasses": false,
+      "glasses_style": "없음",
+      "distinctive_features": "도톰한 입술"
+    },
+    {
+      "id": 55,
+      "filename": "male_55.png",
+      "face_type": "곰상",
+      "impression_tags": [
+        "반장상",
+        "안경상"
+      ],
+      "hair": "갈색 짧고 단정한 가르마",
+      "eye_shape": "가늘고 편안한 눈매",
+      "face_shape": "넓고 각진 턱선",
+      "expression": "작은 닫힌 미소",
+      "glasses": true,
+      "glasses_style": "투명한 두꺼운 사각테",
+      "distinctive_features": "넓은 콧대, 도톰한 입술"
+    },
+    {
+      "id": 56,
+      "filename": "male_56.jpg",
+      "face_type": "여우상",
+      "impression_tags": [
+        "아이돌상",
+        "시크한상"
+      ],
+      "hair": "붉은 갈색 짧고 흐트러진 앞머리",
+      "eye_shape": "길고 날카롭게 뻗은 눈매",
+      "face_shape": "볼이 얇고 광대가 드러나는 타원형",
+      "expression": "입술을 살짝 벌린 무표정",
+      "glasses": false,
+      "glasses_style": "없음",
+      "distinctive_features": "도톰한 입술과 곧은 콧대"
+    },
+    {
+      "id": 57,
+      "filename": "male_57.jpg",
+      "face_type": "강아지상",
+      "impression_tags": [
+        "상견례프리패스상",
+        "귀여운상"
+      ],
+      "hair": "짙은 갈색 둥글게 말린 앞머리",
+      "eye_shape": "둥글고 살짝 처진 눈매",
+      "face_shape": "작고 둥근 턱선",
+      "expression": "보조개가 보이는 미소",
+      "glasses": false,
+      "glasses_style": "없음",
+      "distinctive_features": "양쪽 보조개"
+    },
+    {
+      "id": 58,
+      "filename": "male_58.png",
+      "face_type": "고양이상",
+      "impression_tags": [
+        "아이돌상",
+        "시크한상"
+      ],
+      "hair": "검정 긴 층머리와 가르마",
+      "eye_shape": "길고 살짝 올라간 눈매",
+      "face_shape": "길고 가는 타원형",
+      "expression": "무표정",
+      "glasses": false,
+      "glasses_style": "없음",
+      "distinctive_features": "도톰한 입술"
+    },
+    {
+      "id": 59,
+      "filename": "male_59.png",
+      "face_type": "늑대상",
+      "impression_tags": [
+        "배우상",
+        "세련된상"
+      ],
+      "hair": "검정 짧고 흐트러진 옆가르마",
+      "eye_shape": "가로로 길고 깊은 눈매",
+      "face_shape": "광대가 드러나는 각진 얼굴형",
+      "expression": "무표정",
+      "glasses": false,
+      "glasses_style": "없음",
+      "distinctive_features": "진한 눈썹과 두꺼운 아랫입술"
+    },
+    {
+      "id": 60,
+      "filename": "male_60.png",
+      "face_type": "고양이상",
+      "impression_tags": [
+        "아이돌상",
+        "몽환적인상"
+      ],
+      "hair": "검정 긴 앞머리와 목덜미 층머리",
+      "eye_shape": "눈꺼풀이 도톰한 긴 눈매",
+      "face_shape": "갸름하고 긴 타원형",
+      "expression": "입술을 살짝 벌린 무표정",
+      "glasses": false,
+      "glasses_style": "없음",
+      "distinctive_features": "도톰한 입술과 작은 턱끝"
+    },
+    {
+      "id": 61,
+      "filename": "male_61.png",
+      "face_type": "강아지상",
+      "impression_tags": [
+        "친근한상",
+        "부드러운상"
+      ],
+      "hair": "검정 풍성한 곱슬 앞머리",
+      "eye_shape": "길고 부드럽게 처진 눈매",
+      "face_shape": "둥글고 넓은 볼선",
+      "expression": "옅은 닫힌 미소",
+      "glasses": false,
+      "glasses_style": "없음",
+      "distinctive_features": "도톰한 입술"
+    },
+    {
+      "id": 62,
+      "filename": "male_62.png",
+      "face_type": "강아지상",
+      "impression_tags": [
+        "모범생상",
+        "상견례프리패스상"
+      ],
+      "hair": "검정 자연스러운 가운데 가르마",
+      "eye_shape": "편안하고 둥근 눈매",
+      "face_shape": "볼이 부드러운 타원형",
+      "expression": "작은 닫힌 미소",
+      "glasses": true,
+      "glasses_style": "검정 둥근 테",
+      "distinctive_features": "웃을 때 보이는 볼의 보조개"
+    },
+    {
+      "id": 63,
+      "filename": "male_63.jpg",
+      "face_type": "토끼상",
+      "impression_tags": [
+        "아이돌상",
+        "귀여운상"
+      ],
+      "hair": "검정 둥글고 풍성한 곱슬 앞머리",
+      "eye_shape": "크고 동그랗게 열린 눈매",
+      "face_shape": "짧고 둥근 타원형",
+      "expression": "입술을 살짝 벌린 무표정",
+      "glasses": false,
+      "glasses_style": "없음",
+      "distinctive_features": "작은 코끝과 도톰한 입술"
+    },
+    {
+      "id": 64,
+      "filename": "male_64.png",
+      "face_type": "늑대상",
+      "impression_tags": [
+        "배우상",
+        "시크한상"
+      ],
+      "hair": "검정 젖은 질감의 긴 가르마",
+      "eye_shape": "깊고 날카로운 눈매",
+      "face_shape": "각진 광대와 긴 턱선",
+      "expression": "무표정",
+      "glasses": false,
+      "glasses_style": "없음",
+      "distinctive_features": "진한 눈썹과 도톰한 입술"
+    }
+  ],
+  "female": [
+    {
+      "id": 1,
+      "filename": "female_01.png",
+      "face_type": "강아지상",
+      "impression_tags": [
+        "청순한상",
+        "상견례프리패스상"
+      ],
+      "hair": "검정 턱선 단발, 얇은 일자 앞머리",
+      "eye_shape": "부드럽고 살짝 처진 눈매",
+      "face_shape": "볼선이 둥근 짧은 타원형",
+      "expression": "옅은 미소",
+      "glasses": false,
+      "glasses_style": "없음",
+      "mouth_features": "도톰한 아랫입술, 작은 닫힌 미소"
+    },
+    {
+      "id": 2,
+      "filename": "female_02.png",
+      "face_type": "고양이상",
+      "impression_tags": [
+        "배우상",
+        "차가운상"
+      ],
+      "hair": "검정 긴 생머리, 가운데 가르마, 앞머리 없음",
+      "eye_shape": "길고 또렷하며 바깥쪽이 올라간 눈매",
+      "face_shape": "길고 갸름한 얼굴, 좁은 턱선",
+      "expression": "무표정",
+      "glasses": false,
+      "glasses_style": "없음",
+      "mouth_features": "입술을 다문 중립적인 입매"
+    },
+    {
+      "id": 3,
+      "filename": "female_03.png",
+      "face_type": "여우상",
+      "impression_tags": [
+        "아이돌상",
+        "화려한상"
+      ],
+      "hair": "적갈색 어깨 길이 웨이브, 옆으로 흐르는 앞머리",
+      "eye_shape": "눈꼬리가 살짝 올라간 또렷한 눈매",
+      "face_shape": "광대에서 턱으로 좁아지는 하트형",
+      "expression": "옅은 미소",
+      "glasses": false,
+      "glasses_style": "없음",
+      "mouth_features": "선명한 입술선과 작은 미소"
+    },
+    {
+      "id": 4,
+      "filename": "female_04.png",
+      "face_type": "사슴상",
+      "impression_tags": [
+        "모범생상",
+        "단정한상"
+      ],
+      "hair": "짙은 갈색 턱선 단발, 옆 가르마, 앞머리 없음",
+      "eye_shape": "둥글고 크게 열린 눈매",
+      "face_shape": "부드러운 타원형과 둥근 턱",
+      "expression": "무표정",
+      "glasses": true,
+      "glasses_style": "가는 금속 원형테",
+      "mouth_features": "작고 단정하게 다문 입술"
+    },
+    {
+      "id": 5,
+      "filename": "female_05.png",
+      "face_type": "토끼상",
+      "impression_tags": [
+        "아이돌상",
+        "귀여운상"
+      ],
+      "hair": "갈색 긴 웨이브, 얇은 일자 앞머리",
+      "eye_shape": "크고 둥글게 열린 눈매",
+      "face_shape": "짧은 하트형, 부드러운 볼선",
+      "expression": "옅은 미소",
+      "glasses": false,
+      "glasses_style": "없음",
+      "mouth_features": "짧고 도톰한 입술의 작은 미소"
+    },
+    {
+      "id": 6,
+      "filename": "female_06.jpg",
+      "face_type": "고양이상",
+      "impression_tags": [
+        "양아치상",
+        "상견례프리빠꾸상"
+      ],
+      "hair": "핑크빛 밝은 애쉬 턱선 단발, 가운데 가르마, 앞머리 없음",
+      "eye_shape": "올라간 눈꼬리, 길게 뺀 아이라인",
+      "face_shape": "작고 날렵한 턱의 하트형",
+      "expression": "무표정",
+      "glasses": false,
+      "glasses_style": "없음",
+      "mouth_features": "도톰하고 선명한 분홍 입술"
+    },
+    {
+      "id": 7,
+      "filename": "female_07.png",
+      "face_type": "사슴상",
+      "impression_tags": [
+        "청순한상",
+        "상견례프리패스상"
+      ],
+      "hair": "검정 낮은 묶음머리, 앞머리 없음, 옆 잔머리",
+      "eye_shape": "크고 편안하게 처진 눈매",
+      "face_shape": "길고 부드러운 타원형",
+      "expression": "옅은 미소",
+      "glasses": false,
+      "glasses_style": "없음",
+      "mouth_features": "자연스러운 닫힌 미소"
+    },
+    {
+      "id": 8,
+      "filename": "female_08.png",
+      "face_type": "강아지상",
+      "impression_tags": [
+        "친근한상",
+        "상견례프리패스상"
+      ],
+      "hair": "갈색 어깨 길이 레이어드 웨이브, 시스루 앞머리",
+      "eye_shape": "동그랗고 부드러운 눈매",
+      "face_shape": "둥근 볼과 짧은 턱선",
+      "expression": "치아가 보이는 미소",
+      "glasses": false,
+      "glasses_style": "없음",
+      "mouth_features": "윗니가 보이는 환한 미소"
+    },
+    {
+      "id": 9,
+      "filename": "female_09.png",
+      "face_type": "고양이상",
+      "impression_tags": [
+        "시크한상",
+        "상견례프리빠꾸상"
+      ],
+      "hair": "밝은 금발 긴 머리, 어두운 뿌리, 앞머리 없음",
+      "eye_shape": "눈두덩이 음영이 있고 길게 뻗은 눈매",
+      "face_shape": "갸름한 타원형과 또렷한 턱선",
+      "expression": "무표정",
+      "glasses": false,
+      "glasses_style": "없음",
+      "mouth_features": "도톰한 입술, 차분하게 다문 입매"
+    },
+    {
+      "id": 10,
+      "filename": "female_10.png",
+      "face_type": "강아지상",
+      "impression_tags": [
+        "모범생상",
+        "친근한상"
+      ],
+      "hair": "검정 어깨 위 웨이브 단발, 가벼운 커튼 앞머리",
+      "eye_shape": "둥글고 편안한 눈매",
+      "face_shape": "둥근 볼의 타원형",
+      "expression": "옅은 미소",
+      "glasses": true,
+      "glasses_style": "가는 금속 둥근 사각테",
+      "mouth_features": "도톰한 아랫입술과 닫힌 미소"
+    },
+    {
+      "id": 11,
+      "filename": "female_11.png",
+      "face_type": "사슴상",
+      "impression_tags": [
+        "배우상",
+        "성숙한상"
+      ],
+      "hair": "짙은 갈색 긴 굵은 웨이브, 옆 가르마, 앞머리 없음",
+      "eye_shape": "길고 또렷한 아몬드형 눈매",
+      "face_shape": "길고 가는 타원형",
+      "expression": "무표정",
+      "glasses": false,
+      "glasses_style": "없음",
+      "mouth_features": "도톰한 아랫입술, 닫힌 입매"
+    },
+    {
+      "id": 12,
+      "filename": "female_12.jpg",
+      "face_type": "강아지상",
+      "impression_tags": [
+        "청순한상",
+        "상견례프리패스상"
+      ],
+      "hair": "갈색 긴 반묶음 머리, 양옆으로 갈라진 앞머리",
+      "eye_shape": "둥글고 부드럽게 내려오는 눈매",
+      "face_shape": "짧은 타원형, 둥근 볼선",
+      "expression": "옅은 미소",
+      "glasses": false,
+      "glasses_style": "없음",
+      "mouth_features": "입꼬리가 부드럽게 올라간 닫힌 미소"
+    },
+    {
+      "id": 13,
+      "filename": "female_13.png",
+      "face_type": "고양이상",
+      "impression_tags": [
+        "모범생상",
+        "차분한상"
+      ],
+      "hair": "검정 긴 생머리, 얇은 일자 앞머리",
+      "eye_shape": "가로로 길고 차분한 눈매",
+      "face_shape": "갸름한 타원형과 짧고 둥근 턱",
+      "expression": "무표정",
+      "glasses": true,
+      "glasses_style": "가는 금속 둥근 사각테",
+      "mouth_features": "도톰한 아랫입술, 다문 입매"
+    },
+    {
+      "id": 14,
+      "filename": "female_14.png",
+      "face_type": "토끼상",
+      "impression_tags": [
+        "아이돌상",
+        "밝은상"
+      ],
+      "hair": "밝은 갈색 높은 묶음머리, 시스루 앞머리",
+      "eye_shape": "크고 둥글게 열린 눈매",
+      "face_shape": "작은 하트형과 둥근 볼선",
+      "expression": "치아가 보이는 미소",
+      "glasses": false,
+      "glasses_style": "없음",
+      "mouth_features": "윗니가 드러나는 밝은 미소"
+    },
+    {
+      "id": 15,
+      "filename": "female_15.png",
+      "face_type": "고양이상",
+      "impression_tags": [
+        "배우상",
+        "시크한상"
+      ],
+      "hair": "검정 짧은 숏컷, 옆으로 넘긴 머리, 앞머리 없음",
+      "eye_shape": "길고 날카롭게 뻗은 눈매",
+      "face_shape": "각진 턱선과 비교적 넓은 광대",
+      "expression": "무표정",
+      "glasses": false,
+      "glasses_style": "없음",
+      "mouth_features": "도톰하고 곧게 다문 입술"
+    },
+    {
+      "id": 16,
+      "filename": "female_16.png",
+      "face_type": "사슴상",
+      "impression_tags": [
+        "청순한상",
+        "배우상"
+      ],
+      "hair": "검정 긴 자연 웨이브, 앞머리 없음, 한쪽 귀 노출",
+      "eye_shape": "크고 아래로 부드럽게 흐르는 눈매",
+      "face_shape": "긴 타원형과 좁은 둥근 턱",
+      "expression": "옅은 미소",
+      "glasses": false,
+      "glasses_style": "없음",
+      "mouth_features": "입꼬리가 살짝 올라간 작은 입술"
+    },
+    {
+      "id": 17,
+      "filename": "female_17.png",
+      "face_type": "강아지상",
+      "impression_tags": [
+        "모범생상",
+        "단정한상"
+      ],
+      "hair": "검정 턱선 단발, 시스루 앞머리",
+      "eye_shape": "편안하고 살짝 처진 눈매",
+      "face_shape": "둥근 볼의 짧은 타원형",
+      "expression": "옅은 미소",
+      "glasses": true,
+      "glasses_style": "가는 금속 원형테",
+      "mouth_features": "얇게 다문 자연스러운 미소"
+    },
+    {
+      "id": 18,
+      "filename": "female_18.png",
+      "face_type": "고양이상",
+      "impression_tags": [
+        "아이돌상",
+        "도도한상"
+      ],
+      "hair": "검정 긴 생머리, 일자 앞머리",
+      "eye_shape": "길고 또렷하며 바깥쪽이 올라간 눈매",
+      "face_shape": "작은 하트형과 좁은 턱선",
+      "expression": "무표정",
+      "glasses": false,
+      "glasses_style": "없음",
+      "mouth_features": "도톰한 입술을 가볍게 다문 입매"
+    },
+    {
+      "id": 19,
+      "filename": "female_19.png",
+      "face_type": "여우상",
+      "impression_tags": [
+        "시크한상",
+        "아이돌상"
+      ],
+      "hair": "구릿빛 적갈색 턱선 웨이브 단발, 앞머리 없음",
+      "eye_shape": "가로로 길고 바깥쪽이 올라간 눈매",
+      "face_shape": "광대가 드러나는 짧은 다이아몬드형",
+      "expression": "옅은 미소",
+      "glasses": false,
+      "glasses_style": "없음",
+      "mouth_features": "입꼬리가 살짝 올라간 도톰한 입술"
+    },
+    {
+      "id": 20,
+      "filename": "female_20.png",
+      "face_type": "사슴상",
+      "impression_tags": [
+        "상견례프리패스상",
+        "단정한상"
+      ],
+      "hair": "짙은 갈색 낮은 묶음머리, 앞머리 없음, 양옆 잔머리",
+      "eye_shape": "크고 편안한 아몬드형 눈매",
+      "face_shape": "길고 부드러운 타원형",
+      "expression": "옅은 미소",
+      "glasses": false,
+      "glasses_style": "없음",
+      "mouth_features": "닫힌 입술의 차분한 미소"
+    },
+    {
+      "id": 21,
+      "filename": "female_21.png",
+      "face_type": "토끼상",
+      "impression_tags": [
+        "아이돌상",
+        "청순한상"
+      ],
+      "hair": "애쉬 갈색 긴 웨이브, 시스루 앞머리",
+      "eye_shape": "크고 둥근 눈매",
+      "face_shape": "부드러운 볼과 짧은 턱의 하트형",
+      "expression": "무표정",
+      "glasses": false,
+      "glasses_style": "없음",
+      "mouth_features": "도톰하고 작은 입술"
+    },
+    {
+      "id": 22,
+      "filename": "female_22.jpg",
+      "face_type": "여우상",
+      "impression_tags": [
+        "배우상",
+        "단정한상"
+      ],
+      "hair": "검정 높은 묶음머리, 이마가 드러나는 올림머리",
+      "eye_shape": "길고 완만하게 올라가는 눈매",
+      "face_shape": "광대에서 턱으로 좁아지는 타원형",
+      "expression": "옅은 미소",
+      "glasses": false,
+      "glasses_style": "없음",
+      "mouth_features": "선명한 붉은 입술과 닫힌 미소"
+    },
+    {
+      "id": 23,
+      "filename": "female_23.png",
+      "face_type": "강아지상",
+      "impression_tags": [
+        "배우상",
+        "상견례프리패스상"
+      ],
+      "hair": "검정 어깨 위 생머리 단발, 옆 가르마, 앞머리 없음",
+      "eye_shape": "둥글고 부드러운 눈매",
+      "face_shape": "넓고 부드러운 타원형",
+      "expression": "옅은 미소",
+      "glasses": false,
+      "glasses_style": "없음",
+      "mouth_features": "자연스럽게 올라간 입꼬리"
+    },
+    {
+      "id": 24,
+      "filename": "female_24.png",
+      "face_type": "여우상",
+      "impression_tags": [
+        "모범생상",
+        "차분한상"
+      ],
+      "hair": "갈색 긴 생머리, 가운데 가르마, 앞머리 없음",
+      "eye_shape": "가로로 길고 살짝 올라간 눈매",
+      "face_shape": "긴 타원형과 좁은 턱선",
+      "expression": "무표정",
+      "glasses": true,
+      "glasses_style": "가는 금속 직사각테",
+      "mouth_features": "도톰한 아랫입술, 다문 입매"
+    },
+    {
+      "id": 25,
+      "filename": "female_25.jpg",
+      "face_type": "토끼상",
+      "impression_tags": [
+        "모범생상",
+        "귀여운상"
+      ],
+      "hair": "검정 낮은 묶음머리, 얇은 일자 앞머리",
+      "eye_shape": "크고 둥글게 열린 눈매",
+      "face_shape": "짧은 하트형, 작은 둥근 턱",
+      "expression": "옅은 미소",
+      "glasses": true,
+      "glasses_style": "가는 금속 원형테",
+      "mouth_features": "작고 부드럽게 다문 미소"
+    },
+    {
+      "id": 26,
+      "filename": "female_26.png",
+      "face_type": "고양이상",
+      "impression_tags": [
+        "배우상",
+        "시크한상"
+      ],
+      "hair": "갈색 뒤로 묶은 머리, 이마가 드러나는 옆 가르마",
+      "eye_shape": "또렷하고 길며 눈꼬리가 올라간 눈매",
+      "face_shape": "긴 타원형과 선명한 턱선",
+      "expression": "무표정",
+      "glasses": false,
+      "glasses_style": "없음",
+      "mouth_features": "도톰한 입술, 중립적인 입매"
+    },
+    {
+      "id": 27,
+      "filename": "female_27.png",
+      "face_type": "토끼상",
+      "impression_tags": [
+        "모범생상",
+        "차분한상"
+      ],
+      "hair": "검정 어깨 길이 레이어드 생머리, 얇은 일자 앞머리",
+      "eye_shape": "크고 둥근 눈매",
+      "face_shape": "짧고 갸름한 타원형",
+      "expression": "무표정",
+      "glasses": true,
+      "glasses_style": "가는 금속 원형테",
+      "mouth_features": "짧고 도톰한 입술"
+    },
+    {
+      "id": 28,
+      "filename": "female_28.png",
+      "face_type": "여우상",
+      "impression_tags": [
+        "아이돌상",
+        "부드러운상"
+      ],
+      "hair": "적갈색 긴 웨이브, 커튼형 시스루 앞머리",
+      "eye_shape": "길고 살짝 올라간 아몬드형 눈매",
+      "face_shape": "광대에서 턱으로 좁아지는 하트형",
+      "expression": "옅은 미소",
+      "glasses": false,
+      "glasses_style": "없음",
+      "mouth_features": "도톰한 아랫입술과 작은 미소"
+    },
+    {
+      "id": 29,
+      "filename": "female_29.png",
+      "face_type": "사슴상",
+      "impression_tags": [
+        "청순한상",
+        "차분한상"
+      ],
+      "hair": "검정 긴 생머리, 옆 가르마, 앞머리 없음",
+      "eye_shape": "부드럽게 처진 긴 눈매",
+      "face_shape": "길고 가는 타원형",
+      "expression": "무표정",
+      "glasses": false,
+      "glasses_style": "없음",
+      "mouth_features": "도톰한 입술을 자연스럽게 다문 입매"
+    },
+    {
+      "id": 30,
+      "filename": "female_30.png",
+      "face_type": "고양이상",
+      "impression_tags": [
+        "배우상",
+        "시크한상"
+      ],
+      "hair": "검정 짧은 젖은 질감 단발, 옆 가르마, 앞머리 없음",
+      "eye_shape": "깊고 또렷하며 바깥쪽이 올라간 눈매",
+      "face_shape": "짧고 각진 다이아몬드형",
+      "expression": "무표정",
+      "glasses": false,
+      "glasses_style": "없음",
+      "mouth_features": "도톰한 입술과 중립적인 입매"
+    },
+    {
+      "id": 31,
+      "filename": "female_31.jpg",
+      "face_type": "토끼상",
+      "impression_tags": [
+        "아이돌상",
+        "귀여운상"
+      ],
+      "hair": "검정 양갈래로 땋아 묶은 머리, 얇은 일자 앞머리",
+      "eye_shape": "크고 둥글게 열린 눈매",
+      "face_shape": "작고 둥근 하트형",
+      "expression": "옅은 미소",
+      "glasses": false,
+      "glasses_style": "없음",
+      "mouth_features": "작고 선명한 분홍 입술의 미소"
+    },
+    {
+      "id": 32,
+      "filename": "female_32.png",
+      "face_type": "사슴상",
+      "impression_tags": [
+        "모범생상",
+        "차분한상"
+      ],
+      "hair": "검정 귀 아래 길이 단발, 옆 가르마, 앞머리 없음",
+      "eye_shape": "길고 편안하게 처진 눈매",
+      "face_shape": "길고 가는 타원형",
+      "expression": "무표정",
+      "glasses": true,
+      "glasses_style": "가는 금속 직사각테",
+      "mouth_features": "도톰한 입술을 다문 중립적인 입매"
+    },
+    {
+      "id": 33,
+      "filename": "female_33.png",
+      "face_type": "토끼상",
+      "impression_tags": [
+        "아이돌상",
+        "청순한상"
+      ],
+      "hair": "밝은 갈색 긴 생머리, 시스루 앞머리",
+      "eye_shape": "크고 둥글며 눈꼬리가 완만한 눈매",
+      "face_shape": "짧은 하트형과 작은 턱",
+      "expression": "옅은 미소",
+      "glasses": false,
+      "glasses_style": "없음",
+      "mouth_features": "작고 도톰한 입술의 미소"
+    },
+    {
+      "id": 34,
+      "filename": "female_34.png",
+      "face_type": "고양이상",
+      "impression_tags": [
+        "시크한상",
+        "아이돌상"
+      ],
+      "hair": "검정 긴 생머리, 두꺼운 일자 앞머리",
+      "eye_shape": "가로로 길고 끝이 올라간 눈매",
+      "face_shape": "광대가 드러나는 타원형과 좁은 턱",
+      "expression": "무표정",
+      "glasses": false,
+      "glasses_style": "없음",
+      "mouth_features": "도톰하고 곧게 다문 입술"
+    },
+    {
+      "id": 35,
+      "filename": "female_35.png",
+      "face_type": "강아지상",
+      "impression_tags": [
+        "모범생상",
+        "친근한상"
+      ],
+      "hair": "갈색 양갈래 땋은 머리, 앞머리 없음, 옆 잔머리",
+      "eye_shape": "둥글고 편안한 눈매",
+      "face_shape": "둥근 볼의 짧은 타원형",
+      "expression": "옅은 미소",
+      "glasses": true,
+      "glasses_style": "가는 금속 둥근 사각테",
+      "mouth_features": "입꼬리가 올라간 닫힌 미소"
+    },
+    {
+      "id": 36,
+      "filename": "female_36.png",
+      "face_type": "여우상",
+      "impression_tags": [
+        "배우상",
+        "시크한상"
+      ],
+      "hair": "적갈색 어깨 길이 울프컷, 가벼운 커튼 앞머리",
+      "eye_shape": "길고 바깥쪽이 올라가는 눈매",
+      "face_shape": "긴 타원형, 광대와 턱선이 또렷함",
+      "expression": "무표정",
+      "glasses": false,
+      "glasses_style": "없음",
+      "mouth_features": "도톰한 입술을 다문 입매"
+    },
+    {
+      "id": 37,
+      "filename": "female_37.jpg",
+      "face_type": "고양이상",
+      "impression_tags": [
+        "아이돌상",
+        "화려한상"
+      ],
+      "hair": "검정 턱선 일자 단발, 두꺼운 일자 앞머리",
+      "eye_shape": "크고 둥글지만 눈꼬리는 또렷한 눈매",
+      "face_shape": "작은 하트형과 짧은 턱",
+      "expression": "무표정",
+      "glasses": false,
+      "glasses_style": "없음",
+      "mouth_features": "선명한 붉은 입술, 살짝 벌어진 중립 입매"
+    },
+    {
+      "id": 38,
+      "filename": "female_38.png",
+      "face_type": "고양이상",
+      "impression_tags": [
+        "아이돌상",
+        "차분한상"
+      ],
+      "hair": "검정 턱선 단발, 가운데 가르마, 앞머리 없음",
+      "eye_shape": "길고 살짝 올라간 아몬드형 눈매",
+      "face_shape": "갸름하고 긴 타원형",
+      "expression": "무표정",
+      "glasses": false,
+      "glasses_style": "없음",
+      "mouth_features": "도톰한 입술, 다문 입매"
+    },
+    {
+      "id": 39,
+      "filename": "female_39.jpg",
+      "face_type": "토끼상",
+      "impression_tags": [
+        "아이돌상",
+        "단정한상"
+      ],
+      "hair": "검정 짧은 숏컷, 가운데 가르마, 앞머리 없음",
+      "eye_shape": "크고 둥글게 열린 눈매",
+      "face_shape": "짧고 작은 하트형",
+      "expression": "무표정",
+      "glasses": false,
+      "glasses_style": "없음",
+      "mouth_features": "작고 도톰한 분홍 입술"
+    },
+    {
+      "id": 40,
+      "filename": "female_40.png",
+      "face_type": "토끼상",
+      "impression_tags": [
+        "모범생상",
+        "귀여운상"
+      ],
+      "hair": "검정 높은 묶음머리, 일자 시스루 앞머리",
+      "eye_shape": "둥글고 편안한 눈매",
+      "face_shape": "짧은 하트형과 둥근 볼선",
+      "expression": "옅은 미소",
+      "glasses": true,
+      "glasses_style": "가는 금속 원형테",
+      "mouth_features": "도톰한 아랫입술과 작은 미소"
+    },
+    {
+      "id": 41,
+      "filename": "female_41.png",
+      "face_type": "고양이상",
+      "impression_tags": [
+        "배우상",
+        "차가운상"
+      ],
+      "hair": "검정 긴 생머리, 깊은 옆 가르마, 앞머리 없음",
+      "eye_shape": "길고 끝이 올라간 선명한 눈매",
+      "face_shape": "긴 얼굴과 각이 드러나는 턱선",
+      "expression": "무표정",
+      "glasses": false,
+      "glasses_style": "없음",
+      "mouth_features": "도톰한 입술을 다문 입매"
+    },
+    {
+      "id": 42,
+      "filename": "female_42.png",
+      "face_type": "여우상",
+      "impression_tags": [
+        "아이돌상",
+        "시크한상"
+      ],
+      "hair": "밝은 금발 짧은 헝클어진 단발, 앞머리 없음",
+      "eye_shape": "또렷하고 살짝 올라간 눈매",
+      "face_shape": "짧은 타원형과 좁은 턱",
+      "expression": "옅은 미소",
+      "glasses": false,
+      "glasses_style": "없음",
+      "mouth_features": "입꼬리가 올라간 도톰한 입술"
+    },
+    {
+      "id": 43,
+      "filename": "female_43.jpg",
+      "face_type": "강아지상",
+      "impression_tags": [
+        "배우상",
+        "상견례프리패스상"
+      ],
+      "hair": "짙은 갈색 긴 생머리, 앞머리 없음",
+      "eye_shape": "크고 부드럽게 내려오는 눈매",
+      "face_shape": "둥근 볼의 부드러운 타원형",
+      "expression": "옅은 미소",
+      "glasses": false,
+      "glasses_style": "없음",
+      "mouth_features": "자연스럽게 올라간 닫힌 미소"
+    },
+    {
+      "id": 44,
+      "filename": "female_44.png",
+      "face_type": "강아지상",
+      "impression_tags": [
+        "아이돌상",
+        "친근한상"
+      ],
+      "hair": "짙은 갈색 긴 웨이브, 시스루 앞머리",
+      "eye_shape": "둥글고 살짝 처진 눈매",
+      "face_shape": "둥근 볼과 짧은 턱선",
+      "expression": "옅은 미소",
+      "glasses": false,
+      "glasses_style": "없음",
+      "mouth_features": "도톰한 입술과 밝은 닫힌 미소"
+    },
+    {
+      "id": 45,
+      "filename": "female_45.png",
+      "face_type": "고양이상",
+      "impression_tags": [
+        "모범생상",
+        "차분한상"
+      ],
+      "hair": "검정 턱선 일자 단발, 시스루 앞머리",
+      "eye_shape": "크고 또렷하며 바깥쪽이 살짝 올라간 눈매",
+      "face_shape": "긴 타원형과 좁은 턱",
+      "expression": "무표정",
+      "glasses": true,
+      "glasses_style": "가는 금속 원형테",
+      "mouth_features": "도톰한 아랫입술, 중립적인 입매"
+    },
+    {
+      "id": 46,
+      "filename": "female_46.png",
+      "face_type": "토끼상",
+      "impression_tags": [
+        "청순한상",
+        "아이돌상"
+      ],
+      "hair": "갈색 옆으로 땋은 머리, 옆으로 흐르는 앞머리",
+      "eye_shape": "크고 둥글게 열린 눈매",
+      "face_shape": "짧고 둥근 하트형",
+      "expression": "무표정",
+      "glasses": false,
+      "glasses_style": "없음",
+      "mouth_features": "짧고 도톰한 입술"
+    },
+    {
+      "id": 47,
+      "filename": "female_47.png",
+      "face_type": "여우상",
+      "impression_tags": [
+        "배우상",
+        "시크한상"
+      ],
+      "hair": "검정 어깨 길이 레이어드 머리, 앞머리 없음",
+      "eye_shape": "길고 살짝 올라간 눈매",
+      "face_shape": "광대가 드러나고 턱으로 좁아지는 얼굴",
+      "expression": "옅은 미소",
+      "glasses": false,
+      "glasses_style": "없음",
+      "mouth_features": "도톰한 입술, 입꼬리가 살짝 올라감"
+    },
+    {
+      "id": 48,
+      "filename": "female_48.jpg",
+      "face_type": "토끼상",
+      "impression_tags": [
+        "아이돌상",
+        "청순한상"
+      ],
+      "hair": "검정 긴 생머리, 얇은 일자 앞머리",
+      "eye_shape": "크고 둥글고 또렷한 눈매",
+      "face_shape": "작은 하트형과 좁은 턱",
+      "expression": "옅은 미소",
+      "glasses": false,
+      "glasses_style": "없음",
+      "mouth_features": "작고 선명한 분홍 입술의 미소"
+    },
+    {
+      "id": 49,
+      "filename": "female_49.png",
+      "face_type": "강아지상",
+      "impression_tags": [
+        "상견례프리패스상",
+        "단정한상"
+      ],
+      "hair": "검정 어깨 길이 생머리, 시스루 앞머리",
+      "eye_shape": "크고 부드럽게 처진 눈매",
+      "face_shape": "둥근 볼의 짧은 타원형",
+      "expression": "옅은 미소",
+      "glasses": false,
+      "glasses_style": "없음",
+      "mouth_features": "도톰하고 작게 다문 미소"
+    },
+    {
+      "id": 50,
+      "filename": "female_50.png",
+      "face_type": "사슴상",
+      "impression_tags": [
+        "모범생상",
+        "차분한상"
+      ],
+      "hair": "짙은 갈색 낮은 묶음머리, 앞머리 없음",
+      "eye_shape": "가로로 길고 편안한 눈매",
+      "face_shape": "긴 타원형과 좁은 둥근 턱",
+      "expression": "무표정",
+      "glasses": true,
+      "glasses_style": "가는 검정 직사각테",
+      "mouth_features": "도톰한 아랫입술, 다문 입매"
+    },
+    {
+      "id": 51,
+      "filename": "female_51.png",
+      "face_type": "여우상",
+      "impression_tags": [
+        "아이돌상",
+        "밝은상"
+      ],
+      "hair": "구릿빛 주황색 어깨 위 단발, 얇은 일자 앞머리",
+      "eye_shape": "살짝 올라간 길고 또렷한 눈매",
+      "face_shape": "광대에서 턱으로 좁아지는 하트형",
+      "expression": "옅은 미소",
+      "glasses": false,
+      "glasses_style": "없음",
+      "mouth_features": "도톰한 입술과 작은 미소"
+    },
+    {
+      "id": 52,
+      "filename": "female_52.png",
+      "face_type": "고양이상",
+      "impression_tags": [
+        "배우상",
+        "시크한상"
+      ],
+      "hair": "검정 긴 굵은 웨이브, 깊은 옆 가르마, 앞머리 없음",
+      "eye_shape": "깊고 길며 바깥쪽이 올라간 눈매",
+      "face_shape": "광대와 턱선이 또렷한 긴 얼굴",
+      "expression": "무표정",
+      "glasses": false,
+      "glasses_style": "없음",
+      "mouth_features": "도톰한 입술을 다문 입매"
+    },
+    {
+      "id": 53,
+      "filename": "female_53.png",
+      "face_type": "토끼상",
+      "impression_tags": [
+        "귀여운상",
+        "친근한상"
+      ],
+      "hair": "갈색 둥근 턱선 단발, 얇은 일자 앞머리",
+      "eye_shape": "크고 둥글게 열린 눈매",
+      "face_shape": "둥근 볼과 짧은 턱",
+      "expression": "옅은 미소",
+      "glasses": false,
+      "glasses_style": "없음",
+      "mouth_features": "짧고 도톰한 입술, 닫힌 미소"
+    },
+    {
+      "id": 54,
+      "filename": "female_54.png",
+      "face_type": "강아지상",
+      "impression_tags": [
+        "반장상",
+        "안경상"
+      ],
+      "hair": "검정 짧은 숏컷, 옆으로 넘긴 앞머리",
+      "eye_shape": "길고 편안하게 처진 눈매",
+      "face_shape": "부드럽게 각진 짧은 타원형",
+      "expression": "옅은 미소",
+      "glasses": true,
+      "glasses_style": "얇은 투명 직사각테",
+      "mouth_features": "입꼬리가 올라간 닫힌 미소"
+    },
+    {
+      "id": 55,
+      "filename": "female_55.png",
+      "face_type": "사슴상",
+      "impression_tags": [
+        "청순한상",
+        "차분한상"
+      ],
+      "hair": "갈색 긴 레이어드 생머리, 가운데 가르마, 앞머리 없음",
+      "eye_shape": "크고 부드럽게 내려오는 눈매",
+      "face_shape": "길고 갸름한 타원형",
+      "expression": "무표정",
+      "glasses": false,
+      "glasses_style": "없음",
+      "mouth_features": "작고 도톰한 입술"
+    },
+    {
+      "id": 56,
+      "filename": "female_56.png",
+      "face_type": "여우상",
+      "impression_tags": [
+        "아이돌상",
+        "장난기있는상"
+      ],
+      "hair": "검정 긴 헝클어진 웨이브, 가벼운 앞머리",
+      "eye_shape": "길고 바깥쪽이 올라간 눈매",
+      "face_shape": "광대에서 턱으로 좁아지는 하트형",
+      "expression": "옅은 미소",
+      "glasses": false,
+      "glasses_style": "없음",
+      "mouth_features": "입꼬리가 살짝 올라간 도톰한 입술"
+    },
+    {
+      "id": 57,
+      "filename": "female_57.jpg",
+      "face_type": "고양이상",
+      "impression_tags": [
+        "양아치상",
+        "상견례프리빠꾸상"
+      ],
+      "hair": "검정 긴 생머리, 눈썹 위 짧은 일자 앞머리",
+      "eye_shape": "길게 뺀 아이라인과 올라간 눈꼬리",
+      "face_shape": "작고 날렵한 하트형",
+      "expression": "옅은 미소",
+      "glasses": false,
+      "glasses_style": "없음",
+      "mouth_features": "선명한 붉은 입술과 작은 미소"
+    },
+    {
+      "id": 58,
+      "filename": "female_58.png",
+      "face_type": "강아지상",
+      "impression_tags": [
+        "모범생상",
+        "단정한상"
+      ],
+      "hair": "갈색 턱선 단발, 옆 가르마, 앞머리 없음",
+      "eye_shape": "편안하게 처진 둥근 눈매",
+      "face_shape": "둥근 볼의 짧은 타원형",
+      "expression": "옅은 미소",
+      "glasses": true,
+      "glasses_style": "가는 금속 원형테",
+      "mouth_features": "도톰한 아랫입술과 닫힌 미소"
+    },
+    {
+      "id": 59,
+      "filename": "female_59.png",
+      "face_type": "토끼상",
+      "impression_tags": [
+        "아이돌상",
+        "귀여운상"
+      ],
+      "hair": "검정 양갈래 땋은 머리, 시스루 앞머리",
+      "eye_shape": "크고 둥글게 열린 눈매",
+      "face_shape": "짧은 하트형과 둥근 볼선",
+      "expression": "옅은 미소",
+      "glasses": false,
+      "glasses_style": "없음",
+      "mouth_features": "작고 도톰한 입술의 미소"
+    },
+    {
+      "id": 60,
+      "filename": "female_60.png",
+      "face_type": "사슴상",
+      "impression_tags": [
+        "배우상",
+        "차분한상"
+      ],
+      "hair": "검정 낮은 올림머리, 앞머리 없음, 옆 잔머리",
+      "eye_shape": "가로로 길고 차분하게 처진 눈매",
+      "face_shape": "긴 타원형과 부드러운 턱",
+      "expression": "무표정",
+      "glasses": false,
+      "glasses_style": "없음",
+      "mouth_features": "도톰한 입술, 중립적인 입매"
+    },
+    {
+      "id": 61,
+      "filename": "female_61.png",
+      "face_type": "여우상",
+      "impression_tags": [
+        "시크한상",
+        "배우상"
+      ],
+      "hair": "버건디색 턱선 비대칭 단발, 앞머리 없음",
+      "eye_shape": "길고 살짝 올라간 눈매",
+      "face_shape": "광대와 턱선이 드러나는 타원형",
+      "expression": "무표정",
+      "glasses": false,
+      "glasses_style": "없음",
+      "mouth_features": "도톰한 아랫입술을 다문 입매"
+    },
+    {
+      "id": 62,
+      "filename": "female_62.png",
+      "face_type": "고양이상",
+      "impression_tags": [
+        "모범생상",
+        "차분한상"
+      ],
+      "hair": "검정 긴 생머리, 가벼운 커튼 앞머리",
+      "eye_shape": "길고 올라간 눈꼬리",
+      "face_shape": "갸름한 타원형과 좁은 턱",
+      "expression": "무표정",
+      "glasses": true,
+      "glasses_style": "검정 둥근 사각 뿔테",
+      "mouth_features": "도톰한 입술, 다문 입매"
+    },
+    {
+      "id": 63,
+      "filename": "female_63.jpg",
+      "face_type": "토끼상",
+      "impression_tags": [
+        "아이돌상",
+        "단정한상"
+      ],
+      "hair": "검정 짧은 숏컷, 가운데 가르마, 앞머리 없음",
+      "eye_shape": "크고 둥글게 열린 눈매",
+      "face_shape": "작고 짧은 하트형",
+      "expression": "옅은 미소",
+      "glasses": false,
+      "glasses_style": "없음",
+      "mouth_features": "작고 도톰한 입술의 닫힌 미소"
+    },
+    {
+      "id": 64,
+      "filename": "female_64.png",
+      "face_type": "사슴상",
+      "impression_tags": [
+        "청순한상",
+        "상견례프리패스상"
+      ],
+      "hair": "검정 어깨 아래 자연 웨이브, 앞머리 없음",
+      "eye_shape": "길고 부드럽게 처진 눈매",
+      "face_shape": "긴 타원형과 둥근 좁은 턱",
+      "expression": "옅은 미소",
+      "glasses": false,
+      "glasses_style": "없음",
+      "mouth_features": "작고 도톰한 입술의 미소"
+    }
+  ]
+};
+/* Portrait base path. Keep assets beside this HTML, or change this one value. */
+const IMAGE_BASE = './assets/';
+/* test429 tournament engine: independent of the UI. */
+function shuffled(items, random = Math.random) {
+  const result = items.slice();
+  for (let i = result.length - 1; i > 0; i--) {
+    const j = Math.floor(random() * (i + 1));
+    [result[i], result[j]] = [result[j], result[i]];
+  }
+  return result;
+}
+class Tournament {
+  constructor(pool, size, random = Math.random) {
+    if (![32, 64].includes(size) || pool.length < size || new Set(pool.map(p => p.id)).size !== pool.length) {
+      throw new Error('대진표를 만들 수 없습니다.');
+    }
+    this.random = random;
+    this.size = size;
+    this.current = shuffled(pool, random).slice(0, size);
+    this.next = [];
+    this.index = 0;
+    this.history = [];
+    this.choices = [];
+    this.winner = null;
+    this.runnerUp = null;
+  }
+  get pair() { return this.winner ? [] : this.current.slice(this.index, this.index + 2); }
+  get round() { return this.current.length; }
+  choose(id) {
+    if (this.winner) return false;
+    const pair = this.pair;
+    const winner = pair.find(p => p.id === id);
+    if (!winner) return false;
+    const loser = pair.find(p => p.id !== id);
+    this.history.push({current:this.current.slice(), next:this.next.slice(), index:this.index, choices:this.choices.slice()});
+    this.choices.push({winner, loser, round:this.round});
+    if (this.round === 2) {
+      this.winner = winner;
+      this.runnerUp = loser;
+    } else {
+      this.next.push(winner);
+      this.index += 2;
+      if (this.index === this.current.length) {
+        this.current = shuffled(this.next, this.random);
+        this.next = [];
+        this.index = 0;
+      }
+    }
+    return true;
+  }
+  undo() {
+    const previous = this.history.pop();
+    if (!previous) return false;
+    Object.assign(this, previous);
+    this.winner = null;
+    this.runnerUp = null;
+    return true;
+  }
+}
+function preferenceTags(choices) {
+  const scores = new Map();
+  const tags = face => new Set([face.face_type, ...face.impression_tags]);
+  for (const choice of choices) {
+    const won = tags(choice.winner), lost = tags(choice.loser);
+    for (const tag of new Set([...won, ...lost])) {
+      if (won.has(tag) === lost.has(tag)) continue;
+      const s = scores.get(tag) || {tag, wins:0, trials:0};
+      s.trials++;
+      if (won.has(tag)) s.wins++;
+      scores.set(tag, s);
+    }
+  }
+  // Compare only matches where this trait distinguishes the two portraits.
+  // Smoothing prevents a trait shown once from dominating the result.
+  return [...scores.values()].filter(s => s.trials >= 3 && s.wins > s.trials / 2)
+    .sort((a,b) => ((b.wins+1)/(b.trials+2)) - ((a.wins+1)/(a.trials+2)) || b.trials-a.trials)
+    .slice(0, 3).map(s => s.tag);
+}
+if (typeof module !== 'undefined') module.exports = {Tournament, shuffled, preferenceTags};
+
+const $ = id => document.getElementById(id);
+const faceUrl = (gender, face) => IMAGE_BASE + gender + '/' + face.filename;
+const number = id => String(id).padStart(2,'0');
+let gender = 'male', game = null, loadToken = 0, busy = false, displayedResult = null, lastPickAt = -Infinity;
+function show(screen, focus = true) {
+  loadToken++;
+  document.querySelectorAll('.screen').forEach(el=>el.hidden=el.id!==screen);
+  $('homeActions').hidden=screen!=='home';$('resultActions').hidden=screen!=='result';$('roundActions').hidden=screen!=='roundTransition';
+  if(!['match','roundTransition'].includes(screen))document.querySelector('.window').removeAttribute('data-round');
+  const labels={roundTransition:['NEXT ROUND','다음 라운드','다음 라운드를 시작할 준비가 됐어요.'],home:['WELCOME','시작','내 취향을 찾을 준비가 됐어요.'],setup:['새로운 취향 찾기','설정','참가 얼굴과 시작 라운드를 골라주세요.'],match:['MY TASTE / SELECT','대결','더 마음에 드는 얼굴을 골라주세요.'],result:['RESULT / MY FAVORITE','결과','내 취향의 얼굴을 찾았어요.']};
+  $('statusText').textContent=labels[screen][2];
+  if(focus){window.scrollTo({top:0,behavior:'instant'});const target=$(screen).querySelector('h1,h2');if(target){target.tabIndex=-1;target.focus({preventScroll:true});}}
+}
+function loadImage(img, src, alt) {
+  img.alt=alt;
+  return new Promise((resolve,reject)=>{
+    const loaded=()=>{cleanup();img.naturalWidth ? resolve() : reject(new Error('empty image'));};
+    const failed=()=>{cleanup();reject(new Error('image unavailable'));};
+    const cleanup=()=>{img.removeEventListener('load',loaded);img.removeEventListener('error',failed);};
+    img.addEventListener('load',loaded);img.addEventListener('error',failed);img.src=src;
+    if(img.complete) queueMicrotask(()=>img.naturalWidth ? loaded() : failed());
+  });
+}
+function preloadNext() {
+  if(!game || game.winner)return;
+  game.current.slice(game.index+2,game.index+6).forEach(face=>{const img=new Image();img.src=faceUrl(gender,face);});
+}
+async function renderMatch() {
+  if(!game || game.winner)return;
+  const token=++loadToken;busy=true;
+  document.querySelector('.window').dataset.round=String(game.round);
+  const [a,b]=game.pair;
+  $('leftFace').disabled=$('rightFace').disabled=true;
+  $('leftFace').classList.remove('selected');$('rightFace').classList.remove('selected');
+  $('retryImages').hidden=true;$('imageStatus').textContent='사진 불러오는 중…';
+  $('roundBadge').textContent=game.round===2?'결승':game.round===4?'준결승':game.round+'강';
+  $('matchTitle').textContent=game.round===2?'마지막으로, 가장 끌리는 얼굴은?':'더 끌리는 얼굴을 골라주세요';
+  $('matchCount').textContent=`${game.index/2+1} / ${game.round/2} 대결 · ${gender==='male'?'남자':'여자'} ${game.size}강으로 시작`;
+  $('leftNumber').textContent='번호 '+number(a.id);$('rightNumber').textContent='번호 '+number(b.id);
+  $('leftFace').setAttribute('aria-label',`${number(a.id)}번 얼굴 선택`);$('rightFace').setAttribute('aria-label',`${number(b.id)}번 얼굴 선택`);
+  const done=game.choices.length,total=game.size-1,percent=Math.round(done/total*100);
+  $('progressText').textContent=`${done} / ${total}`;$('progressFill').style.width=percent+'%';$('progress').setAttribute('aria-valuenow',percent);
+  $('undoButton').disabled=!game.history.length;
+  const results=await Promise.allSettled([loadImage($('leftImage'),faceUrl(gender,a),`${number(a.id)}번 참가자 얼굴`),loadImage($('rightImage'),faceUrl(gender,b),`${number(b.id)}번 참가자 얼굴`)]);
+  if(token!==loadToken)return;
+  if(results.some(r=>r.status==='rejected')){
+    $('imageStatus').textContent='사진을 불러오지 못했어요. 다시 불러와 주세요.';$('retryImages').hidden=false;return;
+  }
+  $('leftFace').disabled=$('rightFace').disabled=false;busy=false;$('imageStatus').textContent='마음이 가는 사진을 눌러주세요.';preloadNext();
+}
+function pick(side) {
+  if(busy||!game||game.winner||performance.now()-lastPickAt<250)return;
+  lastPickAt=performance.now();busy=true;
+  const previousRound=game.round;
+  const chosen=game.pair[side];$('leftFace').disabled=$('rightFace').disabled=true;
+  if(!game.choose(chosen.id)){busy=false;return;}
+  if(game.winner){renderResult(gender,game.winner,game.runnerUp,game.choices);}
+  else if(game.round!==previousRound)showRoundTransition(previousRound);
+  else renderMatch();
+}
+function roundName(n){return n===2?'결승':n===4?'준결승':n+'강';}
+function showRoundTransition(previousRound){
+  busy=false;show('roundTransition');document.querySelector('.window').dataset.round=String(game.round);
+  $('transitionDone').textContent=roundName(previousRound)+' 완료';
+  $('transitionTitle').textContent=roundName(game.round)+'을 시작합니다';
+  $('transitionFrom').textContent=roundName(previousRound);$('transitionTo').textContent=roundName(game.round);
+  $('transitionCopy').textContent=previousRound+'명의 얼굴 중 '+game.round+'명이 남았어요.';
+  $('roundContinue').textContent=roundName(game.round)+' 시작하기';
+}
+$('roundContinue').onclick=()=>{show('match');renderMatch();};
+function renderResult(sex, winner, runner, choices = null) {
+  gender=sex;busy=false;displayedResult={gender:sex,winner,runner,choices};
+  show('result');
+  $('resultTitle').replaceChildren(document.createTextNode('내 취향은 '),Object.assign(document.createElement('span'),{className:'accent',textContent:winner.face_type}));
+  $('winnerImage').src=faceUrl(sex,winner);$('winnerImage').alt=`최종 우승 ${number(winner.id)}번 얼굴`;
+  $('winnerNumber').textContent=`${sex==='male'?'남자':'여자'} 번호 ${number(winner.id)} · 최종 우승`;
+  $('winnerStyle').textContent=winner.impression_tags.join(' · ');
+  $('runnerImage').src=faceUrl(sex,runner);$('runnerImage').alt=`결승 2위 ${number(runner.id)}번 얼굴`;
+  $('runnerTitle').textContent=`마지막까지 고민했던 ${runner.face_type}`;
+  $('runnerCopy').textContent=`번호 ${number(runner.id)} · ${runner.impression_tags.slice(0,2).join(' · ')}`;
+  $('sharedNote').hidden=!!choices;
+  $('resultStatus').textContent='';
+}
+function resetToSetup() {game=null;busy=false;displayedResult=null;show('setup');}
+$('startButton').onclick=()=>show('setup');$('setupBack').onclick=()=>show('home');
+$('setupForm').onsubmit=event=>{event.preventDefault();const form=new FormData(event.currentTarget);gender=form.get('gender');game=new Tournament(FACE_DATA[gender],Number(form.get('size')));show('match');renderMatch();};
+$('leftFace').onclick=()=>pick(0);$('rightFace').onclick=()=>pick(1);$('retryImages').onclick=renderMatch;
+$('undoButton').onclick=()=>{if(game&&game.undo())renderMatch();};
+$('restartMatch').onclick=()=>{if(confirm('진행 중인 선택을 지우고 처음부터 시작할까요?'))resetToSetup();};
+function resetToHome(){
+  game=null;busy=false;displayedResult=null;lastPickAt=-Infinity;$('setupForm').reset();
+  const url=new URL(location.href);url.searchParams.delete('result');url.searchParams.delete('second');
+  try{history.replaceState(null,'',url.href);}catch(error){}
+  show('home');
+}
+$('againButton').onclick=resetToHome;
+$('helpOpen').onclick=()=>{if(typeof $('helpDialog').showModal==='function')$('helpDialog').showModal();else alert('두 얼굴 중 더 끌리는 사진을 선택하세요. 이전 선택으로 되돌릴 수도 있어요.');};
+$('helpClose').onclick=()=>$('helpDialog').close();
+$('helpDialog').addEventListener('click',e=>{if(e.target===$('helpDialog'))$('helpDialog').close();});
+function shareUrl() {
+  const url=new URL(location.href);url.hash='';url.search='';
+  const r=displayedResult;url.searchParams.set('result',r.gender+'-'+number(r.winner.id));url.searchParams.set('second',number(r.runner.id));return url.href;
+}
+$('shareButton').onclick=async()=>{
+  const r=displayedResult;if(!r)return;
+  if(location.protocol==='file:'){$('resultStatus').textContent='사이트에 업로드한 뒤 결과 링크를 공유할 수 있어요.';return;}
+  const url=shareUrl(),text=`내 취향은 ${r.winner.face_type}! 테스트잇 얼굴 취향 분석 테스트`;
+  try{if(navigator.share)await navigator.share({title:'테스트잇 얼굴 취향 분석 테스트',text,url});else if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(url);$('resultStatus').textContent='결과 링크를 복사했어요.';}else{prompt('아래 결과 링크를 복사해 주세요.',url);}}catch(error){if(error.name!=='AbortError')$('resultStatus').textContent='공유하지 못했어요. 결과 이미지를 저장해 공유해 주세요.';}
+};
+function canvasImage(url) {return new Promise((resolve,reject)=>{const img=new Image();if(location.protocol!=='file:')img.crossOrigin='anonymous';img.onload=()=>resolve(img);img.onerror=reject;img.src=url;});}
+function wrapText(ctx,text,x,y,maxWidth,lineHeight){let line='';for(const ch of text){if(ctx.measureText(line+ch).width>maxWidth){ctx.fillText(line,x,y);line='';y+=lineHeight;}line+=ch;}if(line)ctx.fillText(line,x,y);return y+lineHeight;}
+$('saveButton').onclick=async()=>{
+  if(!displayedResult)return;const button=$('saveButton');button.disabled=true;$('resultStatus').textContent='결과 이미지 만드는 중…';
+  try{
+    const r=displayedResult,[winner,runner]=await Promise.all([canvasImage(faceUrl(r.gender,r.winner)),canvasImage(faceUrl(r.gender,r.runner))]);
+    const c=document.createElement('canvas');c.width=900;c.height=1250;const x=c.getContext('2d');
+    x.fillStyle='#edf8f6';x.fillRect(0,0,900,1250);x.fillStyle='#f6fffc';x.fillRect(38,38,824,1174);x.strokeStyle='#619399';x.lineWidth=4;x.strokeRect(38,38,824,1174);
+    x.fillStyle='#a8dcd8';x.fillRect(44,44,812,43);x.fillStyle='#3b737b';x.font='18px Galmuri11, sans-serif';x.fillText('♡  TESTIT — 얼굴 취향 기록',60,72);
+    x.textAlign='center';x.fillStyle='#6d6872';x.font='20px sans-serif';x.fillText('테스트잇 얼굴 취향 분석 테스트',450,139);
+    x.fillStyle='#994b6a';x.font='30px Galmuri11, sans-serif';x.fillText('내 취향은 '+r.winner.face_type,450,208);
+    x.fillStyle='#fff';x.fillRect(191,244,518,518);x.drawImage(winner,200,253,500,500);
+    x.fillStyle='#857781';x.font='18px monospace';x.fillText(`${r.gender==='male'?'남자':'여자'} 번호 ${number(r.winner.id)} · 최종 우승`,450,797);
+    x.fillStyle='#6e5361';x.font='20px Galmuri11, sans-serif';x.fillText(r.winner.impression_tags.join(' · '),450,849);
+    x.strokeStyle='#c9c0bb';x.beginPath();x.moveTo(94,969);x.lineTo(806,969);x.stroke();x.drawImage(runner,105,988,200,200);x.textAlign='left';x.fillStyle='#8f7d88';x.font='17px monospace';x.fillText('결승 2위',335,1026);x.fillStyle='#35343b';x.font='28px Galmuri11, sans-serif';x.fillText('마지막까지 고민했던 '+r.runner.face_type,335,1067);x.fillStyle='#7a737c';x.font='18px sans-serif';x.fillText('번호 '+number(r.runner.id)+' · '+r.runner.impression_tags[0],335,1104);
+    const blob=await new Promise(resolve=>c.toBlob(resolve,'image/png'));if(!blob)throw new Error('empty canvas');
+    const url=URL.createObjectURL(blob),link=document.createElement('a');link.href=url;link.download=`test429_${r.gender}_${number(r.winner.id)}.png`;document.body.append(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),30000);$('resultStatus').textContent='결과 이미지를 저장했어요. 모바일에서는 다운로드 목록도 확인해 주세요.';
+  }catch(error){$('resultStatus').textContent=location.protocol==='file:'?'이 브라우저에서는 로컬 파일 저장이 제한돼요. 사이트에 업로드한 뒤 다시 저장해 주세요.':'저장하지 못했어요. 사진이 정상적으로 표시되는지 확인하고 다시 눌러주세요.';}
+  finally{button.disabled=false;}
+};
+[['male',4],['female',6],['male',7],['female',25]].forEach(([sex,id])=>{const img=new Image();img.src=faceUrl(sex,FACE_DATA[sex].find(f=>f.id===id));img.alt='';$('previewStrip').append(img);});
+const params=new URLSearchParams(location.search),matchResult=/^(male|female)-(\d{2})$/.exec(params.get('result')||'');
+if(matchResult){const sex=matchResult[1],a=FACE_DATA[sex].find(f=>f.id===Number(matchResult[2])),b=FACE_DATA[sex].find(f=>f.id===Number(params.get('second')));if(a&&b&&a.id!==b.id)renderResult(sex,a,b);}
+</script>
+</body>
+</html>

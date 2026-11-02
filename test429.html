@@ -117,7 +117,7 @@ body{background-color:#edf8f6;background-image:linear-gradient(#cbe6e533 1px,tra
 
 
 /* 요청한 결과 문구 정리 및 결승 2위 제목 강조 */
-.title-heart{display:flex;align-items:center;justify-content:center;font-family:Galmuri11,sans-serif;color:#b87f9e;font-size:23px;height:25px;width:25px;line-height:1}
+.title-heart{display:flex;align-items:center;justify-content:center;font-family:Galmuri11,sans-serif;color:#fff3a6;font-size:23px;height:25px;width:25px;line-height:1}
 .window>.titlebar{margin-bottom:7px}
 .runner strong{font-size:17px;font-weight:700;color:#486b65;line-height:1.75;word-break:keep-all}
 @media(max-width:540px){.titlebar .title{font-size:10px;white-space:nowrap;letter-spacing:-.35px}.title-heart{font-size:20px;width:20px;min-width:20px}.titlebar{gap:5px;padding:0 6px}.window-help{height:22px;width:22px;min-width:22px}.runner strong{font-size:16px;color:#486b65;line-height:1.75}}
@@ -150,23 +150,25 @@ body{background-color:#edf8f6;background-image:linear-gradient(#cbe6e533 1px,tra
 .result-screen .runner{margin-bottom:0}
 .result-screen{padding-bottom:8px}
 @media(max-width:540px){.result-screen{padding-bottom:8px}}
+
+/* Main image screen */
+.window[data-screen="home"]{padding:0;border:0;box-shadow:none;background:transparent}
+.window[data-screen="home"]>.titlebar,.window[data-screen="home"]>.statusbar{display:none}
+.window[data-screen="home"]>.content{margin:0;border:0;min-height:0;background:transparent}
+.window[data-screen="home"] #home{padding:0;background:transparent}
+.main-image{display:block;width:100%;height:auto;aspect-ratio:1;object-fit:contain}
+.desktop:has(.window[data-screen="home"])>.desktop-label{display:none}
 </style>
 </head>
 <body>
 <header class="site-header"><div class="header-inner"><a class="site-logo" href="https://test-it.co.kr/">테스트잇</a><nav class="site-nav" aria-label="주 메뉴"><a href="https://test-it.co.kr/test.html">성격</a><a href="https://test-it.co.kr/face.html">얼굴</a><a href="https://test-it.co.kr/etc.html">그외</a><a href="https://test-it.co.kr/saju.html">사주</a></nav></div></header>
 <main class="desktop">
 <div class="desktop-label"><span class="led"></span> 내 취향을 찾는 시간</div>
-<section class="window" aria-label="얼굴 취향 분석 프로그램">
+<section class="window" data-screen="home" aria-label="얼굴 취향 분석 프로그램">
 <div class="titlebar"><span class="app-icon title-heart" aria-hidden="true">♥</span><span class="title">테스트잇 얼굴 취향 분석 테스트</span><button class="window-help" id="helpOpen" aria-label="테스트 도움말">?</button></div>
 <div class="content">
-<section id="home" class="screen welcome" aria-labelledby="homeTitle">
-<div class="eyebrow">나만의 얼굴 취향 찾기</div>
-<svg class="pixel-heart" viewBox="0 0 20 18" aria-hidden="true" shape-rendering="crispEdges"><path d="M3 1h5v2h4V1h5v2h2v7h-2v2h-2v2h-2v2h-2v2H9v-2H7v-2H5v-2H3v-2H1V3h2z" fill="#945a73"/><path d="M3 3h5v2h4V3h5v2h1v4h-2v2h-2v2h-2v2H9v-2H7v-2H5V9H3z" fill="#e7adbf"/><path d="M4 4h3v2H4z" fill="#ffe8ef"/></svg>
-<h1 id="homeTitle"><small>테스트잇</small>얼굴 취향 분석 테스트</h1>
-<p class="intro">끌리는 얼굴을 고르고, 또 고르다 보면<br>내 취향이 조금 더 선명해질 거예요.</p>
-<div class="portrait-strip" aria-hidden="true" id="previewStrip"></div>
-
-<p class="tiny">64개의 얼굴, 내 취향은 한 사람</p>
+<section id="home" class="screen welcome" aria-label="테스트잇 얼굴 취향 분석 테스트">
+<img class="main-image" src="img_main429.png" alt="테스트잇 얼굴 취향 분석 테스트" width="600" height="600" fetchpriority="high">
 </section>
 <section id="setup" class="screen" hidden aria-labelledby="setupTitle">
 <div class="eyebrow" style="margin-bottom:12px">새로운 취향 찾기</div>
@@ -1442,6 +1444,7 @@ const faceUrl = (gender, face) => IMAGE_BASE + gender + '/' + face.filename;
 const number = id => String(id).padStart(2,'0');
 let gender = 'male', game = null, loadToken = 0, busy = false, displayedResult = null, lastPickAt = -Infinity;
 function show(screen, focus = true) {
+  document.querySelector('.window').dataset.screen=screen;
   loadToken++;
   document.querySelectorAll('.screen').forEach(el=>el.hidden=el.id!==screen);
   $('homeActions').hidden=screen!=='home';$('resultActions').hidden=screen!=='result';$('roundActions').hidden=screen!=='roundTransition';
@@ -1583,7 +1586,6 @@ $('saveButton').onclick=async()=>{
   }catch(error){$('resultStatus').textContent=location.protocol==='file:'?'이 브라우저에서는 로컬 파일 저장이 제한돼요. 사이트에 업로드한 뒤 다시 저장해 주세요.':'저장하지 못했어요. 사진이 정상적으로 표시되는지 확인하고 다시 눌러주세요.';}
   finally{button.disabled=false;}
 };
-[['male',4],['female',6],['male',7],['female',25]].forEach(([sex,id])=>{const img=new Image();img.src=faceUrl(sex,FACE_DATA[sex].find(f=>f.id===id));img.alt='';$('previewStrip').append(img);});
 const params=new URLSearchParams(location.search),matchResult=/^(male|female)-(\d{2})$/.exec(params.get('result')||'');
 if(matchResult){const sex=matchResult[1],a=FACE_DATA[sex].find(f=>f.id===Number(matchResult[2])),b=FACE_DATA[sex].find(f=>f.id===Number(params.get('second')));if(a&&b&&a.id!==b.id)renderResult(sex,a,b);}
 </script>

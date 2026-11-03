@@ -1578,8 +1578,21 @@ $('saveButton').onclick=async()=>{
       scale:2,useCORS:true,allowTaint:false,backgroundColor:null,logging:false,
       width:Math.ceil(captureRect.width),height:Math.ceil(captureRect.height),
       windowWidth:window.innerWidth,windowHeight:window.innerHeight,
-      scrollX:window.scrollX,scrollY:window.scrollY,
-      onclone:doc=>{doc.querySelectorAll('.coupang-ad,dialog').forEach(el=>el.remove());const clonedTarget=doc.querySelector('.window');clonedTarget.style.width=captureRect.width+'px';clonedTarget.style.maxWidth='none';}
+      scrollX:0,scrollY:0,
+      onclone:doc=>{
+        const clonedTarget=doc.querySelector('.window');
+        // 저장용 문서에는 결과 창만 남겨 페이지 여백과 스크롤의 영향을 없앱니다.
+        doc.body.replaceChildren(clonedTarget);
+        const captureStyle=doc.createElement('style');
+        captureStyle.textContent='html,body{margin:0!important;padding:0!important;min-height:0!important;display:block!important;overflow:visible!important;scroll-behavior:auto!important}body{background:transparent!important}.window,.window *{animation:none!important;transition:none!important}.window .screen{transform:none!important}';
+        doc.head.append(captureStyle);
+        Object.assign(clonedTarget.style,{
+          position:'absolute',left:'0',top:'0',margin:'0',
+          width:captureRect.width+'px',maxWidth:'none',transform:'none'
+        });
+        doc.documentElement.scrollTop=0;doc.body.scrollTop=0;
+        if(doc.defaultView)doc.defaultView.scrollTo(0,0);
+      }
     });
     const blob=await new Promise(resolve=>c.toBlob(resolve,'image/png'));if(!blob)throw new Error('empty canvas');
     if(savePreviewUrl)URL.revokeObjectURL(savePreviewUrl);savePreviewUrl=URL.createObjectURL(blob);$('savePreview').src=savePreviewUrl;$('saveDialog').showModal();$('savePreview').parentElement.scrollTop=0;$('resultStatus').textContent='';

@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>테스트잇 패션 취향 분석 테스트</title>
+<meta name="description" content="64가지 코디 중 더 마음에 드는 옷을 고르고 나의 패션 취향을 찾아보세요.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="테스트잇 패션 취향 분석 테스트">
+<meta property="og:description" content="내가 가장 끌리는 코디는? 사진으로 고르는 패션 취향 테스트">
+<meta property="og:url" content="https://test-it.co.kr/test430">
+<meta property="og:image" content="https://test-it.co.kr/img_main430.png">
+<link rel="canonical" href="https://test-it.co.kr/test430">
+<link rel="icon" href="favicon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/galmuri@2.40.3/dist/galmuri.css">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5522499110435321" crossorigin="anonymous"></script>
+<style>
+:root{--ink:#41454a;--line:#858b91;--paper:#fafafa;--round-color:#70777e;--round-light:#f0f1f2;--round-border:#aeb3b8}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;color:var(--ink);background:#eff0f1;background-image:linear-gradient(#d8dade55 1px,transparent 1px),linear-gradient(90deg,#d8dade55 1px,transparent 1px);background-size:20px 20px;font-family:Galmuri11,"Malgun Gothic","Apple SD Gothic Neo",sans-serif;font-size:13px;letter-spacing:-.3px}
+button,a,input{-webkit-tap-highlight-color:transparent}
+button{font:inherit;color:inherit;cursor:pointer;touch-action:manipulation}
+button:disabled{cursor:wait;opacity:.55}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #555d66;outline-offset:3px}
+a{color:inherit}button:active:not(:disabled){transform:translateY(1px)}
+.site-header{position:sticky;top:0;z-index:30;background:#ffffffed;border-bottom:1px solid #d6d8da}
+.header-inner{height:52px;max-width:1000px;margin:auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.site-logo,.site-nav a{font-family:"Malgun Gothic","Apple SD Gothic Neo",sans-serif;font-size:15px;font-weight:700;text-decoration:none;white-space:nowrap}
+.site-nav{display:flex;align-items:center;gap:22px}
+.desktop{max-width:1000px;margin:auto;padding:30px 15px 35px;display:flex;flex-direction:column;align-items:center;overflow-anchor:none}
+.window{width:min(100%,680px);padding:7px;border:3px solid var(--line);background:#d4d7da;box-shadow:inset 3px 3px #fff,inset -3px -3px #b6bbc0,5px 5px #bcc0c444}
+.titlebar{display:flex;align-items:center;gap:9px;min-height:42px;padding:7px 10px;background:#bec3c8;border:2px solid var(--line);box-shadow:inset 2px 2px #eceef0,inset -2px -2px #a9afb5}
+.window>.titlebar{margin-bottom:7px}
+.titlebar .title{flex:1;font-size:15px;line-height:1.65;word-break:keep-all}
+.title-heart{font-size:23px;line-height:1;color:#fff5c4}
+.window-help{width:25px;height:25px;flex-shrink:0;padding:0;border:2px solid #8c939a;background:#e8eaec;box-shadow:inset 2px 2px white;font:inherit}
+.content{border:3px solid var(--line);background:var(--paper);box-shadow:inset 3px 3px #f0f1f2}
+.screen{padding:30px 25px;min-width:0}
+.screen h2:focus{outline:none}
+.statusbar{display:flex;gap:5px;margin-top:6px;font-size:9px;color:#5e656c}
+.statusbar span{padding:5px 7px;background:#e2e4e6;border:1px solid #a3a9af}
+.statusbar span:first-child{flex:1}
+.window[data-screen="home"]{padding:0;border:0;box-shadow:none;background:transparent}
+.window[data-screen="home"]>.titlebar,.window[data-screen="home"]>.statusbar{display:none}
+.window[data-screen="home"]>.content{border:0;box-shadow:none;background:transparent}
+#home{padding:0;text-align:center}
+.main-image{display:block;width:100%;height:auto}
+.home-fallback{padding:65px 20px;background:#e2e4e6;border:3px solid #8b9197;box-shadow:inset 4px 4px white}
+.home-fallback p{margin:0 0 20px;line-height:1.9;color:#686f76}
+.home-fallback h1{font-size:clamp(27px,6vw,39px);line-height:1.6;font-weight:400;margin:0 0 23px}
+.home-fallback small{font-size:12px}
+.outside-actions{width:min(100%,560px);margin-top:23px}
+.button{display:flex;align-items:center;justify-content:center;min-height:48px;padding:12px 16px;text-decoration:none;border:2px solid #a1a7ad;background:#f9f9f9;box-shadow:inset 2px 2px white,inset -2px -2px #dddfe1,3px 3px #c9cccf44;font:inherit;font-size:14px}
+.outside-actions .button{width:100%}
+.button.primary{background:#d1d5d9;border-color:#858c94;box-shadow:inset 2px 2px #f7f8f9,inset -2px -2px #b4bac0}
+.eyebrow{font-size:11px;color:#737b83;margin-bottom:12px}
+.setup-heading{font-size:22px;font-weight:400;line-height:1.7;margin:0 0 8px}
+.subtext{font-size:12px;line-height:1.9;margin:0 0 25px;color:#6e757c;word-break:keep-all}
+fieldset{border:0;margin:0 0 23px;padding:0}
+legend{font-size:12px;margin-bottom:12px}
+.options{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.option{position:relative;cursor:pointer;min-width:0}
+.option input{position:absolute;left:12px;top:18px;width:15px;height:15px;margin:0;accent-color:#666f79}
+.option-box{display:block;padding:15px 10px 15px 35px;border:2px solid #c7cbd0;background:#fff;min-height:91px;box-shadow:inset 2px 2px white}
+.option-box strong{display:block;font-size:17px;font-weight:400}
+.option-box small{display:block;font-size:10px;color:#717980;line-height:1.9;margin-top:7px}
+.option input:checked+.option-box{border-color:#7e8790;background:#e9ecef}
+.option input:focus-visible+.option-box{outline:2px solid #5b646f;outline-offset:3px}
+.setup-actions{display:flex;gap:9px;justify-content:center;margin-top:28px}
+.setup-actions .primary{flex:1;max-width:300px}
+.match-screen{padding:22px 18px 18px}
+.match-header{text-align:center;padding:16px 10px;background:var(--round-light);border:2px solid var(--round-border);margin-bottom:18px;box-shadow:inset 2px 2px white}
+.round-tag{display:inline-block;background:var(--round-color);color:white;border:2px solid var(--round-border);padding:6px 14px;font-size:17px}
+.match-header h2{font-size:18px;font-weight:400;margin:13px 0 9px;line-height:1.8}
+.match-header p{font-size:10px;color:var(--round-color);line-height:1.8;margin:0}
+.match-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px;position:relative;align-items:start}
+.face-button{display:block;width:100%;min-width:0;padding:4px;background:var(--round-light);border:2px solid var(--round-border);box-shadow:inset 2px 2px white;text-align:left}
+.face-button img{display:block;width:100%;height:auto;aspect-ratio:3/4;object-fit:contain;background:#eeece8}
+.face-button:hover:not(:disabled){outline:2px solid #68727c;outline-offset:1px}
+.face-caption{display:flex;align-items:center;justify-content:space-between;gap:4px;padding:9px 3px 5px;font-size:10px;white-space:nowrap}
+.face-caption strong{font-weight:400;font-size:11px}
+.vs{position:absolute;top:43%;left:50%;transform:translate(-50%,-50%);width:29px;height:29px;display:grid;place-items:center;border:2px solid var(--round-border);background:#fff;font-size:9px;pointer-events:none}
+.message{font-size:11px;text-align:center;line-height:1.8;color:#69717a;margin:12px 0}
+.message:empty{display:none}
+.retry{font:inherit;font-size:11px;padding:6px 10px;border:1px solid #a2a8ae;background:#fff}
+.progress-wrap{margin:20px 0 10px}
+.progress-label{display:flex;justify-content:space-between;gap:8px;font-size:10px;color:#68717a;margin-bottom:8px}
+.progress-track{height:11px;border:2px solid #b4bac0;padding:1px;background:#eceef0}
+.progress-fill{width:0;height:5px;background:var(--round-color);transition:width .15s}
+.match-bottom{display:flex;justify-content:space-between;gap:10px;margin-top:14px}
+.text-button{border:0;background:none;font:inherit;font-size:11px;color:#6d757d;padding:6px 0;text-decoration:underline;text-underline-offset:3px}
+.window[data-round="64"]{--round-color:#78838d;--round-light:#f0f3f5;--round-border:#b5bfc7}
+.window[data-round="32"]{--round-color:#827d90;--round-light:#f3f1f6;--round-border:#c2bdcb}
+.window[data-round="16"]{--round-color:#7c8981;--round-light:#f0f4f1;--round-border:#bac8bf}
+.window[data-round="8"]{--round-color:#968b76;--round-light:#f6f3ec;--round-border:#d0c7b7}
+.window[data-round="4"]{--round-color:#9a837b;--round-light:#f6efec;--round-border:#d3bfb8}
+.window[data-round="2"]{--round-color:#94818e;--round-light:#f6eff4;--round-border:#d2becc}
+.window[data-round]>.titlebar{background:var(--round-color);color:white;border-color:var(--round-border);box-shadow:inset 2px 2px #ffffff44}
+.round-transition{text-align:center;padding:43px 20px;background:var(--round-light)}
+.round-done{font-size:12px;color:var(--round-color);margin:0 0 14px}
+.round-transition h2{font-size:24px;font-weight:400;line-height:1.6;margin:0 0 26px;color:var(--round-color)}
+.transition-symbol{display:flex;align-items:center;justify-content:center;gap:15px;margin-bottom:25px}
+.transition-symbol>span:not(.transition-arrow),.transition-symbol>strong{min-width:80px;padding:15px;border:2px solid var(--round-border);background:white;font-size:18px;font-weight:400}
+.transition-symbol>strong{background:var(--round-color);color:white}
+.transition-copy,.transition-note{line-height:1.9;font-size:12px;margin:0 0 9px}
+.transition-note{font-size:10px;color:#747d85}
+.result-screen{text-align:center;padding:26px 24px 12px}
+.ribbon{display:inline-block;padding:5px 11px;background:#e9e7ec;border:2px solid #c4c0c9;color:#6c6577;font-size:10px}
+.result-screen h2{font-size:21px;font-weight:400;line-height:1.8;margin:12px 0 19px;word-break:keep-all}
+.accent{color:#6d596e}
+.result-portrait{margin:0 auto 19px;width:min(100%,300px);padding:5px;border:2px solid #adb4bb;background:#fff;box-shadow:4px 4px #dfe2e5}
+.result-portrait img{display:block;width:100%;height:auto;aspect-ratio:3/4;object-fit:contain}
+.photo-no{font-size:10px;color:#6e7780;line-height:1.8;margin:10px 0 5px}
+.winner-style{font-size:12px;color:#6b6573;line-height:1.9;margin:0 0 13px;word-break:keep-all}
+.winner-copy{font-size:12px;color:#59636c;line-height:1.9;margin:0 auto 22px;max-width:470px;word-break:keep-all}
+.runner{display:flex;gap:18px;align-items:center;text-align:left;padding:18px 0 6px;margin:0 auto;border-top:1px dashed #bfc5cb;max-width:500px}
+.runner img{display:block;width:125px;height:auto;aspect-ratio:3/4;object-fit:contain;flex-shrink:0;background:#eeece8;border:3px solid white;outline:2px solid #bbc1c7}
+.runner>div{min-width:0;flex:1}
+.runner .eyebrow{margin:0 0 6px;color:#77707d}
+.runner strong{display:block;font-size:12px;font-weight:400;line-height:1.8;margin-bottom:9px;word-break:keep-all}
+.runner-type{font-size:15px;color:#4f5b66}
+.runner small{display:block;font-size:11px;line-height:1.85;color:#69737d;word-break:keep-all}
+.shared-note{font-size:11px;line-height:1.8;margin:18px 0 8px}
+.result-actions{display:flex;flex-direction:column;gap:10px}
+.result-actions .button:nth-child(1){background:#d8dce0}
+.result-actions .button:nth-child(2){background:#e8eaec}
+.result-actions .button:nth-child(3){background:#e6e2ec}
+.result-actions .button:nth-child(4){background:#eeeadf}
+.result-actions .message{margin:0}
+.coupang-ad{width:350px;max-width:100%;min-height:150px;margin:28px auto 0;overflow-x:auto}
+dialog{color:var(--ink);font:inherit;border:3px solid #929aa2;background:#f6f7f8;padding:12px}
+dialog::backdrop{background:#30384088}
+.help-dialog{width:min(90%,440px)}
+.help-body{padding:15px 8px;font-size:12px;line-height:1.95}
+.help-body p{margin:0 0 15px}.help-body .button{margin:auto;min-width:110px}
+.save-dialog{width:calc(100% - 32px);max-width:380px;max-height:88vh;max-height:88dvh;overflow:hidden}
+.save-dialog[open]{display:flex;flex-direction:column;align-items:stretch}
+.save-dialog-top{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-shrink:0}
+.save-dialog-top h2{font-size:15px;font-weight:400;margin:0}
+.save-dialog-top button{width:28px;height:28px;padding:0;font-size:23px;line-height:1;background:#e5e8ea;border:1px solid #adb3ba}
+.save-guide{text-align:center;font-size:12px;line-height:1.8;margin:12px 0;flex-shrink:0}
+.save-image-scroll{min-height:0;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.save-image-scroll img{display:block;width:auto;height:auto;max-width:100%;max-height:calc(88vh - 116px);max-height:calc(88dvh - 116px);object-fit:contain;margin:auto;-webkit-touch-callout:default;user-select:auto}
+@media(max-width:540px){.header-inner{height:49px;padding:0 14px;gap:10px}.site-logo,.site-nav a{font-size:14px}.site-nav{gap:15px}.desktop{padding:23px 12px 30px}.window{padding:6px}.content{border-width:2px}.titlebar{min-height:46px;padding:6px;gap:6px}.titlebar .title{font-size:14px;letter-spacing:-.5px}.title-heart{font-size:21px}.window-help{width:23px;height:23px}.screen{padding:26px 16px}.match-screen{padding:18px 9px 15px}.match-header{padding:13px 8px}.match-header h2{font-size:16px}.match-header p{font-size:9px}.match-grid{gap:10px}.face-button{padding:3px}.face-caption{font-size:9px;padding:8px 1px 5px}.face-caption strong{font-size:9px}.vs{width:24px;height:24px;font-size:8px}.options{gap:8px}.option-box{padding-left:31px;padding-right:7px}.option input{left:9px}.option-box strong{font-size:16px}.setup-heading{font-size:20px}.setup-actions .button{font-size:12px;min-width:0}.outside-actions{margin-top:19px}.result-screen{padding:24px 15px 10px}.result-screen h2{font-size:20px}.result-portrait{width:min(100%,280px)}.runner{gap:13px}.runner img{width:105px}.runner-type{font-size:14px}.runner small{font-size:10px}.statusbar{font-size:8px}.round-transition{padding:38px 15px}.round-transition h2{font-size:22px}}
+@media(max-width:350px){.site-nav{gap:10px}.site-logo,.site-nav a{font-size:13px}.header-inner{padding:0 11px}.face-caption{font-size:8px}.face-caption strong{font-size:8px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<header class="site-header"><div class="header-inner"><a class="site-logo" href="https://test-it.co.kr/">테스트잇</a><nav class="site-nav" aria-label="주 메뉴"><a href="https://test-it.co.kr/test.html">성격</a><a href="https://test-it.co.kr/face.html">얼굴</a><a href="https://test-it.co.kr/etc.html">그외</a><a href="https://test-it.co.kr/saju.html">사주</a></nav></div></header>
+<main class="desktop">
+<section class="window" data-screen="home" aria-label="패션 취향 분석 프로그램">
+<div class="titlebar"><span class="title-heart" aria-hidden="true">♥</span><span class="title">테스트잇 패션 취향 분석 테스트</span><button class="window-help" id="helpOpen" aria-label="테스트 도움말">?</button></div>
+<div class="content">
+<section id="home" class="screen" aria-label="테스트 시작 화면">
+<img class="main-image" id="mainImage" src="img_main430.png" alt="테스트잇 패션 취향 분석 테스트" hidden>
+<div class="home-fallback" id="homeFallback"><p>테스트잇</p><h1>패션 취향<br>분석 테스트</h1><p>보고 고르다 보면<br>내 취향이 보인다!</p><small>64가지 코디로 찾아보는 나의 패션 취향</small></div>
+</section>
+<section id="setup" class="screen" hidden aria-labelledby="setupTitle">
+<div class="eyebrow">새로운 취향 찾기</div><h2 id="setupTitle" class="setup-heading" tabindex="-1">어떤 코디를 골라볼까요?</h2><p class="subtext">참가 코디도 대진표도, 시작할 때마다 랜덤이에요.</p>
+<form id="setupForm"><fieldset><legend>01. 살펴보고 싶은 패션</legend><div class="options">
+<label class="option"><input type="radio" name="gender" value="male" checked><span class="option-box"><strong>남자 코디</strong><small>64가지 다른 스타일</small></span></label>
+<label class="option"><input type="radio" name="gender" value="female"><span class="option-box"><strong>여자 코디</strong><small>64가지 다른 스타일</small></span></label>
+</div></fieldset><fieldset><legend>02. 몇 강부터 시작할까요?</legend><div class="options">
+<label class="option"><input type="radio" name="size" value="64" checked><span class="option-box"><strong>64강</strong><small>모든 코디에서 고르기<br>총 63번 선택</small></span></label>
+<label class="option"><input type="radio" name="size" value="32"><span class="option-box"><strong>32강</strong><small>랜덤 32개에서 고르기<br>총 31번 선택</small></span></label>
+</div></fieldset><div class="setup-actions"><button type="button" class="button" id="setupBack">이전</button><button type="submit" class="button primary">취향 찾으러 가기 →</button></div></form>
+</section>
+<section id="match" class="screen match-screen" hidden aria-labelledby="matchTitle"><header class="match-header"><span class="round-tag" id="roundBadge">64강</span><h2 id="matchTitle" tabindex="-1">더 끌리는 코디를 골라주세요</h2><p id="matchCount"></p></header>
+<div class="match-grid"><button class="face-button" id="leftFace" disabled><img id="leftImage" alt=""><span class="face-caption"><span id="leftNumber"></span><strong>선택하기 ♡</strong></span></button><span class="vs" aria-hidden="true">VS</span><button class="face-button" id="rightFace" disabled><img id="rightImage" alt=""><span class="face-caption"><span id="rightNumber"></span><strong>선택하기 ♡</strong></span></button></div>
+<p class="message" id="imageStatus" role="status" aria-live="polite"></p><div style="text-align:center"><button id="retryImages" class="retry" hidden>사진 다시 불러오기</button></div>
+<div class="progress-wrap"><div class="progress-label"><span>내 취향 찾는 중…</span><span id="progressText"></span></div><div id="progress" class="progress-track" role="progressbar" aria-label="전체 선택 진행률" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="progress-fill" id="progressFill"></div></div></div>
+<div class="match-bottom"><button id="undoButton" class="text-button">← 이전 선택</button><button id="restartMatch" class="text-button">처음부터</button></div></section>
+<section id="roundTransition" class="screen round-transition" hidden aria-labelledby="transitionTitle"><p class="round-done" id="transitionDone"></p><h2 id="transitionTitle" tabindex="-1"></h2><div class="transition-symbol" aria-hidden="true"><span id="transitionFrom"></span><span class="transition-arrow">→</span><strong id="transitionTo"></strong></div><p class="transition-copy" id="transitionCopy"></p><p class="transition-note">다음 라운드의 대진표를 새로 섞었어요.</p></section>
+<section id="result" class="screen result-screen" hidden aria-labelledby="resultTitle"><div class="ribbon">내가 고른 최종 우승</div><h2 id="resultTitle" tabindex="-1">내 마음에 저장된 코디</h2><div class="result-portrait"><img id="winnerImage" alt=""><p class="photo-no" id="winnerNumber"></p></div><p class="winner-style" id="winnerStyle"></p><p class="winner-copy" id="winnerCopy"></p><div class="runner"><img id="runnerImage" alt=""><div><div class="eyebrow">결승 2위</div><strong id="runnerTitle"></strong><small id="runnerCopy"></small></div></div><p id="sharedNote" class="shared-note" hidden>공유된 결과를 보고 있어요. 내 취향도 찾아보세요.</p></section>
+</div><div class="statusbar"><span id="statusText">내 취향을 찾을 준비가 됐어요.</span><span>TEST430</span></div></section>
+<div id="homeActions" class="outside-actions"><button id="startButton" class="button primary">테스트 시작하기</button></div>
+<div id="roundActions" class="outside-actions" hidden><button id="roundContinue" class="button primary">다음 라운드 시작하기</button></div>
+<div id="resultActions" class="outside-actions result-actions" hidden><button id="saveButton" class="button">결과 이미지 저장하기</button><button id="againButton" class="button">다시 해보기</button><a class="button" href="https://test-it.co.kr/">다른 테스트 해보기</a><button id="shareButton" class="button">테스트 공유하기</button><p class="message" id="resultStatus" role="status" aria-live="polite"></p></div>
+<div class="coupang-ad"><script src="https://ads-partners.coupang.com/g.js"></script><script>if(window.PartnersCoupang)new PartnersCoupang.G({"id":798186,"trackingCode":"AF4391881","subId":null,"template":"carousel","width":"350","height":"150"});</script></div>
+</main>
+<dialog id="helpDialog" class="help-dialog"><div class="titlebar"><span class="title">도움말</span></div><div class="help-body"><p>두 코디 중 더 마음에 드는 쪽을 누르면 다음 대결로 넘어가요. 선택한 코디는 다음 라운드에서 다시 만나게 돼요.</p><p>32강은 전체 64개 중 무작위 32개가 참가하고, 매 라운드 대진표도 새로 섞여요. 잘못 골랐다면 ‘이전 선택’으로 되돌릴 수 있어요.</p><p>우승은 마지막에 직접 고른 코디, 2위는 결승에서 맞붙은 코디예요.</p><button class="button" id="helpClose">확인</button></div></dialog>
+<dialog id="saveDialog" class="save-dialog" aria-labelledby="saveDialogTitle"><div class="save-dialog-top"><h2 id="saveDialogTitle">결과 이미지 저장</h2><button type="button" id="saveDialogClose" aria-label="저장 창 닫기">×</button></div><p class="save-guide">이미지를 길게 눌러 저장해 주세요.</p><div class="save-image-scroll"><img id="savePreview" alt="저장할 패션 취향 테스트 결과 이미지"></div></dialog>
+<noscript><p>이 테스트를 실행하려면 브라우저의 자바스크립트를 켜주세요.</p></noscript>
+<script>
+const OUTFIT_ROWS = {
+  "male": `
+놈코어룩|회색 스웨트셔츠에 흰 티를 겹치고 진청 일자 데님과 흰 운동화를 매치|레이어드,스웨트,일자데님
+셔츠 레이어드 놈코어룩|네이비 가디건 아래 블루 셔츠를 보이고 베이지 투턱 치노와 로퍼를 매치|가디건,레이어드,치노
+헨리넥 미니멀룩|아이보리 헨리넥 니트에 차콜 와이드 슬랙스와 검정 신발|헨리넥,미니멀룩,와이드핏
+셔츠 재킷 데일리룩|올리브 셔츠 재킷과 흰 티에 크림 일자 데님과 스웨이드 운동화|셔츠재킷,데님,뉴트럴톤
+브이넥 놈코어룩|회색 브이넥 니트 안에 흰 티, 흑청 일자 데님과 검정 운동화|브이넥,레이어드,흑청
+시티 캐주얼룩|짧은 네이비 블루종에 흰 티와 라이트그레이 슬랙스, 실버 러닝화|블루종,슬랙스,러닝화
+플리스 꾸안꾸룩|무지 올리브 하프집업 플리스에 긴 흰 티와 회색 와이드 스웨트팬츠|플리스,하프집업,스웨트
+하프집업 놈코어룩|초콜릿 하프집업에 연회색 투턱 팬츠와 밝은 운동화|하프집업,투턱,뉴트럴톤
+럭비 프레피룩|네이비와 크림 줄무늬 럭비 셔츠에 베이지 버뮤다와 버건디 로퍼|럭비셔츠,버뮤다,로퍼
+데님 셔츠 프레피룩|연청 셔츠에 네이비 니트 타이와 브라운 치노, 브라운 로퍼|데님셔츠,니트타이,치노
+칼라 니트 시크룩|차콜 칼라 니트 안에 흰 티, 검정 와이드 슬랙스와 크로스백|칼라니트,모노톤,와이드핏
+아노락 시티보이룩|네이비 아노락에 청록색 나일론 쇼츠, 흰 양말과 회색 운동화|아노락,나일론쇼츠,러닝화
+블랙 셔츠 시크룩|여유 있게 단추를 연 블랙 셔츠를 차콜 투턱 슬랙스에 넣고 검정 구두를 매치|오픈칼라,셔츠,슬랙스
+바시티 시티보이룩|크림 바시티 재킷에 회색 후디와 통 큰 진청 데님, 운동화|바시티,후디,와이드데님
+니트 폴로 프레피룩|모스그린 오픈칼라 니트에 크림 투턱 치노와 브라운 로퍼|니트폴로,투턱,로퍼
+코치 재킷 시티보이룩|블루 코치 재킷과 흰 티에 회색 버뮤다, 흰 양말과 운동화|코치재킷,버뮤다,스포티룩
+클래식 정장룩|차콜 싱글 수트에 흰 셔츠와 검정 타이, 검정 더비|정장,타이,더비
+가디건 데님 데이트룩|차콜 브이넥 가디건에 흰 이너를 보이고 워싱 연청 데님과 검정 신발을 매치|가디건,브이넥,워싱데님
+빈티지 정장룩|브라운 핀스트라이프 수트에 크림 니트와 스웨이드 로퍼|정장,핀스트라이프,니트
+미니멀 정장룩|여유 있는 블랙 수트 셋업에 흰 티와 크림 운동화|정장,미니멀룩,스니커즈
+블루종 놈코어룩|블랙 레더 느낌의 짧은 재킷에 흰 티와 크림 와이드 팬츠, 회색 운동화|블루종,와이드핏,뉴트럴톤
+블랙 블루종 데일리룩|블랙 블루종에 흰 티와 올리브 일자 팬츠, 검정 신발|블루종,올리브,데일리룩
+모던 하객룩|딥올리브 수트에 아이보리 오픈칼라 셔츠와 브라운 구두|정장,오픈칼라,하객룩
+코트 테일러링룩|블랙 롱코트 안에 블루 셔츠와 얇은 타이, 회색 와이드 슬랙스|롱코트,타이,슬랙스
+고프코어룩|모스그린 방수 셸 재킷에 검정 나일론 카고와 트레일화|고프코어,셸재킷,카고
+모노톤 집업룩|차콜 스탠드칼라 집업에 흰 티와 검정 일자 슬랙스, 검정 운동화|미니멀룩,집업,모노톤
+아노락 고프코어룩|코발트 아노락에 스톤색 파라슈트 팬츠와 트레일화|고프코어,아노락,파라슈트
+쇼츠 고프코어룩|토프색 방수 재킷에 검정 하이킹 쇼츠, 회색 양말과 트레일화|고프코어,셸재킷,쇼츠
+스웨이드 캐주얼룩|황갈색 스웨이드 재킷에 크림 이너와 아이보리 일자 팬츠, 브라운 신발|스웨이드,뉴트럴톤,일자핏
+버건디 고프코어룩|버건디 방수 재킷에 카키 립스톱 팬츠와 검정 트레일화|고프코어,셸재킷,립스톱
+패딩 베스트 고프코어룩|블랙 패딩 베스트와 회색 플리스에 올리브 카고와 트레일화|고프코어,패딩베스트,레이어드
+배색 플리스 스트릿룩|네이비와 크림 배색 플리스 하프집업에 흑청 배기 데님과 실버 러닝화|플리스,배색,배기데님
+스웨트 트레이닝룩|회색 후드집업과 와이드 스웨트팬츠 셋업에 흰 티와 운동화|트레이닝룩,스웨트셋업,후드집업
+배색 칼라 시티룩|크림 칼라의 초콜릿색 니트에 베이지 투턱 팬츠와 브라운 벨트, 로퍼|배색칼라,니트,투턱
+조거 트레이닝룩|차콜 하프집업 스웨트셔츠에 같은 색 조거와 실버 러닝화|트레이닝룩,하프집업,조거
+레트로 트랙룩|버건디 라인 트랙 재킷에 검정 와이드 트랙팬츠와 밝은 운동화|트레이닝룩,트랙재킷,사이드라인
+러닝 애슬레저룩|검정 러닝 집업과 차콜 러닝 쇼츠에 흰 양말과 러닝화|애슬레저룩,러닝쇼츠,러닝화
+브라운 셔츠 시크룩|브라운 오픈칼라 셔츠를 크림 투턱 슬랙스에 넣고 검정 로퍼를 매치|오픈칼라,슬랙스,브라운
+플리스 아웃도어룩|네이비 포켓의 토프색 스냅 플리스에 올리브 카고와 트레일화|플리스,카고,고프코어
+벨루어 트레이닝룩|초콜릿 벨루어 트랙 셋업에 크림 운동화|트레이닝룩,벨루어,셋업
+레더 바이커룩|블랙 레더 바이커 재킷과 검정 티에 워싱 흑청 와이드 데님과 부츠|테토룩,레더,바이커
+카모 테토 힙합룩|올리브 오버핏 항공점퍼에 긴 검정 티와 카모 와이드 카고, 하이탑|테토룩,힙합룩,카모
+후드집업 스트릿룩|검정 후드집업 안에 긴 흰 티, 올리브 와이드 팬츠와 검정 운동화|스트릿룩,후드집업,와이드핏
+워싱 데님 셔츠룩|회청색 포켓 데님 셔츠를 블랙 와이드 슬랙스에 넣고 벨트와 로퍼를 매치|데님셔츠,워싱,슬랙스
+바시티 힙합룩|버건디와 크림 바시티 재킷에 검정 배기 데님과 레드 하이탑|테토룩,힙합룩,바시티
+후디 카펜터 스트릿룩|회색 오버핏 후디에 초콜릿 와이드 카펜터 팬츠와 스케이트화|스트릿룩,후디,카펜터
+레더 카고 테토룩|검정 레더 블루종에 회색 티와 차콜 와이드 카고, 검정 운동화|테토룩,레더,카고
+그래픽 데님 쇼츠룩|먹색 오버핏 그래픽 티에 무릎 길이 블루 데님 쇼츠와 흰 양말, 스케이트화|스트릿룩,그래픽티,데님쇼츠
+캔버스 워크웨어룩|카멜 캔버스 워크 재킷에 크림 티와 생지 데님, 브라운 워크부츠|워크웨어룩,캔버스,생지데님
+블랙 니트 데일리룩|블랙 루즈핏 니트에 워싱 연청 와이드 데님과 검정 운동화|놈코어룩,니트,워싱데님
+체크 아메카지룩|브라운 체크 셔츠와 흰 티에 올리브 퍼티그 팬츠와 브라운 부츠|아메카지룩,체크,퍼티그
+데님 셔츠 아메카지룩|인디고 데님 셔츠와 크림 헨리넥에 베이지 치노와 브라운 모카신|아메카지룩,데님셔츠,치노
+베스트 워크웨어룩|블랙 캔버스 베스트와 크림 헨리넥에 연청 카펜터 데님과 워크슈즈|워크웨어룩,베스트,카펜터
+스웨이드 웨스턴룩|짧은 브라운 스웨이드 재킷과 검정 티에 블루 부츠컷 데님과 검정 부츠|빈티지룩,스웨이드,부츠컷
+니트 셔츠 프레피룩|회색 브이넥 니트 아래 블루 셔츠를 보이고 차콜 슬랙스와 크로스백을 매치|프레피룩,브이넥,레이어드
+네이비 니트 프레피룩|흰 이너가 보이는 네이비 케이블 칼라 니트에 베이지 와이드 치노와 로퍼|프레피룩,케이블니트,치노
+플리스 코듀로이룩|아이보리 하프집업 플리스에 브라운 와이드 코듀로이와 스웨이드 운동화|플리스,코듀로이,뉴트럴톤
+소프트 에겐룩|오트밀 브이넥 니트 아래 흰 티, 아이보리 여유 있는 팬츠와 브라운 로퍼|에겐룩,브이넥,뉴트럴톤
+가디건 에겐룩|회색 가디건에 하늘색 셔츠를 겹치고 아이보리 와이드 팬츠와 회색 운동화|에겐룩,가디건,레이어드
+차콜 니트 시크룩|딥브이넥 차콜 칼라 니트에 검정 와이드 팬츠와 검정 구두, 넥라인의 안경|시크룩,딥브이넥,모노톤
+집업 니트 데이트룩|크림 집업 니트에 블루그레이 일자 데님과 브라운 스웨이드 더비|데이트룩,집업니트,데님
+스웨이드 미니멀룩|초콜릿 스웨이드 블루종과 크림 이너에 아이보리 일자 팬츠와 브라운 로퍼|미니멀룩,스웨이드,뉴트럴톤
+레트로 트랙 캐주얼룩|체리 레드 트랙 재킷과 흰 티에 회색 와이드 데님과 브라운 운동화|스트릿룩,트랙재킷,워싱데님
+니트 베스트 시크룩|화이트 셔츠 위에 차콜 브이넥 니트 베스트, 검정 와이드 슬랙스와 더비|시크룩,니트베스트,레이어드
+`,
+  "female": `
+내추럴 페미닌룩|화이트 레이스 스트랩 티어드 맥시 원피스에 브라운 샌들과 꽃무늬 숄더백|에겐룩,티어드,롱원피스,레이스
+시크 페미닌룩|허리선이 잡힌 블루 스트라이프 셔츠에 차콜 플리츠 미니와 블랙 롱부츠|스트라이프,플리츠,미니스커트,롱부츠
+로맨틱 에겐룩|크림 리본 블라우스에 핑크 미니스커트와 아이보리 메리제인|리본,파스텔,미니스커트,메리제인
+모던 페미닌룩|블랙 비대칭 오프숄더 가디건에 베이지 와이드 슬랙스와 브라운 토트|오프숄더,와이드핏,슬랙스,모던룩
+새틴 레이어드룩|핑크 새틴 슬립 원피스 안에 화이트 레이스 긴팔을 겹친 코디|에겐룩,새틴,레이스,롱원피스
+애슬레저룩|블랙 슬림 집업에 차콜 바이커 쇼츠, 흰 양말과 운동화|스포티룩,집업,바이커쇼츠,슬림핏
+시크 데님룩|차콜 오프숄더 니트에 아이보리 레이스 이너와 연청 와이드 데님|오프숄더,레이스,레이어드,데님
+셔츠 레이어드 놈코어룩|네이비 가디건 아래 스트라이프 셔츠를 보이게 입고 베이지 치노와 로퍼를 매치|놈코어룩,레이어드,치노,로퍼
+리본 에겐룩|버터색 리본 가디건에 크림 잔꽃 미니스커트와 브라운 메리제인|에겐룩,리본,잔꽃,미니스커트
+핑크 셔츠 데일리룩|루즈한 핑크 셔츠에 흰 미니스커트와 밝은색 플랫슈즈|페미닌룩,셔츠,파스텔,미니스커트
+발레코어룩|로즈색 랩 니트에 차콜 쇼츠, 회색 레그워머와 블랙 발레 플랫|에겐룩,랩니트,레그워머,발레플랫
+스웨이드 웨스턴룩|브라운 스웨이드 재킷에 워싱 부츠컷 청바지와 브라운 부츠|빈티지룩,스웨이드,부츠컷,데님
+소프트 에겐룩|하늘색 루즈핏 니트에 화이트 티어드 롱스커트와 밝은 플랫슈즈|에겐룩,파스텔,루즈핏,롱스커트
+스웨이드 시티 캐주얼룩|초콜릿색 오버핏 스웨이드 재킷에 블랙 쇼츠와 검정 앵클부츠|테토룩,스웨이드,오버핏,쇼츠
+레이스 내추럴룩|화이트 블라우스 위에 크림 레이스 베스트, 화이트 롱스커트와 브라운 플랫|에겐룩,레이스,레이어드,롱스커트
+레이스 믹스 캐주얼룩|네이비 딥브이넥 니트 안에 흰 레이스 나시, 올리브 카고와 밝은 운동화|레이어드,레이스,딥브이넥,카고
+케이블 프레피룩|네이비 케이블 니트에 흰 쇼츠와 줄무늬 양말, 흰 운동화|프레피룩,케이블니트,쇼츠,스포티룩
+로맨틱 부츠룩|연핑크 가디건과 흰 탱크톱에 화이트 티어드 미니, 브라운 부츠|에겐룩,가디건,티어드,미니스커트
+헨리넥 놈코어룩|토프색 헨리넥 아래 흰 티를 겹치고 진청 배럴 데님과 어두운 운동화|놈코어룩,헨리넥,레이어드,배럴핏
+스웨이드 버뮤다룩|올리브 스웨이드 블루종에 아이보리 탱크톱과 흑청 버뮤다, 검정 앵클부츠|테토룩,스웨이드,버뮤다,블루종
+보헤미안룩|화이트 자수 블라우스에 브라운 코듀로이 부츠컷과 스웨이드 부츠|빈티지룩,자수,코듀로이,부츠컷
+모던 프레피룩|짧은 차콜 블레이저와 블루 셔츠에 검정 버뮤다, 흰 양말과 로퍼|프레피룩,블레이저,버뮤다,레이어드
+그런지 스트릿룩|차콜 체크 셔츠와 블랙 탱크톱에 워싱 버건디 와이드 데님|테토룩,체크,워싱데님,와이드핏
+스포티 믹스룩|블루 칼라 집업에 회색 일자 롱스커트와 실버 러닝화|스포티룩,집업,롱스커트,러닝화
+시크 데님 부츠룩|워싱 흑청 재킷에 블랙 미니 원피스와 브라운 롱부츠|시크룩,흑청,미니원피스,롱부츠
+민소매 미니멀룩|차콜 민소매 하이넥에 아이보리 일자 롱스커트와 블랙 샌들|미니멀룩,민소매,롱스커트,모노톤
+스웨트 꾸안꾸룩|아이보리 오프숄더 스웨트셔츠에 네이비 와이드 스웨트팬츠와 버건디 운동화|오프숄더,스웨트,루즈핏,와이드핏
+니트 폴로 놈코어룩|초콜릿색 반팔 니트 폴로에 스톤색 와이드 팬츠와 브라운 슬라이드|놈코어룩,니트폴로,와이드핏,뉴트럴톤
+브이넥 놈코어룩|토프색 브이넥 니트 아래 흰 티, 아이보리 일자 팬츠와 브라운 발레 플랫|놈코어룩,브이넥,레이어드,뉴트럴톤
+테토 힙합룩|오버핏 블랙 트랙 재킷과 긴 흰 티에 카모 배기 카고와 검정 스케이트화|테토룩,힙합룩,카모,배기핏
+스포티 스트릿룩|회색 줄무늬 홀터탑에 작은 스터드가 있는 회색 배기 스웨트팬츠와 실버 운동화|스포티룩,홀터넥,스터드,스웨트
+셔츠 슬랙스 미니멀룩|아이보리 셔츠를 차콜 와이드 슬랙스에 넣고 블랙 벨트와 로퍼를 매치|미니멀룩,셔츠,슬랙스,와이드핏
+홀터넥 시크룩|초콜릿색 비대칭 홀터탑에 크림 와이드 데님과 블랙 슬링백|시크룩,홀터넥,비대칭,와이드데님
+레이스 페미닌 캐주얼룩|회색 딥브이넥 니트 사이로 검정 레이스 나시를 보이고 워싱 청바지와 검정 플랫을 매치|페미닌룩,딥브이넥,레이스,데님
+다크 발레코어룩|화이트 레이스 미니 원피스 위에 검정 리본 볼레로, 레이스업 롱부츠와 작은 숄더백|발레코어,리본,미니원피스,롱부츠
+차콜 니트 시크룩|보슬한 차콜 오픈칼라 니트에 차콜 와이드 팬츠, 넥라인에 건 안경|시크룩,딥브이넥,니트,톤온톤
+레이어드 에겐룩|회색 가디건 안에 레이스 이너, 화이트 티어드 미니와 회색 레그워머, 브라운 부츠|에겐룩,레이어드,레이스,레그워머
+블랙 미니원피스룩|블랙 티어드 끈 미니 원피스에 검정 미들부츠와 체인백|페미닌룩,블랙,티어드,미니원피스
+비대칭 시크 페미닌룩|비대칭 블랙 니트에 브라운 새틴 미디스커트와 블랙 롱부츠|페미닌룩,시크룩,새틴,롱부츠
+프레피 페미닌룩|버건디 브이넥 니트 아래 흰 칼라를 보이고 차콜 플리츠 롱스커트와 검정 부츠를 매치|프레피룩,레이어드,플리츠,롱스커트
+블랙 가디건 페미닌룩|허리 아래가 갈라진 블랙 가디건에 화이트 미니 플레어와 검정 스타킹, 미들부츠|페미닌룩,가디건,미니스커트,스타킹
+후디 카고 스트릿룩|크림 오버핏 후디와 그린 나일론 카고팬츠에 회색 트레일 운동화|테토룩,스트릿룩,후디,카고
+레더 믹스 페미닌룩|블랙 레더 재킷과 회색 이너에 화이트 티어드 미니, 검정 롱부츠|레더,페미닌룩,티어드,롱부츠
+새틴 미니멀 페미닌룩|브라운 스퀘어넥 니트에 아이보리 새틴 롱스커트와 슬링백|페미닌룩,미니멀룩,스퀘어넥,새틴
+크롭 트레이닝룩|회색 크롭 집업에 네이비 와이드 트랙팬츠와 실버 러닝화|스포티룩,크롭,트랙팬츠,러닝화
+레이스 나시 레이어드룩|흰 긴팔 위에 검정 레이스 나시를 겹치고 워싱 블루 데님과 검정 신발을 매치|레이어드,레이스,페미닌룩,데님
+다크 그런지룩|검정과 차콜 줄무늬 오버핏 니트에 워싱 흑청 데님과 검정 부츠|그런지룩,테토룩,스트라이프,워싱데님
+항공점퍼 스트릿룩|블랙 항공점퍼와 흰 티에 블루 와이드 데님과 회색 스니커즈|스트릿룩,테토룩,항공점퍼,와이드데님
+레더 레이스 믹스룩|브라운 워싱 레더 재킷과 회색 티에 크림 레이스 미디스커트와 검정 운동화|레더,레이스,믹스매치,미디스커트
+시티보이 믹스룩|하늘색 오버핏 셔츠에 브라운 니트 베스트, 검정 나일론 버뮤다와 실버 운동화|시티보이룩,레이어드,니트베스트,버뮤다
+그런지 미니룩|차콜 오버핏 니트에 블랙 플리츠 미니와 타이츠, 컴뱃 롱부츠|그런지룩,테토룩,오버핏,롱부츠
+후디 롱스커트 스트릿룩|체리 레드 크롭 후드집업과 흰 탱크톱에 차콜 슬릿 스웨트 맥시스커트, 실버 운동화|스트릿룩,크롭,스웨트,롱스커트
+리본 빈티지룩|와인색 리본 가디건에 크림 일자 팬츠와 버건디 발레 플랫|빈티지룩,에겐룩,리본,발레플랫
+슬립 데님 레이어드룩|회색 반팔 위에 화이트 레이스 슬립 튜닉을 겹치고 블루 일자 데님과 검정 플랫을 매치|페미닌룩,레이어드,레이스,데님
+오프숄더 레이어드룩|차콜 오프숄더 가디건 안에 줄무늬 홀터탑, 검정 와이드 팬츠와 플랫|시크룩,오프숄더,홀터넥,레이어드
+다크 와이드 스트릿룩|차콜 민소매 하이넥에 블랙 코팅 와이드 데님과 플랫폼 운동화|테토룩,스트릿룩,코팅데님,와이드핏
+푸퍼 힙합룩|회색 후디 위에 검정 패딩 베스트, 네이비 배기 팬츠와 흰 농구화|힙합룩,테토룩,패딩베스트,배기핏
+레트로 트랙 힙합룩|네이비·화이트 배색 트랙 재킷에 회색 배기 데님과 청키 운동화|힙합룩,테토룩,트랙재킷,배기데님
+밀리터리 테토룩|올리브 오버핏 항공점퍼와 검정 티에 검정 와이드 카고와 운동화|테토룩,밀리터리룩,카고,오버핏
+고프코어 믹스룩|실버그레이 바람막이에 올리브 카고 롱스커트와 트레일화|고프코어,바람막이,카고스커트,트레일화
+카모 워크웨어 힙합룩|브라운 워크재킷과 크림 티에 카모 와이드 카고와 검정 스케이트화|힙합룩,테토룩,워크웨어,카모
+니트 미니 데일리룩|브라운 루즈핏 니트에 베이지 미니스커트와 벨트, 브라운 부츠|페미닌룩,뉴트럴톤,미니스커트,부츠
+트랙 페미닌 믹스룩|크림 트랙 재킷에 차콜 미니 원피스, 흰 양말과 메리제인 스니커즈|스포티룩,페미닌룩,미니원피스,메리제인
+레이스 니트 미니멀룩|차콜 루즈 브이넥 니트 아래 흰 레이스 나시, 검정 와이드 슬랙스와 구두|미니멀룩,레이어드,레이스,와이드핏
+`
+};
+const OUTFIT_DATA = Object.fromEntries(
+  Object.entries(OUTFIT_ROWS).map(([sex, rows]) => [sex,
+    rows.trim().split('\n').map((row, index) => {
+      const [style, description, tags] = row.split('|');
+      const id = index + 1;
+      const suffix = sex === 'male' && id === 7 ? 'png' : 'jpg';
+      const prefix = sex === 'male' ? 'fashion_male_' : 'fashion_';
+      return {id, filename:prefix + String(id).padStart(2,'0') + '.' + suffix,
+        style, description, tags:tags.split(',')};
+    })
+  ])
+);
+function shuffled(items, random = Math.random) {
+  const result = items.slice();
+  for (let i = result.length - 1; i > 0; i--) {
+    const j = Math.floor(random() * (i + 1));
+    [result[i], result[j]] = [result[j], result[i]];
+  }
+  return result;
+}
+class Tournament {
+  constructor(pool, size, random = Math.random) {
+    if (![32, 64].includes(size) || pool.length < size || new Set(pool.map(p => p.id)).size !== pool.length) {
+      throw new Error('대진표를 만들 수 없습니다.');
+    }
+    this.random = random;
+    this.size = size;
+    this.current = shuffled(pool, random).slice(0, size);
+    this.next = [];
+    this.index = 0;
+    this.history = [];
+    this.choices = [];
+    this.winner = null;
+    this.runnerUp = null;
+  }
+  get pair() { return this.winner ? [] : this.current.slice(this.index, this.index + 2); }
+  get round() { return this.current.length; }
+  choose(id) {
+    if (this.winner) return false;
+    const pair = this.pair;
+    const winner = pair.find(p => p.id === id);
+    if (!winner) return false;
+    const loser = pair.find(p => p.id !== id);
+    this.history.push({current:this.current.slice(), next:this.next.slice(), index:this.index, choices:this.choices.slice()});
+    this.choices.push({winner, loser, round:this.round});
+    if (this.round === 2) {
+      this.winner = winner;
+      this.runnerUp = loser;
+    } else {
+      this.next.push(winner);
+      this.index += 2;
+      if (this.index === this.current.length) {
+        this.current = shuffled(this.next, this.random);
+        this.next = [];
+        this.index = 0;
+      }
+    }
+    return true;
+  }
+  undo() {
+    const previous = this.history.pop();
+    if (!previous) return false;
+    Object.assign(this, previous);
+    this.winner = null;
+    this.runnerUp = null;
+    return true;
+  }
+}
+if (typeof module !== 'undefined') module.exports = {Tournament, shuffled};
+
+const $ = id => document.getElementById(id);
+const IMAGE_DIRS = {male:'./남자패션/', female:'./여자패션/'};
+const faceUrl = (gender, outfit) => IMAGE_DIRS[gender] + outfit.filename;
+const number = id => String(id).padStart(2,'0');
+let gender = 'male', game = null, loadToken = 0, busy = false, displayedResult = null, lastPickAt = -Infinity;
+function show(screen, focus = true) {
+  document.querySelector('.window').dataset.screen=screen;
+  loadToken++;
+  document.querySelectorAll('.screen').forEach(el=>el.hidden=el.id!==screen);
+  $('homeActions').hidden=screen!=='home';$('resultActions').hidden=screen!=='result';$('roundActions').hidden=screen!=='roundTransition';
+  if(!['match','roundTransition'].includes(screen))document.querySelector('.window').removeAttribute('data-round');
+  const labels={roundTransition:['다음 라운드','다음 라운드','다음 라운드를 시작할 준비가 됐어요.'],home:['시작','시작','내 취향을 찾을 준비가 됐어요.'],setup:['새로운 취향 찾기','설정','참가 코디와 시작 라운드를 골라주세요.'],match:['선택','대결','더 마음에 드는 코디를 골라주세요.'],result:['결과','결과','내 취향의 코디를 찾았어요.']};
+  $('statusText').textContent=labels[screen][2];
+  if(focus){const target=$(screen).querySelector('h1,h2');if(target){target.tabIndex=-1;target.focus({preventScroll:true});}}
+}
+function loadImage(img, src, alt) {
+  img.alt=alt;
+  return new Promise((resolve,reject)=>{
+    const loaded=()=>{cleanup();img.naturalWidth ? resolve() : reject(new Error('empty image'));};
+    const failed=()=>{cleanup();reject(new Error('image unavailable'));};
+    const cleanup=()=>{img.removeEventListener('load',loaded);img.removeEventListener('error',failed);};
+    img.addEventListener('load',loaded);img.addEventListener('error',failed);img.src=src;
+    if(img.complete) queueMicrotask(()=>img.naturalWidth ? loaded() : failed());
+  });
+}
+function preloadNext() {
+  if(!game || game.winner)return;
+  game.current.slice(game.index+2,game.index+6).forEach(face=>{const img=new Image();img.src=faceUrl(gender,face);});
+}
+async function renderMatch() {
+  if(!game || game.winner)return;
+  const token=++loadToken;busy=true;
+  document.querySelector('.window').dataset.round=String(game.round);
+  const [a,b]=game.pair;
+  $('leftFace').disabled=$('rightFace').disabled=true;
+  $('leftFace').classList.remove('selected');$('rightFace').classList.remove('selected');
+  $('retryImages').hidden=true;$('imageStatus').textContent='사진 불러오는 중…';
+  $('roundBadge').textContent=game.round===2?'결승':game.round===4?'준결승':game.round+'강';
+  $('matchTitle').textContent=game.round===2?'마지막으로, 가장 끌리는 코디는?':'더 끌리는 코디를 골라주세요';
+  $('matchCount').textContent=`${game.index/2+1} / ${game.round/2} 대결 · ${gender==='male'?'남자':'여자'} ${game.size}강으로 시작`;
+  $('leftNumber').textContent='번호 '+number(a.id);$('rightNumber').textContent='번호 '+number(b.id);
+  $('leftFace').setAttribute('aria-label',`${number(a.id)}번 코디 선택`);$('rightFace').setAttribute('aria-label',`${number(b.id)}번 코디 선택`);
+  const done=game.choices.length,total=game.size-1,percent=Math.round(done/total*100);
+  $('progressText').textContent=`${done} / ${total}`;$('progressFill').style.width=percent+'%';$('progress').setAttribute('aria-valuenow',percent);
+  $('undoButton').disabled=!game.history.length;
+  const results=await Promise.allSettled([loadImage($('leftImage'),faceUrl(gender,a),`${number(a.id)}번 코디`),loadImage($('rightImage'),faceUrl(gender,b),`${number(b.id)}번 코디`)]);
+  if(token!==loadToken)return;
+  if(results.some(r=>r.status==='rejected')){
+    $('imageStatus').textContent='사진을 불러오지 못했어요. 다시 불러와 주세요.';$('retryImages').hidden=false;return;
+  }
+  $('leftFace').disabled=$('rightFace').disabled=false;busy=false;$('imageStatus').textContent='';preloadNext();
+}
+function pick(side) {
+  if(busy||!game||game.winner||performance.now()-lastPickAt<250)return;
+  lastPickAt=performance.now();busy=true;
+  const previousRound=game.round;
+  const chosen=game.pair[side];$('leftFace').disabled=$('rightFace').disabled=true;
+  if(!game.choose(chosen.id)){busy=false;return;}
+  if(game.winner){renderResult(gender,game.winner,game.runnerUp,game.choices);}
+  else if(game.round!==previousRound)showRoundTransition(previousRound);
+  else renderMatch();
+}
+function roundName(n){return n===2?'결승':n===4?'준결승':n+'강';}
+function showRoundTransition(previousRound){
+  busy=false;show('roundTransition',false);document.querySelector('.window').dataset.round=String(game.round);
+  $('transitionDone').textContent=roundName(previousRound)+' 완료';
+  $('transitionTitle').textContent=roundName(game.round)+'을 시작합니다';
+  $('transitionFrom').textContent=roundName(previousRound);$('transitionTo').textContent=roundName(game.round);
+  $('transitionCopy').textContent=previousRound+'개 코디 중 '+game.round+'개가 남았어요.';
+  $('roundContinue').textContent=roundName(game.round)+' 시작하기';
+}
+$('roundContinue').onclick=()=>{show('match',false);renderMatch();};
+function renderResult(sex, winner, runner, choices = null) {
+  gender=sex;busy=false;displayedResult={gender:sex,winner,runner,choices};
+  show('result');
+  $('resultTitle').replaceChildren(document.createTextNode('내 취향은 '),Object.assign(document.createElement('span'),{className:'accent',textContent:winner.style}));
+  $('winnerImage').src=faceUrl(sex,winner);$('winnerImage').alt=`최종 우승 ${number(winner.id)}번 코디`;
+  $('winnerNumber').textContent=`${sex==='male'?'남자':'여자'} 코디 ${number(winner.id)} · 최종 우승`;
+  $('winnerStyle').textContent=winner.tags.join(' · ');
+  $('winnerCopy').textContent=winner.description;
+  $('runnerImage').src=faceUrl(sex,runner);$('runnerImage').alt=`결승 2위 ${number(runner.id)}번 코디`;
+  $('runnerTitle').replaceChildren(document.createTextNode('마지막까지 고민했던'),document.createElement('br'),Object.assign(document.createElement('span'),{className:'runner-type',textContent:runner.style}));
+  $('runnerCopy').replaceChildren();
+  $('runnerCopy').append(document.createTextNode(`번호 ${number(runner.id)}`),document.createElement('br'),document.createTextNode(runner.description));
+  $('sharedNote').hidden=!!choices;
+  $('resultStatus').textContent='';
+}
+function resetToSetup() {game=null;busy=false;displayedResult=null;show('setup');}
+$('startButton').onclick=()=>show('setup');$('setupBack').onclick=()=>show('home');
+$('setupForm').onsubmit=event=>{event.preventDefault();const form=new FormData(event.currentTarget);gender=form.get('gender');game=new Tournament(OUTFIT_DATA[gender],Number(form.get('size')));show('match');renderMatch();};
+$('leftFace').onclick=()=>pick(0);$('rightFace').onclick=()=>pick(1);$('retryImages').onclick=renderMatch;
+$('undoButton').onclick=()=>{if(game&&game.undo())renderMatch();};
+$('restartMatch').onclick=()=>{if(confirm('진행 중인 선택을 지우고 처음부터 시작할까요?'))resetToSetup();};
+function resetToHome(){
+  game=null;busy=false;displayedResult=null;lastPickAt=-Infinity;$('setupForm').reset();
+  const url=new URL(location.href);url.searchParams.delete('result');url.searchParams.delete('second');
+  try{history.replaceState(null,'',url.href);}catch(error){}
+  show('home');
+}
+$('againButton').onclick=resetToHome;
+$('helpOpen').onclick=()=>{if(typeof $('helpDialog').showModal==='function')$('helpDialog').showModal();else alert('두 코디 중 더 끌리는 사진을 선택하세요. 이전 선택으로 되돌릴 수도 있어요.');};
+$('helpClose').onclick=()=>$('helpDialog').close();
+$('helpDialog').addEventListener('click',e=>{if(e.target===$('helpDialog'))$('helpDialog').close();});
+function shareUrl() {
+  const url=new URL(location.href);url.hash='';url.search='';return url.href;
+}
+$('shareButton').onclick=async()=>{
+  const r=displayedResult;if(!r)return;
+  if(location.protocol==='file:'){$('resultStatus').textContent='사이트에 업로드한 뒤 테스트 주소를 공유할 수 있어요.';return;}
+  const url=shareUrl(),text='테스트잇 패션 취향 분석 테스트',message=text+'\n'+url;
+  try{if(navigator.share)await navigator.share({title:text,text,url});else if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(message);$('resultStatus').textContent='테스트 이름과 주소를 복사했어요.';}else{prompt('테스트 이름과 주소를 복사해 주세요.',message);}}catch(error){if(error.name!=='AbortError')$('resultStatus').textContent='공유하지 못했어요. 결과 이미지를 저장해 공유해 주세요.';}
+};
+$('saveDialogClose').onclick=()=>$('saveDialog').close();
+$('saveDialog').addEventListener('click',event=>{if(event.target===$('saveDialog')){const rect=$('saveDialog').getBoundingClientRect();if(event.clientX<rect.left||event.clientX>rect.right||event.clientY<rect.top||event.clientY>rect.bottom)$('saveDialog').close();}});
+async function createResultPng() {
+  if (document.fonts) await document.fonts.ready;
+  const images = [$('winnerImage'), $('runnerImage')];
+  await Promise.all(images.map(async img => {
+    if (img.decode) await img.decode();
+    if (!img.complete || !img.naturalWidth) throw new Error('사진을 불러오지 못했어요.');
+  }));
+  const result = displayedResult;
+  const canvas = document.createElement('canvas');
+  const width = 600;
+  const scale = 2;
+  let ctx = canvas.getContext('2d');
+  const font = size => size + 'px Galmuri11,"Malgun Gothic",sans-serif';
+  function wrap(value, maxWidth, size) {
+    ctx.font = font(size);
+    const lines = [];
+    let line = '';
+    for (const character of value) {
+      if (ctx.measureText(line + character).width > maxWidth && line) {
+        lines.push(line.trim());
+        line = character;
+      } else {
+        line += character;
+      }
+    }
+    if (line.trim()) lines.push(line.trim());
+    return lines;
+  }
+  const heading = wrap('내 취향은 ' + result.winner.style, 512, 27);
+  const tags = wrap(result.winner.tags.join(' · '), 510, 18);
+  const description = wrap(result.winner.description, 510, 19);
+  const runnerHeading = wrap(result.runner.style, 305, 22);
+  const runnerDescription = wrap(result.runner.description, 305, 16);
+  const imageY = 151 + heading.length * 38;
+  const tagsY = imageY + 518;
+  const descriptionY = tagsY + tags.length * 27 + 12;
+  const runnerY = descriptionY + description.length * 30 + 25;
+  const runnerHeight = Math.max(210, 110 + runnerHeading.length * 31 + runnerDescription.length * 25);
+  const footerY = runnerY + runnerHeight + 22;
+  const height = footerY + 40;
+  canvas.width = width * scale;
+  canvas.height = height * scale;
+  ctx = canvas.getContext('2d');
+  ctx.scale(scale, scale);
+  function box(background, border, x, y, w, h, lineWidth = 2) {
+    ctx.fillStyle = background;
+    ctx.fillRect(x, y, w, h);
+    ctx.strokeStyle = border;
+    ctx.lineWidth = lineWidth;
+    ctx.strokeRect(x + lineWidth / 2, y + lineWidth / 2, w - lineWidth, h - lineWidth);
+  }
+  function text(value, x, y, size = 19, color = '#46515b', align = 'left') {
+    ctx.font = font(size);
+    ctx.fillStyle = color;
+    ctx.textAlign = align;
+    ctx.textBaseline = 'top';
+    ctx.fillText(value, x, y);
+  }
+  function lines(values, x, y, size, lineHeight, color, align) {
+    values.forEach((value, i) => text(value, x, y + i * lineHeight, size, color, align));
+  }
+  function photo(img, x, y, w, h) {
+    ctx.fillStyle = '#eeece8';
+    ctx.fillRect(x, y, w, h);
+    const ratio = Math.min(w / img.naturalWidth, h / img.naturalHeight);
+    const dw = img.naturalWidth * ratio;
+    const dh = img.naturalHeight * ratio;
+    ctx.drawImage(img, x + (w - dw) / 2, y + (h - dh) / 2, dw, dh);
+  }
+  box('#d4d7da', '#858b91', 0, 0, width, height, 4);
+  box('#bec3c8', '#858b91', 12, 12, 576, 58, 3);
+  text('♥', 26, 27, 30, '#fff5c4');
+  text('테스트잇 패션 취향 분석 테스트', 67, 30, 22);
+  box('#fafafa', '#858b91', 12, 80, 576, footerY - 90, 3);
+  box('#e9e7ec', '#c4c0c9', 211, 104, 178, 30);
+  text('내가 고른 최종 우승', 300, 111, 16, '#6c6577', 'center');
+  lines(heading, 300, 151, 27, 38, '#6d596e', 'center');
+  box('#ffffff', '#adb4bb', 113, imageY, 374, 514);
+  photo(images[0], 120, imageY + 7, 360, 480);
+  text((result.gender === 'male' ? '남자' : '여자') + ' 코디 ' + number(result.winner.id) + ' · 최종 우승', 300, imageY + 491, 14, '#5b6570', 'center');
+  lines(tags, 300, tagsY, 18, 27, '#726879', 'center');
+  lines(description, 300, descriptionY, 19, 30, '#59636c', 'center');
+  ctx.strokeStyle = '#bfc5cb';
+  ctx.setLineDash([4, 4]);
+  ctx.beginPath();ctx.moveTo(38, runnerY - 12);ctx.lineTo(562, runnerY - 12);ctx.stroke();
+  ctx.setLineDash([]);
+  box('#ffffff', '#bbc1c7', 39, runnerY, 166, 214);
+  photo(images[1], 44, runnerY + 5, 156, 208);
+  text('결승 2위', 225, runnerY + 4, 16, '#77707d');
+  text('마지막까지 고민했던', 225, runnerY + 31, 16);
+  lines(runnerHeading, 225, runnerY + 59, 22, 31, '#4f5b66');
+  const runnerTextY = runnerY + 64 + runnerHeading.length * 31;
+  text('코디 ' + number(result.runner.id), 225, runnerTextY, 15, '#69737d');
+  lines(runnerDescription, 225, runnerTextY + 27, 16, 25, '#69737d');
+  box('#e2e4e6', '#a3a9af', 12, footerY, 483, 28, 1);
+  text('내 취향의 코디를 찾았어요.', 22, footerY + 7, 13, '#5e656c');
+  box('#e2e4e6', '#a3a9af', 501, footerY, 87, 28, 1);
+  text('TEST430', 544, footerY + 7, 13, '#5e656c', 'center');
+  return canvas.toDataURL('image/png');
+}
+
+$('saveButton').onclick=async()=>{
+  if(!displayedResult)return;
+  const button=$('saveButton');button.disabled=true;$('resultStatus').textContent='결과 이미지 만드는 중…';
+  try{
+    const png=await createResultPng();
+    $('savePreview').src=png;
+    $('saveDialog').showModal();$('savePreview').parentElement.scrollTop=0;$('resultStatus').textContent='';
+  }catch(error){$('resultStatus').textContent='이미지를 만들지 못했어요. 사진이 모두 표시된 뒤 다시 눌러주세요.';}
+  finally{button.disabled=false;}
+};
+const params=new URLSearchParams(location.search),matchResult=/^(male|female)-(\d{2})$/.exec(params.get('result')||'');
+if(matchResult){const sex=matchResult[1],a=OUTFIT_DATA[sex].find(f=>f.id===Number(matchResult[2])),b=OUTFIT_DATA[sex].find(f=>f.id===Number(params.get('second')));if(a&&b&&a.id!==b.id)renderResult(sex,a,b);}
+
+const mainImage = $('mainImage');
+function updateMainImage(){
+  const ready=mainImage.complete && mainImage.naturalWidth>0;
+  mainImage.hidden=!ready;
+  $('homeFallback').hidden=ready;
+}
+mainImage.addEventListener('load',updateMainImage);
+mainImage.addEventListener('error',updateMainImage);
+updateMainImage();
+
+</script>
+</body>
+</html>

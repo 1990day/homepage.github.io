@@ -1,0 +1,78 @@
+name: Testit optimized Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: actions/configure-pages@v5
+      - name: Build existing Pages site
+        uses: actions/jekyll-build-pages@v1
+        with:
+          source: ./
+          destination: ./_site
+      - name: Install PNG optimizer
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pngquant
+      - name: Compress deployment images without changing source files
+        shell: python
+        run: |
+          from pathlib import Path
+          from concurrent.futures import ThreadPoolExecutor
+          import subprocess, os
+          root = Path('_site')
+          before = sum(p.stat().st_size for p in root.rglob('*') if p.is_file())
+          images = [p for p in root.rglob('*') if p.is_file() and p.suffix.lower() == '.png' and p.stat().st_size > 20000]
+          def optimize(p):
+              tmp = p.with_name(p.name + '.optimized.png')
+              result = subprocess.run(['pngquant', '--speed', '4', '--force', '--output', str(tmp), '256', '--', str(p)], stdout=subprocess.DEVNULL, stderr=subprocess.PIPE)
+              if result.returncode:
+                  tmp.unlink(missing_ok=True)
+                  raise RuntimeError('PNG optimization failed: ' + str(p) + ': ' + result.stderr.decode(errors='replace')[:300])
+              if tmp.stat().st_size < p.stat().st_size:
+                  os.replace(tmp, p)
+              else:
+                  tmp.unlink()
+          with ThreadPoolExecutor(max_workers=2) as pool:
+              for i, _ in enumerate(pool.map(optimize, images), 1):
+                  if i % 250 == 0:
+                      print(f'Optimized {i}/{len(images)} PNGs', flush=True)
+          after = sum(p.stat().st_size for p in root.rglob('*') if p.is_file())
+          summary = f'## Deployment image optimization\nBefore: {before / 1_000_000:.1f} MB\nAfter: {after / 1_000_000:.1f} MB\nPNG files processed: {len(images)}\nOriginal repository files were not modified.\n'
+          print(summary)
+          with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as f:
+              f.write(summary)
+          if after > 950_000_000:
+              raise RuntimeError('Still above the 950 MB safety target. Deployment stopped; further optimization is needed.')
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./_site
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to existing GitHub Pages site
+        id: deployment
+        uses: actions/deploy-pages@v4

@@ -28,6 +28,8 @@ jobs:
         with:
           source: ./
           destination: ./_site
+      - name: Allow optimizer to write build output
+        run: sudo chown -R "$(id -u):$(id -g)" ./_site
       - name: Install PNG optimizer
         run: |
           sudo apt-get update

@@ -9840,7 +9840,7 @@ function markForecast(text, phrase, underline) {
 }
 
 function renderSajuSummary(data) {
-  const pillarNames = ['태어난 해', '태어난 달', '태어난 날(나)', '태어난 시간'];
+  const pillarNames = ['태어난 해', '태어난 달', '태어난 날', '태어난 시간'];
   const pillarBoxes = data.chart.pillars.map((pillar, idx) => `
     <div class="pillar-box${idx === 2 ? ' is-me' : ''}">
       <span class="pillar-label">${pillarNames[idx]}</span>

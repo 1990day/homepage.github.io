@@ -160,7 +160,7 @@
     .pillars-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:4px; margin:8px 0; }
     .pillar-box { display:grid; text-align:center; padding:4px 2px; border:1px solid #f0d28a; background:#fff4d1; }
     .pillar-box.is-me { background:#ffe1e2; border-color:#eea4a8; }
-    .pillar-label,.pillar-el,.el-caption,.saju-note-sub { font-size:20px; }
+    .pillar-label,.pillar-el,.saju-note-sub { font-size:20px; }
     .pillar-han { color:var(--pine); }
     .el-bars { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:5px; }
     .el-item { min-width:0; font-size:20px; }
@@ -171,7 +171,7 @@
     .el-bar-fill.el-earth { background:#b8873e; }
     .el-bar-fill.el-metal { background:#8e928c; }
     .el-bar-fill.el-water { background:#617e8b; }
-    .el-caption { margin-top:6px; color:var(--muted); }
+    .el-caption { margin-top:6px; color:var(--muted); font-size:12px; line-height:18px; }
 
     .story-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
     .story-card {
@@ -9954,7 +9954,7 @@ function displayReport(data) {
     ${renderStoryCards(data)}
     <div class="note-grid">
       <section class="small-note lucky">
-        <h3 class="section-title">나에게 들어올 운</h3>
+        <h3 class="section-title">2027년에 들어올 운</h3>
         <ul class="luck-list">${data.emphasize.map(luck => `<li>${luck}</li>`).join('')}</ul>
       </section>
       <section class="small-note caution">

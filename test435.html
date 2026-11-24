@@ -9808,7 +9808,6 @@ const daySelect = form.elements.day;
 const errorBox = byId('form-error');
 const reportPaper = byId('report-paper');
 const shareUrl = document.querySelector('link[rel=canonical]').href;
-let imageUrl = '';
 
 const bornNow = new Date(Date.now()+9*60*MINUTE);
 const thisYear = bornNow.getUTCFullYear();
@@ -10011,6 +10010,7 @@ byId('restart-button').addEventListener('click',()=>{
 const imageDialog = byId('image-dialog');
 const shareDialog = byId('share-dialog');
 const save = byId('save-button');
+const savedImage = byId('saved-image');
 function statusText(message='') {
   byId('action-status').textContent = message;
   byId('action-status').hidden = !message;
@@ -10024,11 +10024,9 @@ save.addEventListener('click',async()=>{
     const height = reportPaper.offsetHeight;
     const scale = Math.min(2.5,Math.sqrt(4100000/(width*height)),8000/height);
     const canvas = await html2canvas(reportPaper,{scale,backgroundColor:'#fff9e8',logging:false});
-    const blob = await new Promise(resolve=>canvas.toBlob(resolve,'image/png'));
-    if (!blob) throw new Error('PNG 생성 실패');
-    if (imageUrl) URL.revokeObjectURL(imageUrl);
-    imageUrl = URL.createObjectURL(blob);
-    byId('saved-image').src = imageUrl;
+    const pngUrl = canvas.toDataURL('image/png');
+    if (!pngUrl.startsWith('data:image/png;base64,')) throw new Error('PNG 생성 실패');
+    savedImage.src = pngUrl;
     imageDialog.showModal();
   } catch (error) {
     console.error(error);
@@ -10038,10 +10036,7 @@ save.addEventListener('click',async()=>{
   }
 });
 imageDialog.addEventListener('close',()=>{
-  if (!imageUrl) return;
-  URL.revokeObjectURL(imageUrl);
-  byId('saved-image').removeAttribute('src');
-  imageUrl = '';
+  savedImage.removeAttribute('src');
   save.focus({preventScroll:true});
 });
 byId('share-button').addEventListener('click',async()=>{

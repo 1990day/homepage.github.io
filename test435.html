@@ -10015,6 +10015,33 @@ function statusText(message='') {
   byId('action-status').textContent = message;
   byId('action-status').hidden = !message;
 }
+function prepareCaptureMarkers(clonedDocument, clonedReport) {
+  for (const marker of clonedReport.querySelectorAll('.forecast-marker')) {
+    const paragraph = marker.parentElement;
+    const paragraphRect = paragraph.getBoundingClientRect();
+    const color = clonedDocument.defaultView.getComputedStyle(marker).backgroundColor;
+    const lineRects = [...marker.getClientRects()];
+
+    // Draw each highlighted line behind the paragraph text in the capture.
+    paragraph.style.position = 'relative';
+    paragraph.style.zIndex = '0';
+    marker.style.backgroundColor = 'transparent';
+    for (const rect of lineRects) {
+      const highlight = clonedDocument.createElement('span');
+      highlight.setAttribute('aria-hidden', 'true');
+      Object.assign(highlight.style, {
+        position: 'absolute',
+        zIndex: '-1',
+        left: `${rect.left - paragraphRect.left}px`,
+        top: `${rect.top - paragraphRect.top}px`,
+        width: `${rect.width}px`,
+        height: `${rect.height}px`,
+        backgroundColor: color
+      });
+      paragraph.append(highlight);
+    }
+  }
+}
 save.addEventListener('click',async()=>{
   statusText();
   save.disabled = true;
@@ -10023,7 +10050,12 @@ save.addEventListener('click',async()=>{
     const width = reportPaper.offsetWidth;
     const height = reportPaper.offsetHeight;
     const scale = Math.min(2.5,Math.sqrt(4100000/(width*height)),8000/height);
-    const canvas = await html2canvas(reportPaper,{scale,backgroundColor:'#fff9e8',logging:false});
+    const canvas = await html2canvas(reportPaper, {
+      scale,
+      backgroundColor: '#fff9e8',
+      logging: false,
+      onclone: prepareCaptureMarkers
+    });
     const pngUrl = canvas.toDataURL('image/png');
     if (!pngUrl.startsWith('data:image/png;base64,')) throw new Error('PNG 생성 실패');
     savedImage.src = pngUrl;

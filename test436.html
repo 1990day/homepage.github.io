@@ -131,6 +131,7 @@ dialog::backdrop{background:#10291f99}
 dialog h2{color:var(--red);font-size:25px;font-weight:400;line-height:1.2}
 dialog p{font-size:16px;margin:6px 0 8px}
 #save-dialog h2,#save-dialog p{text-align:center}
+#saved-image-link{display:block;width:fit-content;margin:0 auto}
 dialog img{display:block;margin:0 auto 9px;max-width:100%;max-height:55vh;object-fit:contain}
 dialog .action{margin-top:9px}
 </style>
@@ -244,7 +245,9 @@ dialog .action{margin-top:9px}
 <dialog id="save-dialog" aria-labelledby="save-heading">
   <h2 id="save-heading">결과 이미지 저장하기</h2>
   <p>이미지를 꾹 눌러 저장해 주세요.</p>
-  <img id="saved-image" alt="테스트잇 양기 음기 사주 테스트 결과 PNG">
+  <a id="saved-image-link" download="test-it-yang-yin.png" aria-label="결과 이미지를 PNG로 저장하기">
+    <img id="saved-image" alt="테스트잇 양기 음기 사주 테스트 결과 PNG">
+  </a>
   <form method="dialog"><button class="action">닫기</button></form>
 </dialog>
 <dialog id="share-dialog" aria-labelledby="share-heading">
@@ -489,6 +492,71 @@ function showStatus(message) {
   status.hidden = false;
 }
 
+const pngFilename = 'test-it-yang-yin.png';
+const pngCacheName = 'test436-result-png-v1';
+const saveImageLink = byId('saved-image-link');
+
+async function registerPngWorker() {
+  if (!window.isSecureContext || !('serviceWorker' in navigator) || !('caches' in window)) return null;
+  const script = new URL('./test436-png.js', location.href);
+  const scope = new URL('./test436', location.href);
+  try {
+    const workers = navigator.serviceWorker;
+    const existing = await workers.getRegistration(location.href);
+    if (existing?.scope === scope.href &&
+        [existing.active, existing.waiting, existing.installing].some((worker) => worker && worker.scriptURL !== script.href)) return null;
+    await workers.register(script.href, {scope:scope.href});
+    if (workers.controller?.scriptURL === script.href) return script.href;
+
+    return await new Promise((resolve) => {
+      const finish = (value) => {
+        clearTimeout(timeout);
+        workers.removeEventListener('controllerchange', onChange);
+        resolve(value);
+      };
+      const onChange = () => {
+        if (workers.controller?.scriptURL === script.href) finish(script.href);
+      };
+      const timeout = setTimeout(() => finish(null), 1500);
+      workers.addEventListener('controllerchange', onChange);
+      onChange();
+    });
+  } catch {
+    return null;
+  }
+}
+
+const pngWorkerReady = registerPngWorker();
+
+async function publishPngPreview(blob) {
+  const worker = await Promise.race([
+    pngWorkerReady,
+    new Promise((resolve) => setTimeout(() => resolve(null), 1500))
+  ]);
+  if (worker && navigator.serviceWorker.controller?.scriptURL === worker) {
+    try {
+      const cache = await caches.open(pngCacheName);
+      const now = Date.now();
+      const url = new URL('./test436-result-png/' + now + '-' + crypto.randomUUID() + '/' + pngFilename, location.href);
+      for (const entry of await cache.keys()) {
+        const timestamp = Number(new URL(entry.url).pathname.split('/').at(-2).split('-')[0]);
+        if (timestamp < now - 3600000) await cache.delete(entry);
+      }
+      await cache.put(url.href, new Response(blob, {
+        headers:{
+          'Content-Type':'image/png',
+          'Content-Disposition':'inline; filename="' + pngFilename + '"',
+          'Cache-Control':'private, no-store'
+        }
+      }));
+      return url.href;
+    } catch {
+      // The image remains a named PNG download when Cache Storage is unavailable.
+    }
+  }
+  return URL.createObjectURL(blob);
+}
+
 byId('save').addEventListener('click', async () => {
   const button = byId('save');
   byId('action-status').hidden = true;
@@ -502,17 +570,13 @@ byId('save').addEventListener('click', async () => {
       logging:false
     });
     const blob = await new Promise((resolve) => canvas.toBlob(resolve, 'image/png'));
-    if (!blob) throw new Error('결과 이미지가 만들어지지 않았어요.');
-    let previewUrl;
-    try {
-      previewUrl = URL.createObjectURL(new File([blob], 'test-it-yang-yin.png', {type:'image/png'}));
-    } catch {
-      previewUrl = canvas.toDataURL('image/png');
-    }
+    if (!blob || blob.type !== 'image/png') throw new Error('PNG 이미지를 만들지 못했어요.');
+    const previewUrl = await publishPngPreview(blob);
     if (byId('result').hidden) {
       if (previewUrl.startsWith('blob:')) URL.revokeObjectURL(previewUrl);
       return;
     }
+    saveImageLink.href = previewUrl;
     savedImage.src = previewUrl;
     saveDialog.showModal();
   } catch {
@@ -524,6 +588,7 @@ byId('save').addEventListener('click', async () => {
 saveDialog.addEventListener('close', () => {
   if (savedImage.src.startsWith('blob:')) URL.revokeObjectURL(savedImage.src);
   savedImage.removeAttribute('src');
+  saveImageLink.removeAttribute('href');
 });
 byId('share').addEventListener('click', async () => {
   const text = title + '\n' + url;

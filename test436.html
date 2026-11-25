@@ -1,0 +1,203 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>테스트잇 산타의 성격 평가서 테스트</title><meta property="og:title" content="테스트잇 산타의 성격 평가서 테스트"><meta property="og:image" content="https://test-it.co.kr/img_main436.png"><meta property="og:url" content="https://test-it.co.kr/test436.html"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script><style>
+@font-face{font-family:'DearFromsol';src:url('https://cdn.jsdelivr.net/gh/Project-Noonnu/2607161334@griun-fromsol-rg/griun-fromsol-rg/Griun_Fromsol-Rg.woff2') format('woff2');font-weight:400;font-display:swap}
+:root{color-scheme:light;--pine:#285541;--red:#a5373d;--paper:#fff7e5;--ink:#172b21;--rule:#dec39a}
+*{box-sizing:border-box}
+body{margin:0;background:#f8efdc;color:var(--ink);font-family:"DearFromsol","Malgun Gothic",sans-serif;font-weight:400}
+header{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:14px clamp(13px,4vw,30px);border-bottom:1px solid #ded0ad;background:#fffaf0;font-size:13px}
+header>a{color:var(--pine);font-size:18px;font-weight:400;white-space:nowrap}
+a{color:inherit;text-decoration:none}
+nav{display:flex;gap:clamp(10px,3vw,24px);white-space:nowrap}
+nav a:hover{color:var(--red)}
+main{width:min(100% - 28px,544px);margin:clamp(20px,5vw,40px) auto;text-align:center}
+.frame{border:1px solid #a89066;background:var(--paper);padding:8px}
+.green{display:flex;align-items:center;justify-content:center;gap:7px;background:var(--pine);color:#fff1cb;padding:9px 4px;font-size:clamp(11px,3vw,13px);line-height:1.45;word-break:keep-all}
+.green::before,.green::after{content:"✦";color:#ffcf7a;font-size:10px}
+#start .green{letter-spacing:2px}
+.red{background:var(--red);color:#fff9e9;border:1px solid #853039;padding:12px 8px}
+#start .red{margin-top:6px}
+h1,h2,b,strong{font-weight:400}
+h1,h2,p{margin:0;word-break:keep-all;overflow-wrap:anywhere}
+h1{font-size:clamp(23px,6vw,34px);line-height:1.38;letter-spacing:-.04em}
+h2{font-size:clamp(18px,5vw,24px);line-height:1.42;letter-spacing:-.025em}
+p{font-size:14px;line-height:1.75}
+#start p{padding:8px 6px 5px}
+button{width:100%;min-height:46px;margin-top:8px;border:1px solid #ae9c76;border-radius:0;background:#fffaf0;color:#234c3b;padding:11px 10px;font:inherit;font-weight:400;font-size:16px;line-height:1.55;word-break:keep-all;cursor:pointer}
+button:hover{background:#f2ebd9;border-color:var(--pine)}
+button:focus-visible,a:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+.primary{font-weight:400;background:var(--red);border-color:#853039;color:#fff9e9}
+.primary:hover{background:#873139;border-color:#853039}
+.art{border:1px solid #426b52;margin:6px 0}
+.art svg{display:block;width:100%;height:auto}
+#quiz .art{margin-top:9px}
+#question{padding:5px 6px 8px}
+#choices{display:grid;grid-template-columns:minmax(0,1fr);column-gap:8px}
+@media(min-width:600px){#choices{grid-template-columns:repeat(2,minmax(0,1fr))}}
+#capture{background:#fff5df}
+#capture .green{margin-bottom:6px;padding:11px 6px;gap:7px;color:#fff7e2;font-size:clamp(17px,4.5vw,22px);font-weight:700;line-height:1.35;letter-spacing:.15px;overflow-wrap:anywhere}
+#capture .green::before,#capture .green::after{font-size:12px;flex:none}
+#capture .art{margin:0;background:#214a3b}
+#resultart svg{aspect-ratio:400/155}
+.verdict-ribbon{margin:6px 0 8px;padding:6px}
+.verdict-ribbon-inner{border:1px solid #e5ac71;padding:9px 7px 10px}
+.verdict-ribbon .small{color:#fff0ca;font-size:clamp(15px,4vw,18px);font-weight:400;line-height:1.3;letter-spacing:.85px}
+#verdict{color:#fff9e9;font-size:clamp(23px,6.3vw,32px);font-weight:700;line-height:1.35;letter-spacing:.1px}
+.verdict-ribbon .small::before,.verdict-ribbon .small::after{content:"✦";margin:0 6px;font-size:9px;color:#ffd487}
+.section{border:1px solid var(--rule);margin-top:7px;padding:8px 10px;text-align:left;background:#fffaf0;font-size:16px;line-height:1.65;word-break:keep-all;overflow-wrap:anywhere}
+.traits-panel{background:#f0f2e2;border-color:#b9c6a6}
+.fault-panel{background:#fff0dd}
+.gift-panel{background:#f4dfbf;border-color:#cba374}
+.section b{display:block;padding-bottom:4px;color:#203e30;font-size:17px;font-weight:700;line-height:1.45;letter-spacing:.25px}
+.fault-panel b,.gift-panel b,#gift{color:#75272e}
+.motif{margin-right:6px;width:17px;height:17px;vertical-align:-4px;image-rendering:pixelated}
+.line{border-bottom:1px solid #d9dfc6;padding:3px 0}
+.line:last-child{border-bottom:0}
+.small{font-size:11px;line-height:1.5}
+.signature{background:var(--pine);color:#fff6db;padding:7px 5px;font-size:clamp(15px,4vw,17px);line-height:1.4;letter-spacing:.35px}
+.signature::before,.signature::after{content:"✧";margin:0 7px;color:#ffcf7a}
+.hidden{display:none}
+#modal{position:fixed;inset:0;background:#192b22a8;display:none;align-items:center;justify-content:center;padding:18px;z-index:5}
+#modal>div{background:#fffaf0;border:1px solid #ad9b76;padding:12px;width:min(360px,95vw);max-height:90vh;overflow:auto}
+#modal p{padding-bottom:7px}
+#modal img{width:100%;display:block}
+progress{display:block;width:100%;height:8px;margin-top:7px;accent-color:var(--red)}
+footer{width:min(350px,100%);overflow:hidden;margin:20px auto;text-align:center}
+
+#quizart{overflow:hidden}
+.quiz-santa,.quiz-deer{transform-box:fill-box;transform-origin:center bottom}
+.quiz-santa{animation:quiz-santa-sway 3s ease-in-out infinite}
+.quiz-deer{animation:quiz-deer-hop 2.7s ease-in-out infinite}
+.quiz-flakes{animation:quiz-snow 2.9s ease-in infinite}
+@keyframes quiz-santa-sway{0%,100%{transform:rotate(0deg)}45%{transform:rotate(2deg) translateY(-1px)}}
+@keyframes quiz-deer-hop{0%,100%{transform:translateY(0)}45%{transform:translateY(-5px) rotate(-2deg)}}
+@keyframes quiz-snow{0%{transform:translateY(-7px);opacity:.3}50%{opacity:.9}100%{transform:translateY(12px);opacity:.2}}
+@media(prefers-reduced-motion:reduce){.quiz-santa,.quiz-deer,.quiz-flakes{animation:none}}
+</style></head><body><header><a href="/">테스트잇</a><nav><a href="/">성격</a><a href="/">얼굴</a><a href="/">그외</a><a href="/">사주</a></nav></header><main><div id="start"><div class="frame"><div class="green">NORTH POLE · 2026</div><div class="red"><h1>산타의 성격 평가서</h1></div><div class="art" id="coverart"></div><p>산타가 지켜본 나의 성격은?<br>산타가 주는 선물은 뭘까?</p></div><button class="primary" onclick="begin()">테스트 시작하기</button></div><div id="quiz" class="hidden"><div class="frame"><div class="green" id="count"></div><progress id="progress" max="12"></progress><div class="art" id="quizart" aria-hidden="true"></div><h2 id="question"></h2></div><div id="choices"></div></div><div id="result" class="hidden"><div id="capture" class="frame"><div class="green">테스트잇 산타의 성격 평가서 테스트</div><div class="art" id="resultart"></div><div class="red verdict-ribbon"><div class="verdict-ribbon-inner"><div class="small">산타의 최종 평가</div><h2 id="verdict" style="margin:5px 0 0"></h2></div></div><div class="section traits-panel"><b><img class="motif" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEIAAABCCAYAAADjVADoAAABN0lEQVR42u2asQ7BUBhGW+nCYPEGHkOMIiaJEZtYrR7CahUbRolJxCgewxtYDCyCSVPJFb3c//rF+aam6dAc38nXNoKAEGJIqOEmDuvm9X6cr8y+ck8ZugAIQAACEMpWI7kOtpFeExoBCCUPVKVONdZk2SrE52vTfXy8Ha9CGoEagAAEIP51NZJLYRvpBaERgPCsxic6+NSERgDCgxoSOkhrQiMAAQhAAMLnavhcCokFoRGAcKjGMx1Gx8h4fTd3VqsJjQDEYyJX9WM1UAM1XsbnOtAIQPzQA5VEJvWi8Xx7seOBCjU0rIYrHYYn82/Qy16cfxZIowmNAMQbqyGxDtJq2L6P0AhAeHjXSBNpBWgEIIRWQ8MXJ+kkF4RGAMLha7htBo2ylW79+YY/paMGIAABCEKI+twAeTJOU66DzqYAAAAASUVORK5CYII=" alt="">산타가 관찰한 성격</b><div id="traits"></div></div><div class="section fault-panel"><b><img class="motif" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEIAAABCCAYAAADjVADoAAABUUlEQVR42u2YsUoDQRRFd0IwKSyCf6CYT0gIFmFbsUkZsMkfWAj5hIB+hUUCdqZJFZAtBVtLIU3qdGk1lcNYDMzbeWM28Zxqi2VgL/dwdzfLAAAAAAAA9DH/7YEH45vvn+v548I+f40uEMQv6sdUdRpBEBVXo3Ob27q+zwqzbx1GvUt7/fT2SSNQQ6qGW+mqaZJCBxpBECVWY5if2+vnYnUQL0tSHWgEQZRQw9XB1cR3j9aChOjgKuAi1YFGEETkt4ZPAa1lkeoQowCNIIgwjNa3Rsiy3K+3ojObd1fqOrg/bGkEQUSuhtayZNMP0ZmpdaARBBG4GloL4sO3GhdnLdE5k/aJig40giBKqBGjzMPmS3TmabOhooZUBxpBEIovVO6fpRTLkuJliUYQxB+sRgiv132RMtLV6L4sDY1AjQP5DI8hRdVpBEEAAAAAAABUjx3GtmlcfkAAlAAAAABJRU5ErkJggg==" alt="">올해 산타가 눈감아 준 행동</b><div id="fault"></div></div><div class="section gift-panel"><b><img class="motif" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEIAAABCCAYAAADjVADoAAABE0lEQVR42u2aoQpCMRSG78RiMdgtBk2CIAgGs9l+38EXMPoCvsPtZrNBMAkmDRabQcGiTZNjgmHjbHPK96WFXbb78R/Oxr1ZBgAAYIuSPHwoRo/XuJHP1bdfRrKfEllAhHtpmJGTICmf0HsgEYh4p5zy5nyVA4lARIQDVcwOEnMtEoGIxLtGzE5BIhBh2TW2+TBoLOvjjh6fd/uPc2qtph4fZ5ugL98uFopEUBqJdQ2zBEgEIhCBCEQgAhGI+JsDlXn2ng56+t7Rr1b83DUc558udy/rrq43PZ4s13zXoDQQgQhEIAIRiEAEIhCBCEQgAhGIQAQiEIEIRCACEb+J1Y8i5ncBCV3H+b7WJRGIAAAACMkTykA5gljecp8AAAAASUVORK5CYII=" alt="">산타가 준비한 선물</b><div id="gift"></div></div><div class="small signature" style="margin-top:8px">테스트잇 · test-it.co.kr</div></div><button class="primary" onclick="save()">결과 이미지 저장하기</button><button onclick="restart()">다시 해보기</button><button onclick="location.href='/'">다른 테스트 해보기</button><button onclick="share()">테스트 공유하기</button></div></main><div id="modal" onclick="if(event.target===this)this.style.display='none'"><div><p>이미지를 꾹 눌러 저장해 주세요.</p><img id="preview" alt="결과 이미지"><button onclick="document.getElementById('modal').style.display='none'">닫기</button></div></div><footer><script src="https://ads-partners.coupang.com/g.js"></script><script>if(window.PartnersCoupang)new PartnersCoupang.G({id:798186,template:'carousel',width:'350',height:'150'});</script></footer><script>const Q=[["E", "I", "크리스마스 파티에 초대받았다!", "사람들 많이 오면 더 재밌겠다", "친한 사람 몇 명만 있으면 좋겠다"], ["S", "N", "트리를 꾸미기 시작했다.", "예쁘게 꾸며진 사진을 참고한다", "작년과 다르게 꾸며 본다"], ["T", "F", "친구가 선물 고르기에 실패했다고 속상해한다.", "교환할 수 있는지 알아봐 준다", "속상했겠다며 먼저 위로한다"], ["J", "P", "크리스마스 당일 약속이 생겼다.", "시간과 장소부터 정해 둔다", "일단 만나서 하고 싶은 걸 한다"], ["I", "E", "선물 교환 파티에서 모르는 사람 옆에 앉았다.", "상대가 말을 걸면 대화한다", "먼저 말을 걸어 분위기를 풀어 본다"], ["N", "S", "산타에게 편지를 쓴다면?", "이루고 싶은 소원을 여러 개 적는다", "지금 정말 필요한 것을 적는다"], ["F", "T", "친구가 직접 만든 케이크 맛이 별로다.", "만들어 준 정성이 고맙다고 한다", "좋은 점과 아쉬운 점을 솔직히 말한다"], ["P", "J", "예약한 식당이 갑자기 문을 닫았다.", "근처에 괜찮은 곳을 찾아 들어간다", "다른 식당을 검색하고 일정을 다시 짠다"], ["E", "I", "크리스마스 저녁 시간이 비었다.", "친구에게 만나자고 연락한다", "집에서 영화 보며 혼자 쉰다"], ["S", "N", "눈 내리는 거리를 걷고 있다.", "길이 미끄럽고 춥다는 생각이 든다", "눈을 보며 이런저런 상상을 한다"], ["T", "F", "친구가 선물을 깜빡하고 왔다.", "다음에 주면 되지 뭐", "혹시 미안해할까 봐 괜찮다고 말해 준다"], ["J", "P", "선물을 포장해야 한다.", "미리 포장해서 준비해 둔다", "전날이나 당일에 포장한다"]],R={"ISTJ": ["착한데 고집이 셈", "약속 시간을 잘 지킴|맡은 일은 끝까지 함|갑자기 계획이 바뀌면 싫어함|친한 사람은 잘 챙김|자기 방식대로 하는 걸 좋아함|정해진 규칙을 잘 지킴|말보다 행동으로 보여줌", "계획을 망친 사람에게 짜증 낸 일", "하루 종일 쉴 수 있는 휴일", ""], "ISFJ": ["남 챙기느라 본인만 손해 봄", "남이 좋아하는 걸 잘 기억함|부탁을 잘 거절하지 못함|말없이 주변 사람을 챙김|서운했던 일을 오래 기억함|자기 일보다 남의 일을 먼저 챙김|고마웠던 일을 잘 기억함|불편해도 티를 잘 안 냄", "싫은데도 좋다고 한 일", "혼자 편하게 쉴 시간", ""], "INFJ": ["착한데 속마음을 잘 안 말함", "상대방의 기분을 잘 살핌|혼자 생각을 많이 함|친해지기까지 시간이 걸림|친한 사람 몇 명이면 충분함|실망하면 연락을 줄임|사람을 오래 지켜보는 편임|고민이 있어도 잘 말하지 않음", "말없이 연락을 끊은 일", "말이 잘 통하는 친구", ""], "INTJ": ["착한데 기준이 높음", "혼자서도 일을 잘함|시간 낭비를 싫어함|계획을 세우는 걸 좋아함|친한 사람이 곤란하면 도와줌|빈말을 잘 못함|자기 기준이 확실함|위로보다 해결책을 먼저 생각함", "답답한 사람을 속으로 욕한 일", "아무도 방해하지 않는 휴일", ""], "ISTP": ["귀찮아서 나쁜 짓도 안 함", "혼자 있는 걸 좋아함|문제가 생기면 직접 해결함|간섭받는 걸 싫어함|말보다 행동으로 챙김|감정 표현을 잘 안 함|용건이 있을 때 주로 연락함|좋아하는 일에는 집중을 잘함", "연락을 귀찮아서 미룬 일", "약속 없는 주말", ""], "ISFP": ["착한데 하기 싫은 건 미룸", "주변 분위기를 잘 살핌|좋아하는 것과 싫어하는 것이 확실함|싸우는 걸 싫어함|집에서 편하게 쉬는 걸 좋아함|재촉하면 더 하기 싫어함|친한 사람 앞에서는 장난이 많음|싫다는 말을 잘 못함", "할 일을 계속 미룬 일", "갖고 싶었던 물건", ""], "INFP": ["착한데 생각이 너무 많음", "별말 아닌데도 오래 생각함|상상을 자주 함|친한 사람을 많이 챙김|기분이 안 좋으면 혼자 있고 싶어 함|마음에 없는 말을 잘 못함|좋아하는 것에 푹 빠짐|자기 생각을 쉽게 바꾸지 않음", "혼자 오해하고 서운해한 일", "좋아하는 취미용품", ""], "INTP": ["착한데 궁금한 게 너무 많음", "궁금한 건 끝까지 알아봄|혼자 집중하는 걸 좋아함|이유를 따져 보는 걸 좋아함|관심 없는 일은 미룸|엉뚱한 생각을 자주 함|납득이 안 되면 질문이 많아짐|좋아하는 일은 시간 가는 줄 모름", "대화 중에 딴생각한 일", "취미에 쓸 용돈", ""], "ESTP": ["착한데 일단 저지르고 봄", "행동이 빠름|갑자기 문제가 생겨도 잘 대처함|새로운 걸 해보는 걸 좋아함|답답한 분위기를 싫어함|생각보다 행동이 먼저임|승부욕이 강함|실수해도 금방 잊는 편임", "생각 없이 일을 벌인 일", "여행 경비", ""], "ESFP": ["착한데 노는 걸 너무 좋아함", "분위기를 잘 띄움|친구들과 노는 걸 좋아함|재미있는 일에는 적극적임|재미없는 일은 미룸|칭찬받는 걸 좋아함|좋아하는 사람에게 표현을 잘함|신나면 말이 많아짐", "놀다가 할 일을 잊은 일", "친구들과 놀러 갈 돈", ""], "ENFP": ["착한데 한 가지에 집중을 못 함", "새로운 것에 관심이 많음|사람에게 관심이 많음|감정 표현이 많음|시작은 잘하는데 마무리가 어려움|좋아하는 사람을 잘 챙김|관심사가 자주 바뀜|작은 일에도 잘 감동함", "일을 너무 많이 벌인 일", "하고 싶었던 일을 할 시간", ""], "ENTP": ["착한데 말싸움에서 안 짐", "새로운 생각을 자주 함|납득이 안 되면 따짐|갑자기 상황이 바뀌어도 잘 적응함|반복되는 일을 싫어함|친한 사람에게 장난을 많이 침|의견이 다르면 토론하는 걸 좋아함|관심 있는 주제는 말이 많아짐", "말싸움을 끝까지 한 일", "돈 많이 벌 수 있는 기회", ""], "ESTJ": ["착한데 잔소리가 많음", "일 처리가 빠름|맡은 일은 책임지고 함|약속을 중요하게 생각함|시간 낭비를 싫어함|주변 사람의 일도 챙김|애매하게 말하는 걸 싫어함|잘못된 부분을 바로 지적함", "남의 일까지 잔소리한 일", "밀린 일 없는 휴일", ""], "ESFJ": ["착한데 남의 일까지 신경 씀", "기념일을 잘 기억함|주변 사람의 기분을 잘 살핌|사람들과 어울리는 걸 좋아함|서운함을 잘 느낌|받은 만큼 잘 챙겨줌|혼자 있는 사람이 있으면 챙김|친한 사람의 반응에 신경 씀", "부탁을 너무 많이 들어준 일", "먼저 연락해 주는 친구", ""], "ENFJ": ["남의 고민까지 떠맡음", "남의 장점을 잘 알아봄|주변 사람을 자주 응원함|모임에서 분위기를 잘 이끎|남의 고민을 잘 들어줌|자기 고민은 잘 말하지 않음|친구끼리 싸우면 중간에서 말림|남의 기대에 맞추려고 노력함", "남의 일에 너무 많이 신경 쓴 일", "나를 먼저 챙겨주는 친구", ""], "ENTJ": ["착한데 성질이 급함", "목표가 생기면 바로 시작함|결정을 빠르게 내림|답답한 상황을 싫어함|자기 사람은 확실히 챙김|쉬면서도 할 일을 생각함|결과가 확실한 일을 좋아함|문제가 생기면 해결부터 함", "일이 느린 사람에게 짜증 낸 일", "일한 만큼 받는 보너스", ""]};const $=id=>document.getElementById(id);let i=0,s={};const art=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 155"><rect width="400" height="155" fill="#214a3b"/>
+<path d="M0 112 Q27 103 50 109T100 108T150 110T210 108T265 110T320 107T400 112V155H0Z" fill="#b6c7a6"/>
+<path d="M0 129 Q35 121 65 127T136 123T205 126T276 121T340 125T400 121V155H0Z" fill="#f6e9c9"/>
+<path d="M0 7Q48 30 102 8M191 7Q221 24 238 14M334 8Q368 27 400 8" fill="none" stroke="#d3b37d"/>
+<g fill="#edc277"><circle cx="7" cy="12" r="3"/><circle cx="37" cy="21" r="3"/><circle cx="68" cy="20" r="3"/><circle cx="96" cy="12" r="3"/><circle cx="198" cy="12" r="3"/><circle cx="220" cy="19" r="3"/><circle cx="341" cy="13" r="3"/><circle cx="367" cy="21" r="3"/><circle cx="392" cy="14" r="3"/></g>
+<g fill="#e9816a"><circle cx="23" cy="18" r="3"/><circle cx="53" cy="23" r="3"/><circle cx="82" cy="16" r="3"/><circle cx="209" cy="16" r="3"/><circle cx="235" cy="17" r="3"/><circle cx="354" cy="18" r="3"/><circle cx="380" cy="18" r="3"/></g>
+<g fill="#fff4d2"><circle cx="19" cy="43" r="1.6"/><circle cx="36" cy="59" r="1.5"/><circle cx="81" cy="39" r="2"/><circle cx="110" cy="29" r="1.4"/><circle cx="201" cy="38" r="1.7"/><circle cx="226" cy="48" r="1.5"/><circle cx="245" cy="39" r="2"/><circle cx="305" cy="29" r="2"/><circle cx="346" cy="50" r="1.5"/><circle cx="383" cy="37" r="1.6"/><circle cx="374" cy="54" r="2"/><circle cx="393" cy="72" r="2"/><circle cx="14" cy="68" r="2"/><circle cx="224" cy="84" r="2"/></g>
+<path d="M88 58v10M83 63h10M207 55v12M201 61h12M308 11v10M303 16h10M367 36v12M361 42h12" fill="none" stroke="#ffe3a7" stroke-width="2"/>
+<g><path fill="#b4c7a2" d="M365 57 344 90H353L338 108H392L377 90H386Z"/><path fill="#4c7957" d="M365 59 350 87H358L345 103H385L373 87H379Z"/><path fill="#e9c16d" d="m365 49 2 5 6 1-4 4 1 5-5-3-5 3 1-5-4-4 6-1z"/><circle cx="359" cy="85" r="2.8" fill="#eb9471"/><circle cx="374" cy="95" r="2.7" fill="#edc277"/></g><g stroke="#744a3b" stroke-width="1.5"><path fill="#426e4c" d="M45 28 15 80H30L8 112H82L60 80H75Z"/><path d="M40 30l5-10 4 10 10 2-7 6 2 9-9-5-9 5 2-9-7-6z" fill="#edc277" stroke="none"/><path d="M28 70Q46 66 63 73M22 99Q48 93 67 98" fill="none" stroke="#d8d9ad"/><rect x="40" y="112" width="12" height="20" fill="#9b6646"/><circle cx="34" cy="79" r="5" fill="#b63b40"/><circle cx="58" cy="101" r="5" fill="#e3b84f"/><rect x="106" y="93" width="98" height="52" rx="22" fill="#b63b40"/><circle cx="155" cy="70" r="36" fill="#f2c4a4"/><path d="M119 69Q155 100 191 69L190 96Q155 135 120 96Z" fill="white"/><path d="M116 55Q117 9 156 13Q187 15 198 55Z" fill="#b63b40"/><rect x="111" y="49" width="88" height="14" rx="7" fill="white"/><circle cx="156" cy="13" r="9" fill="white"/><circle cx="143" cy="72" r="3" fill="#47382f"/><circle cx="169" cy="72" r="3" fill="#47382f"/><circle cx="156" cy="83" r="5" fill="#e49a86"/><path d="M266 61 253 30 238 21M253 30 258 12M307 61 322 30 338 21M322 30 317 12" fill="none" stroke-width="5" stroke-linecap="round"/><ellipse cx="286" cy="93" rx="37" ry="44" fill="#bd8a59"/><ellipse cx="249" cy="64" rx="15" ry="8" fill="#bd8a59"/><ellipse cx="323" cy="64" rx="15" ry="8" fill="#bd8a59"/><ellipse cx="286" cy="111" rx="24" ry="18" fill="#f0d2ad"/><circle cx="273" cy="84" r="4" fill="#47382f"/><circle cx="299" cy="84" r="4" fill="#47382f"/><circle cx="286" cy="105" r="10" fill="#c53239"/><ellipse cx="283" cy="101" rx="3.5" ry="2" fill="#f99883" stroke="none"/><path d="M264 129Q286 143 308 129L305 138Q286 149 267 138Z" fill="#ae3a3c"/><circle cx="286" cy="141" r="5" fill="#edc277"/><rect x="340" y="108" width="44" height="34" fill="#b63b40"/><path d="M362 108V142M340 120H384" stroke="#e8c16a" stroke-width="7"/><rect x="75" y="117" width="34" height="25" fill="#e8c16a"/><path d="M92 117V142M75 127H109" stroke="#b63b40" stroke-width="5"/></g></svg>`;const quizScenes = [
+  { santa:[-3,-1,-6], deer:[2,-3,6], hand:[203,52], item:'party' },
+  { santa:[4,-1,7], deer:[-6,0,-7], hand:[209,61], item:'ornament' },
+  { santa:[-4,2,-5], deer:[-9,4,-10], hand:[203,94], item:'gift' },
+  { santa:[2,1,5], deer:[8,-1,7], hand:[205,55], item:'calendar' },
+  { santa:[0,-1,-7], deer:[-2,-8,-7], hand:[207,68], item:'tag' },
+  { santa:[3,2,8], deer:[-7,1,-5], hand:[208,94], item:'letter' },
+  { santa:[-2,2,-4], deer:[-10,1,-8], hand:[205,88], item:'cake' },
+  { santa:[1,-1,3], deer:[5,-3,9], hand:[203,58], item:'sign' },
+  { santa:[-8,2,-8], deer:[-3,-2,-6], hand:[194,64], item:'phone' },
+  { santa:[4,-2,6], deer:[5,-9,-8], hand:[210,58], item:'snowball' },
+  { santa:[-2,3,-5], deer:[-7,2,-7], hand:[206,77], item:'gift' },
+  { santa:[3,0,7], deer:[4,-4,6], hand:[206,91], item:'ribbon' }
+];
+
+const quizProps = {
+  party:'<path d="M-7 6 2-14 11 6Z" fill="#d8584b"/><path d="M-3-2 6 1M-1-7 5-5" stroke="#fae4a6" stroke-width="2"/><circle cx="2" cy="-14" r="2.8" fill="#f3ce72"/>',
+  ornament:'<path d="M0-18V-5" stroke="#fff1c3"/><circle cy="4" r="8" fill="#e1675b"/><path d="M-7 4H7" stroke="#ffe6a9" stroke-width="2"/><path d="M-2-5H2V-2H-2Z" fill="#e8b65f"/>',
+  gift:'<rect x="-11" y="-7" width="23" height="19" rx="2" fill="#437456"/><path d="M0-7V12M-10-1H11" stroke="#f6d17d" stroke-width="3"/><path d="M0-7Q-12-11-7-15Q0-15 0-7Q2-16 8-14Q11-10 0-7" fill="none" stroke="#f6d17d" stroke-width="2"/>',
+  calendar:'<rect x="-10" y="-13" width="21" height="22" rx="2" fill="#fff0cf"/><path d="M-10-7H11" stroke="#d06150" stroke-width="4"/><path d="M-5-15v5M6-15v5M-5-1h3M2-1h3M-5 4h3M2 4h3" stroke="#7c5a43" stroke-width="1.5"/>',
+  tag:'<path d="M-11-7H4L11 0 4 7H-11Z" fill="#f7d895"/><circle cx="6" r="1.7" fill="#a3473b"/><path d="M-7-2h8M-7 2h6" stroke="#a3473b"/>',
+  letter:'<rect x="-13" y="-9" width="26" height="18" rx="2" fill="#fff1d0"/><path d="M-12-8 0 1 12-8M-12 8l6-5M12 8 6 3" fill="none" stroke="#b78760"/><circle r="3.5" fill="#c14c48"/>',
+  cake:'<ellipse cy="8" rx="15" ry="3" fill="#f6e7bd"/><rect x="-11" y="-5" width="22" height="12" rx="2" fill="#be7655"/><path d="M-11-2Q-6 2 0-2Q5-5 11-2V-6H-11Z" fill="#fff4d7"/><path d="M0-7V-13" stroke="#d65b52" stroke-width="2"/><circle cy="-16" r="2.2" fill="#f5ca66"/>',
+  sign:'<rect x="-12" y="-10" width="24" height="19" rx="2" fill="#f3d797"/><path d="m-5 0 10 0m-4-4 4 4-4 4" fill="none" stroke="#8c3f3c" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>',
+  phone:'<rect x="-7" y="-14" width="14" height="24" rx="3" fill="#345745"/><rect x="-4" y="-11" width="8" height="15" rx="1" fill="#e8e6b7"/><circle cy="7" r="1" fill="#f8d78b"/>',
+  snowball:'<circle r="9" fill="#fff1d3" stroke="#bbcfb5"/><path d="M-5 3Q-1 7 4 4" fill="none" stroke="#c7d5bc"/><circle cx="-3" cy="-3" r="1.5" fill="#fff"/>',
+  ribbon:'<path d="M0 1Q-16-4-11-10Q-6-14 0 0Q6-14 11-10Q16-4 0 1Z" fill="#d75c53"/><path d="M-2 0-8 10M2 0l8 10" stroke="#d75c53" stroke-width="3" stroke-linecap="round"/><circle r="2.5" fill="#efaa76"/>'
+};
+
+const resultProps = {
+  mug:'<path d="M6-6H12Q18 1 8 5" fill="none" stroke="#edbc71" stroke-width="3"/><path d="M-10-8H8L6 9H-8Z" fill="#b94f4b"/><path d="M-6-12q-4-4 0-7m7 7q-4-4 0-7" fill="none" stroke="#fff2d4" stroke-width="2"/>',
+  pillow:'<rect x="-14" y="-9" width="28" height="19" rx="6" fill="#f4dbad"/><path d="M-10-5Q0-2 10-5M-10 6Q0 3 10 6" fill="none" stroke="#bd8665"/>',
+  hearts:'<path d="M0 11Q-17 0-12-8Q-7-15 0-7Q7-15 12-8Q17 0 0 11Z" fill="#dd6962"/><path d="M-9-5q-1-3 3-3" fill="none" stroke="#ffd49b" stroke-width="2"/>',
+  moon:'<path d="M4-15Q-10-17-14-4Q-17 10-3 14Q7 17 13 8Q-2 11-4 0Q-5-8 4-15Z" fill="#f4cb75"/><path d="M8-11v10m-5-5h10" stroke="#fff1ca" stroke-width="2"/>',
+  weekend:'<rect x="-13" y="-10" width="26" height="21" rx="2" fill="#f5e1b6"/><path d="M-13-4H13" stroke="#b94f4b" stroke-width="4"/><path d="m-5 3 4 4 7-8" fill="none" stroke="#3b6b54" stroke-width="2.5"/>',
+  palette:'<path d="M-13-3Q-12-13 2-13Q15-13 15-2Q15 8 4 9Q-1 9-1 5Q-1 2-5 4Q-14 6-13-3Z" fill="#f4ce92"/><circle cx="-7" cy="-5" r="2.5" fill="#c95c52"/><circle cx="0" cy="-8" r="2.5" fill="#417550"/><circle cx="7" cy="-6" r="2.5" fill="#b286a3"/><circle cx="9" r="2" fill="#bd7455"/>',
+  coin:'<circle r="11" fill="#e8b25f"/><circle r="7.5" fill="#f8d689" stroke="#b78748"/><path d="M0-5v10m-4-5h8" stroke="#a5713e" stroke-width="2"/>',
+  ticket:'<path d="M-15-9H15V-3Q9 0 15 3V9H-15V3Q-9 0-15-3Z" fill="#ebc574"/><path d="M6-6v12m-16-6H1" stroke="#9a5c4d" stroke-width="1.8" stroke-dasharray="2 2"/>',
+  coins:'<ellipse cx="-6" cy="5" rx="8" ry="6" fill="#db9e53"/><ellipse cx="-6" cy="2" rx="8" ry="6" fill="#f6cf7c"/><circle cx="5" cy="-4" r="9" fill="#f5ca70"/><path d="M5-9V1M1-4h8" stroke="#b37b42" stroke-width="2"/>',
+  clock:'<circle r="12" fill="#d76656"/><circle r="9" fill="#fff0cd"/><path d="M0-6V1H5" fill="none" stroke="#72543f" stroke-width="2" stroke-linecap="round"/>',
+  star:'<path d="M0-15 5-5 15-3 8 4 9 14 0 9-9 14-8 4-15-3-5-5Z" fill="#f3c66b"/><path d="M0-8 2-3 7-2" fill="none" stroke="#ffecaf" stroke-width="2"/>',
+  list:'<path d="M-10-13H10V12H-10Z" fill="#fff0cd"/><path d="M-5-7h10m-10 5h10m-10 5h6" stroke="#a56b53" stroke-width="1.6"/><path d="m1 7 3 3 5-6" fill="none" stroke="#427557" stroke-width="2"/>',
+  message:'<path d="M-13-11H13V6H1L-6 12V6H-13Z" fill="#f7ddb1"/><circle cx="-6" cy="-2" r="1.4" fill="#a54442"/><circle cy="-2" r="1.4" fill="#a54442"/><circle cx="6" cy="-2" r="1.4" fill="#a54442"/>',
+  card:'<rect x="-12" y="-9" width="24" height="19" rx="2" fill="#8db88b"/><path d="M0 6Q-10 0-6-4Q-3-7 0-3Q3-7 6-4Q10 0 0 6Z" fill="#d35552"/>',
+  bonus:'<rect x="-13" y="-8" width="26" height="17" rx="2" fill="#dfb161"/><path d="M-12-7 0 0 12-7M-12 7l7-5m17 5L5 2" fill="none" stroke="#ab7942"/><path d="M0-6v12m-5-6h10" stroke="#fff0bc" stroke-width="2"/>'
+};
+
+const resultScenes = {
+  ISTJ: {santa:[-5,0,3],deer:[-4,0,-5],hand:[205,94],item:'mug',face:'calm'},
+  ISFJ: {santa:[1,3,-6],deer:[-6,4,5],hand:[204,110],item:'pillow',face:'sleepy'},
+  INFJ: {santa:[2,-1,8],deer:[5,0,-6],hand:[207,64],item:'hearts',face:'happy',swap:true},
+  INTJ: {santa:[-5,2,-4],deer:[5,2,4],hand:[202,59],item:'moon',face:'sleepy'},
+  ISTP: {santa:[1,0,6],deer:[-6,2,-8],hand:[199,85],item:'weekend',face:'calm',swap:true},
+  ISFP: {santa:[3,1,5],deer:[-4,1,6],hand:[210,96],item:'gift',face:'happy'},
+  INFP: {santa:[-2,2,-7],deer:[-5,0,4],hand:[207,77],item:'palette',face:'happy',swap:true},
+  INTP: {santa:[2,0,7],deer:[-4,0,-4],hand:[207,52],item:'coin',face:'wink'},
+  ESTP: {santa:[-4,-1,-7],deer:[4,-3,5],hand:[203,49],item:'ticket',face:'happy',swap:true},
+  ESFP: {santa:[1,-2,8],deer:[6,-2,-7],hand:[207,57],item:'coins',face:'wink',swap:true},
+  ENFP: {santa:[0,1,-7],deer:[-2,-1,7],hand:[207,65],item:'clock',face:'happy'},
+  ENTP: {santa:[-2,0,7],deer:[7,0,-8],hand:[207,58],item:'star',face:'wink'},
+  ESTJ: {santa:[1,2,-5],deer:[-5,1,5],hand:[205,79],item:'list',face:'calm'},
+  ESFJ: {santa:[-2,0,-5],deer:[1,-1,6],hand:[208,72],item:'message',face:'wink',swap:true},
+  ENFJ: {santa:[2,2,7],deer:[-5,1,-6],hand:[209,84],item:'card',face:'happy'},
+  ENTJ: {santa:[0,1,-6],deer:[4,-2,7],hand:[205,56],item:'bonus',face:'wink',swap:true}
+};
+
+function expression(figure, mood, radius) {
+  if (mood === 'calm') return figure;
+  let eye = 0;
+  return figure.replace(new RegExp('<circle cx="(\\d+)" cy="(\\d+)" r="' + radius + '" fill="#47382f"/>', 'g'), (original, x, y) => {
+    eye++;
+    if (mood === 'wink' && eye === 1) return original;
+    const bend = mood === 'sleepy' ? 4 : -5;
+    return `<path d="M${Number(x)-4} ${y}q4 ${bend} 8 0" fill="none" stroke="#47382f" stroke-width="2.3" stroke-linecap="round"/>`;
+  });
+}
+
+function drawScene({santa, deer, hand, item, face = 'calm', swap = false}, animated) {
+  const [handX, handY] = hand;
+  const santaStart = art.indexOf('<rect x="106"');
+  const deerStart = art.indexOf('<path d="M266 61');
+  const parcelsStart = art.indexOf('<rect x="340"');
+
+  const figure = (name, [x, y, angle], cx, cy, content) =>
+    `<g class="${animated ? 'quiz' : 'result'}-${name}"><g transform="translate(${x} ${y}) rotate(${angle} ${cx} ${cy})">${content}</g></g>`;
+  const mitten = `<path d="M182 109 Q195 104 ${handX} ${handY}" fill="none" stroke="#7d4038" stroke-width="17" stroke-linecap="round"/>
+    <path d="M182 109 Q195 104 ${handX} ${handY}" fill="none" stroke="#b63b40" stroke-width="14" stroke-linecap="round"/>
+    <circle cx="${handX}" cy="${handY}" r="7" fill="#fff3d8"/>`;
+  const prop = `<g transform="translate(${handX + 10} ${handY - 5})">${resultProps[item] ?? quizProps[item]}</g>`;
+  const flakes = '<g class="quiz-flakes" fill="#fff1cf"><circle cx="90" cy="45" r="2"/><circle cx="217" cy="35" r="2"/><circle cx="333" cy="39" r="1.8"/><circle cx="54" cy="51" r="1.6"/><circle cx="383" cy="57" r="1.5"/></g>';
+  let santaArt = expression(art.slice(santaStart, deerStart), face, 3) + mitten + prop;
+  const deerArt = expression(art.slice(deerStart, parcelsStart), face, 4);
+  if (swap) santaArt = `<g transform="translate(310 0) scale(-1 1)">${santaArt}</g>`;
+  const santaPose = swap ? [santa[0]+131, santa[1], santa[2]] : santa;
+  const deerPose = swap ? [deer[0]-131, deer[1], deer[2]] : deer;
+
+  return art.slice(0, santaStart)
+    + figure('santa', santaPose, 155, 112, santaArt)
+    + figure('deer', deerPose, 286, 111, deerArt)
+    + art.slice(parcelsStart).replace('</svg>', flakes.replace('quiz-flakes', animated ? 'quiz-flakes' : 'result-flakes') + '</svg>');
+}
+
+function renderQuizArt(step) {
+  $('quizart').innerHTML = drawScene(quizScenes[step], true);
+}
+
+$('coverart').innerHTML=art;function show(id){['start','quiz','result'].forEach(x=>$(x).classList.toggle('hidden',x!==id))}function begin(){i=0;s={E:0,I:0,S:0,N:0,T:0,F:0,J:0,P:0};show('quiz');render()}function render(){let q=Q[i];renderQuizArt(i);$('count').textContent=`QUESTION ${i+1} / 12`;$('progress').value=i+1;$('question').textContent=q[2];$('choices').replaceChildren();[0,1].forEach(n=>{let b=document.createElement('button');b.textContent=q[n+3];b.onclick=()=>{s[q[n]]++;i++;i===Q.length?finish():render()};$('choices').append(b)})}function finish(){let k=['EI','SN','TF','JP'].map(p=>s[p[0]]>s[p[1]]?p[0]:p[1]).join(''),r=R[k];$('resultart').innerHTML=drawScene(resultScenes[k],false);$('verdict').textContent=r[0];$('traits').replaceChildren();r[1].split('|').forEach(t=>{let d=document.createElement('div');d.className='line';d.textContent='✦ '+t;$('traits').append(d)});$('fault').textContent=r[2];$('gift').textContent=r[3];show('result')}function restart(){show('start')}async function save(){try{
+  const text = $('capture').textContent;
+  const faces = await Promise.all([400,700].map(weight => document.fonts.load(weight + ' 16px DearFromsol',text)));
+  if (faces.some(matches => matches.length === 0)) throw new Error('그리운 프롬솔을 불러오지 못했습니다.');
+  await document.fonts.ready;const illustration = $('resultart').querySelector('svg');
+  const illustrationSize = illustration.getBoundingClientRect();
+  let c=await html2canvas($('capture'),{
+    scale:2,
+    backgroundColor:'#fffaf0',
+    onclone(clone){
+      const svg = clone.querySelector('#resultart svg');
+      svg.setAttribute('width', illustrationSize.width);
+      svg.setAttribute('height', illustrationSize.height);
+      svg.setAttribute('preserveAspectRatio','none');
+    }
+  });$('preview').src=c.toDataURL('image/png');$('modal').style.display='flex'}catch(e){alert('이미지를 저장하지 못했습니다. 다시 시도해 주세요.')}}async function share(){let url='https://test-it.co.kr/test436.html';try{if(navigator.share)await navigator.share({title:document.title,url});else{await navigator.clipboard.writeText(document.title+' '+url);alert('링크가 복사되었습니다.')}}catch(e){if(e.name!=='AbortError')alert(url)}}</script></body></html>
